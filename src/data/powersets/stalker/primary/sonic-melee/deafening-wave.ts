@@ -1,66 +1,16 @@
 /**
- * Deafening Wave
- * PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold
+ * Deafening Wave — COMPOSED EXPORT
  *
- * Source: stalker_melee/sonic_melee/deafening_wave.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee sonic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DeafeningWave as base } from '@/data/generated/powersets/stalker/primary/sonic-melee/deafening-wave';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/sonic-melee/deafening-wave';
 
-export const DeafeningWave: Power = {
-  "name": "Deafening Wave",
-  "internalName": "Deafening_Wave",
-  "available": 21,
-  "description": "You create a large field of sonic waves, causing damage to all foes around you. It has a moderate chance of causing migraines, leaving them shaking in pain and helpless. This power will inflict 10% bonus damage against Attuned targets.",
-  "shortHelp": "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
-  "icon": "sonicmanipulation_deafeningcry.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 2.03,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Melee AoE Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.4246,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4246,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8492,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "hold": {
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const DeafeningWave: Power = withOverrides(base, overrides);

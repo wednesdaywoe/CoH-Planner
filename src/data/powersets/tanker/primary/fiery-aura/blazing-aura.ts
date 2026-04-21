@@ -1,54 +1,16 @@
 /**
- * Blazing Aura
- * Toggle: PBAoE, DoT (Fire)
+ * Blazing Aura — COMPOSED EXPORT
  *
- * Source: tanker_defense/fiery_aura/blazing_aura.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BlazingAura as base } from '@/data/generated/powersets/tanker/primary/fiery-aura/blazing-aura';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/fiery-aura/blazing-aura';
 
-export const BlazingAura: Power = {
-  "name": "Blazing Aura",
-  "internalName": "Blazing_Aura",
-  "available": 0,
-  "description": "While active, you are surrounded by flames that burn all foes that attempt to enter melee range.Damage: Minor(DoT).Recharge: Fast.",
-  "shortHelp": "Toggle: PBAoE, DoT (Fire)",
-  "icon": "flamingshield_fieryaura.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 12,
-    "recharge": 4,
-    "endurance": 1.04,
-    "castTime": 2.03,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.1729,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "taunt": {
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
-    }
-  }
-};
+export const BlazingAura: Power = withOverrides(base, overrides);

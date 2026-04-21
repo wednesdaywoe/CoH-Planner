@@ -1,73 +1,16 @@
 /**
- * Obsidian Shield
- * Toggle: Self +Res(Psionic, Sleep, Hold, Disorient, Fear)
+ * Obsidian Shield — COMPOSED EXPORT
  *
- * Source: tanker_defense/dark_armor/obsidian_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense dark_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ObsidianShield as base } from '@/data/generated/powersets/tanker/primary/dark-armor/obsidian-shield';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/dark-armor/obsidian-shield';
 
-export const ObsidianShield: Power = {
-  "name": "Obsidian Shield",
-  "internalName": "Obsidian_Shield",
-  "available": 5,
-  "description": "You can create a special Obsidian Shield that grants good resistance to Psionic damage. With your mind enshrouded in darkness you are protected from Sleep, Fear, Hold and Disorient attacks.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +Res(Psionic, Sleep, Hold, Disorient, Fear)",
-  "icon": "darkarmor_obsidianshield.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.104,
-    "castTime": 1.17,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "psionic": {
-        "scale": 5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "fear": 0.75,
-      "hold": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const ObsidianShield: Power = withOverrides(base, overrides);

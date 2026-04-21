@@ -1,58 +1,16 @@
 /**
- * Spectral Wall
- * Ranged, DoT (Psionic), Foe Immobilize, -ToHit
+ * Spectral Wall — COMPOSED EXPORT
  *
- * Source: dominator_control/illusion_control/spectral_wall.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control illusion_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SpectralWall as base } from '@/data/generated/powersets/dominator/primary/illusion-control/spectral-wall';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/illusion-control/spectral-wall';
 
-export const SpectralWall: Power = {
-  "name": "Spectral Wall",
-  "internalName": "Spectral_Wall",
-  "available": 0,
-  "description": "Creates an illusionary wall of specters that prevents enemies from moving. As the foe is surrounded, they take psionic damage over time.",
-  "shortHelp": "Ranged, DoT (Psionic), Foe Immobilize, -ToHit",
-  "icon": "illusions_immob.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Dominator Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 2
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const SpectralWall: Power = withOverrides(base, overrides);

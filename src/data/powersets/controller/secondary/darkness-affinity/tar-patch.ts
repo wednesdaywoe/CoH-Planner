@@ -1,48 +1,16 @@
 /**
- * Tar Patch
- * Ranged (Location AoE), Target -Speed, -Res, -Fly
+ * Tar Patch — COMPOSED EXPORT
  *
- * Source: controller_buff/darkness_affinity/tar_patch.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff darkness_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TarPatch as base } from '@/data/generated/powersets/controller/secondary/darkness-affinity/tar-patch';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/darkness-affinity/tar-patch';
 
-export const TarPatch: Power = {
-  "name": "Tar Patch",
-  "internalName": "Tar_Patch",
-  "available": 0,
-  "description": "Drops a large patch of viscous Negative Energy which dramatically slows down enemies that run through it and reduces their damage resistance. Affected targets stuck in the Tar Patch cannot jump or fly.",
-  "shortHelp": "Ranged (Location AoE), Target -Speed, -Res, -Fly",
-  "icon": "darkmiasma_tarpatch.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 90,
-    "recharge": 90,
-    "endurance": 7.8,
-    "castTime": 3.1
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Tar Patch",
-      "powers": [
-        "Redirects.Dark_Miasma.Tar"
-      ],
-      "duration": 45,
-      "copyBoosts": true
-    }
-  }
-};
+export const TarPatch: Power = withOverrides(base, overrides);

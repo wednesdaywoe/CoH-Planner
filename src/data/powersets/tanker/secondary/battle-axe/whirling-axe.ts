@@ -1,63 +1,16 @@
 /**
- * Axe Cyclone
- * PBAoE Melee, DMG(Lethal), Foe Knockdown
+ * Axe Cyclone — COMPOSED EXPORT
  *
- * Source: tanker_melee/battle_axe/whirling_axe.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee battle_axe
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AxeCyclone as base } from '@/data/generated/powersets/tanker/secondary/battle-axe/whirling-axe';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/battle-axe/whirling-axe';
 
-export const AxeCyclone: Power = {
-  "name": "Axe Cyclone",
-  "internalName": "Whirling_Axe",
-  "available": 27,
-  "description": "You spin your Battle Axe in a huge circle, attacking all nearby foes. This attack deals moderate damage to any foe it hits, draws them into melee range and can knock them down.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE Melee, DMG(Lethal), Foe Knockdown",
-  "icon": "battleaxe_whirlingaxe.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.05,
-    "radius": 15,
-    "recharge": 18,
-    "endurance": 16.848,
-    "castTime": 2.1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "repel": {
-      "scale": 2,
-      "table": "Ones"
-    },
-    "durations": {
-      "repel": 0.15
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.15
-  }
-};
+export const AxeCyclone: Power = withOverrides(base, overrides);

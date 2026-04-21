@@ -1,109 +1,16 @@
 /**
- * Energy Absorption
- * PBAoE, Self +End, +DEF(All), Res (Slow), Foe -End
+ * Energy Absorption — COMPOSED EXPORT
  *
- * Source: brute_defense/ice_armor/energy_absorption.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense ice_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnergyAbsorption as base } from '@/data/generated/powersets/brute/secondary/ice-armor/energy-absorption';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/ice-armor/energy-absorption';
 
-export const EnergyAbsorption: Power = {
-  "name": "Energy Absorption",
-  "internalName": "Energy_Absorption",
-  "available": 19,
-  "description": "Activating this power draws moisture directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw moisture from adds to your own Endurance as well as Defense to all attacks. The first foe you absorb grants the highest Defense bonus, and you can absorb up to 10 foes. In addition to Defense, Energy Absorption also grants you resistance to Slow effects. If there are no foes within range, this power will fail.",
-  "shortHelp": "PBAoE, Self +End, +DEF(All), Res (Slow), Foe -End",
-  "icon": "icearmor_energyabsorption.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 12,
-    "recharge": 60,
-    "endurance": 13,
-    "castTime": 1.33,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Endurance Modification",
-    "Threat Duration"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 45,
-      "defenseBuff": 45
-    },
-    "defenseBuff": {
-      "smashing": {
-        "scale": 0.47500000000000003,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.025
-      },
-      "lethal": {
-        "scale": 0.47500000000000003,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.025
-      },
-      "fire": {
-        "scale": 0.47500000000000003,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.025
-      },
-      "cold": {
-        "scale": 0.47500000000000003,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.025
-      },
-      "energy": {
-        "scale": 0.47500000000000003,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.025
-      },
-      "negative": {
-        "scale": 0.47500000000000003,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.025
-      },
-      "psionic": {
-        "scale": 0.47500000000000003,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.025
-      },
-      "toxic": {
-        "scale": 0.47500000000000003,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.025
-      }
-    },
-    "enduranceGain": {
-      "scale": 15,
-      "table": "Melee_Ones",
-      "perTarget": 15
-    },
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 45
-  }
-};
+export const EnergyAbsorption: Power = withOverrides(base, overrides);

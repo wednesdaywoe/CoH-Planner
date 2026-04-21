@@ -1,39 +1,16 @@
 /**
- * Inertial Reduction
- * PBAoE, Allies +Jump
+ * Inertial Reduction — COMPOSED EXPORT
  *
- * Source: corruptor_buff/kinetics/inertial_reduction.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff kinetics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { InertialReduction as base } from '@/data/generated/powersets/corruptor/secondary/kinetics/inertial-reduction';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/kinetics/inertial-reduction';
 
-export const InertialReduction: Power = {
-  "name": "Inertial Reduction",
-  "internalName": "Inertial_Reduction",
-  "available": 23,
-  "description": "You can reduce your Inertia, along with that of all nearby allies. The affected allies can then jump incredible distances for a while.Recharge: Slow.",
-  "shortHelp": "PBAoE, Allies +Jump",
-  "icon": "kineticboost_initialreductions.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 60,
-    "endurance": 23.4,
-    "castTime": 2.03,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Jump"
-  ],
-  "allowedSetCategories": [
-    "Leaping",
-    "Leaping & Sprints",
-    "Universal Travel"
-  ],
-  "maxSlots": 6
-};
+export const InertialReduction: Power = withOverrides(base, overrides);

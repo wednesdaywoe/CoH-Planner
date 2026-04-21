@@ -1,40 +1,16 @@
 /**
- * Snow Storm
- * Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly
+ * Snow Storm — COMPOSED EXPORT
  *
- * Source: mastermind_buff/cold_domination/snow_storm.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff cold_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SnowStorm as base } from '@/data/generated/powersets/mastermind/secondary/cold-domination/snow-storm';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/cold-domination/snow-storm';
 
-export const SnowStorm: Power = {
-  "name": "Snow Storm",
-  "internalName": "Snow_Storm",
-  "available": 3,
-  "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes. The torrent winds of the Snow Storm are enough to bring down flying foes.Recharge: Moderate.",
-  "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly",
-  "icon": "colddomination_snowstorm.png",
-  "powerType": "Toggle",
-  "targetType": "Foe",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 25,
-    "recharge": 10,
-    "endurance": 0.325,
-    "castTime": 2.03,
-    "activatePeriod": 0.5,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement"
-  ],
-  "maxSlots": 6
-};
+export const SnowStorm: Power = withOverrides(base, overrides);

@@ -1,71 +1,16 @@
 /**
- * Precognition
- * Auto: Self +DEF(Melee, Ranged, AoE, Psionic), Res(DeBuff DEF), +Perception
+ * Precognition — COMPOSED EXPORT
  *
- * Source: tanker_defense/psionic_armor/precognition.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense psionic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Precognition as base } from '@/data/generated/powersets/tanker/primary/psionic-armor/precognition';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/psionic-armor/precognition';
 
-export const Precognition: Power = {
-  "name": "Precognition",
-  "internalName": "Precognition",
-  "available": 17,
-  "description": "Precognition allows you to read your enemies' minds, letting you see their attacks before they happen and increasing your perception. This power is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +DEF(Melee, Ranged, AoE, Psionic), Res(DeBuff DEF), +Perception",
-  "icon": "psionicarmor_precognition.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10.25,
-      "perceptionBuff": 0.75,
-      "debuffResistance": 10.25
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "defense": {
-        "scale": 0.2312,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const Precognition: Power = withOverrides(base, overrides);

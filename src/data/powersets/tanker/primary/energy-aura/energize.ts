@@ -1,55 +1,16 @@
 /**
- * Energize
- * Self Endurance Discount, Heal, +Regen
+ * Energize — COMPOSED EXPORT
  *
- * Source: tanker_defense/energy_aura/energize.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense energy_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Energize as base } from '@/data/generated/powersets/tanker/primary/energy-aura/energize';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/energy-aura/energize';
 
-export const Energize: Power = {
-  "name": "Energize",
-  "internalName": "Energize",
-  "available": 17,
-  "description": "You can channel a tremendous amount of energy through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time.",
-  "shortHelp": "Self Endurance Discount, Heal, +Regen",
-  "icon": "energyaura_energize.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 120,
-    "endurance": 10.4,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 2.5,
-    "table": "Melee_HealSelf"
-  },
-  "effects": {
-    "enduranceDiscount": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "durations": {
-      "enduranceDiscount": 30,
-      "regenBuff": 30
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 30
-  }
-};
+export const Energize: Power = withOverrides(base, overrides);

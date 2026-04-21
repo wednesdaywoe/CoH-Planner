@@ -1,75 +1,16 @@
 /**
- * Howling Twilight
- * Ranged (AoE), Minor DMG(Negative), Target Slow, -Recharge, -Regen, Disorient, Ally Rez
+ * Howling Twilight — COMPOSED EXPORT
  *
- * Source: defender_buff/dark_miasma/howling_twilight.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff dark_miasma
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HowlingTwilight as base } from '@/data/generated/powersets/defender/primary/dark-miasma/howling-twilight';
+import { overrides } from '@/data/overrides/powersets/defender/primary/dark-miasma/howling-twilight';
 
-export const HowlingTwilight: Power = {
-  "name": "Howling Twilight",
-  "internalName": "Howling_Twilight",
-  "available": 5,
-  "description": "Activating this power channels the power of the Netherworld to weaken your foes, in an attempt to revive all nearby fallen allies. You must stand near your defeated allies to revive them, then select a foe. The selected foe and all nearby foes will be Slowed, Disoriented, have their Regeneration rate reduced and drained of some life. Revived allies will have full Hit Points and Endurance and will be protected from XP Debt for 90 seconds.",
-  "shortHelp": "Ranged (AoE), Minor DMG(Negative), Target Slow, -Recharge, -Regen, Disorient, Ally Rez",
-  "icon": "darkmiasma_howlingtwilight.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "radius": 15,
-    "recharge": 180,
-    "endurance": 10.4,
-    "castTime": 1.83,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Damage"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.25,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "fear": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Howling",
-      "duration": 1,
-      "copyBoosts": true
-    },
-    "stun": {
-      "mag": 2,
-      "scale": 15,
-      "table": "Ranged_Ones"
-    },
-    "regenDebuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
-    },
-    "buffDuration": 30
-  }
-};
+export const HowlingTwilight: Power = withOverrides(base, overrides);

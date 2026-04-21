@@ -1,86 +1,16 @@
 /**
- * Grounded
- * Auto: Self +Res (All DMG but Toxic and Psionics, End Drain, Immobilize, KB)
+ * Grounded — COMPOSED EXPORT
  *
- * Source: sentinel_defense/electric_armor/grounded.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense electric_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Grounded as base } from '@/data/generated/powersets/sentinel/secondary/electric-armor/grounded';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/electric-armor/grounded';
 
-export const Grounded: Power = {
-  "name": "Grounded",
-  "internalName": "Grounded",
-  "available": 19,
-  "description": "You are Grounded and naturally very resistant to Energy and Negative Energy damage. You also have added resistance to Endurance Drain effects. Additionally, Grounded provides Immobilize, Knockback protection and the Grounded status, but only for up to 5 seconds after being near the ground. This power is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +Res (All DMG but Toxic and Psionics, End Drain, Immobilize, KB)",
-  "icon": "electricarmor_selfresistenergies.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1
-  },
-  "allowedEnhancements": [
-    "Resistance"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 0.8,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.8,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 0.8,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 0.8,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 1,
-      "debuffResistance": 1,
-      "knockup": 5,
-      "knockback": 5,
-      "immobilize": 1
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "knockup": {
-      "scale": 6,
-      "table": "Melee_Knockback"
-    },
-    "knockback": {
-      "scale": 6,
-      "table": "Melee_Knockback"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 1,
-    "buffDuration": 1
-  }
-};
+export const Grounded: Power = withOverrides(base, overrides);

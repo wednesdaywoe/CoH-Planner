@@ -1,156 +1,16 @@
 /**
- * Icy Bastion
- * Toggle: Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery, Invulnerable; Self Hold
+ * Icy Bastion — COMPOSED EXPORT
  *
- * Source: brute_defense/ice_armor/hibernate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense ice_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IcyBastion as base } from '@/data/generated/powersets/brute/secondary/ice-armor/hibernate';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/ice-armor/hibernate';
 
-export const IcyBastion: Power = {
-  "name": "Icy Bastion",
-  "internalName": "Hibernate",
-  "available": 29,
-  "description": "You encase yourself in a block of solid ice, rendering yourself invulnerable but unable to act. While the power is active you heal damage and recover endurance at an incredible rate. You can remain in this state for up to 30 seconds. Should you deactivate the power earlier, some of the resistance to damage and other effects will remain until the full 30 seconds window is over. Notes:If you are under the effects of No Phase, this power will instantly deactivate and leave you only with the lingering effects for 30 seconds.",
-  "shortHelp": "Toggle: Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery, Invulnerable; Self Hold",
-  "icon": "icearmor_hybernate.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 300,
-    "endurance": 0.1085,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 14,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 30,
-      "recoveryBuff": 30,
-      "resistance": 30,
-      "knockup": 30,
-      "knockback": 30,
-      "repel": 30,
-      "mezResistance": 30,
-      "hold": 30,
-      "immobilize": 30,
-      "stun": 30,
-      "sleep": 30,
-      "slow": 0.75
-    },
-    "recoveryBuff": {
-      "scale": 6,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "cold": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "toxic": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      }
-    },
-    "knockup": {
-      "scale": 200,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 200,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 200,
-      "table": "Melee_Ones"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "repel": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 30,
-    "immobilize": {
-      "mag": 1000,
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "slow": {
-      "fly": {
-        "scale": 10000,
-        "table": "Melee_Ones"
-      }
-    },
-    "selfPenalty": true,
-    "untouchable": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "onlyAffectsSelf": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 30
-  }
-};
+export const IcyBastion: Power = withOverrides(base, overrides);

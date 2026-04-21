@@ -1,55 +1,16 @@
 /**
- * Sonic Cage
- * Ranged, Foe Capture (Special)
+ * Sonic Cage — COMPOSED EXPORT
  *
- * Source: controller_buff/sonic_debuff/sonic_cage.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff sonic_debuff
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SonicCage as base } from '@/data/generated/powersets/controller/secondary/sonic-resonance/sonic-cage';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/sonic-resonance/sonic-cage';
 
-export const SonicCage: Power = {
-  "name": "Sonic Cage",
-  "internalName": "Sonic_Cage",
-  "available": 9,
-  "description": "Encases the target in an impenetrable field of sonic waves. The target cannot attack or be attacked.Recharge: Slow.",
-  "shortHelp": "Ranged, Foe Capture (Special)",
-  "icon": "sonicdebuff_hold.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.4,
-    "range": 80,
-    "recharge": 60,
-    "endurance": 12.48,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "immobilize": {
-      "mag": 1,
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
-    "effectDuration": 30,
-    "durations": {
-      "immobilize": 30,
-      "untouchable": 30,
-      "onlyAffectsSelf": 30
-    },
-    "untouchable": {
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
-    "onlyAffectsSelf": {
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
-    "buffDuration": 30
-  }
-};
+export const SonicCage: Power = withOverrides(base, overrides);

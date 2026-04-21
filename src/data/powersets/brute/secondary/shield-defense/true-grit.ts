@@ -1,66 +1,16 @@
 /**
- * True Grit
- * Auto: Self +Res (Cold, Energy, Fire, Negative Energy, Toxic), +MaxHealth
+ * True Grit — COMPOSED EXPORT
  *
- * Source: brute_defense/shield_defense/true_grit.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense shield_defense
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TrueGrit as base } from '@/data/generated/powersets/brute/secondary/shield-defense/true-grit';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/shield-defense/true-grit';
 
-export const TrueGrit: Power = {
-  "name": "True Grit",
-  "internalName": "True_Grit",
-  "available": 3,
-  "description": "Your intense training has left you tougher than even the hardiest of heroes. You gain additional hit points and resistance to fire, cold, energy, negative energy and toxic damage sources. This power is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +Res (Cold, Energy, Fire, Negative Energy, Toxic), +MaxHealth",
-  "icon": "shielddefense_truegrit.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "maxHPBuff": {
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 10.25,
-      "resistance": 10.25
-    },
-    "resistance": {
-      "fire": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const TrueGrit: Power = withOverrides(base, overrides);

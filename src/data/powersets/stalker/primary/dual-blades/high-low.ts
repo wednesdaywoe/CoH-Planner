@@ -1,68 +1,16 @@
 /**
- * One Thousand Cuts
- * Melee (Cone), DMG(Lethal), Foe Knockback
+ * One Thousand Cuts — COMPOSED EXPORT
  *
- * Source: stalker_melee/dual_blades/high_low.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee dual_blades
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { OneThousandCuts as base } from '@/data/generated/powersets/stalker/primary/dual-blades/high-low';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/dual-blades/high-low';
 
-export const OneThousandCuts: Power = {
-  "name": "One Thousand Cuts",
-  "internalName": "High_Low",
-  "available": 25,
-  "description": "Unleashes a flurry of attacks on all foes in a cone in front of you, dealing moderate lethal damage to each foe hit. This power is the finishing move for the Weaken combination attack.Weaken: Sweeping Strike > Power Slice > One Thousand Cuts.",
-  "shortHelp": "Melee (Cone), DMG(Lethal), Foe Knockback",
-  "icon": "dualblades_highlow.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 10,
-    "radius": 10,
-    "arc": 1.5708,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 3.3,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.151,
-      "table": "Melee_Damage",
-      "duration": 2.05,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.7,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.21,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const OneThousandCuts: Power = withOverrides(base, overrides);

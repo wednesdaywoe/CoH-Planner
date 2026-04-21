@@ -1,68 +1,16 @@
 /**
- * Inexhaustible
- * Auto: +Max HP, +Regen, +Recovery, +Res(Slow, End Drain), +Special
+ * Inexhaustible — COMPOSED EXPORT
  *
- * Source: brute_defense/bio_organic_armor/inexhaustible.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Inexhaustible as base } from '@/data/generated/powersets/brute/secondary/bio-armor/inexhaustible';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/bio-armor/inexhaustible';
 
-export const Inexhaustible: Power = {
-  "name": "Inexhaustible",
-  "internalName": "Inexhaustible",
-  "available": 0,
-  "description": "Your body is constantly evolving and adapting based on your surroundings. As a result you receive a moderate bonus to maximum hit points, regeneration, recovery as well as gaining a measure of Slow and Endurance Drain Resistance. Half of this power's maximum hit point increase is unenhanceable. While Efficient Adaptation is active, this power grants a small bonus to recovery and regeneration. While Defensive Adaptation is active you gain a small amount of additional maximum hit points. This power doesn't grant any bonuses to Offensive Adaptation. These special bonuses are unenhanceable. Inexhaustible is always active.",
-  "shortHelp": "Auto: +Max HP, +Regen, +Recovery, +Res(Slow, End Drain), +Special",
-  "icon": "bioorganicarmor_inexhaustible.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "maxHPBuff": {
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 5.25,
-      "regenBuff": 5.25,
-      "recoveryBuff": 5.25,
-      "debuffResistance": 5.25
-    },
-    "regenBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "movement": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 5.25
-  }
-};
+export const Inexhaustible: Power = withOverrides(base, overrides);

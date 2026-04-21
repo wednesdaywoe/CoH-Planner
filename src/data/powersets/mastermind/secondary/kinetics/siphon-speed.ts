@@ -1,58 +1,16 @@
 /**
- * Siphon Speed
- * Ranged, Foe -Speed, -Rech, Self +Speed, +Rech
+ * Siphon Speed — COMPOSED EXPORT
  *
- * Source: mastermind_buff/kinetics/siphon_speed.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff kinetics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SiphonSpeed as base } from '@/data/generated/powersets/mastermind/secondary/kinetics/siphon-speed';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/kinetics/siphon-speed';
 
-export const SiphonSpeed: Power = {
-  "name": "Siphon Speed",
-  "internalName": "Siphon_Speed",
-  "available": 9,
-  "description": "You can Siphon the speed from a targeted foe, Slowing his movement and attack rate while boosting your own.Recharge: Slow.",
-  "shortHelp": "Ranged, Foe -Speed, -Rech, Self +Speed, +Rech",
-  "icon": "kineticboost_siphonspeed.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 60,
-    "endurance": 9.75,
-    "castTime": 1.93
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.85,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.85,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "durations": {
-      "movement": 60,
-      "rechargeBuff": 60
-    },
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 60
-  }
-};
+export const SiphonSpeed: Power = withOverrides(base, overrides);

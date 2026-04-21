@@ -1,56 +1,16 @@
 /**
- * Neutrino Bolt
- * Ranged, Light DMG(Energy), Foe -DEF
+ * Neutrino Bolt — COMPOSED EXPORT
  *
- * Source: dominator_assault/radioactive_assault/neutrino_bolt.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault radioactive_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { NeutrinoBolt as base } from '@/data/generated/powersets/dominator/secondary/radioactive-assault/neutrino-bolt';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/radioactive-assault/neutrino-bolt';
 
-export const NeutrinoBolt: Power = {
-  "name": "Neutrino Bolt",
-  "internalName": "Neutrino_Bolt",
-  "available": 0,
-  "description": "A very quick, but low damage attack. Neutrino Bolt can reduce the target's Defense. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Light DMG(Energy), Foe -DEF",
-  "icon": "radioactiveassault_neutrinoblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 3
-    },
-    "buffDuration": 3
-  }
-};
+export const NeutrinoBolt: Power = withOverrides(base, overrides);

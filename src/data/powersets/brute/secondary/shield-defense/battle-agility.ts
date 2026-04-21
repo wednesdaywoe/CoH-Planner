@@ -1,110 +1,16 @@
 /**
- * Active Defense
- * Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback, Defense Debuff)
+ * Active Defense — COMPOSED EXPORT
  *
- * Source: brute_defense/shield_defense/battle_agility.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense shield_defense
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ActiveDefense as base } from '@/data/generated/powersets/brute/secondary/shield-defense/battle-agility';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/shield-defense/battle-agility';
 
-export const ActiveDefense: Power = {
-  "name": "Active Defense",
-  "internalName": "Battle_Agility",
-  "available": 9,
-  "description": "When you activate this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Repel, Knockback, Hold and Defense Debuff effects for a short duration.Recharge: Long.",
-  "shortHelp": "Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback, Defense Debuff)",
-  "icon": "shielddefense_battleagility.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 200,
-    "endurance": 10.4,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 120,
-    "durations": {
-      "confuse": 120,
-      "fear": 120,
-      "hold": 120,
-      "stun": 120,
-      "sleep": 120,
-      "immobilize": 120,
-      "mezResistance": 120,
-      "knockup": 120,
-      "knockback": 120,
-      "repel": 120,
-      "debuffResistance": 120
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "repel": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 120
-  }
-};
+export const ActiveDefense: Power = withOverrides(base, overrides);

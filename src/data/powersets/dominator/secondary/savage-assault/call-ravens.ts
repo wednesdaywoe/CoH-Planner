@@ -1,63 +1,16 @@
 /**
- * Unkindness
- * Ranged (Cone), DoT (Lethal), Foe -Speed, -Defense, -Fly, +2 Blood Frenzy
+ * Unkindness — COMPOSED EXPORT
  *
- * Source: dominator_assault/savage_assault/call_ravens.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault savage_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Unkindness as base } from '@/data/generated/powersets/dominator/secondary/savage-assault/call-ravens';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/savage-assault/call-ravens';
 
-export const Unkindness: Power = {
-  "name": "Unkindness",
-  "internalName": "Call_Ravens",
-  "available": 9,
-  "description": "With a mighty roar, you command an unkindness of ravens to quickly assault and harass your foes. Your foes will suffer Moderate Lethal damage over time and have their speed and defense reduced. The power inflicts lethal damage over time that scales in strength with the number Blood Frenzy stacks. This power grants 2 stacks of Blood Frenzy.Damage: Light.Recharge: Slow.",
-  "shortHelp": "Ranged (Cone), DoT (Lethal), Foe -Speed, -Defense, -Fly, +2 Blood Frenzy",
-  "icon": "savagemelee_callravens.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.155,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.5236,
-    "recharge": 14,
-    "endurance": 16.9,
-    "castTime": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.241,
-    "table": "Ranged_Damage",
-    "duration": 3.1,
-    "tickRate": 0.75
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const Unkindness: Power = withOverrides(base, overrides);

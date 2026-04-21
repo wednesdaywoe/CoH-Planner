@@ -1,64 +1,16 @@
 /**
- * Mercurial Blow
- * Melee, DMG(Smash), Foe -Def
+ * Mercurial Blow — COMPOSED EXPORT
  *
- * Source: stalker_melee/staff_fighting/mercurial_blow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee staff_fighting
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MercurialBlow as base } from '@/data/generated/powersets/stalker/primary/staff-fighting/mercurial-blow';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/staff-fighting/mercurial-blow';
 
-export const MercurialBlow: Power = {
-  "name": "Mercurial Blow",
-  "internalName": "Mercurial_Blow",
-  "available": 0,
-  "description": "You strike your foe with a lightning fast blow from your staff dealing Smashing damage. The attack is so unexpected that the target's defenses are reduced slightly for a short time. This power grants one stack of Perfection of Body.",
-  "shortHelp": "Melee, DMG(Smash), Foe -Def",
-  "icon": "stafffighting_mercurialblow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 9,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.84,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    },
-    "buffDuration": 8
-  },
-  "requires": "!Stalker_Defense.Shield_Defense"
-};
+export const MercurialBlow: Power = withOverrides(base, overrides);

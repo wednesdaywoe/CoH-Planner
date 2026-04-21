@@ -1,50 +1,16 @@
 /**
- * Infrigidate
- * Ranged Foe -Speed, -Recharge, -DEF, -DMG (Fire)
+ * Infrigidate — COMPOSED EXPORT
  *
- * Source: mastermind_buff/cold_domination/infrigidate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff cold_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Infrigidate as base } from '@/data/generated/powersets/mastermind/secondary/cold-domination/infrigidate';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/cold-domination/infrigidate';
 
-export const Infrigidate: Power = {
-  "name": "Infrigidate",
-  "internalName": "Infrigidate",
-  "available": 0,
-  "description": "Fires a frigid beam of cold at a single target. This beam dramatically reduces the targets attack rate, movement speed and Defense. Infrigidate draws so much heat out of the target that the damage of any of its Fire attacks will be reduced.Recharge: Slow.",
-  "shortHelp": "Ranged Foe -Speed, -Recharge, -DEF, -DMG (Fire)",
-  "icon": "colddomination_infrigidate.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 15,
-    "endurance": 13,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 20
-    },
-    "buffDuration": 20
-  }
-};
+export const Infrigidate: Power = withOverrides(base, overrides);

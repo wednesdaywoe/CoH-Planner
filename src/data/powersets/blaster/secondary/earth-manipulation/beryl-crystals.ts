@@ -1,60 +1,16 @@
 /**
- * Beryl Crystals
- * Toggle: Self Res(Confuse, Perception, ToHit), +Perception, Accuracy
+ * Beryl Crystals — COMPOSED EXPORT
  *
- * Source: blaster_support/earth_manipulation/beryl_crystals.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support earth_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BerylCrystals as base } from '@/data/generated/powersets/blaster/secondary/earth-manipulation/beryl-crystals';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/earth-manipulation/beryl-crystals';
 
-export const BerylCrystals: Power = {
-  "name": "Beryl Crystals",
-  "internalName": "Beryl_Crystals",
-  "available": 23,
-  "description": "Activating this power summons several rare Beryl Crystals to orbit around you. These Crystals can bring clarity of the mind and increase your Accuracy, Perception to see hidden foes, and grant resistance to Confusion, Perception and ToHit debuffs.Recharge: Fast.",
-  "shortHelp": "Toggle: Self Res(Confuse, Perception, ToHit), +Perception, Accuracy",
-  "icon": "earthmanip_beryl.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.13,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "durations": {
-      "confuse": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const BerylCrystals: Power = withOverrides(base, overrides);

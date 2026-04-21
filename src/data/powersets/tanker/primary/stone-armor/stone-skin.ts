@@ -1,97 +1,16 @@
 /**
- * Stone Skin
- * Auto: Self +Res(All but Psionics), +DEF(All but Psionics)
+ * Stone Skin — COMPOSED EXPORT
  *
- * Source: tanker_defense/stone_armor/stone_skin.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense stone_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StoneSkin as base } from '@/data/generated/powersets/tanker/primary/stone-armor/stone-skin';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/stone-armor/stone-skin';
 
-export const StoneSkin: Power = {
-  "name": "Stone Skin",
-  "internalName": "Stone_Skin",
-  "available": 0,
-  "description": "Your tough skin is naturally resistant to most types of damage. This power is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +Res(All but Psionics), +DEF(All but Psionics)",
-  "icon": "stonearmor_stoneskin.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "defenseBuff": 10.25
-    },
-    "defenseBuff": {
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "buffDuration": 10.25
-  },
-  "requires": "!Tanker_Melee.Claws"
-};
+export const StoneSkin: Power = withOverrides(base, overrides);

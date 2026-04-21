@@ -1,56 +1,16 @@
 /**
- * Discharge
- * Ranged (Targeted AoE), Foe -DMG, -End, -Recovery, -Regen
+ * Discharge — COMPOSED EXPORT
  *
- * Source: mastermind_buff/shock_therapy/discharge.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff shock_therapy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Discharge as base } from '@/data/generated/powersets/mastermind/secondary/electrical-affinity/discharge';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/electrical-affinity/discharge';
 
-export const Discharge: Power = {
-  "name": "Discharge",
-  "internalName": "Discharge",
-  "available": 3,
-  "description": "Unleash a blast of electrical energy around your target, draining them and all nearby enemies of some endurance. This will also reduce their regeneration, recovery, and damage dealt for a short period of time.Recharge: Slow.",
-  "shortHelp": "Ranged (Targeted AoE), Foe -DMG, -End, -Recovery, -Regen",
-  "icon": "shocktherapy_discharge.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 15,
-    "recharge": 20,
-    "endurance": 19.5,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 25,
-      "recoveryDebuff": 25
-    },
-    "recoveryDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "enduranceDrain": {
-      "scale": 0.25,
-      "table": "Ranged_EndDrain"
-    },
-    "buffDuration": 25
-  }
-};
+export const Discharge: Power = withOverrides(base, overrides);

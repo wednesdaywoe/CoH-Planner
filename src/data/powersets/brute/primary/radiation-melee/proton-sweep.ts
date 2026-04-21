@@ -1,73 +1,16 @@
 /**
- * Proton Sweep
- * Melee Cone, DoT(Energy/Toxic), Foe -Def, Special
+ * Proton Sweep — COMPOSED EXPORT
  *
- * Source: brute_melee/radiation_melee/proton_sweep.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee radiation_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ProtonSweep as base } from '@/data/generated/powersets/brute/primary/radiation-melee/proton-sweep';
+import { overrides } from '@/data/overrides/powersets/brute/primary/radiation-melee/proton-sweep';
 
-export const ProtonSweep: Power = {
-  "name": "Proton Sweep",
-  "internalName": "Proton_Sweep",
-  "available": 1,
-  "description": "You release a cloud of deadly radioactive particles in front of you inflicting Moderate Energy and Toxic damage over a short time as well as reducing the targets' defense. Affected enemies have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.",
-  "shortHelp": "Melee Cone, DoT(Energy/Toxic), Foe -Def, Special",
-  "icon": "radiationmelee_protonsweep.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "radius": 7,
-    "arc": 1.309,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.67,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.0894,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.2681,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1.2,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const ProtonSweep: Power = withOverrides(base, overrides);

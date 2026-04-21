@@ -1,59 +1,16 @@
 /**
- * Transfusion
- * Ranged, Foe -End, -Regen, Team Heal
+ * Transfusion — COMPOSED EXPORT
  *
- * Source: mastermind_buff/kinetics/transfusion.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff kinetics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Transfusion as base } from '@/data/generated/powersets/mastermind/secondary/kinetics/transfusion';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/kinetics/transfusion';
 
-export const Transfusion: Power = {
-  "name": "Transfusion",
-  "internalName": "Transfusion",
-  "available": 0,
-  "description": "Transfusion drains an enemy of some Endurance and reduces the target's Regeneration rate, and transfers that energy, in the form of Hit Points, to all allies near the affected foe. You can use Transfusion to heal yourself as well as your allies.Recharge: Moderate.",
-  "shortHelp": "Ranged, Foe -End, -Regen, Team Heal",
-  "icon": "kineticboost_transfusion.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 60,
-    "recharge": 8,
-    "endurance": 9.75,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1.7616,
-    "table": "Ranged_Heal"
-  },
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_EndDrain"
-    },
-    "regenDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 20
-    },
-    "buffDuration": 20
-  }
-};
+export const Transfusion: Power = withOverrides(base, overrides);

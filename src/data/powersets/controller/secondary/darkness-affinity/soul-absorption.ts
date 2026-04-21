@@ -1,50 +1,16 @@
 /**
- * Soul Absorption
- * PBAoE Team +Regen, +Recovery, Foe -To Hit
+ * Soul Absorption — COMPOSED EXPORT
  *
- * Source: controller_buff/darkness_affinity/soul_absorption.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff darkness_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SoulAbsorption as base } from '@/data/generated/powersets/controller/secondary/darkness-affinity/soul-absorption';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/darkness-affinity/soul-absorption';
 
-export const SoulAbsorption: Power = {
-  "name": "Soul Absorption",
-  "internalName": "Soul_Absorption",
-  "available": 23,
-  "description": "You drain the essence of both nearby conscious and defeated foes to cause you and your allies to regenerate and recovery much more quickly. The more defeated foes affected, the more powerful the regeneration and recovery effect will be.",
-  "shortHelp": "PBAoE Team +Regen, +Recovery, Foe -To Hit",
-  "icon": "darknessaffinity_soulabsorption.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.2,
-    "radius": 20,
-    "recharge": 160,
-    "castTime": 3,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing",
-    "ToHit Debuff",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Endurance Modification",
-    "Healing",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_SoulAbsorptionBuff",
-      "duration": 1,
-      "copyBoosts": true
-    }
-  }
-};
+export const SoulAbsorption: Power = withOverrides(base, overrides);

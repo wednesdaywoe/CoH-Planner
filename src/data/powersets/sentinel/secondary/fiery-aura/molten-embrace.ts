@@ -1,42 +1,16 @@
 /**
- * Molten Embrace
- * Toggle: +Dmg, +Special
+ * Molten Embrace — COMPOSED EXPORT
  *
- * Source: sentinel_defense/fiery_aura/molten_embrace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MoltenEmbrace as base } from '@/data/generated/powersets/sentinel/secondary/fiery-aura/molten-embrace';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/fiery-aura/molten-embrace';
 
-export const MoltenEmbrace: Power = {
-  "name": "Molten Embrace",
-  "internalName": "Molten_Embrace",
-  "available": 0,
-  "description": "Molten Embrace superheats your attacks, increasing the damage they inflict. In addition, all your attacks will have a chance to inflict fire damage over time.Recharge: Moderate.",
-  "shortHelp": "Toggle: +Dmg, +Special",
-  "icon": "flamingshield_fieryembrace.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.208,
-    "castTime": 0.73,
-    "activatePeriod": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "damageBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 1.2
-    },
-    "buffDuration": 1.2
-  }
-};
+export const MoltenEmbrace: Power = withOverrides(base, overrides);

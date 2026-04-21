@@ -1,76 +1,16 @@
 /**
- * Sparkling Chain
- * Ranged Chain AoE, Minor DoT(Fire, Energy), Foe Immobilize,Chance for Blast Off
+ * Sparkling Chain — COMPOSED EXPORT
  *
- * Source: dominator_control/pyrotechnic_control/sparkling_field.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control pyrotechnic_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SparklingChain as base } from '@/data/generated/powersets/dominator/primary/pyrotechnic-control/sparkling-field';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/pyrotechnic-control/sparkling-field';
 
-export const SparklingChain: Power = {
-  "name": "Sparkling Chain",
-  "internalName": "Sparkling_Field",
-  "available": 1,
-  "description": "Immobilizes a group of foes one by one in a chain formation, dealing Fire and Energy damage over time to each enemy in the chain. More resilient foes may require multiple casts to Immobilize. Sparkling Chain is slower and less damaging than Sparkling Cage, but can capture multiple targets.This power has a chance of Blasting Off targets into the air. This chance is greater on the initial target of Sparkling Chain.",
-  "shortHelp": "Ranged Chain AoE, Minor DoT(Fire, Energy), Foe Immobilize,Chance for Blast Off",
-  "icon": "pyrotechnic_sparklingfield.png",
-  "powerType": "Click",
-  "effectArea": "Chain",
-  "stats": {
-    "accuracy": 0.9,
-    "range": 80,
-    "radius": 15,
-    "recharge": 8,
-    "endurance": 13,
-    "castTime": 1.03,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Immobilize",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.055,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.055,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
-    }
-  ],
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 12
-    },
-    "buffDuration": 12
-  }
-};
+export const SparklingChain: Power = withOverrides(base, overrides);

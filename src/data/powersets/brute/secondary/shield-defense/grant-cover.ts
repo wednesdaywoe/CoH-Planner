@@ -1,93 +1,16 @@
 /**
- * Grant Cover
- * PBAoE, Team (but not self) +DEF(All but Psionic), Self +RES(Defense Debuff)
+ * Grant Cover — COMPOSED EXPORT
  *
- * Source: brute_defense/shield_defense/grant_cover.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense shield_defense
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GrantCover as base } from '@/data/generated/powersets/brute/secondary/shield-defense/grant-cover';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/shield-defense/grant-cover';
 
-export const GrantCover: Power = {
-  "name": "Grant Cover",
-  "internalName": "Grant_Cover",
-  "available": 23,
-  "description": "You are able to use your shield to defend nearby allies. Any teammates who remain nearby gain a bonus to their defense. Additionally, while this power is active, the user will gain some resistance to defense debuffs.Notes: The defense bonus from this power is only applied to nearby team mates, but not yourself.Recharge: Moderate.",
-  "shortHelp": "PBAoE, Team (but not self) +DEF(All but Psionic), Self +RES(Defense Debuff)",
-  "icon": "shielddefense_grantcover.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 10,
-    "endurance": 0.312,
-    "castTime": 2.5,
-    "activatePeriod": 2,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 2.25,
-      "debuffResistance": 2.25
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 2.25
-  }
-};
+export const GrantCover: Power = withOverrides(base, overrides);

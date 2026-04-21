@@ -1,115 +1,16 @@
 /**
- * Indomitable Will
- * Toggle: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback). DEF(Psionics)
+ * Indomitable Will — COMPOSED EXPORT
  *
- * Source: tanker_defense/willpower/indomitable_will.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense willpower
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IndomitableWill as base } from '@/data/generated/powersets/tanker/primary/willpower/indomitable-will';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/willpower/indomitable-will';
 
-export const IndomitableWill: Power = {
-  "name": "Indomitable Will",
-  "internalName": "Indomitable_Will",
-  "available": 5,
-  "description": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusions, Repel, Knockback and Hold effects. Indomitable Will also grants a moderate defense to Psionic based attacks.Recharge: Fast.",
-  "shortHelp": "Toggle: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback). DEF(Psionics)",
-  "icon": "willpower_indomitablewill.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.104,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "durations": {
-      "hold": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
-      "confuse": 0.75,
-      "fear": 0.75,
-      "defenseBuff": 0.75,
-      "immobilize": 0.75,
-      "mezResistance": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
-      "repel": 0.75
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "defenseBuff": {
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "repel": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const IndomitableWill: Power = withOverrides(base, overrides);

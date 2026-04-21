@@ -1,103 +1,16 @@
 /**
- * Meltdown
- * Self, +Res(All), +Recovery, +DMG(All)
+ * Meltdown — COMPOSED EXPORT
  *
- * Source: brute_defense/radiation_armor/meltdown.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense radiation_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Meltdown as base } from '@/data/generated/powersets/brute/secondary/radiation-armor/meltdown';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/radiation-armor/meltdown';
 
-export const Meltdown: Power = {
-  "name": "Meltdown",
-  "internalName": "Meltdown",
-  "available": 29,
-  "description": "After building up a dangerous amount of radiation you release it to both shield and empower yourself. While active you will gain a good amount of damage resistance to all types of damage, recover endurance more quickly and deal more damage for a short time. When this power wears off you will lose a small amount of endurance.Recharge: Very Long.",
-  "shortHelp": "Self, +Res(All), +Recovery, +DMG(All)",
-  "icon": "radiationarmor_meltdown.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 480,
-    "endurance": 2.6,
-    "castTime": 2.93
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60,
-      "recoveryBuff": 60,
-      "damageBuff": 60,
-      "recoveryDebuff": 10,
-      "debuffResistance": 10
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "damageBuff": {
-      "scale": 3.3,
-      "table": "Melee_Buff_Dmg"
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "recovery": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 60
-  }
-};
+export const Meltdown: Power = withOverrides(base, overrides);

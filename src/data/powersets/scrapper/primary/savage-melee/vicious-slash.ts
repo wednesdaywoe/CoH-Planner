@@ -1,70 +1,16 @@
 /**
- * Vicious Slash
- * Melee, DMG(Lethal), Foe DoT (Lethal), Knockdown, Self +2 Blood Frenzy
+ * Vicious Slash — COMPOSED EXPORT
  *
- * Source: scrapper_melee/savage_melee/vicious_slash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee savage_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ViciousSlash as base } from '@/data/generated/powersets/scrapper/primary/savage-melee/vicious-slash';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/savage-melee/vicious-slash';
 
-export const ViciousSlash: Power = {
-  "name": "Vicious Slash",
-  "internalName": "Vicious_Slash",
-  "available": 7,
-  "description": "You tear at your foe with both hands dealing high lethal damage and causing minor lethal damage over time. Foes struck by this attack have a high chance to be knocked down.",
-  "shortHelp": "Melee, DMG(Lethal), Foe DoT (Lethal), Knockdown, Self +2 Blood Frenzy",
-  "icon": "savagemelee_viciousslash.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 9,
-    "endurance": 9.36,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.324,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const ViciousSlash: Power = withOverrides(base, overrides);

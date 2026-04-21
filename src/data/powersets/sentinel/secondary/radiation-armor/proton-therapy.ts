@@ -1,66 +1,16 @@
 /**
- * Proton Therapy
- * Self Heal, Endurance over time, Res(Toxic, -Regen)
+ * Proton Therapy — COMPOSED EXPORT
  *
- * Source: sentinel_defense/radiation_armor/proton_therapy.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense radiation_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ProtonTherapy as base } from '@/data/generated/powersets/sentinel/secondary/radiation-armor/proton-therapy';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/radiation-armor/proton-therapy';
 
-export const ProtonTherapy: Power = {
-  "name": "Proton Therapy",
-  "internalName": "Proton_Therapy",
-  "available": 15,
-  "description": "You concentrate your energies to harness the healing powers of radiation to mend your wounds. The effects of Proton Therapy also leaves you resistant to Toxic damage and regeneration debuffs for a while, in addition to giving you some endurance over time.Recharge: Slow.",
-  "shortHelp": "Self Heal, Endurance over time, Res(Toxic, -Regen)",
-  "icon": "radiationarmor_protontherapy.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 50,
-    "endurance": 10.4,
-    "castTime": 1.03
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 2.5,
-    "table": "Melee_HealSelf"
-  },
-  "effects": {
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60,
-      "enduranceGain": 2.1,
-      "debuffResistance": 60
-    },
-    "enduranceGain": {
-      "scale": 5,
-      "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "regeneration": {
-        "scale": 0.75,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 60
-  }
-};
+export const ProtonTherapy: Power = withOverrides(base, overrides);

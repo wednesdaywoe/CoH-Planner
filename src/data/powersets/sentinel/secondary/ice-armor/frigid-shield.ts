@@ -1,57 +1,16 @@
 /**
- * Frigid Shield
- * Toggle: +Absorb over time, Res(Slow)
+ * Frigid Shield — COMPOSED EXPORT
  *
- * Source: sentinel_defense/ice_armor/frigid_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense ice_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FrigidShield as base } from '@/data/generated/powersets/sentinel/secondary/ice-armor/frigid-shield';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ice-armor/frigid-shield';
 
-export const FrigidShield: Power = {
-  "name": "Frigid Shield",
-  "internalName": "Frigid_Shield",
-  "available": 9,
-  "description": "While active, you dramatically lower the temperature around yourself. The air around your body becomes so cold that attacks deflect off of it, granting you absorption.",
-  "shortHelp": "Toggle: +Absorb over time, Res(Slow)",
-  "icon": "icearmor_absorb.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.73,
-    "activatePeriod": 4
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.5,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "absorb": 20,
-      "debuffResistance": 4
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 20
-  }
-};
+export const FrigidShield: Power = withOverrides(base, overrides);

@@ -1,54 +1,16 @@
 /**
- * Healing Flames
- * Self Heal, +Res(Toxic)
+ * Healing Flames — COMPOSED EXPORT
  *
- * Source: tanker_defense/fiery_aura/healing_flames.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HealingFlames as base } from '@/data/generated/powersets/tanker/primary/fiery-aura/healing-flames';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/fiery-aura/healing-flames';
 
-export const HealingFlames: Power = {
-  "name": "Healing Flames",
-  "internalName": "Healing_Flames",
-  "available": 1,
-  "description": "You can concentrate for a few moments to heal yourself. The power of the flames can also protect you from Toxic Damage for a while.Recharge: Slow.",
-  "shortHelp": "Self Heal, +Res(Toxic)",
-  "icon": "flamingshield_healingflames.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 40,
-    "endurance": 10.4,
-    "castTime": 0.73
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 2.5,
-    "table": "Melee_HealSelf"
-  },
-  "effects": {
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60
-    },
-    "buffDuration": 60
-  }
-};
+export const HealingFlames: Power = withOverrides(base, overrides);

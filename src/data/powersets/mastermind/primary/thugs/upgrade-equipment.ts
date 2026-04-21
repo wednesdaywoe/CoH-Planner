@@ -1,38 +1,16 @@
 /**
- * Upgrade Equipment
- * Ranged, Upgrade Thug Henchman
+ * Upgrade Equipment — COMPOSED EXPORT
  *
- * Source: mastermind_summon/thugs/upgrade_equipment.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon thugs
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { UpgradeEquipment as base } from '@/data/generated/powersets/mastermind/primary/thugs/upgrade-equipment';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/thugs/upgrade-equipment';
 
-export const UpgradeEquipment: Power = {
-  "name": "Upgrade Equipment",
-  "internalName": "Upgrade_Equipment",
-  "available": 25,
-  "description": "Permanently Upgrade the most advanced ammo, weapons and training to all of your Thug Henchman. The Upgraded Thug will gain new powers, weapons and abilities. The powers gained are unique and dependent upon the type of Thug Henchman that is Upgraded.This power only works on your Thug Henchmen and you can only Upgrade the Equipment of your Thug Henchmen once with this power.",
-  "shortHelp": "Ranged, Upgrade Thug Henchman",
-  "icon": "thugs_upgradeequipment.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 30,
-    "radius": 30,
-    "recharge": 0.5,
-    "endurance": 11.375,
-    "castTime": 1.67,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6
-};
+export const UpgradeEquipment: Power = withOverrides(base, overrides);

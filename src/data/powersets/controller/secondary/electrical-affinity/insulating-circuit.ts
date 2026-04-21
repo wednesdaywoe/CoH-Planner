@@ -1,49 +1,16 @@
 /**
- * Insulating Circuit
- * Ranged (Chain), Ally +Absorb, Self +Static
+ * Insulating Circuit — COMPOSED EXPORT
  *
- * Source: controller_buff/shock_therapy/insulating_circuit.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff shock_therapy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { InsulatingCircuit as base } from '@/data/generated/powersets/controller/secondary/electrical-affinity/insulating-circuit';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/electrical-affinity/insulating-circuit';
 
-export const InsulatingCircuit: Power = {
-  "name": "Insulating Circuit",
-  "internalName": "Insulating_Circuit",
-  "available": 27,
-  "description": "Create a circuit of protective energy between several nearby allies, granting them a small protective shield. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Insulating Circuit grants 1 stack of Static.Recharge: Slow.",
-  "shortHelp": "Ranged (Chain), Ally +Absorb, Self +Static",
-  "icon": "shocktherapy_insulatingcircuit.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "Chain",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 25,
-    "recharge": 20,
-    "endurance": 13,
-    "castTime": 1,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 2,
-      "table": "Ranged_Heal"
-    },
-    "durations": {
-      "absorb": 30
-    },
-    "buffDuration": 30
-  }
-};
+export const InsulatingCircuit: Power = withOverrides(base, overrides);

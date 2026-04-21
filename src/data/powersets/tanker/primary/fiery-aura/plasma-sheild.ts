@@ -1,69 +1,16 @@
 /**
- * Plasma Shield
- * Toggle: Self +Res(Energy, Negative, Fire, Hold, Sleep)
+ * Plasma Shield — COMPOSED EXPORT
  *
- * Source: tanker_defense/fiery_aura/plasma_sheild.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PlasmaShield as base } from '@/data/generated/powersets/tanker/primary/fiery-aura/plasma-sheild';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/fiery-aura/plasma-sheild';
 
-export const PlasmaShield: Power = {
-  "name": "Plasma Shield",
-  "internalName": "Plasma_Sheild",
-  "available": 11,
-  "description": "While this power is active, you are surrounded by pure plasma. The Plasma Shield gives you resistance to Energy, Negative Energy, and Fire damage. Plasma Shield also gives your protection from Sleep and Hold effects.Recharge: Very Fast.",
-  "shortHelp": "Toggle: Self +Res(Energy, Negative, Fire, Hold, Sleep)",
-  "icon": "flamingshield_plasmasheild.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 3,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "hold": 0.75,
-      "sleep": 0.75
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const PlasmaShield: Power = withOverrides(base, overrides);

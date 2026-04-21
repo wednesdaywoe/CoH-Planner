@@ -1,52 +1,16 @@
 /**
- * Second Wind
- * Self +Max HP, Rez(Special)
+ * Second Wind — COMPOSED EXPORT
  *
- * Source: brute_defense/regeneration/dull_pain.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense regeneration
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SecondWind as base } from '@/data/generated/powersets/brute/secondary/regeneration/dull-pain';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/regeneration/dull-pain';
 
-export const SecondWind: Power = {
-  "name": "Second Wind",
-  "internalName": "Dull_Pain",
-  "available": 27,
-  "description": "When you use this power you will recover a percentage of your missing health, in addition to increasing your maximum hit points. Should you fall in battle after using this power, you can stand up and fight again. If used while defeated, you will stand back up and be protected from XP Debt for 90 seconds and immune to most damage for 15 seconds.Note: the self resurrect granted if this power is activated while alive can not be enhanced.",
-  "shortHelp": "Self +Max HP, Rez(Special)",
-  "icon": "regeneration_dullpain.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 360,
-    "endurance": 10.4,
-    "castTime": 0.73
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 4,
-    "table": "Melee_HealSelf"
-  },
-  "effects": {
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 120
-    },
-    "buffDuration": 120
-  }
-};
+export const SecondWind: Power = withOverrides(base, overrides);

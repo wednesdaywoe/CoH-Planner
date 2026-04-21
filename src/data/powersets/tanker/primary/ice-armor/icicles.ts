@@ -1,54 +1,16 @@
 /**
- * Icicles
- * Toggle: PBAoE, DoT(Cold)
+ * Icicles — COMPOSED EXPORT
  *
- * Source: tanker_defense/ice_armor/icicles.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense ice_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Icicles as base } from '@/data/generated/powersets/tanker/primary/ice-armor/icicles';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/ice-armor/icicles';
 
-export const Icicles: Power = {
-  "name": "Icicles",
-  "internalName": "Icicles",
-  "available": 11,
-  "description": "While active, you form sharp icicles on your body that continuously cut all foes that attempt to enter melee range.",
-  "shortHelp": "Toggle: PBAoE, DoT(Cold)",
-  "icon": "icearmor_icicles.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 12,
-    "recharge": 4,
-    "endurance": 1.04,
-    "castTime": 1.67,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.1571,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "taunt": {
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
-    }
-  }
-};
+export const Icicles: Power = withOverrides(base, overrides);

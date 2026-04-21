@@ -1,121 +1,16 @@
 /**
- * Fallout Shelter
- * Toggle: Self +Res(Hold, Sleep, Immobilize, Stun, Knockdown, Toxic, Psi, Slow)
+ * Fallout Shelter — COMPOSED EXPORT
  *
- * Source: scrapper_defense/radiation_armor/fallout_shelter.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense radiation_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FalloutShelter as base } from '@/data/generated/powersets/scrapper/secondary/radiation-armor/fallout-shelter';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/radiation-armor/fallout-shelter';
 
-export const FalloutShelter: Power = {
-  "name": "Fallout Shelter",
-  "internalName": "Fallout_Shelter",
-  "available": 9,
-  "description": "While active you are protected from recharge, movement, hold, sleep, immobilize, stun and knockdown effects. Additionally Fallout Shelter grants you minor resistance to toxic and psionic damage as well as a measure of resistance against slow effects.",
-  "shortHelp": "Toggle: Self +Res(Hold, Sleep, Immobilize, Stun, Knockdown, Toxic, Psi, Slow)",
-  "icon": "radiationarmor_falloutshelter.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.104,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "durations": {
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
-      "mezResistance": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
-      "resistance": 0.75,
-      "debuffResistance": 0.75
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 1.05,
-        "table": "Melee_Res_Boolean"
-      },
-      "recharge": {
-        "scale": 1.05,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const FalloutShelter: Power = withOverrides(base, overrides);

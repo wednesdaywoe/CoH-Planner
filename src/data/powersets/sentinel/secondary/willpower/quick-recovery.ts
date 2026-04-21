@@ -1,41 +1,16 @@
 /**
- * Quick Recovery
- * Auto: Self +Recovery
+ * Quick Recovery — COMPOSED EXPORT
  *
- * Source: sentinel_defense/willpower/quick_recovery.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense willpower
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { QuickRecovery as base } from '@/data/generated/powersets/sentinel/secondary/willpower/quick-recovery';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/willpower/quick-recovery';
 
-export const QuickRecovery: Power = {
-  "name": "Quick Recovery",
-  "internalName": "Quick_Recovery",
-  "available": 19,
-  "description": "You recover Endurance at a faster rate than normal. This power is always on.",
-  "shortHelp": "Auto: Self +Recovery",
-  "icon": "willpower_quickrecovery.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 10.25
-    },
-    "buffDuration": 10.25
-  }
-};
+export const QuickRecovery: Power = withOverrides(base, overrides);

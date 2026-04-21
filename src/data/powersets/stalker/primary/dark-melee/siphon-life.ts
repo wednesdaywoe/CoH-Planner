@@ -1,61 +1,16 @@
 /**
- * Siphon Life
- * Melee, DMG(Negative), Foe -To Hit, Self +HP
+ * Siphon Life — COMPOSED EXPORT
  *
- * Source: stalker_melee/dark_melee/siphon_life.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee dark_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SiphonLife as base } from '@/data/generated/powersets/stalker/primary/dark-melee/siphon-life';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/dark-melee/siphon-life';
 
-export const SiphonLife: Power = {
-  "name": "Siphon Life",
-  "internalName": "Siphon_Life",
-  "available": 17,
-  "description": "You tap the power of the Netherworld and create a life transferring conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes Siphoned in this manner have their chance to hit reduced.",
-  "shortHelp": "Melee, DMG(Negative), Foe -To Hit, Self +HP",
-  "icon": "shadowfighting_siphonlife.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.93
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Accurate To-Hit Debuff",
-    "Healing",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Heal",
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    }
-  ]
-};
+export const SiphonLife: Power = withOverrides(base, overrides);

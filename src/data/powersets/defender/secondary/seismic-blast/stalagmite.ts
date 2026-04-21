@@ -1,53 +1,16 @@
 /**
- * Stalagmite
- * Ranged, DMG(Smash), Foe Disorient, Special
+ * Stalagmite — COMPOSED EXPORT
  *
- * Source: defender_ranged/seismic_blast/stalagmite.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged seismic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Stalagmite as base } from '@/data/generated/powersets/defender/secondary/seismic-blast/stalagmite';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/seismic-blast/stalagmite';
 
-export const Stalagmite: Power = {
-  "name": "Stalagmite",
-  "internalName": "Stalagmite",
-  "available": 27,
-  "description": "You can cause a Stalagmite to erupt under an enemy dealing minimal Lethal damage, and Disorienting them for a good while. You must be on the ground to activate this power.If affected by Seismic Shockwaves, this power will halt the shockwaves and deal extreme damage.Stalagmite grants two stacks of Seismic Pressure.",
-  "shortHelp": "Ranged, DMG(Smash), Foe Disorient, Special",
-  "icon": "seismicblast_stalagmite.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 10.192,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Ranged Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.75,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 6,
-      "table": "Ranged_Stun"
-    }
-  }
-};
+export const Stalagmite: Power = withOverrides(base, overrides);

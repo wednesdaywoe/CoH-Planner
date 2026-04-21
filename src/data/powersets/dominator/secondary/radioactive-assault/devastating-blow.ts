@@ -1,70 +1,16 @@
 /**
- * Devastating Blow
- * Melee, Extreme DMG(Energy/Smash), Foe -Def, Disorient, Special
+ * Devastating Blow — COMPOSED EXPORT
  *
- * Source: dominator_assault/radioactive_assault/devastating_blow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault radioactive_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DevastatingBlow as base } from '@/data/generated/powersets/dominator/secondary/radioactive-assault/devastating-blow';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/radioactive-assault/devastating-blow';
 
-export const DevastatingBlow: Power = {
-  "name": "Devastating Blow",
-  "internalName": "Devastating_Blow",
-  "available": 29,
-  "description": "You hammer your foe with a brutal smashing attack charged with a lethal dose of radiation. Your target will suffer Extreme Energy and Smashing damage, will have its defense reduced and will be disoriented for a short time. Devastating Blow has an increased change to critically hit. Affected enemies will be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: Extreme.Recharge: Slow.",
-  "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe -Def, Disorient, Special",
-  "icon": "radioactiveassault_devastatingblow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 2.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Dominator Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.89,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.67,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "buffDuration": 10
-  }
-};
+export const DevastatingBlow: Power = withOverrides(base, overrides);

@@ -1,74 +1,16 @@
 /**
- * Contaminated Strike
- * Melee, DMG(Energy/Smash), Foe -Def, Special
+ * Contaminated Strike — COMPOSED EXPORT
  *
- * Source: stalker_melee/radiation_melee/contaminated_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee radiation_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ContaminatedStrike as base } from '@/data/generated/powersets/stalker/primary/radiation-melee/contaminated-strike';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/radiation-melee/contaminated-strike';
 
-export const ContaminatedStrike: Power = {
-  "name": "Contaminated Strike",
-  "internalName": "Contaminated_Strike",
-  "available": 0,
-  "description": "You charge your fist with harmful radioactive particles and quickly strike your foe dealing Light Energy and Smashing damage as well as reducing their defense. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.",
-  "shortHelp": "Melee, DMG(Energy/Smash), Foe -Def, Special",
-  "icon": "radiationmelee_contaminatedstrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.21,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.63,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.168,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const ContaminatedStrike: Power = withOverrides(base, overrides);

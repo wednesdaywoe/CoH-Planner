@@ -1,38 +1,16 @@
 /**
- * Equip Thugs
- * Ranged, Equip Thug Henchman
+ * Equip Thugs — COMPOSED EXPORT
  *
- * Source: mastermind_summon/thugs/equip_thugs.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon thugs
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EquipThugs as base } from '@/data/generated/powersets/mastermind/primary/thugs/equip-thugs';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/thugs/equip-thugs';
 
-export const EquipThugs: Power = {
-  "name": "Equip Thugs",
-  "internalName": "Equip_Thugs",
-  "available": 5,
-  "description": "Equip your Thug Henchmen with better ammo, weapons and training. This power permanently bestows new weapons and abilities to all of your Thug Henchman. The powers gained are unique and dependent upon the type of Thug Henchman.This power only works on your Thug Henchmen and you can only Equip your Thug Henchmen once with this power.",
-  "shortHelp": "Ranged, Equip Thug Henchman",
-  "icon": "thugs_equipthugs.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 30,
-    "recharge": 0.5,
-    "endurance": 11.375,
-    "castTime": 1.3,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6
-};
+export const EquipThugs: Power = withOverrides(base, overrides);

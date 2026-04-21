@@ -1,58 +1,16 @@
 /**
- * Dark Regeneration
- * PBAoE DMG(Negative), Self +HP
+ * Dark Regeneration — COMPOSED EXPORT
  *
- * Source: brute_defense/dark_armor/dark_regeneration.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense dark_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DarkRegeneration as base } from '@/data/generated/powersets/brute/secondary/dark-armor/dark-regeneration';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/dark-armor/dark-regeneration';
 
-export const DarkRegeneration: Power = {
-  "name": "Dark Regeneration",
-  "internalName": "Dark_Regeneration",
-  "available": 15,
-  "description": "You can tap the dark essence of the Netherworld to drain a small amount of life from all enemies nearby, thus healing yourself. The more foes affected, the more you will be healed.This power is mutually exclusive from Obscure Sustenance.",
-  "shortHelp": "PBAoE DMG(Negative), Self +HP",
-  "icon": "darkarmor_darkregeneration.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 20,
-    "recharge": 30,
-    "endurance": 33.8,
-    "castTime": 1.17,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Brute Archetype Sets",
-    "Healing",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.2,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Heal",
-      "scale": 3,
-      "table": "Melee_HealSelf"
-    }
-  ],
-  "requires": "!Brute_Defense.Dark_Armor.Obscure_Sustenance"
-};
+export const DarkRegeneration: Power = withOverrides(base, overrides);

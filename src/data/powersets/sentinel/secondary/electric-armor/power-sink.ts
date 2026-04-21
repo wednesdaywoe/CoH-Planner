@@ -1,61 +1,16 @@
 /**
- * Power Sink
- * PBAoE, Self +End, +Regen, Foe -End
+ * Power Sink — COMPOSED EXPORT
  *
- * Source: sentinel_defense/electric_armor/power_sink.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense electric_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerSink as base } from '@/data/generated/powersets/sentinel/secondary/electric-armor/power-sink';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/electric-armor/power-sink';
 
-export const PowerSink: Power = {
-  "name": "Power Sink",
-  "internalName": "Power_Sink",
-  "available": 27,
-  "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance and regeneration rate. If there are no foes within range, you will not gain any Endurance.",
-  "shortHelp": "PBAoE, Self +End, +Regen, Foe -End",
-  "icon": "electricarmor_pbaoeregendrain.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "radius": 10,
-    "arc": 1.5708,
-    "recharge": 60,
-    "endurance": 13,
-    "castTime": 2.03,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "enduranceGain": {
-      "scale": 15,
-      "table": "Melee_Ones",
-      "perTarget": 15
-    },
-    "regenBuff": {
-      "scale": 0.35,
-      "table": "Melee_Ones",
-      "perTarget": 0.175
-    },
-    "durations": {
-      "regenBuff": 45
-    },
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 45
-  }
-};
+export const PowerSink: Power = withOverrides(base, overrides);

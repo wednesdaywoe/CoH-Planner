@@ -1,47 +1,16 @@
 /**
- * Touch of Fear
- * Melee (Targeted AoE), DMG(Negative), Fear, Foe -To Hit
+ * Touch of Fear — COMPOSED EXPORT
  *
- * Source: tanker_melee/dark_melee/touch_of_fear.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee dark_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TouchofFear as base } from '@/data/generated/powersets/tanker/secondary/dark-melee/touch-of-fear';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/dark-melee/touch-of-fear';
 
-export const TouchofFear: Power = {
-  "name": "Touch of Fear",
-  "internalName": "Touch_of_Fear",
-  "available": 19,
-  "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "Melee (Targeted AoE), DMG(Negative), Fear, Foe -To Hit",
-  "icon": "shadowfighting_touchoffearaoe.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "radius": 9,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.97,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Fear",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Fear",
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6
-};
+export const TouchofFear: Power = withOverrides(base, overrides);

@@ -1,43 +1,16 @@
 /**
- * Cold Snap
- * Ranged (Cone), Foe Fear, -SPD, -Recharge
+ * Cold Snap — COMPOSED EXPORT
  *
- * Source: dominator_control/ice_control/shiver.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control ice_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ColdSnap as base } from '@/data/generated/powersets/dominator/primary/ice-control/shiver';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/ice-control/shiver';
 
-export const ColdSnap: Power = {
-  "name": "Cold Snap",
-  "internalName": "Shiver",
-  "available": 7,
-  "description": "You blast forth a wide cone of chilling air that dramatically slows the enemies' movement and attack rate and might leave nearby foes trembling.Notes: The Fear component applies only to enemies in the center area of effect.",
-  "shortHelp": "Ranged (Cone), Foe Fear, -SPD, -Recharge",
-  "icon": "iceformation_shiver.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "radius": 60,
-    "arc": 2.3562,
-    "recharge": 40,
-    "endurance": 10.4,
-    "castTime": 2.17,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Fear",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Fear",
-    "Slow Movement"
-  ],
-  "maxSlots": 6
-};
+export const ColdSnap: Power = withOverrides(base, overrides);

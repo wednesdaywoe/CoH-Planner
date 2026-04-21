@@ -1,60 +1,16 @@
 /**
- * Single Shot
- * Ranged, DMG(Energy), Foe Knockdown, Special
+ * Single Shot — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/beam_rifle/single_shot.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged beam_rifle
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SingleShot as base } from '@/data/generated/powersets/corruptor/primary/beam-rifle/single-shot';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/beam-rifle/single-shot';
 
-export const SingleShot: Power = {
-  "name": "Single Shot",
-  "internalName": "Single_Shot",
-  "available": 0,
-  "description": "You fire a single blast from your Beam Rifle which deals Moderate Energy damage and has a chance to knock the target down. If the target is suffering from the Disintegrating effect, Single Shot will reduce the target's regeneration rate slightly. In addition, targets already affected by the Disintegrating effect have a chance to spread to 3 nearby targets. This Disintegrate Spread effect can only hit targets that aren't already affected by the Disintegrating effect. Disintegrate Spread causes Minor Energy damage over time.",
-  "shortHelp": "Ranged, DMG(Energy), Foe Knockdown, Special",
-  "icon": "beamrifle_singleshot.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
-    "regenDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const SingleShot: Power = withOverrides(base, overrides);

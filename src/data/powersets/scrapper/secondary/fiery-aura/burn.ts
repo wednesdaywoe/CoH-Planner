@@ -1,57 +1,16 @@
 /**
- * Burn
- * Location (PBAoE), DoT (Fire), Self Res(Immobilize)
+ * Burn — COMPOSED EXPORT
  *
- * Source: scrapper_defense/fiery_aura/burn.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Burn as base } from '@/data/generated/powersets/scrapper/secondary/fiery-aura/burn';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/fiery-aura/burn';
 
-export const Burn: Power = {
-  "name": "Burn",
-  "internalName": "Burn",
-  "available": 23,
-  "description": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power.Damage: Moderate.Recharge: Slow.",
-  "shortHelp": "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
-  "icon": "flamingshield_burn.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 25,
-    "endurance": 5.2,
-    "castTime": 2.03,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 1.44,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Burn Flames",
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Redirects.Fiery_Aura.Burn"
-      ],
-      "duration": 10,
-      "copyBoosts": true
-    }
-  }
-};
+export const Burn: Power = withOverrides(base, overrides);

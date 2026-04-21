@@ -1,30 +1,16 @@
 /**
- * Form of the Soul
- * Toggle: Grants Perfection of Soul levels
+ * Form of the Soul — COMPOSED EXPORT
  *
- * Source: scrapper_melee/staff_fighting/form_of_the_soul.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee staff_fighting
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FormoftheSoul as base } from '@/data/generated/powersets/scrapper/primary/staff-fighting/form-of-the-soul';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/staff-fighting/form-of-the-soul';
 
-export const FormoftheSoul: Power = {
-  "name": "Form of the Soul",
-  "internalName": "Form_of_the_Soul",
-  "available": -1,
-  "description": "This power is obtained by purchasing Staff Mastery. All Staff Fighting attacks will build a level of Perfection of Soul while this toggle is active. Each level will grant the user an Endurance Discount. Once the user has built up 3 levels of Perfection of Soul and they execute Eye of the Storm, the attack will reduce targets' defense slightly and will deal additional energy damage. Executing Sky Splitter with three 3 levels of Perfection of Soul will deal additional energy damage and grant the user a moderate regeneration and recovery buff for a short time.",
-  "shortHelp": "Toggle: Grants Perfection of Soul levels",
-  "icon": "stafffighting_formofthesoul.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "castTime": 0.63,
-    "activatePeriod": 1
-  },
-  "allowedEnhancements": [],
-  "maxSlots": 0,
-  "requires": "Scrapper_Melee.Staff_Fighting.Staff_Mastery",
-  "mechanicType": "childToggle"
-};
+export const FormoftheSoul: Power = withOverrides(base, overrides);

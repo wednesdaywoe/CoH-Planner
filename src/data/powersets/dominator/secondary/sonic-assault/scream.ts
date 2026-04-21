@@ -1,54 +1,16 @@
 /**
- * Scream
- * Ranged, DMG(Energy/Smash), Foe -Res(All)
+ * Scream — COMPOSED EXPORT
  *
- * Source: dominator_assault/sonic_assault/scream.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault sonic_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Scream as base } from '@/data/generated/powersets/dominator/secondary/sonic-assault/scream';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/sonic-assault/scream';
 
-export const Scream: Power = {
-  "name": "Scream",
-  "internalName": "Scream",
-  "available": 3,
-  "description": "Your Scream can cause serious damage to a target. This power applies Lingering Sonic Vibrations that lower resistance for 10s.",
-  "shortHelp": "Ranged, DMG(Energy/Smash), Foe -Res(All)",
-  "icon": "sonicmanipulation_scream.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.47
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.132,
-      "table": "Ranged_Damage",
-      "duration": 1.05,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Energy",
-      "scale": 0.132,
-      "table": "Ranged_Damage",
-      "duration": 1.05,
-      "tickRate": 0.25
-    }
-  ]
-};
+export const Scream: Power = withOverrides(base, overrides);

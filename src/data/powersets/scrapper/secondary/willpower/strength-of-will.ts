@@ -1,138 +1,16 @@
 /**
- * Strength of Will
- * Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG), +Recovery
+ * Strength of Will — COMPOSED EXPORT
  *
- * Source: scrapper_defense/willpower/strength_of_will.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense willpower
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StrengthofWill as base } from '@/data/generated/powersets/scrapper/secondary/willpower/strength-of-will';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/willpower/strength-of-will';
 
-export const StrengthofWill: Power = {
-  "name": "Strength of Will",
-  "internalName": "Strength_of_Will",
-  "available": 29,
-  "description": "When you activate this power, you not only become extremely resistant to most damage, but also to Disorient, Immobilization, Hold, Knockback, Repel and Sleep effects. Strength of Will costs little Endurance to activate and increases your recovery for its duration, but when it wears off you are left exhausted, and substantially drained of Endurance.Notes: Strength of Will is unaffected by Recharge Time changes.Recharge: Very Long.",
-  "shortHelp": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG), +Recovery",
-  "icon": "willpower_strengthofwill.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 300,
-    "endurance": 2.6,
-    "castTime": 3.1
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 120,
-      "knockup": 120,
-      "knockback": 120,
-      "mezResistance": 120,
-      "repel": 120,
-      "recoveryBuff": 120,
-      "immobilize": 120,
-      "stun": 120,
-      "sleep": 120,
-      "hold": 120
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "repel": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "enduranceDrain": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 120,
-    "stun": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 120
-  }
-};
+export const StrengthofWill: Power = withOverrides(base, overrides);

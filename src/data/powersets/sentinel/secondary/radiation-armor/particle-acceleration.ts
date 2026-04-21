@@ -1,61 +1,16 @@
 /**
- * Particle Acceleration
- * Auto: Self +Recharge, +SPD, Res (Slow)
+ * Particle Acceleration — COMPOSED EXPORT
  *
- * Source: sentinel_defense/radiation_armor/particle_acceleration.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense radiation_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ParticleAcceleration as base } from '@/data/generated/powersets/sentinel/secondary/radiation-armor/particle-acceleration';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/radiation-armor/particle-acceleration';
 
-export const ParticleAcceleration: Power = {
-  "name": "Particle Acceleration",
-  "internalName": "Particle_Acceleration",
-  "available": 19,
-  "description": "Your Particles have been accelerated allowing you to move faster than normal, as well as resist slow effects. This power is always on and permanently increases your attack rate and movement speed.",
-  "shortHelp": "Auto: Self +Recharge, +SPD, Res (Slow)",
-  "icon": "radiationarmor_particleacceleration.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Run Speed",
-    "Fly"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rechargeBuff": 10.25,
-      "debuffResistance": 10.25,
-      "movement": 10.25
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      }
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const ParticleAcceleration: Power = withOverrides(base, overrides);

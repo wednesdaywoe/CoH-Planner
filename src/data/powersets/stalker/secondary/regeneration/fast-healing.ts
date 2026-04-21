@@ -1,59 +1,16 @@
 /**
- * Fast Healing
- * Auto: Self +Regeneration, +Recovery
+ * Fast Healing — COMPOSED EXPORT
  *
- * Source: stalker_defense/regeneration/fast_healing.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense regeneration
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FastHealing as base } from '@/data/generated/powersets/stalker/secondary/regeneration/fast-healing';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/regeneration/fast-healing';
 
-export const FastHealing: Power = {
-  "name": "Fast Healing",
-  "internalName": "Fast_Healing",
-  "available": 3,
-  "description": "You heal Hit Points and recovery Endurance at a faster rate than normal. This power is always on.",
-  "shortHelp": "Auto: Self +Regeneration, +Recovery",
-  "icon": "regeneration_fasthealing.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 10,
-      "debuffResistance": 10.25,
-      "recoveryBuff": 10
-    },
-    "debuffResistance": {
-      "regeneration": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "recoveryBuff": {
-      "scale": 0.15,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const FastHealing: Power = withOverrides(base, overrides);

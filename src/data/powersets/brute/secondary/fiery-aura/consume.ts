@@ -1,79 +1,16 @@
 /**
- * Consume
- * PBAoE, DMG(Fire), Self +End, +Max HP
+ * Consume — COMPOSED EXPORT
  *
- * Source: brute_defense/fiery_aura/consume.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Consume as base } from '@/data/generated/powersets/brute/secondary/fiery-aura/consume';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/fiery-aura/consume';
 
-export const Consume: Power = {
-  "name": "Consume",
-  "internalName": "Consume",
-  "available": 19,
-  "description": "You can drain body heat from all nearby foes, and even from the air itself, increasing your health, resistance against endurance drain, as well as replenishing your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.HP and End Drain resistance do not scale with enemy count, but will be granted even if there are no enemies nearby.Damage: Minor.Recharge: Long.",
-  "shortHelp": "PBAoE, DMG(Fire), Self +End, +Max HP",
-  "icon": "flamingshield_consume.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 20,
-    "recharge": 180,
-    "endurance": 0.52,
-    "castTime": 2.03,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Endurance Modification",
-    "Healing",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.4,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "enduranceGain": {
-      "scale": 20,
-      "table": "Melee_Ones",
-      "perTarget": 20
-    },
-    "recoveryBuff": {
-      "scale": 0.05,
-      "table": "Melee_Ones",
-      "perTarget": 0.05
-    },
-    "durations": {
-      "recoveryBuff": 15,
-      "debuffResistance": 120,
-      "maxHPBuff": 120
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
-    },
-    "maxHPBuff": {
-      "scale": 1.5,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 120
-  }
-};
+export const Consume: Power = withOverrides(base, overrides);

@@ -1,47 +1,16 @@
 /**
- * Transference
- * Ranged (Targeted AoE), Target -End, Team +Recovery, Special
+ * Transference — COMPOSED EXPORT
  *
- * Source: defender_buff/kinetics/transference.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff kinetics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Transference as base } from '@/data/generated/powersets/defender/primary/kinetics/transference';
+import { overrides } from '@/data/overrides/powersets/defender/primary/kinetics/transference';
 
-export const Transference: Power = {
-  "name": "Transference",
-  "internalName": "Transference",
-  "available": 21,
-  "description": "Transference drains an enemy of some of their Endurance and transfers that Endurance to all allies near the affected foe. You can use Transference to recover Endurance for yourself as well as your allies.Recharge: Slow.",
-  "shortHelp": "Ranged (Targeted AoE), Target -End, Team +Recovery, Special",
-  "icon": "kineticboost_transferance.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.1,
-    "range": 60,
-    "recharge": 30,
-    "endurance": 2.6,
-    "castTime": 2.27
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "enduranceGain": {
-      "scale": 40,
-      "table": "Ranged_EndDrain"
-    },
-    "enduranceDrain": {
-      "scale": 0.45,
-      "table": "Ranged_EndDrain"
-    }
-  }
-};
+export const Transference: Power = withOverrides(base, overrides);

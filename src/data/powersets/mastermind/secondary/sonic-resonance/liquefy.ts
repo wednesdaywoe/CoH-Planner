@@ -1,60 +1,16 @@
 /**
- * Liquefy
- * Ranged (Location AoE), Foe Knockback, Hold, -To Hit, -DEF
+ * Liquefy — COMPOSED EXPORT
  *
- * Source: mastermind_buff/sonic_resonance/liquefy.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff sonic_resonance
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Liquefy as base } from '@/data/generated/powersets/mastermind/secondary/sonic-resonance/liquefy';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/sonic-resonance/liquefy';
 
-export const Liquefy: Power = {
-  "name": "Liquefy",
-  "internalName": "Liquefy",
-  "available": 29,
-  "description": "You unleash a barrage of sonic waves on the Earth itself, generating a powerful, localized earthquake. Most foes that pass through the location will fall down. The violent shaking also reduces their chance to hit and Defense.Recharge: Very Long.",
-  "shortHelp": "Ranged (Location AoE), Foe Knockback, Hold, -To Hit, -DEF",
-  "icon": "sonicdebuff_dropknockback.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 150,
-    "endurance": 23.4,
-    "castTime": 2.67
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "ToHit Debuff",
-    "Defense Debuff",
-    "Damage"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Accurate To-Hit Debuff",
-    "Defense Debuff",
-    "Holds",
-    "Knockback",
-    "Ranged AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Liquefy",
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Pets.Liquefy.Liquefy"
-      ],
-      "duration": 30,
-      "copyBoosts": true
-    }
-  }
-};
+export const Liquefy: Power = withOverrides(base, overrides);

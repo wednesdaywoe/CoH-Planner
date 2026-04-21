@@ -1,52 +1,16 @@
 /**
- * Levitate
- * Ranged, DMG(Smash)
+ * Levitate — COMPOSED EXPORT
  *
- * Source: controller_control/mind_control/levitate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control mind_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Levitate as base } from '@/data/generated/powersets/controller/primary/mind-control/levitate';
+import { overrides } from '@/data/overrides/powersets/controller/primary/mind-control/levitate';
 
-export const Levitate: Power = {
-  "name": "Levitate",
-  "internalName": "Levitate",
-  "available": 0,
-  "description": "You can send a single target violently into the air, then slam them to the ground for Smashing damage. This power can bring flying foes to the ground. This power will affect enemies around your primary target, should it be used on the primary target of your Telekinesis.",
-  "shortHelp": "Ranged, DMG(Smash)",
-  "icon": "mentalcontrol_levitate.png",
-  "powerType": "Click",
-  "targetType": "Foe",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.87
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.32,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockup": {
-      "scale": 6,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const Levitate: Power = withOverrides(base, overrides);

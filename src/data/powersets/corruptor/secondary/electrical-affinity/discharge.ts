@@ -1,46 +1,16 @@
 /**
- * Galvanic Sentinel
- * Summon Galvanic Sentinel: Ranged Debuff Special
+ * Galvanic Sentinel — COMPOSED EXPORT
  *
- * Source: corruptor_buff/shock_therapy/discharge.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff shock_therapy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GalvanicSentinel as base } from '@/data/generated/powersets/corruptor/secondary/electrical-affinity/discharge';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/electrical-affinity/discharge';
 
-export const GalvanicSentinel: Power = {
-  "name": "Galvanic Sentinel",
-  "internalName": "Discharge",
-  "available": 3,
-  "description": "Summons a Galvanic Sentinel to your aid. The Galvanic Sentinel shocks and weakens your foes, draining some endurance and reducing their regeneration, recovery, and damage output. The Galvanic Sentinel can be buffed and healed, and may be targeted with your Circuit powers.Recharge: Slow.",
-  "shortHelp": "Summon Galvanic Sentinel: Ranged Debuff Special",
-  "icon": "shocktherapy_galvanicsentinel.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 15,
-    "recharge": 60,
-    "endurance": 25,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_GalvanicSentinel",
-      "duration": 120,
-      "copyBoosts": true
-    }
-  }
-};
+export const GalvanicSentinel: Power = withOverrides(base, overrides);

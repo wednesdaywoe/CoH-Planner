@@ -1,103 +1,16 @@
 /**
- * Toroidal Bubble
- * PBAoE, Team +Res(All DMG, End Drain), +End, +Recovery, +Jump
+ * Toroidal Bubble — COMPOSED EXPORT
  *
- * Source: mastermind_buff/marine_affinity/toroidal_bubble.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff marine_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ToroidalBubble as base } from '@/data/generated/powersets/mastermind/secondary/marine-affinity/toroidal-bubble';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/marine-affinity/toroidal-bubble';
 
-export const ToroidalBubble: Power = {
-  "name": "Toroidal Bubble",
-  "internalName": "Toroidal_Bubble",
-  "available": 3,
-  "description": "You create a ring of Bubbles that surrounds your allies, hydrating them to replenish endurance and reducing the effects of endurance drain. The bubble also reduces all incoming damage, providing extra resistance to Smashing and Fire damage, and also increases jump height thanks to added buoyancy.",
-  "shortHelp": "PBAoE, Team +Res(All DMG, End Drain), +End, +Recovery, +Jump",
-  "icon": "marineaffinity_toroidalbubble.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 40,
-    "recharge": 60,
-    "endurance": 10,
-    "castTime": 1.77,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Jump"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Leaping",
-    "Leaping & Sprints",
-    "Resist Damage",
-    "Universal Travel"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60,
-      "debuffResistance": 60,
-      "recoveryBuff": 60
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "recovery": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "enduranceGain": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 60
-  }
-};
+export const ToroidalBubble: Power = withOverrides(base, overrides);

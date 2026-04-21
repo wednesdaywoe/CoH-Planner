@@ -1,57 +1,16 @@
 /**
- * Empty Clips
- * Ranged (Cone), Knockback
+ * Empty Clips — COMPOSED EXPORT
  *
- * Source: mastermind_summon/thugs/empty_clips.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon thugs
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EmptyClips as base } from '@/data/generated/powersets/mastermind/primary/thugs/empty-clips';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/thugs/empty-clips';
 
-export const EmptyClips: Power = {
-  "name": "Empty Clips",
-  "internalName": "Empty_Clips",
-  "available": 7,
-  "description": "You empty the clips of both your pistols in a arc of suppression fire. This attack can blast multiple foes in the affected cone area, and has a small chance of knocking some foes down.Street Cred:If you own Gang War and are at least level 18, activating this power will grant a stack of Street Cred and summon a Pose to fight by your side for 30 up to seconds. Each stack of Street Cred owned will increase the chances to summon all 13 Posse when using Gang War. Enhancements in this power will also enhance the stats of Posse summoned with this attack. You may only have build Street Cred with this power once every 30 seconds.",
-  "shortHelp": "Ranged (Cone), Knockback",
-  "icon": "thugs_conerangedmoderatedmg.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.1,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.5236,
-    "recharge": 8,
-    "endurance": 8.53,
-    "castTime": 1.83,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.2633,
-    "table": "Ranged_Damage",
-    "duration": 0.7,
-    "tickRate": 0.3
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.64,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const EmptyClips: Power = withOverrides(base, overrides);

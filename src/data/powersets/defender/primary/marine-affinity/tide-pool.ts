@@ -1,50 +1,16 @@
 /**
- * Tide Pool
- * Ranged (Location AoE), Team +DMG, Foe -DMG, -SPD, -Jump, -Stealth, Special
+ * Tide Pool — COMPOSED EXPORT
  *
- * Source: defender_buff/marine_affinity/tide_pool.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff marine_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TidePool as base } from '@/data/generated/powersets/defender/primary/marine-affinity/tide-pool';
+import { overrides } from '@/data/overrides/powersets/defender/primary/marine-affinity/tide-pool';
 
-export const TidePool: Power = {
-  "name": "Tide Pool",
-  "internalName": "Tide_Pool",
-  "available": 7,
-  "description": "You summon a large pool of water at a targeted location to swell the damage that your allies deal, while reducing the damage, movement speeds, and stealth of enemies within the Tide Pool. If an enemy is defeated in the pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
-  "shortHelp": "Ranged (Location AoE), Team +DMG, Foe -DMG, -SPD, -Jump, -Stealth, Special",
-  "icon": "marineaffinity_tidepool.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 10,
-    "endurance": 13,
-    "castTime": 2.33,
-    "activatePeriod": 1
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Tide Pool",
-      "powers": [
-        "Redirects.Marine_Affinity.TidePool_Aura",
-        "Redirects.Marine_Affinity.TidePool_Aura_Debuff"
-      ],
-      "duration": 240,
-      "copyBoosts": true
-    }
-  }
-};
+export const TidePool: Power = withOverrides(base, overrides);

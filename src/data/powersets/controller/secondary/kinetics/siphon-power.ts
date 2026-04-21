@@ -1,33 +1,16 @@
 /**
- * Siphon Power
- * Ranged, Foe -DMG, Team +DMG
+ * Siphon Power — COMPOSED EXPORT
  *
- * Source: controller_buff/kinetics/siphon_power.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff kinetics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SiphonPower as base } from '@/data/generated/powersets/controller/secondary/kinetics/siphon-power';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/kinetics/siphon-power';
 
-export const SiphonPower: Power = {
-  "name": "Siphon Power",
-  "internalName": "Siphon_Power",
-  "available": 0,
-  "description": "You can Siphon the Power from a targeted foe, reducing their damage potential. The power is transferred back to you, increasing your own damage potential and that of all nearby allies.Recharge: Slow.",
-  "shortHelp": "Ranged, Foe -DMG, Team +DMG",
-  "icon": "kineticboost_siphonpower.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 20,
-    "endurance": 10.4,
-    "castTime": 1.93
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "maxSlots": 6
-};
+export const SiphonPower: Power = withOverrides(base, overrides);

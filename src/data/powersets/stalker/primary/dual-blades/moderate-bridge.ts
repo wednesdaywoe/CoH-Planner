@@ -1,74 +1,16 @@
 /**
- * Ablating Strike
- * Melee, DMG(Lethal), Foe -DEF
+ * Ablating Strike — COMPOSED EXPORT
  *
- * Source: stalker_melee/dual_blades/moderate_bridge.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee dual_blades
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AblatingStrike as base } from '@/data/generated/powersets/stalker/primary/dual-blades/moderate-bridge';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/dual-blades/moderate-bridge';
 
-export const AblatingStrike: Power = {
-  "name": "Ablating Strike",
-  "internalName": "Moderate_Bridge",
-  "available": 1,
-  "description": "You Slash at your foe with your blades, dealing a good amount of lethal damage. This attack can reduce a target's Defense, making them easier to hit. This power is the finishing move of the Sweep combination attack.Sweep: Build Up > Assassin’s Blades > Ablating Strike.",
-  "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
-  "icon": "dualblades_moderatebridge.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.03
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.66,
-      "table": "Melee_Damage",
-      "duration": 0.6,
-      "tickRate": 0.4
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.57,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const AblatingStrike: Power = withOverrides(base, overrides);

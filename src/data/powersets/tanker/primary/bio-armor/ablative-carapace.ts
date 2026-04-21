@@ -1,50 +1,16 @@
 /**
- * Ablative Carapace
- * Self, +Absorption, +Regeneration
+ * Ablative Carapace — COMPOSED EXPORT
  *
- * Source: tanker_defense/bio_organic_armor/ablative_carapace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AblativeCarapace as base } from '@/data/generated/powersets/tanker/primary/bio-armor/ablative-carapace';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/bio-armor/ablative-carapace';
 
-export const AblativeCarapace: Power = {
-  "name": "Ablative Carapace",
-  "internalName": "Ablative_Carapace",
-  "available": 7,
-  "description": "When needed, you're able to cause your Bio Armor to gain a thick, but brittle outer layer that will absorb a large amount of damage before breaking off. Ablative Carapace will grant a moderate amount of damage absorption and a high amount of regeneration for a short time. While Efficient Adaptation is active, this power grants a slightly larger regeneration buff. While Defensive Adaptation is active, this power grants a bonus to damage absorption.Recharge: Long.",
-  "shortHelp": "Self, +Absorption, +Regeneration",
-  "icon": "bioorganicarmor_ablativecarapace.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 10.4,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "absorb": 30,
-      "regenBuff": 30
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 30
-  }
-};
+export const AblativeCarapace: Power = withOverrides(base, overrides);

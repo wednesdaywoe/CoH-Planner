@@ -1,63 +1,16 @@
 /**
- * Evasion
- * Toggle: Self +DEF(vs. AoE), Res(DeBuff DEF)
+ * Evasion — COMPOSED EXPORT
  *
- * Source: tanker_defense/super_reflexes/evasion.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense super_reflexes
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Evasion as base } from '@/data/generated/powersets/tanker/primary/super-reflexes/evasion';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/super-reflexes/evasion';
 
-export const Evasion: Power = {
-  "name": "Evasion",
-  "internalName": "Evasion",
-  "available": 11,
-  "description": "You are Evasive against area effect and cone shaped attacks. This power increases your Defense versus such attacks as long as it is active. Evasion also helps you resist Defense DeBuffs.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +DEF(vs. AoE), Res(DeBuff DEF)",
-  "icon": "superreflexes_evasion.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 12,
-    "recharge": 4,
-    "endurance": 0.52,
-    "castTime": 3,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Threat Duration"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "aoe": {
-        "scale": 1.85,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 2.25,
-      "debuffResistance": 2.25
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "taunt": {
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 2.25
-  }
-};
+export const Evasion: Power = withOverrides(base, overrides);

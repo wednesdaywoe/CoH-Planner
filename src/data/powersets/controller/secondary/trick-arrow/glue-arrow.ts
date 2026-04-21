@@ -1,50 +1,16 @@
 /**
- * Glue Arrow
- * Ranged (Location AoE), Foe -Speed, -Recharge
+ * Glue Arrow — COMPOSED EXPORT
  *
- * Source: controller_buff/trick_arrow/glue_arrow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff trick_arrow
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GlueArrow as base } from '@/data/generated/powersets/controller/secondary/trick-arrow/glue-arrow';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/trick-arrow/glue-arrow';
 
-export const GlueArrow: Power = {
-  "name": "Glue Arrow",
-  "internalName": "Glue_Arrow",
-  "available": 3,
-  "description": "This arrow carries a cartridge of intensely sticky glue, which explodes on impact. The glue Slows the movement and attack rates of any foes in the area.Recharge: Slow.",
-  "shortHelp": "Ranged (Location AoE), Foe -Speed, -Recharge",
-  "icon": "trickarrow_slow.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "radius": 25,
-    "recharge": 60,
-    "endurance": 7.8,
-    "castTime": 1.16,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Glue Arrow",
-      "powers": [
-        "Redirects.Trick_Arrow.GlueArrow"
-      ],
-      "duration": 60,
-      "copyBoosts": true
-    }
-  }
-};
+export const GlueArrow: Power = withOverrides(base, overrides);

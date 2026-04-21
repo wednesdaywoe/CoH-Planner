@@ -1,60 +1,16 @@
 /**
- * Assassin's Smash
- * Melee, Extreme DMG(Smash)
+ * Assassin's Smash — COMPOSED EXPORT
  *
- * Source: stalker_melee/stone_melee/assassins_rockslide.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee stone_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AssassinsSmash as base } from '@/data/generated/powersets/stalker/primary/stone-melee/assassins-rockslide';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/stone-melee/assassins-rockslide';
 
-export const AssassinsSmash: Power = {
-  "name": "Assassin's Smash",
-  "internalName": "Assassins_Rockslide",
-  "available": 5,
-  "description": "A signature Stalker attack. This attack does superior smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Smash when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.Damage: Extreme.Recharge: Slow.",
-  "shortHelp": "Melee, Extreme DMG(Smash)",
-  "icon": "stonemelee_assassinate.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 3.17
-  },
-  "allowedEnhancements": [
-    "Interrupt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.5,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 8
-    },
-    "buffDuration": 8
-  }
-};
+export const AssassinsSmash: Power = withOverrides(base, overrides);

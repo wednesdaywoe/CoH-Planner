@@ -1,48 +1,16 @@
 /**
- * Feral Charge
- * Melee, DMG(Lethal), Foe DoT (Lethal), +3 Blood Frenzy, Self Teleport
+ * Feral Charge — COMPOSED EXPORT
  *
- * Source: dominator_assault/savage_assault/feral_charge.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault savage_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FeralCharge as base } from '@/data/generated/powersets/dominator/secondary/savage-assault/feral-charge';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/savage-assault/feral-charge';
 
-export const FeralCharge: Power = {
-  "name": "Feral Charge",
-  "internalName": "Feral_Charge",
-  "available": 29,
-  "description": "You throw yourself at your target while slashing and tearing wildly dealing moderate lethal damage and causing it to suffer from additional minor lethal damage over time. The damage of this power can increase based on how far away you charge from, with up to double damage dealt at its strongest. Feral Charge builds 1 stacks of Blood Frenzy for every 20 ft in between your target and you, up to 3 stacks.Damage: Light.Recharge: Moderate.",
-  "shortHelp": "Melee, DMG(Lethal), Foe DoT (Lethal), +3 Blood Frenzy, Self Teleport",
-  "icon": "savagemelee_feralcharge.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 10,
-    "endurance": 10.19,
-    "castTime": 1.1667
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Teleport",
-    "Universal Damage Sets",
-    "Universal Travel"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const FeralCharge: Power = withOverrides(base, overrides);

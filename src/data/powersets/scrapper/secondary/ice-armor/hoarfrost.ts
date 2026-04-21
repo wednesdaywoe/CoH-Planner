@@ -1,60 +1,16 @@
 /**
- * Hoarfrost
- * Self Heal, +Max HP, Res(Toxic)
+ * Hoarfrost — COMPOSED EXPORT
  *
- * Source: scrapper_defense/ice_armor/hoarfrost.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense ice_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Hoarfrost as base } from '@/data/generated/powersets/scrapper/secondary/ice-armor/hoarfrost';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ice-armor/hoarfrost';
 
-export const Hoarfrost: Power = {
-  "name": "Hoarfrost",
-  "internalName": "Hoarfrost",
-  "available": 0,
-  "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage.This power is mutually exclusive from Rime",
-  "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
-  "icon": "icearmor_hp.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 360,
-    "endurance": 14.56,
-    "castTime": 0.73
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 4,
-    "table": "Melee_HealSelf"
-  },
-  "effects": {
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 120,
-      "maxHPBuff": 120
-    },
-    "maxHPBuff": {
-      "scale": 4,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 120
-  },
-  "requires": "!Scrapper_Defense.Ice_Armor.Rime_Ice"
-};
+export const Hoarfrost: Power = withOverrides(base, overrides);

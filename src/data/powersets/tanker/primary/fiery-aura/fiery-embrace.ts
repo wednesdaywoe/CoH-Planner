@@ -1,31 +1,16 @@
 /**
- * Fiery Embrace
- * Self +DMG
+ * Fiery Embrace — COMPOSED EXPORT
  *
- * Source: tanker_defense/fiery_aura/fiery_embrace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FieryEmbrace as base } from '@/data/generated/powersets/tanker/primary/fiery-aura/fiery-embrace';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/fiery-aura/fiery-embrace';
 
-export const FieryEmbrace: Power = {
-  "name": "Fiery Embrace",
-  "internalName": "Fiery_Embrace",
-  "available": 21,
-  "description": "Fiery Embrace causes all your damaging powers to do bonus fire damage.In PvP, this power significantly boosts the damage of all your Fire attacks for quite a while. Also increases the damage of all your other non-fire based attacks for a short while.Recharge: Long.",
-  "shortHelp": "Self +DMG",
-  "icon": "flamingshield_fieryembrace.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 180,
-    "endurance": 7.8,
-    "castTime": 0.73
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "maxSlots": 6
-};
+export const FieryEmbrace: Power = withOverrides(base, overrides);

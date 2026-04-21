@@ -1,57 +1,16 @@
 /**
- * Oppressive Gloom
- * Toggle: PBAoE, Foe Disorient, Self -HP
+ * Oppressive Gloom — COMPOSED EXPORT
  *
- * Source: tanker_defense/dark_armor/oppressive_gloom.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense dark_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { OppressiveGloom as base } from '@/data/generated/powersets/tanker/primary/dark-armor/oppressive-gloom';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/dark-armor/oppressive-gloom';
 
-export const OppressiveGloom: Power = {
-  "name": "Oppressive Gloom",
-  "internalName": "Oppressive_Gloom",
-  "available": 21,
-  "description": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use.Recharge: Moderate.",
-  "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
-  "icon": "darkarmor_oppressivegloom.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 12,
-    "recharge": 8,
-    "endurance": 0.156,
-    "castTime": 1.17,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Stuns",
-    "Threat Duration"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 0.0786,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Stun"
-    },
-    "taunt": {
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
-    }
-  }
-};
+export const OppressiveGloom: Power = withOverrides(base, overrides);

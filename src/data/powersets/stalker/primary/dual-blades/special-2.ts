@@ -1,53 +1,16 @@
 /**
- * Sweeping Strike
- * Melee (Cone), DMG(Lethal)
+ * Sweeping Strike — COMPOSED EXPORT
  *
- * Source: stalker_melee/dual_blades/special_2.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee dual_blades
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SweepingStrike as base } from '@/data/generated/powersets/stalker/primary/dual-blades/special-2';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/dual-blades/special-2';
 
-export const SweepingStrike: Power = {
-  "name": "Sweeping Strike",
-  "internalName": "Special_2",
-  "available": 21,
-  "description": "You make a sweeping strike with your blades, hitting all foes in a cone in front of you and dealing moderate lethal damage to each. This power is the opening move for the Weaken combination attack.Weaken: Sweeping Strike > Power Slice > One Thousand Cuts.",
-  "shortHelp": "Melee (Cone), DMG(Lethal)",
-  "icon": "dualblades_special2.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "radius": 7,
-    "arc": 1.5708,
-    "recharge": 11,
-    "endurance": 11.024,
-    "castTime": 1.23,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_InherentDamage"
-    }
-  ]
-};
+export const SweepingStrike: Power = withOverrides(base, overrides);

@@ -1,39 +1,16 @@
 /**
- * Gang War
- * Summon Posse
+ * Gang War — COMPOSED EXPORT
  *
- * Source: mastermind_summon/thugs/gang_war.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon thugs
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GangWar as base } from '@/data/generated/powersets/mastermind/primary/thugs/gang-war';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/thugs/gang-war';
 
-export const GangWar: Power = {
-  "name": "Gang War",
-  "internalName": "Gang_War",
-  "available": 17,
-  "description": "Calls a gang of 10 or so Thug Posse to come to your aid for a brief while. Posse are not like your true Henchman. They cannot be given direct commands, nor will they appear in your pet window. You must select an enemy target to attack first before calling these Thugs. Posse are many, but they are very weak, and are only equipped with the most basic weapons. Although they will follow you, they are not as loyal as your Henchmen, and they will only stick around for a few minutes before taking off.",
-  "shortHelp": "Summon Posse",
-  "icon": "thugs_targetedsummonmob.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 300,
-    "endurance": 13,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6
-};
+export const GangWar: Power = withOverrides(base, overrides);

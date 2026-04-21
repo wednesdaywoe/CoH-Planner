@@ -1,95 +1,16 @@
 /**
- * Entangling Arrow
- * Ranged, Target Immobilize, -Res(All), -Fly, Slow
+ * Entangling Arrow — COMPOSED EXPORT
  *
- * Source: mastermind_buff/trick_arrow/entangling_arrow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff trick_arrow
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EntanglingArrow as base } from '@/data/generated/powersets/mastermind/secondary/trick-arrow/entangling-arrow';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/trick-arrow/entangling-arrow';
 
-export const EntanglingArrow: Power = {
-  "name": "Entangling Arrow",
-  "internalName": "Entangling_Arrow",
-  "available": 0,
-  "description": "You entangle a targeted foe causing their reflexes to become slowed and sluggish. This grounds them and causes them to have decreased movement speed and damage resistance. Weaker foes will also be immobilized.Recharge: Fast.",
-  "shortHelp": "Ranged, Target Immobilize, -Res(All), -Fly, Slow",
-  "icon": "trickarrow_immobilize.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 6.5,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Immobilize",
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 30,
-      "resistanceDebuff": 30
-    },
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "immobilize": {
-      "mag": 3,
-      "scale": 7,
-      "table": "Ranged_Immobilize"
-    },
-    "buffDuration": 30
-  }
-};
+export const EntanglingArrow: Power = withOverrides(base, overrides);

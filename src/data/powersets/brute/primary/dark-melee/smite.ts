@@ -1,55 +1,16 @@
 /**
- * Smite
- * Melee, DMG(Smash/Negative), Foe -To Hit
+ * Smite — COMPOSED EXPORT
  *
- * Source: brute_melee/dark_melee/smite.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee dark_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Smite as base } from '@/data/generated/powersets/brute/primary/dark-melee/smite';
+import { overrides } from '@/data/overrides/powersets/brute/primary/dark-melee/smite';
 
-export const Smite: Power = {
-  "name": "Smite",
-  "internalName": "Smite",
-  "available": 0,
-  "description": "You wrap your fists with Negative Energy channeled from the Netherworlds, then perform a Smite that deals more damage than Shadow Punch, but has a longer recharge time. Smite clouds the target's vision, lowering their chance to hit for a short time.",
-  "shortHelp": "Melee, DMG(Smash/Negative), Foe -To Hit",
-  "icon": "shadowfighting_smite.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 0.97
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Threat Duration",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Melee_Damage"
-    }
-  ]
-};
+export const Smite: Power = withOverrides(base, overrides);

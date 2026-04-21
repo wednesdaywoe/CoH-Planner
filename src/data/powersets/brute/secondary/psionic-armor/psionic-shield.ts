@@ -1,75 +1,16 @@
 /**
- * Psionic Shield
- * Toggle: Self +Res(Fire, Cold, Energy, Negative, Toxic, End Drain)
+ * Psionic Shield — COMPOSED EXPORT
  *
- * Source: brute_defense/psionic_armor/psionic_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense psionic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsionicShield as base } from '@/data/generated/powersets/brute/secondary/psionic-armor/psionic-shield';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/psionic-armor/psionic-shield';
 
-export const PsionicShield: Power = {
-  "name": "Psionic Shield",
-  "internalName": "Psionic_Shield",
-  "available": 0,
-  "description": "This power generates a psionic shield that dampens most energy and elemental damage types while also reducing the effect of endurance drain effects.",
-  "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative, Toxic, End Drain)",
-  "icon": "psionicarmor_psionicshield.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.104,
-    "castTime": 1.17,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "debuffResistance": 0.75
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 0.75,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const PsionicShield: Power = withOverrides(base, overrides);

@@ -1,50 +1,16 @@
 /**
- * Gremlins
- * Summon Gremlins: Minor DMG(Energy)
+ * Gremlins — COMPOSED EXPORT
  *
- * Source: controller_control/electric_control/gremlins.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control electric_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Gremlins as base } from '@/data/generated/powersets/controller/primary/electric-control/gremlins';
+import { overrides } from '@/data/overrides/powersets/controller/primary/electric-control/gremlins';
 
-export const Gremlins: Power = {
-  "name": "Gremlins",
-  "internalName": "Gremlins",
-  "available": 25,
-  "description": "Mastery over electricity allows you to create almost sentient elementals of lightning. These elementals are mischievous in nature, and enjoy creating havoc and interfering with electronic equipment or magical cantrips. They also never work alone, where there is one Gremlin, there is often another nearby.",
-  "shortHelp": "Summon Gremlins: Minor DMG(Energy)",
-  "icon": "electriccontrol_gremlins.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 240,
-    "endurance": 26,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Gremlin_Controller",
-      "copyBoosts": true,
-      "entityCount": 2
-    }
-  }
-};
+export const Gremlins: Power = withOverrides(base, overrides);

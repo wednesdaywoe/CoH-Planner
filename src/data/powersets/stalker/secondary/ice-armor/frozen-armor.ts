@@ -1,70 +1,16 @@
 /**
- * Frozen Armor
- * Self, +Def(Smash, Lethal), +Res(Cold, Fire, DeBuff DEF)
+ * Frozen Armor — COMPOSED EXPORT
  *
- * Source: stalker_defense/ice_armor/frozen_armor.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense ice_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FrozenArmor as base } from '@/data/generated/powersets/stalker/secondary/ice-armor/frozen-armor';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/ice-armor/frozen-armor';
 
-export const FrozenArmor: Power = {
-  "name": "Frozen Armor",
-  "internalName": "Frozen_Armor",
-  "available": 0,
-  "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage.This power is mutually exclusive from Rime",
-  "shortHelp": "Self, +Def(Smash, Lethal), +Res(Cold, Fire, DeBuff DEF)",
-  "icon": "icearmor_icearmor.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "smashing": {
-        "scale": 1.7,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.7,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "resistance": 0.75,
-      "debuffResistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const FrozenArmor: Power = withOverrides(base, overrides);

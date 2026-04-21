@@ -1,86 +1,16 @@
 /**
- * Hide
- * Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)
+ * Hide — COMPOSED EXPORT
  *
- * Source: stalker_defense/stone_armor/hide.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense stone_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Hide as base } from '@/data/generated/powersets/stalker/secondary/stone-armor/hide';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/stone-armor/hide';
 
-export const Hide: Power = {
-  "name": "Hide",
-  "internalName": "Hide",
-  "available": 0,
-  "description": "Hide makes you almost impossible to detect. When properly 'Hidden\", a Stalker can pull off Critical hits with his attacks, and even land a massive 'Assassins Strike' with an Assassins power. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. Unlike most stealth powers, Hide can be used at the same time as other Concealment powers, giving you even greater stealth capability. No Endurance cost.Recharge: Very Fast.",
-  "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
-  "icon": "stonearmor_hide.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
-  }
-};
+export const Hide: Power = withOverrides(base, overrides);

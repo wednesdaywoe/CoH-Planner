@@ -1,56 +1,16 @@
 /**
- * Shock
- * Ranged, Foe -DMG, -End, -Recovery, -Regen
+ * Shock — COMPOSED EXPORT
  *
- * Source: mastermind_buff/shock_therapy/shock.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff shock_therapy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Shock as base } from '@/data/generated/powersets/mastermind/secondary/electrical-affinity/shock';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/electrical-affinity/shock';
 
-export const Shock: Power = {
-  "name": "Shock",
-  "internalName": "Shock",
-  "available": 0,
-  "description": "Strike a single foe with a highly-charged electrical shock, draining some endurance and moderately reducing their recovery, regeneration and damage output.Recharge: Slow.",
-  "shortHelp": "Ranged, Foe -DMG, -End, -Recovery, -Regen",
-  "icon": "shocktherapy_shock.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 12,
-    "endurance": 10.66,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 25,
-      "recoveryDebuff": 25
-    },
-    "recoveryDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "enduranceDrain": {
-      "scale": 0.16,
-      "table": "Ranged_EndDrain"
-    },
-    "buffDuration": 25
-  }
-};
+export const Shock: Power = withOverrides(base, overrides);

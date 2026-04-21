@@ -1,58 +1,16 @@
 /**
- * Siphon Life
- * Melee, DMG(Negative), Foe -To Hit, Self +HP
+ * Siphon Life — COMPOSED EXPORT
  *
- * Source: brute_melee/dark_melee/siphon_life.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee dark_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SiphonLife as base } from '@/data/generated/powersets/brute/primary/dark-melee/siphon-life';
+import { overrides } from '@/data/overrides/powersets/brute/primary/dark-melee/siphon-life';
 
-export const SiphonLife: Power = {
-  "name": "Siphon Life",
-  "internalName": "Siphon_Life",
-  "available": 7,
-  "description": "You tap the power of the Netherworld and create a life transferring conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes Siphoned in this manner have their chance to hit reduced.",
-  "shortHelp": "Melee, DMG(Negative), Foe -To Hit, Self +HP",
-  "icon": "shadowfighting_siphonlife.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.93
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Accurate To-Hit Debuff",
-    "Brute Archetype Sets",
-    "Healing",
-    "Melee Damage",
-    "Threat Duration",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Heal",
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    }
-  ]
-};
+export const SiphonLife: Power = withOverrides(base, overrides);

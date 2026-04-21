@@ -1,73 +1,16 @@
 /**
- * Negatron Slam
- * Melee, DMG(Energy/Smash), Foe Knockdown, -DEF, Special, +Negatrons
+ * Negatron Slam — COMPOSED EXPORT
  *
- * Source: blaster_support/radiation_manipulation/negatron_slam.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support radiation_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { NegatronSlam as base } from '@/data/generated/powersets/blaster/secondary/atomic-manipulation/negatron-slam';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/atomic-manipulation/negatron-slam';
 
-export const NegatronSlam: Power = {
-  "name": "Negatron Slam",
-  "internalName": "Negatron_Slam",
-  "available": 0,
-  "description": "You channel a greater amount of radiation into your fists and deliver a hard-hitting blow that deals Energy and Smashing damage to the target as well as reduce their Defense for a short time. The affected target will also be surrounded in negatively charged particles. Hitting a foe that has positive charged particles will trigger a Gamma Burst.",
-  "shortHelp": "Melee, DMG(Energy/Smash), Foe Knockdown, -DEF, Special, +Negatrons",
-  "icon": "atomicmanipulation_weakpunch.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.49,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.47,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const NegatronSlam: Power = withOverrides(base, overrides);

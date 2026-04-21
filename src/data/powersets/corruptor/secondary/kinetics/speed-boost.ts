@@ -1,69 +1,16 @@
 /**
- * Speed Boost
- * Ranged, Allies +SPD, +Recharge, +Recovery, Res Slow
+ * Speed Boost — COMPOSED EXPORT
  *
- * Source: corruptor_buff/kinetics/speed_boost.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff kinetics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SpeedBoost as base } from '@/data/generated/powersets/corruptor/secondary/kinetics/speed-boost';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/kinetics/speed-boost';
 
-export const SpeedBoost: Power = {
-  "name": "Speed Boost",
-  "internalName": "Speed_Boost",
-  "available": 19,
-  "description": "You can hasten a targeted ally and its nearby allies. The allies' movement speed, attack rate, and Endurance recovery are all greatly increased and they gain resistance to Slow effects. You cannot use this power on yourself.Recharge: Very Fast.",
-  "shortHelp": "Ranged, Allies +SPD, +Recharge, +Recovery, Res Slow",
-  "icon": "kineticboost_speedboost.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 30,
-    "recharge": 2,
-    "endurance": 7.8,
-    "castTime": 1,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Run Speed",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Running",
-    "Running & Sprints",
-    "Universal Travel"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "rechargeBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rechargeBuff": 120,
-      "recoveryBuff": 120,
-      "debuffResistance": 120
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "recharge": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "buffDuration": 120
-  }
-};
+export const SpeedBoost: Power = withOverrides(base, overrides);

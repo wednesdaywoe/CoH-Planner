@@ -1,45 +1,16 @@
 /**
- * Deceive
- * Ranged, Foe Confuse
+ * Deceive — COMPOSED EXPORT
  *
- * Source: controller_control/illusion_control/deceive.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control illusion_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Deceive as base } from '@/data/generated/powersets/controller/primary/illusion-control/deceive';
+import { overrides } from '@/data/overrides/powersets/controller/primary/illusion-control/deceive';
 
-export const Deceive: Power = {
-  "name": "Deceive",
-  "internalName": "Deceive",
-  "available": 1,
-  "description": "You can Deceive an enemy into believing their friends are not who they appear to be. If successful, the enemy will ignore you and attack their own allies. If you Deceive someone before they have noticed you, your presence will continue to be masked. Damage done by a Deceived enemy will reduce the total amount of Experience Points awarded when a foe is defeated.",
-  "shortHelp": "Ranged, Foe Confuse",
-  "icon": "illusions_decieve.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Confuse",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Confuse",
-    "Controller Archetype Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "mag": 3,
-      "scale": 20,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const Deceive: Power = withOverrides(base, overrides);

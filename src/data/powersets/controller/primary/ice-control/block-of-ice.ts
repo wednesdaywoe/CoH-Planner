@@ -1,69 +1,16 @@
 /**
- * Block of Ice
- * Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge
+ * Block of Ice — COMPOSED EXPORT
  *
- * Source: controller_control/ice_control/block_of_ice.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control ice_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BlockofIce as base } from '@/data/generated/powersets/controller/primary/ice-control/block-of-ice';
+import { overrides } from '@/data/overrides/powersets/controller/primary/ice-control/block-of-ice';
 
-export const BlockofIce: Power = {
-  "name": "Block of Ice",
-  "internalName": "Block_of_Ice",
-  "available": 0,
-  "description": "You can freeze a single foe in a Block of Ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be held, but all affected targets will be Slowed and take some Cold damage.",
-  "shortHelp": "Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge",
-  "icon": "iceformation_blockofice.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.87
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 12
-    },
-    "buffDuration": 12
-  }
-};
+export const BlockofIce: Power = withOverrides(base, overrides);

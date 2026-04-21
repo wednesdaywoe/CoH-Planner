@@ -1,70 +1,16 @@
 /**
- * Cloak of Fear
- * Toggle: PBAoE Self +Res(Knockback), Foe Fear, -ACC
+ * Cloak of Fear — COMPOSED EXPORT
  *
- * Source: tanker_defense/dark_armor/cloak_of_fear.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense dark_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CloakofFear as base } from '@/data/generated/powersets/tanker/primary/dark-armor/cloak-of-fear';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/dark-armor/cloak-of-fear';
 
-export const CloakofFear: Power = {
-  "name": "Cloak of Fear",
-  "internalName": "Cloak_of_Fear",
-  "available": 17,
-  "description": "You can wrap yourself in a nightmarish Cloak of Fear. Foes close to you are treated to visions most horrific, lowering their damage ouptupt and forcing them to tremble in terror, only attacking if attacked, and even then, with a reduced chance to hit. Feeding on your enemies fear will increase your protection against knockback effects.Notes: Mez enhancements on this power enhance its magnitude instead of its duration.",
-  "shortHelp": "Toggle: PBAoE Self +Res(Knockback), Foe Fear, -ACC",
-  "icon": "darkarmor_fearfulaura.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "radius": 15,
-    "recharge": 4,
-    "endurance": 0.26,
-    "castTime": 1.17,
-    "activatePeriod": 1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Fear",
-    "ToHit Debuff",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Fear",
-    "Threat Duration",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "fear": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 3,
-    "durations": {
-      "fear": 3,
-      "knockup": 5,
-      "knockback": 5
-    },
-    "knockup": {
-      "scale": 1.25,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 1.25,
-      "table": "Melee_Ones"
-    },
-    "taunt": {
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 5
-  }
-};
+export const CloakofFear: Power = withOverrides(base, overrides);

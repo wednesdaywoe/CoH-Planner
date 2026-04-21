@@ -1,50 +1,16 @@
 /**
- * Incendiary Aura
- * Toggle: PBAoE, Chance for Blast Off. -ToHit, -Defense
+ * Incendiary Aura — COMPOSED EXPORT
  *
- * Source: dominator_control/pyrotechnic_control/incendiary_aura.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control pyrotechnic_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IncendiaryAura as base } from '@/data/generated/powersets/dominator/primary/pyrotechnic-control/incendiary-aura';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/pyrotechnic-control/incendiary-aura';
 
-export const IncendiaryAura: Power = {
-  "name": "Incendiary Aura",
-  "internalName": "Incendiary_Aura",
-  "available": 17,
-  "description": "You create an aura of pyrotechnic energy around yourself that has combustible properties. Enemies within range of the power have a persistent chance of Blasting Off into the air, as well as suffer from reduced ToHit and Defense.",
-  "shortHelp": "Toggle: PBAoE, Chance for Blast Off. -ToHit, -Defense",
-  "icon": "pyrotechnic_incendiaryaura.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 20,
-    "recharge": 20,
-    "endurance": 0.08,
-    "castTime": 1.47,
-    "activatePeriod": 0.2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit Debuff",
-    "Defense Debuff"
-  ],
-  "allowedSetCategories": [
-    "Defense Debuff",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 0.45
-    },
-    "buffDuration": 0.45
-  }
-};
+export const IncendiaryAura: Power = withOverrides(base, overrides);

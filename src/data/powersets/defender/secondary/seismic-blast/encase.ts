@@ -1,57 +1,16 @@
 /**
- * Encase
- * Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF
+ * Encase — COMPOSED EXPORT
  *
- * Source: defender_ranged/seismic_blast/encase.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged seismic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Encase as base } from '@/data/generated/powersets/defender/secondary/seismic-blast/encase';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/seismic-blast/encase';
 
-export const Encase: Power = {
-  "name": "Encase",
-  "internalName": "Encase",
-  "available": 0,
-  "description": "Encase a foe in stone for a short moment, dealing damage and lowering their defense. The enemy will also become heavy, limiting their ability to jump and fly for a short time. Encase grants two stacks of Seismic Pressure.",
-  "shortHelp": "Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF",
-  "icon": "seismicblast_shatter.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defender Archetype Sets",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 3
-    },
-    "buffDuration": 3
-  }
-};
+export const Encase: Power = withOverrides(base, overrides);

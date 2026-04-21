@@ -1,60 +1,16 @@
 /**
- * Psionic Lance
- * Sniper, DMG(Psionic), Target -Recharge, Self +Range
+ * Psionic Lance — COMPOSED EXPORT
  *
- * Source: blaster_ranged/psychic_blast/psionic_lance.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsionicLance as base } from '@/data/generated/powersets/blaster/primary/psychic-blast/psionic-lance';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/psychic-blast/psionic-lance';
 
-export const PsionicLance: Power = {
-  "name": "Psionic Lance",
-  "internalName": "Psionic_Lance",
-  "available": 11,
-  "description": "This extremely long range Psionic attack has a bonus to Accuracy, and can Slow a target's attack rate. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
-  "shortHelp": "Sniper, DMG(Psionic), Target -Recharge, Self +Range",
-  "icon": "psychicblast_psioniclance.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 175,
-    "recharge": 12,
-    "endurance": 14.352,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const PsionicLance: Power = withOverrides(base, overrides);

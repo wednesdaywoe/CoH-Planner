@@ -1,56 +1,16 @@
 /**
- * Phalanx Fighting
- * Auto: Self Special +DEF(Melee, Ranged, AoE)
+ * Phalanx Fighting — COMPOSED EXPORT
  *
- * Source: brute_defense/shield_defense/phalanx_fighting.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense shield_defense
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PhalanxFighting as base } from '@/data/generated/powersets/brute/secondary/shield-defense/phalanx-fighting';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/shield-defense/phalanx-fighting';
 
-export const PhalanxFighting: Power = {
-  "name": "Phalanx Fighting",
-  "internalName": "Phalanx_Fighting",
-  "available": 19,
-  "description": "Fighting very near your allies allows you to deflect attacks much easier. You will gain a small bonus to your melee, ranged and area of effect defense. This bonus grows for each ally near you. This power is always on and costs no endurance.",
-  "shortHelp": "Auto: Self Special +DEF(Melee, Ranged, AoE)",
-  "icon": "shielddefense_phalanxfighting.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "activatePeriod": 1,
-    "maxTargets": 3
-  },
-  "allowedEnhancements": [
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.3
-      },
-      "melee": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.3
-      },
-      "aoe": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.3
-      }
-    },
-    "durations": {
-      "defenseBuff": 1.25
-    },
-    "buffDuration": 1.25
-  }
-};
+export const PhalanxFighting: Power = withOverrides(base, overrides);

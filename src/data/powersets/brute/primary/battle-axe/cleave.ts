@@ -1,55 +1,16 @@
 /**
- * Cleave
- * Ranged, DMG(Lethal), Foe Knockdown
+ * Cleave — COMPOSED EXPORT
  *
- * Source: brute_melee/battle_axe/cleave.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee battle_axe
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Cleave as base } from '@/data/generated/powersets/brute/primary/battle-axe/cleave';
+import { overrides } from '@/data/overrides/powersets/brute/primary/battle-axe/cleave';
 
-export const Cleave: Power = {
-  "name": "Cleave",
-  "internalName": "Cleave",
-  "available": 25,
-  "description": "This is an attempt to split your opponent in two with one fell swoop of your Battle Axe. It is an extremely devastating attack that deals massive damage and can knock foes to the ground. The power of this attack can actually extend a short distance through multiple foes.Notes: Cleave is unaffected by Range and Radius changes.",
-  "shortHelp": "Ranged, DMG(Lethal), Foe Knockdown",
-  "icon": "battleaxe_cleaveplayer.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 40,
-    "radius": 3,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 2.33,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 2.76,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Cleave: Power = withOverrides(base, overrides);

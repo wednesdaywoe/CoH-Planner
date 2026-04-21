@@ -1,46 +1,16 @@
 /**
- * Up to the Challenge
- * Toggle: Self +Regen
+ * Up to the Challenge — COMPOSED EXPORT
  *
- * Source: sentinel_defense/willpower/up_to_the_challenge.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense willpower
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { UptotheChallenge as base } from '@/data/generated/powersets/sentinel/secondary/willpower/up-to-the-challenge';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/willpower/up-to-the-challenge';
 
-export const UptotheChallenge: Power = {
-  "name": "Up to the Challenge",
-  "internalName": "Up_to_the_Challenge",
-  "available": 15,
-  "description": "Regardless of the odds against you, you are determined to go on. Your ability to regenerate health is greatly increased at all times.Recharge: Moderate.",
-  "shortHelp": "Toggle: Self +Regen",
-  "icon": "willpower_risetothechallenge.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.208,
-    "castTime": 3,
-    "activatePeriod": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 1.125
-    },
-    "buffDuration": 1.125
-  }
-};
+export const UptotheChallenge: Power = withOverrides(base, overrides);

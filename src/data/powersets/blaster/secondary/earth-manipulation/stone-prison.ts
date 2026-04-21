@@ -1,77 +1,16 @@
 /**
- * Stone Prison
- * Ranged, Moderate DoT(Smash), Foe Immobilize, -DEF, -Fly
+ * Stone Prison — COMPOSED EXPORT
  *
- * Source: blaster_support/earth_manipulation/stone_prison.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support earth_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StonePrison as base } from '@/data/generated/powersets/blaster/secondary/earth-manipulation/stone-prison';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/earth-manipulation/stone-prison';
 
-export const StonePrison: Power = {
-  "name": "Stone Prison",
-  "internalName": "Stone_Prison",
-  "available": 0,
-  "description": "Immobilizes a single target within an earthy formation and deals some Smashing damage over time. Some more resilient foes may require multiple attacks to Immobilize. Stone Prison can also reduce a target's Defense.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Moderate DoT(Smash), Foe Immobilize, -DEF, -Fly",
-  "icon": "earthmanip_stoneprison.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.23
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Immobilize",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 2
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15,
-      "defenseDebuff": 10
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "buffDuration": 15
-  }
-};
+export const StonePrison: Power = withOverrides(base, overrides);

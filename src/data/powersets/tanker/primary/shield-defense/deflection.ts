@@ -1,60 +1,16 @@
 /**
- * Battle Agility
- * Toggle: Self +DEF(Ranged, AoE), +Res(Defense Debuff)
+ * Battle Agility — COMPOSED EXPORT
  *
- * Source: tanker_defense/shield_defense/deflection.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense shield_defense
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BattleAgility as base } from '@/data/generated/powersets/tanker/primary/shield-defense/deflection';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/shield-defense/deflection';
 
-export const BattleAgility: Power = {
-  "name": "Battle Agility",
-  "internalName": "Deflection",
-  "available": 0,
-  "description": "Your incredible agility allows you to position your shield to protect yourself from incoming ranged damage. While Battle Agility is active you will benefit from increased Ranged and AoE defense as well as some moderate protection from Defense Debuffs.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +DEF(Ranged, AoE), +Res(Defense Debuff)",
-  "icon": "shielddefense_deflection.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.104,
-    "castTime": 1.5,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
-  },
-  "requires": "!(Tanker_Melee.Claws || Tanker_Melee.Dual_Blades || Tanker_Melee.Katana || Tanker_Melee.Spines || Tanker_Melee.Staff_Fighting || Tanker_Melee.Titan_Weapons)"
-};
+export const BattleAgility: Power = withOverrides(base, overrides);

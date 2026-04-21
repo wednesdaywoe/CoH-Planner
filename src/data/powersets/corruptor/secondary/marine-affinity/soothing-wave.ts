@@ -1,45 +1,16 @@
 /**
- * Soothing Wave
- * Ranged (Facing Cone), Foe -DMG, Team Heal
+ * Soothing Wave — COMPOSED EXPORT
  *
- * Source: corruptor_buff/marine_affinity/soothing_wave.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff marine_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SoothingWave as base } from '@/data/generated/powersets/corruptor/secondary/marine-affinity/soothing-wave';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/marine-affinity/soothing-wave';
 
-export const SoothingWave: Power = {
-  "name": "Soothing Wave",
-  "internalName": "Soothing_Wave",
-  "available": 0,
-  "description": "Send forth a calming wave of water, washing over friend and foe alike. Allies will be healed by this power, while enemies will have their offensive power watered down.",
-  "shortHelp": "Ranged (Facing Cone), Foe -DMG, Team Heal",
-  "icon": "marineaffinity_soothingwave.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 45,
-    "radius": 45,
-    "arc": 1.5708,
-    "recharge": 10,
-    "endurance": 13.52,
-    "castTime": 2,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1,
-    "table": "Ranged_Heal"
-  }
-};
+export const SoothingWave: Power = withOverrides(base, overrides);

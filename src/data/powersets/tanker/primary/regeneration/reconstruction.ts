@@ -1,54 +1,16 @@
 /**
- * Reconstruction
- * Self Heal, Res(Toxic)
+ * Reconstruction — COMPOSED EXPORT
  *
- * Source: tanker_defense/regeneration/reconstruction.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense regeneration
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Reconstruction as base } from '@/data/generated/powersets/tanker/primary/regeneration/reconstruction';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/regeneration/reconstruction';
 
-export const Reconstruction: Power = {
-  "name": "Reconstruction",
-  "internalName": "Reconstruction",
-  "available": 0,
-  "description": "Through perfect control of your body, you can concentrate for a few moments and heal yourself. The effects of Reconstruction also leaves you resistant to Toxic damage for a while.",
-  "shortHelp": "Self Heal, Res(Toxic)",
-  "icon": "regeneration_reconstruction.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 60,
-    "endurance": 10.4,
-    "castTime": 0.73
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 2.5,
-    "table": "Melee_HealSelf"
-  },
-  "effects": {
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60
-    },
-    "buffDuration": 60
-  }
-};
+export const Reconstruction: Power = withOverrides(base, overrides);

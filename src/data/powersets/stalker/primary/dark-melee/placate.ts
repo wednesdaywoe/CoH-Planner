@@ -1,60 +1,16 @@
 /**
- * Placate
- * Ranged, Foe Placate, Self Stealth/Hide
+ * Placate — COMPOSED EXPORT
  *
- * Source: stalker_melee/dark_melee/placate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee dark_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Placate as base } from '@/data/generated/powersets/stalker/primary/dark-melee/placate';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/dark-melee/placate';
 
-export const Placate: Power = {
-  "name": "Placate",
-  "internalName": "Placate",
-  "available": 11,
-  "description": "Allows you to trick a foe to no longer attack you. A Successful Placate will also Hide you. This Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit or an Assassins Blow. However, if you attack a Placated Foe, he will be able to attack you back.",
-  "shortHelp": "Ranged, Foe Placate, Self Stealth/Hide",
-  "icon": "shadowfighting_placate.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "radius": 15,
-    "recharge": 60,
-    "castTime": 0.8,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Threat Duration"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "placate": {
-      "scale": 10,
-      "table": "Melee_Taunt"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 150,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 380,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const Placate: Power = withOverrides(base, overrides);

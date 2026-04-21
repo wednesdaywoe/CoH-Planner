@@ -1,49 +1,16 @@
 /**
- * Blood Craze
- * Self +HP, +Health over Time
+ * Blood Craze — COMPOSED EXPORT
  *
- * Source: dominator_assault/savage_assault/blood_craze.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault savage_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BloodCraze as base } from '@/data/generated/powersets/dominator/secondary/savage-assault/blood-craze';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/savage-assault/blood-craze';
 
-export const BloodCraze: Power = {
-  "name": "Blood Craze",
-  "internalName": "Blood_Craze",
-  "available": 23,
-  "description": "You go into a blood craze, making you quickly shrug aside some of the damage received. Blood Craze will immediately heal you for a small amount and cause you to heal for a moderate amount of health over time.Recharge: Long.",
-  "shortHelp": "Self +HP, +Health over Time",
-  "icon": "savagemelee_bloodthirst.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 180,
-    "endurance": 7.8,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Heal",
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.25,
-      "table": "Melee_HealSelf",
-      "duration": 9.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const BloodCraze: Power = withOverrides(base, overrides);

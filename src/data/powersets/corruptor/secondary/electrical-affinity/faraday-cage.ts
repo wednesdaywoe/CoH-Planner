@@ -1,49 +1,16 @@
 /**
- * Faraday Cage
- * Location (PBAoE), Team +Res(All DMG but Toxic, Status, Knockback, -Rech, -Rec, -End)
+ * Faraday Cage — COMPOSED EXPORT
  *
- * Source: corruptor_buff/shock_therapy/faraday_cage.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff shock_therapy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FaradayCage as base } from '@/data/generated/powersets/corruptor/secondary/electrical-affinity/faraday-cage';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/electrical-affinity/faraday-cage';
 
-export const FaradayCage: Power = {
-  "name": "Faraday Cage",
-  "internalName": "Faraday_Cage",
-  "available": 15,
-  "description": "Create a large energy barrier at your location which provides all allies within resistance to all damage except Toxic. They are also protected from status effects, knockbacks, endurance drain, recovery debuffs and recharge debuffs. Casting this power again will move the energy barrier to your location. Standing inside your own Faraday Cage will grant you a stack of Static every 5 seconds.Recharge: Moderate.",
-  "shortHelp": "Location (PBAoE), Team +Res(All DMG but Toxic, Status, Knockback, -Rech, -Rec, -End)",
-  "icon": "shocktherapy_faradaycage.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 25,
-    "recharge": 10,
-    "endurance": 13,
-    "castTime": 1.07
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Faraday Cage",
-      "powers": [
-        "Redirects.Shock_Therapy.FaradayCage",
-        "Redirects.Shock_Therapy.FaradayCageFx",
-        "Redirects.Shock_Therapy.FaradayStatic"
-      ],
-      "duration": 240,
-      "copyBoosts": true
-    }
-  }
-};
+export const FaradayCage: Power = withOverrides(base, overrides);

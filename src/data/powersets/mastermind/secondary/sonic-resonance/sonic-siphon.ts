@@ -1,73 +1,16 @@
 /**
- * Sonic Siphon
- * Ranged, Foe -Res(All)
+ * Sonic Siphon — COMPOSED EXPORT
  *
- * Source: mastermind_buff/sonic_resonance/sonic_siphon.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff sonic_resonance
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SonicSiphon as base } from '@/data/generated/powersets/mastermind/secondary/sonic-resonance/sonic-siphon';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/sonic-resonance/sonic-siphon';
 
-export const SonicSiphon: Power = {
-  "name": "Sonic Siphon",
-  "internalName": "Sonic_Siphon",
-  "available": 0,
-  "description": "By setting up a constant vibration within the body of your foe, you weaken their Damage Resistance. Affected targets will take more damage from successful attacks.Recharge: Slow.",
-  "shortHelp": "Ranged, Foe -Res(All)",
-  "icon": "sonicdebuff_debuffdamres.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 16,
-    "endurance": 10.66,
-    "castTime": 2.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 30
-    },
-    "buffDuration": 30
-  }
-};
+export const SonicSiphon: Power = withOverrides(base, overrides);

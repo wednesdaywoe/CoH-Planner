@@ -1,64 +1,16 @@
 /**
- * Power of the Depths
- * PBAoE, Team +MaxHP, +MaxEnd, +Regen, +Range
+ * Power of the Depths — COMPOSED EXPORT
  *
- * Source: corruptor_buff/marine_affinity/call_depths.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff marine_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PoweroftheDepths as base } from '@/data/generated/powersets/corruptor/secondary/marine-affinity/call-depths';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/marine-affinity/call-depths';
 
-export const PoweroftheDepths: Power = {
-  "name": "Power of the Depths",
-  "internalName": "Call_Depths",
-  "available": 29,
-  "description": "Becoming a conduit of the ocean itself, you acclimate your allies to the incredible forces of the deep! This boosts the maximum hit points, maximum endurance, regeneration, and attack range of all nearby allies. Some of these effects will decay over time to a lower value.If Power of the Depths is activated inside a Tide Pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
-  "shortHelp": "PBAoE, Team +MaxHP, +MaxEnd, +Regen, +Range",
-  "icon": "marineaffinity_powerofthedepths.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 240,
-    "endurance": 26,
-    "castTime": 3,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "maxHPBuff": {
-      "scale": 4,
-      "table": "Ranged_Heal"
-    },
-    "durations": {
-      "maxHPBuff": 60,
-      "maxEndBuff": 60,
-      "regenBuff": 60,
-      "rangeBuff": 60
-    },
-    "maxEndBuff": {
-      "scale": 20,
-      "table": "Ranged_Ones"
-    },
-    "regenBuff": {
-      "scale": 4,
-      "table": "Ranged_Ones"
-    },
-    "rangeBuff": {
-      "scale": 0.375,
-      "table": "Melee_Stun"
-    },
-    "buffDuration": 60
-  }
-};
+export const PoweroftheDepths: Power = withOverrides(base, overrides);

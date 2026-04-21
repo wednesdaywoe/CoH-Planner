@@ -1,50 +1,16 @@
 /**
- * Poison Gas Arrow
- * Ranged AoE, Foe -DMG, Sleep
+ * Poison Gas Arrow — COMPOSED EXPORT
  *
- * Source: corruptor_buff/trick_arrow/poison_gas_arrow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff trick_arrow
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PoisonGasArrow as base } from '@/data/generated/powersets/corruptor/secondary/trick-arrow/poison-gas-arrow';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/trick-arrow/poison-gas-arrow';
 
-export const PoisonGasArrow: Power = {
-  "name": "Poison Gas Arrow",
-  "internalName": "Poison_Gas_Arrow",
-  "available": 15,
-  "description": "This arrow carries a capsule cloud of poisonous gas, which explodes on impact and weakens all foes in its vicinity. Affected foes damage potential will be severely reduced. Some foes will react badly to the poison and choke for a time, though they will react if attacked.Recharge: Slow.",
-  "shortHelp": "Ranged AoE, Foe -DMG, Sleep",
-  "icon": "trickarrow_debuffdamage.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.5,
-    "range": 70,
-    "radius": 25,
-    "recharge": 45,
-    "endurance": 10.4,
-    "castTime": 1.16,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Sleep",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Sleep"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Poison Gas Arrow",
-      "powers": [
-        "Redirects.Trick_Arrow.PoisonGasArrow"
-      ],
-      "duration": 20,
-      "copyBoosts": true
-    }
-  }
-};
+export const PoisonGasArrow: Power = withOverrides(base, overrides);

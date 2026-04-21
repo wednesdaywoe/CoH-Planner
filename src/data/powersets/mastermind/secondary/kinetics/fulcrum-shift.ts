@@ -1,33 +1,16 @@
 /**
- * Fulcrum Shift
- * Ranged (Foe AoE), Foe -DMG, Team +DMG
+ * Fulcrum Shift — COMPOSED EXPORT
  *
- * Source: mastermind_buff/kinetics/fulcrum_shift.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff kinetics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FulcrumShift as base } from '@/data/generated/powersets/mastermind/secondary/kinetics/fulcrum-shift';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/kinetics/fulcrum-shift';
 
-export const FulcrumShift: Power = {
-  "name": "Fulcrum Shift",
-  "internalName": "Fulcrum_Shift",
-  "available": 29,
-  "description": "Fulcrum Shift drains the power of a targeted foe and all foes nearby, transferring it to all adjacent allies, you, and those near you. Affected foes will deal less damage, while your affected allies will deal more. The more foes that are affected, the more power you and your allies receive. Fulcrum Shift can dramatically turn the tide of a battle.Recharge: Slow.",
-  "shortHelp": "Ranged (Foe AoE), Foe -DMG, Team +DMG",
-  "icon": "kineticboost_kinetictransfer.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 60,
-    "endurance": 19.5,
-    "castTime": 2.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "maxSlots": 6
-};
+export const FulcrumShift: Power = withOverrides(base, overrides);

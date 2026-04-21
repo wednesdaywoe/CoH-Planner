@@ -1,133 +1,16 @@
 /**
- * Arctic Fog
- * Toggle: PBAoE, Team Stealth, +DEF, +Res(Fire, Cold, Energy, Slow)
+ * Arctic Fog — COMPOSED EXPORT
  *
- * Source: controller_buff/cold_domination/arctic_fog.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff cold_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ArcticFog as base } from '@/data/generated/powersets/controller/secondary/cold-domination/arctic-fog';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/cold-domination/arctic-fog';
 
-export const ArcticFog: Power = {
-  "name": "Arctic Fog",
-  "internalName": "Arctic_Fog",
-  "available": 19,
-  "description": "Your mastery of Cold allows you to hide yourself and all nearby allies within thick Arctic Fog. Arctic Fog makes you and your allies harder to see and increases your Defense to area effect, melee and ranged attacks, as well as your resistance to Slow, Fire, Cold, and Energy damage.",
-  "shortHelp": "Toggle: PBAoE, Team Stealth, +DEF, +Res(Fire, Cold, Energy, Slow)",
-  "icon": "colddomination_arcticfog.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 40,
-    "recharge": 15,
-    "endurance": 0.26,
-    "castTime": 1.87,
-    "activatePeriod": 0.5,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75,
-      "stealth": 0.75,
-      "resistance": 0.75
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.6,
-        "table": "Ranged_Ones"
-      },
-      "recharge": {
-        "scale": 0.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0.7,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      },
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      }
-    },
-    "resistance": {
-      "fire": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const ArcticFog: Power = withOverrides(base, overrides);

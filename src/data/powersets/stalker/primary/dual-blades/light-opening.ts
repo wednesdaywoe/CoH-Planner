@@ -1,53 +1,16 @@
 /**
- * Nimble Slash
- * Melee, Light DMG(Lethal)
+ * Nimble Slash — COMPOSED EXPORT
  *
- * Source: stalker_melee/dual_blades/light_opening.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee dual_blades
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { NimbleSlash as base } from '@/data/generated/powersets/stalker/primary/dual-blades/light-opening';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/dual-blades/light-opening';
 
-export const NimbleSlash: Power = {
-  "name": "Nimble Slash",
-  "internalName": "Light_Opening",
-  "available": 0,
-  "description": "A quick swipe with your blades. Does minor lethal damage, but has a quick recharge rate. This attack is needed for the Attack Vitals combination attack.Attack Vitals: Power Slice > Nimble Slash > Vengeful Slice.",
-  "shortHelp": "Melee, Light DMG(Lethal)",
-  "icon": "dualblades_lightopening.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 1.03
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.42,
-      "table": "Melee_Damage",
-      "duration": 0.5,
-      "tickRate": 0.33
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "requires": "!Stalker_Defense.Shield_Defense"
-};
+export const NimbleSlash: Power = withOverrides(base, overrides);

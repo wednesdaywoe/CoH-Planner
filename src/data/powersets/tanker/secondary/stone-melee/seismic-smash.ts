@@ -1,54 +1,16 @@
 /**
- * Seismic Smash
- * Melee, DMG(Smash), Foe Hold
+ * Seismic Smash — COMPOSED EXPORT
  *
- * Source: tanker_melee/stone_melee/seismic_smash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee stone_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SeismicSmash as base } from '@/data/generated/powersets/tanker/secondary/stone-melee/seismic-smash';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/stone-melee/seismic-smash';
 
-export const SeismicSmash: Power = {
-  "name": "Seismic Smash",
-  "internalName": "Seismic_Smash",
-  "available": 29,
-  "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright.",
-  "shortHelp": "Melee, DMG(Smash), Foe Hold",
-  "icon": "stonemelee_seismicsmash.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 3.56,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "hold": {
-      "mag": 4,
-      "scale": 8,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const SeismicSmash: Power = withOverrides(base, overrides);

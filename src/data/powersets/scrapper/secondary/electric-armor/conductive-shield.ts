@@ -1,60 +1,16 @@
 /**
- * Conductive Shield
- * Toggle: Self +Res(Fire, Cold, Energy, Negative)
+ * Conductive Shield — COMPOSED EXPORT
  *
- * Source: scrapper_defense/electric_armor/conductive_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense electric_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ConductiveShield as base } from '@/data/generated/powersets/scrapper/secondary/electric-armor/conductive-shield';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/electric-armor/conductive-shield';
 
-export const ConductiveShield: Power = {
-  "name": "Conductive Shield",
-  "internalName": "Conductive_Shield",
-  "available": 3,
-  "description": "When you toggle on this power, you are surrounded in a Conductive Shield that will conduct many sorts of energy away from your body. Conductive Shield grants high resistant to Fire, Cold, and Energy damage, as well as good resistance to Negative Energy damage.",
-  "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
-  "icon": "electricarmor_selfresistelements.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
-  }
-};
+export const ConductiveShield: Power = withOverrides(base, overrides);

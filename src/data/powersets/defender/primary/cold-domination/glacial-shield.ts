@@ -1,72 +1,16 @@
 /**
- * Glacial Shield
- * Ranged, Ally +DEF(Ranged, AoE, Energy, Negative), Res(Cold)
+ * Glacial Shield — COMPOSED EXPORT
  *
- * Source: defender_buff/cold_domination/glacial_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff cold_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GlacialShield as base } from '@/data/generated/powersets/defender/primary/cold-domination/glacial-shield';
+import { overrides } from '@/data/overrides/powersets/defender/primary/cold-domination/glacial-shield';
 
-export const GlacialShield: Power = {
-  "name": "Glacial Shield",
-  "internalName": "Glacial_Shield",
-  "available": 5,
-  "description": "Envelopes an ally in gleaming Glacial Ice. Its crystalline structure has refracting properties that grants the target good Defense against Area Effect, Ranged, Energy and Negative Energy attacks. Glacial Shield also grants the target some damage resistance to Cold. You cannot stack multiple Glacial Shields on the same target, however the shield can be improved by another ally using the same power. Can also be used in conjunction with your Ice Shield. You cannot use this power on yourself.Recharge: Very Fast.",
-  "shortHelp": "Ranged, Ally +DEF(Ranged, AoE, Energy, Negative), Res(Cold)",
-  "icon": "colddomination_glaciate.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 30,
-    "recharge": 2,
-    "endurance": 7.8,
-    "castTime": 1.17,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 240,
-      "resistance": 240
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "buffDuration": 240
-  }
-};
+export const GlacialShield: Power = withOverrides(base, overrides);

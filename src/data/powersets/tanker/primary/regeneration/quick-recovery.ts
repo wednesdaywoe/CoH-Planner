@@ -1,48 +1,16 @@
 /**
- * Quick Recovery
- * Auto: Self +Recovery
+ * Quick Recovery — COMPOSED EXPORT
  *
- * Source: tanker_defense/regeneration/quick_recovery.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense regeneration
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { QuickRecovery as base } from '@/data/generated/powersets/tanker/primary/regeneration/quick-recovery';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/regeneration/quick-recovery';
 
-export const QuickRecovery: Power = {
-  "name": "Quick Recovery",
-  "internalName": "Quick_Recovery",
-  "available": 1,
-  "description": "You recover Endurance at a faster rate than normal. This power is always on.",
-  "shortHelp": "Auto: Self +Recovery",
-  "icon": "regeneration_quickrecovery.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 10.25,
-      "debuffResistance": 10.25
-    },
-    "debuffResistance": {
-      "recovery": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const QuickRecovery: Power = withOverrides(base, overrides);

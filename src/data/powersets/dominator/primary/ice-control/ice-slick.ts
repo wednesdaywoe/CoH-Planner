@@ -1,47 +1,16 @@
 /**
- * Ice Slick
- * Target (Location AoE), Foe DoT (Cold), Knockdown, -SPD
+ * Ice Slick — COMPOSED EXPORT
  *
- * Source: dominator_control/ice_control/ice_slick.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control ice_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceSlick as base } from '@/data/generated/powersets/dominator/primary/ice-control/ice-slick';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/ice-control/ice-slick';
 
-export const IceSlick: Power = {
-  "name": "Ice Slick",
-  "internalName": "Ice_Slick",
-  "available": 11,
-  "description": "You can create a large patch of ice at a targeted area, causing all foes that pass through it to lose their footing. Those caught in the Ice Slick are dramatically slowed, take cold damage over time, tend to fall down and will be unable to jump.",
-  "shortHelp": "Target (Location AoE), Foe DoT (Cold), Knockdown, -SPD",
-  "icon": "iceformation_iceslick.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 90,
-    "endurance": 10.4,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_IceSlick",
-      "duration": 30,
-      "copyBoosts": true
-    }
-  }
-};
+export const IceSlick: Power = withOverrides(base, overrides);

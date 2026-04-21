@@ -1,54 +1,16 @@
 /**
- * Radioactive Cloud
- * PBAoE, Foe Hold, Immobilize
+ * Radioactive Cloud — COMPOSED EXPORT
  *
- * Source: blaster_support/radiation_manipulation/radioactive_cloud.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support radiation_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RadioactiveCloud as base } from '@/data/generated/powersets/blaster/secondary/atomic-manipulation/radioactive-cloud';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/atomic-manipulation/radioactive-cloud';
 
-export const RadioactiveCloud: Power = {
-  "name": "Radioactive Cloud",
-  "internalName": "Radioactive_Cloud",
-  "available": 27,
-  "description": "When activated, you generate toxic radioactive gas around yourself. Any nearby foes may be overcome by the gas, leaving them choking or barfing helplessly. Choking foes might temporarily snap out of it when hit, barfing foes are more likely to be too sick to counterattack.",
-  "shortHelp": "PBAoE, Foe Hold, Immobilize",
-  "icon": "atomicmanipulation_holdpbaoe.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "radius": 20,
-    "recharge": 90,
-    "endurance": 20.18,
-    "castTime": 1.07,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Immobilize"
-    },
-    "immobilize": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const RadioactiveCloud: Power = withOverrides(base, overrides);

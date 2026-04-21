@@ -1,46 +1,16 @@
 /**
- * Tombstone
- * Sniper, DMG(Smash), Foe -Jump, -Fly
+ * Tombstone — COMPOSED EXPORT
  *
- * Source: defender_ranged/seismic_blast/tombstone.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged seismic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Tombstone as base } from '@/data/generated/powersets/defender/secondary/seismic-blast/tombstone';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/seismic-blast/tombstone';
 
-export const Tombstone: Power = {
-  "name": "Tombstone",
-  "internalName": "Tombstone",
-  "available": 23,
-  "description": "Create a giant pillar of stone, creating a Tombstone around your target, dealing extreme damage and limiting their ability to jump and fly for a short time. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle, this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Tombstone grants two stacks of Seismic Pressure.",
-  "shortHelp": "Sniper, DMG(Smash), Foe -Jump, -Fly",
-  "icon": "seismicblast_snipe.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 150,
-    "recharge": 12,
-    "endurance": 14.352,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  }
-};
+export const Tombstone: Power = withOverrides(base, overrides);

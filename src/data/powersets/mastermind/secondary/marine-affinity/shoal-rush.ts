@@ -1,53 +1,16 @@
 /**
- * Shoal Rush
- * Ranged (Targeted AoE), Foe -DEF, -SPD, Special
+ * Shoal Rush — COMPOSED EXPORT
  *
- * Source: mastermind_buff/marine_affinity/shoal_rush.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff marine_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ShoalRush as base } from '@/data/generated/powersets/mastermind/secondary/marine-affinity/shoal-rush';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/marine-affinity/shoal-rush';
 
-export const ShoalRush: Power = {
-  "name": "Shoal Rush",
-  "internalName": "Shoal_Rush",
-  "available": 0,
-  "description": "By sensing the water in an area, you can direct a shoal of marine life to harass your foes. This lowers the defense and movement speed of all enemies struck.If you direct a Shoal Rush on targets inside a Tide Pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
-  "shortHelp": "Ranged (Targeted AoE), Foe -DEF, -SPD, Special",
-  "icon": "marineaffinity_shoalrush.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "radius": 20,
-    "arc": 1.5708,
-    "recharge": 15,
-    "endurance": 13,
-    "castTime": 2.17,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1.6,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 20
-    },
-    "buffDuration": 20
-  }
-};
+export const ShoalRush: Power = withOverrides(base, overrides);

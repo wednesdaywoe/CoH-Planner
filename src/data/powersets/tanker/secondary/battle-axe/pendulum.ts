@@ -1,55 +1,16 @@
 /**
- * Pendulum
- * Melee (Targeted AoE), DMG(Lethal), Foe Knockdown
+ * Pendulum — COMPOSED EXPORT
  *
- * Source: tanker_melee/battle_axe/pendulum.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee battle_axe
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Pendulum as base } from '@/data/generated/powersets/tanker/secondary/battle-axe/pendulum';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/battle-axe/pendulum';
 
-export const Pendulum: Power = {
-  "name": "Pendulum",
-  "internalName": "Pendulum",
-  "available": 19,
-  "description": "This attack swings your Battle Axe directly in front of you. Foes struck by this attack are dealt heavy damage, and may be knocked down.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "Melee (Targeted AoE), DMG(Lethal), Foe Knockdown",
-  "icon": "battleaxe_taoe.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "radius": 7,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 2,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.3463,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Pendulum: Power = withOverrides(base, overrides);

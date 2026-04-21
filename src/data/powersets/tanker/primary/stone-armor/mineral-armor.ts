@@ -1,79 +1,16 @@
 /**
- * Minerals
- * Toggle: Self +Recharge, +DEF(Psionic), Res(Confuse), +Perception
+ * Minerals — COMPOSED EXPORT
  *
- * Source: tanker_defense/stone_armor/mineral_armor.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense stone_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Minerals as base } from '@/data/generated/powersets/tanker/primary/stone-armor/mineral-armor';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/stone-armor/mineral-armor';
 
-export const Minerals: Power = {
-  "name": "Minerals",
-  "internalName": "Mineral_Armor",
-  "available": 17,
-  "description": "Activating this power summons several rare earth rock Minerals to orbit around you. These Minerals can disperse thought patterns and make Psionic attacks less likely to hit. They also bring clarity of the mind reducing the recharge time of your powers, increasing your Perception, and making you resistant to Confusion.Cannot be active at the same time as Granite Armor.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +Recharge, +DEF(Psionic), Res(Confuse), +Perception",
-  "icon": "stonearmor_mineralcrust.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.104,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "psionic": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "confuse": 0.75,
-      "mezResistance": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75,
-      "rechargeBuff": 0.75
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 0.75,
-    "mezResistance": {
-      "confuse": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "rechargeBuff": {
-      "scale": 0.15,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const Minerals: Power = withOverrides(base, overrides);

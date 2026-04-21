@@ -1,49 +1,16 @@
 /**
- * Phantom Army
- * Summon Decoys: Ranged DMG(Psionic)
+ * Phantom Army — COMPOSED EXPORT
  *
- * Source: controller_control/illusion_control/decoy.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control illusion_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PhantomArmy as base } from '@/data/generated/powersets/controller/primary/illusion-control/decoy';
+import { overrides } from '@/data/overrides/powersets/controller/primary/illusion-control/decoy';
 
-export const PhantomArmy: Power = {
-  "name": "Phantom Army",
-  "internalName": "Decoy",
-  "available": 17,
-  "description": "You can fabricate 3 Phantom heroes around a targeted foe. These Phantoms are not real, and are indestructible. Their attacks are similar to Spectral Wounds. Though they deal damage, it is illusory and will heal if the victim survives long enough. Phantoms are short lived and cannot be buffed or healed.",
-  "shortHelp": "Summon Decoys: Ranged DMG(Psionic)",
-  "icon": "illusions_phantomarmy.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 240,
-    "endurance": 26,
-    "castTime": 3.1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Decoy",
-      "duration": 60,
-      "copyBoosts": true,
-      "entityCount": 6
-    }
-  }
-};
+export const PhantomArmy: Power = withOverrides(base, overrides);

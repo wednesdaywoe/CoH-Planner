@@ -1,73 +1,16 @@
 /**
- * Thunder Strike
- * Melee (AoE), Superior DMG(Smash, Energy), Foe Disorient, Knockback
+ * Thunder Strike — COMPOSED EXPORT
  *
- * Source: dominator_assault/electricity_manipulation/power_sink.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault electricity_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ThunderStrike as base } from '@/data/generated/powersets/dominator/secondary/electricity-assault/power-sink';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/electricity-assault/power-sink';
 
-export const ThunderStrike: Power = {
-  "name": "Thunder Strike",
-  "internalName": "Power_Sink",
-  "available": 27,
-  "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave.Damage: Superior.Recharge: Slow.",
-  "shortHelp": "Melee (AoE), Superior DMG(Smash, Energy), Foe Disorient, Knockback",
-  "icon": "electricalassault_thunderstrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 2.53
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2.044,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.876,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 4
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 4
-  }
-};
+export const ThunderStrike: Power = withOverrides(base, overrides);

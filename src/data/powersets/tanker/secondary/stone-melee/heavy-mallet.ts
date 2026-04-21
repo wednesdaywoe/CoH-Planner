@@ -1,53 +1,16 @@
 /**
- * Heavy Mallet
- * Melee, DMG(Smash), Knockback
+ * Heavy Mallet — COMPOSED EXPORT
  *
- * Source: tanker_melee/stone_melee/heavy_mallet.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee stone_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HeavyMallet as base } from '@/data/generated/powersets/tanker/secondary/stone-melee/heavy-mallet';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/stone-melee/heavy-mallet';
 
-export const HeavyMallet: Power = {
-  "name": "Heavy Mallet",
-  "internalName": "Heavy_Mallet",
-  "available": 3,
-  "description": "A more impressive form of Stone Mallet, the Heavy Mallet deals more damage, but is slower to swing. It has a greater chance of knocking down opponents.",
-  "shortHelp": "Melee, DMG(Smash), Knockback",
-  "icon": "stonemelee_heavymallet.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.63
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const HeavyMallet: Power = withOverrides(base, overrides);

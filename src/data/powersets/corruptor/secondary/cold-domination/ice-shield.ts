@@ -1,72 +1,16 @@
 /**
- * Ice Shield
- * Ranged, Ally +DEF(Melee, Smash, Lethal), Res(Cold, Fire)
+ * Ice Shield — COMPOSED EXPORT
  *
- * Source: corruptor_buff/cold_domination/ice_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff cold_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceShield as base } from '@/data/generated/powersets/corruptor/secondary/cold-domination/ice-shield';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/cold-domination/ice-shield';
 
-export const IceShield: Power = {
-  "name": "Ice Shield",
-  "internalName": "Ice_Shield",
-  "available": 0,
-  "description": "Casts a rock hard Ice Shield on one of your allies and grants him Defense to Melee, Lethal and Smashing attacks and damage resistance to Cold and Fire damage. You cannot stack multiple Ice Shields on the same target, however the shield can be improved by another ally using the same power. Can also be used in conjunction with your Glacial Shield. You cannot use this power on yourself.Recharge: Very Fast.",
-  "shortHelp": "Ranged, Ally +DEF(Melee, Smash, Lethal), Res(Cold, Fire)",
-  "icon": "colddomination_iceshield.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 30,
-    "recharge": 2,
-    "endurance": 7.8,
-    "castTime": 1.17,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 240,
-      "resistance": 240
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "buffDuration": 240
-  }
-};
+export const IceShield: Power = withOverrides(base, overrides);

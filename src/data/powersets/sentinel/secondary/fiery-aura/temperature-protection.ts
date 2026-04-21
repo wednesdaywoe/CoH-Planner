@@ -1,73 +1,16 @@
 /**
- * Temperature Protection
- * Auto: Self +Res(Fire, Cold, Slow, Knock), +Regen
+ * Temperature Protection — COMPOSED EXPORT
  *
- * Source: sentinel_defense/fiery_aura/temperature_protection.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TemperatureProtection as base } from '@/data/generated/powersets/sentinel/secondary/fiery-aura/temperature-protection';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/fiery-aura/temperature-protection';
 
-export const TemperatureProtection: Power = {
-  "name": "Temperature Protection",
-  "internalName": "Temperature_Protection",
-  "available": 9,
-  "description": "Temperature Protection gives you strong resistance to Fire damage, some resistance to Cold damage and slow effects, and grants minor, unenhanceable regeneration as well as provide very minor Knockback Protection. This power is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +Res(Fire, Cold, Slow, Knock), +Regen",
-  "icon": "flamingshield_temperatureprotection.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Resistance"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10,
-      "debuffResistance": 10,
-      "regenBuff": 10,
-      "knockback": 10.25,
-      "knockup": 10.25
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const TemperatureProtection: Power = withOverrides(base, overrides);

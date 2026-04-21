@@ -1,62 +1,16 @@
 /**
- * Beta Decay
- * Toggle: Foe, Taunt, -To Hit, -Defense, Self +Recharge
+ * Beta Decay — COMPOSED EXPORT
  *
- * Source: tanker_defense/radiation_armor/beta_decay.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense radiation_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BetaDecay as base } from '@/data/generated/powersets/tanker/primary/radiation-armor/beta-decay';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/radiation-armor/beta-decay';
 
-export const BetaDecay: Power = {
-  "name": "Beta Decay",
-  "internalName": "Beta_Decay",
-  "available": 11,
-  "description": "While Beta Decay is active, nearby foes will have their chance to hit and defense decreased slightly and will be taunted. You will gain a recharge bonus per nearby target up to 10 targets. The first target grants the largest benefit.",
-  "shortHelp": "Toggle: Foe, Taunt, -To Hit, -Defense, Self +Recharge",
-  "icon": "radiationarmor_betadecay.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 12,
-    "recharge": 10,
-    "endurance": 0.208,
-    "castTime": 0.67,
-    "activatePeriod": 1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit Debuff",
-    "Defense Debuff"
-  ],
-  "allowedSetCategories": [
-    "Defense Debuff",
-    "Threat Duration",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 1,
-      "rechargeBuff": 1
-    },
-    "rechargeBuff": {
-      "scale": 0.125,
-      "table": "Melee_Ones",
-      "perTarget": 0.025
-    },
-    "taunt": {
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 1
-  }
-};
+export const BetaDecay: Power = withOverrides(base, overrides);

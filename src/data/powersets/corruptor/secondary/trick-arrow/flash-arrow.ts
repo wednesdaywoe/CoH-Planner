@@ -1,50 +1,16 @@
 /**
- * Flash Arrow
- * Ranged (Targeted AoE), Foe -Visibility, -To Hit
+ * Flash Arrow — COMPOSED EXPORT
  *
- * Source: corruptor_buff/trick_arrow/flash_arrow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff trick_arrow
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FlashArrow as base } from '@/data/generated/powersets/corruptor/secondary/trick-arrow/flash-arrow';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/trick-arrow/flash-arrow';
 
-export const FlashArrow: Power = {
-  "name": "Flash Arrow",
-  "internalName": "Flash_Arrow",
-  "available": 0,
-  "description": "This arrow explodes in a dazzling flash of light and sound. The targets are so blinded that they can hardly see a thing. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to chance to hit.Recharge: Slow.",
-  "shortHelp": "Ranged (Targeted AoE), Foe -Visibility, -To Hit",
-  "icon": "trickarrow_blind.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 35,
-    "recharge": 15,
-    "endurance": 7.8,
-    "castTime": 1,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "perceptionDebuff": 60
-    },
-    "buffDuration": 60
-  }
-};
+export const FlashArrow: Power = withOverrides(base, overrides);

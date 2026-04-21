@@ -1,63 +1,16 @@
 /**
- * Gash
- * Melee, DMG(Lethal), Foe Knockdown
+ * Gash — COMPOSED EXPORT
  *
- * Source: scrapper_melee/battle_axe/gash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee battle_axe
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Gash as base } from '@/data/generated/powersets/scrapper/primary/battle-axe/gash';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/battle-axe/gash';
 
-export const Gash: Power = {
-  "name": "Gash",
-  "internalName": "Gash",
-  "available": 1,
-  "description": "Gashes your opponent with your Battle Axe dealing superior damage. This attack is very slow, but can deal a lot damage and knock the target down.",
-  "shortHelp": "Melee, DMG(Lethal), Foe Knockdown",
-  "icon": "battleaxe_beheader.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.27
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Gash: Power = withOverrides(base, overrides);

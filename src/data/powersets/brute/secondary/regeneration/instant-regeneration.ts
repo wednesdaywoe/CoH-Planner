@@ -1,49 +1,16 @@
 /**
- * Reactive Regeneration
- * Toggle: Self +Regeneration, +Res(-Regeneration, -End, -Recovery)
+ * Reactive Regeneration — COMPOSED EXPORT
  *
- * Source: brute_defense/regeneration/instant_regeneration.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense regeneration
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ReactiveRegeneration as base } from '@/data/generated/powersets/brute/secondary/regeneration/instant-regeneration';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/regeneration/instant-regeneration';
 
-export const ReactiveRegeneration: Power = {
-  "name": "Reactive Regeneration",
-  "internalName": "Instant_Regeneration",
-  "available": 23,
-  "description": "When you activate this power, you can regenerate your health at an astounding rate. This boost becomes stronger every time you take damage, as it scales you also become resistant to regeneration and recovery debuffs as well as endurance drain.This power is mutually exclusive from Instant Healing.",
-  "shortHelp": "Toggle: Self +Regeneration, +Res(-Regeneration, -End, -Recovery)",
-  "icon": "regeneration_instanthealing.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.52,
-    "castTime": 1.17,
-    "activatePeriod": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 2,
-      "table": "Melee_Ones",
-      "perTarget": 0.25
-    },
-    "durations": {
-      "regenBuff": 2.25
-    },
-    "buffDuration": 2.25,
-    "maxStacks": 20
-  },
-  "requires": "!Brute_Defense.Regeneration.Instant_Healing"
-};
+export const ReactiveRegeneration: Power = withOverrides(base, overrides);

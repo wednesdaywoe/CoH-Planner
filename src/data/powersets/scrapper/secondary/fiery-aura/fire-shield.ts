@@ -1,67 +1,16 @@
 /**
- * Fire Shield
- * Toggle: Self +Res(Fire, Lethal, Smash, Cold, Disorient)
+ * Fire Shield — COMPOSED EXPORT
  *
- * Source: scrapper_defense/fiery_aura/fire_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FireShield as base } from '@/data/generated/powersets/scrapper/secondary/fiery-aura/fire-shield';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/fiery-aura/fire-shield';
 
-export const FireShield: Power = {
-  "name": "Fire Shield",
-  "internalName": "Fire_Shield",
-  "available": 0,
-  "description": "While this power is active, Fire Shield gives you good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage as well as protection from Disorient effects.Recharge: Very Fast.",
-  "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold, Disorient)",
-  "icon": "flamingshield_flamingshield.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 1.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "stun": 0.75
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "buffDuration": 0.75
-  }
-};
+export const FireShield: Power = withOverrides(base, overrides);

@@ -1,60 +1,16 @@
 /**
- * Call Swarm
- * Ranged, DoT (Lethal), Foe -Defense, -Speed, +1 Blood Frenzy
+ * Call Swarm — COMPOSED EXPORT
  *
- * Source: dominator_assault/savage_assault/call_swarm.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault savage_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CallSwarm as base } from '@/data/generated/powersets/dominator/secondary/savage-assault/call-swarm';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/savage-assault/call-swarm';
 
-export const CallSwarm: Power = {
-  "name": "Call Swarm",
-  "internalName": "Call_Swarm",
-  "available": 0,
-  "description": "You summon a swarm of stinging insects to harass your foe causing Light Lethal damage over time and reducing both their movement speed and defense. This power grants 1 stack of Blood Frenzy.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, DoT (Lethal), Foe -Defense, -Speed, +1 Blood Frenzy",
-  "icon": "savagemelee_callswarm.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.46,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 3.1,
-    "tickRate": 0.75
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    },
-    "buffDuration": 8
-  }
-};
+export const CallSwarm: Power = withOverrides(base, overrides);

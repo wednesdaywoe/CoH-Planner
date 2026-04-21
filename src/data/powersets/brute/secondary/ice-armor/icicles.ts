@@ -1,54 +1,16 @@
 /**
- * Icicles
- * Toggle: PBAoE, DoT(Cold)
+ * Icicles — COMPOSED EXPORT
  *
- * Source: brute_defense/ice_armor/icicles.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense ice_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Icicles as base } from '@/data/generated/powersets/brute/secondary/ice-armor/icicles';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/ice-armor/icicles';
 
-export const Icicles: Power = {
-  "name": "Icicles",
-  "internalName": "Icicles",
-  "available": 27,
-  "description": "While active, you form sharp icicles on your body that continuously cut all foes that attempt to enter melee range.",
-  "shortHelp": "Toggle: PBAoE, DoT(Cold)",
-  "icon": "icearmor_icicles.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 4,
-    "endurance": 1.04,
-    "castTime": 1.67,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.2,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  }
-};
+export const Icicles: Power = withOverrides(base, overrides);

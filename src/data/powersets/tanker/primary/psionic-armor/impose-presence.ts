@@ -1,70 +1,16 @@
 /**
- * Impose Presence
- * Toggle: Self +DEF(Melee, Ranged), +To Hit, Foe -Recharge
+ * Impose Presence — COMPOSED EXPORT
  *
- * Source: tanker_defense/psionic_armor/impose_presence.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense psionic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ImposePresence as base } from '@/data/generated/powersets/tanker/primary/psionic-armor/impose-presence';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/psionic-armor/impose-presence';
 
-export const ImposePresence: Power = {
-  "name": "Impose Presence",
-  "internalName": "Impose_Presence",
-  "available": 7,
-  "description": "Impose your presence on nearby enemies, slowing their attack rate down and increasing your defense and chance to hit.",
-  "shortHelp": "Toggle: Self +DEF(Melee, Ranged), +To Hit, Foe -Recharge",
-  "icon": "psionicarmor_imposepresence.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 12,
-    "recharge": 10,
-    "endurance": 0.208,
-    "castTime": 0.73,
-    "activatePeriod": 1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Threat Duration",
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 0.2,
-      "table": "Melee_Buff_ToHit",
-      "perTarget": 0.2
-    },
-    "durations": {
-      "tohitBuff": 1,
-      "defenseBuff": 1
-    },
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.075,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.075
-      },
-      "melee": {
-        "scale": 0.075,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.075
-      }
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 1
-  }
-};
+export const ImposePresence: Power = withOverrides(base, overrides);

@@ -1,50 +1,16 @@
 /**
- * Seismic Force
- * Self +To Hit, +DMG, +Special
+ * Seismic Force — COMPOSED EXPORT
  *
- * Source: defender_ranged/seismic_blast/seismic_force.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged seismic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SeismicForce as base } from '@/data/generated/powersets/defender/secondary/seismic-blast/seismic-force';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/seismic-blast/seismic-force';
 
-export const SeismicForce: Power = {
-  "name": "Seismic Force",
-  "internalName": "Seismic_Force",
-  "available": 15,
-  "description": "Greatly increases your attacks' chance to hit for a few seconds. Slightly increases damage.If affected by Seismic Shockwaves, this power will halt the shockwaves and will decrease the cooldown of all recharging Seismic Blast attacks by a moderate amount.",
-  "shortHelp": "Self +To Hit, +DMG, +Special",
-  "icon": "seismicblast_aim.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const SeismicForce: Power = withOverrides(base, overrides);

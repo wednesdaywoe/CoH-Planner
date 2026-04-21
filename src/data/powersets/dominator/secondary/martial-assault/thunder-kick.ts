@@ -1,52 +1,16 @@
 /**
- * Thunder Kick
- * Melee, Moderate DMG(Smash), Minor Disorient
+ * Thunder Kick — COMPOSED EXPORT
  *
- * Source: dominator_assault/martial_assault/thunder_kick.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault martial_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ThunderKick as base } from '@/data/generated/powersets/dominator/secondary/martial-assault/thunder-kick';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/martial-assault/thunder-kick';
 
-export const ThunderKick: Power = {
-  "name": "Thunder Kick",
-  "internalName": "Thunder_Kick",
-  "available": 0,
-  "description": "You can perform a strong Thunder Kick that hits so hard it can Disorient your target.Damage: Moderate.Recharge: Moderate.",
-  "shortHelp": "Melee, Moderate DMG(Smash), Minor Disorient",
-  "icon": "martialassault_thunderkick.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 7,
-    "endurance": 7.696,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.48,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const ThunderKick: Power = withOverrides(base, overrides);

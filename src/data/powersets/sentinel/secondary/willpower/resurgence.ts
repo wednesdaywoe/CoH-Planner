@@ -1,70 +1,16 @@
 /**
- * Resurgence
- * Self Rez, Special
+ * Resurgence — COMPOSED EXPORT
  *
- * Source: sentinel_defense/willpower/resurgence.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense willpower
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Resurgence as base } from '@/data/generated/powersets/sentinel/secondary/willpower/resurgence';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/willpower/resurgence';
 
-export const Resurgence: Power = {
-  "name": "Resurgence",
-  "internalName": "Resurgence",
-  "available": 27,
-  "description": "Should you fall in battle, you can Revive yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds. Additionally, for 90 seconds, your damage and chance to hit will be improved, then for another 45 seconds, your damage and chance to hit will be diminished. You will also have 15 seconds of immunity to most damage.Recharge: Very Long.",
-  "shortHelp": "Self Rez, Special",
-  "icon": "willpower_resurgence.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 300,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 0.8,
-    "table": "Ranged_Ones",
-    "duration": 0.5,
-    "tickRate": 1
-  },
-  "effects": {
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 90,
-      "rechargeBuff": 90,
-      "damageBuff": 90,
-      "tohitBuff": 90
-    },
-    "rechargeBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuff": {
-      "scale": 3,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "buffDuration": 90
-  }
-};
+export const Resurgence: Power = withOverrides(base, overrides);

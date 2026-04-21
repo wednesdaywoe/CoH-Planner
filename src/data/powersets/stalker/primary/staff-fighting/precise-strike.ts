@@ -1,60 +1,16 @@
 /**
- * Precise Strike
- * Melee, Liht DMG(Smash), Foe Disorient
+ * Precise Strike — COMPOSED EXPORT
  *
- * Source: stalker_melee/staff_fighting/precise_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee staff_fighting
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PreciseStrike as base } from '@/data/generated/powersets/stalker/primary/staff-fighting/precise-strike';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/staff-fighting/precise-strike';
 
-export const PreciseStrike: Power = {
-  "name": "Precise Strike",
-  "internalName": "Precise_Strike",
-  "available": 0,
-  "description": "You attempt to daze your foe with a heavy staff blow to their head. Precise Strike has a higher chance to hit than normal, deals Smashing damage, and has a small chance to disorient the target briefly. This power grants one stack of Perfection of Body.",
-  "shortHelp": "Melee, Liht DMG(Smash), Foe Disorient",
-  "icon": "stafffighting_precisestrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.1,
-    "range": 9,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.13
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  },
-  "requires": "!Stalker_Defense.Shield_Defense"
-};
+export const PreciseStrike: Power = withOverrides(base, overrides);

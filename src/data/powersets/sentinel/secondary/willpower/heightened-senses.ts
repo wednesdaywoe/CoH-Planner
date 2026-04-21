@@ -1,84 +1,16 @@
 /**
- * Heightened Senses
- * Toggle: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative Energy), +Per
+ * Heightened Senses — COMPOSED EXPORT
  *
- * Source: sentinel_defense/willpower/heightened_senses.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense willpower
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HeightenedSenses as base } from '@/data/generated/powersets/sentinel/secondary/willpower/heightened-senses';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/willpower/heightened-senses';
 
-export const HeightenedSenses: Power = {
-  "name": "Heightened Senses",
-  "internalName": "Heightened_Senses",
-  "available": 23,
-  "description": "You become more aware of your environment and its hazards while this power is activated. This will increase your Defense versus environmental damage as long as it is active. Your Heightened Senses also allow you to perceive stealthy foes and resist Defense DeBuffs.Recharge: Very Fast.",
-  "shortHelp": "Toggle: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative Energy), +Per",
-  "icon": "willpower_heightenedsenses.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.104,
-    "castTime": 0.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "smashing": {
-        "scale": 0.33,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.33,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 1.3,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 1.3,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 1.3,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 1.3,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const HeightenedSenses: Power = withOverrides(base, overrides);

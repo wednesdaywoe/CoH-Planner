@@ -1,59 +1,16 @@
 /**
- * Reverberant
- * Summon Reverberant: Ranged Control Special
+ * Reverberant — COMPOSED EXPORT
  *
- * Source: dominator_control/symphony_control/reverberant.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control symphony_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Reverberant as base } from '@/data/generated/powersets/dominator/primary/symphony-control/reverberant';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/symphony-control/reverberant';
 
-export const Reverberant: Power = {
-  "name": "Reverberant",
-  "internalName": "Reverberant",
-  "available": 25,
-  "description": "You summon an entity capable of repeating your songs a short while after you have executed them. Note: This entity will execute weaker versions of your songs. Type ''/release_pets'' in the chat window to release all your pets.",
-  "shortHelp": "Summon Reverberant: Ranged Control Special",
-  "icon": "symphonycontrol_pet.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 240,
-    "endurance": 20.8,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Sleep",
-    "Recharge",
-    "Immobilize",
-    "Fear",
-    "Damage",
-    "Confuse",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Confuse",
-    "Fear",
-    "Holds",
-    "Immobilize",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Sleep",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Reverberant",
-      "copyBoosts": true
-    }
-  }
-};
+export const Reverberant: Power = withOverrides(base, overrides);

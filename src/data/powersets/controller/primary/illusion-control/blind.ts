@@ -1,60 +1,16 @@
 /**
- * Blind
- * Ranged (Targeted AoE), DMG(Psionic), Foe Hold/Sleep
+ * Blind — COMPOSED EXPORT
  *
- * Source: controller_control/illusion_control/blind.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control illusion_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Blind as base } from '@/data/generated/powersets/controller/primary/illusion-control/blind';
+import { overrides } from '@/data/overrides/powersets/controller/primary/illusion-control/blind';
 
-export const Blind: Power = {
-  "name": "Blind",
-  "internalName": "Blind",
-  "available": 0,
-  "description": "Painfully Blinds a single targeted foe so severely that they are rendered helpless. Blind is so bright that additional foes may also be blinded, though they will not take any damage, and attacking them will free them from the effects.",
-  "shortHelp": "Ranged (Targeted AoE), DMG(Psionic), Foe Hold/Sleep",
-  "icon": "illusions_blind.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.1,
-    "range": 80,
-    "recharge": 9,
-    "endurance": 8.528,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Sleep",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Sleep",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "sleep": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Melee_Sleep"
-    }
-  }
-};
+export const Blind: Power = withOverrides(base, overrides);

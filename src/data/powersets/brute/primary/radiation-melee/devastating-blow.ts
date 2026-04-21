@@ -1,77 +1,16 @@
 /**
- * Devastating Blow
- * Melee, DMG(Energy/Smash), Foe -Def, Disorient, Special
+ * Devastating Blow — COMPOSED EXPORT
  *
- * Source: brute_melee/radiation_melee/devastating_blow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee radiation_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DevastatingBlow as base } from '@/data/generated/powersets/brute/primary/radiation-melee/devastating-blow';
+import { overrides } from '@/data/overrides/powersets/brute/primary/radiation-melee/devastating-blow';
 
-export const DevastatingBlow: Power = {
-  "name": "Devastating Blow",
-  "internalName": "Devastating_Blow",
-  "available": 21,
-  "description": "You hammer your foe with a brutal smashing attack charged with a lethal dose of radiation. Your target will suffer Extreme Energy and Smashing damage, will have its defense reduced and will be disoriented for a short time. Affected enemies will be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.",
-  "shortHelp": "Melee, DMG(Energy/Smash), Foe -Def, Disorient, Special",
-  "icon": "radiationmelee_devastatingblow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 17,
-    "endurance": 16.016,
-    "castTime": 2.67
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.77,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.31,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.296,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "buffDuration": 10
-  }
-};
+export const DevastatingBlow: Power = withOverrides(base, overrides);

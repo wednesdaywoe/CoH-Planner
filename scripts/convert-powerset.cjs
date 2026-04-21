@@ -1691,10 +1691,12 @@ export default powerset;
   return { powerset: indexJson, powers, outputDir: composedDir };
 }
 
-// Export for reuse by other scripts (e.g., audit-powerset-effects.cjs)
+// Export for reuse by other scripts (e.g., audit-powerset-effects.cjs,
+// migrate-to-layered.cjs)
 module.exports = {
   extractEffects,
   extractDamage,
+  toKebabCase,
   CATEGORY_MAP,
   BOOST_TYPE_MAP,
   SET_CATEGORY_MAP,

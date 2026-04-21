@@ -1,55 +1,16 @@
 /**
- * Shadow Punch
- * Melee, DMG(Smash/Negative), Foe -To Hit,
+ * Shadow Punch — COMPOSED EXPORT
  *
- * Source: tanker_melee/dark_melee/shadow_punch.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee dark_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ShadowPunch as base } from '@/data/generated/powersets/tanker/secondary/dark-melee/shadow-punch';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/dark-melee/shadow-punch';
 
-export const ShadowPunch: Power = {
-  "name": "Shadow Punch",
-  "internalName": "Shadow_Punch",
-  "available": 0,
-  "description": "You wrap your fists with Negative Energy channeled from the Netherworlds, then perform a quick punch that deals minor damage. Shadow Punches cloud the target's vision, lowering their chance to hit for a short time.",
-  "shortHelp": "Melee, DMG(Smash/Negative), Foe -To Hit,",
-  "icon": "shadowfighting_shadowpunch.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.34,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.5,
-      "table": "Melee_Damage"
-    }
-  ]
-};
+export const ShadowPunch: Power = withOverrides(base, overrides);

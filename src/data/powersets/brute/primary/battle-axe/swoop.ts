@@ -1,53 +1,16 @@
 /**
- * Swoop
- * Melee, DMG(Lethal), Foe Knockup
+ * Swoop — COMPOSED EXPORT
  *
- * Source: brute_melee/battle_axe/swoop.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee battle_axe
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Swoop as base } from '@/data/generated/powersets/brute/primary/battle-axe/swoop';
+import { overrides } from '@/data/overrides/powersets/brute/primary/battle-axe/swoop';
 
-export const Swoop: Power = {
-  "name": "Swoop",
-  "internalName": "Swoop",
-  "available": 17,
-  "description": "A Swoop of your Battle Axe deals a superior amount of damage, and can send your target flying upwards.",
-  "shortHelp": "Melee, DMG(Lethal), Foe Knockup",
-  "icon": "battleaxe_swoop.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.37
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 2.28,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockup": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    }
-  }
-};
+export const Swoop: Power = withOverrides(base, overrides);

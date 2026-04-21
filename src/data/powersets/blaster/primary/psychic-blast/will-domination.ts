@@ -1,53 +1,16 @@
 /**
- * Dominate Will
- * Ranged, DMG(Psionic), Foe Sleep
+ * Dominate Will — COMPOSED EXPORT
  *
- * Source: blaster_ranged/psychic_blast/will_domination.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DominateWill as base } from '@/data/generated/powersets/blaster/primary/psychic-blast/will-domination';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/psychic-blast/will-domination';
 
-export const DominateWill: Power = {
-  "name": "Dominate Will",
-  "internalName": "Will_Domination",
-  "available": 0,
-  "description": "This attack deals Psionic damage, and is capable of rendering its target unconscious. The victim is asleep, and will wake if disturbed.",
-  "shortHelp": "Ranged, DMG(Psionic), Foe Sleep",
-  "icon": "psychicblast_willdomination.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 100,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Sleep",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Ranged Damage",
-    "Sleep",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "sleep": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Sleep"
-    }
-  }
-};
+export const DominateWill: Power = withOverrides(base, overrides);

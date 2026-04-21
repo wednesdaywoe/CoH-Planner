@@ -1,56 +1,16 @@
 /**
- * Alpha Barrier
- * Toggle: Self +Res(Lethal, Smash, Toxic)
+ * Alpha Barrier — COMPOSED EXPORT
  *
- * Source: scrapper_defense/radiation_armor/alpha_barrier.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense radiation_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AlphaBarrier as base } from '@/data/generated/powersets/scrapper/secondary/radiation-armor/alpha-barrier';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/radiation-armor/alpha-barrier';
 
-export const AlphaBarrier: Power = {
-  "name": "Alpha Barrier",
-  "internalName": "Alpha_Barrier",
-  "available": 0,
-  "description": "You cloak yourself in a field of protective radiation that grants you a good deal of resistance to Lethal, Smashing and Toxic damage.",
-  "shortHelp": "Toggle: Self +Res(Lethal, Smash, Toxic)",
-  "icon": "radiationarmor_alphabarrier.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
-  }
-};
+export const AlphaBarrier: Power = withOverrides(base, overrides);

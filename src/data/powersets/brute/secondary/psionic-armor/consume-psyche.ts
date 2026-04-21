@@ -1,73 +1,16 @@
 /**
- * Consume Psyche
- * PBAoE Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery
+ * Consume Psyche — COMPOSED EXPORT
  *
- * Source: brute_defense/psionic_armor/consume_psyche.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense psionic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ConsumePsyche as base } from '@/data/generated/powersets/brute/secondary/psionic-armor/consume-psyche';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/psionic-armor/consume-psyche';
 
-export const ConsumePsyche: Power = {
-  "name": "Consume Psyche",
-  "internalName": "Consume_Psyche",
-  "available": 9,
-  "description": "You Consume the Psyche of nearby foes, thus weakening their Hit Point Regeneration and Endurance Recovery and boosting your own. Hitting any foe with this power will refresh all existing stacks you currently have.Notes: This power has adaptive recharge. It has a base recharge of 5 seconds and each affected foe will increase the recharge by 5.5 seconds for a maximum total of 60 seconds.",
-  "shortHelp": "PBAoE Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery",
-  "icon": "psionicarmor_consumepsyche.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 20,
-    "recharge": 60,
-    "endurance": 10.5,
-    "castTime": 1.33,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing",
-    "Threat Duration"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 0.85,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 45,
-      "recoveryBuff": 45,
-      "resistance": 45,
-      "regenDebuff": 45,
-      "recoveryDebuff": 45
-    },
-    "recoveryBuff": {
-      "scale": 0.15000000000000002,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "heal": {
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      }
-    },
-    "regenDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 45
-  }
-};
+export const ConsumePsyche: Power = withOverrides(base, overrides);

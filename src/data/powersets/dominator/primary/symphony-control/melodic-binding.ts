@@ -1,69 +1,16 @@
 /**
- * Melodic Binding
- * Ranged, DMG(Psionic), Foe Immobilize, -SPD
+ * Melodic Binding — COMPOSED EXPORT
  *
- * Source: dominator_control/symphony_control/melodic_binding.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control symphony_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MelodicBinding as base } from '@/data/generated/powersets/dominator/primary/symphony-control/melodic-binding';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/symphony-control/melodic-binding';
 
-export const MelodicBinding: Power = {
-  "name": "Melodic Binding",
-  "internalName": "Melodic_Binding",
-  "available": 0,
-  "description": "Melodic Binding immobilizes your target in place and inflict psionic damage. Stronger foes might still be able to move, but will do so at a reduced speed.",
-  "shortHelp": "Ranged, DMG(Psionic), Foe Immobilize, -SPD",
-  "icon": "symphonycontrol_immobst.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15
-    },
-    "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "buffDuration": 15
-  }
-};
+export const MelodicBinding: Power = withOverrides(base, overrides);

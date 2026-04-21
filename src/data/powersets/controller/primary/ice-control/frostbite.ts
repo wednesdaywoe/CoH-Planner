@@ -1,73 +1,16 @@
 /**
- * Frostbite
- * Ranged (Targeted AoE), DoT (Cold), Foe Immobilize, -SPD, -Recharge
+ * Frostbite — COMPOSED EXPORT
  *
- * Source: controller_control/ice_control/frostbite.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control ice_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Frostbite as base } from '@/data/generated/powersets/controller/primary/ice-control/frostbite';
+import { overrides } from '@/data/overrides/powersets/controller/primary/ice-control/frostbite';
 
-export const Frostbite: Power = {
-  "name": "Frostbite",
-  "internalName": "Frostbite",
-  "available": 1,
-  "description": "Immobilizes a group of foes in icy traps. Deals minimal Cold damage over time and slightly Slows the targets. Slower and less damaging than Chilblain, but can capture multiple targets. More resilient foes may only be Slowed.",
-  "shortHelp": "Ranged (Targeted AoE), DoT (Cold), Foe Immobilize, -SPD, -Recharge",
-  "icon": "iceformation_frostbite.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.9,
-    "range": 80,
-    "radius": 30,
-    "recharge": 8,
-    "endurance": 15.6,
-    "castTime": 2.07,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Immobilize",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.1,
-    "table": "Ranged_Damage",
-    "duration": 5.2,
-    "tickRate": 2
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 12
-    },
-    "buffDuration": 12
-  }
-};
+export const Frostbite: Power = withOverrides(base, overrides);

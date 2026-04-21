@@ -1,38 +1,16 @@
 /**
- * Chilling Embrace
- * Toggle: PBAoE, Foe -Recharge, -Speed, -DMG
+ * Chilling Embrace — COMPOSED EXPORT
  *
- * Source: scrapper_defense/ice_armor/chilling_embrace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense ice_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ChillingEmbrace as base } from '@/data/generated/powersets/scrapper/secondary/ice-armor/chilling-embrace';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ice-armor/chilling-embrace';
 
-export const ChillingEmbrace: Power = {
-  "name": "Chilling Embrace",
-  "internalName": "Chilling_Embrace",
-  "available": 3,
-  "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their movement speed and damage.",
-  "shortHelp": "Toggle: PBAoE, Foe -Recharge, -Speed, -DMG",
-  "icon": "icearmor_chillingembrace.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 10,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.73,
-    "activatePeriod": 0.5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement"
-  ],
-  "maxSlots": 6
-};
+export const ChillingEmbrace: Power = withOverrides(base, overrides);

@@ -1,66 +1,16 @@
 /**
- * Midnight Grasp
- * Melee, DMG(Negative), Foe Immobilize, -To Hit
+ * Midnight Grasp — COMPOSED EXPORT
  *
- * Source: brute_melee/dark_melee/midnight_grasp.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee dark_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MidnightGrasp as base } from '@/data/generated/powersets/brute/primary/dark-melee/midnight-grasp';
+import { overrides } from '@/data/overrides/powersets/brute/primary/dark-melee/midnight-grasp';
 
-export const MidnightGrasp: Power = {
-  "name": "Midnight Grasp",
-  "internalName": "Midnight_Grasp",
-  "available": 25,
-  "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.",
-  "shortHelp": "Melee, DMG(Negative), Foe Immobilize, -To Hit",
-  "icon": "shadowfighting_midnightgrasp.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 15,
-    "endurance": 11.96,
-    "castTime": 2.07
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Immobilize",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Brute Archetype Sets",
-    "Immobilize",
-    "Melee Damage",
-    "Threat Duration",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 2.21,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.11,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 0.75
-    }
-  ],
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const MidnightGrasp: Power = withOverrides(base, overrides);

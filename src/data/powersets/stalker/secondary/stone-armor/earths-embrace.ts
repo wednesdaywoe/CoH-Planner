@@ -1,59 +1,16 @@
 /**
- * Earth's Embrace
- * Self +HP, Res(Toxic)
+ * Earth's Embrace — COMPOSED EXPORT
  *
- * Source: stalker_defense/stone_armor/earths_embrace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense stone_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EarthsEmbrace as base } from '@/data/generated/powersets/stalker/secondary/stone-armor/earths-embrace';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/stone-armor/earths-embrace';
 
-export const EarthsEmbrace: Power = {
-  "name": "Earth's Embrace",
-  "internalName": "Earths_Embrace",
-  "available": 9,
-  "description": "You are so connected to the Earth, you can draw upon its power to add to your health. Activating this power increases your maximum Hit Points and grants you resistance to Toxic Damage.Recharge: Long.",
-  "shortHelp": "Self +HP, Res(Toxic)",
-  "icon": "stonearmor_earthsembrace.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 120,
-    "endurance": 10.4,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1.35,
-    "table": "Melee_HealSelf"
-  },
-  "effects": {
-    "maxHPBuff": {
-      "scale": 4,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 60,
-      "resistance": 60
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "buffDuration": 60
-  }
-};
+export const EarthsEmbrace: Power = withOverrides(base, overrides);

@@ -1,51 +1,16 @@
 /**
- * Irradiated Ground
- * Toggle, DoT(Toxic) Patch, Foe -Def, Special
+ * Irradiated Ground — COMPOSED EXPORT
  *
- * Source: scrapper_melee/radiation_melee/irradiated_ground.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee radiation_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IrradiatedGround as base } from '@/data/generated/powersets/scrapper/primary/radiation-melee/irradiated-ground';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/radiation-melee/irradiated-ground';
 
-export const IrradiatedGround: Power = {
-  "name": "Irradiated Ground",
-  "internalName": "Irradiated_Ground",
-  "available": 17,
-  "description": "While active you will scorch the earth beneath you leaving toxic clouds of radioactive gas in your wake. Foes that enter these clouds will suffer Minor Toxic damage, have their defense reduced and also have a tiny chance of being Contaminated. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.",
-  "shortHelp": "Toggle, DoT(Toxic) Patch, Foe -Def, Special",
-  "icon": "radiationmelee_irradiatedground.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 4,
-    "endurance": 2.6,
-    "castTime": 2.03,
-    "activatePeriod": 5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
-      "copyBoosts": true
-    }
-  }
-};
+export const IrradiatedGround: Power = withOverrides(base, overrides);

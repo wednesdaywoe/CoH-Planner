@@ -1,74 +1,16 @@
 /**
- * Atom Smasher
- * PBAoE, DMG(Energy/Toxic), Foe -Def, Disorient, Special
+ * Atom Smasher — COMPOSED EXPORT
  *
- * Source: tanker_melee/radiation_melee/atom_smasher.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee radiation_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AtomSmasher as base } from '@/data/generated/powersets/tanker/secondary/radiation-melee/atom-smasher';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/radiation-melee/atom-smasher';
 
-export const AtomSmasher: Power = {
-  "name": "Atom Smasher",
-  "internalName": "Atom_Smasher",
-  "available": 29,
-  "description": "You charge up a dangerously unstable amount of radioactive energy into a single fist before driving it into the ground and causing a small explosion. Foes caught in the blast will suffer High Energy and Toxic damage and have their defense reduced. Enemies also have a moderate chance to be disoriented for a short time. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE, DMG(Energy/Toxic), Foe -Def, Disorient, Special",
-  "icon": "radiationmelee_atomsmasher.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 22,
-    "endurance": 20.176,
-    "castTime": 2.93,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.3875,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1.1625,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1.2,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "stun": {
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Immobilize"
-    },
-    "buffDuration": 10
-  }
-};
+export const AtomSmasher: Power = withOverrides(base, overrides);

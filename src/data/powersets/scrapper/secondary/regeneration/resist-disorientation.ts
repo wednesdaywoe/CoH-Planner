@@ -1,85 +1,16 @@
 /**
- * Resilience
- * Auto: Self +Res(Disorient, All DMG)
+ * Resilience — COMPOSED EXPORT
  *
- * Source: scrapper_defense/regeneration/resist_disorientation.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense regeneration
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Resilience as base } from '@/data/generated/powersets/scrapper/secondary/regeneration/resist-disorientation';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/regeneration/resist-disorientation';
 
-export const Resilience: Power = {
-  "name": "Resilience",
-  "internalName": "Resist_Disorientation",
-  "available": 19,
-  "description": "You are more Resilient. This power allows you to build up a resistance to Disorientation effects. You tend not to get Disoriented, and if you do, it wears off quickly. This resistance to Disorientation gets stronger as you go up in level. Resilience also grants some resistance to all types of damage. This power is always on.",
-  "shortHelp": "Auto: Self +Res(Disorient, All DMG)",
-  "icon": "regeneration_resilience.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Resistance"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "mezResistance": {
-      "stun": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "mezResistance": 10.25,
-      "stun": 10.25,
-      "resistance": 10.25
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 15,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 10.25,
-    "resistance": {
-      "smashing": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const Resilience: Power = withOverrides(base, overrides);

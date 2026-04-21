@@ -1,94 +1,16 @@
 /**
- * Elude
- * Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special
+ * Elude — COMPOSED EXPORT
  *
- * Source: brute_defense/super_reflexes/elude.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense super_reflexes
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Elude as base } from '@/data/generated/powersets/brute/secondary/super-reflexes/elude';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/super-reflexes/elude';
 
-export const Elude: Power = {
-  "name": "Elude",
-  "internalName": "Elude",
-  "available": 29,
-  "description": "You can improve your reflexes, making yourself so quick you can Elude almost any attack, be it ranged, melee, or area effect. Your running speed, jumping height, and Endurance Recovery are also increased. Elude also grants you high resistance to Defense DeBuffs. When Elude wears off, you are left drained of all Endurance and unable to recover Endurance for a while.Recharge: Extremely Long.",
-  "shortHelp": "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special",
-  "icon": "superreflexes_elude.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 1000,
-    "endurance": 2.6,
-    "castTime": 2,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Run Speed",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Endurance Modification",
-    "Running",
-    "Running & Sprints",
-    "Universal Travel"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 180,
-      "recoveryBuff": 180,
-      "movement": 180,
-      "debuffResistance": 180,
-      "recoveryDebuff": 20
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "recoveryDebuff": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "enduranceDrain": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 180
-  }
-};
+export const Elude: Power = withOverrides(base, overrides);

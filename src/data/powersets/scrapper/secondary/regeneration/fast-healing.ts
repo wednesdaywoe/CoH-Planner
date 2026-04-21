@@ -1,48 +1,16 @@
 /**
- * Fast Healing
- * Auto: Self +Regeneration
+ * Fast Healing — COMPOSED EXPORT
  *
- * Source: scrapper_defense/regeneration/fast_healing.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense regeneration
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FastHealing as base } from '@/data/generated/powersets/scrapper/secondary/regeneration/fast-healing';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/regeneration/fast-healing';
 
-export const FastHealing: Power = {
-  "name": "Fast Healing",
-  "internalName": "Fast_Healing",
-  "available": 0,
-  "description": "You heal Hit Points at a faster rate than normal. This power is always on.",
-  "shortHelp": "Auto: Self +Regeneration",
-  "icon": "regeneration_fasthealing.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 10,
-      "debuffResistance": 10
-    },
-    "debuffResistance": {
-      "regeneration": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 10
-  }
-};
+export const FastHealing: Power = withOverrides(base, overrides);

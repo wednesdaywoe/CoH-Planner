@@ -1,60 +1,16 @@
 /**
- * Proton Armor
- * Toggle: Self, +Res(Energy, Fire, Cold and Negative)
+ * Proton Armor — COMPOSED EXPORT
  *
- * Source: brute_defense/radiation_armor/proton_armor.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense radiation_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ProtonArmor as base } from '@/data/generated/powersets/brute/secondary/radiation-armor/proton-armor';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/radiation-armor/proton-armor';
 
-export const ProtonArmor: Power = {
-  "name": "Proton Armor",
-  "internalName": "Proton_Armor",
-  "available": 3,
-  "description": "When active, your body is encased in a shield-like radiation barrier that gives you good resistance to Energy and Fire damage and moderate resistance to Cold and Negative Energy attacks.",
-  "shortHelp": "Toggle: Self, +Res(Energy, Fire, Cold and Negative)",
-  "icon": "radiationarmor_protonarmor.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "energy": {
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
-  }
-};
+export const ProtonArmor: Power = withOverrides(base, overrides);

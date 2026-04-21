@@ -1,54 +1,16 @@
 /**
- * Frostwork
- * Target +Max HP, Res(Toxic)
+ * Frostwork — COMPOSED EXPORT
  *
- * Source: controller_buff/cold_domination/frostwork.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff cold_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Frostwork as base } from '@/data/generated/powersets/controller/secondary/cold-domination/frostwork';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/cold-domination/frostwork';
 
-export const Frostwork: Power = {
-  "name": "Frostwork",
-  "internalName": "Frostwork",
-  "available": 15,
-  "description": "Covers an ally in a thick layer of Frost. The frost can absorb the impact from enemy attacks, effectively increasing your ally's maximum Hit Points for a short time. Frostwork also grants your ally resistance to Toxic Damage.Recharge: Slow.",
-  "shortHelp": "Target +Max HP, Res(Toxic)",
-  "icon": "colddomination_frostwork.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 60,
-    "endurance": 14.56,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "maxHPBuff": {
-      "scale": 4,
-      "table": "Ranged_Heal"
-    },
-    "durations": {
-      "maxHPBuff": 120,
-      "resistance": 120
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "buffDuration": 120
-  }
-};
+export const Frostwork: Power = withOverrides(base, overrides);

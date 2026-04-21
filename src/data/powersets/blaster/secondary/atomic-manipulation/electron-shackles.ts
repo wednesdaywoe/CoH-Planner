@@ -1,81 +1,16 @@
 /**
- * Electron Shackles
- * Ranged, DoT(Energy), Foe Immobilize, -DEF, +Negatrons
+ * Electron Shackles — COMPOSED EXPORT
  *
- * Source: blaster_support/radiation_manipulation/electron_shackles.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support radiation_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ElectronShackles as base } from '@/data/generated/powersets/blaster/secondary/atomic-manipulation/electron-shackles';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/atomic-manipulation/electron-shackles';
 
-export const ElectronShackles: Power = {
-  "name": "Electron Shackles",
-  "internalName": "Electron_Shackles",
-  "available": 0,
-  "description": "Immobilizes a single target and deals some energy damage over time. Some more resilient foes may require multiple attacks to Immobilize. Electron Shackles can also reduce a target's Defense and will surround it in negatively charged particles. Hitting a foe that has positive charged particles will trigger a Gamma Burst.",
-  "shortHelp": "Ranged, DoT(Energy), Foe Immobilize, -DEF, +Negatrons",
-  "icon": "atomicmanipulation_immob.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Immobilize",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.115,
-    "table": "Ranged_Damage",
-    "duration": 4.75,
-    "tickRate": 0.5
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15,
-      "defenseDebuff": 10
-    },
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 15
-  }
-};
+export const ElectronShackles: Power = withOverrides(base, overrides);

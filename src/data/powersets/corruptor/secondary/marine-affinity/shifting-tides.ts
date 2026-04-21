@@ -1,69 +1,16 @@
 /**
- * Shifting Tides
- * Toggle: Ranged (Targeted AoE), Team +DMG, +ToHit, +Recharge, Special Damage
+ * Shifting Tides — COMPOSED EXPORT
  *
- * Source: corruptor_buff/marine_affinity/shifting_tides.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff marine_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ShiftingTides as base } from '@/data/generated/powersets/corruptor/secondary/marine-affinity/shifting-tides';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/marine-affinity/shifting-tides';
 
-export const ShiftingTides: Power = {
-  "name": "Shifting Tides",
-  "internalName": "Shifting_Tides",
-  "available": 23,
-  "description": "Select either a friend or foe to create a field of shifting tides around them.When attacked, foes within the shifting tides will provide you and your allies a stacking Rising Tide buff that increases ToHit, Damage, and Recharge. Enemies may also take bonus damage, with the odds increasing per stack.",
-  "shortHelp": "Toggle: Ranged (Targeted AoE), Team +DMG, +ToHit, +Recharge, Special Damage",
-  "icon": "marineaffinity_shiftingtides.png",
-  "powerType": "Toggle",
-  "targetType": "Any",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 25,
-    "recharge": 15,
-    "endurance": 0.078,
-    "castTime": 1.17,
-    "activatePeriod": 0.1,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged AoE Damage",
-    "To Hit Buff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "damageBuff": {
-      "scale": 0.24,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuff": {
-      "scale": 0.08,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "rechargeBuff": {
-      "scale": 0.02,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const ShiftingTides: Power = withOverrides(base, overrides);

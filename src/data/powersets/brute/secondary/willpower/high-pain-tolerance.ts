@@ -1,78 +1,16 @@
 /**
- * High Pain Tolerance
- * Auto: Self +Res (All), +MaxHealth
+ * High Pain Tolerance — COMPOSED EXPORT
  *
- * Source: brute_defense/willpower/high_pain_tolerance.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense willpower
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HighPainTolerance as base } from '@/data/generated/powersets/brute/secondary/willpower/high-pain-tolerance';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/willpower/high-pain-tolerance';
 
-export const HighPainTolerance: Power = {
-  "name": "High Pain Tolerance",
-  "internalName": "High_Pain_Tolerance",
-  "available": 0,
-  "description": "You have a greater tolerance to pain than others. You are also slightly resistant to all types of damage. This power is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +Res (All), +MaxHealth",
-  "icon": "willpower_highpaintolerance.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 10.25,
-      "resistance": 10.25
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const HighPainTolerance: Power = withOverrides(base, overrides);

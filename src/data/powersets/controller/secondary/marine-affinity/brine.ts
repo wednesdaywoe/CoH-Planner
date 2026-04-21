@@ -1,82 +1,16 @@
 /**
- * Brine
- * Ranged, Foe -Resist(All), -MaxHP
+ * Brine — COMPOSED EXPORT
  *
- * Source: controller_buff/marine_affinity/brine.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff marine_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Brine as base } from '@/data/generated/powersets/controller/secondary/marine-affinity/brine';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/marine-affinity/brine';
 
-export const Brine: Power = {
-  "name": "Brine",
-  "internalName": "Brine",
-  "available": 19,
-  "description": "You coat an enemy in an extremely salinated layer of deep-sea brine that reduces your foe's resistance to damage and maximum hitpoints.If Shifting Tides is active, Brine will consume up to 3 stacks upon use to reduce its base recharge by 15 seconds per stack.",
-  "shortHelp": "Ranged, Foe -Resist(All), -MaxHP",
-  "icon": "marineaffinity_brine.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 60,
-    "endurance": 7,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 60,
-      "maxHPBuff": 60
-    },
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Ranged_Heal"
-    },
-    "buffDuration": 60
-  }
-};
+export const Brine: Power = withOverrides(base, overrides);

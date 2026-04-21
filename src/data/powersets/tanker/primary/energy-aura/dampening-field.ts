@@ -1,62 +1,16 @@
 /**
- * Dampening Field
- * Auto: Self +Res (Smashing, Lethal, Energy, Endurance Drain)
+ * Dampening Field — COMPOSED EXPORT
  *
- * Source: tanker_defense/energy_aura/dampening_field.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense energy_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DampeningField as base } from '@/data/generated/powersets/tanker/primary/energy-aura/dampening-field';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/energy-aura/dampening-field';
 
-export const DampeningField: Power = {
-  "name": "Dampening Field",
-  "internalName": "Dampening_Field",
-  "available": 0,
-  "description": "Your body resonates a mild Dampening Field that absorbs kinetic energy from physical weapons as well as Energy damage. This auto power permanently reduces all incoming Smashing, Lethal and Energy damage as well as providing a minor amount of resistance to Endurance Drain effects. This power is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +Res (Smashing, Lethal, Energy, Endurance Drain)",
-  "icon": "energyaura_powershield.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Resistance"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "debuffResistance": 10.25
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const DampeningField: Power = withOverrides(base, overrides);

@@ -1,30 +1,16 @@
 /**
- * Phoenix Rising
- * Self Rez, Special
+ * Phoenix Rising — COMPOSED EXPORT
  *
- * Source: tanker_defense/fiery_aura/phoenix_rising.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PhoenixRising as base } from '@/data/generated/powersets/tanker/primary/fiery-aura/phoenix-rising';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/fiery-aura/phoenix-rising';
 
-export const PhoenixRising: Power = {
-  "name": "Phoenix Rising",
-  "internalName": "Phoenix_Rising",
-  "available": 0,
-  "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Gift of the Phoenix will leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.You can also use this power even if you have not been defeated, with weakend effects. The closer you are to being defeated, the stronger the effects will be. You need to be under 75% health to activate this power.",
-  "shortHelp": "Self Rez, Special",
-  "icon": "flamingshield_temperatureprotection.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance"
-  ],
-  "maxSlots": 6,
-  "requires": "Tanker_Defense.Fiery_Aura.Rise_of_the_Phoenix",
-  "mechanicType": "hiddenAuto"
-};
+export const PhoenixRising: Power = withOverrides(base, overrides);

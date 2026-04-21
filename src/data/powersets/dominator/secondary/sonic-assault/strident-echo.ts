@@ -1,63 +1,16 @@
 /**
- * Strident Echo
- * Melee, DMG(Energy/Smash), Foe Chance for Hold
+ * Strident Echo — COMPOSED EXPORT
  *
- * Source: dominator_assault/sonic_assault/strident_echo.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault sonic_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StridentEcho as base } from '@/data/generated/powersets/dominator/secondary/sonic-assault/strident-echo';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/sonic-assault/strident-echo';
 
-export const StridentEcho: Power = {
-  "name": "Strident Echo",
-  "internalName": "Strident_Echo",
-  "available": 0,
-  "description": "Strident Echo deals minor damage over time. It has a low chance of causing a migraine, leaving the target shaking in pain and helpless.",
-  "shortHelp": "Melee, DMG(Energy/Smash), Foe Chance for Hold",
-  "icon": "sonicmanipulation_stridentecho.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Holds",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.19,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 0.4
-    },
-    {
-      "type": "Energy",
-      "scale": 0.19,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 0.4
-    }
-  ],
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const StridentEcho: Power = withOverrides(base, overrides);

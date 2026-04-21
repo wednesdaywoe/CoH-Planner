@@ -1,65 +1,16 @@
 /**
- * Spine Burst
- * PBAoE Melee, DMG(Lethal), DoT(Toxic), -SPD, -Recharge
+ * Spine Burst — COMPOSED EXPORT
  *
- * Source: brute_melee/spines/spine_burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee spines
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SpineBurst as base } from '@/data/generated/powersets/brute/primary/spines/spine-burst';
+import { overrides } from '@/data/overrides/powersets/brute/primary/spines/spine-burst';
 
-export const SpineBurst: Power = {
-  "name": "Spine Burst",
-  "internalName": "Spine_Burst",
-  "available": 1,
-  "description": "You can fling dozens of Spines in all directions. These Spines only travel a short distance, but they can deal moderate damage and poison any target close to you. Spine poison deals additional Toxic damage and Slows affected foes.",
-  "shortHelp": "PBAoE Melee, DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
-  "icon": "quills_flingquills.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.67,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee AoE Damage",
-    "Slow Movement",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.9,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "immobilize": {
-      "mag": 0.33,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const SpineBurst: Power = withOverrides(base, overrides);

@@ -1,59 +1,16 @@
 /**
- * Maiming Slash
- * Melee, DMG(Lethal), DoT (Lethal), Foe -Speed), Self +1 Blood Frenzy
+ * Maiming Slash — COMPOSED EXPORT
  *
- * Source: stalker_melee/savage_melee/maiming_slash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee savage_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MaimingSlash as base } from '@/data/generated/powersets/stalker/primary/savage-melee/maiming-slash';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/savage-melee/maiming-slash';
 
-export const MaimingSlash: Power = {
-  "name": "Maiming Slash",
-  "internalName": "Maiming_Slash",
-  "available": 0,
-  "description": "You execute a savage slash at your foe's lower body causing moderate lethal damage and minor damage over time. The foe will also have their movement speed reduced moderately. Maiming Slash grants 1 stack of Blood Frenzy.",
-  "shortHelp": "Melee, DMG(Lethal), DoT (Lethal), Foe -Speed), Self +1 Blood Frenzy",
-  "icon": "savagemelee_maimingslash.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 5,
-    "endurance": 6.03,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Slow Movement",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.16,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.16,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.209,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const MaimingSlash: Power = withOverrides(base, overrides);

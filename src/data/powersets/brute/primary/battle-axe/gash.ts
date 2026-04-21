@@ -1,64 +1,16 @@
 /**
- * Beheader
- * Melee, DMG(Lethal), Foe Knockdown, -Defense
+ * Beheader — COMPOSED EXPORT
  *
- * Source: brute_melee/battle_axe/gash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee battle_axe
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Beheader as base } from '@/data/generated/powersets/brute/primary/battle-axe/gash';
+import { overrides } from '@/data/overrides/powersets/brute/primary/battle-axe/gash';
 
-export const Beheader: Power = {
-  "name": "Beheader",
-  "internalName": "Gash",
-  "available": 0,
-  "description": "This is an attempt to remove your opponent's head from his neck with your Battle Axe. This attack is fairly quick for such a large weapon, and has a chance to cut through your foe's defense and knock them down.",
-  "shortHelp": "Melee, DMG(Lethal), Foe Knockdown, -Defense",
-  "icon": "battleaxe_chop.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.15,
-    "range": 7,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    },
-    "buffDuration": 6
-  }
-};
+export const Beheader: Power = withOverrides(base, overrides);

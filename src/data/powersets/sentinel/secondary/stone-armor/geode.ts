@@ -1,105 +1,16 @@
 /**
- * Geode
- * Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold
+ * Geode — COMPOSED EXPORT
  *
- * Source: sentinel_defense/stone_armor/geode.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense stone_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Geode as base } from '@/data/generated/powersets/sentinel/secondary/stone-armor/geode';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/stone-armor/geode';
 
-export const Geode: Power = {
-  "name": "Geode",
-  "internalName": "Geode",
-  "available": 29,
-  "description": "When you activate this power, you encase yourself in various protective mineral layers that can absorb incoming damage while you heal and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot stay in this Geode for more than 30 seconds. If enemies inflict enough damage, they can break you out of this effect.If Brimstone Armor is owned, this power will also grant Geothermal Power every 5 seconds, increasing the damage inflicted by Brimstone's Fire by 8% per stack.Recharge: Long.",
-  "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
-  "icon": "stonearmor_geode.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 180,
-    "endurance": 0.026,
-    "castTime": 0.07,
-    "activatePeriod": 0.1
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 7.5,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 0.2,
-      "recoveryBuff": 0.2,
-      "mezResistance": 0.2,
-      "knockup": 0.2,
-      "knockback": 0.2,
-      "slow": 0.2,
-      "untouchable": 0.2,
-      "damageDebuff": 0.2,
-      "taunt": 0.2
-    },
-    "recoveryBuff": {
-      "scale": 3,
-      "table": "Melee_Ones"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "displayName": "Geode",
-      "powers": [
-        "Redirects.Stone_Armor.Geode",
-        "Redirects.Stone_Armor.Geode_Scaling"
-      ]
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 10000,
-        "table": "Melee_Ones"
-      }
-    },
-    "selfPenalty": true,
-    "untouchable": {
-      "scale": 1000,
-      "table": "Melee_Ones"
-    },
-    "damageDebuff": {
-      "scale": 999,
-      "table": "Melee_Ones"
-    },
-    "taunt": {
-      "scale": 999,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.2
-  }
-};
+export const Geode: Power = withOverrides(base, overrides);

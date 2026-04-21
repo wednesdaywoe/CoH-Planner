@@ -1,56 +1,16 @@
 /**
- * Charged Armor
- * Toggle: Self +Res(Smash, Lethal, Energy)
+ * Charged Armor — COMPOSED EXPORT
  *
- * Source: tanker_defense/electric_armor/charged_armor.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense electric_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ChargedArmor as base } from '@/data/generated/powersets/tanker/primary/electric-armor/charged-armor';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/electric-armor/charged-armor';
 
-export const ChargedArmor: Power = {
-  "name": "Charged Armor",
-  "internalName": "Charged_Armor",
-  "available": 0,
-  "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
-  "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
-  "icon": "electricarmor_selfbuffdefensephysical.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
-  }
-};
+export const ChargedArmor: Power = withOverrides(base, overrides);

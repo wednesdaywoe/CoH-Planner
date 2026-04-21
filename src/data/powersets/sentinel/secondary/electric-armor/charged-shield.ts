@@ -1,51 +1,16 @@
 /**
- * Charged Shield
- * Toggle: Self +Regen, +MaxEnd
+ * Charged Shield — COMPOSED EXPORT
  *
- * Source: sentinel_defense/electric_armor/charged_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense electric_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ChargedShield as base } from '@/data/generated/powersets/sentinel/secondary/electric-armor/charged-shield';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/electric-armor/charged-shield';
 
-export const ChargedShield: Power = {
-  "name": "Charged Shield",
-  "internalName": "Charged_Shield",
-  "available": 0,
-  "description": "When you toggle on this power, you charge up every particle in your body increasing your regeneration rate and increasing your max endurance. Recharge: Moderate.",
-  "shortHelp": "Toggle: Self +Regen, +MaxEnd",
-  "icon": "electricarmor_chargedshield.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.104,
-    "castTime": 0.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "maxEndBuff": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "maxEndBuff": 0.6,
-      "regenBuff": 0.6
-    },
-    "regenBuff": {
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.6
-  }
-};
+export const ChargedShield: Power = withOverrides(base, overrides);

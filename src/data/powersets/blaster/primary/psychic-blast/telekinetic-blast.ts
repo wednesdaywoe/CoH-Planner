@@ -1,59 +1,16 @@
 /**
- * Telekinetic Blast
- * Ranged, DMG(Smash/Psionic), Foe Knockback
+ * Telekinetic Blast — COMPOSED EXPORT
  *
- * Source: blaster_ranged/psychic_blast/telekinetic_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TelekineticBlast as base } from '@/data/generated/powersets/blaster/primary/psychic-blast/telekinetic-blast';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/psychic-blast/telekinetic-blast';
 
-export const TelekineticBlast: Power = {
-  "name": "Telekinetic Blast",
-  "internalName": "Telekinetic_Blast",
-  "available": 1,
-  "description": "You can use Telekinesis to Blast a targeted foe with the power of your mind. This attack deals Smashing and Psionic damage, and can knock your opponent back.",
-  "shortHelp": "Ranged, DMG(Smash/Psionic), Foe Knockback",
-  "icon": "psychicblast_telekineticblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 100,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.46,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.5,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 4,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const TelekineticBlast: Power = withOverrides(base, overrides);

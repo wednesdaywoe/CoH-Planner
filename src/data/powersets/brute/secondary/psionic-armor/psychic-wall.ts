@@ -1,56 +1,16 @@
 /**
- * Psychic Wall
- * Toggle: Self +Res(Smash, Lethal, Psionic)
+ * Psychic Wall — COMPOSED EXPORT
  *
- * Source: brute_defense/psionic_armor/psychic_wall.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense psionic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsychicWall as base } from '@/data/generated/powersets/brute/secondary/psionic-armor/psychic-wall';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/psionic-armor/psychic-wall';
 
-export const PsychicWall: Power = {
-  "name": "Psychic Wall",
-  "internalName": "Psychic_Wall",
-  "available": 0,
-  "description": "You focus to create a psychic wall that dampens the smashing, lethal and psionic damage.",
-  "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionic)",
-  "icon": "psionicarmor_psychicwall.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.104,
-    "castTime": 0.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
-  }
-};
+export const PsychicWall: Power = withOverrides(base, overrides);

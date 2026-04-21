@@ -1,52 +1,16 @@
 /**
- * Dragon's Tail
- * PBAoE Melee, Light DMG(Smash), Foe Knockdown
+ * Dragon's Tail — COMPOSED EXPORT
  *
- * Source: dominator_assault/martial_assault/dragons_tail.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault martial_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DragonsTail as base } from '@/data/generated/powersets/dominator/secondary/martial-assault/dragons-tail';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/martial-assault/dragons-tail';
 
-export const DragonsTail: Power = {
-  "name": "Dragon's Tail",
-  "internalName": "Dragons_Tail",
-  "available": 19,
-  "description": "This low spinning kick deals less damage than Thunder Kick, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.Damage: Light.Recharge: Slow.",
-  "shortHelp": "PBAoE Melee, Light DMG(Smash), Foe Knockdown",
-  "icon": "martialmanipulation_dragonstail.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.05,
-    "radius": 15,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 1.5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.8985,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const DragonsTail: Power = withOverrides(base, overrides);

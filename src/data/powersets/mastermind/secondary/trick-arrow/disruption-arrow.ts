@@ -1,49 +1,16 @@
 /**
- * Disruption Arrow
- * Ranged (Location AoE), -Res(All), -MaxEnd
+ * Disruption Arrow — COMPOSED EXPORT
  *
- * Source: mastermind_buff/trick_arrow/disruption_arrow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff trick_arrow
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DisruptionArrow as base } from '@/data/generated/powersets/mastermind/secondary/trick-arrow/disruption-arrow';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/trick-arrow/disruption-arrow';
 
-export const DisruptionArrow: Power = {
-  "name": "Disruption Arrow",
-  "internalName": "Disruption_Arrow",
-  "available": 23,
-  "description": "This arrow plants a sonic resonator at a target location. The vibrations of the resonator weaken the Damage Resistance and Recovery rate of all nearby foes.Recharge: Slow.",
-  "shortHelp": "Ranged (Location AoE), -Res(All), -MaxEnd",
-  "icon": "trickarrow_debuffdamres.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 30,
-    "endurance": 18.2,
-    "castTime": 1.16
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Disruption Arrow",
-      "powers": [
-        "Redirects.Trick_Arrow.Disruption_Arrow",
-        "Pets.ResistAll.ResistAll"
-      ],
-      "duration": 45,
-      "copyBoosts": true
-    }
-  }
-};
+export const DisruptionArrow: Power = withOverrides(base, overrides);

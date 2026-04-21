@@ -1,60 +1,16 @@
 /**
- * Lightning Field
- * Toggle: PBAoE, Minor DoT(Energy), Foe -End
+ * Lightning Field — COMPOSED EXPORT
  *
- * Source: brute_defense/electric_armor/lightning_field.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense electric_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { LightningField as base } from '@/data/generated/powersets/brute/secondary/electric-armor/lightning-field';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/electric-armor/lightning-field';
 
-export const LightningField: Power = {
-  "name": "Lightning Field",
-  "internalName": "Lightning_Field",
-  "available": 0,
-  "description": "While active, you emit a storm of electricity that constantly damages all nearby foes.",
-  "shortHelp": "Toggle: PBAoE, Minor DoT(Energy), Foe -End",
-  "icon": "electricarmor_pbaoeminordamage.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 10,
-    "endurance": 1.04,
-    "castTime": 2.03,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Endurance Modification",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.2,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.03,
-      "table": "Melee_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  }
-};
+export const LightningField: Power = withOverrides(base, overrides);

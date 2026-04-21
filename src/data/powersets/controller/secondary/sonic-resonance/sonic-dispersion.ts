@@ -1,93 +1,16 @@
 /**
- * Sonic Dispersion
- * Toggle: PBAoE, Ally +Res(All DMG except Psionic, Hold, Immobilize, Disorient)
+ * Sonic Dispersion — COMPOSED EXPORT
  *
- * Source: controller_buff/sonic_debuff/sonic_dispersion.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff sonic_debuff
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SonicDispersion as base } from '@/data/generated/powersets/controller/secondary/sonic-resonance/sonic-dispersion';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/sonic-resonance/sonic-dispersion';
 
-export const SonicDispersion: Power = {
-  "name": "Sonic Dispersion",
-  "internalName": "Sonic_Dispersion",
-  "available": 19,
-  "description": "You create a large field of sonic waves, protecting all allies inside. The Sonic Dispersion gives all allies within increased Resistance against all damage except Psionic. The Sonic Bubble also protects allies from Immobilization, Disorient, and Hold effects.Recharge: Slow.",
-  "shortHelp": "Toggle: PBAoE, Ally +Res(All DMG except Psionic, Hold, Immobilize, Disorient)",
-  "icon": "sonicdebuff_buffdamageres.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 15,
-    "endurance": 1.04,
-    "castTime": 2.03,
-    "activatePeriod": 2,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 2.25,
-      "hold": 2.25,
-      "immobilize": 2.25,
-      "stun": 2.25
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 2.25,
-    "immobilize": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 2.25
-  }
-};
+export const SonicDispersion: Power = withOverrides(base, overrides);

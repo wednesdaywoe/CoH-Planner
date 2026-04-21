@@ -1,44 +1,16 @@
 /**
- * Gravestone
- * Ranged, DMG(Smash), Foe -Jump, -Fly
+ * Gravestone — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/seismic_blast/gravestone.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged seismic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Gravestone as base } from '@/data/generated/powersets/sentinel/primary/seismic-blast/gravestone';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/seismic-blast/gravestone';
 
-export const Gravestone: Power = {
-  "name": "Gravestone",
-  "internalName": "Gravestone",
-  "available": 17,
-  "description": "Create a giant pillar of stone, creating a Gravestone around your target, dealing extreme damage and limiting their ability to jump and fly for a short time.Gravestone grants two stacks of Seismic Pressure.",
-  "shortHelp": "Ranged, DMG(Smash), Foe -Jump, -Fly",
-  "icon": "seismicblast_gravestone.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 60,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  }
-};
+export const Gravestone: Power = withOverrides(base, overrides);

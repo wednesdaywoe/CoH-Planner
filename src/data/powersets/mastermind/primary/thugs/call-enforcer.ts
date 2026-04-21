@@ -1,52 +1,16 @@
 /**
- * Call Enforcer
- * Summon Enforcer
+ * Call Enforcer — COMPOSED EXPORT
  *
- * Source: mastermind_summon/thugs/call_enforcer.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon thugs
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CallEnforcer as base } from '@/data/generated/powersets/mastermind/primary/thugs/call-enforcer';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/thugs/call-enforcer';
 
-export const CallEnforcer: Power = {
-  "name": "Call Enforcer",
-  "internalName": "Call_Enforcer",
-  "available": 11,
-  "description": "Calls forth one to two Thug Enforcers (depending on your level) to do your bidding. Thug Enforcers carry a Sub-machine Gun, and possess good leadership skills. Their weapon of choice is an UZI, and can be equipped to carry up to 2 at once.You may only have 2 Thug Enforcers under your control at any given time. If you attempt to call more Enforcers, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
-  "shortHelp": "Summon Enforcer",
-  "icon": "thugs_enlistlieutenant.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 10,
-    "endurance": 9.62,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Holds",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Thug_Lt",
-      "copyBoosts": true,
-      "entityCount": 2
-    }
-  }
-};
+export const CallEnforcer: Power = withOverrides(base, overrides);

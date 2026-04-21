@@ -1,72 +1,16 @@
 /**
- * Shred
- * Melee (Cone), Foe DoT (Lethal), -Def(All), Self +1 Blood Frenzy
+ * Shred — COMPOSED EXPORT
  *
- * Source: brute_melee/savage_melee/shred.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee savage_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Shred as base } from '@/data/generated/powersets/brute/primary/savage-melee/shred';
+import { overrides } from '@/data/overrides/powersets/brute/primary/savage-melee/shred';
 
-export const Shred: Power = {
-  "name": "Shred",
-  "internalName": "Shred",
-  "available": 1,
-  "description": "You rapidly slash at your foes several times causing a moderate amount of damage to all enemies in front of you and reduce their defense. Shred also causes minor lethal damage over time. This power grants 1 stack of Blood Frenzy.",
-  "shortHelp": "Melee (Cone), Foe DoT (Lethal), -Def(All), Self +1 Blood Frenzy",
-  "icon": "savagemelee_shred.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "radius": 7,
-    "arc": 1.3963,
-    "recharge": 7.5,
-    "endurance": 8.11,
-    "castTime": 2.17,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.21,
-      "table": "Melee_Damage",
-      "duration": 2,
-      "tickRate": 0.35
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.211,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1.2,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const Shred: Power = withOverrides(base, overrides);

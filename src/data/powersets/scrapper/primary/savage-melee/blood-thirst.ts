@@ -1,50 +1,16 @@
 /**
- * Blood Thirst
- * Self +DMG, +To Hit, +Special, +5 Blood Frenzy
+ * Blood Thirst — COMPOSED EXPORT
  *
- * Source: scrapper_melee/savage_melee/blood_thirst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee savage_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BloodThirst as base } from '@/data/generated/powersets/scrapper/primary/savage-melee/blood-thirst';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/savage-melee/blood-thirst';
 
-export const BloodThirst: Power = {
-  "name": "Blood Thirst",
-  "internalName": "Blood_Thirst",
-  "available": 5,
-  "description": "You unleash your frenzy, increasing your chance to inflict Bleed to 100% as well as increasing your damage and chance to hit moderately. Blood Thirst also grants 5 stacks of Frenzy Fury.",
-  "shortHelp": "Self +DMG, +To Hit, +Special, +5 Blood Frenzy",
-  "icon": "savagemelee_buildup.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 7.8,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 15,
-      "damageBuff": 15
-    },
-    "damageBuff": {
-      "scale": 3.333,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 15
-  }
-};
+export const BloodThirst: Power = withOverrides(base, overrides);

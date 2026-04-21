@@ -1,96 +1,16 @@
 /**
- * Increase Density
- * Ranged, Ally Special
+ * Increase Density — COMPOSED EXPORT
  *
- * Source: defender_buff/kinetics/increase_density.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff kinetics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IncreaseDensity as base } from '@/data/generated/powersets/defender/primary/kinetics/increase-density';
+import { overrides } from '@/data/overrides/powersets/defender/primary/kinetics/increase-density';
 
-export const IncreaseDensity: Power = {
-  "name": "Increase Density",
-  "internalName": "Increase_Density",
-  "available": 7,
-  "description": "Increases an ally's mass, freeing them from any Disorient, Immobilization, or Hold effects and leaving them resistant to such effects for a while. Increase Density also protects the target from Knockback, Repel and enemy Teleportation, as well as Smashing and Energy damage. Because the target grows more dense, their movement speed is Slowed. Although the Damage Resistance and slowing effect will not stack with multiple applications, the rest of the effects of Increase Density will. You cannot use this power on yourself.Recharge: Very Fast.",
-  "shortHelp": "Ranged, Ally Special",
-  "icon": "kineticboost_increasedensity.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "radius": 30,
-    "recharge": 3,
-    "endurance": 5.2,
-    "castTime": 2.07,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60,
-      "hold": 60,
-      "immobilize": 60,
-      "stun": 60,
-      "knockup": 60,
-      "knockback": 60,
-      "repel": 60,
-      "mezResistance": 60
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 60,
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "mezResistance": {
-      "teleport": {
-        "scale": 1,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 60
-  }
-};
+export const IncreaseDensity: Power = withOverrides(base, overrides);

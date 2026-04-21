@@ -1,50 +1,16 @@
 /**
- * Call Bruiser
- * Summon Bruiser
+ * Call Bruiser — COMPOSED EXPORT
  *
- * Source: mastermind_summon/thugs/call_bruiser.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon thugs
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CallBruiser as base } from '@/data/generated/powersets/mastermind/primary/thugs/call-bruiser';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/thugs/call-bruiser';
 
-export const CallBruiser: Power = {
-  "name": "Call Bruiser",
-  "internalName": "Call_Bruiser",
-  "available": 21,
-  "description": "Calls one massive Bruiser. He is strong, tough and has a mean temper. As a Brute, he will generate Fury and deal more damage the longer the combat lasts. His Super Strength powers means he favors hand to hand combat. He has resistance to Lethal and Smashing Damage and some resistance to Fire and Cold Damage.",
-  "shortHelp": "Summon Bruiser",
-  "icon": "thugs_enlistboss.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 15,
-    "endurance": 13.18,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Stun",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Thug_Boss",
-      "copyBoosts": true
-    }
-  }
-};
+export const CallBruiser: Power = withOverrides(base, overrides);

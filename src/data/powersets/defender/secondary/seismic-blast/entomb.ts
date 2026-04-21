@@ -1,57 +1,16 @@
 /**
- * Entomb
- * Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF
+ * Entomb — COMPOSED EXPORT
  *
- * Source: defender_ranged/seismic_blast/entomb.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged seismic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Entomb as base } from '@/data/generated/powersets/defender/secondary/seismic-blast/entomb';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/seismic-blast/entomb';
 
-export const Entomb: Power = {
-  "name": "Entomb",
-  "internalName": "Entomb",
-  "available": 9,
-  "description": "Entomb foes in a giant boulder, dealing high damage and lowering their defense. They will also become heavy, limiting their ability to jump and fly for a short time. Entomb grants two stacks of Seismic Pressure.",
-  "shortHelp": "Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF",
-  "icon": "seismicblast_entomb.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 11,
-    "endurance": 11.024,
-    "castTime": 2.07
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defender Archetype Sets",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.12,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12
-    },
-    "buffDuration": 12
-  }
-};
+export const Entomb: Power = withOverrides(base, overrides);

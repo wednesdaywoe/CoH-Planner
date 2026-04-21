@@ -1,70 +1,16 @@
 /**
- * Positron Cell
- * Ranged, DoT(Energy), Foe Hold, -DEF, +Positrons
+ * Positron Cell — COMPOSED EXPORT
  *
- * Source: blaster_support/radiation_manipulation/positron_cell.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support radiation_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PositronCell as base } from '@/data/generated/powersets/blaster/secondary/atomic-manipulation/positron-cell';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/atomic-manipulation/positron-cell';
 
-export const PositronCell: Power = {
-  "name": "Positron Cell",
-  "internalName": "Positron_Cell",
-  "available": 3,
-  "description": "Encases a single target in a cage made of positrons. The radiation emitted slowly hurts the victim, inflicting energy damage over time. The encased victim is held helpless and unable to defend themselves in addition to being surrounded by positively charged particles. Hitting a foe that has negatively charged particles will trigger a Gamma Burst.",
-  "shortHelp": "Ranged, DoT(Energy), Foe Hold, -DEF, +Positrons",
-  "icon": "atomicmanipulation_hold.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 60,
-    "recharge": 16,
-    "endurance": 11.388,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Holds",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 4.2,
-    "tickRate": 1
-  },
-  "effects": {
-    "hold": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const PositronCell: Power = withOverrides(base, overrides);

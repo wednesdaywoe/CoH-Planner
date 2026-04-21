@@ -1,64 +1,16 @@
 /**
- * Focused Senses
- * Toggle: Self +DEF(Ranged), +Perception, Res(DeBuff DEF)
+ * Focused Senses — COMPOSED EXPORT
  *
- * Source: tanker_defense/super_reflexes/focused_senses.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense super_reflexes
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FocusedSenses as base } from '@/data/generated/powersets/tanker/primary/super-reflexes/focused-senses';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/super-reflexes/focused-senses';
 
-export const FocusedSenses: Power = {
-  "name": "Focused Senses",
-  "internalName": "Focused_Senses",
-  "available": 0,
-  "description": "You become more evasive against ranged attacks while you have Focused Senses activated. This will increase your Defense versus ranged attacks as long as it is active. Your Improved Senses also allow you to perceive stealthy foes as well as resist Defense DeBuffs.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +DEF(Ranged), +Perception, Res(DeBuff DEF)",
-  "icon": "superreflexes_focusedsenses.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.13,
-    "castTime": 2.03,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1.85,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const FocusedSenses: Power = withOverrides(base, overrides);

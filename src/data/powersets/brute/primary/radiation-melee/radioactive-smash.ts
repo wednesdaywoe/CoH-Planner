@@ -1,76 +1,16 @@
 /**
- * Radioactive Smash
- * Melee, DMG(Energy/Smash), Foe -Def, Knockdown, Special
+ * Radioactive Smash — COMPOSED EXPORT
  *
- * Source: brute_melee/radiation_melee/radioactive_smash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee radiation_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RadioactiveSmash as base } from '@/data/generated/powersets/brute/primary/radiation-melee/radioactive-smash';
+import { overrides } from '@/data/overrides/powersets/brute/primary/radiation-melee/radioactive-smash';
 
-export const RadioactiveSmash: Power = {
-  "name": "Radioactive Smash",
-  "internalName": "Radioactive_Smash",
-  "available": 0,
-  "description": "You channel a greater amount of radiation into your fists and deliver a hard hitting blow that deals Moderate Energy and Smashing damage to the target as well as reducing their Defense for a short time. Affected targets also have a chance to be knocked down and have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.",
-  "shortHelp": "Melee, DMG(Energy/Smash), Foe -Def, Knockdown, Special",
-  "icon": "radiationmelee_radioactivesmash.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 7,
-    "endurance": 7.696,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.37,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.11,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.296,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const RadioactiveSmash: Power = withOverrides(base, overrides);

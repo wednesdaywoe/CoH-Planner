@@ -1,63 +1,16 @@
 /**
- * Sonic Haven
- * Ranged, Ally +Res(Fire, Cold, Energy, Negative Energy)
+ * Sonic Haven — COMPOSED EXPORT
  *
- * Source: controller_buff/sonic_debuff/sonic_haven.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff sonic_debuff
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SonicHaven as base } from '@/data/generated/powersets/controller/secondary/sonic-resonance/sonic-haven';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/sonic-resonance/sonic-haven';
 
-export const SonicHaven: Power = {
-  "name": "Sonic Haven",
-  "internalName": "Sonic_Haven",
-  "available": 3,
-  "description": "This shield dramatically reduces the damage an ally takes from Fire, Cold, Energy, and Negative Energy attacks for a limited time. You cannot stack multiple Sonic Havens on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Sonic Barrier. You cannot use this power on yourself.Recharge: Very Fast.",
-  "shortHelp": "Ranged, Ally +Res(Fire, Cold, Energy, Negative Energy)",
-  "icon": "sonicdebuff_protectelements.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 30,
-    "recharge": 2,
-    "endurance": 7.8,
-    "castTime": 1.33,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 240
-    },
-    "buffDuration": 240
-  }
-};
+export const SonicHaven: Power = withOverrides(base, overrides);

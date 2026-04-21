@@ -1,56 +1,16 @@
 /**
- * Beta Decay
- * Toggle: PBAoE, Foe -ToHit, -DEF, Self +Recharge(Special)
+ * Beta Decay — COMPOSED EXPORT
  *
- * Source: blaster_support/radiation_manipulation/beta_decay.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support radiation_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BetaDecay as base } from '@/data/generated/powersets/blaster/secondary/atomic-manipulation/beta-decay';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/atomic-manipulation/beta-decay';
 
-export const BetaDecay: Power = {
-  "name": "Beta Decay",
-  "internalName": "Beta_Decay",
-  "available": 15,
-  "description": "While Beta Decay is active, nearby foes will have their chance to hit and defense decreased slightly. You will gain a recharge bonus per nearby target up to 10 targets. The first target grants the largest benefit.",
-  "shortHelp": "Toggle: PBAoE, Foe -ToHit, -DEF, Self +Recharge(Special)",
-  "icon": "atomicmanipulation_decay.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 10,
-    "endurance": 0.208,
-    "castTime": 0.67,
-    "activatePeriod": 1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit Debuff",
-    "Defense Debuff"
-  ],
-  "allowedSetCategories": [
-    "Defense Debuff",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 1,
-      "rechargeBuff": 1
-    },
-    "rechargeBuff": {
-      "scale": 0.125,
-      "table": "Melee_Ones",
-      "perTarget": 0.025
-    },
-    "buffDuration": 1
-  }
-};
+export const BetaDecay: Power = withOverrides(base, overrides);

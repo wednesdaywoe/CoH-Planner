@@ -1,45 +1,16 @@
 /**
- * Envenomed Blades
- * Self +Toxic Damage on all attacks, +ToHit
+ * Envenomed Blades — COMPOSED EXPORT
  *
- * Source: dominator_assault/martial_assault/envenomed_blades.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault martial_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnvenomedBlades as base } from '@/data/generated/powersets/dominator/secondary/martial-assault/envenomed-blades';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/martial-assault/envenomed-blades';
 
-export const EnvenomedBlades: Power = {
-  "name": "Envenomed Blades",
-  "internalName": "Envenomed_Blades",
-  "available": 15,
-  "description": "You add a toxic venom to all of your attacks for a moderate duration. All damaging powers gain bonus Toxic damage. You also gain a moderate bonus to your chance to hit.Recharge: Long.",
-  "shortHelp": "Self +Toxic Damage on all attacks, +ToHit",
-  "icon": "martialassault_envenomedblades.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 160,
-    "endurance": 7.8,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 0.12,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "tohitBuff": 40
-    },
-    "buffDuration": 40
-  }
-};
+export const EnvenomedBlades: Power = withOverrides(base, overrides);

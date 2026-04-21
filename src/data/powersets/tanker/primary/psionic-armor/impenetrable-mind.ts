@@ -1,106 +1,16 @@
 /**
- * Impenetrable Mind
- * Toggle: Self Res (Psionics, Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Knockback)
+ * Impenetrable Mind — COMPOSED EXPORT
  *
- * Source: tanker_defense/psionic_armor/impenetrable_mind.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_defense psionic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ImpenetrableMind as base } from '@/data/generated/powersets/tanker/primary/psionic-armor/impenetrable-mind';
+import { overrides } from '@/data/overrides/powersets/tanker/primary/psionic-armor/impenetrable-mind';
 
-export const ImpenetrableMind: Power = {
-  "name": "Impenetrable Mind",
-  "internalName": "Impenetrable_Mind",
-  "available": 1,
-  "description": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Knockback and Hold effects. Impenetrable Mind also grants moderate resistance to Psionic based attacks.",
-  "shortHelp": "Toggle: Self Res (Psionics, Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Knockback)",
-  "icon": "psionicarmor_impenetrablemind.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.104,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "confuse": 0.75,
-      "fear": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
-      "mezResistance": 0.75
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "knockup": {
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "knockback": {
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const ImpenetrableMind: Power = withOverrides(base, overrides);

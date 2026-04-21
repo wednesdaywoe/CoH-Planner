@@ -1,58 +1,16 @@
 /**
- * Arctic Air
- * Toggle: PBAoE, Foe Confuse(Special), -SPD, -Recharge, -Stealth
+ * Arctic Air — COMPOSED EXPORT
  *
- * Source: controller_control/ice_control/artic_air.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control ice_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ArcticAir as base } from '@/data/generated/powersets/controller/primary/ice-control/artic-air';
+import { overrides } from '@/data/overrides/powersets/controller/primary/ice-control/artic-air';
 
-export const ArcticAir: Power = {
-  "name": "Arctic Air",
-  "internalName": "Artic_Air",
-  "available": 5,
-  "description": "While this power is active, you are surrounded in a fog of Arctic Air that dramatically slows the attack and movement speed of nearby foes. The chill of Arctic Air is so bitter that many foes are forced to flee, albeit very slowly, from the immediate area. Others may attack their own allies, as the fog from the Arctic Air is thick and can cause much confusion. The cold air can also reduced the stealth capability of affected foes.",
-  "shortHelp": "Toggle: PBAoE, Foe Confuse(Special), -SPD, -Recharge, -Stealth",
-  "icon": "iceformation_articair.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 15,
-    "endurance": 2.08,
-    "castTime": 2.03,
-    "activatePeriod": 2,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Confuse"
-  ],
-  "allowedSetCategories": [
-    "Confuse",
-    "Controller Archetype Sets",
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "mag": 3,
-      "scale": 2,
-      "table": "Ranged_Fear"
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 3,
-      "table": "Ranged_Ones"
-    },
-    "effectDuration": 2,
-    "durations": {
-      "fear": 2
-    },
-    "buffDuration": 2
-  }
-};
+export const ArcticAir: Power = withOverrides(base, overrides);

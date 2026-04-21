@@ -1,55 +1,16 @@
 /**
- * Precise Strike
- * Melee, DMG(Smash), Foe Disorient
+ * Precise Strike — COMPOSED EXPORT
  *
- * Source: brute_melee/staff_fighting/precise_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee staff_fighting
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PreciseStrike as base } from '@/data/generated/powersets/brute/primary/staff-fighting/precise-strike';
+import { overrides } from '@/data/overrides/powersets/brute/primary/staff-fighting/precise-strike';
 
-export const PreciseStrike: Power = {
-  "name": "Precise Strike",
-  "internalName": "Precise_Strike",
-  "available": 0,
-  "description": "You attempt to daze your foe with a heavy staff blow to their head. Precise Strike has a higher chance to hit than normal, deals Smashing damage, and has a small chance to disorient the target briefly. While a form is active, this power will build one level of Perfection.",
-  "shortHelp": "Melee, DMG(Smash), Foe Disorient",
-  "icon": "stafffighting_precisestrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.1,
-    "range": 9,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.13
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.32,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  },
-  "requires": "!Brute_Defense.Shield_Defense"
-};
+export const PreciseStrike: Power = withOverrides(base, overrides);

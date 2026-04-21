@@ -1,56 +1,16 @@
 /**
- * Savage Strike
- * Melee, DMG(Lethal), Foe DoT (Lethal), Self +1 Blood Frenzy
+ * Savage Strike — COMPOSED EXPORT
  *
- * Source: brute_melee/savage_melee/savage_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee savage_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SavageStrike as base } from '@/data/generated/powersets/brute/primary/savage-melee/savage-strike';
+import { overrides } from '@/data/overrides/powersets/brute/primary/savage-melee/savage-strike';
 
-export const SavageStrike: Power = {
-  "name": "Savage Strike",
-  "internalName": "Savage_Strike",
-  "available": 0,
-  "description": "You quickly tear at your foe dealing minor lethal damage and causing minor lethal damage over time. Savage Strikes grants you 1 stack of Blood Frenzy.",
-  "shortHelp": "Melee, DMG(Lethal), Foe DoT (Lethal), Self +1 Blood Frenzy",
-  "icon": "savagemelee_savagestrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 2.5,
-    "endurance": 3.95,
-    "castTime": 0.8
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.38,
-      "table": "Melee_Damage",
-      "duration": 0.4,
-      "tickRate": 0.35
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.137,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const SavageStrike: Power = withOverrides(base, overrides);

@@ -1,63 +1,16 @@
 /**
- * Gamma Boost
- * Auto: Self +Regen, +Recovery, Special
+ * Gamma Boost — COMPOSED EXPORT
  *
- * Source: brute_defense/radiation_armor/gamma_boost.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_defense radiation_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GammaBoost as base } from '@/data/generated/powersets/brute/secondary/radiation-armor/gamma-boost';
+import { overrides } from '@/data/overrides/powersets/brute/secondary/radiation-armor/gamma-boost';
 
-export const GammaBoost: Power = {
-  "name": "Gamma Boost",
-  "internalName": "Gamma_Boost",
-  "available": 0,
-  "description": "Gamma Boost grants you a passive boost to both regeneration and recovery. The lower your current health is, the greater the regeneration bonus you'll receive from Gamma Boost. The higher your current health is, the greater the recovery bonus you'll receive from Gamma Boost. This power is always active.",
-  "shortHelp": "Auto: Self +Regen, +Recovery, Special",
-  "icon": "radiationarmor_gammaboost.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 1.25,
-      "debuffResistance": 1.25,
-      "recoveryBuff": 1.25
-    },
-    "debuffResistance": {
-      "regeneration": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      },
-      "endurance": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 1.25
-  }
-};
+export const GammaBoost: Power = withOverrides(base, overrides);

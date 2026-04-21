@@ -1,44 +1,16 @@
 /**
- * Pistols
- * Ranged, DMG(Lethal)
+ * Pistols — COMPOSED EXPORT
  *
- * Source: mastermind_summon/thugs/pistols.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon thugs
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Pistols as base } from '@/data/generated/powersets/mastermind/primary/thugs/pistols';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/thugs/pistols';
 
-export const Pistols: Power = {
-  "name": "Pistols",
-  "internalName": "Pistols",
-  "available": 0,
-  "description": "Quickly fires a round from one of your heavy automatic pistols. Damage is average, but the fire rate is very fast.Street Cred:If you own Gang War and are at least level 18, activating this power will grant a stack of Street Cred and summon a Pose to fight by your side for 30 up to seconds. Each stack of Street Cred owned will increase the chances to summon all 13 Posse when using Gang War. Enhancements in this power will also enhance the stats of Posse summoned with this attack. You may only have build Street Cred with this power once every 30 seconds.",
-  "shortHelp": "Ranged, DMG(Lethal)",
-  "icon": "thugs_targetedrangedminordmg.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.1,
-    "range": 80,
-    "recharge": 3,
-    "endurance": 5.2,
-    "castTime": 1.2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  }
-};
+export const Pistols: Power = withOverrides(base, overrides);

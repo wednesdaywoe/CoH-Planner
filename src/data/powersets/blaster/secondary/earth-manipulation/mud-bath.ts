@@ -1,55 +1,16 @@
 /**
- * Mud Bath
- * Toggle: PBAoE, -SPD, Self +Heal Over Time, +Recovery
+ * Mud Bath — COMPOSED EXPORT
  *
- * Source: blaster_support/earth_manipulation/mud_bath.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support earth_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MudBath as base } from '@/data/generated/powersets/blaster/secondary/earth-manipulation/mud-bath';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/earth-manipulation/mud-bath';
 
-export const MudBath: Power = {
-  "name": "Mud Bath",
-  "internalName": "Mud_Bath",
-  "available": 19,
-  "description": "While this power is active, you draw upon the geothermal power of the Earth to create a bubbling pool of hot mud around you. All foes in melee range will become snared and entrapped in the mud, slowing them down. You recover a small amount of health every few seconds while this power is active.Recharge: Fast.",
-  "shortHelp": "Toggle: PBAoE, -SPD, Self +Heal Over Time, +Recovery",
-  "icon": "earthmanip_mudbath.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 10,
-    "recharge": 4,
-    "castTime": 2.03,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Slow",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing",
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 0.15,
-    "table": "Melee_HealSelf"
-  },
-  "effects": {
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 2.1
-    },
-    "buffDuration": 2.1
-  }
-};
+export const MudBath: Power = withOverrides(base, overrides);

@@ -1,43 +1,16 @@
 /**
- * Explosive Shuriken
- * Ranged, Superior DMG(Fire), Minor Splash Damage (Fire DoT)
+ * Explosive Shuriken — COMPOSED EXPORT
  *
- * Source: dominator_assault/martial_assault/explosive_shuriken.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault martial_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ExplosiveShuriken as base } from '@/data/generated/powersets/dominator/secondary/martial-assault/explosive-shuriken';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/martial-assault/explosive-shuriken';
 
-export const ExplosiveShuriken: Power = {
-  "name": "Explosive Shuriken",
-  "internalName": "Explosive_Shuriken",
-  "available": 29,
-  "description": "You rig a shuriken with a powerful explosive, then send it flying towards your enemies.Damage: Superior.Recharge: Slow.",
-  "shortHelp": "Ranged, Superior DMG(Fire), Minor Splash Damage (Fire DoT)",
-  "icon": "martialassault_explosiveshuriken.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  }
-};
+export const ExplosiveShuriken: Power = withOverrides(base, overrides);

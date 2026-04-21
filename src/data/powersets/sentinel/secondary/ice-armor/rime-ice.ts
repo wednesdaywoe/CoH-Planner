@@ -1,60 +1,16 @@
 /**
- * Rime
- * Self +Regen, +Absorb, Res(Toxic)
+ * Rime — COMPOSED EXPORT
  *
- * Source: sentinel_defense/ice_armor/rime_ice.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense ice_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Rime as base } from '@/data/generated/powersets/sentinel/secondary/ice-armor/rime-ice';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ice-armor/rime-ice';
 
-export const Rime: Power = {
-  "name": "Rime",
-  "internalName": "Rime_Ice",
-  "available": 0,
-  "description": "Activating this power covers you in a thick layer of rime. The rime can absorb the impact of a limited number of enemy attacks, the lingering moisture increasing your regeneration rate. Rime also grants you resistance to Toxic Damage.This power is mutually exclusive from Hoarfrost",
-  "shortHelp": "Self +Regen, +Absorb, Res(Toxic)",
-  "icon": "icearmor_rime.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 10.4,
-    "castTime": 0.73
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60,
-      "absorb": 30,
-      "regenBuff": 30
-    },
-    "absorb": {
-      "scale": 3,
-      "table": "Melee_HealSelf"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 30
-  },
-  "requires": "!Sentinel_Defense.Ice_Armor.Hoarfrost"
-};
+export const Rime: Power = withOverrides(base, overrides);

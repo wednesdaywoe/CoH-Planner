@@ -1,65 +1,16 @@
 /**
- * Electron Haze
- * Close, Moderate Moderate DMG(Energy), Foe -DEF, Knockback
+ * Electron Haze — COMPOSED EXPORT
  *
- * Source: dominator_assault/radioactive_assault/electron_haze.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault radioactive_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ElectronHaze as base } from '@/data/generated/powersets/dominator/secondary/radioactive-assault/electron-haze';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/radioactive-assault/electron-haze';
 
-export const ElectronHaze: Power = {
-  "name": "Electron Haze",
-  "internalName": "Electron_Haze",
-  "available": 9,
-  "description": "A short range conical blast of free electrons. This attack can bypass some of a target's defenses and reduce the target's Defense. It can also knock some targets down. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: Moderate.Recharge: Slow.",
-  "shortHelp": "Close, Moderate Moderate DMG(Energy), Foe -DEF, Knockback",
-  "icon": "radioactiveassault_electronhaze.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.5236,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 2.37,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.35,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
-    "buffDuration": 8
-  }
-};
+export const ElectronHaze: Power = withOverrides(base, overrides);

@@ -1,65 +1,16 @@
 /**
- * Zapp
- * Sniper, Extreme DMG(Energy), Foe -End
+ * Zapp — COMPOSED EXPORT
  *
- * Source: dominator_assault/electricity_manipulation/lightning_clap.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault electricity_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Zapp as base } from '@/data/generated/powersets/dominator/secondary/electricity-assault/lightning-clap';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/electricity-assault/lightning-clap';
 
-export const Zapp: Power = {
-  "name": "Zapp",
-  "internalName": "Lightning_Clap",
-  "available": 19,
-  "description": "A focused electrical blast that can travel great distances with high Accuracy. Zapp drains Endurance, some of which may transfer back to you. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Damage: Extreme.Recharge: Slow.",
-  "shortHelp": "Sniper, Extreme DMG(Energy), Foe -End",
-  "icon": "electricalassault_zapp.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 150,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.15,
-      "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 4
-    },
-    "enduranceGain": {
-      "scale": 7.2,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 4
-  }
-};
+export const Zapp: Power = withOverrides(base, overrides);

@@ -1,44 +1,16 @@
 /**
- * Mental Blast
- * Ranged, DMG(Psionic), Target -Recharge
+ * Mental Blast — COMPOSED EXPORT
  *
- * Source: blaster_ranged/psychic_blast/mental_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MentalBlast as base } from '@/data/generated/powersets/blaster/primary/psychic-blast/mental-blast';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/psychic-blast/mental-blast';
 
-export const MentalBlast: Power = {
-  "name": "Mental Blast",
-  "internalName": "Mental_Blast",
-  "available": 0,
-  "description": "This basic attack does high Psionic damage, and can slightly reduce a target's attack speed.",
-  "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
-  "icon": "psychicblast_mentalblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 100,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  }
-};
+export const MentalBlast: Power = withOverrides(base, overrides);

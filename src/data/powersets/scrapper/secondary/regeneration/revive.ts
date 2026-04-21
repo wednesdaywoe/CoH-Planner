@@ -1,84 +1,16 @@
 /**
- * Ailment Resistance
- * Auto: Self +Max HP, -Res(Heal), Res(-Defense, -Endurance, -Speed, -Regeneration, -Recovery, -Recharge, -Range, -ToHit)
+ * Ailment Resistance — COMPOSED EXPORT
  *
- * Source: scrapper_defense/regeneration/revive.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense regeneration
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AilmentResistance as base } from '@/data/generated/powersets/scrapper/secondary/regeneration/revive';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/regeneration/revive';
 
-export const AilmentResistance: Power = {
-  "name": "Ailment Resistance",
-  "internalName": "Revive",
-  "available": 9,
-  "description": "Your superior immune system makes you resilient to disease and multiple ailments. Healing techniques also become more effective. This power is always on.",
-  "shortHelp": "Auto: Self +Max HP, -Res(Heal), Res(-Defense, -Endurance, -Speed, -Regeneration, -Recovery, -Recharge, -Range, -ToHit)",
-  "icon": "regeneration_resiststun.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "maxHPBuff": {
-      "scale": 2.4,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 10.3,
-      "resistanceDebuff": 10.3,
-      "debuffResistance": 10.25
-    },
-    "resistanceDebuff": {
-      "heal": {
-        "scale": 0.15,
-        "table": "Melee_Ones"
-      }
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "endurance": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "regeneration": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "range": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 10.3
-  }
-};
+export const AilmentResistance: Power = withOverrides(base, overrides);

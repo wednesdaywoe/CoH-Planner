@@ -1,26 +1,16 @@
 /**
- * Staff Mastery
- * Change Stances/Special
+ * Staff Mastery — COMPOSED EXPORT
  *
- * Source: tanker_melee/staff_fighting/staff_mastery.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee staff_fighting
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StaffMastery as base } from '@/data/generated/powersets/tanker/secondary/staff-fighting/staff-mastery';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/staff-fighting/staff-mastery';
 
-export const StaffMastery: Power = {
-  "name": "Staff Mastery",
-  "internalName": "Staff_Mastery",
-  "available": 19,
-  "description": "By Purchasing this power, you will gain access to the following powers: Form of the Body, Form of the Mind and Form of the Soul. Each of these toggle powers will allow the user to build up levels of Perfection, which grant the user a stacking short duration buff. Each buff is unique to the active form, and only one form can be active at a time. Perfection can be released by executing Eye of the Storm or Sky Splitter. When either of these attacks are empowered with Perfection they will have additional effects that are unique to each form. See Forms for additional details.",
-  "shortHelp": "Change Stances/Special",
-  "icon": "stafffighting_staffmastery.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [],
-  "maxSlots": 0
-};
+export const StaffMastery: Power = withOverrides(base, overrides);

@@ -1,46 +1,16 @@
 /**
- * Hypnotizing Lights
- * Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep
+ * Hypnotizing Lights — COMPOSED EXPORT
  *
- * Source: dominator_control/pyrotechnic_control/hypnotizing_lights.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control pyrotechnic_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HypnotizingLights as base } from '@/data/generated/powersets/dominator/primary/pyrotechnic-control/hypnotizing-lights';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/pyrotechnic-control/hypnotizing-lights';
 
-export const HypnotizingLights: Power = {
-  "name": "Hypnotizing Lights",
-  "internalName": "Hypnotizing_Lights",
-  "available": 7,
-  "description": "You conjure a whirl of lights with differing effects depending on the distance from which it is viewed. Most all targets within the area will be placed into a sleep like trance. Up to five enemies within 20 feet of the display are Confused and receive Psionic damage over time.Notes: Although this power is Auto Hit, it requires a To Hit check to apply Deep Sleep. If the Hit check is missed, and the target is not an AV, the weaker form of Sleep will be applied.",
-  "shortHelp": "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep",
-  "icon": "pyrotechnic_hypnotizinglights.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "radius": 70,
-    "arc": 0.7854,
-    "recharge": 45,
-    "endurance": 8.528,
-    "castTime": 1.67,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Sleep",
-    "Recharge",
-    "Damage",
-    "Confuse",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Confuse",
-    "Dominator Archetype Sets",
-    "Ranged AoE Damage",
-    "Sleep",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6
-};
+export const HypnotizingLights: Power = withOverrides(base, overrides);

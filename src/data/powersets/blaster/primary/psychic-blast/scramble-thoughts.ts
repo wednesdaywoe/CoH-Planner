@@ -1,79 +1,16 @@
 /**
- * Scramble Minds
- * Chain, DMG(Psionic), Foe Disorient
+ * Scramble Minds — COMPOSED EXPORT
  *
- * Source: blaster_ranged/psychic_blast/scramble_thoughts.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ScrambleMinds as base } from '@/data/generated/powersets/blaster/primary/psychic-blast/scramble-thoughts';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/psychic-blast/scramble-thoughts';
 
-export const ScrambleMinds: Power = {
-  "name": "Scramble Minds",
-  "internalName": "Scramble_Thoughts",
-  "available": 21,
-  "description": "Painfully scrambles the synapses of a targeted foe, leaving them dramatically Disoriented for a short duration. The effects of this power can jump from one foe to another in a chain dealing damage and applying a random mental effects to each target.",
-  "shortHelp": "Chain, DMG(Psionic), Foe Disorient",
-  "icon": "psychicblast_scrambleminds.png",
-  "powerType": "Click",
-  "effectArea": "Chain",
-  "stats": {
-    "accuracy": 1,
-    "range": 100,
-    "radius": 15,
-    "recharge": 14,
-    "endurance": 13.52,
-    "castTime": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Ranged AoE Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "sleep": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "immobilize": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "placate": {
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "fear": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const ScrambleMinds: Power = withOverrides(base, overrides);

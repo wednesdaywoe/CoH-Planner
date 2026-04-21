@@ -1,64 +1,16 @@
 /**
- * Chop
- * Melee, DMG(Lethal), Foe Knockdown, -Defense
+ * Chop — COMPOSED EXPORT
  *
- * Source: brute_melee/battle_axe/chop.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee battle_axe
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Chop as base } from '@/data/generated/powersets/brute/primary/battle-axe/chop';
+import { overrides } from '@/data/overrides/powersets/brute/primary/battle-axe/chop';
 
-export const Chop: Power = {
-  "name": "Chop",
-  "internalName": "Chop",
-  "available": 0,
-  "description": "Chop deals heavy damage with your Battle Axe, although it is much slower than Gash. This attack has a chance to cut through your target's defense and knock them down.",
-  "shortHelp": "Melee, DMG(Lethal), Foe Knockdown, -Defense",
-  "icon": "battleaxe_gash.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.15,
-    "range": 7,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.2
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.64,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    },
-    "buffDuration": 8
-  }
-};
+export const Chop: Power = withOverrides(base, overrides);

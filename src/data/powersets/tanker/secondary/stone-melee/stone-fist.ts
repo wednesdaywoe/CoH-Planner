@@ -1,54 +1,16 @@
 /**
- * Stone Fist
- * Melee DMG(Smash), Foe Minor Disorient,
+ * Stone Fist — COMPOSED EXPORT
  *
- * Source: tanker_melee/stone_melee/stone_fist.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee stone_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StoneFist as base } from '@/data/generated/powersets/tanker/secondary/stone-melee/stone-fist';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/stone-melee/stone-fist';
 
-export const StoneFist: Power = {
-  "name": "Stone Fist",
-  "internalName": "Stone_Fist",
-  "available": 0,
-  "description": "Your stone covered fists attack swiftly for moderate damage, and may Disorient your opponent.",
-  "shortHelp": "Melee DMG(Smash), Foe Minor Disorient,",
-  "icon": "stonemelee_stonefist.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const StoneFist: Power = withOverrides(base, overrides);

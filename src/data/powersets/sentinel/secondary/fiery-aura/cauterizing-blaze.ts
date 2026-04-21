@@ -1,41 +1,16 @@
 /**
- * Cauterizing Blaze
- * Toggle: Self +Heal Over Time
+ * Cauterizing Blaze — COMPOSED EXPORT
  *
- * Source: sentinel_defense/fiery_aura/cauterizing_blaze.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense fiery_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CauterizingBlaze as base } from '@/data/generated/powersets/sentinel/secondary/fiery-aura/cauterizing-blaze';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/fiery-aura/cauterizing-blaze';
 
-export const CauterizingBlaze: Power = {
-  "name": "Cauterizing Blaze",
-  "internalName": "Cauterizing_Blaze",
-  "available": 27,
-  "description": "While active, you are surrounded by flames cauterize your wounds healing you a small amount every few seconds.Recharge: Moderate.",
-  "shortHelp": "Toggle: Self +Heal Over Time",
-  "icon": "flamingshield_cauterizing.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.13,
-    "castTime": 2.03,
-    "activatePeriod": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 0.15,
-    "table": "Melee_HealSelf"
-  }
-};
+export const CauterizingBlaze: Power = withOverrides(base, overrides);

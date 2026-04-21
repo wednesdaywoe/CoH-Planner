@@ -1,92 +1,16 @@
 /**
- * Integration
- * Toggle: Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize), +Regeneration
+ * Integration — COMPOSED EXPORT
  *
- * Source: scrapper_defense/regeneration/integration.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense regeneration
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Integration as base } from '@/data/generated/powersets/scrapper/secondary/regeneration/integration';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/regeneration/integration';
 
-export const Integration: Power = {
-  "name": "Integration",
-  "internalName": "Integration",
-  "available": 15,
-  "description": "You can Integrate your mind and body, making you resistant to Knockback, Disorient, Hold, Sleep, and Immobilization effects, as well as increase your regeneration rate, for as long as you can keep this toggle power active.",
-  "shortHelp": "Toggle: Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize), +Regeneration",
-  "icon": "regeneration_integration.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.13,
-    "castTime": 3.1,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
-      "regenBuff": 0.75
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "regenBuff": {
-      "scale": 1.5,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const Integration: Power = withOverrides(base, overrides);

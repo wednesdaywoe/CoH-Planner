@@ -1,53 +1,16 @@
 /**
- * Energizing Circuit
- * Ranged (Chain), Ally +End, +Recharge, Self +Static
+ * Energizing Circuit — COMPOSED EXPORT
  *
- * Source: defender_buff/shock_therapy/energizing_circuit.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff shock_therapy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnergizingCircuit as base } from '@/data/generated/powersets/defender/primary/electrical-affinity/energizing-circuit';
+import { overrides } from '@/data/overrides/powersets/defender/primary/electrical-affinity/energizing-circuit';
 
-export const EnergizingCircuit: Power = {
-  "name": "Energizing Circuit",
-  "internalName": "Energizing_Circuit",
-  "available": 5,
-  "description": "Create a circuit of pure energy between several nearby allies, restoring a small amount of their endurance and significantly increasing their attack rate for a short time. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Energizing Circuit grants 1 stack of Static.Recharge: Slow.",
-  "shortHelp": "Ranged (Chain), Ally +End, +Recharge, Self +Static",
-  "icon": "shocktherapy_energizingcircuit.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "Chain",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 25,
-    "recharge": 35,
-    "endurance": 13,
-    "castTime": 1.67,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones"
-    },
-    "rechargeBuff": {
-      "scale": 1.25,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rechargeBuff": 5
-    },
-    "buffDuration": 5
-  }
-};
+export const EnergizingCircuit: Power = withOverrides(base, overrides);

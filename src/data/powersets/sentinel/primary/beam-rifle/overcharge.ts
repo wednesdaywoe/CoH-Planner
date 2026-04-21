@@ -1,80 +1,16 @@
 /**
- * Overcharge
- * Ranged (Targeted AoE), DMG(Energy), Foe Minor DoT (Energy), -Def(All), Disorient, Special
+ * Overcharge — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/beam_rifle/overcharge.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged beam_rifle
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Overcharge as base } from '@/data/generated/powersets/sentinel/primary/beam-rifle/overcharge';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/beam-rifle/overcharge';
 
-export const Overcharge: Power = {
-  "name": "Overcharge",
-  "internalName": "Overcharge",
-  "available": 25,
-  "description": "You overcharge your Beam Rifle and release a massive blast of energy at a group of distant foes causing Extreme Energy damage, causing Minor Energy damage over time, reducing the defense of all affected foes and potentially stunning affected foes. If Overcharge strikes a target suffering from the Disintegrating effect they will be affected by a longer stun.",
-  "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe Minor DoT (Energy), -Def(All), Disorient, Special",
-  "icon": "beamrifle_overcharge.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.4,
-    "range": 40,
-    "radius": 20,
-    "recharge": 90,
-    "endurance": 15.6,
-    "castTime": 2.9,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged AoE Damage",
-    "Sentinel Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.928,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.253,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 15
-    },
-    "stun": {
-      "mag": 3,
-      "scale": 4,
-      "table": "Ranged_Stun"
-    },
-    "buffDuration": 15
-  }
-};
+export const Overcharge: Power = withOverrides(base, overrides);

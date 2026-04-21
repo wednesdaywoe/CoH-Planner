@@ -1,63 +1,16 @@
 /**
- * Charged Bolts
- * Ranged, Light DMG(Energy), Foe -End
+ * Charged Bolts — COMPOSED EXPORT
  *
- * Source: dominator_assault/electricity_manipulation/electric_fence.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault electricity_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ChargedBolts as base } from '@/data/generated/powersets/dominator/secondary/electricity-assault/electric-fence';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/electricity-assault/electric-fence';
 
-export const ChargedBolts: Power = {
-  "name": "Charged Bolts",
-  "internalName": "Electric_Fence",
-  "available": 0,
-  "description": "You can quickly hurl small bolts of electricity at foes, dealing some damage and draining some Endurance. Some of this Endurance may transfer back to you. Charged Bolts deals light damage but recharges quickly.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Light DMG(Energy), Foe -End",
-  "icon": "electricalassault_chargedbolts.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 2
-    },
-    "enduranceGain": {
-      "scale": 2.6,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 2
-  }
-};
+export const ChargedBolts: Power = withOverrides(base, overrides);
