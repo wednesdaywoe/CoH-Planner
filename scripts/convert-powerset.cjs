@@ -9,13 +9,12 @@
 const fs = require('fs');
 const path = require('path');
 
-// Source: CoD2 archive (stale snapshot; see src/data/README.md). The live
-// bin-crawler export at ../exported_powers/ has newer effect/redirect data
-// but its description/short_help strings are encoded hashes the parser
-// can't yet decode (~89% of powers affected), so swapping the source
-// wholesale breaks UI. Until the encoded-string resolver lands, the
-// converter stays on CoD2 and the override layer carries HC drift.
-const RAW_DATA_PATH = path.join(__dirname, '../raw_data_homecoming-20251209_7415');
+// Source: bin-crawler JSON export (tools/bin-crawler/bin_crawler/export_powers.py)
+// reading live HC .pigg archives. This is current HC data on every re-run;
+// the old CoD2 snapshot at raw_data_homecoming-20251209_7415/ has been
+// retired now that the encoded-string resolver lands the missing
+// display_help / display_short_help strings.
+const RAW_DATA_PATH = path.join(__dirname, '../exported_powers');
 // The convert writes into three parallel trees (see src/data/README.md):
 //   generated/  — full auto-extraction, overwritten on every run
 //   overrides/  — hand-written deltas, scaffolded as empty stubs, never overwritten
@@ -153,6 +152,19 @@ const BIN_BOOST_MAP = {
   // unmapped — they aren't enhancement categories.
 };
 
+// Map bin-crawler's full effect-area enum to the planner's narrower
+// EffectArea type. CoD2 used "AoE" for what bin-crawler labels "Sphere",
+// and the planner only recognizes the canonical five values.
+const EFFECT_AREA_MAP = {
+  'SingleTarget': 'SingleTarget',
+  'Cone': 'Cone',
+  'Sphere': 'AoE',
+  'Location': 'Location',
+  'Chain': 'Chain',
+  // Volume/NamedVolume/Map/Room/Touch/Box — not normally seen on player
+  // powers; map to undefined so callers fall back to default behavior.
+};
+
 // IO Set category mapping
 const SET_CATEGORY_MAP = {
   'Accurate Defense Debuff': 'Accurate Defense Debuff',
@@ -211,7 +223,7 @@ function resolveRedirectPath(powerName) {
   const parts = powerName.split('.');
   // All segments form the path: Category/Powerset/PowerName
   const filePath = parts.map(p => p.toLowerCase()).join('/') + '.json';
-  return path.join(RAW_DATA_PATH, 'powers', filePath);
+  return path.join(RAW_DATA_PATH, filePath);
 }
 
 /**
@@ -1421,7 +1433,7 @@ function convertPower(powerJson, availableLevel) {
     icon: ICON_OVERRIDES[powerJson.icon] || powerJson.icon,
     powerType: powerJson.type,
     targetType: mappedTargetType,
-    effectArea: powerJson.effect_area,
+    effectArea: EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area,
   };
 
   // Basic stats
@@ -1578,7 +1590,7 @@ function convertPowerset(category, powersetName) {
     process.exit(1);
   }
 
-  const rawPath = path.join(RAW_DATA_PATH, 'powers', category, powersetName);
+  const rawPath = path.join(RAW_DATA_PATH, category, powersetName);
   const indexPath = path.join(rawPath, 'index.json');
 
   if (!fs.existsSync(indexPath)) {

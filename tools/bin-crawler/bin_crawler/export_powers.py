@@ -209,9 +209,10 @@ def main():
         print('Parsing powersets.bin...', flush=True)
         ps_records = parse_powersets(resolver.read('powersets.bin'))
         for ps in ps_records:
+            # ps.powers contains full dotted names (Cat.Powerset.Power),
+            # not just short names. Use them as the lookup keys directly.
             for pw_name, avail in zip(ps.powers, ps.available):
-                key = f"{ps.key}.{pw_name}"
-                ps_available[key] = avail
+                ps_available[pw_name] = avail
         print(f'  {len(ps_records)} powersets loaded.', flush=True)
 
     # Filter to player categories
@@ -250,8 +251,11 @@ def main():
                 'help': ps_rec.help if ps_rec else '',
                 'short_help': ps_rec.short_help if ps_rec else '',
                 'icon': (ps_rec.icon.lower().replace('.tga', '.png') if ps_rec and ps_rec.icon else ''),
-                'powers': [pw.power_name for pw in powers_in_set],
-                'available_level': [ps_available.get(f"{ps_key}.{pw.power_name}", 0) for pw in powers_in_set],
+                # Emit full dotted names ("Cat.Powerset.Power") so downstream
+                # consumers (e.g. the planner converter) can use suffix-match
+                # against the per-power short name.
+                'powers': [pw.full_name for pw in powers_in_set],
+                'available_level': [ps_available.get(pw.full_name, 0) for pw in powers_in_set],
             }
 
             if msgs and ps_rec:
@@ -266,7 +270,7 @@ def main():
             # Write individual power files
             for pw in powers_in_set:
                 pw_dict = power_to_dict(pw, msgs)
-                pw_dict['available_level'] = ps_available.get(f"{ps_key}.{pw.power_name}", 0)
+                pw_dict['available_level'] = ps_available.get(pw.full_name, 0)
                 pw_dict['powerset'] = ps_key
 
                 fname = pw.power_name.lower() + '.json'
