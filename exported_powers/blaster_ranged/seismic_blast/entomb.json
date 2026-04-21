@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Entomb",
   "display_fullname": "Blaster Ranged Seismic Blast Entomb",
-  "display_help": "7QKK42ZXABK4WZV4KAXMY92KLZ",
-  "display_short_help": "B6932R92ASMZY6VB854HVWYNT2",
+  "display_help": "Entomb foes in a giant boulder, dealing high damage and lowering their defense. They will also become heavy, limiting their ability to jump and fly for a short time. <br><br>Entomb grants two stacks of Seismic Pressure.",
+  "display_short_help": "Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF",
   "icon": "seismicblast_entomb",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -401,6 +401,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Blaster_Ranged.Seismic_Blast"
 }

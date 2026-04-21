@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "One with the Shield",
   "display_fullname": "Stalker Defense Shield Defense One with the Shield",
-  "display_help": "NF467KJESY56W4CZT95P6YJYTX",
+  "display_help": "When you activate this power, you gain strong resistance against most types of damage and also to Disorient, Immobilization, Hold, Knockback, Repel and Sleep effects. One with the Shield costs little Endurance to activate and increases your recovery and maximum hit points for its duration, but when it wears off you are left exhausted, and substantially drained of Endurance.<br><br><color #fcfc95>Notes: One with the Shield is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG but Psi), +Recovery, +Max HP",
   "icon": "shielddefense_onewiththeshield.png",
   "auto_issue": false,
@@ -382,6 +382,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Stalker_Defense.Shield_Defense"
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Up to the Challenge",
   "display_fullname": "Sentinel Defense Willpower Up to the Challenge",
-  "display_help": "3MLAT5TA2LTSWBZACMLASNRT9A",
+  "display_help": "Regardless of the odds against you, you are determined to go on. Your ability to regenerate health is greatly increased at all times.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: Self +Regen",
   "icon": "willpower_risetothechallenge.png",
   "auto_issue": false,
@@ -124,6 +124,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Sentinel_Defense.Willpower"
 }

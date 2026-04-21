@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Sting of the Wasp",
   "display_fullname": "Epic Sentinel Ninja Mastery Sting of the Wasp",
-  "display_help": "4QRSZHXVY62YWZMKW4M9G4XPYA",
-  "display_short_help": "ZSUCGXTARWWAYUMFHP78W3T2BQ",
+  "display_help": "You perform a standard attack with your Ninja Blade. This attack is slower than Gambler's Cut, but deals more lethal damage. Sting of the Wasp can reduce a target's Defense, making them easier to hit.",
+  "display_short_help": "Melee, DMG(Lethal), Foe -Def",
   "icon": "ninjatools_katanalight",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -267,6 +267,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Ninja_Mastery"
 }

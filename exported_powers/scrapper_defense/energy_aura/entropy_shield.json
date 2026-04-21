@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Entropic Aura",
   "display_fullname": "Scrapper Defense Energy Aura Entropy Shield",
-  "display_help": "QMW5YW9H7WV6Y8MBUMFUYYK2WQ",
+  "display_help": "Entropic Aura diminishes and dampens the energy of controlling type effects. The shield makes you resistant to Knockback, Repel, Disorient, Hold, Sleep, Immobilization, and enemy Teleportation for as long as you can keep this toggle power active. Entropic Aura also grants you good resistance to Defense Debuffs as well as providing you a recharge bonus for each foe in melee, up to the first 10 foes. Foes that get close to the user will have their own recharge rate reduced.",
   "display_short_help": "Toggle: Self +Res(Knockback, Repel, Disorient, Hold, Sleep, Immobilize, Teleport, DeBuff DEF), Self +Recharge, Foe -Recharge",
   "icon": "energyaura_entropy.png",
   "auto_issue": false,
@@ -627,6 +627,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Scrapper_Defense.Energy_Aura"
 }

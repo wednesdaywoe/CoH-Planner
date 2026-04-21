@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Power of the Phoenix",
   "display_fullname": "Corruptor Buff Thermal Radiation Power of the Phoenix",
-  "display_help": "452VKKHDFKYRW9LTX7N2WWQKSX",
+  "display_help": "Revives a fallen ally. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. Your ally will revive with most of their Hit Points and Endurance. He will also be invulnerable for a brief time, as well as protected from XPDebt for 90 seconds.",
   "display_short_help": "Ally Rez, Special",
   "icon": "thermalradiation_phoenix.png",
   "auto_issue": false,
@@ -230,6 +230,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Corruptor_Buff.Thermal_Radiation"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Midnight Grasp",
   "display_fullname": "Epic Sentinel Soul Mastery Midnight Grasp",
-  "display_help": "566K6BHTHN7HWZVQ9SZ3Z4CEQ2",
-  "display_short_help": "C435Y7ZPHGNWYDCTX7QUZMP5AS",
+  "display_help": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.",
+  "display_short_help": "Melee, DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "arachnos_patron_midnightgrasp",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -398,6 +398,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Soul_Mastery"
 }

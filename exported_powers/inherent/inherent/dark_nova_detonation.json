@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Nova Detonation",
   "display_fullname": "Inherent Inherent Dark Nova Detonation",
-  "display_help": "FRUQU7J2PQVAYVLCQ73695282S",
-  "display_short_help": "9FKSR248SYYLWEBU32RTCJMPUQ",
+  "display_help": "You hurl a blast of Dark Matter that violently explodes on impact, damaging all foes near the target. All affected targets' attack and movement speed are slowed. Some foes may be knocked down. This power is only available while in Dark Nova Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Targeted AoE), Light DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_darkmatterdetonation.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -269,6 +269,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Inherent.Inherent"
 }

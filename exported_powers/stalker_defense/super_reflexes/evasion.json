@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Evasion",
   "display_fullname": "Stalker Defense Super Reflexes Evasion",
-  "display_help": "CPGHEAD5FTHVWYZUT2HW89SSWQ",
+  "display_help": "You are Evasive against area effect and cone shaped attacks. This power increases your Defense versus such attacks as long as it is active. Evasion also helps you resist Defense DeBuffs. Evasion also adds an Elusivity defense bonus to AOE Attacks in PVP zones.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +DEF(vs. AoE), Res(DeBuff DEF)",
   "icon": "superreflexes_evasion.png",
   "auto_issue": false,
@@ -187,6 +187,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Stalker_Defense.Super_Reflexes"
 }

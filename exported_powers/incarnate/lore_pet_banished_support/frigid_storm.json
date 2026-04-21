@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Enervating Storm",
   "display_fullname": "Incarnate Lore Pet Banished Support Frigid Storm",
-  "display_help": "NA3VUW38CL9WWHBYNYC6WVS7X2",
+  "display_help": "All foes that pass through this storm will be shredded with shards of falling death energy, suffering cold and negative energy damage over time. Additionally, damage is reduced on all opponents within the storm.<br><br><color #fcfc95>Notes: Enervating Storm is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Targeted AoE, Minor DoT(Cold/Negative Energy), -DMG(Foe, All)",
   "icon": "banishedpantheon_defiler_frigidstorm.png",
   "auto_issue": false,

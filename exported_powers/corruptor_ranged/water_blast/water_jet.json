@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Water Jet",
   "display_fullname": "Corruptor Ranged Water Blast Water Jet",
-  "display_help": "VCLS3RX5CZPPYRBKVK3BD4NY53",
-  "display_short_help": "AYYXGZZ9CHKGY6VSBYW7S6QUHA",
+  "display_help": "You spray a concentrated torrent of water toward your target that causes Cold and Smashing damage as well as reducing your target's movement speed. If you have 2 or less Tidal Power, you will gain a stack of Tidal Power. If you have 3 Tidal Power and you activate this power, it will have an enhanced effect causing Water Jet to cast slightly faster and immediately reset the recharge of Water Jet. Water Jet's enhanced effect can be used once every 8 seconds.",
+  "display_short_help": "Ranged, DMG(Cold/Smash), Foe -Speed, +Wet, Self +/-Tidal Power",
   "icon": "waterblast_waterjet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Corruptor_Ranged.Water_Blast"
 }

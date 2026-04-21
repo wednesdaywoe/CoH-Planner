@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Glue Arrow",
   "display_fullname": "Controller Buff Trick Arrow Glue Arrow",
-  "display_help": "TY9VBB664JFFWWZFT8Y3E692HA",
+  "display_help": "This arrow carries a cartridge of intensely sticky glue, which explodes on impact. The glue Slows the movement and attack rates of any foes in the area.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Location AoE), Foe -Speed, -Recharge",
   "icon": "trickarrow_slow.png",
   "auto_issue": false,
@@ -93,6 +93,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Controller_Buff.Trick_Arrow"
 }

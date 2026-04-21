@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Cauterize",
   "display_fullname": "Incarnate Lore Pet Carnival Support Cauterize",
-  "display_help": "PF4A87UAWSYEY8X97LDY55282Z",
+  "display_help": "Heals a single targeted ally by cauterizing their wounds. You cannot use this power to heal yourself.<br><br><color #fcfc95>Notes: Cauterize is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ally Heal",
   "icon": "thermalradiation_cauterize.png",
   "auto_issue": false,

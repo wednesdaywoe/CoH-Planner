@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Heavy Mallet",
   "display_fullname": "Dominator Assault Earth Assault Heavy Mallet",
-  "display_help": "BRWQPVXCNEWRY9ZNAGMYBPT7SA",
+  "display_help": "A more impressive form of Stone Mallet, the Heavy Mallet deals more damage, but is slower to swing. It has a greater chance of knocking down opponents.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee, Superior DMG(Smash), Knockback",
   "icon": "earthassault_heavymallet.png",
   "auto_issue": false,
@@ -226,6 +226,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Dominator_Assault.Earth_Assault"
 }

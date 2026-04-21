@@ -3,10 +3,10 @@
   "full_name": "Brute_Melee.Sonic_Melee.Sandmans_Whisper",
   "short_name": "Sandmans_Whisper",
   "type": "Click",
-  "display_name": "R3LP8Z75XBF3WPCVM54SHNRJ4Z",
+  "display_name": "Sandman's Whisper",
   "display_fullname": "Brute Melee Sonic Melee Sandmans Whisper",
-  "display_help": "Y7TXEPHVT5RVWLXRT6E7QDK42S",
-  "display_short_help": "D6HJBJSM2X9GW3NU3GRRHRMEHQ",
+  "display_help": "You whisper in your foe's ear with a slumbering effect. Affected foe might fall asleep and will have their damage resistance lowered. This power will inflict 10% bonus damage against Attuned targets.",
+  "display_short_help": "Melee, DMG(Smashing/Energy), Foe Sleep, -Res(DMG)",
   "icon": "sonicmanipulation_whisper2",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -507,6 +507,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Brute_Melee.Sonic_Melee"
 }

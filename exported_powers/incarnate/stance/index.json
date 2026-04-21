@@ -5,7 +5,7 @@
   "short_help": "Incarnate",
   "icon": "stance_set.ico",
   "powers": [
-    "Nothing"
+    "Incarnate.Stance.Nothing"
   ],
   "available_level": [
     0

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Assault Partial Radial Graft",
   "display_fullname": "Incarnate Hybrid Assault Partial Radial Graft",
-  "display_help": "L5QQZPSFJG9ZWNLYHNXBU4XSK2",
+  "display_help": "While active, this power gives all of your damaging powers a 30% chance to boost your damage for a short period of time. This boost can stack up to 3 times. This power gives also gives all of your damaging powers a moderate chance to strike again for a moderate portion of their damage in Smashing damage. Equipping this Hybrid power grants a passive boost to Damage at all times.<br><br><color #fcfc95>Notes: Assault Partial Radial Graft is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Chance for +DMG(All), Chance for Doublehit",
   "icon": "incarnate_hybrid_assault_rare.png",
   "auto_issue": false,

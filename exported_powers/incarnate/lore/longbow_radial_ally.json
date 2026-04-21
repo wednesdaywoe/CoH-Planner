@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Longbow Radial Ally",
   "display_fullname": "Incarnate Lore Longbow Radial Ally",
-  "display_help": "W9ELP64VK3KEWQB5HXG6FHKHYA",
+  "display_help": "Draws forth the essences of a vanquished Longbow Warden and Nullifier from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Longbow Radial Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Longbow LT & Support Essences",
   "icon": "incarnate_lore_longbow_uncommon.png",
   "auto_issue": false,

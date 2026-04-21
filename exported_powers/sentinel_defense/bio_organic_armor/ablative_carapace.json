@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ablative Carapace",
   "display_fullname": "Sentinel Defense Bio Organic Armor Ablative Carapace",
-  "display_help": "4MT27K5QE8Q9YGL7UK9KZ52RGZ",
+  "display_help": "When needed, you're able to cause your Bio Armor to gain a thick, but brittle outer layer that will absorb a large amount of damage before breaking off. Ablative Carapace will grant a moderate amount of damage absorption and a high amount of regeneration for a short time.<br><br><color #fac39b>*This power doesn't grant any bonuses to Offensive Adaptation.</color><br><color #9efa9b>*While Efficient Adaptation is active, this power grants a slightly larger regeneration buff.</color><br><color #9bfafa>*While Defensive Adaptation is active, this power grants a bonus to damage absorption.</color><br><br>Bonuses granted from Adaptations are unenhanceable.",
   "display_short_help": "Self, +Absorption, +Regeneration",
   "icon": "bioorganicarmor_ablativecarapace.png",
   "auto_issue": false,
@@ -183,6 +183,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Sentinel_Defense.Bio_Organic_Armor"
 }

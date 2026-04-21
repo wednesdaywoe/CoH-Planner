@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fire Breath",
   "display_fullname": "Dominator Assault Fiery Assault Fire Breath",
-  "display_help": "H6QEBWQB4UACY5LH8J8S5CMRWW",
+  "display_help": "You can breathe forth a torrent of fire that burns all foes within its narrow cone. Very accurate and very deadly at medium range.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Close (Cone), Moderate DoT(Fire)",
   "icon": "fireassault_breathoffire.png",
   "auto_issue": false,
@@ -150,6 +150,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Dominator_Assault.Fiery_Assault"
 }

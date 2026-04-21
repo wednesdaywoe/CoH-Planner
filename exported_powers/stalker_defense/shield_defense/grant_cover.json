@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Grant Cover",
   "display_fullname": "Stalker Defense Shield Defense Grant Cover",
-  "display_help": "NGCNLBPT9GYUW7M626YW6MY9P3",
+  "display_help": "You are able to use your shield to defend nearby allies. Any teammates who remain nearby gain a bonus to their defense. As a stalker, you can also provide stealth to your teammates if you too are hidden. Additionally, while this power is active, the user and his team mates will gain some resistance to defense and recharge rate debuffs.<br><br><color #fcfc95>Notes: The defense bonus from this power is only applied to nearby team mates, but not yourself.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "PBAoE, Team (but not self) +DEF(All but Psionic), Team +RES(Defense Debuff, Recharge Debuff)",
   "icon": "shielddefense_grantcover.png",
   "auto_issue": false,
@@ -243,6 +243,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Stalker_Defense.Shield_Defense"
 }

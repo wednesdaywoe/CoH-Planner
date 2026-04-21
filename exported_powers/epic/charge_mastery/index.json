@@ -5,17 +5,17 @@
   "short_help": "Electricity Mastery",
   "icon": "charge_mastery_set.ico",
   "powers": [
-    "Electric_Shackles",
-    "EM_Pulse",
-    "Static_Discharge",
-    "Surge_of_Power",
-    "Thunder_Strike"
+    "Epic.Charge_Mastery.Electric_Shackles",
+    "Epic.Charge_Mastery.EM_Pulse",
+    "Epic.Charge_Mastery.Static_Discharge",
+    "Epic.Charge_Mastery.Surge_of_Power",
+    "Epic.Charge_Mastery.Thunder_Strike"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    43,
+    34,
+    40,
+    37
   ]
 }

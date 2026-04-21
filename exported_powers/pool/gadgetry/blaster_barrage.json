@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Drone Barrage",
   "display_fullname": "Pool Gadgetry Blaster Barrage",
-  "display_help": "KWRB8KRV48LAWFMHUPTXM983Q2",
-  "display_short_help": "TVJZSHVPJCSWY8L84SG3GVG7AQ",
+  "display_help": "You fire off a barrage of energy blasts from an advanced energy drone dealing Moderate energy damage to foes in long cone in front of you.<br><br>You must be at least level 14 and have two other Gadgetry powers before selecting Drone Barrage.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged Cone, Light DMG(Energy), Foe -Regen",
   "icon": "gadgetry_blasterbarrage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -1062,6 +1062,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Gadgetry"
 }

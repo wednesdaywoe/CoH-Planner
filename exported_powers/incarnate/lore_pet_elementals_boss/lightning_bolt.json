@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Lightning Bolt",
   "display_fullname": "Incarnate Lore Pet Elementals Boss Lightning Bolt",
-  "display_help": "LUE789LX8LANYRNZBTFDMU89UA",
+  "display_help": "You can send a large blast of electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you. Lightning Bolt deals more damage than Charged Bolts, but recharges more slowly.<br><br><color #fcfc95>Notes: Lightning Bolt is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Moderate DMG(Energy), Foe -End",
   "icon": "electricalbolt_lightningbolt.png",
   "auto_issue": false,

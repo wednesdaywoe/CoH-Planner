@@ -5,17 +5,17 @@
   "short_help": "Dark Mastery",
   "icon": "sentinel_dark_mastery_set.ico",
   "powers": [
-    "Black_Hole",
-    "Fearsome_Stare",
-    "Murky_Cloud",
-    "Possess",
-    "Soul_Consumption"
+    "Epic.Blaster_Dark_Mastery.Black_Hole",
+    "Epic.Blaster_Dark_Mastery.Fearsome_Stare",
+    "Epic.Blaster_Dark_Mastery.Murky_Cloud",
+    "Epic.Blaster_Dark_Mastery.Possess",
+    "Epic.Blaster_Dark_Mastery.Soul_Consumption"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    40,
+    34,
+    34,
+    37,
+    43
   ]
 }

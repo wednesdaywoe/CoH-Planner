@@ -5,25 +5,25 @@
   "short_help": "Kinetic Attack",
   "icon": "kinetic_attack_set.ico",
   "powers": [
-    "Assassins_Strike",
-    "Body_Blow",
-    "Build_Up",
-    "Burst",
-    "Focused_Burst",
-    "Placate",
-    "Quick_Strike",
-    "Smashing_Blow",
-    "Total_Focus"
+    "Stalker_Melee.Kinetic_Attack.Assassins_Strike",
+    "Stalker_Melee.Kinetic_Attack.Body_Blow",
+    "Stalker_Melee.Kinetic_Attack.Build_Up",
+    "Stalker_Melee.Kinetic_Attack.Burst",
+    "Stalker_Melee.Kinetic_Attack.Focused_Burst",
+    "Stalker_Melee.Kinetic_Attack.Placate",
+    "Stalker_Melee.Kinetic_Attack.Quick_Strike",
+    "Stalker_Melee.Kinetic_Attack.Smashing_Blow",
+    "Stalker_Melee.Kinetic_Attack.Total_Focus"
   ],
   "available_level": [
+    5,
     0,
+    7,
+    17,
+    21,
+    11,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    25
   ]
 }

@@ -5,19 +5,19 @@
   "short_help": "Leaping",
   "icon": "leaping_set.ico",
   "powers": [
-    "Combat_Jumping",
-    "Double_Jump",
-    "Jump_Kick",
-    "Leap",
-    "Long_Jump",
-    "Spring_Attack"
+    "Pool.Leaping.Combat_Jumping",
+    "Pool.Leaping.Double_Jump",
+    "Pool.Leaping.Jump_Kick",
+    "Pool.Leaping.Leap",
+    "Pool.Leaping.Long_Jump",
+    "Pool.Leaping.Spring_Attack"
   ],
   "available_level": [
     0,
+    4294967295,
     0,
-    0,
-    0,
-    0,
-    0
+    13,
+    3,
+    13
   ]
 }

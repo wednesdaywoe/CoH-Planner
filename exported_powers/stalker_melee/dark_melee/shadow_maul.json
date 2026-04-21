@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shadow Maul",
   "display_fullname": "Stalker Melee Dark Melee Shadow Maul",
-  "display_help": "X7U6XTXMD8M6W5LTPZSUCYXZQA",
-  "display_short_help": "B4M7AFC34CBRWXLE79W3TGR9NA",
+  "display_help": "You wrap your entire arms with Negative Energy channeled from the Netherworlds, then perform a series of blows that deal a lot of damage over a short period of time to multiple targets in front of you. These blows cloud your target's vision, lowering their chance to hit for a short time.",
+  "display_short_help": "Melee (Cone), DoT(Smash/Negative), Foe -To Hit",
   "icon": "shadowfighting_shadowmaul.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -451,6 +451,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Stalker_Melee.Dark_Melee"
 }

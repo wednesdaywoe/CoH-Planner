@@ -5,17 +5,17 @@
   "short_help": "Psionic Mastery",
   "icon": "psionic_mastery_set.ico",
   "powers": [
-    "Harmonic_Mind",
-    "Mental_Blast",
-    "Psionic_Lance",
-    "Psionic_Nexus",
-    "Psychic_Scream"
+    "Epic.Melee_Psionic_Mastery.Harmonic_Mind",
+    "Epic.Melee_Psionic_Mastery.Mental_Blast",
+    "Epic.Melee_Psionic_Mastery.Psionic_Lance",
+    "Epic.Melee_Psionic_Mastery.Psionic_Nexus",
+    "Epic.Melee_Psionic_Mastery.Psychic_Scream"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    40,
+    34,
+    34,
+    43,
+    37
   ]
 }

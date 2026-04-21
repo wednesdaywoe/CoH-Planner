@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Golden Dragonfly",
   "display_fullname": "Stalker Melee Ninja Sword Head Splitter",
-  "display_help": "BJZV4CJWWLH8YUZTQR68CYSSR3",
-  "display_short_help": "LT28DBHMPQULYCBL6AKHKHRLHZ",
+  "display_help": "You perform a devastating Golden Dragonfly attack that deals a massive amount of lethal damage and can even knock a foe down to the ground and reduce their Defense. The power of this attack can actually extend a short distance through multiple foes. If executed while hidden, only some affected targets may be hit with a Critical, however, there is a chance you may land a Critical hit with Golden Dragonfly even if you are not Hidden.",
+  "display_short_help": "Melee, High DMG(Lethal), Foe Knockback, -DEF",
   "icon": "katana_headsplitter.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -440,6 +440,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Stalker_Melee.Ninja_Sword"
 }

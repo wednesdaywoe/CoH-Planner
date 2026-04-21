@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Mystic Flight",
   "display_fullname": "Pool Sorcery Mystic Flight",
-  "display_help": "M76ERVH2V5K9W5BWEVWJZMHS62",
+  "display_help": "Using powerful magic you are able to lift yourself from the ground and fly. While Mystic Flight is active you can use Translocation to teleport to a distant location. Mystic Flight also increases your maximum flying speed by 50% whilst it is active.<br><br>Mystic Flight can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
   "display_short_help": "Toggle: Self Fly, (Special)",
   "icon": "sorcerypool_mysticflight.png",
   "auto_issue": false,
@@ -414,6 +414,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Pool.Sorcery"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psychic Scream",
   "display_fullname": "Blaster Support Mental Manipulation Psychic Scream",
-  "display_help": "XCY4DXTLQLTXWFNVW34M6W8UHX",
-  "display_short_help": "2HU2JEKWCLTWWYMQ6WKL6D7B42",
+  "display_help": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Cone), Light DMG(Psionic), Foe -Recharge",
   "icon": "psionicassault_psychicscream.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -208,6 +208,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Mental_Manipulation"
 }

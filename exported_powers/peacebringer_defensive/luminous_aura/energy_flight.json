@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Energy Flight",
   "display_fullname": "Peacebringer Defensive Luminous Aura Energy Flight",
-  "display_help": "2DSMSGQPR4Q8WRCQXSNP4BM3KZ",
+  "display_help": "Energy Flight allows you to travel large distances quickly. Energy Flight also increases your maximum flying speed by 50% and gives you access to the Quantum Acceleration power whilst it is active.<br><br>If you attack a target while this power is on, your flight speed will be temporarily reduced to Hover speed.<br><br>Energy Flight can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
   "display_short_help": "Toggle: Self Fly",
   "icon": "luminousaura_energyflight",
   "auto_issue": true,

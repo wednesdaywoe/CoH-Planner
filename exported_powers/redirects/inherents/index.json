@@ -5,11 +5,11 @@
   "short_help": "Inherent",
   "icon": "blind_set.ico",
   "powers": [
-    "Fury_Proc",
-    "Fury_Proc_Aura",
-    "Gauntlet_AoE",
-    "Gauntlet_Proc",
-    "Gauntlet_Proc_Aura"
+    "Redirects.Inherents.Fury_Proc",
+    "Redirects.Inherents.Fury_Proc_Aura",
+    "Redirects.Inherents.Gauntlet_AoE",
+    "Redirects.Inherents.Gauntlet_Proc",
+    "Redirects.Inherents.Gauntlet_Proc_Aura"
   ],
   "available_level": [
     0,

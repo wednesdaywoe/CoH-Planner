@@ -5,17 +5,17 @@
   "short_help": "Force Mastery",
   "icon": "force_mastery_set.ico",
   "powers": [
-    "Foce_of_Nature",
-    "Personal_Force_Field",
-    "Repulsion_Bomb",
-    "Repulsion_Field",
-    "Temp_Invulnerability"
+    "Epic.Force_Mastery.Foce_of_Nature",
+    "Epic.Force_Mastery.Personal_Force_Field",
+    "Epic.Force_Mastery.Repulsion_Bomb",
+    "Epic.Force_Mastery.Repulsion_Field",
+    "Epic.Force_Mastery.Temp_Invulnerability"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    43,
+    34,
+    40,
+    34,
+    37
   ]
 }

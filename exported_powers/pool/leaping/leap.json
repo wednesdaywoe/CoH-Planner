@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Acrobatics",
   "display_fullname": "Pool Leaping Leap",
-  "display_help": "U49ZXX5ZV9RXWCBQP68ATBZGJZ",
+  "display_help": "While this power is active, you are very nimble and Acrobatic. You can avoid most Knockback effects and are resistant to Hold effects.<br><br>You must be at least level 14 and have two other Leaping Powers before selecting Acrobatics.<br><br><color #fcfc95>Notes: Knock enhancements on this power enhance it's magnitude protection</color>",
   "display_short_help": "Toggle: Self +Res(Knockback, Hold)",
   "icon": "jump_acrobatics.png",
   "auto_issue": false,
@@ -253,6 +253,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Leaping"
 }

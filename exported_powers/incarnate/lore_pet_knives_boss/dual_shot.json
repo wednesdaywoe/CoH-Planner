@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Dual Shot",
   "display_fullname": "Incarnate Lore Pet Knives Boss Dual Shot",
-  "display_help": "58JER6M624XZWTZMM529GGSJYX",
+  "display_help": "You fire a round from each of your pistols. The ammunition used contains a special toxin which causes additional toxic damage to the target and reduces their damage. There is also a chance the target may be knocked down.<br><br><color #fcfc95>Notes: Dual Shot is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Moderate DMG(Lethal), Minor DoT (Toxic), Knockdown (Foe), -DMG(Foe,All)",
   "icon": "knivesofvengeance_dualshot.png",
   "auto_issue": false,

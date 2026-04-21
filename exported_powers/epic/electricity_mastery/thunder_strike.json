@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Thunder Strike",
   "display_fullname": "Epic Electricity Mastery Thunder Strike",
-  "display_help": "ZN6R97HBSK4NYXC2QJ85HZV7EQ",
-  "display_short_help": "TK8EEDTW4RPCYEVGXK3KMNTHPS",
+  "display_help": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave.",
+  "display_short_help": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback",
   "icon": "electricitymanipulation_thunderstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -644,6 +644,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Electricity_Mastery"
 }

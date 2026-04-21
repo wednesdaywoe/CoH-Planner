@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Poisonous Ray",
   "display_fullname": "Arachnos Soldiers Bane Spider Soldier Poisonous Ray",
-  "display_help": "3AUZWV99YHCUYYZV8A4NPJWCSX",
-  "display_short_help": "L2YWCYFARXNSYGCU258RSYD4AS",
+  "display_help": "You fire a Poisonous Ray from your mace causing damage over time as reducing the target's defense.",
+  "display_short_help": "Ranged, DoT(Toxic), -DEF",
   "icon": "banespider_poisonousray.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -176,6 +176,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Arachnos_Soldiers.Bane_Spider_Soldier"
 }

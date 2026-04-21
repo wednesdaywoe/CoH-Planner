@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Penumbral Shield",
   "display_fullname": "Warshade Defensive Umbral Aura Penumbral Shield",
-  "display_help": "ZTHZNGZY8E58WMBAVZ4CRE45MX",
+  "display_help": "When you toggle on Penumbral Shield, you become highly resistant to Fire, Cold, and Toxic damage.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Self +Res(Fire, Cold, Toxic)",
   "icon": "umbralaura_penumbralshield.png",
   "auto_issue": false,
@@ -201,6 +201,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

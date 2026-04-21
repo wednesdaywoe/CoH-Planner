@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Follow Up",
   "display_fullname": "Widow Training Widow Training Follow Up",
-  "display_help": "9P5LM6KUWKGWWHBQ7K3BG8XWGA",
-  "display_short_help": "C4DVUWZFBX8FYEZ7VNPKXE5YMQ",
+  "display_help": "You perform a feint attack that deals moderate damage. After this attack hits, it gives you a large bonus to your chance to hit and damage for a brief time.<br><br><color #fcfc95>Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power, additionally if you select this power, you may not also select Build Up.</color>",
+  "display_short_help": "Melee, DMG(Lethal), Self +DMG",
   "icon": "widowtraining_followup.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -271,6 +271,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Widow_Training.Widow_Training"
 }

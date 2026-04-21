@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Water Burst",
   "display_fullname": "Corruptor Ranged Water Blast Water Burst",
-  "display_help": "VJCDGQEUVWTDYTLX8LNVX6YFBZ",
-  "display_short_help": "KM3RJNVV8RQRWDXP2KPRZYLQZ2",
+  "display_help": "You cause water to violently explode from beneath your target's feet blasting all foes nearby with freezing cold water. Affected targets will suffer Cold and Smashing damage, have their movement speed reduced and may be knocked down by the force of the blast. Water Burst consumes all Tidal Power. It will deal additional cold damage and have a greater chance to knockdown for each stack of Tidal Power. If you have 3 stacks of Tidal Power Water Burst will have a 100% chance to knock the targets into the air.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Cold/Smash), Foe -Speed, Knockdown, +Wet, Self -Tidal Power",
   "icon": "waterblast_waterburst.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -889,6 +889,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Corruptor_Ranged.Water_Blast"
 }

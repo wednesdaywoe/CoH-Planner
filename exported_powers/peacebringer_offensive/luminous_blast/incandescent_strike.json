@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Incandescent Strike",
   "display_fullname": "Peacebringer Offensive Luminous Blast Incandescent Strike",
-  "display_help": "AJ2QM97FMYHGWPLV9RVCXXD5GA",
+  "display_help": "Incandescent Strike is an absolutely devastating melee attack that focuses all of the Kheldian's energy and strength into a single massive blow. This slow but incredibly devastating attack can knock out most opponents, leaving them Held. Incandescent Strike can also bring down fliers, Knock Down foes, and reduce their Defense.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee, Extreme DMG(Energy/Smash), Foe -DEF, -Fly, Hold",
   "icon": "luminousblast_incandescentstrike.png",
   "auto_issue": false,
@@ -370,6 +370,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Hurl Boulder",
   "display_fullname": "Epic Stone Mastery Hurl Boulder",
-  "display_help": "P9TMKJB6SBYLWTLP2R34PAR9QX",
-  "display_short_help": "KCNQXP7K458WWTVE7RWFK932UA",
+  "display_help": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack is close ranged, deals high damage, and can knock foes back.",
+  "display_short_help": "Ranged, DMG(Smash), Foe Knockback",
   "icon": "earth_mastery_hurlboulder",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -282,6 +282,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Stone_Mastery"
 }

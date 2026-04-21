@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Pulverize",
   "display_fullname": "Incarnate Lore Pet Arachnos LT Pulverize",
-  "display_help": "AN9XFUCPLCHYYHC8Q7MCFHFW6S",
+  "display_help": "You Pulverize with your mace dealing high Smashing damage and minor Toxic damage over time.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, Moderate DMG(Smash), Minor DoT(Toxic), Minor Disorient",
   "icon": "banespider_pulverize.png",
   "auto_issue": false,

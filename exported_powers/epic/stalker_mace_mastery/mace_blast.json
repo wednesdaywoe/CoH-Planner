@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mace Blast",
   "display_fullname": "Epic Stalker Mace Mastery Mace Blast",
-  "display_help": "A25TNTL9AG6DYFLV8HZBFFUJDZ",
-  "display_short_help": "A7BEFULRQU7LYEVR5R87UF98WQ",
+  "display_help": "The Bane Mace is capable of firing a bolt of kinetic energy. The blast is powerful enough that it may knockback some foes. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
+  "display_short_help": "Ranged, DMG(Energy), Foe Knockback",
   "icon": "arachnos_patron_targetedrangedmoddmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -538,6 +538,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Stalker_Mace_Mastery"
 }

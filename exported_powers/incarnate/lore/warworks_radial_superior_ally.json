@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Warworks Radial Superior Ally",
   "display_fullname": "Incarnate Lore Warworks Radial Superior Ally",
-  "display_help": "RJTMEZP7CNAZWQVFVJE7ULTUMA",
+  "display_help": "Draws forth the essences of a vanquished WarWorks Mk-VI \"Victoria\" from the Well of the Furies to serve you for 3 minutes and 20 seconds and Battle Orb from the Well of the Furies to serve you for 5 minutes. The Battle Orb is untouchable, but has no offensive powers at all.<br><br>This power also applies an Incarnate Shift. (An Incarnate Shift is a Level Shift which only activates while participating in an Incarnate Trial.).<br><br><color #fcfc95>Notes: Warworks Radial Superior Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Summon WarWorks Boss & Support Essences",
   "icon": "incarnate_lore_warworks_veryrare.png",
   "auto_issue": false,

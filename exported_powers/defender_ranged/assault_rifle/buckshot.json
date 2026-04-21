@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Buckshot",
   "display_fullname": "Defender Ranged Assault Rifle Buckshot",
-  "display_help": "NWBLRMBEATNCYZZCVELGGKUS7Q",
-  "display_short_help": "SFUNKWQCG8Q6WDLNA8B7MP5D4S",
+  "display_help": "Good at close range. Fires a cone of Buckshot pellets and can knock some foes down.",
+  "display_short_help": "Ranged (Cone), DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_shotgunbuckshot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -206,6 +206,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Defender_Ranged.Assault_Rifle"
 }

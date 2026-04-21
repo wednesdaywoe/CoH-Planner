@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fire Sword Circle",
   "display_fullname": "Incarnate Lore Pet Phantoms Boss Fire Sword Circle",
-  "display_help": "6T9HABG7KHWJW3VPC3C9UR874Z",
+  "display_help": "Mastery of your Fire Sword has enabled you to make an attack on every foe within melee distance. This will slash and burn your enemies, dealing minor damage and setting them ablaze.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE Melee, Moderate DMG(Fire/Lethal)",
   "icon": "firemanipulation_fireswordcircle.png",
   "auto_issue": false,

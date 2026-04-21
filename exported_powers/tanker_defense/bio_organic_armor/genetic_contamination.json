@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Genetic Contamination",
   "display_fullname": "Tanker Defense Bio Organic Armor Genetic Contamination",
-  "display_help": "FJE4VKDFG3Q7WNBURPVM96RKTW",
+  "display_help": "You're capable of breaking down the genetic material of your foes with a powerful toxin that is produced by your Bio Armor. Nearby foes affected by this poison will suffer toxic damage over time as well as dealing reduced damage. While Defensive Adaptation is active this power's damage debuff is increased in effectiveness.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: PBAoE, Minor DoT(Toxic), -Damage(All)",
   "icon": "bioorganicarmor_geneticcontamination.png",
   "auto_issue": false,
@@ -221,6 +221,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Tanker_Defense.Bio_Organic_Armor"
 }

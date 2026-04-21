@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Heavy Mallet",
   "display_fullname": "Tanker Melee Stone Melee Heavy Mallet",
-  "display_help": "TX934933M2J5Y9L93NX48PH33Q",
-  "display_short_help": "AQHFUE5C2EXUWNBVASRYJWLJS2",
+  "display_help": "A more impressive form of Stone Mallet, the Heavy Mallet deals more damage, but is slower to swing. It has a greater chance of knocking down opponents.",
+  "display_short_help": "Melee, DMG(Smash), Knockback",
   "icon": "stonemelee_heavymallet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -244,6 +244,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Tanker_Melee.Stone_Melee"
 }

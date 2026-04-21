@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dragon's Tail",
   "display_fullname": "Blaster Support Martial Manipulation Dragons Tail",
-  "display_help": "BWP2JER7X7T3Y3XJWY4EW7P7KW",
-  "display_short_help": "2NAFLRALB9YZYBLPJQCZYMTEEQ",
+  "display_help": "This low spinning kick deals moderate damage, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE Melee, Light DMG(Smash), Foe Knockdown",
   "icon": "martialmanipulation_dragonstail.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -246,6 +246,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Blaster_Support.Martial_Manipulation"
 }

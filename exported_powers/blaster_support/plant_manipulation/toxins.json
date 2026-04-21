@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Toxins",
   "display_fullname": "Blaster Support Plant Manipulation Toxins",
-  "display_help": "P6UA7CL8HVWEWXMX568MTM2M4Q",
-  "display_short_help": "FTYWCY22778MYNMTKG8RYWJ5L2",
+  "display_help": "You use your power over plants to coat all your attacks with powerful toxins for a few seconds, all your attacks will now do extra toxic damage and be more accurate.<br><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "Self +ToHit, +DMG(Special)",
   "icon": "plantmanipulation_toxins",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -113,6 +113,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Plant_Manipulation"
 }

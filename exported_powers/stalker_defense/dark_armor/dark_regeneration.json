@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Regeneration",
   "display_fullname": "Stalker Defense Dark Armor Dark Regeneration",
-  "display_help": "JYM2FWGCXBC7WVX73M6ADH2LJA",
-  "display_short_help": "2UNDMLMP2T3MW3ZZBNL8A7SJ53",
+  "display_help": "You can tap the dark essence of the Netherworld to drain a small amount of life from all enemies nearby, thus healing yourself. The more foes affected, the more you will be healed.<br><br>This power is mutually exclusive from Obscure Sustenance.",
+  "display_short_help": "PBAoE DMG(Negative), Self +HP",
   "icon": "darkarmor_darkregeneration.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -112,6 +112,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Stalker_Defense.Dark_Armor"
 }

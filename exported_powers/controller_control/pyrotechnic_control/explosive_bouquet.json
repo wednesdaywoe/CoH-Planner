@@ -3,10 +3,10 @@
   "full_name": "Controller_Control.Pyrotechnic_Control.Explosive_Bouquet",
   "short_name": "Explosive_Bouquet",
   "type": "Click",
-  "display_name": "3YYUJ8EWNHAWW2NMQJZK8VNBV3",
+  "display_name": "Explosive Bouquet",
   "display_fullname": "Controller Control Pyrotechnic Control Explosive Bouquet",
-  "display_help": "S5NVY7BFNDM3YXMN4SCRUJBSLX",
-  "display_short_help": "KFQWBGLMMAJSWCBJQUL4J38LFW",
+  "display_help": "You create an explosion of light and sound in a flower formation. Foes inside the blast radius will be Held and Blasted Off into the air.<br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>8</color> seconds and each affected foe will increase the recharge by <color #FF7F27>14.5</color> seconds for a maximum total of <color #FF7F27>240</color> seconds.</color>",
+  "display_short_help": "Ranged (AoE), Foe Hold, Blast Off",
   "icon": "pyrotechnic_explosivebouquet",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Controller_Control.Pyrotechnic_Control"
 }

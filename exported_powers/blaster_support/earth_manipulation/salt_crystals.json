@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Salt Crystals",
   "display_fullname": "Blaster Support Earth Manipulation Salt Crystals",
-  "display_help": "Z2TUEFY2FTG3WKX6VM8J7AEM6W",
+  "display_help": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required against AVs and players, as well as to make secondary effects apply.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Foe Sleep, -DEF",
   "icon": "earthmanip_saltcrystals",
   "auto_issue": false,
@@ -286,6 +286,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Blaster_Support.Earth_Manipulation"
 }

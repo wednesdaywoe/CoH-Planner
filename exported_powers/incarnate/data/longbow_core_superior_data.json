@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Longbow Core Superior Data",
   "display_fullname": "Incarnate Data Longbow Core Superior Data",
-  "display_help": "9KLV97K2X8DFY9CSNPKHNGJGR2",
+  "display_help": "Draws forth the essences of a vanquished Longbow Cataphract and Nullifier from the Well of the Furies to serve you for 5 minutes. These essences do increased damage compared to their previous versions.<br><br>This power also applies an Incarnate Shift. (An Incarnate Shift is a Level Shift which only activates while participating in an Incarnate Trial.).<br><br><color #fcfc95>Notes: Longbow Core Superior Data is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Longbow Boss & LT Essences",
   "icon": "incarnate_lore_clockwork_veryrare.png",
   "auto_issue": false,

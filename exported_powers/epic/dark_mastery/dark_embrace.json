@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Dark Embrace",
   "display_fullname": "Epic Dark Mastery Dark Embrace",
-  "display_help": "T3XJRVXC4CDBWUCJE56W2ZK4NZ",
+  "display_help": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Toxic, and Negative Energy damage. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
   "icon": "dark_mastery_darkembrace",
   "auto_issue": false,
@@ -158,6 +158,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Dark_Mastery"
 }

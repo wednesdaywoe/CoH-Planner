@@ -5,25 +5,25 @@
   "short_help": "Kinetic Attack",
   "icon": "kinetic_attack_set.ico",
   "powers": [
-    "Body_Blow",
-    "Burst",
-    "Focused_Burst",
-    "Power_Siphon",
-    "Quick_Strike",
-    "Repulsing_Torrent",
-    "Smashing_Blow",
-    "Taunt",
-    "Total_Focus"
+    "Tanker_Melee.Kinetic_Attack.Body_Blow",
+    "Tanker_Melee.Kinetic_Attack.Burst",
+    "Tanker_Melee.Kinetic_Attack.Focused_Burst",
+    "Tanker_Melee.Kinetic_Attack.Power_Siphon",
+    "Tanker_Melee.Kinetic_Attack.Quick_Strike",
+    "Tanker_Melee.Kinetic_Attack.Repulsing_Torrent",
+    "Tanker_Melee.Kinetic_Attack.Smashing_Blow",
+    "Tanker_Melee.Kinetic_Attack.Taunt",
+    "Tanker_Melee.Kinetic_Attack.Total_Focus"
   ],
   "available_level": [
     0,
+    23,
+    27,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    3,
+    9,
+    29
   ]
 }

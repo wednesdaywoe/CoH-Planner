@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Tremor",
   "display_fullname": "Dominator Assault Earth Assault Tremor",
-  "display_help": "Q63KQEW85Y57WMMWQFGE36HXJ3",
-  "display_short_help": "KCTMB4E55CHZYEBLWYXSW6NULZ",
+  "display_help": "You can cause a localized earthquake immediately around you. This will deal moderate damage to every foe in melee range, while knocking them back.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE, Light DMG(Smash), Knockback",
   "icon": "earthassault_tremor.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -226,6 +226,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Dominator_Assault.Earth_Assault"
 }

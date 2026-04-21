@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "ESD Arrow",
   "display_fullname": "Blaster Support Tactical Arrow EMP Arrow",
-  "display_help": "X4XBWQDBCTXGW4L4VGDY53VTL3",
-  "display_short_help": "LK5HQDWWQ45PWJZBWU63GXY9M2",
+  "display_help": "This arrow can unleash a massive electrostatic discharge on impact. This ESD can affect machines, and is even powerful enough to affect synaptic brain patterns. It will stun all foes in its radius. Additionally, most machines and robots will be held and take moderate high damage.<br><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "Ranged (Targeted AoE), Foe Disorient, -End, Special vs. Robots",
   "icon": "tacticalarrow_stun.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -315,6 +315,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Tactical_Arrow"
 }

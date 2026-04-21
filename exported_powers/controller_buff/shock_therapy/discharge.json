@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Galvanic Sentinel",
   "display_fullname": "Controller Buff Shock Therapy Discharge",
-  "display_help": "RYPC4MLLTFGCWQCQ2GPSBBQ32X",
+  "display_help": "Summons a Galvanic Sentinel to your aid. The Galvanic Sentinel shocks and weakens your foes, draining some endurance and reducing their regeneration, recovery, and damage output. The Galvanic Sentinel can be buffed and healed, and may be targeted with your Circuit powers.",
   "display_short_help": "Summon Galvanic Sentinel: Ranged Debuff Special",
   "icon": "shocktherapy_galvanicsentinel.png",
   "auto_issue": false,
@@ -90,6 +90,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Controller_Buff.Shock_Therapy"
 }

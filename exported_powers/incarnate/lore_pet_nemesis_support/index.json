@@ -5,8 +5,8 @@
   "short_help": "Nemesis",
   "icon": "lore_pet_nemesis_support_set.ico",
   "powers": [
-    "Healing_Aura",
-    "Triage"
+    "Incarnate.Lore_Pet_Nemesis_Support.Healing_Aura",
+    "Incarnate.Lore_Pet_Nemesis_Support.Triage"
   ],
   "available_level": [
     0,

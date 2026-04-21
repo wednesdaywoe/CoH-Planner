@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Whirling Sword",
   "display_fullname": "Tanker Melee Broad Sword Whirling Sword",
-  "display_help": "4A2LPJYZ3H3CWCXRRHVXGQHT5Z",
-  "display_short_help": "NY5TH7BMQFU8WGXCBQMXM69DGX",
+  "display_help": "You perform a Whirling Sword maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take minor damage over time and reduces their defense.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Lethal), Foe -Def",
   "icon": "sword_whirlingsword.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -266,6 +266,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Tanker_Melee.Broad_Sword"
 }

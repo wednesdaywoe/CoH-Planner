@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Tashibishi",
   "display_fullname": "Epic Sentinel Ninja Mastery Caltrops",
-  "display_help": "8UCPYPDRHUEWY7LQWMXFPTMUKW",
-  "display_short_help": "CJJGWNTAVXH6WPB9WSJPXGDLDZ",
+  "display_help": "You toss a handful of Caltrops at a targeted location and spread the tiny metal spikes over a large area. Any villains that pass over the Caltrops will be forced to move at a slower rate. They will also take some trivial Lethal damage over time.",
+  "display_short_help": "Ranged (Location AoE), DoT(Lethal), Foe -Speed",
   "icon": "ninjatools_slow",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Ninja_Mastery"
 }

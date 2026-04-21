@@ -5,9 +5,9 @@
   "short_help": "Brute Melee",
   "icon": "brute_melee_set.ico",
   "powers": [
-    "Savage_Leap"
+    "Redirects.Brute_Melee.Savage_Leap"
   ],
   "available_level": [
-    0
+    31
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Vorpal Core Judgement",
   "display_fullname": "Incarnate Judgement Vorpal Core Judgement",
-  "display_help": "XRB3RS5LEB4QYBC7FSDL99G4V3",
+  "display_help": "Self-Targeted Cone AoE, Extreme DMG(Smashing) + Moderate DoT(Lethal).<br><br><color #fcfc95>Notes: Vorpal Core Judgement is unaffected by Recharge Time, Range, Radius or Arc changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self-Targeted Cone AoE, Extreme DMG(Smashing) + Moderate DoT(Lethal)",
   "icon": "incarnate_judgement_vorpal_uncommon.png",
   "auto_issue": false,

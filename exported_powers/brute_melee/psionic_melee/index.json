@@ -5,25 +5,25 @@
   "short_help": "Psionic Melee",
   "icon": "psionic_melee_set.ico",
   "powers": [
-    "Boggle",
-    "Concentration",
-    "Greater_Psi_Blade",
-    "Mass_Levitate",
-    "Mental_Strike",
-    "Psi_Blade",
-    "Psi_Blade_Sweep",
-    "Taunt",
-    "Telekinetic_Blow"
+    "Brute_Melee.Psionic_Melee.Boggle",
+    "Brute_Melee.Psionic_Melee.Concentration",
+    "Brute_Melee.Psionic_Melee.Greater_Psi_Blade",
+    "Brute_Melee.Psionic_Melee.Mass_Levitate",
+    "Brute_Melee.Psionic_Melee.Mental_Strike",
+    "Brute_Melee.Psionic_Melee.Psi_Blade",
+    "Brute_Melee.Psionic_Melee.Psi_Blade_Sweep",
+    "Brute_Melee.Psionic_Melee.Taunt",
+    "Brute_Melee.Psionic_Melee.Telekinetic_Blow"
   ],
   "available_level": [
+    17,
+    5,
+    21,
+    25,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    7,
+    11,
+    1
   ]
 }

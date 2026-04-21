@@ -3,10 +3,10 @@
   "full_name": "Brute_Defense.Regeneration.Instant_Regeneration",
   "short_name": "Instant_Regeneration",
   "type": "Toggle",
-  "display_name": "R8QGE5MPF6FRWAMJBVZGTJD9PX",
+  "display_name": "Reactive Regeneration",
   "display_fullname": "Brute Defense Regeneration Instant Regeneration",
-  "display_help": "QW2V9BXP7P4RY6B2RM42RG568S",
-  "display_short_help": "EGE7L6SYXJ4EYEZLS5G8RQRNCZ",
+  "display_help": "When you activate this power, you can regenerate your health at an astounding rate. This boost becomes stronger every time you take damage, as it scales you also become resistant to regeneration and recovery debuffs as well as endurance drain.<br><br>This power is mutually exclusive from Instant Healing.",
+  "display_short_help": "Toggle: Self +Regeneration, +Res(-Regeneration, -End, -Recovery)",
   "icon": "regeneration_instanthealing.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -232,6 +232,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Brute_Defense.Regeneration"
 }

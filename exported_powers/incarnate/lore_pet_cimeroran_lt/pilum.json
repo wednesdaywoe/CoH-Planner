@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Pilum",
   "display_fullname": "Incarnate Lore Pet Cimeroran LT Pilum",
-  "display_help": "G6FXYUPM5Z9YYZBEBQNL9FA8ZW",
+  "display_help": "You throw a pilum at a foe, dealing heavy damage.<br><br><color #fcfc95>Notes: Pilum is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Light DMG(Lethal)",
   "icon": "electricalbolt_lightningbolt.png",
   "auto_issue": false,

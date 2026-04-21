@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Flash Freeze",
   "display_fullname": "Epic Cold Mastery Flash Freeze",
-  "display_help": "RRUB57AP4M4QYCCRNM2S54GUTS",
-  "display_short_help": "E4R5TCXDHARPYLZMELQ7CAA6SW",
+  "display_help": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Cold/Lethal), Foe Sleep",
   "icon": "ice_mastery_flashfreeze",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -358,6 +358,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Cold_Mastery"
 }

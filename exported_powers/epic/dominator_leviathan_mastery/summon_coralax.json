@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Summon Coralax",
   "display_fullname": "Epic Dominator Leviathan Mastery Summon Coralax",
-  "display_help": "2KRA4358FEKPWHBKDY2TBSVDLZ",
-  "display_short_help": "F49M7TREEUCPYCLCKS3WD7STNZ",
+  "display_help": "Captain Mako has shown you how to summon a Coralax Blue Hybrid to do your bidding. The Coralax are humans who have been infected with living coral. Your access to this Hybrid is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Hybrid: Ranged DMG(Lethal)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -89,6 +89,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Dominator_Leviathan_Mastery"
 }

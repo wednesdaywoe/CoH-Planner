@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Breath of Fire",
   "display_fullname": "Scrapper Melee Fiery Melee Breath of Fire",
-  "display_help": "5XBBH8SRGX98WQZC653CQPBZK2",
-  "display_short_help": "JW3GP7GJBKPAWYLERMLD5LTJD2",
+  "display_help": "This allows you to spew forth fire from your mouth, burning all foes within its narrow cone. This is a very accurate attack that can deal good damage at a close range.",
+  "display_short_help": "Close (Cone) DoT (Fire)",
   "icon": "fieryfray_breathingfire.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -457,6 +457,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Scrapper_Melee.Fiery_Melee"
 }

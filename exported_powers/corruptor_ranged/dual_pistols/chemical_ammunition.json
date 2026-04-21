@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Chemical Ammunition",
   "display_fullname": "Corruptor Ranged Dual Pistols Chemical Ammunition",
-  "display_help": "JUXCRLL8P5TWYDX7T73JX5K9VS",
+  "display_help": "While this toggle is active you will be equipped with 'Chemical Rounds.' Most of your Dual Pistol attacks will have their secondary damage converted to toxic damage and inflict a minor damage debuff effect on the target.<br><br>In order to earn this power, you must purchase the Swap Ammo power.",
   "display_short_help": "Toggle: Ammo Change (Toxic), Special",
   "icon": "dualpistols_chemicalammo.png",
   "auto_issue": true,
@@ -405,6 +405,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Corruptor_Ranged.Dual_Pistols"
 }

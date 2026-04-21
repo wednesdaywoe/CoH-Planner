@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Dark Empowerment",
   "display_fullname": "Mastermind Summon Necromancy Dark Empowerment",
-  "display_help": "UEPUUTLQ4WN9WRNMC6M9ZTQKL3",
+  "display_help": "Dark Empowerment will permanently bestow the most powerful and darkest new powers and abilities to all of your Undead Henchman. The Empowered Undead will gain new abilities and powers. The powers gained are unique and dependent upon the type of Undead Henchman that is Empowered, but all Henchmen will gain additional Hit Points, and the power to steal life force from enemies they attack!<br><br>Dark Empowerment only works on your Undead Henchmen and you can only Empower your Undead Henchmen once with this power.",
   "display_short_help": "Ranged, Empower Undead Henchman",
   "icon": "necromancy_darkempowerment.png",
   "auto_issue": false,
@@ -43,6 +43,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Mastermind_Summon.Necromancy"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Rend Armor",
   "display_fullname": "Tanker Melee Titan Weapons Shatter Armor",
-  "display_help": "3842WZUE2U7MW7MBTV3WZPBHZW",
-  "display_short_help": "2E9T2RLFHHW4YGNLP62CRP23KQ",
+  "display_help": "You batter your enemy with your mighty weapon dealing Extreme Smashing damage and reducing their resistance to damage as well as their defense to all types of attacks for a short time.",
+  "display_short_help": "Melee, DMG(Smashing), Foe -Def(All), -Res(All)",
   "icon": "titanweapons_shatterarmor.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Tanker_Melee.Titan_Weapons"
 }

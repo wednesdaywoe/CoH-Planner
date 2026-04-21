@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Oppressive Gloom",
   "display_fullname": "Stalker Defense Dark Armor Oppressive Gloom",
-  "display_help": "32E6HTW7SCMCWMBCGE4264TT5Z",
+  "display_help": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: PBAoE, Foe Disorient, Self -HP",
   "icon": "darkarmor_oppressivegloom.png",
   "auto_issue": false,
@@ -162,6 +162,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Stalker_Defense.Dark_Armor"
 }

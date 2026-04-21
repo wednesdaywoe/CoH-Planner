@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Throw Sand",
   "display_fullname": "Blaster Support Martial Manipulation Throw Sand",
-  "display_help": "8J7UQWC7ZNZYWJVM9SJRLHHVGX",
+  "display_help": "You grab some nearby debris and fling it towards a nearby foe, obstructing their vision and dazing them.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Ranged (Cone), Foe Disorient, -Perception",
   "icon": "martialmanipulations_throwsand.png",
   "auto_issue": false,
@@ -244,6 +244,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Martial_Manipulation"
 }

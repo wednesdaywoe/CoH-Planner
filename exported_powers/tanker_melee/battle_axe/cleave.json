@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Cleave",
   "display_fullname": "Tanker Melee Battle Axe Cleave",
-  "display_help": "WN4443Q9H78KY7VK5ZZYY7NGL2",
-  "display_short_help": "SFT2TXGMQ7PGW5X6XMSV6WVHTQ",
+  "display_help": "This is an attempt to split your opponent in two with one fell swoop of your Battle Axe. It is an extremely devastating attack that deals massive damage and can knock foes to the ground. The power of this attack can actually extend a short distance through multiple foes.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>5</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "Ranged, DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_cleaveplayer",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -282,6 +282,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Tanker_Melee.Battle_Axe"
 }

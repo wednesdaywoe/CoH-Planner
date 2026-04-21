@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Knockout Blow",
   "display_fullname": "Epic Sentinel Leviathan Mastery Knockout Blow",
-  "display_help": "TFTGHQNEEL33YCVW3C34WHMM63",
-  "display_short_help": "JA8V4L5NNWVUYEZKNLTLU3T7VX",
+  "display_help": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target.",
+  "display_short_help": "Melee, DMG(Smash), Foe Hold",
   "icon": "arachnos_patron_koblow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -332,6 +332,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Leviathan_Mastery"
 }

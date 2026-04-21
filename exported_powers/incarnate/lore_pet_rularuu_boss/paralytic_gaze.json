@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Paralytic Gaze",
   "display_fullname": "Incarnate Lore Pet Rularuu Boss Paralytic Gaze",
-  "display_help": "GXWB4S35DF56YMNKE6TPAKLMZA",
+  "display_help": "The Sentry has Held you with it's Paralytic Gaze.<br><br><color #fcfc95>Notes: Paralytic Gaze is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Hold",
   "icon": "mentalcontrol_command.png",
   "auto_issue": false,

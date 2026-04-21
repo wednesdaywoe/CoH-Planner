@@ -1,29 +1,29 @@
 {
   "key": "Corruptor_Ranged.Beam_Rifle",
   "display_name": "Beam Rifle",
-  "help": "P2828438103",
+  "help": "Your weapon of choice is a high-tech beam rifle capable of firing a wide variety of energy blasts at your foes. Your Beam Rifle attacks will have greater potency while Disintegration is in effect on your target. Additionally, single target Beam Rifle attacks used on targets suffering from the Disintegrating effect have a chance to spread this effect to nearby foes. Beam Rifle focuses on dealing a great deal of single target damage, but has a few area of effect attacks as well.",
   "short_help": "Beam Rifle",
   "icon": "beam_rifle_set.ico",
   "powers": [
-    "Aim",
-    "Charged_Shot",
-    "Cutting_Beam",
-    "Disintegrate",
-    "Lancer_Shot",
-    "Overcharge",
-    "Penetrating_Ray",
-    "Piercing_Beam",
-    "Single_Shot"
+    "Corruptor_Ranged.Beam_Rifle.Aim",
+    "Corruptor_Ranged.Beam_Rifle.Charged_Shot",
+    "Corruptor_Ranged.Beam_Rifle.Cutting_Beam",
+    "Corruptor_Ranged.Beam_Rifle.Disintegrate",
+    "Corruptor_Ranged.Beam_Rifle.Lancer_Shot",
+    "Corruptor_Ranged.Beam_Rifle.Overcharge",
+    "Corruptor_Ranged.Beam_Rifle.Penetrating_Ray",
+    "Corruptor_Ranged.Beam_Rifle.Piercing_Beam",
+    "Corruptor_Ranged.Beam_Rifle.Single_Shot"
   ],
   "available_level": [
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    1,
+    5,
+    11,
+    25,
+    17,
+    21,
     0
   ]
 }

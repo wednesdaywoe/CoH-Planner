@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Lich",
   "display_fullname": "Mastermind Summon Necromancy Lich",
-  "display_help": "3RKY9N3SVGW8WGVUJB9MCFWALQ",
+  "display_help": "Summons a dark and powerful Lich. The lich is an undead entity that, when alive, possessed many dark powers of his own. Perhaps it was a dark wizard, or powerful arch villain. Perhaps it was even a Necromancer. Now it only hungers for the souls of the living, and is quite good at feeding itself. The Lich specializes in dark control and draining powers.",
   "display_short_help": "Summon Lich",
   "icon": "necromancy_summonlitch.png",
   "auto_issue": false,
@@ -138,6 +138,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Mastermind_Summon.Necromancy"
 }

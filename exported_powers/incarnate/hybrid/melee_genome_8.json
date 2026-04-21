@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Melee Core Embodiment",
   "display_fullname": "Incarnate Hybrid Melee Genome 8",
-  "display_help": "CQQEHPYW6XHPWYNUCXW6S5KU8S",
+  "display_help": "This power grants the user a stacking Regeneration, Resistance, and Status Protection buff for each enemy within a 10 foot radius. The effect reaches its maximum strength at 9 enemies. This power also grants a very large Regeneration, Resistance, and Status Protection buff regardless of nearby foes. Equipping this Hybrid power grants a passive boost to Regeneration at all times.<br><br><color #fcfc95>Notes: Melee Core Embodiment is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Self +Regen, +Resist(All), +Status Protection per nearby enemy",
   "icon": "incarnate_hybrid_melee_veryrare.png",
   "auto_issue": false,

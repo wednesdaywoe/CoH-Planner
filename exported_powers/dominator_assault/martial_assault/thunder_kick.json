@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Thunder Kick",
   "display_fullname": "Dominator Assault Martial Assault Thunder Kick",
-  "display_help": "3LRCVAXWK2BBWHV2DJB8GHA92W",
+  "display_help": "You can perform a strong Thunder Kick that hits so hard it can Disorient your target.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, Moderate DMG(Smash), Minor Disorient",
   "icon": "martialassault_thunderkick.png",
   "auto_issue": false,

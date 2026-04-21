@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Soul Storm",
   "display_fullname": "Epic Stalker Soul Mastery Soul Storm",
-  "display_help": "LRQT28DVQSUMW7C8X77GFTM8PZ",
-  "display_short_help": "AQJQZ86BGHVNWULUAGZ86T2CD3",
+  "display_help": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DoT(Negative), Foe Hold",
   "icon": "arachnos_patron_targetedhold.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -508,6 +508,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Stalker_Soul_Mastery"
 }

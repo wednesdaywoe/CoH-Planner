@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Shark Skin",
   "display_fullname": "Epic Mastermind Leviathan Mastery Shark Skin",
-  "display_help": "JY5LVN452FJ2YJM5NEV4GA6P4A",
+  "display_help": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing and cold damage. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Self +Res(Smash, Lethal, Cold)",
   "icon": "arachnos_patron_resistbuff.png",
   "auto_issue": false,
@@ -133,6 +133,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Mastermind_Leviathan_Mastery"
 }

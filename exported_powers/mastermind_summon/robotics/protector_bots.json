@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Protector Bots",
   "display_fullname": "Mastermind Summon Robotics Protector Bots",
-  "display_help": "WENNEU69MKYPW5BGFCZS4698VZ",
+  "display_help": "You can summon one to two powerful Protector Bots (depending on your level). Protector Bots can defend your army by placing Force Fields on you and your allies. They can even be equipped to repair your other Robot Henchmen. Make no mistake though, the best defense is a good offense, and Protector Bots are well equipped with energy weapons.<br><br>You may only have 2 Protector Bots under your control at any given time. If you attempt to summon more Protector Bots, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
   "display_short_help": "Summon Protector Bot",
   "icon": "robotics_constructprotectorbot.png",
   "auto_issue": false,
@@ -180,6 +180,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Mastermind_Summon.Robotics"
 }

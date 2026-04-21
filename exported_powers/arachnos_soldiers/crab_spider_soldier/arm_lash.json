@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Arm Lash",
   "display_fullname": "Arachnos Soldiers Crab Spider Soldier Arm Lash",
-  "display_help": "QR8CF3FA2K4VYSVM5DCFWFE9VQ",
-  "display_short_help": "N4ARCYYZCMYFWXZ38E62TPXAVS",
+  "display_help": "The Crab Spider's backpack is capable of making rapid attacks with its many arms dealing heavy damage to foes within a short cone in front of the user.",
+  "display_short_help": "Melee Cone, DMG(Lethal), Foe -DEF",
   "icon": "crabspider_armlash.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -203,6 +203,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Arachnos_Soldiers.Crab_Spider_Soldier"
 }

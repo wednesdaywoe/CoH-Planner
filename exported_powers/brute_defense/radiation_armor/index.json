@@ -5,25 +5,25 @@
   "short_help": "Radiation Armor",
   "icon": "radiation_armor_set.ico",
   "powers": [
-    "Alpha_Barrier",
-    "Beta_Decay",
-    "Fallout_Shelter",
-    "Gamma_Boost",
-    "Ground_Zero",
-    "Meltdown",
-    "Particle_Shielding",
-    "Proton_Armor",
-    "Radiation_Therapy"
+    "Brute_Defense.Radiation_Armor.Alpha_Barrier",
+    "Brute_Defense.Radiation_Armor.Beta_Decay",
+    "Brute_Defense.Radiation_Armor.Fallout_Shelter",
+    "Brute_Defense.Radiation_Armor.Gamma_Boost",
+    "Brute_Defense.Radiation_Armor.Ground_Zero",
+    "Brute_Defense.Radiation_Armor.Meltdown",
+    "Brute_Defense.Radiation_Armor.Particle_Shielding",
+    "Brute_Defense.Radiation_Armor.Proton_Armor",
+    "Brute_Defense.Radiation_Armor.Radiation_Therapy"
   ],
   "available_level": [
     0,
+    19,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27,
+    29,
+    23,
+    3,
+    15
   ]
 }

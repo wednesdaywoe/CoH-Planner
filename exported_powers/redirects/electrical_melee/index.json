@@ -5,9 +5,9 @@
   "short_help": "Electrical Melee",
   "icon": "blind_set.ico",
   "powers": [
-    "Lightning_Clap"
+    "Redirects.Electrical_Melee.Lightning_Clap"
   ],
   "available_level": [
-    0
+    21
   ]
 }

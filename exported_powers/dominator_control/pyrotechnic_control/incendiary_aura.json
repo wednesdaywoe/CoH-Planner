@@ -3,10 +3,10 @@
   "full_name": "Dominator_Control.Pyrotechnic_Control.Incendiary_Aura",
   "short_name": "Incendiary_Aura",
   "type": "Toggle",
-  "display_name": "XRDJJZTNWDZSW9VQJQ44KNLE7Q",
+  "display_name": "Incendiary Aura",
   "display_fullname": "Dominator Control Pyrotechnic Control Incendiary Aura",
-  "display_help": "ZJU9WV323MLSYGCL9QQW223XYX",
-  "display_short_help": "MTWVF52M9PRJWNNDPKJUNXNMFX",
+  "display_help": "You create an aura of pyrotechnic energy around yourself that has combustible properties. Enemies within range of the power have a persistent chance of Blasting Off into the air, as well as suffer from reduced ToHit and Defense.",
+  "display_short_help": "Toggle: PBAoE, Chance for Blast Off. -ToHit, -Defense",
   "icon": "pyrotechnic_incendiaryaura",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -180,6 +180,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Dominator_Control.Pyrotechnic_Control"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Incinerate",
   "display_fullname": "Brute Melee Fiery Melee Incinerate",
-  "display_help": "ZEF5G82MGZ3EYDMSQBAQADWRDW",
-  "display_short_help": "8U3GFPRPHVEDYQZZQXMLHE2XYZ",
+  "display_help": "Intense concentration can allow you to Incinerate an opponent. This will set your foe ablaze, dealing very high damage over a short time.",
+  "display_short_help": "Melee, DoT (Fire)",
   "icon": "fieryfray_incinerate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -165,6 +165,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Brute_Melee.Fiery_Melee"
 }

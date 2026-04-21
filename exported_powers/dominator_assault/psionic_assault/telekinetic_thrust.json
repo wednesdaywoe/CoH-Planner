@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Telekinetic Thrust",
   "display_fullname": "Dominator Assault Psionic Assault Telekinetic Thrust",
-  "display_help": "UZWTAYP83Q26WQXWTYUK86LK43",
-  "display_short_help": "X4X4MB7TZNGCYFMXSQDAWJ492Q",
+  "display_help": "A focused attack of intense mental power that violently sends a nearby foe flying and deals a high amount of Psionic and Smashing damage.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Melee, Moderate DMG(Psionic/Smash), Foe Knockback",
   "icon": "psionicassault_telekineticthrust.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -250,6 +250,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Dominator_Assault.Psionic_Assault"
 }

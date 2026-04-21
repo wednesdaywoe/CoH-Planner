@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Blackwand",
   "display_fullname": "Inherent Inherent prestige Permanent Blackwand 54",
-  "display_help": "RY3YPRKFSRBGYVMDHEVYMAFCCS",
+  "display_help": "This black metal wand feels cold in your hand, and glows with dark arcane energies. Damage enhancing powers do not apply to Blackwand.<br><br><color #fcfc95>Damage: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Negative), Foe -ACC",
   "icon": "veteran_blackwand.png",
   "auto_issue": true,

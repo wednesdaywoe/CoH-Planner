@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Hand Clap",
   "display_fullname": "Incarnate Lore Pet Tsoo LT Hand Clap",
-  "display_help": "WN8SSWNW7YDFWALZKQNSYN44YA",
+  "display_help": "You have been Disoriented.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Disorient",
   "icon": "superstrength_handclap.png",
   "auto_issue": false,

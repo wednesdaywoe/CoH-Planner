@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Rib Cracker",
   "display_fullname": "Scrapper Melee Brawling Throat Strike",
-  "display_help": "8H779S45ZZW9WJNHWV4FZZDM23",
-  "display_short_help": "5K7Z9KX9GCSXW9Z8CQJRW68H9Z",
+  "display_help": "You deftly strike your foe in a very vulnerable location. Rib Cracker deals Moderate Damage but reduces your foe's Damage and Resistance moderately for a short time. Rib Cracker is a Combo Builder and adds 1 Combo Level.",
+  "display_short_help": "Melee, DMG(Smash), Foe -Res (All), -Dmg, Combo Builder",
   "icon": "brawling_throatstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -653,6 +653,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Scrapper_Melee.Brawling"
 }

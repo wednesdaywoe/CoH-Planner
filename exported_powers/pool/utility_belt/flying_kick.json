@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Envenomed Barrage",
   "display_fullname": "Pool Utility Belt Flying Kick",
-  "display_help": "LQZQNZSRFDAUWUNNF7ZR76W5SZ",
+  "display_help": "You unleash a barrage of throwing knives at foes in front of you dealing Moderate lethal damage and an additional amount of toxic damage over time. Affected foes will also have their damage reduced slightly.<br><br>You must be at least level 14 and have two other Utility Belt powers before selecting Envenomed Barrage.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged(Cone), Moderate DMG(Lethal), Foe Light DoT(Toxic), -DMG",
   "icon": "utilitybelt_envenomedbarrage.png",
   "auto_issue": false,
@@ -993,6 +993,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Utility_Belt"
 }

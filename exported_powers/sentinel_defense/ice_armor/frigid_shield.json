@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Frigid Shield",
   "display_fullname": "Sentinel Defense Ice Armor Frigid Shield",
-  "display_help": "GNUVLJGVC7FBY4XM5QLPW7F6QW",
+  "display_help": "While active, you dramatically lower the temperature around yourself. The air around your body becomes so cold that attacks deflect off of it, granting you absorption.",
   "display_short_help": "Toggle: +Absorb over time, Res(Slow)",
   "icon": "icearmor_absorb.png",
   "auto_issue": false,
@@ -136,6 +136,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Sentinel_Defense.Ice_Armor"
 }

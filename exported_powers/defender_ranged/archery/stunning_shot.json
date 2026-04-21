@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Stunning Shot",
   "display_fullname": "Defender Ranged Archery Stunning Shot",
-  "display_help": "VAPMZH9M2E6FY6BSLQD587ABRZ",
+  "display_help": "You fire a blunt, weighted arrow at your target's chest. The Stunning Shot has a good chance of stunning your foe.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged Disorient, Minor DMG(Smashing)",
   "icon": "archery_stunarrow.png",
   "auto_issue": false,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Defender_Ranged.Archery"
 }

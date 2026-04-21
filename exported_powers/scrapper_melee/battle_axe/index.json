@@ -5,25 +5,25 @@
   "short_help": "Battle Axe",
   "icon": "battle_axe_set.ico",
   "powers": [
-    "Beheader",
-    "Build_Up",
-    "Chop",
-    "Cleave",
-    "Confront",
-    "Gash",
-    "Pendulum",
-    "Swoop",
-    "Whirling_Axe"
+    "Scrapper_Melee.Battle_Axe.Beheader",
+    "Scrapper_Melee.Battle_Axe.Build_Up",
+    "Scrapper_Melee.Battle_Axe.Chop",
+    "Scrapper_Melee.Battle_Axe.Cleave",
+    "Scrapper_Melee.Battle_Axe.Confront",
+    "Scrapper_Melee.Battle_Axe.Gash",
+    "Scrapper_Melee.Battle_Axe.Pendulum",
+    "Scrapper_Melee.Battle_Axe.Swoop",
+    "Scrapper_Melee.Battle_Axe.Whirling_Axe"
   ],
   "available_level": [
     0,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25,
+    11,
+    1,
+    7,
+    17,
+    21
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Call Hawk",
   "display_fullname": "Mastermind Summon Beast Mastery Call Hawk",
-  "display_help": "SEURAH8EYE4XY3CMB672AB2SBW",
-  "display_short_help": "63JFFJGNCCGLW4XNM2N2KWBWPA",
+  "display_help": "You call forth a hawk ally to swoop in and viciously peck at your target causing High Lethal damage. The attack often catches foes off their guard and can knock them down as well as reducing their chance to hit. This power has a good chance at granting your pets a stack of Pack Mentality.<br><br><color #fcfc95>Apex Predator:</color><br>Using this power will grant you and your summoned beasts an Accuracy and HP buff for 30 seconds. This does not stack from the same power.",
+  "display_short_help": "Ranged, Moderate DMG(Lethal), Foe -To Hit, Knockdown, -Fly",
   "icon": "beastmastery_callhawk.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -400,6 +400,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Mastermind_Summon.Beast_Mastery"
 }

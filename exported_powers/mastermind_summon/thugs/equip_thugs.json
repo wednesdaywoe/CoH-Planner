@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Equip Thugs",
   "display_fullname": "Mastermind Summon Thugs Equip Thugs",
-  "display_help": "WHR33UU5PSSGYTNFGPPEV5ZPYW",
+  "display_help": "Equip your Thug Henchmen with better ammo, weapons and training. This power permanently bestows new weapons and abilities to all of your Thug Henchman. The powers gained are unique and dependent upon the type of Thug Henchman.<br><br>This power only works on your Thug Henchmen and you can only Equip your Thug Henchmen once with this power.",
   "display_short_help": "Ranged, Equip Thug Henchman",
   "icon": "thugs_equipthugs.png",
   "auto_issue": false,
@@ -44,6 +44,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Mastermind_Summon.Thugs"
 }

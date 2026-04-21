@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Long Range Teleporter",
   "display_fullname": "Redirects Pool Teleportation Long Range Teleport",
-  "display_help": "NJ8S8Y9XUWZXW5CPF2AL2UZ7KZ",
+  "display_help": "The Long Range Teleporter allows you to teleport very long distances, even across city zones and to Supergroup bases. Collecting any Exploration badge in a zone will unlock it as a destination for your Long Range Teleporter.<br><br><color #fcfc95>Notes: Long Range Teleporter is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Teleport to Zone or Base",
   "icon": "accolade_longrangeteleport",
   "auto_issue": false,

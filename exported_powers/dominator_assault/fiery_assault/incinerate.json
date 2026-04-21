@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Incinerate",
   "display_fullname": "Dominator Assault Fiery Assault Incinerate",
-  "display_help": "FS3TKFZW7UGSY3X5TKCVMU979Z",
+  "display_help": "Intense concentration can allow you to Incinerate an opponent at melee range. This will set your foe ablaze, dealing damage over time.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High DoT(Fire)",
   "icon": "fireassault_incinerate.png",
   "auto_issue": false,

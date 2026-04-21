@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Dominate Mind",
   "display_fullname": "Incarnate Lore Pet Seers LT Dominate Mind",
-  "display_help": "MZYLA5BLG36HY2NW2PTDK4YH9X",
+  "display_help": "You crush your target's mind dealing moderate psionic damage over time as well as having a chance to hold your foe for a short time.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Melee, Moderate DMG(Psionic), Foe Hold",
   "icon": "mentalcontrol_hypnotize.png",
   "auto_issue": false,

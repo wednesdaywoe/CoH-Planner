@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Soothing Song",
   "display_fullname": "Incarnate Lore Pet Talons Support Seductive Song",
-  "display_help": "MRXSQ2XB7PANWSNAF44CFSZTXQ",
+  "display_help": "You enchant your targets with a song of beauty and promise, with the intent of soothing their minds. Any targets around you are enthralled by your song, and gain Defense, Resistance, and a bonus to all healing received.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, +DEF, +RES, +Healing",
   "icon": "talonsofvengeance_seductivesong.png",
   "auto_issue": false,

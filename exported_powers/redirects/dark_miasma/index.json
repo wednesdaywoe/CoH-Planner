@@ -5,9 +5,9 @@
   "short_help": "Tanker Melee",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Tar",
-    "Tar_Epic",
-    "Twilight"
+    "Redirects.Dark_Miasma.Tar",
+    "Redirects.Dark_Miasma.Tar_Epic",
+    "Redirects.Dark_Miasma.Twilight"
   ],
   "available_level": [
     0,

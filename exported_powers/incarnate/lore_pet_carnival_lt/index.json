@@ -5,9 +5,9 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_carnival_lt_set.ico",
   "powers": [
-    "Haymaker",
-    "Hurl",
-    "Punch"
+    "Incarnate.Lore_Pet_Carnival_LT.Haymaker",
+    "Incarnate.Lore_Pet_Carnival_LT.Hurl",
+    "Incarnate.Lore_Pet_Carnival_LT.Punch"
   ],
   "available_level": [
     0,

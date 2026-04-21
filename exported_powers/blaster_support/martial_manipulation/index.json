@@ -5,27 +5,27 @@
   "short_help": "Martial Combat",
   "icon": "martial_manipulation_set.ico",
   "powers": [
-    "Build_Up_Proc",
-    "Burst_of_Speed",
-    "Dragons_Tail",
-    "Eagles_Claw",
-    "Inner_Will",
-    "Ki_Push",
-    "Reach_for_the_Limit",
-    "Reaction_Time",
-    "Storm_Kick",
-    "Throw_Sand"
+    "Blaster_Support.Martial_Manipulation.Build_Up_Proc",
+    "Blaster_Support.Martial_Manipulation.Burst_of_Speed",
+    "Blaster_Support.Martial_Manipulation.Dragons_Tail",
+    "Blaster_Support.Martial_Manipulation.Eagles_Claw",
+    "Blaster_Support.Martial_Manipulation.Inner_Will",
+    "Blaster_Support.Martial_Manipulation.Ki_Push",
+    "Blaster_Support.Martial_Manipulation.Reach_for_the_Limit",
+    "Blaster_Support.Martial_Manipulation.Reaction_Time",
+    "Blaster_Support.Martial_Manipulation.Storm_Kick",
+    "Blaster_Support.Martial_Manipulation.Throw_Sand"
   ],
   "available_level": [
+    4294967295,
+    9,
+    15,
+    29,
+    23,
     0,
+    3,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27
   ]
 }

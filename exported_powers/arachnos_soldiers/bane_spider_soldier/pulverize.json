@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Pulverize",
   "display_fullname": "Arachnos Soldiers Bane Spider Soldier Pulverize",
-  "display_help": "VBDXVX6EQQ6EWLMERZWV359VXZ",
-  "display_short_help": "ASSBGY9W5AL7WXLHMQD52J65J3",
+  "display_help": "You are capable of Pulverizing a foe with your Nullifier Mace dealing high damage, causing toxic damage over time. Pulverize will occasionally disorient foes as well.<br><br><color #fcfc95>Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.</color>",
+  "display_short_help": "Melee, DMG(Smash), Minor DoT(Toxic), Foe Disorient",
   "icon": "banespider_pulverize.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -331,6 +331,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Arachnos_Soldiers.Bane_Spider_Soldier"
 }

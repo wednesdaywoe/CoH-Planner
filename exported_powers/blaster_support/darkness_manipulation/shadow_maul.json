@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shadow Maul",
   "display_fullname": "Blaster Support Darkness Manipulation Shadow Maul",
-  "display_help": "XYJZRQ57KPMWYLN7KD9SYCQQT3",
+  "display_help": "You wrap your entire arms with Negative Energy channeled from the Netherworlds, then perform a series of blows that deal a lot of damage over a short period of time to multiple targets in front of you. These blows cloud your target's vision, lowering his chance to hit for a short time.",
   "display_short_help": "Melee (Cone), Superior DoT(Smash/Negative), Foe -To Hit",
   "icon": "darknessmanipulation_shadowmaul.png",
   "auto_issue": false,
@@ -258,6 +258,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Darkness_Manipulation"
 }

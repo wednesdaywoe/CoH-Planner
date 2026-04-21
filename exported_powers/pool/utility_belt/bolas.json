@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Bolas",
   "display_fullname": "Pool Utility Belt Bolas",
-  "display_help": "ADGXF79FQB6AWVCA476PBRU8YX",
+  "display_help": "You hurl a pair of bolas at your target entangling them and rendering them immobilized. For the duration of the effect the target may become knocked down.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Foe Immobilize, Knockdown",
   "icon": "utilitybelt_bolas.png",
   "auto_issue": false,

@@ -3,10 +3,10 @@
   "full_name": "Dominator_Control.Arsenal_Control.Liquid_Nitrogen",
   "short_name": "Liquid_Nitrogen",
   "type": "Click",
-  "display_name": "35K4KKXTLREGWBZ9QCCPN6JNDS",
+  "display_name": "Liquid Nitrogen",
   "display_fullname": "Dominator Control Arsenal Control Liquid Nitrogen",
-  "display_help": "SP8D2ESA27YCYDNVTNQLWK3XZ3",
-  "display_short_help": "4GY7FTPMTN2NYUVS49NTRWH2T2",
+  "display_help": "The Liquid Nitrogen dispenser can spray a target location with liquid nitrogen creating a large patch of ice. Those caught in the patch of ice are dramatically slowed, tend to fall down taking damage, and will be unable to jump.",
+  "display_short_help": "Ranged (Location AoE), DoT(Cold), Knockdown, -SPD",
   "icon": "arsenalcontrol_liquidnitrogen",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -90,6 +90,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Dominator_Control.Arsenal_Control"
 }

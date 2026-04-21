@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Geode",
   "display_fullname": "Redirects Stone Armor Geode Pull",
-  "display_help": "ZGRWL54A9Z5FWWMFCLE4323NVZ",
+  "display_help": "When you activate this power, you encase yourself in various protective mineral layers, that can absorb incoming damage while you heal recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot stay in this Geode for more than 30 seconds. If enemies inflict enough damage, they might break you out of this effect.<br><br>If Brimstone Armor is owned, this power will also grant Geothermal Power every 5 seconds, increasing the damage inflicted by Brimstone's Fire by 8% per stack.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
   "icon": "stonearmor_geode.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shadow Recall",
   "display_fullname": "Warshade Defensive Umbral Aura Shadow Recall",
-  "display_help": "Z6LSCJJ6LY88YCZW6UYBAQRMCX",
+  "display_help": "You can Teleport a single foe or ally directly next to yourself. A successful hit must be made in order to Teleport the foes. Some powerful foes cannot be Teleported. Enemy players that are teleported will be temporarily out of phase, and cannot be targeted or damaged. This power can be interrupted while teleporting foes.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Teleport Teamate or Foe",
   "icon": "umbralaura_shadowrecall",
   "auto_issue": true,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

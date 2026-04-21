@@ -5,27 +5,27 @@
   "short_help": "Energy Melee",
   "icon": "blind_set.ico",
   "powers": [
-    "Energy_Store",
-    "Energy_Store_Assault",
-    "Energy_Transfer_Critter_Fast",
-    "Energy_Transfer_Critter_Slow",
-    "Energy_Transfer_Fast",
-    "Energy_Transfer_Fast_Scrapper",
-    "Energy_Transfer_Fast_Stalker",
-    "Energy_Transfer_Slow",
-    "Energy_Transfer_Slow_Scrapper",
-    "Energy_Transfer_Slow_Stalker"
+    "Redirects.Energy_Melee.Energy_Store",
+    "Redirects.Energy_Melee.Energy_Store_Assault",
+    "Redirects.Energy_Melee.Energy_Transfer_Critter_Fast",
+    "Redirects.Energy_Melee.Energy_Transfer_Critter_Slow",
+    "Redirects.Energy_Melee.Energy_Transfer_Fast",
+    "Redirects.Energy_Melee.Energy_Transfer_Fast_Scrapper",
+    "Redirects.Energy_Melee.Energy_Transfer_Fast_Stalker",
+    "Redirects.Energy_Melee.Energy_Transfer_Slow",
+    "Redirects.Energy_Melee.Energy_Transfer_Slow_Scrapper",
+    "Redirects.Energy_Melee.Energy_Transfer_Slow_Stalker"
   ],
   "available_level": [
     0,
     0,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    29,
+    25,
+    25,
+    29,
+    25,
+    25
   ]
 }

@@ -5,25 +5,25 @@
   "short_help": "Assault Rifle",
   "icon": "assault_rifle_set.ico",
   "powers": [
-    "Beanbag",
-    "Buckshot",
-    "Burst",
-    "Flamethrower",
-    "Full_Auto",
-    "Ignite",
-    "M30_Grenade",
-    "Slug",
-    "Sniper_Rifle"
+    "Defender_Ranged.Assault_Rifle.Beanbag",
+    "Defender_Ranged.Assault_Rifle.Buckshot",
+    "Defender_Ranged.Assault_Rifle.Burst",
+    "Defender_Ranged.Assault_Rifle.Flamethrower",
+    "Defender_Ranged.Assault_Rifle.Full_Auto",
+    "Defender_Ranged.Assault_Rifle.Ignite",
+    "Defender_Ranged.Assault_Rifle.M30_Grenade",
+    "Defender_Ranged.Assault_Rifle.Slug",
+    "Defender_Ranged.Assault_Rifle.Sniper_Rifle"
   ],
   "available_level": [
+    15,
+    3,
     0,
+    23,
+    29,
+    27,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19
   ]
 }

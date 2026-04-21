@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Sky Splitter",
   "display_fullname": "Stalker Melee Staff Fighting Sky Splitter",
-  "display_help": "MLWN5M4NQ6JQY8ZCWKQXL3X3XW",
-  "display_short_help": "57J9WM429BMWWJMAZZ9W7DP5HW",
+  "display_help": "You leap into the air and hammer your foe with an overhead bash from your staff. Sky Splitter deals Smashing damage, will knock the target into the air and will briefly disorient your target. This power will build one stack of Perfection of Body if the user has two or less stacks, if the user has three stacks of Perfection of Body it will consume them and gain some benefit. 3 Levels of Perfection of Body will cause additional smashing damage and grant the user a bonus to damage resistance a short time. Critical Hit damage isn't enhanced by levels of Perfection.",
+  "display_short_help": "Melee, DMG(Smash), Foe Knock Up, Disorient, -Fly, Consumes Perfection",
   "icon": "stafffighting_skysplitter.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -882,6 +882,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Stalker_Melee.Staff_Fighting"
 }

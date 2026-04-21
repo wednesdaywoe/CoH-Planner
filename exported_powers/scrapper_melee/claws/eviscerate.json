@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Eviscerate",
   "display_fullname": "Scrapper Melee Claws Eviscerate",
-  "display_help": "LM7MG6KVW772Y5XV8XYFJMZNQS",
-  "display_short_help": "LTFALSP58UU9YLCRSSKJ3PLRH2",
+  "display_help": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you. This attack has an exceptionally good critical hit capability, better than other Claw attacks, that can sometimes deal double damage.",
+  "display_short_help": "Melee (Cone), DMG(Lethal), +Special",
   "icon": "claws_evicerate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -278,6 +278,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Scrapper_Melee.Claws"
 }

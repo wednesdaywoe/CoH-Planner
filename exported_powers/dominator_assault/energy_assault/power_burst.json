@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Power Burst",
   "display_fullname": "Dominator Assault Energy Assault Power Burst",
-  "display_help": "FN74EX23L4Z9WNV826PKMDPUAX",
-  "display_short_help": "DD3ZUL7JRLU9WDCY9YU5FXU52S",
+  "display_help": "A devastating attack that can knock your target off their feet. This power will inflict bonus damage if used while in Energy Focus mode.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, Superior DMG(Energy/Smash), Foe Knockback, Special",
   "icon": "energyassault_powerburst.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -419,6 +419,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Dominator_Assault.Energy_Assault"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Acid Mortar",
   "display_fullname": "Mastermind Buff Traps Acid Mortar",
-  "display_help": "U4DZ8N2CTSPRYJMWXB9VTJ3FBX",
+  "display_help": "You can place a small Mortar on the ground. If an enemy passes nearby, the Mortar will fire an Acid grenade at the target. The grenade will explodes in a small shower of acid on impact. This acid eats through armor, causing minor damage over time. It reduces the target's Defense as well as their Damage Resistance. The mortar will last up to 60 seconds and will fire up to 10 grenades. It can be destroyed by your foes.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Place Trap: Ranged (AoE), Minor DoT(Toxic), Foe -Res(All), -DEF",
   "icon": "traps_droppedaoedebuffdefense.png",
   "auto_issue": false,
@@ -89,6 +89,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Mastermind_Buff.Traps"
 }

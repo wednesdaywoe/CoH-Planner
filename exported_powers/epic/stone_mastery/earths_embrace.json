@@ -3,9 +3,9 @@
   "full_name": "Epic.Stone_Mastery.Earths_Embrace",
   "short_name": "Earths_Embrace",
   "type": "Click",
-  "display_name": "MRL6VSQC6GBRWVZPGAFYUHM84Z",
+  "display_name": "Embrace of the Earth",
   "display_fullname": "Epic Stone Mastery Earths Embrace",
-  "display_help": "34ZRPVMLKM9KWYB7TPUJYFSK7S",
+  "display_help": "You are so connected to the Earth, you can draw upon its power to add to your own health. Activating this power increases your maximum Hit Points, and grants you resistance to Toxic Damage. You must be level 44 and have two other Earth Mastery Powers before selecting this power.",
   "display_short_help": "Self +HP",
   "icon": "earth_mastery_earthsembrace",
   "auto_issue": false,
@@ -158,6 +158,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Stone_Mastery"
 }

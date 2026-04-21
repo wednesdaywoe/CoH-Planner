@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Train Beasts",
   "display_fullname": "Mastermind Summon Beast Mastery Train Beasts",
-  "display_help": "93AXEDFZAWFDWULXELUXJY48K3",
+  "display_help": "Train your Beast Henchmen to more effectively attack your foes. This power permanently bestows new powers and abilities to all of your Beast Henchmen. The powers gained are unique and dependent upon the type of Beast Henchman.<br><br>This power only works on your Beast Henchmen and you can only Train your Beast Henchmen once with this power.",
   "display_short_help": "Ranged, Train Beast Henchmen",
   "icon": "beastmastery_trainbeasts.png",
   "auto_issue": false,
@@ -43,6 +43,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Mastermind_Summon.Beast_Mastery"
 }

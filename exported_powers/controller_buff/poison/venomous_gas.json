@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Venomous Gas",
   "display_fullname": "Controller Buff Poison Venomous Gas",
-  "display_help": "GP7XBEETRQ9TYWLSU92C58V9BZ",
+  "display_help": "You surround yourself in a cloud of toxic vapors that significantly weaken any enemies that get near you. Affected foes have their defense, damage resistance, damage and chance to hit reduced moderately.",
   "display_short_help": "Toggle: PBAoE, Foe -Res(All), -DMG(All), -Def(All), -To(Hit)",
   "icon": "poison_venomousgas.png",
   "auto_issue": false,
@@ -197,6 +197,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Controller_Buff.Poison"
 }

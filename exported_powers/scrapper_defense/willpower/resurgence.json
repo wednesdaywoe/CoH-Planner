@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Resurgence",
   "display_fullname": "Scrapper Defense Willpower Resurgence",
-  "display_help": "4SAKPJNGGHEJY2XM7PGUN59CJS",
+  "display_help": "Should you fall in battle, you can Revive yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds. Additionally, for 90 seconds, your damage and chance to hit will be improved, then for another 45 seconds, your damage and chance to hit will be diminished. You will also have 15 seconds of immunity to most damage.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self Rez, Special",
   "icon": "willpower_resurgence.png",
   "auto_issue": false,
@@ -458,6 +458,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Scrapper_Defense.Willpower"
 }

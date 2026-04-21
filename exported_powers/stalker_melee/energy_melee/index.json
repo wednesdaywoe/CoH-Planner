@@ -1,29 +1,29 @@
 {
   "key": "Stalker_Melee.Energy_Melee",
   "display_name": "Energy Melee",
-  "help": "VFXL8NTYDD2FYWBBU83M92R2JA",
+  "help": "You can use Energy Melee to power your blows with pure energy. These focused power attacks often Disorient opponents. Total Focus will enter Energy Focus upon hitting an enemy. Barrage, Power Crash or Energy Transfer are empowered while under Energy Focus.",
   "short_help": "Energy Melee",
   "icon": "energy_melee_set.ico",
   "powers": [
-    "Assassins_Strike",
-    "Barrage",
-    "Bone_Smasher",
-    "Build_Up",
-    "Energy_Punch",
-    "Energy_Transfer",
-    "Placate",
-    "Stun",
-    "Total_Focus"
+    "Stalker_Melee.Energy_Melee.Assassins_Strike",
+    "Stalker_Melee.Energy_Melee.Barrage",
+    "Stalker_Melee.Energy_Melee.Bone_Smasher",
+    "Stalker_Melee.Energy_Melee.Build_Up",
+    "Stalker_Melee.Energy_Melee.Energy_Punch",
+    "Stalker_Melee.Energy_Melee.Energy_Transfer",
+    "Stalker_Melee.Energy_Melee.Placate",
+    "Stalker_Melee.Energy_Melee.Stun",
+    "Stalker_Melee.Energy_Melee.Total_Focus"
   ],
   "available_level": [
+    5,
     0,
+    1,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25,
+    11,
+    17,
+    21
   ]
 }

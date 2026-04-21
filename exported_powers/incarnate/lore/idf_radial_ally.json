@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "IDF Radial Ally",
   "display_fullname": "Incarnate Lore IDF Radial Ally",
-  "display_help": "CLTWYSWTQ7C6WPLNHW8GN4NFRW",
+  "display_help": "Draws forth the essences of a vanquished IDF Battle Orb and Elite Ranger from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: IDF Radial Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon IDF LT & Support Essences",
   "icon": "incarnate_lore_idf_uncommon.png",
   "auto_issue": false,

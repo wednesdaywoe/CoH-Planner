@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psychic Scream",
   "display_fullname": "Sentinel Ranged Psychic Blast Psychic Scream",
-  "display_help": "XCY4DXTLQLTXWFNVW34M6W8UHX",
-  "display_short_help": "2HU2JEKWCLTWWYMQ6WKL6D7B42",
+  "display_help": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Cone), Light DMG(Psionic), Foe -Recharge",
   "icon": "psychicblast_psychicscream.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -267,6 +267,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Sentinel_Ranged.Psychic_Blast"
 }

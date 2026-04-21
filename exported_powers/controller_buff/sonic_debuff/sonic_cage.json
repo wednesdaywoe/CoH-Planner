@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Sonic Cage",
   "display_fullname": "Controller Buff Sonic Debuff Sonic Cage",
-  "display_help": "BZT4YU8AENTSYMMP6UXGXTYTJS",
+  "display_help": "Encases the target in an impenetrable field of sonic waves. The target cannot attack or be attacked.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Foe Capture (Special)",
   "icon": "sonicdebuff_hold.png",
   "auto_issue": false,
@@ -151,6 +151,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Controller_Buff.Sonic_Debuff"
 }

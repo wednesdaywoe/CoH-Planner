@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Moment of Glory",
   "display_fullname": "Scrapper Defense Regeneration Moment of Glory",
-  "display_help": "9UR479J2YSJVWJCEGQPZMT6J8S",
-  "display_short_help": "SE4GUZHQEYUUWNZZNZAJR5NV93",
+  "display_help": "When you activate this power, you deal increased damage, recover Endurance more quickly, gain Resistance and Defense to all damage types, and are highly resistant to Knock Back, Sleep, Disorient, Immobilization, and Hold effects.",
+  "display_short_help": "Self +DMG, +Res(All DMG, Knock Back, Repel, Stun, Hold, Sleep, Immobilize), +DEF(All DMG), +Recovery",
   "icon": "regeneration_momentofglory.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -596,6 +596,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Scrapper_Defense.Regeneration"
 }

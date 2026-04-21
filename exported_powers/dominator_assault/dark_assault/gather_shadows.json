@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Gather Shadows",
   "display_fullname": "Dominator Assault Dark Assault Gather Shadows",
-  "display_help": "SZ477U5AURTGW4LPQKCXM87GR3",
+  "display_help": "By collecting shadows from your surroundings you boost your damage and the secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved. The effects of Gather Shadows last a short while, and only the next couple of attacks will be boosted.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +Special, +Dmg(All)",
   "icon": "darknessassault_gathershadows.png",
   "auto_issue": false,
@@ -211,6 +211,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Dominator_Assault.Dark_Assault"
 }

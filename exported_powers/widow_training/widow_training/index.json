@@ -5,23 +5,23 @@
   "short_help": "Arachnos Widow",
   "icon": "widow_training_set.ico",
   "powers": [
-    "Confront",
-    "Dart_Burst",
-    "Follow_Up",
-    "Lunge",
-    "Poison_Dart",
-    "Spin",
-    "Strike",
-    "Swipe"
+    "Widow_Training.Widow_Training.Confront",
+    "Widow_Training.Widow_Training.Dart_Burst",
+    "Widow_Training.Widow_Training.Follow_Up",
+    "Widow_Training.Widow_Training.Lunge",
+    "Widow_Training.Widow_Training.Poison_Dart",
+    "Widow_Training.Widow_Training.Spin",
+    "Widow_Training.Widow_Training.Strike",
+    "Widow_Training.Widow_Training.Swipe"
   ],
   "available_level": [
+    17,
+    5,
+    7,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    11,
+    11,
     0
   ]
 }

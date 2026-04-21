@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Coordinated Targeting",
   "display_fullname": "Epic Sentinel Mace Mastery Focused Accuracy",
-  "display_help": "JQAFN2PZ8GGSYGM2L5GGQXYUF2",
+  "display_help": "When this power is activated, the Villain and allies focus their offensive to dramatically improve their accuracy. Additionally, Coordinated Targeting increases the team's Perception, allowing to better see stealthy foes. It also grants resistance to powers that DeBuff Accuracy. Coordinated Targeting is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Coordinated Targeting drains Endurance while active. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Team +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
   "icon": "arachnos_patron_teamtohitbuff",
   "auto_issue": false,
@@ -184,6 +184,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Sentinel_Mace_Mastery"
 }

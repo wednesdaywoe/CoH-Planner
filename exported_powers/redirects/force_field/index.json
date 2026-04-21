@@ -5,9 +5,9 @@
   "short_help": "Force Field",
   "icon": "blind_set.ico",
   "powers": [
-    "Dampening_Bubble",
-    "Dampening_Bubble_Debuff",
-    "Dampening_BubbleFX"
+    "Redirects.Force_Field.Dampening_Bubble",
+    "Redirects.Force_Field.Dampening_Bubble_Debuff",
+    "Redirects.Force_Field.Dampening_BubbleFX"
   ],
   "available_level": [
     0,

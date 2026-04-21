@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Steamy Mist",
   "display_fullname": "Corruptor Buff Storm Summoning Steamy Mist",
-  "display_help": "2MCS7RSH5WWEY2ZXLG6Z5WA4UW",
+  "display_help": "Your mastery of the elements allows you to hide yourself and all nearby allies within a Steamy Mist. Steamy Mist makes you and your allies harder to see and increases your Defense bonus to all attacks, while reducing Fire, Cold, and Energy damage, as well as your Foes ability to Confuse you.",
   "display_short_help": "Toggle: PBAoE, Team Stealth, +DEF(All), +Res(Fire, Cold, Energy, Confuse)",
   "icon": "stormsummoning_fog.png",
   "auto_issue": false,
@@ -366,6 +366,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Corruptor_Buff.Storm_Summoning"
 }

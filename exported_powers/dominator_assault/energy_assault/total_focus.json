@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Total Focus",
   "display_fullname": "Dominator Assault Energy Assault Total Focus",
-  "display_help": "M7UTSHU2N55YWTNGSZ4S6W8TPQ",
+  "display_help": "Total Focus is complete mastery over Energy Melee. This melee attack is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. This power will enter Energy Focus mode.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee, Extreme DMG(Energy/Smash), Foe Disorient, +Energy Focus",
   "icon": "energyassault_totalfocus.png",
   "auto_issue": false,
@@ -374,6 +374,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Energy_Assault"
 }

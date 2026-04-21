@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bile Spray",
   "display_fullname": "Epic Dominator Leviathan Mastery Chum Spray",
-  "display_help": "4568QHFBFRAPWXBFK64W6DTFMS",
-  "display_short_help": "MWVXHML2QKAZYYBKZL2JMZZGEA",
+  "display_help": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time.",
+  "display_short_help": "Ranged (Cone), DoT(Toxic)",
   "icon": "arachnos_patron_rangedconemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -251,6 +251,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Dominator_Leviathan_Mastery"
 }

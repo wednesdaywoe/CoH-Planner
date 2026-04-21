@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Touch of Fear",
   "display_fullname": "Redirects Dark Melee Touch of Fear ST",
-  "display_help": "QRWU99VSA9JPW3BN2UWFXERUYS",
+  "display_help": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit.<br><br><color #fcfc95>Notes: Touch of Fear is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee (Targeted AoE), Moderate DMG (Negative), Fear, Foe -To Hit",
   "icon": "shadowfighting_touchoffearaoe",
   "auto_issue": false,
@@ -201,6 +201,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Redirects.Dark_Melee"
 }

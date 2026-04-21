@@ -5,17 +5,17 @@
   "short_help": "Energy Mastery",
   "icon": "body_mastery_stalker_set.ico",
   "powers": [
-    "Conserve_Power",
-    "Energy_Torrent",
-    "Focused_Accuracy",
-    "Laser_Beam_Eyes",
-    "Physical_Perfection"
+    "Epic.Body_Mastery_Stalker.Conserve_Power",
+    "Epic.Body_Mastery_Stalker.Energy_Torrent",
+    "Epic.Body_Mastery_Stalker.Focused_Accuracy",
+    "Epic.Body_Mastery_Stalker.Laser_Beam_Eyes",
+    "Epic.Body_Mastery_Stalker.Physical_Perfection"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    43,
+    34,
+    37,
+    40
   ]
 }

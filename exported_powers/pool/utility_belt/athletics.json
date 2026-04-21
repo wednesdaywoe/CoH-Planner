@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Athletics",
   "display_fullname": "Pool Utility Belt Athletics",
-  "display_help": "HTEJN9GRAGM7W6XJ9A64GC5V9A",
+  "display_help": "Activating this power will give you a massive burst of speed and jump power for a short time.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Click, Self +Run Speed, +Jump",
   "icon": "utilitybelt_athletics.png",
   "auto_issue": true,
@@ -178,6 +178,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Pool.Utility_Belt"
 }

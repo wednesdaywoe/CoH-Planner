@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Jack Frost",
   "display_fullname": "Dominator Control Ice Control Jack Frost",
-  "display_help": "QSF2G482XFJBWWLVCEFYCBW5WZ",
-  "display_short_help": "JCZHBTZWENVVWWXPPMENG6FWMZ",
+  "display_help": "You can create a very powerful entity of animated ice at a targeted location. Jack Frost possesses several ice powers to attack any nearby foes and can be healed and buffed like any teammate.",
+  "display_short_help": "Summon Jack Frost: Melee DMG(Lethal/Cold)",
   "icon": "iceformation_jackfrost.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Dominator_Control.Ice_Control"
 }

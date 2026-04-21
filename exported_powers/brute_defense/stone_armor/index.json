@@ -1,29 +1,29 @@
 {
   "key": "Brute_Defense.Stone_Armor",
   "display_name": "Stone Armor",
-  "help": "CK222MG7QVXXY7B87XN5QL4BUX",
+  "help": "You can transform your skin into various forms of rock and stone. Stone Armor is one of the only Brute Defensive Power Sets that offers defense to Psionics. Stone Armor offers amazing defense, but a few Stone Armors are mutually exclusive to each other. Some Armors, although offering superior defense, also slow you down due to their enormous bulk.",
   "short_help": "Stone Armor",
   "icon": "stone_armor_set.ico",
   "powers": [
-    "Brimstone_Armor",
-    "Crystal_Armor",
-    "Earths_Embrace",
-    "Granite_Armor",
-    "Minerals",
-    "Mud_Pots",
-    "Rock_Armor",
-    "Rooted",
-    "Stone_Skin"
+    "Brute_Defense.Stone_Armor.Brimstone_Armor",
+    "Brute_Defense.Stone_Armor.Crystal_Armor",
+    "Brute_Defense.Stone_Armor.Earths_Embrace",
+    "Brute_Defense.Stone_Armor.Granite_Armor",
+    "Brute_Defense.Stone_Armor.Minerals",
+    "Brute_Defense.Stone_Armor.Mud_Pots",
+    "Brute_Defense.Stone_Armor.Rock_Armor",
+    "Brute_Defense.Stone_Armor.Rooted",
+    "Brute_Defense.Stone_Armor.Stone_Skin"
   ],
   "available_level": [
+    27,
+    19,
+    3,
+    29,
+    23,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    15,
     0
   ]
 }

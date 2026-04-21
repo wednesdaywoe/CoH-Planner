@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Particle Shielding",
   "display_fullname": "Sentinel Defense Radiation Armor Particle Shielding",
-  "display_help": "CC8GH8QYWPHNW2B8NHW5UT8SG2",
+  "display_help": "You channel a tremendous amount of radiation into a barrier around you. For a short time you will have a strong absorption shield in addition to a regeneration and recovery buff.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self, +Absorb, +Regeneration",
   "icon": "radiationarmor_particleshielding.png",
   "auto_issue": false,
@@ -132,6 +132,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Sentinel_Defense.Radiation_Armor"
 }

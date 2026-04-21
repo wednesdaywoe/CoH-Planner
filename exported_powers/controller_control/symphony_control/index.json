@@ -1,29 +1,29 @@
 {
   "key": "Controller_Control.Symphony_Control",
-  "display_name": "8G9SKEGUVC8WY8ZRMBDYPK6R9Q",
-  "help": "8N5XZAQAVXB9Y3NBKC378QXB9Q",
-  "short_help": "8G9SKEGUVC8WY8ZRMBDYPK6R9Q",
+  "display_name": "Symphony Control",
+  "help": "Use the power of music to captivate and control the spirits of your enemies. Most of your symphonic abilities influence the mind of your enemies, causing psionic damage.",
+  "short_help": "Symphony Control",
   "icon": "siren_set.ico",
   "powers": [
-    "Aria_of_Stasis",
-    "Chords_of_Despair",
-    "Confounding_Chant",
-    "Dreadful_Discord",
-    "Enfeebling_Lullaby",
-    "Hymn_of_Dissonance",
-    "Impassioned_Serenade",
-    "Melodic_Binding",
-    "Reverberant"
+    "Controller_Control.Symphony_Control.Aria_of_Stasis",
+    "Controller_Control.Symphony_Control.Chords_of_Despair",
+    "Controller_Control.Symphony_Control.Confounding_Chant",
+    "Controller_Control.Symphony_Control.Dreadful_Discord",
+    "Controller_Control.Symphony_Control.Enfeebling_Lullaby",
+    "Controller_Control.Symphony_Control.Hymn_of_Dissonance",
+    "Controller_Control.Symphony_Control.Impassioned_Serenade",
+    "Controller_Control.Symphony_Control.Melodic_Binding",
+    "Controller_Control.Symphony_Control.Reverberant"
   ],
   "available_level": [
+    1,
+    21,
+    17,
+    7,
+    11,
     0,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25
   ]
 }

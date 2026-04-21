@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Chronos",
   "display_fullname": "Blaster Support Time Manipulation Chronological Selection",
-  "display_help": "MJXD25LY57GNYYZBNLKQW8R2MZ",
-  "display_short_help": "7LN29VZ9NW9DWBCPNFGUV53ZGZ",
+  "display_help": "You distort time around you, selecting a period of time where your abilities are at your highest. Your damage, attack rate and chance to hit are dramatically increased for a brief period. This power places the Accelerated effect on you. While this is in effect, the target has any healing and healing over time effects from Temporal Healing or Time Lord significantly increased.<br><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "Self +DMG, +Recharge, +ToHit, Special",
   "icon": "timemanipulation_chronologicalselection",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -264,6 +264,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Time_Manipulation"
 }

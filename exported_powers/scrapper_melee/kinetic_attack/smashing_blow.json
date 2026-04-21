@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Smashing Blow",
   "display_fullname": "Scrapper Melee Kinetic Attack Smashing Blow",
-  "display_help": "BVVU4EY48AXHWGB29TXCJ2EM3W",
-  "display_short_help": "RUVBGHB4DUQDYBVN7U9GGTTSB3",
+  "display_help": "Smashing Blow is a slow attack, but makes up for it with a good amount of damage. Has a greater chance to stun than body blow.",
+  "display_short_help": "Melee, DMG(Smash/Energy), Foe Disorient",
   "icon": "kineticattack_smashingblow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -520,6 +520,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Scrapper_Melee.Kinetic_Attack"
 }

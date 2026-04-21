@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Short Circuit",
   "display_fullname": "Incarnate Lore Pet Elementals Boss Short Circuit",
-  "display_help": "7JRXQKEK73JQW2MYSHE339J623",
+  "display_help": "Releases a burst of electrical energy around you, shocking all nearby foes. This highly accurate discharge deals Moderate damage over time, drains a lot of Endurance from the targets and renders them unable to recover Endurance for quite a while. Additionally, Short Circuit deals extra damage to most robots and mechanical foes. Short Circuit is very effective when used with your other Endurance draining powers.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Moderate DoT(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_shortcircuit.png",
   "auto_issue": false,

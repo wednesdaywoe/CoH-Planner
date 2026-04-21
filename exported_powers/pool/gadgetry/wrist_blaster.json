@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Blaster Drone",
   "display_fullname": "Pool Gadgetry Wrist Blaster",
-  "display_help": "68FT4SKYZ82RY5MUJ29VPYLP8X",
+  "display_help": "You fire a series of blasts from a sophisticated energy drone. Wrist Blaster deals Moderate energy damage and will reduce the target's regeneration rate for a short time.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Light DMG(Energy), Foe -Regen",
   "icon": "gadgetry_wristblaster.png",
   "auto_issue": false,

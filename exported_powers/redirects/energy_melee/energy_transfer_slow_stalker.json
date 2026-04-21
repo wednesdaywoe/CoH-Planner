@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Energy Transfer",
   "display_fullname": "Redirects Energy Melee Energy Transfer Slow Stalker",
-  "display_help": "QQF9GBPVF2XTYVXLKPUYR486AA",
-  "display_short_help": "743KQH9C7DAQYZVBFDW7UL3TWW",
+  "display_help": "Mastery of Energy Melee culminates with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. This power will execute extremely quickly if under Energy Focus mode.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
   "icon": "powerpunch_energytransfer.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -605,6 +605,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Redirects.Energy_Melee"
 }

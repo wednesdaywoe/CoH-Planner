@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Consume",
   "display_fullname": "Epic Corruptor Fire Mastery Consume",
-  "display_help": "UCB8EVK29MYQYTXSW2Z8LPXD5S",
-  "display_short_help": "W6DQSHP7VWQHWBVJRZH52FA5QA",
+  "display_help": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage",
+  "display_short_help": "PBAoE, DMG(Fire), Self +End",
   "icon": "flamingshield_consume.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -232,6 +232,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Corruptor_Fire_Mastery"
 }

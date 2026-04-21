@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Rain of Fire",
   "display_fullname": "Corruptor Ranged Fire Blast Rain of Fire",
-  "display_help": "XUGMKQQ3UYDZYAXB6NSENQ5GUX",
-  "display_short_help": "SSWXN2CRTH6CYZZB8XHKUWTCFX",
+  "display_help": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area.",
+  "display_short_help": "Ranged (Location AoE), DoT(Fire), -SPD",
   "icon": "fireblast_rainoffire.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -89,6 +89,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Corruptor_Ranged.Fire_Blast"
 }

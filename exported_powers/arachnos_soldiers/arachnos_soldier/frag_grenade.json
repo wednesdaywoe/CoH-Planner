@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Frag Grenade",
   "display_fullname": "Arachnos Soldiers Arachnos Soldier Frag Grenade",
-  "display_help": "36PNXMMMAEE2YXMNTS4YW4MYQA",
-  "display_short_help": "A7ZAPEG2GANSYKXPVRKYX6WSY2",
+  "display_help": "Launches a Frag Grenade at long range from under the barrel of your rifle. The explosion from this grenade affects all within the blast and can knock them back.<br><br><color #fcfc95>Notes: If you take this power, you cannot take the Crab Spider version.</color>",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Fire/Lethal), Foe Knockback",
   "icon": "arachnossoldier_fraggrenade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -66,6 +66,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Arachnos_Soldiers.Arachnos_Soldier"
 }

@@ -5,27 +5,27 @@
   "short_help": "Fiery Aura",
   "icon": "fiery_aura_set.ico",
   "powers": [
-    "Burn",
-    "Cauterizing_Blaze",
-    "Consume",
-    "Fire_Shield",
-    "Healing_Flames",
-    "Molten_Embrace",
-    "Phoenix_Rising",
-    "Plasma_Shield",
-    "Rise_of_the_Phoenix",
-    "Temperature_Protection"
+    "Sentinel_Defense.Fiery_Aura.Burn",
+    "Sentinel_Defense.Fiery_Aura.Cauterizing_Blaze",
+    "Sentinel_Defense.Fiery_Aura.Consume",
+    "Sentinel_Defense.Fiery_Aura.Fire_Shield",
+    "Sentinel_Defense.Fiery_Aura.Healing_Flames",
+    "Sentinel_Defense.Fiery_Aura.Molten_Embrace",
+    "Sentinel_Defense.Fiery_Aura.Phoenix_Rising",
+    "Sentinel_Defense.Fiery_Aura.Plasma_Shield",
+    "Sentinel_Defense.Fiery_Aura.Rise_of_the_Phoenix",
+    "Sentinel_Defense.Fiery_Aura.Temperature_Protection"
   ],
   "available_level": [
+    23,
+    27,
+    19,
+    0,
+    3,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    29,
+    9
   ]
 }

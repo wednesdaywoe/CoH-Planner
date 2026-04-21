@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ball Lightning",
   "display_fullname": "Incarnate Lore Pet Elementals Boss Ball Lightning",
-  "display_help": "PWXEK2PKMHG6YDXDA53Z4TTHYZ",
+  "display_help": "Hurls a highly charged ball of lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits.<br><br><color #fcfc95>Notes: Ball Lightning is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
   "icon": "electricalbolt_balllightning.png",
   "auto_issue": false,

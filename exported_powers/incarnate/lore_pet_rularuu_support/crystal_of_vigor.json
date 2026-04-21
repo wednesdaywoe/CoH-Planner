@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Crystal of Vigor",
   "display_fullname": "Incarnate Lore Pet Rularuu Support Crystal of Vigor",
-  "display_help": "MZEVDHXSSTE4YALYTYULKT9SX2",
+  "display_help": "When a Brute minion is in peril, he can release the power in his crystal to give himself and all his nearby allies a buff to their damage.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE, Ally +DMG",
   "icon": "empathy_fortitude.png",
   "auto_issue": false,

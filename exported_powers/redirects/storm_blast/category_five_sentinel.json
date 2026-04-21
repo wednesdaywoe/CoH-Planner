@@ -3,10 +3,10 @@
   "full_name": "Redirects.Storm_Blast.Category_Five_Sentinel",
   "short_name": "Category_Five_Sentinel",
   "type": "Auto",
-  "display_name": "NWM8XM8EG8T7YSCD76QFWG4NP3",
+  "display_name": "Category Five",
   "display_fullname": "Redirects Storm Blast Category Five Sentinel",
   "display_help": "All foes that pass through this Storm will be Slowed Knocked Down, and pummeled with wind, cold, and shards of falling ice.",
-  "display_short_help": "6GMK2FPB7ZAMYBCMU9T666VP5X",
+  "display_short_help": "Dmg(Cold), -Speed, -Recharge",
   "icon": "stormblast_categoryfive.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -392,6 +392,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Redirects.Storm_Blast"
 }

@@ -5,25 +5,25 @@
   "short_help": "Street Justice",
   "icon": "brawling_set.ico",
   "powers": [
-    "Assassins_Strike",
-    "Build_Up",
-    "Crushing_Uppercut",
-    "Heavy_Blow",
-    "Initial_Strike",
-    "Low_Kick",
-    "Placate",
-    "Spinning_Strike",
-    "Sweeping_Cross"
+    "Stalker_Melee.Brawling.Assassins_Strike",
+    "Stalker_Melee.Brawling.Build_Up",
+    "Stalker_Melee.Brawling.Crushing_Uppercut",
+    "Stalker_Melee.Brawling.Heavy_Blow",
+    "Stalker_Melee.Brawling.Initial_Strike",
+    "Stalker_Melee.Brawling.Low_Kick",
+    "Stalker_Melee.Brawling.Placate",
+    "Stalker_Melee.Brawling.Spinning_Strike",
+    "Stalker_Melee.Brawling.Sweeping_Cross"
   ],
   "available_level": [
+    5,
+    7,
+    25,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    11,
+    17,
+    1
   ]
 }

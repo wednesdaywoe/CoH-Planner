@@ -5,17 +5,17 @@
   "short_help": "Ice Mastery",
   "icon": "ice_mastery_set.ico",
   "powers": [
-    "Frost_Breath",
-    "Frozen_Armor",
-    "Hibernate",
-    "Ice_Blast",
-    "Ice_Storm"
+    "Epic.Ice_Mastery.Frost_Breath",
+    "Epic.Ice_Mastery.Frozen_Armor",
+    "Epic.Ice_Mastery.Hibernate",
+    "Epic.Ice_Mastery.Ice_Blast",
+    "Epic.Ice_Mastery.Ice_Storm"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    40,
+    37,
+    34,
+    34,
+    43
   ]
 }

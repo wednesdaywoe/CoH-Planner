@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Lightning Clap",
   "display_fullname": "Tanker Melee Electrical Melee Lightning Clap",
-  "display_help": "4YWGHMG3YK34WZLNDBTFU92773",
-  "display_short_help": "5UGLSSGEJMFGWVVMYTDMLPUFCA",
+  "display_help": "You can clap your hands together to release a violent Lightning Clap at your target. The Lightning Clap does energy damage to your main target and can knock down most nearby foes, Disorienting many of them.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "Melee AoE, Foe Damage, Disorient, Knockdown",
   "icon": "electricmelee_taoestun",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -384,6 +384,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Tanker_Melee.Electrical_Melee"
 }

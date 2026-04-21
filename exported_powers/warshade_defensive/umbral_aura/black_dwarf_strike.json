@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Black Dwarf Strike",
   "display_fullname": "Warshade Defensive Umbral Aura Black Dwarf Strike",
-  "display_help": "AC2QQQDMYFHKYZBD5W6NWFEE3S",
-  "display_short_help": "ED3GPDVRTDUVYUMEQWHPZ5V3W3",
+  "display_help": "The Black Dwarf Strike is a moderate melee attack that releases Nictus Dark Energy on impact, which can Knock Down foes, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
+  "display_short_help": "Melee, Light DMG(Smash/Negative), Foe -Recharge, -SPD, Knockback",
   "icon": "umbralaura_blackdwarfstrike.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -398,6 +398,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

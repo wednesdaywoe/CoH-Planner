@@ -5,25 +5,25 @@
   "short_help": "Force Field",
   "icon": "force_field_set.ico",
   "powers": [
-    "Deflection_Shield",
-    "Detention_Field",
-    "Dispersion_Bubble",
-    "Force_Bolt",
-    "Force_Bubble",
-    "Insulation_Shield",
-    "Personal_Force_Field",
-    "Repulsion_Bomb",
-    "Repulsion_Field"
+    "Mastermind_Buff.Force_Field.Deflection_Shield",
+    "Mastermind_Buff.Force_Field.Detention_Field",
+    "Mastermind_Buff.Force_Field.Dispersion_Bubble",
+    "Mastermind_Buff.Force_Field.Force_Bolt",
+    "Mastermind_Buff.Force_Field.Force_Bubble",
+    "Mastermind_Buff.Force_Field.Insulation_Shield",
+    "Mastermind_Buff.Force_Field.Personal_Force_Field",
+    "Mastermind_Buff.Force_Field.Repulsion_Bomb",
+    "Mastermind_Buff.Force_Field.Repulsion_Field"
   ],
   "available_level": [
     0,
+    9,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    29,
+    3,
+    15,
+    27,
+    23
   ]
 }

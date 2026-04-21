@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Head Splitter",
   "display_fullname": "Redirects Broad Sword Head Splitter",
-  "display_help": "D5LTBVLXW7PWWGZ3L5657V75M3",
-  "display_short_help": "N4C46XGLB7QQWVC27TE73XFC5S",
+  "display_help": "You perform a devastating Head Splitter attack that deals a massive amount of damage and can even knock a foe down to the ground and reduce its Defense. This attack has an exceptionally good critical hit capability, better than other Broadsword attacks, that can sometimes deal double damage. The power of this attack can actually extend a short distance through multiple foes.",
+  "display_short_help": "Melee, DMG(Lethal), Foe Knockback, -DEF",
   "icon": "sword_headsplitter.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -669,6 +669,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Redirects.Broad_Sword"
 }

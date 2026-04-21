@@ -5,25 +5,25 @@
   "short_help": "Thugs",
   "icon": "thugs_set.ico",
   "powers": [
-    "Call_Bruiser",
-    "Call_Enforcer",
-    "Call_Thugs",
-    "Dual_Wield",
-    "Empty_Clips",
-    "Equip_Thugs",
-    "Gang_War",
-    "Pistols",
-    "Upgrade_Equipment"
+    "Mastermind_Summon.Thugs.Call_Bruiser",
+    "Mastermind_Summon.Thugs.Call_Enforcer",
+    "Mastermind_Summon.Thugs.Call_Thugs",
+    "Mastermind_Summon.Thugs.Dual_Wield",
+    "Mastermind_Summon.Thugs.Empty_Clips",
+    "Mastermind_Summon.Thugs.Equip_Thugs",
+    "Mastermind_Summon.Thugs.Gang_War",
+    "Mastermind_Summon.Thugs.Pistols",
+    "Mastermind_Summon.Thugs.Upgrade_Equipment"
   ],
   "available_level": [
+    21,
+    11,
     0,
+    1,
+    7,
+    5,
+    17,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25
   ]
 }

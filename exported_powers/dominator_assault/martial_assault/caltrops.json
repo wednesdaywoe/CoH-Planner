@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Caltrops",
   "display_fullname": "Dominator Assault Martial Assault Caltrops",
-  "display_help": "4S7EHBQM2SERWXCZ8BKHF6L35Q",
+  "display_help": "You toss a handful of Caltrops at a targeted location and spread the tiny metal spikes over a large area. Any villains that pass over the Caltrops will be forced to move at a slower rate. They will also take some trivial Lethal damage over time.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
   "icon": "martialassault_caltrops.png",
   "auto_issue": false,
@@ -89,6 +89,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Martial_Assault"
 }

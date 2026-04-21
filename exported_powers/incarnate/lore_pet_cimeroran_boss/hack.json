@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Hack",
   "display_fullname": "Incarnate Lore Pet Cimeroran Boss Hack",
-  "display_help": "YL5B8CGGA6YUY7C7MGGCHDXLL3",
+  "display_help": "You Hack your opponent for a high amount of damage. This attack can reduce a target's Defense, making him easier to hit.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High Dam(Lethal), Foe -DEF",
   "icon": "sword_hack.png",
   "auto_issue": false,

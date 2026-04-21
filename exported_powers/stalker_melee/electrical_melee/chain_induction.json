@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Chain Induction",
   "display_fullname": "Stalker Melee Electrical Melee Chain Induction",
-  "display_help": "REVZ7EQEAP8UWKN5DCWBPYNMA3",
-  "display_short_help": "VK4NWSHFLVZDWMVATDP63UUTDA",
+  "display_help": "This Electric Melee attack deals moderate Smashing and Energy damage and may drain some of the targets Endurance. However, this attack also induces an unstable electric charge that may jump to another enemy target. The charge will jump to the closest enemy in range that has not been previously hit, until it inevitably dissipates. Enhancements will boost the effectiveness of the initial attack as well as the jumping charge.",
+  "display_short_help": "Melee, DMG(Energy), Foe -End +Special",
   "icon": "electricmelee_targetedchaininduction.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -567,6 +567,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Stalker_Melee.Electrical_Melee"
 }

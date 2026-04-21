@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Soul Drain",
   "display_fullname": "Brute Melee Dark Melee Soul Drain",
-  "display_help": "BFUFYY8RHKEYY6L23JV3H3G7MQ",
-  "display_short_help": "6BF7HAZPKVCTY8VB6SYXF2LK8X",
+  "display_help": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit.",
+  "display_short_help": "PBAoE DMG(Negative), Self +DMG, +To Hit",
   "icon": "shadowfighting_stealpower.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Brute_Melee.Dark_Melee"
 }

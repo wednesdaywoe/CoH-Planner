@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Pendulum",
   "display_fullname": "Scrapper Melee Battle Axe Pendulum",
-  "display_help": "WNGEH9G559CCYSLE68PLEHXAHS",
-  "display_short_help": "3URTB4CBLSHTY2XWXWSH6RUJRA",
+  "display_help": "This attack swings your Battle Axe directly in front of you. Foes struck by this attack are dealt heavy damage, and may be knocked down.",
+  "display_short_help": "Melee (Targeted AoE), DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_taoe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -395,6 +395,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Scrapper_Melee.Battle_Axe"
 }

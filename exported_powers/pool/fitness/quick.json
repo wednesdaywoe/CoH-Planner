@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Swift",
   "display_fullname": "Pool Fitness Quick",
-  "display_help": "XMHQTPNNWLH4WQXQUKRSJ4NYVX",
+  "display_help": "You can naturally run slightly faster than normal.<br><br>This ability is always on and does not cost any Endurance.",
   "display_short_help": "Auto: Self +SPD",
   "icon": "fitness_quick.png",
   "auto_issue": false,
@@ -106,6 +106,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Pool.Fitness"
 }

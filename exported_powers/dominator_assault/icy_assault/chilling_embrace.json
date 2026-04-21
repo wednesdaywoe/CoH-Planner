@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Chilling Embrace",
   "display_fullname": "Dominator Assault Icy Assault Chilling Embrace",
-  "display_help": "2RYCE3Z25YR5WZXKFXPLG9ACKS",
+  "display_help": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their damage and movement speed. The low air temperatures may also deal some damage over time to the snared foes.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: PBAoE, Minor DoT(Cold), Foe -Recharge, -Speed",
   "icon": "iceassault_chillingembrace.png",
   "auto_issue": false,
@@ -185,6 +185,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Icy_Assault"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Radiation Siphon",
   "display_fullname": "Brute Melee Radiation Melee Radiation Siphon",
-  "display_help": "GSYBAJ9LXC2HWVL6QH9PUKSXU3",
-  "display_short_help": "26CQNLWP6LZQWPXC5PWMKZHY7A",
+  "display_help": "You pummel your foe with a deadly smashing attack dealing High Energy and Smashing damage and reducing their defense. Hitting Contaminated targets will also heal you for a large amount of health over 3 seconds and remove the Contaminated effect from the target. However, uncontaminated targets have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.",
+  "display_short_help": "Melee, DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
   "icon": "radiationmelee_radiationsiphon.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -397,6 +397,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Brute_Melee.Radiation_Melee"
 }

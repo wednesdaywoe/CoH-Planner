@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Spirit Tree",
   "display_fullname": "Dominator Control Plant Control Spirit Tree",
-  "display_help": "2Z58GQ3ZBKWBYKLVAFC5N5Z7RZ",
+  "display_help": "You can tap into the elusive and powerful energy of the World Tree and extract a Spirit Tree at a targeted location. The Sprit Tree is immobile, but possesses incredible rejuvenating powers. The Regeneration Rate of you, or your allies, will be greatly increased as long as you are near the Spirit Tree. The tree will also distract some enemies, taunting them to attack it instead of you.",
   "display_short_help": "Place Tree: PBAoE +Regen",
   "icon": "plantcontrol_spirittree.png",
   "auto_issue": false,
@@ -122,6 +122,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Dominator_Control.Plant_Control"
 }

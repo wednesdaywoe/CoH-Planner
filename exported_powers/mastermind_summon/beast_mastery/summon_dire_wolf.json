@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Summon Dire Wolf",
   "display_fullname": "Mastermind Summon Beast Mastery Summon Dire Wolf",
-  "display_help": "DK5KR4Y2YDLHW4MMSUADSMFEU3",
+  "display_help": "You call upon the aid of the fabled Dire Wolf. It has powerful bite and breath attacks. Unlike wolves and lions, the Dire Wolf has some limited ranged attacks. The Dire Wolf has good defense to Melee, Ranged and AoE attacks and good resistance to Cold damage.<br><br>Dire Wolf attacks have a chance to build a charge of Pack Mentality. Pack Mentality is a Damage buff aura that radiates from the Mastermind and can stack up to 10 times.",
   "display_short_help": "Summon Dire Wolf",
   "icon": "beastmastery_summondirewolves.png",
   "auto_issue": false,
@@ -136,6 +136,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Mastermind_Summon.Beast_Mastery"
 }

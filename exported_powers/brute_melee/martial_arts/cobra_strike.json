@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Cobra Strike",
   "display_fullname": "Brute Melee Martial Arts Cobra Strike",
-  "display_help": "UPHSEFK6T65GYSZC3RC5WJQLLZ",
-  "display_short_help": "W8EGWYFGK5CFYXV8RCATZKXEZQ",
+  "display_help": "Using intense martial arts focus, you can perform a Cobra Strike that deals high damage, but has a great chance of Disorienting your target.",
+  "display_short_help": "Melee, DMG(Smash), Foe Disorient",
   "icon": "martialarts_cobrastrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Brute_Melee.Martial_Arts"
 }

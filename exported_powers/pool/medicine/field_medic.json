@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Field Medic",
   "display_fullname": "Pool Medicine Field Medic",
-  "display_help": "Q5TNYAG2KKBAWJX4663VYMA4ZS",
+  "display_help": "Your skill as a Field Medic is unparalleled. In addition to permanently removing the interrupt time Aid Other and adding Endurance recovery to Aid Self, using this power will grant a powerful boost in the effectiveness of your healing powers and reduce your resistance to healing debuffs.<br><br>You must be at least level 14 and have trained any two other Medicine powers before you can train as a Field Medic.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self, +Heal, -Res(Heal), Special",
   "icon": "medicine_fieldmedic.png",
   "auto_issue": false,
@@ -106,6 +106,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Medicine"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Wearying Strike",
   "display_fullname": "Incarnate Lore Pet Knives LT Wearying Strike",
-  "display_help": "7WXRPJYN236EW9ZWYYPUVVC9YA",
+  "display_help": "You slice your target with your blades. This attack causes lethal damage and bleeding wounds.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, Moderate DMG(Lethal), Moderate DoT (Lethal)",
   "icon": "knivesofvengeance_wearyingstrike.png",
   "auto_issue": false,

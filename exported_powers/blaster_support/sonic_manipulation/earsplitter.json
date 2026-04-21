@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Earsplitter",
   "display_fullname": "Blaster Support Sonic Manipulation Earsplitter",
-  "display_help": "F3T3YZ45TNNRWUVHTC7RQGZFDQ",
-  "display_short_help": "JUG3VKWUMST5YHNKSTJYV6QY9X",
+  "display_help": "You generate an earsplitting sound wave right in the face of your foe, inflicting great damage. It has a good chance of causing a migraine, leaving them shaking in pain and helpless.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, DMG(Energy/Smash), Foe Chance for Hold",
   "icon": "sonicmanipulation_earsplitter",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -294,6 +294,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Sonic_Manipulation"
 }

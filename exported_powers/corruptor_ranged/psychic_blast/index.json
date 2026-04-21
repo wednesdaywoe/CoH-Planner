@@ -5,25 +5,25 @@
   "short_help": "Psychic Blast",
   "icon": "psychic_blast_set.ico",
   "powers": [
-    "Mental_Blast",
-    "Psionic_Lance",
-    "Psionic_Tornado",
-    "Psychic_Scream",
-    "Psychic_Wail",
-    "Scramble_Thoughts",
-    "Subdue",
-    "Telekinetic_blast",
-    "Will_Domination"
+    "Corruptor_Ranged.Psychic_Blast.Mental_Blast",
+    "Corruptor_Ranged.Psychic_Blast.Psionic_Lance",
+    "Corruptor_Ranged.Psychic_Blast.Psionic_Tornado",
+    "Corruptor_Ranged.Psychic_Blast.Psychic_Scream",
+    "Corruptor_Ranged.Psychic_Blast.Psychic_Wail",
+    "Corruptor_Ranged.Psychic_Blast.Scramble_Thoughts",
+    "Corruptor_Ranged.Psychic_Blast.Subdue",
+    "Corruptor_Ranged.Psychic_Blast.Telekinetic_blast",
+    "Corruptor_Ranged.Psychic_Blast.Will_Domination"
   ],
   "available_level": [
     0,
+    11,
+    17,
+    5,
+    25,
+    21,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    7
   ]
 }

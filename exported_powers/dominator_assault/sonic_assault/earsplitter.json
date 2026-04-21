@@ -6,7 +6,7 @@
   "display_name": "Earsplitter",
   "display_fullname": "Dominator Assault Sonic Assault Earsplitter",
   "display_help": "You generate an earsplitting sound wave right in the face of your foe, inflicting great damage. It has a good chance of causing a migraine, leaving them shaking in pain and helpless.",
-  "display_short_help": "JUG3VKWUMST5YHNKSTJYV6QY9X",
+  "display_short_help": "Melee, DMG(Energy/Smash), Foe Chance for Hold",
   "icon": "sonicmanipulation_earsplitter",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -295,6 +295,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Dominator_Assault.Sonic_Assault"
 }

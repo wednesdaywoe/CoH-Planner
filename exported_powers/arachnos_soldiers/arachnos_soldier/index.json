@@ -5,23 +5,23 @@
   "short_help": "Arachnos Soldiers",
   "icon": "arachnos_soldier_set.ico",
   "powers": [
-    "Bayonet",
-    "Burst",
-    "Frag_Grenade",
-    "Heavy_Burst",
-    "Pummel",
-    "Single_Shot",
-    "Venom_Grenade",
-    "WS_Wide_Area_Web_Grenade"
+    "Arachnos_Soldiers.Arachnos_Soldier.Bayonet",
+    "Arachnos_Soldiers.Arachnos_Soldier.Burst",
+    "Arachnos_Soldiers.Arachnos_Soldier.Frag_Grenade",
+    "Arachnos_Soldiers.Arachnos_Soldier.Heavy_Burst",
+    "Arachnos_Soldiers.Arachnos_Soldier.Pummel",
+    "Arachnos_Soldiers.Arachnos_Soldier.Single_Shot",
+    "Arachnos_Soldiers.Arachnos_Soldier.Venom_Grenade",
+    "Arachnos_Soldiers.Arachnos_Soldier.WS_Wide_Area_Web_Grenade"
   ],
   "available_level": [
+    11,
+    1,
+    17,
+    7,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11,
+    5
   ]
 }

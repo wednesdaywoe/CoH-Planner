@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ball Lightning",
   "display_fullname": "Incarnate Lore Pet Vanguard Boss Ball Lightning",
-  "display_help": "35LFRL7BJ75GY6XQXUYVQM92LA",
+  "display_help": "Your Endurance has been drained and are in a state of shock.<br><br><color #fcfc95>Notes: Ball Lightning is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Sleep",
   "icon": "electricalbolt_zapp.png",
   "auto_issue": false,

@@ -5,25 +5,25 @@
   "short_help": "Willpower",
   "icon": "willpower_set.ico",
   "powers": [
-    "Fast_Healing",
-    "Heightened_Senses",
-    "High_Pain_Tolerance",
-    "Indomitable_Will",
-    "Mind_Over_Body",
-    "Quick_Recovery",
-    "Resurgence",
-    "Rise_to_the_Challenge",
-    "Strength_of_Will"
+    "Brute_Defense.Willpower.Fast_Healing",
+    "Brute_Defense.Willpower.Heightened_Senses",
+    "Brute_Defense.Willpower.High_Pain_Tolerance",
+    "Brute_Defense.Willpower.Indomitable_Will",
+    "Brute_Defense.Willpower.Mind_Over_Body",
+    "Brute_Defense.Willpower.Quick_Recovery",
+    "Brute_Defense.Willpower.Resurgence",
+    "Brute_Defense.Willpower.Rise_to_the_Challenge",
+    "Brute_Defense.Willpower.Strength_of_Will"
   ],
   "available_level": [
+    3,
+    23,
     0,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    27,
+    15,
+    29
   ]
 }

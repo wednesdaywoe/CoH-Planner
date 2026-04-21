@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Kuji-In Sha",
   "display_fullname": "Sentinel Defense Ninjitsu Kuji-In Sha",
-  "display_help": "R4Q2TSDRAP6EYWCAPCZR6PX28W",
+  "display_help": "Kuji-In Sha invokes the power of Sha, or healing. Focusing your inner power, you can heal your body of its wounds and leave yourself resistant to the effects of Toxic damage for a while.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Self Heal, Res(Toxic)",
   "icon": "ninjitsu_kujinsha.png",
   "auto_issue": false,
@@ -108,6 +108,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Sentinel_Defense.Ninjitsu"
 }

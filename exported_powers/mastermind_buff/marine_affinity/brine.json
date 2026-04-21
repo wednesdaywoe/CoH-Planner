@@ -3,10 +3,10 @@
   "full_name": "Mastermind_Buff.Marine_Affinity.Brine",
   "short_name": "Brine",
   "type": "Click",
-  "display_name": "SKGHA68T4DYDYCZKDNMRS9DUJW",
+  "display_name": "Brine",
   "display_fullname": "Mastermind Buff Marine Affinity Brine",
-  "display_help": "E8CGSMJFJRVRWLXVGKJFZBYBFX",
-  "display_short_help": "PJH63G9PXSDBWCLVHN3B373NRZ",
+  "display_help": "You coat an enemy in an extremely salinated layer of deep-sea brine that reduces your foe's resistance to damage and maximum hitpoints.<br><br>If <color #fcfc95>Shifting Tides</color> is active, Brine will consume up to <color #fcfc95>3</color> stacks upon use to reduce its base recharge by 15 seconds per stack.",
+  "display_short_help": "Ranged, Foe -Resist(All), -MaxHP",
   "icon": "marineaffinity_brine.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -256,6 +256,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Mastermind_Buff.Marine_Affinity"
 }

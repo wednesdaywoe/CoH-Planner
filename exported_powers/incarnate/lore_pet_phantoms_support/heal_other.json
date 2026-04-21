@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Heal Other",
   "display_fullname": "Incarnate Lore Pet Phantoms Support Heal Other",
-  "display_help": "YSARPGV9FWDUWEXMQDZVQKC8SA",
+  "display_help": "Heals a single targeted ally. You cannot use this power to heal yourself.<br><br><color #fcfc95>Notes: Heal Other is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ally Heal",
   "icon": "empathy_healother.png",
   "auto_issue": false,

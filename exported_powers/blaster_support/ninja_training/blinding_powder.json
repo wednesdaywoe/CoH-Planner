@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Blinding Powder",
   "display_fullname": "Blaster Support Ninja Training Blinding Powder",
-  "display_help": "CAY3ZFFNVX7BW3CXG8ZF2T55J3",
+  "display_help": "You throw a handful of Blinding powder in a wide arc at your foes. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
   "icon": "ninjatools_blindingpowder",
   "auto_issue": false,
@@ -435,6 +435,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Ninja_Training"
 }

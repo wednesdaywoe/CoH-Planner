@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ranged Shot",
   "display_fullname": "Corruptor Ranged Archery Ranged Shot",
-  "display_help": "C3NSSC78PMN7YKLHGYR6A3EUGX",
+  "display_help": "A long range shot that blasts your foes. Like most sniper attacks, this power has a bonus to Accuracy, but is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Sniper, Extreme DMG(Lethal)",
   "icon": "archery_sniperarrow.png",
   "auto_issue": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Corruptor_Ranged.Archery"
 }

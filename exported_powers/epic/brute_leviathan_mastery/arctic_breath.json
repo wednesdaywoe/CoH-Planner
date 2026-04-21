@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Arctic Breath",
   "display_fullname": "Epic Brute Leviathan Mastery Arctic Breath",
-  "display_help": "56JEE9FEP97YY2MJL95CYGSXKQ",
-  "display_short_help": "YRDKQH3JCRTKWSVUZPR9TDNS63",
+  "display_help": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this freezing acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take cold damage over time, and have their damage resistance, Defense, movement rate, and recharge rate reduced. This ice will stick to foes, causing them to fall down occasionally. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
   "icon": "arachnos_patron_coneslow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -413,6 +413,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Brute_Leviathan_Mastery"
 }

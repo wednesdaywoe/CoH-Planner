@@ -5,9 +5,9 @@
   "short_help": "Incarnate",
   "icon": "barrier_rez_set.ico",
   "powers": [
-    "Barrier_Rez_Double",
-    "Barrier_Rez_Double_Wide",
-    "Barrier_Rez_Single"
+    "Incarnate.Barrier_Rez.Barrier_Rez_Double",
+    "Incarnate.Barrier_Rez.Barrier_Rez_Double_Wide",
+    "Incarnate.Barrier_Rez.Barrier_Rez_Single"
   ],
   "available_level": [
     0,

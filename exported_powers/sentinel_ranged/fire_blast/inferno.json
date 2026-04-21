@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Inferno",
   "display_fullname": "Sentinel Ranged Fire Blast Inferno",
-  "display_help": "9GZXRSPG7WF6YVNJ37X8V9ML22",
-  "display_short_help": "8XS75GHHDN9AWNBPSRYYZQDW2X",
+  "display_help": "Unleashes a massive fiery explosion to devastate all nearby enemies and set them ablaze. Inferno deals Extreme Fire damage to all nearby foes and inflicts Moderate Fire damage over time.",
+  "display_short_help": "PBAoE, DMG(Fire/Smash), DoT(Fire)",
   "icon": "fireblast_inferno.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -252,6 +252,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Sentinel_Ranged.Fire_Blast"
 }

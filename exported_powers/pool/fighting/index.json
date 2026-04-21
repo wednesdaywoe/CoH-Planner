@@ -5,17 +5,17 @@
   "short_help": "Fighting",
   "icon": "fighting_set.ico",
   "powers": [
-    "Boxing",
-    "Cross_Punch",
-    "Kick",
-    "Tough",
-    "Weave"
+    "Pool.Fighting.Boxing",
+    "Pool.Fighting.Cross_Punch",
+    "Pool.Fighting.Kick",
+    "Pool.Fighting.Tough",
+    "Pool.Fighting.Weave"
   ],
   "available_level": [
     0,
+    13,
     0,
-    0,
-    0,
-    0
+    13,
+    13
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dominate",
   "display_fullname": "Epic Sentinel Psionic Mastery Dominate",
-  "display_help": "7AYXH6NDGY7ZYTB9VZKJU69E32",
-  "display_short_help": "PT994H7YRVDYY9CW5B9273FBWA",
+  "display_help": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in their own mind and unable to defend themselves. You must be level 38 and have one other Psionic Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Psionic), Foe Hold",
   "icon": "mentalcontrol_command.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -305,6 +305,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Sentinel_Psionic_Mastery"
 }

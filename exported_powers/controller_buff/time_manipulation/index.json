@@ -5,25 +5,25 @@
   "short_help": "Time Manipulation",
   "icon": "time_manipulation_set.ico",
   "powers": [
-    "Chrono_Shift",
-    "Distortion_Field",
-    "Farsight",
-    "Slowed_Response",
-    "Temporal_Mending",
-    "Temporal_Selection",
-    "Time_Crawl",
-    "Time_Stop",
-    "Times_Juncture"
+    "Controller_Buff.Time_Manipulation.Chrono_Shift",
+    "Controller_Buff.Time_Manipulation.Distortion_Field",
+    "Controller_Buff.Time_Manipulation.Farsight",
+    "Controller_Buff.Time_Manipulation.Slowed_Response",
+    "Controller_Buff.Time_Manipulation.Temporal_Mending",
+    "Controller_Buff.Time_Manipulation.Temporal_Selection",
+    "Controller_Buff.Time_Manipulation.Time_Crawl",
+    "Controller_Buff.Time_Manipulation.Time_Stop",
+    "Controller_Buff.Time_Manipulation.Times_Juncture"
   ],
   "available_level": [
+    29,
+    15,
+    23,
+    27,
     0,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    3
   ]
 }

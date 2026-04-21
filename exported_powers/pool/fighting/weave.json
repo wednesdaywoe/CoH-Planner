@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Weave",
   "display_fullname": "Pool Fighting Weave",
-  "display_help": "LSRSE9P7BUFQYBV8XMPX2EH4D2",
+  "display_help": "While active, you bob and weave, increasing your Defense to all attacks, as well as your resistance to Immobilize.<br><br>You must be at least level 14 and have two other Fighting Powers before selecting Weave.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: Self +DEF(All), Res(Immobilize)",
   "icon": "fighting_weave.png",
   "auto_issue": false,
@@ -182,6 +182,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Fighting"
 }

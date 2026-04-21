@@ -5,25 +5,25 @@
   "short_help": "Ice Manipulation",
   "icon": "ice_manipulation_set.ico",
   "powers": [
-    "Build_Up",
-    "Chilblain",
-    "Chilling_Embrace",
-    "Freezing_Touch",
-    "Frozen_Aura",
-    "Frozen_Fists",
-    "Ice_Patch",
-    "Ice_Sword",
-    "Shiver"
+    "Blaster_Support.Ice_Manipulation.Build_Up",
+    "Blaster_Support.Ice_Manipulation.Chilblain",
+    "Blaster_Support.Ice_Manipulation.Chilling_Embrace",
+    "Blaster_Support.Ice_Manipulation.Freezing_Touch",
+    "Blaster_Support.Ice_Manipulation.Frozen_Aura",
+    "Blaster_Support.Ice_Manipulation.Frozen_Fists",
+    "Blaster_Support.Ice_Manipulation.Ice_Patch",
+    "Blaster_Support.Ice_Manipulation.Ice_Sword",
+    "Blaster_Support.Ice_Manipulation.Shiver"
   ],
   "available_level": [
+    15,
     0,
+    9,
+    27,
+    29,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    3,
+    23
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Mutation",
   "display_fullname": "Controller Buff Radiation Emission Mutation",
-  "display_help": "4U2LQS2Q4CSZWDMBZ9L5GAW443",
+  "display_help": "Using a concentrated burst of radiation, you can revive a fallen hero and Mutate them into a killing machine. The Mutated hero has increased damage, chance to hit, Endurance recovery, and attack speed and is protected from XP Debt for 90 seconds. The entire experience is very taxing on the Mutated hero, and they will soon be severely weakened. All effects of the Mutation will eventually wear off.",
   "display_short_help": "Close, Ally Rez, Special",
   "icon": "radiationpoisoning_mutation.png",
   "auto_issue": false,
@@ -389,6 +389,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Controller_Buff.Radiation_Emission"
 }

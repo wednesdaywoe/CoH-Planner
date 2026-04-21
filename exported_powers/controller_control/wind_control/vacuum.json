@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Vacuum",
   "display_fullname": "Controller Control Wind Control Vacuum",
-  "display_help": "BXEGW7PT3EL2Y8MRSFYRQ7DTEX",
+  "display_help": "You release all Pressure to create a vacuum space around a target. With a foe target, the foe is held. Nearby foes may also be held. Foes in the field suffer lethal damage and persistent movement, attack speed, and chance to hit debuffs that grow stronger the longer they are in the field. If centered on an ally, the main target is not held, but foes are affected as normal. For each Pressure released, the Vacuum field persists for 2 seconds more. At your highest Pressure level, the main target will take extra damage and the field will persist long enough to reapply its hold. If Vacuum is targeted on your Vortex, you will gain the Clear Skies boon, but at the expense of using the power to harm foes. The boon lasts 5 seconds more for each Pressure released. Both Vacuum and Vortex are required to unlock Clear Skies.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Ranged (Targeted AoE), Hold (Foe), Moderate DoT (Lethal), -Movement(Foe), -Rech(Foe), -ToHit(Foe), Special(Pet), Pressure Consumer (Self)",
   "icon": "windcontrol_vacuum.png",
   "auto_issue": false,
@@ -450,6 +450,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Controller_Control.Wind_Control"
 }

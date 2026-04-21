@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Atomic Blast",
   "display_fullname": "Sentinel Ranged Radiation Blast Atomic Blast",
-  "display_help": "CSPJNM35A7T2W4MW3ZSK69TD6Z",
-  "display_short_help": "5KGN3DUQZGCFW5NWEU4A2TNYJQ",
+  "display_help": "This attack taps most of your stored energy to deal a devastating Atomic Blast which deals Extreme Energy and Smashing damage. Any foes left standing will have their Defense greatly reduced and may be left helplessly choking on toxic vapors.",
+  "display_short_help": "PBAoE, DMG(Energy/Smash), Foe Hold, -DEF",
   "icon": "radiationburst_atomicblast",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -341,6 +341,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Sentinel_Ranged.Radiation_Blast"
 }

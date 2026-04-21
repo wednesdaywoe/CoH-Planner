@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Concentrated Strike",
   "display_fullname": "Scrapper Melee Kinetic Attack Total Focus",
-  "display_help": "9FHKZV7DXSLWYKBXXGW98ZQMMQ",
-  "display_short_help": "TCV3TLFDN77QW8N2D94KGM5YGS",
+  "display_help": "Concentrated Strike is a slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Concentrated Strike, recharge time is very long.",
+  "display_short_help": "Melee, DMG(Energy/Smash), Foe Disorient, Special",
   "icon": "kineticattack_totalfocus.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -575,6 +575,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Scrapper_Melee.Kinetic_Attack"
 }

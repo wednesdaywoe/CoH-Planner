@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Jaunt",
   "display_fullname": "Pool Experimentation Jaunt",
-  "display_help": "ZM2PYALD9Z9AYZMSCV8QSY7UAS",
+  "display_help": "Clicking on this power and then selecting a location will cause the caster to vanish and reappear at their target location.<br><br><color #fcfc95>Notes: In PvP, this power will recharge in 20s.<br><br>Jaunt is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Click, Self Teleport",
   "icon": "experimentation_jaunt.png",
   "auto_issue": true,
@@ -303,6 +303,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Pool.Experimentation"
 }

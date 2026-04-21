@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Smoke Flash",
   "display_fullname": "Blaster Support Ninja Training Smoke Flash",
-  "display_help": "XMYNSSFMGR6UWRL83WZZ6CT7V2",
+  "display_help": "You throw a smoke bomb at your feet. The resulting flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. Enemies will be distracted and confused, making them more vulnerable to attacks for a short time.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE, Foe Placate, -Res",
   "icon": "ninjatools_placate",
   "auto_issue": false,
@@ -180,6 +180,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Blaster_Support.Ninja_Training"
 }

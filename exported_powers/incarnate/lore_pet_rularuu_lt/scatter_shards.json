@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Scatter Shards",
   "display_fullname": "Incarnate Lore Pet Rularuu LT Scatter Shards",
-  "display_help": "SLJL88BJZ5S3YLCJMHFSMZWYW2",
+  "display_help": "Natterlings can hurl shards of themselves in a narrow cone.<br><br><color #fcfc95>Notes: Scatter Shards is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Light DMG(Lethal)",
   "icon": "quills_impale.png",
   "auto_issue": false,

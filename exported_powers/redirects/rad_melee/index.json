@@ -5,15 +5,15 @@
   "short_help": "Illusion Control",
   "icon": "blind_set.ico",
   "powers": [
-    "Contaminated_Strike_AoE",
-    "Devastating_Blow_AoE",
-    "Radiation_Siphon_AoE",
-    "Radioactive_Smash_AoE"
+    "Redirects.Rad_Melee.Contaminated_Strike_AoE",
+    "Redirects.Rad_Melee.Devastating_Blow_AoE",
+    "Redirects.Rad_Melee.Radiation_Siphon_AoE",
+    "Redirects.Rad_Melee.Radioactive_Smash_AoE"
   ],
   "available_level": [
     0,
-    0,
-    0,
-    0
+    34,
+    15,
+    1
   ]
 }

@@ -3,10 +3,10 @@
   "full_name": "Sentinel_Defense.Psionic_Armor.Precognition",
   "short_name": "Precognition",
   "type": "Auto",
-  "display_name": "UJTB2JSZQVR3Y6NCJH8GQZFWH3",
+  "display_name": "Precognition",
   "display_fullname": "Sentinel Defense Psionic Armor Precognition",
-  "display_help": "EE7FZBT8ATN3WCXZAYTMGCWN8Z",
-  "display_short_help": "ZAM976A366HQYPZ2UC34MKVGUZ",
+  "display_help": "Precognition allows you to read your enemies' minds, letting you see their attacks before they happen and increasing your perception. This power is always on and costs no Endurance.",
+  "display_short_help": "Auto: Self +DEF(Melee, Ranged, AoE, Psionic), Res(DeBuff DEF), +Perception",
   "icon": "psionicarmor_precognition",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -182,6 +182,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Sentinel_Defense.Psionic_Armor"
 }

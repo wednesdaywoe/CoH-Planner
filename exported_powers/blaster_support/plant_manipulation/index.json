@@ -5,25 +5,25 @@
   "short_help": "Plant Manipulation",
   "icon": "plant_manipulation_set.ico",
   "powers": [
-    "Entangle",
-    "Ripper",
-    "Skewer",
-    "Spore_Cloud",
-    "Strangler",
-    "Thorn_Burst",
-    "Toxins",
-    "Vines",
-    "Wild_Fortress"
+    "Blaster_Support.Plant_Manipulation.Entangle",
+    "Blaster_Support.Plant_Manipulation.Ripper",
+    "Blaster_Support.Plant_Manipulation.Skewer",
+    "Blaster_Support.Plant_Manipulation.Spore_Cloud",
+    "Blaster_Support.Plant_Manipulation.Strangler",
+    "Blaster_Support.Plant_Manipulation.Thorn_Burst",
+    "Blaster_Support.Plant_Manipulation.Toxins",
+    "Blaster_Support.Plant_Manipulation.Vines",
+    "Blaster_Support.Plant_Manipulation.Wild_Fortress"
   ],
   "available_level": [
     0,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    3,
+    29,
+    9,
+    27,
+    19
   ]
 }

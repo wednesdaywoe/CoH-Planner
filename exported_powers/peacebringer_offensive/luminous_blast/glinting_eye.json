@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Glinting Eye",
   "display_fullname": "Peacebringer Offensive Luminous Blast Glinting Eye",
-  "display_help": "JK4DYTM9V89DW5V8HVBNSNTVSQ",
+  "display_help": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Moderate DMG(Energy), Foe -DEF",
   "icon": "luminousblast_glintingeye.png",
   "auto_issue": false,

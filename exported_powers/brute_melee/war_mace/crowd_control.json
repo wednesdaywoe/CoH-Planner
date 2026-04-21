@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Crowd Control",
   "display_fullname": "Brute Melee War Mace Crowd Control",
-  "display_help": "8RBL8KUC65F8Y7XQTWRP8QD393",
+  "display_help": "You swing your mace in a wide arc in front of you. This attack strikes all foes within melee range, deals them serious damage, and knocks them down.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee (Cone), Moderate DMG(Smashing), Knockback",
   "icon": "mace_crowdcontrol.png",
   "auto_issue": false,
@@ -254,6 +254,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Brute_Melee.War_Mace"
 }

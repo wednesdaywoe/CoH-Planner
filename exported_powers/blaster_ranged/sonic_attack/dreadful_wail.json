@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dreadful Wail",
   "display_fullname": "Blaster Ranged Sonic Attack Dreadful Wail",
-  "display_help": "2EHMG8N777F4YQBWB75LT5P9BQ",
-  "display_short_help": "7PKHRG8XZQG9WXVKWU5LS5HJ6Z",
+  "display_help": "Your Dreadful Wail is so strong that most foes will be defeated by being subjected to it. Dreadful Wail deals Extreme Smashing and Energy damage to all nearby foes in addition to disorienting them for a good while.",
+  "display_short_help": "PBAoE, DMG(Energy/Smash), Foe Disorient, -Res(All)",
   "icon": "sonicblast_massivedamage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -284,6 +284,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Blaster_Ranged.Sonic_Attack"
 }

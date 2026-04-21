@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Whirling Smash",
   "display_fullname": "Tanker Melee Titan Weapons Whirling Slice",
-  "display_help": "SXKS7QY2L7WQYFVX6XHGFATYCQ",
-  "display_short_help": "PZUVRWKDS289YNNDDWJ4AYGQPW",
+  "display_help": "You perform a powerful Whirling Smash that deals Moderate Smashing damage, and can knock an opponent down.<br><br><color #fcfc95>Notes: Whirling Smash requires Momentum in order to be activated.</color><br><br>Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Smashing), Knockdown, Requires Momentum",
   "icon": "titanweapons_whirlingslice.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Tanker_Melee.Titan_Weapons"
 }

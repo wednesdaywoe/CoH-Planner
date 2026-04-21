@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Zombie Horde",
   "display_fullname": "Mastermind Summon Necromancy Zombie Horde",
-  "display_help": "ZWAYRNJYXPZBW7LXTHDDFJ2TKS",
+  "display_help": "Summons one to three Zombies (depending on your level) to do your bidding. Zombies are very tough but can be slow and stupid. They start out with only rudimentary melee attacks, but can be empowered with range and even life draining powers.<br><br>You may only have 3 Zombies under your control at any given time. If you attempt to summon more Zombies, you can only replace the ones you have lost in battle. If you already have three, the power will fail.<br><br>In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "display_short_help": "Summon Zombies",
   "icon": "necromancy_callzombiehorde.png",
   "auto_issue": false,

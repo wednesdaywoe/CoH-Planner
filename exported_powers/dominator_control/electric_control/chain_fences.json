@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Chain Fences",
   "display_fullname": "Dominator Control Electric Control Chain Fences",
-  "display_help": "SAGJ5HKJ34CEYBNDX8ZAEC3VJA",
-  "display_short_help": "J4U5S7JD4UBEWJXKYR5AF3YGTA",
+  "display_help": "You can immobilize multiple foes in a chain of electricity, dealing minor damage to all foes in range and draining some endurance. This power also reduces Flight capacity in targets.",
+  "display_short_help": "Ranged AoE, DMG(Energy), Foe Immobilize, -End, -Fly",
   "icon": "electriccontrol_chainfences.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -404,6 +404,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Dominator_Control.Electric_Control"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Netherworld Grasp",
   "display_fullname": "Epic Sentinel Dark Mastery Netherworld Grasp",
-  "display_help": "66JCL9U3GSEAWKNKTCW7BHKN43",
-  "display_short_help": "PKU6X5XXHL5XWGNJHWSA3LPDRX",
+  "display_help": "Mastery over the forces of the Netherworld allows you to summon dark tentacles to render your target helpless and inflicting moderate negative energy damage. Even if the target is powerful enough to resist the power's hold effect they will have their chance to hit reduced. You must be level 38 and have one other Dark Mastery Powers before selecting this power.<br>",
+  "display_short_help": "Ranged, DMG(Negative), Foe Hold, -To Hit",
   "icon": "darknesscontrol_darkgrasp.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -345,6 +345,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Sentinel_Dark_Mastery"
 }

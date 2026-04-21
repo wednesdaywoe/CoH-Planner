@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Enchant Undead",
   "display_fullname": "Mastermind Summon Necromancy Enchant Undead",
-  "display_help": "CNN6RY3S7JNQYDB8P78C8P73VX",
+  "display_help": "Enchant Undead will permanently bestow new powers and abilities to all of your Undead Henchman. The powers gained are unique and dependent upon the type of Undead Henchman that is Enchanted, but all henchmen will gain Resistances to most forms of crowd control and a variety of damage types.<br><br>Enchant Undead only works on your Undead Henchmen and you can only Enchant your Undead Henchmen once with this power.",
   "display_short_help": "Ranged, Enchant Undead Henchman",
   "icon": "necromancy_enchantundead.png",
   "auto_issue": false,
@@ -43,6 +43,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Mastermind_Summon.Necromancy"
 }

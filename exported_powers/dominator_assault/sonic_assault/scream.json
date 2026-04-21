@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Scream",
   "display_fullname": "Dominator Assault Sonic Assault Scream",
-  "display_help": "38N3C85UC6L8YTBRTT8CP95A3S",
-  "display_short_help": "6RR3A5G9TC5JYRBQKXCTP5LNJX",
+  "display_help": "Your Scream can cause serious damage to a target. This power applies <color #ffd9b3>Lingering Sonic Vibrations</color> that lower resistance for 10s.",
+  "display_short_help": "Ranged, DMG(Energy/Smash), Foe -Res(All)",
   "icon": "sonicmanipulation_scream",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -194,6 +194,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Dominator_Assault.Sonic_Assault"
 }

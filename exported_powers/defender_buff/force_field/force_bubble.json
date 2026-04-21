@@ -3,10 +3,10 @@
   "full_name": "Defender_Buff.Force_Field.Force_Bubble",
   "short_name": "Force_Bubble",
   "type": "Click",
-  "display_name": "VXK86J74Y35MYKCUFWLVHMBBUX",
+  "display_name": "Damping Bubble",
   "display_fullname": "Defender Buff Force Field Force Bubble",
-  "display_help": "DEHZKBJT5GHYYRLU48J8VF4TAS",
-  "display_short_help": "5UEWP4BV2MAHYKZWMXHZCXVDHW",
+  "display_help": "Creates a large bubble at your location which protects all allies inside. While active, this power will grant resistance to Accuracy, Defense, Regeneration, Perception, and Slow debuffs on yourself and allies. Foes within this bubble will have the strength of their Accuracy, Defense, Regeneration, Perception, and Speed debuff powers weakened directly.",
+  "display_short_help": "Location (PBAoE), Team +Res(Accuracy, Defense, Perception, Recharge, Regen, Speed, ToHit), Foe -Str(Defense, Perception, Regen, Speed, ToHit)",
   "icon": "forcefield_dampeningbubble",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -94,6 +94,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Defender_Buff.Force_Field"
 }

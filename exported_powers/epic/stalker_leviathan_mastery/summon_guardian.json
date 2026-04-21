@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Summon Guardian",
   "display_fullname": "Epic Stalker Leviathan Mastery Summon Guardian",
-  "display_help": "GASKQLYMPENKWBX65HMRG7K353",
-  "display_short_help": "GMTSXYGCNNMLYGNVDFTHTGW8KA",
+  "display_help": "Captain Mako has shown you how to summon a Coralax Guardian Warder to do your bidding. These creatures are composed of living coral made from the sea-goddess Merulina. Your access to this Guardian is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Warder: Ranged DMG(Smashing)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -92,6 +92,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Stalker_Leviathan_Mastery"
 }

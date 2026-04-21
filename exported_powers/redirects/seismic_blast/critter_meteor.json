@@ -6,7 +6,7 @@
   "display_name": "Meteor",
   "display_fullname": "Redirects Seismic Blast Critter Meteor",
   "display_help": "You call down a meteor strike from the sky at a single target's location. All targets around the main target within 30' are caught in the blast radius. In addition to a knockback in the entire radius, those in the inner 15' of the radius suffer the worst effects, including more damage and a stun, while those in the outer radius suffer less damage and no stun. This power also increases your smashing damage and defense for a brief time.",
-  "display_short_help": "ZMRCLV2K2YDVY8Z6X6WKVPLCKS",
+  "display_short_help": "Targeted AoE, DMG(Smash/Fire), Knockback",
   "icon": "seismicblast_meteor",
   "auto_issue": false,
   "auto_issue_keeps_level": false,

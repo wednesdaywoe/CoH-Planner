@@ -3,10 +3,10 @@
   "full_name": "Scrapper_Defense.Psionic_Armor.Aura_of_Insanity",
   "short_name": "Aura_of_Insanity",
   "type": "Toggle",
-  "display_name": "73RRTZA5XEJGYLB9S9JPATZRVW",
+  "display_name": "Aura of Insanity",
   "display_fullname": "Scrapper Defense Psionic Armor Aura of Insanity",
-  "display_help": "XLDV7LPVHVU8Y7VFFJET7YQS43",
-  "display_short_help": "H3KAHHGPSFV2YCNWQK8LAMRFB2",
+  "display_help": "You emit a powerful psychic aura that causes the minds of those around you to become weak and distracted. Foes may be stunned, held, terrified or even confused in your presence, in addition to suffering a debuff derived from the applied control effect. Those that resist these effects will suffer damage over time. This power allows you to use your own Hit Points to keep enemies near you disabled. The power costs no endurance but can be dangerous to use.<br><br><color #fcfc95>Notes: Mez enhancements on this power enhance its magnitude instead of its duration.</color>",
+  "display_short_help": "Toggle: PBAoE, Foe Confuse, Disorient, Sleep, Hold, Fear, DoT(Psionic), +Special",
   "icon": "psionicarmor_worldofconfusion",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -1414,6 +1414,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Scrapper_Defense.Psionic_Armor"
 }

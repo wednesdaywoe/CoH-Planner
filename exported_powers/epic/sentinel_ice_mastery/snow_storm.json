@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Snow Storm",
   "display_fullname": "Epic Sentinel Ice Mastery Snow Storm",
-  "display_help": "BDVZWGJVH4T6YHM4BXMPQCAMH3",
+  "display_help": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes. The torrent winds of the Snow Storm are enough to bring down flying foes. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly",
   "icon": "ice_mastery_snowstorm",
   "auto_issue": false,
@@ -176,6 +176,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Sentinel_Ice_Mastery"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Greater Fire Sword",
   "display_fullname": "Tanker Melee Fiery Melee Greater Fire Sword",
-  "display_help": "ACBD3M6VQ7ZFWFNBVJZUXL7W7S",
-  "display_short_help": "JAP4KZNGFJM4YANPGFKAGDR7JQ",
+  "display_help": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze and cut through their defenses. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time.",
+  "display_short_help": "Melee, DMG(Fire)",
   "icon": "fieryfray_greaterfiresword.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -241,6 +241,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Tanker_Melee.Fiery_Melee"
 }

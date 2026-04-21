@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Conserve Power",
   "display_fullname": "Epic Energy Mastery Conserve Power",
-  "display_help": "BPVYRYMJZ9WRYZM3KLH779ULHS",
+  "display_help": "You can focus for a moment to conserve your Endurance. After activating this power, you expend less Endurance on all other powers for a while.",
   "display_short_help": "Self Endurance Discount",
   "icon": "energymastery_conservepower.png",
   "auto_issue": false,
@@ -81,6 +81,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Energy_Mastery"
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Double Jump",
   "display_fullname": "Pool Leaping Double Jump",
-  "display_help": "5E9X8H7EK2HRYRN5PXP9G97G63",
+  "display_help": "Double Jump allows you to jump and gain altitude in mid air! This ability will automatically shut down after 30 seconds of continuous use.<br><br>In PvP, this power will detoggle after 10 seconds of continuous use, and disabled for 40 seconds.",
   "display_short_help": "Toggle: Self +Special",
   "icon": "jump_highjump.png",
   "auto_issue": true,
@@ -151,6 +151,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Pool.Leaping"
 }

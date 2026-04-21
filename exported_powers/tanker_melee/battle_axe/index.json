@@ -5,25 +5,25 @@
   "short_help": "Battle Axe",
   "icon": "battle_axe_set.ico",
   "powers": [
-    "Beheader",
-    "Build_Up",
-    "Chop",
-    "Cleave",
-    "Gash",
-    "Pendulum",
-    "Swoop",
-    "Taunt",
-    "Whirling_Axe"
+    "Tanker_Melee.Battle_Axe.Beheader",
+    "Tanker_Melee.Battle_Axe.Build_Up",
+    "Tanker_Melee.Battle_Axe.Chop",
+    "Tanker_Melee.Battle_Axe.Cleave",
+    "Tanker_Melee.Battle_Axe.Gash",
+    "Tanker_Melee.Battle_Axe.Pendulum",
+    "Tanker_Melee.Battle_Axe.Swoop",
+    "Tanker_Melee.Battle_Axe.Taunt",
+    "Tanker_Melee.Battle_Axe.Whirling_Axe"
   ],
   "available_level": [
+    3,
+    15,
     0,
+    29,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    23,
+    9,
+    27
   ]
 }

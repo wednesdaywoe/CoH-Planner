@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mind Probe",
   "display_fullname": "Epic Sentinel Psionic Mastery Mind Probe",
-  "display_help": "VA2Z7CFH3AV6Y4MH677P3GA7S2",
-  "display_short_help": "EZG6MCSLHNJCYLN6GMG4D43P5Q",
+  "display_help": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wreaks havoc on your foes synapses, dealing high Psionic Damage while reducing their attack speed.",
+  "display_short_help": "Melee, DMG(Psionic), Target -Recharge",
   "icon": "mentalcontrol_mindprobe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -266,6 +266,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Psionic_Mastery"
 }

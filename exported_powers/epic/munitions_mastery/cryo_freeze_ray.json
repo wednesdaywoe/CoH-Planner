@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Cryo Freeze Ray",
   "display_fullname": "Epic Munitions Mastery Cryo Freeze Ray",
-  "display_help": "BSREHV365YZ3WMCTJ3JJ9ASVJ3",
-  "display_short_help": "RV4B3QJB8QRPWTBZ63DCNKP8TW",
+  "display_help": "Although this weapon deals very little damage, the Cryo Freeze Ray encases your foe in a block of ice, holding him helpless in place for a while.",
+  "display_short_help": "Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge",
   "icon": "munitionsmastery_cryofreezeray.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -293,6 +293,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Munitions_Mastery"
 }

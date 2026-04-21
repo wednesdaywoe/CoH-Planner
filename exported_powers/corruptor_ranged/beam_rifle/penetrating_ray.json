@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Penetrating Ray",
   "display_fullname": "Corruptor Ranged Beam Rifle Penetrating Ray",
-  "display_help": "QPW6UPTG6S8CYFMHUDNXMMMGJX",
-  "display_short_help": "ZK2WKBRHNS7YWXC2ZKSYEPJX93",
+  "display_help": "You take careful aim at your target and deliver a punishing supercharged shot from your Beam Rifle. This causes Extreme Energy damage and may knock the target off their feet. If the target is also suffering from the Disintegrating effect it will also suffer additional damage over time. Like all Sniper attacks it will be interrupted if you're attacked. In addition, targets already affected by the Disintegrating effect will cause this effect to spread to 3 nearby targets. This Disintegrate Spread effect can only hit targets that aren't already affected by the Disintegrating effect. Disintegrate Spread causes Minor Energy damage over time. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+  "display_short_help": "Sniper, DMG(Energy), Foe Knockdown, Special",
   "icon": "beamrifle_penetratingray.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Corruptor_Ranged.Beam_Rifle"
 }

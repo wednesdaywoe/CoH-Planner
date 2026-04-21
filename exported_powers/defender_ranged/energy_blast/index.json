@@ -5,25 +5,25 @@
   "short_help": "Energy Blast",
   "icon": "energy_blast_set.ico",
   "powers": [
-    "Aim",
-    "Energy_Torrent",
-    "Explosive_Blast",
-    "Nova",
-    "Power_Blast",
-    "Power_Bolt",
-    "Power_Burst",
-    "Power_Push",
-    "Sniper_Blast"
+    "Defender_Ranged.Energy_Blast.Aim",
+    "Defender_Ranged.Energy_Blast.Energy_Torrent",
+    "Defender_Ranged.Energy_Blast.Explosive_Blast",
+    "Defender_Ranged.Energy_Blast.Nova",
+    "Defender_Ranged.Energy_Blast.Power_Blast",
+    "Defender_Ranged.Energy_Blast.Power_Bolt",
+    "Defender_Ranged.Energy_Blast.Power_Burst",
+    "Defender_Ranged.Energy_Blast.Power_Push",
+    "Defender_Ranged.Energy_Blast.Sniper_Blast"
   ],
   "available_level": [
+    19,
+    3,
+    27,
+    29,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9,
+    23,
+    15
   ]
 }

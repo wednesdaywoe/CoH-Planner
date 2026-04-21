@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Voltaic Sentinel",
   "display_fullname": "Dominator Assault Electricity Manipulation Shocking Grasp",
-  "display_help": "Q4KNGXB6A468WGNZBGMZREG7BS",
+  "display_help": "You can manifest a polarized electricity field that hovers above the ground and hurls bolts of electricity at nearby foes. Any enemy that passes near this Sentinel risks serious injury. The Sentinel is not alive and cannot be targeted or attacked by enemies. The Sentinel can fly and will follow you.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Summon Sentinel: Ranged, Moderate DMG(Energy), Foe -End",
   "icon": "electricalassault_voltaicsentinel.png",
   "auto_issue": false,
@@ -96,6 +96,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Dominator_Assault.Electricity_Manipulation"
 }

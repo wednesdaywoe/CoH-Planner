@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "LRM Rocket",
   "display_fullname": "Epic Munitions Mastery LRM Rocket",
-  "display_help": "M3BT6C2294MWY8N8UYPYKGSACZ",
-  "display_short_help": "8SE9SGAESWJMYBV9Q62XFWSX3Z",
+  "display_help": "The LRM Rocket is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. The LRM Rocket is bulky, awkward to use and you must take your time to aim, so this attack can be interrupted. You must be level 44 and have two other Arsenal Mastery Powers before selecting this power. If you are engaged in battle this attack becomes instant-cast, but inflicts lower damage on a reduced area and range.",
+  "display_short_help": "Interruptible (Targeted AoE), DMG(Lethal/Smash), Foe Knockback",
   "icon": "munitionsmastery_lrmrocket.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Munitions_Mastery"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Sonic Siphon",
   "display_fullname": "Defender Buff Sonic Debuff Sonic Siphon",
-  "display_help": "9HPK6FHATDJVYULFJ499TVR4S2",
+  "display_help": "By setting up a constant vibration within the body of your foe, you weaken their Damage Resistance. Affected targets will take more damage from successful attacks.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Foe -Res(All)",
   "icon": "sonicdebuff_debuffdamres.png",
   "auto_issue": false,

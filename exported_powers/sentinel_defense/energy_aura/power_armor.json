@@ -5,8 +5,8 @@
   "type": "Auto",
   "display_name": "Power Armor",
   "display_fullname": "Sentinel Defense Energy Aura Power Armor",
-  "display_help": "B8CWZB9VT3ZAYHMKFKEB98RKHS",
-  "display_short_help": "459YP6ZWVTSTWGCV4W9W3EFDYS",
+  "display_help": "Power Armor increases Hit Points and resistance to all damage types. This power is always on and costs no endurance.",
+  "display_short_help": "Auto: Self +MaxHP, +Resist(All DMG)",
   "icon": "energyaura_powerarmor",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -138,6 +138,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Sentinel_Defense.Energy_Aura"
 }

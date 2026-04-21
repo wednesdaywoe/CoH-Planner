@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fossilize",
   "display_fullname": "Epic Earth Mastery Fossilize",
-  "display_help": "L2TZ54638KUUWULZ8K2RN92N93",
-  "display_short_help": "C247XCTS6LH3WZNHJ5N6BGJMAX",
+  "display_help": "Encases a single target within solid stone. The stone slowly crushes the victim, dealing Smashing damage. The Fossilized victim is held helpless and unable to defend himself. You must be level 38 and have one other Earth Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Smash), Foe Hold, -DEF",
   "icon": "earth_mastery_fossilize",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -254,6 +254,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Earth_Mastery"
 }

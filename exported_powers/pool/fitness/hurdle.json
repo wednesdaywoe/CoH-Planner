@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Hurdle",
   "display_fullname": "Pool Fitness Hurdle",
-  "display_help": "ZA92LCP6EFS5Y5M2J4PVEWUHTQ",
+  "display_help": "You can naturally jump higher than normal.<br><br>This ability is always on and does not cost any Endurance.",
   "display_short_help": "Auto: Self +Leap",
   "icon": "fitness_hurdle.png",
   "auto_issue": false,
@@ -105,6 +105,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Pool.Fitness"
 }

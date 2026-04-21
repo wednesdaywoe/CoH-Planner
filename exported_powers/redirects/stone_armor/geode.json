@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Geode",
   "display_fullname": "Redirects Stone Armor Geode",
-  "display_help": "E9WL8YQ25UPZWBVRVFAX5MGUAZ",
+  "display_help": "When you activate this power, you encase yourself in various protective mineral layers, that can absorb incoming damage while you heal recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot stay in this Geode for more than 30 seconds. If enemies inflict enough damage, they might break you out of this effect.",
   "display_short_help": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
   "icon": "stonearmor_geode.png",
   "auto_issue": false,

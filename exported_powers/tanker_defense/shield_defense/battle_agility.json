@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Active Defense",
   "display_fullname": "Tanker Defense Shield Defense Battle Agility",
-  "display_help": "LBDBPNUBR5WGWYNHGNX55LF4VS",
+  "display_help": "When you activate this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Repel, Knockback, Hold and Defense Debuff effects for a short duration.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback, Defense Debuff)",
   "icon": "shielddefense_battleagility.png",
   "auto_issue": false,
@@ -363,6 +363,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Tanker_Defense.Shield_Defense"
 }

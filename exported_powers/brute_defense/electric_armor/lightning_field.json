@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Lightning Field",
   "display_fullname": "Brute Defense Electric Armor Lightning Field",
-  "display_help": "M9KCKL4C8QW4YACN46JQNMDRSA",
+  "display_help": "While active, you emit a storm of electricity that constantly damages all nearby foes.",
   "display_short_help": "Toggle: PBAoE, Minor DoT(Energy), Foe -End",
   "icon": "electricarmor_pbaoeminordamage.png",
   "auto_issue": false,

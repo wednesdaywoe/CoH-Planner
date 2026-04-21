@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fearsome Stare",
   "display_fullname": "Mastermind Buff Dark Miasma Fearsome Stare",
-  "display_help": "TTGRESTCHAR8YRX83HS66BBFHX",
+  "display_help": "Instills tremendous Fear within a cone area in front of you, causing all affected targets to tremble in Terror uncontrollably, attacking only when attacked and even then with a reduced chance to hit.",
   "display_short_help": "Ranged (Cone), Foe Fear, -To Hit",
   "icon": "darkmiasma_fearsomeaura.png",
   "auto_issue": false,
@@ -201,6 +201,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Mastermind_Buff.Dark_Miasma"
 }

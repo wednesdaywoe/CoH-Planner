@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Penumbral Grasp",
   "display_fullname": "Blaster Support Darkness Manipulation Penumbral Grasp",
-  "display_help": "VKRMW36WHZW8YAC3LEP62V9XRZ",
+  "display_help": "Penumbral Grasp deals moderate Negative Energy damage, reduces their chance to hit and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.",
   "display_short_help": "Ranged, Moderate DOT(Negative), Foe Immobilize, -To Hit",
   "icon": "darknessmanipulation_penumbralgrasp.png",
   "auto_issue": false,

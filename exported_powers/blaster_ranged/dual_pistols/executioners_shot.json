@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Executioner's Shot",
   "display_fullname": "Blaster Ranged Dual Pistols Executioners Shot",
-  "display_help": "ZD5ZJUT435GJW3ZJNATQE9ATYX",
-  "display_short_help": "5MYD6B4EYS37WHX5UMPPZGCUQS",
+  "display_help": "Executioner's Shot is a deadly ranged attack. Foes struck by this attack will suffer lethal damage and will likely be knocked back by the impact of this attack. Targets struck by Executioner's Shot while no special ammunition is equipped will have their defenses reduced for a short time.<br><br>Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.<br><br>Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to:<br><br><color #9bfafa>*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.</color><br><color #fac39b>*A minor damage over time effect if 'Incendiary Ammo' is loaded.</color><br><color #9efa9b>*A -damage effect if 'Chemical Ammo' is loaded.</color>",
+  "display_short_help": "Ranged, DMG(Lethal/Special), Foe -Defense, Knockback/Special",
   "icon": "dualpistols_executionersshot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -838,6 +838,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Blaster_Ranged.Dual_Pistols"
 }

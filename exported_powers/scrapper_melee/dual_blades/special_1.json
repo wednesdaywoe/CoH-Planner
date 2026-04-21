@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Vengeful Slice",
   "display_fullname": "Scrapper Melee Dual Blades Special 1",
-  "display_help": "89WKQLR2EWBWY4X4YM3JP3XAPX",
-  "display_short_help": "G4C3EKQ583X3YRCQD97MFHGKZQ",
+  "display_help": "Unleashes a series of strong attacks on your foe, dealing high lethal damage and knocking them down. This power is needed for the Attack Vitals combination attack.<br><br><color #ff7f00>Attack Vitals: Ablating Strike > Vengeful Slice > Sweeping Strike.</color>",
+  "display_short_help": "Melee, DMG(Lethal), Knockdown",
   "icon": "dualblades_special1.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -794,6 +794,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Scrapper_Melee.Dual_Blades"
 }

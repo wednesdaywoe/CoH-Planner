@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psionic Nexus",
   "display_fullname": "Epic Melee Psionic Mastery Psionic Nexus",
-  "display_help": "8WYLZLB2MQD7YFNDG3YN7RJ4R3",
-  "display_short_help": "5Q5369VDT5ERYLLAP7RMKVPHHQ",
+  "display_help": "You create a nexus of psionic energy at your location.",
+  "display_short_help": "Summon Psionic Nexus: Ranged DMG(Psionic)",
   "icon": "psionic_mastery_psionicnexus",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -49,6 +49,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Melee_Psionic_Mastery"
 }

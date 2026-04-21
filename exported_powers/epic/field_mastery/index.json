@@ -5,17 +5,17 @@
   "short_help": "Energy Mastery",
   "icon": "field_mastery_set.ico",
   "powers": [
-    "Energy_Torrent",
-    "Foce_of_Nature",
-    "Personal_Force_Field",
-    "Power_Blast",
-    "Repulsion_Bomb"
+    "Epic.Field_Mastery.Energy_Torrent",
+    "Epic.Field_Mastery.Foce_of_Nature",
+    "Epic.Field_Mastery.Personal_Force_Field",
+    "Epic.Field_Mastery.Power_Blast",
+    "Epic.Field_Mastery.Repulsion_Bomb"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    43,
+    34,
+    34,
+    40
   ]
 }

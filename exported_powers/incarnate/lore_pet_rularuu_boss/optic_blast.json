@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Optic Blast",
   "display_fullname": "Incarnate Lore Pet Rularuu Boss Optic Blast",
-  "display_help": "24S6CD54QEXMYJX88RME5BN8HW",
+  "display_help": "The Optic Blast of the Sentry has a paralytic effect. Your attack and movement speed, as well as your defense, is reduced.<br><br><color #fcfc95>Notes: Optic Blast is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "-SPD, -Recharge, -DEF",
   "icon": "radiationpoisoning_enervatingfield.png",
   "auto_issue": false,

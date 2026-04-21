@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Energy Torrent",
   "display_fullname": "Epic Field Mastery Energy Torrent",
-  "display_help": "LCJY4W543KHAW5BJYWGV2UTVDQ",
-  "display_short_help": "WBZLY9BQK3K5WZZ2YFM4R396NS",
+  "display_help": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
   "icon": "primalforcesmastery_energytorrent.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -252,6 +252,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Field_Mastery"
 }

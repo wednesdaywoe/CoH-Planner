@@ -5,25 +5,25 @@
   "short_help": "Dark Assault",
   "icon": "dark_assault_set.ico",
   "powers": [
-    "Dark_Blast",
-    "Death_Shroud",
-    "Gather_Shadows",
-    "Gloom",
-    "Life_Drain",
-    "Midnight_Grasp",
-    "Moonbeam",
-    "Night_Fall",
-    "Smite"
+    "Dominator_Assault.Dark_Assault.Dark_Blast",
+    "Dominator_Assault.Dark_Assault.Death_Shroud",
+    "Dominator_Assault.Dark_Assault.Gather_Shadows",
+    "Dominator_Assault.Dark_Assault.Gloom",
+    "Dominator_Assault.Dark_Assault.Life_Drain",
+    "Dominator_Assault.Dark_Assault.Midnight_Grasp",
+    "Dominator_Assault.Dark_Assault.Moonbeam",
+    "Dominator_Assault.Dark_Assault.Night_Fall",
+    "Dominator_Assault.Dark_Assault.Smite"
   ],
   "available_level": [
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    27,
+    15,
+    3,
+    23,
+    29,
+    19,
+    9,
     0
   ]
 }

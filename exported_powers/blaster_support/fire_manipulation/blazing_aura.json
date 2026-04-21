@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Cauterizing Aura",
   "display_fullname": "Blaster Support Fire Manipulation Blazing Aura",
-  "display_help": "CS2S7U37ASTGYYMVXQZRSUZQ82",
-  "display_short_help": "G7JBD5JLJRKJWCM27Z8QFDXEF3",
+  "display_help": "While active, you are surrounded by flames that continuously burn all foes that attempt to enter melee range. In addition, you recover a small amount of health every few seconds.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle: PBAoE, DoT (Fire), Self +Heal Over Time, +Recovery",
   "icon": "firemanipulation_blazingaura.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -193,6 +193,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Fire_Manipulation"
 }

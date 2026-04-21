@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Oni",
   "display_fullname": "Mastermind Summon Ninjas Oni",
-  "display_help": "7RRF838UBZ3TW9XHKTDSJ2GAYX",
+  "display_help": "Summons an ancient and powerful Oni. An Oni is a powerful human-like demon warrior. The Oni is a formidable creature who possesses the skill of a warrior and the powers of wind and fire.",
   "display_short_help": "Summon Oni",
   "icon": "ninjas_calloni.png",
   "auto_issue": false,
@@ -136,6 +136,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Mastermind_Summon.Ninjas"
 }

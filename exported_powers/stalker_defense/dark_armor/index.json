@@ -5,27 +5,27 @@
   "short_help": "Dark Armor",
   "icon": "dark_armor_set.ico",
   "powers": [
-    "Cloak_of_Fear",
-    "Dark_Embrace",
-    "Dark_Regeneration",
-    "Hide",
-    "Murky_Cloud",
-    "Obscure_Sustenance",
-    "Obsidian_Shield",
-    "Oppressive_Gloom",
-    "Shadow_Dweller",
-    "Soul_Transfer"
+    "Stalker_Defense.Dark_Armor.Cloak_of_Fear",
+    "Stalker_Defense.Dark_Armor.Dark_Embrace",
+    "Stalker_Defense.Dark_Armor.Dark_Regeneration",
+    "Stalker_Defense.Dark_Armor.Hide",
+    "Stalker_Defense.Dark_Armor.Murky_Cloud",
+    "Stalker_Defense.Dark_Armor.Obscure_Sustenance",
+    "Stalker_Defense.Dark_Armor.Obsidian_Shield",
+    "Stalker_Defense.Dark_Armor.Oppressive_Gloom",
+    "Stalker_Defense.Dark_Armor.Shadow_Dweller",
+    "Stalker_Defense.Dark_Armor.Soul_Transfer"
   ],
   "available_level": [
+    23,
     0,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3,
+    19,
+    15,
+    27,
+    9,
+    29
   ]
 }

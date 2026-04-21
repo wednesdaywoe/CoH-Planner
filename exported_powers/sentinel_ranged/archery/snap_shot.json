@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Snap Shot",
   "display_fullname": "Sentinel Ranged Archery Snap Shot",
-  "display_help": "2RLAVJ7S99XDYZCP9F73B5NMFZ",
+  "display_help": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Light DMG(Lethal)",
   "icon": "archery_quickarrow.png",
   "auto_issue": false,

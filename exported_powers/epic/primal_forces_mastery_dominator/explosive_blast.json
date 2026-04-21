@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Explosive Blast",
   "display_fullname": "Epic Primal Forces Mastery Dominator Explosive Blast",
-  "display_help": "RURU89B6P85HY7ZCW84ZM23WNA",
-  "display_short_help": "H3QBHZHEUPJ2YNLLRJTFE8C9ZQ",
+  "display_help": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target. Explosive Blast may knock targets backwards. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
   "icon": "primalforcesmasterydominator_explosiveblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -227,6 +227,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Primal_Forces_Mastery_Dominator"
 }

@@ -5,7 +5,7 @@
   "short_help": "Demons",
   "icon": "lore_pet_arachnos_support_attack_set.ico",
   "powers": [
-    "Gloom"
+    "Incarnate.Lore_Pet_Demons_Support_Attack.Gloom"
   ],
   "available_level": [
     0

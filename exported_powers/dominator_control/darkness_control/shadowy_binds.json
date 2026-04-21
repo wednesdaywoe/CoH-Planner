@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shadowy Binds",
   "display_fullname": "Dominator Control Darkness Control Shadowy Binds",
-  "display_help": "P4LED4RZFV7YWEZFFRGWGY48XX",
+  "display_help": "You take control of your victim's shadow causing it to entangle and bind its owner thus leaving them immobilized and suffering from negative energy damage over time and reducing their chance to hit. Immobilized foes cannot move but can still attack.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Moderate DoT(Negative), Foe Immobilize, -To Hit, -Fly",
   "icon": "darknesscontrol_shadowybinds.png",
   "auto_issue": false,

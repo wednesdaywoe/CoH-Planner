@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shatter",
   "display_fullname": "Arachnos Soldiers Bane Spider Soldier Shatter",
-  "display_help": "HDMJCJAXGLDPWQVVEBGJ3LTAFA",
-  "display_short_help": "F9SVYLLWMJ5FY4NDLE9AN7M7ZZ",
+  "display_help": "You attempt to Shatter the bones of your opponent by striking them with all your might. This attack will deal great damage and can knock foes back a great ways.<br><br><color #fcfc95>Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.</color>",
+  "display_short_help": "Melee, DMG(Smash), Minor DoT(Toxic), High Knockback",
   "icon": "banespider_shatter.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -331,6 +331,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Arachnos_Soldiers.Bane_Spider_Soldier"
 }

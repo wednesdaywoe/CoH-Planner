@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Typhoon's Edge",
   "display_fullname": "Brute Melee Dual Blades AoE Bridge",
-  "display_help": "R4SLNKWKTCXGYFV8WTBQC345KS",
-  "display_short_help": "G2M77TSMNCZMWSZ4Q99QULSJFQ",
+  "display_help": "You spin around in a circle, attacking everyone within melee range with a striking attack. This attack is the finishing move in both the Weaken and Sweep combination attacks.<br><br><color #ff7f00>Weaken: Nimble Slash > Ablating Strike > Typhoon's Edge.</color><br><color #ff7f00>Sweep: One Thousand Cuts > Power Slice > Typhoon's Edge.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Lethal)",
   "icon": "dualblades_aoebridge.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -591,6 +591,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Brute_Melee.Dual_Blades"
 }

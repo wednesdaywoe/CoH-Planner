@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Lunge",
   "display_fullname": "Widow Training Widow Training Strike",
-  "display_help": "QT5L9XUJJGCEYJL5JEK5BKPDJZ",
-  "display_short_help": "F27MQWTEYMZCY8ZH2XMJ4LGGQZ",
+  "display_help": "Lunge does high lethal damage to your foe, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.<br><br><color #fcfc95>Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.</color>",
+  "display_short_help": "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "widowtraining_lunge.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -291,6 +291,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Widow_Training.Widow_Training"
 }

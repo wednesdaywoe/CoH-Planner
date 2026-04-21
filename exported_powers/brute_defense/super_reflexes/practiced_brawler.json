@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Practiced Brawler",
   "display_fullname": "Brute Defense Super Reflexes Practiced Brawler",
-  "display_help": "PJVFDZUYCLJ7YTBDMDQEVZBUUX",
+  "display_help": "Your training has allowed you to become a Practiced Brawler, tuning you into a perfect fighting machine. You gain a resistance to Knockback, Disorient, Hold, Sleep, and Immobilization powers for a short duration.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize)",
   "icon": "superreflexes_practicedbrawler.png",
   "auto_issue": false,
@@ -254,6 +254,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Brute_Defense.Super_Reflexes"
 }

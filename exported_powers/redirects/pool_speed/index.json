@@ -5,7 +5,7 @@
   "short_help": "Teleportation",
   "icon": "blind_set.ico",
   "powers": [
-    "Super_Speed_Momentum"
+    "Redirects.Pool_Speed.Super_Speed_Momentum"
   ],
   "available_level": [
     0

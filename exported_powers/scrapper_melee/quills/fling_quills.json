@@ -6,7 +6,7 @@
   "display_name": "Spine Burst",
   "display_fullname": "Scrapper Melee Quills Fling Quills",
   "display_help": "You can fling dozens of Spines in all directions. These Spines only travel a short distance, but they can deal moderate damage and poison any target close to you. Spine poison deals additional Toxic damage and Slows affected foes.",
-  "display_short_help": "W639U6EJPKANYLMA3K3JHLQHV3",
+  "display_short_help": "PBAoE Melee, DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_flingquills.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -442,6 +442,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Scrapper_Melee.Quills"
 }

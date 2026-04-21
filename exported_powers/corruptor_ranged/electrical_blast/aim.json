@@ -3,10 +3,10 @@
   "full_name": "Corruptor_Ranged.Electrical_Blast.Aim",
   "short_name": "Aim",
   "type": "Click",
-  "display_name": "Q53PP8X5HSRHWSNLFAT4XPKLKA",
+  "display_name": "Charge Up",
   "display_fullname": "Corruptor Ranged Electrical Blast Aim",
-  "display_help": "P9TVXWKU76X2YXXLKK53Y9YSH3",
-  "display_short_help": "NNH8Z4BZRP6PW9VPKLXYZ7UFYZ",
+  "display_help": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and endurance modification.",
+  "display_short_help": "Self +To Hit, +DMG, +End Mod",
   "icon": "electricalbolt_aim.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -139,6 +139,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Corruptor_Ranged.Electrical_Blast"
 }

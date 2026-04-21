@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Blaze",
   "display_fullname": "Dominator Assault Fiery Assault Blaze",
-  "display_help": "RJEA37DBNVRSWFLUWVCV49YWYA",
-  "display_short_help": "HJUTCUF9E6XDYJLYK7E3PVBE8S",
+  "display_help": "A devastating flame attack.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, Superior DMG(Fire)",
   "icon": "fireassault_blaze.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -188,6 +188,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Dominator_Assault.Fiery_Assault"
 }

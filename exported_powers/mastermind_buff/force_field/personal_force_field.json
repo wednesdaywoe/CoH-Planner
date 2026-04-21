@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Personal Force Field",
   "display_fullname": "Mastermind Buff Force Field Personal Force Field",
-  "display_help": "234AW9Y6DN33YELJM9GMY35VR2",
+  "display_help": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest.",
   "display_short_help": "Toggle: Self +Def, Res(All except Toxic)",
   "icon": "forcefield_personalforcefield.png",
   "auto_issue": false,
@@ -294,6 +294,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Mastermind_Buff.Force_Field"
 }

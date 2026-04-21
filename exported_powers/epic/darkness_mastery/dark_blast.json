@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Blast",
   "display_fullname": "Epic Darkness Mastery Dark Blast",
-  "display_help": "KACUU5XPK6L9Y6XFVWAW3KGWUA",
-  "display_short_help": "MNSRPKV3Q3NHW3XS3NZZZZGQSQ",
+  "display_help": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy. You must be level 38 and have one other Dark Mastery Powers before selecting this power",
+  "display_short_help": "Ranged, DMG(Negative), Foe -ACC",
   "icon": "darkcast_darkblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -496,6 +496,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Darkness_Mastery"
 }

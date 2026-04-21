@@ -5,8 +5,8 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_lights_lt_set.ico",
   "powers": [
-    "Northern_Lights_Bolt",
-    "Northern_Lights_Scatter"
+    "Incarnate.Lore_Pet_Lights_LT.Northern_Lights_Bolt",
+    "Incarnate.Lore_Pet_Lights_LT.Northern_Lights_Scatter"
   ],
   "available_level": [
     0,

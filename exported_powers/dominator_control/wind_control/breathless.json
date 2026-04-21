@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Breathless",
   "display_fullname": "Dominator Control Wind Control Breathless",
-  "display_help": "BQ24CTD59MESYHL4XP3979RYM2",
-  "display_short_help": "KVLCS8E52WSBYYVWJJ7AC2ZM42",
+  "display_help": "You release all available Pressure to create a localized high pressure sphere at a location of your choosing. This high pressure crushes foes continually while they remain within the sphere, causing lethal damage over time. Affected foes will be immobilized and suffer from a reduced attack speed. In normal combat, affected foes will also suffer reduced damage potential, while in PvP, affected foes will suffer from increased endurance cost of their powers. The damage done increases in proportion to the amount of Pressure released when using this power. Also, Breathless can reduce the damage potential of all targets, in PvE or PvP, if used at the lowest levels of Pressure accumulation.<br><br><color #fcfc95>Damage: Variable.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged (Targeted AoE), Variable DMG(Lethal), Immobilize (Foe), -DMG(Foe, All), +EndCost(Foe, PvP), Consumes Pressure",
   "icon": "windcontrol_breathless.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -474,6 +474,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Dominator_Control.Wind_Control"
 }

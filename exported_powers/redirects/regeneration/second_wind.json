@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Second Wind",
   "display_fullname": "Redirects Regeneration Second Wind",
-  "display_help": "FQE68F6UX5C6YKXTDZDNRPJ672",
+  "display_help": "Using ancient techniques, you can make yourself more resilient to pain. Thus, you can take more damage before being defeated. When you activate this power you will increase your maximum Hit Points for a couple of minutes. Should you fall in battle, you can use this power at its maximum strength to stand up and fight again. If used while defeated, you will be protected from XP Debt for 90 seconds and immune to most damage for 15 seconds.",
   "display_short_help": "Self +Max HP, Rez(Special)",
   "icon": "regeneration_dullpain.png",
   "auto_issue": false,
@@ -187,6 +187,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Redirects.Regeneration"
 }

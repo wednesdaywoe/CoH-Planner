@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Electric Shackles",
   "display_fullname": "Epic Sentinel Mu Mastery Electric Shackles",
-  "display_help": "843XRMXSVY43WPBTYG6LCACD4Z",
-  "display_short_help": "J5BTGZUP65X7W7BM2EZJVK87V3",
+  "display_help": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Energy), Foe Hold, -End",
   "icon": "arachnos_patron_targetedhold.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -435,6 +435,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Sentinel_Mu_Mastery"
 }

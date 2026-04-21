@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Force Bomb",
   "display_fullname": "Mastermind Buff Force Field Repulsion Bomb",
-  "display_help": "JG5G8BXMV7WUW2XRHWQBDF9FKX",
-  "display_short_help": "D3SWUE98UVZDYMBDBYFEM9XQXZ",
+  "display_help": "A powerful Force Bomb is hurled at your foes dealing a moderate amount of damage and knocking them off of their feet. Foes struck by Repulsion Bomb have a chance to become disoriented, and the force of the blow will leave their armor shattered, lowering their damage resistance.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Smash), Foe Knockdown, Disorient",
   "icon": "forcefield_repulsionbomb.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -309,6 +309,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Mastermind_Buff.Force_Field"
 }

@@ -5,25 +5,25 @@
   "short_help": "Illusion Control",
   "icon": "illusion_control_set.ico",
   "powers": [
-    "Blind",
-    "Deceive",
-    "Decoy",
-    "Flash",
-    "Gleam",
-    "Invisibility",
-    "Phantasm",
-    "Spectral_Terror",
-    "Spectral_Wall"
+    "Dominator_Control.Illusion_Control.Blind",
+    "Dominator_Control.Illusion_Control.Deceive",
+    "Dominator_Control.Illusion_Control.Decoy",
+    "Dominator_Control.Illusion_Control.Flash",
+    "Dominator_Control.Illusion_Control.Gleam",
+    "Dominator_Control.Illusion_Control.Invisibility",
+    "Dominator_Control.Illusion_Control.Phantasm",
+    "Dominator_Control.Illusion_Control.Spectral_Terror",
+    "Dominator_Control.Illusion_Control.Spectral_Wall"
   ],
   "available_level": [
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    1,
+    17,
+    21,
+    11,
+    7,
+    25,
+    5,
     0
   ]
 }

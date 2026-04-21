@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Char",
   "display_fullname": "Controller Control Fire Control Soot",
-  "display_help": "ZWUMSYJT9DH6Y8ZXSDLWX6XZUZ",
+  "display_help": "Incapacitates a distant foe by Charring them with smoldering soot and cinders. The target is left helpless, choking on the soot.",
   "display_short_help": "Ranged, Moderate DoT(Fire), Foe Hold",
   "icon": "firetrap_soot.png",
   "auto_issue": false,

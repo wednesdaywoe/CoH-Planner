@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Possess",
   "display_fullname": "Controller Control Darkness Control Possess",
-  "display_help": "CHZXXEQPS2RXWCCTG2X7F4X9GS",
+  "display_help": "You cause your targeted foe to be possessed by a dark entity from the Netherworld causing them to be confused for a short period of time. While confused they will be unable to tell the difference between friend or foe and will attack nearby allies.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Target Confuse",
   "icon": "darknesscontrol_possess.png",
   "auto_issue": false,
@@ -162,6 +162,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Controller_Control.Darkness_Control"
 }

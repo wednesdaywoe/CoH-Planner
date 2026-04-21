@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shuriken",
   "display_fullname": "Incarnate Lore Pet Tsoo LT Shuriken",
-  "display_help": "PDBR3ZU92K86Y7ZXHNU53H54KW",
+  "display_help": "Small throwing weapon.<br><br><color #fcfc95>Notes: Shuriken is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged Lethal, Low Dam",
   "icon": "weaponmastery_shuriken.png",
   "auto_issue": false,

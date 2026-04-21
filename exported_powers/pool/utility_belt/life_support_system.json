@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Life Support System",
   "display_fullname": "Pool Utility Belt Life Support System",
-  "display_help": "N29NJWD4W4XDWDBUMPZPNFQFZX",
+  "display_help": "Life Support System immediately heals you and causes you to recover a moderate amount of health over time. This power's potency increases as your health decreases.<br><br>You must be at least level 20 and have two other Utility Belt powers before selecting Life Support System.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self, +HP, +Heal Over Time, +Special",
   "icon": "utilitybelt_lifesupportsystem.png",
   "auto_issue": false,
@@ -107,6 +107,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Pool.Utility_Belt"
 }

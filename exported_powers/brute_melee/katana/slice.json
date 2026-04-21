@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Flashing Steel",
   "display_fullname": "Brute Melee Katana Slice",
-  "display_help": "6XU2SLS55FNWYCMMQ6J67TRQ3X",
-  "display_short_help": "7JP6SNY6QX82YNLNL4ZT8UVJFZ",
+  "display_help": "You swing your katana in a wide arc in front of you, slicing multiple foes. This attack can reduce a target's Defense, making them easier to hit.",
+  "display_short_help": "Melee (Cone), DMG(Lethal), Foe -Def",
   "icon": "katana_slice.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -242,6 +242,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Brute_Melee.Katana"
 }

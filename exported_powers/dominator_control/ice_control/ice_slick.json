@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ice Slick",
   "display_fullname": "Dominator Control Ice Control Ice Slick",
-  "display_help": "2R229D4NTYJ2YCXTMCZS69P3UW",
-  "display_short_help": "H8XQBMVTGKMRWEMD8WSRAPSBXX",
+  "display_help": "You can create a large patch of ice at a targeted area, causing all foes that pass through it to lose their footing. Those caught in the Ice Slick are dramatically slowed, take cold damage over time, tend to fall down and will be unable to jump.",
+  "display_short_help": "Target (Location AoE), Foe DoT (Cold), Knockdown, -SPD",
   "icon": "iceformation_iceslick.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -92,6 +92,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Dominator_Control.Ice_Control"
 }

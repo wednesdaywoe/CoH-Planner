@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Inky Aspect",
   "display_fullname": "Warshade Defensive Umbral Aura Inky Aspect",
-  "display_help": "94VBUE7U582RYAMQZ3PE9WNWZ3",
+  "display_help": "Inky Aspect allows you to sacrifice some of your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "PBAoE, Foe Disorient, Self -HP",
   "icon": "umbralaura_inkyaspect.png",
   "auto_issue": false,
@@ -162,6 +162,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

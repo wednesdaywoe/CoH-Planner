@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ice Arrow",
   "display_fullname": "Blaster Support Tactical Arrow Ice Arrow",
-  "display_help": "9ZWXHHSX8XN8Y3XQ2R8R7P2FXZ",
-  "display_short_help": "67APY6UUW59AW9ZPMUHCK8RH6Z",
+  "display_help": "This arrow can freeze a single foe in a block of ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be Held, but all affected targets will be Slowed.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, DoT(Cold), Foe Hold, -SPD, -Recharge",
   "icon": "tacticalarrow_hold.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -355,6 +355,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Blaster_Support.Tactical_Arrow"
 }

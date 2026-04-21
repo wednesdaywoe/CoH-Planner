@@ -5,8 +5,8 @@
   "short_help": "Cimeroran",
   "icon": "lore_pet_cimeroran_support_set.ico",
   "powers": [
-    "Heal_Other",
-    "Healing_Aura"
+    "Incarnate.Lore_Pet_Cimeroran_Support.Heal_Other",
+    "Incarnate.Lore_Pet_Cimeroran_Support.Healing_Aura"
   ],
   "available_level": [
     0,

@@ -5,25 +5,25 @@
   "short_help": "Street Justice",
   "icon": "brawling_set.ico",
   "powers": [
-    "Combat_Readiness",
-    "Crushing_Uppercut",
-    "Heavy_Blow",
-    "Initial_Strike",
-    "Low_Kick",
-    "Spinning_Strike",
-    "Sweeping_Cross",
-    "Taunt",
-    "Throat_Strike"
+    "Tanker_Melee.Brawling.Combat_Readiness",
+    "Tanker_Melee.Brawling.Crushing_Uppercut",
+    "Tanker_Melee.Brawling.Heavy_Blow",
+    "Tanker_Melee.Brawling.Initial_Strike",
+    "Tanker_Melee.Brawling.Low_Kick",
+    "Tanker_Melee.Brawling.Spinning_Strike",
+    "Tanker_Melee.Brawling.Sweeping_Cross",
+    "Tanker_Melee.Brawling.Taunt",
+    "Tanker_Melee.Brawling.Throat_Strike"
   ],
   "available_level": [
+    15,
+    29,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27,
+    23,
+    3,
+    9,
+    19
   ]
 }

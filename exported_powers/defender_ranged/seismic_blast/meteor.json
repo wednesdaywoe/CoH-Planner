@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Meteor",
   "display_fullname": "Defender Ranged Seismic Blast Meteor",
-  "display_help": "QXQCHXELGXUZY2V86RGGVV9JW3",
-  "display_short_help": "YQE7UZGFG8XZYCVXGB4XMB2CJ3",
+  "display_help": "You call down a meteor strike from the sky at a specified location. All targets within 30' are caught in the blast radius, taking extreme damage and being knocked back.",
+  "display_short_help": "Ranged (Location AoE), DMG(Smash/Fire), Foe Knockback",
   "icon": "seismicblast_meteor",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -97,6 +97,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Defender_Ranged.Seismic_Blast"
 }

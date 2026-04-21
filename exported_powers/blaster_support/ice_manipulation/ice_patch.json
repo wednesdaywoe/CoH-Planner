@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ice Patch",
   "display_fullname": "Blaster Support Ice Manipulation Ice Patch",
-  "display_help": "2TS2NSG68X57Y8CB5G3FVY4M8W",
+  "display_help": "You emanate a patch of ice around you, which causes foes that step onto it to slip and fall down. This effect lasts until the ice melts. You must be near the ground to activate this power.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Location (PBAoE), Foe Knockdown",
   "icon": "icemanipulation_icepatch.png",
   "auto_issue": false,
@@ -98,6 +98,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Ice_Manipulation"
 }

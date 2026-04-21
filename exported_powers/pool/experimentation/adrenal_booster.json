@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Adrenal Booster",
   "display_fullname": "Pool Experimentation Adrenal Booster",
-  "display_help": "RAWF2JJHWLGXYXXGQ5BSESYTAQ",
+  "display_help": "You inject yourself with a concentrated experimental serum that boosts your damage, recharge, chance to hit and secondary effects for a short time.<br><br>You must be at least level 20 and have two other Experimentation powers before selecting Adrenal Booster.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self, +To Hit, +Recharge, +Damage, +Special",
   "icon": "experimentation_adrenalbooster.png",
   "auto_issue": false,
@@ -200,6 +200,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Pool.Experimentation"
 }

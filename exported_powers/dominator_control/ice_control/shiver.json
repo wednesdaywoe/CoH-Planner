@@ -3,10 +3,10 @@
   "full_name": "Dominator_Control.Ice_Control.Shiver",
   "short_name": "Shiver",
   "type": "Click",
-  "display_name": "KQVQS5VYG5EGW8BVGBNY78RKN2",
+  "display_name": "Cold Snap",
   "display_fullname": "Dominator Control Ice Control Shiver",
-  "display_help": "5XBPB7V7LFR5Y8B7SMER3XM9XQ",
-  "display_short_help": "65ZGYTD7SZJYY3Z8JAD7B25USW",
+  "display_help": "You blast forth a wide cone of chilling air that dramatically slows the enemies' movement and attack rate and might leave nearby foes trembling.<br><br><color #fcfc95>Notes: The Fear component applies only to enemies in the center area of effect.</color>",
+  "display_short_help": "Ranged (Cone), Foe Fear, -SPD, -Recharge",
   "icon": "iceformation_shiver.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -200,6 +200,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Dominator_Control.Ice_Control"
 }

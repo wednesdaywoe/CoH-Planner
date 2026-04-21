@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Fire Shield",
   "display_fullname": "Epic Corruptor Fire Mastery Fire Shield",
-  "display_help": "4RYJSKSLTT7NW2CM7T7DQDXBH3",
+  "display_help": "While this power is active, you get a good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
   "icon": "flamingshield_flamingshield.png",
   "auto_issue": false,
@@ -206,6 +206,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Corruptor_Fire_Mastery"
 }

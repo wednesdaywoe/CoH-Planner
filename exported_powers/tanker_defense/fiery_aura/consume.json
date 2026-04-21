@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Consume",
   "display_fullname": "Tanker Defense Fiery Aura Consume",
-  "display_help": "SM9TFXU46S4SW7VFP772TWKXWX",
-  "display_short_help": "Z8WTC5GPTPK8YZXYPUKUER7YWZ",
+  "display_help": "You can drain body heat from all nearby foes, and even from the air itself, increasing your health, resistance against endurance drain, as well as replenishing your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.<br><br>HP and End Drain resistance do not scale with enemy count, but will be granted even if there are no enemies nearby.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "PBAoE, DMG(Fire), Self +End, +Max HP",
   "icon": "flamingshield_consume.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -259,6 +259,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Tanker_Defense.Fiery_Aura"
 }

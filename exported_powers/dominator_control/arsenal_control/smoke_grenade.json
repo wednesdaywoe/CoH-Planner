@@ -3,10 +3,10 @@
   "full_name": "Dominator_Control.Arsenal_Control.Smoke_Grenade",
   "short_name": "Smoke_Grenade",
   "type": "Click",
-  "display_name": "K5EX3ZT8AXZEYLV4ABXDB3BMHS",
+  "display_name": "Smoke Canister",
   "display_fullname": "Dominator Control Arsenal Control Smoke Grenade",
-  "display_help": "E6ZJ3U63QCFLYGVZUQW9QPSTYW",
-  "display_short_help": "H5QAEEFVDVV9W7BCFMAVC7SVAA",
+  "display_help": "The Smoke Canister is a powerful infiltration tool. Fling it at a target location and it will quickly cover the area in smoke. While engulfed within this smoke, most enemies will not be able to see past normal melee range, although some may have better perception. If the foes are attacked, they will become confused and might attack their allies.",
+  "display_short_help": "Ranged (Location AoE), Foe -Perception, -To Hit, Confuse",
   "icon": "arsenalcontrol_smokegrenade",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -99,6 +99,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Dominator_Control.Arsenal_Control"
 }

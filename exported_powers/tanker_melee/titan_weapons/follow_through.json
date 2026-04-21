@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Follow Through",
   "display_fullname": "Tanker Melee Titan Weapons Follow Through",
-  "display_help": "DXL76GTXPLDZYMNS7D7JG2SY7W",
-  "display_short_help": "7FRYS6JSRZRAYAC5PP6LB9CQRZ",
+  "display_help": "You Follow Through with a massive attack dealing Superior Smashing damage, knocking your opponent down and possibly stunning them.<br><br><color #fcfc95>Notes: Follow Through requires Momentum in order to be activated.</color>",
+  "display_short_help": "Melee, DMG(Smashing), Knockdown, Stun, Requires Momentum",
   "icon": "titanweapons_followthrough.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -291,6 +291,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Tanker_Melee.Titan_Weapons"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Stone Cages",
   "display_fullname": "Dominator Control Earth Control Stone Cages",
-  "display_help": "JBDQT4QDF7KKW8BN5WEQADHJPQ",
-  "display_short_help": "4HENWA8UNB93WLXDGHJFAHZGHZ",
+  "display_help": "Immobilizes a group of foes within earthy formations and deals some Smashing damage over time. Slower and less damaging than Stone Prison, but can capture multiple targets. Stone Cages can also reduce a target's Defense.",
+  "display_short_help": "Ranged AoE, DMG(Smash), Foe Immobilize, -Fly, -DEF",
   "icon": "earthgrasp_stonecages.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -341,6 +341,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Dominator_Control.Earth_Control"
 }

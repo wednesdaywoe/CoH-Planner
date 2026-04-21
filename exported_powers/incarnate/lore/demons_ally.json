@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Demons Ally",
   "display_fullname": "Incarnate Lore Demons Ally",
-  "display_help": "BWASUQTJAXLSWZCZHXR75NHUAW",
+  "display_help": "Draws forth an essence of a vanquished Behemoth from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Demons Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Demons LT Essence",
   "icon": "incarnate_lore_demons_common.png",
   "auto_issue": false,

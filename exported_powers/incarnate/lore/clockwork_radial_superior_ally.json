@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Clockwork Radial Superior Ally",
   "display_fullname": "Incarnate Lore Clockwork Radial Superior Ally",
-  "display_help": "LQ4QSJTCQWEVYAXSCMAPC8QHXW",
+  "display_help": "Draws forth the essences of a vanquished Clockwork Dismantler from the Well of the Furies to serve you for 3 minutes and 20 seconds and Mender from the Well of the Furies to serve you for 5 minutes. The Mender is untouchable, but has no offensive powers at all.<br><br>This power also applies an Incarnate Shift. (An Incarnate Shift is a Level Shift which only activates while participating in an Incarnate Trial.).<br><br><color #fcfc95>Notes: Clockwork Radial Superior Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Summon Clockwork Boss & Support Essences",
   "icon": "incarnate_lore_clockwork_veryrare.png",
   "auto_issue": false,

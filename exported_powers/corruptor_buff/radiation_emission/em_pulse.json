@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "EM Pulse",
   "display_fullname": "Corruptor Buff Radiation Emission EM Pulse",
-  "display_help": "THV638A65HQ2W7NHNUE7FYCTPX",
+  "display_help": "You can unleash a massive pulse of electromagnetic energy. This EMP can affect machines, and is even powerful enough to affect synaptic brain patterns. It will drain the Endurance, and HP Regeneration of all affected targets and leave them incapacitate and Held for a long while. Additionally, most machines and robots will take moderate high damage. However, this power uses a lot of Endurance and leaves you unable to recover Endurance for a while.",
   "display_short_help": "PBAoE, Foe Hold, -END, -Regen, Special vs. Robots; Self -Recovery",
   "icon": "radiationpoisoning_emppulse.png",
   "auto_issue": false,
@@ -339,6 +339,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Corruptor_Buff.Radiation_Emission"
 }

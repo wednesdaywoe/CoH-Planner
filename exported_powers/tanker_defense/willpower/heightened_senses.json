@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Heightened Senses",
   "display_fullname": "Tanker Defense Willpower Heightened Senses",
-  "display_help": "JLAL7PB3CH56Y3XX97G2HMDEV2",
+  "display_help": "You become more aware of your environment and its hazards while this power is activated. This will increase your Defense versus environmental damage as long as it is active. Your Heightened Senses also allow you to perceive stealthy foes and resist Defense DeBuffs.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative Energy), +Per",
   "icon": "willpower_heightenedsenses.png",
   "auto_issue": false,
@@ -318,6 +318,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Tanker_Defense.Willpower"
 }

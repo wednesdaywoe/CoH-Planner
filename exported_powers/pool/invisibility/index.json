@@ -5,17 +5,17 @@
   "short_help": "Concealment",
   "icon": "invisibility_set.ico",
   "powers": [
-    "Grant_Invisibility",
-    "Invisibility",
-    "Misdirection",
-    "Phase_Shift",
-    "Stealth"
+    "Pool.Invisibility.Grant_Invisibility",
+    "Pool.Invisibility.Invisibility",
+    "Pool.Invisibility.Misdirection",
+    "Pool.Invisibility.Phase_Shift",
+    "Pool.Invisibility.Stealth"
   ],
   "available_level": [
     0,
-    0,
-    0,
-    0,
+    3,
+    13,
+    13,
     0
   ]
 }

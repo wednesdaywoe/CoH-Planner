@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Eagles Claw",
   "display_fullname": "Blaster Support Martial Manipulation Eagles Claw",
-  "display_help": "GU4F7VPN8B47WSNL9DKVQ48M5S",
-  "display_short_help": "VWMFHDUD7LQ9WXMGW6FWPR65DZ",
+  "display_help": "You can perform a devastating kick that can severely Disorient most opponents. Eagle's Claw strikes so powerfully that it weakens your target's resolve, reducing their Range and Recharge for several seconds after attacking, and has an additional chance to cause your target to bleed for Lethal damage over time.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Extreme DMG(Smash), DoT(Lethal), Foe Minor Disorient, +Special",
   "icon": "martialmanipulation_eaglesclaw.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -271,6 +271,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Martial_Manipulation"
 }

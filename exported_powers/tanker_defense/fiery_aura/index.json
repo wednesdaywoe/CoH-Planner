@@ -5,27 +5,27 @@
   "short_help": "Fiery Aura",
   "icon": "fiery_aura_set.ico",
   "powers": [
-    "Blazing_Aura",
-    "Burn",
-    "Consume",
-    "Fiery_Embrace",
-    "Fire_Shield",
-    "Healing_Flames",
-    "Phoenix_Rising",
-    "Plasma_Sheild",
-    "Rise_of_the_Phoenix",
-    "Temperature_protection"
+    "Tanker_Defense.Fiery_Aura.Blazing_Aura",
+    "Tanker_Defense.Fiery_Aura.Burn",
+    "Tanker_Defense.Fiery_Aura.Consume",
+    "Tanker_Defense.Fiery_Aura.Fiery_Embrace",
+    "Tanker_Defense.Fiery_Aura.Fire_Shield",
+    "Tanker_Defense.Fiery_Aura.Healing_Flames",
+    "Tanker_Defense.Fiery_Aura.Phoenix_Rising",
+    "Tanker_Defense.Fiery_Aura.Plasma_Sheild",
+    "Tanker_Defense.Fiery_Aura.Rise_of_the_Phoenix",
+    "Tanker_Defense.Fiery_Aura.Temperature_protection"
   ],
   "available_level": [
     0,
+    17,
+    7,
+    21,
     0,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11,
+    25,
+    5
   ]
 }

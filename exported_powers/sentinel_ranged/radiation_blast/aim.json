@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Aim",
   "display_fullname": "Sentinel Ranged Radiation Blast Aim",
-  "display_help": "N9H5KEPTD5Q3WDN83MMK98UZ7A",
+  "display_help": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and range.",
   "display_short_help": "Self +To Hit, +DMG, +Range",
   "icon": "radiationburst_aim.png",
   "auto_issue": false,
@@ -139,6 +139,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Sentinel_Ranged.Radiation_Blast"
 }

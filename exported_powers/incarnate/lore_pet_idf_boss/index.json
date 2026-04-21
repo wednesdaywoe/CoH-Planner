@@ -5,9 +5,9 @@
   "short_help": "Imperial Defense Force",
   "icon": "lore_pet_idf_boss_set.ico",
   "powers": [
-    "Plasma_Blast",
-    "Plasma_Punch",
-    "Plasma_Vortex"
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Blast",
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Punch",
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Vortex"
   ],
   "available_level": [
     0,

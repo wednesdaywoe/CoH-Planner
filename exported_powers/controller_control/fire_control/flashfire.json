@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Flashfire",
   "display_fullname": "Controller Control Fire Control Flashfire",
-  "display_help": "9M397LXQJVVWW9NKBVKQAQ2N4S",
+  "display_help": "You can bring forth a Flashfire to Disorient a group of foes and deal some damage over time. Target must be on the ground to activate Flashfire.",
   "display_short_help": "Ranged (Targeted AoE), Minor DMG(Fire), Foe Disorient",
   "icon": "firetrap_flashfire.png",
   "auto_issue": false,
@@ -278,6 +278,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Controller_Control.Fire_Control"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ageless Invocation",
   "display_fullname": "Incarnate Destiny Ageless Invocation",
-  "display_help": "MZW9JAEVSP3MWEN527DBD9LK4A",
+  "display_help": "PBAoE Ally +End, +Recharge Rate.<br><br><color #fcfc95>Notes: Ageless Invocation is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE Ally +End, +Recharge Rate",
   "icon": "incarnate_destiny_ageless_common.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fistful of Arrows",
   "display_fullname": "Blaster Ranged Archery Fistful of Arrows",
-  "display_help": "FDN2HTZHMPH6WUC8AZCLWZPXYS",
+  "display_help": "You fire a fistful of arrows at foes in a cone in front of you. Good at close range.",
   "display_short_help": "Ranged (Cone), DMG(Lethal)",
   "icon": "archery_conearrow.png",
   "auto_issue": false,
@@ -170,6 +170,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Blaster_Ranged.Archery"
 }

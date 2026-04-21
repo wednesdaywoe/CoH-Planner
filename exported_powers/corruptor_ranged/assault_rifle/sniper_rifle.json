@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Sniper Rifle",
   "display_fullname": "Corruptor Ranged Assault Rifle Sniper Rifle",
-  "display_help": "3C6XLVTSK9FWY8ZC4U77CNE8WS",
-  "display_short_help": "HUUL7B2K9FAUWBZGQRYTBZQ5G2",
+  "display_help": "Sniper Rifle is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. Like most sniper attacks, you must take your time to aim, so this attack can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+  "display_short_help": "Sniper, DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_sniperrifle.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Corruptor_Ranged.Assault_Rifle"
 }

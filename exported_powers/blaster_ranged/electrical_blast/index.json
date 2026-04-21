@@ -1,29 +1,29 @@
 {
   "key": "Blaster_Ranged.Electrical_Blast",
   "display_name": "Electrical Blast",
-  "help": "P529J522EWY5WHZDQVXPC42QLS",
+  "help": "Electrical Blast endows you with ranged electrical attack powers. Electrical powers can drain foes' Endurance and can often temporarily halt their Endurance recovery. This can be quite effective against higher level foes and Bosses. As you drain endurance, Electrical Blast powers can even sometimes Shock targets do deal bonus damage, hinder recovery, and transfer this Endurance back to you.",
   "short_help": "Electrical Blast",
   "icon": "electrical_blast_set.ico",
   "powers": [
-    "Aim",
-    "Ball_Lightning",
-    "Charged_Bolts",
-    "Lightning_Bolt",
-    "Short_Circuit",
-    "Tesla_Cage",
-    "Thunderous_Blast",
-    "Voltaic_Sentinel",
-    "Zapp"
+    "Blaster_Ranged.Electrical_Blast.Aim",
+    "Blaster_Ranged.Electrical_Blast.Ball_Lightning",
+    "Blaster_Ranged.Electrical_Blast.Charged_Bolts",
+    "Blaster_Ranged.Electrical_Blast.Lightning_Bolt",
+    "Blaster_Ranged.Electrical_Blast.Short_Circuit",
+    "Blaster_Ranged.Electrical_Blast.Tesla_Cage",
+    "Blaster_Ranged.Electrical_Blast.Thunderous_Blast",
+    "Blaster_Ranged.Electrical_Blast.Voltaic_Sentinel",
+    "Blaster_Ranged.Electrical_Blast.Zapp"
   ],
   "available_level": [
+    7,
+    1,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    5,
+    17,
+    25,
+    21,
+    11
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dominate",
   "display_fullname": "Epic Tank Psionic Mastery Dominate",
-  "display_help": "94WGWWD85E6JYQN7B5KU8M5R3S",
-  "display_short_help": "PT994H7YRVDYY9CW5B9273FBWA",
+  "display_help": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in their own mind and unable to defend themselves.",
+  "display_short_help": "Ranged, DMG(Psionic), Foe Hold",
   "icon": "psionic_mastery_dominate",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -215,6 +215,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Tank_Psionic_Mastery"
 }

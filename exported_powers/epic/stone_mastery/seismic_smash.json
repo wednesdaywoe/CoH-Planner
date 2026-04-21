@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Seismic Smash",
   "display_fullname": "Epic Stone Mastery Seismic Smash",
-  "display_help": "YRQVFZNGE47EWCNYBNYN7SM2QS",
-  "display_short_help": "JA8V4L5NNWVUYEZKNLTLU3T7VX",
+  "display_help": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright. You must be level 41 and have one other Earth Mastery Powers before selecting this power.",
+  "display_short_help": "Melee, DMG(Smash), Foe Hold",
   "icon": "earth_mastery_seismicsmash",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -255,6 +255,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Stone_Mastery"
 }

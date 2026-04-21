@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Barrier Partial Radial Fate",
   "display_fullname": "Incarnate Fate Barrier Partial Radial Fate",
-  "display_help": "A6NSBAMXCDE9YBX8VUTG3FBTS2",
+  "display_help": "PBAoE Ally +DEF(All), +Res(All), Ally Rez x1.<br><br><color #fcfc95>Notes: Barrier Partial Radial Fate is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE Ally +DEF(All), +Res(All), Ally Rez x1",
   "icon": "incarnate_destiny_barrier_rare.png",
   "auto_issue": false,

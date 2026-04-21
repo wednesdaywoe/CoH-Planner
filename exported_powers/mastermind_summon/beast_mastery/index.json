@@ -5,25 +5,25 @@
   "short_help": "Beast Mastery",
   "icon": "beast_mastery_set.ico",
   "powers": [
-    "Call_Hawk",
-    "Call_Locusts",
-    "Call_Swarm",
-    "Fortify_Pack",
-    "Summon_Dire_Wolf",
-    "Summon_Lions",
-    "Summon_Wolves",
-    "Tame_Beasts",
-    "Train_Beasts"
+    "Mastermind_Summon.Beast_Mastery.Call_Hawk",
+    "Mastermind_Summon.Beast_Mastery.Call_Locusts",
+    "Mastermind_Summon.Beast_Mastery.Call_Swarm",
+    "Mastermind_Summon.Beast_Mastery.Fortify_Pack",
+    "Mastermind_Summon.Beast_Mastery.Summon_Dire_Wolf",
+    "Mastermind_Summon.Beast_Mastery.Summon_Lions",
+    "Mastermind_Summon.Beast_Mastery.Summon_Wolves",
+    "Mastermind_Summon.Beast_Mastery.Tame_Beasts",
+    "Mastermind_Summon.Beast_Mastery.Train_Beasts"
   ],
   "available_level": [
+    1,
+    7,
     0,
+    17,
+    21,
+    11,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25,
+    5
   ]
 }

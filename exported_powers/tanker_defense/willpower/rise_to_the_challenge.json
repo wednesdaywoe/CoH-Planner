@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Rise to the Challenge",
   "display_fullname": "Tanker Defense Willpower Rise to the Challenge",
-  "display_help": "66HH4SAHPPHXYENMUKNZSN726W",
+  "display_help": "The more the odds are against you, the more determined you become. When surrounded by foes, your ability to regenerate health increases greatly. Additionally, your resolve and the look in your eye is enough to leave most foes shaken, so their attacks are less accurate. The first foe you engage in melee grants the highest regeneration bonus, and up to 10 foes can contribute to this effect.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: Self +Regen, Foe -ACC",
   "icon": "willpower_risetothechallenge.png",
   "auto_issue": false,
@@ -351,6 +351,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Tanker_Defense.Willpower"
 }

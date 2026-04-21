@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Envenom",
   "display_fullname": "Defender Buff Poison Envenom",
-  "display_help": "7GYSCRJGFR2VYMZQAJDETKHNL3",
+  "display_help": "You Envenom your foe with a nasty poison, the poison then spreads to nearby foes. The toxin directly attacks the immune system, reducing the affected target's Defense, Damage Resistance and Hit Point Regeneration Rate. The poison is so potent, that the target actually responds less to Healing while affected by the poison. Secondary foes struck by this power will have a lesser effect placed on them while the primary target receives the full effectiveness of the power.",
   "display_short_help": "Ranged (Targeted AoE), Foe -RES, -DEF, -Regen, -Heal",
   "icon": "poison_envenomaoe.png",
   "auto_issue": false,

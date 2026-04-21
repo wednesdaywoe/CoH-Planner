@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Spirit Shark",
   "display_fullname": "Epic Stalker Leviathan Mastery Spirit Shark",
-  "display_help": "GAMKCA3Q33B4YUXMM542WHA4TZ",
-  "display_short_help": "PPW6JNFYUU2GYXLPDNJ46Q3XSX",
+  "display_help": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
+  "display_short_help": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
   "icon": "arachnos_patron_targetedrangedmoddmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -726,6 +726,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Stalker_Leviathan_Mastery"
 }

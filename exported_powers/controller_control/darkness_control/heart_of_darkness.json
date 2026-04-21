@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Heart of Darkness",
   "display_fullname": "Controller Control Darkness Control Heart of Darkness",
-  "display_help": "YRHJWMCA8YCXWGC2ZMPPYXA7HA",
+  "display_help": "In a burst of negative energy you overwhelm the minds of those around you causing them to be disoriented and suffer minor negative energy damage over a short time. Affected targets will also have their chance to hit reduced.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE, Foe Disorient, -To Hit, Minor DoT(Negative)",
   "icon": "darknesscontrol_heartofdarkness.png",
   "auto_issue": false,
@@ -328,6 +328,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Controller_Control.Darkness_Control"
 }

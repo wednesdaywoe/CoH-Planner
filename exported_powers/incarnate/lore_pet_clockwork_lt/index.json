@@ -5,9 +5,9 @@
   "short_help": "Clockwork",
   "icon": "lore_pet_clockwork_lt_set.ico",
   "powers": [
-    "Particle_Blast",
-    "Particle_Blast_Barrage",
-    "Particle_Stunner"
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast_Barrage",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Stunner"
   ],
   "available_level": [
     0,

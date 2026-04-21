@@ -5,17 +5,17 @@
   "short_help": "Fire Mastery",
   "icon": "flame_mastery_set.ico",
   "powers": [
-    "Char",
-    "Consume",
-    "Fire_Shield",
-    "Greater_Fire_Sword",
-    "Rise_of_the_Phoenix"
+    "Epic.Defender_Fire_Mastery.Char",
+    "Epic.Defender_Fire_Mastery.Consume",
+    "Epic.Defender_Fire_Mastery.Fire_Shield",
+    "Epic.Defender_Fire_Mastery.Greater_Fire_Sword",
+    "Epic.Defender_Fire_Mastery.Rise_of_the_Phoenix"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    34,
+    37,
+    43,
+    40
   ]
 }

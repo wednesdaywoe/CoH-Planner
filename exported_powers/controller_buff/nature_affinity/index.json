@@ -5,25 +5,25 @@
   "short_help": "Nature Affinity",
   "icon": "nature_affinity_set.ico",
   "powers": [
-    "Corrosive_Sap",
-    "Lifegiving_Spores",
-    "Overgrowth",
-    "Raging_Tempest",
-    "Rebirth",
-    "Regrowth",
-    "Spore_Cloud",
-    "Wild_Bastion",
-    "Wild_Growth"
+    "Controller_Buff.Nature_Affinity.Corrosive_Sap",
+    "Controller_Buff.Nature_Affinity.Lifegiving_Spores",
+    "Controller_Buff.Nature_Affinity.Overgrowth",
+    "Controller_Buff.Nature_Affinity.Raging_Tempest",
+    "Controller_Buff.Nature_Affinity.Rebirth",
+    "Controller_Buff.Nature_Affinity.Regrowth",
+    "Controller_Buff.Nature_Affinity.Spore_Cloud",
+    "Controller_Buff.Nature_Affinity.Wild_Bastion",
+    "Controller_Buff.Nature_Affinity.Wild_Growth"
   ],
   "available_level": [
     0,
+    15,
+    29,
+    27,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9,
+    19,
+    3
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Whirling Hands",
   "display_fullname": "Dominator Assault Energy Assault Whirling Hands",
-  "display_help": "L5C6ZUSLXGM4WRMDMKFT8ZCAWW",
-  "display_short_help": "GSJV3D5JQ6DMYYXW7RJU6NM642",
+  "display_help": "By focusing your energy into the muscles in your arms, you can launch a dizzying flurry of attacks against every foe in melee range. Some foes may be hit hard enough to be Disoriented as well. This power will recharge instantly if used while in Energy Focus mode.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE Melee, Light DMG(Smash/Energy), Special",
   "icon": "energyassault_whirlinghands.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -355,6 +355,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Dominator_Assault.Energy_Assault"
 }

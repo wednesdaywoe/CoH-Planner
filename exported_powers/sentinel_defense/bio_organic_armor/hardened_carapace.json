@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Hardened Carapace",
   "display_fullname": "Sentinel Defense Bio Organic Armor Hardened Carapace",
-  "display_help": "KJKCULDBSDJQYBNS5BSV5XZMHQ",
+  "display_help": "With a little concentration you can cause your skin to become hard as stone, boosting your constitution to reject toxins. While active, this power will boost your resistance to Lethal, Smashing and Toxic damage, and grant protection to Disorient and Sleep effects.<br><br><color #fac39b>*While Offensive Adaptation is active, this power will grant a minor boost to damage.</color><br><color #9efa9b>*While Defensive Adaptation is active, Hardened Carapace will grant additional resistance to Lethal, Smashing and Toxic damage.</color><br><color #9bfafa>*While Efficient Adaptation is active, Hardened Carapace will grant an Endurance Discount.</color><br><br>Bonuses granted from Adaptations are unenhanceable.",
   "display_short_help": "Self Toggle, +Res(Lethal, Smash, Toxic, Disorient, Sleep), +Special",
   "icon": "bioorganicarmor_hardenedskin.png",
   "auto_issue": false,

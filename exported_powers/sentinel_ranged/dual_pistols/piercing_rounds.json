@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Piercing Rounds",
   "display_fullname": "Sentinel Ranged Dual Pistols Piercing Rounds",
-  "display_help": "CNLRYUTUQSFYWBNS8UDFD4SMB3",
-  "display_short_help": "XBHLVCNZKKN5WBCZUS6N3CP49W",
+  "display_help": "You fire your pistols with deadly precision in a very narrow cone, piercing up to three enemies. Piercing Rounds deals Superior lethal damage and reduces targets' Damage Resistance for a short time.<br><br>Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic, and a secondary effect will be included in this attack:<br><br><color #9bfafa>*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.</color><br><color #fac39b>*A minor damage over time effect if 'Incendiary Ammo' is loaded.</color><br><color #9efa9b>*A -damage effect if 'Chemical Ammo' is loaded.</color>",
+  "display_short_help": "Narrow Ranged (Cone), DMG(Lethal/Special), Foes -Res(All)/Special",
   "icon": "dualpistols_piercingrounds.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -1160,6 +1160,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Sentinel_Ranged.Dual_Pistols"
 }

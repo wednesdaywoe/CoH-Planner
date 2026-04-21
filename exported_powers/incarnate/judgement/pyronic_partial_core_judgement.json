@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Pyronic Partial Core Judgement",
   "display_fullname": "Incarnate Judgement Pyronic Partial Core Judgement",
-  "display_help": "7BL9WRPPFDBBWDMTAHBPQUC243",
+  "display_help": "Targeted Ranged AoE, Extreme DMG(Fire) + Moderate DoT(Fire).<br><br><color #fcfc95>Notes: Pyronic Partial Core Judgement is unaffected by Recharge Time, Range, Radius or Arc changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Targeted Ranged AoE, Extreme DMG(Fire) + Moderate DoT(Fire)",
   "icon": "incarnate_judgement_pyronic_rare.png",
   "auto_issue": false,

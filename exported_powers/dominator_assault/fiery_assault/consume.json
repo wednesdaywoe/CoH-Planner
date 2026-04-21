@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Consume",
   "display_fullname": "Dominator Assault Fiery Assault Consume",
-  "display_help": "5JUMAWTQPNWVWEM3AQAX4XWTHZ",
-  "display_short_help": "MTNFVBFZAJHMWYXP623F23FB7Z",
+  "display_help": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "PBAoE DMG(Fire), Self +End",
   "icon": "fireassault_consume.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -232,6 +232,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Fiery_Assault"
 }

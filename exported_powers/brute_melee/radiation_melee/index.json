@@ -5,25 +5,25 @@
   "short_help": "Radiation Melee",
   "icon": "radiation_melee_set.ico",
   "powers": [
-    "Atom_Smasher",
-    "Contaminated_Strike",
-    "Devastating_Blow",
-    "Fusion",
-    "Irradiated_Ground",
-    "Proton_Sweep",
-    "Radiation_Siphon",
-    "Radioactive_Smash",
-    "Taunt"
+    "Brute_Melee.Radiation_Melee.Atom_Smasher",
+    "Brute_Melee.Radiation_Melee.Contaminated_Strike",
+    "Brute_Melee.Radiation_Melee.Devastating_Blow",
+    "Brute_Melee.Radiation_Melee.Fusion",
+    "Brute_Melee.Radiation_Melee.Irradiated_Ground",
+    "Brute_Melee.Radiation_Melee.Proton_Sweep",
+    "Brute_Melee.Radiation_Melee.Radiation_Siphon",
+    "Brute_Melee.Radiation_Melee.Radioactive_Smash",
+    "Brute_Melee.Radiation_Melee.Taunt"
   ],
   "available_level": [
+    25,
     0,
+    21,
+    5,
+    17,
+    1,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11
   ]
 }

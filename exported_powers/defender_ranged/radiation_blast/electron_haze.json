@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Electron Haze",
   "display_fullname": "Defender Ranged Radiation Blast Electron Haze",
-  "display_help": "WCLGHS3K2YY9W6XVSTLZL9ZAYQ",
-  "display_short_help": "NEHVPUYEUGGJW7NKHRLPAFG9T2",
+  "display_help": "A short range conical blast of free electrons. This attack can bypass some of a target's defenses and reduce the target's Defense. It can also knock some targets down.",
+  "display_short_help": "Close, DMG(Energy), Foe -DEF, Knockback",
   "icon": "radiationburst_electronhaze",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -279,6 +279,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Defender_Ranged.Radiation_Blast"
 }

@@ -5,25 +5,25 @@
   "short_help": "Fiery Melee",
   "icon": "fiery_melee_set.ico",
   "powers": [
-    "Breath_of_Fire",
-    "Build_Up",
-    "Cremate",
-    "Fire_Sword",
-    "Fire_Sword_Circle",
-    "Greater_Fire_Sword",
-    "Incinerate",
-    "Provoke",
-    "Scorch"
+    "Scrapper_Melee.Fiery_Melee.Breath_of_Fire",
+    "Scrapper_Melee.Fiery_Melee.Build_Up",
+    "Scrapper_Melee.Fiery_Melee.Cremate",
+    "Scrapper_Melee.Fiery_Melee.Fire_Sword",
+    "Scrapper_Melee.Fiery_Melee.Fire_Sword_Circle",
+    "Scrapper_Melee.Fiery_Melee.Greater_Fire_Sword",
+    "Scrapper_Melee.Fiery_Melee.Incinerate",
+    "Scrapper_Melee.Fiery_Melee.Provoke",
+    "Scrapper_Melee.Fiery_Melee.Scorch"
   ],
   "available_level": [
+    7,
+    5,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    17,
+    25,
+    21,
+    11,
     0
   ]
 }

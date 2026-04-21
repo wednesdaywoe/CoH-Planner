@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Pulverize",
   "display_fullname": "Brute Melee War Mace Pulverize",
-  "display_help": "D8KGREFXYBLTWFZX9LBZSBTTPA",
+  "display_help": "You attempt to Pulverize your opponent. This attack is slower than Bash but causes more damage. It also has a chance of Disorienting your opponent for a brief time.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, Moderate DMG(Smashing), Minor Disorient",
   "icon": "mace_pulverize.png",
   "auto_issue": false,

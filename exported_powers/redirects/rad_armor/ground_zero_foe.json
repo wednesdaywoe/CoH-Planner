@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ground Zero",
   "display_fullname": "Redirects Rad Armor Ground Zero Foe",
-  "display_help": "ZEDZWSMCUZVLWPM568TB47WB4W",
-  "display_short_help": "4NWZUF7TYA9VYUBRKPRPDM99HQ",
+  "display_help": "You release a mixture of radiation into the area. Nearby foes will be barraged with harmful radiation and will suffer Moderate Energy damage immediately, followed by moderate toxic damage over time. Affected foes will also have their defense reduced. Nearby allies will be healed for a moderate amount and will recover health over time. This power can affect a total of 30 targets. This includes both friends and foes. Ground Zero has no effect on the caster, only nearby allies and enemies.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "PBAoE, Foe DMG(Energy), DoT (Toxic), -DEF(All)",
   "icon": "radiationarmor_groundzero.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -138,6 +138,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Redirects.Rad_Armor"
 }

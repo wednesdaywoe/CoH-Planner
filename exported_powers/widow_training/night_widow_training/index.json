@@ -5,19 +5,19 @@
   "short_help": "Night Widow Training",
   "icon": "night_widow_training_set.ico",
   "powers": [
-    "Build_Up",
-    "NW_Eviscerate",
-    "NW_Mental_Blast",
-    "NW_Psychic_Scream",
-    "NW_Slash",
-    "NW_Smoke_Grenade"
+    "Widow_Training.Night_Widow_Training.Build_Up",
+    "Widow_Training.Night_Widow_Training.NW_Eviscerate",
+    "Widow_Training.Night_Widow_Training.NW_Mental_Blast",
+    "Widow_Training.Night_Widow_Training.NW_Psychic_Scream",
+    "Widow_Training.Night_Widow_Training.NW_Slash",
+    "Widow_Training.Night_Widow_Training.NW_Smoke_Grenade"
   ],
   "available_level": [
+    7,
+    21,
     0,
-    0,
-    0,
-    0,
-    0,
-    0
+    23,
+    17,
+    11
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Clobber",
   "display_fullname": "Tanker Melee War Mace Clobber",
-  "display_help": "KPWLK25DVSBRWZZWX42PUD4RHQ",
-  "display_short_help": "PN767GLY2ZDSYQMK5ENA4CMN9Z",
+  "display_help": "You Clobber your foe with a massive swing of your mace. This attack deals exceptional damage and can leave most opponents disoriented for a period of time.",
+  "display_short_help": "Melee, DMG(Smash), Disorient",
   "icon": "mace_clobber.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -214,6 +214,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Tanker_Melee.War_Mace"
 }

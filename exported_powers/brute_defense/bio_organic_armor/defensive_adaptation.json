@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Defensive Adaptation",
   "display_fullname": "Brute Defense Bio Organic Armor Defensive Adaptation",
-  "display_help": "KWGQ2JDHZE64WMLSAC5K2UEWT2",
+  "display_help": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to become dense and durable. While active Hardened Carapace grants additional resistance to Lethal, Smashing and Toxic damage, Inexhaustible grants additional Maximum HP, Environmental Modification grants additional defense and also grants a small amount of Maximum HP, Evolving Armor grants additional resistance and a small amount of defense per nearby target but loses the resistance debuff effect, Ablative Carapace grants additional damage absorption, DNA Siphon grants additional health per target hit and Parasitic Aura grants additional damage absorption per target hit. Additionally, many of your damaging attacks will heal you for a minor amount of health. However, the bulkiness of this adaptation reduces your damage moderately. Defensive Adaptation costs no endurance.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Bio Armor Defensive Mode",
   "icon": "bioorganicarmor_defensiveadaptation.png",
   "auto_issue": true,
@@ -205,6 +205,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Brute_Defense.Bio_Organic_Armor"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Foot Stomp",
   "display_fullname": "Brute Melee Super Strength Foot Stomp",
-  "display_help": "EDK2N59L3A9ZYBNVMEXQXN4AX3",
-  "display_short_help": "873TT25W3W4YWABZJ89LA2DN5X",
+  "display_help": "Using your superior leg strength, you can Stomp your foot to the ground, quaking the earth itself. This is a localized attack against everything in melee range.",
+  "display_short_help": "PBAoE Melee, DMG(Smashing), Knockback",
   "icon": "superstrength_footstomp.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Brute_Melee.Super_Strength"
 }

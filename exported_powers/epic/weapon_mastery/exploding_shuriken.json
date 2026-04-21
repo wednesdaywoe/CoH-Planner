@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Exploding Shuriken",
   "display_fullname": "Epic Weapon Mastery Exploding Shuriken",
-  "display_help": "BMUUS45D246TWUMS5LDTKT8QE2",
-  "display_short_help": "CWN4NR5AUTPEYMBCV9LRL2BBRA",
+  "display_help": "This small throwing star is rigged to explode on impact. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Lethal)",
   "icon": "weaponmastery_explodingshuriken.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -291,6 +291,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Weapon_Mastery"
 }

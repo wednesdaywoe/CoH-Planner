@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Opportunity",
   "display_fullname": "Inherent Inherent Opportunity",
-  "display_help": "J9QZ7KXAM9QDYPZJN5L9H8FRJS",
+  "display_help": "The watchful eye of the Sentinel constantly seeks opportunities to exploit a foe's Vulnerability. The Sentinel is difficult to evade, resisting debuffs against their perception and chance to hit, and has a 5% chance for Critical Strikes on most attacks. As the Opportunity bar rises, so does the Sentinel's Critical Strike chance and Perception bonus, to a maximum of 40% Critical Strike chance and 25% +Perception.",
   "display_short_help": "Critical Damage",
   "icon": "inherent_targetlock",
   "auto_issue": true,

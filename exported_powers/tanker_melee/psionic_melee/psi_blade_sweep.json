@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psi Blade Sweep",
   "display_fullname": "Tanker Melee Psionic Melee Psi Blade Sweep",
-  "display_help": "9QYFELCDFY55Y4N34EWPH3LG5Z",
-  "display_short_help": "XVBGFDXQEGE6WFCP4HMHC72SL2",
+  "display_help": "You project a Psi Blade and swing it in a broad arc hitting all foes within a wide cone in front of you for high Psionic and Lethal damage. Foes struck by this power have their recharge reduced and have chance to become disoriented for a short time. Psi Blade Sweep has a high chance of granting you Insight. While you have Insight, Psi Blade Sweep will deal additional minor psionic damage over time and has a greater chance to disorient foes.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>5</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "Melee (Cone), DMG(Psionic/Lethal), Foe Disorient, -Rech; Self +Insight",
   "icon": "psionicmelee_psibladesweep.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -570,6 +570,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Tanker_Melee.Psionic_Melee"
 }

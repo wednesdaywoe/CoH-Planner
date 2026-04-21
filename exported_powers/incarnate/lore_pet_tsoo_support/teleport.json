@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Teleport",
   "display_fullname": "Incarnate Lore Pet Tsoo Support Teleport",
-  "display_help": "5CAM2Z5SMHRYYRBANHL947SM9Z",
+  "display_help": "The Tsoo Sorcerer can Teleport long distances.<br><br><color #fcfc95>Notes: Teleport is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Self Travel",
   "icon": "teleportation_teleport.png",
   "auto_issue": false,

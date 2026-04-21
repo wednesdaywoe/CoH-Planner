@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Haunt",
   "display_fullname": "Controller Control Darkness Control Haunt",
-  "display_help": "YYNJSYYVK34SYNZNDZMABTUCSA",
+  "display_help": "You summon a pair of Shades from the Netherworld to harass your target foe. Shades deal moderate damage and they terrorize their victims.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Foe Targeted, Summon Shades",
   "icon": "darknesscontrol_haunt.png",
   "auto_issue": false,
@@ -152,6 +152,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Controller_Control.Darkness_Control"
 }

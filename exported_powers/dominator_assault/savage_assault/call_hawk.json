@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Call Hawk",
   "display_fullname": "Dominator Assault Savage Assault Call Hawk",
-  "display_help": "HAMP7WM7DYEYYDZTF66J9LJXAW",
-  "display_short_help": "6GQQZ9ZHDVD8WUN4GDL2RXXJLW",
+  "display_help": "You call forth a hawk ally to swoop in and viciously peck at your target causing High Lethal damage. The attack often catches foes off their guard and can knock them down as well as reducing their chance to hit. This power's damage over time effect will scale with the number of stacks of Blood Frenzy. Using this power with 5 stacks of Blood Frenzy causes you to become Exhausted for a short time, but the duration of its damage over time effect is increased. While exhausted you cannot gain Blood Frenzy.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, Foe DoT (Lethal), -To Hit, Knockdown, -Fly",
   "icon": "savagemelee_callhawk",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -390,6 +390,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Dominator_Assault.Savage_Assault"
 }

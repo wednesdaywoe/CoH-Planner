@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Mass Confusion",
   "display_fullname": "Dominator Control Mind Control Mass Confusion",
-  "display_help": "88DFQMSP3PLAWQCPR8Q6YN3GRW",
+  "display_help": "You can cause Mass Confusion within a group of foes, creating chaos. All affected foes within the area will turn and attack each other, ignoring all your allies. If you Confuse your foes before they noticed you, your presence will continue to go unnoticed.<br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>8</color> seconds and each affected foe will increase the recharge by <color #FF7F27>14.5</color> seconds for a maximum total of <color #FF7F27>240</color> seconds.</color>",
   "display_short_help": "Ranged (Targeted AoE), Foe Confuse",
   "icon": "mentalcontrol_confuse.png",
   "auto_issue": false,
@@ -248,6 +248,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Dominator_Control.Mind_Control"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Trip Mine",
   "display_fullname": "Redirects Assault Rifle TripMine",
-  "display_help": "7LE222476HM4YEZR3GSR9F8NDS",
+  "display_help": "All foes that pass near this Trip Mine will get blown to smithereens.<br><br><color #fcfc95>Notes: Trip Mine is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "AoE Lethal/Fire, Knockback",
   "icon": "darkmiasma_tarpatch.png",
   "auto_issue": false,

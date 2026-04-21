@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Caltrops",
   "display_fullname": "Stalker Defense Ninjitsu Caltrops",
-  "display_help": "EQ6J7T6LS9LUWBX59XB7T6475S",
+  "display_help": "You toss a handful of Caltrops at a targeted location and spread the tiny metal spikes over a large area. Any enemy that passes over the Caltrops will be forced to move at a slower rate. They will also take some trivial Lethal damage over time.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
   "icon": "ninjitsu_caltrops.png",
   "auto_issue": false,
@@ -89,6 +89,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Stalker_Defense.Ninjitsu"
 }

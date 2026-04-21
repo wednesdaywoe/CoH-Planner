@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Shadow Fall",
   "display_fullname": "Defender Buff Dark Miasma Shadow Fall",
-  "display_help": "3F5MJ7LPASJBY3NNZ4HNTHD3W2",
+  "display_help": "Envelops you and your nearby teammates in a shroud of darkness. Shadow Fall does not grant Invisibility, but it does make you harder to detect. Even if you are discovered, Shadow Fall grants a bonus to Defense bonus to all attacks and Resistance to Fear, while reducing Energy, Negative Energy, and Psionic Damage.",
   "display_short_help": "Toggle: PBAoE, Team Stealth, +DEF(All), +Res(Energy, Negative, Psionics, Fear)",
   "icon": "darkmiasma_shadowfall.png",
   "auto_issue": false,
@@ -391,6 +391,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Defender_Buff.Dark_Miasma"
 }

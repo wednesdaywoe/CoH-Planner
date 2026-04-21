@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Assassin's Strike",
   "display_fullname": "Stalker Melee Brawling Assassins Strike",
-  "display_help": "U33R8225SU7JYCZ6J6EZXLC25Q",
-  "display_short_help": "5YADPYMUHC8NWTZYWR9LUXVCW2",
+  "display_help": "A signature Stalker attack. This attack does superior smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Assassin's Strike builds 2 Combo Levels. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Extreme DMG(Smash), Combo Builder",
   "icon": "brawling_assassinsstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -60,6 +60,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Stalker_Melee.Brawling"
 }

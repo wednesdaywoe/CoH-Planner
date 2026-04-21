@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Embrace of Fire",
   "display_fullname": "Dominator Assault Fiery Assault Fiery Embrace",
-  "display_help": "A732UEZ9R8YWWDCBEF6AZBPQPA",
+  "display_help": "Significantly boosts the damage of all your Fire attacks for quite a while. Also increases the damage of all your other non-fire based attacks for a short while.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +DMG",
   "icon": "fireassault_fieryembrace.png",
   "auto_issue": false,
@@ -112,6 +112,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Dominator_Assault.Fiery_Assault"
 }

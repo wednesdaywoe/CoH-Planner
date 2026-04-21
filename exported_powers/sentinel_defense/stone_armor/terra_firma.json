@@ -3,10 +3,10 @@
   "full_name": "Sentinel_Defense.Stone_Armor.Terra_Firma",
   "short_name": "Terra_Firma",
   "type": "Auto",
-  "display_name": "P1478562641",
+  "display_name": "Terra Firma",
   "display_fullname": "Sentinel Defense Stone Armor Terra Firma",
-  "display_help": "RLX39L8XUAYVY7BEDK8N7Z28TX",
-  "display_short_help": "8UJ5BZTB9STHYZZ48W3TJ2YEUA",
+  "display_help": "Being on solid ground allows you to more carefully aim your attack for optimal range. This power increases your chance to hit, accuracy, and range of your attacks and makes you more resistant to To-Hit debuffs, but only applies when you are near the ground.",
+  "display_short_help": "Auto: Self +To Hit, +ACC, +Range, Res(ToHit)",
   "icon": "stonearmor_terrafirma",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -155,6 +155,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Sentinel_Defense.Stone_Armor"
 }

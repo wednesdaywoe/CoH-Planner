@@ -5,17 +5,17 @@
   "short_help": "Mace Mastery",
   "icon": "brute_mace_mastery_set.ico",
   "powers": [
-    "Disruptor_Blast",
-    "Focused_Accuracy",
-    "Mace_Blast",
-    "Summon_Blaster",
-    "Web_Envelope"
+    "Epic.Brute_Mace_Mastery.Disruptor_Blast",
+    "Epic.Brute_Mace_Mastery.Focused_Accuracy",
+    "Epic.Brute_Mace_Mastery.Mace_Blast",
+    "Epic.Brute_Mace_Mastery.Summon_Blaster",
+    "Epic.Brute_Mace_Mastery.Web_Envelope"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    40,
+    37,
+    34,
+    43,
+    34
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Freezing Touch",
   "display_fullname": "Blaster Support Ice Manipulation Freezing Touch",
-  "display_help": "8H4M3Z5SH8QEYEMQZ37TVYU8XZ",
+  "display_help": "This Freezing Touch will encase a single foe in a block of ice. This will deal minor damage as well as freezing them in their tracks, leaving them cold and helpless.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High DMG(Cold), Foe Hold",
   "icon": "icemanipulation_freezingtouch.png",
   "auto_issue": false,
@@ -277,6 +277,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Ice_Manipulation"
 }

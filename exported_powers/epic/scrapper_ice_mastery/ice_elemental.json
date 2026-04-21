@@ -3,10 +3,10 @@
   "full_name": "Epic.Scrapper_Ice_Mastery.Ice_Elemental",
   "short_name": "Ice_Elemental",
   "type": "Click",
-  "display_name": "Y9PLGYX9AQUQWWBWM9RKPGF5M3",
+  "display_name": "Ice Elemental",
   "display_fullname": "Epic Scrapper Ice Mastery Ice Elemental",
-  "display_help": "PY9X866WKDJRY2BNRDMT4CUJD2",
-  "display_short_help": "P6UKMP96MHKGW9XSJBU8MG3DSA",
+  "display_help": "You can create a very powerful entity of animated ice at a targeted location. Ice Elemental possesses several ice powers to attack any nearby foes and can be healed and buffed like any teammate. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Ice Elemental: Melee DMG(Lethal/Cold)",
   "icon": "ice_mastery_iceelemental",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Scrapper_Ice_Mastery"
 }

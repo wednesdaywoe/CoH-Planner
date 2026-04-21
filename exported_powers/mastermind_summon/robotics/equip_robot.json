@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Equip Robot",
   "display_fullname": "Mastermind Summon Robotics Equip Robot",
-  "display_help": "RFKQDMYZEJJXW5LFDPS6U34BJ2",
+  "display_help": "Equip your Robots with the latest gear and weaponry. This power permanently bestows new powers and abilities to all of your Robot Henchman. The powers gained are unique and dependent upon the type of Robot Henchman that is Equipped.<br><br>Your Robot Henchmen will also become more resistant to damage. This power only works on your Robot Henchmen and you can only Equip your Robot Henchmen once with this power.",
   "display_short_help": "Ranged, Equip Robot Henchman",
   "icon": "robotics_equiprobot.png",
   "auto_issue": false,
@@ -43,6 +43,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Mastermind_Summon.Robotics"
 }

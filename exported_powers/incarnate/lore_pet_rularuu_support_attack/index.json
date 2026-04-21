@@ -5,7 +5,7 @@
   "short_help": "Rularuu",
   "icon": "lore_pet_rularuu_support_attack_set.ico",
   "powers": [
-    "Energy_Blast"
+    "Incarnate.Lore_Pet_Rularuu_Support_Attack.Energy_Blast"
   ],
   "available_level": [
     0

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Plasma Eye Beams",
   "display_fullname": "Incarnate Lore Pet Warworks Boss Plasma Eye Beams",
-  "display_help": "4K9HZJTNKEBWW5VVEYQGNVMB9A",
+  "display_help": "The Victoria Mk6 is capable of firing a powerful energy beam from her eyes which will reduce its targets' defense and cause energy damage.<br><br><color #fcfc95>Notes: Plasma Eye Beams is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Energy), Foe -DEF",
   "icon": "radiationburst_xraybeam",
   "auto_issue": false,

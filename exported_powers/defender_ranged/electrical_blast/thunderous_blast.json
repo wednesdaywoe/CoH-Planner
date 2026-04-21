@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Thunderous Blast",
   "display_fullname": "Defender Ranged Electrical Blast Thunderous Blast",
-  "display_help": "EZTRS6REHNKHWACLSTSUZG42TQ",
-  "display_short_help": "JUH4XLGJRS8JWKMV3BVHX6CYSQ",
+  "display_help": "You hurl a tremendously powerful bolt of lightning at a target, devastating all nearby foes. Thunderous Blast deals extreme Energy and Smashing damage and drains a lot of Endurance from nearby foes.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_thunderouseblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -601,6 +601,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Defender_Ranged.Electrical_Blast"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Parry",
   "display_fullname": "Brute Melee Broad Sword Parry",
-  "display_help": "E2XKAD2QBGDPW3BLWWTQP8A2UQ",
-  "display_short_help": "A2EAJWQ7GP6VWQBGSKND4B3YM2",
+  "display_help": "You can use this power to Parry incoming melee attacks. The Parry itself does minor damage, but every successful hit will increase your Defense against melee and lethal attacks for a short while.",
+  "display_short_help": "Melee, DMG(Lethal), Self +DEF(Melee,Lethal)",
   "icon": "sword_parry.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -217,6 +217,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Brute_Melee.Broad_Sword"
 }

@@ -5,25 +5,25 @@
   "short_help": "Fiery Melee",
   "icon": "fiery_melee_set.ico",
   "powers": [
-    "Breath_of_Fire",
-    "Build_Up",
-    "Combustion",
-    "Fire_Sword",
-    "Fire_Sword_Circle",
-    "Greater_Fire_Sword",
-    "Incinerate",
-    "Scorch",
-    "Taunt"
+    "Brute_Melee.Fiery_Melee.Breath_of_Fire",
+    "Brute_Melee.Fiery_Melee.Build_Up",
+    "Brute_Melee.Fiery_Melee.Combustion",
+    "Brute_Melee.Fiery_Melee.Fire_Sword",
+    "Brute_Melee.Fiery_Melee.Fire_Sword_Circle",
+    "Brute_Melee.Fiery_Melee.Greater_Fire_Sword",
+    "Brute_Melee.Fiery_Melee.Incinerate",
+    "Brute_Melee.Fiery_Melee.Scorch",
+    "Brute_Melee.Fiery_Melee.Taunt"
   ],
   "available_level": [
+    7,
+    5,
+    1,
     0,
+    17,
+    25,
+    21,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11
   ]
 }

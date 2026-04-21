@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Spinning Strike",
   "display_fullname": "Tanker Melee Brawling Spinning Strike",
-  "display_help": "N2WCU2F7GLK7WSV92APQTQURH2",
-  "display_short_help": "SG88GFM3HDLLWYZF8W5GJA24H3",
+  "display_help": "You execute a spinning attack that first strikes with your fist and finally your heel hitting your foe and all enemies immediately nearby. Spinning Strike deals Heavy Smashing damage and has a high chance to knockdown foes. Spinning Strike is a Finisher and sets your Combo Level to 0. It will deal additional damage and will have a greater chance to knockdown dependent upon the current Combo Level. At Combo Level 3, Spinning Strike also has a moderate chance to briefly inflict Terrorize in nearby foes.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "Melee (Targeted AoE), DMG(Smash), Foe Knockdown, Finisher",
   "icon": "brawling_spinningstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -960,6 +960,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Tanker_Melee.Brawling"
 }

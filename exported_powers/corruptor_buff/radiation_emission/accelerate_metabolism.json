@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Accelerate Metabolism",
   "display_fullname": "Corruptor Buff Radiation Emission Accelerate Metabolism",
-  "display_help": "BRE4G73GAEY5YJV4XS83UCJ3J2",
+  "display_help": "Activating this power emits radiation that increases the running speed, attack speed, Endurance recovery, and damage potential of all nearby allies. Affected allies' metabolisms are increased so much that they become resistant to effects such as Sleep, Hold, Disorient, Immobilization and Endurance Drain.",
   "display_short_help": "PBAoE, Ally +SPD, +Recharge, +Recovery, +DMG(All) +Res(Effects)",
   "icon": "radiationpoisoning_acceleratemetabolism.png",
   "auto_issue": false,
@@ -235,6 +235,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Corruptor_Buff.Radiation_Emission"
 }

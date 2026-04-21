@@ -5,17 +5,17 @@
   "short_help": "Soul Mastery",
   "icon": "corruptor_soul_mastery_set.ico",
   "powers": [
-    "Dark_Embrace",
-    "Power_Boost",
-    "Soul_Drain",
-    "Soul_Storm",
-    "Summon_Mistress"
+    "Epic.Corruptor_Soul_Mastery.Dark_Embrace",
+    "Epic.Corruptor_Soul_Mastery.Power_Boost",
+    "Epic.Corruptor_Soul_Mastery.Soul_Drain",
+    "Epic.Corruptor_Soul_Mastery.Soul_Storm",
+    "Epic.Corruptor_Soul_Mastery.Summon_Mistress"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    37,
+    40,
+    34,
+    43
   ]
 }

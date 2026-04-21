@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Aimed Shot",
   "display_fullname": "Mastermind Summon Ninjas Aimed Shot",
-  "display_help": "Y3QNZ7WDBSQ9Y4M9FD7EJNKNM2",
-  "display_short_help": "NB2XU8MP3FUEW3ZHSEP8PG2N9A",
+  "display_help": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot.<br><br><color #fcfc95>Sensei's Guidance:</color><br>Hitting with this power will grant your Ninja Henchman +3% Critical Hit chance for 30 seconds. This does not stack from the same power.",
+  "display_short_help": "Ranged, DMG(Lethal)",
   "icon": "ninjas_standardshot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -190,6 +190,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Mastermind_Summon.Ninjas"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Clobber",
   "display_fullname": "Brute Melee War Mace Clobber",
-  "display_help": "82XYTHVH293AYWN6AY7URUP3WX",
-  "display_short_help": "EQXV8LTYZ356YKM4MBSYC7DALW",
+  "display_help": "You Clobber your foe with a massive swing of your mace. This attack deals exceptional damage and can leave most opponents disoriented for a period of time.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Superior DMG(Smashing), Disorient",
   "icon": "mace_clobber.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -214,6 +214,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Brute_Melee.War_Mace"
 }

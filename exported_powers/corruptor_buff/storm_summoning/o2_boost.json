@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "O2 Boost",
   "display_fullname": "Corruptor Buff Storm Summoning O2 Boost",
-  "display_help": "XWSR7YLSZRMHY6ZLJAN9ZEKRQ2",
+  "display_help": "Saturates the air around a targeted ally with rich oxygen, healing their wounds. The O2 Boost can protect a targeted ally from Sleep, Stun and Endurance Drain effects as well as increase perception. You cannot use this power on yourself.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ally Heal, +Res(Disorient, Sleep, End Drain), +Perception",
   "icon": "stormsummoning_o2boost.png",
   "auto_issue": false,

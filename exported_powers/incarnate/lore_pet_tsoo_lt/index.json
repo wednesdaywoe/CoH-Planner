@@ -5,9 +5,9 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_tsoo_lt_set.ico",
   "powers": [
-    "Hand_Clap",
-    "Punch",
-    "Shuriken"
+    "Incarnate.Lore_Pet_Tsoo_LT.Hand_Clap",
+    "Incarnate.Lore_Pet_Tsoo_LT.Punch",
+    "Incarnate.Lore_Pet_Tsoo_LT.Shuriken"
   ],
   "available_level": [
     0,

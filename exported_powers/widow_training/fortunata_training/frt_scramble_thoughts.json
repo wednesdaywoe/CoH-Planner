@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Scramble Thoughts",
   "display_fullname": "Widow Training Fortunata Training FRT Scramble Thoughts",
-  "display_help": "9U363CREHLWNYWBZSXLJEMKLW3",
-  "display_short_help": "HHPBKC249M4AYBBRBHVKD3PALS",
+  "display_help": "Painfully scrambles the synapses of a targeted foe, leaving him dramatically Disoriented for a short duration. Over time, the pain will increase causing psionic damage.",
+  "display_short_help": "Ranged, DoT(Psionic), Foe Disorient",
   "icon": "fortunatatraining_scramblethoughts.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -175,6 +175,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Widow_Training.Fortunata_Training"
 }

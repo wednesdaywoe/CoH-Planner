@@ -5,21 +5,21 @@
   "short_help": "Sorcery",
   "icon": "sorcery_set.ico",
   "powers": [
-    "Arcane_Bolt",
-    "Arcane_Proc",
-    "Enflame",
-    "Mystic_Flight",
-    "Rune_of_Protection",
-    "Spirit_Ward",
-    "Translocation"
+    "Pool.Sorcery.Arcane_Bolt",
+    "Pool.Sorcery.Arcane_Proc",
+    "Pool.Sorcery.Enflame",
+    "Pool.Sorcery.Mystic_Flight",
+    "Pool.Sorcery.Rune_of_Protection",
+    "Pool.Sorcery.Spirit_Ward",
+    "Pool.Sorcery.Translocation"
   ],
   "available_level": [
     0,
+    4294967295,
+    13,
+    3,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0
+    4294967295
   ]
 }

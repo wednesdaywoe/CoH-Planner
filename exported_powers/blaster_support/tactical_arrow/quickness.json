@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Gymnastics",
   "display_fullname": "Blaster Support Tactical Arrow Quickness",
-  "display_help": "TKL8GYTUJAPPWQZCWRGP2BM9J2",
-  "display_short_help": "7B27MSPEB34BYGBD5P5G3TQB32",
+  "display_help": "Years of training have made you extremely agile and quick on your feet. This power slightly increases your defense, attack rate and movement speed, in addition of protecting you from knockback.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle: Self +Recharge, +DEF(All), +SPD, +Res(Slow, Knockback)",
   "icon": "tacticalarrow_quickness.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -377,6 +377,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Blaster_Support.Tactical_Arrow"
 }

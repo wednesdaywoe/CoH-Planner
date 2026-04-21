@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Midnight Grasp",
   "display_fullname": "Stalker Melee Dark Melee Midnight Grasp",
-  "display_help": "YP2WN8UVRQHVYHN6PC6S7BVAJW",
-  "display_short_help": "C435Y7ZPHGNWYDCTX7QUZMP5AS",
+  "display_help": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe and continuously drain their life force as well as reducing their chance to hit.",
+  "display_short_help": "Melee, DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "shadowfighting_midnightgrasp.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -426,6 +426,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Stalker_Melee.Dark_Melee"
 }

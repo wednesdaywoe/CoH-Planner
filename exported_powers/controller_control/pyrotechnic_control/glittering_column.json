@@ -3,10 +3,10 @@
   "full_name": "Controller_Control.Pyrotechnic_Control.Glittering_Column",
   "short_name": "Glittering_Column",
   "type": "Click",
-  "display_name": "JXHE3V54PR36YPM99D3X2N8GRX",
+  "display_name": "Glittering Column",
   "display_fullname": "Controller Control Pyrotechnic Control Glittering Column",
-  "display_help": "MG5Y82LXJBE5YFVQC8ELKJ38FW",
-  "display_short_help": "REZNMWJTWUE9WRV35KUMDG7EK2",
+  "display_help": "You summon a column of brilliant, glittering energy that is sure to capture foes' attention. The column will reduce the ToHit of any foe within a short range, while also Taunting them, forcing them to direct their attacks in its direction. <br><br>When the Glittering Column expires, it explodes, Blasting Off nearby enemies into the air.",
+  "display_short_help": "Summon Glittering Column: Taunt, -ToHit, AoE DMG (Fire, Energy), Blast Off",
   "icon": "pyrotechnic_glitteringcolumn",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -97,6 +97,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Controller_Control.Pyrotechnic_Control"
 }

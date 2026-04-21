@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bitter Ice Blast",
   "display_fullname": "Corruptor Ranged Ice Blast Bitter Ice Blast",
-  "display_help": "AD7BATM99TUWYFN32HYGQB9YK3",
-  "display_short_help": "3E9BZEG43QS8WHL3U8UKZCA2C2",
+  "display_help": "A slower yet more powerful version of Ice Blast, Bitter Ice Blast deals much more damage and can also reduce your enemy's chance to hit. Like other Ice Blast powers, Bitter Ice Blast can Slow a target's movement and attack speed.",
+  "display_short_help": "Ranged, DMG(Cold), Foe -Recharge, -SPD, -To Hit",
   "icon": "iceblast_bitterfrostblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -298,6 +298,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Corruptor_Ranged.Ice_Blast"
 }

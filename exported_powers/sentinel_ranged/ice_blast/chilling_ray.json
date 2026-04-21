@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Chilling Ray",
   "display_fullname": "Sentinel Ranged Ice Blast Chilling Ray",
-  "display_help": "68QRT3L9XFKYWJXQ2BVSB36DSZ",
-  "display_short_help": "2DZWXJ6JHAFHYNVTBEYMDF62GX",
+  "display_help": "Chilling Ray encases your foe in a frail block of ice, holding them helpless in place for a while. The block of ice will break if attacked.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
+  "display_short_help": "Ranged, DMG(Cold), Foe Sleep",
   "icon": "iceblast_freezeray.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -615,6 +615,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Sentinel_Ranged.Ice_Blast"
 }

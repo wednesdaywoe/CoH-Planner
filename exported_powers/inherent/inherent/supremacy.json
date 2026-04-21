@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Supremacy",
   "display_fullname": "Inherent Inherent Supremacy",
-  "display_help": "3HVAUBE6G29LYCX6X5JMAK64E3",
+  "display_help": "A good Mastermind knows how to manage their Henchmen. The Mastermind imparts a bonus to their Henchmen's Accuracy and Damage only if they are nearby and not Phased or otherwise can only use Self Only powers. Additionally, your Henchmen within range in Defensive mode will share damage with the Mastermind, with damage being divided between the Mastermind and each one of his Henchmen in range.",
   "display_short_help": "PBAoE, Henchman +ACC, +DMG",
   "icon": "inherentpeacebringer_interspaciallink.png",
   "auto_issue": true,

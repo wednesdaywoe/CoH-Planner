@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Spirit Shark Jaws",
   "display_fullname": "Epic Mastermind Leviathan Mastery Spirit Shark Jaws",
-  "display_help": "DGEB9E6CMVLEWHLVJH4SMPDJ4W",
-  "display_short_help": "ADGE4TGPZNMMYGZFWG8FBPJEUZ",
+  "display_help": "You can summon a massive Spirit Shark that will attack your foe from below. The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DoT(Lethal), Foe Hold, -Fly",
   "icon": "arachnos_patron_targetedhold.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -264,6 +264,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Mastermind_Leviathan_Mastery"
 }

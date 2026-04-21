@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Hasten",
   "display_fullname": "Pool Speed Hasten",
-  "display_help": "EW4RMSZ5GLXTWHZ2XAXR34TY43",
+  "display_help": "You can reduce the recharge time of all powers for 2 minutes. Although Hasten does not cost any Endurance to activate, you can tire easily since your Endurance does not recover more rapidly. After Hasten wears off, you become tired and will lose some Endurance.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self +Recharge",
   "icon": "superspeed_acceleratedcombat.png",
   "auto_issue": false,

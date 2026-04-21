@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Electric Fence",
   "display_fullname": "Epic Electricity Mastery Electric Fence",
-  "display_help": "38YKV3NWE9T6WQV3XS9RJDGUNS",
-  "display_short_help": "7BVCWNJ7RVETYKMM5WGTAKRQ63",
+  "display_help": "Surrounds and Immobilizes a single target in an Electric Fence. Deals some damage over time and slowly drains some Endurance. Useful for keeping villains at bay.",
+  "display_short_help": "Ranged, DoT(Energy), Foe Immobilize, -End",
   "icon": "electricitymanipulation_electricfence.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -380,6 +380,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Electricity_Mastery"
 }

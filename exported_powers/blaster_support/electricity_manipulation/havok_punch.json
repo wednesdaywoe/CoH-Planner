@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Havoc Punch",
   "display_fullname": "Blaster Support Electricity Manipulation Havok Punch",
-  "display_help": "N3S3RZDXBCH2YGBEZ7MJUZ46RQ",
-  "display_short_help": "GMGKEFXF6YFWYEZFBKRVMFT24A",
+  "display_help": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with greater damage. Havoc Punch can knock down targets, drain some Endurance from your target, or even overload their synapses, leaving them writhing for a moment. A portion of the drained Endurance may be given back to you. Disturbing an overloaded target will disperse the electrical charge and release them.",
+  "display_short_help": "Melee, DMG(Smash/Energy), Foe Sleep, -End, Knock back",
   "icon": "electricitymanipulation_havokpunch.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -506,6 +506,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Electricity_Manipulation"
 }

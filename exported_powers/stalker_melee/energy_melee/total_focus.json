@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Total Focus",
   "display_fullname": "Stalker Melee Energy Melee Total Focus",
-  "display_help": "JBVD3QKZAKW4WPC9R9XEHK8B4X",
-  "display_short_help": "9ZGN3T5CNLUZYTBJSBNS8R5N2X",
+  "display_help": "Total Focus is complete mastery over Energy Melee. This melee attack is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. This power will enter Energy Focus mode. Total Focus Criticals do not result in double damage, instead it grants double Energy Focus.",
+  "display_short_help": "Melee, DMG(Smash/Energy), Foe DisorientMelee, Extreme(Energy/Smash), Foe Disorient, +Energy Focus",
   "icon": "powerpunch_totalfocus.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -595,6 +595,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Stalker_Melee.Energy_Melee"
 }

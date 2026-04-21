@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Snow Storm",
   "display_fullname": "Mastermind Buff Cold Domination Snow Storm",
-  "display_help": "8C6GEWEYTQBWYRZF7GXZBCCJQZ",
+  "display_help": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes. The torrent winds of the Snow Storm are enough to bring down flying foes.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly",
   "icon": "colddomination_snowstorm.png",
   "auto_issue": false,
@@ -177,6 +177,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Mastermind_Buff.Cold_Domination"
 }

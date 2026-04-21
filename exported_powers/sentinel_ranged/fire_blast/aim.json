@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Aim",
   "display_fullname": "Sentinel Ranged Fire Blast Aim",
-  "display_help": "N9H5KEPTD5Q3WDN83MMK98UZ7A",
-  "display_short_help": "JJ2F2S7HKQ93WFCWCHA4TJ9D22",
+  "display_help": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and range.",
+  "display_short_help": "Self +ToHit, +DMG, +Range",
   "icon": "fireblast_aim.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -139,6 +139,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Sentinel_Ranged.Fire_Blast"
 }

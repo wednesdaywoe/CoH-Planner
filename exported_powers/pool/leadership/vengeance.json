@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Vengeance",
   "display_fullname": "Pool Leadership Vengeance",
-  "display_help": "GM447JJRXLZDWDNRCATCMQZNGS",
+  "display_help": "The loss of a comrade enrages the team. When a teammate is defeated in combat, activate this power to grant you and your teammates a bonus to chance to hit, Damage and Defense to all attacks. A Vengeful team has no fear, and Vengeance protects you and your Teammates from Fear effects. It also gives you and your team great resistance to Sleep, Hold, Disorient, Immobilize, Confuse, Taunt, Placate and Knockback.<br><br>This power does not stack with multiple castings.<br><br>You must be at least level 14 and have two other Leadership powers before selecting Victory Rush.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)",
   "icon": "leadership_vengence.png",
   "auto_issue": false,
@@ -323,6 +323,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Leadership"
 }

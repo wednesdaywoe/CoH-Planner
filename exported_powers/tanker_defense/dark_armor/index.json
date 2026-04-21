@@ -5,27 +5,27 @@
   "short_help": "Dark Armor",
   "icon": "dark_armor_set.ico",
   "powers": [
-    "Cloak_of_Darkness",
-    "Cloak_of_Fear",
-    "Dark_Embrace",
-    "Dark_Regeneration",
-    "Death_Shroud",
-    "Murky_Cloud",
-    "Obscure_Sustenance",
-    "Obsidian_Shield",
-    "Oppressive_Gloom",
-    "Soul_Transfer"
+    "Tanker_Defense.Dark_Armor.Cloak_of_Darkness",
+    "Tanker_Defense.Dark_Armor.Cloak_of_Fear",
+    "Tanker_Defense.Dark_Armor.Dark_Embrace",
+    "Tanker_Defense.Dark_Armor.Dark_Regeneration",
+    "Tanker_Defense.Dark_Armor.Death_Shroud",
+    "Tanker_Defense.Dark_Armor.Murky_Cloud",
+    "Tanker_Defense.Dark_Armor.Obscure_Sustenance",
+    "Tanker_Defense.Dark_Armor.Obsidian_Shield",
+    "Tanker_Defense.Dark_Armor.Oppressive_Gloom",
+    "Tanker_Defense.Dark_Armor.Soul_Transfer"
   ],
   "available_level": [
+    11,
+    17,
     0,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    7,
+    5,
+    21,
+    25
   ]
 }

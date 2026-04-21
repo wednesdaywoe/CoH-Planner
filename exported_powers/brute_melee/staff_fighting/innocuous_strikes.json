@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Innocuous Strikes",
   "display_fullname": "Brute Melee Staff Fighting Innocuous Strikes",
-  "display_help": "4EGFS8B7NLJAY9M24BKKYYCWSA",
-  "display_short_help": "4WAS8Z76J3YNYDV7WSFCX76DSQ",
+  "display_help": "You repeatedly batter your foes' feet and legs with a flurry of sweeps of your staff. This attack deals Smashing damage to all foes within its cone. All affected targets will have their movement speed reduced, with a chance of being immobilized briefly. While a form is active, this power will build one level of Perfection.",
+  "display_short_help": "Melee (Cone), DMG(Smash), Foe Immobilize, -Speed",
   "icon": "stafffighting_innocuousstrikes.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -444,6 +444,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Brute_Melee.Staff_Fighting"
 }

@@ -5,25 +5,25 @@
   "short_help": "Traps",
   "icon": "traps_set.ico",
   "powers": [
-    "Acid_Mortar",
-    "Caltrops",
-    "Force_Field_Generator",
-    "Poison_Trap",
-    "Seeker_Drones",
-    "Time_Bomb",
-    "Triage_Beacon",
-    "Trip_Mine",
-    "Web_Grenade"
+    "Controller_Buff.Traps.Acid_Mortar",
+    "Controller_Buff.Traps.Caltrops",
+    "Controller_Buff.Traps.Force_Field_Generator",
+    "Controller_Buff.Traps.Poison_Trap",
+    "Controller_Buff.Traps.Seeker_Drones",
+    "Controller_Buff.Traps.Time_Bomb",
+    "Controller_Buff.Traps.Triage_Beacon",
+    "Controller_Buff.Traps.Trip_Mine",
+    "Controller_Buff.Traps.Web_Grenade"
   ],
   "available_level": [
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    15,
+    19,
+    23,
+    29,
+    3,
+    27,
     0
   ]
 }

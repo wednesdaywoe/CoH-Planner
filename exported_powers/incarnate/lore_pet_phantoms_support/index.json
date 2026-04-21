@@ -5,8 +5,8 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_phantoms_support_set.ico",
   "powers": [
-    "Adrenalin_Boost",
-    "Heal_Other"
+    "Incarnate.Lore_Pet_Phantoms_Support.Adrenalin_Boost",
+    "Incarnate.Lore_Pet_Phantoms_Support.Heal_Other"
   ],
   "available_level": [
     0,

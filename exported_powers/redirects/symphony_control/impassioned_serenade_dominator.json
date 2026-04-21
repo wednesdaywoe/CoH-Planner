@@ -3,10 +3,10 @@
   "full_name": "Redirects.Symphony_Control.Impassioned_Serenade_Dominator",
   "short_name": "Impassioned_Serenade_Dominator",
   "type": "Click",
-  "display_name": "JKMHNVRBKYEUYNC8FRCY3XRV92",
+  "display_name": "Impassioned Serenade",
   "display_fullname": "Redirects Symphony Control Impassioned Serenade Dominator",
-  "display_help": "ZVA7S23GN9HTYFX6ETCBZ2TLJ3",
-  "display_short_help": "7A63ZMCK8WXZYAX6P4ZQUSYEGX",
+  "display_help": "You serenade your target with an impassioned song, charming them into fighting for you.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged, Minor DMG(Psionic), Confuse",
   "icon": "symphonycontrol_confusest",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -206,6 +206,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Redirects.Symphony_Control"
 }

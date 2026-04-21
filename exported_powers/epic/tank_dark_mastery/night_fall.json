@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Night Fall",
   "display_fullname": "Epic Tank Dark Mastery Night Fall",
-  "display_help": "ZUQQ82EKE5W8WMM9V3ECGC32KX",
-  "display_short_help": "4GQPDY5ZYZTWY7VXUEHZFRVH6Z",
+  "display_help": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Cone), DMG(Negative), Foe -To Hit",
   "icon": "dark_mastery_nightfall",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Tank_Dark_Mastery"
 }

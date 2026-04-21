@@ -5,8 +5,8 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_banished_support_set.ico",
   "powers": [
-    "Frigid_Burst",
-    "Frigid_Storm"
+    "Incarnate.Lore_Pet_Banished_Support.Frigid_Burst",
+    "Incarnate.Lore_Pet_Banished_Support.Frigid_Storm"
   ],
   "available_level": [
     0,

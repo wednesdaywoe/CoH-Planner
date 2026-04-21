@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Turbo Boost",
   "display_fullname": "Pool Gadgetry Turbo Boost",
-  "display_help": "99WURAQ6K5TWWGNJ9MMHJSCUUZ",
+  "display_help": "Activating this power will give you a massive burst to your flight speed for a short time.<br><br><color #fcfc95>Notes: Turbo Boost is unaffected by Endurance Discount changes.</color>",
   "display_short_help": "Click, Self +Fly Speed",
   "icon": "gadgetry_turboboost.png",
   "auto_issue": true,
@@ -103,6 +103,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Pool.Gadgetry"
 }

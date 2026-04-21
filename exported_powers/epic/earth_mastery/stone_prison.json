@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Stone Prison",
   "display_fullname": "Epic Earth Mastery Stone Prison",
-  "display_help": "5LSMEK5HAT2LYNZK9PCXVVGT9S",
-  "display_short_help": "G9LS28BSB9QQY8ZPJLAT7AZB4W",
+  "display_help": "Immobilizes a single target within an earthy formation and deals some Smashing damage over time. Some more resilient foes may require multiple attacks to Immobilize. Stone Prison can also reduce a target's Defense.",
+  "display_short_help": "Ranged, DoT(Smash), Foe Immobilize, -DEF, -Fly",
   "icon": "earth_mastery_stoneprison",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -343,6 +343,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Earth_Mastery"
 }

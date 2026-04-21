@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Zapp",
   "display_fullname": "Blaster Ranged Electrical Blast Zapp",
-  "display_help": "CTHCC35ZR77CW6LG6XC5A49E2Z",
-  "display_short_help": "M62GHE2J3KY5WGX9BMSGYGFCNW",
+  "display_help": "A focused electrical blast that can travel great distances with high Accuracy. Zapp drains Endurance, and is best fired from a distance, as it can be interrupted. Some of the Endurance you drain may transfer back to you. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+  "display_short_help": "Sniper, DMG(Energy), Foe -End, Self +Range",
   "icon": "electricalbolt_zapp.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Blaster_Ranged.Electrical_Blast"
 }

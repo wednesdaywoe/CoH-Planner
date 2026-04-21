@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Night Fall",
   "display_fullname": "Corruptor Ranged Dark Blast Night Fall",
-  "display_help": "NMQ98S2JMGGSYJXKG3779YCPAZ",
-  "display_short_help": "4GQPDY5ZYZTWY7VXUEHZFRVH6Z",
+  "display_help": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit.",
+  "display_short_help": "Ranged (Cone), DMG(Negative), Foe -To Hit",
   "icon": "darkcast_nightfall.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -244,6 +244,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Corruptor_Ranged.Dark_Blast"
 }

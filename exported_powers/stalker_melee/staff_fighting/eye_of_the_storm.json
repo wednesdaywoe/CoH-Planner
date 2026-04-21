@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Eye of the Storm",
   "display_fullname": "Stalker Melee Staff Fighting Eye of the Storm",
-  "display_help": "GPQDLWZQARVPWQVDD2G6X2TTW2",
-  "display_short_help": "68SMQBQMKRXSYVXHEEPRMMRBT3",
+  "display_help": "With a lightning fast series of spins of your staff you strike at all nearby foes dealing damage with a chance of knocking foes down. This power will build one stack of Perfection of Body if the user has two or less stacks, if the user has three stacks of Perfection of Body it will consume them and gain some benefit. 3 stacks of Perfection of Body will cause additional smashing damage and reduce damage resistance slightly for a short time.",
+  "display_short_help": "PBAoE Melee, DMG(Smash), Foe Knockdown, Consumes Perfection",
   "icon": "stafffighting_eyeofthestorm.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -807,6 +807,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Stalker_Melee.Staff_Fighting"
 }

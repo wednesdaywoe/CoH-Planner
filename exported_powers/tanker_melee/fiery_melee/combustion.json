@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Combustion",
   "display_fullname": "Tanker Melee Fiery Melee Combustion",
-  "display_help": "HQ5BNTNV22MSYXVUN6YPUJAFZQ",
-  "display_short_help": "WZF99456VSXFWLVZAFUQDUDXYS",
+  "display_help": "Your mastery of fire allows you to violently raise the temperature around yourself in an attempt to spontaneously combust any nearby foes and set them ablaze, dealing damage over time.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE, DoT (Fire)",
   "icon": "fieryfray_combustion.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -253,6 +253,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Tanker_Melee.Fiery_Melee"
 }

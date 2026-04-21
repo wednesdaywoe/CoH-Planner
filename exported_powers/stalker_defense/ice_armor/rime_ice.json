@@ -3,10 +3,10 @@
   "full_name": "Stalker_Defense.Ice_Armor.Rime_Ice",
   "short_name": "Rime_Ice",
   "type": "Click",
-  "display_name": "ZEBPT5PNT59WW3MGDS6VJ85KXQ",
+  "display_name": "Rime",
   "display_fullname": "Stalker Defense Ice Armor Rime Ice",
-  "display_help": "86NEN8VLU7DUWRLECW8M7BMD8W",
-  "display_short_help": "574QQ9VFZK3WWVC5SEWP5BN59S",
+  "display_help": "Activating this power covers you in a thick layer of rime. The rime can absorb the impact of a limited number of enemy attacks, the lingering moisture increasing your regeneration rate. Rime also grants you resistance to Toxic Damage.<br><br>This power is mutually exclusive from Hoarfrost",
+  "display_short_help": "Self +Regen, +Absorb, Res(Toxic)",
   "icon": "icearmor_rime",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -133,6 +133,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Stalker_Defense.Ice_Armor"
 }

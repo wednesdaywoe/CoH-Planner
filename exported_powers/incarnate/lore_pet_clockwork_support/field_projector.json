@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Field Projector",
   "display_fullname": "Incarnate Lore Pet Clockwork Support Field Projector",
-  "display_help": "HL7A5C6JWK6YYTXDYYKCZCVJRW",
+  "display_help": "The Field Projector protects others from smashing, lethal, fire, cold, energy and negative energy attacks for a limited time. The magnetic nature of the shield makes attacks less likely to land and affect your ally. Multiple Shields can be stacked on one target to improve the defense.<br><br><color #fcfc95>Notes: Field Projector is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ally +DEF(Smash, Lethal, Fire, Cold, Energy, Negative)",
   "icon": "forcefield_deflectionshield.png",
   "auto_issue": false,

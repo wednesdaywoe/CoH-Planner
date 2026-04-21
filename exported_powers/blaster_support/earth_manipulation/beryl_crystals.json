@@ -3,10 +3,10 @@
   "full_name": "Blaster_Support.Earth_Manipulation.Beryl_Crystals",
   "short_name": "Beryl_Crystals",
   "type": "Toggle",
-  "display_name": "THM8F86XYGCWYNLBZMMAZMN33X",
+  "display_name": "Beryl Crystals",
   "display_fullname": "Blaster Support Earth Manipulation Beryl Crystals",
-  "display_help": "8CNFXAQJYPREYTVTQ2A2EJ7VSZ",
-  "display_short_help": "58BSN8DCNUU9WQLW5KKMW5H2GX",
+  "display_help": "Activating this power summons several rare Beryl Crystals to orbit around you. These Crystals can bring clarity of the mind and increase your Accuracy, Perception to see hidden foes, and grant resistance to Confusion, Perception and ToHit debuffs.<br><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Toggle: Self Res(Confuse, Perception, ToHit), +Perception, Accuracy",
   "icon": "earthmanip_beryl",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -238,6 +238,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Blaster_Support.Earth_Manipulation"
 }

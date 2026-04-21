@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Frost Breath",
   "display_fullname": "Epic Ice Mastery Frost Breath",
-  "display_help": "MPHU9RDR6HB4YKVELN9RXN8N4Q",
-  "display_short_help": "AV2K7W734QF3WVVNYLBGUJU23S",
+  "display_help": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range. You must have two other Ice Mastery power to select this power. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
+  "display_short_help": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
   "icon": "ice_mastery_frostbreath",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -268,6 +268,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Ice_Mastery"
 }

@@ -5,25 +5,25 @@
   "short_help": "Spines",
   "icon": "quills_set.ico",
   "powers": [
-    "Barb_Swipe",
-    "Build_Up",
-    "Fling_Quills",
-    "Impale",
-    "Lunge",
-    "Quill_Throwing",
-    "Quills",
-    "Ripper",
-    "Taunt"
+    "Scrapper_Melee.Quills.Barb_Swipe",
+    "Scrapper_Melee.Quills.Build_Up",
+    "Scrapper_Melee.Quills.Fling_Quills",
+    "Scrapper_Melee.Quills.Impale",
+    "Scrapper_Melee.Quills.Lunge",
+    "Scrapper_Melee.Quills.Quill_Throwing",
+    "Scrapper_Melee.Quills.Quills",
+    "Scrapper_Melee.Quills.Ripper",
+    "Scrapper_Melee.Quills.Taunt"
   ],
   "available_level": [
     0,
+    5,
+    1,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25,
+    17,
+    21,
+    11
   ]
 }

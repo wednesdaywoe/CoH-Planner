@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Restore Essence",
   "display_fullname": "Peacebringer Defensive Luminous Aura Restore Essence",
-  "display_help": "G846UVURUV7LY6NR2JGWTHA86X",
+  "display_help": "Should you fall in battle, you can Restore your Essence and bring yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self Rez",
   "icon": "luminousaura_restoreessence.png",
   "auto_issue": false,
@@ -181,6 +181,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

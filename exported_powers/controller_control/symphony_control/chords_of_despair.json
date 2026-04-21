@@ -3,9 +3,9 @@
   "full_name": "Controller_Control.Symphony_Control.Chords_of_Despair",
   "short_name": "Chords_of_Despair",
   "type": "Click",
-  "display_name": "ZHRAZR5WX9EZW5XUZS8YBPYJTA",
+  "display_name": "Chords of Despair",
   "display_fullname": "Controller Control Symphony Control Chords of Despair",
-  "display_help": "TN26N465R7AYYZMMGY3U3XX6BW",
+  "display_help": "Your audience falls into deep despair, incapacitating them.<br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>8</color> seconds and each affected foe will increase the recharge by <color #FF7F27>14.5</color> seconds for a maximum total of <color #FF7F27>240</color> seconds.</color>",
   "display_short_help": "Ranged (Targeted AoE), Foe Hold",
   "icon": "symphonycontrol_holdaoe",
   "auto_issue": false,
@@ -255,6 +255,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Controller_Control.Symphony_Control"
 }

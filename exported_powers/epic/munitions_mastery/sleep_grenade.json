@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Sleep Grenade",
   "display_fullname": "Epic Munitions Mastery Sleep Grenade",
-  "display_help": "JFCJV4FQ42E6YMLFMA5PE432XQ",
+  "display_help": "The Sleep Grenade can be launched at long range from beneath the barrel of your Assault Rifle. It releases a cloud of gas that will make enemies fall asleep. You must be level 35 and have one other Arsenal Mastery powers before selecting this power.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
   "display_short_help": "Ranged (Targeted AoE), Minor DMG(Smash), Foe Sleep",
   "icon": "munitionsmastery_sleepgrenade.png",
   "auto_issue": false,
@@ -216,6 +216,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Munitions_Mastery"
 }

@@ -3,10 +3,10 @@
   "full_name": "Controller_Control.Symphony_Control.Enfeebling_Lullaby",
   "short_name": "Enfeebling_Lullaby",
   "type": "Click",
-  "display_name": "CKMVDZNMJH7TYSVVG4ES9E3XA3",
+  "display_name": "Enfeebling Lullaby",
   "display_fullname": "Controller Control Symphony Control Enfeebling Lullaby",
-  "display_help": "N9C3T53VMWTBYHB4NQPNQJQTF2",
-  "display_short_help": "MXUHF33CCA2VW6VNMQPYXPK8G2",
+  "display_help": "A song that will put even elephants to sleep. Enfeebling Lullaby will relax foes, causing them to sleep and their attacks will do reduced damage for some time.<br><br><color #fcfc95>Notes: Although this power is Auto Hit, it requires a To Hit check to apply Deep Sleep. If The Hit check is missed, and the target is not an AV, the weaker form of Sleep will be applied.</color>",
+  "display_short_help": "Ranged (Cone), DMG(Psionic), Foe Deep Sleep, -DMG",
   "icon": "symphonycontrol_sleepst",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -414,6 +414,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Controller_Control.Symphony_Control"
 }

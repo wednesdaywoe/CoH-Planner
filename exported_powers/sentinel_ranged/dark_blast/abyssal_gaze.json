@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Abyssal Gaze",
   "display_fullname": "Sentinel Ranged Dark Blast Abyssal Gaze",
-  "display_help": "H83NM3ELWSW5YLZXY4FGZLBHV3",
-  "display_short_help": "AA3EWS9245D3YMM8BF5RZEPP3A",
+  "display_help": "You gaze into your foe's eyes giving them a glimpse into the terrifying netherworld rendering them held, reducing their chance to hit and dealing High Negative Energy damage over the next couple of seconds.",
+  "display_short_help": "Ranged, DoT(Negative), Foe Hold, -To Hit",
   "icon": "darkcast_abyssalgaze.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -345,6 +345,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Sentinel_Ranged.Dark_Blast"
 }

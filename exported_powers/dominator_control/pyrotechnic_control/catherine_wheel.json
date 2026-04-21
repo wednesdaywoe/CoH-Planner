@@ -3,10 +3,10 @@
   "full_name": "Dominator_Control.Pyrotechnic_Control.Catherine_Wheel",
   "short_name": "Catherine_Wheel",
   "type": "Click",
-  "display_name": "QPA6D524EPLRWXX7NPEM9XT97Q",
+  "display_name": "Catherine Wheel",
   "display_fullname": "Dominator Control Pyrotechnic Control Catherine Wheel",
-  "display_help": "78NQV2F2UWQFWTLWAK8MG3SNLZ",
-  "display_short_help": "XXZ6C5TLH2QBYBLYWTPZK7GTTW",
+  "display_help": "You can craft a wheel of pure pyrotechnic energy to assist you in battle. The Catherine Wheel employs a variety of pyrotechnic powers to damage and distract enemies. If an enemy becomes affected by the Blast Off effect from one of your powers, the Catherine Wheel may Intercept the enemy with an attack, dealing additional damage.",
+  "display_short_help": "Summon Catherine Wheel: Ranged DMG (Fire, Energy), Special",
   "icon": "pyrotechnic_catherinewheel",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -89,6 +89,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Dominator_Control.Pyrotechnic_Control"
 }

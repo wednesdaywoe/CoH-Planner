@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Living Shadows",
   "display_fullname": "Controller Control Darkness Control Living Shadows",
-  "display_help": "FQLFSKE67SRRYEM58WX2FV2A7W",
+  "display_help": "You extend and animate your own shadow causing it to entangle all foes within a long cone pattern in front of you, rendering all affected foes immobilized.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged (Cone), Minor DoT(Negative), Foe Immobilize, -To Hit, -Fly",
   "icon": "darknesscontrol_livingshadows.png",
   "auto_issue": false,
@@ -384,6 +384,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Controller_Control.Darkness_Control"
 }

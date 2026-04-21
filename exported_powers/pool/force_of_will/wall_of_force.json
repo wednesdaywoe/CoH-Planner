@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Wall of Force",
   "display_fullname": "Pool Force of Will Wall of Force",
-  "display_help": "RZBATJRMWX4KYVVTZ2U4VPDCUS",
-  "display_short_help": "UHRUW3U2GRPEYWVYQ749LYWQTX",
+  "display_help": "You project an unfocused blast of sheer force at foes in a short wide cone in front of you, dealing moderate psionic and smashing damage and potentially knocking targets down.<br><br>You must be at least level 14 and have two other Force of Will powers before selecting Wall of Force.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged Cone, Minor DMG(Psionic/Smashing), Foe Knockdown",
   "icon": "forceofwill_wallofforce.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -664,6 +664,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Force_of_Will"
 }

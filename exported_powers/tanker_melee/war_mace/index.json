@@ -5,25 +5,25 @@
   "short_help": "War Mace",
   "icon": "war_mace_set.ico",
   "powers": [
-    "Bash",
-    "Build_Up",
-    "Clobber",
-    "Crowd_Control",
-    "Jawbreaker",
-    "Pulverize",
-    "Shatter",
-    "Taunt",
-    "Whirling_Mace"
+    "Tanker_Melee.War_Mace.Bash",
+    "Tanker_Melee.War_Mace.Build_Up",
+    "Tanker_Melee.War_Mace.Clobber",
+    "Tanker_Melee.War_Mace.Crowd_Control",
+    "Tanker_Melee.War_Mace.Jawbreaker",
+    "Tanker_Melee.War_Mace.Pulverize",
+    "Tanker_Melee.War_Mace.Shatter",
+    "Tanker_Melee.War_Mace.Taunt",
+    "Tanker_Melee.War_Mace.Whirling_Mace"
   ],
   "available_level": [
     0,
+    15,
+    23,
+    29,
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27,
+    9,
+    19
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ignite",
   "display_fullname": "Sentinel Ranged Assault Rifle Incinerator",
-  "display_help": "35AX88UT7C2JYLCG27UELX6773",
-  "display_short_help": "TE9MUR4UGBF4YALBMCY7RZYJGS",
+  "display_help": "Sprays a target with accelerant from your flamethrower, igniting it and causing extreme damage over time. Also sets the location on fire if the target is grounded, inflicting damage to additional foes that step in the area.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, DoT(Fire), Location AoE, DoT(Fire)",
   "icon": "assaultweapons_dot",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -423,6 +423,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Sentinel_Ranged.Assault_Rifle"
 }

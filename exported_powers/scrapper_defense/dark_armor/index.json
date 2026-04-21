@@ -5,27 +5,27 @@
   "short_help": "Dark Armor",
   "icon": "dark_armor_set.ico",
   "powers": [
-    "Cloak_of_Darkness",
-    "Cloak_of_Fear",
-    "Dark_Embrace",
-    "Dark_Regeneration",
-    "Death_Shroud",
-    "Defracting_cloud",
-    "Obscure_Sustenance",
-    "Obsidian_Shield",
-    "Oppressive_Gloom",
-    "Soul_Transfer"
+    "Scrapper_Defense.Dark_Armor.Cloak_of_Darkness",
+    "Scrapper_Defense.Dark_Armor.Cloak_of_Fear",
+    "Scrapper_Defense.Dark_Armor.Dark_Embrace",
+    "Scrapper_Defense.Dark_Armor.Dark_Regeneration",
+    "Scrapper_Defense.Dark_Armor.Death_Shroud",
+    "Scrapper_Defense.Dark_Armor.Defracting_cloud",
+    "Scrapper_Defense.Dark_Armor.Obscure_Sustenance",
+    "Scrapper_Defense.Dark_Armor.Obsidian_Shield",
+    "Scrapper_Defense.Dark_Armor.Oppressive_Gloom",
+    "Scrapper_Defense.Dark_Armor.Soul_Transfer"
   ],
   "available_level": [
+    19,
+    23,
     0,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3,
+    15,
+    9,
+    27,
+    29
   ]
 }

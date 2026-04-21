@@ -5,19 +5,19 @@
   "short_help": "Nano Net",
   "icon": "gadgetry_set.ico",
   "powers": [
-    "Blaster_Barrage",
-    "Force_Barrier",
-    "Jetpack",
-    "Nano_Net",
-    "Turbo_Boost",
-    "Wrist_Blaster"
+    "Pool.Gadgetry.Blaster_Barrage",
+    "Pool.Gadgetry.Force_Barrier",
+    "Pool.Gadgetry.Jetpack",
+    "Pool.Gadgetry.Nano_Net",
+    "Pool.Gadgetry.Turbo_Boost",
+    "Pool.Gadgetry.Wrist_Blaster"
   ],
   "available_level": [
+    13,
+    19,
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
+    4294967295,
     0
   ]
 }

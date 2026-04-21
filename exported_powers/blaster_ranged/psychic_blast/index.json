@@ -5,25 +5,25 @@
   "short_help": "Psychic Blast",
   "icon": "psychic_blast_set.ico",
   "powers": [
-    "Aim",
-    "Mental_Blast",
-    "Psionic_Dart",
-    "Psionic_Lance",
-    "Psionic_Tornado",
-    "Psychic_Wail",
-    "Scramble_Thoughts",
-    "Telekinetic_Blast",
-    "Will_Domination"
+    "Blaster_Ranged.Psychic_Blast.Aim",
+    "Blaster_Ranged.Psychic_Blast.Mental_Blast",
+    "Blaster_Ranged.Psychic_Blast.Psionic_Dart",
+    "Blaster_Ranged.Psychic_Blast.Psionic_Lance",
+    "Blaster_Ranged.Psychic_Blast.Psionic_Tornado",
+    "Blaster_Ranged.Psychic_Blast.Psychic_Wail",
+    "Blaster_Ranged.Psychic_Blast.Scramble_Thoughts",
+    "Blaster_Ranged.Psychic_Blast.Telekinetic_Blast",
+    "Blaster_Ranged.Psychic_Blast.Will_Domination"
   ],
   "available_level": [
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    5,
+    11,
+    17,
+    25,
+    21,
+    1,
     0
   ]
 }

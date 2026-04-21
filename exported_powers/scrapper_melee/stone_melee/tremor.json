@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Tremor",
   "display_fullname": "Scrapper Melee Stone Melee Tremor",
-  "display_help": "CVP6C6HJXSHLYMBKV5N2MUB2ZA",
-  "display_short_help": "MBHXGY36M35KWALQ9H647MAZ33",
+  "display_help": "You can cause a localized earthquake immediately around you. This will deal moderate damage to every foe in melee range while knocking them back.",
+  "display_short_help": "PBAoE, DMG(Smashing), Knockback",
   "icon": "stonemelee_tremor.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -357,6 +357,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Scrapper_Melee.Stone_Melee"
 }

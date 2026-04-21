@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Screech",
   "display_fullname": "Sentinel Ranged Sonic Attack Screech",
-  "display_help": "F4PURQ24HSKUWYZ6E5WZ892RB3",
-  "display_short_help": "ZV6S4ZM2H2HLWPB5QW8NRHN87X",
+  "display_help": "By bursting forth with this hypersonic Screech, you can inflict high damage and disorient a target.",
+  "display_short_help": "Ranged, High DMG(Smashing/Energy), Foe Disorient, -Res(All)",
   "icon": "sonicblast_stun.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -427,6 +427,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Sentinel_Ranged.Sonic_Attack"
 }

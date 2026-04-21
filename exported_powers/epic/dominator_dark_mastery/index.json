@@ -5,17 +5,17 @@
   "short_help": "Dark Mastery",
   "icon": "sentinel_dark_mastery_set.ico",
   "powers": [
-    "Darkest_Night",
-    "Murky_Cloud",
-    "Soul_Consumption",
-    "Tar_Patch",
-    "Torrent"
+    "Epic.Dominator_Dark_Mastery.Darkest_Night",
+    "Epic.Dominator_Dark_Mastery.Murky_Cloud",
+    "Epic.Dominator_Dark_Mastery.Soul_Consumption",
+    "Epic.Dominator_Dark_Mastery.Tar_Patch",
+    "Epic.Dominator_Dark_Mastery.Torrent"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    34,
+    43,
+    34,
+    40
   ]
 }

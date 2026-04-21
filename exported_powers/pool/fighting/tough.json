@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Tough",
   "display_fullname": "Pool Fighting Tough",
-  "display_help": "VA35D3VPNCKVYDNNA9DTM8UN23",
+  "display_help": "While active, you are tough and slightly resistant to Smashing and Lethal damage.<br><br>You must be at least level 14 and have one other Fighting Powers before selecting Tough.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: Self +Res(Smash/Lethal)",
   "icon": "fighting_tough.png",
   "auto_issue": false,
@@ -132,6 +132,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Fighting"
 }

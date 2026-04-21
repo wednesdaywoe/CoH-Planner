@@ -1,21 +1,21 @@
 {
   "key": "Epic.Stalker_Mu_Mastery",
   "display_name": "Mu Mastery",
-  "help": "P2730572537",
+  "help": "Scirocco has taught you the ancient powers of the Mu. In their eternal struggle against the Oranbega, the Mu have unlocked many mystical powers, including their very signature crimson lightning. Now you possess their secrets.",
   "short_help": "Mu Mastery",
   "icon": "stalker_mu_mastery_set.ico",
   "powers": [
-    "Ball_Lightning",
-    "Electric_Shackles",
-    "Mu_Bolts",
-    "Summon_Adept",
-    "Zapp"
+    "Epic.Stalker_Mu_Mastery.Ball_Lightning",
+    "Epic.Stalker_Mu_Mastery.Electric_Shackles",
+    "Epic.Stalker_Mu_Mastery.Mu_Bolts",
+    "Epic.Stalker_Mu_Mastery.Summon_Adept",
+    "Epic.Stalker_Mu_Mastery.Zapp"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    40,
+    34,
+    43,
+    34
   ]
 }

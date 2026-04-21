@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Light Form",
   "display_fullname": "Peacebringer Defensive Luminous Aura Light Form",
-  "display_help": "D7VVMM6XWX4JW7NXBQ2JPKJP6Q",
+  "display_help": "When you activate Light Form, you become pure Kheldian energy and are extremely resistant to most damage. You are also partially protected from some Disorient, Immobilization, Hold, Sleep, Knockback and Repel effects. Endurance recovery is also increased. Light Form costs little Endurance to activate, but when it wears off you are left exhausted, and drained of Hit Points and Endurance.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Knockback, Repel, All DMG but Psionics)",
   "icon": "luminousaura_lightform.png",
   "auto_issue": false,
@@ -490,6 +490,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 31,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

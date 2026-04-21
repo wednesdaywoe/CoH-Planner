@@ -5,25 +5,25 @@
   "short_help": "Regeneration",
   "icon": "regeneration_set.ico",
   "powers": [
-    "Dismiss_Pain",
-    "Fast_Healing",
-    "Instant_Regeneration",
-    "Integration",
-    "Moment_of_Glory",
-    "Quick_Recovery",
-    "Reconstruction",
-    "Resilience",
-    "Second_Wind"
+    "Sentinel_Defense.Regeneration.Dismiss_Pain",
+    "Sentinel_Defense.Regeneration.Fast_Healing",
+    "Sentinel_Defense.Regeneration.Instant_Regeneration",
+    "Sentinel_Defense.Regeneration.Integration",
+    "Sentinel_Defense.Regeneration.Moment_of_Glory",
+    "Sentinel_Defense.Regeneration.Quick_Recovery",
+    "Sentinel_Defense.Regeneration.Reconstruction",
+    "Sentinel_Defense.Regeneration.Resilience",
+    "Sentinel_Defense.Regeneration.Second_Wind"
   ],
   "available_level": [
+    9,
     0,
+    23,
+    15,
+    29,
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    27
   ]
 }

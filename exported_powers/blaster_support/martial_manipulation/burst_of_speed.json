@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Burst of Speed",
   "display_fullname": "Blaster Support Martial Manipulation Burst of Speed",
-  "display_help": "2ZX5R5TDYTAPWQN7D2PG234S5W",
+  "display_help": "Channeling physical Ki inwards, you move more quickly than can be seen for an instant, allowing you to move instantly to a targeted location and strike at targets within melee range. You can use this Burst of Speed up to 3 times before it needs to recharge.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Location AoE Moderate DMG (Smash), Self Teleport",
   "icon": "martialmanipulation_burstofspeed.png",
   "auto_issue": false,
@@ -202,6 +202,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Martial_Manipulation"
 }

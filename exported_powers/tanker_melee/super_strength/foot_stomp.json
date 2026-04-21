@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Foot Stomp",
   "display_fullname": "Tanker Melee Super Strength Foot Stomp",
-  "display_help": "KSBZEALQLBQGW5BP6QUWD6VT92",
-  "display_short_help": "CGN9T43USYGTWWZKSXLZT4R4UZ",
+  "display_help": "Using your superior leg strength, you can Stomp your foot to the ground, quaking the earth itself. This is a localized attack against everything in melee range.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Smash), Knockback",
   "icon": "superstrength_footstomp.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Tanker_Melee.Super_Strength"
 }

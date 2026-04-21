@@ -5,25 +5,25 @@
   "short_help": "Psionic Melee",
   "icon": "psionic_melee_set.ico",
   "powers": [
-    "Assassins_Psi_Blade",
-    "Boggle",
-    "Concentration",
-    "Greater_Psi_Blade",
-    "Mass_Levitate",
-    "Mental_Strike",
-    "Placate",
-    "Psi_Blade",
-    "Telekinetic_Blow"
+    "Stalker_Melee.Psionic_Melee.Assassins_Psi_Blade",
+    "Stalker_Melee.Psionic_Melee.Boggle",
+    "Stalker_Melee.Psionic_Melee.Concentration",
+    "Stalker_Melee.Psionic_Melee.Greater_Psi_Blade",
+    "Stalker_Melee.Psionic_Melee.Mass_Levitate",
+    "Stalker_Melee.Psionic_Melee.Mental_Strike",
+    "Stalker_Melee.Psionic_Melee.Placate",
+    "Stalker_Melee.Psionic_Melee.Psi_Blade",
+    "Stalker_Melee.Psionic_Melee.Telekinetic_Blow"
   ],
   "available_level": [
+    5,
+    17,
+    7,
+    21,
+    25,
     0,
+    11,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1
   ]
 }

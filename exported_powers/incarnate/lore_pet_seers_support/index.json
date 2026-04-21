@@ -5,8 +5,8 @@
   "short_help": "Diviner",
   "icon": "lore_pet_seers_support_set.ico",
   "powers": [
-    "Fortitude",
-    "Soothe_Mind"
+    "Incarnate.Lore_Pet_Seers_Support.Fortitude",
+    "Incarnate.Lore_Pet_Seers_Support.Soothe_Mind"
   ],
   "available_level": [
     0,

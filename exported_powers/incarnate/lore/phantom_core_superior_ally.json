@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Phantom Core Superior Ally",
   "display_fullname": "Incarnate Lore Phantom Core Superior Ally",
-  "display_help": "LLFF4MDGNLZ8WNCKETB6FNBGHX",
+  "display_help": "Draws forth the essences of a vanquished Spectre and Phantom from the Well of the Furies to serve you for 5 minutes. These essences do increased damage compared to their previous versions.<br><br>This power also applies an Incarnate Shift. (An Incarnate Shift is a Level Shift which only activates while participating in an Incarnate Trial.).<br><br><color #fcfc95>Notes: Phantom Core Superior Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Phantom Boss & LT Essences",
   "icon": "incarnate_lore_phantoms_veryrare.png",
   "auto_issue": false,

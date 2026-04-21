@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Swoop",
   "display_fullname": "Scrapper Melee Battle Axe Swoop",
-  "display_help": "7Q737ABHGMPMWVVLL8RTUUH48X",
-  "display_short_help": "VGXKNUNXV6PNY7VXVQMKWAW7K3",
+  "display_help": "A Swoop of your Battle Axe deals a superior amount of damage, and can send your target flying upwards.",
+  "display_short_help": "Melee, DMG(Lethal), Foe Knockup",
   "icon": "battleaxe_swoop.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -357,6 +357,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Scrapper_Melee.Battle_Axe"
 }

@@ -5,25 +5,25 @@
   "short_help": "Ninja Training",
   "icon": "ninja_training_set.ico",
   "powers": [
-    "Blinding_Powder",
-    "Choking_Powder",
-    "Golden_Dragonfly",
-    "Immobilizing_Dart",
-    "Kuji-In_Toh",
-    "Kyokan",
-    "Smoke_Flash",
-    "Sting_of_the_Wasp",
-    "The_Lotus_Drops"
+    "Blaster_Support.Ninja_Training.Blinding_Powder",
+    "Blaster_Support.Ninja_Training.Choking_Powder",
+    "Blaster_Support.Ninja_Training.Golden_Dragonfly",
+    "Blaster_Support.Ninja_Training.Immobilizing_Dart",
+    "Blaster_Support.Ninja_Training.Kuji-In_Toh",
+    "Blaster_Support.Ninja_Training.Kyokan",
+    "Blaster_Support.Ninja_Training.Smoke_Flash",
+    "Blaster_Support.Ninja_Training.Sting_of_the_Wasp",
+    "Blaster_Support.Ninja_Training.The_Lotus_Drops"
   ],
   "available_level": [
+    27,
+    3,
+    29,
     0,
+    19,
+    9,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15
   ]
 }

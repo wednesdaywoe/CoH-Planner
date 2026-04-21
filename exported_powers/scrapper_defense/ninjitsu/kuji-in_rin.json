@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Kuji-In Rin",
   "display_fullname": "Scrapper Defense Ninjitsu Kuji-In Rin",
-  "display_help": "J5JXBHPBUPF5Y6CR4AULHVNJTX",
+  "display_help": "Kuji-In Rin is the strength of mind and body. By focusing your power on this exercise, you gain a resistance to Disorient, Hold, Sleep, Immobilization, Confusion, and fear, as well as resistance to Psionic damage for a few minutes. Your running speed and jumping height are also increased.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +SPD, +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Psionics)",
   "icon": "ninjitsu_kujinrin.png",
   "auto_issue": false,
@@ -275,6 +275,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Scrapper_Defense.Ninjitsu"
 }

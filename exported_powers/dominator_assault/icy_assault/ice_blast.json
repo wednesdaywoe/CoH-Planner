@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ice Blast",
   "display_fullname": "Dominator Assault Icy Assault Ice Blast",
-  "display_help": "KAWSB38RXMRCYSMWLCPBMBTYYQ",
-  "display_short_help": "KUV2VPVTQXVEW2Z8BQZFE7U3NX",
+  "display_help": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Ranged, Light DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "iceassault_iceblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -267,6 +267,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Dominator_Assault.Icy_Assault"
 }

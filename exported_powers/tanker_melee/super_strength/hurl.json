@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Hurl",
   "display_fullname": "Tanker Melee Super Strength Hurl",
-  "display_help": "27CMHGC69A4GWYZMGU5PCT2AAW",
+  "display_help": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals high damage, and can knock foes back and even drop them out of the air if they are flying.",
   "display_short_help": "Ranged, Moderate DMG(Smash), Knockback, -Fly",
   "icon": "superstrength_hurl.png",
   "auto_issue": false,
@@ -279,6 +279,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Tanker_Melee.Super_Strength"
 }

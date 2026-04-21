@@ -5,25 +5,25 @@
   "short_help": "Robotics",
   "icon": "robotics_set.ico",
   "powers": [
-    "Assault_Bot",
-    "Battle_Drones",
-    "Equip_Robot",
-    "Photon_Grenade",
-    "Protector_Bots",
-    "Pulse_Rifle_Blast",
-    "Pulse_Rifle_Burst",
-    "Repair",
-    "Upgrade_Robot"
+    "Mastermind_Summon.Robotics.Assault_Bot",
+    "Mastermind_Summon.Robotics.Battle_Drones",
+    "Mastermind_Summon.Robotics.Equip_Robot",
+    "Mastermind_Summon.Robotics.Photon_Grenade",
+    "Mastermind_Summon.Robotics.Protector_Bots",
+    "Mastermind_Summon.Robotics.Pulse_Rifle_Blast",
+    "Mastermind_Summon.Robotics.Pulse_Rifle_Burst",
+    "Mastermind_Summon.Robotics.Repair",
+    "Mastermind_Summon.Robotics.Upgrade_Robot"
   ],
   "available_level": [
+    21,
     0,
+    5,
+    7,
+    11,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    17,
+    25
   ]
 }

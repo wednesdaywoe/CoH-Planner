@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Crowd Control",
   "display_fullname": "Arachnos Soldiers Bane Spider Soldier Crowd Control",
-  "display_help": "Y3XV5SAQSYHVWMBV2RJSBXYRE3",
-  "display_short_help": "BPMUVREZDRP7WVCRZGY8PW5YGA",
+  "display_help": "You swing your mace in a wide arc in front of you. This attack strikes all foes within melee range, deals them serious damage and minor Toxic damage over time, and knocks them down.<br><br><color #fcfc95>Notes: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.</color>",
+  "display_short_help": "Melee (Cone), DMG(Smash), Minor DoT(Toxic), Foe Knockback",
   "icon": "banespider_crowdcontrol.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -343,6 +343,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Arachnos_Soldiers.Bane_Spider_Soldier"
 }

@@ -5,25 +5,25 @@
   "short_help": "Sonic Resonance",
   "icon": "sonic_debuff_set.ico",
   "powers": [
-    "Clarity",
-    "Disruption_Field",
-    "Liquefy",
-    "Sonic_Barrier",
-    "Sonic_Cage",
-    "Sonic_Dispersion",
-    "Sonic_Haven",
-    "Sonic_Repulsion",
-    "Sonic_Siphon"
+    "Defender_Buff.Sonic_Debuff.Clarity",
+    "Defender_Buff.Sonic_Debuff.Disruption_Field",
+    "Defender_Buff.Sonic_Debuff.Liquefy",
+    "Defender_Buff.Sonic_Debuff.Sonic_Barrier",
+    "Defender_Buff.Sonic_Debuff.Sonic_Cage",
+    "Defender_Buff.Sonic_Debuff.Sonic_Dispersion",
+    "Defender_Buff.Sonic_Debuff.Sonic_Haven",
+    "Defender_Buff.Sonic_Debuff.Sonic_Repulsion",
+    "Defender_Buff.Sonic_Debuff.Sonic_Siphon"
   ],
   "available_level": [
+    21,
+    7,
+    25,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    5,
+    11,
+    1,
+    17,
     0
   ]
 }

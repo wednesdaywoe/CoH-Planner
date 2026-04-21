@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "System Reboot",
   "display_fullname": "Inherent Inherent HAC Rez",
-  "display_help": "YUER3F95BMFCWPNRMZY39B5U4W",
+  "display_help": "If you are defeated , you activating this power which will restore you so you may continue the battle. You will revive with about half of your Hit Points and Endurance. You will be invulnerable for a brief time, and protected from XP Debt for 20 seconds.<br><br><color #fcfc95>Notes: System Reboot is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Self Rez, Special",
   "icon": "temporary_mayhem_selfresurrect.png",
   "auto_issue": true,

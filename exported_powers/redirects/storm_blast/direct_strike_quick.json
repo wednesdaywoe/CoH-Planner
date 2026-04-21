@@ -3,10 +3,10 @@
   "full_name": "Redirects.Storm_Blast.Direct_Strike_Quick",
   "short_name": "Direct_Strike_Quick",
   "type": "Click",
-  "display_name": "6CRF7M4RV77YWEBJNCZ4AD6SSA",
+  "display_name": "Direct Strike",
   "display_fullname": "Redirects Storm Blast Direct Strike Quick",
-  "display_help": "MEQQ2H7FSHHWYRCYCAQAE8GLHA",
-  "display_short_help": "KAR6MPNK4JFNYSBBF8XS75QMJZ",
+  "display_help": "You channel your storm powers into a direct hit, jolting the enemy with a bolt of lightning that deals Energy damage. The target hit by a direct strike will experience a large amount of endurance drain and may get momentarily stunned if they are within a Storm Cell.",
+  "display_short_help": "Sniper, DMG(Energy), Foe -End, Special",
   "icon": "stormblast_directstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -628,6 +628,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Redirects.Storm_Blast"
 }

@@ -3,10 +3,10 @@
   "full_name": "Sentinel_Ranged.Storm_Blast.Aim",
   "short_name": "Aim",
   "type": "Click",
-  "display_name": "PRXSD99SJRC2YJMN2L2MM2YWZ3",
+  "display_name": "Intensify",
   "display_fullname": "Sentinel Ranged Storm Blast Aim",
-  "display_help": "9LBZXRUH6SN2YBNGCJA6EWCG3Z",
-  "display_short_help": "6WM4L36XW62DWHBEVR47PEJ78A",
+  "display_help": "Greatly increases the chance to hit of your attacks, and slightly increases damage and range for a few seconds. Moderately increases the chance for Storm Blast powers to summon powerful lightning from your Storm Cell while active.",
+  "display_short_help": "Self +To Hit, +DMG, +Range, Special",
   "icon": "stormblast_aim.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -210,6 +210,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Sentinel_Ranged.Storm_Blast"
 }

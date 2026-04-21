@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Spec Ops",
   "display_fullname": "Mastermind Summon Mercenaries Spec Ops",
-  "display_help": "VXM7DMZ9AEGYYVV6X4BN3Q57WS",
+  "display_help": "You can enlist one to two highly skilled Spec Ops Mercenary (depending on your level). Spec Ops weapons are highly accurate and long ranged, and they are adept in many different tactical weapons. Like all Henchmen, Spec Ops can be equipped with even deadlier munitions.<br><br>You may only have 2 Spec Ops under your control at any given time. If you attempt to summon more Spec Ops, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
   "display_short_help": "Summon Spec Ops",
   "icon": "paramilitary_enlistspecialforces.png",
   "auto_issue": false,
@@ -181,6 +181,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Mastermind_Summon.Mercenaries"
 }

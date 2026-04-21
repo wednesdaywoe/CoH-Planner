@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Eagles Claw",
   "display_fullname": "Brute Melee Martial Arts Eagles Claw",
-  "display_help": "NELZJR2GTNBBWLCS4ADJX2BXAW",
-  "display_short_help": "U44AHHGMPAZSYEX7Q5GVKPJRSQ",
+  "display_help": "You can perform a devastating kick that can severely Disorient most opponents. After using Eagle's Claw your damage will be increased for a brief moment allowing the next attack or two to cause additional damage.",
+  "display_short_help": "Melee, DMG(Smash), Foe Minor Disorient, +DMG(All)",
   "icon": "martialarts_eaglesclaw.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -259,6 +259,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Brute_Melee.Martial_Arts"
 }

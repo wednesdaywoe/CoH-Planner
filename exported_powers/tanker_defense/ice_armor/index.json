@@ -5,27 +5,27 @@
   "short_help": "Ice Armor",
   "icon": "ice_armor_set.ico",
   "powers": [
-    "Chilling_Embrace",
-    "Energy_Absorption",
-    "Glacial_Armor",
-    "Hibernate",
-    "Hoarfrost",
-    "Ice_Armor",
-    "Icicles",
-    "Permafrost",
-    "Rime_Ice",
-    "Wet_Ice"
+    "Tanker_Defense.Ice_Armor.Chilling_Embrace",
+    "Tanker_Defense.Ice_Armor.Energy_Absorption",
+    "Tanker_Defense.Ice_Armor.Glacial_Armor",
+    "Tanker_Defense.Ice_Armor.Hibernate",
+    "Tanker_Defense.Ice_Armor.Hoarfrost",
+    "Tanker_Defense.Ice_Armor.Ice_Armor",
+    "Tanker_Defense.Ice_Armor.Icicles",
+    "Tanker_Defense.Ice_Armor.Permafrost",
+    "Tanker_Defense.Ice_Armor.Rime_Ice",
+    "Tanker_Defense.Ice_Armor.Wet_Ice"
   ],
   "available_level": [
+    1,
+    21,
+    17,
+    25,
     0,
     0,
+    11,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    5
   ]
 }

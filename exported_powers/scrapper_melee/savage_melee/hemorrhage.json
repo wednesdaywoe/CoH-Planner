@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Hemorrhage",
   "display_fullname": "Scrapper Melee Savage Melee Hemorrhage",
-  "display_help": "9SR7BC2HEMLCW2ZQVQL3P834AW",
-  "display_short_help": "7A6Y2RGWVEDEY7X5JNYC2TF3LX",
+  "display_help": "You viciously tear at your foe causing a light amount of lethal damage. Additionally, the target will suffer from lethal damage over time. Hemorrhage consumes all stacks of Blood Frenzy. This power's damage over time effect will scale with the number of stacks of Blood Frenzy. Using this power with 5 stacks of Blood Frenzy causes you to become Exhausted for a short time, but the duration of Hemorrhage's damage over time effect is increased. While exhausted you cannot gain Blood Frenzy.",
+  "display_short_help": "Melee, DMG(Lethal), Foe Special DoT (Lethal), -Blood Frenzy",
   "icon": "savagemelee_hemorrhage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -441,6 +441,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Scrapper_Melee.Savage_Melee"
 }

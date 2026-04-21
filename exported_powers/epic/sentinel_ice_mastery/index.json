@@ -5,17 +5,17 @@
   "short_help": "Ice Mastery",
   "icon": "sentinel_ice_mastery_set.ico",
   "powers": [
-    "Block_of_Ice",
-    "Frostbite",
-    "Frozen_Aura",
-    "Ice_Sword",
-    "Snow_Storm"
+    "Epic.Sentinel_Ice_Mastery.Block_of_Ice",
+    "Epic.Sentinel_Ice_Mastery.Frostbite",
+    "Epic.Sentinel_Ice_Mastery.Frozen_Aura",
+    "Epic.Sentinel_Ice_Mastery.Ice_Sword",
+    "Epic.Sentinel_Ice_Mastery.Snow_Storm"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    34,
+    40,
+    34,
+    43
   ]
 }

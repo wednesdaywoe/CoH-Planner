@@ -5,25 +5,25 @@
   "short_help": "Radiation Blast",
   "icon": "radiation_blast_set.ico",
   "powers": [
-    "Aim",
-    "Atomic_Blast",
-    "Cosmic_Burst",
-    "Electron_Haze",
-    "Irradiate",
-    "Neutrino_Bolt",
-    "Neutron_Bomb",
-    "Proton_Volley",
-    "X-Ray_Beam"
+    "Blaster_Ranged.Radiation_Blast.Aim",
+    "Blaster_Ranged.Radiation_Blast.Atomic_Blast",
+    "Blaster_Ranged.Radiation_Blast.Cosmic_Burst",
+    "Blaster_Ranged.Radiation_Blast.Electron_Haze",
+    "Blaster_Ranged.Radiation_Blast.Irradiate",
+    "Blaster_Ranged.Radiation_Blast.Neutrino_Bolt",
+    "Blaster_Ranged.Radiation_Blast.Neutron_Bomb",
+    "Blaster_Ranged.Radiation_Blast.Proton_Volley",
+    "Blaster_Ranged.Radiation_Blast.X-Ray_Beam"
   ],
   "available_level": [
+    7,
+    25,
+    17,
+    5,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    21,
+    11,
     0
   ]
 }

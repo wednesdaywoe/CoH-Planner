@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "White Dwarf",
   "display_fullname": "Peacebringer Defensive Luminous Aura White Dwarf",
-  "display_help": "ZRXMKJP8N797WHBEK8M2CFRLYZ",
+  "display_help": "Kheldians are masters of energy and matter. A Peacebringer can transform into a massive unstoppable energy beast known as a White Dwarf. When you choose this power, you will have access to 6 other powers that can only be used while in this form. You will not be able to use any other powers while in White Dwarf form. White Dwarf has awesome resistance to all damage except Psionics, as well as controlling effects. White Dwarf also has improved HP and Endurance Recovery, but is limited to melee attacks.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Shapeshift, Special",
   "icon": "luminousaura_whitedwarf.png",
   "auto_issue": false,
@@ -850,6 +850,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

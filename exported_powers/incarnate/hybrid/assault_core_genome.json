@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Assault Core Genome",
   "display_fullname": "Incarnate Hybrid Assault Core Genome",
-  "display_help": "LWMVT2VHFW6GY3ZWFVMTKM9B82",
+  "display_help": "While active, this power gives all of your damaging powers a 35% chance to boost your own damage for a short period of time. This boost can stack up to 3 times. Equipping this Hybrid power grants a passive boost to Damage at all times.<br><br><color #fcfc95>Notes: Assault Core Genome is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Chance for +DMG(All)",
   "icon": "incarnate_hybrid_assault_uncommon.png",
   "auto_issue": false,

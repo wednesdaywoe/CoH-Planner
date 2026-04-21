@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Tenebrous Tentacles",
   "display_fullname": "Epic Darkness Mastery Tenebrous Tentacles",
-  "display_help": "UFGBFNUNUF5RYQM967U5UFWTYS",
-  "display_short_help": "BXYTYAMAHK45W7MVRTJTSA7Q9S",
+  "display_help": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their Accuracy. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Cone), DMG(Negative), Foe Immobilize, -ACC",
   "icon": "darkcast_tenebroustentacles.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -648,6 +648,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Darkness_Mastery"
 }

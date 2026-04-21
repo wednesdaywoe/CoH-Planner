@@ -5,25 +5,25 @@
   "short_help": "Super Reflexes",
   "icon": "super_reflexes_set.ico",
   "powers": [
-    "Agile",
-    "Dodge",
-    "Elude",
-    "Evasion",
-    "Focused_Fighting",
-    "Focused_Senses",
-    "Hide",
-    "Practiced_Brawler",
-    "Quickness"
+    "Stalker_Defense.Super_Reflexes.Agile",
+    "Stalker_Defense.Super_Reflexes.Dodge",
+    "Stalker_Defense.Super_Reflexes.Elude",
+    "Stalker_Defense.Super_Reflexes.Evasion",
+    "Stalker_Defense.Super_Reflexes.Focused_Fighting",
+    "Stalker_Defense.Super_Reflexes.Focused_Senses",
+    "Stalker_Defense.Super_Reflexes.Hide",
+    "Stalker_Defense.Super_Reflexes.Practiced_Brawler",
+    "Stalker_Defense.Super_Reflexes.Quickness"
   ],
   "available_level": [
+    9,
+    19,
+    29,
+    27,
     0,
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    23
   ]
 }

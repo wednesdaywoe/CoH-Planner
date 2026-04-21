@@ -3,10 +3,10 @@
   "full_name": "Mastermind_Summon.Robotics.Repair",
   "short_name": "Repair",
   "type": "Click",
-  "display_name": "3BUPL8QM7KWNWCBGNV2UJGEBDZ",
+  "display_name": "Maintenance Drone",
   "display_fullname": "Mastermind Summon Robotics Repair",
-  "display_help": "77K57FAMCN5ZYXXP9UZ8XCJQAA",
-  "display_short_help": "FBPAEDL8UYK7WACZATCDF8X2LZ",
+  "display_help": "This sturdy Maintenance Drone serves as a health battery reserve for your machines. As your other drones are hurt, it will use its own health to heal other drones. Once all its health is used up, it will self destruct. Maintenance Drone does not regenerate health, and can't be healed.",
+  "display_short_help": "Summon Maintenance Robot",
   "icon": "robotics_maintenancebot",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -88,6 +88,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Mastermind_Summon.Robotics"
 }

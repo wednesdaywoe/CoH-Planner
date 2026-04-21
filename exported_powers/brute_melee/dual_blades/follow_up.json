@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Blinding Feint",
   "display_fullname": "Brute Melee Dual Blades Follow Up",
-  "display_help": "ECXLCRE6XGPEYNNBM67SUK54XW",
-  "display_short_help": "THQSC4MJYZMVWLCHNPYGSEV352",
+  "display_help": "You perform a feint attack that deals light damage. After this attack hits, it gives you a large bonus to your chance to hit and damage for a brief time. This power is the finishing move in the Empower combination attack.<br><br><color #ff7f00>Empower: Nimble Slash > Ablating Strike > Blinding Feint.</color>",
+  "display_short_help": "Melee, DMG(Lethal), Self +DMG, +To Hit",
   "icon": "dualblades_followup.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -528,6 +528,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Brute_Melee.Dual_Blades"
 }

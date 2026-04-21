@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ice Storm",
   "display_fullname": "Epic Ice Mastery Ice Storm",
-  "display_help": "85M23PMJ23UDWSVX3P8VMZHGZQ",
-  "display_short_help": "J768PY8Z5KYAW5L6Z227PUYD4A",
+  "display_help": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Location AoE), DoT(Cold), Foe -Recharge, -SPD",
   "icon": "ice_mastery_icestorm",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -89,6 +89,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Ice_Mastery"
 }

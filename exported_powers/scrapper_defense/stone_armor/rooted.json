@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Rooted",
   "display_fullname": "Scrapper Defense Stone Armor Rooted",
-  "display_help": "G2P6C4XJ3LZMYKMUR8PZJXGVBZ",
-  "display_short_help": "BZKVYNY4UZM7WGNGMFHX4LAVAQ",
+  "display_help": "While this power is active, you merge with the Earth and draw forth its power to become resistant to Knockback, Sleep, Hold, Disorient and Endurance Drain effects, and increase your Hit Point Regeneration rate. Rooted also grants you resistance to Defense DeBuffs.<br><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Toggle: Self +Res(Knockback, Sleep, Disorient, Hold, End Drain, DeBuff DEF), +Regeneration",
   "icon": "stonearmor_rooted.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -543,6 +543,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Scrapper_Defense.Stone_Armor"
 }

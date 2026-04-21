@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mental Blast",
   "display_fullname": "Epic Psionic Mastery Mental Blast",
-  "display_help": "4J83HWH5JNLAYRV253TLXHJ95Q",
-  "display_short_help": "ZQAVEZF5W482YGN4FV5EWZGSTA",
+  "display_help": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed.",
+  "display_short_help": "Ranged, DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_mentalblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -239,6 +239,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Psionic_Mastery"
 }

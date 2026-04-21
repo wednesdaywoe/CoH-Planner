@@ -6,7 +6,7 @@
   "display_name": "Bonfire",
   "display_fullname": "Epic Flame Mastery Bonfire",
   "display_help": "You can create a Bonfire that knocks back and burns any foes who try to pass through it.",
-  "display_short_help": "KK6VHXAN75ZWW7Z7QZWGADEYFX",
+  "display_short_help": "Ranged (Location AoE), DMG(Fire), Foe Knockback",
   "icon": "flamemastery_bonfire.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -93,6 +93,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Flame_Mastery"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shuriken Throw",
   "display_fullname": "Dominator Assault Martial Assault Shuriken Throw",
-  "display_help": "F74T4HHU8JYGWQX5ESAC3YLYQW",
+  "display_help": "You impale your foe with a thrown shuriken, dealing moderate Lethal damage.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Light DMG(Lethal)",
   "icon": "martialassault_shurikenthrow.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Slug",
   "display_fullname": "Incarnate Lore Pet Longbow LT Slug",
-  "display_help": "WZGNXVWCP8SAY4VSNCLLGQHF3X",
+  "display_help": "Fires a single Slug at a targeted foe. Firing a single Slug is slower than firing a Burst, but deals more damage, is longer range, and can knock down foes.<br><br><color #fcfc95>Notes: Slug is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_shotgunslug.png",
   "auto_issue": false,

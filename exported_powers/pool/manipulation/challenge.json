@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Pacify",
   "display_fullname": "Pool Manipulation Challenge",
-  "display_help": "ETSHCEN88JHHWWVWN3VKGT9DES",
+  "display_help": "Through persuasion or subtle intimidation, you attempt to placate a single target for a short time. If successful, the affected target will no longer attack you. This persists until the effect expires or you attack the target. Unlike other placation effects, this power will not hide you or give any concealment bonuses.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Placate (Foe)",
   "icon": "manipulation_placate.png",
   "auto_issue": false,

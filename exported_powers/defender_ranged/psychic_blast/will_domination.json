@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Will Domination",
   "display_fullname": "Defender Ranged Psychic Blast Will Domination",
-  "display_help": "RK5XV7QJ2W53YCVLXG85FZD2ZX",
-  "display_short_help": "4M6YF9UTVHWEYZCSUTDKTZFC5S",
+  "display_help": "This powerful attack deals Psionic damage, and is so painful it usually renders its target unconscious. The victim is asleep, and will wake if disturbed.",
+  "display_short_help": "Ranged, DMG(Psionic), Foe Sleep",
   "icon": "psychicblast_willdomination.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -206,6 +206,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Defender_Ranged.Psychic_Blast"
 }

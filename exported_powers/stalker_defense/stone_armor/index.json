@@ -1,29 +1,29 @@
 {
   "key": "Stalker_Defense.Stone_Armor",
   "display_name": "Stone Armor",
-  "help": "9JRHT822GG7NW2Z9LF2F6BQJ22",
+  "help": "You can transform your skin into various forms of rock and stone. Stone Armor is one of the few Stalker Defensive Power Sets that offers defense to Psionics.",
   "short_help": "Stone Armor",
   "icon": "stone_armor_set.ico",
   "powers": [
-    "Brimstone_Armor",
-    "Crystal_Armor",
-    "Earths_Embrace",
-    "Geode",
-    "Hide",
-    "Mineral_Armor",
-    "Rooted",
-    "Stone_Armor",
-    "Stone_Skin"
+    "Stalker_Defense.Stone_Armor.Brimstone_Armor",
+    "Stalker_Defense.Stone_Armor.Crystal_Armor",
+    "Stalker_Defense.Stone_Armor.Earths_Embrace",
+    "Stalker_Defense.Stone_Armor.Geode",
+    "Stalker_Defense.Stone_Armor.Hide",
+    "Stalker_Defense.Stone_Armor.Mineral_Armor",
+    "Stalker_Defense.Stone_Armor.Rooted",
+    "Stalker_Defense.Stone_Armor.Stone_Armor",
+    "Stalker_Defense.Stone_Armor.Stone_Skin"
   ],
   "available_level": [
+    23,
+    19,
+    9,
+    29,
     0,
+    27,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3
   ]
 }

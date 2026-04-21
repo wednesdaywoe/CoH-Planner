@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Base Transporter",
   "display_fullname": "Redirects Pool Teleportation prestige Base Teleport PVP",
-  "display_help": "VZGM9MEUH5PDW5BX9VTT2X4RSS",
+  "display_help": "You have a Base Transport beacon. It will allow you to return to your base from any location. It is usable once every 10 minutes.<br><br><color #fcfc95>Notes: Base Transporter is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Teleport to Base",
   "icon": "veteran_teleportbase.png",
   "auto_issue": false,

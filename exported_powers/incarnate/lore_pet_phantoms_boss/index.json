@@ -5,9 +5,9 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_phantoms_boss_set.ico",
   "powers": [
-    "Fire_Blast",
-    "Fire_Sword_Circle",
-    "Greater_Ice_Sword"
+    "Incarnate.Lore_Pet_Phantoms_Boss.Fire_Blast",
+    "Incarnate.Lore_Pet_Phantoms_Boss.Fire_Sword_Circle",
+    "Incarnate.Lore_Pet_Phantoms_Boss.Greater_Ice_Sword"
   ],
   "available_level": [
     0,

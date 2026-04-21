@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Enchant Demon",
   "display_fullname": "Mastermind Summon Demon Summoning Enchant Demon",
-  "display_help": "RP4BXGLLJAJ8Y9BWXFU438BX33",
+  "display_help": "Enchant Demon will permanently bestow new powers and abilities to all of your Demon Henchman. The powers gained are unique and dependent upon the type of Demon Henchman that is Enchanted.<br><br>Enchant Demon only works on your Demon Henchmen and you can only Enchant your Demon Henchmen once with this power.",
   "display_short_help": "Ranged, Enchant Demon Henchman",
   "icon": "demonsummoning_enchantdemon.png",
   "auto_issue": false,
@@ -43,6 +43,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Mastermind_Summon.Demon_Summoning"
 }

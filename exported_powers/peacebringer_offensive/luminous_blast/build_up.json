@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Inner Light",
   "display_fullname": "Peacebringer Offensive Luminous Blast Build Up",
-  "display_help": "X6U5XDZUUGGKYVBSGY5WLJC8B3",
+  "display_help": "Greatly increases the amount of damage you deal for a few seconds, as well as increasing your chance to hit. Light continues to burn from within you for 30 seconds, giving you a lingering damage and ToHit buff after the initial burst fades.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +DMG, +To Hit",
   "icon": "luminousblast_buildup.png",
   "auto_issue": false,
@@ -171,6 +171,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

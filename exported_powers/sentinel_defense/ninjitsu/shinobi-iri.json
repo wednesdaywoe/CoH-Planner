@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Shinobi-Iri",
   "display_fullname": "Sentinel Defense Ninjitsu Shinobi-Iri",
-  "display_help": "7HBENCET8BSCWPL2C6P4H98D2A",
-  "display_short_help": "6KDTKWVWN8DQYPZHSBLFY7W6DQ",
+  "display_help": "Shinobi Iri are the ninjitsu techniques of silent movement and avoidance, granting you stealth and defense against all positional attacks. While stealthed, the strength of your next attack will be more powerful; however, you can only attempt this after spending 8 seconds without attacking.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
+  "display_short_help": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE), +Special",
   "icon": "ninjitsu_hide.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -349,6 +349,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Sentinel_Defense.Ninjitsu"
 }

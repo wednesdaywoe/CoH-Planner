@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Focused Burst",
   "display_fullname": "Tanker Melee Kinetic Attack Focused Burst",
-  "display_help": "GQGZGEH7QEDAY7MVUW6QL2GPCZ",
-  "display_short_help": "ZVSARMKCCXS5YNVQWC9Z2N5R4W",
+  "display_help": "Projects a burst of focused power over a short distance that can bounce between nearby targets. Focused Burst deals high damage and can possibly knock down your foes.",
+  "display_short_help": "Ranged Chain, DMG(Smash/Energy), Foe Knockdown",
   "icon": "kineticattack_focusedburst.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -408,6 +408,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Tanker_Melee.Kinetic_Attack"
 }

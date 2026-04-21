@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Wild Fortress",
   "display_fullname": "Blaster Support Plant Manipulation Wild Fortress",
-  "display_help": "UR2X3CFNMRP2YANFDRK3E7VM8X",
-  "display_short_help": "EGRFXM27Z2LVYKXALURJ2HQDQZ",
+  "display_help": "You encase yourself in a protective barrier that will absorb a moderate amount of damage. Additionally, you will recover endurance faster and be resistant to toxic damage and have confusion protection.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle: Self +Absorb, +Recovery, +Resist(Toxic, Confuse)",
   "icon": "plantmanipulation_wildfortress",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -224,6 +224,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Plant_Manipulation"
 }

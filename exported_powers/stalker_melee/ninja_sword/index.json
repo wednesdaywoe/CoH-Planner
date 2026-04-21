@@ -5,25 +5,25 @@
   "short_help": "Ninja Blade",
   "icon": "ninja_sword_set.ico",
   "powers": [
-    "Assassins_Blade",
-    "Build_Up",
-    "Disembowel",
-    "Hack",
-    "Head_Splitter",
-    "Parry",
-    "Placate",
-    "Slash",
-    "Slice"
+    "Stalker_Melee.Ninja_Sword.Assassins_Blade",
+    "Stalker_Melee.Ninja_Sword.Build_Up",
+    "Stalker_Melee.Ninja_Sword.Disembowel",
+    "Stalker_Melee.Ninja_Sword.Hack",
+    "Stalker_Melee.Ninja_Sword.Head_Splitter",
+    "Stalker_Melee.Ninja_Sword.Parry",
+    "Stalker_Melee.Ninja_Sword.Placate",
+    "Stalker_Melee.Ninja_Sword.Slash",
+    "Stalker_Melee.Ninja_Sword.Slice"
   ],
   "available_level": [
+    5,
+    7,
+    21,
     0,
+    25,
+    17,
+    11,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1
   ]
 }

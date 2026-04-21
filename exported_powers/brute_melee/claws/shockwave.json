@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shockwave",
   "display_fullname": "Brute Melee Claws Shockwave",
-  "display_help": "PWAMP4PTU69HYFM4ZDWJAS9YXZ",
-  "display_short_help": "F3ABSVDSUSSKY8BD68SJJNB6KS",
+  "display_help": "Projects a Shockwave of focused power that can travel a short distance. Shockwave travels in a wide arc in front of you dealing moderate damage and, possibly knocking back foes.",
+  "display_short_help": "Melee (Cone), DMG(Lethal), Foe Knockback",
   "icon": "claws_wave.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -255,6 +255,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Brute_Melee.Claws"
 }

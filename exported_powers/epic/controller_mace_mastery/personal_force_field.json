@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Focused Accuracy",
   "display_fullname": "Epic Controller Mace Mastery Personal Force Field",
-  "display_help": "3XA8DRZ5WDLAWUNAGV694FBY2X",
+  "display_help": "When this power is activated, the Villain focuses their senses to dramatically improve their range and accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
   "icon": "arachnos_patron_selftohitbuff.png",
   "auto_issue": false,
@@ -182,6 +182,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Controller_Mace_Mastery"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Crane Kick",
   "display_fullname": "Stalker Melee Martial Arts Crane Kick",
-  "display_help": "HHZLT5HD8CSRYQB4SDHATL5HZW",
-  "display_short_help": "TG9VLHUNTYZCWGMZDVF4VJGFJX",
+  "display_help": "You can perform a slow, high smashing damage kick that will likely knock your target back.",
+  "display_short_help": "Melee, DMG(Smashing), Knockback",
   "icon": "martialarts_cranekick.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -401,6 +401,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Stalker_Melee.Martial_Arts"
 }

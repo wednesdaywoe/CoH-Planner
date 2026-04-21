@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psychic Shockwave",
   "display_fullname": "Dominator Assault Psionic Assault Psychic Shockwave",
-  "display_help": "XUHPSUZC9Z8DYRZW72KT5PQC2W",
-  "display_short_help": "48L84ZCJFPUKWCMX3MXSQ3HG9A",
+  "display_help": "Psychic Shockwave is a devastating Psionic attack that wracks the minds of all nearby foes. Affected foes may have a reduced attack rate and may be left Disoriented.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE, Light DMG(Psionic), Foe Disorient -Recharge",
   "icon": "psionicassault_psionicshockwave.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -340,6 +340,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Dominator_Assault.Psionic_Assault"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "O2 Boost",
   "display_fullname": "Incarnate Lore Pet Tsoo Support O2 Boost",
-  "display_help": "VKCE3L2FDB7BWCZMVBCKDUCT5Z",
+  "display_help": "Saturates the air around a targeted ally with rich oxygen, to heal his wounds. The O2 boost can also protect a targeted ally from Sleep, Immobilize, Confuse and Stun effects.<br><br><color #fcfc95>Notes: O2 Boost is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ally Heal +Res(Effects)",
   "icon": "stormsummoning_o2boost.png",
   "auto_issue": false,

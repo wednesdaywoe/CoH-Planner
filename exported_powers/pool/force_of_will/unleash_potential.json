@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Unleash Potential",
   "display_fullname": "Pool Force of Will Unleash Potential",
-  "display_help": "8MY75TYM5N6RY7LRUURGHCDT42",
+  "display_help": "Unleashing your potential, you grant yourself a moderate boost to defense, regeneration rate, and recovery for a short time.<br><br>You must be at least level 20 and have two other Force of Will powers before selecting Unleash Potential.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self, +Regen, +Recovery, +Defense",
   "icon": "forceofwill_unleashpotential.png",
   "auto_issue": false,
@@ -144,6 +144,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Pool.Force_of_Will"
 }

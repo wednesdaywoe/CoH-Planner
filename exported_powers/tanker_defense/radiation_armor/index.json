@@ -5,25 +5,25 @@
   "short_help": "Radiation Armor",
   "icon": "radiation_armor_set.ico",
   "powers": [
-    "Alpha_Barrier",
-    "Beta_Decay",
-    "Fallout_Shelter",
-    "Gamma_Boost",
-    "Ground_Zero",
-    "Meltdown",
-    "Particle_Shielding",
-    "Proton_Armor",
-    "Radiation_Therapy"
+    "Tanker_Defense.Radiation_Armor.Alpha_Barrier",
+    "Tanker_Defense.Radiation_Armor.Beta_Decay",
+    "Tanker_Defense.Radiation_Armor.Fallout_Shelter",
+    "Tanker_Defense.Radiation_Armor.Gamma_Boost",
+    "Tanker_Defense.Radiation_Armor.Ground_Zero",
+    "Tanker_Defense.Radiation_Armor.Meltdown",
+    "Tanker_Defense.Radiation_Armor.Particle_Shielding",
+    "Tanker_Defense.Radiation_Armor.Proton_Armor",
+    "Tanker_Defense.Radiation_Armor.Radiation_Therapy"
   ],
   "available_level": [
     0,
+    11,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    25,
+    17,
+    1,
+    7
   ]
 }

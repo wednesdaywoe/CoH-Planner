@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bitter Freeze Ray",
   "display_fullname": "Defender Ranged Ice Blast Bitter Freeze Ray",
-  "display_help": "6TKAK5Q9KPPMYRXBL3RTX25ZVS",
-  "display_short_help": "RMRLD4X9QESXWKZY4YNA25Y72W",
+  "display_help": "This power can Hold your opponent frozen solid in a block of ice. The victim can be attacked and will remain frozen and helpless. After the ice thaws, the victim emerges chilled and Slowed.",
+  "display_short_help": "Ranged, DMG(Cold), Foe Hold",
   "icon": "iceblast_bitterfreezeray.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -308,6 +308,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Defender_Ranged.Ice_Blast"
 }

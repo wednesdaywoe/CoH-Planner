@@ -3,10 +3,10 @@
   "full_name": "Dominator_Control.Symphony_Control.Confounding_Chant",
   "short_name": "Confounding_Chant",
   "type": "Click",
-  "display_name": "FAGE84YZBYLYWRBXJH4F35C3MW",
+  "display_name": "Confounding Chant",
   "display_fullname": "Dominator Control Symphony Control Confounding Chant",
-  "display_help": "V549PJWVLG2LWRBBKGGZQSLJ23",
-  "display_short_help": "FQCWHTBD7RZEYGZQ62WCYTLVAZ",
+  "display_help": "Confounding Chant will disorient anyone that hears it, while dealing psionic damage over time. <br><br><color #fcfc95>Note: this power's damage over time will extend its duration but only inflict its damage if the foe is stunned.</color>",
+  "display_short_help": "Ranged (Cone), DoT(Psionic), Foe Disorient",
   "icon": "symphonycontrol_stunaoe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -342,6 +342,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Dominator_Control.Symphony_Control"
 }

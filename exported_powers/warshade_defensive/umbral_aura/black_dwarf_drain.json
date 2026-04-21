@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Black Dwarf Drain",
   "display_fullname": "Warshade Defensive Umbral Aura Black Dwarf Drain",
-  "display_help": "L2979S7G5SD2YWCXDR6G5A29E3",
-  "display_short_help": "EVJJEVTGYHHEW3M9JCVEU6U5YS",
+  "display_help": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes drained in this manner have their attack and movement speed reduced. This power is only available while in Black Dwarf Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Light DMG(Negative), Foe -Recharge, -SPD; Self +HP",
   "icon": "umbralaura_essencedrain.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -255,6 +255,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

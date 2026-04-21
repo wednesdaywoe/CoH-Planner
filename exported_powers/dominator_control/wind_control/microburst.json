@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Microburst",
   "display_fullname": "Dominator Control Wind Control Microburst",
-  "display_help": "FRRGCCPMW7EMWZLJ2TMZQ2W3G2",
-  "display_short_help": "2ZH8UNKMQ7CXYBM2WRHURLQXSW",
+  "display_help": "You release all available Pressure to create an extremely powerful blast of air that descends from the skies and spreads out over a large radius. Any foes caught within the burst are immediately stunned by the force of the wind and suffer smashing damage.Flying foes are knocked out of the sky, while all foes suffer reduced movement speed that lingers for some time. The damage done increases in proportion to the amount of Pressure released when using this power. Also, Microburst can reduce your target's defenses at the when the highest levels of Pressure are released.<br><br><color #fcfc95>Damage: Variable.</color><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "Ranged (Targeted AoE), Variable DMG(Smashing), Stun(Foe), -Speed(Foe, All), -Fly(Foe), -Rech(Foe), Chance for -DEF(Foe, All), Consumes Pressure",
   "icon": "windcontrol_microburst.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -490,6 +490,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Dominator_Control.Wind_Control"
 }

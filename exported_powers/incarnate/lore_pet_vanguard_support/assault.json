@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Assault",
   "display_fullname": "Incarnate Lore Pet Vanguard Support Assault",
-  "display_help": "A9GM4RKK93CSWTBTLTR69UXZDZ",
+  "display_help": "While this power is active, you and your nearby teammates deal more damage and are resistant to Taunt and Placate.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Team +DMG, Res(Taunt, Placate)",
   "icon": "leadership_assault.png",
   "auto_issue": false,

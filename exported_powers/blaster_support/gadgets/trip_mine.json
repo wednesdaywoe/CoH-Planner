@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Trip Mine",
   "display_fullname": "Blaster Support Gadgets Trip Mine",
-  "display_help": "2CFVNHZ752L7YPLQURPVUT25RQ",
+  "display_help": "You can place a Trip Mine on the ground. Any villains that pass near the Trip Mine will cause it to explode, severely damaging all nearby foes and sending them flying. The Trip Mine is almost impossible to detect, but it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Trip Mine will detonate.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Place Mine: PBAoE, Superior DMG(Lethal/Fire), Foe Knockback",
   "icon": "gadgets_mine.png",
   "auto_issue": false,
@@ -101,6 +101,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Blaster_Support.Gadgets"
 }

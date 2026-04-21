@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Oil Slick Arrow",
   "display_fullname": "Corruptor Buff Trick Arrow Oil Slick Arrow",
-  "display_help": "A32DAS6B9TRUWLN55DPPJFHZEX",
+  "display_help": "On impact, this arrow creates an oil slick that Slows foes in the area and may cause them to slip and fall. The oil slick is very flammable and may burst into flames if fire is used near it.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Ranged (Location AoE), Knockdown, -Speed, -DEF, +Special",
   "icon": "trickarrow_knockdown.png",
   "auto_issue": false,
@@ -90,6 +90,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Corruptor_Buff.Trick_Arrow"
 }

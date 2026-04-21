@@ -5,25 +5,25 @@
   "short_help": "Water Blast",
   "icon": "water_blast_set.ico",
   "powers": [
-    "Aqua_Bolt",
-    "Dehydrate",
-    "Geyser",
-    "Hydro_Blast",
-    "Steam_Spray",
-    "Tidal_Forces",
-    "Water_Burst",
-    "Water_Jet",
-    "Whirlpool"
+    "Corruptor_Ranged.Water_Blast.Aqua_Bolt",
+    "Corruptor_Ranged.Water_Blast.Dehydrate",
+    "Corruptor_Ranged.Water_Blast.Geyser",
+    "Corruptor_Ranged.Water_Blast.Hydro_Blast",
+    "Corruptor_Ranged.Water_Blast.Steam_Spray",
+    "Corruptor_Ranged.Water_Blast.Tidal_Forces",
+    "Corruptor_Ranged.Water_Blast.Water_Burst",
+    "Corruptor_Ranged.Water_Blast.Water_Jet",
+    "Corruptor_Ranged.Water_Blast.Whirlpool"
   ],
   "available_level": [
     0,
+    11,
+    25,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    7,
+    1,
+    17,
+    5
   ]
 }

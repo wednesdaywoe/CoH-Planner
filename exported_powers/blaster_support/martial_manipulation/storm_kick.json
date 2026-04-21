@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Storm Kick",
   "display_fullname": "Blaster Support Martial Manipulation Storm Kick",
-  "display_help": "X8ZXS57DAENGWEB8W83K8TX5LS",
+  "display_help": "You can unleash a roundhouse kick that pummels your foe for moderate damage, knocking them down. Storm Kick has an additional chance to cause your target to bleed for Lethal damage over time.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Melee, Moderate DMG(Smash), DoT(Lethal), Foe Knockdown",
   "icon": "martialmanipulation_stormkick.png",
   "auto_issue": false,

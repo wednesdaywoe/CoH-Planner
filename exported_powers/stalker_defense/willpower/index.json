@@ -5,25 +5,25 @@
   "short_help": "Willpower",
   "icon": "willpower_set.ico",
   "powers": [
-    "Fast_Healing",
-    "Heightened_Senses",
-    "Hide",
-    "High_Pain_Tolerance",
-    "Indomitable_Will",
-    "Mind_Over_Body",
-    "Reconstruction",
-    "Resurgence",
-    "Strength_of_Will"
+    "Stalker_Defense.Willpower.Fast_Healing",
+    "Stalker_Defense.Willpower.Heightened_Senses",
+    "Stalker_Defense.Willpower.Hide",
+    "Stalker_Defense.Willpower.High_Pain_Tolerance",
+    "Stalker_Defense.Willpower.Indomitable_Will",
+    "Stalker_Defense.Willpower.Mind_Over_Body",
+    "Stalker_Defense.Willpower.Reconstruction",
+    "Stalker_Defense.Willpower.Resurgence",
+    "Stalker_Defense.Willpower.Strength_of_Will"
   ],
   "available_level": [
+    23,
+    19,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    9,
+    3,
+    27,
+    29
   ]
 }

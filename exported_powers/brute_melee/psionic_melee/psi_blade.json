@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Psi Blade",
   "display_fullname": "Brute Melee Psionic Melee Psi Blade",
-  "display_help": "9ZE4HU98LCQSWZNBHA3UTDAEVA",
+  "display_help": "You lash at your foe's mind with a mentally projected blade of psychic energy to deal moderate Psionic and Lethal damage. Affected foes will have their recharge rate reduced. Psi Blade has a moderate chance to grant you Insight. While you have Insight, Psi Blade will deal additional minor psionic damage over time.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Melee, Moderate DMG(Psionic/Lethal), Foe -Rech, Self +Insight",
   "icon": "psionicmelee_psiblade.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Char",
   "display_fullname": "Epic Defender Fire Mastery Char",
-  "display_help": "KWYMGJTG42JPWWB5PBRVPWKP7A",
-  "display_short_help": "3L9SX83PYJXZWDBNC3YRHQ95FA",
+  "display_help": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot.",
+  "display_short_help": "Ranged, DoT (Fire), Foe Hold",
   "icon": "flamemastery_soot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -176,6 +176,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Defender_Fire_Mastery"
 }

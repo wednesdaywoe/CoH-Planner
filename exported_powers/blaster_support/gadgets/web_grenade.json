@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Toxic Web Grenade",
   "display_fullname": "Blaster Support Gadgets Web Grenade",
-  "display_help": "3WKCP46KCQ3VYFNWC9HHVJAXAS",
+  "display_help": "Upon impact, the Toxic Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize and corrode most targets, dealing moderate Toxic damage. This device does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Moderate DoT(Toxic), Target Immobilize, -Recharge, -Fly",
   "icon": "gadgets_webgrenade.png",
   "auto_issue": false,

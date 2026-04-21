@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Solar Flare",
   "display_fullname": "Peacebringer Offensive Luminous Blast Solar Flare",
-  "display_help": "RMXXRA2GWR9MW5MLU8L28UC6EA",
-  "display_short_help": "V33FDEYLTZPDYKC363PFZJNYWZ",
+  "display_help": "You channel the might of your Kheldian energy into the very Earth itself. The ground erupts and cracks with luminous energy, blasting all nearby foes, knocking them back and reducing their Defense.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE Melee, Moderate DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_solarflare.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -244,6 +244,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

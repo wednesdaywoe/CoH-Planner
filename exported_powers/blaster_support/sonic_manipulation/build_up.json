@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Sound Booster",
   "display_fullname": "Blaster Support Sonic Manipulation Build Up",
-  "display_help": "KXJVNSKMXBZMYUX6GCJCCKTGMX",
+  "display_help": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit. Moderately increases the duration of mez effects. Moderately increases the chance for Sound Manipulation powers to induce migraines.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +DMG, +To Hit, +Special",
   "icon": "sonicmanipulation_buildup",
   "auto_issue": false,
@@ -169,6 +169,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Sonic_Manipulation"
 }

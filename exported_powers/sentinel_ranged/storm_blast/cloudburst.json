@@ -3,10 +3,10 @@
   "full_name": "Sentinel_Ranged.Storm_Blast.Cloudburst",
   "short_name": "Cloudburst",
   "type": "Click",
-  "display_name": "VZCCUUCJM8KKWJCN6ZGD59NTQZ",
+  "display_name": "Cloudburst",
   "display_fullname": "Sentinel Ranged Storm Blast Cloudburst",
-  "display_help": "T5VPWNB3WQUFWDBKAHEGFSZRXQ",
-  "display_short_help": "WPYP5X6BUBQBWLCMUD5GGEDS3Q",
+  "display_help": "Unleashes a cloud that drops a torrent of freezing rain on your target, causing Cold damage. <br><br>While in a <color #fcfc95>Storm Cell</color>, targets experience Recharge, ToHit, and Movement speed debuffs.",
+  "display_short_help": "Ranged, DoT(Cold), +Wet, Special",
   "icon": "stormblast_cloudburst.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -682,6 +682,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Sentinel_Ranged.Storm_Blast"
 }

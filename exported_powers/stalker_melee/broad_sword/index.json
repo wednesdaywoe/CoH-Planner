@@ -5,27 +5,27 @@
   "short_help": "Broad Sword",
   "icon": "broad_sword_set.ico",
   "powers": [
-    "Assassins_Slash",
-    "Boomerang_Slice",
-    "Build_Up",
-    "Disembowel",
-    "Hack",
-    "Head_Splitter",
-    "Parry",
-    "Placate",
-    "Slash",
-    "Slice"
+    "Stalker_Melee.Broad_Sword.Assassins_Slash",
+    "Stalker_Melee.Broad_Sword.Boomerang_Slice",
+    "Stalker_Melee.Broad_Sword.Build_Up",
+    "Stalker_Melee.Broad_Sword.Disembowel",
+    "Stalker_Melee.Broad_Sword.Hack",
+    "Stalker_Melee.Broad_Sword.Head_Splitter",
+    "Stalker_Melee.Broad_Sword.Parry",
+    "Stalker_Melee.Broad_Sword.Placate",
+    "Stalker_Melee.Broad_Sword.Slash",
+    "Stalker_Melee.Broad_Sword.Slice"
   ],
   "available_level": [
+    5,
+    1,
+    7,
+    21,
     0,
+    25,
+    17,
+    11,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1
   ]
 }

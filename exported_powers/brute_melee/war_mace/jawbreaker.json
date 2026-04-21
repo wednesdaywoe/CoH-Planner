@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Jawbreaker",
   "display_fullname": "Brute Melee War Mace Jawbreaker",
-  "display_help": "C7Z9QS587T5TYSXYY8F7RANZXX",
-  "display_short_help": "JF3VPU93XBN8YNMARV3HA9HNEA",
+  "display_help": "This upward swing attempts to shatter your opponent's jaw, and has a chance to send him flying upwards into the air.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Melee, High DMG(Smashing), Knockup",
   "icon": "mace_jawbreaker.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Brute_Melee.War_Mace"
 }

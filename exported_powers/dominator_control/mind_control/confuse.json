@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Confuse",
   "display_fullname": "Dominator Control Mind Control Confuse",
-  "display_help": "UNV2CKYELVLAY3CFSFTBKXEP8Q",
+  "display_help": "You can Confuse an enemy, forcing it to believe their friends are not who they appear to be. If successful, the enemy will ignore you and attack their own allies. If you Confuse a target before they notice you, your presence will continue to be masked. You will not receive any Experience Points for foes defeated entirely by a Confused enemy.",
   "display_short_help": "Ranged, Target Confuse",
   "icon": "mentalcontrol_mindcontrol.png",
   "auto_issue": false,
@@ -204,6 +204,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Dominator_Control.Mind_Control"
 }

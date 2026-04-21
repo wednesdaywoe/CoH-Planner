@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Arcane Bolt",
   "display_fullname": "Pool Sorcery Arcane Bolt",
-  "display_help": "RDMNVZTFK6QBW6XSGK7CGSLXZA",
+  "display_help": "You channel arcane energies into a concentrated blast and release them upon your target dealing Moderate energy damage and possibly knocking them down. <br><br>When you acquire this power, any power you activate will have a chance to grant you Arcane Power. When empowered with Arcane Power, Arcane Bolt will be recharged and using it will inflict bonus damage.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Energy), Foe Knockdown",
   "icon": "sorcerypool_arcanebolt.png",
   "auto_issue": false,

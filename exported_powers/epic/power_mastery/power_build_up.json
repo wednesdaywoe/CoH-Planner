@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Power Build Up",
   "display_fullname": "Epic Power Mastery Power Build Up",
-  "display_help": "SP5NR8ZRWB24WCVHSULNBK5SBA",
+  "display_help": "Your mastery of power and energy allows you to greatly increase the damage you deal for a few seconds, as well as slightly increasing your Accuracy Additionally, Power Build Up greatly boosts the secondary effects of your powers. Your powers effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved.",
   "display_short_help": "Self +DMG, +ACC, +Special",
   "icon": "powermastery_powerbuildup.png",
   "auto_issue": false,
@@ -212,6 +212,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Power_Mastery"
 }

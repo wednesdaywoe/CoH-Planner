@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Stun",
   "display_fullname": "Blaster Support Energy Manipulation Stun",
-  "display_help": "2PXSLZUCCVBGYZV59ZWJ62VSX3",
+  "display_help": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. If this power is used under the effects of Boost Range, this power will become a ranged stun instead. If this power is used under the effect of Power Boost, it will become an AoE stun, but it will recharge in 90 seconds instead of 12. Both these effects can be combined for the power to become a ranged AoE stun.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee, Minor DMG(Energy/Smashing), Foe Disorient, Special",
   "icon": "energymanipulation_stun.png",
   "auto_issue": false,
@@ -70,6 +70,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Energy_Manipulation"
 }

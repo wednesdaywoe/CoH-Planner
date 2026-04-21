@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Cimeroran Ally",
   "display_fullname": "Incarnate Lore Cimeroran Ally",
-  "display_help": "7BFVTN5UU3D4YVVRRGNT5PFUC3",
+  "display_help": "Draws forth an essence of a vanquished Cimeroran Centurion from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Cimeroran Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Cimeroran LT Essence",
   "icon": "incarnate_lore_cimeroran_common.png",
   "auto_issue": false,

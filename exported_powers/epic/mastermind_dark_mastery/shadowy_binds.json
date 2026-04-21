@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shadowy Binds",
   "display_fullname": "Epic Mastermind Dark Mastery Shadowy Binds",
-  "display_help": "DT7M8TSDAHZEWCNRB5JY97LSBA",
+  "display_help": "You take control of your victim's shadow causing it to entangle and bind its owner thus leaving them immobilized and suffering from negative energy damage over time and reducing their chance to hit. Immobilized foes cannot move but can still attack.",
   "display_short_help": "Ranged, Moderate DoT(Negative), Foe Immobilize, -To Hit, -Fly",
   "icon": "dark_mastery_penumbralgrasp",
   "auto_issue": false,
@@ -266,6 +266,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Mastermind_Dark_Mastery"
 }

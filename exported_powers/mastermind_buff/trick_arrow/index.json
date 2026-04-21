@@ -5,25 +5,25 @@
   "short_help": "Trick Arrow",
   "icon": "trick_arrow_set.ico",
   "powers": [
-    "Acid_Arrow",
-    "Disruption_Arrow",
-    "EMP_Arrow",
-    "Entangling_Arrow",
-    "Flash_Arrow",
-    "Glue_Arrow",
-    "Ice_Arrow",
-    "Oil_Slick_Arrow",
-    "Poison_Gas_Arrow"
+    "Mastermind_Buff.Trick_Arrow.Acid_Arrow",
+    "Mastermind_Buff.Trick_Arrow.Disruption_Arrow",
+    "Mastermind_Buff.Trick_Arrow.EMP_Arrow",
+    "Mastermind_Buff.Trick_Arrow.Entangling_Arrow",
+    "Mastermind_Buff.Trick_Arrow.Flash_Arrow",
+    "Mastermind_Buff.Trick_Arrow.Glue_Arrow",
+    "Mastermind_Buff.Trick_Arrow.Ice_Arrow",
+    "Mastermind_Buff.Trick_Arrow.Oil_Slick_Arrow",
+    "Mastermind_Buff.Trick_Arrow.Poison_Gas_Arrow"
   ],
   "available_level": [
+    19,
+    23,
+    29,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3,
+    9,
+    27,
+    15
   ]
 }

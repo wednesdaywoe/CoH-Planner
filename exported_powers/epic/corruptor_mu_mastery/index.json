@@ -1,21 +1,21 @@
 {
   "key": "Epic.Corruptor_Mu_Mastery",
   "display_name": "Mu Mastery",
-  "help": "P2730572537",
+  "help": "Scirocco has taught you the ancient powers of the Mu. In their eternal struggle against the Oranbega, the Mu have unlocked many mystical powers, including their very signature crimson lightning. Now you possess their secrets.",
   "short_help": "Mu Mastery",
   "icon": "corruptor_mu_mastery_set.ico",
   "powers": [
-    "Charged_Armor",
-    "Conserve_Power",
-    "Electric_Shackles",
-    "Power_Sink",
-    "Summon_Adept"
+    "Epic.Corruptor_Mu_Mastery.Charged_Armor",
+    "Epic.Corruptor_Mu_Mastery.Conserve_Power",
+    "Epic.Corruptor_Mu_Mastery.Electric_Shackles",
+    "Epic.Corruptor_Mu_Mastery.Power_Sink",
+    "Epic.Corruptor_Mu_Mastery.Summon_Adept"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    40,
+    37,
+    34,
+    43
   ]
 }

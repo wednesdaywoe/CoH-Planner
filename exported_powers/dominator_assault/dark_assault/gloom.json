@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Gloom",
   "display_fullname": "Dominator Assault Dark Assault Gloom",
-  "display_help": "SMP9YG96EL65WTME94DKSGATRA",
+  "display_help": "Gloom slowly drains a target of life, while reducing their chance to hit. Slower than Dark Blast, but deals more damage over time.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, High DoT(Negative), Foe -To Hit",
   "icon": "darknessassault_gloom.png",
   "auto_issue": false,
@@ -189,6 +189,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Dominator_Assault.Dark_Assault"
 }

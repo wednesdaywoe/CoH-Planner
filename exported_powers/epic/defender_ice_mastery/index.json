@@ -5,17 +5,17 @@
   "short_help": "Ice Mastery",
   "icon": "chill_mastery_set.ico",
   "powers": [
-    "Flash_Freeze",
-    "Frozen_Armor",
-    "Hoarfrost",
-    "Ice_Elemental",
-    "Ice_Slick"
+    "Epic.Defender_Ice_Mastery.Flash_Freeze",
+    "Epic.Defender_Ice_Mastery.Frozen_Armor",
+    "Epic.Defender_Ice_Mastery.Hoarfrost",
+    "Epic.Defender_Ice_Mastery.Ice_Elemental",
+    "Epic.Defender_Ice_Mastery.Ice_Slick"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    34,
+    37,
+    43,
+    40
   ]
 }

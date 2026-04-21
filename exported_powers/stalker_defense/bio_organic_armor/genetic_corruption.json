@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Genetic Corruption",
   "display_fullname": "Stalker Defense Bio Organic Armor Genetic Corruption",
-  "display_help": "PCTQ2C4YUN9PYAZ62FMAKMZ3GQ",
+  "display_help": "Your Bio Armor is capable of corrupting the genetic code of nearby foes, reducing the damage they deal. Lesser foes may be put to sleep for a short time. While Efficiency Adaptation is active, this power grants a moderate bonus to Regeneration. While Defensive Adaptation is active you gain a minor bonus to all types of damage resistance and increase the potency of this power's damage debuff. If Offensive Adaptation is active enemies are more likely to fall asleep. These special bonuses are unenhanceable.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: PBAoE, Foe Sleep, -Damage(All), Self +Special",
   "icon": "bioorganicarmor_geneticcorruption.png",
   "auto_issue": false,
@@ -399,6 +399,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Stalker_Defense.Bio_Organic_Armor"
 }

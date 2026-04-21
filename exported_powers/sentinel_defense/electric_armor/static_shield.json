@@ -6,7 +6,7 @@
   "display_name": "Static Shield",
   "display_fullname": "Sentinel Defense Electric Armor Static Shield",
   "display_help": "You can create a field of Static Electricity around your body. This Static Shield protects you from Hold, Sleep, and Disorient effects as well as Endurance Drain, Recovery DeBuffs and enemy Teleportation. Static Shield can also help normalize your synaptic activity, granting you good resistance to Psionic Damage.",
-  "display_short_help": "CGDJACQLSQH6Y7CADW4UHA4CSQ",
+  "display_short_help": "Toggle: Self +Res(Hold, Sleep, Disorient, End Drain, Recovery DeBuff, Psionic, Toxic, Teleport)",
   "icon": "electricarmor_selfresistmez.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -337,6 +337,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Sentinel_Defense.Electric_Armor"
 }

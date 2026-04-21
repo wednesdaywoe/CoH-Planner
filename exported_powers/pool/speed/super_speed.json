@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Super Speed",
   "display_fullname": "Pool Speed Super Speed",
-  "display_help": "AMENVU83K2Y7W5LL2NGAMSEE5X",
+  "display_help": "You can run at super-human speeds! While running at such speeds, you are a blur, and many foes will not even notice you as you speed past them. As you run, you build momentum, allowing you to jump great distances, but only for a limited time. If you attack a target while this power is on, you will temporarily be slowed to normal speed. Super Speed also increases your maximum run speed by 30% and gives you access to the Speed Phase power whilst it is active.<br><br>Super Speed can be active at the same time as other run speed toggles, but only the strongest run speed buff will apply.",
   "display_short_help": "Toggle: Self +Speed",
   "icon": "superspeed_superspeed.png",
   "auto_issue": false,
@@ -457,6 +457,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Pool.Speed"
 }

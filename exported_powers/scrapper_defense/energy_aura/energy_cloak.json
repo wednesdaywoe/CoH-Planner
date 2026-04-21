@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Energy Cloak",
   "display_fullname": "Scrapper Defense Energy Aura Energy Cloak",
-  "display_help": "REKL8Y2NQ9TRYWNUC3KZ6PS5LX",
+  "display_help": "The Energy Cloak bends light around you so you become partially invisible. While Cloaked you can only be seen at very close range. If you attack while Cloaked, you will be discovered. Even if discovered, you still maintain a Defense bonus to all attacks.",
   "display_short_help": "Toggle: Self Stealth, +DEF",
   "icon": "energyaura_cloak.png",
   "auto_issue": false,
@@ -320,6 +320,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Scrapper_Defense.Energy_Aura"
 }

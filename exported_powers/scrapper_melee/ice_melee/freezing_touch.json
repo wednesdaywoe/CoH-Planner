@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Freezing Touch",
   "display_fullname": "Scrapper Melee Ice Melee Freezing Touch",
-  "display_help": "VGEGFV5VDNFTWGNXMU8PLKBB92",
-  "display_short_help": "PUMDVXW4QFMMWNMHNECXCHFK3Q",
+  "display_help": "This Freezing Touch will encase a single foe in a block of ice. This will deal high damage over time, as well as freezing him in his tracks, leaving him cold and helpless.",
+  "display_short_help": "Melee, DoT(Cold), Foe Hold",
   "icon": "icyonslaught_freezingtouch.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -392,6 +392,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Scrapper_Melee.Ice_Melee"
 }

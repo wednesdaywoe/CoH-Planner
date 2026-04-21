@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Conduit of Pain",
   "display_fullname": "Corruptor Buff Pain Domination Conduit of Pain",
-  "display_help": "LLS2MM2GZPLLYCV2GB53VBV2WZ",
+  "display_help": "You revive a fallen ally by becoming a Conduit of Pain and transferring the pain that was inflicted upon them back upon your enemies. This will briefly empower you increasing your damage output, recovery rate, attack rate and chance to hit. After a minute the effect will wear off leaving you weakened for 30 seconds. Your damage, attack rate and chance to hit will all be reduced during this period.",
   "display_short_help": "Ally Rez, Self +DMG, +Recharge, +Recovery, +To Hit, +Special",
   "icon": "paindomination_conduitofpain.png",
   "auto_issue": false,
@@ -389,6 +389,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Corruptor_Buff.Pain_Domination"
 }

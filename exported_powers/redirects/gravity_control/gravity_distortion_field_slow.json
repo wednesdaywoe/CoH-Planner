@@ -6,7 +6,7 @@
   "display_name": "Gravity Distortion Field",
   "display_fullname": "Redirects Gravity Control Gravity Distortion Field Slow",
   "display_help": "Tears at the mind of a target foe and those near them. Dominate renders all affected foes helpless, lost in their own minds and unable to defend themselves.",
-  "display_short_help": "NQX75YBMSDK2WSBZ3XUA7QBYH2",
+  "display_short_help": "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
   "icon": "gravitycontrol_gravitydistortionfieldsummon",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -201,6 +201,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Redirects.Gravity_Control"
 }

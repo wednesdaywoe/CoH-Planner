@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Power Thrust",
   "display_fullname": "Blaster Support Energy Manipulation Power Thrust",
-  "display_help": "EXSZTU3RTDG8Y5XL7RELM9FRMQ",
+  "display_help": "A focused attack that violently shoves the target and sends them flying. Deals minimal damage, but can be very effective.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Melee, Minor DMG(Energy/Smash), Foe Knockback",
   "icon": "energymanipulation_powerthrust.png",
   "auto_issue": false,

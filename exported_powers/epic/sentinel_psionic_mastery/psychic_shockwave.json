@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psychic Shockwave",
   "display_fullname": "Epic Sentinel Psionic Mastery Psychic Shockwave",
-  "display_help": "KUBGHSZRZFBKW3LXTH2DM2D352",
-  "display_short_help": "FK34AZPPLYLBW5CW8LC7AXTL9A",
+  "display_help": "Psychic Shockwave is a devastating Psionic attack that wracks the minds of all nearby foes. Affected foes may have a reduced attack rate and may be left Disoriented. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
+  "display_short_help": "PBAoE, DMG(Psionic), Foe Disorient -Recharge",
   "icon": "mentalcontrol_psionicshockwave",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -343,6 +343,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Sentinel_Psionic_Mastery"
 }

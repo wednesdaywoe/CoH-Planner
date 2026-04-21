@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Absorb Pain",
   "display_fullname": "Mastermind Buff Empathy Absorb Pain",
-  "display_help": "GQVV8Y9HE8VJYGZK2R5CQWE9U2",
+  "display_help": "Dramatically heals an ally's wounds. This power has only a tiny Endurance cost, but it requires you to sacrifice some of your Hit Points. Absorbing someone's pain can be quite dramatic, and afterwards you will be briefly unable to heal your own wounds by any means.",
   "display_short_help": "Ally Strong Heal, Self Moderate DMG(Special)",
   "icon": "empathy_absorbpain.png",
   "auto_issue": false,
@@ -275,6 +275,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Mastermind_Buff.Empathy"
 }

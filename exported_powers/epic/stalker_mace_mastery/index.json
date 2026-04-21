@@ -5,17 +5,17 @@
   "short_help": "Mace Mastery",
   "icon": "stalker_mace_mastery_set.ico",
   "powers": [
-    "Disruptor_Blast",
-    "Mace_Beam",
-    "Mace_Blast",
-    "Summon_Spiderlings",
-    "Web_Cocoon"
+    "Epic.Stalker_Mace_Mastery.Disruptor_Blast",
+    "Epic.Stalker_Mace_Mastery.Mace_Beam",
+    "Epic.Stalker_Mace_Mastery.Mace_Blast",
+    "Epic.Stalker_Mace_Mastery.Summon_Spiderlings",
+    "Epic.Stalker_Mace_Mastery.Web_Cocoon"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    34,
+    34,
+    43,
+    40
   ]
 }

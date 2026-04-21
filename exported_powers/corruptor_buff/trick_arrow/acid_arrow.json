@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Acid Arrow",
   "display_fullname": "Corruptor Buff Trick Arrow Acid Arrow",
-  "display_help": "ALWB6S44VJN6Y3Z768TM6F9JJS",
+  "display_help": "This arrow explodes in a small shower of acid on impact. This acid eats through armor, causing damage over time, reducing target's Defense as well as their resistance to debuffs, while making it harder for them to be healed.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged AoE Minor DoT(Toxic), Foe -Res(Special), Res(Heal), -DEF",
   "icon": "trickarrow_debuffdefense.png",
   "auto_issue": false,
@@ -278,6 +278,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Corruptor_Buff.Trick_Arrow"
 }

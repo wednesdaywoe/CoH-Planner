@@ -3,10 +3,10 @@
   "full_name": "Redirects.Psionic_Armor.Devour_Psyche",
   "short_name": "Devour_Psyche",
   "type": "Click",
-  "display_name": "Z4BWNEZ592TVWDLS88HH4GS2WA",
+  "display_name": "Devour Psyche",
   "display_fullname": "Redirects Psionic Armor Devour Psyche",
-  "display_help": "J65PCUAURJF3YFBVBLSP4T765X",
-  "display_short_help": "VDNU6KM7DTFKY5NJ7HMYXEU3TZ",
+  "display_help": "You Devour the Psyche of foes in front of you, weakening their Hit Point Regeneration and Endurance Recovery and boosting your own.",
+  "display_short_help": "Cone Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery",
   "icon": "psionicarmor_devourpsyche",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -395,6 +395,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Redirects.Psionic_Armor"
 }

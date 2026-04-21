@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "The Lotus Drops",
   "display_fullname": "Epic Sentinel Ninja Mastery The Lotus Drops",
-  "display_help": "432WDUUTWV3SWHX9SPHS9B8UKQ",
-  "display_short_help": "NY5TH7BMQFU8WGXCBQMXM69DGX",
+  "display_help": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense. You must be level 41 and have one other Weapon Mastery Powers before selecting this power.",
+  "display_short_help": "PBAoE Melee, DMG(Lethal), Foe -Def",
   "icon": "ninjatools_katanaaoe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -345,6 +345,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Sentinel_Ninja_Mastery"
 }

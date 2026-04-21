@@ -5,15 +5,15 @@
   "short_help": "Fiery Aura",
   "icon": "fiery_aura_set.ico",
   "powers": [
-    "Burn",
-    "Critter_Phoenix",
-    "Gift_of_the_Phoenix",
-    "Phoenix"
+    "Redirects.Fiery_Aura.Burn",
+    "Redirects.Fiery_Aura.Critter_Phoenix",
+    "Redirects.Fiery_Aura.Gift_of_the_Phoenix",
+    "Redirects.Fiery_Aura.Phoenix"
   ],
   "available_level": [
     0,
     0,
-    0,
+    31,
     0
   ]
 }

@@ -5,17 +5,17 @@
   "short_help": "Mace Mastery",
   "icon": "dominator_mace_mastery_set.ico",
   "powers": [
-    "Disruptor_Blast",
-    "Personal_Force_Field",
-    "Poisonous_Ray",
-    "Scorpion_Shield",
-    "Summon_Tarantula"
+    "Epic.Dominator_Mace_Mastery.Disruptor_Blast",
+    "Epic.Dominator_Mace_Mastery.Personal_Force_Field",
+    "Epic.Dominator_Mace_Mastery.Poisonous_Ray",
+    "Epic.Dominator_Mace_Mastery.Scorpion_Shield",
+    "Epic.Dominator_Mace_Mastery.Summon_Tarantula"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    40,
+    34,
+    34,
+    43
   ]
 }

@@ -5,25 +5,25 @@
   "short_help": "War Mace",
   "icon": "war_mace_set.ico",
   "powers": [
-    "Bash",
-    "Build_Up",
-    "Clobber",
-    "Confront",
-    "Crowd_Control",
-    "Jawbreaker",
-    "Pulverize",
-    "Shatter",
-    "Whirling_Mace"
+    "Scrapper_Melee.War_Mace.Bash",
+    "Scrapper_Melee.War_Mace.Build_Up",
+    "Scrapper_Melee.War_Mace.Clobber",
+    "Scrapper_Melee.War_Mace.Confront",
+    "Scrapper_Melee.War_Mace.Crowd_Control",
+    "Scrapper_Melee.War_Mace.Jawbreaker",
+    "Scrapper_Melee.War_Mace.Pulverize",
+    "Scrapper_Melee.War_Mace.Shatter",
+    "Scrapper_Melee.War_Mace.Whirling_Mace"
   ],
   "available_level": [
     0,
+    5,
+    7,
+    11,
+    25,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    17
   ]
 }

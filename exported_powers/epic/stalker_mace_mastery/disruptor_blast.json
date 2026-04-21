@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Disruptor Blast",
   "display_fullname": "Epic Stalker Mace Mastery Disruptor Blast",
-  "display_help": "RQ8TNFEKP462WXCVN9LC548UX3",
-  "display_short_help": "4BAPY52BWGJJY7B4F4H8ZL2T62",
+  "display_help": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 44 and have two other Mace Mastery powers before selecting this power. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
   "icon": "arachnos_patron_rangedaoemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -538,6 +538,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Stalker_Mace_Mastery"
 }

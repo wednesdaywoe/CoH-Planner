@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Subdue",
   "display_fullname": "Dominator Assault Psionic Assault Subdue",
-  "display_help": "XB6FTWK5KM4UYQZKXMVB488XRA",
+  "display_help": "Subdue deals high Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Psionic), Foe Immobilize",
   "icon": "psionicassault_subdue.png",
   "auto_issue": false,
@@ -303,6 +303,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Psionic_Assault"
 }

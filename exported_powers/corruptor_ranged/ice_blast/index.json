@@ -5,25 +5,25 @@
   "short_help": "Ice Blast",
   "icon": "ice_blast_set.ico",
   "powers": [
-    "Aim",
-    "Bitter_Freeze_Ray",
-    "Bitter_Ice_Blast",
-    "Blizzard",
-    "Freeze_Ray",
-    "Frost_Breath",
-    "Ice_Blast",
-    "Ice_Bolt",
-    "Ice_Storm"
+    "Corruptor_Ranged.Ice_Blast.Aim",
+    "Corruptor_Ranged.Ice_Blast.Bitter_Freeze_Ray",
+    "Corruptor_Ranged.Ice_Blast.Bitter_Ice_Blast",
+    "Corruptor_Ranged.Ice_Blast.Blizzard",
+    "Corruptor_Ranged.Ice_Blast.Freeze_Ray",
+    "Corruptor_Ranged.Ice_Blast.Frost_Breath",
+    "Corruptor_Ranged.Ice_Blast.Ice_Blast",
+    "Corruptor_Ranged.Ice_Blast.Ice_Bolt",
+    "Corruptor_Ranged.Ice_Blast.Ice_Storm"
   ],
   "available_level": [
+    5,
+    21,
+    17,
+    25,
+    7,
+    1,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11
   ]
 }

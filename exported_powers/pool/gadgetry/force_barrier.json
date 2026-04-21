@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Force Barrier",
   "display_fullname": "Pool Gadgetry Force Barrier",
-  "display_help": "P649G3CC6XJAYUXWACS2HGCS7Q",
+  "display_help": "You activate a force field around you for a short time that will absorb a high amount of damage before dissipating.<br><br>You must be at least level 20 and have two other Gadgetry powers before selecting Force Barrier.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self, +Absorb",
   "icon": "gadgetry_forcebarrier.png",
   "auto_issue": false,
@@ -82,6 +82,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Pool.Gadgetry"
 }

@@ -5,17 +5,17 @@
   "short_help": "Mace Mastery",
   "icon": "blaster_mace_mastery_set.ico",
   "powers": [
-    "Mace_Beam_Volley",
-    "Power_Boost",
-    "Scorpion_Shield",
-    "Web_Cocoon",
-    "Web_Envelope"
+    "Epic.Blaster_Mace_Mastery.Mace_Beam_Volley",
+    "Epic.Blaster_Mace_Mastery.Power_Boost",
+    "Epic.Blaster_Mace_Mastery.Scorpion_Shield",
+    "Epic.Blaster_Mace_Mastery.Web_Cocoon",
+    "Epic.Blaster_Mace_Mastery.Web_Envelope"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    40,
+    34,
+    43,
+    34
   ]
 }

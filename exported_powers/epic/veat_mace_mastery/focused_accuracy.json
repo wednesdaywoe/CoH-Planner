@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shatter Armor",
   "display_fullname": "Epic VEAT Mace Mastery Focused Accuracy",
-  "display_help": "PSNDP6TSUGYYWDMSC24Q4NX5QQ",
-  "display_short_help": "XUMJKU48V9K9W8LZ7L2JKD2A2S",
+  "display_help": "You deliver a punishing blow with your Arachnos Mace dealing superior damage and reducing the target's resistance to damage for a short time. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
+  "display_short_help": "Melee, DMG(Smash), Foe -Res",
   "icon": "arachnos_patron_targeteddebuffdefense.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -194,6 +194,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.VEAT_Mace_Mastery"
 }

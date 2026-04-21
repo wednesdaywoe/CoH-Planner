@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bile Spray",
   "display_fullname": "Epic Brute Leviathan Mastery Chum Spray",
-  "display_help": "6G2HZ79BFZ8PWUXRVGN6HC9WMQ",
-  "display_short_help": "MWVXHML2QKAZYYBKZL2JMZZGEA",
+  "display_help": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Cone), DoT(Toxic)",
   "icon": "arachnos_patron_rangedconemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -238,6 +238,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Brute_Leviathan_Mastery"
 }

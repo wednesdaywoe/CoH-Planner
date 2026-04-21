@@ -5,25 +5,25 @@
   "short_help": "Dark Blast",
   "icon": "dark_blast_set.ico",
   "powers": [
-    "Blackstar",
-    "Dark_Blast",
-    "Dark_Pit",
-    "Gloom",
-    "Life_Drain",
-    "Moonbeam",
-    "Night_Fall",
-    "Tenebrous_Tentacles",
-    "Torrent"
+    "Corruptor_Ranged.Dark_Blast.Blackstar",
+    "Corruptor_Ranged.Dark_Blast.Dark_Blast",
+    "Corruptor_Ranged.Dark_Blast.Dark_Pit",
+    "Corruptor_Ranged.Dark_Blast.Gloom",
+    "Corruptor_Ranged.Dark_Blast.Life_Drain",
+    "Corruptor_Ranged.Dark_Blast.Moonbeam",
+    "Corruptor_Ranged.Dark_Blast.Night_Fall",
+    "Corruptor_Ranged.Dark_Blast.Tenebrous_Tentacles",
+    "Corruptor_Ranged.Dark_Blast.Torrent"
   ],
   "available_level": [
+    25,
     0,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    1,
+    11,
+    7,
+    17
   ]
 }

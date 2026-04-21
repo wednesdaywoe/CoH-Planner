@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mu Bolts",
   "display_fullname": "Epic Stalker Mu Mastery Mu Bolts",
-  "display_help": "MCBMRY7MA72XYSBT823QSCUABA",
-  "display_short_help": "RAPSU8SFA9AVYFNUJ5H6LCMKQZ",
+  "display_help": "You can quickly hurl small bolts of Mu electricity at foes, dealing some damage and draining some Endurance. Some of this Endurance may transfer back to you. Mu Bolts deals light damage but recharges quickly.",
+  "display_short_help": "Ranged, DMG(Energy), Foe -End",
   "icon": "arachnos_patron_targetedrangedmoddmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -584,6 +584,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Stalker_Mu_Mastery"
 }

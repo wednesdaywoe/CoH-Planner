@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fiery Embrace",
   "display_fullname": "Brute Defense Fiery Aura Fiery Embrace",
-  "display_help": "CSMS9YWTWW3AYEZHZQE2FWMMS2",
+  "display_help": "Fiery Embrace causes all your damaging powers to do bonus fire damage.<br><br>In PvP, this power significantly boosts the damage of all your Fire attacks for quite a while. Also increases the damage of all your other non-fire based attacks for a short while.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +DMG",
   "icon": "flamingshield_fieryembrace.png",
   "auto_issue": false,
@@ -154,6 +154,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Brute_Defense.Fiery_Aura"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Spine Burst",
   "display_fullname": "Stalker Melee Spines Spine Burst",
-  "display_help": "D7GZZGPBPTHCYJCDPNDTJMY7BZ",
-  "display_short_help": "W639U6EJPKANYLMA3K3JHLQHV3",
+  "display_help": "You can fling dozens of Spines in all directions. These Spines only travel a short distance, but they can deal moderate lethal damage and poison any target close to you. Spine poison deals additional Toxic damage and Slows affected foes. If executed while hidden, all affected targets have a chance to be hit with a Critical Hit for extra damage.",
+  "display_short_help": "PBAoE Melee, DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_flingquills.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -477,6 +477,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Stalker_Melee.Spines"
 }

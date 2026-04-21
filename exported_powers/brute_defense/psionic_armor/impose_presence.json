@@ -3,10 +3,10 @@
   "full_name": "Brute_Defense.Psionic_Armor.Impose_Presence",
   "short_name": "Impose_Presence",
   "type": "Toggle",
-  "display_name": "8K5KHJZAWMSGW4NUJNJBNL4B5Z",
+  "display_name": "Impose Presence",
   "display_fullname": "Brute Defense Psionic Armor Impose Presence",
-  "display_help": "F8GQSUHBBR5UY4VZSETC5KL9YQ",
-  "display_short_help": "649WTBVK8EHQYGMVTPJWULSQ8Q",
+  "display_help": "Impose your presence on nearby enemies, slowing their attack rate down and increasing\u00a0your defense and chance to hit.",
+  "display_short_help": "Toggle: Self +DEF(Melee, Ranged), +To Hit, Foe -Recharge",
   "icon": "psionicarmor_imposepresence",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -329,6 +329,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Brute_Defense.Psionic_Armor"
 }

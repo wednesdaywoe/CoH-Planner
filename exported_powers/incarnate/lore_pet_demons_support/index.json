@@ -5,8 +5,8 @@
   "short_help": "Demons",
   "icon": "lore_pet_arachnos_support_set.ico",
   "powers": [
-    "Chill_of_the_Night",
-    "Twilight_Grasp"
+    "Incarnate.Lore_Pet_Demons_Support.Chill_of_the_Night",
+    "Incarnate.Lore_Pet_Demons_Support.Twilight_Grasp"
   ],
   "available_level": [
     0,

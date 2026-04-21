@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Blood Craze",
   "display_fullname": "Dominator Assault Savage Assault Blood Craze",
-  "display_help": "3CFQJNVYKRY5YAX2KQFJUDMJFZ",
+  "display_help": "You go into a blood craze, making you quickly shrug aside some of the damage received. Blood Craze will immediately heal you for a small amount and cause you to heal for a moderate amount of health over time.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +HP, +Health over Time",
   "icon": "savagemelee_bloodthirst.png",
   "auto_issue": false,
@@ -107,6 +107,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Savage_Assault"
 }

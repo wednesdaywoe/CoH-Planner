@@ -3,10 +3,10 @@
   "full_name": "Dominator_Control.Pyrotechnic_Control.Sparkling_Field",
   "short_name": "Sparkling_Field",
   "type": "Click",
-  "display_name": "TBT9LAVWNEKNWJLWL89TDM6B4Q",
+  "display_name": "Sparkling Chain",
   "display_fullname": "Dominator Control Pyrotechnic Control Sparkling Field",
-  "display_help": "H4RYSBXVD6S6WEBVPDTK63J62X",
-  "display_short_help": "YSVTKZ3EYBQAY4XS3BLHBRTDQS",
+  "display_help": "Immobilizes a group of foes one by one in a chain formation, dealing Fire and Energy damage over time to each enemy in the chain. More resilient foes may require multiple casts to Immobilize. Sparkling Chain is slower and less damaging than Sparkling Cage, but can capture multiple targets.<br><br>This power has a chance of Blasting Off targets into the air. This chance is greater on the initial target of Sparkling Chain.",
+  "display_short_help": "Ranged Chain AoE, Minor DoT(Fire, Energy), Foe Immobilize,Chance for Blast Off",
   "icon": "pyrotechnic_sparklingfield",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -531,6 +531,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Dominator_Control.Pyrotechnic_Control"
 }

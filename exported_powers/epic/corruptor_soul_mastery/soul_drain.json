@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Soul Drain",
   "display_fullname": "Epic Corruptor Soul Mastery Soul Drain",
-  "display_help": "9L5225DZ5AANWUNJV4JY96Q6YX",
-  "display_short_help": "3JS4ZCXHRBMDYMMHQR5NQR7BWA",
+  "display_help": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
+  "display_short_help": "PBAoE DMG(Negative), Self +DMG, +ACC",
   "icon": "arachnos_patron_pbaoebuffdamage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -277,6 +277,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Corruptor_Soul_Mastery"
 }

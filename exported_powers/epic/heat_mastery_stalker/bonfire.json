@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bonfire",
   "display_fullname": "Epic Heat Mastery Stalker Bonfire",
-  "display_help": "Z44HGEVD3ALZWXXTJMWEXWU7AZ",
-  "display_short_help": "KK6VHXAN75ZWW7Z7QZWGADEYFX",
+  "display_help": "You can create a Bonfire that knocks back and burns any foes who try to pass through it. Cannot do critical hits.",
+  "display_short_help": "Ranged (Location AoE), DMG(Fire), Foe Knockback",
   "icon": "heatmastery_bonfire.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -93,6 +93,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Heat_Mastery_Stalker"
 }

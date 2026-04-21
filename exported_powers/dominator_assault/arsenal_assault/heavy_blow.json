@@ -3,10 +3,10 @@
   "full_name": "Dominator_Assault.Arsenal_Assault.Heavy_Blow",
   "short_name": "Heavy_Blow",
   "type": "Click",
-  "display_name": "MGXGDSKACWGEWDVUDNHGN2VGHZ",
+  "display_name": "Elbow Strike",
   "display_fullname": "Dominator Assault Arsenal Assault Heavy Blow",
-  "display_help": "F3WC4V5VK7XAWZMQMT6VJNPCJW",
-  "display_short_help": "K95FNTJP3A4HYHXRGL6SPN3NY2",
+  "display_help": "You strike your foe with a powerful punch dealing Smashing damage and knocking the target back.",
+  "display_short_help": "Melee, DMG(Smash), Foe Knockback",
   "icon": "assaultweapons_heavyblow",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -230,6 +230,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Dominator_Assault.Arsenal_Assault"
 }

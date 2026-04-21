@@ -1,29 +1,29 @@
 {
   "key": "Sentinel_Ranged.Storm_Blast",
-  "display_name": "MS36MJUB2GXWYANABNRL9AHGCA",
-  "help": "WYDCN7NNM4GCWSMATSFW9CBYQQ",
-  "short_help": "MS36MJUB2GXWYANABNRL9AHGCA",
+  "display_name": "Storm Blast",
+  "help": "Storm Blast conjures violent weather to attack your foes. The use of your storm attacks will empower your created storm cells.",
+  "short_help": "Storm Blast",
   "icon": "storm_summoning_set.ico",
   "powers": [
-    "Aim",
-    "Category_Five",
-    "Chain_Lightning",
-    "Cloudburst",
-    "Gust",
-    "Hailstones",
-    "Jet_Stream",
-    "Lightning_Strike",
-    "Storm_Cell"
+    "Sentinel_Ranged.Storm_Blast.Aim",
+    "Sentinel_Ranged.Storm_Blast.Category_Five",
+    "Sentinel_Ranged.Storm_Blast.Chain_Lightning",
+    "Sentinel_Ranged.Storm_Blast.Cloudburst",
+    "Sentinel_Ranged.Storm_Blast.Gust",
+    "Sentinel_Ranged.Storm_Blast.Hailstones",
+    "Sentinel_Ranged.Storm_Blast.Jet_Stream",
+    "Sentinel_Ranged.Storm_Blast.Lightning_Strike",
+    "Sentinel_Ranged.Storm_Blast.Storm_Cell"
   ],
   "available_level": [
+    7,
+    25,
+    17,
+    21,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    11,
+    5
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Noxious Gas",
   "display_fullname": "Mastermind Buff Poison Noxious Gas",
-  "display_help": "VPMR3K9KM76HYQCXGH3Y2QGJKS",
+  "display_help": "You can infect one of your Henchmen, surrounding him with a Noxious Gas. All foes near the infected Henchmen will be overcome with the Noxious Gas. Their Defense, chance to hit, Damage and Damage resistance will all be reduced. Additionally, there is a chance than any affected humanoid enemy will become violently ill. Even the mightiest foe will stop dead in their tracks, and left helpless as they empty the contents of their stomach.",
   "display_short_help": "Ranged (Infect Henchman); Foe -RES, -DEF, -To Hit, -Res, +Special",
   "icon": "poison_noxiousgas.png",
   "auto_issue": false,
@@ -88,6 +88,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Mastermind_Buff.Poison"
 }

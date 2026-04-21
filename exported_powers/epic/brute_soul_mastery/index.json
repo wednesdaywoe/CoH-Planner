@@ -5,17 +5,17 @@
   "short_help": "Soul Mastery",
   "icon": "brute_soul_mastery_set.ico",
   "powers": [
-    "Dark_Obliteration",
-    "Darkest_Night",
-    "Gloom",
-    "Soul_Tentacles",
-    "Summon_Widow"
+    "Epic.Brute_Soul_Mastery.Dark_Obliteration",
+    "Epic.Brute_Soul_Mastery.Darkest_Night",
+    "Epic.Brute_Soul_Mastery.Gloom",
+    "Epic.Brute_Soul_Mastery.Soul_Tentacles",
+    "Epic.Brute_Soul_Mastery.Summon_Widow"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    40,
+    37,
+    34,
+    34,
+    43
   ]
 }

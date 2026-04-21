@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Tombstone",
   "display_fullname": "Blaster Ranged Seismic Blast Tombstone",
-  "display_help": "32MY6G5RFUR2YPBD2BJ8P7PRLQ",
-  "display_short_help": "JQTV86XM8EF4W7CK9QNT5W28N2",
+  "display_help": "Create a giant pillar of stone, creating a Tombstone around your target, dealing extreme damage and limiting their ability to jump and fly for a short time. <br><br>This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle, this attack becomes instant-cast. If you are not engaged, it will do bonus damage.<br><br>Tombstone grants two stacks of Seismic Pressure.",
+  "display_short_help": "Sniper, DMG(Smash), Foe -Jump, -Fly",
   "icon": "seismicblast_snipe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Blaster_Ranged.Seismic_Blast"
 }

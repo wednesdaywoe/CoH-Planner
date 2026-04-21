@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Void Total Core Judgement",
   "display_fullname": "Incarnate Judgement Void Total Core Judgement",
-  "display_help": "YFHLMARN33TLYUNN9QKBMDYMGQ",
+  "display_help": "PBAoE Extreme DMG(Negative Energy).<br><br><color #fcfc95>Notes: Void Total Core Judgement is unaffected by Recharge Time, Radius or Arc changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE Extreme DMG(Negative Energy)",
   "icon": "incarnate_judgement_void_rare.png",
   "auto_issue": false,

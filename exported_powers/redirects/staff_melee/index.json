@@ -1,12 +1,12 @@
 {
   "key": "Redirects.Staff_Melee",
-  "display_name": "GZL3KP88WA3AWYL5MNKAF7BG8Q",
-  "help": "GZL3KP88WA3AWYL5MNKAF7BG8Q",
-  "short_help": "GZL3KP88WA3AWYL5MNKAF7BG8Q",
+  "display_name": "Staff Melee",
+  "help": "Staff Melee",
+  "short_help": "Staff Melee",
   "icon": "blind_set.ico",
   "powers": [
-    "Perfection_Level",
-    "Perfection_Level_Stalker"
+    "Redirects.Staff_Melee.Perfection_Level",
+    "Redirects.Staff_Melee.Perfection_Level_Stalker"
   ],
   "available_level": [
     0,

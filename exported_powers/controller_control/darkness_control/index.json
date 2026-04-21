@@ -5,25 +5,25 @@
   "short_help": "Darkness Control",
   "icon": "darkness_control_set.ico",
   "powers": [
-    "Dark_Grasp",
-    "Fearsome_Stare",
-    "Haunt",
-    "Heart_of_Darkness",
-    "Living_Shadows",
-    "Possess",
-    "Shadow_Field",
-    "Shadowy_Binds",
-    "Umbra_Beast"
+    "Controller_Control.Darkness_Control.Dark_Grasp",
+    "Controller_Control.Darkness_Control.Fearsome_Stare",
+    "Controller_Control.Darkness_Control.Haunt",
+    "Controller_Control.Darkness_Control.Heart_of_Darkness",
+    "Controller_Control.Darkness_Control.Living_Shadows",
+    "Controller_Control.Darkness_Control.Possess",
+    "Controller_Control.Darkness_Control.Shadow_Field",
+    "Controller_Control.Darkness_Control.Shadowy_Binds",
+    "Controller_Control.Darkness_Control.Umbra_Beast"
   ],
   "available_level": [
     0,
+    7,
+    17,
+    11,
+    1,
+    5,
+    21,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25
   ]
 }

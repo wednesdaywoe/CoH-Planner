@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Corrosive Vial",
   "display_fullname": "Redirects Pool Experimentation Corrosive Vial Splat",
-  "display_help": "82PHBHGW6GFZWXMW6YGMFMN23W",
+  "display_help": "You hurl a vial of toxic fluid that explodes upon impact at the desired location leaving a corrosive puddle behind. Any foe that stands within the puddle will take toxic damage and have their defense reduced for a short while. Corrosive Vial requires you to have 2 powers from the Experimentation power pool.<br><br><color #fcfc95>Damage: High (DoT).</color>",
   "display_short_help": "Ranged (Location AoE), High DoT(Toxic), -Defense",
   "icon": "experimentation_corrosivevial.png",
   "auto_issue": false,

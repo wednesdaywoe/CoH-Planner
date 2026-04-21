@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Stone Mallet",
   "display_fullname": "Dominator Assault Earth Assault Stone Mallet",
-  "display_help": "RR3HFRR9YXVRWHLR3JD8RB224Q",
+  "display_help": "Your control over the earth allows you to form a mallet of solid stone. This Stone Mallet deals heavy damage, and can knock down weak foes.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, Moderate DMG(Smash), Knockback",
   "icon": "earthassault_stonemallet.png",
   "auto_issue": false,

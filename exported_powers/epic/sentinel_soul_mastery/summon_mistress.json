@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Summon Mistress",
   "display_fullname": "Epic Sentinel Soul Mastery Summon Mistress",
-  "display_help": "KFU39WEWJRMYYLLHKHVUBS7AR3",
-  "display_short_help": "QHBGAX9CTUXRYXMQDKM23DWENA",
+  "display_help": "Ghost Widow has assigned a Fortunata Mistress for you to command. Arguably, the most powerful of the Fortunatas, these rare few have mastered numerous psychic abilities and risen to the top of Lord Recluse's beautiful Black Widows. Your access to this Fortunata is very limited. You can only summon her once every 15 minutes and she will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Fortunata Mistress: Ranged DMG(Psionic)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -93,6 +93,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Sentinel_Soul_Mastery"
 }

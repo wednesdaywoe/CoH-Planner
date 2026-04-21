@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Siphon Speed",
   "display_fullname": "Defender Buff Kinetics Siphon Speed",
-  "display_help": "GYYBD8H3HWRFYFZ9RQFL79KQW3",
+  "display_help": "You can Siphon the speed from a targeted foe, Slowing their movement and attack rate while boosting your own.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Foe -Speed, -Recharge, Self +Speed, +Recharge",
   "icon": "kineticboost_siphonspeed.png",
   "auto_issue": false,
@@ -289,6 +289,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Defender_Buff.Kinetics"
 }

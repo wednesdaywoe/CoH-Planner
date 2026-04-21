@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Pulverize",
   "display_fullname": "Epic Sentinel Mace Mastery Pulverize",
-  "display_help": "KL33KY5G3CD9YBNJEHT3A63A9X",
+  "display_help": "You are capable of Pulverizing a foe with your Nullifier Mace dealing high damage, causing toxic damage over time. Pulverize will occasionally disorient foes as well.",
   "display_short_help": "Melee, High DMG(Smash), Minor DoT(Toxic), Foe Disorient",
   "icon": "arachnos_patron_pulverize.png",
   "auto_issue": false,
@@ -395,6 +395,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Mace_Mastery"
 }

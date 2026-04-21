@@ -3,9 +3,9 @@
   "full_name": "Brute_Defense.Fiery_Aura.Rise_of_the_Phoenix",
   "short_name": "Rise_of_the_Phoenix",
   "type": "Click",
-  "display_name": "63XXN987U486YFLUL74DZ2W6HW",
+  "display_name": "Phoenix Rising",
   "display_fullname": "Brute Defense Fiery Aura Rise of the Phoenix",
-  "display_help": "9MQ6WZGJMDQNWWL4K329RFTWXW",
+  "display_help": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Gift of the Phoenix will leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.<br><br>You can also use this power even if you have not been defeated, with weakend effects. The closer you are to being defeated, the stronger the effects will be. You need to be under 75% health to activate this power.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self Rez, Special",
   "icon": "flamingshield_riseofthephoenix.png",
   "auto_issue": false,
@@ -90,6 +90,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Brute_Defense.Fiery_Aura"
 }

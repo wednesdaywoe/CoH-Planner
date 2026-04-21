@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Inertial Reduction",
   "display_fullname": "Defender Buff Kinetics Inertial Reduction",
-  "display_help": "6CNZ6LYCHV28Y7VRDHLPG8LS8W",
+  "display_help": "You can reduce your Inertia, along with that of all nearby allies. The affected heroes can then jump incredible distances for a while.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Allies +Jump",
   "icon": "kineticboost_initialreductions.png",
   "auto_issue": false,
@@ -159,6 +159,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Defender_Buff.Kinetics"
 }

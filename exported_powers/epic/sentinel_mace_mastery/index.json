@@ -5,17 +5,17 @@
   "short_help": "Mace Mastery",
   "icon": "sentinel_mace_mastery_set.ico",
   "powers": [
-    "Focused_Accuracy",
-    "Pulverize",
-    "Summon_Tarantula",
-    "Web_Cocoon",
-    "Web_Envelope"
+    "Epic.Sentinel_Mace_Mastery.Focused_Accuracy",
+    "Epic.Sentinel_Mace_Mastery.Pulverize",
+    "Epic.Sentinel_Mace_Mastery.Summon_Tarantula",
+    "Epic.Sentinel_Mace_Mastery.Web_Cocoon",
+    "Epic.Sentinel_Mace_Mastery.Web_Envelope"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    40,
+    34,
+    43,
+    37,
+    34
   ]
 }

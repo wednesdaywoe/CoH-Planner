@@ -5,25 +5,25 @@
   "short_help": "Psychic Blast",
   "icon": "psychic_blast_set.ico",
   "powers": [
-    "Mental_Blast",
-    "Psionic_Lance",
-    "Psionic_Tornado",
-    "Psychic_Scream",
-    "Psychic_Wail",
-    "Scramble_Thoughts",
-    "Subdue",
-    "Telekinetic_blast",
-    "Will_Domination"
+    "Defender_Ranged.Psychic_Blast.Mental_Blast",
+    "Defender_Ranged.Psychic_Blast.Psionic_Lance",
+    "Defender_Ranged.Psychic_Blast.Psionic_Tornado",
+    "Defender_Ranged.Psychic_Blast.Psychic_Scream",
+    "Defender_Ranged.Psychic_Blast.Psychic_Wail",
+    "Defender_Ranged.Psychic_Blast.Scramble_Thoughts",
+    "Defender_Ranged.Psychic_Blast.Subdue",
+    "Defender_Ranged.Psychic_Blast.Telekinetic_blast",
+    "Defender_Ranged.Psychic_Blast.Will_Domination"
   ],
   "available_level": [
     0,
+    19,
+    23,
+    9,
+    29,
+    27,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3,
+    15
   ]
 }

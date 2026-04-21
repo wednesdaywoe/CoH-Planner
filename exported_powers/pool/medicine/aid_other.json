@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Aid Other",
   "display_fullname": "Pool Medicine Aid Other",
-  "display_help": "DYZKW3S6A2CEWTNHHPXRS2YZZ3",
+  "display_help": "You heal a single targeted ally. This power is interruptible unless you have also trained Field Medic, in which case it is not interruptible.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Close, Heal(Ally)",
   "icon": "medicine_aid.png",
   "auto_issue": false,

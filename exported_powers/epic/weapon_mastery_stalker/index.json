@@ -5,17 +5,17 @@
   "short_help": "Weapon Mastery",
   "icon": "weapon_mastery_stalker_set.ico",
   "powers": [
-    "Caltrops",
-    "Exploding_Shuriken",
-    "Shuriken",
-    "Targeting_Drone",
-    "Web_Grenade"
+    "Epic.Weapon_Mastery_Stalker.Caltrops",
+    "Epic.Weapon_Mastery_Stalker.Exploding_Shuriken",
+    "Epic.Weapon_Mastery_Stalker.Shuriken",
+    "Epic.Weapon_Mastery_Stalker.Targeting_Drone",
+    "Epic.Weapon_Mastery_Stalker.Web_Grenade"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    43,
+    37,
+    40,
+    34
   ]
 }

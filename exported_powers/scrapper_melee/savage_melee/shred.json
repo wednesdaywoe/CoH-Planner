@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shred",
   "display_fullname": "Scrapper Melee Savage Melee Shred",
-  "display_help": "UALQ8AUZ7M6MYZNWC4MAVRZMZS",
-  "display_short_help": "5BASGCEUV2ZDYGL5P9QGAVQK3A",
+  "display_help": "You rapidly slash at your foes several times causing a moderate amount of damage to all enemies in front of you and reduce their defense. Shred also causes minor lethal damage over time. This power grants 1 stack of Blood Frenzy.",
+  "display_short_help": "Melee (Cone), DMG(Lethal), Foe DoT (Lethal), -Def(All), Self +1 Blood Frenzy",
   "icon": "savagemelee_shred.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -477,6 +477,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Scrapper_Melee.Savage_Melee"
 }

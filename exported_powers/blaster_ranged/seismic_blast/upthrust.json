@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Upthrust",
   "display_fullname": "Blaster Ranged Seismic Blast Upthrust",
-  "display_help": "RQYE8QE8PPTUYTBV95YVHE79N2",
-  "display_short_help": "C5XTP8J957KZWLCQRA4BVV6MLQ",
+  "display_help": "You channel seismic energy into the earth, causing a micro-fault to erupt under your target. This causes a shard of rock to thrust upward out of the ground, dealing smashing damage and lowering their defense. Affected foes will become heavy, limiting their ability to jump and fly for a short time. The force of the eruption can knockback enemies.<br><br>Upthrust grants two stacks of Seismic Pressure.",
+  "display_short_help": "Targeted AoE, DMG(Smash), -Fly, -Defense, Chance to Knockback",
   "icon": "seismicblast_upthrust",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -520,6 +520,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Blaster_Ranged.Seismic_Blast"
 }

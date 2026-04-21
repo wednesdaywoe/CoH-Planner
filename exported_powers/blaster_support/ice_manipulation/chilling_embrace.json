@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Frigid Protection",
   "display_fullname": "Blaster Support Ice Manipulation Chilling Embrace",
-  "display_help": "PF49LCD23LKMWBBGXT8782ZBG2",
+  "display_help": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their movement speed and damage. The air around your body becomes so cold that attacks deflect off of it, granting you absorption, while your body becomes extremely energy efficient, granting you bonus Recovery.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: PBAoE, Foe -Recharge, -Speed, -DMG, Self +Absorb over Time, +Recovery",
   "icon": "icemanipulation_chillingembrace.png",
   "auto_issue": false,
@@ -357,6 +357,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Ice_Manipulation"
 }

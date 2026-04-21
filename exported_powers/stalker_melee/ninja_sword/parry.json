@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Divine Avalanche",
   "display_fullname": "Stalker Melee Ninja Sword Parry",
-  "display_help": "7SRV7P64GXA9WWZ6GXR8M79ZNQ",
-  "display_short_help": "RM62BML7ZVWFWHMMJGYQLBDNXA",
+  "display_help": "You can use your Ninja Blade to parry incoming melee attacks and then quickly return the favor. Divine Avalanche does minor damage, but every successful hit will increase your Defense against melee and lethal attacks for a short while.",
+  "display_short_help": "Melee, DMG(Lethal), Self +DEF (Melee, Lethal)",
   "icon": "katana_parry.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -364,6 +364,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Stalker_Melee.Ninja_Sword"
 }

@@ -5,25 +5,25 @@
   "short_help": "Dark Melee",
   "icon": "dark_melee_set.ico",
   "powers": [
-    "Assassins_Eclipse",
-    "Build_Up",
-    "Midnight_Grasp",
-    "Placate",
-    "Shadow_Maul",
-    "Shadow_Punch",
-    "Siphon_Life",
-    "Smite",
-    "Touch_of_Fear"
+    "Stalker_Melee.Dark_Melee.Assassins_Eclipse",
+    "Stalker_Melee.Dark_Melee.Build_Up",
+    "Stalker_Melee.Dark_Melee.Midnight_Grasp",
+    "Stalker_Melee.Dark_Melee.Placate",
+    "Stalker_Melee.Dark_Melee.Shadow_Maul",
+    "Stalker_Melee.Dark_Melee.Shadow_Punch",
+    "Stalker_Melee.Dark_Melee.Siphon_Life",
+    "Stalker_Melee.Dark_Melee.Smite",
+    "Stalker_Melee.Dark_Melee.Touch_of_Fear"
   ],
   "available_level": [
+    5,
+    7,
+    25,
+    11,
+    1,
     0,
+    17,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21
   ]
 }

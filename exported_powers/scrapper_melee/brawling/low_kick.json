@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shin Breaker",
   "display_fullname": "Scrapper Melee Brawling Low Kick",
-  "display_help": "GY3ZZC2974D6Y3XJKSKYZ4FLFQ",
-  "display_short_help": "HHF78B5582QVWBXVK7F74H98TZ",
+  "display_help": "You execute a quick but powerful kick targeting your foe's leg in an attempt to cripple their movement. Shin Breaker deals Superior Smashing damage and moderately reduces your target's movement speed and defense for a short time. Shin Breaker is a Combo Builder and adds 1 Combo Level.",
+  "display_short_help": "Melee, DMG(Smash), Foe -Speed, -Defense, Combo Builder",
   "icon": "brawling_lowkick.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -641,6 +641,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Scrapper_Melee.Brawling"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Power Sink",
   "display_fullname": "Stalker Defense Electric Armor Power Sink",
-  "display_help": "AAHCT5ARLCAYW6N74KRAQFZQC2",
-  "display_short_help": "SB6GX795A7CYYTVKL9WRYW9S4Q",
+  "display_help": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance and regeneration rate. If there are no foes within range, you will not gain any Endurance.",
+  "display_short_help": "PBAoE, Self +End, +Regen, Foe -End",
   "icon": "electricarmor_pbaoeregendrain",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -226,6 +226,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Stalker_Defense.Electric_Armor"
 }

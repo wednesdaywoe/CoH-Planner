@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Fury",
   "display_fullname": "Inherent Inherent Rage Buff",
-  "display_help": "DZJJLN4QUJUWWGXSX5LW42LL63",
+  "display_help": "As a Brute engages in combat, they unleash their Fury. The longer they remain in combat, attacking and being attacked, the more damage they deal.",
   "display_short_help": "Self +DMG, Special",
   "icon": "inherent_blasterdesperation.png",
   "auto_issue": true,

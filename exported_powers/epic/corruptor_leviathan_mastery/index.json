@@ -5,17 +5,17 @@
   "short_help": "Leviathan Mastery",
   "icon": "corruptor_leviathan_mastery_set.ico",
   "powers": [
-    "Hibernate",
-    "School_of_Sharks",
-    "Shark_Skin",
-    "Spirit_Shark_Jaws",
-    "Summon_Coralax"
+    "Epic.Corruptor_Leviathan_Mastery.Hibernate",
+    "Epic.Corruptor_Leviathan_Mastery.School_of_Sharks",
+    "Epic.Corruptor_Leviathan_Mastery.Shark_Skin",
+    "Epic.Corruptor_Leviathan_Mastery.Spirit_Shark_Jaws",
+    "Epic.Corruptor_Leviathan_Mastery.Summon_Coralax"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    34,
+    34,
+    40,
+    43
   ]
 }

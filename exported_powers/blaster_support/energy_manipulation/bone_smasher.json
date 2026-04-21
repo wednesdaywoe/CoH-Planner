@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bone Smasher",
   "display_fullname": "Blaster Support Energy Manipulation Bone Smasher",
-  "display_help": "J8XDZVXTEMHZWQBTQNE5BMQAC2",
-  "display_short_help": "HCBZYDTWM4QLWHLLZFJVTR4LHZ",
+  "display_help": "The Bone Smasher is a slow attack, but makes up for it with a good amount of damage. Has a greater chance to Disorient than Energy Punch.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Superior DMG(Smash/Energy), Foe Disorient",
   "icon": "energymanipulation_bonesmasher.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -263,6 +263,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Energy_Manipulation"
 }

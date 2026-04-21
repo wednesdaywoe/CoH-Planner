@@ -3,10 +3,10 @@
   "full_name": "Controller_Control.Plant_Control.Vines",
   "short_name": "Vines",
   "type": "Click",
-  "display_name": "P3475827511",
+  "display_name": "Vines",
   "display_fullname": "Controller Control Plant Control Vines",
-  "display_help": "VRLRQC9ZFYXNYYV3B7H44RW4NA",
-  "display_short_help": "3TJEZU3MN544WBMQWN6GQC3GJX",
+  "display_help": "Creates a field of Strangler Vines that can Hold multiple foes at range. The affected targets are held helpless by the massive root-like vines. Vines lowers damage output of targets and deals toxic damage over time if they are held.",
+  "display_short_help": "Ranged (Targeted AoE), Foe Hold, -DMG, -DoT(Toxic)",
   "icon": "plantcontrol_vines.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -125,6 +125,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Controller_Control.Plant_Control"
 }

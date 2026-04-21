@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Hibernate",
   "display_fullname": "Epic Ice Mastery Hibernate",
-  "display_help": "PHZZYBDTZM89YGN2RQNECVQXNW",
+  "display_help": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall.",
   "display_short_help": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
   "icon": "ice_mastery_hibernate",
   "auto_issue": false,
@@ -256,6 +256,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Ice_Mastery"
 }

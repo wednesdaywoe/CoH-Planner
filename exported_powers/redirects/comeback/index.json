@@ -1,13 +1,13 @@
 {
   "key": "Redirects.Comeback",
-  "display_name": "FMHVWDRDDRQQY2NQ37AXMDTNEA",
-  "help": "FMHVWDRDDRQQY2NQ37AXMDTNEA",
-  "short_help": "FMHVWDRDDRQQY2NQ37AXMDTNEA",
+  "display_name": "Comeback",
+  "help": "Comeback",
+  "short_help": "Comeback",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Comeback",
-    "Debt_Protection",
-    "Delegate"
+    "Redirects.Comeback.Comeback",
+    "Redirects.Comeback.Debt_Protection",
+    "Redirects.Comeback.Delegate"
   ],
   "available_level": [
     0,

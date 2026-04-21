@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Whirling Smash",
   "display_fullname": "Brute Melee Titan Weapons Whirling Slice",
-  "display_help": "W49SRA9M6DDRYYMF2YE95S4TXZ",
-  "display_short_help": "PZUVRWKDS289YNNDDWJ4AYGQPW",
+  "display_help": "You perform a powerful Whirling Smash that deals Moderate Smashing damage, and can knock an opponent down.<br><br><color #fcfc95>Notes: Whirling Smash requires Momentum in order to be activated.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Smashing), Knockdown, Requires Momentum",
   "icon": "titanweapons_whirlingslice.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Brute_Melee.Titan_Weapons"
 }

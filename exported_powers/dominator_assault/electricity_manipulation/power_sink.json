@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Thunder Strike",
   "display_fullname": "Dominator Assault Electricity Manipulation Power Sink",
-  "display_help": "M3FG4V3L46CEW7VJGRTNRYVXKA",
-  "display_short_help": "ZSJCJLLBN3YTY6L5S6YKTU7QQW",
+  "display_help": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee (AoE), Superior DMG(Smash, Energy), Foe Disorient, Knockback",
   "icon": "electricalassault_thunderstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -486,6 +486,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Dominator_Assault.Electricity_Manipulation"
 }

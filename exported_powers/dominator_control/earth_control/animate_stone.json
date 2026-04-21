@@ -6,7 +6,7 @@
   "display_name": "Animate Stone",
   "display_fullname": "Dominator Control Earth Control Animate Stone",
   "display_help": "Earth and stone coalesce to form an incredibly tough entity that can attack your foes. The Animated Stone is not alive and is immune to Psionic damage. It is also virtually immune to Sleep, Immobilize, Disorient, and Hold effects. The entity can be healed and buffed like any teammate. Type ''/release_pets'' in the chat window to release all your pets.",
-  "display_short_help": "ABP45LEX73WSW9XEJAC22YPHQ2",
+  "display_short_help": "Summon Golem: Melee DMG(Smashing)",
   "icon": "earthgrasp_animatestone.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Dominator_Control.Earth_Control"
 }

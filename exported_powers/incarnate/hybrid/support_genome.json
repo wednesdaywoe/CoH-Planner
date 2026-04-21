@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Support Genome",
   "display_fullname": "Incarnate Hybrid Support Genome",
-  "display_help": "ALCKQ3V2VZD4WXLUFBRQWVZ26S",
+  "display_help": "While toggled on, this power provides a small boost in Damage(All) and Defense(Melee, Smashing, Lethal) to all leaguemates within a 50 foot radius. Up to five Support Hybrid powers can stack on a single target at any given time. Equipping this Hybrid power grants a passive boost to Endurance Discount at all times.<br><br><color #fcfc95>Notes: Support Genome is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: +Damage, +Defense",
   "icon": "incarnate_hybrid_support_common.png",
   "auto_issue": false,

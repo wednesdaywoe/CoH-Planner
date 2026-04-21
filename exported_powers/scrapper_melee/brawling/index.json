@@ -5,25 +5,25 @@
   "short_help": "Street Justice",
   "icon": "brawling_set.ico",
   "powers": [
-    "Combat_Readiness",
-    "Confront",
-    "Crushing_Uppercut",
-    "Heavy_Blow",
-    "Initial_Strike",
-    "Low_Kick",
-    "Spinning_Strike",
-    "Sweeping_Cross",
-    "Throat_Strike"
+    "Scrapper_Melee.Brawling.Combat_Readiness",
+    "Scrapper_Melee.Brawling.Confront",
+    "Scrapper_Melee.Brawling.Crushing_Uppercut",
+    "Scrapper_Melee.Brawling.Heavy_Blow",
+    "Scrapper_Melee.Brawling.Initial_Strike",
+    "Scrapper_Melee.Brawling.Low_Kick",
+    "Scrapper_Melee.Brawling.Spinning_Strike",
+    "Scrapper_Melee.Brawling.Sweeping_Cross",
+    "Scrapper_Melee.Brawling.Throat_Strike"
   ],
   "available_level": [
+    5,
+    11,
+    25,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    17,
+    1,
+    7
   ]
 }

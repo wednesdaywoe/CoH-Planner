@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shockwave",
   "display_fullname": "Blaster Ranged Sonic Attack Shockwave",
-  "display_help": "E36N4UVSWG8TYCLV5D3N7X5VJ2",
-  "display_short_help": "4UWXHES25Z8NWYCNF7SDWRQLF2",
+  "display_help": "You can call forth a tremendous Shockwave that knocks back foes and deals Smashing damage in a wide cone area.",
+  "display_short_help": "Ranged (Cone), DMG(Smashing/Energy), Foe Knockback",
   "icon": "sonicblast_knockback.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Blaster_Ranged.Sonic_Attack"
 }

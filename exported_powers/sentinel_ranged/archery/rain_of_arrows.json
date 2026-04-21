@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Rain of Arrows",
   "display_fullname": "Sentinel Ranged Archery Rain of Arrows",
-  "display_help": "7C38PK24X9RLW5X6L2NWFNDH9S",
+  "display_help": "You unleash a Rain of Arrows on a targeted location, damaging foes within a large area.",
   "display_short_help": "Ranged (Location AoE), Extreme DoT(Lethal)",
   "icon": "archery_rainofarrows.png",
   "auto_issue": false,
@@ -119,6 +119,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Sentinel_Ranged.Archery"
 }

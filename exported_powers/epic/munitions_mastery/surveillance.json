@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Surveillance",
   "display_fullname": "Epic Munitions Mastery Surveillance",
-  "display_help": "PHMPAJH83RP8YQV5M6ZL2VHGH3",
+  "display_help": "When this power is activated, you focus your senses to analyze your target's defensive capabilities and discover their weaknesses. By sharing your knowledge of the target's weaknesses with your team mates, you effectively reduce their defense and resistance to damage. Your Combat Attributes Window will also show the combat attributes of the target. You must be level 41 and have one other Arsenal Mastery powers before selecting this power.",
   "display_short_help": "Ranged Foe -DEF, -RES (All)",
   "icon": "munitionsmastery_surveillance.png",
   "auto_issue": false,
@@ -140,6 +140,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Munitions_Mastery"
 }

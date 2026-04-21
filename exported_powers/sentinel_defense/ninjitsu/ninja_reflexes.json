@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Ninja Reflexes",
   "display_fullname": "Sentinel Defense Ninjitsu Ninja Reflexes",
-  "display_help": "PCTP7A2ADDJ3YVZRNEBC3Z6UTX",
+  "display_help": "Activating your Ninja Reflexes enables you to be more evasive to melee attacks. This will increase your Defense versus melee as long as it is active. Ninja Reflexes also grants you resistance to Defense DeBuffs.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +DEF(Melee), Res(DeBuff DEF)",
   "icon": "ninjitsu_ninjareflexes.png",
   "auto_issue": false,

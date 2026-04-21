@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fire Ball",
   "display_fullname": "Incarnate Lore Pet Demons Boss Fire Ball",
-  "display_help": "W2P8XX8MS4BWYGMC9W7TN3CLH3",
+  "display_help": "The Fireball has set you on Fire.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "DoT(Fire)",
   "icon": "fireblast_fireball.png",
   "auto_issue": false,

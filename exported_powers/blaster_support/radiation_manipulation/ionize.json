@@ -6,7 +6,7 @@
   "display_name": "Ionize",
   "display_fullname": "Blaster Support Radiation Manipulation Ionize",
   "display_help": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.",
-  "display_short_help": "UPUAVJGXZFH5Y5VPGG7VDG48MW",
+  "display_short_help": "Self +DMG, +ToHit",
   "icon": "atomicmanipulation_buildup",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -114,6 +114,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Radiation_Manipulation"
 }

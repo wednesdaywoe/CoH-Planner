@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Surge of Power",
   "display_fullname": "Epic Charge Mastery Surge of Power",
-  "display_help": "2CZ67QY25K86YNNHLWV63W6JJX",
+  "display_help": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics. However, expending all this energy will leave you exhausted, and drained of all endurance. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
   "display_short_help": "Self, +Res(Special)",
   "icon": "electrical_mastery_powersurge.png",
   "auto_issue": false,
@@ -262,6 +262,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Charge_Mastery"
 }

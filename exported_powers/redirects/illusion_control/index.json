@@ -5,7 +5,7 @@
   "short_help": "Illusion Control",
   "icon": "blind_set.ico",
   "powers": [
-    "Blind"
+    "Redirects.Illusion_Control.Blind"
   ],
   "available_level": [
     0

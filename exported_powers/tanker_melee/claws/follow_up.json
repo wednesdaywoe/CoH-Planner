@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Follow Up",
   "display_fullname": "Tanker Melee Claws Follow Up",
-  "display_help": "BK2B3RS8JSHVWXMTE3QFDKYN92",
-  "display_short_help": "JWTJPF7NVHS4WTM6Q29T6X8782",
+  "display_help": "You perform a feint attack that deals moderate damage. After this attack hits, it gives you a large bonus Damage and chance to hit for a brief time.",
+  "display_short_help": "Melee, DMG(Lethal), Self +DMG +To-hit",
   "icon": "claws_feint.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -234,6 +234,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Tanker_Melee.Claws"
 }

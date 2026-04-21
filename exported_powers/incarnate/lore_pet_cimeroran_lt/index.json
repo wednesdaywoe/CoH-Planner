@@ -5,10 +5,10 @@
   "short_help": "Cimeroran",
   "icon": "lore_pet_cimeroran_lt_set.ico",
   "powers": [
-    "Hack",
-    "Pilum",
-    "Slash",
-    "Slice"
+    "Incarnate.Lore_Pet_Cimeroran_LT.Hack",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Pilum",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Slash",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Slice"
   ],
   "available_level": [
     0,

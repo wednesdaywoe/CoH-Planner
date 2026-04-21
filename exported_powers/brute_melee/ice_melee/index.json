@@ -5,25 +5,25 @@
   "short_help": "Ice Melee",
   "icon": "ice_melee_set.ico",
   "powers": [
-    "Build_Up",
-    "Freezing_Touch",
-    "Frost",
-    "Frozen_Aura",
-    "Frozen_Fists",
-    "Greater_Ice_Sword",
-    "Ice_Patch",
-    "Ice_Sword",
-    "Taunt"
+    "Brute_Melee.Ice_Melee.Build_Up",
+    "Brute_Melee.Ice_Melee.Freezing_Touch",
+    "Brute_Melee.Ice_Melee.Frost",
+    "Brute_Melee.Ice_Melee.Frozen_Aura",
+    "Brute_Melee.Ice_Melee.Frozen_Fists",
+    "Brute_Melee.Ice_Melee.Greater_Ice_Sword",
+    "Brute_Melee.Ice_Melee.Ice_Patch",
+    "Brute_Melee.Ice_Melee.Ice_Sword",
+    "Brute_Melee.Ice_Melee.Taunt"
   ],
   "available_level": [
+    5,
+    21,
+    1,
+    25,
     0,
+    17,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11
   ]
 }

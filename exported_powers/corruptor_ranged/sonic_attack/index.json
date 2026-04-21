@@ -5,25 +5,25 @@
   "short_help": "Sonic Attacks",
   "icon": "sonic_attack_set.ico",
   "powers": [
-    "Amplify",
-    "Dreadful_Wail",
-    "Howl",
-    "Scream",
-    "Screech",
-    "Shockwave",
-    "Shout",
-    "Shriek",
-    "Sirens_Song"
+    "Corruptor_Ranged.Sonic_Attack.Amplify",
+    "Corruptor_Ranged.Sonic_Attack.Dreadful_Wail",
+    "Corruptor_Ranged.Sonic_Attack.Howl",
+    "Corruptor_Ranged.Sonic_Attack.Scream",
+    "Corruptor_Ranged.Sonic_Attack.Screech",
+    "Corruptor_Ranged.Sonic_Attack.Shockwave",
+    "Corruptor_Ranged.Sonic_Attack.Shout",
+    "Corruptor_Ranged.Sonic_Attack.Shriek",
+    "Corruptor_Ranged.Sonic_Attack.Sirens_Song"
   ],
   "available_level": [
+    11,
+    25,
+    1,
     0,
+    21,
+    5,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    17
   ]
 }

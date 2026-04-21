@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Death Shroud",
   "display_fullname": "Tanker Defense Dark Armor Death Shroud",
-  "display_help": "4RDV7N7CL8F8Y4XYZZZQECQTVZ",
+  "display_help": "You become a focus point for the Netherworld, allowing its Negative Energy to seep from your body. This will continuously damage all foes in melee range.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: PBAoE Minor DoT(Negative)",
   "icon": "darkarmor_touchofdeath.png",
   "auto_issue": false,

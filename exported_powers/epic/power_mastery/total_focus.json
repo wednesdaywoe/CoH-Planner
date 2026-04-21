@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Total Focus",
   "display_fullname": "Epic Power Mastery Total Focus",
-  "display_help": "S7ESYUFBKZ6HYLXYPYGBBAMQZX",
+  "display_help": "Total Focus is complete mastery over Energy Melee. This is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
   "display_short_help": "Melee, Extreme DMG(Energy/Smash), Foe Disorient",
   "icon": "energymanipulation_totalfocus.png",
   "auto_issue": false,
@@ -301,6 +301,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Power_Mastery"
 }

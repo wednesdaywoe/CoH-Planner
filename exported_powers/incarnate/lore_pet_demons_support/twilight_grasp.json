@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Twilight Grasp",
   "display_fullname": "Incarnate Lore Pet Demons Support Twilight Grasp",
-  "display_help": "2SUELP777RKRW2NYQVSKK9EFXS",
+  "display_help": "You channel Negative Energy from the Netherworld through yourself to a targeted foe. Twilight Grasp drains the power from that target and slowly transfers it to you and all nearby allies. The targeted foe's Accuracy and damage are reduced, while you and your nearby allies are healed.<br><br><color #fcfc95>Notes: Twilight Grasp is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Foe -Acc -DMG, Team Heal",
   "icon": "darkmiasma_twilightgrasp.png",
   "auto_issue": false,

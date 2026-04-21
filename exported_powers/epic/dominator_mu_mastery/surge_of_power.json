@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Surge of Power",
   "display_fullname": "Epic Dominator Mu Mastery Surge of Power",
-  "display_help": "JZUY7LDGVMSXWPMKFP7H3NXJFA",
+  "display_help": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics, and your endurance recovery is also increased. Expending all this energy will leave you exhausted, drained of all your endurance and unable to recover endurance for a short time. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
   "display_short_help": "Self, +Res(Special)",
   "icon": "arachnos_patron_selfbuffresistancephysical.png",
   "auto_issue": false,
@@ -262,6 +262,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Dominator_Mu_Mastery"
 }

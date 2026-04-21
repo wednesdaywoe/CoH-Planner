@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Neutron Bomb",
   "display_fullname": "Defender Ranged Radiation Blast Neutron Bomb",
-  "display_help": "2ZDAA8NZ3FU3WVNASNPQ9R4U42",
-  "display_short_help": "SJ6BGUL5X4Y7W7CY2H6NVUVHPA",
+  "display_help": "This devastating attack lobs an explosive sphere of deadly radiation, damaging the target and all nearby foes. Neutron Bomb can bypass some of a target's defenses and reduce the target's Defense.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Energy), Foe -DEF",
   "icon": "radiationburst_radiationblast",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Defender_Ranged.Radiation_Blast"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Master Brawler",
   "display_fullname": "Sentinel Defense Super Reflexes Master Brawler",
-  "display_help": "CHB7PSTT3S3GYPVZFE6LTWSLAA",
+  "display_help": "Your are a master brawler, as such you have learned when its best to block an attack and absorb damage the most effectively. Using this power when you have the highest amount of endurance but the lowest amount of health will result in the most powerful effect possible. Owning this power will also improve your Focused Fighting and Focused Senses abilities. This power can not be taken if you take Practiced Brawler.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Self +Absorb +Special",
   "icon": "superreflexes_block",
   "auto_issue": false,
@@ -124,6 +124,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Sentinel_Defense.Super_Reflexes"
 }

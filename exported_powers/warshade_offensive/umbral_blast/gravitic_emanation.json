@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Gravitic Emanation",
   "display_fullname": "Warshade Offensive Umbral Blast Gravitic Emanation",
-  "display_help": "XCFZRDJSTBFLWWLF2GAYCN3SB3",
+  "display_help": "Gravitic Emanation sends bolts of dark Nictus energy to multiple targets within a cone area in front of the caster. Gravitic Emanation deals only minor Negative Energy damage to each affected foe, but knocks them back, leaving them Disoriented and with reduced attack rate and movement speed.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Cone), Minor DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
   "icon": "umbralblast_graviticemanation.png",
   "auto_issue": false,
@@ -294,6 +294,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

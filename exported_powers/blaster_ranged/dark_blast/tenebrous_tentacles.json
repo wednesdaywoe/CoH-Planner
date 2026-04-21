@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Tenebrous Tentacles",
   "display_fullname": "Blaster Ranged Dark Blast Tenebrous Tentacles",
-  "display_help": "XAGNLC64PVYQYUCPUCZUC3MNNA",
-  "display_short_help": "ER93FHXCD4FDWQNAW7MSKYGURW",
+  "display_help": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their chance to hit.",
+  "display_short_help": "Ranged (Cone), DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "darkcast_tenebroustentacles.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -367,6 +367,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Blaster_Ranged.Dark_Blast"
 }

@@ -3,10 +3,10 @@
   "full_name": "Sentinel_Defense.Psionic_Armor.Aura_of_Insanity",
   "short_name": "Aura_of_Insanity",
   "type": "Toggle",
-  "display_name": "3A74JS2XX43CWEM46KSAYHUVSA",
+  "display_name": "Aura of Madness",
   "display_fullname": "Sentinel Defense Psionic Armor Aura of Insanity",
-  "display_help": "SJVGW7A7RNHXY2N5Y3Y7P6U7U2",
-  "display_short_help": "Z65SH4K8M2JHWHL5HT3TVKUCP2",
+  "display_help": "You emit a powerful psychic aura that causes the minds of those around you to become weak and distracted. Foes may be stunned, held, terrified or even confused in your presence, in addition to suffering a debuff derived from the applied control effect. Those that resist these effects will see their damage reduced. This power allows you to use your own Hit Points to keep enemies near you disabled. The power costs no endurance but can be dangerous to use.<br><br><color #fcfc95>Notes: Mez enhancements on this power enhance its magnitude instead of its duration.</color>",
+  "display_short_help": "Toggle: PBAoE, Foe Confuse, Disorient, Sleep, Hold, Fear, -Damage(All), +Special",
   "icon": "psionicarmor_worldofconfusion",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -1420,6 +1420,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Sentinel_Defense.Psionic_Armor"
 }

@@ -5,25 +5,25 @@
   "short_help": "Dark Blast",
   "icon": "dark_blast_set.ico",
   "powers": [
-    "Abyssal_Gaze",
-    "Aim",
-    "Blackstar",
-    "Dark_Blast",
-    "Gloom",
-    "Life_Drain",
-    "Moonbeam",
-    "Tenebrous_Tentacles",
-    "Umbral_Torrent"
+    "Blaster_Ranged.Dark_Blast.Abyssal_Gaze",
+    "Blaster_Ranged.Dark_Blast.Aim",
+    "Blaster_Ranged.Dark_Blast.Blackstar",
+    "Blaster_Ranged.Dark_Blast.Dark_Blast",
+    "Blaster_Ranged.Dark_Blast.Gloom",
+    "Blaster_Ranged.Dark_Blast.Life_Drain",
+    "Blaster_Ranged.Dark_Blast.Moonbeam",
+    "Blaster_Ranged.Dark_Blast.Tenebrous_Tentacles",
+    "Blaster_Ranged.Dark_Blast.Umbral_Torrent"
   ],
   "available_level": [
+    17,
+    5,
+    25,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    7,
+    11,
+    1
   ]
 }

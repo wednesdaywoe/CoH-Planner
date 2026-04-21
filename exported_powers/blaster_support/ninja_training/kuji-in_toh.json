@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Kuji-In Toh",
   "display_fullname": "Blaster Support Ninja Training Kuji-In Toh",
-  "display_help": "NRRN4H5Y8WJXWCCBS3VNUPA6SA",
+  "display_help": "Kuji-In Toh invokes the power of Toh, or harmony with the universe. Focusing your inner power, you can make your body regenerate and recover endurance for a while. You also gain resistance to psionic attacks and fear protection.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +Regen, +Recovery, Res(Psionic, Fear)",
   "icon": "ninjatools_toh",
   "auto_issue": false,
@@ -239,6 +239,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Ninja_Training"
 }

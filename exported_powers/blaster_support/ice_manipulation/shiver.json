@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shiver",
   "display_fullname": "Blaster Support Ice Manipulation Shiver",
-  "display_help": "8GRWY3HF65D7WPVHBVCBJS2UFX",
+  "display_help": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Cone), Foe -SPD, -Recharge",
   "icon": "icemanipulation_shiver.png",
   "auto_issue": false,
@@ -304,6 +304,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Blaster_Support.Ice_Manipulation"
 }

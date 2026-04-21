@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Plasma Shield",
   "display_fullname": "Scrapper Defense Fiery Aura Plasma Shield",
-  "display_help": "3YZP32RZDUC8WBM9GY34FEHA7S",
+  "display_help": "While this power is active, you are surrounded by pure plasma. The Plasma Shield gives you resistance to Energy, Negative Energy, and Fire damage. Plasma Shield also gives your protection from Sleep and Hold effects.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Self +Res(Energy, Negative, Fire, Hold, Sleep)",
   "icon": "flamingshield_plasmasheild.png",
   "auto_issue": false,
@@ -236,6 +236,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Scrapper_Defense.Fiery_Aura"
 }

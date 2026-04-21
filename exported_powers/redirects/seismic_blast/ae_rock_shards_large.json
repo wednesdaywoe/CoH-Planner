@@ -3,10 +3,10 @@
   "full_name": "Redirects.Seismic_Blast.AE_Rock_Shards_Large",
   "short_name": "AE_Rock_Shards_Large",
   "type": "Click",
-  "display_name": "67C3XYGPWCULWPVMWKJSZ5JJ6Q",
+  "display_name": "Enhanced Rock Shards",
   "display_fullname": "Redirects Seismic Blast AE Rock Shards Large",
-  "display_help": "QB3ERC2WVNUDYAZJR9TQWBR97X",
-  "display_short_help": "BH7PUJ5RD7PLYBB42V3BZU9GWA",
+  "display_help": "You launch a volley of stone shards at your target in a sweeping cone. These shards stab into the target, causing lethal damage. They will also continue to suffer aditional lethal damage over time.<br><br>If affected by Seismic Shockwaves, this power will halt the shockwaves, the up front damage will be increased and damage over time accelerated, foes will be knocked down, range will be increased to 60ft and arc to 40 degrees.<br><br>Rock Shards grants one stack of Seismic Pressure.",
+  "display_short_help": "Ranged Cone, DMG(Smash), -Defense, Special",
   "icon": "seismicblast_rockshards",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -321,6 +321,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Redirects.Seismic_Blast"
 }

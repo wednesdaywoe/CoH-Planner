@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Drain Psyche",
   "display_fullname": "Dominator Assault Psionic Assault Drain Psyche",
-  "display_help": "G3W685PNM2K4YLM3WAKJVMFJ53",
+  "display_help": "You Drain the Psyche of nearby foes, thus weakening their Hit Point Regeneration and Endurance Recovery and boosting your own.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE Foe -Regen, -Recovery; Self +Regen, +Recovery",
   "icon": "psionicassault_psychicsiphon.png",
   "auto_issue": false,
@@ -263,6 +263,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Dominator_Assault.Psionic_Assault"
 }

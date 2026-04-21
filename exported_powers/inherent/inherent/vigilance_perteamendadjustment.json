@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Vigilance",
   "display_fullname": "Inherent Inherent Vigilance PerTeamEndAdjustment",
-  "display_help": "23SELMZ8KMC7YVZDYXSZ93BLYQ",
+  "display_help": "The Defender's primary focus is to protect the team. When their allies are in danger, the Defender is able to look deep within him or herself and rise to the occasion. As a Defender's teammates are in danger of being defeated, the Defender gains an Endurance Discount and can activate their powers at a reduced cost. The more teammates in trouble, the greater the discount. A Defender on a small team or by himself has more freedom to concentrate on his enemies, which allows him to increase his damage output by up to 30%. Each team member reduces this by 10%, to a minimum of no buff at all.",
   "display_short_help": "Endurance Discount",
   "icon": "inherentpeacebringer_interspaciallink.png",
   "auto_issue": true,

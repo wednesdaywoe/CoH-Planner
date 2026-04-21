@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Equip Mercenary",
   "display_fullname": "Mastermind Summon Mercenaries Equip Mercenary",
-  "display_help": "FKBQE3P3K5APYDVG232KZ7SLQW",
+  "display_help": "Equip your Mercenary Henchmen with more advanced munitions and weaponry. This power permanently bestows new weapons and abilities to all Mercenary Henchman. The powers gained are unique and dependent upon the type of Mercenary Henchman.<br><br>Your Mercenary Henchmen will also become more resistant to damage. This power only works on your Mercenary Henchmen and you can only Equip your Mercenary Henchmen once with this power.",
   "display_short_help": "Ranged, Equip Mercenary Henchman",
   "icon": "paramilitary_equipsoldier.png",
   "auto_issue": false,
@@ -43,6 +43,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Mastermind_Summon.Mercenaries"
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Superior Invisibility",
   "display_fullname": "Controller Control Illusion Control Invisibility",
-  "display_help": "KZL3E3YTY84YYHVLVELSRV2TK2",
+  "display_help": "You can bend light around yourself to become completely Invisible. While this power is active, you are all but impossible to detect, and have an extremely high Defense bonus to all attacks. Superior Invisibility is the only toggle invisibility power that allows you to attack while it is active, although you will lose some of your defense bonus if you do so.",
   "display_short_help": "Toggle: Self Stealth, +DEF(All)",
   "icon": "illusions_invisibility.png",
   "auto_issue": false,
@@ -341,6 +341,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Controller_Control.Illusion_Control"
 }

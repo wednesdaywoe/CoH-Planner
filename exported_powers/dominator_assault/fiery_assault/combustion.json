@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Combustion",
   "display_fullname": "Dominator Assault Fiery Assault Combustion",
-  "display_help": "LJRUQBBQZQXBYCXJMDGGCCK7GZ",
+  "display_help": "Your mastery of fire allows you to violently raise the temperature around yourself in an attempt to spontaneously combust any nearby foes and set them ablaze, dealing damage over time.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Moderate DoT(Fire)",
   "icon": "fireassault_combustion.png",
   "auto_issue": false,
@@ -187,6 +187,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Dominator_Assault.Fiery_Assault"
 }

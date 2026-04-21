@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Spin",
   "display_fullname": "Scrapper Melee Claws Spin",
-  "display_help": "K674J6AXRHEVWTXAG8EHWJPDDS",
-  "display_short_help": "G2M77TSMNCZMWSZ4Q99QULSJFQ",
+  "display_help": "You spin around in a circle, attacking everyone within melee range with a Strike attack.",
+  "display_short_help": "PBAoE Melee, DMG(Lethal)",
   "icon": "claws_spinningclawsattack.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -276,6 +276,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Scrapper_Melee.Claws"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Plasma Blast",
   "display_fullname": "Incarnate Lore Pet Longbow Boss Plasma Blast",
-  "display_help": "APU7UX26X42LWZLABXJJFMU3VQ",
+  "display_help": "Plasma burns are hard to heal. The burns have halted your Regeneration rate.<br><br><color #fcfc95>Notes: Plasma Blast is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "-Regeneration",
   "icon": "robotics_laserrifleburst.png",
   "auto_issue": false,

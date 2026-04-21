@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bayonet",
   "display_fullname": "Arachnos Soldiers Arachnos Soldier Bayonet",
-  "display_help": "4MXZW5BFHBVGYYCL2ZNGXE4E7Q",
-  "display_short_help": "JWQ7HF66AE5EY9LA35JKERSJF3",
+  "display_help": "Your weapon includes a bayonet attachment which you can use to stab at your enemies for lethal damage as well as causing them to bleed losing health over time.<br><br><color #fcfc95>Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.</color>",
+  "display_short_help": "Melee, DMG(Lethal), DoT(Lethal)",
   "icon": "arachnossoldier_bayonet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -238,6 +238,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Arachnos_Soldiers.Arachnos_Soldier"
 }

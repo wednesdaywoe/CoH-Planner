@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Deflection",
   "display_fullname": "Brute Defense Shield Defense Active Defense",
-  "display_help": "49SLT4FRBE68YTVN77HBJ5R933",
+  "display_help": "Your mastery of the shield allows you to easily deflect melee attacks, and attacks that do get through your ironclad defenses tend to do less damage. While Deflection is active the user will gain defense to melee attacks and some minor resistance to lethal and smashing damage. Deflection also adds Psionic Defense and an Elusivity defense bonus to Psionic and Melee Attacks in PVP zones.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +DEF(Melee), +Res(Lethal, Smashing)",
   "icon": "shielddefense_activedefense.png",
   "auto_issue": false,

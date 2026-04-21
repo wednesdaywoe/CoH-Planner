@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "White Dwarf Sublimation",
   "display_fullname": "Inherent Inherent White Dwarf Sublimation",
-  "display_help": "N9999VTEA7PMWCZY8JKZYWYTQX",
+  "display_help": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself. This power is only available while in White Dwarf Form.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Self Heal",
   "icon": "luminousaura_reformessence.png",
   "auto_issue": true,
@@ -82,6 +82,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Inherent.Inherent"
 }

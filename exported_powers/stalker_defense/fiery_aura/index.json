@@ -5,27 +5,27 @@
   "short_help": "Fiery Aura",
   "icon": "fiery_aura_set.ico",
   "powers": [
-    "Burn",
-    "Cauterizing_Blaze",
-    "Consume",
-    "Fire_Shield",
-    "Healing_Flames",
-    "Hide",
-    "Phoenix_Rising",
-    "Plasma_Shield",
-    "Rise_of_the_Phoenix",
-    "Temperature_Protection"
+    "Stalker_Defense.Fiery_Aura.Burn",
+    "Stalker_Defense.Fiery_Aura.Cauterizing_Blaze",
+    "Stalker_Defense.Fiery_Aura.Consume",
+    "Stalker_Defense.Fiery_Aura.Fire_Shield",
+    "Stalker_Defense.Fiery_Aura.Healing_Flames",
+    "Stalker_Defense.Fiery_Aura.Hide",
+    "Stalker_Defense.Fiery_Aura.Phoenix_Rising",
+    "Stalker_Defense.Fiery_Aura.Plasma_Shield",
+    "Stalker_Defense.Fiery_Aura.Rise_of_the_Phoenix",
+    "Stalker_Defense.Fiery_Aura.Temperature_Protection"
   ],
   "available_level": [
+    23,
+    27,
+    19,
+    0,
+    3,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    29,
+    9
   ]
 }

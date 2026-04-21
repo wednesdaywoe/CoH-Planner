@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Subdual",
   "display_fullname": "Blaster Support Mental Manipulation Subdual",
-  "display_help": "N6H43QMFVTKNYSLXU6N47VRS5S",
+  "display_help": "Subdual deals moderate Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Moderate DOT(Psionic), Foe Immobilize",
   "icon": "mentalcontrol_subdue.png",
   "auto_issue": false,

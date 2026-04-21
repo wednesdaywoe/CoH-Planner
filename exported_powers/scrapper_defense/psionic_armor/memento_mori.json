@@ -3,10 +3,10 @@
   "full_name": "Scrapper_Defense.Psionic_Armor.Memento_Mori",
   "short_name": "Memento_Mori",
   "type": "Click",
-  "display_name": "5424BLSXV9UZYBMT6M5J4PBT4A",
+  "display_name": "Memento Mori",
   "display_fullname": "Scrapper Defense Psionic Armor Memento Mori",
-  "display_help": "EU5KMZA6HV34YNZ5V388JTDC3S",
-  "display_short_help": "7FWSVF8EA4SGYMCMT3P28GH37A",
+  "display_help": "Terrify your foes projecting images of their own impending demise into their minds. Memento Mori inflicts fear on targets while healing you even if you have been defeated. Each affected foe will increase your maximum hit points and heal you. Using this power while conscious will give you one opportunity to get back up should you be defeated while its effects are active.<br><br><color #fcfc95>Notes: This power recharges in <color #FF7F27>10</color> seconds if no foes are hit. Otherwise, it recharges in <color #FF7F27>300</color> seconds.</color>",
+  "display_short_help": "Self Rez, +Max HP, Special",
   "icon": "psionicarmor_mementomori",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -59,6 +59,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Scrapper_Defense.Psionic_Armor"
 }

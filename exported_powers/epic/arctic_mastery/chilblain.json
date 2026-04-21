@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Chilblain",
   "display_fullname": "Epic Arctic Mastery Chilblain",
-  "display_help": "TXFJNU5Y4AE3Y9VQ43UTCGBVBA",
-  "display_short_help": "VPRL98NU4X6HY7CLG396GV9UXQ",
+  "display_help": "Immobilizes your target in an icy trap. Deals some damage over time and slightly Slows the target's attack and movement speed. Useful for keeping villains at bay.",
+  "display_short_help": "Ranged, DoT(Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "ice_mastery_chillblain",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -356,6 +356,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Arctic_Mastery"
 }

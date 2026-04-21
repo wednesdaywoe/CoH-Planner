@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Granite Armor",
   "display_fullname": "Tanker Defense Stone Armor Granite Armor",
-  "display_help": "4VHZXQJUQHXVYGVWP4DVH6ZWNZ",
-  "display_short_help": "95J3CJ76N592W9BNR74MB8FVM2",
+  "display_help": "When you activate this power, you are transformed into a massive bulk of unyielding Granite. Your incredible mass makes you almost completely invulnerable and resistant to most effects, including Defense DeBuffs. However, you also become quite heavy, cannot fly, your attack and movement speed are Slowed and you do less damage.<br><br>Cannot be active at the same time as other Armors in this set, Fly powers, Sprint, Super Speed, or Jump powers.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Self, +Res(All but Psionics), +DEF(All but Psionics), -SPD, -Recharge, -DMG, -Special",
   "icon": "stonearmor_granite.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -715,6 +715,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Tanker_Defense.Stone_Armor"
 }

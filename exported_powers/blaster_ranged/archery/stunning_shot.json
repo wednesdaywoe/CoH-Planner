@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Stunning Shot",
   "display_fullname": "Blaster Ranged Archery Stunning Shot",
-  "display_help": "J3FPALXFNGM6WZZZJNV7JGCQJ2",
-  "display_short_help": "2AR62BAKA8LRY4X32WARL4F78A",
+  "display_help": "You fire a blunt, weighted arrow at your target's chest. The Stunning Shot has a good chance of stunning your foe.",
+  "display_short_help": "Ranged Disorient, DMG(Smashing)",
   "icon": "archery_stunarrow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -196,6 +196,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Blaster_Ranged.Archery"
 }

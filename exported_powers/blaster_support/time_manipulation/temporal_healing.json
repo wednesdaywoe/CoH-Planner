@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Temporal Healing",
   "display_fullname": "Blaster Support Time Manipulation Temporal Healing",
-  "display_help": "UB3UNT5LEZK2Y4V7PR5MJWGWSA",
-  "display_short_help": "HAB46L7H7NE4WDBC26NLSN5UHQ",
+  "display_help": "You mend your wounds by placing your bodies in a past or future state where they are far less injured. Temporal Mending will immediately absorb damage as it's inflicted. Additionally, you will gain some resistance to slow effects and regeneration debuffs. If you are affected by the Accelerated effect, you absorb even more damage from this power.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle: Self +Absorb, +Recovery, +Resist(Slow, Regen Debuff)",
   "icon": "timemanipulation_temporalhealing",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -292,6 +292,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Time_Manipulation"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psionic Strike",
   "display_fullname": "Sentinel Ranged Psychic Blast Psionic Strike",
-  "display_help": "TVF237HRNELGWWB7KFL2EP7FWZ",
-  "display_short_help": "VFP4X8PR3W5MYGXFAJJRZPNDMX",
+  "display_help": "This extremely accurate attack does moderate Psionic damage and can Slow a target's attack rate.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, Superior DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_heavy",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -267,6 +267,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Sentinel_Ranged.Psychic_Blast"
 }

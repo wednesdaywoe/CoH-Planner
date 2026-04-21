@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Detonation",
   "display_fullname": "Warshade Offensive Umbral Blast Dark Matter Detonation",
-  "display_help": "M9JEPU8RCTG5YZX4CTRP6BLVPQ",
-  "display_short_help": "9FKSR248SYYLWEBU32RTCJMPUQ",
+  "display_help": "You hurl a blast of Dark Matter that violently explodes on impact, damaging all foes near the target. All affected targets' have their attack rate and movement speed slowed. Some foes may be knocked down.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Targeted AoE), Light DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_darkmatterdetonation.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -269,6 +269,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

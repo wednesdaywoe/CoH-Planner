@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "The Lotus Drops",
   "display_fullname": "Blaster Support Ninja Training The Lotus Drops",
-  "display_help": "MV49DTR3STQGWNL8MUQBL6AT92",
+  "display_help": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE Melee, Moderate DMG(Lethal), Foe -Def",
   "icon": "ninjatools_katanaaoe",
   "auto_issue": false,
@@ -225,6 +225,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Blaster_Support.Ninja_Training"
 }

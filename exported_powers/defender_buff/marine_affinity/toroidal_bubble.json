@@ -3,10 +3,10 @@
   "full_name": "Defender_Buff.Marine_Affinity.Toroidal_Bubble",
   "short_name": "Toroidal_Bubble",
   "type": "Click",
-  "display_name": "2UPTZKDVUQN3YTL7H6W5AWRWDA",
+  "display_name": "Toroidal Bubble",
   "display_fullname": "Defender Buff Marine Affinity Toroidal Bubble",
-  "display_help": "JPK342FX4MBPWGVMKLGMCKPLP3",
-  "display_short_help": "TTWQQLJC2ARBW7L5ZMEJZ3763Q",
+  "display_help": "You create a ring of Bubbles that surrounds your allies, hydrating them to replenish endurance and reducing the effects of endurance drain. The bubble also reduces all incoming damage, providing extra resistance to Smashing and Fire damage, and also increases jump height thanks to added buoyancy.",
+  "display_short_help": "PBAoE, Team +Res(All DMG, End Drain), +End, +Recovery, +Jump",
   "icon": "marineaffinity_toroidalbubble.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -218,6 +218,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Defender_Buff.Marine_Affinity"
 }

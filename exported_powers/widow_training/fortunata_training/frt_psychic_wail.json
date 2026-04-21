@@ -6,7 +6,7 @@
   "display_name": "Psychic Wail",
   "display_fullname": "Widow Training Fortunata Training FRT Psychic Wail",
   "display_help": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes. Those that survive will have a severely reduced attack rate and may be left Disoriented.",
-  "display_short_help": "FK34AZPPLYLBW5CW8LC7AXTL9A",
+  "display_short_help": "PBAoE, DMG(Psionic), Foe Disorient -Recharge",
   "icon": "fortunatatraining_psychicwail.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -213,6 +213,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Widow_Training.Fortunata_Training"
 }

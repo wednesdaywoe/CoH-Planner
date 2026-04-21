@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ice Storm",
   "display_fullname": "Defender Ranged Ice Blast Freezing Rain",
-  "display_help": "AEM2XTDTQBNZY3CEW9AB98677S",
-  "display_short_help": "UAZKCK3PARY4WNXDMDQEZJNJGQ",
+  "display_help": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed.",
+  "display_short_help": "Ranged (Location AoE), DoT(Cold, Lethal), Foe -Recharge, -SPD",
   "icon": "iceblast_freezingrain.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -90,6 +90,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Defender_Ranged.Ice_Blast"
 }

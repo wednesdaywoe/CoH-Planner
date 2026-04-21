@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Torrent",
   "display_fullname": "Defender Ranged Dark Blast Torrent",
-  "display_help": "D96YS3ALTZSEYPB6B8CFRJXZL2",
-  "display_short_help": "ZQPPD8V6CFWGWKCSMRQ25C27MZ",
+  "display_help": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit.",
+  "display_short_help": "Ranged (Cone), DMG(Negative), Foe -To Hit, Knockback",
   "icon": "darkcast_torrent.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -215,6 +215,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Defender_Ranged.Dark_Blast"
 }

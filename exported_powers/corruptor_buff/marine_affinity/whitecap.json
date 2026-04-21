@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Whitecap",
   "display_fullname": "Corruptor Buff Marine Affinity Whitecap",
-  "display_help": "YA2RLQHNVKD3YYVLTWWER6FSW3",
-  "display_short_help": "AJFWSC64S2TNY4VPSZ9X83VJ2W",
+  "display_help": "You summon a burst of water underfoot that hurls from your present location to a location of your choosing. When you splash down, any enemies in the surrounding area will be swept off their feet, and will experience a damage resistance debuff for a period of time. Enemies close to where you splash down will receive harsher debuffs for a brief time.<br><br>If you direct a Whitecap on targets inside a <color #fcfc95>Tide Pool</color>, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Cold), Foe Knockdown, -Resist(All), Self Teleport, Special",
   "icon": "marineaffinity_whitecap.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -119,6 +119,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Corruptor_Buff.Marine_Affinity"
 }

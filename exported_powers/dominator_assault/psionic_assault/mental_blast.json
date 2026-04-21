@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Mental Blast",
   "display_fullname": "Dominator Assault Psionic Assault Mental Blast",
-  "display_help": "U6UJ52LV2WUZYDBX4GQNX49YQW",
+  "display_help": "This basic attack does high Psionic damage, and can slightly reduce a target's attack speed.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mentalblast.png",
   "auto_issue": false,
@@ -188,6 +188,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Dominator_Assault.Psionic_Assault"
 }

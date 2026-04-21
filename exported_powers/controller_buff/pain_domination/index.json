@@ -5,25 +5,25 @@
   "short_help": "Pain Domination",
   "icon": "pain_domination_set.ico",
   "powers": [
-    "Anguishing_Cry",
-    "Conduit_of_Pain",
-    "Enforced_Morale",
-    "Nullify_Pain",
-    "Painbringer",
-    "Share_Pain",
-    "Soothe",
-    "Soothing_Aura",
-    "World_of_Pain"
+    "Controller_Buff.Pain_Domination.Anguishing_Cry",
+    "Controller_Buff.Pain_Domination.Conduit_of_Pain",
+    "Controller_Buff.Pain_Domination.Enforced_Morale",
+    "Controller_Buff.Pain_Domination.Nullify_Pain",
+    "Controller_Buff.Pain_Domination.Painbringer",
+    "Controller_Buff.Pain_Domination.Share_Pain",
+    "Controller_Buff.Pain_Domination.Soothe",
+    "Controller_Buff.Pain_Domination.Soothing_Aura",
+    "Controller_Buff.Pain_Domination.World_of_Pain"
   ],
   "available_level": [
+    27,
+    9,
+    15,
     0,
+    29,
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    23
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Quantum Flight",
   "display_fullname": "Peacebringer Defensive Luminous Aura Quantum Flight",
-  "display_help": "63AJAQFC7AFRW6XRQL2KGCCTJW",
+  "display_help": "You shift your quantum matrix and become more energy than matter. No longer bound by the laws of normal physics, you become intangible to other entities and can fly at high speeds. However, after 30 seconds the phase out effect will wear off. 30 seconds later, if this power is still active the user will become phased out once again. Quantum Flight offers greater flight speed and some stealth, but costs more endurance.<br><br>Quantum Flight can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Toggle: Self Fly, Intangible",
   "icon": "luminousaura_quantumflight.png",
   "auto_issue": false,
@@ -465,6 +465,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

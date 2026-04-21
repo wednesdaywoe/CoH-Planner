@@ -3,10 +3,10 @@
   "full_name": "Sentinel_Ranged.Storm_Blast.Category_Five",
   "short_name": "Category_Five",
   "type": "Click",
-  "display_name": "NWM8XM8EG8T7YSCD76QFWG4NP3",
+  "display_name": "Category Five",
   "display_fullname": "Sentinel Ranged Storm Blast Category Five",
-  "display_help": "49XJNKLZD2TAW4CDENYHLF4A7X",
-  "display_short_help": "KCW79JPHRBZEYXMATV2E7X3F5Z",
+  "display_help": "Summons a severe storm that begins light, but grows in power until it becomes a raging engine of destruction. Left on its own, the Category Five storm is capable of delivering moderate damage. As it grows in power, foes may begin to fling through the air.",
+  "display_short_help": "Ranged (Location AoE), DoT(Energy), +Wet",
   "icon": "stormblast_categoryfive.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -177,6 +177,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Sentinel_Ranged.Storm_Blast"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Regenerating Song",
   "display_fullname": "Incarnate Lore Pet Talons Support Debilitating Song",
-  "display_help": "YQJ59KEECKPMWLMVEMN7SEELNA",
+  "display_help": "You unleash a song which can create resonance within the bodies of those who hear it, amplifying their performance with powerfully sustaining effects. Your target receives a direct Heal with a steady Heal over Time, along with a Recharge and Recovery boost for a short period of time.<br><br><color #fcfc95>Notes: Regenerating Song is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Heal, HoT, +Recovery, +Recharge",
   "icon": "talonsofvengeance_debilitatingsong.png",
   "auto_issue": false,

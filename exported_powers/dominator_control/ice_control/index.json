@@ -5,25 +5,25 @@
   "short_help": "Ice Control",
   "icon": "ice_control_set.ico",
   "powers": [
-    "Arctic_Air",
-    "Block_of_Ice",
-    "Chilblain",
-    "Flash_Freeze",
-    "Frostbite",
-    "Glacier",
-    "Ice_Slick",
-    "Jack_Frost",
-    "Shiver"
+    "Dominator_Control.Ice_Control.Arctic_Air",
+    "Dominator_Control.Ice_Control.Block_of_Ice",
+    "Dominator_Control.Ice_Control.Chilblain",
+    "Dominator_Control.Ice_Control.Flash_Freeze",
+    "Dominator_Control.Ice_Control.Frostbite",
+    "Dominator_Control.Ice_Control.Glacier",
+    "Dominator_Control.Ice_Control.Ice_Slick",
+    "Dominator_Control.Ice_Control.Jack_Frost",
+    "Dominator_Control.Ice_Control.Shiver"
   ],
   "available_level": [
+    5,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    17,
+    1,
+    21,
+    11,
+    25,
+    7
   ]
 }

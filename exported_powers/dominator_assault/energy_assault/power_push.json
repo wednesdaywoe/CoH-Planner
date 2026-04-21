@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Power Push",
   "display_fullname": "Dominator Assault Energy Assault Power Push",
-  "display_help": "4R3JX3TN8RD6WEXXEZKRB9LCAX",
-  "display_short_help": "NSQDDF7ZUZDTY3LW5AZEMY36FA",
+  "display_help": "Power Push deals a high amount of Energy and Smashing damage and sends the target flying for a great distance. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged Moderate DMG(Energy/Smash), Foe High Knockback, Chance for Energy Focus",
   "icon": "energyassault_powerpush.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -295,6 +295,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Dominator_Assault.Energy_Assault"
 }

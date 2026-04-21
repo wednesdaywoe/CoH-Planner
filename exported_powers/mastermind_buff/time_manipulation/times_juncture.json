@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Time's Juncture",
   "display_fullname": "Mastermind Buff Time Manipulation Times Juncture",
-  "display_help": "PUUPEMZMU2SXY8NEQMJ56PTNS3",
+  "display_help": "You create a time dilation field around you causing enemies who get too close to be slowed to a crawl, their movement speed, damage and chance to hit will be decreased substantially. Enemies affected by Delayed have these affects increased.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: PBAoE Foe (-Damage, -Speed, -To Hit)",
   "icon": "timemanipulation_timesjuncture.png",
   "auto_issue": false,
@@ -417,6 +417,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Mastermind_Buff.Time_Manipulation"
 }

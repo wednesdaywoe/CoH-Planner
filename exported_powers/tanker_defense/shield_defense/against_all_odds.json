@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Against All Odds",
   "display_fullname": "Tanker Defense Shield Defense Against all Odds",
-  "display_help": "829K6JYQ8JNDYMMSU6BEH7MHA2",
+  "display_help": "The harder pressed you are in combat the greater your offensive abilities become. Each enemy that stands toe-to-toe with you in combat will grant you a damage bonus. The first foe you engage in melee grants the highest damage bonus, and up to 10 foes can contribute to this effect. Each foe in melee range also suffers from reduced damage as your shield deflects a portion of their damage.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: Self +DMG, Foe -DMG",
   "icon": "shielddefense_againstallodds.png",
   "auto_issue": false,
@@ -314,6 +314,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Tanker_Defense.Shield_Defense"
 }

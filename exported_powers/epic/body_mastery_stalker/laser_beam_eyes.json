@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Laser Beam Eyes",
   "display_fullname": "Epic Body Mastery Stalker Laser Beam Eyes",
-  "display_help": "ETXSB4HR6Y8GYNZKFEH9ZEMY7A",
-  "display_short_help": "NJCCUJA5UHEQYHBHUQBA8X6ZVQ",
+  "display_help": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can not miss and will reduce the target's Defense. Damage inflicted will fluctuate the current hit roll. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Energy), Foe -DEF",
   "icon": "bodymastery_laserbeameyes.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -534,6 +534,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Body_Mastery_Stalker"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Claw Pierce",
   "display_fullname": "Incarnate Lore Pet Arachnos Boss Claw Pierce",
-  "display_help": "9G67W2WXEHPNYEZN3LN89L6QLQ",
+  "display_help": "You have been poisoned and are taking damage over time.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "DoT(Toxic)",
   "icon": "inherent_brawl.png",
   "auto_issue": false,

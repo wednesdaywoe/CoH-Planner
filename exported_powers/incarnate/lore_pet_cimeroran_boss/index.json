@@ -5,11 +5,11 @@
   "short_help": "Cimeroran",
   "icon": "lore_pet_cimeroran_boss_set.ico",
   "powers": [
-    "Hack",
-    "Pilum",
-    "Push_Back",
-    "Slash",
-    "Slice"
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Hack",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Pilum",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Push_Back",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Slash",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Slice"
   ],
   "available_level": [
     0,

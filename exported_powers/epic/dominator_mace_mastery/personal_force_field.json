@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Personal Force Field",
   "display_fullname": "Epic Dominator Mace Mastery Personal Force Field",
-  "display_help": "LWAQ35RXDK2FWCCWJ2GD6N6QKA",
+  "display_help": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Self +Def, Res(All)",
   "icon": "arachnos_patron_megabuff.png",
   "auto_issue": false,
@@ -269,6 +269,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Dominator_Mace_Mastery"
 }

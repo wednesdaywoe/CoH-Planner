@@ -5,25 +5,25 @@
   "short_help": "Kinetic Attack",
   "icon": "kinetic_attack_set.ico",
   "powers": [
-    "Body_Blow",
-    "Burst",
-    "Focused_Burst",
-    "Power_Siphon",
-    "Quick_Strike",
-    "Repulsing_Torrent",
-    "Smashing_Blow",
-    "Taunt",
-    "Total_Focus"
+    "Brute_Melee.Kinetic_Attack.Body_Blow",
+    "Brute_Melee.Kinetic_Attack.Burst",
+    "Brute_Melee.Kinetic_Attack.Focused_Burst",
+    "Brute_Melee.Kinetic_Attack.Power_Siphon",
+    "Brute_Melee.Kinetic_Attack.Quick_Strike",
+    "Brute_Melee.Kinetic_Attack.Repulsing_Torrent",
+    "Brute_Melee.Kinetic_Attack.Smashing_Blow",
+    "Brute_Melee.Kinetic_Attack.Taunt",
+    "Brute_Melee.Kinetic_Attack.Total_Focus"
   ],
   "available_level": [
     0,
+    17,
+    21,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    7,
+    1,
+    11,
+    25
   ]
 }

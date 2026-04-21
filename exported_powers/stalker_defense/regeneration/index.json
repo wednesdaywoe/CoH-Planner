@@ -5,27 +5,27 @@
   "short_help": "Regeneration",
   "icon": "regeneration_set.ico",
   "powers": [
-    "Dull_Pain",
-    "Fast_Healing",
-    "Hide",
-    "Instant_Healing",
-    "Instant_Regeneration",
-    "Integration",
-    "Moment_of_Glory",
-    "Reconstruction",
-    "Resilience",
-    "Revive"
+    "Stalker_Defense.Regeneration.Dull_Pain",
+    "Stalker_Defense.Regeneration.Fast_Healing",
+    "Stalker_Defense.Regeneration.Hide",
+    "Stalker_Defense.Regeneration.Instant_Healing",
+    "Stalker_Defense.Regeneration.Instant_Regeneration",
+    "Stalker_Defense.Regeneration.Integration",
+    "Stalker_Defense.Regeneration.Moment_of_Glory",
+    "Stalker_Defense.Regeneration.Reconstruction",
+    "Stalker_Defense.Regeneration.Resilience",
+    "Stalker_Defense.Regeneration.Revive"
   ],
   "available_level": [
+    27,
+    3,
     0,
+    23,
+    23,
+    15,
+    29,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    9
   ]
 }

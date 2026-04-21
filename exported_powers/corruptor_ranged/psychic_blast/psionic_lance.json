@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psionic Lance",
   "display_fullname": "Corruptor Ranged Psychic Blast Psionic Lance",
-  "display_help": "LDEX9GG6JRQHY9CVH77BUY733Z",
-  "display_short_help": "84NRDFD47J5ZYLZHB2YTQGJ6U3",
+  "display_help": "This extremely long range Psionic attack has a bonus to Accuracy, and can Slow a target's attack rate. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+  "display_short_help": "Sniper, DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_psioniclance.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Corruptor_Ranged.Psychic_Blast"
 }

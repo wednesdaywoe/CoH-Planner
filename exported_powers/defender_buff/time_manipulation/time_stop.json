@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Time Stop",
   "display_fullname": "Defender Buff Time Manipulation Time Stop",
-  "display_help": "W4H5QZ2LTK2DWSL9BJTT924KAS",
+  "display_help": "You trap your target within the flow of time causing them to be held helpless. Even those resistant to the effects of Time Stop's hold will still have their regeneration rate and healing effects reduced for a brief period. Targets affected by Time Crawl will suffer from a more powerful hold, however its benefits are brief.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged Hold, Foe -Regen, -Heal",
   "icon": "timemanipulation_timestop.png",
   "auto_issue": false,
@@ -276,6 +276,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Defender_Buff.Time_Manipulation"
 }

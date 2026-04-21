@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Overload",
   "display_fullname": "Scrapper Defense Energy Aura Overload",
-  "display_help": "P7PVL4B4D9TSYKNCZ8CGQGBUAQ",
-  "display_short_help": "XZJB49R8EWS4Y7NLRGHYTAJAKA",
+  "display_help": "You can Overload your Energy Aura and dramatically improve your defense to all attack types. Overload also grants you high resistance to Defense Debuffs. This Energy Aura is so powerful, that it can even absorb some damage, effectively increasing your Max Hit Points. However, when Overload wears off, you are left drained of all Endurance and unable to recover Endurance for a while. Overload also adds a moderate Elusivity defense bonus to all attacks in PVP zones.",
+  "display_short_help": "Self +DEF(All), +Recovery, +Max HP, Res(DeBuff DEF), +Special",
   "icon": "energyaura_overload.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -329,6 +329,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Scrapper_Defense.Energy_Aura"
 }

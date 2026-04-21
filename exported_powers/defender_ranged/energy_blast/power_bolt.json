@@ -6,7 +6,7 @@
   "display_name": "Power Bolt",
   "display_fullname": "Defender Ranged Energy Blast Power Bolt",
   "display_help": "A quick attack that rapidly hurls small bolts of energy at foes, sometimes knocking them down. Fast, but little damage.",
-  "display_short_help": "Y3U93CASX2E9WXZVYWHUEUZZ6Q",
+  "display_short_help": "Ranged, DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_powerbolts.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,

@@ -5,7 +5,7 @@
   "short_help": "Mind Control",
   "icon": "martial_manipulation_set.ico",
   "powers": [
-    "Burst_of_Speed_NPC"
+    "Redirects.Martial_Manipulation.Burst_of_Speed_NPC"
   ],
   "available_level": [
     0

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Field Operative",
   "display_fullname": "Blaster Support Gadgets Cloaking Device",
-  "display_help": "4J4MWNLU4WJCYSLH5WWLPKFPXQ",
+  "display_help": "Through a mixture of combat training and highly sophisticated devices you are considered a Field Operative. You use an LCD body coating to become partially invisible. While concealed you can only be seen at very close range. If you attack while concealed, you will be discovered. Even if discovered, you are hard to see but will retain some of your Defense bonus to all attacks. Unlike some stealth powers, Field Operative has no movement penalty. This power's stealth component will not work with any other form of Concealment power such as Shadow Fall or Steamy Mist. In addition to being stealthy, your training also allows you to regenerate health and recovery endurance at an accelerated rate while this power is active. However, only half of this regeneration bonus is enhanceable.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Self Stealth, +DEF(All), +Special, +Regeneration, +Recovery",
   "icon": "gadgets_cloak.png",
   "auto_issue": false,
@@ -421,6 +421,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Gadgets"
 }

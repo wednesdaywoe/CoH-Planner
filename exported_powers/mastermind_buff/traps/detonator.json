@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Detonator",
   "display_fullname": "Mastermind Buff Traps Detonator",
-  "display_help": "RPZB4MQU4627YGVWPRMTEWNNAS",
+  "display_help": "A good Mastermind always plans ahead, but a great one knows when to make a strategic sacrifice. You have equipped all your Henchmen with explosives. When the time is right, select a Henchman and set off the Detonator. <br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_aoemassivedamage.png",
   "auto_issue": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Mastermind_Buff.Traps"
 }

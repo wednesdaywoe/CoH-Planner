@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Radiation Siphon",
   "display_fullname": "Dominator Assault Radioactive Assault Radiation Siphon",
-  "display_help": "5LCFKBMMQPJEYQNN7AA9NADKT3",
-  "display_short_help": "G9DT4RF6SPJLW9LKQLKGULFY7A",
+  "display_help": "You pummel your foe with a deadly smashing attack dealing High Energy and Smashing damage and reducing their defense. Hitting Contaminated targets will also heal you for a large amount of health over 3 seconds and remove the Contaminated effect from the target. However, uncontaminated targets have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Superior DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
   "icon": "radioactiveassault_radiationsiphon.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -389,6 +389,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Dominator_Assault.Radioactive_Assault"
 }

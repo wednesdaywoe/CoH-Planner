@@ -5,25 +5,25 @@
   "short_help": "Sonic Attack",
   "icon": "sonic_attack_set.ico",
   "powers": [
-    "Amplify",
-    "Dreadful_Wail",
-    "Howl",
-    "Scream",
-    "Screech",
-    "Shockwave",
-    "Shout",
-    "Shriek",
-    "Sirens_Song"
+    "Sentinel_Ranged.Sonic_Attack.Amplify",
+    "Sentinel_Ranged.Sonic_Attack.Dreadful_Wail",
+    "Sentinel_Ranged.Sonic_Attack.Howl",
+    "Sentinel_Ranged.Sonic_Attack.Scream",
+    "Sentinel_Ranged.Sonic_Attack.Screech",
+    "Sentinel_Ranged.Sonic_Attack.Shockwave",
+    "Sentinel_Ranged.Sonic_Attack.Shout",
+    "Sentinel_Ranged.Sonic_Attack.Shriek",
+    "Sentinel_Ranged.Sonic_Attack.Sirens_Song"
   ],
   "available_level": [
+    7,
+    25,
+    1,
     0,
+    21,
+    11,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    17
   ]
 }

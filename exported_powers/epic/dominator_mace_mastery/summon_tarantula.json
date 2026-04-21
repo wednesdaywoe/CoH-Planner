@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Summon Tarantula",
   "display_fullname": "Epic Dominator Mace Mastery Summon Tarantula",
-  "display_help": "V7DDDGJ4P8ALYGZAGW5ATSZLVX",
-  "display_short_help": "XRY8YQCATX7CYKZUUE76CADT8S",
+  "display_help": "Black Scorpion has granted you an Toxic Tarantula for you to command. Weaver One developed the Tarantula Exoskeleton Armor, which so radically transforms an Arachnos troop that hardly anything human is recognizable. Your access to this Tarantula is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Tarantula: Ranged DMG(Toxic)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Dominator_Mace_Mastery"
 }

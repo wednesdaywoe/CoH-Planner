@@ -1,29 +1,29 @@
 {
   "key": "Dominator_Assault.Arsenal_Assault",
-  "display_name": "7DR7SRGABJ9XYBLCKJMJDYYUY2",
-  "help": "TMQHX4JPM5Z3WFN76JRLQSJ7ZS",
-  "short_help": "7DR7SRGABJ9XYBLCKJMJDYYUY2",
+  "display_name": "Arsenal Assault",
+  "help": "You use your cutting edge rifle to not only devastate foes from range, but also wield it and other advanced munitions at short range to incapacitate anyone who gets too close",
+  "short_help": "Arsenal Assault",
   "icon": "assault_rifle_set.ico",
   "powers": [
-    "Buckshot",
-    "Burst",
-    "Buttstroke",
-    "Heavy_Blow",
-    "Ignite",
-    "Power_Up",
-    "Sniper_Rifle",
-    "Targeting_Drone",
-    "Trip_Mine"
+    "Dominator_Assault.Arsenal_Assault.Buckshot",
+    "Dominator_Assault.Arsenal_Assault.Burst",
+    "Dominator_Assault.Arsenal_Assault.Buttstroke",
+    "Dominator_Assault.Arsenal_Assault.Heavy_Blow",
+    "Dominator_Assault.Arsenal_Assault.Ignite",
+    "Dominator_Assault.Arsenal_Assault.Power_Up",
+    "Dominator_Assault.Arsenal_Assault.Sniper_Rifle",
+    "Dominator_Assault.Arsenal_Assault.Targeting_Drone",
+    "Dominator_Assault.Arsenal_Assault.Trip_Mine"
   ],
   "available_level": [
+    3,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9,
+    29,
+    15,
+    27,
+    23,
+    19
   ]
 }

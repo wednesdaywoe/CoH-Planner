@@ -5,25 +5,25 @@
   "short_help": "Electricity Assault",
   "icon": "electricity_manipulation_set.ico",
   "powers": [
-    "Build_Up",
-    "Charged_Brawl",
-    "Electric_Fence",
-    "Havok_Punch",
-    "Lightning_Clap",
-    "Lightning_Field",
-    "Power_Sink",
-    "Shocking_Grasp",
-    "Thunder_Strike"
+    "Dominator_Assault.Electricity_Manipulation.Build_Up",
+    "Dominator_Assault.Electricity_Manipulation.Charged_Brawl",
+    "Dominator_Assault.Electricity_Manipulation.Electric_Fence",
+    "Dominator_Assault.Electricity_Manipulation.Havok_Punch",
+    "Dominator_Assault.Electricity_Manipulation.Lightning_Clap",
+    "Dominator_Assault.Electricity_Manipulation.Lightning_Field",
+    "Dominator_Assault.Electricity_Manipulation.Power_Sink",
+    "Dominator_Assault.Electricity_Manipulation.Shocking_Grasp",
+    "Dominator_Assault.Electricity_Manipulation.Thunder_Strike"
   ],
   "available_level": [
+    15,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9,
+    19,
+    3,
+    27,
+    29,
+    23
   ]
 }

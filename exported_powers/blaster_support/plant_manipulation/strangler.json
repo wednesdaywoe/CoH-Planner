@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Strangler",
   "display_fullname": "Blaster Support Plant Manipulation Strangler",
-  "display_help": "MQXX4T2PEGBTY2CTD96QQ6HWMS",
-  "display_short_help": "A67UDSFHW6LYYKNJWEDNTR8AQ2",
+  "display_help": "Holds a distant foe by Strangling him with massive root-like vines. The target is held helpless, while he is slowly crushed by the vines.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, DoT(Smash), Foe Hold",
   "icon": "plantmanipulation_strangler",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -213,6 +213,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Blaster_Support.Plant_Manipulation"
 }

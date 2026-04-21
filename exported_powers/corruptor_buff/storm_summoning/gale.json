@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Gale",
   "display_fullname": "Corruptor Buff Storm Summoning Gale",
-  "display_help": "XHGDK2HQWVP8WRZ2QJNZSX34DQ",
+  "display_help": "You can call forth a tremendous gust of Gale force winds that knock down foes and deal some Smashing damage in a wide cone area.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged (Cone), Minor DMG(Smash), Foe Knockback",
   "icon": "stormsummoning_gale.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Heat Exhaustion",
   "display_fullname": "Mastermind Buff Thermal Radiation Heat Exhaustion",
-  "display_help": "8ERFLZJ3CRMHYDLUQQGRHBWKUZ",
+  "display_help": "Overwhelm a single foe with waves of exhausting heat. The initial effect will drain the target of some Endurance, but the heat is so overwhelming that the affected target will be weakened. His Damage output, Endurance Recovery and Hit Point Regeneration will all be reduced.",
   "display_short_help": "Ranged Foe -DMG, -END, -Recovery, -Regeneration",
   "icon": "thermalradiation_heatexhaustion.png",
   "auto_issue": false,
@@ -307,6 +307,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Mastermind_Buff.Thermal_Radiation"
 }

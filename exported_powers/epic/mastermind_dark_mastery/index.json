@@ -5,17 +5,17 @@
   "short_help": "Dark Mastery",
   "icon": "sentinel_dark_mastery_set.ico",
   "powers": [
-    "Dark_Pit",
-    "Murky_Cloud",
-    "Possess",
-    "Shadowy_Binds",
-    "Soul_Consumption"
+    "Epic.Mastermind_Dark_Mastery.Dark_Pit",
+    "Epic.Mastermind_Dark_Mastery.Murky_Cloud",
+    "Epic.Mastermind_Dark_Mastery.Possess",
+    "Epic.Mastermind_Dark_Mastery.Shadowy_Binds",
+    "Epic.Mastermind_Dark_Mastery.Soul_Consumption"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    34,
+    40,
+    34,
+    43
   ]
 }

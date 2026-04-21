@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Howl",
   "display_fullname": "Blaster Ranged Sonic Attack Howl",
-  "display_help": "TXBWQH74GU5YWZBG4EBHX5PHTS",
-  "display_short_help": "B3UUWYNLMSURYNMHL4N6VNMGRS",
+  "display_help": "A short ranged sonic attack that can hit multiple enemies in an arc in front of you.",
+  "display_short_help": "Ranged Cone, DMG(Smashing/Energy), Foe -Res(All)",
   "icon": "sonicblast_cone.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -247,6 +247,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Blaster_Ranged.Sonic_Attack"
 }

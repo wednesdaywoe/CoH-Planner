@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fusion",
   "display_fullname": "Dominator Assault Radioactive Assault Fusion",
-  "display_help": "7XAQ4DQYD9Q4Y6XL4ZATKQ492S",
+  "display_help": "Fusion boosts your damage and chance to hit moderately and also causes your next few attacks to have a 100% chance to inflict Contaminated on your enemies.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +DMG, +To Hit, Special",
   "icon": "radioactiveassault_buildup.png",
   "auto_issue": false,
@@ -139,6 +139,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Dominator_Assault.Radioactive_Assault"
 }

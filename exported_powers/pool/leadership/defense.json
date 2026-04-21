@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Maneuvers",
   "display_fullname": "Pool Leadership Defense",
-  "display_help": "EL4ZU4RCQRKTW4NXY8BWJW45F3",
+  "display_help": "A good leader knows how to protect his team. While active, this power increases the Defense of yourself and all nearby teammates to all attacks.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Toggle: PBAoE, Team +DEF(All)",
   "icon": "leadership_defense.png",
   "auto_issue": false,

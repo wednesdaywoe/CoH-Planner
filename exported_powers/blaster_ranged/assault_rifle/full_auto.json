@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Full Auto",
   "display_fullname": "Blaster Ranged Assault Rifle Full Auto",
-  "display_help": "5HYTTH8296VDYHBGNZMDRWMAJ3",
-  "display_short_help": "9NQWQF6CXRXDWTZWXW4YLQNRRZ",
+  "display_help": "Opens up your assault rifle on Full Auto to lay down a massive spray of bullets at your target. Although very slow to reload, damage from this attack is massive, shredding all targets within the cone of effect. There's a chance you may land a lucky shot for extra damage.",
+  "display_short_help": "Ranged (Cone), DMG(Lethal), +Special",
   "icon": "assaultweapons_arfullauto.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -177,6 +177,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Blaster_Ranged.Assault_Rifle"
 }

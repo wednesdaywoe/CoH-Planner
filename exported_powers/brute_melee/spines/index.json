@@ -5,25 +5,25 @@
   "short_help": "Spines",
   "icon": "quills_set.ico",
   "powers": [
-    "Barb_Swipe",
-    "Build_Up",
-    "Impale",
-    "Lunge",
-    "Quills",
-    "Ripper",
-    "Spine_Burst",
-    "Taunt",
-    "Throw_Spines"
+    "Brute_Melee.Spines.Barb_Swipe",
+    "Brute_Melee.Spines.Build_Up",
+    "Brute_Melee.Spines.Impale",
+    "Brute_Melee.Spines.Lunge",
+    "Brute_Melee.Spines.Quills",
+    "Brute_Melee.Spines.Ripper",
+    "Brute_Melee.Spines.Spine_Burst",
+    "Brute_Melee.Spines.Taunt",
+    "Brute_Melee.Spines.Throw_Spines"
   ],
   "available_level": [
     0,
+    5,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    17,
+    21,
+    1,
+    11,
+    25
   ]
 }

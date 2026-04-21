@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Psionic Tornado",
   "display_fullname": "Incarnate Lore Pet Carnival Boss Psionic Tornado",
-  "display_help": "DAQLUCY2SUPNYNNHV746V75C9W",
+  "display_help": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed.<br><br><color #fcfc95>Notes: Psionic Tornado is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
   "icon": "psychicblast_psionictornado.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Call Ravens",
   "display_fullname": "Mastermind Summon Beast Mastery Call Locusts",
-  "display_help": "LAUE7M3V3EKWW6XJVEHMBRUCKZ",
+  "display_help": "You command an unkindness of ravens to quickly assault and harass your foes. Your foes will suffer Moderate Lethal damage over time and have their speed and defense reduced. This power has a high chance at granting your pets a stack of Pack Mentality.<br><br><color #fcfc95>Apex Predator:</color><br>Using this power will grant you and your summoned beasts an Accuracy and HP buff for 30 seconds. This does not stack from the same power.",
   "display_short_help": "Ranged (Cone), Moderate DoT(Lethal), Foe -Speed, -Defense, -Fly",
   "icon": "beastmastery_calllocusts.png",
   "auto_issue": false,
@@ -376,6 +376,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Mastermind_Summon.Beast_Mastery"
 }

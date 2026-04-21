@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Crystal Armor",
   "display_fullname": "Brute Defense Stone Armor Crystal Armor",
-  "display_help": "2DNDTXC9JKENY3XLFY2DXLPGAW",
-  "display_short_help": "QK39KU87T4HCWYXSUPVECLBMRS",
+  "display_help": "While this power is active, your skin becomes encrusted in various quartz crystals. Crystal Armor makes Energy and Negative Energy attacks less likely to hit. This power also grants you an Endurance recovery buff and resistance to Defense DeBuffs.<br><br>Crystal Armor also adds an Elusivity defense bonus to Energy and Negative Energy Attacks in PVP zones.<br><br>Cannot be active at the same time as Granite Armor.<br><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Toggle: Self +Recovery, +DEF(Energy, Negative), Res(DeBuff DEF)",
   "icon": "stonearmor_crystalarmor.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -218,6 +218,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Brute_Defense.Stone_Armor"
 }

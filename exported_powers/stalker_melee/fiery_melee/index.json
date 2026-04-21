@@ -5,25 +5,25 @@
   "short_help": "Fiery Melee",
   "icon": "fiery_melee_set.ico",
   "powers": [
-    "Assassins_Blaze",
-    "Breath_of_Fire",
-    "Build_Up",
-    "Cremate",
-    "Fire_Sword",
-    "Fire_Sword_Circle",
-    "Greater_Fire_Sword",
-    "Placate",
-    "Scorch"
+    "Stalker_Melee.Fiery_Melee.Assassins_Blaze",
+    "Stalker_Melee.Fiery_Melee.Breath_of_Fire",
+    "Stalker_Melee.Fiery_Melee.Build_Up",
+    "Stalker_Melee.Fiery_Melee.Cremate",
+    "Stalker_Melee.Fiery_Melee.Fire_Sword",
+    "Stalker_Melee.Fiery_Melee.Fire_Sword_Circle",
+    "Stalker_Melee.Fiery_Melee.Greater_Fire_Sword",
+    "Stalker_Melee.Fiery_Melee.Placate",
+    "Stalker_Melee.Fiery_Melee.Scorch"
   ],
   "available_level": [
+    5,
+    17,
+    7,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    21,
+    25,
+    11,
     0
   ]
 }

@@ -5,27 +5,27 @@
   "short_help": "Wind Control",
   "icon": "wind_control_set.ico",
   "powers": [
-    "Breathless",
-    "Clear_Skies",
-    "Downdraft",
-    "Keening_Winds",
-    "Microburst",
-    "Thundergust",
-    "Updraft",
-    "Vacuum",
-    "Vortex",
-    "Wind_Shear"
+    "Dominator_Control.Wind_Control.Breathless",
+    "Dominator_Control.Wind_Control.Clear_Skies",
+    "Dominator_Control.Wind_Control.Downdraft",
+    "Dominator_Control.Wind_Control.Keening_Winds",
+    "Dominator_Control.Wind_Control.Microburst",
+    "Dominator_Control.Wind_Control.Thundergust",
+    "Dominator_Control.Wind_Control.Updraft",
+    "Dominator_Control.Wind_Control.Vacuum",
+    "Dominator_Control.Wind_Control.Vortex",
+    "Dominator_Control.Wind_Control.Wind_Shear"
   ],
   "available_level": [
+    1,
     0,
     0,
+    17,
+    11,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    25,
+    5
   ]
 }

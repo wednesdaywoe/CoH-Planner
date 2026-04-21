@@ -5,25 +5,25 @@
   "short_help": "Electrical Melee",
   "icon": "electrical_melee_set.ico",
   "powers": [
-    "Assassins_Strike",
-    "Build_Up",
-    "Chain_Induction",
-    "Charged_Brawl",
-    "Havoc_Punch",
-    "Jacobs_Ladder",
-    "Lightning_Clap",
-    "Lightning_Rod",
-    "Placate"
+    "Stalker_Melee.Electrical_Melee.Assassins_Strike",
+    "Stalker_Melee.Electrical_Melee.Build_Up",
+    "Stalker_Melee.Electrical_Melee.Chain_Induction",
+    "Stalker_Melee.Electrical_Melee.Charged_Brawl",
+    "Stalker_Melee.Electrical_Melee.Havoc_Punch",
+    "Stalker_Melee.Electrical_Melee.Jacobs_Ladder",
+    "Stalker_Melee.Electrical_Melee.Lightning_Clap",
+    "Stalker_Melee.Electrical_Melee.Lightning_Rod",
+    "Stalker_Melee.Electrical_Melee.Placate"
   ],
   "available_level": [
+    5,
+    7,
+    17,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    21,
+    25,
+    11
   ]
 }

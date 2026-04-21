@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Melt Armor",
   "display_fullname": "Epic Pyre Mastery Melt Armor",
-  "display_help": "HRHUAXXR8SHWWMC3LYSMJR962W",
+  "display_help": "The searing Heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
   "display_short_help": "Ranged (Targeted AoE), Foe -Res, -DEF",
   "icon": "pyremastery_meltarmor.png",
   "auto_issue": false,
@@ -119,6 +119,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Pyre_Mastery"
 }

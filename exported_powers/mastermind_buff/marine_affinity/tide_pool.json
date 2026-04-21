@@ -3,10 +3,10 @@
   "full_name": "Mastermind_Buff.Marine_Affinity.Tide_Pool",
   "short_name": "Tide_Pool",
   "type": "Click",
-  "display_name": "FTLM8XDQKK3NWHXSADJ8VMX2MQ",
+  "display_name": "Tide Pool",
   "display_fullname": "Mastermind Buff Marine Affinity Tide Pool",
-  "display_help": "4MVZ4HJX9XMSW4MDS2TLNWE7DW",
-  "display_short_help": "TFDYZLCJ97C2WJVBXPMJXZNA53",
+  "display_help": "You summon a large pool of water at a targeted location to swell the damage that your allies deal, while reducing the damage, movement speeds, and stealth of enemies within the Tide Pool. <br><br>If an enemy is <color #fcfc95>defeated</color> in the pool, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
+  "display_short_help": "Ranged (Location AoE), Team +DMG, Foe -DMG, -SPD, -Jump, -Stealth, Special",
   "icon": "marineaffinity_tidepool.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -92,6 +92,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Mastermind_Buff.Marine_Affinity"
 }

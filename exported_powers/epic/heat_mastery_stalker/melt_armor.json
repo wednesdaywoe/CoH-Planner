@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Char",
   "display_fullname": "Epic Heat Mastery Stalker Melt Armor",
-  "display_help": "YSQ86TLBZSCSWGZVZS55GCAX5X",
-  "display_short_help": "FQTWUXWYPBN6Y2NCBDR5Y6TP9A",
+  "display_help": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DoT(Fire), Foe Hold",
   "icon": "pyremastery_soot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -176,6 +176,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Heat_Mastery_Stalker"
 }

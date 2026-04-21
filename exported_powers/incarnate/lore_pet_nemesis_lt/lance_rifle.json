@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Lance Rifle",
   "display_fullname": "Incarnate Lore Pet Nemesis LT Lance Rifle",
-  "display_help": "XWDGPHV6U7CQWMNU7UTMBY7TXA",
+  "display_help": "An extremely long range and very accurate weapon. Fires an explosive round that can knock down its target. The explosive round has a small area of effect.<br><br><color #fcfc95>Notes: Lance Rifle is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Sniper Lethal/Fire, AoE Knockback",
   "icon": "assaultweapons_sniperrifle.png",
   "auto_issue": false,

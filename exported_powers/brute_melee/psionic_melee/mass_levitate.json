@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mass Levitate",
   "display_fullname": "Brute Melee Psionic Melee Mass Levitate",
-  "display_help": "ML5JYGKE6EWLWEX3VL5TJYK5YS",
-  "display_short_help": "DPMV7TLXKHNFWZVZGXB262ZB7W",
+  "display_help": "You build up a large amount of telekinetic energy and release it causing nearby foes to be flung into the air. Affected foes will suffer high Smashing damage. If the caster has Insight when this power is used Mass Levitate will also cause a moderate amount of Psionic damage over time.",
+  "display_short_help": "PBAoE, DMG(Smash), Foe Knock Up, +Insight",
   "icon": "psionicmelee_masslevitate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -340,6 +340,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Brute_Melee.Psionic_Melee"
 }

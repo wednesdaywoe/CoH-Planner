@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Gloom",
   "display_fullname": "Epic VEAT Soul Mastery Gloom",
-  "display_help": "BBGHBMB7N577WVN9FEBWV37Y3W",
-  "display_short_help": "V5QXWQCGBSRSWDLLTWYYV55UDS",
+  "display_help": "Gloom slowly drains a target of life, while reducing his Accuracy. Slower than Dark Blast, but deals more damage over time.",
+  "display_short_help": "Ranged, DoT(Negative), Foe -ACC",
   "icon": "arachnos_patron_targetedrangedhighdmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.VEAT_Soul_Mastery"
 }

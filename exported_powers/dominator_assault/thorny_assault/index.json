@@ -5,25 +5,25 @@
   "short_help": "Thorny Assault",
   "icon": "thorny_assault_set.ico",
   "powers": [
-    "Aim",
-    "Fling_Thorns",
-    "Impale",
-    "Ripper",
-    "Skewer",
-    "Thorn_Barrage",
-    "Thorn_Burst",
-    "Thorntrops",
-    "Thorny_Darts"
+    "Dominator_Assault.Thorny_Assault.Aim",
+    "Dominator_Assault.Thorny_Assault.Fling_Thorns",
+    "Dominator_Assault.Thorny_Assault.Impale",
+    "Dominator_Assault.Thorny_Assault.Ripper",
+    "Dominator_Assault.Thorny_Assault.Skewer",
+    "Dominator_Assault.Thorny_Assault.Thorn_Barrage",
+    "Dominator_Assault.Thorny_Assault.Thorn_Burst",
+    "Dominator_Assault.Thorny_Assault.Thorntrops",
+    "Dominator_Assault.Thorny_Assault.Thorny_Darts"
   ],
   "available_level": [
+    15,
+    3,
+    9,
+    27,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    29,
+    19,
+    23,
     0
   ]
 }

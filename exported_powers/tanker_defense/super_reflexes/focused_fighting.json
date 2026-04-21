@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Focused Fighting",
   "display_fullname": "Tanker Defense Super Reflexes Focused Fighting",
-  "display_help": "WQ5AAXRCA26SYLVUCR8FUQ3LGX",
+  "display_help": "You become more evasive to melee attacks while you have Focused Fighting activated. This will increase your Defense versus melee as long as it is active. Your Focus also offers you resistance to Confuse effects and DeBuffs to Defense.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +DEF(Melee), Res(Confuse, DeBuff DEF)",
   "icon": "superreflexes_focusedfighting.png",
   "auto_issue": false,

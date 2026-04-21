@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Grave Knight",
   "display_fullname": "Mastermind Summon Necromancy Skeletal Warriors",
-  "display_help": "TWJJ5TZQFYRAWVVKEGBY7JC7P2",
+  "display_help": "You can summon one to two powerful Grave Knights (depending on your level) to do your bidding. Grave Knights come well equipped with several attack powers and can be empowered with even more.<br><br>You may only have 2 Grave Knights under your control at any given time. If you attempt to summon more Grave Knights, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
   "display_short_help": "Summon Grave Knight",
   "icon": "necromancy_summonskeletonwarrior.png",
   "auto_issue": false,
@@ -179,6 +179,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Mastermind_Summon.Necromancy"
 }

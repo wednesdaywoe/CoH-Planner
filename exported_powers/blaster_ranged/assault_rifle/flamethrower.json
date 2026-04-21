@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Flamethrower",
   "display_fullname": "Blaster Ranged Assault Rifle Flamethrower",
-  "display_help": "ANTKZSGJSCW3WUZL599W2HQM9X",
-  "display_short_help": "CTTBYUDBEPTTYNX2S83T8Z97CS",
+  "display_help": "Spews forth a cone of flames from underneath the barrel of your assault rifle, setting foes on fire. Very accurate and very deadly at medium range.",
+  "display_short_help": "Ranged (Cone), DoT(Fire)",
   "icon": "assaultweapons_arflamethrower.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -139,6 +139,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Blaster_Ranged.Assault_Rifle"
 }

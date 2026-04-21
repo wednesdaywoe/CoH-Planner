@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Siphon Power",
   "display_fullname": "Mastermind Buff Kinetics Siphon Power",
-  "display_help": "J3CKMU2NUKF2WHMFB6L6AHWLBW",
+  "display_help": "You can Siphon the Power from a targeted foe, reducing his damage potential. The power is transferred back to you, increasing your own damage potential and that of all nearby allies.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Foe -DMG, Team +DMG",
   "icon": "kineticboost_siphonpower.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Control Total Radial Graft",
   "display_fullname": "Incarnate Hybrid Control Total Radial Graft",
-  "display_help": "HJPV4TMYPX6UYAVU2QVU94JY72",
+  "display_help": "Toggle: Adds a Chance for Fear and a Chance for Immobilize to most damaging powers. This ability gives a 45% chance for its effects to occur on each hit. Equipping this Hybrid power grants a passive boost to Status Resistance at all times.<br><br><color #fcfc95>Notes: Control Total Radial Graft is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Chance for Fear, Chance for Immobilize (Special)",
   "icon": "incarnate_hybrid_control_rare.png",
   "auto_issue": false,

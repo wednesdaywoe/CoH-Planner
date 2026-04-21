@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Deploy Stimulant",
   "display_fullname": "Incarnate Lore Pet IDF Support Deploy Stimulant",
-  "display_help": "WXH6RVK9UDH4W5MVY5PT5PUTP3",
+  "display_help": "Heals a single targeted ally of some Hit Points and frees an ally from any status effects and leaves them resistant to such effects for a brief time.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ally Heal, Res Effects",
   "icon": "medicine_aid.png",
   "auto_issue": false,

@@ -5,25 +5,25 @@
   "short_help": "Kinetics",
   "icon": "kinetics_set.ico",
   "powers": [
-    "Increase_Density",
-    "Inertial_Reduction",
-    "Kinetic_Transfer",
-    "Repel",
-    "Siphon_Power",
-    "Siphon_Speed",
-    "Speed_Boost",
-    "Transference",
-    "Transfusion"
+    "Defender_Buff.Kinetics.Increase_Density",
+    "Defender_Buff.Kinetics.Inertial_Reduction",
+    "Defender_Buff.Kinetics.Kinetic_Transfer",
+    "Defender_Buff.Kinetics.Repel",
+    "Defender_Buff.Kinetics.Siphon_Power",
+    "Defender_Buff.Kinetics.Siphon_Speed",
+    "Defender_Buff.Kinetics.Speed_Boost",
+    "Defender_Buff.Kinetics.Transference",
+    "Defender_Buff.Kinetics.Transfusion"
   ],
   "available_level": [
+    7,
+    17,
+    25,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    5,
+    11,
+    21,
     0
   ]
 }

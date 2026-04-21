@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Earsplitter",
   "display_fullname": "Tanker Melee Sonic Melee Earsplitter",
-  "display_help": "JKYGE6L5G32MWFNZQ2UY6Y24YS",
-  "display_short_help": "E5YLMVQS96HQYDLSL8T2BEAM6Q",
+  "display_help": "You generate an earsplitting sound wave right in the face of your foe, inflicting great damage. It has a good chance of causing a migraine, leaving them shaking in pain and helpless. This power will inflict 20% bonus damage against Attuned targets.",
+  "display_short_help": "Melee, DMG(Energy/Smash),\u00a0Foe -Res(Debuffs), Chance for Hold",
   "icon": "sonicmanipulation_earsplitter",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -554,6 +554,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Tanker_Melee.Sonic_Melee"
 }

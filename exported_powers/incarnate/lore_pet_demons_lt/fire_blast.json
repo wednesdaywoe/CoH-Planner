@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fire Blast",
   "display_fullname": "Incarnate Lore Pet Demons LT Fire Blast",
-  "display_help": "4EF4ZJD22LESYWVQHLUL3ZPJ8W",
+  "display_help": "You have been set on fire by the Fire Blast.<br><br><color #fcfc95>Notes: Fire Blast is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "DoT(Fire)",
   "icon": "fireblast_fireblast.png",
   "auto_issue": false,

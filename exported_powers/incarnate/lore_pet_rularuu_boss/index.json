@@ -5,10 +5,10 @@
   "short_help": "Rularuu",
   "icon": "lore_pet_rularuu_boss_set.ico",
   "powers": [
-    "Chomp",
-    "Optic_Blast",
-    "Paralytic_Gaze",
-    "Quill_Blast"
+    "Incarnate.Lore_Pet_Rularuu_Boss.Chomp",
+    "Incarnate.Lore_Pet_Rularuu_Boss.Optic_Blast",
+    "Incarnate.Lore_Pet_Rularuu_Boss.Paralytic_Gaze",
+    "Incarnate.Lore_Pet_Rularuu_Boss.Quill_Blast"
   ],
   "available_level": [
     0,

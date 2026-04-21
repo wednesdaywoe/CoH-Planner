@@ -5,25 +5,25 @@
   "short_help": "Willpower",
   "icon": "willpower_set.ico",
   "powers": [
-    "Fast_Healing",
-    "Heightened_Senses",
-    "High_Pain_Tolerance",
-    "Indomitable_Will",
-    "Mind_Over_Body",
-    "Quick_Recovery",
-    "Resurgence",
-    "Strength_of_Will",
-    "Up_to_the_Challenge"
+    "Sentinel_Defense.Willpower.Fast_Healing",
+    "Sentinel_Defense.Willpower.Heightened_Senses",
+    "Sentinel_Defense.Willpower.High_Pain_Tolerance",
+    "Sentinel_Defense.Willpower.Indomitable_Will",
+    "Sentinel_Defense.Willpower.Mind_Over_Body",
+    "Sentinel_Defense.Willpower.Quick_Recovery",
+    "Sentinel_Defense.Willpower.Resurgence",
+    "Sentinel_Defense.Willpower.Strength_of_Will",
+    "Sentinel_Defense.Willpower.Up_to_the_Challenge"
   ],
   "available_level": [
+    3,
+    23,
     0,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    27,
+    29,
+    15
   ]
 }

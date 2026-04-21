@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Frost Breath",
   "display_fullname": "Defender Ranged Ice Blast Frost Breath",
-  "display_help": "A7BET7F5JHECW9X4J7A33YEQRX",
-  "display_short_help": "AV2K7W734QF3WVVNYLBGUJU23S",
+  "display_help": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range.",
+  "display_short_help": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
   "icon": "iceblast_frostbreath.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -230,6 +230,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Defender_Ranged.Ice_Blast"
 }

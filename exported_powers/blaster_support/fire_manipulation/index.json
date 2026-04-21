@@ -5,25 +5,25 @@
   "short_help": "Fire Manipulation",
   "icon": "fire_manipulation_set.ico",
   "powers": [
-    "Blazing_Aura",
-    "Build_Up",
-    "Burn",
-    "Combustion",
-    "Consume",
-    "Fire_Sword",
-    "Fire_Sword_Circle",
-    "Hot_Feet",
-    "Ring_of_Fire"
+    "Blaster_Support.Fire_Manipulation.Blazing_Aura",
+    "Blaster_Support.Fire_Manipulation.Build_Up",
+    "Blaster_Support.Fire_Manipulation.Burn",
+    "Blaster_Support.Fire_Manipulation.Combustion",
+    "Blaster_Support.Fire_Manipulation.Consume",
+    "Blaster_Support.Fire_Manipulation.Fire_Sword",
+    "Blaster_Support.Fire_Manipulation.Fire_Sword_Circle",
+    "Blaster_Support.Fire_Manipulation.Hot_Feet",
+    "Blaster_Support.Fire_Manipulation.Ring_of_Fire"
   ],
   "available_level": [
+    19,
+    15,
+    27,
+    3,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    9,
+    29,
     0
   ]
 }

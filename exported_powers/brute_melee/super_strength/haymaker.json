@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Haymaker",
   "display_fullname": "Brute Melee Super Strength Haymaker",
-  "display_help": "73GE8LESP3KLYDN6HL48HMK5D3",
-  "display_short_help": "TG9VLHUNTYZCWGMZDVF4VJGFJX",
+  "display_help": "A slow but devastating attack, the Haymaker has a great chance of knocking your opponent down.",
+  "display_short_help": "Melee, DMG(Smashing), Knockback",
   "icon": "superstrength_haymaker.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Brute_Melee.Super_Strength"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psychic Scream",
   "display_fullname": "Corruptor Ranged Psychic Blast Psychic Scream",
-  "display_help": "6KULVBE3F492YPCA82SB9TMKXQ",
-  "display_short_help": "634KPJHES5MNWWVUSG4TNHMK5A",
+  "display_help": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.",
+  "display_short_help": "Ranged (Cone), DMG(Psionic), Foe -Recharge",
   "icon": "psychicblast_psychicscream.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -239,6 +239,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Corruptor_Ranged.Psychic_Blast"
 }

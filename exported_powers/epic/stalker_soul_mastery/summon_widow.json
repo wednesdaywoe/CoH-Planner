@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Summon Widow",
   "display_fullname": "Epic Stalker Soul Mastery Summon Widow",
-  "display_help": "3E88SJM9NZJKYDM85MULC5AM23",
-  "display_short_help": "YXXTG9P3KZH2YQZZ2ZVEQRE4M2",
+  "display_help": "Ghost Widow has assigned a beautiful but deadly Blood Widow assassins for you to command. Their weapons of choice include wrist retractable mounted razors and darts, all tipped in deadly poison. Your access to this Blood Widow is very limited, and you can only summon her once every 15 minutes and she will leave after 4 minutes, until defeated, or until you leave a zone or mission. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Night Widow: Melee DMG(Lethal)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -90,6 +90,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Stalker_Soul_Mastery"
 }

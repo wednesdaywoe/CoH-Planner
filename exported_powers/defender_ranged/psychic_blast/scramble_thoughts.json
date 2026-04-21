@@ -3,10 +3,10 @@
   "full_name": "Defender_Ranged.Psychic_Blast.Scramble_Thoughts",
   "short_name": "Scramble_Thoughts",
   "type": "Click",
-  "display_name": "467CQ9APKRDWYRZCVSQ3DM36ZZ",
+  "display_name": "Scramble Minds",
   "display_fullname": "Defender Ranged Psychic Blast Scramble Thoughts",
-  "display_help": "9VMMA882UKJTYGVRURH75A58F2",
-  "display_short_help": "KFC6C6XJLUBRWCM4Q7UBR37ZQQ",
+  "display_help": "Painfully scrambles the synapses of a targeted foe, leaving them dramatically Disoriented for a short duration. The effects of this power can jump from one foe to another in a chain dealing damage and applying a random mental effects to each target.",
+  "display_short_help": "Chain, DMG(Psionic), Foe Disorient",
   "icon": "psychicblast_scrambleminds",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -766,6 +766,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Defender_Ranged.Psychic_Blast"
 }

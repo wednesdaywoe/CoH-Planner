@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shadow Field",
   "display_fullname": "Dominator Control Darkness Control Shadow Field",
-  "display_help": "MBGPYALA559RY2B5D28LREQH5S",
+  "display_help": "You blanket a targeted area in darkness immediately holding foes within the field. Any foe who enters this area will have their chance to hit reduced and has a chance to be held for a short period of time.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Target (Location AoE), Foe Hold, -To Hit",
   "icon": "darknesscontrol_shadowfield.png",
   "auto_issue": false,
@@ -133,6 +133,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Dominator_Control.Darkness_Control"
 }

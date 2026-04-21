@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Black Dwarf Antagonize",
   "display_fullname": "Inherent Inherent Black Dwarf Antagonize",
-  "display_help": "N7T45WYU6XQZYBBHWQCM9GWS6Q",
+  "display_help": "This power attracts the attention of a foe and all those around him. Use this to pull villains off of an ally in trouble. An Accuracy check is required to Taunt enemy players, but is not needed against critter targets.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "umbralaura_antagonize.png",
   "auto_issue": true,
@@ -197,6 +197,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Inherent.Inherent"
 }

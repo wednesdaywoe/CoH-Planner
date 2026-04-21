@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Summon Wolves",
   "display_fullname": "Mastermind Summon Beast Mastery Summon Wolves",
-  "display_help": "YTPAHGFFS3SYWKL2GYCDML7QG3",
+  "display_help": "Calls forth one to three Wolves to do your bidding. The third one summoned will be an Alpha Wolf, which grants some leadership bonuses to the pack. Wolves have no ranged attacks, but can quickly close in on their prey.<br><br>You may only have 3 Wolves under your control at any given time. If you attempt to call more Wolves, you can only replace the ones you have lost in battle. If you already have three, the power will fail.<br><br>Wolf attacks have a chance to build a charge of Pack Mentality. Pack Mentality is a Damage buff aura that radiates from the Mastermind and can stack up to 10 times.<br><br>In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "display_short_help": "Summon Wolves",
   "icon": "beastmastery_summonwolves.png",
   "auto_issue": false,

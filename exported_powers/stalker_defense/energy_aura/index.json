@@ -5,25 +5,25 @@
   "short_help": "Energy Aura",
   "icon": "energy_aura_set.ico",
   "powers": [
-    "Conserve_Power",
-    "Energy_Drain",
-    "Energy_Protection",
-    "Entropy_Shield",
-    "Hide",
-    "Kinetic_Shield",
-    "Overload",
-    "Power_Shield",
-    "Repulse"
+    "Stalker_Defense.Energy_Aura.Conserve_Power",
+    "Stalker_Defense.Energy_Aura.Energy_Drain",
+    "Stalker_Defense.Energy_Aura.Energy_Protection",
+    "Stalker_Defense.Energy_Aura.Entropy_Shield",
+    "Stalker_Defense.Energy_Aura.Hide",
+    "Stalker_Defense.Energy_Aura.Kinetic_Shield",
+    "Stalker_Defense.Energy_Aura.Overload",
+    "Stalker_Defense.Energy_Aura.Power_Shield",
+    "Stalker_Defense.Energy_Aura.Repulse"
   ],
   "available_level": [
+    27,
+    23,
+    15,
+    9,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    29,
+    3,
+    19
   ]
 }

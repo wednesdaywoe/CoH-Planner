@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Essence Boost",
   "display_fullname": "Peacebringer Defensive Luminous Aura Essence Boost",
-  "display_help": "7PJU48YG65SHYKNWRGA35WS5EQ",
+  "display_help": "You can activate this power to increase your maximum Hit Points for a short time. Essence Boost also grants you resistance to Toxic Damage.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self Heal, +Max HP, Res (Toxic)",
   "icon": "luminousaura_essenceboost.png",
   "auto_issue": false,
@@ -158,6 +158,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

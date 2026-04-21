@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Static Discharge",
   "display_fullname": "Epic VEAT Mu Mastery Static Discharge",
-  "display_help": "3T3QKWLA8E84WPC64Y7NHWGA4S",
-  "display_short_help": "NXGDKQULUM2WYQXCDMZTFVNES3",
+  "display_help": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Cone), DMG(Energy), -END",
   "icon": "arachnos_patron_rangedconemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -252,6 +252,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.VEAT_Mu_Mastery"
 }

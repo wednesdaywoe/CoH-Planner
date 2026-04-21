@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "School of Sharks",
   "display_fullname": "Epic Brute Leviathan Mastery School of Sharks",
-  "display_help": "FKXJQMDQCXLJWJZRPH8S54TBJW",
-  "display_short_help": "7DHW5K4UWA7RYAXW7YVMHAZHDW",
+  "display_help": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
+  "display_short_help": "Ranged (Cone), DoT(Negative), Foe Immobilize",
   "icon": "arachnos_patron_coneimmobilize.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -328,6 +328,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Brute_Leviathan_Mastery"
 }

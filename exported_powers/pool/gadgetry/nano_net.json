@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Nano Net",
   "display_fullname": "Pool Gadgetry Nano Net",
-  "display_help": "ESZRX7Y8X3M2YTBHU4BNFH6YJZ",
+  "display_help": "You trap your foe in an energy net that significantly reduces their movement speed, attack rate and regeneration rate for a short time. Affected foes will also be knocked out of the sky.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Foe -Speed, -Recharge, -Fly, -Regen",
   "icon": "gadgetry_nanonet.png",
   "auto_issue": false,

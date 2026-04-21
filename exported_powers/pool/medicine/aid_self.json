@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Aid Self",
   "display_fullname": "Pool Medicine Aid Self",
-  "display_help": "PZ688FX4JHA4WJCYYS29CFG7ZW",
+  "display_help": "You are able to heal yourself. This hypo also leaves you wide awake and resistant to stun effects. If you have also trained Field Medic, this power will also grant you an unenhanceable, long duration endurance over time effect.<br><br>You must be at least level 14 and have one other Medicine powers before selecting Aid Self.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Self, Heal, +Res(Stun), +EndGain(Synergy)",
   "icon": "medicine_selfadministration.png",
   "auto_issue": false,
@@ -146,6 +146,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Medicine"
 }

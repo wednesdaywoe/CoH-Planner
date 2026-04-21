@@ -5,9 +5,9 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_elementals_lt_set.ico",
   "powers": [
-    "Ball_Lightning",
-    "Charged_Bolts",
-    "Lightning_Bolt"
+    "Incarnate.Lore_Pet_Elementals_LT.Ball_Lightning",
+    "Incarnate.Lore_Pet_Elementals_LT.Charged_Bolts",
+    "Incarnate.Lore_Pet_Elementals_LT.Lightning_Bolt"
   ],
   "available_level": [
     0,

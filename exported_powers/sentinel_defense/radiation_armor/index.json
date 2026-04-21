@@ -5,25 +5,25 @@
   "short_help": "Radiation Armor",
   "icon": "radiation_armor_set.ico",
   "powers": [
-    "Alpha_Barrier",
-    "Fallout_Shelter",
-    "Gamma_Boost",
-    "Ground_Zero",
-    "Meltdown",
-    "Particle_Acceleration",
-    "Particle_Shielding",
-    "Proton_Armor",
-    "Proton_Therapy"
+    "Sentinel_Defense.Radiation_Armor.Alpha_Barrier",
+    "Sentinel_Defense.Radiation_Armor.Fallout_Shelter",
+    "Sentinel_Defense.Radiation_Armor.Gamma_Boost",
+    "Sentinel_Defense.Radiation_Armor.Ground_Zero",
+    "Sentinel_Defense.Radiation_Armor.Meltdown",
+    "Sentinel_Defense.Radiation_Armor.Particle_Acceleration",
+    "Sentinel_Defense.Radiation_Armor.Particle_Shielding",
+    "Sentinel_Defense.Radiation_Armor.Proton_Armor",
+    "Sentinel_Defense.Radiation_Armor.Proton_Therapy"
   ],
   "available_level": [
     0,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27,
+    29,
+    19,
+    23,
+    3,
+    15
   ]
 }

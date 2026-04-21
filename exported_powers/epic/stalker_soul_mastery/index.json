@@ -5,17 +5,17 @@
   "short_help": "Soul Mastery",
   "icon": "stalker_soul_mastery_set.ico",
   "powers": [
-    "Dark_Blast",
-    "Moonbeam",
-    "Shadow_Meld",
-    "Soul_Storm",
-    "Summon_Widow"
+    "Epic.Stalker_Soul_Mastery.Dark_Blast",
+    "Epic.Stalker_Soul_Mastery.Moonbeam",
+    "Epic.Stalker_Soul_Mastery.Shadow_Meld",
+    "Epic.Stalker_Soul_Mastery.Soul_Storm",
+    "Epic.Stalker_Soul_Mastery.Summon_Widow"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    34,
+    37,
+    40,
+    43
   ]
 }

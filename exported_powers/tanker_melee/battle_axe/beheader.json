@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Gash",
   "display_fullname": "Tanker Melee Battle Axe Beheader",
-  "display_help": "K2UUCPJ2AQEPYWBEEAMFDD5QYQ",
-  "display_short_help": "5ALWT6EZ2KQ8WHXFWHWMN6A64W",
+  "display_help": "Gashes your opponent with your Battle Axe dealing superior damage. This attack is very slow, but can deal a lot damage and knock the target down.",
+  "display_short_help": "Melee, DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_beheader.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -244,6 +244,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Tanker_Melee.Battle_Axe"
 }

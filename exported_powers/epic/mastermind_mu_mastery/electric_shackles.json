@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Electric Shackles",
   "display_fullname": "Epic Mastermind Mu Mastery Electric Shackles",
-  "display_help": "BF9HUZZC6EHFWFXAF9NDH6QZNA",
-  "display_short_help": "J5BTGZUP65X7W7BM2EZJVK87V3",
+  "display_help": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Energy), Foe Hold, -End",
   "icon": "arachnos_patron_targetedhold.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -303,6 +303,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Mastermind_Mu_Mastery"
 }

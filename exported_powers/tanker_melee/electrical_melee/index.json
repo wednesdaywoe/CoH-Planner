@@ -5,25 +5,25 @@
   "short_help": "Electrical Melee",
   "icon": "electrical_melee_set.ico",
   "powers": [
-    "Build_Up",
-    "Chain_Induction",
-    "Charged_Brawl",
-    "Havoc_Punch",
-    "Jacobs_Ladder",
-    "Lightning_Clap",
-    "Lightning_Rod",
-    "Taunt",
-    "Thunder_Strike"
+    "Tanker_Melee.Electrical_Melee.Build_Up",
+    "Tanker_Melee.Electrical_Melee.Chain_Induction",
+    "Tanker_Melee.Electrical_Melee.Charged_Brawl",
+    "Tanker_Melee.Electrical_Melee.Havoc_Punch",
+    "Tanker_Melee.Electrical_Melee.Jacobs_Ladder",
+    "Tanker_Melee.Electrical_Melee.Lightning_Clap",
+    "Tanker_Melee.Electrical_Melee.Lightning_Rod",
+    "Tanker_Melee.Electrical_Melee.Taunt",
+    "Tanker_Melee.Electrical_Melee.Thunder_Strike"
   ],
   "available_level": [
+    19,
+    23,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3,
+    27,
+    29,
+    9,
+    15
   ]
 }

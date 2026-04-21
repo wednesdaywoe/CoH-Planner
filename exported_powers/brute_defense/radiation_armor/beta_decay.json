@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Beta Decay",
   "display_fullname": "Brute Defense Radiation Armor Beta Decay",
-  "display_help": "FLHV6SCTCV3MWUMAEL3Q4SCM5A",
+  "display_help": "While Beta Decay is active, nearby foes will have their chance to hit and defense decreased slightly and will be taunted. You will gain a recharge bonus per nearby target up to 10 targets. The first target grants the largest benefit.",
   "display_short_help": "Toggle: Foe, Taunt, -To Hit, -Defense, Self +Recharge",
   "icon": "radiationarmor_betadecay.png",
   "auto_issue": false,
@@ -296,6 +296,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Brute_Defense.Radiation_Armor"
 }

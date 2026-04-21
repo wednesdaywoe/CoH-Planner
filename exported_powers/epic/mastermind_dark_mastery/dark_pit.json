@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Dark Pit",
   "display_fullname": "Epic Mastermind Dark Mastery Dark Pit",
-  "display_help": "CSL4Z39SHM3KWPBM74RU6WWKXZ",
+  "display_help": "Envelops a targeted foe and any nearby enemies in a pit of Negative Energy. The attack deals no damage, but Disorients all affected foes for a good while. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
   "display_short_help": "Ranged (Targeted AoE), Foe Disorient",
   "icon": "dark_mastery_darkpit",
   "auto_issue": false,
@@ -125,6 +125,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Mastermind_Dark_Mastery"
 }

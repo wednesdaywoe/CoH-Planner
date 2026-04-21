@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Eviscerate",
   "display_fullname": "Stalker Melee Claws Eviscerate",
-  "display_help": "VL6ZXU284T52WLLPFQ4HH48HZ3",
-  "display_short_help": "FBU2DVWT4MAXYDXX5WTH3KGCLQ",
+  "display_help": "You spin and slash violently at the foe in front of you. This attack deals exceptional damage, and has a high chance of landing a critical hit even while not hidden.",
+  "display_short_help": "Melee, DMG(Lethal), +Special",
   "icon": "claws_stalkereviscerate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -324,6 +324,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Stalker_Melee.Claws"
 }

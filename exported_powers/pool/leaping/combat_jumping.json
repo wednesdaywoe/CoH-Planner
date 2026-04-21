@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Combat Jumping",
   "display_fullname": "Pool Leaping Combat Jumping",
-  "display_help": "XJQRLDZXJ9V9YKZLFF4C8UN4VW",
+  "display_help": "While active, Combat Jumping increases your Defense to all attacks, and adds resistance to Immobilization. Moderately increases your jump height and distance while providing good air control.<br><br>Combat Jumping can be active at the same time as other jumping toggles, but only the strongest jump buff will apply.",
   "display_short_help": "Toggle: Self +Jump, +DEF(All), Res(Immobilization)",
   "icon": "jump_combatjump.png",
   "auto_issue": false,

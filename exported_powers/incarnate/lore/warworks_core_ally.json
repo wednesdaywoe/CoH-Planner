@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Warworks Core Ally",
   "display_fullname": "Incarnate Lore Warworks Core Ally",
-  "display_help": "ZZJBM4EA75W6WJNLSSLMVFTV2X",
+  "display_help": "Draws forth an essence of a vanquished WarWorks Mk-VI \"Victoria\" from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Warworks Core Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon WarWorks Boss Essence",
   "icon": "incarnate_lore_warworks_uncommon.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Crowd Control",
   "display_fullname": "Scrapper Melee War Mace Crowd Control",
-  "display_help": "5LD2BVAAVL29Y4Z4N9L5HEXCNW",
-  "display_short_help": "JS43HTGQPCTKWRNQ25XRAFM2QA",
+  "display_help": "You swing your mace in a wide arc in front of you. This attack strikes all foes within melee range, deals them serious damage, and knocks them down.",
+  "display_short_help": "Melee (Cone), DMG(Smash), Knockback",
   "icon": "mace_crowdcontrol.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -367,6 +367,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Scrapper_Melee.War_Mace"
 }

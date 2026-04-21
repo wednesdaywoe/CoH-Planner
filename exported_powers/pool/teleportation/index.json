@@ -5,17 +5,17 @@
   "short_help": "Teleportation",
   "icon": "teleportation_set.ico",
   "powers": [
-    "Long_Range_Teleport",
-    "Recall_Friend",
-    "Team_Teleport",
-    "Teleport",
-    "Teleport_Foe"
+    "Pool.Teleportation.Long_Range_Teleport",
+    "Pool.Teleportation.Recall_Friend",
+    "Pool.Teleportation.Team_Teleport",
+    "Pool.Teleportation.Teleport",
+    "Pool.Teleportation.Teleport_Foe"
   ],
   "available_level": [
+    13,
     0,
-    0,
-    0,
-    0,
+    13,
+    3,
     0
   ]
 }

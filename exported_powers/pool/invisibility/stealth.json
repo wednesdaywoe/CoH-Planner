@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Stealth",
   "display_fullname": "Pool Invisibility Stealth",
-  "display_help": "S9WLDKVH4PB6W3XY5JATTGBZGX",
+  "display_help": "You can bend light around yourself to become Invisible. While this power is active, you are almost impossible to detect. If, however, you attack while using this power, you will be discovered and will lose your Stealth and some of your Defense bonus.<br><br>Sending commands to pets, buffing or healing allies will also lower the defense and stealth granted by this power.",
   "display_short_help": "Toggle: Self Stealth, +DEF(All)",
   "icon": "invisibility_stealth.png",
   "auto_issue": false,

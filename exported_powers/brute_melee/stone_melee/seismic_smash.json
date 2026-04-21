@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Seismic Smash",
   "display_fullname": "Brute Melee Stone Melee Seismic Smash",
-  "display_help": "E5N7PLBRS9MPW6V98GHQKCLTCA",
-  "display_short_help": "T8DKP3JR8VL4WUM8ZCZXXHNPSZ",
+  "display_help": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright.",
+  "display_short_help": "Melee, DMG(Smashing), Foe Hold",
   "icon": "stonemelee_seismicsmash.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -216,6 +216,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Brute_Melee.Stone_Melee"
 }

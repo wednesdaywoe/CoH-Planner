@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Vortex",
   "display_fullname": "Dominator Control Wind Control Vortex",
-  "display_help": "GURVSDMDNF9VWUM2EMF2A46BDZ",
+  "display_help": "You can create a true Vortex cloud to assist you in battle. This Vortex will build Pressure along with you as you use your powers. This will allow its attacks to have a chance, proportional to current pressure, for critical damage. However, at higher pressures, the Vortex will be unable to use some of its powers. The Manipulation of Pressure on this pet through the use of Vacuum upon it will grant you the Clear Skies buff. Both this power and Vacuum are required to automatically unlock Clear Skies.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Summon Vortex",
   "icon": "windcontrol_vortex.png",
   "auto_issue": false,
@@ -92,6 +92,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Dominator_Control.Wind_Control"
 }

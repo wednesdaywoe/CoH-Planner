@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Cross Punch",
   "display_fullname": "Pool Fighting Cross Punch",
-  "display_help": "25ZPJVTY5QMYWLNV4CH8MR3H92",
-  "display_short_help": "D42DL2S8VVQNY2N96EP6QNQQLX",
+  "display_help": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. This attack causes moderate smashing damage and has a chance to both knock down and stun foes.<br><br>If you have also trained Boxing, this power's damage is increased by 15% and will improve your recharge and accuracy briefly.<br><br>If you have also trained Kick, this power's damage is increased by 15% and will improve your recharge and accuracy briefly.<br><br>The synergy with Boxing and Kick stacks.<br><br>You must be at least level 14 and have two other Fighting Powers before selecting Cross Punch.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Melee (Cone), DMG(Smash), Fighting Synergy, Foe Knockdown, Stun",
   "icon": "fighting_crosspunch.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -914,6 +914,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Fighting"
 }

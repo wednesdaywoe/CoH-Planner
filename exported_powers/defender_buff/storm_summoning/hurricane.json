@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Hurricane",
   "display_fullname": "Defender Buff Storm Summoning Hurricane",
-  "display_help": "ZU6GZMEJFQ69YYXMWXXUT8L4LZ",
+  "display_help": "You can summon a Hurricane. The wind and rain from this massive storm reduce the range and chance to hit of nearby foes. The massive winds of this storm continuously force foes away from you.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: PBAoE, Foe -Range, -To Hit, Repel, Knockback",
   "icon": "stormsummoning_hurricane.png",
   "auto_issue": false,
@@ -287,6 +287,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Defender_Buff.Storm_Summoning"
 }

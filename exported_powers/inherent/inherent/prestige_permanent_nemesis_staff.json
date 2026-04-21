@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Nemesis Staff",
   "display_fullname": "Inherent Inherent prestige Permanent Nemesis Staff",
-  "display_help": "4QQJ3B9T3TTTWYNNTPY5SZKUNQ",
+  "display_help": "This strange, steam-powered staff shoots a bolt of energy that deals damage, knocks back foes. The Nemesis is particularly effective when wielded by Technology, Science or Natural origin individuals. Damage enhancing powers do not apply to the Nemesis Staff.<br><br><color #fcfc95>Damage: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Smash), Foe Knockback",
   "icon": "veteran_nemesisstaff.png",
   "auto_issue": true,

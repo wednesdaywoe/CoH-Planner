@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Shield Generator",
   "display_fullname": "Incarnate Lore Pet IDF Support Shield Generator",
-  "display_help": "J92BHS7AYDVWWXXMWAUNZRY33S",
+  "display_help": "Creates a large bubble which protects all allies inside. While active, the Shield Generator gives all allies within increase defense to all attacks. The Force Field Generator also protects allies inside from Immobilization, and Disorient effects.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Team AoE Toggle, +Def(All), +Res(Immobilize, Disorient)",
   "icon": "forcefield_dispersionbubble.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Control Core Embodiment",
   "display_fullname": "Incarnate Hybrid Control Core Embodiment",
-  "display_help": "BB97V7HR3K95W5MJPV94JPEMEQ",
+  "display_help": "Toggle: Chance for +1 Mag to Controls, Chance for Psionic damage to Controlled enemies. This ability gives a 75% chance for its effects to occur when their conditions are met. Equipping this Hybrid power grants a passive boost to Status Resistance at all times.<br><br><color #fcfc95>Notes: Control Core Embodiment is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Chance for Psionic Damage (Special), Chance for +1 Magnitude",
   "icon": "incarnate_hybrid_control_veryrare.png",
   "auto_issue": false,

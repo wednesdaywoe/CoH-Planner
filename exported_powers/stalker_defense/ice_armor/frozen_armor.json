@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Frozen Armor",
   "display_fullname": "Stalker Defense Ice Armor Frozen Armor",
-  "display_help": "YK7D8MNG7M2XY7NZHR9C45MKYQ",
+  "display_help": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage.<br><br>This power is mutually exclusive from Rime",
   "display_short_help": "Self, +Def(Smash, Lethal), +Res(Cold, Fire, DeBuff DEF)",
   "icon": "icearmor_icearmor.png",
   "auto_issue": false,

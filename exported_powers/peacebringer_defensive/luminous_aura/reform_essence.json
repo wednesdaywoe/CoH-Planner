@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Reform Essence",
   "display_fullname": "Peacebringer Defensive Luminous Aura Reform Essence",
-  "display_help": "PZUWU8GQELTRW6CY6S8WML2VB2",
+  "display_help": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Self Heal",
   "icon": "luminousaura_reformessence.png",
   "auto_issue": false,
@@ -120,6 +120,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

@@ -5,25 +5,25 @@
   "short_help": "Mercenaries",
   "icon": "mercenaries_set.ico",
   "powers": [
-    "Burst",
-    "Commando",
-    "Equip_Mercenary",
-    "M30_Grenade",
-    "Serum",
-    "Slug",
-    "Soldiers",
-    "Spec_Ops",
-    "Tactical_Upgrade"
+    "Mastermind_Summon.Mercenaries.Burst",
+    "Mastermind_Summon.Mercenaries.Commando",
+    "Mastermind_Summon.Mercenaries.Equip_Mercenary",
+    "Mastermind_Summon.Mercenaries.M30_Grenade",
+    "Mastermind_Summon.Mercenaries.Serum",
+    "Mastermind_Summon.Mercenaries.Slug",
+    "Mastermind_Summon.Mercenaries.Soldiers",
+    "Mastermind_Summon.Mercenaries.Spec_Ops",
+    "Mastermind_Summon.Mercenaries.Tactical_Upgrade"
   ],
   "available_level": [
     0,
+    21,
+    5,
+    7,
+    17,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11,
+    25
   ]
 }

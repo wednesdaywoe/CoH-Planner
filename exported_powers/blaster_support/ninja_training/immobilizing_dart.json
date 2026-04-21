@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Immobilizing Dart",
   "display_fullname": "Blaster Support Ninja Training Immobilizing Dart",
-  "display_help": "QZW6U5TK6LVFY7VBJCM9P8M653",
+  "display_help": "Immobilizing Darts do minor toxic damage over time and weakens your foe's legs. They will either be entirely unable to move, or severely slowed down.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Minor DoT(Toxic), Foe Immobilize",
   "icon": "ninjatools_immob",
   "auto_issue": false,

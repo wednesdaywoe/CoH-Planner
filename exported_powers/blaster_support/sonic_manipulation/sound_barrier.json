@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Sound Barrier",
   "display_fullname": "Blaster Support Sonic Manipulation Sound Barrier",
-  "display_help": "ZTMDQBNCGZGAWPLGASD5F5PTTW",
+  "display_help": "Creates a barrier around the caster which reduces incoming energy and smashing damage, provides protection against sleep effects and grants an absorption shield. Recovery is also increased.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: Self +Absorb, +Recovery, +Res(Smashing, Energy, Sleep)",
   "icon": "sonicmanipulation_soundbarrier",
   "auto_issue": false,
@@ -290,6 +290,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Sonic_Manipulation"
 }

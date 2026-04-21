@@ -5,25 +5,25 @@
   "short_help": "Psionic Assault",
   "icon": "psionic_assault_set.ico",
   "powers": [
-    "Drain_Psyche",
-    "Mental_Blast",
-    "Mind_Probe",
-    "Psionic_Dart",
-    "Psionic_Lance",
-    "Psychic_Scream",
-    "Psychic_Shockwave",
-    "Subdue",
-    "Telekinetic_Thrust"
+    "Dominator_Assault.Psionic_Assault.Drain_Psyche",
+    "Dominator_Assault.Psionic_Assault.Mental_Blast",
+    "Dominator_Assault.Psionic_Assault.Mind_Probe",
+    "Dominator_Assault.Psionic_Assault.Psionic_Dart",
+    "Dominator_Assault.Psionic_Assault.Psionic_Lance",
+    "Dominator_Assault.Psionic_Assault.Psychic_Scream",
+    "Dominator_Assault.Psionic_Assault.Psychic_Shockwave",
+    "Dominator_Assault.Psionic_Assault.Subdue",
+    "Dominator_Assault.Psionic_Assault.Telekinetic_Thrust"
   ],
   "available_level": [
+    19,
+    9,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27,
+    15,
+    29,
+    23,
+    3
   ]
 }

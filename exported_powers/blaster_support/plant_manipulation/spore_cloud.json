@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Spore Cloud",
   "display_fullname": "Blaster Support Plant Manipulation Spore Cloud",
-  "display_help": "HWUUJENBQH4EY6MJC6NKZGHFSA",
-  "display_short_help": "EAWVCKC3C3V9Y9L8G5PFKGTDV3",
+  "display_help": "You create a large cloud of toxic spores around your targeted foe. The target and all nearby foes will have their damage output, chance to hit and regeneration rate reduced.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle: Ranged (Targeted AoE), Foe -DMG, -ToHit, -Regen",
   "icon": "natureaffinity_sporecloud.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -225,6 +225,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Blaster_Support.Plant_Manipulation"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Plasma Rifle Burst",
   "display_fullname": "Incarnate Lore Pet Warworks LT Plasma Rifle Burst",
-  "display_help": "T22F6SWEUT6FWCVJU57P3MMW3A",
+  "display_help": "The Warworks plasma weapons deal energy damage as well as reduce their target's regeneration rate.<br><br><color #fcfc95>Notes: Plasma Rifle Burst is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Moderate DMG(Energy), Foe -Regen",
   "icon": "powerblast_powerblast.png",
   "auto_issue": false,

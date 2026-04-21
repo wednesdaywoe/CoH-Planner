@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Oppressive Gloom",
   "display_fullname": "Epic Mastermind Soul Mastery Oppressive Gloom",
-  "display_help": "CRZQYQ9NQ83EWECGDSU5ZWUKPW",
+  "display_help": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: PBAoE, Foe Disorient, Self -HP",
   "icon": "arachnos_patron_pbaoestun.png",
   "auto_issue": false,
@@ -187,6 +187,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Mastermind_Soul_Mastery"
 }

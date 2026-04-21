@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Trip Mine",
   "display_fullname": "Corruptor Buff Traps Trip Mine",
-  "display_help": "7XQLV3PFFH4LWCNM5563FUAT9Q",
-  "display_short_help": "K5CNQQZ7EJ6EYNBMEQVSFDFYAA",
+  "display_help": "You can place a Trip Mine on the ground. Any foes that pass near the Trip Mine will cause it to explode, severely damaging all nearby foes and sending them flying. The Trip Mine is almost impossible to detect, but it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Trip Mine will detonate. Setting a mine is delicate work, and if you are interrupted, you will fail.",
+  "display_short_help": "Place Mine: PBAoE, DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_droppedaoedamage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -89,6 +89,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Corruptor_Buff.Traps"
 }

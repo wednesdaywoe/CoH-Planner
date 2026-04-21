@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Integration",
   "display_fullname": "Brute Defense Regeneration Integration",
-  "display_help": "KXZKF8X3AKU5YLCP2AD49FCFT2",
+  "display_help": "You can Integrate your mind and body, making you resistant to Knockback, Disorient, Hold, Sleep, and Immobilization effects, as well as increase your regeneration rate, for as long as you can keep this toggle power active. Integration also taunts nearby foes.",
   "display_short_help": "Toggle: Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize), +Regeneration, Taunt",
   "icon": "regeneration_integration.png",
   "auto_issue": false,
@@ -539,6 +539,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Brute_Defense.Regeneration"
 }

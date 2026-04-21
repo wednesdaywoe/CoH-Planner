@@ -5,25 +5,25 @@
   "short_help": "Fire Blast",
   "icon": "fire_blast_set.ico",
   "powers": [
-    "Aim",
-    "Blaze",
-    "Blazing_Blast",
-    "Fire_Ball",
-    "Fire_Blast",
-    "Fire_Breath",
-    "Flares",
-    "Inferno",
-    "Rain_of_Fire"
+    "Sentinel_Ranged.Fire_Blast.Aim",
+    "Sentinel_Ranged.Fire_Blast.Blaze",
+    "Sentinel_Ranged.Fire_Blast.Blazing_Blast",
+    "Sentinel_Ranged.Fire_Blast.Fire_Ball",
+    "Sentinel_Ranged.Fire_Blast.Fire_Blast",
+    "Sentinel_Ranged.Fire_Blast.Fire_Breath",
+    "Sentinel_Ranged.Fire_Blast.Flares",
+    "Sentinel_Ranged.Fire_Blast.Inferno",
+    "Sentinel_Ranged.Fire_Blast.Rain_of_Fire"
   ],
   "available_level": [
+    7,
+    5,
+    17,
+    1,
     0,
+    11,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25,
+    21
   ]
 }

@@ -5,27 +5,27 @@
   "short_help": "Fiery Aura",
   "icon": "fiery_aura_set.ico",
   "powers": [
-    "Blazing_Aura",
-    "Burn",
-    "Consume",
-    "Fiery_Embrace",
-    "Fire_Shield",
-    "Healing_Flames",
-    "Phoenix_Rising",
-    "Plasma_Shield",
-    "Rise_of_the_Phoenix",
-    "Temperature_Protection"
+    "Scrapper_Defense.Fiery_Aura.Blazing_Aura",
+    "Scrapper_Defense.Fiery_Aura.Burn",
+    "Scrapper_Defense.Fiery_Aura.Consume",
+    "Scrapper_Defense.Fiery_Aura.Fiery_Embrace",
+    "Scrapper_Defense.Fiery_Aura.Fire_Shield",
+    "Scrapper_Defense.Fiery_Aura.Healing_Flames",
+    "Scrapper_Defense.Fiery_Aura.Phoenix_Rising",
+    "Scrapper_Defense.Fiery_Aura.Plasma_Shield",
+    "Scrapper_Defense.Fiery_Aura.Rise_of_the_Phoenix",
+    "Scrapper_Defense.Fiery_Aura.Temperature_Protection"
   ],
   "available_level": [
     0,
+    23,
+    19,
+    27,
     0,
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    29,
+    9
   ]
 }

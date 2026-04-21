@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Taunt",
   "display_fullname": "Brute Melee Dark Melee Taunt",
-  "display_help": "VVVQ7XNBKG5SW3MMN4NC9CRT7W",
+  "display_help": "Taunt foes to attack you. Useful to pull enemies off allies and keep them attacking you to raise your Fury. A To Hit check is required to Taunt enemy players, but is not needed against critter targets.",
   "display_short_help": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "shadowfighting_taunt.png",
   "auto_issue": false,
@@ -199,6 +199,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Brute_Melee.Dark_Melee"
 }

@@ -3,10 +3,10 @@
   "full_name": "Redirects.Battle_Axe.Battle_Axe",
   "short_name": "Battle_Axe",
   "type": "Click",
-  "display_name": "7JHWQKVNVWFAYLMCUR5LBL9Q8Q",
+  "display_name": "Axe Hit",
   "display_fullname": "Redirects Battle Axe Battle Axe",
-  "display_help": "7JHWQKVNVWFAYLMCUR5LBL9Q8Q",
-  "display_short_help": "7JHWQKVNVWFAYLMCUR5LBL9Q8Q",
+  "display_help": "Axe Hit",
+  "display_short_help": "Axe Hit",
   "icon": "battleaxe_whirlingaxe.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -78,6 +78,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Redirects.Battle_Axe"
 }

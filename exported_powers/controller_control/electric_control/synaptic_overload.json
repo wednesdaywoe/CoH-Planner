@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Synaptic Overload",
   "display_fullname": "Controller Control Electric Control Synaptic Overload",
-  "display_help": "H2LKUL2EVD3AW6X9JPEZT933YA",
+  "display_help": "This power can subtly scramble the synapses of any target affected, causing hallucinations and confusion amongst foes. The electric charge lasts for some time, and will jump slowly to other opponents causing wide spread confusion. Foes may not be aware that this has happened, and will not be alerted to your presence. You will also not receive experience for any damage dealt by confused opponents.<br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>6</color> seconds and each affected foe will increase the recharge by <color #FF7F27>6.5</color> seconds for a maximum total of <color #FF7F27>110</color> seconds.</color>",
   "display_short_help": "Ranged Chain AoE, Foe Confuse, -End",
   "icon": "electriccontrol_synapticoverload.png",
   "auto_issue": false,
@@ -283,6 +283,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Controller_Control.Electric_Control"
 }

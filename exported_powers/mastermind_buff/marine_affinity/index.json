@@ -1,29 +1,29 @@
 {
   "key": "Mastermind_Buff.Marine_Affinity",
-  "display_name": "3A2HMNRUNHMHYYVG2NETELZD53",
-  "help": "PXP2FYL3NP3EWEXL4XV3JW946A",
-  "short_help": "3A2HMNRUNHMHYYVG2NETELZD53",
+  "display_name": "Marine Affinity",
+  "help": "Command the various powers of the ocean to buff your allies, and wash away your enemies.",
+  "short_help": "Marine Affinity",
   "icon": "nature_affinity_set.ico",
   "powers": [
-    "Brine",
-    "Call_Depths",
-    "Shifting_Tides",
-    "Shoal_Rush",
-    "Soothing_Wave",
-    "Tide_Pool",
-    "Toroidal_Bubble",
-    "Wellspring",
-    "Whitecap"
+    "Mastermind_Buff.Marine_Affinity.Brine",
+    "Mastermind_Buff.Marine_Affinity.Call_Depths",
+    "Mastermind_Buff.Marine_Affinity.Shifting_Tides",
+    "Mastermind_Buff.Marine_Affinity.Shoal_Rush",
+    "Mastermind_Buff.Marine_Affinity.Soothing_Wave",
+    "Mastermind_Buff.Marine_Affinity.Tide_Pool",
+    "Mastermind_Buff.Marine_Affinity.Toroidal_Bubble",
+    "Mastermind_Buff.Marine_Affinity.Wellspring",
+    "Mastermind_Buff.Marine_Affinity.Whitecap"
   ],
   "available_level": [
+    19,
+    29,
+    23,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    3,
+    27,
+    9
   ]
 }

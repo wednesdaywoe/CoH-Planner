@@ -3,10 +3,10 @@
   "full_name": "Epic.Mastermind_Dark_Mastery.Soul_Consumption",
   "short_name": "Soul_Consumption",
   "type": "Click",
-  "display_name": "49V2EJYHMAJSYGMVYDQRZVD7GX",
+  "display_name": "Soul Consumption",
   "display_fullname": "Epic Mastermind Dark Mastery Soul Consumption",
-  "display_help": "8MW8BSBKRPXQW7LF2DD77C3MZX",
-  "display_short_help": "QLGCND2BMD6SYJLC7UCGNZ4SQA",
+  "display_help": "You consume life and soul from all enemies nearby, thus siginficantly increasing your maximum hitpoints and endurance. The more foes affected, the stronger the effect. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
+  "display_short_help": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
   "icon": "dark_mastery_soulconsumption",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -212,6 +212,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Mastermind_Dark_Mastery"
 }

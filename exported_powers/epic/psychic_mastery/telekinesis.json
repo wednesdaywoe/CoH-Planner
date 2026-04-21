@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Telekinesis",
   "display_fullname": "Epic Psychic Mastery Telekinesis",
-  "display_help": "KHZUB9C8N4ZBYDNM9HBKTQ9FL3",
-  "display_short_help": "75S8Y7U4BKS2WDVGNK2TNBZU9W",
+  "display_help": "Lifts a foe, and any nearby foes, off the ground and repels them. The targets are helpless, unable to move, and will continue to hover away, picking up any passing targets, as long as you keep this power active. Keeping up this level of concentration costs a lot of Endurance. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
+  "display_short_help": "Toggle: Ranged (Targeted AoE), Foe Immobilize, Repel",
   "icon": "mentalcontrol_telekinesis.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -390,6 +390,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Psychic_Mastery"
 }

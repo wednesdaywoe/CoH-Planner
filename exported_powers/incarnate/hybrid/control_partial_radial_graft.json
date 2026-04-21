@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Control Partial Radial Graft",
   "display_fullname": "Incarnate Hybrid Control Partial Radial Graft",
-  "display_help": "PCD9MM6ZNH6UWMB9R53TFYD3XQ",
+  "display_help": "Toggle: Adds a Chance for Fear to most damaging powers. This ability gives a 45% chance for its effects to occur on each hit. Also adds a chance for +1 magnitude to all of your status effects while active. Equipping this Hybrid power grants a passive boost to Status Resistance at all times.<br><br><color #fcfc95>Notes: Control Partial Radial Graft is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Chance for Fear, Chance for +1 Magnitude to Crowd Control effects",
   "icon": "incarnate_hybrid_control_rare.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "short_help": "Diviner",
   "icon": "lore_pet_seers_lt_set.ico",
   "powers": [
-    "Dominate_Mind",
-    "Mental_Blast"
+    "Incarnate.Lore_Pet_Seers_LT.Dominate_Mind",
+    "Incarnate.Lore_Pet_Seers_LT.Mental_Blast"
   ],
   "available_level": [
     0,

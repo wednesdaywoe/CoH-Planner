@@ -5,27 +5,27 @@
   "short_help": "Ice Armor",
   "icon": "ice_armor_set.ico",
   "powers": [
-    "Frigid_Shield",
-    "Frost_Protection",
-    "Frozen_Armor",
-    "Glacial_Armor",
-    "Hoarfrost",
-    "Icy_Bastion",
-    "Moisture_Absorption",
-    "Permafrost",
-    "Rime_Ice",
-    "Wet_Ice"
+    "Sentinel_Defense.Ice_Armor.Frigid_Shield",
+    "Sentinel_Defense.Ice_Armor.Frost_Protection",
+    "Sentinel_Defense.Ice_Armor.Frozen_Armor",
+    "Sentinel_Defense.Ice_Armor.Glacial_Armor",
+    "Sentinel_Defense.Ice_Armor.Hoarfrost",
+    "Sentinel_Defense.Ice_Armor.Icy_Bastion",
+    "Sentinel_Defense.Ice_Armor.Moisture_Absorption",
+    "Sentinel_Defense.Ice_Armor.Permafrost",
+    "Sentinel_Defense.Ice_Armor.Rime_Ice",
+    "Sentinel_Defense.Ice_Armor.Wet_Ice"
   ],
   "available_level": [
+    9,
+    27,
     0,
+    19,
     0,
+    29,
+    15,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Upgrade Equipment",
   "display_fullname": "Mastermind Summon Thugs Upgrade Equipment",
-  "display_help": "55FJFTK4TKR2YRZ7NF2JSS9EHX",
+  "display_help": "Permanently Upgrade the most advanced ammo, weapons and training to all of your Thug Henchman. The Upgraded Thug will gain new powers, weapons and abilities. The powers gained are unique and dependent upon the type of Thug Henchman that is Upgraded.<br><br>This power only works on your Thug Henchmen and you can only Upgrade the Equipment of your Thug Henchmen once with this power.",
   "display_short_help": "Ranged, Upgrade Thug Henchman",
   "icon": "thugs_upgradeequipment.png",
   "auto_issue": false,
@@ -44,6 +44,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Mastermind_Summon.Thugs"
 }

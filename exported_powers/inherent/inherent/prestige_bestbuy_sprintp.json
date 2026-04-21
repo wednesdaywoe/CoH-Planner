@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Prestige Power Dash",
   "display_fullname": "Inherent Inherent prestige BestBuy Sprintp",
-  "display_help": "74BV5XBHXKZTWNCASNQUTMSXVZ",
+  "display_help": "Sprint allows you to travel, or run away, slightly faster than normal, while slightly draining your Endurance.<br><br>Sprint's movement buff stacks with other travel powers.",
   "display_short_help": "Boost Run SPD",
   "icon": "inherent_sprint.png",
   "auto_issue": true,

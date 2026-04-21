@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Concentration",
   "display_fullname": "Blaster Support Mental Manipulation Build Up",
-  "display_help": "73EGA83LD89LWSBMLTCE7637T3",
+  "display_help": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +DMG, +To Hit",
   "icon": "mentalcontrol_buildup.png",
   "auto_issue": false,
@@ -114,6 +114,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Blaster_Support.Mental_Manipulation"
 }

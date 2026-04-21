@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fire Sword Circle",
   "display_fullname": "Tanker Melee Fiery Melee Fire Sword Circle",
-  "display_help": "VUCPNJ5CBFTPWDNBUSD8CFEB6Z",
-  "display_short_help": "VXUQ5JV4NDLMYEC7PR3EGZGZ9Q",
+  "display_help": "Mastery of your Fire Sword has enabled you to make an attack on every foe within melee distance. This will slash burn and cut through the defenses of your enemies, dealing moderate damage and setting them ablaze.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Fire), -Defense",
   "icon": "fieryfray_fireswordcircle.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -267,6 +267,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Tanker_Melee.Fiery_Melee"
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "World of Confusion",
   "display_fullname": "Blaster Support Mental Manipulation World of Confusion",
-  "display_help": "JPMXAGSHV23HYJZXDQBT2NJDA3",
+  "display_help": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse",
   "icon": "mentalcontrol_worldofconfusion.png",
   "auto_issue": false,
@@ -162,6 +162,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Blaster_Support.Mental_Manipulation"
 }

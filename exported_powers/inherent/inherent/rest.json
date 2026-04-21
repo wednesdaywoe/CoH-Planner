@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Rest",
   "display_fullname": "Inherent Inherent Rest",
-  "display_help": "E95U6TPV8LA6YMMA8C5WY63HTA",
+  "display_help": "Activate Rest to heal Hit Points and recover Endurance. While Resting you cannot attack, and you are extremely vulnerable to attack and damage.<br><br>Activation of Rest can be interrupted, and the power must be active for a few seconds before you start to recuperate.<br><br><color #fcfc95>Notes: This power can be used while flying, but will make you fall to the ground.</color>",
   "display_short_help": "Self Heal Recover, -DEF",
   "icon": "inherent_rest.png",
   "auto_issue": true,
@@ -285,6 +285,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Inherent.Inherent"
 }

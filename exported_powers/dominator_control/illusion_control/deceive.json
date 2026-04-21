@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Deceive",
   "display_fullname": "Dominator Control Illusion Control Deceive",
-  "display_help": "VKZG6MZYXNCNW9NKKHP8BBPPZ3",
+  "display_help": "You can Deceive an enemy into believing their friends are not who they appear to be. If successful, the enemy will ignore you and attack their own allies. If you Deceive someone before they have noticed you, your presence will continue to be masked. Damage done by a Deceived enemy will reduce the total amount of Experience Points awarded when a foe is defeated.",
   "display_short_help": "Ranged, Foe Confuse",
   "icon": "illusions_decieve.png",
   "auto_issue": false,
@@ -204,6 +204,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Dominator_Control.Illusion_Control"
 }

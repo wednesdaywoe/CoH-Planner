@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Concentrated Strike",
   "display_fullname": "Stalker Melee Kinetic Attack Total Focus",
-  "display_help": "HAVHSVSHZPHCWBV2CWHSJBY6UW",
-  "display_short_help": "TLM8XN9QC595W8CJ3M2MKUEPWS",
+  "display_help": "Concentrated Strike is a slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Concentrated Strike, its recharge time is very long.",
+  "display_short_help": "Melee, DMG(Energy/Smash), Foe Disorient, +Special",
   "icon": "kineticattack_totalfocus.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -531,6 +531,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Stalker_Melee.Kinetic_Attack"
 }

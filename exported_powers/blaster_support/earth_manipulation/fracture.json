@@ -3,10 +3,10 @@
   "full_name": "Blaster_Support.Earth_Manipulation.Fracture",
   "short_name": "Fracture",
   "type": "Click",
-  "display_name": "P2186418631",
+  "display_name": "Fracture",
   "display_fullname": "Blaster Support Earth Manipulation Fracture",
-  "display_help": "2J4KAD3YG67ZWCMK8VVW32QYU3",
-  "display_short_help": "SGLZ3P759PD9Y6C25SVNYEXLVS",
+  "display_help": "You can Fracture the ground around an enemy, disorienting all affected targets for a good while. You must be on the ground to activate this power.<br><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "Ranged (Targeted AoE), Foe Disorient, -DEF",
   "icon": "earthmanip_fracture",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -261,6 +261,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Earth_Manipulation"
 }

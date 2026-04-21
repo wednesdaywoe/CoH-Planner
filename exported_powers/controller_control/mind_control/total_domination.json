@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Total Domination",
   "display_fullname": "Controller Control Mind Control Total Domination",
-  "display_help": "U7XHFHHWBXE7YNNK5JHV5URASX",
+  "display_help": "Tears at the mind of a target foe and those near him. Total Domination renders all affected foes helpless, lost in their own minds and unable to defend themselves.<br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>8</color> seconds and each affected foe will increase the recharge by <color #FF7F27>14.5</color> seconds for a maximum total of <color #FF7F27>240</color> seconds.</color>",
   "display_short_help": "Ranged (Targeted AoE), Foe Hold",
   "icon": "mentalcontrol_freeze.png",
   "auto_issue": false,
@@ -206,6 +206,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Controller_Control.Mind_Control"
 }

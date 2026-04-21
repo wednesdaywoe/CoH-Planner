@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Salt Crystals",
   "display_fullname": "Controller Control Earth Control Salt Crystals",
-  "display_help": "62AKEWQZFU6DYWMLABZ9PJZT5S",
-  "display_short_help": "RTCVXDS2NQG4YRNXK9V9C88ZCA",
+  "display_help": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free.<br><br><color #fcfc95>Notes: Although this power is Auto Hit, it requires a To Hit check to apply Deep Sleep. If The Hit check is missed, and the target is not an AV, the weaker form of Sleep will be applied.</color>",
+  "display_short_help": "PBAoE, Foe Deep Sleep, -DEF",
   "icon": "earthgrasp_saltpillars.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -293,6 +293,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Controller_Control.Earth_Control"
 }

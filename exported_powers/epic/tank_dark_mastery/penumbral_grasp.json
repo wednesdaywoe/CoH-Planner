@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Penumbral Grasp",
   "display_fullname": "Epic Tank Dark Mastery Penumbral Grasp",
-  "display_help": "VKRMW36WHZW8YAC3LEP62V9XRZ",
-  "display_short_help": "VEKCWHF8V6SFWYXCKAEXG4ZQ2Z",
+  "display_help": "Penumbral Grasp deals moderate Negative Energy damage, reduces their chance to hit and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.",
+  "display_short_help": "Ranged, DOT(Negative), Foe Immobilize, -To Hit",
   "icon": "dark_mastery_penumbralgrasp",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -241,6 +241,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Tank_Dark_Mastery"
 }

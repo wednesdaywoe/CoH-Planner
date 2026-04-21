@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Physical Perfection",
   "display_fullname": "Epic Energy Mastery Physical Perfection",
-  "display_help": "XF9GT4ZYBYDSYKV3VV9REZAHC2",
+  "display_help": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
   "display_short_help": "Auto: Self, +Regeneration, +Recovery",
   "icon": "energymastery_physicalperfection.png",
   "auto_issue": false,
@@ -106,6 +106,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Energy_Mastery"
 }

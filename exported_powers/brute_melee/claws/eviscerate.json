@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Eviscerate",
   "display_fullname": "Brute Melee Claws Eviscerate",
-  "display_help": "BQ879BLZUCVEWWZ5K9C8YLHHMX",
-  "display_short_help": "EYH8PB4DDDQYW4NTPLSQU4U793",
+  "display_help": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you.",
+  "display_short_help": "Melee (Cone), DMG(Lethal), Foe -DEF",
   "icon": "claws_evicerate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -241,6 +241,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Brute_Melee.Claws"
 }

@@ -3,10 +3,10 @@
   "full_name": "Redirects.Storm_Blast.StormCell_LightningAura4",
   "short_name": "StormCell_LightningAura4",
   "type": "Auto",
-  "display_name": "R8URY983CQKEYKLJPW74Q22MEW",
+  "display_name": "Strong Storm Cell Lightning",
   "display_fullname": "Redirects Storm Blast StormCell LightningAura4",
-  "display_help": "9GWWHNJJ9YRTY6VHG9AFZWMY23",
-  "display_short_help": "4Q7DN2437G5AYJBZ2V5LK9L6Z2",
+  "display_help": "Enemies within range of this crackling aura have a chance of being struck by lightning!",
+  "display_short_help": "Ranged, DMG(Energy), Foe -End, Chance for Knockdown",
   "icon": "stormblast_stormcell.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -644,6 +644,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Redirects.Storm_Blast"
 }

@@ -5,21 +5,21 @@
   "short_help": "Teamwork",
   "icon": "teamwork_set.ico",
   "powers": [
-    "Combat_Training:_Defensive",
-    "Combat_Training:_Offensive",
-    "Foresight",
-    "Indomitable_Will",
-    "Tactical_Training:_Assault",
-    "Tactical_Training:_Leadership",
-    "Tactical_Training:_Maneuvers"
+    "Teamwork.Teamwork.Combat_Training:_Defensive",
+    "Teamwork.Teamwork.Combat_Training:_Offensive",
+    "Teamwork.Teamwork.Foresight",
+    "Teamwork.Teamwork.Indomitable_Will",
+    "Teamwork.Teamwork.Tactical_Training:_Assault",
+    "Teamwork.Teamwork.Tactical_Training:_Leadership",
+    "Teamwork.Teamwork.Tactical_Training:_Maneuvers"
   ],
   "available_level": [
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    21,
+    9,
+    15,
+    19,
+    3
   ]
 }

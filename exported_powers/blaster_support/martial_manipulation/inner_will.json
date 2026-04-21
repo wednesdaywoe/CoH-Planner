@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Inner Will",
   "display_fullname": "Blaster Support Martial Manipulation Inner Will",
-  "display_help": "F27VJGE5FQ9NWCM8QRW6QZTF4A",
+  "display_help": "When pushed to your limit, you can tap into an inner reserve of power, allowing you to overcome impossible odds. When you are below half health, below half endurance, or the victim of any status effect, you may activate Inner Will. Inner Will cancels any status effects currently affecting you, increases your resistance to status effects by 100%, and increases the power of your own status effect-inducing powers. Inner Will also heals you for a moderate amount when activated.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self Heal, Special",
   "icon": "martialmanipulation_innerwill.png",
   "auto_issue": false,
@@ -321,6 +321,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Blaster_Support.Martial_Manipulation"
 }

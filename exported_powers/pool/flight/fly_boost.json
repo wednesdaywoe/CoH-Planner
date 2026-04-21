@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Afterburner",
   "display_fullname": "Pool Flight Fly Boost",
-  "display_help": "NX8QUJFSYEXAWNVGHQ4EULVH8Z",
+  "display_help": "Afterburner greatly increases your fly speed and maximum fly speed for a short period of time.<br><br><color #fcfc95>Notes: Afterburner is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Self +FlySpeed (Special)",
   "icon": "flight_afterburner.png",
   "auto_issue": true,
@@ -103,6 +103,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Pool.Flight"
 }

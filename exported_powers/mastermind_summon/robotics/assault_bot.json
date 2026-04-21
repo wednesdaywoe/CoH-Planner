@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Assault Bot",
   "display_fullname": "Mastermind Summon Robotics Assault Bot",
-  "display_help": "QE3APXTHUXWGYKVZ93M4RVVQSX",
+  "display_help": "Builds one massive Assault Bot. Simply put, the Assault Bot is a killing machine. There is nothing subtle about its weaponry.",
   "display_short_help": "Summon Assault Bot",
   "icon": "robotics_assembleassaultmech.png",
   "auto_issue": false,
@@ -135,6 +135,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Mastermind_Summon.Robotics"
 }

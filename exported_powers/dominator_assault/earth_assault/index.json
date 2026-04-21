@@ -5,25 +5,25 @@
   "short_help": "Earth Assault",
   "icon": "earth_assault_set.ico",
   "powers": [
-    "Fissure",
-    "Heavy_Mallet",
-    "Hurl_Boulder",
-    "Mud_Pots",
-    "Power_Boost",
-    "Seismic_Smash",
-    "Stone_Mallet",
-    "Stone_Spears",
-    "Tremor"
+    "Dominator_Assault.Earth_Assault.Fissure",
+    "Dominator_Assault.Earth_Assault.Heavy_Mallet",
+    "Dominator_Assault.Earth_Assault.Hurl_Boulder",
+    "Dominator_Assault.Earth_Assault.Mud_Pots",
+    "Dominator_Assault.Earth_Assault.Power_Boost",
+    "Dominator_Assault.Earth_Assault.Seismic_Smash",
+    "Dominator_Assault.Earth_Assault.Stone_Mallet",
+    "Dominator_Assault.Earth_Assault.Stone_Spears",
+    "Dominator_Assault.Earth_Assault.Tremor"
   ],
   "available_level": [
+    29,
+    19,
+    9,
+    27,
+    15,
+    23,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3
   ]
 }

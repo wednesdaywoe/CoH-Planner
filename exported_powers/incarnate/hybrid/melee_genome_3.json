@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Melee Radial Genome",
   "display_fullname": "Incarnate Hybrid Melee Genome 3",
-  "display_help": "AGAARWFBX6MQWBLUA587QZS2R2",
+  "display_help": "This power grants the user a stacking Regeneration and Defense buff for each enemy within an 8 foot radius. The effect reaches its maximum strength at 4 enemies - these enemies will be taunted by this power. Equipping this Hybrid power grants a passive boost to Regeneration at all times.<br><br><color #fcfc95>Notes: Melee Radial Genome is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Self +Regen, +Def(All) per nearby enemy",
   "icon": "incarnate_hybrid_melee_uncommon.png",
   "auto_issue": false,

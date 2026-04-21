@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Slice",
   "display_fullname": "Brute Melee Broad Sword Slice",
-  "display_help": "TX9DX7LRWBBJW7Z9BYWXULRRES",
-  "display_short_help": "AHYUAZYRTHTYY8CS627MVNCQ3Z",
+  "display_help": "You Slice your sword in a wide arc, attacking all enemies in front of you reducing their defense and damage resistance.<br><br>Every <color #fcfc95>15 seconds</color>, you can perform a more powerful, Rending Slice on your main target.<br><br><color #fcfc95>This power is mutually exclusive from Boomerang Slice.</color>",
+  "display_short_help": "Melee (Cone), DMG(Lethal), Foe -DEF, -Res(Dmg)",
   "icon": "sword_slice.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -426,6 +426,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Brute_Melee.Broad_Sword"
 }

@@ -5,27 +5,27 @@
   "short_help": "Crab Spider Soldier",
   "icon": "crab_spider_soldier_set.ico",
   "powers": [
-    "Aim",
-    "Arm_Lash",
-    "Channelgun",
-    "CS_Frag_Grenade",
-    "CS_Venom_Grenade",
-    "Frenzy",
-    "Longfang",
-    "Omega_Maneuver",
-    "Slice",
-    "Suppression"
+    "Arachnos_Soldiers.Crab_Spider_Soldier.Aim",
+    "Arachnos_Soldiers.Crab_Spider_Soldier.Arm_Lash",
+    "Arachnos_Soldiers.Crab_Spider_Soldier.Channelgun",
+    "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Frag_Grenade",
+    "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade",
+    "Arachnos_Soldiers.Crab_Spider_Soldier.Frenzy",
+    "Arachnos_Soldiers.Crab_Spider_Soldier.Longfang",
+    "Arachnos_Soldiers.Crab_Spider_Soldier.Omega_Maneuver",
+    "Arachnos_Soldiers.Crab_Spider_Soldier.Slice",
+    "Arachnos_Soldiers.Crab_Spider_Soldier.Suppression"
   ],
   "available_level": [
+    5,
+    11,
     0,
+    17,
+    11,
+    21,
+    1,
+    25,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    7
   ]
 }

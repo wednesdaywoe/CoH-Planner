@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Cloak of Darkness",
   "display_fullname": "Scrapper Defense Dark Armor Cloak of Darkness",
-  "display_help": "8J5PHABDLWLGWMBQP37FJKQRJW",
+  "display_help": "A shroud of Netherworld darkness envelops you, making you difficult to spot at a distance. You can be seen only at close range, or if you attack a target. Even if seen, the Cloak of Darkness grants you a bonus to Defense to all attacks and some protection from Immobilization. This Netherworld Cloak also allows you to see things in a new light, allowing you to better see stealthy foes.",
   "display_short_help": "Toggle: Self Stealth, +DEF(All), +Perception, Res (Immobilize)",
   "icon": "darkarmor_cloakofdarkness.png",
   "auto_issue": false,
@@ -358,6 +358,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Scrapper_Defense.Dark_Armor"
 }

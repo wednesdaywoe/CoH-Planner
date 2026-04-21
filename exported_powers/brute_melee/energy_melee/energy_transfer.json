@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Energy Transfer",
   "display_fullname": "Brute Melee Energy Melee Energy Transfer",
-  "display_help": "Z6F2FS9QRX76Y5VBSVMHMSMZ9W",
-  "display_short_help": "743KQH9C7DAQYZVBFDW7UL3TWW",
+  "display_help": "Mastery of Energy Melee culminates with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. This power will execute extremely quickly if under Energy Focus mode.",
+  "display_short_help": "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
   "icon": "powerpunch_energytransfer.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -60,6 +60,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Brute_Melee.Energy_Melee"
 }

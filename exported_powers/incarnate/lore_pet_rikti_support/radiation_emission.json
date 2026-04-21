@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Radiation Emission",
   "display_fullname": "Incarnate Lore Pet Rikti Support Radiation Emission",
-  "display_help": "GMQ7ER4RHFM8WXZG74W3X5QKV2",
+  "display_help": "The Radiation Emission power utilizes the healing properties of radiation to re-energize your allies. This power radiates out from the Rikti and restores some health to all nearby allies.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Team AoE Ally +Heal",
   "icon": "radiationpoisoning_radiationemission.png",
   "auto_issue": false,

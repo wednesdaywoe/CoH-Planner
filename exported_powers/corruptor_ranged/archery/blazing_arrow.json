@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Blazing Arrow",
   "display_fullname": "Corruptor Ranged Archery Blazing Arrow",
-  "display_help": "YFMVJGF3PC78WMB8XX6SHPF8H2",
-  "display_short_help": "7E84MEPDY7FQWLXSYJEP8N5YCA",
+  "display_help": "You fire a Blazing Arrow at your foe, dealing some Lethal damage and causing them to catch on fire and burn.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged, Extreme DMG(Lethal), Minor DoT(Fire)",
   "icon": "archery_flamingarrow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -239,6 +239,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Corruptor_Ranged.Archery"
 }

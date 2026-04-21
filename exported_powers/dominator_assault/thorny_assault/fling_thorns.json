@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fling Thorns",
   "display_fullname": "Dominator Assault Thorny Assault Fling Thorns",
-  "display_help": "7DJ6FLMPSA9FWVBWQJRFQLGK2X",
-  "display_short_help": "YC6GKBXDGGM5YUV3PKTTFS96WS",
+  "display_help": "You can throw dozens of Thorns in a wide cone in front of you, impaling foes caught within the area. These Thorns deals moderate damage, and poisons any targets it hits. Thorn poison deals additional Toxic damage and can reduce your foes' Defense.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged (Cone), Light DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_flingthorns.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -214,6 +214,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Dominator_Assault.Thorny_Assault"
 }

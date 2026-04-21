@@ -1,29 +1,29 @@
 {
   "key": "Blaster_Support.Tactical_Arrow",
   "display_name": "Tactical Arrow",
-  "help": "SUCTNLU6GY7CWHZL9X9C9KXYTS",
+  "help": "Gain an advantage in combat with a combination of training techniques that boost your accuracy and movement skills in addition to Tactical Arrows tipped with a variety of payloads, which if used strategically, can dramatically alter a battle site.",
   "short_help": "Tactical Arrow",
   "icon": "tactical_arrow_set.ico",
   "powers": [
-    "Eagle_Eye",
-    "Electrified_Net_Arrow",
-    "EMP_Arrow",
-    "Flash_Arrow",
-    "Glue_Arrow",
-    "Gymnastics",
-    "Ice_Arrow",
-    "Quickness",
-    "Upshot"
+    "Blaster_Support.Tactical_Arrow.Eagle_Eye",
+    "Blaster_Support.Tactical_Arrow.Electrified_Net_Arrow",
+    "Blaster_Support.Tactical_Arrow.EMP_Arrow",
+    "Blaster_Support.Tactical_Arrow.Flash_Arrow",
+    "Blaster_Support.Tactical_Arrow.Glue_Arrow",
+    "Blaster_Support.Tactical_Arrow.Gymnastics",
+    "Blaster_Support.Tactical_Arrow.Ice_Arrow",
+    "Blaster_Support.Tactical_Arrow.Quickness",
+    "Blaster_Support.Tactical_Arrow.Upshot"
   ],
   "available_level": [
+    19,
     0,
+    27,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    29,
+    3,
+    23,
+    9
   ]
 }

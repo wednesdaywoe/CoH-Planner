@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Hail of Bullets",
   "display_fullname": "Defender Ranged Dual Pistols Hail of Bullets",
-  "display_help": "U8JYJ2G525RTYLXAJ2D47BB6RW",
-  "display_short_help": "CVS8CWPKBL2HY4M86YGCXNCQMA",
+  "display_help": "You fire a hail of bullets at all enemies around you dealing Extreme lethal damage. Enemies that are struck have a chance to be knocked down. Having Standard Rounds will dramatically increase this chance to knockdown your foes. If you hit at least one target you will gain a moderate melee, ranged and AoE Defense bonus for a brief period.<br><br>Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.<br><br>Additionally, changing your ammunition type will also change the secondary effect of this attack from a guaranteed knockdown effect to:<br><br><color #9bfafa>*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.</color><br><color #fac39b>*A minor damage over time effect if 'Incendiary Ammo' is loaded.</color><br><color #9efa9b>*A -damage effect if 'Chemical Ammo' is loaded.</color>",
+  "display_short_help": "PBAoE, DMG(Lethal/Special), Self +Def(Melee, Ranged, AoE), Foe Knockdown/Special",
   "icon": "dualpistols_hailofbullets.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -1074,6 +1074,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Defender_Ranged.Dual_Pistols"
 }

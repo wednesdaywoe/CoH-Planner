@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Frozen Aura",
   "display_fullname": "Tanker Melee Ice Melee Frozen Aura",
-  "display_help": "BAA6U542XQB8WMBNX7YQ68MDXS",
-  "display_short_help": "4CFZ2PP3JUYHW7VYCQKBLBJ2KZ",
+  "display_help": "Your mastery of cold enables you to dramatically lower the temperature immediately around you. When you perform a Frozen Aura, nearby foes will be frozen within a fragile casing of ice and suffer a moderate amount of cold damage. These frozen foes will break free if attacked. Frozen Aura deals moderate damage.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.<br><br>Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE, DMG(Cold), Foe Sleep",
   "icon": "icyonslaught_frozenaura.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -321,6 +321,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Tanker_Melee.Ice_Melee"
 }

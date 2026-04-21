@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fire Breath",
   "display_fullname": "Sentinel Ranged Fire Blast Fire Breath",
-  "display_help": "MXDMPZR7LRQQYXMTAZZ9JKAMT3",
-  "display_short_help": "CTTBYUDBEPTTYNX2S83T8Z97CS",
+  "display_help": "You can breathe forth a torrent of fire that burns all foes within its narrow cone. Very accurate and very deadly at medium range.",
+  "display_short_help": "Ranged (Cone), DoT(Fire)",
   "icon": "fireblast_arcoffire.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -319,6 +319,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Sentinel_Ranged.Fire_Blast"
 }

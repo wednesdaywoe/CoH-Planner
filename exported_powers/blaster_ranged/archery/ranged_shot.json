@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ranged Shot",
   "display_fullname": "Blaster Ranged Archery Ranged Shot",
-  "display_help": "2XK7D22PK8TGYHXUYWGSZU2BDS",
-  "display_short_help": "Z8XTXHTUCG7ZWXLLC2GVS6M6UQ",
+  "display_help": "A long range shot that blasts your foes. Like most sniper attacks, this power has a bonus to Accuracy, but is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+  "display_short_help": "Sniper, DMG(Lethal), Self +Range",
   "icon": "archery_sniperarrow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Blaster_Ranged.Archery"
 }

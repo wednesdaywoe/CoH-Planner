@@ -5,9 +5,9 @@
   "short_help": "Scrapper Melee",
   "icon": "scrapper_melee_set.ico",
   "powers": [
-    "Savage_Leap"
+    "Redirects.Scrapper_Melee.Savage_Leap"
   ],
   "available_level": [
-    0
+    31
   ]
 }

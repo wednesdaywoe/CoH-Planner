@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Frozen Armor",
   "display_fullname": "Epic Ice Mastery Frozen Armor",
-  "display_help": "873A3KXYESDWYMZ83J3LSVCBQX",
+  "display_help": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
   "icon": "ice_mastery_frozenarmor",
   "auto_issue": false,
@@ -260,6 +260,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Ice_Mastery"
 }

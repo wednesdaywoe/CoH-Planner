@@ -3,9 +3,9 @@
   "full_name": "Redirects.Storm_Blast.Lightning_Proc",
   "short_name": "Lightning_Proc",
   "type": "Auto",
-  "display_name": "KZP7NQDZL38RWEZ43Q6JEQLDCX",
+  "display_name": "Lightning Proc",
   "display_fullname": "Redirects Storm Blast Lightning Proc",
-  "display_help": "9GWWHNJJ9YRTY6VHG9AFZWMY23",
+  "display_help": "Enemies within range of this crackling aura have a chance of being struck by lightning!",
   "display_short_help": "Lightning",
   "icon": "stormblast_categoryfive.png",
   "auto_issue": false,
@@ -150,6 +150,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Redirects.Storm_Blast"
 }

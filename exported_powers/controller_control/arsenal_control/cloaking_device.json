@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Cloaking Device",
   "display_fullname": "Controller Control Arsenal Control Cloaking Device",
-  "display_help": "G65PAP65LFZQWCN2VDVKNBWW4Z",
+  "display_help": "This Cloaking Device is the ultimate in infiltration technology. It uses an LCD body coating to become all but impossible to detect. While concealed you can only be seen at very close range. If you attack while concealed, you will be discovered. Even if discovered, you are hard to see but will retain some of your Defense bonus to all attacks.",
   "display_short_help": "Toggle: Self Stealth, +DEF(All)",
   "icon": "arsenalcontrol_cloakingdevice",
   "auto_issue": false,
@@ -371,6 +371,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Controller_Control.Arsenal_Control"
 }

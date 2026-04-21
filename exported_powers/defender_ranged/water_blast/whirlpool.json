@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Whirlpool",
   "display_fullname": "Defender Ranged Water Blast Whirlpool",
-  "display_help": "N8L8GRZPKTZBW4VXTZ9TJT4EQ3",
-  "display_short_help": "CASSTVWDCKD5Y3MPFUAUN2N5N3",
+  "display_help": "You create a violent whirlpool at the target location causing Cold damage over time, reducing the targets' speed and defense for a short time. Whirlpool grants 1 stack of Tidal Power.",
+  "display_short_help": "Ranged (Location AoE), DoT(Cold), -Speed, -Defense, +Wet, Self +Tidal Power",
   "icon": "waterblast_whirlpool.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -131,6 +131,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Defender_Ranged.Water_Blast"
 }

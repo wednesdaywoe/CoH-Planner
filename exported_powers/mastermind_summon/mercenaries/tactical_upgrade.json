@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Tactical Upgrade",
   "display_fullname": "Mastermind Summon Mercenaries Tactical Upgrade",
-  "display_help": "FYXK8H92ZPBLYMZCKEV3LZWT3Q",
+  "display_help": "Permanently Upgrade the most advanced tactical weapons and gear to all of your Mercenary Henchman. The Tactically Upgraded Mercenaries will gain powers, weapons and munitions. The powers gained are unique and dependent upon the type of Mercenary Henchman that is Upgraded.<br><br>Your Mercenary Henchmen will also become more evasive towards Ranged and AoE attacks. This power only works on your Mercenary Henchmen and you can only Upgrade your Mercenary Henchmen once with this power.",
   "display_short_help": "Ranged, Upgrade Mercenary Henchman",
   "icon": "paramilitary_tacticalupgrade.png",
   "auto_issue": false,
@@ -43,6 +43,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Mastermind_Summon.Mercenaries"
 }

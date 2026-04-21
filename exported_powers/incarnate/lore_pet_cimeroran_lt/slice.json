@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Slice",
   "display_fullname": "Incarnate Lore Pet Cimeroran LT Slice",
-  "display_help": "6G85ZSFAPRRWWXVG3E95PS7ERS",
+  "display_help": "You Slice your sword in a wide arc, attacking all enemies in front of you. Slice does less damage than Slash, but can hit multiple foes and reduces their defense.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee (Cone), Moderate Dam(Lethal), Foe -DEF",
   "icon": "sword_slice.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Shinobi-Iri",
   "display_fullname": "Scrapper Defense Ninjitsu Shinobi-Iri",
-  "display_help": "2X35Z5HW5Z7NYFMLN2RDDDPWTA",
-  "display_short_help": "6KDTKWVWN8DQYPZHSBLFY7W6DQ",
+  "display_help": "Shinobi Iri are the ninjitsu techniques of silent movement and avoidance, granting you stealth and defense against all positional attacks. While stealthed, you have a very high chance of landing a critical attack, however you can only attempt this after spending 8 seconds without attacking or being hit.",
+  "display_short_help": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE), +Special",
   "icon": "ninjitsu_hide.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -367,6 +367,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Scrapper_Defense.Ninjitsu"
 }

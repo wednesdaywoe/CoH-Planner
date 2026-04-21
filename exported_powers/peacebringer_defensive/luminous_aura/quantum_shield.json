@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Quantum Shield",
   "display_fullname": "Peacebringer Defensive Luminous Aura Quantum Shield",
-  "display_help": "HYLQN39DYN8KYUBXM95BM4NZKA",
+  "display_help": "When you toggle on Quantum Shield, you become highly resistant to Energy and Negative damage.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Self +Res(Energy, Negative)",
   "icon": "luminousaura_quantumshield.png",
   "auto_issue": false,
@@ -203,6 +203,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

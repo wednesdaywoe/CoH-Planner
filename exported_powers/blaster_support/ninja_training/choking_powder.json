@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Choking Powder",
   "display_fullname": "Blaster Support Ninja Training Choking Powder",
-  "display_help": "8GVTN2B62VCAYRVNKBJKVJ9973",
+  "display_help": "Toss a fistful of toxic powder at an enemy\u2019s face. This powder will temporarily close the affected foe\u2019s throat making them choke and struggle to grasp for air.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Moderate DoT(Toxic), Foe Hold",
   "icon": "ninjatools_hold",
   "auto_issue": false,
@@ -213,6 +213,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Blaster_Support.Ninja_Training"
 }

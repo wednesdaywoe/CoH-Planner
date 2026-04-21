@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ice Arrow",
   "display_fullname": "Defender Buff Trick Arrow Ice Arrow",
-  "display_help": "MA2ALJFYH2WNWPBA2WXBA6AJL2",
+  "display_help": "This arrow can freeze a single foe in a block of ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be Held, but all affected targets will be Slowed, have their secondary effects weakened, and damage output reduced.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Foe Hold, -SPD, -Recharge, -DMG, -Special",
   "icon": "trickarrow_hold.png",
   "auto_issue": false,
@@ -496,6 +496,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Defender_Buff.Trick_Arrow"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Temporal Mending",
   "display_fullname": "Mastermind Buff Time Manipulation Temporal Mending",
-  "display_help": "SKFACBVQAAQDY3BVHY6NM42W33",
+  "display_help": "You mend the wounds of yourself and nearby allies by placing your bodies in a past or future state where they are far less injured. Temporal Mending will immediately heal its targets and continue to heal them for an equal amount over the next 6 seconds. Additionally, affected allies will gain some resistance to slow effects and regeneration debuffs. Allies affected by the Accelerated effect will receive additional healing from this power.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Ally +Heal, Heal Over Time, +Res(Slow, Regen Debuff)",
   "icon": "timemanipulation_temporalmending.png",
   "auto_issue": false,

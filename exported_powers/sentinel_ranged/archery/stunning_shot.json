@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Stunning Shot",
   "display_fullname": "Sentinel Ranged Archery Stunning Shot",
-  "display_help": "4XDTBZLUFG3HYGZX2F383VYND2",
-  "display_short_help": "PVR56WLTF6HGY5MY26ZYA2PB3Q",
+  "display_help": "You fire a blunt, weighted arrow at your target's chest. The Stunning Shot inflicts high damage and has a good chance of stunning your foe.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged Disorient, Moderate DMG(Smashing)",
   "icon": "archery_stunarrow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -306,6 +306,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Sentinel_Ranged.Archery"
 }

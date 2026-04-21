@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Engulfing Darkness",
   "display_fullname": "Epic Sentinel Dark Mastery Engulfing Darkness",
-  "display_help": "XDPQ3TVSWE3PY3XENJTWHHANJ2",
-  "display_short_help": "2K93R6LG3GQ9W6Z65PN9JC5UPQ",
+  "display_help": "You release a burst of negative energy to foes around you dealing moderate Negative Energy damage, reducing their chance to hit and sapping their health over time. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
+  "display_short_help": "PBAoE, DMG(Negative), Foe -To Hit, DoT(Negative)",
   "icon": "darknesscontrol_pbaoe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -317,6 +317,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Sentinel_Dark_Mastery"
 }

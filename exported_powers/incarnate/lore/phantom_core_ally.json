@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Phantom Core Ally",
   "display_fullname": "Incarnate Lore Phantom Core Ally",
-  "display_help": "LLSXRRHSEHM9YUVMQTG6ZR6JPX",
+  "display_help": "Draws forth an essence of a vanquished Spectre from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Phantom Core Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Phantom Boss Essence",
   "icon": "incarnate_lore_phantoms_uncommon.png",
   "auto_issue": false,

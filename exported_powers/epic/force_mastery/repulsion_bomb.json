@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Force Bomb",
   "display_fullname": "Epic Force Mastery Repulsion Bomb",
-  "display_help": "2AZ5FD6P2Y38Y3NBP29YB3BJZZ",
-  "display_short_help": "JWPW5FLRUJNAW5B8UHDC45YS3A",
+  "display_help": "A powerful Force Bomb is hurled at your foes dealing a moderate amount of damage and knocking them off of their feet. Foes struck by Repulsion Bomb have a chance to become disoriented, and the force of the blow will leave their armor shattered, lowering their damage resistance. You must be level 41 and have one other Force Mastery Powers before selecting this power.<br>",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Smash), Foe -Res, Knockdown, Disorient",
   "icon": "forcefield_repulsionbomb.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -335,6 +335,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Force_Mastery"
 }

@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Icicles",
   "display_fullname": "Scrapper Defense Ice Armor Icicles",
-  "display_help": "4FZDD4D6Y2UNYWLTDMLBARYYPZ",
-  "display_short_help": "7RMDMRJK7AFNYMXXBCM5L4FUU3",
+  "display_help": "While active, you form sharp icicles on your body that continuously cut all foes that attempt to enter melee range.",
+  "display_short_help": "Toggle: PBAoE, DoT(Cold)",
   "icon": "icearmor_icicles.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -124,6 +124,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Scrapper_Defense.Ice_Armor"
 }

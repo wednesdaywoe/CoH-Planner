@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Clockwork Radial Ally",
   "display_fullname": "Incarnate Lore Clockwork Radial Ally",
-  "display_help": "5UMXV3KVAAF3Y2MA5JHTTCYU7Z",
+  "display_help": "Draws forth the essences of a vanquished Clockwork Mender and Builder from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Clockwork Radial Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Clockwork LT & Support Essences",
   "icon": "incarnate_lore_clockwork_uncommon.png",
   "auto_issue": false,

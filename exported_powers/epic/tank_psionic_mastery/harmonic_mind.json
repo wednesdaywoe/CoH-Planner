@@ -3,10 +3,10 @@
   "full_name": "Epic.Tank_Psionic_Mastery.Harmonic_Mind",
   "short_name": "Harmonic_Mind",
   "type": "Auto",
-  "display_name": "BQBCB8VCYP6UWYMKKLRWT34LYA",
+  "display_name": "Harmonic Mind",
   "display_fullname": "Epic Tank Psionic Mastery Harmonic Mind",
-  "display_help": "FMJLV98SSPCMYMNK9Q4U3XFE22",
-  "display_short_help": "VB5L5GJU9UXZWRC75NPWNKR23Q",
+  "display_help": "By achieving perfect harmony of body, mind and spirit you are able to conserve and recover endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 38 and have one other Psionic Mastery Powers before selecting this power.",
+  "display_short_help": "Auto: Self, +Recovery, Endurance Discount",
   "icon": "psionic_mastery_harmonicmind",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -105,6 +105,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Tank_Psionic_Mastery"
 }

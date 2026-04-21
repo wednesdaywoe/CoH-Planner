@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Anti-Matter Particles",
   "display_fullname": "Incarnate AntiMatterRayBurn Anti-Matter Particles",
-  "display_help": "X5KK68EX6M7FYWCYFCACQCBRHQ",
+  "display_help": "All foes that pass through these Anti-Matter particles will suffer intense Energy Damage and have their defense reduced substantially.<br><br><color #fcfc95>Damage: Minor.</color>",
   "display_short_help": "Superior DoT(Energy), Foe -Def",
   "icon": "flamingshield_burn.png",
   "auto_issue": false,

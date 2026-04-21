@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Cosmic Burst",
   "display_fullname": "Sentinel Ranged Radiation Blast Cosmic Burst",
-  "display_help": "VMR84WP4U3H9W8MFW2L7RJERCW",
-  "display_short_help": "J6DZF4RKMFRWYRLAFCCKB8RNM3",
+  "display_help": "Cosmic Burst smashes the target with cosmic particles. The attack is devastating and can leave most targets Disoriented and with reduced Defense.",
+  "display_short_help": "Ranged, DMG(Energy), Foe Disorient, -DEF",
   "icon": "radiationburst_cosmicburst",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -333,6 +333,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Sentinel_Ranged.Radiation_Blast"
 }

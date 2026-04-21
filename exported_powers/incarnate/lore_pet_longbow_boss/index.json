@@ -5,9 +5,9 @@
   "short_help": "Longbow",
   "icon": "lore_pet_longbow_boss_set.ico",
   "powers": [
-    "Energy_Barrage",
-    "Grenade",
-    "Plasma_Blast"
+    "Incarnate.Lore_Pet_Longbow_Boss.Energy_Barrage",
+    "Incarnate.Lore_Pet_Longbow_Boss.Grenade",
+    "Incarnate.Lore_Pet_Longbow_Boss.Plasma_Blast"
   ],
   "available_level": [
     0,

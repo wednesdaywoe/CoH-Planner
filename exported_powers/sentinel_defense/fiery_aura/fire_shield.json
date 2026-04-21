@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Fire Shield",
   "display_fullname": "Sentinel Defense Fiery Aura Fire Shield",
-  "display_help": "YLJBQ427WMTMY7VARHTRSLTUXS",
+  "display_help": "While this power is active, Fire Shield gives you good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage as well as protection from Disorient effects.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Self +Res(Fire, Lethal, Smash, Cold, Disorient)",
   "icon": "flamingshield_flamingshield.png",
   "auto_issue": false,

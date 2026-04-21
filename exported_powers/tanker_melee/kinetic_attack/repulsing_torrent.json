@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Repulsing Torrent",
   "display_fullname": "Tanker Melee Kinetic Attack Repulsing Torrent",
-  "display_help": "URNEX9BLFLCPWSCFSYK7DWJHPA",
-  "display_short_help": "WBZLY9BQK3K5WZZ2YFM4R396NS",
+  "display_help": "Repulsing Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
   "icon": "kineticattack_repulsingtorrent.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -446,6 +446,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Tanker_Melee.Kinetic_Attack"
 }

@@ -5,11 +5,11 @@
   "short_help": "Stalker Melee",
   "icon": "stalker_melee_set.ico",
   "powers": [
-    "Ablating_Strike_Sweep",
-    "Savage_Leap"
+    "Redirects.Stalker_Melee.Ablating_Strike_Sweep",
+    "Redirects.Stalker_Melee.Savage_Leap"
   ],
   "available_level": [
-    0,
+    1,
     0
   ]
 }

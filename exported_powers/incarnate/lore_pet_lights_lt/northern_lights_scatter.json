@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Northern Light's Scatter",
   "display_fullname": "Incarnate Lore Pet Lights LT Northern Lights Scatter",
-  "display_help": "36QC4DL5JMTNWBMREQS9WA8S8Q",
+  "display_help": "The Northern Light's Scatter has weakened your Defenses!<br><br><color #fcfc95>Notes: Northern Light's Scatter is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "-DEF",
   "icon": "luminousblast_protonscatter.png",
   "auto_issue": false,

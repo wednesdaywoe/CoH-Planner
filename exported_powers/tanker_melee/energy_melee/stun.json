@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Power Crash",
   "display_fullname": "Tanker Melee Energy Melee Stun",
-  "display_help": "CE7G62CPDHSZWNVYKAEQJCSFVZ",
-  "display_short_help": "QM7XV66J2CYPYJMDTTFM6FESBX",
+  "display_help": "You focus your internal energy on your fists and release it once you hit your target unleashing an energy wave that hurts and disorients multiple enemies. This power will hit up to 6 additional foes if used while in Energy Focus mode.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>5</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "Melee (Cone), DMG(Smash/Energy), Foe Disorient, Special",
   "icon": "powerpunch_powercrash",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -376,6 +376,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Tanker_Melee.Energy_Melee"
 }

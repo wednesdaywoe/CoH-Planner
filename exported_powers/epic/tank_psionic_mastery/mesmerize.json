@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mesmerize",
   "display_fullname": "Epic Tank Psionic Mastery Mesmerize",
-  "display_help": "X24LTYDSVNVBWXNAV5PX5GXSGZ",
-  "display_short_help": "4M6YF9UTVHWEYZCSUTDKTZFC5S",
+  "display_help": "Mesmerize painfully assails a target with psychic energy, rendering them unconscious. The target will remain asleep for some time, but will awaken if attacked.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
+  "display_short_help": "Ranged, DMG(Psionic), Foe Sleep",
   "icon": "psionic_mastery_mesmerize",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -282,6 +282,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Tank_Psionic_Mastery"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Combustion",
   "display_fullname": "Blaster Support Fire Manipulation Combustion",
-  "display_help": "644YXPZBKNNDWNMDXGPUM89U3S",
-  "display_short_help": "JCQLK4YJP7GLY9BFE7QE3FE4X3",
+  "display_help": "Your mastery of fire allows you to violently raise the temperature around yourself in an attempt to spontaneously combust any nearby foes and set them ablaze, dealing damage over time.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee (AoE), DoT (Fire)",
   "icon": "firemanipulation_combustion.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -219,6 +219,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Blaster_Support.Fire_Manipulation"
 }

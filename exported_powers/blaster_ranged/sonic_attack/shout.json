@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shout",
   "display_fullname": "Blaster Ranged Sonic Attack Shout",
-  "display_help": "CPVQF9XZTYLUYHL5A2HZL5YRJQ",
-  "display_short_help": "CBA784GWUDPDW2CYDTZ92FRW8Z",
+  "display_help": "You blast your foe with a tremendous Shout, damaging them.",
+  "display_short_help": "Ranged, DMG(Smashing/Energy), Foe -Res(All)",
   "icon": "sonicblast_heavy.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -234,6 +234,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Blaster_Ranged.Sonic_Attack"
 }

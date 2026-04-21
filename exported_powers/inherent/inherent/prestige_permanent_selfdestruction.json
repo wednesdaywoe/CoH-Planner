@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Self Destruction",
   "display_fullname": "Inherent Inherent prestige Permanent SelfDestruction",
-  "display_help": "RTAQNVZ7DKZZY3Z3YUQGTUZLMZ",
+  "display_help": "You explode! In doing so, you create a massive explosion which deals extreme damage to all foes in a large radius.<br><br><color #fcfc95>Damage: Extreme.</color>",
   "display_short_help": "PBAoE, Extreme DMG(Smashing/Fire), Foe KB, Self Kill",
   "icon": "cyborgselfdestruct.png",
   "auto_issue": true,

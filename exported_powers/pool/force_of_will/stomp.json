@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Takeoff",
   "display_fullname": "Pool Force of Will Stomp",
-  "display_help": "46F3ALJWASPKYSVDUWWQESJ8N2",
+  "display_help": "You stomp your foot on the ground with tremendous force empowering your jump speed and height for a short time and shattering the earth beneath, knocking nearby foes off of their feet.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE Melee, Self +Jump, Foe Knockdown",
   "icon": "forceofwill_stomp.png",
   "auto_issue": true,
@@ -181,6 +181,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Pool.Force_of_Will"
 }

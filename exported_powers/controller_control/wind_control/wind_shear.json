@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Wind Shear",
   "display_fullname": "Controller Control Wind Control Wind Shear",
-  "display_help": "Y8GSV3VMR9L8Y4XEJQDXLF4F4Q",
+  "display_help": "You create a sphere of high speed winds around yourself. This significantly slows the movement of any enemies caught within the sphere and makes their attacks less likely to hit. Damage potential is also reduced. Flying foes are brought to the ground. This power neither builds nor releases Pressure, but does have a continuous Endurance cost.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE (Toggle), -Speed (Foe, All), -Fly(Foe), -ToHit(Foe), -DMG(Foe, All)",
   "icon": "windcontrol_windshear.png",
   "auto_issue": false,
@@ -230,6 +230,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Controller_Control.Wind_Control"
 }

@@ -5,7 +5,7 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_tsoo_support_attack_set.ico",
   "powers": [
-    "Petrifying_Gaze"
+    "Incarnate.Lore_Pet_Tsoo_Support_Attack.Petrifying_Gaze"
   ],
   "available_level": [
     0

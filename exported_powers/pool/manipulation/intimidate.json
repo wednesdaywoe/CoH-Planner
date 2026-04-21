@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Intimidate",
   "display_fullname": "Pool Manipulation Intimidate",
-  "display_help": "LE5WR2FJFNEFYHV59E8GJYL8MS",
+  "display_help": "When fully engaged in battle, you are a frightening presence and can use this to your advantage. You threaten a single foe and cause that foe to tremble helplessly in fear for a short time.<br><br>You must be at least level 14 and have one other Presence power before selecting Intimidate.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Fear (Foe)",
   "icon": "manipulation_intimidate.png",
   "auto_issue": false,
@@ -239,6 +239,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Manipulation"
 }

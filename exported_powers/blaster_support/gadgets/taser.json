@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Taser",
   "display_fullname": "Blaster Support Gadgets Taser",
-  "display_help": "63WYWL4KE2EMY8NS6VQXXYXGXW",
+  "display_help": "The High Voltage Taser is an overcharged stun-gun, releasing a high-voltage, high-amperage electrical charge that can Disorient most opponents with major tissue damage. The Taser has a very short range.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High DMG(Energy), Foe Disorient",
   "icon": "gadgets_taser.png",
   "auto_issue": false,
@@ -187,6 +187,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Blaster_Support.Gadgets"
 }

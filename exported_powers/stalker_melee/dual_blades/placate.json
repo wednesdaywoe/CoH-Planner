@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Placate",
   "display_fullname": "Stalker Melee Dual Blades Placate",
-  "display_help": "ST4H2VYV8ZDVWEZQYCUE2XVVD3",
+  "display_help": "Allows you to trick a foe to no longer attack you. A successful Placate will also Hide you. This Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit or Assassination. However, if you attack a Placated Foe, he will be able to attack you back. This power is the finishing move in the Empower combination attack.<br><br><color #ff7f00>Empower: Build Up > Assassin\u2019s Blades > Placate.</color>",
   "display_short_help": "Ranged, Foe Placate, Self Stealth/Hide",
   "icon": "dualblades_placate.png",
   "auto_issue": false,
@@ -620,6 +620,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Stalker_Melee.Dual_Blades"
 }

@@ -3,9 +3,9 @@
   "full_name": "Redirects.Storm_Blast.Category_Five_Lightning_Sentinel",
   "short_name": "Category_Five_Lightning_Sentinel",
   "type": "Auto",
-  "display_name": "HGGGL4Q2QXSNYUNA57TJ338J6Z",
+  "display_name": "Category Five Lightning",
   "display_fullname": "Redirects Storm Blast Category Five Lightning Sentinel",
-  "display_help": "9GWWHNJJ9YRTY6VHG9AFZWMY23",
+  "display_help": "Enemies within range of this crackling aura have a chance of being struck by lightning!",
   "display_short_help": "Lightning",
   "icon": "stormblast_categoryfive.png",
   "auto_issue": false,
@@ -396,6 +396,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Redirects.Storm_Blast"
 }

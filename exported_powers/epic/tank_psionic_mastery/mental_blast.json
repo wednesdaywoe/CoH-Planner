@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mental Blast",
   "display_fullname": "Epic Tank Psionic Mastery Mental Blast",
-  "display_help": "AVGDJD9YFAP4WMV2N24Z2QX8LQ",
-  "display_short_help": "ZQAVEZF5W482YGN4FV5EWZGSTA",
+  "display_help": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Psionic), Target -Recharge",
   "icon": "psionic_mastery_mentalblast",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -203,6 +203,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Tank_Psionic_Mastery"
 }

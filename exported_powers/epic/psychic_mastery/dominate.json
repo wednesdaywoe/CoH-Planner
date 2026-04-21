@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dominate",
   "display_fullname": "Epic Psychic Mastery Dominate",
-  "display_help": "ZE94E3TST7W4YWBVUJZ5CV3LSS",
-  "display_short_help": "PT994H7YRVDYY9CW5B9273FBWA",
+  "display_help": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in his own mind and unable to defend himself.",
+  "display_short_help": "Ranged, DMG(Psionic), Foe Hold",
   "icon": "mentalcontrol_command.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -251,6 +251,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Psychic_Mastery"
 }

@@ -5,25 +5,25 @@
   "short_help": "Electric Armor",
   "icon": "electric_armor_set.ico",
   "powers": [
-    "Charged_Armor",
-    "Conductive_Shield",
-    "Energize",
-    "Grounded",
-    "Lightning_Field",
-    "Lightning_Reflexes",
-    "Power_Sink",
-    "Power_Surge",
-    "Static_Shield"
+    "Tanker_Defense.Electric_Armor.Charged_Armor",
+    "Tanker_Defense.Electric_Armor.Conductive_Shield",
+    "Tanker_Defense.Electric_Armor.Energize",
+    "Tanker_Defense.Electric_Armor.Grounded",
+    "Tanker_Defense.Electric_Armor.Lightning_Field",
+    "Tanker_Defense.Electric_Armor.Lightning_Reflexes",
+    "Tanker_Defense.Electric_Armor.Power_Sink",
+    "Tanker_Defense.Electric_Armor.Power_Surge",
+    "Tanker_Defense.Electric_Armor.Static_Shield"
   ],
   "available_level": [
     0,
+    1,
+    11,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    17,
+    21,
+    25,
+    5
   ]
 }

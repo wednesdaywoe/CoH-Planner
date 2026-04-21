@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Char",
   "display_fullname": "Dominator Control Fire Control Char",
-  "display_help": "KWYMGJTG42JPWWB5PBRVPWKP7A",
+  "display_help": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot.",
   "display_short_help": "Ranged, Moderate DoT(Fire), Foe Hold",
   "icon": "firetrap_soot.png",
   "auto_issue": false,

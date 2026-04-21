@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ripper",
   "display_fullname": "Dominator Assault Thorny Assault Ripper",
-  "display_help": "6CS6WSKKV68KYLZATCR7NVRSWX",
-  "display_short_help": "FNKMAVRMJHR4W2L3JESWUXU3R3",
+  "display_help": "You can unleash a spectacular slashing maneuver that attacks all foes in a wide arc directly in front of you. Ripper deals massive damage and poisons multiple targets. It can even knock foes down. Thorn poison deals additional Toxic damage and can reduce your foes Defense.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee (Cone), Superior DMG(Lethal), DoT(Toxic) -DEF, Knockback, -SPD",
   "icon": "thornyassault_ripper.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -290,6 +290,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Dominator_Assault.Thorny_Assault"
 }

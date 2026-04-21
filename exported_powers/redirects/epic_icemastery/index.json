@@ -5,11 +5,11 @@
   "short_help": "Ice Mastery",
   "icon": "stalker_epicmumastery_snipe_set.ico",
   "powers": [
-    "Frozen_Spear_Normal",
-    "Frozen_Spear_Quick"
+    "Redirects.Epic_IceMastery.Frozen_Spear_Normal",
+    "Redirects.Epic_IceMastery.Frozen_Spear_Quick"
   ],
   "available_level": [
-    0,
-    0
+    34,
+    34
   ]
 }

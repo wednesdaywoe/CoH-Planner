@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Voltaic Sentinel",
   "display_fullname": "Sentinel Ranged Electrical Blast Voltaic Sentinel",
-  "display_help": "RUEKM9HC3Y3BYPL59X93TCD6PS",
-  "display_short_help": "J8FYWBECDYE6WJZVZYXDML2SDW",
+  "display_help": "You can manifest a polarized electricity field that hovers above the ground and hurls bolts of electricity at nearby foes. Any enemy that passes near this Sentinel risks serious injury. The Sentinel is not alive and cannot be targeted or attacked by enemies. The Sentinel can fly and will follow you.",
+  "display_short_help": "Summon Sentinel: Ranged, DMG(Energy), Foe -End",
   "icon": "electricalbolt_voltaicsentinal.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -96,6 +96,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Sentinel_Ranged.Electrical_Blast"
 }

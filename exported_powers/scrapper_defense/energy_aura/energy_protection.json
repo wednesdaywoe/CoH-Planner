@@ -5,8 +5,8 @@
   "type": "Auto",
   "display_name": "Energy Protection",
   "display_fullname": "Scrapper Defense Energy Aura Energy Protection",
-  "display_help": "QECDHJ3KUC3PWRVDG74676FRGW",
-  "display_short_help": "54BJKYX96R9MW8V74RYGME2UXA",
+  "display_help": "Your ability to channel energy makes you naturally resistant to Energy, Negative Energy, Psionic and Toxic damage. Additionally, this power grants some resistance to both recharge and movement slowing effects. This power is always on and costs no Endurance.",
+  "display_short_help": "Auto: Self +Res (Energy, Negative, Toxic, Psionic, Slow)",
   "icon": "energyaura_protection.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -112,6 +112,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Scrapper_Defense.Energy_Aura"
 }

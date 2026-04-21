@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ion Judgement",
   "display_fullname": "Incarnate Judgement Ion Judgement",
-  "display_help": "4K9N45E6W939YANYU4THDS4NE3",
+  "display_help": "Chain Ranged AoE, Extreme DMG(Energy).<br><br><color #fcfc95>Notes: Ion Judgement is unaffected by Recharge Time, Range, Radius or Arc changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Chain Ranged AoE, Extreme DMG(Energy)",
   "icon": "incarnate_judgement_ion_common.png",
   "auto_issue": false,

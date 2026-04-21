@@ -3,10 +3,10 @@
   "full_name": "Blaster_Ranged.Storm_Blast.Direct_Strike",
   "short_name": "Direct_Strike",
   "type": "Click",
-  "display_name": "6CRF7M4RV77YWEBJNCZ4AD6SSA",
+  "display_name": "Direct Strike",
   "display_fullname": "Blaster Ranged Storm Blast Direct Strike",
-  "display_help": "CSV4MXKR7S4KWACMNKPTSQLR72",
-  "display_short_help": "KAR6MPNK4JFNYSBBF8XS75QMJZ",
+  "display_help": "You channel your storm powers into a direct hit, jolting the enemy with a bolt of lightning that deals Energy damage and saps some endurance. If fired outside of combat, it can be interrupted by enemies, but will do bonus damage. If you are engaged in battle, this attack becomes instant-cast. <br><br>While in a <color #fcfc95>Storm Cell</color>, targets have a chance to be stunned. The odds of creating High Winds and Lightning are much greater when Direct Strike is cast out of combat.",
+  "display_short_help": "Sniper, DMG(Energy), Foe -End, Special",
   "icon": "stormblast_directstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Blaster_Ranged.Storm_Blast"
 }

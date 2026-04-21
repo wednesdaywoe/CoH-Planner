@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Tear Gas",
   "display_fullname": "Dominator Control Arsenal Control Tear Gas",
-  "display_help": "9HBGT4NJ45P5YLZXV4VQ6RW6Y2",
-  "display_short_help": "CQYATLWNAPBWWPNF67KHPCSTUZ",
+  "display_help": "The Tear Gas canister serves as the ultimate crowd control tool, rendering enemies incapacitated and choking, thereby preventing them from taking any action while also debuffing their damage output.",
+  "display_short_help": "Ranged (Location AoE), DoT(Toxic), Foe Hold -DMG",
   "icon": "arsenalcontrol_teargas",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -99,6 +99,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Dominator_Control.Arsenal_Control"
 }

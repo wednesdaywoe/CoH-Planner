@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Dark Nova",
   "display_fullname": "Warshade Offensive Umbral Blast Dark Nova",
-  "display_help": "M8U2LKJXHAT3W3XLUPHKZPKVN3",
+  "display_help": "Kheldians are masters of energy and matter. A Warshade can transform into a flying energy beast known as a Dark Nova. When you choose this power, you will have access to 4 very powerful ranged attacks that can only be used while in this form. You will not be able to use any other powers while in Dark Nova form. Dark Nova can fly, has an increased chance to hit and improved Endurance Recovery but has no defense.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Shapeshift, Special",
   "icon": "umbralblast_darknova.png",
   "auto_issue": false,
@@ -441,6 +441,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

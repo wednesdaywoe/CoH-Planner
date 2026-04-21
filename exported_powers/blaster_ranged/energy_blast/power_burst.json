@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Power Burst",
   "display_fullname": "Blaster Ranged Energy Blast Power Burst",
-  "display_help": "AQEUHRFBNM3QWBVHBN97TVJXDS",
-  "display_short_help": "Y3U93CASX2E9WXZVYWHUEUZZ6Q",
+  "display_help": "A devastating attack, Power Burst unleashes a massive amount of energy dealing very high damage at short distances. The impact from this burst often knocks back most foes.",
+  "display_short_help": "Ranged, DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_powerburst.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -239,6 +239,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Blaster_Ranged.Energy_Blast"
 }

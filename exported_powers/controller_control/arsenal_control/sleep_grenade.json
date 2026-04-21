@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Sleep Grenade",
   "display_fullname": "Controller Control Arsenal Control Sleep Grenade",
-  "display_help": "V8PC8LC8HBMFW9L84Q6AD9ZFKX",
-  "display_short_help": "SE46AV7WVVW7Y8VHJA383R3QA2",
+  "display_help": "The Sleep Grenade can be launched at long range from beneath the barrel of your Assault Rifle. It releases a cloud of gas that will make enemies drowsy, slow, and fall asleep.",
+  "display_short_help": "Ranged (Location AoE), DMG(Toxic), Foe Sleep, -SPD, -Recharge, -Fly",
   "icon": "arsenalcontrol_sleepgrenade",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -100,6 +100,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Controller_Control.Arsenal_Control"
 }

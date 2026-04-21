@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Unrelenting",
   "display_fullname": "Pool Manipulation Unrelenting",
-  "display_help": "8438GUHLH5KKY7NEHW9CLZCLKX",
+  "display_help": "You channel your inner confidence to become a relentless opponent, gaining significant boosts to your damage, recovery and attack speed for a short while. Additionally, you will be able to fight though the pain caused by opponents, healing continuously over time. You can also use this power to fight your way back to the living after defeat - if you are defeated when you use this power, you will be revived with 50% health.<br><br>You must be at least level 14 and have two other Presence powers before selecting Unrelenting.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self, Heal over Time, +DMG(All), +Rech, +Rec, Self Resurrect (Special)",
   "icon": "manipulation_unrelenting.png",
   "auto_issue": false,
@@ -202,6 +202,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Manipulation"
 }

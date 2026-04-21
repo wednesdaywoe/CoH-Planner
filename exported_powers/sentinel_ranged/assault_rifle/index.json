@@ -5,25 +5,25 @@
   "short_help": "Assault Rifle",
   "icon": "assault_rifle_set.ico",
   "powers": [
-    "Aim",
-    "Beanbag",
-    "Buckshot",
-    "Burst",
-    "Flamethrower",
-    "Full_Auto",
-    "Incinerator",
-    "M30_Grenade",
-    "Slug"
+    "Sentinel_Ranged.Assault_Rifle.Aim",
+    "Sentinel_Ranged.Assault_Rifle.Beanbag",
+    "Sentinel_Ranged.Assault_Rifle.Buckshot",
+    "Sentinel_Ranged.Assault_Rifle.Burst",
+    "Sentinel_Ranged.Assault_Rifle.Flamethrower",
+    "Sentinel_Ranged.Assault_Rifle.Full_Auto",
+    "Sentinel_Ranged.Assault_Rifle.Incinerator",
+    "Sentinel_Ranged.Assault_Rifle.M30_Grenade",
+    "Sentinel_Ranged.Assault_Rifle.Slug"
   ],
   "available_level": [
+    7,
     0,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    17,
+    25,
+    21,
+    11,
+    5
   ]
 }

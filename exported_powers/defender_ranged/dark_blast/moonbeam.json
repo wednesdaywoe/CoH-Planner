@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Moonbeam",
   "display_fullname": "Defender Ranged Dark Blast Moonbeam",
-  "display_help": "N2T9B9NUVB95YXVSPTDL9Z6XHX",
-  "display_short_help": "3365MTM8RLQSWVCUTAQSANYRHZ",
+  "display_help": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit. This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+  "display_short_help": "Sniper, DMG(Negative), Target -To Hit",
   "icon": "darkcast_moonbeam.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Defender_Ranged.Dark_Blast"
 }

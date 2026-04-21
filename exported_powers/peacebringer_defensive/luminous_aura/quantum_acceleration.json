@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Quantum Maneuvers",
   "display_fullname": "Peacebringer Defensive Luminous Aura Quantum Acceleration",
-  "display_help": "SLLLVPF6WTBTWRV3ZS6HKXT3BQ",
+  "display_help": "While Energy Flight, Combat Flight or Group Energy Flight are active, Quantum Maneuvers increases fly speed and movement control. It will also grant resistance against knockback and protection against -Fly and Immobilization.<br><br>Quantum Maneuvers' flight speed buff stacks with other flight powers, and isn't suppressed by combat.<br><br><color #fcfc95>Notes: Quantum Maneuvers provides a moderate amount of Defense even while on the ground, but this defense is lost if you attack, buff allies, give an order to pets or interact with a mission objective.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: Self +FlySpeed, Res(-Fly, Immobilize), +Def(All), +Flight Control",
   "icon": "luminousaura_lightofreason",
   "auto_issue": false,
@@ -444,6 +444,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

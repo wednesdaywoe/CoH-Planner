@@ -5,8 +5,8 @@
   "short_help": "Nemesis",
   "icon": "lore_pet_nemesis_lt_set.ico",
   "powers": [
-    "Lance",
-    "Lance_Rifle"
+    "Incarnate.Lore_Pet_Nemesis_LT.Lance",
+    "Incarnate.Lore_Pet_Nemesis_LT.Lance_Rifle"
   ],
   "available_level": [
     0,

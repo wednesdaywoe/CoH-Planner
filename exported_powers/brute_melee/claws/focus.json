@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Focus",
   "display_fullname": "Brute Melee Claws Focus",
-  "display_help": "SUKK65F2AAC8WAM87CKXBK74QQ",
-  "display_short_help": "RUK2TK2YFMSJYTX7EE9NLWJYQ2",
+  "display_help": "Projects a burst of focused power over a short distance. Focus deals high damage and can possibly knock down your foe.",
+  "display_short_help": "Ranged, DMG(Lethal), Knockback",
   "icon": "claws_focus.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -215,6 +215,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Brute_Melee.Claws"
 }

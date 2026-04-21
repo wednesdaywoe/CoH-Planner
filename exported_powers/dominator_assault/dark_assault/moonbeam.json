@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Engulfing Darkness",
   "display_fullname": "Dominator Assault Dark Assault Moonbeam",
-  "display_help": "BR59FZXLAYPLYRBTFHW5VL76Y2",
-  "display_short_help": "B7VCAG6A3M4QYCXTSHG8ZHY23X",
+  "display_help": "You release a burst of negative energy to foes around you dealing moderate Negative Energy damage, reducing their chance to hit and sapping their health over time.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE, Light DMG(Negative), Foe -To Hit, Minor DoT(Negative)",
   "icon": "darknessassault_deathshroud.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -213,6 +213,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Dominator_Assault.Dark_Assault"
 }

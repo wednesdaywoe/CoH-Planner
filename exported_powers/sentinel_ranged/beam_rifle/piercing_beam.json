@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Piercing Beam",
   "display_fullname": "Sentinel Ranged Beam Rifle Piercing Beam",
-  "display_help": "5DFJ4PZXMULBW3XQH6Z64WBYJS",
-  "display_short_help": "XD8KLNC246B9Y8B7KPLQKNCKHS",
+  "display_help": "You release a supercharged beam in a narrow cone of energy that pierces through up to 3 enemies. Piercing Beam deals High Energy damage and briefly reduces their damage resistance. If a target struck by Piercing Beam is suffering from the Disintegrating effect it will immediately suffer additional damage.",
+  "display_short_help": "Narrow Ranged (Cone), DMG(Energy), Foes -Res, Special",
   "icon": "beamrifle_piercingbeam.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -454,6 +454,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Sentinel_Ranged.Beam_Rifle"
 }

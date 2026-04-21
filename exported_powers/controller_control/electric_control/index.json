@@ -5,25 +5,25 @@
   "short_help": "Electric Control",
   "icon": "electric_control_set.ico",
   "powers": [
-    "Chain_Fences",
-    "Electric_Fence",
-    "Gremlins",
-    "Jolting_Chain",
-    "Paralyzing_Blast",
-    "Static_Field",
-    "Stunning_Aura",
-    "Synaptic_Overload",
-    "Tesla_Cage"
+    "Controller_Control.Electric_Control.Chain_Fences",
+    "Controller_Control.Electric_Control.Electric_Fence",
+    "Controller_Control.Electric_Control.Gremlins",
+    "Controller_Control.Electric_Control.Jolting_Chain",
+    "Controller_Control.Electric_Control.Paralyzing_Blast",
+    "Controller_Control.Electric_Control.Static_Field",
+    "Controller_Control.Electric_Control.Stunning_Aura",
+    "Controller_Control.Electric_Control.Synaptic_Overload",
+    "Controller_Control.Electric_Control.Tesla_Cage"
   ],
   "available_level": [
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    25,
+    5,
+    17,
+    11,
+    7,
+    21,
     0
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Swap Ammo",
   "display_fullname": "Sentinel Ranged Dual Pistols Swap Ammo",
-  "display_help": "NF48RQVVZ23NWDBP6UKYWL76MZ",
+  "display_help": "By purchasing this power, you will be granted the Cryo Ammunition, Incendiary Ammunition and Chemical Ammunition toggles. Activating these toggles will change your secondary damage type on most Dual Pistols attacks from lethal (Standard Rounds) to cold (Cryo Rounds), fire (Incendiary Rounds) or toxic (Chemical Rounds).<br><br>These toggles are mutually exclusive and only one can be active at a time. If no Swap Ammo toggles are active, the player will revert to Standard Ammunition.<br><br>Different ammo types also have different secondary effects. Examine your Dual Pistols powers for more information.",
   "display_short_help": "Change Secondary Damage/Effects",
   "icon": "dualpistols_swapammo.png",
   "auto_issue": false,
@@ -78,6 +78,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Sentinel_Ranged.Dual_Pistols"
 }

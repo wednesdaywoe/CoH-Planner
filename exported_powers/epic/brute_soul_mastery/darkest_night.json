@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Darkest Night",
   "display_fullname": "Epic Brute Soul Mastery Darkest Night",
-  "display_help": "6L9QBRYEGF25YWXHUTBCMVJM5S",
+  "display_help": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
   "icon": "arachnos_patron_aoedamagedebuff.png",
   "auto_issue": false,
@@ -176,6 +176,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Brute_Soul_Mastery"
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Fallout Shelter",
   "display_fullname": "Stalker Defense Radiation Armor Fallout Shelter",
-  "display_help": "8BS76KG3RE56W7NJE93E5TYYZX",
+  "display_help": "While active you are protected from recharge, movement, hold, sleep, immobilize, stun and knockdown effects. Additionally Fallout Shelter grants you minor resistance to toxic and psionic damage as well as a measure of resistance against slow effects.",
   "display_short_help": "Toggle: Self +Res(Hold, Sleep, Immobilize, Stun, Knockdown, Toxic, Psi, Slow)",
   "icon": "radiationarmor_falloutshelter.png",
   "auto_issue": false,
@@ -455,6 +455,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Stalker_Defense.Radiation_Armor"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Trick Shot",
   "display_fullname": "Dominator Assault Martial Assault Trick Shot",
-  "display_help": "VS56PKM372REYXVV77QVF6V95A",
-  "display_short_help": "6NV8ZY5W6LFMYUBE3ZXTXCLJYW",
+  "display_help": "You take careful aim and bounce a thrown shuriken between multiple targets.<br><br><color #fcfc95>Notes: Trick Shot is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged, Chain Light DMG(Lethal)",
   "icon": "martialassault_trickshot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -150,6 +150,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Dominator_Assault.Martial_Assault"
 }

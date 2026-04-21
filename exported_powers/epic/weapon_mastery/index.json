@@ -5,17 +5,17 @@
   "short_help": "Weapon Mastery",
   "icon": "weapon_mastery_set.ico",
   "powers": [
-    "Caltrops",
-    "Exploding_Shuriken",
-    "Shuriken",
-    "Targeting_Drone",
-    "Web_Grenade"
+    "Epic.Weapon_Mastery.Caltrops",
+    "Epic.Weapon_Mastery.Exploding_Shuriken",
+    "Epic.Weapon_Mastery.Shuriken",
+    "Epic.Weapon_Mastery.Targeting_Drone",
+    "Epic.Weapon_Mastery.Web_Grenade"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    43,
+    37,
+    40,
+    34
   ]
 }

@@ -5,17 +5,17 @@
   "short_help": "Soul Mastery",
   "icon": "veat_soul_mastery_set.ico",
   "powers": [
-    "Dark_Obliteration",
-    "Darkest_Night",
-    "Gloom",
-    "Soul_Tentacles",
-    "Summon_Widow"
+    "Epic.VEAT_Soul_Mastery.Dark_Obliteration",
+    "Epic.VEAT_Soul_Mastery.Darkest_Night",
+    "Epic.VEAT_Soul_Mastery.Gloom",
+    "Epic.VEAT_Soul_Mastery.Soul_Tentacles",
+    "Epic.VEAT_Soul_Mastery.Summon_Widow"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    40,
+    34,
+    34,
+    43
   ]
 }

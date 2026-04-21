@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bright Nova Detonation",
   "display_fullname": "Inherent Inherent Bright Nova Detonation",
-  "display_help": "43SPZDBAXSHTYMVHNDKUECJMYA",
-  "display_short_help": "Z3BUDTLV3W38WTBKYKTWJ6CBKS",
+  "display_help": "You hurl a large blast of Kheldian light energy that violently explodes on impact, damaging all foes near the target, reducing their defense. Some affected targets may get knocked back. This power is only available while in Bright Nova Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Targeted AoE), Light DMG(Smash/Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_luminousdetonation.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -291,6 +291,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Inherent.Inherent"
 }

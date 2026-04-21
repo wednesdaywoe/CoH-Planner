@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Barrier Partial Radial Invocation",
   "display_fullname": "Incarnate Destiny Barrier Partial Radial Invocation",
-  "display_help": "BS8FUMVWV3DDW2X9CYFM5TDBBZ",
+  "display_help": "PBAoE Ally +DEF(All), +Res(All), Ally Rez x1.<br><br><color #fcfc95>Notes: Barrier Partial Radial Invocation is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE Ally +DEF(All), +Res(All), Ally Rez x1",
   "icon": "incarnate_destiny_barrier_rare.png",
   "auto_issue": false,

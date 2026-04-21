@@ -5,25 +5,25 @@
   "short_help": "Energy Assault",
   "icon": "energy_assault_set.ico",
   "powers": [
-    "Bone_Smasher",
-    "Power_Blast",
-    "Power_Bolt",
-    "Power_Boost",
-    "Power_Burst",
-    "Power_Push",
-    "Sniper_Blast",
-    "Total_Focus",
-    "Whirling_Hands"
+    "Dominator_Assault.Energy_Assault.Bone_Smasher",
+    "Dominator_Assault.Energy_Assault.Power_Blast",
+    "Dominator_Assault.Energy_Assault.Power_Bolt",
+    "Dominator_Assault.Energy_Assault.Power_Boost",
+    "Dominator_Assault.Energy_Assault.Power_Burst",
+    "Dominator_Assault.Energy_Assault.Power_Push",
+    "Dominator_Assault.Energy_Assault.Sniper_Blast",
+    "Dominator_Assault.Energy_Assault.Total_Focus",
+    "Dominator_Assault.Energy_Assault.Whirling_Hands"
   ],
   "available_level": [
     0,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    29,
+    3,
+    27,
+    23,
+    19
   ]
 }

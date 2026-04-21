@@ -5,25 +5,25 @@
   "short_help": "Super Reflexes",
   "icon": "super_reflexes_set.ico",
   "powers": [
-    "Agile",
-    "Dodge",
-    "Elude",
-    "Evasion",
-    "Focused_Fighting",
-    "Focused_Senses",
-    "Lucky",
-    "Practiced_Brawler",
-    "Quickness"
+    "Scrapper_Defense.Super_Reflexes.Agile",
+    "Scrapper_Defense.Super_Reflexes.Dodge",
+    "Scrapper_Defense.Super_Reflexes.Elude",
+    "Scrapper_Defense.Super_Reflexes.Evasion",
+    "Scrapper_Defense.Super_Reflexes.Focused_Fighting",
+    "Scrapper_Defense.Super_Reflexes.Focused_Senses",
+    "Scrapper_Defense.Super_Reflexes.Lucky",
+    "Scrapper_Defense.Super_Reflexes.Practiced_Brawler",
+    "Scrapper_Defense.Super_Reflexes.Quickness"
   ],
   "available_level": [
+    3,
+    15,
+    29,
+    27,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    23,
+    9,
+    19
   ]
 }

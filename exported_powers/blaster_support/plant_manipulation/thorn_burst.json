@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Thorn Burst",
   "display_fullname": "Blaster Support Plant Manipulation Thorn Burst",
-  "display_help": "TW9T7ESVCX79Y6VWB3V7USUHTZ",
-  "display_short_help": "76QM86MF87N4YTV7YL5FH7628Q",
+  "display_help": "You can explode dozens of Thorns in all directions around you. These Thorns only travel a short distance, but they can deal moderate damage and poison any target close to you. Toxic damage from the thorns can reduce the Defense of affected foes.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Lethal), DoT(Toxic), Foe -DEF",
   "icon": "plantmanipulation_thornburst",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -200,6 +200,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Plant_Manipulation"
 }

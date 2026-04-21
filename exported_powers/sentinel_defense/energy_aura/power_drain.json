@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Power Drain",
   "display_fullname": "Sentinel Defense Energy Aura Power Drain",
-  "display_help": "WPXE49V2HT46Y5M2Z435CYUF6S",
-  "display_short_help": "UT5U3NAZRWKYWHCLF9M2NECZ6Q",
+  "display_help": "Power Drain leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.<br><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "Autohit: PBAoE, Self +End, Foe -End, -Recovery",
   "icon": "energyaura_drain.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -199,6 +199,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Sentinel_Defense.Energy_Aura"
 }

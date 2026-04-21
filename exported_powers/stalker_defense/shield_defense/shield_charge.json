@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shield Charge",
   "display_fullname": "Stalker Defense Shield Defense Shield Charge",
-  "display_help": "T685JBA9EL2KWYXFB7PCN4GKZW",
+  "display_help": "You can throw all of your might behind your shield and charge through ranks of foes in the blink of an eye. Using this power allows you to teleport to a selected area to deal significant smashing damage to all foes near the location you teleport to, most foes that are struck by your Shield Charge will be knocked down.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE Superior DMG(Smashing), Foe Knockdown; Self Teleport",
   "icon": "shielddefense_shieldcharge.png",
   "auto_issue": false,
@@ -115,6 +115,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Stalker_Defense.Shield_Defense"
 }

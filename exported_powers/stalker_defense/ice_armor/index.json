@@ -5,27 +5,27 @@
   "short_help": "Ice Armor",
   "icon": "ice_armor_set.ico",
   "powers": [
-    "Chilling_Embrace",
-    "Energy_Absorption",
-    "Frozen_Armor",
-    "Glacial_Armor",
-    "Hide",
-    "Hoarfrost",
-    "Icy_Bastion",
-    "Permafrost",
-    "Rime_Ice",
-    "Wet_Ice"
+    "Stalker_Defense.Ice_Armor.Chilling_Embrace",
+    "Stalker_Defense.Ice_Armor.Energy_Absorption",
+    "Stalker_Defense.Ice_Armor.Frozen_Armor",
+    "Stalker_Defense.Ice_Armor.Glacial_Armor",
+    "Stalker_Defense.Ice_Armor.Hide",
+    "Stalker_Defense.Ice_Armor.Hoarfrost",
+    "Stalker_Defense.Ice_Armor.Icy_Bastion",
+    "Stalker_Defense.Ice_Armor.Permafrost",
+    "Stalker_Defense.Ice_Armor.Rime_Ice",
+    "Stalker_Defense.Ice_Armor.Wet_Ice"
   ],
   "available_level": [
+    15,
+    27,
     0,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3,
+    29,
+    19,
+    3,
+    9
   ]
 }

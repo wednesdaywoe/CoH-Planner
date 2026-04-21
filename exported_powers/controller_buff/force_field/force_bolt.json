@@ -3,10 +3,10 @@
   "full_name": "Controller_Buff.Force_Field.Force_Bolt",
   "short_name": "Force_Bolt",
   "type": "Click",
-  "display_name": "2MZTUR4C4DHAWXLSENYHJL45GX",
+  "display_name": "Repulsion Bolt",
   "display_fullname": "Controller Buff Force Field Force Bolt",
-  "display_help": "A7UBX76MD6XFWPCHQ7VBCZ9J62",
-  "display_short_help": "KCNQXP7K458WWTVE7RWFK932UA",
+  "display_help": "Discharges a bolt of force that knocks down foes and deals some Smashing Damage. Foes struck will have their armor shattered by the force of the impact, leaving them with lowered damage resistance.",
+  "display_short_help": "Ranged, DMG(Smash), Foe Knockback",
   "icon": "forcefield_forcebolt.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -266,6 +266,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Controller_Buff.Force_Field"
 }

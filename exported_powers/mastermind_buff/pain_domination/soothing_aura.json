@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Suppress Pain",
   "display_fullname": "Mastermind Buff Pain Domination Soothing Aura",
-  "display_help": "CY97CH7P6N5FY7VBBPB6UHHRSW",
+  "display_help": "While this power is active all nearby allies will have their regeneration rate increased dramatically.",
   "display_short_help": "Toggle: PBAoE, Ally +Regeneration",
   "icon": "paindomination_soothingaura.png",
   "auto_issue": false,
@@ -84,6 +84,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Mastermind_Buff.Pain_Domination"
 }

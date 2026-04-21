@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Kuji-In Retsu",
   "display_fullname": "Sentinel Defense Ninjitsu Kuji-In Retsu",
-  "display_help": "BV5VGDFG6UF5W6CP7FP4FUNEBW",
+  "display_help": "Kuji-In Retsu is the mastery of space and time. Focusing your power on Retsu enables you to control your own time to easily defeat your foes. Mastery of this power enables you to avoid almost any attack, be it ranged, melee, or area effect. Your running speed, jumping height and Endurance Recovery are also increased. Retsu also grants you high resistance to Defense DeBuffs. When Retsu wears off, you are left drained of all Endurance and unable to recover Endurance for a while.<br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Self +DEF, +SPD, +Recovery, Res(DeBuff DEF), +Special",
   "icon": "ninjitsu_kujinzen.png",
   "auto_issue": false,
@@ -373,6 +373,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Sentinel_Defense.Ninjitsu"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Summon Spiderlings",
   "display_fullname": "Epic Stalker Mace Mastery Summon Spiderlings",
-  "display_help": "4XXH8J77AMMAY7C2KFN9ZW8P5Z",
-  "display_short_help": "HBMZ7T2HMF6TW2ZM28XK5MQXS2",
+  "display_help": "Black Scorpion has granted you access to a small squadron of Arachnobot Spiderlings. Three Spiderlings that are one level less than you will show up when summoned. Your access to these Arachnobots is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Spiderlings: Ranged DMG(Lethal)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -149,6 +149,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Stalker_Mace_Mastery"
 }

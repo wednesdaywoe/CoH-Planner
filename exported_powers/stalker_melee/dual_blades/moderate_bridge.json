@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ablating Strike",
   "display_fullname": "Stalker Melee Dual Blades Moderate Bridge",
-  "display_help": "7P8CT6B5T32ZW2MW3UQ27D2552",
-  "display_short_help": "BHNVJKHZ6NXEWUV5YA62URYP7A",
+  "display_help": "You Slash at your foe with your blades, dealing a good amount of lethal damage. This attack can reduce a target's Defense, making them easier to hit. This power is the finishing move of the Sweep combination attack.<br><br><color #ff7f00>Sweep: Build Up > Assassin\u2019s Blades > Ablating Strike.</color>",
+  "display_short_help": "Melee, DMG(Lethal), Foe -DEF",
   "icon": "dualblades_moderatebridge.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -607,6 +607,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Stalker_Melee.Dual_Blades"
 }

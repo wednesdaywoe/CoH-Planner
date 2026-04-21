@@ -5,17 +5,17 @@
   "short_help": "Electricity Mastery",
   "icon": "sentinel_electricity_mastery_set.ico",
   "powers": [
-    "Chain_Fences",
-    "Havok_Punch",
-    "Lightning_Field",
-    "Paralyzing_Jolt",
-    "Rehabilitating_Circuit"
+    "Epic.Sentinel_Electricity_Mastery.Chain_Fences",
+    "Epic.Sentinel_Electricity_Mastery.Havok_Punch",
+    "Epic.Sentinel_Electricity_Mastery.Lightning_Field",
+    "Epic.Sentinel_Electricity_Mastery.Paralyzing_Jolt",
+    "Epic.Sentinel_Electricity_Mastery.Rehabilitating_Circuit"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    34,
+    40,
+    37,
+    43
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Summon Guardian",
   "display_fullname": "Epic VEAT Leviathan Mastery Summon Guardian",
-  "display_help": "KPHGYREHNVF3YFZB7SA2CZLWD3",
+  "display_help": "Captain Mako has shown you how to summon a Coralax Guardian Sentinel to do your bidding. These creatures are composed of living coral made from the sea-goddess Merulina. Your access to this Guardian is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
   "display_short_help": "Summon Sentinel: Ranged Moderate DMG(Smashing)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
@@ -92,6 +92,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.VEAT_Leviathan_Mastery"
 }

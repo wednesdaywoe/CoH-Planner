@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Scramble Thoughts",
   "display_fullname": "Sentinel Ranged Psychic Blast Scramble Thoughts",
-  "display_help": "3FCGZNC3BEZKYPBZVFVNF63K73",
-  "display_short_help": "PPU7UUC59GLMYCXQAW45BYWUSW",
+  "display_help": "Painfully scrambles the synapses of a targeted foe, leaving them dramatically Disoriented for a short duration. Deals a little Psionic Damage.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, Extreme DMG(Psionic), Foe Disorient",
   "icon": "psychicblast_scramblethoughts.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -294,6 +294,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Sentinel_Ranged.Psychic_Blast"
 }

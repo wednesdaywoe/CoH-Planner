@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fold Space",
   "display_fullname": "Pool Teleportation Long Range Teleport",
-  "display_help": "F42WJ37WHL78YLMD3XBNK4E7ZW",
+  "display_help": "Fold Space teleports enemies from up to 100ft away into melee range of the caster.<br><br>You must be at least level 14 and have two other Teleportation Powers before selecting Fold Space.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Melee (PBAoE), Foe Teleport",
   "icon": "pool_fold_space",
   "auto_issue": false,
@@ -110,6 +110,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Teleportation"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "White Dwarf Smite",
   "display_fullname": "Inherent Inherent White Dwarf Smite",
-  "display_help": "EFAVPMTBX8FNYQVR5SX9MZKRHA",
-  "display_short_help": "96ZLQ4UPKVCFYCX2DZ98QL6EFA",
+  "display_help": "White Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. White Dwarf Smite can also bring down fliers, and reduce their defense. This power is only available while in White Dwarf Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Melee, Light DMG(Energy/Smash), Foe -DEF, -Fly, Disorient",
   "icon": "luminousaura_whitedwarfsmite.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -468,6 +468,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Inherent.Inherent"
 }

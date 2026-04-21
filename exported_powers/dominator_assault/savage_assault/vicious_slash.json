@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Vicious Slash",
   "display_fullname": "Dominator Assault Savage Assault Vicious Slash",
-  "display_help": "KF2WCHBNFX8KYCLJLNLJAMWEXW",
-  "display_short_help": "BS4B4EEYMBCKYXC3EXMRPGTECQ",
+  "display_help": "You tear at your foe with both hands dealing high lethal damage and causing minor lethal damage over time. Foes struck by this attack have a high chance to be knocked down. Vicious Slash grants 2 stacks of Blood Frenzy.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, DMG(Lethal), Foe DoT (Lethal), Knockdown, Self +2 Blood Frenzy",
   "icon": "savagemelee_viciousslash.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -320,6 +320,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Dominator_Assault.Savage_Assault"
 }

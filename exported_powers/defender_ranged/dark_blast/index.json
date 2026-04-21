@@ -5,25 +5,25 @@
   "short_help": "Dark Blast",
   "icon": "dark_blast_set.ico",
   "powers": [
-    "Blackstar",
-    "Dark_Blast",
-    "Dark_Pit",
-    "Gloom",
-    "Life_Drain",
-    "Moonbeam",
-    "Night_Fall",
-    "Tenebrous_Tentacles",
-    "Torrent"
+    "Defender_Ranged.Dark_Blast.Blackstar",
+    "Defender_Ranged.Dark_Blast.Dark_Blast",
+    "Defender_Ranged.Dark_Blast.Dark_Pit",
+    "Defender_Ranged.Dark_Blast.Gloom",
+    "Defender_Ranged.Dark_Blast.Life_Drain",
+    "Defender_Ranged.Dark_Blast.Moonbeam",
+    "Defender_Ranged.Dark_Blast.Night_Fall",
+    "Defender_Ranged.Dark_Blast.Tenebrous_Tentacles",
+    "Defender_Ranged.Dark_Blast.Torrent"
   ],
   "available_level": [
+    29,
     0,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27,
+    3,
+    19,
+    15,
+    23
   ]
 }

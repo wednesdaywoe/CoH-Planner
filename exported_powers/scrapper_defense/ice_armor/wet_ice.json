@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Wet Ice",
   "display_fullname": "Scrapper Defense Ice Armor Wet Ice",
-  "display_help": "SGLNMW29DN5KYUCDG9SK85GRG2",
-  "display_short_help": "59RTL6E95FAJWEZRRXGBEDHUEQ",
+  "display_help": "When you activate this power, you cover yourself in a thick coating of slick, melting ice. This makes you slippery, leaving you nearly immune to Disorient, Immobilization, Hold, Sleep, Slow and Knockback effects. This power also adds a slight increase to your defense to all attacks. Wet Ice also reduces Cold damage and grants you resistance to Defense DeBuffs.",
+  "display_short_help": "Self, +DEF(All), +Res(Cold, Disorient, Immobilize, Hold, Sleep, Slow, Knockback, DeBuff DEF)",
   "icon": "icearmor_wetice.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -469,6 +469,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Scrapper_Defense.Ice_Armor"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Static Discharge",
   "display_fullname": "Epic Electrical Mastery Static Discharge",
-  "display_help": "X996EFPZ6WAZWPB3DRC2564AYZ",
-  "display_short_help": "NXGDKQULUM2WYQXCDMZTFVNES3",
+  "display_help": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.",
+  "display_short_help": "Ranged (Cone), DMG(Energy), -END",
   "icon": "electrical_mastery_static_discharge.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -176,6 +176,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Electrical_Mastery"
 }

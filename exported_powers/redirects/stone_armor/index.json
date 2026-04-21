@@ -5,16 +5,16 @@
   "short_help": "Stone Armor",
   "icon": "brute_melee_set.ico",
   "powers": [
-    "Brimstone_Proc_Brute",
-    "Brimstone_Proc_Scrapper",
-    "Brimstone_Proc_Sentinel",
-    "Brimstone_Proc_Stalker",
-    "Brimstone_Proc_Tanker",
-    "Geode",
-    "Geode_Buff",
-    "Geode_Pull",
-    "Geode_Scaling",
-    "Thermal"
+    "Redirects.Stone_Armor.Brimstone_Proc_Brute",
+    "Redirects.Stone_Armor.Brimstone_Proc_Scrapper",
+    "Redirects.Stone_Armor.Brimstone_Proc_Sentinel",
+    "Redirects.Stone_Armor.Brimstone_Proc_Stalker",
+    "Redirects.Stone_Armor.Brimstone_Proc_Tanker",
+    "Redirects.Stone_Armor.Geode",
+    "Redirects.Stone_Armor.Geode_Buff",
+    "Redirects.Stone_Armor.Geode_Pull",
+    "Redirects.Stone_Armor.Geode_Scaling",
+    "Redirects.Stone_Armor.Thermal"
   ],
   "available_level": [
     0,
@@ -23,7 +23,7 @@
     0,
     0,
     0,
-    0,
+    29,
     0,
     0,
     0

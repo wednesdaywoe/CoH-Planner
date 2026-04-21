@@ -3,10 +3,10 @@
   "full_name": "Tanker_Defense.Psionic_Armor.Fortify_Mind",
   "short_name": "Fortify_Mind",
   "type": "Click",
-  "display_name": "C6ASCMY7WGVAW3CEQNT6CL53BS",
+  "display_name": "Psychokinetic Barrier",
   "display_fullname": "Tanker Defense Psionic Armor Fortify Mind",
-  "display_help": "NBD9965PEZZVY4ZHEEHGDD2MZX",
-  "display_short_help": "37798HZF9XH6WKNGJAHKR5QGES",
+  "display_help": "You can erect a temporary wall of crystalized psionic energy that will absorb a large amount of damage before breaking off. Psychokinetic Barrier\u00a0will grant a moderate amount of absorption and reduce the effect debuffs have on you.",
+  "display_short_help": "Self, +Absorb, +MaxHP, +Regeneration, +Res(-Regeneration, -Recovery, -Recharge, -Endurance)",
   "icon": "psionicarmor_psychokineticbarrier",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -160,6 +160,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Tanker_Defense.Psionic_Armor"
 }

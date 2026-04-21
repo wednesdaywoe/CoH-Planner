@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Commando",
   "display_fullname": "Mastermind Summon Mercenaries Commando",
-  "display_help": "T37H4M7NR8UMWBC9JPNHXLQRDA",
+  "display_help": "Enlists one highly trained Commando. The Commando is a seasoned professional who favors heavy assault weapons. He is simply a one man army that can leave a wake of destruction in his path. In addition to standard Soldier resistance, the Commandos experience also makes him resistant to Fear and his rugged advanced training makes him slightly resistant to Fire, Cold and Toxic Damage.",
   "display_short_help": "Summon Commando",
   "icon": "paramilitary_supersoldier.png",
   "auto_issue": false,
@@ -135,6 +135,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Mastermind_Summon.Mercenaries"
 }

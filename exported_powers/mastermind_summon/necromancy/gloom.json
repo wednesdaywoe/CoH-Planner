@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Gloom",
   "display_fullname": "Mastermind Summon Necromancy Gloom",
-  "display_help": "AVT4W4KC44C2YEVDWCGBUXNK3W",
-  "display_short_help": "F9EGLPD59MF2YCBJST7PAUQGSW",
+  "display_help": "Gloom slowly drains a target of life, while reducing their chance to hit Slower than Dark Blast, but deals more damage over time.<br><br><color #fcfc95>Spectral Forces:</color><br>Activating this power has a chance to summon a Specter to your side! Specters fade away over 30 seconds. They cannot be healed, regenerate, upgraded, or commanded, but provide a good distraction. <br><br>Enhancements in this power will also enhance the stats of summoned Specters. You may only have 1 Specter active per Necromancy attack.",
+  "display_short_help": "Ranged, DoT (Negative), Foe -To Hit",
   "icon": "necromancy_gloom.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -209,6 +209,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Mastermind_Summon.Necromancy"
 }

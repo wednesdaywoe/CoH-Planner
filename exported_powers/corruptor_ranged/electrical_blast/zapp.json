@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Zapp",
   "display_fullname": "Corruptor Ranged Electrical Blast Zapp",
-  "display_help": "CTHCC35ZR77CW6LG6XC5A49E2Z",
-  "display_short_help": "C8JY4PTCJLFTYTXTSNX5AA556Q",
+  "display_help": "A focused electrical blast that can travel great distances with high Accuracy. Zapp drains Endurance, and is best fired from a distance, as it can be interrupted. Some of the Endurance you drain may transfer back to you. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+  "display_short_help": "Sniper, DMG(Energy), Foe -End",
   "icon": "electricalbolt_zapp.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Corruptor_Ranged.Electrical_Blast"
 }

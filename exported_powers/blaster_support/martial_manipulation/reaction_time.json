@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Reaction Time",
   "display_fullname": "Blaster Support Martial Manipulation Reaction Time",
-  "display_help": "AZ8N7N4BZKFEYMZXQEY2E7WJVX",
-  "display_short_help": "P1591276170",
+  "display_help": "You attune yourself to the world around you, moving with preternatural speed. All enemies nearby move slowly and have reduced recharge, and you can absorb small amounts of damage every 2 seconds. When Reaction Time is deactivated, you gain a burst of speed for a short duration, increasing your own recharge and move speed.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle (PBAoE), Self Absorb over Time, +Recovery, Foe \u2013Rech, - Move, Special",
   "icon": "martialmanipulation_reactiontime.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -416,6 +416,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Martial_Manipulation"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ball Lightning",
   "display_fullname": "Corruptor Ranged Electrical Blast Ball Lightning",
-  "display_help": "HS52RLLKN6ZCYXNMF98NQGZWHQ",
-  "display_short_help": "74JMQAAJ83RMYBBLHYLWCUNJHW",
+  "display_help": "Hurls a highly charged ball of lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits.",
+  "display_short_help": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
   "icon": "electricalbolt_balllightning.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -514,6 +514,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Corruptor_Ranged.Electrical_Blast"
 }

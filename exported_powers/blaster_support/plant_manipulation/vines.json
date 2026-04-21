@@ -3,9 +3,9 @@
   "full_name": "Blaster_Support.Plant_Manipulation.Vines",
   "short_name": "Vines",
   "type": "Click",
-  "display_name": "P3475827511",
+  "display_name": "Vines",
   "display_fullname": "Blaster Support Plant Manipulation Vines",
-  "display_help": "N8TXBZPVGUSSWRCPMKEMHL6S7X",
+  "display_help": "Creates a field of Strangler Vines that can Hold multiple foes at range. The affected targets are held helpless by the massive root-like vines. Some are likely to free their arms and attack, but will still be unable to move. Unlike the power Strangler, this power does not deal any damage, but it can Hold multiple foes at once.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Ranged (Targeted AoE), Foe Hold, Immobilize",
   "icon": "plantmanipulation_vines",
   "auto_issue": false,
@@ -289,6 +289,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Plant_Manipulation"
 }

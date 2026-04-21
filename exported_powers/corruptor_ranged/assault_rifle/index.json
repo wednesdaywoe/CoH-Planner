@@ -5,25 +5,25 @@
   "short_help": "Assault Rifle",
   "icon": "assault_rifle_set.ico",
   "powers": [
-    "Beanbag",
-    "Buckshot",
-    "Burst",
-    "Flamethrower",
-    "Full_Auto",
-    "Ignite",
-    "M30_Grenade",
-    "Slug",
-    "Sniper_Rifle"
+    "Corruptor_Ranged.Assault_Rifle.Beanbag",
+    "Corruptor_Ranged.Assault_Rifle.Buckshot",
+    "Corruptor_Ranged.Assault_Rifle.Burst",
+    "Corruptor_Ranged.Assault_Rifle.Flamethrower",
+    "Corruptor_Ranged.Assault_Rifle.Full_Auto",
+    "Corruptor_Ranged.Assault_Rifle.Ignite",
+    "Corruptor_Ranged.Assault_Rifle.M30_Grenade",
+    "Corruptor_Ranged.Assault_Rifle.Slug",
+    "Corruptor_Ranged.Assault_Rifle.Sniper_Rifle"
   ],
   "available_level": [
+    7,
+    1,
     0,
+    17,
+    25,
+    21,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11
   ]
 }

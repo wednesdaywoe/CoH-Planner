@@ -5,17 +5,17 @@
   "short_help": "Earth Mastery",
   "icon": "earth_mastery_set.ico",
   "powers": [
-    "Fossilize",
-    "Quick_Sand",
-    "Salt_Crystals",
-    "Stalagmites",
-    "Stone_Prison"
+    "Epic.Earth_Mastery.Fossilize",
+    "Epic.Earth_Mastery.Quick_Sand",
+    "Epic.Earth_Mastery.Salt_Crystals",
+    "Epic.Earth_Mastery.Stalagmites",
+    "Epic.Earth_Mastery.Stone_Prison"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    40,
+    34,
+    43,
+    34
   ]
 }

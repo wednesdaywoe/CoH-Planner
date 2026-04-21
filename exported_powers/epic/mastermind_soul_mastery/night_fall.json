@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Night Fall",
   "display_fullname": "Epic Mastermind Soul Mastery Night Fall",
-  "display_help": "B3VXVSUAJT5GW6MGNN78P8Z9JS",
-  "display_short_help": "RUSJ9VRYBCJVYRCLXY7CCBQFJ3",
+  "display_help": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced Accuracy.",
+  "display_short_help": "Ranged (Cone), DMG(Negative), Foe -ACC",
   "icon": "arachnos_patron_conedot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Mastermind_Soul_Mastery"
 }

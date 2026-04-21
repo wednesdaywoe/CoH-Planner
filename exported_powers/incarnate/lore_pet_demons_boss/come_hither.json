@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Come Hither",
   "display_fullname": "Incarnate Lore Pet Demons Boss Come Hither",
-  "display_help": "A4PNUYQBWKGLYQXRSB2GW7PMZQ",
+  "display_help": "You can Deceive an enemy into believing his friends are not who they appear to be. If successful, the enemy will ignore you and attack his own allies. If you Deceive someone before they have noticed you, your presence will continue to be masked. You will not receive any Experience Points for foes defeated by a Deceived enemy.<br><br><color #fcfc95>Notes: Come Hither is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Foe Confuse",
   "icon": "illusions_decieve.png",
   "auto_issue": false,

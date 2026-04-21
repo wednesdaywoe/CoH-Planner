@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Paralyzing Jolt",
   "display_fullname": "Epic Sentinel Electricity Mastery Paralyzing Jolt",
-  "display_help": "YTAPXALB4AVVWUMLYQR7ERHKKZ",
-  "display_short_help": "262BQ7XBGWH8WDMPEMTGNPMTJW",
+  "display_help": "You strike an enemy with a powerful jolt of electricity, disorienting him, draining some endurance and causing moderate damage over time. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Energy), Foe Stun, -End",
   "icon": "electriccontrol_teslacage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -397,6 +397,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Sentinel_Electricity_Mastery"
 }

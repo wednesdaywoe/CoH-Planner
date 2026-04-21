@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Rock Armor",
   "display_fullname": "Stalker Defense Stone Armor Stone Armor",
-  "display_help": "UY26SE9F23PKW6V8294W2AGYA2",
+  "display_help": "Your skin becomes stone while this power is active. Rock Armor protects you from Smashing and Lethal attacks. They are less likely to land and affect you. Stone Armor also grants you resistance to Defense DeBuffs.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +DEF(Lethal, Smashing), Res(DeBuff DEF)",
   "icon": "stonearmor_stonearmor.png",
   "auto_issue": false,

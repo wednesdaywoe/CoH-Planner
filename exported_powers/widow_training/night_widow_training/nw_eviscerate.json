@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Eviscerate",
   "display_fullname": "Widow Training Night Widow Training NW Eviscerate",
-  "display_help": "MD7XKR3YE3AMY7BH7N95VYUR9S",
-  "display_short_help": "X8JLJSVF9L25YUVL8ETY6GBA7Z",
+  "display_help": "Eviscerate does superior lethal damage to your foe, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.<br><br><color #fcfc95>Notes: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.</color>",
+  "display_short_help": "Melee (Cone), DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "nightwidowtraining_eviscerate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -331,6 +331,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Widow_Training.Night_Widow_Training"
 }

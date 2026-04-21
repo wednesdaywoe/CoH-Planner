@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Greater Ice Sword",
   "display_fullname": "Incarnate Lore Pet Phantoms Boss Greater Ice Sword",
-  "display_help": "VGGNRA37G9SUYKZ48G3SMXKL62",
+  "display_help": "Your mastery of Ice allows you to create an enhanced blade of solid ice that deals above average damage. Being hit by the Greater Ice Sword will Slow a villain's attack and movement speed, due to the intense chill.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "icyonslaught_greatericesword.png",
   "auto_issue": false,

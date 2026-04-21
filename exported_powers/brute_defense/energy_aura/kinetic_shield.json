@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Kinetic Shield",
   "display_fullname": "Brute Defense Energy Aura Kinetic Shield",
-  "display_help": "LK2S3QM3QTYQYZVCYN36ZMJMYS",
+  "display_help": "Kinetic Shield creates a harmonic Energy Aura that can deflect physical attacks. Your Defense to Smashing and Lethal attacks is increased as weapons and powers like bullets, blades and punches tend to deflect off the shield. Kinetic Shield also grants you good resistance to Defense Debuffs. The Energy based nature of Kinetic Shield also offers some minimal Defense to Energy attacks. Kinetic Shield also adds an Elusivity defense bonus to Smashing, Lethal, and Energy Attacks in PVP zones.",
   "display_short_help": "Toggle: Self +DEF(Smashing, Lethal, Energy), Res(DeBuff DEF)",
   "icon": "energyaura_kineticshield.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Thunder Strike",
   "display_fullname": "Epic Charge Mastery Thunder Strike",
-  "display_help": "3Z5Y7TNQ7BXUY2VU454YYGUJNW",
-  "display_short_help": "STW3Q583ZWLCWCVD87DEALWQQS",
+  "display_help": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
+  "display_short_help": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
   "icon": "chargemastery_thunderstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -492,6 +492,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Charge_Mastery"
 }

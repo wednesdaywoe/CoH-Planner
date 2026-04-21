@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Summon Demons",
   "display_fullname": "Mastermind Summon Demon Summoning Summon Demons",
-  "display_help": "QQKMK3B3UZ4BYSNVLN9H7W4AN3",
+  "display_help": "Summons forth one to two Demons (depending on your level) to do your bidding. One is cloaked in hellfire and has skin as hard as stone while the other manipulates flame.<br><br>You may only have 2 Demons under your control at any given time. If you attempt to call more Demons, you can only replace the ones you have lost in battle. If you already have your maximum allowed number, the power will fail.",
   "display_short_help": "Summon Demons",
   "icon": "demonsummoning_summondemons.png",
   "auto_issue": false,
@@ -177,6 +177,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Mastermind_Summon.Demon_Summoning"
 }

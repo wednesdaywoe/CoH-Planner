@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Banished Pantheon Core Ally",
   "display_fullname": "Incarnate Lore Banished Pantheon Core Ally",
-  "display_help": "AH3H7FELP5BVYNLXVQLGGGQ7LZ",
+  "display_help": "Draws forth an essence of a vanquished Banished Pantheon Ravager from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Banished Pantheon Core Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Banished Pantheon Boss Essence",
   "icon": "incarnate_lore_banished_uncommon.png",
   "auto_issue": false,

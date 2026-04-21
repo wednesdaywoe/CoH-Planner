@@ -5,25 +5,25 @@
   "short_help": "Energy Aura",
   "icon": "energy_aura_set.ico",
   "powers": [
-    "Conserve_Power",
-    "Dampening_Field",
-    "Energy_Cloak",
-    "Energy_Drain",
-    "Energy_Protection",
-    "Entropy_Shield",
-    "Kinetic_Shield",
-    "Overload",
-    "Power_Shield"
+    "Brute_Defense.Energy_Aura.Conserve_Power",
+    "Brute_Defense.Energy_Aura.Dampening_Field",
+    "Brute_Defense.Energy_Aura.Energy_Cloak",
+    "Brute_Defense.Energy_Aura.Energy_Drain",
+    "Brute_Defense.Energy_Aura.Energy_Protection",
+    "Brute_Defense.Energy_Aura.Entropy_Shield",
+    "Brute_Defense.Energy_Aura.Kinetic_Shield",
+    "Brute_Defense.Energy_Aura.Overload",
+    "Brute_Defense.Energy_Aura.Power_Shield"
   ],
   "available_level": [
+    27,
     0,
+    19,
+    23,
+    15,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    29,
+    3
   ]
 }

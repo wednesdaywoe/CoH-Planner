@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Smoke Flash",
   "display_fullname": "Stalker Defense Ninjitsu Smoke Flash",
-  "display_help": "E9NRZCH6D9PYYTXRHYALH78YUX",
+  "display_help": "You throw a smoke bomb at your feet. The resulting flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. Combined with Hide, Smoke Flash is the perfect distraction to get out of a bad situation.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE, Foe Placate",
   "icon": "ninjitsu_smokeflash.png",
   "auto_issue": false,
@@ -120,6 +120,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Stalker_Defense.Ninjitsu"
 }

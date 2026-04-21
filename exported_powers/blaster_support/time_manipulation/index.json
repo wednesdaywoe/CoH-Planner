@@ -1,29 +1,29 @@
 {
   "key": "Blaster_Support.Time_Manipulation",
   "display_name": "Temporal Manipulation",
-  "help": "H6GSX99GU89DWWVRE66789D37Z",
+  "help": "By gazing into the flow of time you are able to manipulate time itself. Temporal Manipulation allows the wielder to inflict crippling debuffs, and cause mental damage and exhausting your foes by showing them their future and accelerating their aging.",
   "short_help": "Temporal Manipulation",
   "icon": "time_manipulation_set.ico",
   "powers": [
-    "Aging_Touch",
-    "Chronological_Selection",
-    "End_of_Time",
-    "Future_Pain",
-    "Temporal_Healing",
-    "Time_Lord",
-    "Time_Shift",
-    "Time_Stop",
-    "Time_Wall"
+    "Blaster_Support.Time_Manipulation.Aging_Touch",
+    "Blaster_Support.Time_Manipulation.Chronological_Selection",
+    "Blaster_Support.Time_Manipulation.End_of_Time",
+    "Blaster_Support.Time_Manipulation.Future_Pain",
+    "Blaster_Support.Time_Manipulation.Temporal_Healing",
+    "Blaster_Support.Time_Manipulation.Time_Lord",
+    "Blaster_Support.Time_Manipulation.Time_Shift",
+    "Blaster_Support.Time_Manipulation.Time_Stop",
+    "Blaster_Support.Time_Manipulation.Time_Wall"
   ],
   "available_level": [
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    9,
+    15,
+    23,
+    19,
+    29,
+    27,
+    3,
     0
   ]
 }

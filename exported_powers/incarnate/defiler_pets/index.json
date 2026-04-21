@@ -5,7 +5,7 @@
   "short_help": "Incarnate",
   "icon": "defiler_pets_set.ico",
   "powers": [
-    "Frigid_Storm"
+    "Incarnate.Defiler_Pets.Frigid_Storm"
   ],
   "available_level": [
     0

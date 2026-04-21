@@ -5,25 +5,25 @@
   "short_help": "Ninjitsu",
   "icon": "ninjitsu_set.ico",
   "powers": [
-    "Blinding_Powder",
-    "Caltrops",
-    "Danger_Sense",
-    "Hide",
-    "Kuji-In_Retsu",
-    "Kuji-In_Rin",
-    "Kuji-In_Sha",
-    "Ninja_Reflexes",
-    "Smoke_Flash"
+    "Stalker_Defense.Ninjitsu.Blinding_Powder",
+    "Stalker_Defense.Ninjitsu.Caltrops",
+    "Stalker_Defense.Ninjitsu.Danger_Sense",
+    "Stalker_Defense.Ninjitsu.Hide",
+    "Stalker_Defense.Ninjitsu.Kuji-In_Retsu",
+    "Stalker_Defense.Ninjitsu.Kuji-In_Rin",
+    "Stalker_Defense.Ninjitsu.Kuji-In_Sha",
+    "Stalker_Defense.Ninjitsu.Ninja_Reflexes",
+    "Stalker_Defense.Ninjitsu.Smoke_Flash"
   ],
   "available_level": [
+    27,
+    9,
+    3,
     0,
+    29,
+    15,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    23
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Blazing Bolt",
   "display_fullname": "Dominator Assault Fiery Assault Blazing Bolt",
-  "display_help": "46QDC8AJJMPBWFNM5JZJNUWLKW",
+  "display_help": "A long range beam of fire that blasts your foes. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Sniper, Extreme DMG(Fire)",
   "icon": "fireassault_blazingbolt.png",
   "auto_issue": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Dominator_Assault.Fiery_Assault"
 }

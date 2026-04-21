@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Overload",
   "display_fullname": "Tanker Defense Energy Aura Overload",
-  "display_help": "GP7C6BVTMLYQWCV9VXA6BHQV8Z",
-  "display_short_help": "FHWPJ7K8MTJPYUBZE75DZZJW2S",
+  "display_help": "You can Overcharge your Energy Aura and significantly improve your defense to all attack types. Overcharge also grants you Defense Debuffs. This Energy Aura is so powerful, that it can even absorb some damage, effectively increasing your Max Hit Points. Overcharge also adds a moderate Elusivity defense bonus to all attacks in PVP zones.",
+  "display_short_help": "Self +DEF(All), +Recovery, +MaxHP, Res(DeBuff DEF)",
   "icon": "energyaura_overload.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -241,6 +241,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Tanker_Defense.Energy_Aura"
 }

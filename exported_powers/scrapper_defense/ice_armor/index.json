@@ -5,27 +5,27 @@
   "short_help": "Ice Armor",
   "icon": "ice_armor_set.ico",
   "powers": [
-    "Chilling_Embrace",
-    "Energy_Absorption",
-    "Glacial_Armor",
-    "Hoarfrost",
-    "Ice_Armor",
-    "Icicles",
-    "Icy_Bastion",
-    "Permafrost",
-    "Rime_Ice",
-    "Wet_Ice"
+    "Scrapper_Defense.Ice_Armor.Chilling_Embrace",
+    "Scrapper_Defense.Ice_Armor.Energy_Absorption",
+    "Scrapper_Defense.Ice_Armor.Glacial_Armor",
+    "Scrapper_Defense.Ice_Armor.Hoarfrost",
+    "Scrapper_Defense.Ice_Armor.Ice_Armor",
+    "Scrapper_Defense.Ice_Armor.Icicles",
+    "Scrapper_Defense.Ice_Armor.Icy_Bastion",
+    "Scrapper_Defense.Ice_Armor.Permafrost",
+    "Scrapper_Defense.Ice_Armor.Rime_Ice",
+    "Scrapper_Defense.Ice_Armor.Wet_Ice"
   ],
   "available_level": [
+    3,
+    19,
+    15,
     0,
     0,
+    27,
+    29,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9
   ]
 }

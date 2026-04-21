@@ -3,10 +3,10 @@
   "full_name": "Redirects.Storm_Blast.Nukenado_Pulse",
   "short_name": "Nukenado_Pulse",
   "type": "Auto",
-  "display_name": "TQNZR3B3XHGSYRZR34CEKJDJDX",
+  "display_name": "Category Five Eye Wall",
   "display_fullname": "Redirects Storm Blast Nukenado Pulse",
-  "display_help": "FAR55TP2XC56YUX8BDYPG8QW7A",
-  "display_short_help": "RLS2JRP42UVNYNC2QVZMLJ3LWA",
+  "display_help": "The eye wall of the Category Five storm delivers devastating damage.",
+  "display_short_help": "DoT(Smashing), Chance for Knockdown",
   "icon": "stormblast_categoryfive.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -255,6 +255,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Redirects.Storm_Blast"
 }

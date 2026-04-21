@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Psionic Tornado",
   "display_fullname": "Sentinel Ranged Psychic Blast Psionic Tornado",
-  "display_help": "QKKGKYX3HEJ9Y8LT9PFX7F4WE3",
+  "display_help": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
   "icon": "psychicblast_psionictornado.png",
   "auto_issue": false,
@@ -344,6 +344,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Sentinel_Ranged.Psychic_Blast"
 }

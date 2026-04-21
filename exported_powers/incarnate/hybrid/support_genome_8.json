@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Support Core Embodiment",
   "display_fullname": "Incarnate Hybrid Support Genome 8",
-  "display_help": "RG8GBXDEEWRTWRVXDWBWPWY9CX",
+  "display_help": "While toggled on, this power provides a small boost in Damage, Accuracy, Defense(All), and Special to all leaguemates within a 50 foot radius. Up to five Support Hybrid powers can stack on a single target at any given time. This boost is doubled in strength for pets. Equipping this Hybrid power grants a passive boost to Endurance Discount at all times.<br><br><color #fcfc95>Notes: Support Core Embodiment is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: +Damage, +Accuracy, +Defense, +Special",
   "icon": "incarnate_hybrid_support_veryrare.png",
   "auto_issue": false,

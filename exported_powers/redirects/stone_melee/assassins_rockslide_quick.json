@@ -3,10 +3,10 @@
   "full_name": "Redirects.Stone_Melee.Assassins_Rockslide_Quick",
   "short_name": "Assassins_Rockslide_Quick",
   "type": "Click",
-  "display_name": "QMXHYFD9TBVSY9XCGTWVBPJ9GS",
+  "display_name": "Assassin's Smash (Quick)",
   "display_fullname": "Redirects Stone Melee Assassins Rockslide Quick",
-  "display_help": "TGUUQ73GF685YMVKLZBYEADRVX",
-  "display_short_help": "2Z8C7TSXPGBUWHNTTTUY4R9KP3",
+  "display_help": "A signature Stalker attack. This attack does superior smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Smash when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Superior DMG(Smash)",
   "icon": "stonemelee_assassinate",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -487,6 +487,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Redirects.Stone_Melee"
 }

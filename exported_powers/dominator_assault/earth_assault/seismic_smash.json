@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Seismic Smash",
   "display_fullname": "Dominator Assault Earth Assault Seismic Smash",
-  "display_help": "M69KLWDEJSHFYJVJ6RGENZE283",
+  "display_help": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee, Extreme DMG(Smash), Foe Hold",
   "icon": "earthassault_seismicsmash.png",
   "auto_issue": false,
@@ -276,6 +276,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Earth_Assault"
 }

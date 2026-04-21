@@ -5,17 +5,17 @@
   "short_help": "Psionic Mastery",
   "icon": "sentinel_psionic_mastery_set.ico",
   "powers": [
-    "Dominate",
-    "Link_Minds",
-    "Mass_Hypnosis",
-    "Mind_Probe",
-    "Psychic_Shockwave"
+    "Epic.Sentinel_Psionic_Mastery.Dominate",
+    "Epic.Sentinel_Psionic_Mastery.Link_Minds",
+    "Epic.Sentinel_Psionic_Mastery.Mass_Hypnosis",
+    "Epic.Sentinel_Psionic_Mastery.Mind_Probe",
+    "Epic.Sentinel_Psionic_Mastery.Psychic_Shockwave"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    43,
+    34,
+    34,
+    40
   ]
 }

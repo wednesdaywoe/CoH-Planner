@@ -5,25 +5,25 @@
   "short_help": "Thermal Radiation",
   "icon": "thermal_radiation_set.ico",
   "powers": [
-    "Cauterize",
-    "Fire_Shield",
-    "Forge",
-    "Heat_Exhaustion",
-    "Melt_Armor",
-    "Plasma_Shield",
-    "Power_of_the_Phoenix",
-    "Thaw",
-    "Warmth"
+    "Controller_Buff.Thermal_Radiation.Cauterize",
+    "Controller_Buff.Thermal_Radiation.Fire_Shield",
+    "Controller_Buff.Thermal_Radiation.Forge",
+    "Controller_Buff.Thermal_Radiation.Heat_Exhaustion",
+    "Controller_Buff.Thermal_Radiation.Melt_Armor",
+    "Controller_Buff.Thermal_Radiation.Plasma_Shield",
+    "Controller_Buff.Thermal_Radiation.Power_of_the_Phoenix",
+    "Controller_Buff.Thermal_Radiation.Thaw",
+    "Controller_Buff.Thermal_Radiation.Warmth"
   ],
   "available_level": [
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    23,
+    27,
+    29,
+    9,
+    15,
+    19,
     0
   ]
 }

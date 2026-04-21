@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Proton Therapy",
   "display_fullname": "Sentinel Defense Radiation Armor Proton Therapy",
-  "display_help": "GHFXBXCACT2VY8LZQLUV5PPMQX",
+  "display_help": "You concentrate your energies to harness the healing powers of radiation to mend your wounds. The effects of Proton Therapy also leaves you resistant to Toxic damage and regeneration debuffs for a while, in addition to giving you some endurance over time.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Self Heal, Endurance over time, Res(Toxic, -Regen)",
   "icon": "radiationarmor_protontherapy",
   "auto_issue": false,
@@ -158,6 +158,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Sentinel_Defense.Radiation_Armor"
 }

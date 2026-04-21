@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mace Beam Volley",
   "display_fullname": "Epic Mastermind Mace Mastery Mace Beam Volley",
-  "display_help": "RNS39XRGG5NKY9LNY3W7LKK853",
-  "display_short_help": "F46WR25UFH8LYVLQG8FZ8TLJM3",
+  "display_help": "Fires a volley of multiple kinetic energy blasts from your Nullifier Mace. These blast spread out in a wide cone and are powerful enough to knock down some foes. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Cone), DMG(Energy), Foe Knockback",
   "icon": "arachnos_patron_rangedconemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -206,6 +206,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Mastermind_Mace_Mastery"
 }

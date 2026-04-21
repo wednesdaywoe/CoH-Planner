@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fistful of Arrows",
   "display_fullname": "Corruptor Ranged Archery Fistful of Arrows",
-  "display_help": "JXLVKVV25HR2YXVCLE79S8LHNA",
+  "display_help": "You fire a fistful of arrows at foes in a cone in front of you. Good at close range.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged (Cone), Moderate DMG(Lethal)",
   "icon": "archery_conearrow.png",
   "auto_issue": false,
@@ -201,6 +201,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Corruptor_Ranged.Archery"
 }

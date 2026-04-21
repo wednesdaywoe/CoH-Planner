@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Knives of Vengeance Ally",
   "display_fullname": "Incarnate Lore Knives of Vengeance Ally",
-  "display_help": "7PYV9ZKHEXKQY9VQEVA87UYX52",
+  "display_help": "Draws forth an essence of a vanquished Knives of Vengeance Tempest from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Knives of Vengeance Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Knives of Vengeance LT Essence",
   "icon": "incarnate_lore_knives_common.png",
   "auto_issue": false,

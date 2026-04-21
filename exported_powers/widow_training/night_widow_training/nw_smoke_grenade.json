@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Smoke Grenade",
   "display_fullname": "Widow Training Night Widow Training NW Smoke Grenade",
-  "display_help": "GJA4ZT3CW2F9YSMR95X4PXN93W",
+  "display_help": "The Smoke Grenade envelops all those in the affected area in a cloud of smoke. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit.<br>",
   "display_short_help": "Ranged (Target AoE), Foe -Perception, -To Hit",
   "icon": "nightwidowtraining_smokegrenade.png",
   "auto_issue": false,
@@ -109,6 +109,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Widow_Training.Night_Widow_Training"
 }

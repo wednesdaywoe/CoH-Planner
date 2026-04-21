@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Volcanic Gasses",
   "display_fullname": "Controller Control Earth Control Volcanic Gasses",
-  "display_help": "BBEJF6GK7PU5W8Z58PMU4WBNZ2",
-  "display_short_help": "MGE63TFDR4UNYQCUZEMJUWYVRQ",
+  "display_help": "You can tap into the geothermal power of the Earth and focus it at a targeted location. Foes that pass near a thermal vent will take minor Fire damage and be overcome by the gasses, leaving them choking and helpless.",
+  "display_short_help": "Ranged (Location AoE), Foe Hold, DoT(Fire), Special",
   "icon": "earthgrasp_volcanicgasses.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -270,6 +270,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Controller_Control.Earth_Control"
 }

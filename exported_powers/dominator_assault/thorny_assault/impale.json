@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Impale",
   "display_fullname": "Dominator Assault Thorny Assault Impale",
-  "display_help": "5TUFB9LYNASDW8NB9L5DSGSRMZ",
+  "display_help": "You can throw a small cluster of large Thorns at a targeted foe. These Thorns carry a large amount of the toxin. In addition to dealing Toxic damage, a successful attack can slow a target, preventing Running, Jumping or Flying. Most foes will likely be completely Immobilized, unable to run.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, High DMG(Lethal), DoT(Toxic), Immobilize, -DEF, -SPD, -Fly, -Jump",
   "icon": "thornyassault_impale.png",
   "auto_issue": false,
@@ -343,6 +343,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Dominator_Assault.Thorny_Assault"
 }

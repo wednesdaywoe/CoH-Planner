@@ -5,25 +5,25 @@
   "short_help": "Savage Melee",
   "icon": "savage_melee_set.ico",
   "powers": [
-    "Assassins_Frenzy",
-    "Build_Up",
-    "Hemorrhage",
-    "Maiming_Slash",
-    "Placate",
-    "Rending_Flurry",
-    "Savage_Leap",
-    "Savage_Strike",
-    "Shred"
+    "Stalker_Melee.Savage_Melee.Assassins_Frenzy",
+    "Stalker_Melee.Savage_Melee.Build_Up",
+    "Stalker_Melee.Savage_Melee.Hemorrhage",
+    "Stalker_Melee.Savage_Melee.Maiming_Slash",
+    "Stalker_Melee.Savage_Melee.Placate",
+    "Stalker_Melee.Savage_Melee.Rending_Flurry",
+    "Stalker_Melee.Savage_Melee.Savage_Leap",
+    "Stalker_Melee.Savage_Melee.Savage_Strike",
+    "Stalker_Melee.Savage_Melee.Shred"
   ],
   "available_level": [
+    5,
+    7,
+    21,
     0,
+    11,
+    17,
+    25,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1
   ]
 }

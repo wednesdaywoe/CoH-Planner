@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Poisonous Ray",
   "display_fullname": "Epic Controller Mace Mastery Poisonous Ray",
-  "display_help": "DT8WA34J3TKZWYB7QW88WTH9RA",
+  "display_help": "The Bane Mace can fire a nasty Poison Ray. This toxin is suspended in a polarized plasma field and delivered like an energy blast. Upon impact, the toxin directly attacks the immune system, reducing the affected targets Defense and Damage Resistance as it deals toxic damage.",
   "display_short_help": "Ranged DoT(Poison), Foe -RES, -DEF",
   "icon": "arachnos_patron_targeteddebuffdefense.png",
   "auto_issue": false,
@@ -322,6 +322,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Controller_Mace_Mastery"
 }

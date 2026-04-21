@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Orbiting Death",
   "display_fullname": "Warshade Defensive Umbral Aura Orbiting Death",
-  "display_help": "HQ64UEXCRR9EWSVVLRJ2DY5GBW",
+  "display_help": "You surround yourself with orbiting particles and dark matter that will continually cause Negative Energy damage to any nearby foes.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: PBAoE Minor DoT(Negative)",
   "icon": "umbralaura_orbitingdeath.png",
   "auto_issue": false,
@@ -111,6 +111,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

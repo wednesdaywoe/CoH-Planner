@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Umbral Torrent",
   "display_fullname": "Epic Darkness Mastery Torrent",
-  "display_help": "D96YS3ALTZSEYPB6B8CFRJXZL2",
-  "display_short_help": "RKBCVDS784ZNW7X653YVKXBK8S",
+  "display_help": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit.",
+  "display_short_help": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
   "icon": "darkcast_torrent.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -547,6 +547,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Darkness_Mastery"
 }

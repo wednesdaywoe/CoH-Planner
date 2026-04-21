@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Shinobi",
   "display_fullname": "Blaster Support Ninja Training Kyokan",
-  "display_help": "H5RZNFJAY9RCW7Z6ZYELEA27VW",
-  "display_short_help": "ZDCEDKFVTC2MYTXQQV8M2EUK8X",
+  "display_help": "A shinobi is a master of stealth and assassination. While this power is active you will be very hard to detect, and your first strike out of the shadows will deal extra damage. Even while detected, a shinobi is a deadly foe and able to deal lethal critical strikes.",
+  "display_short_help": "Toggle: Self Stealth, +DEF(All), +Special",
   "icon": "ninjatools_assassin",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -398,6 +398,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Ninja_Training"
 }

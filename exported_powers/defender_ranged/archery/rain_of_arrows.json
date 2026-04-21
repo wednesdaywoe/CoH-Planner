@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Rain of Arrows",
   "display_fullname": "Defender Ranged Archery Rain of Arrows",
-  "display_help": "AA6LTDHZBD8RY4XWZAPGJJQ45X",
-  "display_short_help": "AZRLZP3DQHCVYRZNEYK2AA83UW",
+  "display_help": "You unleash a Rain of Arrows on a targeted location, damaging foes within a large area.<br><br><color #fcfc95>Damage: Extreme (DoT).</color><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "Ranged (Location AoE), DoT(Lethal)",
   "icon": "archery_rainofarrows.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -119,6 +119,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Defender_Ranged.Archery"
 }

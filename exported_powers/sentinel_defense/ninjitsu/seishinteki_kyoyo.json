@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Seishinteki Kyoyo",
   "display_fullname": "Sentinel Defense Ninjitsu Seishinteki Kyoyo",
-  "display_help": "K4Y99PX5VN7BWPC6745PYWAVLZ",
+  "display_help": "Seishinteki Kyoyo is the spiritual education in Ninjitsu. Your mastery of these spiritual techniques allow you to recover endurance with a short period of meditation.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Self +Endurance",
   "icon": "ninjitsu_recovery",
   "auto_issue": false,
@@ -81,6 +81,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Sentinel_Defense.Ninjitsu"
 }

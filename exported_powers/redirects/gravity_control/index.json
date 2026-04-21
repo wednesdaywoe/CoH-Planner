@@ -5,15 +5,15 @@
   "short_help": "Mind Control",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Gravity_Distortion_Field_Oneshot",
-    "Gravity_Distortion_Field_Pulse",
-    "Gravity_Distortion_Field_Slow",
-    "Self_Destruct"
+    "Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot",
+    "Redirects.Gravity_Control.Gravity_Distortion_Field_Pulse",
+    "Redirects.Gravity_Control.Gravity_Distortion_Field_Slow",
+    "Redirects.Gravity_Control.Self_Destruct"
   ],
   "available_level": [
-    0,
-    0,
-    0,
+    17,
+    17,
+    17,
     0
   ]
 }

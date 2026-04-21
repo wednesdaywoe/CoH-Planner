@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Electron Haze",
   "display_fullname": "Corruptor Ranged Radiation Blast Electron Haze",
-  "display_help": "WCLGHS3K2YY9W6XVSTLZL9ZAYQ",
-  "display_short_help": "3UCCYD34ME7BYUBUPT6ZG7J8EA",
+  "display_help": "A short range conical blast of free electrons. This attack can bypass some of a target's defenses and reduce the target's Defense. It can also knock some targets down.",
+  "display_short_help": "Close, Cone DMG(Energy), Foe -DEF, Knockback",
   "icon": "radiationburst_electronhaze",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -355,6 +355,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Corruptor_Ranged.Radiation_Blast"
 }

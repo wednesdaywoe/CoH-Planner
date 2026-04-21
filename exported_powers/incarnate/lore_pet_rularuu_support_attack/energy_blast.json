@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Energy Blast",
   "display_fullname": "Incarnate Lore Pet Rularuu Support Attack Energy Blast",
-  "display_help": "8NMLJGH4KPSMWGXMH2XFLUV9LQ",
+  "display_help": "Sends a focused beam of energy that can knock back foes.<br><br><color #fcfc95>Notes: Energy Blast is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged Energy, Knockback",
   "icon": "powerblast_powerblast.png",
   "auto_issue": false,

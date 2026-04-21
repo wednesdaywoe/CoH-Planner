@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Triage",
   "display_fullname": "Incarnate Lore Pet Nemesis Support Triage",
-  "display_help": "ZQ5RU43K83W6Y8CNXUDD2H5ZX2",
+  "display_help": "The Nemesis soldiers use this battle field syringe to heals a single targeted ally of some Hit Points. The serum can also free an ally from any Immobilization, Sleep, Disorient and Hold effects and leaves them resistant to such effects for a brief time. Should be performed away from combat as this power can fail if interrupted.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ally Heal, Res Effects",
   "icon": "medicine_aid.png",
   "auto_issue": false,

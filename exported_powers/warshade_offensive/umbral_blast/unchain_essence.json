@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Unchain Essence",
   "display_fullname": "Warshade Offensive Umbral Blast Unchain Essence",
-  "display_help": "PRN8QLCTVG7CW9BVEXJ85UZGQQ",
+  "display_help": "The Warshade can release the energy of a defeated foe and cause a massive Negative Energy explosion that can devastate any remaining foes. This power can only be activated by targeting a defeated foe.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Ranged (Targeted AoE Special), Superior DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
   "icon": "umbralblast_unchainessence.png",
   "auto_issue": false,
@@ -292,6 +292,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

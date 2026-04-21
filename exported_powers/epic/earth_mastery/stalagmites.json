@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Stalagmites",
   "display_fullname": "Epic Earth Mastery Stalagmites",
-  "display_help": "2SD2KHHMGWHRWKZEKFKX5SWTR3",
-  "display_short_help": "62NTLHBQPXGFW4VUW8ARRZW3AQ",
+  "display_help": "You can cause Stalagmites to erupt all around an enemy, slicing all nearby foes. The Stalagmites deal Lethal damage, and reduce the affected targets Defense. Some affected foes may be Disorient for a short while. You must be on the ground to activate this power. You must be level 44 and have two other Earth Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Lethal), Foe -DEF, Minor Disorient",
   "icon": "earth_mastery_rangedaoe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -282,6 +282,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Earth_Mastery"
 }

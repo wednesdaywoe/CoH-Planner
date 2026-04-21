@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Vengeful Slice",
   "display_fullname": "Stalker Melee Dual Blades Special 1",
-  "display_help": "YPWVT5N59JDUY7ZC68AP6MYZDZ",
-  "display_short_help": "G4C3EKQ583X3YRCQD97MFHGKZQ",
+  "display_help": "Unleashes a series of strong attacks on your foe, dealing high lethal damage and knocking them down. This power is the finishing move for the Attack Vitals combination attack.<br><br><color #ff7f00>Attack Vitals: Power Slice > Nimble Slash > Vengeful Slice.</color>",
+  "display_short_help": "Melee, DMG(Lethal), Knockdown",
   "icon": "dualblades_special1.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -776,6 +776,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Stalker_Melee.Dual_Blades"
 }

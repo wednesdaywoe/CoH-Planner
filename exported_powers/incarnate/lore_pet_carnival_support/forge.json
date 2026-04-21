@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Forge",
   "display_fullname": "Incarnate Lore Pet Carnival Support Forge",
-  "display_help": "9CY8RBSNJF4UY6BETUQTRH2PVQ",
+  "display_help": "Forge a single ally target into a killing machine. Forge immensely enhances a single ally's Damage and chance to hit.<br><br><color #fcfc95>Notes: Forge is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ally +DMG, +To-hit",
   "icon": "thermalradiation_forge.png",
   "auto_issue": false,

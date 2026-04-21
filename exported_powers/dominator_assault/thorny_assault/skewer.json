@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Skewer",
   "display_fullname": "Dominator Assault Thorny Assault Skewer",
-  "display_help": "YRWCLPXJX3W8YLV58CYJ69P8YX",
+  "display_help": "You lunge forward with this melee attack and Skewer your foe with the large Thorn on your arm. Deals high damage and poisons your foe. Poison from the Thorns deals additional Toxic damage and can reduce your foes Defense.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Melee, Moderate DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_skewer.png",
   "auto_issue": false,

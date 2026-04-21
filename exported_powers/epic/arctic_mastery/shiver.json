@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shiver",
   "display_fullname": "Epic Arctic Mastery Shiver",
-  "display_help": "LE6MLBVRWQ76WBBRCEW5EQMKNZ",
+  "display_help": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
   "display_short_help": "Ranged (Cone), Foe -SPD, -Recharge",
   "icon": "ice_mastery_shiver",
   "auto_issue": false,
@@ -153,6 +153,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Arctic_Mastery"
 }

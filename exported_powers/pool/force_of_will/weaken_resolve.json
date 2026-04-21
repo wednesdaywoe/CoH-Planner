@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Weaken Resolve",
   "display_fullname": "Pool Force of Will Weaken Resolve",
-  "display_help": "QGJH4NNS93JZWRLFJSS5Y4CXP3",
+  "display_help": "You overwhelm your foe with sheer strength of will, reducing their defense, damage resistance, and chance to hit!<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Foe -Resist, -Defense, -To Hit",
   "icon": "forceofwill_weakenresolve.png",
   "auto_issue": false,

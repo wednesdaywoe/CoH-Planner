@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Shark Skin",
   "display_fullname": "Epic Corruptor Leviathan Mastery Shark Skin",
-  "display_help": "68FEV3XQW8EHWLL32HPXFVMRAZ",
+  "display_help": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing and cold damage.",
   "display_short_help": "Toggle: Self +Res(Smash, Lethal, Cold)",
   "icon": "arachnos_patron_resistbuff.png",
   "auto_issue": false,
@@ -133,6 +133,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Corruptor_Leviathan_Mastery"
 }

@@ -5,8 +5,8 @@
   "type": "Auto",
   "display_name": "Repelling Force",
   "display_fullname": "Sentinel Defense Energy Aura Repelling Force",
-  "display_help": "QPZ893PY4WNUYEVZSCZTQAYTYX",
-  "display_short_help": "BMR5AT3PGZ9PWSCPEB39NGCBCZ",
+  "display_help": "Your innate power over energies manifest itself naturally as a repelling force, increasing your defense against all types. This power is always on and costs no endurance.",
+  "display_short_help": "Auto: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative, Psionic, Toxic)",
   "icon": "energyaura_repellingforce.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -136,6 +136,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Sentinel_Defense.Energy_Aura"
 }

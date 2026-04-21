@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Chilblain",
   "display_fullname": "Blaster Support Ice Manipulation Chilblain",
-  "display_help": "8EQ6ZR9LNN65W7MJJWGSYPCBEQ",
+  "display_help": "Immobilizes your target in an icy trap. Deals some damage over time and slightly Slows the target's attack and movement speed. Useful for keeping villains at bay.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "icemanipulation_chillblains.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Blizzard",
   "display_fullname": "Corruptor Ranged Ice Blast Blizzard",
-  "display_help": "RNEC7JXQ8NCYYRCER98B9RGWEQ",
-  "display_short_help": "WH6BUXCMXR7HWLVMTYZJGKDR7Z",
+  "display_help": "You can conjure a Blizzard that inflicts Extreme Cold and Lethal damage over time and can Slow the attack rate of all your opponents in a large area, reducing their chance to hit and possibly knocking them back.",
+  "display_short_help": "Ranged (Location AoE), DoT(Cold), Foe -To Hit, -SPD, -Recharge, Knockback",
   "icon": "iceblast_blizzard.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Corruptor_Ranged.Ice_Blast"
 }

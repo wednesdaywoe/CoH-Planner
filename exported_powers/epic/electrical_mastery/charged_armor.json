@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Charged Armor",
   "display_fullname": "Epic Electrical Mastery Charged Armor",
-  "display_help": "MGLJADENKDFGW6NNWBH7PTG27X",
+  "display_help": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Self +Res(Smash, Lethal, Energy)",
   "icon": "electrical_mastery_charged_armor.png",
   "auto_issue": false,
@@ -133,6 +133,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Electrical_Mastery"
 }

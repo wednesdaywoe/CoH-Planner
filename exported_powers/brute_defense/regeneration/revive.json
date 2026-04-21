@@ -3,10 +3,10 @@
   "full_name": "Brute_Defense.Regeneration.Revive",
   "short_name": "Revive",
   "type": "Auto",
-  "display_name": "DGLUK4UM7ZT2YQLDBHZM5NV2DA",
+  "display_name": "Ailment Resistance",
   "display_fullname": "Brute Defense Regeneration Revive",
-  "display_help": "EQGTYJV5PYM8WMM6KYW8HGHQKS",
-  "display_short_help": "SDQRB3ZUU9TFYBMU7ASTWES4TQ",
+  "display_help": "Your superior immune system makes you resilient to disease and multiple ailments. Healing techniques also become more effective. This power is always on.",
+  "display_short_help": "Auto: Self +Max HP, -Res(Heal), Res(-Defense, -Endurance, -Speed, -Regeneration, -Recovery, -Recharge, -Range, -ToHit)",
   "icon": "regeneration_resiststun.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -304,6 +304,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Brute_Defense.Regeneration"
 }

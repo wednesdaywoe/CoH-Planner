@@ -5,9 +5,9 @@
   "short_help": "Longbow",
   "icon": "lore_pet_longbow_lt_set.ico",
   "powers": [
-    "Burst",
-    "M30_Grenade",
-    "Slug"
+    "Incarnate.Lore_Pet_Longbow_LT.Burst",
+    "Incarnate.Lore_Pet_Longbow_LT.M30_Grenade",
+    "Incarnate.Lore_Pet_Longbow_LT.Slug"
   ],
   "available_level": [
     0,

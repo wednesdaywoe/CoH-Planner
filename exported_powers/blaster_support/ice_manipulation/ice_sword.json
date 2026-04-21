@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ice Sword",
   "display_fullname": "Blaster Support Ice Manipulation Ice Sword",
-  "display_help": "7YDEG8RASSF6WTLLSDH39DWLG3",
+  "display_help": "You create a blade of solid ice that deals higher damage then Frozen Fists. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "icemanipulation_icesword.png",
   "auto_issue": false,
@@ -228,6 +228,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Blaster_Support.Ice_Manipulation"
 }

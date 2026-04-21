@@ -5,7 +5,7 @@
   "short_help": "Trick Arrow",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Psionic_Dart"
+    "Redirects.Psychic_Blast.Psionic_Dart"
   ],
   "available_level": [
     0

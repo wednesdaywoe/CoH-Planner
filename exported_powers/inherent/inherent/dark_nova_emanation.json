@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Nova Emanation",
   "display_fullname": "Inherent Inherent Dark Nova Emanation",
-  "display_help": "4HYCM2JCJ3BQYXVXQ33H7PXLBZ",
-  "display_short_help": "9Y7DAPVP84RTWDM7NYMPXFHUMZ",
+  "display_help": "Sends bolts of Nictus dark energy to multiple targets at once within a cone area in front of the caster. Deals moderate negative energy damage to each affected foe and reduces their attack rate and movement speed. This power is only available while in Dark Nova Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Cone), Light DMG(Negative), Foe -Recharge, -SPD, Knockback",
   "icon": "umbralblast_graviticemanation.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -193,6 +193,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Inherent.Inherent"
 }

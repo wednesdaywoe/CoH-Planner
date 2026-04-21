@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Power Crash",
   "display_fullname": "Scrapper Melee Energy Melee Power Crash",
-  "display_help": "9Z4QXJKP3VCYWDB9FDAPVG8HZQ",
-  "display_short_help": "QM7XV66J2CYPYJMDTTFM6FESBX",
+  "display_help": "You focus your internal energy on your fists and release it once you hit your target unleashing an energy wave that hurts and disorients multiple enemies. This power will hit up to 5 additional foes if used while in Energy Focus mode.",
+  "display_short_help": "Melee (Cone), DMG(Smash/Energy), Foe Disorient, Special",
   "icon": "powerpunch_powercrash",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -489,6 +489,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Scrapper_Melee.Energy_Melee"
 }

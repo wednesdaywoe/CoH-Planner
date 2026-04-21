@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Time Stop",
   "display_fullname": "Blaster Support Time Manipulation Time Stop",
-  "display_help": "FWUS7L5EPFL2YXXZGE3GKAVRRW",
-  "display_short_help": "FL3565W4HMCEYMZLAUYZPTN7EZ",
+  "display_help": "You trap your target within the flow of time causing them to be held helpless. Even those resistant to the effects of Time Stop's hold will still have their regeneration rate and healing effects reduced for a brief period. Targets affected by the Delayed effect will suffer from a more powerful hold, however its benefits are brief.<br><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, Foe Hold, -Regen, -Heal",
   "icon": "timemanipulation_timestop.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -346,6 +346,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Blaster_Support.Time_Manipulation"
 }

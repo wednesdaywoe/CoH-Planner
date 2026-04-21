@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Infrigidate",
   "display_fullname": "Defender Buff Cold Domination Infrigidate",
-  "display_help": "KKM5WC5YVB6CW2X4F5M5VRL7MX",
+  "display_help": "Fires a frigid beam of cold at a single target. This beam dramatically reduces the targets attack rate, movement speed and Defense. Infrigidate draws so much heat out of the target that the damage of any of its Fire attacks will be reduced.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged Foe -Speed, -Recharge, -DEF, -DMG (Fire)",
   "icon": "colddomination_infrigidate.png",
   "auto_issue": false,

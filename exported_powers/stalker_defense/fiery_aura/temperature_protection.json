@@ -5,8 +5,8 @@
   "type": "Auto",
   "display_name": "Temperature Protection",
   "display_fullname": "Stalker Defense Fiery Aura Temperature Protection",
-  "display_help": "5AGS9BE49WQ7WJC56URUFBKYYQ",
-  "display_short_help": "7JV9SAXDEVRSYJLNU2KF3PA3GZ",
+  "display_help": "Temperature Protection gives you strong resistance to Fire damage, some resistance to Cold damage and slow effects, and grants minor, unenhanceable regeneration as well as provide very minor Knockback Protection. This power is always on and costs no Endurance.",
+  "display_short_help": "Auto: Self +Res(Fire, Cold, Slow, Knock), +Regen",
   "icon": "flamingshield_temperatureprotection.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -200,6 +200,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Stalker_Defense.Fiery_Aura"
 }

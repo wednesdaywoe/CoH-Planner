@@ -5,25 +5,25 @@
   "short_help": "Energy Aura",
   "icon": "energy_aura_set.ico",
   "powers": [
-    "Dampening_Field",
-    "Efficiency",
-    "Energy_Cloak",
-    "Energy_Drain",
-    "Energy_Protection",
-    "Entropy_Shield",
-    "Kinetic_Shield",
-    "Overload",
-    "Power_Shield"
+    "Scrapper_Defense.Energy_Aura.Dampening_Field",
+    "Scrapper_Defense.Energy_Aura.Efficiency",
+    "Scrapper_Defense.Energy_Aura.Energy_Cloak",
+    "Scrapper_Defense.Energy_Aura.Energy_Drain",
+    "Scrapper_Defense.Energy_Aura.Energy_Protection",
+    "Scrapper_Defense.Energy_Aura.Entropy_Shield",
+    "Scrapper_Defense.Energy_Aura.Kinetic_Shield",
+    "Scrapper_Defense.Energy_Aura.Overload",
+    "Scrapper_Defense.Energy_Aura.Power_Shield"
   ],
   "available_level": [
     0,
+    23,
+    19,
+    27,
+    15,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    29,
+    3
   ]
 }

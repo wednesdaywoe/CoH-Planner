@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Athletic Regulation",
   "display_fullname": "Sentinel Defense Bio Organic Armor Athletic Regulation",
-  "display_help": "ARSC5BJQ7K6XYYL8RXWFE3VTLA",
+  "display_help": "Your body is continually regulating your athletic capabilities to best fit your current need. You also gain a small amount of defense debuff resistance.<br><br><color #fac39b>*While Offensive Adaptation is active you gain increased movement speed. </color><br><color #9efa9b>*While Defensive Adaptation is active you are more resistant to run and fly speed debuffs. </color><br><color #9bfafa>*While Efficient Adaptation is active all your run and fly powers have their speeds boosted.</color><br><br>Bonuses granted from Adaptations are unenhanceable.<br><br>This power is always on and permanently increases your movement speed, regardless your Adaptation.",
   "display_short_help": "Auto: Self +SPD, +Special",
   "icon": "bioorganicarmor_athleticaugmentation",
   "auto_issue": false,
@@ -248,6 +248,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Sentinel_Defense.Bio_Organic_Armor"
 }

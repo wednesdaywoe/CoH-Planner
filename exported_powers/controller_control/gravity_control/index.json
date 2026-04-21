@@ -5,25 +5,25 @@
   "short_help": "Gravity Control",
   "icon": "gravity_control_set.ico",
   "powers": [
-    "Crush",
-    "Crushing_Field",
-    "Dimension_Shift",
-    "Fold_Space",
-    "Gravity_Distortion",
-    "Gravity_Distortion_Field",
-    "Lift",
-    "Propel",
-    "Wormhole"
+    "Controller_Control.Gravity_Control.Crush",
+    "Controller_Control.Gravity_Control.Crushing_Field",
+    "Controller_Control.Gravity_Control.Dimension_Shift",
+    "Controller_Control.Gravity_Control.Fold_Space",
+    "Controller_Control.Gravity_Control.Gravity_Distortion",
+    "Controller_Control.Gravity_Control.Gravity_Distortion_Field",
+    "Controller_Control.Gravity_Control.Lift",
+    "Controller_Control.Gravity_Control.Propel",
+    "Controller_Control.Gravity_Control.Wormhole"
   ],
   "available_level": [
     0,
+    7,
+    11,
+    25,
+    1,
+    17,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    5,
+    21
   ]
 }

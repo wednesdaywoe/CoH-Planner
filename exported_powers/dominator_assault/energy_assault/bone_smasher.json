@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Bone Smasher",
   "display_fullname": "Dominator Assault Energy Assault Bone Smasher",
-  "display_help": "2XE453PNF3T7WYVVARRWJ4KBSS",
+  "display_help": "This melee attack can be slow, but it compensates by dealing a good amount of damage and having a good chance to Disorient the target. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode. This power will weaken the target's secondary effects if used while in Energy Focus mode.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High DMG(Smash/Energy), Disorient, Special, Chance for Energy Focus",
   "icon": "energyassault_bonesmasher.png",
   "auto_issue": false,

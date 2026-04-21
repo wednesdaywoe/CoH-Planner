@@ -5,27 +5,27 @@
   "short_help": "Broad Sword",
   "icon": "broad_sword_set.ico",
   "powers": [
-    "Boomerang_Slice",
-    "Build_Up",
-    "Disembowel",
-    "Hack",
-    "Head_Splitter",
-    "Parry",
-    "Slash",
-    "Slice",
-    "Taunt",
-    "Whirling_Sword"
+    "Brute_Melee.Broad_Sword.Boomerang_Slice",
+    "Brute_Melee.Broad_Sword.Build_Up",
+    "Brute_Melee.Broad_Sword.Disembowel",
+    "Brute_Melee.Broad_Sword.Hack",
+    "Brute_Melee.Broad_Sword.Head_Splitter",
+    "Brute_Melee.Broad_Sword.Parry",
+    "Brute_Melee.Broad_Sword.Slash",
+    "Brute_Melee.Broad_Sword.Slice",
+    "Brute_Melee.Broad_Sword.Taunt",
+    "Brute_Melee.Broad_Sword.Whirling_Sword"
   ],
   "available_level": [
+    1,
+    5,
+    21,
     0,
+    25,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    11,
+    17
   ]
 }

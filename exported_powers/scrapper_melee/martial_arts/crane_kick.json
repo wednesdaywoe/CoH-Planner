@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Crane Kick",
   "display_fullname": "Scrapper Melee Martial Arts Crane Kick",
-  "display_help": "KS644KB8DL4TWAC4QK6BVQPYGZ",
+  "display_help": "You can perform a slow, high damage kick that will likely knock your target back.",
   "display_short_help": "Melee, High DMG(Smash), Knockback",
   "icon": "martialarts_cranekick.png",
   "auto_issue": false,
@@ -357,6 +357,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Scrapper_Melee.Martial_Arts"
 }

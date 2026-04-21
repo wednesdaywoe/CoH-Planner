@@ -5,11 +5,11 @@
   "short_help": "Electric Armor",
   "icon": "blind_set.ico",
   "powers": [
-    "EM_Pulse",
-    "Power_Surge"
+    "Redirects.Electric_Armor.EM_Pulse",
+    "Redirects.Electric_Armor.Power_Surge"
   ],
   "available_level": [
-    0,
-    0
+    31,
+    29
   ]
 }

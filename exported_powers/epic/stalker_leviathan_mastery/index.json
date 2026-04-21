@@ -5,17 +5,17 @@
   "short_help": "Leviathan Mastery",
   "icon": "stalker_leviathan_mastery_set.ico",
   "powers": [
-    "Hibernate",
-    "Spirit_Shark",
-    "Spirit_Shark_Jaws",
-    "Summon_Guardian",
-    "Water_Spout"
+    "Epic.Stalker_Leviathan_Mastery.Hibernate",
+    "Epic.Stalker_Leviathan_Mastery.Spirit_Shark",
+    "Epic.Stalker_Leviathan_Mastery.Spirit_Shark_Jaws",
+    "Epic.Stalker_Leviathan_Mastery.Summon_Guardian",
+    "Epic.Stalker_Leviathan_Mastery.Water_Spout"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    34,
+    40,
+    43,
+    34
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Control Radial Embodiment",
   "display_fullname": "Incarnate Hybrid Control Radial Embodiment",
-  "display_help": "9E8YLWGA5ZGSYKVP6FKJ9MGMES",
+  "display_help": "Toggle: Adds a Chance for Fear and a Chance for Immobilize to most damaging powers. This ability gives a 70% chance for its effects to occur on each hit. If your target is already Immobilized and Feared, you have an additional 100% chance to stun that target. Equipping this Hybrid power grants a passive boost to Status Resistance at all times.<br><br><color #fcfc95>Notes: Control Radial Embodiment is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Chance for Fear, Chance for Immobilize, Chance for Stun (Special)",
   "icon": "incarnate_hybrid_control_veryrare.png",
   "auto_issue": false,

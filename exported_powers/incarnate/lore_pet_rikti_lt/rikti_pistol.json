@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Rikti Pistol",
   "display_fullname": "Incarnate Lore Pet Rikti LT Rikti Pistol",
-  "display_help": "DK8F2YZPWGXEYWLP3QT7599QWZ",
+  "display_help": "You are Disoriented.<br><br><color #fcfc95>Notes: Rikti Pistol is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Disorient",
   "icon": "medievalweapons_maceclobber.png",
   "auto_issue": false,

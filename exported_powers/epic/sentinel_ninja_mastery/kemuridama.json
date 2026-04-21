@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Kemuridama",
   "display_fullname": "Epic Sentinel Ninja Mastery Kemuridama",
-  "display_help": "JK2XRM2B62EAW6L8FF69PR5QYQ",
+  "display_help": "You activate a kemuridama smoke bomb at your feet. The resulting flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. A mixture of toxins in the smoke also weaken your foes, reducing how much damage they inflict in addition to lowering their chance to hit. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.<br>",
   "display_short_help": "PBAoE, Foe Placate -DMG -To Hit",
   "icon": "ninjatools_placate",
   "auto_issue": false,
@@ -225,6 +225,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Sentinel_Ninja_Mastery"
 }

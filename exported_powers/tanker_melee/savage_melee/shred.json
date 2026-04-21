@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shred",
   "display_fullname": "Tanker Melee Savage Melee Shred",
-  "display_help": "RCER4J8ZKPMEYUBBG8VU7YHJB3",
-  "display_short_help": "KNVX5YCG7DRXW9VHSWKWMGNVL3",
+  "display_help": "You rapidly slash at your foes several times causing a moderate amount of damage to all enemies in front of you and reduce their defense. Shred also causes minor lethal damage over time. This power grants 1 stack of Blood Frenzy.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>5</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "Melee (Cone), Foe DoT (Lethal), -Def(All), Self +1 Blood Frenzy",
   "icon": "savagemelee_shred.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -364,6 +364,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Tanker_Melee.Savage_Melee"
 }

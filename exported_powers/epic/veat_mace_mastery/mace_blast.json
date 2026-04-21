@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mace Blast",
   "display_fullname": "Epic VEAT Mace Mastery Mace Blast",
-  "display_help": "WKSKXF54RH5YY6BHLM2MLA9P3W",
-  "display_short_help": "A7BEFULRQU7LYEVR5R87UF98WQ",
+  "display_help": "The Executioner's Mace is capable of firing a powerful bolt of kinetic energy. The blast is powerful enough that it may knock some foes back. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
+  "display_short_help": "Ranged, DMG(Energy), Foe Knockback",
   "icon": "arachnos_patron_targetedrangedhighdmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -206,6 +206,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.VEAT_Mace_Mastery"
 }

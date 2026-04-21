@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Tesla Coil",
   "display_fullname": "Dominator Control Electric Control Paralyzing Blast",
-  "display_help": "UWQM6APXA2NYWHBKCAQ24XN3RQ",
-  "display_short_help": "QVLTZNU27LB6W7CFQ8W4JM9LT3",
+  "display_help": "Summoning a large amount of energy that periodically jolts at nearby enemies dealing energy damage and paralizing them for a short time. These foes may be drained of some endurance as well.",
+  "display_short_help": "Ranged (Targeted AoE), Foe DMG(Energy), Hold, -End, -Fly, -Jump, -Recharge",
   "icon": "electriccontrol_paralyzingblastpatch",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -125,6 +125,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Dominator_Control.Electric_Control"
 }

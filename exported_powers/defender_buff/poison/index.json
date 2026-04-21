@@ -5,25 +5,25 @@
   "short_help": "Poison",
   "icon": "poison_set.ico",
   "powers": [
-    "Alkaloid",
-    "Antidote",
-    "Elixir_of_Life",
-    "Envenom",
-    "Neurotoxic_Breath",
-    "Paralytic_Poison",
-    "Poison_Trap",
-    "Venomous_Gas",
-    "Weaken"
+    "Defender_Buff.Poison.Alkaloid",
+    "Defender_Buff.Poison.Antidote",
+    "Defender_Buff.Poison.Elixir_of_Life",
+    "Defender_Buff.Poison.Envenom",
+    "Defender_Buff.Poison.Neurotoxic_Breath",
+    "Defender_Buff.Poison.Paralytic_Poison",
+    "Defender_Buff.Poison.Poison_Trap",
+    "Defender_Buff.Poison.Venomous_Gas",
+    "Defender_Buff.Poison.Weaken"
   ],
   "available_level": [
     0,
+    11,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    5,
+    17,
+    21,
+    25,
+    1
   ]
 }

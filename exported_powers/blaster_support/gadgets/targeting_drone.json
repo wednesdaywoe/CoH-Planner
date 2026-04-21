@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Targeting Drone",
   "display_fullname": "Blaster Support Gadgets Targeting Drone",
-  "display_help": "XWQ8CRQ6B66QYFZKV3NJ67JJKX",
+  "display_help": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit, slightly increase the damage you deal, and increase your perception, allowing you to better see stealthy foes. If not engaged in combat, this power will give a large damage buff to your opening attack. Targeting Drone also grants you resistance to powers that debuff your chance to hit.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: Self +To Hit, +Damage, +Perception, Res(DeBuff To Hit)",
   "icon": "gadgets_targetingdrone.png",
   "auto_issue": false,
@@ -234,6 +234,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Gadgets"
 }

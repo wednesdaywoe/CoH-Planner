@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Power Boost",
   "display_fullname": "Epic Primal Forces Mastery Power Boost",
-  "display_help": "9HPMWG99RKWWYDXNJN7WKJDH3Q",
+  "display_help": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
   "display_short_help": "Self +Special",
   "icon": "primalforcesmastery_powerboost.png",
   "auto_issue": false,
@@ -141,6 +141,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Primal_Forces_Mastery"
 }

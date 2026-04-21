@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Flamethrower",
   "display_fullname": "Incarnate Lore Pet Nemesis Boss Flamethrower",
-  "display_help": "CADXZC9YMUTDYRNVG6PZLXXY3S",
+  "display_help": "The Warhulk's Flamethrower is doing Fire damage over time to you.<br><br><color #fcfc95>Notes: Flamethrower is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "DoT(Fire)",
   "icon": "assaultweapons_arflamethrower.png",
   "auto_issue": false,

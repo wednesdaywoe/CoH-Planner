@@ -5,25 +5,25 @@
   "short_help": "Spines",
   "icon": "spines_set.ico",
   "powers": [
-    "Barb_Swipe",
-    "Build_Up",
-    "Impale",
-    "Lunge",
-    "Quills",
-    "Ripper",
-    "Spine_Burst",
-    "Taunt",
-    "Throw_Spines"
+    "Tanker_Melee.Spines.Barb_Swipe",
+    "Tanker_Melee.Spines.Build_Up",
+    "Tanker_Melee.Spines.Impale",
+    "Tanker_Melee.Spines.Lunge",
+    "Tanker_Melee.Spines.Quills",
+    "Tanker_Melee.Spines.Ripper",
+    "Tanker_Melee.Spines.Spine_Burst",
+    "Tanker_Melee.Spines.Taunt",
+    "Tanker_Melee.Spines.Throw_Spines"
   ],
   "available_level": [
     0,
+    19,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27,
+    15,
+    3,
+    9,
+    29
   ]
 }

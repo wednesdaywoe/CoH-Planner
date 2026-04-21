@@ -5,25 +5,25 @@
   "short_help": "Super Reflexes",
   "icon": "super_reflexes_set.ico",
   "powers": [
-    "Agile",
-    "Dodge",
-    "Elude",
-    "Evasion",
-    "Focused_Fighting",
-    "Focused_Senses",
-    "Lucky",
-    "Practiced_Brawler",
-    "Quickness"
+    "Tanker_Defense.Super_Reflexes.Agile",
+    "Tanker_Defense.Super_Reflexes.Dodge",
+    "Tanker_Defense.Super_Reflexes.Elude",
+    "Tanker_Defense.Super_Reflexes.Evasion",
+    "Tanker_Defense.Super_Reflexes.Focused_Fighting",
+    "Tanker_Defense.Super_Reflexes.Focused_Senses",
+    "Tanker_Defense.Super_Reflexes.Lucky",
+    "Tanker_Defense.Super_Reflexes.Practiced_Brawler",
+    "Tanker_Defense.Super_Reflexes.Quickness"
   ],
   "available_level": [
+    1,
+    7,
+    25,
+    11,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    17,
+    5,
+    21
   ]
 }

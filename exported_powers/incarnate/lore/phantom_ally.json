@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Phantom Ally",
   "display_fullname": "Incarnate Lore Phantom Ally",
-  "display_help": "DDFQ6RZCGQ5EY9XT2H3CR77XC3",
+  "display_help": "Draws forth an essence of a vanquished Phantom from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Phantom Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Phantom LT Essence",
   "icon": "incarnate_lore_phantoms_common.png",
   "auto_issue": false,

@@ -3,10 +3,10 @@
   "full_name": "Dominator_Control.Symphony_Control.Impassioned_Serenade",
   "short_name": "Impassioned_Serenade",
   "type": "Click",
-  "display_name": "JKMHNVRBKYEUYNC8FRCY3XRV92",
+  "display_name": "Impassioned Serenade",
   "display_fullname": "Dominator Control Symphony Control Impassioned Serenade",
-  "display_help": "TCJ5DB4FVKZ7WLX5BEENW8CHD2",
-  "display_short_help": "TZ4HUJQQKUYTYZZM8BG8EFQ9RW",
+  "display_help": "You serenade your target with an impassioned song, charming them into fighting for you.<br><br><color #fcfc95>Note: this power inflicts damage over time for up to 30 seconds as long as the target is confused.</color>",
+  "display_short_help": "Ranged, DoT(Psionic), Foe Confuse",
   "icon": "symphonycontrol_confusest",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -190,6 +190,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Dominator_Control.Symphony_Control"
 }

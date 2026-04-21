@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Power Boost",
   "display_fullname": "Blaster Support Energy Manipulation Power Boost",
-  "display_help": "4UGQ8E6K44M7YCM9YSYQQWUFG3",
+  "display_help": "Greatly boosts the secondary effects of your powers. Your powers effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Self +Special",
   "icon": "energymanipulation_powerboost.png",
   "auto_issue": false,
@@ -178,6 +178,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Blaster_Support.Energy_Manipulation"
 }

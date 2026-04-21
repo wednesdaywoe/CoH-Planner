@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Force Field Generator",
   "display_fullname": "Mastermind Buff Traps Force Field Generator",
-  "display_help": "D8SYEVR6ACCMYUM8YN4AWQD7R2",
+  "display_help": "You can build a Force Field Generator Drone. It will generate a Dispersion Bubble that gives all nearby allies increased Defense against all attacks including Psionic. The Dispersion Bubble also protects allies from Immobilization, Disorient, and Hold effects. The Drone will follow you, can be buffed and healed or even destroyed. However, it is not a Henchman and cannot be given commands. Limited to one Force Field Generator.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Place Drone: PBAoE, Team +DEF, +Res(Hold, Immobilize, Disorient)",
   "icon": "traps_droppedaoebuffdefense.png",
   "auto_issue": false,
@@ -86,6 +86,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Mastermind_Buff.Traps"
 }

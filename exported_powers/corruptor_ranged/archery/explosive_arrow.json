@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Explosive Arrow",
   "display_fullname": "Corruptor Ranged Archery Explosive Arrow",
-  "display_help": "KEDQQ727CDBHYDXEZFRSDUJVBX",
-  "display_short_help": "NNTUUW8TRWTYYYB5EFW9TFKRNQ",
+  "display_help": "You fire a grenade-tipped arrow at long range. This explosion affects all within the blast radius, and can knock them back.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Targeted AoE), Moderate DMG(Lethal/Fire), Knockback",
   "icon": "archery_explodingarrow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -391,6 +391,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Corruptor_Ranged.Archery"
 }

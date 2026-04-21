@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Spinning Kick",
   "display_fullname": "Dominator Assault Martial Assault Spinning Kick",
-  "display_help": "XBCJHZULKKBJY7VRV3FTKM88CA",
-  "display_short_help": "45T6SX43C36GYHVDMNQBJX2BUW",
+  "display_help": "You perform a high spinning reverse roundhouse kick, smashing anything in front of you with devastating force. You can activate this ability at any time, no matter what you have targeted; it will strike enemies directly in front of your character, rather than enemies near your target.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Melee Cone, Light DMG(Smash), Knockdown",
   "icon": "martialassault_spinningkick.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -226,6 +226,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Dominator_Assault.Martial_Assault"
 }

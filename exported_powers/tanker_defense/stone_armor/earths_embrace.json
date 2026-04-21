@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Earth's Embrace",
   "display_fullname": "Tanker Defense Stone Armor Earths Embrace",
-  "display_help": "GDCKJMHM3KWQYJZRVMU3YSDDV3",
+  "display_help": "You are so connected to the Earth, you can draw upon its power to add to your health. Activating this power increases your maximum Hit Points, and grants you resistance to Toxic Damage.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +HP, Res(Toxic)",
   "icon": "stonearmor_earthsembrace.png",
   "auto_issue": false,
@@ -158,6 +158,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Tanker_Defense.Stone_Armor"
 }

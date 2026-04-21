@@ -3,10 +3,10 @@
   "full_name": "Redirects.Storm_Blast.StormCell_Tempest_Sentinel",
   "short_name": "StormCell_Tempest_Sentinel",
   "type": "Auto",
-  "display_name": "P3408457872",
+  "display_name": "Tempest",
   "display_fullname": "Redirects Storm Blast StormCell Tempest Sentinel",
-  "display_help": "ZTVNAQLSDXCNW2ML9FTBLEAKFQ",
-  "display_short_help": "44688NW3KW9DYJCF69RNP2X37A",
+  "display_help": "The Tempest slightly reduces the recharge, run speed, and to hit of enemies within.",
+  "display_short_help": "Foe -Recharge, -RunSpeed, -ToHit",
   "icon": "stormblast_stormcell.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -310,6 +310,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Redirects.Storm_Blast"
 }

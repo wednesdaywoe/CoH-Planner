@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fire Ball",
   "display_fullname": "Sentinel Ranged Fire Blast Fire Ball",
-  "display_help": "97JY2CBY4GXSY6LHTPV2K7XFBW",
-  "display_short_help": "GJCL3GEHQDZXYGC6WLAQ3494QQ",
+  "display_help": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Fire/Smash), DoT(Fire)",
   "icon": "fireblast_fireball.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -317,6 +317,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Sentinel_Ranged.Fire_Blast"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shadow Blast",
   "display_fullname": "Warshade Offensive Umbral Blast Shadow Blast",
-  "display_help": "Z9RYSYUKSRKCY6BMLH2ZCSKXVA",
+  "display_help": "A much more powerful, yet slower version of Shadow Bolt. Shadow Blast sends focused negative Nictus energy at a foe. This attack can knock down foes and will leave the target's attack rate and movement speed slowed.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_shadowblast.png",
   "auto_issue": false,
@@ -269,6 +269,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

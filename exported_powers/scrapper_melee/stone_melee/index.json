@@ -5,25 +5,25 @@
   "short_help": "Stone Melee",
   "icon": "stone_melee_set.ico",
   "powers": [
-    "Build_Up",
-    "Confront",
-    "Fault",
-    "Heavy_Mallet",
-    "Hurl_Boulder",
-    "Seismic_Smash",
-    "Stone_Fist",
-    "Stone_Mallet",
-    "Tremor"
+    "Scrapper_Melee.Stone_Melee.Build_Up",
+    "Scrapper_Melee.Stone_Melee.Confront",
+    "Scrapper_Melee.Stone_Melee.Fault",
+    "Scrapper_Melee.Stone_Melee.Heavy_Mallet",
+    "Scrapper_Melee.Stone_Melee.Hurl_Boulder",
+    "Scrapper_Melee.Stone_Melee.Seismic_Smash",
+    "Scrapper_Melee.Stone_Melee.Stone_Fist",
+    "Scrapper_Melee.Stone_Melee.Stone_Mallet",
+    "Scrapper_Melee.Stone_Melee.Tremor"
   ],
   "available_level": [
+    5,
+    11,
+    7,
+    1,
+    21,
+    17,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25
   ]
 }

@@ -5,17 +5,17 @@
   "short_help": "Fire Mastery",
   "icon": "flame_mastery_set.ico",
   "powers": [
-    "Bonfire",
-    "Char",
-    "Fire_Shield",
-    "Melt_Armor",
-    "Rise_of_the_Phoenix"
+    "Epic.Flame_Mastery.Bonfire",
+    "Epic.Flame_Mastery.Char",
+    "Epic.Flame_Mastery.Fire_Shield",
+    "Epic.Flame_Mastery.Melt_Armor",
+    "Epic.Flame_Mastery.Rise_of_the_Phoenix"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    34,
+    37,
+    40,
+    43
   ]
 }

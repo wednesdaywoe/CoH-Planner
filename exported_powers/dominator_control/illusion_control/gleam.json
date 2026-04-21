@@ -3,10 +3,10 @@
   "full_name": "Dominator_Control.Illusion_Control.Gleam",
   "short_name": "Gleam",
   "type": "Click",
-  "display_name": "P1471774528",
+  "display_name": "Gleam",
   "display_fullname": "Dominator Control Illusion Control Gleam",
-  "display_help": "XPJC5Z3KAMK2YHBH2GGYB7PGXZ",
-  "display_short_help": "5UY8R6SH84FUY3M5XETZHP8FZZ",
+  "display_help": "Multiple flashing lights go off around enemies, disorienting and damaging them. Gleam deals minimal Psionic damage, and can Disorient all affected targets for a good while.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Psionic), Foe Disorient",
   "icon": "illusions_stun",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -255,6 +255,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Dominator_Control.Illusion_Control"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Disruption Arrow",
   "display_fullname": "Controller Buff Trick Arrow Disruption Arrow",
-  "display_help": "F7SX7ZDZCH6YYPZJZQTT85XRCA",
+  "display_help": "This arrow plants a sonic resonator at a target location. The vibrations of the resonator weaken the Damage Resistance and Max Endurance of all nearby foes.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Location AoE), -Res(All), -MaxEnd",
   "icon": "trickarrow_debuffdamres.png",
   "auto_issue": false,
@@ -92,6 +92,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Controller_Buff.Trick_Arrow"
 }

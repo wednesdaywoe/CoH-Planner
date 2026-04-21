@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Antumbral Beam",
   "display_fullname": "Sentinel Ranged Dark Blast Antumbral Beam",
-  "display_help": "KU6LSPFG8HSHW4ZR35AEFVQFMA",
-  "display_short_help": "SPCDPB2SS44MWQBD2EC89CM9F2",
+  "display_help": "An extremely focused beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit.",
+  "display_short_help": "Ranged, DMG(Negative), Target -To Hit",
   "icon": "darkcast_heavy",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -268,6 +268,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Sentinel_Ranged.Dark_Blast"
 }

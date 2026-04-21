@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Flash Bang",
   "display_fullname": "Dominator Control Arsenal Control Flash Bang",
-  "display_help": "JFP7PZWZF2V8WDZYAGG6WLAWZ3",
-  "display_short_help": "YUR3NS7KU6YNYUV2DAULGQ4BDA",
+  "display_help": "The Flash Bang Grenade is ideal to disorient a group of enemies. Even enemies that are not disoriented will have their chance to hit reduced.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Energy), Disorient, -To Hit",
   "icon": "arsenalcontrol_flashbang",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -270,6 +270,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Dominator_Control.Arsenal_Control"
 }

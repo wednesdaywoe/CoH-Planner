@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Disruption Aura",
   "display_fullname": "Blaster Support Sonic Manipulation Disruption Aura",
-  "display_help": "7GCH83632LL8Y2BE3A89KXMYLX",
-  "display_short_help": "SPDS3AES7YT6YRV8ZR6QYMH643",
+  "display_help": "You emit a constant wave of sonic energy around yourself, weakening the Damage Resistance of all nearby foes.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle: PBAoE, Foe -Res(All)",
   "icon": "sonicmanipulation_disruptionaura",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Blaster_Support.Sonic_Manipulation"
 }

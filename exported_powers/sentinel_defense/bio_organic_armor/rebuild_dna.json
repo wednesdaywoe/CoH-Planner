@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Rebuild DNA",
   "display_fullname": "Sentinel Defense Bio Organic Armor Rebuild DNA",
-  "display_help": "6CER3QPEWR8LYVZT2TE2HCZVAS",
+  "display_help": "You rebuild your genetic makeup to restore some of your health and endurance.<br><br><color #fac39b>*While Offensive Adaptation is active, this power's will increase your perception.</color><br><color #9efa9b>*While Defensive Adaptation is active, this power will grant bonus health.</color><br><color #9bfafa>*While Efficient Adaptation is active, this power will grant bonus endurance.</color><br><br>Bonuses granted from Adaptations are unenhanceable.",
   "display_short_help": "Self +HP, +End, +Special",
   "icon": "bioorganicarmor_rebuilddna",
   "auto_issue": false,
@@ -247,6 +247,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Sentinel_Defense.Bio_Organic_Armor"
 }

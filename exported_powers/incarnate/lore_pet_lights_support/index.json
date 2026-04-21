@@ -5,8 +5,8 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_lights_support_set.ico",
   "powers": [
-    "Assault",
-    "Glowing_Touch"
+    "Incarnate.Lore_Pet_Lights_Support.Assault",
+    "Incarnate.Lore_Pet_Lights_Support.Glowing_Touch"
   ],
   "available_level": [
     0,

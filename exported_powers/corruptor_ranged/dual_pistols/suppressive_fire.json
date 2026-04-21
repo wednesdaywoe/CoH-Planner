@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Suppressive Fire",
   "display_fullname": "Corruptor Ranged Dual Pistols Suppressive Fire",
-  "display_help": "AEMHJAAW6EUHWXBDM29HUQ9J6A",
-  "display_short_help": "7FGDVZW5Z8LZWUZXTVLS9MAD83",
+  "display_help": "Suppressive Fire allows the user to quickly stun their target for a short time and deal a very minor amount of Lethal damage.<br><br>Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.<br><br>Additionally, changing your ammunition type will lower the power's base recharge to 8 seconds and change the secondary effect of this attack from Disorient effect to a Hold effect if <color #9bfafa>'Cryo Ammo'</color>, <color #fac39b>'Incendiary Ammo'</color> or <color #9efa9b>'Chemical Ammo'</color> are loaded.<br><br><color #9bfafa>*Significantly higher damage and boss-stopping hold if 'Cryo Ammo' is loaded.</color><br><color #fac39b>*Significantly higher damage and minor hold if 'Incendiary Ammo' is loaded.</color><br><color #9efa9b>*Somewhat increased damage and long duration hold if 'Chemical Ammo' is loaded.</color>",
+  "display_short_help": "Ranged, DMG(Lethal/Special), Foe Disorient/Special",
   "icon": "dualpistols_suppressivefire.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Corruptor_Ranged.Dual_Pistols"
 }

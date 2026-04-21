@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Battle Agility",
   "display_fullname": "Scrapper Defense Shield Defense Deflection",
-  "display_help": "9K2G7CXTG7HNYSVXEWLEW3DL72",
+  "display_help": "Your incredible agility allows you to position your shield to protect yourself from incoming ranged damage. While Battle Agility is active you will benefit from increased Ranged and AoE defense as well as some moderate protection from Defense Debuffs.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +DEF(Ranged, AoE), +Res(Defense Debuff)",
   "icon": "shielddefense_deflection.png",
   "auto_issue": false,

@@ -3,10 +3,10 @@
   "full_name": "Defender_Ranged.Seismic_Blast.Seismic_Force",
   "short_name": "Seismic_Force",
   "type": "Click",
-  "display_name": "V823VSMNLST2WMMMWMCNY8EUTZ",
+  "display_name": "Seismic Force",
   "display_fullname": "Defender Ranged Seismic Blast Seismic Force",
-  "display_help": "FPZ3X4VA2UUPW6B45KR5WBXYVA",
-  "display_short_help": "SNQG4FVQR42QYEZTDJQ33ND662",
+  "display_help": "Greatly increases your attacks' chance to hit for a few seconds. Slightly increases damage.<br><br>If affected by Seismic Shockwaves, this power will halt the shockwaves and will decrease the cooldown of all recharging Seismic Blast attacks by a moderate amount.",
+  "display_short_help": "Self +To Hit, +DMG, +Special",
   "icon": "seismicblast_aim",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -462,6 +462,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Defender_Ranged.Seismic_Blast"
 }

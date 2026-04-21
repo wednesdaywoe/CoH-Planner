@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Murky Cloud",
   "display_fullname": "Brute Defense Dark Armor Murky Cloud",
-  "display_help": "XDQ7CM3QAN5GWUVNNA8FYWUB43",
+  "display_help": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks, as well as Endurance Drain effects.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +Res(Fire, Cold, Energy, Negative, End Drain)",
   "icon": "darkarmor_defractingcloud.png",
   "auto_issue": false,
@@ -217,6 +217,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Brute_Defense.Dark_Armor"
 }

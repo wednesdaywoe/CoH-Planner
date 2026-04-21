@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shadow Bolt",
   "display_fullname": "Warshade Offensive Umbral Blast Shadow Bolt",
-  "display_help": "D35UKQMRV77TWJN7KGL4HRABV3",
+  "display_help": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. This power can be used while in Dwarf form, although only at a reduced range. While in dwarf form, this power will inflict a stronger attack and movement debuff, in addition to taunt its target.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_shadowbolt.png",
   "auto_issue": false,

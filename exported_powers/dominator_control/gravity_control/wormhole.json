@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Wormhole",
   "display_fullname": "Dominator Control Gravity Control Wormhole",
-  "display_help": "A5XR9RRUCZ2ZWBVN7B8L8KAGUA",
+  "display_help": "You can open a gravitational Wormhole behind a targeted foe and violently push him, and all nearby foes, through it. The victims are sent flying out the other end of the Wormhole and are left Disoriented. You determine the location of the Wormhole's end, and can place it high in the air if desired. More powerful foes may be resistant to the Wormhole effects.",
   "display_short_help": "Ranged (Targeted AoE), Foe Teleport, Disorient, Knockback",
   "icon": "gravitycontrol_wormhole.png",
   "auto_issue": false,
@@ -339,6 +339,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Dominator_Control.Gravity_Control"
 }

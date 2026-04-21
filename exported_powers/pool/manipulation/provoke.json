@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Provoke",
   "display_fullname": "Pool Manipulation Provoke",
-  "display_help": "NCPGH2BR2JU2WNL66YTDG6T36Q",
+  "display_help": "When you have established that a fight is absolutely necessary, you step up to take the lead, provoking the attention of several targets at a targeted location. Use this to pull the attention of your foes off of an ally in trouble. This provocation effect is not as powerful as similar powers used by Tankers, and also has a chance to miss.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Targeted AoE, Taunt (Foe)",
   "icon": "manipulation_provoke.png",
   "auto_issue": false,

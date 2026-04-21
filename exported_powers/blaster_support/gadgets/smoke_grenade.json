@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Smoke Grenade",
   "display_fullname": "Blaster Support Gadgets Smoke Grenade",
-  "display_help": "SX6Y8UPE5FHSY9CUYASGS9F7WZ",
+  "display_help": "The Smoke Grenade envelops all those in the affected area in a cloud of smoke. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Target AoE), Foe -Perception, -To Hit",
   "icon": "gadgets_smokegrenade.png",
   "auto_issue": false,
@@ -186,6 +186,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Blaster_Support.Gadgets"
 }

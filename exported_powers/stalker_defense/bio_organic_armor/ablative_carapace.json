@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ablative Carapace",
   "display_fullname": "Stalker Defense Bio Organic Armor Ablative Carapace",
-  "display_help": "99K9FK2NB8CCYNZ4GNVT4GZ9QA",
+  "display_help": "When needed, you're able to cause your Bio Armor to gain a thick, but brittle outer layer that will absorb a large amount of damage before breaking off. Ablative Carapace will grant a moderate amount of damage absorption and a high amount of regeneration for a short time. While Efficient Adaptation is active, this power grants a slightly larger regeneration buff. While Defensive Adaptation is active, this power grants a bonus to damage absorption.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self, +Absorption, +Regeneration",
   "icon": "bioorganicarmor_ablativecarapace.png",
   "auto_issue": false,
@@ -183,6 +183,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Stalker_Defense.Bio_Organic_Armor"
 }

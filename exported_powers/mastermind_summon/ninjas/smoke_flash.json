@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Smoke Flash",
   "display_fullname": "Mastermind Summon Ninjas Smoke Flash",
-  "display_help": "THUX7DK8S4YJW6LFDA4TCBEAW2",
+  "display_help": "You can command one of your Ninja Henchmen to throw down a Smoke Bomb. The Smoke Flash will allow the Ninja to Placate his nearby foes, and thus unable to target the Ninja. The Smoke Flash also makes all your Ninja stealthy and Hidden for 3 seconds, enabling them to perform Critical hits with their next few attacks. You can only use this power on a Ninja Henchmen.",
   "display_short_help": "Hide Ninja",
   "icon": "ninjas_kujikiri.png",
   "auto_issue": false,
@@ -188,6 +188,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Mastermind_Summon.Ninjas"
 }

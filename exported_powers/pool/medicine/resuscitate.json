@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Resuscitate",
   "display_fullname": "Pool Medicine Resuscitate",
-  "display_help": "ZY5V8YUP263UW3L52SPEAG73BX",
+  "display_help": "You revive a fallen ally, restoring health, but not endurance, completely. The target will also be protected from incurring any XP Debt for 15 seconds. This power is interruptible.<br><br>You must be at least level 14 and have two other Medicine Powers before selecting Resuscitate.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Close, Resurrect(Ally)",
   "icon": "medicine_smellingsalts.png",
   "auto_issue": false,
@@ -108,6 +108,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Medicine"
 }

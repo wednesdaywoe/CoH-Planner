@@ -5,25 +5,25 @@
   "short_help": "Radiation Armor",
   "icon": "radiation_armor_set.ico",
   "powers": [
-    "Alpha_Barrier",
-    "Fallout_Shelter",
-    "Gamma_Boost",
-    "Ground_Zero",
-    "Hide",
-    "Meltdown",
-    "Particle_Shielding",
-    "Proton_Armor",
-    "Radiation_Therapy"
+    "Stalker_Defense.Radiation_Armor.Alpha_Barrier",
+    "Stalker_Defense.Radiation_Armor.Fallout_Shelter",
+    "Stalker_Defense.Radiation_Armor.Gamma_Boost",
+    "Stalker_Defense.Radiation_Armor.Ground_Zero",
+    "Stalker_Defense.Radiation_Armor.Hide",
+    "Stalker_Defense.Radiation_Armor.Meltdown",
+    "Stalker_Defense.Radiation_Armor.Particle_Shielding",
+    "Stalker_Defense.Radiation_Armor.Proton_Armor",
+    "Stalker_Defense.Radiation_Armor.Radiation_Therapy"
   ],
   "available_level": [
     0,
+    15,
+    3,
+    27,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    29,
+    23,
+    9,
+    19
   ]
 }

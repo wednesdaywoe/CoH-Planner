@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Placate",
   "display_fullname": "Stalker Melee Claws Placate",
-  "display_help": "2CC3SHTWZJ25W8CSNJMJ5YWKLX",
+  "display_help": "Allows you to trick a foe to no longer attack you. A Successful Placate will also Hide you. This Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit or an Assassins Claw. However, if you attack a Placated Foe, he will be able to attack you back.",
   "display_short_help": "Ranged, Foe Placate, Self Stealth/Hide",
   "icon": "claws_placate.png",
   "auto_issue": false,
@@ -337,6 +337,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Stalker_Melee.Claws"
 }

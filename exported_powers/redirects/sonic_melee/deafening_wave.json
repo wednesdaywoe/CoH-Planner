@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Deafening Wave",
   "display_fullname": "Redirects Sonic Melee Deafening Wave",
-  "display_help": "GPEPMPZQ47CPYKLHXXZL8UC2G2",
-  "display_short_help": "ZP5G6C6AFAZKWJMW6S2YJE88V3",
+  "display_help": "You create a large field of sonic waves, causing damage to all foes around you. It has a moderate chance of causing migraines, leaving them shaking in pain and helpless. This power will inflict 10% bonus damage against Attuned targets as well as trigger a dot effect on enemies around that target.",
+  "display_short_help": "Melee (Cone), Foe Disorient, Knockdown",
   "icon": "sonicmanipulation_deafeningcry",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -359,6 +359,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Redirects.Sonic_Melee"
 }

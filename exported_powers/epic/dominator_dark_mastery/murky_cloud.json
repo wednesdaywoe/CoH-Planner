@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Murky Cloud",
   "display_fullname": "Epic Dominator Dark Mastery Murky Cloud",
-  "display_help": "JBPRPDPMEHYCW9VBNG9PYF24XZ",
+  "display_help": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
   "display_short_help": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
   "icon": "dark_mastery_murkycloud",
   "auto_issue": false,
@@ -158,6 +158,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Dominator_Dark_Mastery"
 }

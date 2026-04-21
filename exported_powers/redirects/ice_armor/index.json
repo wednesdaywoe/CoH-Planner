@@ -1,15 +1,15 @@
 {
   "key": "Redirects.Ice_Armor",
   "display_name": "Ice Armor",
-  "help": "VCDBSDMJEC3XW2LA6MA5T26RU2",
+  "help": "These powers are used by Ice Armor powers.",
   "short_help": "Battle Axe",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Icy_Bastion",
-    "Icy_Bastion_NoCast"
+    "Redirects.Ice_Armor.Icy_Bastion",
+    "Redirects.Ice_Armor.Icy_Bastion_NoCast"
   ],
   "available_level": [
-    0,
-    0
+    29,
+    29
   ]
 }

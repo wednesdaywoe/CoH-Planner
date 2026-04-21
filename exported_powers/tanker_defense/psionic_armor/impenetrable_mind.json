@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Impenetrable Mind",
   "display_fullname": "Tanker Defense Psionic Armor Impenetrable Mind",
-  "display_help": "44K6VE4KQ3ZDWEZ4ZAUCU7E6MQ",
-  "display_short_help": "M3947955LK6QWPVY295HD23KF2",
+  "display_help": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Knockback and Hold effects. Impenetrable Mind also grants moderate resistance to Psionic based attacks.",
+  "display_short_help": "Toggle: Self Res (Psionics, Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Knockback)",
   "icon": "psionicarmor_impenetrablemind",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -321,6 +321,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Tanker_Defense.Psionic_Armor"
 }

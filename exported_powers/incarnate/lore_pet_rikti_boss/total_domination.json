@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Total Domination",
   "display_fullname": "Incarnate Lore Pet Rikti Boss Total Domination",
-  "display_help": "ME5Q7VRVZAREWZZZYH7TVYUQ6A",
+  "display_help": "Your mind has been Dominated. You are Held.<br><br><color #fcfc95>Notes: Total Domination is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Hold",
   "icon": "mentalcontrol_freeze.png",
   "auto_issue": false,

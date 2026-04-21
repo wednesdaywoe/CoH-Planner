@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Knockout Blow",
   "display_fullname": "Epic Mastermind Leviathan Mastery Knockout Blow",
-  "display_help": "PLW87E3MSDHNYQVFCZHNF7A9H2",
-  "display_short_help": "JA8V4L5NNWVUYEZKNLTLU3T7VX",
+  "display_help": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
+  "display_short_help": "Melee, DMG(Smash), Foe Hold",
   "icon": "arachnos_patron_koblow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -226,6 +226,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Mastermind_Leviathan_Mastery"
 }

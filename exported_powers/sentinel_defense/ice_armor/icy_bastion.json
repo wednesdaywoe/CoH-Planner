@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Icy Bastion",
   "display_fullname": "Sentinel Defense Ice Armor Icy Bastion",
-  "display_help": "F94D9BDQ7ZLHW6X5V52FBPHF4Q",
-  "display_short_help": "74CYQA57NREXWNX3RV3UR5RRFZ",
+  "display_help": "You encase yourself in a block of solid ice, rendering yourself invulnerable but unable to act. While the power is active you heal damage and recover endurance at an incredible rate. You can remain in this state for up to 30 seconds. Should you deactivate the power earlier, some of the resistance to damage and other effects will remain until the full 30 seconds window is over. <br><br><color #fcfc95>Notes:If you are under the effects of No Phase, this power will instantly deactivate and leave you only with the lingering effects for 30 seconds.</color>",
+  "display_short_help": "Toggle: Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery, Invulnerable; Self Hold",
   "icon": "icearmor_hybernate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -389,6 +389,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Sentinel_Defense.Ice_Armor"
 }

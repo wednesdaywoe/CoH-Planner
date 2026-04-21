@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Blackstar",
   "display_fullname": "Defender Ranged Dark Blast Blackstar",
-  "display_help": "NFUGUJABTTDTYFZYSDF54SRUU2",
-  "display_short_help": "GGT2RGJ6AWC4Y2Z3CL4BTBN6VZ",
+  "display_help": "You can unleash a devastating blast of Negative Energy around yourself, dealing massive Negative Energy and Smashing damage and severely reducing affected foes' chance to hit.",
+  "display_short_help": "PBAoE, DMG(Negative), Foe -To Hit",
   "icon": "darkcast_blackstar.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -213,6 +213,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Defender_Ranged.Dark_Blast"
 }

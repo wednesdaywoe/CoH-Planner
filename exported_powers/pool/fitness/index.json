@@ -5,15 +5,15 @@
   "short_help": "Fitness",
   "icon": "fitness_set.ico",
   "powers": [
-    "Health",
-    "Hurdle",
-    "Quick",
-    "Stamina"
+    "Pool.Fitness.Health",
+    "Pool.Fitness.Hurdle",
+    "Pool.Fitness.Quick",
+    "Pool.Fitness.Stamina"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0
+    13,
+    5,
+    5,
+    19
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Team Teleport",
   "display_fullname": "Pool Teleportation Team Teleport",
-  "display_help": "SGDD8Z8SHBLUY6Z2XP8CJ9FB6W",
+  "display_help": "You can Teleport yourself and your nearby teammates to a targeted location. Teammates must be in close proximity to you. Team Teleport costs slightly more Endurance than Teleport, but you can Teleport your entire team for no additional cost.<br><br>You must be at least level 14 and have two other Teleportation Powers before selecting Team Teleport.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged (Location), Team Teleport",
   "icon": "teleportation_groupteleport.png",
   "auto_issue": false,
@@ -161,6 +161,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Teleportation"
 }

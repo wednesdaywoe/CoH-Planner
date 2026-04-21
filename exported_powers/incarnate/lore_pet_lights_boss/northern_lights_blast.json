@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Northern Light's Blast",
   "display_fullname": "Incarnate Lore Pet Lights Boss Northern Lights Blast",
-  "display_help": "RVWM2PGEJFTQWVLMXSKW623JJA",
+  "display_help": "The Northern Light's Blast has weakened your Defenses!<br><br><color #fcfc95>Notes: Northern Light's Blast is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "-DEF",
   "icon": "luminousblast_gleamingblast.png",
   "auto_issue": false,

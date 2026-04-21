@@ -3,10 +3,10 @@
   "full_name": "Redirects.Storm_Blast.StormCell_WindSpeed_Sentinel",
   "short_name": "StormCell_WindSpeed_Sentinel",
   "type": "Auto",
-  "display_name": "RV9QK2UGH947Y8VELV9SKSX89Q",
+  "display_name": "Storm Cell High Winds",
   "display_fullname": "Redirects Storm Blast StormCell WindSpeed Sentinel",
-  "display_help": "PQBSJLCBQR8QWKZN58ZFEY964S",
-  "display_short_help": "GYBVM4TW52VPW8N6486DQZ7D2Q",
+  "display_help": "All foes that pass through this storm will have their recharge, movement speed, and chance to hit reduced.",
+  "display_short_help": "Foe -Recharge, -Speed, -ToHit",
   "icon": "stormblast_stormcell.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -238,6 +238,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Redirects.Storm_Blast"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ice Sword",
   "display_fullname": "Dominator Assault Icy Assault Ice Sword",
-  "display_help": "NV56GZDTQ4RYYKXBSMAMNUXX6Q",
+  "display_help": "You create a blade of solid ice that deals good damage. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "iceassault_icesword.png",
   "auto_issue": false,

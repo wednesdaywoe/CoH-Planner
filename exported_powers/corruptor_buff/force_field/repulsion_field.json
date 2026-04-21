@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Repulsion Field",
   "display_fullname": "Corruptor Buff Force Field Repulsion Field",
-  "display_help": "6ZQCFF9YE5W7W2LXJ6YHWZU8KW",
+  "display_help": "This Toggle power creates a field that keeps all foes at bay, protecting all allies inside from melee or short ranged attacks. More powerful foes may be able to penetrate the Repulsion Field, but may slip and get knocked down and forced back if they try.<br><br>Enemies that get too close will be violently knocked away. In PvP, Each villain that is knocked away costs you additional Endurance.<br><br><color #fcfc95>Note: Slotting Knockback to Knockdown enhancement in this power will disable Repel.</color>",
   "display_short_help": "Toggle: PBAoE Knockback",
   "icon": "forcefield_repulsionfield.png",
   "auto_issue": false,
@@ -352,6 +352,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Corruptor_Buff.Force_Field"
 }

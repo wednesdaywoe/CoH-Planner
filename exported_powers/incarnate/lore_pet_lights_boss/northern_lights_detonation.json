@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Northern Light's Detonation",
   "display_fullname": "Incarnate Lore Pet Lights Boss Northern Lights Detonation",
-  "display_help": "9HCAZRZQXWF9YWN9JFNCB75SXW",
+  "display_help": "The Northern Light's Detonation has weakened your Defenses!<br><br><color #fcfc95>Notes: Northern Light's Detonation is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "-DEF",
   "icon": "luminousblast_luminousdetonation.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Force of Nature",
   "display_fullname": "Epic Power Mastery Force of Nature",
-  "display_help": "2WC6FCAGQYLXWDB7AKYDD3GDVA",
+  "display_help": "When you activate this power, you become highly resistant to all damage types except psionics. Your Endurance recovery is also increased. Force of Nature costs little Endurance to activate, but when it wears off you are left exhausted, and drained of almost all Endurance, and unable to recover Endurance for a short while. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
   "display_short_help": "Self, +Res(All DMG but Psionics)",
   "icon": "powermastery_forceofnature.png",
   "auto_issue": false,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Power_Mastery"
 }

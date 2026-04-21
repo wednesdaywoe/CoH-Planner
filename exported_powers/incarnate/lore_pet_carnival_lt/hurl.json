@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Hurl",
   "display_fullname": "Incarnate Lore Pet Carnival LT Hurl",
-  "display_help": "S55VNKVE349JYGL8R2TLRWTPG2",
+  "display_help": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals high damage, and can knock foes back and even drop them out of the air if they are flying.<br><br><color #fcfc95>Notes: Hurl is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Smash), Knockback, -Fly",
   "icon": "superstrength_hurl.png",
   "auto_issue": false,

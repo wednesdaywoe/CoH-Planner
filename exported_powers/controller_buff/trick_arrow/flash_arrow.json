@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Flash Arrow",
   "display_fullname": "Controller Buff Trick Arrow Flash Arrow",
-  "display_help": "KUYUJS53VZWPWXBGVRQJJZ3NSZ",
+  "display_help": "This arrow explodes in a dazzling flash of light and sound. The targets are so blinded that they can hardly see a thing. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to chance to hit.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Targeted AoE), Foe -Visibility, -To Hit",
   "icon": "trickarrow_blind.png",
   "auto_issue": false,

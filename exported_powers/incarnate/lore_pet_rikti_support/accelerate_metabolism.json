@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Accelerate Metabolism",
   "display_fullname": "Incarnate Lore Pet Rikti Support Accelerate Metabolism",
-  "display_help": "DFRR9L9TK4R9WRMYD5HS8SG6SZ",
+  "display_help": "Activating this power emits radiation that increases the running speed, attack speed, Endurance Recovery and Damage potential of all nearby allies. Affected Rikti Metabolism is increased so much that they become resistant to effects such as Sleep, Hold, Disorient and Immobilization. The Rikti are not protected from such effects, they just ware off faster.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Team AoE +Speed, +Recharge, +Recovery, +Dam +Res(Effects)",
   "icon": "radiationpoisoning_acceleratemetabolism.png",
   "auto_issue": false,

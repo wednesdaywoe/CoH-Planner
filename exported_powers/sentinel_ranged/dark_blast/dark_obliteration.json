@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Obliteration",
   "display_fullname": "Sentinel Ranged Dark Blast Dark Obliteration",
-  "display_help": "ZTK2SHNDHNCJY4MS82AAYR73NA",
-  "display_short_help": "AQR8UJBG9QEZWAZWM5V2B6GTKA",
+  "display_help": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
   "icon": "darkcast_darkobliteration",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -268,6 +268,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Sentinel_Ranged.Dark_Blast"
 }

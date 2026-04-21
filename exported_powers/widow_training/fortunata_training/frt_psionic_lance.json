@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psionic Tornado",
   "display_fullname": "Widow Training Fortunata Training FRT Psionic Lance",
-  "display_help": "LBQ5TFWDUJTQWWZC4AUYLLRVFX",
-  "display_short_help": "DR68EC5ZVEZUYWM72KMG64FG4W",
+  "display_help": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed.",
+  "display_short_help": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
   "icon": "fortunatatraining_psionictornado.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -282,6 +282,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Widow_Training.Fortunata_Training"
 }

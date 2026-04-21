@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Boost Range",
   "display_fullname": "Blaster Support Energy Manipulation Boost Range",
-  "display_help": "AU54BZ46QHNKYDCCXHE2Y499CX",
+  "display_help": "You can boost your powers to increase the range of your next few attacks.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Self Range Increase",
   "icon": "energymanipulation_boostrange.png",
   "auto_issue": false,
@@ -106,6 +106,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Energy_Manipulation"
 }

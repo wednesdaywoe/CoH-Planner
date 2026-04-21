@@ -5,17 +5,17 @@
   "short_help": "Fire Mastery",
   "icon": "fire_mastery_dominator_set.ico",
   "powers": [
-    "Consume",
-    "Fire_Ball",
-    "Fire_Blast",
-    "Fire_Shield",
-    "Rise_of_the_Phoenix"
+    "Epic.Fire_Mastery_Dominator.Consume",
+    "Epic.Fire_Mastery_Dominator.Fire_Ball",
+    "Epic.Fire_Mastery_Dominator.Fire_Blast",
+    "Epic.Fire_Mastery_Dominator.Fire_Shield",
+    "Epic.Fire_Mastery_Dominator.Rise_of_the_Phoenix"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    43,
+    34,
+    34,
+    37,
+    40
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Summon Blaster",
   "display_fullname": "Epic VEAT Mace Mastery Summon Blaster",
-  "display_help": "X2ZDX6ZGCC9XY4L38XMMHW9TS3",
-  "display_short_help": "JBPCB7XDHEXZYMMRVB96CH38JZ",
+  "display_help": "Black Scorpion has granted you an Arachnobot Blaster for you to command. Arachnobot Blasters were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Your access to this Arachnobot is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Arachnobot: Ranged DMG(Energy)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.VEAT_Mace_Mastery"
 }

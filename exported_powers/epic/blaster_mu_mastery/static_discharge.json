@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Static Discharge",
   "display_fullname": "Epic Blaster Mu Mastery Static Discharge",
-  "display_help": "BZSF2SYXW3A8WUXXCPL5DEAUTZ",
-  "display_short_help": "NXGDKQULUM2WYQXCDMZTFVNES3",
+  "display_help": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area.",
+  "display_short_help": "Ranged (Cone), DMG(Energy), -END",
   "icon": "arachnos_patron_rangedconemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -252,6 +252,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Blaster_Mu_Mastery"
 }

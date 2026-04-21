@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Plasma Burst",
   "display_fullname": "Incarnate Lore Pet IDF LT Plasma Burst",
-  "display_help": "KYHMN2YYUW6GW5L38B2U89QSX2",
+  "display_help": "The IDF soldier's gauntlets are capable of firing potent plasma energy attacks at their foes which strike with enough force to sometimes knock a foe off their feet.<br><br><color #fcfc95>Notes: Plasma Burst is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Moderate DMG(Energy), Foe Knockdown",
   "icon": "powerblast_powerblast.png",
   "auto_issue": false,

@@ -3,10 +3,10 @@
   "full_name": "Blaster_Support.Earth_Manipulation.Mud_Bath",
   "short_name": "Mud_Bath",
   "type": "Toggle",
-  "display_name": "3XVT8YM9UB9AYPBB9Q97QHHVSS",
+  "display_name": "Mud Bath",
   "display_fullname": "Blaster Support Earth Manipulation Mud Bath",
-  "display_help": "GDAK9QYH3X55YYV99TL4SSLU63",
-  "display_short_help": "MXCHQKPTB8Y9WCXCAMEKEP4X2S",
+  "display_help": "While this power is active, you draw upon the geothermal power of the Earth to create a bubbling pool of hot mud around you. All foes in melee range will become snared and entrapped in the mud, slowing them down. You recover a small amount of health every few seconds while this power is active.<br><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Toggle: PBAoE, -SPD, Self +Heal Over Time, +Recovery",
   "icon": "earthmanip_mudbath",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -230,6 +230,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Earth_Manipulation"
 }

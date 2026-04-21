@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Soul Transfer",
   "display_fullname": "Epic Dark Mastery Soul Transfer",
-  "display_help": "836Y53GAZDBTW3Z5ZFNN86F9RX",
+  "display_help": "Should you fall in battle, you can perform a Soul Transfer, sucking the life force of all foes around you to bring yourself back from the brink of death. The more foes nearby, the more life is restored to you. Drained foes are left Disoriented. The dark effects of this Soul Transfer will actually leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds. There must be at least one foe nearby to fuel the Transfer and revive yourself. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
   "display_short_help": "Self Rez, Special",
   "icon": "dark_mastery_soultransfer",
   "auto_issue": false,
@@ -270,6 +270,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Dark_Mastery"
 }

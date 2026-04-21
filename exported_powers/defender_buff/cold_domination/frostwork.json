@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Frostwork",
   "display_fullname": "Defender Buff Cold Domination Frostwork",
-  "display_help": "ARFE4T3339NXYFMPMBKV8WVKDZ",
+  "display_help": "Covers an ally in a thick layer of Frost. The frost can absorb the impact from enemy attacks, effectively increasing your ally's maximum Hit Points for a short time. Frostwork also grants your ally resistance to Toxic Damage.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Target +Max HP, Res(Toxic)",
   "icon": "colddomination_frostwork.png",
   "auto_issue": false,
@@ -108,6 +108,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Defender_Buff.Cold_Domination"
 }

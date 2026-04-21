@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Empowering Burst",
   "display_fullname": "Incarnate Lore Pet Banished Support Frigid Burst",
-  "display_help": "N9A4ML689SBRWGCNJL9LANP6WA",
+  "display_help": "You fire a mass of coalesced life energy at a single target. This mass explodes on reaching its destination, causing the target and those nearby to be infused with its power. All affected targets have enhanced Regeneration, Recovery, Recharge and steadily gain Endurance over Time.<br><br><color #fcfc95>Notes: Empowering Burst is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Targeted AoE, +Regen, +Rec, +End, +Recharge",
   "icon": "banishedpantheon_defiler_frigidburst.png",
   "auto_issue": false,

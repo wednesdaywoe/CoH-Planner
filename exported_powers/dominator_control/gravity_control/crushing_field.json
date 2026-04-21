@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Crushing Field",
   "display_fullname": "Dominator Control Gravity Control Crushing Field",
-  "display_help": "D4QG2E6PGKPEYANX9QPT45JNA3",
-  "display_short_help": "YZWTX2AQ7CC6YVMY7SN33FSYXA",
+  "display_help": "Creates a large gravitational field strong enough to Immobilize multiple foes. Crushing Field can also bring down flying entities. Slower and less damaging than Crush, but can capture multiple targets. Crushing Field deals Smashing damage over time and can Slow the movement of targets that escape its grasp.",
+  "display_short_help": "Ranged (Targeted AoE), DoT(Smash), Foe Immobilize, -Fly",
   "icon": "gravitycontrol_crushingfield.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -343,6 +343,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Dominator_Control.Gravity_Control"
 }

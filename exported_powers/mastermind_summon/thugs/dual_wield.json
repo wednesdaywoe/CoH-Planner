@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dual Wield",
   "display_fullname": "Mastermind Summon Thugs Dual Wield",
-  "display_help": "XPZTWWMZN5K5W4MLL4XN84WRNA",
-  "display_short_help": "JRPXVF24DJCZWKX6MSFMS6SBWA",
+  "display_help": "Fires both pistols at once at a time target. Firing both pistols at once is slower than a single shot, but deals more damage, and the target may get knocked down by the force of the impact.<br><br><color #fcfc95>Street Cred:</color><br>If you own Gang War and are at least level 18, activating this power will grant a stack of Street Cred and summon a Pose to fight by your side for 30 up to seconds. Each stack of Street Cred owned will increase the chances to summon all 13 Posse when using Gang War. <br><br>Enhancements in this power will also enhance the stats of Posse summoned with this attack. You may only have build Street Cred with this power once every 30 seconds.",
+  "display_short_help": "Ranged, DMG(Lethal), Foe Knockback",
   "icon": "thugs_targetedrangedheavydmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -343,6 +343,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Mastermind_Summon.Thugs"
 }

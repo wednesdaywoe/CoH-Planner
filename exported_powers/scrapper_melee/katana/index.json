@@ -5,25 +5,25 @@
   "short_help": "Katana",
   "icon": "katana_set.ico",
   "powers": [
-    "Build_Up",
-    "Disembowel",
-    "Hack",
-    "Head_Splitter",
-    "Parry",
-    "Slash",
-    "Slice",
-    "Taunt",
-    "Whirling_Sword"
+    "Scrapper_Melee.Katana.Build_Up",
+    "Scrapper_Melee.Katana.Disembowel",
+    "Scrapper_Melee.Katana.Hack",
+    "Scrapper_Melee.Katana.Head_Splitter",
+    "Scrapper_Melee.Katana.Parry",
+    "Scrapper_Melee.Katana.Slash",
+    "Scrapper_Melee.Katana.Slice",
+    "Scrapper_Melee.Katana.Taunt",
+    "Scrapper_Melee.Katana.Whirling_Sword"
   ],
   "available_level": [
+    5,
+    21,
     0,
+    25,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    11,
+    17
   ]
 }

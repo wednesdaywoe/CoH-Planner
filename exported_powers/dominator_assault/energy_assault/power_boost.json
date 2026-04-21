@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Power Up",
   "display_fullname": "Dominator Assault Energy Assault Power Boost",
-  "display_help": "73YPZB7PJ3YCY5M975JAARKD62",
+  "display_help": "Boosts the damage and secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes and more, are all improved. The effects of Power Up last a short while, and only the next couple of attacks will be boosted.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +Special, +Dmg(All)",
   "icon": "energyassault_powerboost.png",
   "auto_issue": false,
@@ -211,6 +211,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Dominator_Assault.Energy_Assault"
 }

@@ -5,9 +5,9 @@
   "short_help": "Incarnate",
   "icon": "destiny_silent_set.ico",
   "powers": [
-    "Incandescence",
-    "Incandescence_Wide",
-    "Level_Shift"
+    "Incarnate.Destiny_Silent.Incandescence",
+    "Incarnate.Destiny_Silent.Incandescence_Wide",
+    "Incarnate.Destiny_Silent.Level_Shift"
   ],
   "available_level": [
     0,

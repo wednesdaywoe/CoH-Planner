@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shocking Grasp",
   "display_fullname": "Blaster Support Electricity Manipulation Shocking Grasp",
-  "display_help": "ULBUTHZC6UAQW7MJYQD8SVXQ7X",
-  "display_short_help": "9B4MEDGJVG59YHCWPLFUSGBFJS",
+  "display_help": "Shocking Grasp causes the target to be overcome with a violent electrical charge. The seized target is left writhing in agony and is unable to defend themselves. Shocking Grasp also drains a significant amount of Endurance from the target and may return a portion of it to you.",
+  "display_short_help": "Melee, DoT (Energy), Target Hold, -End",
   "icon": "electricitymanipulation_shockinggrasp.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -391,6 +391,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Electricity_Manipulation"
 }

@@ -5,9 +5,9 @@
   "short_help": "Arachnos",
   "icon": "lore_pet_arachnos_lt_set.ico",
   "powers": [
-    "Bash",
-    "Mace_Beam",
-    "Pulverize"
+    "Incarnate.Lore_Pet_Arachnos_LT.Bash",
+    "Incarnate.Lore_Pet_Arachnos_LT.Mace_Beam",
+    "Incarnate.Lore_Pet_Arachnos_LT.Pulverize"
   ],
   "available_level": [
     0,

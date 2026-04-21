@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Anti-Matter Beam",
   "display_fullname": "Incarnate Lore Pet Clockwork Boss Anti-Matter Beam",
-  "display_help": "5KS5NFCUU3Q6YDNV8XMN72BCNA",
+  "display_help": "Dismantlers and Lifter model Clockwork androids are capable of releasing a blast of Anti-Matter from their core in a devastating arc. This attack will deal superior Energy damage and reduce the targets' defense, target stuck may also be knocked off of their feet.<br><br><color #fcfc95>Notes: Anti-Matter Beam is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Cone), Superior DMG(Energy), Foe -Def, Knockback",
   "icon": "powerblast_powerburst.png",
   "auto_issue": false,

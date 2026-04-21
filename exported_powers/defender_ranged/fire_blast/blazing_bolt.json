@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Blazing Bolt",
   "display_fullname": "Defender Ranged Fire Blast Blazing Bolt",
-  "display_help": "QPBGKGGSDR3AWDXMUH8TA4SKMS",
-  "display_short_help": "5F8JQABEWWBMYKCDT4WYR2HNFQ",
+  "display_help": "A long range beam of fire that blasts your foes. Like most sniper attacks, this power has a bonus to Accuracy, but is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+  "display_short_help": "Sniper, DMG(Fire)",
   "icon": "fireblast_blazingbolt.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Defender_Ranged.Fire_Blast"
 }

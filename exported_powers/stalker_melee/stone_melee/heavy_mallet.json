@@ -3,10 +3,10 @@
   "full_name": "Stalker_Melee.Stone_Melee.Heavy_Mallet",
   "short_name": "Heavy_Mallet",
   "type": "Click",
-  "display_name": "U3F7YGQD9TWBYNB6MYGNALL75X",
+  "display_name": "Seismic Mallet",
   "display_fullname": "Stalker Melee Stone Melee Heavy Mallet",
-  "display_help": "NPE9PQHT7DEDY6VKAVH8LXP5MX",
-  "display_short_help": "GURKYCQ82L59YSN4E9AAYBA3V2",
+  "display_help": "A more impressive form of Stone Mallet, the Seismic Mallet deals more damage, but is slower to swing. It has a greater chance of knocking down opponents, in addition to a chance for hold.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Superior DMG(Smashing), Knockback, Hold",
   "icon": "stonemelee_heavymallet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -452,6 +452,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Stalker_Melee.Stone_Melee"
 }

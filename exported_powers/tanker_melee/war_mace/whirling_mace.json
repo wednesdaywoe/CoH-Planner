@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Whirling Mace",
   "display_fullname": "Tanker Melee War Mace Whirling Mace",
-  "display_help": "46MKVVS9GAGGYDCRY7NW7W86GA",
-  "display_short_help": "3ZLVL38P6ZPPYRXT7XPD8DTYUQ",
+  "display_help": "You swing your mace in a circle all around you, attacking everyone in melee range. Your Whirling Mace deals moderate damage, and has a chance to Disorient every foe you hit.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE Melee, Light DMG(Smash), Minor Disorient",
   "icon": "mace_whirlingmace.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Tanker_Melee.War_Mace"
 }

@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Genomic Evolution",
   "display_fullname": "Sentinel Defense Bio Organic Armor Genomic Evolution",
-  "display_help": "HU3WLBZEKVU8WDNDRLJ26NS6LW",
+  "display_help": "Your body has evolved to protect you from all damage types. As a result you receive a moderate bonus to damage resistance against all types.<br><br><color #fac39b>*While Offensive Adaptation is active you gain increased range buff.</color><br><color #9efa9b>*While Defensive Adaptation is active you gain a bonus to damage resistance.</color><br><color #9bfafa>*While Efficient Adaptation is active you gain a power bonus to your max endurance.</color><br><br>Bonuses granted from Adaptations are unenhanceable.<br><br>This power is always active and cost no endurance.",
   "display_short_help": "Auto: +Res(All), +Special",
   "icon": "bioorganicarmor_genomicevolution",
   "auto_issue": false,
@@ -352,6 +352,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Sentinel_Defense.Bio_Organic_Armor"
 }

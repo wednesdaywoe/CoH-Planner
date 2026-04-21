@@ -5,17 +5,17 @@
   "short_help": "Leviathan Mastery",
   "icon": "mastermind_leviathan_mastery_set.ico",
   "powers": [
-    "Chum_Spray",
-    "Knockout_Blow",
-    "School_of_Sharks",
-    "Shark_Skin",
-    "Spirit_Shark_Jaws"
+    "Epic.Mastermind_Leviathan_Mastery.Chum_Spray",
+    "Epic.Mastermind_Leviathan_Mastery.Knockout_Blow",
+    "Epic.Mastermind_Leviathan_Mastery.School_of_Sharks",
+    "Epic.Mastermind_Leviathan_Mastery.Shark_Skin",
+    "Epic.Mastermind_Leviathan_Mastery.Spirit_Shark_Jaws"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    37,
+    34,
+    40,
+    43
   ]
 }

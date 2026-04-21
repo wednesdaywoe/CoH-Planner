@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Elude",
   "display_fullname": "Scrapper Defense Super Reflexes Elude",
-  "display_help": "GBMW2K9CZ7ZMWKN3JLTHRJK35W",
+  "display_help": "You can improve your reflexes, making yourself so quick you can Elude almost any attack, be it ranged, melee, or area effect. Your running speed, jumping height, and Endurance Recovery are also increased. Elude also grants you high resistance to Defense DeBuffs. When Elude wears off, you are left drained of all Endurance and unable to recover Endurance for a while.<br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special",
   "icon": "superreflexes_elude.png",
   "auto_issue": false,
@@ -373,6 +373,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Scrapper_Defense.Super_Reflexes"
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Melee Total Radial Graft",
   "display_fullname": "Incarnate Hybrid Melee Genome 7",
-  "display_help": "8KTQWJBAACD9WJVGR9VGDXRZWQ",
+  "display_help": "This power grants the user a stacking Regeneration, Defense, and Status Protection buff for each enemy within an 8 foot radius. The effect reaches its maximum strength at 4 enemies - these enemies will be taunted by this power. Equipping this Hybrid power grants a passive boost to Regeneration at all times.<br><br><color #fcfc95>Notes: Melee Total Radial Graft is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Self +Regeneration, +Defense(All), +Status Protection per nearby enemy",
   "icon": "incarnate_hybrid_melee_rare.png",
   "auto_issue": false,

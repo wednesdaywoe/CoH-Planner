@@ -3,10 +3,10 @@
   "full_name": "Mastermind_Buff.Marine_Affinity.Wellspring",
   "short_name": "Wellspring",
   "type": "Click",
-  "display_name": "VN59Y5CDTDATW8VUN888YNQ4MA",
+  "display_name": "Barrier Reef",
   "display_fullname": "Mastermind Buff Marine Affinity Wellspring",
-  "display_help": "NEU9YWV7QLEFWKV4LBJU45GJ3X",
-  "display_short_help": "7FGQC834WAFDW9CR68A3QVKLWS",
+  "display_help": "Create a Barrier Reef teeming with life at your target location. The Barrier Reef will emit an aura that washes over allies in range, providing them with a defensive cover of water that will absorb and deflect some damage.",
+  "display_short_help": "Summon Barrier Reef: Team +Absorb, +DEF(All)",
   "icon": "marineaffinity_wellspring.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -88,6 +88,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Mastermind_Buff.Marine_Affinity"
 }

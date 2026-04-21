@@ -5,19 +5,19 @@
   "short_help": "Fortunata Teamwork",
   "icon": "fortunata_teamwork_set.ico",
   "powers": [
-    "Aura_of_Confusion",
-    "Confuse",
-    "Fate_Sealed",
-    "FRT_Mask_Presence",
-    "FRT_Mind_Link",
-    "FRT_Tactical_Training:_Vengeance"
+    "Teamwork.Fortunata_Teamwork.Aura_of_Confusion",
+    "Teamwork.Fortunata_Teamwork.Confuse",
+    "Teamwork.Fortunata_Teamwork.Fate_Sealed",
+    "Teamwork.Fortunata_Teamwork.FRT_Mask_Presence",
+    "Teamwork.Fortunata_Teamwork.FRT_Mind_Link",
+    "Teamwork.Fortunata_Teamwork.FRT_Tactical_Training:_Vengeance"
   ],
   "available_level": [
+    29,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    23,
+    27
   ]
 }

@@ -5,8 +5,8 @@
   "short_help": "Clockwork",
   "icon": "lore_pet_clockwork_support_set.ico",
   "powers": [
-    "Field_Projector",
-    "Nano_Repair"
+    "Incarnate.Lore_Pet_Clockwork_Support.Field_Projector",
+    "Incarnate.Lore_Pet_Clockwork_Support.Nano_Repair"
   ],
   "available_level": [
     0,

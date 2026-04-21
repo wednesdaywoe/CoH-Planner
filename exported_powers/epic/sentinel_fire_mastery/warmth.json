@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Warmth",
   "display_fullname": "Epic Sentinel Fire Mastery Warmth",
-  "display_help": "T2VAJM72R3ZJYSZA8X76ZUMZ2W",
+  "display_help": "You can use your Warmth to heal some of your wounds, and the wounds of your group. This power has a small radius, so your allies need to be near you if they wish to be affected. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
   "display_short_help": "PBAoE, Team +Heal",
   "icon": "firetrap_heal",
   "auto_issue": false,
@@ -84,6 +84,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Sentinel_Fire_Mastery"
 }

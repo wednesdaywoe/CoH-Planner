@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Particle Stunner",
   "display_fullname": "Incarnate Lore Pet Clockwork LT Particle Stunner",
-  "display_help": "MURDZ6CJ2KY4Y6NZ4M3NAKLTM3",
+  "display_help": "Particle Stunners are capable of dazing even the most resilient of targets, the target will also suffer minor Energy damage over time.<br><br><color #fcfc95>Notes: Particle Stunner is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Minor DoT(Energy), Foe Disorient",
   "icon": "electricalbolt_telsacage.png",
   "auto_issue": false,

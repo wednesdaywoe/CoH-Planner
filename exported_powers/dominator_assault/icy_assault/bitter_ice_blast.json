@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bitter Ice Blast",
   "display_fullname": "Dominator Assault Icy Assault Bitter Ice Blast",
-  "display_help": "HWKK56UEHAJFYFCP4UXUEXAZMX",
-  "display_short_help": "NFKQCJPDHG8VW8MJ5D5PFUNN5W",
+  "display_help": "A slower yet more powerful version of Ice Blast, Bitter Ice Blast deals much more damage and can also reduce your enemy's chance to hit. Like other Ice Blast powers, Bitter Ice Blast can Slow a target's movement and attack speed.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, High DMG(Cold/Smash), Foe -Recharge, -SPD, -To Hit",
   "icon": "iceassault_bitterblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -293,6 +293,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Dominator_Assault.Icy_Assault"
 }

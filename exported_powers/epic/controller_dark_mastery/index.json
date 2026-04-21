@@ -5,17 +5,17 @@
   "short_help": "Dark Mastery",
   "icon": "sentinel_dark_mastery_set.ico",
   "powers": [
-    "Dark_Blast",
-    "Gather_Shadows",
-    "Murky_Cloud",
-    "Soul_Consumption",
-    "Torrent"
+    "Epic.Controller_Dark_Mastery.Dark_Blast",
+    "Epic.Controller_Dark_Mastery.Gather_Shadows",
+    "Epic.Controller_Dark_Mastery.Murky_Cloud",
+    "Epic.Controller_Dark_Mastery.Soul_Consumption",
+    "Epic.Controller_Dark_Mastery.Torrent"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    40,
+    34,
+    43,
+    37
   ]
 }

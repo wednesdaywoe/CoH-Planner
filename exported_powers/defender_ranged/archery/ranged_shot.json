@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ranged Shot",
   "display_fullname": "Defender Ranged Archery Ranged Shot",
-  "display_help": "6HUSXFM8P7WVYMNF39QA8BJVBQ",
-  "display_short_help": "VADZDY4CUB25YVBLFQ7RAF7EQS",
+  "display_help": "A long range shot that blasts your foes. Like most sniper attacks, this power has a bonus to Accuracy, but is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Sniper, High DMG(Lethal)",
   "icon": "archery_sniperarrow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Defender_Ranged.Archery"
 }

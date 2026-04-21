@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Hover",
   "display_fullname": "Pool Flight Combat Flight",
-  "display_help": "PASZ2D6H2L6UY2N359RPXL7AJS",
+  "display_help": "For hovering and aerial combat. This power is much slower than Fly, but provides some Defense to all attacks, offers good air control, costs little Endurance, and has none of the penalties associated with Fly. Switch to this mode when fighting other flying foes.<br><br>Hover can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
   "display_short_help": "Toggle: Self Fly, +DEF(All)",
   "icon": "flight_combatflight.png",
   "auto_issue": false,

@@ -5,25 +5,25 @@
   "short_help": "Time Manipulation",
   "icon": "time_manipulation_set.ico",
   "powers": [
-    "Chrono_Shift",
-    "Distortion_Field",
-    "Farsight",
-    "Slowed_Response",
-    "Temporal_Mending",
-    "Temporal_Selection",
-    "Time_Crawl",
-    "Time_Stop",
-    "Times_Juncture"
+    "Defender_Buff.Time_Manipulation.Chrono_Shift",
+    "Defender_Buff.Time_Manipulation.Distortion_Field",
+    "Defender_Buff.Time_Manipulation.Farsight",
+    "Defender_Buff.Time_Manipulation.Slowed_Response",
+    "Defender_Buff.Time_Manipulation.Temporal_Mending",
+    "Defender_Buff.Time_Manipulation.Temporal_Selection",
+    "Defender_Buff.Time_Manipulation.Time_Crawl",
+    "Defender_Buff.Time_Manipulation.Time_Stop",
+    "Defender_Buff.Time_Manipulation.Times_Juncture"
   ],
   "available_level": [
+    25,
+    7,
+    17,
+    21,
     0,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11,
+    1
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Chrono Shift",
   "display_fullname": "Corruptor Buff Time Manipulation Chrono Shift",
-  "display_help": "FVEXKHLDK8R5Y2VGKLH4Y9Q7P3",
+  "display_help": "You cause nearby allies to act more quickly by allowing them to slip through the time stream seamlessly. When Chrono Shift is activated, you and nearby allies will immediately recover a portion of your health and endurance. Chrono Shift will greatly increase the Recharge Speed of nearby allies for the duration of the power, additionally for a short while the flow of time will constantly undo a portion of your allies' wounds causing them to periodically recover health and recover endurance. An ally affected by Temporal Selection will recover additional health from Chrono Shift.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "PBAoE, Team +Recharge, Heal, +End, Moderate Healing over Time, +Recovery",
   "icon": "timemanipulation_chronoshift.png",
   "auto_issue": false,
@@ -286,6 +286,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Corruptor_Buff.Time_Manipulation"
 }

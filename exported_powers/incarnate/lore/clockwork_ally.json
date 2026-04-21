@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Clockwork Ally",
   "display_fullname": "Incarnate Lore Clockwork Ally",
-  "display_help": "AAAU2UYEFPZ8Y9ZYH7LLEHCD3Q",
+  "display_help": "Draws forth an essence of a vanquished Clockwork Builder from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Clockwork Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Clockwork LT Essence",
   "icon": "incarnate_lore_clockwork_common.png",
   "auto_issue": false,

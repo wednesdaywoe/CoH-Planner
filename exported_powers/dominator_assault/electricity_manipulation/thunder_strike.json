@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Static Discharge",
   "display_fullname": "Dominator Assault Electricity Manipulation Thunder Strike",
-  "display_help": "XAKC7H7RPLZCYWV9S8UJ8CS99Z",
-  "display_short_help": "JA6XYUB77F58WPNYL3DAQZXMGQ",
+  "display_help": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Cone), Light DMG(Energy), -END",
   "icon": "electricalassault_staticdischarge.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -277,6 +277,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Electricity_Manipulation"
 }

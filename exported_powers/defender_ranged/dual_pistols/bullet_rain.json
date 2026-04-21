@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bullet Rain",
   "display_fullname": "Defender Ranged Dual Pistols Bullet Rain",
-  "display_help": "DV4QKCRXC7E7YFLU5DRR8675HX",
-  "display_short_help": "4TFPGGGBFDALYABDHWNL5ALA8A",
+  "display_help": "You fire your pistols faster than the human eye can follow, causing your bullet trajectory to arc, dealing moderate Lethal damage and possibly knocking your foes back.<br><br>Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.<br><br>Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to:<br><br><color #9bfafa>*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.</color><br><color #fac39b>*A minor damage over time effect if 'Incendiary Ammo' is loaded.</color><br><color #9efa9b>*A -damage effect if 'Chemical Ammo' is loaded.</color>",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Lethal/Special), Knockback/Special",
   "icon": "dualpistols_explosiveclip.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -775,6 +775,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Defender_Ranged.Dual_Pistols"
 }

@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Hot Feet",
   "display_fullname": "Blaster Support Fire Manipulation Hot Feet",
-  "display_help": "WUT3JLC9N93ZYBVL24PBCDSVY2",
-  "display_short_help": "48BWZQCZ5LNKY7NMFFL793JSZ2",
+  "display_help": "While active, you heat the earth in a large area around yourself. Enemy movement is Slowed as they attempt to flee the immediate area. All foes in the affected area may also suffer some damage over time. You cannot fly and must be near the ground to use this power.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Toggle: PBAoE, DoT (Fire), Foe -SPD",
   "icon": "firemanipulation_hotfeet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -213,6 +213,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Fire_Manipulation"
 }

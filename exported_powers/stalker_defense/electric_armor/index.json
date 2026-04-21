@@ -5,25 +5,25 @@
   "short_help": "Electric Armor",
   "icon": "electric_armor_set.ico",
   "powers": [
-    "Charged_Armor",
-    "Conductive_Shield",
-    "Conserve_Power",
-    "Grounded",
-    "Hide",
-    "Lightning_Reflexes",
-    "Power_Sink",
-    "Power_Surge",
-    "Static_Shield"
+    "Stalker_Defense.Electric_Armor.Charged_Armor",
+    "Stalker_Defense.Electric_Armor.Conductive_Shield",
+    "Stalker_Defense.Electric_Armor.Conserve_Power",
+    "Stalker_Defense.Electric_Armor.Grounded",
+    "Stalker_Defense.Electric_Armor.Hide",
+    "Stalker_Defense.Electric_Armor.Lightning_Reflexes",
+    "Stalker_Defense.Electric_Armor.Power_Sink",
+    "Stalker_Defense.Electric_Armor.Power_Surge",
+    "Stalker_Defense.Electric_Armor.Static_Shield"
   ],
   "available_level": [
     0,
+    3,
+    23,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    27,
+    29,
+    9
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Auto",
   "display_name": "Permafrost",
   "display_fullname": "Brute Defense Ice Armor Permafrost",
-  "display_help": "428BBKZ4GCYUY7MYCLD9X2YEMQ",
-  "display_short_help": "BYAJ7RBVSZQZYLBY6LMYN5P222",
+  "display_help": "Your body temperature permanently lowers to 33 degrees Fahrenheit. Permafrost gives you strong resistance to Cold damage, some resistance to Fire damage and minor Smashing, Lethal, Energy, Negative Energy, Toxic and Psionic resistance as well. You also gain an inherent resistance to Slow effects. This power is always on and does not cost Endurance.",
+  "display_short_help": "Auto: Self +Res(All damage, Slow)",
   "icon": "icearmor_permafrost.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Brute_Defense.Ice_Armor"
 }

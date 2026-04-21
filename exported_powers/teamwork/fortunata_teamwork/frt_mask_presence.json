@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Mask Presence",
   "display_fullname": "Teamwork Fortunata Teamwork FRT Mask Presence",
-  "display_help": "GDZ2S38YZL27WTVX8FSPSC2LWS",
+  "display_help": "Mask Presence makes you almost impossible to detect. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense.",
   "display_short_help": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
   "icon": "fortunatateamwork_maskpresence.png",
   "auto_issue": false,
@@ -319,6 +319,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Teamwork.Fortunata_Teamwork"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ring of Fire",
   "display_fullname": "Epic Pyre Mastery Ring of Fire",
-  "display_help": "7JG64533GSVTWULX3SMG3GZAY2",
-  "display_short_help": "LGE9QELLYJ2DWDB3XXE4M4K58A",
+  "display_help": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.",
+  "display_short_help": "Ranged, DoT(Fire), Foe Immobilize",
   "icon": "pyremastery_ringoffire.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -253,6 +253,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Pyre_Mastery"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mass Hypnosis",
   "display_fullname": "Dominator Control Mind Control Mass Hypnosis",
-  "display_help": "GNKM6JZNL87QWMN2AQBDEF4H9S",
-  "display_short_help": "4ZM99FQE7PQFY4VUHWC8JQ3UJ3",
+  "display_help": "Hypnotizes a group of foes at a distance and puts them to Sleep. The targets will remain asleep for some time, but will awaken if attacked. This power deals no damage, but if done discreetly, the targets will never be aware of your presence.<br><br><color #fcfc95>Notes: Although this power is Auto Hit, it requires a To Hit check to apply Deep Sleep. If The Hit check is missed, and the target is not an AV, the weaker form of Sleep will be applied.</color>",
+  "display_short_help": "Ranged (Targeted AoE), Foe Deep Sleep",
   "icon": "mentalcontrol_masshypnosis.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -296,6 +296,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Dominator_Control.Mind_Control"
 }

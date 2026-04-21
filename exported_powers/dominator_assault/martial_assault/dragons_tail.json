@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dragon's Tail",
   "display_fullname": "Dominator Assault Martial Assault Dragons Tail",
-  "display_help": "2NCJ727PJ8TYWLVHYACLU3YQ4W",
-  "display_short_help": "2NAFLRALB9YZYBLPJQCZYMTEEQ",
+  "display_help": "This low spinning kick deals less damage than Thunder Kick, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE Melee, Light DMG(Smash), Foe Knockdown",
   "icon": "martialmanipulation_dragonstail.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -226,6 +226,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Dominator_Assault.Martial_Assault"
 }

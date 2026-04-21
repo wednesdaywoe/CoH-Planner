@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Alpha Barrier",
   "display_fullname": "Sentinel Defense Radiation Armor Alpha Barrier",
-  "display_help": "N32NH7T6DX8BYDZSTK44EDVZF2",
+  "display_help": "You cloak yourself in a field of protective radiation that grants you a good deal of resistance to Lethal, Smashing and Toxic damage.",
   "display_short_help": "Toggle: Self +Res(Lethal, Smash, Toxic)",
   "icon": "radiationarmor_alphabarrier.png",
   "auto_issue": false,

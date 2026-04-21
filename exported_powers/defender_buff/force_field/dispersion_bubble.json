@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Dispersion Bubble",
   "display_fullname": "Defender Buff Force Field Dispersion Bubble",
-  "display_help": "Y47H3LUW2C8NY5B6B3Q8WMW6ZA",
+  "display_help": "Creates a large bubble which protects all allies inside. While active, the Dispersion Bubble gives all allies within increased Defense against all attack types. The Dispersion Bubble also protects allies from Immobilization, Disorient, and Hold effects.<br><br>Allies will retain bonuses from the bubble for some after leaving the bubble's area.",
   "display_short_help": "Toggle: PBAoE, Team +Res(Hold, Immobilize, Disorient) +DEF(All)",
   "icon": "forcefield_dispersionbubble.png",
   "auto_issue": false,
@@ -178,6 +178,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Defender_Buff.Force_Field"
 }

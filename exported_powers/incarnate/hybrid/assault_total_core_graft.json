@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Assault Total Core Graft",
   "display_fullname": "Incarnate Hybrid Assault Total Core Graft",
-  "display_help": "5Z6GM8SULMAYYXNBRPRSZYR9YQ",
+  "display_help": "While active, this power gives all of your damaging powers a 55% chance to boost your own damage for a short period of time. This boost can stack up to 3 times. Equipping this Hybrid power grants a passive boost to Damage at all times.<br><br><color #fcfc95>Notes: Assault Total Core Graft is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Chance for +DMG(All)",
   "icon": "incarnate_hybrid_assault_rare.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Invoke Panic",
   "display_fullname": "Pool Manipulation Invoke Panic",
-  "display_help": "UXK98WSL9XVLW6Z98DGUGE4CKS",
+  "display_help": "When fully engaged in battle, you are a frightening presence and can use this to your advantage. This power causes sheer terror in all foes around you, causing them to tremble uncontrollably in fear.<br><br>You must be at least level 14 and have two other Presence powers before selecting Invoke Panic.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Fear (Foe)",
   "icon": "manipulation_invokepanic.png",
   "auto_issue": false,
@@ -200,6 +200,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Manipulation"
 }

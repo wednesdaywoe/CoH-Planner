@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ripper",
   "display_fullname": "Scrapper Melee Quills Ripper",
-  "display_help": "DVLHTHC42CJSYNNDRKPWC46LB2",
-  "display_short_help": "7D545ZGEQD95YABWMJM8ZNEYUW",
+  "display_help": "You can unleash a spectacular slashing maneuver that attacks all villains in a wide arc in front of you. Ripper deals massive damage and poisons multiple targets. It can even knock foes down. Spine poison Slows affected targets and deals additional Toxic damage.",
+  "display_short_help": "Melee (Cone), DMG(Lethal), DoT(Toxic), Knockback, -SPD, -Recharge",
   "icon": "quills_bonesword.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -585,6 +585,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Scrapper_Melee.Quills"
 }

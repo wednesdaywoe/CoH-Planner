@@ -5,25 +5,25 @@
   "short_help": "Devices",
   "icon": "gadgets_set.ico",
   "powers": [
-    "Auto_Turret",
-    "Caltrops",
-    "Cloaking_Device",
-    "Smoke_Grenade",
-    "Targeting_Drone",
-    "Taser",
-    "Time_Bomb",
-    "Trip_Mine",
-    "Web_Grenade"
+    "Blaster_Support.Gadgets.Auto_Turret",
+    "Blaster_Support.Gadgets.Caltrops",
+    "Blaster_Support.Gadgets.Cloaking_Device",
+    "Blaster_Support.Gadgets.Smoke_Grenade",
+    "Blaster_Support.Gadgets.Targeting_Drone",
+    "Blaster_Support.Gadgets.Taser",
+    "Blaster_Support.Gadgets.Time_Bomb",
+    "Blaster_Support.Gadgets.Trip_Mine",
+    "Blaster_Support.Gadgets.Web_Grenade"
   ],
   "available_level": [
+    29,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    19,
+    15,
+    9,
+    3,
+    27,
+    23,
     0
   ]
 }

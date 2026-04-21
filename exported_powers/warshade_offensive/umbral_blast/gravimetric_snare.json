@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Gravimetric Snare",
   "display_fullname": "Warshade Offensive Umbral Blast Gravimetric Snare",
-  "display_help": "RWU6MDJC7ZB2Y9N3EAP8YXA732",
-  "display_short_help": "7A3HFMQ7X9PVWMCCZ3RWA4YN52",
+  "display_help": "You can hurl Gravimetric fibers to Snare your foes. Gravimetric Snare can Immobilize a single target and crush them. The target's attack rate and movement speed are also slowed, even if they resist the Immobilization effect.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Ranged, Moderate DOT(Negative), Foe Immobilize, -Recharge, -SPD",
   "icon": "umbralblast_gravimetricsnare.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -243,6 +243,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

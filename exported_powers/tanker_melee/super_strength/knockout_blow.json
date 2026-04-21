@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Knockout Blow",
   "display_fullname": "Tanker Melee Super Strength Knockout Blow",
-  "display_help": "2BMUQ43DXG53YMBN3Q832LEN3Z",
-  "display_short_help": "JA8V4L5NNWVUYEZKNLTLU3T7VX",
+  "display_help": "You can perform a Knockout Blow on your opponent. This punch does extreme damage, and has a great chance of Holding your target.",
+  "display_short_help": "Melee, DMG(Smash), Foe Hold",
   "icon": "superstrength_knockoutblow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -265,6 +265,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Tanker_Melee.Super_Strength"
 }

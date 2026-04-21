@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Thermal Shield",
   "display_fullname": "Peacebringer Defensive Luminous Aura Thermal Shield",
-  "display_help": "7M3HWMYHZD9WWVCMAU8987EGYW",
+  "display_help": "When you toggle on Thermal Shield, you emit tendrils of Kheldian energy that give you resistance to Fire and Cold damage.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Self +Res(Fire, Cold)",
   "icon": "luminousaura_thermalshield.png",
   "auto_issue": false,
@@ -202,6 +202,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

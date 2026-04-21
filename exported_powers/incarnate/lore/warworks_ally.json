@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Warworks Ally",
   "display_fullname": "Incarnate Lore Warworks Ally",
-  "display_help": "ESZ82U5ERNBYWHBHA4WCVR8QN3",
+  "display_help": "Draws forth an essence of a vanquished WarWorks ACU from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Warworks Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon WarWorks LT Essence",
   "icon": "incarnate_lore_warworks_common.png",
   "auto_issue": false,

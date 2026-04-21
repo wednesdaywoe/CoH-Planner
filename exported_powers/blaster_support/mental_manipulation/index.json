@@ -5,25 +5,25 @@
   "short_help": "Mental Manipulation",
   "icon": "mental_manipulation_set.ico",
   "powers": [
-    "Build_Up",
-    "Drain_Psyche",
-    "Mind_Probe",
-    "Psychic_Scream",
-    "Psychic_Shockwave",
-    "Scare",
-    "Subdual",
-    "Telekinetic_Thrust",
-    "World_of_Confusion"
+    "Blaster_Support.Mental_Manipulation.Build_Up",
+    "Blaster_Support.Mental_Manipulation.Drain_Psyche",
+    "Blaster_Support.Mental_Manipulation.Mind_Probe",
+    "Blaster_Support.Mental_Manipulation.Psychic_Scream",
+    "Blaster_Support.Mental_Manipulation.Psychic_Shockwave",
+    "Blaster_Support.Mental_Manipulation.Scare",
+    "Blaster_Support.Mental_Manipulation.Subdual",
+    "Blaster_Support.Mental_Manipulation.Telekinetic_Thrust",
+    "Blaster_Support.Mental_Manipulation.World_of_Confusion"
   ],
   "available_level": [
+    15,
+    19,
     0,
+    9,
+    27,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    29,
+    3
   ]
 }

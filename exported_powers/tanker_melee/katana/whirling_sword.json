@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "The Lotus Drops",
   "display_fullname": "Tanker Melee Katana Whirling Sword",
-  "display_help": "BXT9LXH8Y8D3YTNTFC42QXQYRA",
-  "display_short_help": "NY5TH7BMQFU8WGXCBQMXM69DGX",
+  "display_help": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Lethal), Foe -Def",
   "icon": "katana_whirlingsword.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -252,6 +252,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Tanker_Melee.Katana"
 }

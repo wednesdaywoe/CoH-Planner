@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Dark Sustenance",
   "display_fullname": "Inherent Inherent Dark Sustenance",
-  "display_help": "XK5DYC3U5DRVYWZ3MWFXL7Z45Q",
+  "display_help": "Kheldians naturally thrive off the energy and essence of their teammates. Warshades' absorbing nature allows them to draw on the power of their teammates' power to increase their own. Your Damage Resistance will increase for each nearby Tanker, Mastermind, Corruptor or Defender teammate. Your Damage will increase for each nearby Scrapper, Sentinel, Stalker, Brute or Blaster teammate. Each nearby Controller or Dominator teammate will grant you limited Protection from Control effects. Finally, each nearby Peacebringer, Warshade, or teamed Arachnos Soldier or Widow grants you some resistance to attack time slow effects. You cannot put Enhancements in this power.",
   "display_short_help": "Auto: Special",
   "icon": "inherentpeacebringer_interspaciallink.png",
   "auto_issue": true,

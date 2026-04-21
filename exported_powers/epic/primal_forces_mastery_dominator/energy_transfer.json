@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Energy Transfer",
   "display_fullname": "Epic Primal Forces Mastery Dominator Energy Transfer",
-  "display_help": "KNF59TM43UJ8WKVMZXNMUPQG93",
-  "display_short_help": "YMUB9R8RMCRPWFM5MBU9B4E85S",
+  "display_help": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target.",
+  "display_short_help": "Melee, DMG(Energy/Smash), Foe Disorient, Self -HP",
   "icon": "primalforcesmasterydominator_energytransfer.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -289,6 +289,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Primal_Forces_Mastery_Dominator"
 }

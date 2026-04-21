@@ -3,10 +3,10 @@
   "full_name": "Epic.Dark_Mastery.Soul_Drain",
   "short_name": "Soul_Drain",
   "type": "Click",
-  "display_name": "JZAS62A88ADLWJLHKE9UQ5SC2Z",
+  "display_name": "Spirit Drain",
   "display_fullname": "Epic Dark Mastery Soul Drain",
-  "display_help": "S7WNFGRMHMFQWTZL69CFPM25FZ",
-  "display_short_help": "HW8A4ANUBDVGWCZX4ZRRWWH6KZ",
+  "display_help": "Using this power, you can drain the spirits of your foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
+  "display_short_help": "Damged AoE, DMG(Negative), Self +DMG, +ACC",
   "icon": "dark_mastery_spiritdrain",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -278,6 +278,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Dark_Mastery"
 }

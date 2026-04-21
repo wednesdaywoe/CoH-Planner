@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Obsidian Shield",
   "display_fullname": "Stalker Defense Dark Armor Obsidian Shield",
-  "display_help": "54JGAHJTQRWYYHNUYHMHPEBPBQ",
+  "display_help": "You can create a special Obsidian Shield that grants good resistance to Psionic damage. With your mind enshrouded in darkness you are protected from Sleep, Fear, Hold and Disorient attacks.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +Res(Psionic, Sleep, Hold, Disorient, Fear)",
   "icon": "darkarmor_obsidianshield.png",
   "auto_issue": false,
@@ -235,6 +235,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Stalker_Defense.Dark_Armor"
 }

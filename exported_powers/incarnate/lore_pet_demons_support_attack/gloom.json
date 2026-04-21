@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Gloom",
   "display_fullname": "Incarnate Lore Pet Demons Support Attack Gloom",
-  "display_help": "XWBNXUZP7VW6YKL5LZM8LCPX4Q",
+  "display_help": "Gloom reduces your Accuracy.<br><br><color #fcfc95>Notes: Gloom is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "-ACC",
   "icon": "darkcast_souldrain.png",
   "auto_issue": false,

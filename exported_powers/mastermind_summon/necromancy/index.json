@@ -5,25 +5,25 @@
   "short_help": "Necromancy",
   "icon": "necromancy_set.ico",
   "powers": [
-    "Dark_Blast",
-    "Dark_Empowerment",
-    "Enchant_Undead",
-    "Gloom",
-    "Lich",
-    "Life_Drain",
-    "Skeletal_Warriors",
-    "Soul_Extraction",
-    "Zombie_Horde"
+    "Mastermind_Summon.Necromancy.Dark_Blast",
+    "Mastermind_Summon.Necromancy.Dark_Empowerment",
+    "Mastermind_Summon.Necromancy.Enchant_Undead",
+    "Mastermind_Summon.Necromancy.Gloom",
+    "Mastermind_Summon.Necromancy.Lich",
+    "Mastermind_Summon.Necromancy.Life_Drain",
+    "Mastermind_Summon.Necromancy.Skeletal_Warriors",
+    "Mastermind_Summon.Necromancy.Soul_Extraction",
+    "Mastermind_Summon.Necromancy.Zombie_Horde"
   ],
   "available_level": [
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    25,
+    5,
+    1,
+    21,
+    7,
+    11,
+    17,
     0
   ]
 }

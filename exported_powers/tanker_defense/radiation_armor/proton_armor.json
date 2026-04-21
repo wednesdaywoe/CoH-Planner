@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Proton Armor",
   "display_fullname": "Tanker Defense Radiation Armor Proton Armor",
-  "display_help": "AQSWFLMSMH9PWWMW2QKRMBDDFS",
+  "display_help": "When active, your body is encased in a shield-like radiation barrier that gives you good resistance to Energy and Fire damage and moderate resistance to Cold and Negative Energy attacks.",
   "display_short_help": "Toggle: Self, +Res(Energy, Fire, Cold and Negative)",
   "icon": "radiationarmor_protonarmor.png",
   "auto_issue": false,
@@ -226,6 +226,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Tanker_Defense.Radiation_Armor"
 }

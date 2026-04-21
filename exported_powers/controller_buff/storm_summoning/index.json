@@ -5,25 +5,25 @@
   "short_help": "Storm Summoning",
   "icon": "storm_summoning_set.ico",
   "powers": [
-    "Fog",
-    "Gale",
-    "Hurricane",
-    "Lightning_Storm",
-    "O2_Boost",
-    "Snow_Storm",
-    "Steamy_Mist",
-    "Thunder_Clap",
-    "Tornado"
+    "Controller_Buff.Storm_Summoning.Fog",
+    "Controller_Buff.Storm_Summoning.Gale",
+    "Controller_Buff.Storm_Summoning.Hurricane",
+    "Controller_Buff.Storm_Summoning.Lightning_Storm",
+    "Controller_Buff.Storm_Summoning.O2_Boost",
+    "Controller_Buff.Storm_Summoning.Snow_Storm",
+    "Controller_Buff.Storm_Summoning.Steamy_Mist",
+    "Controller_Buff.Storm_Summoning.Thunder_Clap",
+    "Controller_Buff.Storm_Summoning.Tornado"
   ],
   "available_level": [
+    15,
     0,
+    19,
+    29,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3,
+    9,
+    23,
+    27
   ]
 }

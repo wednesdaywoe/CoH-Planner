@@ -5,25 +5,25 @@
   "short_help": "Cold Domination",
   "icon": "cold_domination_set.ico",
   "powers": [
-    "Arctic_Fog",
-    "Benumb",
-    "Frostwork",
-    "Glacial_Shield",
-    "Heat_Loss",
-    "Ice_Shield",
-    "Infrigidate",
-    "Sleet",
-    "Snow_Storm"
+    "Defender_Buff.Cold_Domination.Arctic_Fog",
+    "Defender_Buff.Cold_Domination.Benumb",
+    "Defender_Buff.Cold_Domination.Frostwork",
+    "Defender_Buff.Cold_Domination.Glacial_Shield",
+    "Defender_Buff.Cold_Domination.Heat_Loss",
+    "Defender_Buff.Cold_Domination.Ice_Shield",
+    "Defender_Buff.Cold_Domination.Infrigidate",
+    "Defender_Buff.Cold_Domination.Sleet",
+    "Defender_Buff.Cold_Domination.Snow_Storm"
   ],
   "available_level": [
+    11,
+    17,
+    7,
+    5,
+    25,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    1
   ]
 }

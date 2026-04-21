@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Energy Punch",
   "display_fullname": "Blaster Support Energy Manipulation Energy Punch",
-  "display_help": "APS5EJGK9XRRYFMLM2HKTNYB2X",
+  "display_help": "Powerful focused punch that may Disorient your opponent!<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High DMG(Smash/Energy), Foe Disorient",
   "icon": "energymanipulation_energypunch.png",
   "auto_issue": false,

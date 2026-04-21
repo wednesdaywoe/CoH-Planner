@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mace Beam Volley",
   "display_fullname": "Arachnos Soldiers Bane Spider Soldier Mace Beam Volley",
-  "display_help": "RWXCTBWBXV9TY4VWS9AGSJ2FWQ",
-  "display_short_help": "NJTU6CCWN2FVYQL9GCF7X4Z54S",
+  "display_help": "The Nullifier Mace can fire a volley of energy at all foes in front of the user. The Mace Beam Volley is a Moderate damage area of effect cone attack with a chance to knock foes off their feet.",
+  "display_short_help": "Ranged Cone, DMG(Energy), Foe Knockback",
   "icon": "banespider_macebeamvolley.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -244,6 +244,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Arachnos_Soldiers.Bane_Spider_Soldier"
 }

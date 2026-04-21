@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Clarion Invocation",
   "display_fullname": "Incarnate Destiny Clarion Invocation",
-  "display_help": "FMJSX3UWXM3YYHVL6VECPXYL8A",
+  "display_help": "PBAoE Ally Status Effect Protection.<br><br><color #fcfc95>Notes: Clarion Invocation is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE Ally Status Effect Protection",
   "icon": "incarnate_destiny_clarion_common.png",
   "auto_issue": false,

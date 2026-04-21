@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Cinders",
   "display_fullname": "Dominator Control Fire Control Cinders",
-  "display_help": "Q9VDHJV9TSHFWEXC6JXC9QFM4A",
+  "display_help": "Incapacitates foes around the caster by whirling Cinders around them. The targets are left helpless, choking on the soot.<br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>8</color> seconds and each affected foe will increase the recharge by <color #FF7F27>14.5</color> seconds for a maximum total of <color #FF7F27>240</color> seconds.</color>",
   "display_short_help": "PBAoE, Foe Hold",
   "icon": "firetrap_cinders.png",
   "auto_issue": false,
@@ -244,6 +244,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Dominator_Control.Fire_Control"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fortify Pack",
   "display_fullname": "Mastermind Summon Beast Mastery Fortify Pack",
-  "display_help": "NRCVDUSKHC9JY3NN5A5FGMXURA",
+  "display_help": "You command your beasts to fight more defensively. The number of charges of Pack Mentality you own when activating this power will determine the potency of the Defense and Regeneration buff that will be granted to your pack.",
   "display_short_help": "PBAoE, Pets +Defense, +Regeneration, consumes all charges of Pack Mentality",
   "icon": "beastmastery_fortifypack.png",
   "auto_issue": false,
@@ -180,6 +180,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Mastermind_Summon.Beast_Mastery"
 }

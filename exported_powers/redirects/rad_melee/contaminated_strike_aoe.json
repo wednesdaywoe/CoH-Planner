@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Contaminated Strike",
   "display_fullname": "Redirects Rad Melee Contaminated Strike AoE",
-  "display_help": "93CLCJWLKFNSYGZSZXV7WDT2X2",
+  "display_help": "You charge your fist with harmful radioactive particles and quickly strike your foe dealing Light Energy and Smashing damage as well as reducing their defense. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. This power can bruise an enemy, making them more vulnerable to damage.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Melee, Light DMG(Energy/Smash), Foe -Def, -Res(All), Special",
   "icon": "radiationmelee_contaminatedstrike.png",
   "auto_issue": false,

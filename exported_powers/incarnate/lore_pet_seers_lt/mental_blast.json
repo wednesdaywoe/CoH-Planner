@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Mental Blast",
   "display_fullname": "Incarnate Lore Pet Seers LT Mental Blast",
-  "display_help": "MZQ5UZGZ32Q5YMXWZ94THHRM8W",
+  "display_help": "This attack does moderate Psionic damage, and can slightly reduce a target's attack speed.<br><br><color #fcfc95>Notes: Mental Blast is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Moderate DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mentaldart.png",
   "auto_issue": false,

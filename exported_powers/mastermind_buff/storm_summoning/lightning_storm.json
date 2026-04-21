@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Lightning Storm",
   "display_fullname": "Mastermind Buff Storm Summoning Lightning Storm",
-  "display_help": "CMQ6UFV3NGYTYBVKLDQXYT7S52",
+  "display_help": "You can create a massive Lightning Storm that will strike any foe that approaches you. Lightning from this storm can knock down and damage all nearby foes, and can even instill panic. Lightning bolts will continue to fall as long as the storm remains.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Create Storm: Ranged, High DMG(Energy), Foe -End",
   "icon": "stormsummoning_lightningstorm.png",
   "auto_issue": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Mastermind_Buff.Storm_Summoning"
 }

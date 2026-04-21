@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Chomp",
   "display_fullname": "Incarnate Lore Pet Rularuu Boss Chomp",
-  "display_help": "5T8DNZ9GAGRNY5VA9FKGFPDJ3X",
+  "display_help": "Sentries can Chomp down on nearby foes.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Melee Heavy Lethal",
   "icon": "inherent_brawl.png",
   "auto_issue": false,

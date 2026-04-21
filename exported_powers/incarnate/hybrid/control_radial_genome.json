@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Control Radial Genome",
   "display_fullname": "Incarnate Hybrid Control Radial Genome",
-  "display_help": "9WMVSG85RHXHYVVTGDWXN46AT2",
+  "display_help": "Toggle: Adds a Chance for Fear to most damaging powers. This ability gives a 35% chance for its effects to occur on each hit. Equipping this Hybrid power grants a passive boost to Status Resistance at all times.<br><br><color #fcfc95>Notes: Control Radial Genome is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Chance for Fear",
   "icon": "incarnate_hybrid_control_uncommon.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shadow Meld",
   "display_fullname": "Epic Stalker Soul Mastery Shadow Meld",
-  "display_help": "HFL4GZQJ6ESSYANEBX4U85XHPX",
+  "display_help": "Your mastery over the shadows allows you to become a living shadow entity for a short time, increasing your defense to all attacks. You must be level 35 and have Dark Blast or Moonbeam before selecting this power. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
   "display_short_help": "Self: +Def(All)",
   "icon": "arachnos_patron_selfbuffresistancephysical.png",
   "auto_issue": false,
@@ -117,6 +117,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Stalker_Soul_Mastery"
 }

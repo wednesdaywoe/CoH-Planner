@@ -5,17 +5,17 @@
   "short_help": "Ice Mastery",
   "icon": "chill_mastery_set.ico",
   "powers": [
-    "Flash_Freeze",
-    "Hibernate",
-    "Hoarfrost",
-    "Ice_Blast",
-    "Snow_Storm"
+    "Epic.Chill_Mastery.Flash_Freeze",
+    "Epic.Chill_Mastery.Hibernate",
+    "Epic.Chill_Mastery.Hoarfrost",
+    "Epic.Chill_Mastery.Ice_Blast",
+    "Epic.Chill_Mastery.Snow_Storm"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    43,
+    37,
+    34,
+    40
   ]
 }

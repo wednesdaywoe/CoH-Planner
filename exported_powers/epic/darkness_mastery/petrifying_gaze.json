@@ -6,7 +6,7 @@
   "display_name": "Petrifying Gaze",
   "display_fullname": "Epic Darkness Mastery Petrifying Gaze",
   "display_help": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless.",
-  "display_short_help": "3GKY3RZ3LQ3LWSMLEBLBKYZD3W",
+  "display_short_help": "Ranged, DMG(Negative), Foe Hold",
   "icon": "darknessmastery_petrifyinggaze.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -470,6 +470,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Darkness_Mastery"
 }

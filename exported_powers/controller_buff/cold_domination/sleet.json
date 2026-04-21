@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Sleet",
   "display_fullname": "Controller Buff Cold Domination Sleet",
-  "display_help": "V5NEU3U883W2WHZBVTYXDB7GXQ",
+  "display_help": "Summons a Sleet Storm at a targeted location. Sleet deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
   "icon": "colddomination_sleet.png",
   "auto_issue": false,
@@ -95,6 +95,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Controller_Buff.Cold_Domination"
 }

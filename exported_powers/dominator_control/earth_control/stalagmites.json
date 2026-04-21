@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Stalagmites",
   "display_fullname": "Dominator Control Earth Control Stalagmites",
-  "display_help": "74SUCX5XUHA3WVCX7A5XDW5K4S",
-  "display_short_help": "ETC7FH2QYRFHWMMBYAL3RYTYEA",
+  "display_help": "You can cause Stalagmites to erupt all around an enemy, damaging all nearby foes. The Stalagmites deal minimal Lethal damage, and can Disorient all affected targets for a good while, as well as reduce their Defense. You must be on the ground to activate this power.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Lethal), Foe Disorient, -DEF",
   "icon": "earthgrasp_stalagmites.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -265,6 +265,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Dominator_Control.Earth_Control"
 }

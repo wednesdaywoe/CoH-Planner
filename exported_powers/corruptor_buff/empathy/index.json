@@ -5,25 +5,25 @@
   "short_help": "Empathy",
   "icon": "empathy_set.ico",
   "powers": [
-    "Absorb_Pain",
-    "Adrenalin_Boost",
-    "Clear_Mind",
-    "Fortitude",
-    "Heal_Other",
-    "Recovery_Aura",
-    "Regeneration_Aura",
-    "Resurrect",
-    "Siphon_Energy"
+    "Corruptor_Buff.Empathy.Absorb_Pain",
+    "Corruptor_Buff.Empathy.Adrenalin_Boost",
+    "Corruptor_Buff.Empathy.Clear_Mind",
+    "Corruptor_Buff.Empathy.Fortitude",
+    "Corruptor_Buff.Empathy.Heal_Other",
+    "Corruptor_Buff.Empathy.Recovery_Aura",
+    "Corruptor_Buff.Empathy.Regeneration_Aura",
+    "Corruptor_Buff.Empathy.Resurrect",
+    "Corruptor_Buff.Empathy.Siphon_Energy"
   ],
   "available_level": [
+    3,
+    29,
+    15,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    23,
+    27,
+    9,
     0
   ]
 }

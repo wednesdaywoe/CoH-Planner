@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Smoke",
   "display_fullname": "Dominator Control Fire Control Smoke",
-  "display_help": "J7VRZS2FYQPAYCXHVZZ925XAGW",
+  "display_help": "Covers all foes near your target in clouds of Smoke. Your enemies are so blinded that they can hardly see a thing. Most foes will not be able to see past normal melee range, although some may have better perception. If the affected targets are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit.",
   "display_short_help": "Ranged (Targeted AoE), Foe -Perception, -To Hit",
   "icon": "firetrap_smoke.png",
   "auto_issue": false,
@@ -172,6 +172,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Dominator_Control.Fire_Control"
 }

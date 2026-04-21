@@ -5,25 +5,25 @@
   "short_help": "Spines",
   "icon": "spines_set.ico",
   "powers": [
-    "Assassins_Impaler",
-    "Barb_Swipe",
-    "Build_Up",
-    "Impale",
-    "Lunge",
-    "Placate",
-    "Ripper",
-    "Spine_Burst",
-    "Throw_Spines"
+    "Stalker_Melee.Spines.Assassins_Impaler",
+    "Stalker_Melee.Spines.Barb_Swipe",
+    "Stalker_Melee.Spines.Build_Up",
+    "Stalker_Melee.Spines.Impale",
+    "Stalker_Melee.Spines.Lunge",
+    "Stalker_Melee.Spines.Placate",
+    "Stalker_Melee.Spines.Ripper",
+    "Stalker_Melee.Spines.Spine_Burst",
+    "Stalker_Melee.Spines.Throw_Spines"
   ],
   "available_level": [
+    5,
     0,
+    7,
+    17,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11,
+    21,
+    1,
+    25
   ]
 }

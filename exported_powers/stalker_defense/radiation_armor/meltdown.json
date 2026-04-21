@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Meltdown",
   "display_fullname": "Stalker Defense Radiation Armor Meltdown",
-  "display_help": "WJHXJL8AP372W3CLTFJBWYC4VW",
+  "display_help": "After building up a dangerous amount of radiation you release it to both shield and empower yourself. While active you will gain a good amount of damage resistance to all types of damage, recover endurance more quickly and deal more damage for a short time. When this power wears off you will lose a small amount endurance.",
   "display_short_help": "Self, +Res(All), +Recovery, +DMG(All)",
   "icon": "radiationarmor_meltdown.png",
   "auto_issue": false,
@@ -260,6 +260,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Stalker_Defense.Radiation_Armor"
 }

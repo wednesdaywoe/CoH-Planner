@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fire Sword Circle",
   "display_fullname": "Brute Melee Fiery Melee Fire Sword Circle",
-  "display_help": "YG83G5EFA8F7W9NM3ZEY69PQDW",
-  "display_short_help": "VXUQ5JV4NDLMYEC7PR3EGZGZ9Q",
+  "display_help": "Mastery of your Fire Sword has enabled you to make an attack on every foe within melee distance. This will slash burn and cut through the defenses of your enemies, dealing moderate damage and setting them ablaze.",
+  "display_short_help": "PBAoE Melee, DMG(Fire), -Defense",
   "icon": "fieryfray_fireswordcircle.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -267,6 +267,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Brute_Melee.Fiery_Melee"
 }

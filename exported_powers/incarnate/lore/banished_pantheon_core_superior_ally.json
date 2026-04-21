@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Banished Pantheon Core Superior Ally",
   "display_fullname": "Incarnate Lore Banished Pantheon Core Superior Ally",
-  "display_help": "JC4CKJDBAW57YQMQ2GMHA8EP9A",
+  "display_help": "Draws forth the essences of a vanquished Banished Pantheon Ravager and Banespawn from the Well of the Furies to serve you for 5 minutes. These essences do increased damage compared to their previous versions.<br><br>This power also applies an Incarnate Shift. (An Incarnate Shift is a Level Shift which only activates while participating in an Incarnate Trial.).<br><br><color #fcfc95>Notes: Banished Pantheon Core Superior Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Banished Pantheon Boss & LT Essences",
   "icon": "incarnate_lore_banished_veryrare.png",
   "auto_issue": false,

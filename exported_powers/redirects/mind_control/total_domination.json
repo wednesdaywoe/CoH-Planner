@@ -6,7 +6,7 @@
   "display_name": "Total Domination",
   "display_fullname": "Redirects Mind Control Total Domination",
   "display_help": "Tears at the mind of a target foe and those near them. Dominate renders all affected foes helpless, lost in their own minds and unable to defend themselves.",
-  "display_short_help": "UMW723K82QUFY5XZRX26NEQDSW",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Psionic), Foe Hold",
   "icon": "mentalcontrol_freeze.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -369,6 +369,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Redirects.Mind_Control"
 }

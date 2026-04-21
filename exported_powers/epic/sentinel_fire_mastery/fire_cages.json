@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fire Cages",
   "display_fullname": "Epic Sentinel Fire Mastery Fire Cages",
-  "display_help": "554HTXYT86RUWWZMW32YP83BTZ",
-  "display_short_help": "57NU27CXH499WJVYR53FTZQYV3",
+  "display_help": "Immobilizes a group of foes in Fire Cages, dealing Fire damage over time. More resilient foes may require multiple Fire Cages to Immobilize. Fire Cages is slower and less damaging than Ring of Fire, but can capture multiple targets.",
+  "display_short_help": "Ranged (Targeted AoE), DoT(Fire), Foe Immobilize",
   "icon": "firetrap_firecage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -346,6 +346,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Fire_Mastery"
 }

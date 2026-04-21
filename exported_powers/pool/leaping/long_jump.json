@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Super Jump",
   "display_fullname": "Pool Leaping Long Jump",
-  "display_help": "DMYF5ZVQ59YCYFLA6XKR2JSW4S",
+  "display_help": "While this power is active, you can leap great distances and heights, easily jumping over buildings and from rooftop to rooftop! If you attack a target while this power is on, you will temporarily be reduced to a normal jump height. Super Jump also increases your maximum jumping speed by 35% and gives you access to the Double Jump power whilst it is active.<br><br>Super Jump can be active at the same time as other jumping toggles, but only the strongest jump buff will apply.",
   "display_short_help": "Toggle: Self Long Jump",
   "icon": "jump_longjump.png",
   "auto_issue": false,
@@ -386,6 +386,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Pool.Leaping"
 }

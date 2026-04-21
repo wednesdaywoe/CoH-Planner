@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Darkest Night",
   "display_fullname": "Epic Dominator Dark Mastery Darkest Night",
-  "display_help": "4ZKZHB9A8H7EYSCR5V3VH6E9TW",
+  "display_help": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
   "icon": "dark_mastery_darkestnight",
   "auto_issue": false,
@@ -176,6 +176,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Dominator_Dark_Mastery"
 }

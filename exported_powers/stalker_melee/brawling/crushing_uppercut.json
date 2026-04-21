@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Crushing Uppercut",
   "display_fullname": "Stalker Melee Brawling Crushing Uppercut",
-  "display_help": "7C4JD4JX8VQEYUC5H27KE3KZFX",
-  "display_short_help": "5NGRWQMA8WHVWMBKY2UQ5VTJNZ",
+  "display_help": "You perform a jaw breaking Crushing Uppercut on your target inflicting Extreme Smashing damage and knocking them into the air. Crushing Uppercut will leave the target disoriented for a short time. Crushing Uppercut is a Finisher and will set your Combo Level to 0. It will deal additional damage and have a longer disorient duration dependent upon the current Combo level. At Combo Level 3, Crushing Uppercut will have its disorient effect upgraded to a Hold effect. Critical damage is unaffected by your Combo Level.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Extreme DMG(Smash), Foe Knock Up, Disorient, Finisher",
   "icon": "brawling_crushinguppercut.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -962,6 +962,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Stalker_Melee.Brawling"
 }

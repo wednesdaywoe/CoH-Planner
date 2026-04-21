@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Atom Smasher",
   "display_fullname": "Blaster Support Radiation Manipulation Atom Smasher",
-  "display_help": "SFRQZKKW2WX5WNN8MT97JW9W5Q",
-  "display_short_help": "SY3WF4UK72WMY6V9Q8JLZ2HZ4X",
+  "display_help": "You charge up a dangerously unstable amount of radioactive energy into a single fist before driving it into the ground and causing a small explosion. Foes caught in the blast will suffer Energy and Toxic damage and have their defense reduced.",
+  "display_short_help": "PBAoE, DMG(Toxic/Energy), Foe Disorient, -DEF, Special",
   "icon": "atomicmanipulation_atomsmasher",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -344,6 +344,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Blaster_Support.Radiation_Manipulation"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Storm Elemental Radial Ally",
   "display_fullname": "Incarnate Lore Storm Elemental Radial Ally",
-  "display_help": "YRMK32AUF49GWXMFVG886VKRUQ",
+  "display_help": "Draws forth the essences of a vanquished Monsoon Elemental and Storm Elemental from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Storm Elemental Radial Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Storm Elemental LT & Support Essences",
   "icon": "incarnate_lore_elementals_uncommon.png",
   "auto_issue": false,

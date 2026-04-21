@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Beanbag",
   "display_fullname": "Blaster Ranged Assault Rifle Beanbag",
-  "display_help": "Q3UDY3VW5RTSWNC6VFEBSVPKUQ",
+  "display_help": "Fires a single non lethal Beanbag that can seriously Disorient a target. Deals little damage and takes a long time to reload, but renders most targets unable to attack for a good while.",
   "display_short_help": "Ranged, Minor DMG(Smash), Foe Disorient",
   "icon": "assaultweapons_shotgunbeanbag.png",
   "auto_issue": false,
@@ -190,6 +190,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Blaster_Ranged.Assault_Rifle"
 }

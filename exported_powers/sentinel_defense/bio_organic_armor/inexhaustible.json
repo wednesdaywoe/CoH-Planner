@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Inexhaustible",
   "display_fullname": "Sentinel Defense Bio Organic Armor Inexhaustible",
-  "display_help": "J7XLVTYFML5SYGCCNBQ3VMRWRS",
+  "display_help": "Your body constantly evolves and addresses weaknesses. As a result you receive a moderate bonus to maximum hit points, regeneration, and recovery, as well as gaining a measure of Slow and Endurance Drain Resistance. Half of this power's maximum hit point increase is unenhanceable.<br><br><color #fac39b>*This power doesn't grant any bonuses to Offensive Adaptation.</color><br><color #9efa9b>*While Defensive Adaptation is active you gain a small amount of additional maximum hit points.</color><br><color #9bfafa>*While Efficient Adaptation is active, this power grants a small bonus to recovery and regeneration.</color><br><br>Bonuses granted from Adaptations are unenhanceable.<br><br>This power is always active and costs no endurance.",
   "display_short_help": "Auto: +Max HP, +Regen, +Recovery, +Res(Slow, End Drain), +Special",
   "icon": "bioorganicarmor_inexhaustible.png",
   "auto_issue": false,

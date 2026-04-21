@@ -5,25 +5,25 @@
   "short_help": "Energy Aura",
   "icon": "energy_aura_set.ico",
   "powers": [
-    "Energize",
-    "Entropy_Shield",
-    "Kinetic_Dampening",
-    "Kinetic_Shield",
-    "Overload",
-    "Power_Armor",
-    "Power_Drain",
-    "Power_Shield",
-    "Repelling_Force"
+    "Sentinel_Defense.Energy_Aura.Energize",
+    "Sentinel_Defense.Energy_Aura.Entropy_Shield",
+    "Sentinel_Defense.Energy_Aura.Kinetic_Dampening",
+    "Sentinel_Defense.Energy_Aura.Kinetic_Shield",
+    "Sentinel_Defense.Energy_Aura.Overload",
+    "Sentinel_Defense.Energy_Aura.Power_Armor",
+    "Sentinel_Defense.Energy_Aura.Power_Drain",
+    "Sentinel_Defense.Energy_Aura.Power_Shield",
+    "Sentinel_Defense.Energy_Aura.Repelling_Force"
   ],
   "available_level": [
+    9,
+    15,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    29,
+    19,
+    27,
+    3,
+    23
   ]
 }

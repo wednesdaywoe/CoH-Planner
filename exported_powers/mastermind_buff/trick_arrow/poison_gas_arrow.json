@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Poison Gas Arrow",
   "display_fullname": "Mastermind Buff Trick Arrow Poison Gas Arrow",
-  "display_help": "Y8ULLJYGE9PSYAVBXPGWDU75UQ",
+  "display_help": "This arrow carries a capsule cloud of poisonous gas, which explodes on impact and weakens all foes in its vicinity. Affected foes damage potential will be severely reduced. Some foes will react badly to the poison and choke for a time, though they will react if attacked.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Targeted AoE), Foe -DMG, Sleep",
   "icon": "trickarrow_debuffdamage.png",
   "auto_issue": false,
@@ -171,6 +171,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Mastermind_Buff.Trick_Arrow"
 }

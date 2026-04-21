@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Build Up",
   "display_fullname": "Blaster Support Energy Manipulation Build Up",
-  "display_help": "GJMQZ8M7ACG6YTCUHUV82J8DWQ",
+  "display_help": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +DMG, +To Hit",
   "icon": "energymanipulation_buildup.png",
   "auto_issue": false,
@@ -114,6 +114,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Blaster_Support.Energy_Manipulation"
 }

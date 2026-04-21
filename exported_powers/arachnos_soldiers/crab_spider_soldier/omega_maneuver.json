@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Omega Maneuver",
   "display_fullname": "Arachnos Soldiers Crab Spider Soldier Omega Maneuver",
-  "display_help": "7E6R93X9XDCZYLLU5FTSWT5XGQ",
-  "display_short_help": "PQQGCRKDVPGUWWLMJNK8DXPTJ2",
+  "display_help": "You may use the Arachnos Teleportation system to summon an Omega Bomb in the midst of your enemies. The Omega Bomb immediately sends out a short range psionic signal and hypnotic light display to draw the attention of those nearby, causing them to approach the device. Then it detonates, causing massive damage to all enemies in a wide radius.",
+  "display_short_help": "Summon Omega Bomb: Ranged (Location Targeted AoE), Superior DMG(Smashing/Energy), Foe Disorient",
   "icon": "crabspider_omegamaneuver.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Arachnos_Soldiers.Crab_Spider_Soldier"
 }

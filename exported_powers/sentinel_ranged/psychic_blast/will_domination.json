@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Will Domination",
   "display_fullname": "Sentinel Ranged Psychic Blast Will Domination",
-  "display_help": "MY6B3RK2LJHTWVLPM4767F8UEA",
+  "display_help": "This powerful attack deals Psionic damage, and is so painful it usually renders its target unconscious. The victim is asleep, and will wake if disturbed.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, High DMG(Psionic), Foe Sleep",
   "icon": "psychicblast_willdomination.png",
   "auto_issue": false,
@@ -306,6 +306,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Sentinel_Ranged.Psychic_Blast"
 }

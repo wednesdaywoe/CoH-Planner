@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Hurl Boulder",
   "display_fullname": "Dominator Assault Earth Assault Hurl Boulder",
-  "display_help": "2GXLRETJGFQFW7MKXWL8PRCJ92",
+  "display_help": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals moderate damage, and can knock foes back and even drop them out of the air if they are flying.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, High DMG(Smash), Foe Knockback, -Fly",
   "icon": "earthassault_hurlboulder.png",
   "auto_issue": false,
@@ -265,6 +265,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Dominator_Assault.Earth_Assault"
 }

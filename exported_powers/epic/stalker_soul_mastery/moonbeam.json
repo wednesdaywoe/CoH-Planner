@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Moonbeam",
   "display_fullname": "Epic Stalker Soul Mastery Moonbeam",
-  "display_help": "A26LZFLNVACWWZVAJ4K7UA95JA",
-  "display_short_help": "9DXCC5M4SLQNYACQX2M2E5P29W",
+  "display_help": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's Accuracy.This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
+  "display_short_help": "Sniper, DMG(Negative), Target -ACC",
   "icon": "arachnos_patron_targetedrangedsnipe.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Stalker_Soul_Mastery"
 }

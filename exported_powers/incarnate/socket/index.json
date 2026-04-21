@@ -5,16 +5,16 @@
   "short_help": "Incarnate",
   "icon": "socket_set.ico",
   "powers": [
-    "Confuse",
-    "DoT_Debuff",
-    "DoT_Energy",
-    "DoT_Negative",
-    "DoT_Psionic",
-    "DoT_Toxic",
-    "Endurance_Drain",
-    "Immobilize",
-    "MaxHP_Debuff",
-    "Resistance_Debuff"
+    "Incarnate.Socket.Confuse",
+    "Incarnate.Socket.DoT_Debuff",
+    "Incarnate.Socket.DoT_Energy",
+    "Incarnate.Socket.DoT_Negative",
+    "Incarnate.Socket.DoT_Psionic",
+    "Incarnate.Socket.DoT_Toxic",
+    "Incarnate.Socket.Endurance_Drain",
+    "Incarnate.Socket.Immobilize",
+    "Incarnate.Socket.MaxHP_Debuff",
+    "Incarnate.Socket.Resistance_Debuff"
   ],
   "available_level": [
     0,

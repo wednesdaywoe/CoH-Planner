@@ -5,11 +5,11 @@
   "short_help": "Ice Control",
   "icon": "blind_set.ico",
   "powers": [
-    "Cold_Snap_Controller",
-    "Cold_Snap_Dominator"
+    "Redirects.Ice_Control.Cold_Snap_Controller",
+    "Redirects.Ice_Control.Cold_Snap_Dominator"
   ],
   "available_level": [
-    0,
-    0
+    7,
+    7
   ]
 }

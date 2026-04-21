@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Power Boost",
   "display_fullname": "Epic Mastermind Mace Mastery Power Boost",
-  "display_help": "XVGSUQDC7HY8W8XPTHDBS4LR2A",
+  "display_help": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
   "display_short_help": "Self +Special",
   "icon": "arachnos_patron_powerboost.png",
   "auto_issue": false,
@@ -141,6 +141,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Mastermind_Mace_Mastery"
 }

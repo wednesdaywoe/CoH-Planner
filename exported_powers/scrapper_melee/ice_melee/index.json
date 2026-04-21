@@ -5,25 +5,25 @@
   "short_help": "Ice Melee",
   "icon": "ice_melee_set.ico",
   "powers": [
-    "Build_Up",
-    "Confront",
-    "Freezing_Touch",
-    "Frost",
-    "Frozen_Aura",
-    "Frozen_Fists",
-    "Greater_Ice_Sword",
-    "Ice_Patch",
-    "Ice_Sword"
+    "Scrapper_Melee.Ice_Melee.Build_Up",
+    "Scrapper_Melee.Ice_Melee.Confront",
+    "Scrapper_Melee.Ice_Melee.Freezing_Touch",
+    "Scrapper_Melee.Ice_Melee.Frost",
+    "Scrapper_Melee.Ice_Melee.Frozen_Aura",
+    "Scrapper_Melee.Ice_Melee.Frozen_Fists",
+    "Scrapper_Melee.Ice_Melee.Greater_Ice_Sword",
+    "Scrapper_Melee.Ice_Melee.Ice_Patch",
+    "Scrapper_Melee.Ice_Melee.Ice_Sword"
   ],
   "available_level": [
+    5,
+    11,
+    21,
+    1,
+    25,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    17,
+    7,
     0
   ]
 }

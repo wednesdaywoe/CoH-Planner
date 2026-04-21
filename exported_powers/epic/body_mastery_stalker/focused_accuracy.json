@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Focused Accuracy",
   "display_fullname": "Epic Body Mastery Stalker Focused Accuracy",
-  "display_help": "H3AAP5DTKGCLW6M4E6ASGPFL7A",
+  "display_help": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active.",
   "display_short_help": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
   "icon": "gadgets_targetingdrone.png",
   "auto_issue": false,
@@ -182,6 +182,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Body_Mastery_Stalker"
 }

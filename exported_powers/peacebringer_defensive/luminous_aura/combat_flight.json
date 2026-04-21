@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Combat Flight",
   "display_fullname": "Peacebringer Defensive Luminous Aura Combat Flight",
-  "display_help": "DHUM8L4QUUDNYTL7GP87P2JXSS",
+  "display_help": "For hovering and aerial combat. This power is much slower than Energy Flight, but provides some Defense, offers good air control, costs little Endurance, and has none of the penalties associated with Energy Flight. Switch to this mode when fighting other flying foes.<br><br>Combat Flight can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
   "display_short_help": "Toggle: Self Fly, +DEF",
   "icon": "luminousaura_combatflight",
   "auto_issue": true,
@@ -423,6 +423,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Gravity Well",
   "display_fullname": "Warshade Offensive Umbral Blast Gravity Well",
-  "display_help": "U5DDYAHL97HWYSBNQX68HPM493",
-  "display_short_help": "X7QWYKUYUTPZWWCF5D98L9HUVS",
+  "display_help": "Mastery over the forces of gravity and dark matter allows you to capture a single foe and crush them in a Gravity Well. The target is Held helpless, while he is crushed by the massive gravimetric forces. The target's attack rate and movement speed are also slowed, even if they resists the Hold effect.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Extreme DMG(Negative), Foe Hold -Recharge, -SPD",
   "icon": "umbralblast_gravitywell.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -292,6 +292,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

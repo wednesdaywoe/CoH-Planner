@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Thorn Burst",
   "display_fullname": "Dominator Assault Thorny Assault Thorn Burst",
-  "display_help": "4TJWEVCTAP9NWXXMP5MK6GQE2Z",
-  "display_short_help": "24HY3WXR2922YQZ9REWUAMS6M3",
+  "display_help": "You can explode dozens of Thorns in all directions around you. These Thorns only travel a short distance, but they can deal moderate damage and poison any target close to you. Toxic damage from the thorns can reduce the Defense of affected foes.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE Melee, Light DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_thornburst.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -213,6 +213,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Dominator_Assault.Thorny_Assault"
 }

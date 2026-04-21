@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shin Breaker",
   "display_fullname": "Stalker Melee Brawling Low Kick",
-  "display_help": "KA63AZZ2G88WYWLDQRJWBLEGBW",
-  "display_short_help": "RBFH3JUQ8A6SWRZNZPRJ9M5A9S",
+  "display_help": "You execute a quick but powerful kick targeting your foe's leg in an attempt to cripple their movement. Shin Breaker deals Superior Smashing damage and moderately reduces your target's movement speed and defense for a short time. Shin Breaker is a Combo Builder and adds 1 Combo Level.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Melee, Superior DMG(Smash), Foe -Speed, -Defense, Combo Builder",
   "icon": "brawling_lowkick.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -685,6 +685,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Stalker_Melee.Brawling"
 }

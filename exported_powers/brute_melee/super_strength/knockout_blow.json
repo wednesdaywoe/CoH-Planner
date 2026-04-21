@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Knockout Blow",
   "display_fullname": "Brute Melee Super Strength Knockout Blow",
-  "display_help": "H3W4FL668QJWYZZMFTRHSU36X3",
-  "display_short_help": "T8DKP3JR8VL4WUM8ZCZXXHNPSZ",
+  "display_help": "You can perform a Knockout Blow on your opponent. This punch does Superior damage, and has a great chance of Holding your target.",
+  "display_short_help": "Melee, DMG(Smashing), Foe Hold",
   "icon": "superstrength_knockoutblow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -265,6 +265,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Brute_Melee.Super_Strength"
 }

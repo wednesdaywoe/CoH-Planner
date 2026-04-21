@@ -5,27 +5,27 @@
   "short_help": "Ice Armor",
   "icon": "ice_armor_set.ico",
   "powers": [
-    "Chilling_Embrace",
-    "Energy_Absorption",
-    "Glacial_Armor",
-    "Hibernate",
-    "Hoarfrost",
-    "Ice_Armor",
-    "Icicles",
-    "Permafrost",
-    "Rime_Ice",
-    "Wet_Ice"
+    "Brute_Defense.Ice_Armor.Chilling_Embrace",
+    "Brute_Defense.Ice_Armor.Energy_Absorption",
+    "Brute_Defense.Ice_Armor.Glacial_Armor",
+    "Brute_Defense.Ice_Armor.Hibernate",
+    "Brute_Defense.Ice_Armor.Hoarfrost",
+    "Brute_Defense.Ice_Armor.Ice_Armor",
+    "Brute_Defense.Ice_Armor.Icicles",
+    "Brute_Defense.Ice_Armor.Permafrost",
+    "Brute_Defense.Ice_Armor.Rime_Ice",
+    "Brute_Defense.Ice_Armor.Wet_Ice"
   ],
   "available_level": [
+    3,
+    19,
+    15,
+    29,
     0,
     0,
+    27,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9
   ]
 }

@@ -5,17 +5,17 @@
   "short_help": "Psionic Mastery",
   "icon": "psionic_mastery_domingator_set.ico",
   "powers": [
-    "Indomitable_Will",
-    "Link_Minds",
-    "Mind_Over_Body",
-    "Psionic_Tornado",
-    "World_of_Confusion"
+    "Epic.Psionic_Mastery_Domingator.Indomitable_Will",
+    "Epic.Psionic_Mastery_Domingator.Link_Minds",
+    "Epic.Psionic_Mastery_Domingator.Mind_Over_Body",
+    "Epic.Psionic_Mastery_Domingator.Psionic_Tornado",
+    "Epic.Psionic_Mastery_Domingator.World_of_Confusion"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    34,
+    37,
+    43,
+    40
   ]
 }

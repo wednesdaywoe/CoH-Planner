@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Share Pain",
   "display_fullname": "Mastermind Buff Pain Domination Share Pain",
-  "display_help": "6FE2ZWWL8LSFY9ZSKKYQ8LFX7A",
+  "display_help": "Share Pain draws away some of an ally's anguish caused by their wounds, but damages the user. The pain caused by this power causes the user to go into a frenzy, briefly increasing their damage output, however the user cannot be healed and will have their regeneration rate greatly diminished for a short time.",
   "display_short_help": "Ally Strong Heal, Self Moderate DMG(Special), +DMG",
   "icon": "paindomination_sharepain.png",
   "auto_issue": false,
@@ -295,6 +295,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Mastermind_Buff.Pain_Domination"
 }

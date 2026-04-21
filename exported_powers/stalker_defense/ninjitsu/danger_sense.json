@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Danger Sense",
   "display_fullname": "Stalker Defense Ninjitsu Danger Sense",
-  "display_help": "9UPRC3CNB2DGWHNETE3FYAWGSA",
+  "display_help": "You become more evasive against ranged and area attacks while you have Danger Sense activated. This will increase your Defense versus ranged and Area of Effect attacks as long as it is active. Your Danger Sense also allow you to perceive stealthy foes and resist Defense DeBuffs.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +DEF(Ranged, AoE), +Perception, Res(DeBuff DEF)",
   "icon": "ninjitsu_dangersense.png",
   "auto_issue": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Stalker_Defense.Ninjitsu"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Dark Extraction",
   "display_fullname": "Warshade Offensive Umbral Blast Dark Extraction",
-  "display_help": "56RGB8CT8SU6WAV9FXEA4Y9G3X",
+  "display_help": "Defeated foes are ripe for the picking. A Warshade can extract the essence from a defeated villain and infuse it with Nictus energy. The extracted energy is an echo of the target's life force, and although it is not sentient, the infused Nictus energy does give it a rudimentary spark of life. Eventually, the extracted entity will fade away into nothingness.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Summon Essence: Ranged Moderate DMG (Negative)",
   "icon": "umbralblast_darkextraction.png",
   "auto_issue": false,
@@ -115,6 +115,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

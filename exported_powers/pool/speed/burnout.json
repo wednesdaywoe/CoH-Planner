@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Burnout",
   "display_fullname": "Pool Speed Burnout",
-  "display_help": "AAZ5TK4BPNV4WDN9LYV53RR7QX",
+  "display_help": "Burnout allows you to instantly recharge all of your Primary and Secondary powers. Burnout is very expensive in terms of endurance, and reduces your maximum endurance slightly for 60 seconds after use.<br><br>You must be at least level 14 and have two other Speed Powers before selecting Burnout.<br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Self +Recharge",
   "icon": "superspeed_burnout.png",
   "auto_issue": false,
@@ -106,6 +106,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Speed"
 }

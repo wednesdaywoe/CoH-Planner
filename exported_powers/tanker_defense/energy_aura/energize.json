@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Energize",
   "display_fullname": "Tanker Defense Energy Aura Energize",
-  "display_help": "T36B3GHSCHW3YCVVG68XYEBVJQ",
+  "display_help": "You can channel a tremendous amount of energy through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time.",
   "display_short_help": "Self Endurance Discount, Heal, +Regen",
   "icon": "energyaura_energize.png",
   "auto_issue": false,
@@ -132,6 +132,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Tanker_Defense.Energy_Aura"
 }

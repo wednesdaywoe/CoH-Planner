@@ -5,25 +5,25 @@
   "short_help": "Martial Arts",
   "icon": "martial_arts_set.ico",
   "powers": [
-    "Cobra_Strike",
-    "Crane_Kick",
-    "Crippling_Axe_Kick",
-    "Dragons_Tail",
-    "Eagles_Claw",
-    "Focus_Chi",
-    "Storm_Kick",
-    "Thunder_Kick",
-    "Warriors_Provocation"
+    "Tanker_Melee.Martial_Arts.Cobra_Strike",
+    "Tanker_Melee.Martial_Arts.Crane_Kick",
+    "Tanker_Melee.Martial_Arts.Crippling_Axe_Kick",
+    "Tanker_Melee.Martial_Arts.Dragons_Tail",
+    "Tanker_Melee.Martial_Arts.Eagles_Claw",
+    "Tanker_Melee.Martial_Arts.Focus_Chi",
+    "Tanker_Melee.Martial_Arts.Storm_Kick",
+    "Tanker_Melee.Martial_Arts.Thunder_Kick",
+    "Tanker_Melee.Martial_Arts.Warriors_Provocation"
   ],
   "available_level": [
+    3,
+    15,
+    27,
+    19,
+    29,
+    23,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9
   ]
 }

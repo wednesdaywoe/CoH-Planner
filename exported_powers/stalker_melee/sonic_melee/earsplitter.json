@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Earsplitter",
   "display_fullname": "Stalker Melee Sonic Melee Earsplitter",
-  "display_help": "JKYGE6L5G32MWFNZQ2UY6Y24YS",
-  "display_short_help": "JUG3VKWUMST5YHNKSTJYV6QY9X",
+  "display_help": "You generate an earsplitting sound wave right in the face of your foe, inflicting great damage. It has a good chance of causing a migraine, leaving them shaking in pain and helpless. This power will inflict 20% bonus damage against Attuned targets.",
+  "display_short_help": "Melee, DMG(Energy/Smash), Foe Chance for Hold",
   "icon": "sonicmanipulation_earsplitter",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -825,6 +825,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Stalker_Melee.Sonic_Melee"
 }

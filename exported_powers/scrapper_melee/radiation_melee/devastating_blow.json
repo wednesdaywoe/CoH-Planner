@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Devastating Blow",
   "display_fullname": "Scrapper Melee Radiation Melee Devastating Blow",
-  "display_help": "SRB27LSBQS29WDC5TUK5J4EY9X",
-  "display_short_help": "64LR4VJTNHKCYFNVBGJAZ4SX22",
+  "display_help": "You hammer your foe with a brutal smashing attack charged with a lethal dose of radiation. Your target will suffer Extreme Energy and Smashing damage, will have its defense reduced and will be disoriented for a short time. Affected enemies will be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.",
+  "display_short_help": "Melee, DMG(Energy/Smash), Foe -Def, Disorient, Special",
   "icon": "radiationmelee_devastatingblow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -605,6 +605,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Scrapper_Melee.Radiation_Melee"
 }

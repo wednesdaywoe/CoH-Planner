@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Dark Nova Bolt",
   "display_fullname": "Warshade Offensive Umbral Blast Dark Nova Bolt",
-  "display_help": "JNPDM6A4KRWRYVX8BWYMF2F6R2",
+  "display_help": "A very quick, but low damage attack that lowers your target's attack and movement speed. This power is only available while in Dark Nova Form.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_shadowbolt.png",
   "auto_issue": true,
@@ -192,6 +192,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

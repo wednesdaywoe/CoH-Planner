@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Divine Avalanche",
   "display_fullname": "Tanker Melee Katana Parry",
-  "display_help": "8JUHPUWASKYCWGXVSGAM4LQ6F3",
-  "display_short_help": "RM62BML7ZVWFWHMMJGYQLBDNXA",
+  "display_help": "You can use your katana to parry incoming melee attacks and then quickly return the favor. Divine Avalanche does minor damage, but every successful hit will increase your Defense against melee and lethal attacks for a short while.",
+  "display_short_help": "Melee, DMG(Lethal), Self +DEF (Melee, Lethal)",
   "icon": "katana_parry.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -203,6 +203,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Tanker_Melee.Katana"
 }

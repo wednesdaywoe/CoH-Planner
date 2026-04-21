@@ -3,10 +3,10 @@
   "full_name": "Blaster_Ranged.Psychic_Blast.Psionic_Dart",
   "short_name": "Psionic_Dart",
   "type": "Click",
-  "display_name": "X9DZ48YVZJBLWELYTU4934HM92",
+  "display_name": "Psionic Darts",
   "display_fullname": "Blaster Ranged Psychic Blast Psionic Dart",
-  "display_help": "MAAJWGFF75Q2Y6CBYT69XGWLD3",
-  "display_short_help": "ZQAVEZF5W482YGN4FV5EWZGSTA",
+  "display_help": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed, but has a very fast attack rate.",
+  "display_short_help": "Ranged, DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_psychicscream.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -221,6 +221,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Blaster_Ranged.Psychic_Blast"
 }

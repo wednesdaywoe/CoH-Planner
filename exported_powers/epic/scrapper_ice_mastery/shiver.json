@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shiver",
   "display_fullname": "Epic Scrapper Ice Mastery Shiver",
-  "display_help": "VLHCP7Z5RXPPWUMZ627T35RYTS",
+  "display_help": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
   "display_short_help": "Ranged (Cone), Foe -SPD, -Recharge",
   "icon": "ice_mastery_shiver",
   "auto_issue": false,
@@ -153,6 +153,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Scrapper_Ice_Mastery"
 }

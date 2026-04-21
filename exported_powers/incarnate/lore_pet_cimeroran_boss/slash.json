@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Slash",
   "display_fullname": "Incarnate Lore Pet Cimeroran Boss Slash",
-  "display_help": "3HRFPHWTKPLAYBZX9QBP84HR6X",
+  "display_help": "You perform a quick Slash that can reduce a target's Defense, making him easier to hit. This attack causes moderate damage, but has a quick recharge time.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Melee, Moderate Dam(Lethal), Foe -DEF",
   "icon": "sword_slash.png",
   "auto_issue": false,

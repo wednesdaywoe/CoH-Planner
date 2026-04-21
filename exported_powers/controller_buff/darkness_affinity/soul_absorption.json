@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Soul Absorption",
   "display_fullname": "Controller Buff Darkness Affinity Soul Absorption",
-  "display_help": "NADMUNLYDPJTYUZNGMC759NVGQ",
+  "display_help": "You drain the essence of both nearby conscious and defeated foes to cause you and your allies to regenerate and recovery much more quickly. The more defeated foes affected, the more powerful the regeneration and recovery effect will be.",
   "display_short_help": "PBAoE Team +Regen, +Recovery, Foe -To Hit",
   "icon": "darknessaffinity_soulabsorption.png",
   "auto_issue": false,
@@ -129,6 +129,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Controller_Buff.Darkness_Affinity"
 }

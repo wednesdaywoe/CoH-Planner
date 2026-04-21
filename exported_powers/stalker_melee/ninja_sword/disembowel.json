@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Soaring Dragon",
   "display_fullname": "Stalker Melee Ninja Sword Disembowel",
-  "display_help": "55PZATLUCL7CW5XPUWTRXEYFBS",
-  "display_short_help": "MP8D4LFGKL2HW7LJFAAENZ7HXW",
+  "display_help": "You perform a powerful Soaring Dragon maneuver that deals a great amount of lethal damage, and can knock a target up into the air. This attack can reduce a target's Defense, making them easier to hit.",
+  "display_short_help": "Melee, DMG(Lethal), Foe Knockup, -DEF",
   "icon": "katana_disembowel.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -440,6 +440,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Stalker_Melee.Ninja_Sword"
 }

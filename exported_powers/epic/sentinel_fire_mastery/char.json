@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Char",
   "display_fullname": "Epic Sentinel Fire Mastery Char",
-  "display_help": "XKTLB3PDEKGTWAB79XH46RNCMZ",
-  "display_short_help": "FQTWUXWYPBN6Y2NCBDR5Y6TP9A",
+  "display_help": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DoT(Fire), Foe Hold",
   "icon": "firetrap_hold",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -306,6 +306,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Sentinel_Fire_Mastery"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Essence Drain",
   "display_fullname": "Warshade Offensive Umbral Blast Essence Drain",
-  "display_help": "JHYK984VXEPMWEX4D6XSRKF4J2",
-  "display_short_help": "EVJJEVTGYHHEW3M9JCVEU6U5YS",
+  "display_help": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to you. Foes drained in this manner have their attack rate and movement speed reduced.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Light DMG(Negative), Foe -Recharge, -SPD; Self +HP",
   "icon": "umbralblast_essencedrain.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -166,6 +166,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

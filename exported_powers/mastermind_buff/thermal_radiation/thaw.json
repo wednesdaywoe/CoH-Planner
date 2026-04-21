@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Thaw",
   "display_fullname": "Mastermind Buff Thermal Radiation Thaw",
-  "display_help": "9YQWDSMF33V9YQMZLUJNG43EN3",
+  "display_help": "Warms an ally and frees him from any Disorient, Hold, Sleep, Slow, Confuse, Fear and Immobilize effects and leaves them resistant to such effects for a good while. Thaw also grants the target some resistance to Cold damage. Some of the effects of this power will improve with Multiple applications and as you advance in level.",
   "display_short_help": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Cold, Slow)",
   "icon": "thermalradiation_thaw.png",
   "auto_issue": false,
@@ -327,6 +327,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Mastermind_Buff.Thermal_Radiation"
 }

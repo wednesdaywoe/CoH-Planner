@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Mind Probe",
   "display_fullname": "Dominator Assault Psionic Assault Mind Probe",
-  "display_help": "3UPKQY5HLU7QW6LN5ECCAHKQQA",
+  "display_help": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wrecks havoc on your foes synapses, dealing high Psionic Damage while reducing their attack speed.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mindprobe.png",
   "auto_issue": false,

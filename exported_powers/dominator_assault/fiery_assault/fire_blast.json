@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fire Blast",
   "display_fullname": "Dominator Assault Fiery Assault Fire Blast",
-  "display_help": "337BGDZNPBQGW3ZN7W24T86X6S",
+  "display_help": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, High DMG(Fire)",
   "icon": "fireassault_fireblast.png",
   "auto_issue": false,
@@ -188,6 +188,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Dominator_Assault.Fiery_Assault"
 }

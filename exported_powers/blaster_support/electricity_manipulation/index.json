@@ -5,25 +5,25 @@
   "short_help": "Electricity Manipulation",
   "icon": "electricity_manipulation_set.ico",
   "powers": [
-    "Build_Up",
-    "Charged_Brawl",
-    "Electric_Fence",
-    "Havok_Punch",
-    "Lightning_Clap",
-    "Lightning_Field",
-    "Power_Sink",
-    "Shocking_Grasp",
-    "Thunder_Strike"
+    "Blaster_Support.Electricity_Manipulation.Build_Up",
+    "Blaster_Support.Electricity_Manipulation.Charged_Brawl",
+    "Blaster_Support.Electricity_Manipulation.Electric_Fence",
+    "Blaster_Support.Electricity_Manipulation.Havok_Punch",
+    "Blaster_Support.Electricity_Manipulation.Lightning_Clap",
+    "Blaster_Support.Electricity_Manipulation.Lightning_Field",
+    "Blaster_Support.Electricity_Manipulation.Power_Sink",
+    "Blaster_Support.Electricity_Manipulation.Shocking_Grasp",
+    "Blaster_Support.Electricity_Manipulation.Thunder_Strike"
   ],
   "available_level": [
+    3,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9,
+    19,
+    27,
+    23,
+    29,
+    15
   ]
 }

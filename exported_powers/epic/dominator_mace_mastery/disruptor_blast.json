@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Disruptor Blast",
   "display_fullname": "Epic Dominator Mace Mastery Disruptor Blast",
-  "display_help": "F9TVNL8HMJNGW8XVKYNZ7AW5TX",
-  "display_short_help": "4BAPY52BWGJJY7B4F4H8ZL2T62",
+  "display_help": "Fires a tremendous charge of kinetic energy from your Bane Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
   "icon": "arachnos_patron_rangedaoemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -282,6 +282,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Dominator_Mace_Mastery"
 }

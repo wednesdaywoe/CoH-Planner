@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Frozen Aura",
   "display_fullname": "Stalker Melee Ice Melee Frozen Aura",
-  "display_help": "GNSLWGTV3VSDW3CUN5G6Z9UAYS",
-  "display_short_help": "4CFZ2PP3JUYHW7VYCQKBLBJ2KZ",
+  "display_help": "Your mastery of cold enables you to dramatically lower the temperature immediately around you. When you perform a Frozen Aura, nearby foes will be frozen within a fragile casing of ice and suffer a moderate amount of cold damage. These frozen foes will break free if attacked. Frozen Aura deals moderate damage.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
+  "display_short_help": "PBAoE, DMG(Cold), Foe Sleep",
   "icon": "icyonslaught_frozenaura.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -560,6 +560,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Stalker_Melee.Ice_Melee"
 }

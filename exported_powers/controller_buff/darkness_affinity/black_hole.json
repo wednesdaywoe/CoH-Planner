@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Black Hole",
   "display_fullname": "Controller Buff Darkness Affinity Black Hole",
-  "display_help": "7LEQ77FUUNPYYQZBWMPMZ67FR2",
+  "display_help": "Opens up a Black Hole to the Netherworld that temporarily pulls in all foes within its grasp. If the main target is immune to the pull, it will become phase shifted and are completely intangible. They are hard to see, and cannot affect or be affected by those in normal space.",
   "display_short_help": "Ranged (Targeted AoE), Foe Intangible",
   "icon": "darkmiasma_blackhole.png",
   "auto_issue": false,
@@ -383,6 +383,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Controller_Buff.Darkness_Affinity"
 }

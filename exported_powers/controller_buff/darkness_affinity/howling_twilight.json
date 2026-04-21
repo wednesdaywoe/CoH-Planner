@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Howling Twilight",
   "display_fullname": "Controller Buff Darkness Affinity Howling Twilight",
-  "display_help": "E3A6H3G9AEK9YLNEH7CCQLH7H2",
+  "display_help": "Activating this power channels the power of the Netherworld to weaken your foes, in an attempt to revive all nearby fallen allies. You must stand near your defeated allies to revive them, then select a foe. The selected foe and all nearby foes will be Slowed, Disoriented, have their Regeneration rate reduced and drained of some life. Revived allies will have full Hit Points and Endurance and will be protected from XP Debt for 90 seconds.",
   "display_short_help": "Ranged (AoE), Minor DMG(Negative), Target Slow, -Recharge, -Regen, Disorient, Ally Rez",
   "icon": "darkmiasma_howlingtwilight.png",
   "auto_issue": false,
@@ -322,6 +322,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Controller_Buff.Darkness_Affinity"
 }

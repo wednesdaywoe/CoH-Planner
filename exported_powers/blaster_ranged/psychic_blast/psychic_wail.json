@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psychic Wail",
   "display_fullname": "Blaster Ranged Psychic Blast Psychic Wail",
-  "display_help": "J7C9S8TMV2FPYTZXUYFFC5S3UQ",
-  "display_short_help": "FK34AZPPLYLBW5CW8LC7AXTL9A",
+  "display_help": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes which deals Extreme Psionic damage. Those that survive will have a severely reduced attack rate and may be left Disoriented.",
+  "display_short_help": "PBAoE, DMG(Psionic), Foe Disorient -Recharge",
   "icon": "psychicblast_psychicwail.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -252,6 +252,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Blaster_Ranged.Psychic_Blast"
 }

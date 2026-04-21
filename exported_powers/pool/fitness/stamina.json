@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Stamina",
   "display_fullname": "Pool Fitness Stamina",
-  "display_help": "3BDUCYNDFYKEYZCP346KLT6CVX",
+  "display_help": "You recover Endurance slightly more quickly than normal.<br><br>This ability is always on and does not cost any Endurance.<br><br>You must be at least level 20 and have two other Fitness Powers before selecting Stamina.",
   "display_short_help": "Auto: Self +Recovery",
   "icon": "fitness_stamina.png",
   "auto_issue": false,
@@ -80,6 +80,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Pool.Fitness"
 }

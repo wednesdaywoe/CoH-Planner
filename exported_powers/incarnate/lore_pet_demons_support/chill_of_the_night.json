@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Chill of the Night",
   "display_fullname": "Incarnate Lore Pet Demons Support Chill of the Night",
-  "display_help": "RQE2T3KHVTXWW2M23WS9NLU492",
+  "display_help": "The Chill of the Night surrounds you, reducing your Accuracy, and slowly dealing Negative Damage to you.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "-ACC",
   "icon": "darkmiasma_chillofthenight.png",
   "auto_issue": false,

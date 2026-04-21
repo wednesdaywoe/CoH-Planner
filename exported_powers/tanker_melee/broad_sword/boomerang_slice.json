@@ -3,10 +3,10 @@
   "full_name": "Tanker_Melee.Broad_Sword.Boomerang_Slice",
   "short_name": "Boomerang_Slice",
   "type": "Click",
-  "display_name": "HZSWQT2RZYPQYCVYT54C3K8BA3",
+  "display_name": "Boomerang Slice",
   "display_fullname": "Tanker Melee Broad Sword Boomerang Slice",
-  "display_help": "96H3HZ4RVEVRWYLA2VBUNF7NKX",
-  "display_short_help": "DC8L3XVDGBRXY8ZEBPQKZ2WGXZ",
+  "display_help": "You toss your sword outward in a Boomerang Slice, attacking all enemies in front of you. This attack wounds your opponents, causing them to take minor damage over time and reduces their defense and damage resistance.<br><br>Every <color #fcfc95>15 seconds</color>, you can perform a more powerful, Rending Slice on your main target.<br><br><color #fcfc95>This power is mutually exclusive from Slice.</color>",
+  "display_short_help": "Melee (Cone), DMG(Lethal), Foe -DEF, -RES",
   "icon": "broadsword_boomerangslice",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -476,6 +476,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Tanker_Melee.Broad_Sword"
 }

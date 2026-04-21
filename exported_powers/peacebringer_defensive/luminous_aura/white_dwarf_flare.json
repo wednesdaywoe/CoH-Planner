@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "White Dwarf Flare",
   "display_fullname": "Peacebringer Defensive Luminous Aura White Dwarf Flare",
-  "display_help": "TK25YDSXV2NQYYCCHURS6A4RZA",
-  "display_short_help": "9VW7MLW53T3SWSVQJJJLHCVBGZ",
+  "display_help": "You channel the might of your Kheldian energy into the very Earth itself. The ground erupts and cracks with luminous energy, blasting all nearby foes, knocking them back and reducing their defense. This power is only available while in White Dwarf Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE Melee, Light DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousaura_solarflare.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -320,6 +320,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

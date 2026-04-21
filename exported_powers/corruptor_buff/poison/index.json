@@ -5,25 +5,25 @@
   "short_help": "Poison",
   "icon": "poison_set.ico",
   "powers": [
-    "Alkaloid",
-    "Antidote",
-    "Elixir_of_Life",
-    "Envenom",
-    "Neurotoxic_Breath",
-    "Paralytic_Poison",
-    "Poison_Trap",
-    "Venomous_Gas",
-    "Weaken"
+    "Corruptor_Buff.Poison.Alkaloid",
+    "Corruptor_Buff.Poison.Antidote",
+    "Corruptor_Buff.Poison.Elixir_of_Life",
+    "Corruptor_Buff.Poison.Envenom",
+    "Corruptor_Buff.Poison.Neurotoxic_Breath",
+    "Corruptor_Buff.Poison.Paralytic_Poison",
+    "Corruptor_Buff.Poison.Poison_Trap",
+    "Corruptor_Buff.Poison.Venomous_Gas",
+    "Corruptor_Buff.Poison.Weaken"
   ],
   "available_level": [
     0,
+    19,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9,
+    23,
+    27,
+    29,
+    3
   ]
 }

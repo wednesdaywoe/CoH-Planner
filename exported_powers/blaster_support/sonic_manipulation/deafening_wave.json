@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Deafening Wave",
   "display_fullname": "Blaster Support Sonic Manipulation Deafening Wave",
-  "display_help": "BNX7VHPHQJQ4YVZ2PSBYZCD43S",
-  "display_short_help": "PEHW7MWQUQ65W2CT9ACU5TMHYQ",
+  "display_help": "You create a large field of sonic waves, causing damage to all foes around you. It has a moderate chance of causing migraines, leaving them shaking in pain and helpless.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
   "icon": "sonicmanipulation_deafeningcry",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -294,6 +294,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Blaster_Support.Sonic_Manipulation"
 }

@@ -5,25 +5,25 @@
   "short_help": "Dark Melee",
   "icon": "dark_melee_set.ico",
   "powers": [
-    "Dark_Consumption",
-    "Midnight_Grasp",
-    "Shadow_Maul",
-    "Shadow_Punch",
-    "Siphon_Life",
-    "Smite",
-    "Soul_Drain",
-    "Taunt",
-    "Touch_of_Fear"
+    "Tanker_Melee.Dark_Melee.Dark_Consumption",
+    "Tanker_Melee.Dark_Melee.Midnight_Grasp",
+    "Tanker_Melee.Dark_Melee.Shadow_Maul",
+    "Tanker_Melee.Dark_Melee.Shadow_Punch",
+    "Tanker_Melee.Dark_Melee.Siphon_Life",
+    "Tanker_Melee.Dark_Melee.Smite",
+    "Tanker_Melee.Dark_Melee.Soul_Drain",
+    "Tanker_Melee.Dark_Melee.Taunt",
+    "Tanker_Melee.Dark_Melee.Touch_of_Fear"
   ],
   "available_level": [
+    27,
+    29,
+    3,
     0,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    23,
+    9,
+    19
   ]
 }

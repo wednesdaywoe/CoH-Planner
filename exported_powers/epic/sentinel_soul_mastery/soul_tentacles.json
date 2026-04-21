@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Soul Tentacles",
   "display_fullname": "Epic Sentinel Soul Mastery Soul Tentacles",
-  "display_help": "NR3VGMHFS8XRYPZSEMMKJCNNJW",
-  "display_short_help": "987C6E2U7NW8YYB2PBDSTTA8AS",
+  "display_help": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life.",
+  "display_short_help": "Ranged (Cone), DMG(Negative), Foe Immobilize",
   "icon": "arachnos_patron_coneimmobilize.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -421,6 +421,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Soul_Mastery"
 }

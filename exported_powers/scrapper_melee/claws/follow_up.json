@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Follow Up",
   "display_fullname": "Scrapper Melee Claws Follow Up",
-  "display_help": "BK2B3RS8JSHVWXMTE3QFDKYN92",
-  "display_short_help": "KP67H6ARHS6ZY7NFUL5B2HKFKX",
+  "display_help": "You perform a feint attack that deals moderate damage. After this attack hits, it gives you a large bonus Damage and chance to hit for a brief time.",
+  "display_short_help": "Melee, DMG(Lethal), Self +DMG +To Hit",
   "icon": "claws_feint.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -347,6 +347,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Scrapper_Melee.Claws"
 }

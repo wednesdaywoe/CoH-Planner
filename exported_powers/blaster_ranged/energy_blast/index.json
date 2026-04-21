@@ -5,25 +5,25 @@
   "short_help": "Energy Blast",
   "icon": "energy_blast_set.ico",
   "powers": [
-    "Aim",
-    "Energy_Torrent",
-    "Explosive_Blast",
-    "Nova",
-    "Power_Blast",
-    "Power_Bolt",
-    "Power_Burst",
-    "Power_Push",
-    "Sniper_Blast"
+    "Blaster_Ranged.Energy_Blast.Aim",
+    "Blaster_Ranged.Energy_Blast.Energy_Torrent",
+    "Blaster_Ranged.Energy_Blast.Explosive_Blast",
+    "Blaster_Ranged.Energy_Blast.Nova",
+    "Blaster_Ranged.Energy_Blast.Power_Blast",
+    "Blaster_Ranged.Energy_Blast.Power_Bolt",
+    "Blaster_Ranged.Energy_Blast.Power_Burst",
+    "Blaster_Ranged.Energy_Blast.Power_Push",
+    "Blaster_Ranged.Energy_Blast.Sniper_Blast"
   ],
   "available_level": [
+    11,
+    1,
+    21,
+    25,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    5,
+    17,
+    7
   ]
 }

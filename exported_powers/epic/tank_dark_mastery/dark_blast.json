@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Blast",
   "display_fullname": "Epic Tank Dark Mastery Dark Blast",
-  "display_help": "TTVRHHMTQ9LDWKZFTP6LVY9GJ2",
-  "display_short_help": "MNSRPKV3Q3NHW3XS3NZZZZGQSQ",
+  "display_help": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy. You must be level 35 and have Torrent or Petrifying Gaze before selecting this power. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Negative), Foe -ACC",
   "icon": "dark_mastery_darkblast",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -202,6 +202,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Tank_Dark_Mastery"
 }

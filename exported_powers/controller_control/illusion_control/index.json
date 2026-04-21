@@ -5,25 +5,25 @@
   "short_help": "Illusion Control",
   "icon": "illusion_control_set.ico",
   "powers": [
-    "Blind",
-    "Deceive",
-    "Decoy",
-    "Flash",
-    "Group_Invisibility",
-    "Invisibility",
-    "Phantasm",
-    "Spectral_Terror",
-    "Spectral_Wounds"
+    "Controller_Control.Illusion_Control.Blind",
+    "Controller_Control.Illusion_Control.Deceive",
+    "Controller_Control.Illusion_Control.Decoy",
+    "Controller_Control.Illusion_Control.Flash",
+    "Controller_Control.Illusion_Control.Group_Invisibility",
+    "Controller_Control.Illusion_Control.Invisibility",
+    "Controller_Control.Illusion_Control.Phantasm",
+    "Controller_Control.Illusion_Control.Spectral_Terror",
+    "Controller_Control.Illusion_Control.Spectral_Wounds"
   ],
   "available_level": [
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    1,
+    17,
+    5,
+    11,
+    7,
+    25,
+    21,
     0
   ]
 }

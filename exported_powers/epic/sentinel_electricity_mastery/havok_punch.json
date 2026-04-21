@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Havoc Punch",
   "display_fullname": "Epic Sentinel Electricity Mastery Havok Punch",
-  "display_help": "G64XCXJWSNWVYKZTNMZ7MR8A6S",
-  "display_short_help": "GMGKEFXF6YFWYEZFBKRVMFT24A",
+  "display_help": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with a greater damage. Havoc Punch can may knock down targets, drain some Endurance from your target, or even overload their synapses, leaving them writhing for a moment. A portion of the drained Endurance may be given back to you. Disturbing an overloaded target will disperse the electrical charge and release them.",
+  "display_short_help": "Melee, DMG(Smash/Energy), Foe Sleep, -End, Knock back",
   "icon": "electriccontrol_havokpunch.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -523,6 +523,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Electricity_Mastery"
 }

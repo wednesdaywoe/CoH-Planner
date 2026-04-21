@@ -5,19 +5,19 @@
   "short_help": "Experimentation",
   "icon": "experimentation_set.ico",
   "powers": [
-    "Adrenal_Booster",
-    "Corrosive_Vial",
-    "Experimental_Injection",
-    "Jaunt",
-    "Speed_of_Sound",
-    "Toxic_Dart"
+    "Pool.Experimentation.Adrenal_Booster",
+    "Pool.Experimentation.Corrosive_Vial",
+    "Pool.Experimentation.Experimental_Injection",
+    "Pool.Experimentation.Jaunt",
+    "Pool.Experimentation.Speed_of_Sound",
+    "Pool.Experimentation.Toxic_Dart"
   ],
   "available_level": [
+    19,
+    13,
     0,
-    0,
-    0,
-    0,
-    0,
+    4294967295,
+    3,
     0
   ]
 }

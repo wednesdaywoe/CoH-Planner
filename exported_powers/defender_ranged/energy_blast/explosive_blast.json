@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Explosive Blast",
   "display_fullname": "Defender Ranged Energy Blast Explosive Blast",
-  "display_help": "2HK4VCQZTZ4YWLVRNNSL8LCVJQ",
-  "display_short_help": "H3QBHZHEUPJ2YNLLRJTFE8C9ZQ",
+  "display_help": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
   "icon": "powerblast_explosion.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -265,6 +265,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Defender_Ranged.Energy_Blast"
 }

@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Evasive Maneuvers",
   "display_fullname": "Pool Flight Afterburner",
-  "display_help": "5VKMMPVV2256W7ZJMKVXJA43HS",
-  "display_short_help": "QNECZ39F5BR4W6B2M3WFFGZ27Q",
+  "display_help": "While Fly, Hover or Group Fly are active, Evasive Maneuvers increases fly speed and movement control. It will also grant resistance against knockback and protection against -Fly and Immobilization.<br><br>Evasive Maneuvers' flight speed buff stacks with other flight powers, and isn't suppressed by combat.<br><br><color #fcfc95>Notes: Evasive Maneuvers provides a moderate amount of Defense even while on the ground, but this defense is lost if you attack, buff allies, give an order to pets or interact with a mission objective.<br><br>You must be at least level 14 and have two other Flight Powers before selecting Evasive Maneuvers.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle: Self +FlySpeed, Res(-Fly, Immobilize, Knockback), +Def(Special), +Flight Control",
   "icon": "flight_evasivemaneuvers.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -404,6 +404,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Flight"
 }

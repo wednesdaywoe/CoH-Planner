@@ -5,19 +5,19 @@
   "short_help": "Teleportation",
   "icon": "blind_set.ico",
   "powers": [
-    "Long_Range_Teleport",
-    "Long_Range_Teleport_PVP",
-    "prestige_Base_Teleport",
-    "prestige_Base_Teleport_PVP",
-    "Rapid_Response_Member_Teleport",
-    "Rapid_Response_Member_Teleport_PVP",
-    "Recall_Friend",
-    "Shadow_Step",
-    "Shadow_Step_LowEnd",
-    "Teleport",
-    "Teleport_Foe",
-    "Teleport_Hover",
-    "Teleport_LowEnd"
+    "Redirects.Pool_Teleportation.Long_Range_Teleport",
+    "Redirects.Pool_Teleportation.Long_Range_Teleport_PVP",
+    "Redirects.Pool_Teleportation.prestige_Base_Teleport",
+    "Redirects.Pool_Teleportation.prestige_Base_Teleport_PVP",
+    "Redirects.Pool_Teleportation.Rapid_Response_Member_Teleport",
+    "Redirects.Pool_Teleportation.Rapid_Response_Member_Teleport_PVP",
+    "Redirects.Pool_Teleportation.Recall_Friend",
+    "Redirects.Pool_Teleportation.Shadow_Step",
+    "Redirects.Pool_Teleportation.Shadow_Step_LowEnd",
+    "Redirects.Pool_Teleportation.Teleport",
+    "Redirects.Pool_Teleportation.Teleport_Foe",
+    "Redirects.Pool_Teleportation.Teleport_Hover",
+    "Redirects.Pool_Teleportation.Teleport_LowEnd"
   ],
   "available_level": [
     0,
@@ -29,9 +29,9 @@
     0,
     0,
     0,
+    3,
     0,
     0,
-    0,
-    0
+    3
   ]
 }

@@ -5,13 +5,13 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_generic_set.ico",
   "powers": [
-    "Essence_Small",
-    "Fly",
-    "Lore_Data_Strength",
-    "Lore_Evasion",
-    "Lore_Power",
-    "Lore_Protection",
-    "Super_Leap"
+    "Incarnate.Lore_Pet_Generic.Essence_Small",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Super_Leap"
   ],
   "available_level": [
     0,

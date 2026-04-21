@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Hurl Boulder",
   "display_fullname": "Tanker Melee Stone Melee Hurl Boulder",
-  "display_help": "27CMHGC69A4GWYZMGU5PCT2AAW",
-  "display_short_help": "ZA2ATBHQTVJHWUMRSQV2XJFA9S",
+  "display_help": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals high damage, and can knock foes back and even drop them out of the air if they are flying.",
+  "display_short_help": "Ranged, DMG(Smash), Foe Knockback, -Fly",
   "icon": "stonemelee_hurlboulder.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -283,6 +283,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Tanker_Melee.Stone_Melee"
 }

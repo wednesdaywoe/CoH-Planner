@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Mind Link",
   "display_fullname": "Incarnate Lore Pet Arachnos Support Mind Link",
-  "display_help": "ZN4FDGQLUVTYYDB949A6PZ4GWS",
+  "display_help": "Your Accuracy and Perception is improved due to the Fortunata Seer's Mind Link.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "+ACC, Res(Confuse), +Perception",
   "icon": "fortunatateamwork_mindlink.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Impale",
   "display_fullname": "Tanker Melee Spines Impale",
-  "display_help": "XPC69LDAXCPMWTM3VU9KMKSNSZ",
-  "display_short_help": "RDHNPMY2ZUQRYCZKG3B3B5XK7Z",
+  "display_help": "You can throw a single large Spine at a targeted foe. This Spine does only moderate damage, but carries a large amount of the Spine toxin. A successful attack can completely Immobilize most foes, as well as Slowing them, reducing their regeneration, and dealing Toxic poison damage for a long duration that starts strong and decays over time. Impale can also bring down flying entities.",
+  "display_short_help": "Ranged, DMG(Lethal), DoT(Toxic), Immobilize, -Recharge, -Fly",
   "icon": "quills_impale.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -381,6 +381,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Tanker_Melee.Spines"
 }

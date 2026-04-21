@@ -5,19 +5,19 @@
   "short_help": "Speed",
   "icon": "speed_set.ico",
   "powers": [
-    "Burnout",
-    "Flurry",
-    "Hasten",
-    "SpeedPhase",
-    "Super_Speed",
-    "Whirlwind"
+    "Pool.Speed.Burnout",
+    "Pool.Speed.Flurry",
+    "Pool.Speed.Hasten",
+    "Pool.Speed.SpeedPhase",
+    "Pool.Speed.Super_Speed",
+    "Pool.Speed.Whirlwind"
   ],
   "available_level": [
+    13,
     0,
     0,
-    0,
-    0,
-    0,
-    0
+    4294967295,
+    3,
+    13
   ]
 }

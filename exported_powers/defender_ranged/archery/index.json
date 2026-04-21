@@ -5,25 +5,25 @@
   "short_help": "Archery",
   "icon": "archery_set.ico",
   "powers": [
-    "Aim",
-    "Aimed_Shot",
-    "Blazing_Arrow",
-    "Explosive_Arrow",
-    "Fistful_of_Arrows",
-    "Rain_of_Arrows",
-    "Ranged_Shot",
-    "Snap_Shot",
-    "Stunning_Shot"
+    "Defender_Ranged.Archery.Aim",
+    "Defender_Ranged.Archery.Aimed_Shot",
+    "Defender_Ranged.Archery.Blazing_Arrow",
+    "Defender_Ranged.Archery.Explosive_Arrow",
+    "Defender_Ranged.Archery.Fistful_of_Arrows",
+    "Defender_Ranged.Archery.Rain_of_Arrows",
+    "Defender_Ranged.Archery.Ranged_Shot",
+    "Defender_Ranged.Archery.Snap_Shot",
+    "Defender_Ranged.Archery.Stunning_Shot"
   ],
   "available_level": [
+    15,
     0,
+    9,
+    19,
+    3,
+    29,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27
   ]
 }

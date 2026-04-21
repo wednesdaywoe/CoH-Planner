@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Liquefy",
   "display_fullname": "Mastermind Buff Sonic Resonance Liquefy",
-  "display_help": "S544BTTBSB4VWJXC39EZJRNYP3",
+  "display_help": "You unleash a barrage of sonic waves on the Earth itself, generating a powerful, localized earthquake. Most foes that pass through the location will fall down. The violent shaking also reduces their chance to hit and Defense.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Ranged (Location AoE), Foe Knockback, Hold, -To Hit, -DEF",
   "icon": "sonicdebuff_dropknockback.png",
   "auto_issue": false,
@@ -127,6 +127,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Mastermind_Buff.Sonic_Resonance"
 }

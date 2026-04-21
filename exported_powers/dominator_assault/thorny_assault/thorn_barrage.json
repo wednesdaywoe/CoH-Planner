@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Thorn Barrage",
   "display_fullname": "Dominator Assault Thorny Assault Thorn Barrage",
-  "display_help": "C5MGVQ45R248W2M6R6P2NNEK7A",
-  "display_short_help": "M48WSP4DL4QUY6BB5HRQEPCQV3",
+  "display_help": "A devastating attack, Thorn Barrage unleashes your Thorns at high velocity causing severe damage at range. The impact of this attack can knock most foes on their back. Thorn poison deals additional Toxic damage and can reduce your foes Defense.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, Extreme DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_thornbarrage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -265,6 +265,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Dominator_Assault.Thorny_Assault"
 }

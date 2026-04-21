@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Proton Sweep",
   "display_fullname": "Stalker Melee Radiation Melee Proton Sweep",
-  "display_help": "JKBS3YZESD22Y7VKNTNY7VYREA",
-  "display_short_help": "TC6UQX52FBSLYQV4QWAKS9VNXZ",
+  "display_help": "You release a cloud of deadly radioactive particles in front of you inflicting Moderate Energy and Toxic damage over a short time as well as reducing the targets' defense. Affected enemies have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.",
+  "display_short_help": "Melee Cone, DoT(Energy/Toxic), Foe -Def, Special",
   "icon": "radiationmelee_protonsweep.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -496,6 +496,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Stalker_Melee.Radiation_Melee"
 }

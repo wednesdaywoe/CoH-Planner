@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Conserve Energy",
   "display_fullname": "Peacebringer Defensive Luminous Aura Conserve Energy",
-  "display_help": "4XKR2LNLDNHXWYLX6T4MPY9D4W",
+  "display_help": "You can focus for a moment to Conserve your Energy. After activating this power, you expend less Endurance on all other powers for a while.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self Endurance Discount",
   "icon": "luminousaura_conserveenergy.png",
   "auto_issue": false,
@@ -119,6 +119,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

@@ -3,10 +3,10 @@
   "full_name": "Redirects.Storm_Blast.Nukenado_Skin",
   "short_name": "Nukenado_Skin",
   "type": "Auto",
-  "display_name": "5687AEK35PC6YDMTZRJ63CBJG2",
+  "display_name": "Storm Eye",
   "display_fullname": "Redirects Storm Blast Nukenado Skin",
-  "display_help": "BWJZJU5RNW4DW3MFWR3SHH8FU3",
-  "display_short_help": "5687AEK35PC6YDMTZRJ63CBJG2",
+  "display_help": "The eye of a powerful storm is a breathtaking sight.",
+  "display_short_help": "Storm Eye",
   "icon": "stormblast_categoryfive.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -105,6 +105,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Redirects.Storm_Blast"
 }

@@ -5,17 +5,17 @@
   "short_help": "Dark Mastery",
   "icon": "sentinel_dark_mastery_set.ico",
   "powers": [
-    "Darkest_Night",
-    "Engulfing_Darkness",
-    "Netherworld_Grasp",
-    "Netherworld_Tentacles",
-    "Smite"
+    "Epic.Sentinel_Dark_Mastery.Darkest_Night",
+    "Epic.Sentinel_Dark_Mastery.Engulfing_Darkness",
+    "Epic.Sentinel_Dark_Mastery.Netherworld_Grasp",
+    "Epic.Sentinel_Dark_Mastery.Netherworld_Tentacles",
+    "Epic.Sentinel_Dark_Mastery.Smite"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    43,
+    40,
+    37,
+    34,
+    34
   ]
 }

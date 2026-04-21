@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Radiation Siphon",
   "display_fullname": "Redirects Rad Melee Radiation Siphon AoE",
-  "display_help": "QL6XLNH9PSFJYEC5VXFLALJ46Z",
-  "display_short_help": "TMMZFN4BKQEBYFL3GGTQS7FTC2",
+  "display_help": "You pummel your foe with a deadly smashing attack dealing High Energy and Smashing damage and reducing their defense. Hitting Contaminated targets will also heal you for a large amount of health over 3 seconds and remove the Contaminated effect from the target. However, uncontaminated targets have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Melee, Minor DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
   "icon": "radiationmelee_radiationsiphon.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -127,6 +127,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Redirects.Rad_Melee"
 }

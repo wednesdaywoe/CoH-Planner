@@ -5,25 +5,25 @@
   "short_help": "Katana",
   "icon": "katana_set.ico",
   "powers": [
-    "Build_Up",
-    "Disembowel",
-    "Hack",
-    "Head_Splitter",
-    "Parry",
-    "Slash",
-    "Slice",
-    "Taunt",
-    "Whirling_Sword"
+    "Brute_Melee.Katana.Build_Up",
+    "Brute_Melee.Katana.Disembowel",
+    "Brute_Melee.Katana.Hack",
+    "Brute_Melee.Katana.Head_Splitter",
+    "Brute_Melee.Katana.Parry",
+    "Brute_Melee.Katana.Slash",
+    "Brute_Melee.Katana.Slice",
+    "Brute_Melee.Katana.Taunt",
+    "Brute_Melee.Katana.Whirling_Sword"
   ],
   "available_level": [
+    5,
+    21,
     0,
+    25,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    11,
+    17
   ]
 }

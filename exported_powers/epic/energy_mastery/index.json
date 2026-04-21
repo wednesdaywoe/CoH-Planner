@@ -5,17 +5,17 @@
   "short_help": "Energy Mastery",
   "icon": "energy_mastery_set.ico",
   "powers": [
-    "Conserve_Power",
-    "Energy_Torrent",
-    "Focused_Accuracy",
-    "Laser_Beam_Eyes",
-    "Physical_Perfection"
+    "Epic.Energy_Mastery.Conserve_Power",
+    "Epic.Energy_Mastery.Energy_Torrent",
+    "Epic.Energy_Mastery.Focused_Accuracy",
+    "Epic.Energy_Mastery.Laser_Beam_Eyes",
+    "Epic.Energy_Mastery.Physical_Perfection"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    43,
+    34,
+    37,
+    40
   ]
 }

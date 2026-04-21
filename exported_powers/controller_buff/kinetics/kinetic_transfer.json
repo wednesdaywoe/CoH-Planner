@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fulcrum Shift",
   "display_fullname": "Controller Buff Kinetics Kinetic Transfer",
-  "display_help": "2JDLCCW2CTT4YJBUND4M35BRU3",
+  "display_help": "Fulcrum Shift drains the power of a targeted foe and all foes nearby, transferring it to all adjacent allies, the caster, and those near the caster. Affected foes will deal less damage, while your affected allies will deal more. The more foes that are affected, the more power your allies receive. Fulcrum Shift can dramatically turn the tide of a melee battle.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Foe AoE), Foe -DMG, Team +DMG",
   "icon": "kineticboost_kinetictransfer.png",
   "auto_issue": false,
@@ -120,6 +120,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Controller_Buff.Kinetics"
 }

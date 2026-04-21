@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Quill Blast",
   "display_fullname": "Incarnate Lore Pet Rularuu Boss Quill Blast",
-  "display_help": "V3BN9AH32E9PWGVEE44PFP9NBW",
+  "display_help": "The Sentry can hurl its quills in a cone arc and impale a group of foes. Impaled foes may be knocked down.<br><br><color #fcfc95>Notes: Quill Blast is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Cone Lethal, Med Damage, Knockback",
   "icon": "quills_quillthrowing.png",
   "auto_issue": false,

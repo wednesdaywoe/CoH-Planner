@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "One Thousand Cuts",
   "display_fullname": "Scrapper Melee Dual Blades High Low",
-  "display_help": "2NEY9LM77QFSWWNNSGYTE2JCG3",
-  "display_short_help": "F3ABSVDSUSSKY8BD68SJJNB6KS",
+  "display_help": "Unleashes a flurry of attacks on all foes in a cone in front of you, dealing moderate lethal damage to each foe hit. This power is the opening move for the Sweep combination attack.<br><br><color #ff7f00>Sweep: One Thousand Cuts > Power Slice > Typhoon's Edge.</color>",
+  "display_short_help": "Melee (Cone), DMG(Lethal), Foe Knockback",
   "icon": "dualblades_highlow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -672,6 +672,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Scrapper_Melee.Dual_Blades"
 }

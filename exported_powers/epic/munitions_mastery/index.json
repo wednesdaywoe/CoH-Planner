@@ -1,21 +1,21 @@
 {
   "key": "Epic.Munitions_Mastery",
-  "display_name": "V8TDQM45Q897W2XJVTGYEJFQBW",
-  "help": "9MJEZHRFTDH5W2MUW3NQANHWJQ",
-  "short_help": "V8TDQM45Q897W2XJVTGYEJFQBW",
+  "display_name": "Arsenal Mastery",
+  "help": "You have Mastery of a wide arsenal of weapons, giving you access to uncommon payloads and equipment.",
+  "short_help": "Arsenal Mastery",
   "icon": "munitions_mastery_set.ico",
   "powers": [
-    "Body_Armor",
-    "Cryo_Freeze_Ray",
-    "LRM_Rocket",
-    "Sleep_Grenade",
-    "Surveillance"
+    "Epic.Munitions_Mastery.Body_Armor",
+    "Epic.Munitions_Mastery.Cryo_Freeze_Ray",
+    "Epic.Munitions_Mastery.LRM_Rocket",
+    "Epic.Munitions_Mastery.Sleep_Grenade",
+    "Epic.Munitions_Mastery.Surveillance"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    34,
+    43,
+    37,
+    40
   ]
 }

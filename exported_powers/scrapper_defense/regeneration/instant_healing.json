@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Instant Healing",
   "display_fullname": "Scrapper Defense Regeneration Instant Healing",
-  "display_help": "468NNRXS6GQXY8C2RSR4SV7JXX",
+  "display_help": "When you activate this power, you can regenerate your health at an astounding rate. This boost to your Regeneration Rate lasts about a minute and takes a long time to recharge once used.<br><br>This power is mutually exclusive from Reactive Regeneration.",
   "display_short_help": "Click: Self +Regeneration",
   "icon": "regeneration_instanthealing.png",
   "auto_issue": false,
@@ -238,6 +238,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Scrapper_Defense.Regeneration"
 }

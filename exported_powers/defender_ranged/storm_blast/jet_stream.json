@@ -3,10 +3,10 @@
   "full_name": "Defender_Ranged.Storm_Blast.Jet_Stream",
   "short_name": "Jet_Stream",
   "type": "Click",
-  "display_name": "J4GVCS86WDQ6YEZBAMWXDFU9Y3",
+  "display_name": "Jet Stream",
   "display_fullname": "Defender Ranged Storm Blast Jet Stream",
-  "display_help": "X3JXU4AL6MJBY6LZ99ANXLF4UX",
-  "display_short_help": "SAAPXXTWNQ38Y9VZ5MZE8KW86W",
+  "display_help": "You call forth a cone of rapidly moving air that repels enemies, causing Smashing damage. <br><br>Enemies who are within a <color #fcfc95>Storm Cell</color> will not be repelled, but instead will be knocked down.",
+  "display_short_help": "Ranged (Cone), DMG(Smashing), Foe Knockdown or Repel",
   "icon": "stormblast_jetstream.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -461,6 +461,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Defender_Ranged.Storm_Blast"
 }

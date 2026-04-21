@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Salt Crystals",
   "display_fullname": "Epic Earth Mastery Salt Crystals",
-  "display_help": "S8CNWZNM3DH3YDC2MQJSZFK62X",
+  "display_help": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
   "display_short_help": "PBAoE, Foe Sleep, -DEF",
   "icon": "earth_mastery_saltcrystals",
   "auto_issue": false,
@@ -293,6 +293,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Earth_Mastery"
 }

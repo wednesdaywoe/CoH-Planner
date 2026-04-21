@@ -5,7 +5,7 @@
   "short_help": "Leaping",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Spring_Attack"
+    "Redirects.Pool_Leaping.Spring_Attack"
   ],
   "available_level": [
     0

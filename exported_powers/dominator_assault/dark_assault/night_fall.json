@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Night Fall",
   "display_fullname": "Dominator Assault Dark Assault Night Fall",
-  "display_help": "9TMY5ZVZ8R4CYRLBQ32UKFSBRZ",
+  "display_help": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Cone), Moderate DMG(Negative), Foe -To Hit",
   "icon": "darknessassault_nightfall.png",
   "auto_issue": false,
@@ -189,6 +189,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Dominator_Assault.Dark_Assault"
 }

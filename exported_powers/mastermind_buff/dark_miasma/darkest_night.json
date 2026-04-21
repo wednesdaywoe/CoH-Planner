@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Darkest Night",
   "display_fullname": "Mastermind Buff Dark Miasma Darkest Night",
-  "display_help": "HM43GXKSVBMGYKCD4WW82N6EG2",
+  "display_help": "While active, you channel Negative Energy onto a targeted foe. While Darkest Night is active the target, and all foes nearby, will have their chance to hit and Damage potential reduced as long as you keep the power active.",
   "display_short_help": "Toggle: Ranged (Targeted AoE), Foe -DMG, -To Hit",
   "icon": "darkmiasma_darkestnight.png",
   "auto_issue": false,
@@ -118,6 +118,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Mastermind_Buff.Dark_Miasma"
 }

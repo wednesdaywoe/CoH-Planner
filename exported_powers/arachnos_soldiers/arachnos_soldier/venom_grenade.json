@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Venom Grenade",
   "display_fullname": "Arachnos Soldiers Arachnos Soldier Venom Grenade",
-  "display_help": "PVX48FH9535UY7MJXHDCKQCF4S",
-  "display_short_help": "HXAHNSJPD62NY3BFGAHQLCG6YA",
+  "display_help": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect.<br><br><color #fcfc95>Notes: If you take this power you cannot also take the Crab Spider version.</color>",
+  "display_short_help": "Ranged (Targeted AoE), DoT(Toxic), Foe -Res(All)",
   "icon": "arachnossoldier_venomgrenade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -65,6 +65,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Arachnos_Soldiers.Arachnos_Soldier"
 }

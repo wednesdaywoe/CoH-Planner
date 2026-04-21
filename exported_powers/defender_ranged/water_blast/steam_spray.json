@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Steam Spray",
   "display_fullname": "Defender Ranged Water Blast Steam Spray",
-  "display_help": "U6F2YHUYJQQEY3BS97TN57CWPX",
-  "display_short_help": "MNGKNU66VGXHYJMFJ79KFLFTNS",
+  "display_help": "You spray scalding hot steam in a cone in front of you badly burning affected targets. Steam Spray causes Fire damage, Fire damage over time and reduces the target's Defense slightly. Steam Spray grants 1 stack of Tidal Power.",
+  "display_short_help": "Ranged (Cone), DMG(Fire), Foe -Defense, DoT(Fire), +Wet, Self +Tidal Power",
   "icon": "waterblast_steamspray.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -307,6 +307,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Defender_Ranged.Water_Blast"
 }

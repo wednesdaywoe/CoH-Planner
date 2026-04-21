@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Sonic Barrier",
   "display_fullname": "Controller Buff Sonic Debuff Sonic Barrier",
-  "display_help": "RZZFD8V8BP78YQCR2PRWXWMUP3",
+  "display_help": "This shield dramatically reduces the damage an ally takes from Smashing, Lethal, and Toxic attacks for a limited time. You cannot stack multiple Sonic Barriers on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Sonic Haven. You cannot use this power on yourself.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Ally +Res(Smash, Lethal, Toxic)",
   "icon": "sonicdebuff_protectphysical.png",
   "auto_issue": false,

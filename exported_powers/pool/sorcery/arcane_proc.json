@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Arcane Power",
   "display_fullname": "Pool Sorcery Arcane Proc",
-  "display_help": "LMXGTZM83XD7WXBQAS2BPF85N3",
+  "display_help": "Fate has granted you with a boost to your Arcane Power, empowering your next use of Arcane Bolt",
   "display_short_help": "Special",
   "icon": "sorcerypool_arcanebolt.png",
   "auto_issue": true,
@@ -186,6 +186,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Pool.Sorcery"
 }

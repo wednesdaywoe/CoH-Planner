@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Heavy Mallet",
   "display_fullname": "Blaster Support Earth Manipulation Heavy Mallet",
-  "display_help": "D65B78S3YYVWWWX7CMWXHM5JQA",
+  "display_help": "Your control over the earth allows you to form a mallet of solid stone. This Stone Mallet deals high damage and can knock down weak foes.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee, High DMG(Smashing), Knockback",
   "icon": "earthmanip_heavymallet",
   "auto_issue": false,

@@ -5,25 +5,25 @@
   "short_help": "Staff Fighting",
   "icon": "staff_fighting_set.ico",
   "powers": [
-    "Assassins_Staff",
-    "Build_Up",
-    "Eye_of_the_Storm",
-    "Guarded_Spin",
-    "Mercurial_Blow",
-    "Placate",
-    "Precise_Strike",
-    "Serpents_Reach",
-    "Sky_Splitter"
+    "Stalker_Melee.Staff_Fighting.Assassins_Staff",
+    "Stalker_Melee.Staff_Fighting.Build_Up",
+    "Stalker_Melee.Staff_Fighting.Eye_of_the_Storm",
+    "Stalker_Melee.Staff_Fighting.Guarded_Spin",
+    "Stalker_Melee.Staff_Fighting.Mercurial_Blow",
+    "Stalker_Melee.Staff_Fighting.Placate",
+    "Stalker_Melee.Staff_Fighting.Precise_Strike",
+    "Stalker_Melee.Staff_Fighting.Serpents_Reach",
+    "Stalker_Melee.Staff_Fighting.Sky_Splitter"
   ],
   "available_level": [
+    5,
+    7,
+    17,
+    1,
     0,
+    11,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    25
   ]
 }

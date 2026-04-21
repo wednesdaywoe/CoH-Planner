@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Midnight Grasp",
   "display_fullname": "Dominator Assault Dark Assault Midnight Grasp",
-  "display_help": "YXMT27HW3PKAWZMFSVNX2Q2MS3",
+  "display_help": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "darknessassault_midnightgrasp.png",
   "auto_issue": false,
@@ -264,6 +264,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Dominator_Assault.Dark_Assault"
 }

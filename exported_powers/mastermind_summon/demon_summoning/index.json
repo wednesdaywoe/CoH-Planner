@@ -5,25 +5,25 @@
   "short_help": "Demon Summoning",
   "icon": "demon_summoning_set.ico",
   "powers": [
-    "Abyssal_Empowerment",
-    "Corruption",
-    "Crack_Whip",
-    "Enchant_Demon",
-    "Hell_on_Earth",
-    "Lash",
-    "Summon_Demon_Prince",
-    "Summon_Demonlings",
-    "Summon_Demons"
+    "Mastermind_Summon.Demon_Summoning.Abyssal_Empowerment",
+    "Mastermind_Summon.Demon_Summoning.Corruption",
+    "Mastermind_Summon.Demon_Summoning.Crack_Whip",
+    "Mastermind_Summon.Demon_Summoning.Enchant_Demon",
+    "Mastermind_Summon.Demon_Summoning.Hell_on_Earth",
+    "Mastermind_Summon.Demon_Summoning.Lash",
+    "Mastermind_Summon.Demon_Summoning.Summon_Demon_Prince",
+    "Mastermind_Summon.Demon_Summoning.Summon_Demonlings",
+    "Mastermind_Summon.Demon_Summoning.Summon_Demons"
   ],
   "available_level": [
+    25,
     0,
+    7,
+    5,
+    17,
+    1,
+    21,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11
   ]
 }

@@ -5,25 +5,25 @@
   "short_help": "Savage Melee",
   "icon": "savage_melee_set.ico",
   "powers": [
-    "Blood_Thirst",
-    "Hemorrhage",
-    "Maiming_Slash",
-    "Rending_Flurry",
-    "Savage_Leap",
-    "Savage_Strike",
-    "Shred",
-    "Taunt",
-    "Vicious_Slash"
+    "Brute_Melee.Savage_Melee.Blood_Thirst",
+    "Brute_Melee.Savage_Melee.Hemorrhage",
+    "Brute_Melee.Savage_Melee.Maiming_Slash",
+    "Brute_Melee.Savage_Melee.Rending_Flurry",
+    "Brute_Melee.Savage_Melee.Savage_Leap",
+    "Brute_Melee.Savage_Melee.Savage_Strike",
+    "Brute_Melee.Savage_Melee.Shred",
+    "Brute_Melee.Savage_Melee.Taunt",
+    "Brute_Melee.Savage_Melee.Vicious_Slash"
   ],
   "available_level": [
+    5,
+    21,
     0,
+    17,
+    25,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    11,
+    7
   ]
 }

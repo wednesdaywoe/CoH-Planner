@@ -5,25 +5,25 @@
   "short_help": "Willpower",
   "icon": "willpower_set.ico",
   "powers": [
-    "Fast_Healing",
-    "Heightened_Senses",
-    "High_Pain_Tolerance",
-    "Indomitable_Will",
-    "Mind_Over_Body",
-    "Quick_Recovery",
-    "Resurgence",
-    "Rise_to_the_Challenge",
-    "Strength_of_Will"
+    "Tanker_Defense.Willpower.Fast_Healing",
+    "Tanker_Defense.Willpower.Heightened_Senses",
+    "Tanker_Defense.Willpower.High_Pain_Tolerance",
+    "Tanker_Defense.Willpower.Indomitable_Will",
+    "Tanker_Defense.Willpower.Mind_Over_Body",
+    "Tanker_Defense.Willpower.Quick_Recovery",
+    "Tanker_Defense.Willpower.Resurgence",
+    "Tanker_Defense.Willpower.Rise_to_the_Challenge",
+    "Tanker_Defense.Willpower.Strength_of_Will"
   ],
   "available_level": [
+    1,
+    17,
     0,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11,
+    21,
+    7,
+    25
   ]
 }

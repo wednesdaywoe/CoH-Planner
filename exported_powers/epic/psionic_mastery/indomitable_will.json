@@ -6,7 +6,7 @@
   "display_name": "Indomitable Will",
   "display_fullname": "Epic Psionic Mastery Indomitable Will",
   "display_help": "Activating this power greatly boosts your resistance to Sleep, Disorient, Fear and Hold effects for 90 seconds. Indomitable Will also grants a high defense to Psionic based attacks.",
-  "display_short_help": "R5YCZ5A8WKPVW8MZA46U7T3W5S",
+  "display_short_help": "Self Res(Disorient, Hold, Sleep, Fear). DEF(Psionics)",
   "icon": "psionicmastery_indomitablewill.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -170,6 +170,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Psionic_Mastery"
 }

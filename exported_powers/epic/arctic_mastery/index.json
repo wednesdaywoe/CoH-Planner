@@ -5,17 +5,17 @@
   "short_help": "Ice Mastery",
   "icon": "arctic_mastery_set.ico",
   "powers": [
-    "Block_of_Ice",
-    "Chilblain",
-    "Ice_Blast",
-    "Ice_Storm",
-    "Shiver"
+    "Epic.Arctic_Mastery.Block_of_Ice",
+    "Epic.Arctic_Mastery.Chilblain",
+    "Epic.Arctic_Mastery.Ice_Blast",
+    "Epic.Arctic_Mastery.Ice_Storm",
+    "Epic.Arctic_Mastery.Shiver"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    34,
+    37,
+    43,
+    40
   ]
 }

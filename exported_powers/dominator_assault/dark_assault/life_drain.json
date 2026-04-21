@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Life Drain",
   "display_fullname": "Dominator Assault Dark Assault Life Drain",
-  "display_help": "MNBZ4WRCE635WRZXRTA5NUQLJ2",
+  "display_help": "You can tap the power of the Netherworld to steal some life from a target foe and reduce their chance to hit. Some of that stolen life is transferred to you in the form of Hit Points.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Negative), Target -To Hit, Self +HP",
   "icon": "darknessassault_lifedrain.png",
   "auto_issue": false,
@@ -215,6 +215,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Dark_Assault"
 }

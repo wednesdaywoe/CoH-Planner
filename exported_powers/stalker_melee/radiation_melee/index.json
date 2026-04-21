@@ -5,25 +5,25 @@
   "short_help": "Radiation Melee",
   "icon": "radiation_melee_set.ico",
   "powers": [
-    "Assassins_Corruption",
-    "Atom_Smasher",
-    "Build_Up",
-    "Contaminated_Strike",
-    "Devastating_Blow",
-    "Placate",
-    "Proton_Sweep",
-    "Radiation_Siphon",
-    "Radioactive_Smash"
+    "Stalker_Melee.Radiation_Melee.Assassins_Corruption",
+    "Stalker_Melee.Radiation_Melee.Atom_Smasher",
+    "Stalker_Melee.Radiation_Melee.Build_Up",
+    "Stalker_Melee.Radiation_Melee.Contaminated_Strike",
+    "Stalker_Melee.Radiation_Melee.Devastating_Blow",
+    "Stalker_Melee.Radiation_Melee.Placate",
+    "Stalker_Melee.Radiation_Melee.Proton_Sweep",
+    "Stalker_Melee.Radiation_Melee.Radiation_Siphon",
+    "Stalker_Melee.Radiation_Melee.Radioactive_Smash"
   ],
   "available_level": [
+    5,
+    25,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    21,
+    11,
+    1,
+    17,
     0
   ]
 }

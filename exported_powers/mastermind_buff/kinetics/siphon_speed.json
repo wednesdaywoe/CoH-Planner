@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Siphon Speed",
   "display_fullname": "Mastermind Buff Kinetics Siphon Speed",
-  "display_help": "GGXDBXM3NB65YFM3YZ3PZTGQS3",
+  "display_help": "You can Siphon the speed from a targeted foe, Slowing his movement and attack rate while boosting your own.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Foe -Speed, -Rech, Self +Speed, +Rech",
   "icon": "kineticboost_siphonspeed.png",
   "auto_issue": false,
@@ -289,6 +289,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Mastermind_Buff.Kinetics"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Incandescence Partial Radial Invocation",
   "display_fullname": "Incarnate Destiny Incandescence Partial Radial Invocation",
-  "display_help": "T7KXCGRRBPJAYTCWTAGPUNF2UX",
+  "display_help": "Targeted AoE League Teleport, +Healing Received, +Stealth Radius. Foe Knockback, Stun. This power will prompt teammates to accept it if they have enabled Prompt Team Teleport.<br><br><color #fcfc95>Notes: Incandescence Partial Radial Invocation is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Targeted AoE League Teleport, +Healing Received, +Stealth Radius. Foe Knockback, Stun.",
   "icon": "incarnate_destiny_incandescence_rare.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Speed Boost",
   "display_fullname": "Mastermind Buff Kinetics Speed Boost",
-  "display_help": "ZKDUTXGT79ZLYFXMRL4ZMEPB4Q",
-  "display_short_help": "BJS75SZ2P7LAYNLKKF5L2GCAMZ",
+  "display_help": "You can hasten a targeted ally and its nearby allies. The allies' movement speed, attack rate, and Endurance recovery are all greatly increased and they gain resistance to Slow effects. You cannot use this power on yourself.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
+  "display_short_help": "Ranged, Allies +SPD, +Recharge, +Recovery, Res Slow",
   "icon": "kineticboost_speedboost.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -247,6 +247,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Mastermind_Buff.Kinetics"
 }

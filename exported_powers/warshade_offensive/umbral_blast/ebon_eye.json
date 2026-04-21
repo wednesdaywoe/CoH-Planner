@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ebon Eye",
   "display_fullname": "Warshade Offensive Umbral Blast Ebon Eye",
-  "display_help": "7HT3J7JUE7TMWBZENZPJWVF53W",
+  "display_help": "You can emit a beam of dark energy from your eyes, dealing moderate Negative Energy damage. Ebon Eye can also slow your target's attack rate and movement speed. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_eboneye.png",
   "auto_issue": false,

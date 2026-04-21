@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Energize",
   "display_fullname": "Epic Corruptor Mu Mastery Conserve Power",
-  "display_help": "VSNBJY8PH9HHY3XY78EYDJUZBS",
+  "display_help": "You can channel a tremendous amount of electricity through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
   "display_short_help": "Self Endurance Discount, Heal, +Regen",
   "icon": "arachnos_patron_conservepower.png",
   "auto_issue": false,
@@ -132,6 +132,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Corruptor_Mu_Mastery"
 }

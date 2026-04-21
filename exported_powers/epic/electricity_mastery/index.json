@@ -5,17 +5,17 @@
   "short_help": "Electricity Mastery",
   "icon": "electricity_mastery_set.ico",
   "powers": [
-    "Charged_Armor",
-    "Electric_Fence",
-    "Power_Sink",
-    "Shocking_Bolt",
-    "Thunder_Strike"
+    "Epic.Electricity_Mastery.Charged_Armor",
+    "Epic.Electricity_Mastery.Electric_Fence",
+    "Epic.Electricity_Mastery.Power_Sink",
+    "Epic.Electricity_Mastery.Shocking_Bolt",
+    "Epic.Electricity_Mastery.Thunder_Strike"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    34,
+    43,
+    40,
+    34
   ]
 }

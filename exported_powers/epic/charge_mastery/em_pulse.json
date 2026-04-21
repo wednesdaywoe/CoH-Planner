@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "ESD",
   "display_fullname": "Epic Charge Mastery EM Pulse",
-  "display_help": "AWNANV22P2SRWRXZXELNZ2MSDS",
+  "display_help": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and leave them incapacitated and Disoriented for a while. Additionally, most machines and robots will take moderate high damage. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
   "display_short_help": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
   "icon": "electrical_mastery_em_pulse.png",
   "auto_issue": false,
@@ -303,6 +303,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Charge_Mastery"
 }

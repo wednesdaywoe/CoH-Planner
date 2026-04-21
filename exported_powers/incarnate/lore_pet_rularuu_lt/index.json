@@ -5,9 +5,9 @@
   "short_help": "Rularuu",
   "icon": "lore_pet_rularuu_lt_set.ico",
   "powers": [
-    "Pummel",
-    "Scatter_Shards",
-    "Sinew"
+    "Incarnate.Lore_Pet_Rularuu_LT.Pummel",
+    "Incarnate.Lore_Pet_Rularuu_LT.Scatter_Shards",
+    "Incarnate.Lore_Pet_Rularuu_LT.Sinew"
   ],
   "available_level": [
     0,

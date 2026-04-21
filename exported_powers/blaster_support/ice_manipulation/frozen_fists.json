@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Frozen Fists",
   "display_fullname": "Blaster Support Ice Manipulation Frozen Fists",
-  "display_help": "P6KPC5WFKS58YHCCBRQUWRFH72",
+  "display_help": "Frozen Fists encrusts your hands in ice, giving them the ability to quickly inflict moderate damage on villains. The foe's attack and movement speed is Slowed, due to the chills caused by the cold blows.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "icemanipulation_frozenfist.png",
   "auto_issue": false,

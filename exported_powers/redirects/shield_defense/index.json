@@ -5,7 +5,7 @@
   "short_help": "Shield Charge",
   "icon": "blind_set.ico",
   "powers": [
-    "Shield_Charge_AoE"
+    "Redirects.Shield_Defense.Shield_Charge_AoE"
   ],
   "available_level": [
     0

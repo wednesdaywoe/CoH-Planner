@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Grant Invisibility",
   "display_fullname": "Pool Invisibility Grant Invisibility",
-  "display_help": "WKS29ZRMKNB5YMMYCGTFAP6U2S",
+  "display_help": "Grants a targeted teammate or leaguemate Invisibility. The Invisibility lasts about 2 minutes. While your ally is Invisible, he probably will not be detected unless he attacks a target. If he attacks, he is still hard to see and maintains some bonus to Defense to all attacks.<br><br>This power works with other Concealment related powers.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Teammate Stealth, +DEF(All)",
   "icon": "invisibility_groupinvisibility.png",
   "auto_issue": false,

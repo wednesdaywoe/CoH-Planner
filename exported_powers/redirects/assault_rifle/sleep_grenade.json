@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Sleep Grenade",
   "display_fullname": "Redirects Assault Rifle Sleep Grenade",
-  "display_help": "GR7LPWM6K39JWZXUYUUJ75JDGA",
+  "display_help": "All foes that pass this cloud will feel drowsy, slow down and likely fall asleep.",
   "display_short_help": "Sleep Grenade",
   "icon": "arsenalcontrol_cryospray",
   "auto_issue": false,

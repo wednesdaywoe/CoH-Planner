@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Rending Flurry",
   "display_fullname": "Stalker Melee Savage Melee Rending Flurry",
-  "display_help": "YCTVKFSWFFUQY6V482RYC39QVA",
-  "display_short_help": "D442T6LQUW6SYNXH7VKJEV5DRX",
+  "display_help": "You wildly slash at nearby foes to deal moderate lethal damage and cause minor lethal damage over time. This power consumes all Blood Frenzy and will deal additional damage per stack of Blood Frenzy consumed. If you have 5 stacks of Blood Frenzy while activating this power, its radius is greatly increased, but causes you to become Exhausted for a short time. While exhausted you cannot gain Blood Frenzy.",
+  "display_short_help": "PBAoE, DMG(Lethal), Foe DoT (Lethal), -Blood Frenzy",
   "icon": "savagemelee_rendingflurry.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -60,6 +60,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Stalker_Melee.Savage_Melee"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Focused Power Bolt",
   "display_fullname": "Sentinel Ranged Energy Blast Focused Power Bolt",
-  "display_help": "FWFB32B39J2HY8Z346WJTXGLTS",
-  "display_short_help": "Y3U93CASX2E9WXZVYWHUEUZZ6Q",
+  "display_help": "A focused and very accurate blast that deals tremendous damage.",
+  "display_short_help": "Ranged, DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_heavy",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -406,6 +406,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Sentinel_Ranged.Energy_Blast"
 }

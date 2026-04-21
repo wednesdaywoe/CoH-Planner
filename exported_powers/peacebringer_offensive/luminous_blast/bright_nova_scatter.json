@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bright Nova Scatter",
   "display_fullname": "Peacebringer Offensive Luminous Blast Bright Nova Scatter",
-  "display_help": "HEHAKLVEDEMXYDB358YRE2KUTZ",
-  "display_short_help": "CLQR84UVY3SDW7CMFRFY96T4QZ",
+  "display_help": "Bright Nova Scatter sends bolts of Kheldian light energy to multiple targets at once within a cone area in front of the caster. Bright Nova Scatter deals moderate energy damage to each affected target and reduces their defense. This power is only available while in Bright Nova Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Cone), Light DMG(Energy), Foe -DEF",
   "icon": "luminousblast_protonscatter.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

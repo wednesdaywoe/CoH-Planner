@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Deflection",
   "display_fullname": "Tanker Defense Shield Defense Active Defense",
-  "display_help": "HW83LBH5ZZWNWPMK8YQLEGUV4X",
+  "display_help": "Your mastery of the shield allows you to easily deflect melee attacks, and attacks that do get through your ironclad defenses tend to do less damage. While Deflection is active the user will gain defense to melee attacks and some minor resistance to lethal and smashing damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +DEF(Melee), +Res(Lethal, Smashing)",
   "icon": "shielddefense_activedefense.png",
   "auto_issue": false,

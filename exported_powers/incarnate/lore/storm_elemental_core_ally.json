@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Storm Elemental Core Ally",
   "display_fullname": "Incarnate Lore Storm Elemental Core Ally",
-  "display_help": "DETLEPF7CSPSYMXDMN43CUBCNQ",
+  "display_help": "Draws forth an essence of a vanquished Tempest Elemental from the Well of the Furies to serve you for 5 minutes.<br><br><color #fcfc95>Notes: Storm Elemental Core Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Summon Storm Elemental Boss Essence",
   "icon": "incarnate_lore_elementals_uncommon.png",
   "auto_issue": false,

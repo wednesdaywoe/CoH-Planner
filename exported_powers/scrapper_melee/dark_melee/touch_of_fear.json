@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Touch of Fear",
   "display_fullname": "Scrapper Melee Dark Melee Touch of Fear",
-  "display_help": "48H444UH5BJHYQM62RKNM2W7RQ",
-  "display_short_help": "XS5FWBADK5X3Y9XEXZC8F8HBJ2",
+  "display_help": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit.",
+  "display_short_help": "Melee (Targeted AoE), DMG(Negative), Fear, Foe -To Hit",
   "icon": "shadowfighting_touchoffearaoe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -95,6 +95,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Scrapper_Melee.Dark_Melee"
 }

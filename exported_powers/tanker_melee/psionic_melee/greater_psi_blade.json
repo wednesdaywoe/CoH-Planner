@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Greater Psi Blade",
   "display_fullname": "Tanker Melee Psionic Melee Greater Psi Blade",
-  "display_help": "SQ3NVVRU94HQY4MM83ZQA5LJNW",
-  "display_short_help": "T8WY2JJSBBESYPV45JCR3TA75W",
+  "display_help": "You focus and create a more powerful Psi Blade projection before slashing at your foe to deal superior Psionic and Lethal damage. The affected foe will have their recharge reduced moderately and be left held for a short time. Greater Psi Blade will cause additional damage and cause this power's hold to be even more powerful if you have Insight. Using this power removes Insight.",
+  "display_short_help": "Melee, DMG(Psionic/Lethal), Foe -Rech, Hold; Self -Insight",
   "icon": "psionicmelee_greaterpsiblade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -447,6 +447,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Tanker_Melee.Psionic_Melee"
 }

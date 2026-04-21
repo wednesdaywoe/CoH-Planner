@@ -3,10 +3,10 @@
   "full_name": "Epic.Sentinel_Electricity_Mastery.Lightning_Field",
   "short_name": "Lightning_Field",
   "type": "Toggle",
-  "display_name": "Q8UHECTW6MG8WLL2FYPW4VLPJX",
+  "display_name": "Shocking Field",
   "display_fullname": "Epic Sentinel Electricity Mastery Lightning Field",
-  "display_help": "E3HSSZLMCE2TW6C8TWC4UM8GX2",
-  "display_short_help": "NMTRWNCQH8RFWTMSJ4Q6YK6AAX",
+  "display_help": "While active, you emit a storm of electricity that constantly damages all nearby foes. Enemies shocked by this field will continue to take electric damage over time for a while. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
+  "display_short_help": "Toggle: PBAoE, DoT(Energy), Foe -End",
   "icon": "electriccontrol_lightningfield.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -282,6 +282,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Sentinel_Electricity_Mastery"
 }

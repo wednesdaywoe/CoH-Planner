@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Starless Step",
   "display_fullname": "Warshade Offensive Umbral Blast Starless Step",
-  "display_help": "E3CCDDUDB6X2YBVUS36AE8ZTN2",
+  "display_help": "You can Teleport moderate distances extremely quickly. These quick teleports surprise foes, giving your next attack a small ToHit advantage. This power can be used up to 3 times in a row before it starts recharging. Note that Starless is unaffected by Range changes.<br><br><color #fcfc95>Notes: Starless Step is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged (Location), Self Teleport, ToHit",
   "icon": "umbralblast_starlessstep.png",
   "auto_issue": false,
@@ -177,6 +177,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

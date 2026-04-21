@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Sweeping Strike",
   "display_fullname": "Stalker Melee Dual Blades Special 2",
-  "display_help": "KEJ2TGJVJKUAY6NU2Y4YGHLEQZ",
-  "display_short_help": "UX7TS542L8KTW7NSB8T24K5AJX",
+  "display_help": "You make a sweeping strike with your blades, hitting all foes in a cone in front of you and dealing moderate lethal damage to each. This power is the opening move for the Weaken combination attack.<br><br><color #ff7f00>Weaken: Sweeping Strike > Power Slice > One Thousand Cuts.</color>",
+  "display_short_help": "Melee (Cone), DMG(Lethal)",
   "icon": "dualblades_special2.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -592,6 +592,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Stalker_Melee.Dual_Blades"
 }

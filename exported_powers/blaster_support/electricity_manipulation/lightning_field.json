@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Force of Thunder",
   "display_fullname": "Blaster Support Electricity Manipulation Lightning Field",
-  "display_help": "XQMRVE3S7SPAWWVZJUW7TKTUAS",
+  "display_help": "You can channel the raw force of a thunderbolt through you knocking enemies back and potentially disorienting them.",
   "display_short_help": "PBAoE, Foe Disorient, Knockback",
   "icon": "electricitymanipulation_lightningclap.png",
   "auto_issue": false,
@@ -292,6 +292,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Electricity_Manipulation"
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Soothing Aura",
   "display_fullname": "Controller Buff Pain Domination Soothing Aura",
-  "display_help": "23X9J5RW4JVHYULLG38T5SRY3Z",
+  "display_help": "While this power is active all nearby allies will be healed by Soothing Aura every couple of seconds for a small portion of their health.<br><br><color #fcfc95>Notes: While on PvP maps this power will grant affected targets a regeneration effect instead of a periodic heal.).</color>",
   "display_short_help": "Toggle: PBAoE, Team Minor Periodic Heal",
   "icon": "paindomination_soothingaura.png",
   "auto_issue": false,
@@ -84,6 +84,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Controller_Buff.Pain_Domination"
 }

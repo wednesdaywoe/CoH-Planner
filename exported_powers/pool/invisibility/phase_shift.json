@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Phase Shift",
   "display_fullname": "Pool Invisibility Phase Shift",
-  "display_help": "94HPL5MH8T88W8BZJKGJT5BND3",
+  "display_help": "You can Phase Shift to become out of sync with normal space. Although you do not become completely Invisible, you are translucent and hard to see. You are intangible, and cannot affect or be affected by those in normal space. Although this power is a toggle, you cannot remain Phase Shifted for more than 30 seconds, even if you still have Endurance.<br><br>You must be at least level 14 and have two other Concealment Powers before selecting Phase Shift.<br><br><color #fcfc95>Notes: This power cannot be used with Rest.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Self Intangible",
   "icon": "invisibility_phaseshift.png",
   "auto_issue": false,
@@ -264,6 +264,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Invisibility"
 }

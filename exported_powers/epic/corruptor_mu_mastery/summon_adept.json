@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Summon Adept",
   "display_fullname": "Epic Corruptor Mu Mastery Summon Adept",
-  "display_help": "XK6TFQC5QTA7WFXDZCSYC5THD2",
-  "display_short_help": "VQBQY5DNQLLWWFBZYXAAZ4DFJS",
+  "display_help": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Mu Adept: Ranged DMG(Energy)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -92,6 +92,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Corruptor_Mu_Mastery"
 }

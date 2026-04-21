@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Black Dwarf Smite",
   "display_fullname": "Inherent Inherent Black Dwarf Smite",
-  "display_help": "FYJTW9MC4V4KY6LCNW7AG7YZN3",
-  "display_short_help": "J3HWPKMUMMAGY2XSSLA3SD35JS",
+  "display_help": "Black Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. Black Dwarf Smite can also bring down fliers, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Melee, Light DMG(Negative/Smash), Foe -Recharge, -SPD, -Fly, Disorient",
   "icon": "umbralaura_blackdwarfsmite.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -496,6 +496,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Inherent.Inherent"
 }

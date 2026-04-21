@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Total Focus",
   "display_fullname": "Tanker Melee Energy Melee Total Focus",
-  "display_help": "TWRFU3WPRAUGW4ZB3QP9LK8HUA",
-  "display_short_help": "TQH6JVFBT8RNYSLE6UQQCNVJ7Q",
+  "display_help": "Total Focus is complete mastery over Energy Melee. This melee attack is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. This power will enter Energy Focus mode.",
+  "display_short_help": "Melee, DMG(Smash/Energy), Foe Disorient, +Energy Focus",
   "icon": "powerpunch_totalfocus.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -272,6 +272,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Tanker_Melee.Energy_Melee"
 }

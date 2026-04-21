@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shatter",
   "display_fullname": "Brute Melee War Mace Shatter",
-  "display_help": "43W4D2H98JBFY2ZXW82MJGMSVZ",
-  "display_short_help": "V56UMPNZ9PLEYTL5VVPN8A6MU2",
+  "display_help": "You attempt to Shatter the bones of your opponent by striking them with all your might. This attack will deal great damage and can knock foes back a great ways. The power of this attack can actually extend a short distance through multiple foes.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee (Cone), DMG(Smashing), Knockback",
   "icon": "mace_shatter.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -254,6 +254,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Brute_Melee.War_Mace"
 }

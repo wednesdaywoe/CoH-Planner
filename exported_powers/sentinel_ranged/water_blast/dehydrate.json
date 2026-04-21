@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dehydrate",
   "display_fullname": "Sentinel Ranged Water Blast Dehydrate",
-  "display_help": "MTMHY3ES2LMPYJXSV5W9FYBPR3",
-  "display_short_help": "2VAZJYW9LTQMYSXWYWMKWH3FB2",
+  "display_help": "You rapidly dehydrate your target, causing Cold and Smashing damage, reducing their movement speed and defense as well as causing a measure of Cold damage over time. You are then healed over time for a moderate amount of health. Dehydrate grants 1 stack of Tidal Power if you have 2 or less. Dehydrate will consume all stacks of Tidal Power if you have 3, but the power's heal over time effect is increased by 50%.",
+  "display_short_help": "Ranged, DMG(Cold/Smash), Foe -Speed, -Defense, DoT(Cold), Self +Heal Over Time, +/- Tidal Power",
   "icon": "waterblast_dehydrate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -613,6 +613,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Sentinel_Ranged.Water_Blast"
 }

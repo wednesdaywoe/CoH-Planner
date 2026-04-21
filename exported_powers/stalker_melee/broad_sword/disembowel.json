@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Disembowel",
   "display_fullname": "Stalker Melee Broad Sword Disembowel",
-  "display_help": "GP5ANWEH9GZ4WSZBUG5BW4PUPS",
-  "display_short_help": "ELLYZHYVGXTFYAMMYREHDUL83S",
+  "display_help": "You perform a powerful Disemboweling maneuver that deals a great amount of damage, and can knock a target up into the air. This attack can reduce a target's Defense, making him easier to hit.",
+  "display_short_help": "Melee, DMG(Lethal), Knockup, Foe -DEF",
   "icon": "sword_disembowel.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -451,6 +451,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Stalker_Melee.Broad_Sword"
 }

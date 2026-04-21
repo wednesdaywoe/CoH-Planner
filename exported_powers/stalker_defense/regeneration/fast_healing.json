@@ -5,8 +5,8 @@
   "type": "Auto",
   "display_name": "Fast Healing",
   "display_fullname": "Stalker Defense Regeneration Fast Healing",
-  "display_help": "G37DMNBM7A24YULK2JL223DP3Z",
-  "display_short_help": "NVPRDZGSAGZJYCBHRFM5RD8DX2",
+  "display_help": "You heal Hit Points and recovery Endurance at a faster rate than normal. This power is always on.",
+  "display_short_help": "Auto: Self +Regeneration, +Recovery",
   "icon": "regeneration_fasthealing.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -156,6 +156,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Stalker_Defense.Regeneration"
 }

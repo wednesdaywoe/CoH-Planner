@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shadow Step",
   "display_fullname": "Warshade Defensive Umbral Aura Shadow Step",
-  "display_help": "P6MK7MKTLFAWWTZ6EDHMGHRXX3",
+  "display_help": "You can Teleport long distances. Once at your destination, you will be stuck in between dimensions for up to 15s. While in this state, you will not be affected by gravity, and be able to execute additional teleportation jumps at a discounted endurance cost.<br><br>Moving or taking any non-teleport action, though, will snap you back into reality, and you will once more be affected by gravity. <br><br>Shadow Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
   "display_short_help": "Ranged (Location), Self Teleport",
   "icon": "umbralaura_teleportself.png",
   "auto_issue": true,

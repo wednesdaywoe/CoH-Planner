@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Deafening Wave",
   "display_fullname": "Tanker Melee Sonic Melee Deafening Wave",
-  "display_help": "2JB2NHLRCDF4WQNCLBLEGT5QZQ",
-  "display_short_help": "PEHW7MWQUQ65W2CT9ACU5TMHYQ",
+  "display_help": "You create a large field of sonic waves, causing damage to all foes around you. It has a moderate chance of causing migraines, leaving them shaking in pain and helpless. This power will inflict 10% bonus damage against Attuned targets as well as trigger a dot effect on enemies around that target.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
   "icon": "sonicmanipulation_deafeningcry",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -506,6 +506,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Tanker_Melee.Sonic_Melee"
 }

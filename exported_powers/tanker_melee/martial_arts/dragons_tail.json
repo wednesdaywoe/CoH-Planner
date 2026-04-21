@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dragon's Tail",
   "display_fullname": "Tanker Melee Martial Arts Dragons Tail",
-  "display_help": "BUG5483SHERCYPLLZHB8JXKBHZ",
-  "display_short_help": "FEPJTNABGB55W2BGW4WDKKFMPZ",
+  "display_help": "This low spinning kick deals slightly more damage than Thunder Kick, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Smash), Foe Knockback",
   "icon": "martialarts_monkeysweep.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Tanker_Melee.Martial_Arts"
 }

@@ -1,19 +1,19 @@
 {
   "key": "Redirects.Psionic_Armor",
-  "display_name": "EXXF5G43NLXWWPXQZ7DDC6ZZNZ",
-  "help": "EXXF5G43NLXWWPXQZ7DDC6ZZNZ",
-  "short_help": "EXXF5G43NLXWWPXQZ7DDC6ZZNZ",
+  "display_name": "Psionic Armor",
+  "help": "Psionic Armor",
+  "short_help": "Psionic Armor",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Consume_Psyche",
-    "Devour_Psyche",
-    "Memento_Mori",
-    "Memento_Mori_Dead"
+    "Redirects.Psionic_Armor.Consume_Psyche",
+    "Redirects.Psionic_Armor.Devour_Psyche",
+    "Redirects.Psionic_Armor.Memento_Mori",
+    "Redirects.Psionic_Armor.Memento_Mori_Dead"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0
+    5,
+    15,
+    29,
+    29
   ]
 }

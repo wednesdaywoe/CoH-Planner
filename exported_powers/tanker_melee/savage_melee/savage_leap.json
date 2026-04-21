@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Savage Leap",
   "display_fullname": "Tanker Melee Savage Melee Savage Leap",
-  "display_help": "TTQBQL5UJZCWYXZNF74WL2TVB3",
-  "display_short_help": "GHPN9KXFB3JRYHVTE7C3NLMHZW",
+  "display_help": "You throw yourself at your distant foes while slashing and tearing wildly dealing moderate lethal damage and causing your foes to suffer from additional minor lethal damage over time. The damage of this power can increase based on how far away you leap from, with up to double damage dealt at its strongest. Savage Leap build 1 stacks of Blood Frenzy for every 20 ft in between your target and you, up to 3 stacks.",
+  "display_short_help": "PBAoE, DMG(Lethal), Foe DoT (Lethal), Self 1 to 3 Blood Frenzy, Teleport",
   "icon": "savagemelee_savageleap.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -264,6 +264,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Tanker_Melee.Savage_Melee"
 }

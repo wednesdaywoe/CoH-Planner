@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Freeze Ray",
   "display_fullname": "Blaster Ranged Ice Blast Freeze Ray",
-  "display_help": "GJE3MDA3H22WYENUJYXTJVPDQA",
-  "display_short_help": "RMRLD4X9QESXWKZY4YNA25Y72W",
+  "display_help": "Freeze Ray encases your foe in a block of ice, holding them helpless in place for a while. While frozen, your foe will take Cold damage over time.",
+  "display_short_help": "Ranged, DMG(Cold), Foe Hold",
   "icon": "iceblast_freezeray.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -243,6 +243,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Blaster_Ranged.Ice_Blast"
 }

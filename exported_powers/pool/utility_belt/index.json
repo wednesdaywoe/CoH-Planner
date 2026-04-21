@@ -5,19 +5,19 @@
   "short_help": "Utility Belt",
   "icon": "utility_belt_set.ico",
   "powers": [
-    "Athletics",
-    "Bolas",
-    "Flying_Kick",
-    "Freerunning",
-    "Life_Support_System",
-    "Poisoned_Dagger"
+    "Pool.Utility_Belt.Athletics",
+    "Pool.Utility_Belt.Bolas",
+    "Pool.Utility_Belt.Flying_Kick",
+    "Pool.Utility_Belt.Freerunning",
+    "Pool.Utility_Belt.Life_Support_System",
+    "Pool.Utility_Belt.Poisoned_Dagger"
   ],
   "available_level": [
+    4294967295,
     0,
-    0,
-    0,
-    0,
-    0,
+    13,
+    3,
+    19,
     0
   ]
 }

@@ -5,25 +5,25 @@
   "short_help": "Savage Assault",
   "icon": "savage_assault_set.ico",
   "powers": [
-    "Blood_Craze",
-    "Call_Hawk",
-    "Call_Ravens",
-    "Call_Swarm",
-    "Feral_Charge",
-    "Maiming_Slash",
-    "Rending_Flurry",
-    "Spot_Prey",
-    "Vicious_Slash"
+    "Dominator_Assault.Savage_Assault.Blood_Craze",
+    "Dominator_Assault.Savage_Assault.Call_Hawk",
+    "Dominator_Assault.Savage_Assault.Call_Ravens",
+    "Dominator_Assault.Savage_Assault.Call_Swarm",
+    "Dominator_Assault.Savage_Assault.Feral_Charge",
+    "Dominator_Assault.Savage_Assault.Maiming_Slash",
+    "Dominator_Assault.Savage_Assault.Rending_Flurry",
+    "Dominator_Assault.Savage_Assault.Spot_Prey",
+    "Dominator_Assault.Savage_Assault.Vicious_Slash"
   ],
   "available_level": [
+    23,
+    27,
+    9,
     0,
+    29,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    15,
+    3
   ]
 }

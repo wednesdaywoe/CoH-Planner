@@ -5,25 +5,25 @@
   "short_help": "Ice Melee",
   "icon": "ice_melee_set.ico",
   "powers": [
-    "Assassins_Ice_Swords",
-    "Build_Up",
-    "Freezing_Touch",
-    "Frost",
-    "Frozen_Aura",
-    "Frozen_Fists",
-    "Ice_Patch",
-    "Ice_Sword",
-    "Placate"
+    "Stalker_Melee.Ice_Melee.Assassins_Ice_Swords",
+    "Stalker_Melee.Ice_Melee.Build_Up",
+    "Stalker_Melee.Ice_Melee.Freezing_Touch",
+    "Stalker_Melee.Ice_Melee.Frost",
+    "Stalker_Melee.Ice_Melee.Frozen_Aura",
+    "Stalker_Melee.Ice_Melee.Frozen_Fists",
+    "Stalker_Melee.Ice_Melee.Ice_Patch",
+    "Stalker_Melee.Ice_Melee.Ice_Sword",
+    "Stalker_Melee.Ice_Melee.Placate"
   ],
   "available_level": [
+    5,
+    11,
+    21,
+    1,
+    25,
     0,
+    17,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    7
   ]
 }

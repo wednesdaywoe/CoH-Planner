@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Gravity Distortion",
   "display_fullname": "Controller Control Gravity Control Gravity Distortion",
-  "display_help": "8RWL5EAT89KCYENZA4F4VEW5VS",
-  "display_short_help": "QY9Q29AYGGCCYGMRS5B3F8XSWS",
+  "display_help": "Causes a single foe to be trapped in a misshapen gravity field, rendering him unable to take action. Gravity Distortion applies the Gravity Distortion effect and deals Smashing damage to the target.",
+  "display_short_help": "Ranged, DoT(Smash), Foe Hold, -Fly, +Gravity Distortion",
   "icon": "gravitycontrol_gravitydistortion.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -432,6 +432,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Controller_Control.Gravity_Control"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Geyser",
   "display_fullname": "Blaster Ranged Water Blast Geyser",
-  "display_help": "YQ46QE9V5LGRYYMTEEXEADX3D2",
-  "display_short_help": "U8CW9CENQ6HHW8BUAP5Q7YMYSS",
+  "display_help": "You cause the earth to erupt beneath your target's feet as a Geyser of scalding hot water burns your foes and tosses them violently into the air. Geyser causes Fire and Smashing damage before causing Fire damage over time as well as reducing their movement speed. Geyser consumes all Tidal Power. Both the initial damage and damage over time portions of this power will be increased and have a scaling chance to disorient for each stack of Tidal Power. If you have 3 stacks of Tidal Power, Geyser will have a 100% chance to disorient affected targets.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Fire/Smash), Foe DoT(Fire), +Wet, -Speed, Knock Up, Disorient, Self -Tidal Power",
   "icon": "waterblast_geyser.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -980,6 +980,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Blaster_Ranged.Water_Blast"
 }

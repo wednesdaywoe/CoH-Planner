@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Plasma Full Auto",
   "display_fullname": "Incarnate Lore Pet Warworks LT Plasma Full Auto",
-  "display_help": "SQ5FZCN5ZSXFW6LHDP9JE93GSQ",
+  "display_help": "The Warworks' plasma weapons are capable of discharging a barrage of bolts of energy in a large cone which will reduce the regeneration rate of affected targets.<br><br><color #fcfc95>Notes: Plasma Full Auto is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Light DMG(Energy), Foe -Regen",
   "icon": "powerblast_powerblast.png",
   "auto_issue": false,

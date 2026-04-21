@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Arc of Destruction",
   "display_fullname": "Tanker Melee Titan Weapons Arc of Destruction",
-  "display_help": "B979NMU99NC3WFVVEPVDFGYBFX",
-  "display_short_help": "F43J5DA6HZBXWYX7APYP9AQY8Q",
+  "display_help": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down. Arc of Destruction may only be used while on the ground.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>5</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "Melee (Cone), DMG(Smashing), Foe Knockback",
   "icon": "titanweapons_arcofdestruction.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Tanker_Melee.Titan_Weapons"
 }

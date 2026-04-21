@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Offensive Adaptation",
   "display_fullname": "Scrapper Defense Bio Organic Armor Offensive Adaptation",
-  "display_help": "B4QXACX83RGTYRMKFPWBS4RV7Q",
+  "display_help": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to sprout spines and become much lighter. While active Hardened Carapace increases your damage slightly, Environmental Modification grants you a moderate to hit buff, Evolving Armor has an improved Damage Resistance debuff, and debuff effects from DNA Siphon, Genetic Contamination and Parasitic Aura are increased moderately. Additionally, many of your damaging powers will inflict a minor amount of additional Toxic damage. While Offensive Adaptation is active your Defense and Damage Resistance is reduced slightly. Offensive Adaptation costs no endurance.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Bio Armor Offensive Mode",
   "icon": "bioorganicarmor_offensiveadaptation.png",
   "auto_issue": true,
@@ -205,6 +205,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Scrapper_Defense.Bio_Organic_Armor"
 }

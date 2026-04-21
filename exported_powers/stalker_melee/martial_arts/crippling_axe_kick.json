@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Crippling Axe Kick",
   "display_fullname": "Stalker Melee Martial Arts Crippling Axe Kick",
-  "display_help": "XFQGZKJULA2UWJNMN5D7MBWLW2",
-  "display_short_help": "8F2Y6EXT73G6YRMC6KD2K3HXTX",
+  "display_help": "You can perform a Crippling Axe Kick that deals moderate smashing damage, reduces the targets defense, may Immobilize, and Slowing their run speed. Crippling Axe Kick may also knock some flying entities out of the sky.",
+  "display_short_help": "Melee, DMG(Smashing), Foe Immobilize, -SPD, -Fly, -DEF",
   "icon": "martialarts_cripplinghookkick.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -529,6 +529,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Stalker_Melee.Martial_Arts"
 }

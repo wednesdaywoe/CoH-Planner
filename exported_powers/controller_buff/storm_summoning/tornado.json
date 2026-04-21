@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Tornado",
   "display_fullname": "Controller Buff Storm Summoning Tornado",
-  "display_help": "Y39BZ9NSELZQWCVQPPHLSYM3L3",
+  "display_help": "Conjures up a funnel cloud at a targeted location. The Tornado will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Tornado is a menacing sight, and can even cause panic among your foes.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Summon Tornado: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
   "icon": "stormsummoning_tornado.png",
   "auto_issue": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Controller_Buff.Storm_Summoning"
 }

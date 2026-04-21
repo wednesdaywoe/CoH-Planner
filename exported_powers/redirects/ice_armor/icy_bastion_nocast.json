@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Icy Bastion",
   "display_fullname": "Redirects Ice Armor Icy Bastion NoCast",
-  "display_help": "F94D9BDQ7ZLHW6X5V52FBPHF4Q",
+  "display_help": "You encase yourself in a block of solid ice, rendering yourself invulnerable but unable to act. While the power is active you heal damage and recover endurance at an incredible rate. You can remain in this state for up to 30 seconds. Should you deactivate the power earlier, some of the resistance to damage and other effects will remain until the full 30 seconds window is over. <br><br><color #fcfc95>Notes:If you are under the effects of No Phase, this power will instantly deactivate and leave you only with the lingering effects for 30 seconds.</color>",
   "display_short_help": "Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery",
   "icon": "icearmor_hybernate.png",
   "auto_issue": false,
@@ -309,6 +309,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Redirects.Ice_Armor"
 }

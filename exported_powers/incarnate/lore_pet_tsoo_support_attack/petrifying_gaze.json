@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Petrifying Gaze",
   "display_fullname": "Incarnate Lore Pet Tsoo Support Attack Petrifying Gaze",
-  "display_help": "4P8H6YGHFBCUYELNNUQHPYNCBW",
+  "display_help": "You are petrified and cannot move or attack!<br><br><color #fcfc95>Notes: Petrifying Gaze is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Hold",
   "icon": "darkmiasma_petrifyinggaze.png",
   "auto_issue": false,

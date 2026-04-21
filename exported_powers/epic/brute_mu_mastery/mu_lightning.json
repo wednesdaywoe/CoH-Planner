@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mu Lightning",
   "display_fullname": "Epic Brute Mu Mastery Mu Lightning",
-  "display_help": "JQEAGF4F67LLWMXYUCZCYQJP9Q",
-  "display_short_help": "RAPSU8SFA9AVYFNUJ5H6LCMKQZ",
+  "display_help": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you.",
+  "display_short_help": "Ranged, DMG(Energy), Foe -End",
   "icon": "arachnos_patron_targetedrangedhighdmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -277,6 +277,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Brute_Mu_Mastery"
 }

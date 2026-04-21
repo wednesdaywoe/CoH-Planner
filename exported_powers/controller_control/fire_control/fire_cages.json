@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fire Cages",
   "display_fullname": "Controller Control Fire Control Fire Cages",
-  "display_help": "554HTXYT86RUWWZMW32YP83BTZ",
+  "display_help": "Immobilizes a group of foes in Fire Cages, dealing Fire damage over time. More resilient foes may require multiple Fire Cages to Immobilize. Fire Cages is slower and less damaging than Ring of Fire, but can capture multiple targets.",
   "display_short_help": "Ranged (Targeted AoE), Minor DoT(Fire), Foe Immobilize",
   "icon": "firetrap_firecage.png",
   "auto_issue": false,
@@ -354,6 +354,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Controller_Control.Fire_Control"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Short Circuit",
   "display_fullname": "Sentinel Ranged Electrical Blast Short Circuit",
-  "display_help": "U837W2Y2RTJ3YWC3BGXBJQCDXS",
-  "display_short_help": "VNYVSTV85F4HW9BVF3YUR637QQ",
+  "display_help": "Releases a burst of electrical energy around you, shocking all nearby foes. This highly accurate discharge deals Moderate damage over time, drains a lot of Endurance from the targets and renders them unable to recover Endurance for quite a while. Additionally, Short Circuit deals extra damage to most robots and mechanical foes. Short Circuit is very effective when used with your other Endurance draining powers.",
+  "display_short_help": "PBAoE, DoT(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_shortcircuit.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -735,6 +735,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Sentinel_Ranged.Electrical_Blast"
 }

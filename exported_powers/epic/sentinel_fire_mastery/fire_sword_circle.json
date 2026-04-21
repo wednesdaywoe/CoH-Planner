@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fire Sword Circle",
   "display_fullname": "Epic Sentinel Fire Mastery Fire Sword Circle",
-  "display_help": "VDBXWEJ64QFYYCBFDTCG2CQK4Z",
-  "display_short_help": "8GH4PHQ5ZKV4YSB5WPP7XDVY2S",
+  "display_help": "Mastery of your Fire Sword has enabled you to make an attack on every foe within melee distance. This will slash and burn your enemies, dealing moderate damage and setting them ablaze. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
+  "display_short_help": "PBAoE Melee, DMG(Fire/Lethal)",
   "icon": "firetrap_pbaoe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -318,6 +318,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Sentinel_Fire_Mastery"
 }

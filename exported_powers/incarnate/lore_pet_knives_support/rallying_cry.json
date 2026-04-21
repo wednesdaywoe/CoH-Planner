@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Rallying Cry",
   "display_fullname": "Incarnate Lore Pet Knives Support Rallying Cry",
-  "display_help": "9YZJ9D67HQTXYPLV39QWCUBXSA",
+  "display_help": "You strike the ground with tremendous force, causing a shockwave of energy that blasts foes around you. All targets nearby suffer smashing damage and minor lethal damage, and may also be knocked back. Additionally, some targets will suffer a minor concussion from the attack, reducing their chance to hit, attack speed and damage.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE, Buff(Self and Allies), +DMG(All), +ToHit, +RES(All Status Effects), +Prot(All Status Effects)",
   "icon": "knivesofvengeance_rallyingcry.png",
   "auto_issue": false,

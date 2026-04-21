@@ -5,25 +5,25 @@
   "short_help": "Electric Armor",
   "icon": "electric_armor_set.ico",
   "powers": [
-    "Charged_Armor",
-    "Conductive_Shield",
-    "Conserve_Power",
-    "Grounded",
-    "Lightning_Field",
-    "Lightning_Reflexes",
-    "Power_Sink",
-    "Power_Surge",
-    "Static_Shield"
+    "Brute_Defense.Electric_Armor.Charged_Armor",
+    "Brute_Defense.Electric_Armor.Conductive_Shield",
+    "Brute_Defense.Electric_Armor.Conserve_Power",
+    "Brute_Defense.Electric_Armor.Grounded",
+    "Brute_Defense.Electric_Armor.Lightning_Field",
+    "Brute_Defense.Electric_Armor.Lightning_Reflexes",
+    "Brute_Defense.Electric_Armor.Power_Sink",
+    "Brute_Defense.Electric_Armor.Power_Surge",
+    "Brute_Defense.Electric_Armor.Static_Shield"
   ],
   "available_level": [
     0,
+    3,
+    23,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    27,
+    29,
+    9
   ]
 }

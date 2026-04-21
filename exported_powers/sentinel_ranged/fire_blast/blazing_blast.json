@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Blazing Blast",
   "display_fullname": "Sentinel Ranged Fire Blast Blazing Blast",
-  "display_help": "STTU76NU9QBBY5C9AYQMXRF42A",
-  "display_short_help": "PS3K8LWVVXVLWMZ93QVG7SYUPX",
+  "display_help": "An extremely quick long range beam of fire that blasts your foes and pushes them away.",
+  "display_short_help": "Ranged, DMG(Fire), DoT(Fire), Foe Knockback, Repel",
   "icon": "fireblast_heavy",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -536,6 +536,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Sentinel_Ranged.Fire_Blast"
 }

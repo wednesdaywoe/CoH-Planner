@@ -3,10 +3,10 @@
   "full_name": "Redirects.Seismic_Blast.Seismic_Force_Aim",
   "short_name": "Seismic_Force_Aim",
   "type": "Click",
-  "display_name": "V823VSMNLST2WMMMWMCNY8EUTZ",
+  "display_name": "Seismic Force",
   "display_fullname": "Redirects Seismic Blast Seismic Force Aim",
-  "display_help": "8PZ7LJYX8PFNWXCPUQMZME3952",
-  "display_short_help": "SNQG4FVQR42QYEZTDJQ33ND662",
+  "display_help": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage.<br><br>If affected by Seismic Shockwaves, this power will recharge in half the time.",
+  "display_short_help": "Self +To Hit, +DMG, +Special",
   "icon": "seismicblast_aim",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -114,6 +114,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Redirects.Seismic_Blast"
 }

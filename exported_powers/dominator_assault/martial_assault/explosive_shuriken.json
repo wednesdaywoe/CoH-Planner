@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Explosive Shuriken",
   "display_fullname": "Dominator Assault Martial Assault Explosive Shuriken",
-  "display_help": "XRL9BDHG569JYBX46CSLDM8BNQ",
-  "display_short_help": "3FB7VH7RZDAVY5NESN7NRV8EHA",
+  "display_help": "You rig a shuriken with a powerful explosive, then send it flying towards your enemies.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged, Superior DMG(Fire), Minor Splash Damage (Fire DoT)",
   "icon": "martialassault_explosiveshuriken.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -194,6 +194,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Dominator_Assault.Martial_Assault"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Life Drain",
   "display_fullname": "Blaster Ranged Dark Blast Life Drain",
-  "display_help": "S93SVAJC5QMWWWZL2USPF4GZMX",
-  "display_short_help": "ANN8AKQ54EMCYYLDYE85E3U8ZS",
+  "display_help": "You can tap the power of the Netherworld to steal some life from a target foe and reduce their chance to hit. Some of that stolen life is transferred to you in the form of Hit Points.",
+  "display_short_help": "Ranged, DMG(Negative), Target -To Hit, Self +HP",
   "icon": "darkcast_lifedrain.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -204,6 +204,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Blaster_Ranged.Dark_Blast"
 }

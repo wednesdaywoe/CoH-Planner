@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Spin",
   "display_fullname": "Widow Training Widow Training Spin",
-  "display_help": "KHJUMDHVKQ68WZMSFKMFQ7XW5A",
-  "display_short_help": "GG5AKZCR2VX6Y3VWQDNZESN3CQ",
+  "display_help": "Spin does moderate lethal damage to all foes within an 8' radius of you, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.<br><br><color #fcfc95>Notes: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "widowtraining_spin.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -291,6 +291,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Widow_Training.Widow_Training"
 }

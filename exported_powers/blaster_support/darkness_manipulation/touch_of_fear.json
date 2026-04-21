@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Touch of the Beyond",
   "display_fullname": "Blaster Support Darkness Manipulation Touch of Fear",
-  "display_help": "WGKGQH4P5YM9WMCZDUTSTUBYEA",
+  "display_help": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit. Additionally, drawing upon this connection to the Netherworld causes you to rapidly regenerate health and recover endurance for a short time.<br><br><color #fcfc95>Notes: Touch of the Beyond is unaffected by Range changes.</color>",
   "display_short_help": "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
   "icon": "darknessmanipulation_touchoffear.png",
   "auto_issue": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Darkness_Manipulation"
 }

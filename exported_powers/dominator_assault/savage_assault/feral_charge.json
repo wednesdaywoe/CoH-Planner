@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Feral Charge",
   "display_fullname": "Dominator Assault Savage Assault Feral Charge",
-  "display_help": "XU3W5ZFLWFNVYVXUP8BUJ7WUXZ",
-  "display_short_help": "QCVQ5FNA2CBPYAC6HH2QCX2GW2",
+  "display_help": "You throw yourself at your target while slashing and tearing wildly dealing moderate lethal damage and causing it to suffer from additional minor lethal damage over time. The damage of this power can increase based on how far away you charge from, with up to double damage dealt at its strongest. Feral Charge builds 1 stacks of Blood Frenzy for every 20 ft in between your target and you, up to 3 stacks.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Melee, DMG(Lethal), Foe DoT (Lethal), +3 Blood Frenzy, Self Teleport",
   "icon": "savagemelee_feralcharge",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -302,6 +302,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Dominator_Assault.Savage_Assault"
 }

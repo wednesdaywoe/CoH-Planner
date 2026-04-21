@@ -5,25 +5,25 @@
   "short_help": "Dark Melee",
   "icon": "dark_melee_set.ico",
   "powers": [
-    "Dark_Consumption",
-    "Midnight_Grasp",
-    "Shadow_Maul",
-    "Shadow_Punch",
-    "Siphon_Life",
-    "Smite",
-    "Soul_Drain",
-    "Taunt",
-    "Touch_of_Fear"
+    "Scrapper_Melee.Dark_Melee.Dark_Consumption",
+    "Scrapper_Melee.Dark_Melee.Midnight_Grasp",
+    "Scrapper_Melee.Dark_Melee.Shadow_Maul",
+    "Scrapper_Melee.Dark_Melee.Shadow_Punch",
+    "Scrapper_Melee.Dark_Melee.Siphon_Life",
+    "Scrapper_Melee.Dark_Melee.Smite",
+    "Scrapper_Melee.Dark_Melee.Soul_Drain",
+    "Scrapper_Melee.Dark_Melee.Taunt",
+    "Scrapper_Melee.Dark_Melee.Touch_of_Fear"
   ],
   "available_level": [
+    17,
+    25,
+    1,
     0,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    11,
+    5
   ]
 }

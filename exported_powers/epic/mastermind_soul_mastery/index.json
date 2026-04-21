@@ -5,17 +5,17 @@
   "short_help": "Soul Mastery",
   "icon": "mastermind_soul_mastery_set.ico",
   "powers": [
-    "Dark_Embrace",
-    "Night_Fall",
-    "Oppressive_Gloom",
-    "Soul_Storm",
-    "Soul_Tentacles"
+    "Epic.Mastermind_Soul_Mastery.Dark_Embrace",
+    "Epic.Mastermind_Soul_Mastery.Night_Fall",
+    "Epic.Mastermind_Soul_Mastery.Oppressive_Gloom",
+    "Epic.Mastermind_Soul_Mastery.Soul_Storm",
+    "Epic.Mastermind_Soul_Mastery.Soul_Tentacles"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    34,
+    37,
+    43,
+    40
   ]
 }

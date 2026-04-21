@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Transference",
   "display_fullname": "Controller Buff Kinetics Transference",
-  "display_help": "7J7NKW2KGJQ5YVVH4T3NJHS5BS",
+  "display_help": "Transference drains an enemy of some of their Endurance and transfers that Endurance to all allies near the affected foe. You can use Transference to recover Endurance for yourself as well as your allies.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Targeted AoE), Target -End, Team +Recovery, Special",
   "icon": "kineticboost_transferance.png",
   "auto_issue": false,
@@ -168,6 +168,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Controller_Buff.Kinetics"
 }

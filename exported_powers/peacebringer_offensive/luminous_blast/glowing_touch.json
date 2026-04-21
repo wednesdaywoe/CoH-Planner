@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Glowing Touch",
   "display_fullname": "Peacebringer Offensive Luminous Blast Glowing Touch",
-  "display_help": "DP5KLUBDRUA2YCBM5M5DH26Q63",
+  "display_help": "Heals a single targeted ally at moderate range. You cannot use this power to heal yourself.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ally Heal",
   "icon": "luminousblast_glowingtouch.png",
   "auto_issue": false,
@@ -83,6 +83,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

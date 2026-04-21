@@ -5,25 +5,25 @@
   "short_help": "Dark Blast",
   "icon": "dark_blast_set.ico",
   "powers": [
-    "Abyssal_Gaze",
-    "Aim",
-    "Antumbral_Beam",
-    "Blackstar",
-    "Dark_Blast",
-    "Dark_Obliteration",
-    "Gloom",
-    "Life_Drain",
-    "Umbral_Torrent"
+    "Sentinel_Ranged.Dark_Blast.Abyssal_Gaze",
+    "Sentinel_Ranged.Dark_Blast.Aim",
+    "Sentinel_Ranged.Dark_Blast.Antumbral_Beam",
+    "Sentinel_Ranged.Dark_Blast.Blackstar",
+    "Sentinel_Ranged.Dark_Blast.Dark_Blast",
+    "Sentinel_Ranged.Dark_Blast.Dark_Obliteration",
+    "Sentinel_Ranged.Dark_Blast.Gloom",
+    "Sentinel_Ranged.Dark_Blast.Life_Drain",
+    "Sentinel_Ranged.Dark_Blast.Umbral_Torrent"
   ],
   "available_level": [
+    5,
+    7,
+    17,
+    25,
     0,
+    11,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    1
   ]
 }

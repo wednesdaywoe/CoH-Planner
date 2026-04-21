@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Ghost Slaying Axe",
   "display_fullname": "Inherent Inherent prestige Permanent Undead Slaying Axe",
-  "display_help": "QRRXRUKBBB44WVL9M4AQXJQDX3",
+  "display_help": "This massive weapon was specifically crafted by MAGI to slay the undead. Note that Mastermind Henchmen are protected from this effect. Damage enhancing powers do not apply to the Ghost Slaying Axe.<br><br><color #fcfc95>Damage: Moderate.</color>",
   "display_short_help": "Melee, Moderate DMG(Lethal), Bonus vs True Undead",
   "icon": "veteran_undeadslayingaxe.png",
   "auto_issue": true,

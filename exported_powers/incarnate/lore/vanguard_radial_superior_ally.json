@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Vanguard Radial Superior Ally",
   "display_fullname": "Incarnate Lore Vanguard Radial Superior Ally",
-  "display_help": "Y6QGBK4NLE2JYUM7HPHK43CKVS",
+  "display_help": "Draws forth the essences of a vanquished Vanguard Sorcerer from the Well of the Furies to serve you for 3 minutes and 20 seconds and Magician from the Well of the Furies to serve you for 5 minutes. The Magician is untouchable, but has no offensive powers at all.<br><br>This power also applies an Incarnate Shift. (An Incarnate Shift is a Level Shift which only activates while participating in an Incarnate Trial.).<br><br><color #fcfc95>Notes: Vanguard Radial Superior Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Summon Vanguard Boss & Support Essences",
   "icon": "incarnate_lore_vanguard_veryrare.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Haymaker",
   "display_fullname": "Tanker Melee Super Strength Haymaker",
-  "display_help": "73GE8LESP3KLYDN6HL48HMK5D3",
-  "display_short_help": "AQHFUE5C2EXUWNBVASRYJWLJS2",
+  "display_help": "A slow but devastating attack, the Haymaker has a great chance of knocking your opponent down.",
+  "display_short_help": "Melee, DMG(Smash), Knockback",
   "icon": "superstrength_haymaker.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Tanker_Melee.Super_Strength"
 }

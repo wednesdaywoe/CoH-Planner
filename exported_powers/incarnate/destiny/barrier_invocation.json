@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Barrier Invocation",
   "display_fullname": "Incarnate Destiny Barrier Invocation",
-  "display_help": "7EKXD7H2HN4YWGZGH2EPMCT8H2",
+  "display_help": "PBAoE Ally +DEF(All), +Res(All).<br><br><color #fcfc95>Notes: Barrier Invocation is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE Ally +DEF(All), +Res(All)",
   "icon": "incarnate_destiny_barrier_common.png",
   "auto_issue": false,

@@ -5,17 +5,17 @@
   "short_help": "Earth Mastery",
   "icon": "stone_mastery_set.ico",
   "powers": [
-    "Earths_Embrace",
-    "Fissure",
-    "Hurl_Boulder",
-    "Seismic_Smash",
-    "Stone_Armor"
+    "Epic.Stone_Mastery.Earths_Embrace",
+    "Epic.Stone_Mastery.Fissure",
+    "Epic.Stone_Mastery.Hurl_Boulder",
+    "Epic.Stone_Mastery.Seismic_Smash",
+    "Epic.Stone_Mastery.Stone_Armor"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    43,
+    34,
+    34,
+    40,
+    37
   ]
 }

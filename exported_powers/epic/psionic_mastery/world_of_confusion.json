@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "World of Confusion",
   "display_fullname": "Epic Psionic Mastery World of Confusion",
-  "display_help": "ANGG4WKL2WUEY7M4A2T7ZSGWC3",
-  "display_short_help": "P8VMMAMKBAUTW4VDGMVAYZZGW3",
+  "display_help": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
+  "display_short_help": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
   "icon": "psionicmastery_worldofconfusion.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -238,6 +238,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Psionic_Mastery"
 }

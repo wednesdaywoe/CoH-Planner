@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Titan Sweep",
   "display_fullname": "Brute Melee Titan Weapons Sweeping Strike",
-  "display_help": "PM4ZR5KUVVZKWSC5BQBPND8TYS",
-  "display_short_help": "FGDB45MTEXKAW4XLL2JZKAAPE2",
+  "display_help": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down.<br><br><color #fcfc95>Notes: Titan Sweep is unaffected by Arc changes.</color>",
+  "display_short_help": "Melee (Cone), DMG(Smashing), Foe Knockdown",
   "icon": "titanweapons_sweepingstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Brute_Melee.Titan_Weapons"
 }

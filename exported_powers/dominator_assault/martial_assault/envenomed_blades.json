@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Envenomed Blades",
   "display_fullname": "Dominator Assault Martial Assault Envenomed Blades",
-  "display_help": "BV8CLVWRJ3G4W2VS5MKUS7ELZA",
+  "display_help": "You add a toxic venom to all of your attacks for a moderate duration. All damaging powers gain bonus Toxic damage. You also gain a moderate bonus to your chance to hit.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +Toxic Damage on all attacks, +ToHit",
   "icon": "martialassault_envenomedblades.png",
   "auto_issue": false,
@@ -169,6 +169,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Dominator_Assault.Martial_Assault"
 }

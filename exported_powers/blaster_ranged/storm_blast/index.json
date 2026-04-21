@@ -1,29 +1,29 @@
 {
   "key": "Blaster_Ranged.Storm_Blast",
-  "display_name": "MS36MJUB2GXWYANABNRL9AHGCA",
-  "help": "WYDCN7NNM4GCWSMATSFW9CBYQQ",
-  "short_help": "MS36MJUB2GXWYANABNRL9AHGCA",
+  "display_name": "Storm Blast",
+  "help": "Storm Blast conjures violent weather to attack your foes. The use of your storm attacks will empower your created storm cells.",
+  "short_help": "Storm Blast",
   "icon": "storm_summoning_set.ico",
   "powers": [
-    "Aim",
-    "Category_Five",
-    "Chain_Lightning",
-    "Cloudburst",
-    "Direct_Strike",
-    "Gust",
-    "Hailstones",
-    "Jet_Stream",
-    "Storm_Cell"
+    "Blaster_Ranged.Storm_Blast.Aim",
+    "Blaster_Ranged.Storm_Blast.Category_Five",
+    "Blaster_Ranged.Storm_Blast.Chain_Lightning",
+    "Blaster_Ranged.Storm_Blast.Cloudburst",
+    "Blaster_Ranged.Storm_Blast.Direct_Strike",
+    "Blaster_Ranged.Storm_Blast.Gust",
+    "Blaster_Ranged.Storm_Blast.Hailstones",
+    "Blaster_Ranged.Storm_Blast.Jet_Stream",
+    "Blaster_Ranged.Storm_Blast.Storm_Cell"
   ],
   "available_level": [
+    7,
+    25,
+    17,
+    21,
+    11,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    5
   ]
 }

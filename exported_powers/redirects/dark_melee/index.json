@@ -5,17 +5,17 @@
   "short_help": "Tanker Melee",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Touch_of_Fear_AoE",
-    "Touch_of_Fear_AoE_Scrapper",
-    "Touch_of_Fear_AoE_Stalker",
-    "Touch_of_Fear_AoE_Tanker",
-    "Touch_of_Fear_ST"
+    "Redirects.Dark_Melee.Touch_of_Fear_AoE",
+    "Redirects.Dark_Melee.Touch_of_Fear_AoE_Scrapper",
+    "Redirects.Dark_Melee.Touch_of_Fear_AoE_Stalker",
+    "Redirects.Dark_Melee.Touch_of_Fear_AoE_Tanker",
+    "Redirects.Dark_Melee.Touch_of_Fear_ST"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    19,
+    19,
+    19,
+    19
   ]
 }

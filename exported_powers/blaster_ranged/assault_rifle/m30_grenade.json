@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "M30 Grenade",
   "display_fullname": "Blaster Ranged Assault Rifle M30 Grenade",
-  "display_help": "ZJMXW4SXLC6EW3XPD9DR332XD2",
-  "display_short_help": "EX2367US4FYNWJZYE7ARDK8E5S",
+  "display_help": "Launches a Grenade at long range from beneath the barrel of your Assault Rifle. This explosion affects all within the blast radius, and can knock them back.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Lethal/Fire), Knockback",
   "icon": "assaultweapons_arm30grenade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -333,6 +333,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Blaster_Ranged.Assault_Rifle"
 }

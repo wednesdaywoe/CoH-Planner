@@ -5,25 +5,25 @@
   "short_help": "Titan Weapons",
   "icon": "titan_weapons_set.ico",
   "powers": [
-    "Arc_of_Destruction",
-    "Build_Up",
-    "Confront",
-    "Crushing_Blow",
-    "Defensive_Sweep",
-    "Follow_Through",
-    "Shatter_Armor",
-    "Sweeping_Strike",
-    "Whirling_Slice"
+    "Scrapper_Melee.Titan_Weapons.Arc_of_Destruction",
+    "Scrapper_Melee.Titan_Weapons.Build_Up",
+    "Scrapper_Melee.Titan_Weapons.Confront",
+    "Scrapper_Melee.Titan_Weapons.Crushing_Blow",
+    "Scrapper_Melee.Titan_Weapons.Defensive_Sweep",
+    "Scrapper_Melee.Titan_Weapons.Follow_Through",
+    "Scrapper_Melee.Titan_Weapons.Shatter_Armor",
+    "Scrapper_Melee.Titan_Weapons.Sweeping_Strike",
+    "Scrapper_Melee.Titan_Weapons.Whirling_Slice"
   ],
   "available_level": [
+    25,
+    7,
+    11,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    5,
+    17,
+    1,
+    21
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psionic Tornado",
   "display_fullname": "Blaster Ranged Psychic Blast Psionic Tornado",
-  "display_help": "LBQ5TFWDUJTQWWZC4AUYLLRVFX",
-  "display_short_help": "SD2L5X8QUFG9YSCRNZ4MVMG9FX",
+  "display_help": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed.",
+  "display_short_help": "Ranged (Targeted AoE), Dmg(Psionic), Foe Knockback",
   "icon": "psychicblast_psionictornado.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -258,6 +258,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Blaster_Ranged.Psychic_Blast"
 }

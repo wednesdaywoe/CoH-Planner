@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ablating Sweep",
   "display_fullname": "Redirects Stalker Melee Ablating Strike Sweep",
-  "display_help": "FRKDAMJDCGPKW6XRPYYF4S4UYS",
-  "display_short_help": "T9KKET2ZE9LKWSLG3GUCGWS47W",
+  "display_help": "You Slash at your foe with your blades, dealing a good amount of lethal damage. This attack can reduce a target's Defense, making them easier to hit. This power is the finishing move of the Sweep combination attack.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Melee, Minor DMG(Lethal), Foe -DEF",
   "icon": "dualblades_moderatebridge.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -172,6 +172,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Redirects.Stalker_Melee"
 }

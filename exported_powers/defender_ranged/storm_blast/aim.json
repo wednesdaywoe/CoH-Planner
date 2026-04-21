@@ -3,10 +3,10 @@
   "full_name": "Defender_Ranged.Storm_Blast.Aim",
   "short_name": "Aim",
   "type": "Click",
-  "display_name": "PRXSD99SJRC2YJMN2L2MM2YWZ3",
+  "display_name": "Intensify",
   "display_fullname": "Defender Ranged Storm Blast Aim",
-  "display_help": "LBGUMDT5G96JW5CE8WDFGHGNH3",
-  "display_short_help": "S4MFPLJ6K89WWDCLQKMMC33RWZ",
+  "display_help": "Greatly increases the chance to hit of your attacks, and slightly increases damage for a few seconds. Moderately increases the chance for Storm Blast powers to summon powerful lightning from your Storm Cell while active.",
+  "display_short_help": "Self +To Hit, +DMG, Special",
   "icon": "stormblast_aim.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -185,6 +185,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Defender_Ranged.Storm_Blast"
 }

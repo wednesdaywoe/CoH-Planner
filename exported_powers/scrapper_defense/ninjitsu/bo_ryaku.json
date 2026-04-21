@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Bo Ryaku",
   "display_fullname": "Scrapper Defense Ninjitsu Bo Ryaku",
-  "display_help": "P2158134936",
+  "display_help": "B\u014d Ryaku is one of the 18 fundamental skills of the Togakure-ry\u016b school of ninjutsu. Alongside more orthodox and mainstream measures, B\u014d Ryaku includes use of unorthodox strategies and tactics that help you minimize the amount of damage taken in combat. This power is always on and costs no endurance.",
   "display_short_help": "Auto: Self +Res(Knockback, Knockup, All DMG)",
   "icon": "ninjitsu_resistance",
   "auto_issue": false,
@@ -195,6 +195,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Scrapper_Defense.Ninjitsu"
 }

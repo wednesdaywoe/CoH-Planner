@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Tidal Forces",
   "display_fullname": "Sentinel Ranged Water Blast Tidal Forces",
-  "display_help": "LB229C2778GJWUZUDA99FBZ4G2",
+  "display_help": "You draw tidal energies into yourself thus boosting your chance to hit significantly, slightly boosting your damage, range and granting yourself +3 Tidal Power.",
   "display_short_help": "Self +To Hit, +DMG, +Range, +Special",
   "icon": "waterblast_tidalforces.png",
   "auto_issue": false,
@@ -189,6 +189,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Sentinel_Ranged.Water_Blast"
 }

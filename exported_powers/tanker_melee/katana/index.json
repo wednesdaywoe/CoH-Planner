@@ -5,25 +5,25 @@
   "short_help": "Katana",
   "icon": "katana_set.ico",
   "powers": [
-    "Build_Up",
-    "Disembowel",
-    "Hack",
-    "Head_Splitter",
-    "Parry",
-    "Slash",
-    "Slice",
-    "Taunt",
-    "Whirling_Sword"
+    "Tanker_Melee.Katana.Build_Up",
+    "Tanker_Melee.Katana.Disembowel",
+    "Tanker_Melee.Katana.Hack",
+    "Tanker_Melee.Katana.Head_Splitter",
+    "Tanker_Melee.Katana.Parry",
+    "Tanker_Melee.Katana.Slash",
+    "Tanker_Melee.Katana.Slice",
+    "Tanker_Melee.Katana.Taunt",
+    "Tanker_Melee.Katana.Whirling_Sword"
   ],
   "available_level": [
+    19,
+    27,
     0,
+    29,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3,
+    9,
+    23
   ]
 }

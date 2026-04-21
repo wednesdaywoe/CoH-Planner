@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Midnight Grasp",
   "display_fullname": "Epic Controller Dark Mastery Gather Shadows",
-  "display_help": "QFG77M742CLAW2ZQEKE2GTKRRZ",
+  "display_help": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
   "display_short_help": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "dark_mastery_midnightgrasp",
   "auto_issue": false,
@@ -359,6 +359,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Controller_Dark_Mastery"
 }

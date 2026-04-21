@@ -5,27 +5,27 @@
   "short_help": "Super Reflexes",
   "icon": "super_reflexes_set.ico",
   "powers": [
-    "Agile",
-    "Dodge",
-    "Elude",
-    "Enduring",
-    "Evasion",
-    "Focused_Fighting",
-    "Focused_Senses",
-    "Master_Brawler",
-    "Practiced_Brawler",
-    "Quickness"
+    "Sentinel_Defense.Super_Reflexes.Agile",
+    "Sentinel_Defense.Super_Reflexes.Dodge",
+    "Sentinel_Defense.Super_Reflexes.Elude",
+    "Sentinel_Defense.Super_Reflexes.Enduring",
+    "Sentinel_Defense.Super_Reflexes.Evasion",
+    "Sentinel_Defense.Super_Reflexes.Focused_Fighting",
+    "Sentinel_Defense.Super_Reflexes.Focused_Senses",
+    "Sentinel_Defense.Super_Reflexes.Master_Brawler",
+    "Sentinel_Defense.Super_Reflexes.Practiced_Brawler",
+    "Sentinel_Defense.Super_Reflexes.Quickness"
   ],
   "available_level": [
+    3,
+    19,
+    29,
+    15,
+    27,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9,
+    9,
+    23
   ]
 }

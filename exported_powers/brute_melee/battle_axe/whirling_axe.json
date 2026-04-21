@@ -3,10 +3,10 @@
   "full_name": "Brute_Melee.Battle_Axe.Whirling_Axe",
   "short_name": "Whirling_Axe",
   "type": "Click",
-  "display_name": "B4XWCEGZ8YBAWRM7VH9L4TRXLQ",
+  "display_name": "Axe Cyclone",
   "display_fullname": "Brute Melee Battle Axe Whirling Axe",
-  "display_help": "T2MNBTMFZPL8WSBZSD2WRDNH83",
-  "display_short_help": "NRDZ53SF2FD8YYV4QRAF5TZ6CS",
+  "display_help": "You spin your Battle Axe in a huge circle, attacking all nearby foes. This attack deals moderate damage to any foe it hits, draws them into melee range and can knock them down.",
+  "display_short_help": "PBAoE Melee, DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_whirlingaxe.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -386,6 +386,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Brute_Melee.Battle_Axe"
 }

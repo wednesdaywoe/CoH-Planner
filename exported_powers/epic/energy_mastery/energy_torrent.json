@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Energy Torrent",
   "display_fullname": "Epic Energy Mastery Energy Torrent",
-  "display_help": "NZGKZX5BTMP4WEBWJJXZPAZZW3",
-  "display_short_help": "7KB9C6P2KR2WW4NAF8R68ACV7X",
+  "display_help": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Cone), Light DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_energytorrent.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -264,6 +264,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Energy_Mastery"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Rock Shards",
   "display_fullname": "Corruptor Ranged Seismic Blast Rock Shards",
-  "display_help": "66R4DV8DTGX2W7M4U9A92VEFSW",
-  "display_short_help": "FWPT8PU7NGU6YFLWDCY5HCGLFS",
+  "display_help": "You launch a volley of stone shards at your target in a sweeping cone. These shards stab into the target, causing lethal damage. They will also continue to suffer additional lethal damage over time.<br><br>If affected by Seismic Shockwaves, this power will halt the shockwaves, the up front damage will be increased and damage over time accelerated, foes will be knocked down, range will be increased to 60ft and arc to 40 degrees.<br><br>Rock Shards grants two stacks of Seismic Pressure.",
+  "display_short_help": "Ranged Cone, DMG(Smash/Lethal), -Defense, Special",
   "icon": "seismicblast_rockshards",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Corruptor_Ranged.Seismic_Blast"
 }

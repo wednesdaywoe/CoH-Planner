@@ -5,10 +5,10 @@
   "short_help": "Nemesis",
   "icon": "lore_pet_nemesis_boss_set.ico",
   "powers": [
-    "Explode",
-    "Flamethrower",
-    "Pummel",
-    "Storm_Cannon"
+    "Incarnate.Lore_Pet_Nemesis_Boss.Explode",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Flamethrower",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Pummel",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Storm_Cannon"
   ],
   "available_level": [
     0,

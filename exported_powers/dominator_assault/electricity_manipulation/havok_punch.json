@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Havoc Punch",
   "display_fullname": "Dominator Assault Electricity Manipulation Havok Punch",
-  "display_help": "H393WXFLT88SWCCH49YQSKLZHX",
+  "display_help": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with greater damage and a chance to knock the target off their feet. Havoc Punch can drain some Endurance from your target and may overload its synapses, leaving them writhing for a moment. A portion of the drained Endurance may be given back to you. Disturbing an overloaded target will disperse the electrical charge and release him.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, High DMG(Smash/Energy), Foe Sleep, -End, Knock Back",
   "icon": "electricalassault_havocpunch.png",
   "auto_issue": false,
@@ -518,6 +518,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Dominator_Assault.Electricity_Manipulation"
 }

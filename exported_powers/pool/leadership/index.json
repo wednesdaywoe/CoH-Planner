@@ -5,17 +5,17 @@
   "short_help": "Leadership",
   "icon": "leadership_set.ico",
   "powers": [
-    "Assault",
-    "Defense",
-    "Tactics",
-    "Vengeance",
-    "Victory_Rush"
+    "Pool.Leadership.Assault",
+    "Pool.Leadership.Defense",
+    "Pool.Leadership.Tactics",
+    "Pool.Leadership.Vengeance",
+    "Pool.Leadership.Victory_Rush"
   ],
   "available_level": [
     0,
     0,
-    0,
-    0,
-    0
+    13,
+    13,
+    13
   ]
 }

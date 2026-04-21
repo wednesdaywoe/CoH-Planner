@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Mud Pots",
   "display_fullname": "Dominator Assault Earth Assault Mud Pots",
-  "display_help": "P5UK844W69SMYTZBCREA2DGA7Z",
+  "display_help": "While this power is active, you draw upon the geothermal power of the Earth to create a bubbling pool of hot mud around yourself. All foes in melee range will become snared and entrapped in the mud, Immobilizing some and slowing others. The boiling heat from Mud Pots may also deal some damage over time to the snared foes.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: PBAoE, Minor DoT(Fire), Foe Immobilize, -SPD",
   "icon": "earthassault_mudpots.png",
   "auto_issue": false,
@@ -277,6 +277,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Dominator_Assault.Earth_Assault"
 }

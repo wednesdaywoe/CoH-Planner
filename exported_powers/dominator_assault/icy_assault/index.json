@@ -5,25 +5,25 @@
   "short_help": "Icy Assault",
   "icon": "icy_assault_set.ico",
   "powers": [
-    "Bitter_Ice_Blast",
-    "Chilling_Embrace",
-    "Frost_Breath",
-    "Greater_Ice_Sword",
-    "Ice_Blast",
-    "Ice_Bolt",
-    "Ice_Sword",
-    "Ice_Sword_Circle",
-    "Power_Boost"
+    "Dominator_Assault.Icy_Assault.Bitter_Ice_Blast",
+    "Dominator_Assault.Icy_Assault.Chilling_Embrace",
+    "Dominator_Assault.Icy_Assault.Frost_Breath",
+    "Dominator_Assault.Icy_Assault.Greater_Ice_Sword",
+    "Dominator_Assault.Icy_Assault.Ice_Blast",
+    "Dominator_Assault.Icy_Assault.Ice_Bolt",
+    "Dominator_Assault.Icy_Assault.Ice_Sword",
+    "Dominator_Assault.Icy_Assault.Ice_Sword_Circle",
+    "Dominator_Assault.Icy_Assault.Power_Boost"
   ],
   "available_level": [
+    29,
+    23,
+    19,
+    27,
+    9,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3,
+    15
   ]
 }

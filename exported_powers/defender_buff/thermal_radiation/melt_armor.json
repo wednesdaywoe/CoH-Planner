@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Melt Armor",
   "display_fullname": "Defender Buff Thermal Radiation Melt Armor",
-  "display_help": "QSRW7MNXC5W8YVM2QPL4PPZP6W",
+  "display_help": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets.",
   "display_short_help": "Ranged (Targeted AoE), Foe -Res, -DEF",
   "icon": "thermalradiation_meltarmor.png",
   "auto_issue": false,
@@ -119,6 +119,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Defender_Buff.Thermal_Radiation"
 }

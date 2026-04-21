@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Energy Torrent",
   "display_fullname": "Defender Ranged Energy Blast Energy Torrent",
-  "display_help": "NFGC9G5X5UPXYTZWLVJL8V3G5W",
-  "display_short_help": "WBZLY9BQK3K5WZZ2YFM4R396NS",
+  "display_help": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying.",
+  "display_short_help": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_energytorrent.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -252,6 +252,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Defender_Ranged.Energy_Blast"
 }

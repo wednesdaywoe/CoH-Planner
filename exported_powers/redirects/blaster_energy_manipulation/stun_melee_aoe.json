@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Stun (Expanded)",
   "display_fullname": "Redirects Blaster Energy Manipulation Stun Melee AoE",
-  "display_help": "HTDBV84VSXJGY5NW2WYR7RQP63",
+  "display_help": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
   "icon": "energymanipulation_stun.png",
   "auto_issue": false,
@@ -225,6 +225,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Redirects.Blaster_Energy_Manipulation"
 }

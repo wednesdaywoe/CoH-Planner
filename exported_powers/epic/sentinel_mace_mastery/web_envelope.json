@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Web Envelope",
   "display_fullname": "Epic Sentinel Mace Mastery Web Envelope",
-  "display_help": "KUY339Q9FQ2FYNNVFV3H8BHRW2",
-  "display_short_help": "CSURHB3F5PMSYSBVHQ4REXDAKS",
+  "display_help": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
+  "display_short_help": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
   "icon": "arachnos_patron_rangedaoeimmobilize.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -472,6 +472,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Mace_Mastery"
 }

@@ -5,17 +5,17 @@
   "short_help": "Regeneration",
   "icon": "regeneration_set.ico",
   "powers": [
-    "Instant_Healing",
-    "Instant_Regeneration",
-    "Second_Wind",
-    "Second_Wind_Awake",
-    "Second_Wind_Defeated"
+    "Redirects.Regeneration.Instant_Healing",
+    "Redirects.Regeneration.Instant_Regeneration",
+    "Redirects.Regeneration.Second_Wind",
+    "Redirects.Regeneration.Second_Wind_Awake",
+    "Redirects.Regeneration.Second_Wind_Defeated"
   ],
   "available_level": [
+    23,
     0,
-    0,
-    0,
-    0,
-    0
+    27,
+    27,
+    27
   ]
 }

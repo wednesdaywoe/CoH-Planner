@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Support Radial Genome",
   "display_fullname": "Incarnate Hybrid Support Genome 3",
-  "display_help": "8ZCHKXG6HV2CYGCE2DR8S8JS5Z",
+  "display_help": "While toggled on, this power provides a small boost in Damage(All), Accuracy, and Defense(Melee, AoE, Smashing, Lethal, Energy, Negative) to all leaguemates within a 50 foot radius. Up to five Support Hybrid powers can stack on a single target at any given time. Equipping this Hybrid power grants a passive boost to Endurance Discount at all times.<br><br><color #fcfc95>Notes: Support Radial Genome is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: +Damage, +Accuracy, +Defense",
   "icon": "incarnate_hybrid_support_uncommon.png",
   "auto_issue": false,

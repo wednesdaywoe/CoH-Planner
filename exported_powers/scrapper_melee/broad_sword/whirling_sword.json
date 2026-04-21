@@ -6,7 +6,7 @@
   "display_name": "Whirling Sword",
   "display_fullname": "Scrapper Melee Broad Sword Whirling Sword",
   "display_help": "You perform a Whirling Sword maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take minor damage over time and reduces their defense.",
-  "display_short_help": "NY5TH7BMQFU8WGXCBQMXM69DGX",
+  "display_short_help": "PBAoE Melee, DMG(Lethal), Foe -Def",
   "icon": "sword_whirlingsword.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -393,6 +393,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Scrapper_Melee.Broad_Sword"
 }

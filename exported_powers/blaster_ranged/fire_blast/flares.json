@@ -6,7 +6,7 @@
   "display_name": "Flares",
   "display_fullname": "Blaster Ranged Fire Blast Flares",
   "display_help": "A quick attack that throws Flares at the target. Little damage, but very fast.",
-  "display_short_help": "TWT6UAF9EHRFW6ZRH3V32NM983",
+  "display_short_help": "Ranged, DMG(Fire)",
   "icon": "fireblast_flare.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,

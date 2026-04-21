@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Snap Shot",
   "display_fullname": "Incarnate Lore Pet Talons LT Snap Shot",
-  "display_help": "YCDTAZ4B3NF3YHV5RJKLP7ZX8Q",
+  "display_help": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.<br><br><color #fcfc95>Notes: Snap Shot is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Minor DMG(Lethal)",
   "icon": "talonsofvengeance_snapshot.png",
   "auto_issue": false,

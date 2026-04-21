@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Targeting Drone",
   "display_fullname": "Dominator Assault Arsenal Assault Targeting Drone",
-  "display_help": "HWTFGK2M2RR9YTC9KJNB3ZR7YQ",
-  "display_short_help": "DDGZEXBEBFDHYCZ3WY7XG2VEYA",
+  "display_help": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit, and increase your perception, allowing you to better see stealthy foes. Targeting Drone also grants you resistance to powers that debuff your chance to hit.",
+  "display_short_help": "Toggle: Self +To Hit, +Perception, Res(DeBuff To Hit)",
   "icon": "assaultweapons_targetingdrone",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -157,6 +157,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Arsenal_Assault"
 }

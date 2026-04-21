@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Frenzy",
   "display_fullname": "Arachnos Soldiers Crab Spider Soldier Frenzy",
-  "display_help": "MP84JX4C5S9FYFN8EPCX8XV9ZA",
-  "display_short_help": "ZWBVBHEWSLKZW7ZFRLMF3F7LRW",
+  "display_help": "You can energize and lash out with your arms, causing energy damage to all foes surrounding you. This attack also weakens the Defense of those struck.",
+  "display_short_help": "Melee PBAoE, DMG(Energy), Foe -DEF",
   "icon": "crabspider_frenzy.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -213,6 +213,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Arachnos_Soldiers.Crab_Spider_Soldier"
 }

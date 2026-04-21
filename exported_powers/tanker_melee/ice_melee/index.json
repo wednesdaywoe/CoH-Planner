@@ -5,25 +5,25 @@
   "short_help": "Ice Melee",
   "icon": "ice_melee_set.ico",
   "powers": [
-    "Build_Up",
-    "Freezing_Touch",
-    "Frost",
-    "Frozen_Aura",
-    "Frozen_Fists",
-    "Greater_Ice_Sword",
-    "Ice_Patch",
-    "Ice_Sword",
-    "Taunt"
+    "Tanker_Melee.Ice_Melee.Build_Up",
+    "Tanker_Melee.Ice_Melee.Freezing_Touch",
+    "Tanker_Melee.Ice_Melee.Frost",
+    "Tanker_Melee.Ice_Melee.Frozen_Aura",
+    "Tanker_Melee.Ice_Melee.Frozen_Fists",
+    "Tanker_Melee.Ice_Melee.Greater_Ice_Sword",
+    "Tanker_Melee.Ice_Melee.Ice_Patch",
+    "Tanker_Melee.Ice_Melee.Ice_Sword",
+    "Tanker_Melee.Ice_Melee.Taunt"
   ],
   "available_level": [
+    15,
+    23,
+    3,
+    29,
     0,
+    27,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9
   ]
 }

@@ -1,20 +1,20 @@
 {
   "key": "Redirects.Sonic_Melee",
-  "display_name": "9ZQATGVZQ7CEY4XAETFKWZL2YS",
-  "help": "ELKZ8M727Q2XW4M52PH3586KYX",
-  "short_help": "9ZQATGVZQ7CEY4XAETFKWZL2YS",
+  "display_name": "Sonic Melee",
+  "help": "Sonic Melee lets you use the power of sound waves to damage your foes with devastating close range sonic attacks that can inflict Migraines, debuffing their resistance to multiple debuffs, and holding foes for a short duration. This can be dramatically increased by using Sound Booster. With the ability to Attune your frequency to your target's, your single target attacks can trigger powerful reverberating damage over time, helping you quickly bring enemies to their knees.",
+  "short_help": "Sonic Melee",
   "icon": "sonic_manipulation_set.ico",
   "powers": [
-    "Attune",
-    "Deafening_Wave",
-    "Sonic_Clap",
-    "Sonic_Thrust",
-    "Strident_Echo"
+    "Redirects.Sonic_Melee.Attune",
+    "Redirects.Sonic_Melee.Deafening_Wave",
+    "Redirects.Sonic_Melee.Sonic_Clap",
+    "Redirects.Sonic_Melee.Sonic_Thrust",
+    "Redirects.Sonic_Melee.Strident_Echo"
   ],
   "available_level": [
     0,
-    0,
-    0,
+    7,
+    7,
     0,
     0
   ]

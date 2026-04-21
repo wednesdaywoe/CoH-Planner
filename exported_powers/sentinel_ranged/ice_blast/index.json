@@ -5,25 +5,25 @@
   "short_help": "Ice Blast",
   "icon": "ice_blast_set.ico",
   "powers": [
-    "Aim",
-    "Bitter_Freeze_Ray",
-    "Bitter_Ice_Blast",
-    "Blizzard",
-    "Chilling_Ray",
-    "Frost_Breath",
-    "Ice_Blast",
-    "Ice_Bolt",
-    "Ice_Storm"
+    "Sentinel_Ranged.Ice_Blast.Aim",
+    "Sentinel_Ranged.Ice_Blast.Bitter_Freeze_Ray",
+    "Sentinel_Ranged.Ice_Blast.Bitter_Ice_Blast",
+    "Sentinel_Ranged.Ice_Blast.Blizzard",
+    "Sentinel_Ranged.Ice_Blast.Chilling_Ray",
+    "Sentinel_Ranged.Ice_Blast.Frost_Breath",
+    "Sentinel_Ranged.Ice_Blast.Ice_Blast",
+    "Sentinel_Ranged.Ice_Blast.Ice_Bolt",
+    "Sentinel_Ranged.Ice_Blast.Ice_Storm"
   ],
   "available_level": [
+    7,
+    21,
+    17,
+    25,
+    5,
+    1,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11
   ]
 }

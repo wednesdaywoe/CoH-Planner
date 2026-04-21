@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Sniper Blast",
   "display_fullname": "Blaster Ranged Energy Blast Sniper Blast",
-  "display_help": "VAXLGF7CFTBBYXCML54YKEC79X",
-  "display_short_help": "566AEEZS4ZAJY3VM94D8QYHZS2",
+  "display_help": "A focused blast that can travel great distances with high Accuracy. This is a sniper attack, and is best fired from a distance, as it can be interrupted. Sniper Blast may knock targets backwards. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+  "display_short_help": "Sniper, DMG(Energy/Smash), Foe Knockback, Self +Range",
   "icon": "powerblast_sniperblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -62,6 +62,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Blaster_Ranged.Energy_Blast"
 }

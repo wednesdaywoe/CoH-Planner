@@ -5,25 +5,25 @@
   "short_help": "Water Blast",
   "icon": "water_blast_set.ico",
   "powers": [
-    "Aqua_Bolt",
-    "Dehydrate",
-    "Geyser",
-    "Hydro_Blast",
-    "Steam_Spray",
-    "Tidal_Forces",
-    "Water_Burst",
-    "Water_Jet",
-    "Whirlpool"
+    "Defender_Ranged.Water_Blast.Aqua_Bolt",
+    "Defender_Ranged.Water_Blast.Dehydrate",
+    "Defender_Ranged.Water_Blast.Geyser",
+    "Defender_Ranged.Water_Blast.Hydro_Blast",
+    "Defender_Ranged.Water_Blast.Steam_Spray",
+    "Defender_Ranged.Water_Blast.Tidal_Forces",
+    "Defender_Ranged.Water_Blast.Water_Burst",
+    "Defender_Ranged.Water_Blast.Water_Jet",
+    "Defender_Ranged.Water_Blast.Whirlpool"
   ],
   "available_level": [
     0,
+    19,
+    29,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27,
+    15,
+    3,
+    23,
+    9
   ]
 }

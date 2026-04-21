@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Sirens Song",
   "display_fullname": "Blaster Ranged Sonic Attack Sirens Song",
-  "display_help": "HQUYGGVE82GCWXB22H9RUBAHVA",
-  "display_short_help": "ML8ECYXVGB4DY8VR2HJUVBXNLA",
+  "display_help": "You send forth a subsonic pulse which causes your foes to fall unconscious and take energy damage. Your foes will remain unconscious for a good while, but will awaken if disturbed.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required against AVs and players, as well as to make secondary effects apply.</color>",
+  "display_short_help": "Ranged (Cone), DMG(Energy), Foe Sleep",
   "icon": "sonicblast_sleep.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -282,6 +282,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Blaster_Ranged.Sonic_Attack"
 }

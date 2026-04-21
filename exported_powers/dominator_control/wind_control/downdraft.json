@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Downdraft",
   "display_fullname": "Dominator Control Wind Control Downdraft",
-  "display_help": "GLQQZEP6LABTYEC57MEKY3FFAW",
+  "display_help": "You gather air above your target before forcefully pressurizing it into a downward flowing vortex. The force of the downdraft prevents your target from moving, effectively holding them in place and preventing flight. The force of the downdraft leaves the target winded, reducing their movement and attack speeds for a short time while they recover. This power builds Pressure.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Hold(Foe), -Movement(Foe), -Rech(Foe), -Fly(Foe), Pressure Builder (Self)",
   "icon": "windcontrol_downdraft.png",
   "auto_issue": false,

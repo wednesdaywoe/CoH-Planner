@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Blast",
   "display_fullname": "Epic Stalker Soul Mastery Dark Blast",
-  "display_help": "E8E8SWDSA93LW4XFSEGWTUJPWQ",
-  "display_short_help": "MNSRPKV3Q3NHW3XS3NZZZZGQSQ",
+  "display_help": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy.",
+  "display_short_help": "Ranged, DMG(Negative), Foe -ACC",
   "icon": "arachnos_patron_targetedrangedmoddmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -496,6 +496,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Stalker_Soul_Mastery"
 }

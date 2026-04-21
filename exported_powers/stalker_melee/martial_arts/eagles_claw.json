@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Eagles Claw",
   "display_fullname": "Stalker Melee Martial Arts Eagles Claw",
-  "display_help": "8VE4TMLTA2NVYBMZ45ZBKUGVCZ",
-  "display_short_help": "JZ9STPBB4PHTW4L3NKKNGGXDPS",
+  "display_help": "You can perform a devastating smashing damage kick that can severely Disorient most opponents. Eagle's Claw has an exceptionally good critical hit capability. In addition to the normal Critical from attacking while Hidden, there is also a small chance you may land a Critical hit even if you are not Hidden.",
+  "display_short_help": "Melee, DMG(Smashing), Foe Minor Disorient, +Special",
   "icon": "martialarts_eaglesclaw.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -375,6 +375,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Stalker_Melee.Martial_Arts"
 }

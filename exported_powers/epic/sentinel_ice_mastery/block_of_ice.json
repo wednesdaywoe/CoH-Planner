@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Block of Ice",
   "display_fullname": "Epic Sentinel Ice Mastery Block of Ice",
-  "display_help": "FU9JD3LSFXBQWNV2DUM5393M8Q",
+  "display_help": "You can freeze a single foe in a Block of Ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be held, but all affected targets will be Slowed. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
   "display_short_help": "Ranged, Foe Hold, -SPD, -Recharge",
   "icon": "ice_mastery_blockofice",
   "auto_issue": false,
@@ -449,6 +449,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Sentinel_Ice_Mastery"
 }

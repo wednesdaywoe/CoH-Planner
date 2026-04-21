@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Obscure Sustenance",
   "display_fullname": "Stalker Defense Dark Armor Obscure Sustenance",
-  "display_help": "KUPQTQXCKPEXWLN66TBZZD428S",
-  "display_short_help": "KU7FDDD9VL6YYUNUZ6KUKSVSR3",
+  "display_help": "You can tap the dark essence of the Netherworld increase your regeneration and recovery rate, as well as making you resistance to -ToHit and -Regeneration debuffs.<br><br>This power is mutually exclusive from Dark Regeneration.",
+  "display_short_help": "Self Heal, +Regen, Res(-ToHit, -Regeneration), +Recovery(Special)",
   "icon": "darkarmor_darkregeneration.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -261,6 +261,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Stalker_Defense.Dark_Armor"
 }

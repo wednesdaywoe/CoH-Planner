@@ -3,10 +3,10 @@
   "full_name": "Redirects.Epic_IceMastery.Frozen_Spear_Normal",
   "short_name": "Frozen_Spear_Normal",
   "type": "Click",
-  "display_name": "SNVJB6YP89EWWSLU62JK8QK63W",
+  "display_name": "Frozen Spear",
   "display_fullname": "Redirects Epic IceMastery Frozen Spear Normal",
-  "display_help": "GGATH9YE96P2WPVGB8VV9GXW6A",
-  "display_short_help": "BKBPWDMVHYBXWFLR6E49RJCVVA",
+  "display_help": "A focused spear of ice that can travel great distances with high Accuracy. Frozen Spear slows its target and has a high chance of encasing them in a frail block of ice, but can break free if disturbed. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
+  "display_short_help": "Sniper, DMG(Cold), Foe Sleep, -Recharge, -SPD",
   "icon": "ice_mastery_frozenspear",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -607,6 +607,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Redirects.Epic_IceMastery"
 }

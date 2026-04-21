@@ -3,10 +3,10 @@
   "full_name": "Sentinel_Ranged.Seismic_Blast.Gravestone",
   "short_name": "Gravestone",
   "type": "Click",
-  "display_name": "MM83HYPYFC35YHZMYPVKT44PR2",
+  "display_name": "Gravestone",
   "display_fullname": "Sentinel Ranged Seismic Blast Gravestone",
-  "display_help": "F6H4AUV5KU6UYDVZJY2VNTUVH2",
-  "display_short_help": "3YE7H6G6838NWJCHNYQQM2VJ53",
+  "display_help": "Create a giant pillar of stone, creating a Gravestone around your target, dealing extreme damage and limiting their ability to jump and fly for a short time.<br><br>Gravestone grants two stacks of Seismic Pressure.",
+  "display_short_help": "Ranged, DMG(Smash), Foe -Jump, -Fly",
   "icon": "seismicblast_gravestone",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -467,6 +467,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Sentinel_Ranged.Seismic_Blast"
 }

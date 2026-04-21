@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Inertial Reduction",
   "display_fullname": "Corruptor Buff Kinetics Inertial Reduction",
-  "display_help": "3JHK9GZY3JCBWZBNB6B5CGKZ83",
+  "display_help": "You can reduce your Inertia, along with that of all nearby allies. The affected allies can then jump incredible distances for a while.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Allies +Jump",
   "icon": "kineticboost_initialreductions.png",
   "auto_issue": false,
@@ -159,6 +159,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Corruptor_Buff.Kinetics"
 }

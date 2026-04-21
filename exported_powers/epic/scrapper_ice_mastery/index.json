@@ -5,17 +5,17 @@
   "short_help": "Ice Mastery",
   "icon": "arctic_mastery_set.ico",
   "powers": [
-    "Frigid_Wind",
-    "Frozen_Spear",
-    "Ice_Bolt",
-    "Ice_Elemental",
-    "Shiver"
+    "Epic.Scrapper_Ice_Mastery.Frigid_Wind",
+    "Epic.Scrapper_Ice_Mastery.Frozen_Spear",
+    "Epic.Scrapper_Ice_Mastery.Ice_Bolt",
+    "Epic.Scrapper_Ice_Mastery.Ice_Elemental",
+    "Epic.Scrapper_Ice_Mastery.Shiver"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    40,
+    34,
+    34,
+    43,
+    37
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Snap Shot",
   "display_fullname": "Defender Ranged Archery Snap Shot",
-  "display_help": "JUFVVGWFNTKRWTX9G3G5WNY8ZQ",
+  "display_help": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Minor DMG(Lethal)",
   "icon": "archery_quickarrow.png",
   "auto_issue": false,

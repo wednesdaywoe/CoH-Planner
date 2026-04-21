@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Adrenalin Boost",
   "display_fullname": "Incarnate Lore Pet Phantoms Support Adrenalin Boost",
-  "display_help": "35GG5YRDXC2QY6N4EPE24AX43Z",
+  "display_help": "Dramatically increases an ally's Endurance Recovery, Hit Point Regeneration and attack rate for 90 seconds. Also grants the target high resistance to slow effects.<br><br><color #fcfc95>Notes: Adrenalin Boost is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)",
   "icon": "empathy_adrenalinboost.png",
   "auto_issue": false,

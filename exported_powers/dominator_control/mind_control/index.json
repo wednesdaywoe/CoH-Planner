@@ -5,25 +5,25 @@
   "short_help": "Mind Control",
   "icon": "mind_control_set.ico",
   "powers": [
-    "Confuse",
-    "Dominate",
-    "Levitate",
-    "Mass_Confusion",
-    "Mass_Hypnosis",
-    "Mesmerize",
-    "Telekinesis",
-    "Terrify",
-    "Total_Domination"
+    "Dominator_Control.Mind_Control.Confuse",
+    "Dominator_Control.Mind_Control.Dominate",
+    "Dominator_Control.Mind_Control.Levitate",
+    "Dominator_Control.Mind_Control.Mass_Confusion",
+    "Dominator_Control.Mind_Control.Mass_Hypnosis",
+    "Dominator_Control.Mind_Control.Mesmerize",
+    "Dominator_Control.Mind_Control.Telekinesis",
+    "Dominator_Control.Mind_Control.Terrify",
+    "Dominator_Control.Mind_Control.Total_Domination"
   ],
   "available_level": [
+    5,
+    1,
     0,
+    25,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11,
+    21,
+    17
   ]
 }

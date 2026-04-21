@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fallout",
   "display_fullname": "Controller Buff Radiation Emission Fallout",
-  "display_help": "JQANXYRUK3E7YZNLXS26SZD3J2",
+  "display_help": "After an ally falls in battle, you can activate this power to extract the energy from their body to deal a massive amount of Energy damage to any nearby foes. All affected foes are extremely weakened by the Fallout, and their chance to hit, Defense, Damage and Damage Resistance is severely reduced.",
   "display_short_help": "Post-Defeat: PBAoE, Extreme DMG(Energy), Foe -To Hit, -DEF, -DMG, -Res(All)",
   "icon": "radiationpoisoning_fallout.png",
   "auto_issue": false,
@@ -116,6 +116,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Controller_Buff.Radiation_Emission"
 }

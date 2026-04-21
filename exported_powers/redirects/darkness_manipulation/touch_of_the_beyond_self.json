@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Touch of the Beyond",
   "display_fullname": "Redirects Darkness Manipulation Touch of the Beyond Self",
-  "display_help": "28HUCJ63WECYYJCAAH6M9SU2QS",
+  "display_help": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit. Additionally, drawing upon this connection to the Netherworld causes you to rapidly regenerate health and recover endurance for a short time.<br><br><color #fcfc95>Notes: Touch of the Beyond is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
   "icon": "darknessmanipulation_touchoffear.png",
   "auto_issue": false,
@@ -143,6 +143,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Redirects.Darkness_Manipulation"
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Cauterizing Blaze",
   "display_fullname": "Sentinel Defense Fiery Aura Cauterizing Blaze",
-  "display_help": "XZALLCFXSX3BYGX9HUZ6Q7JNKW",
+  "display_help": "While active, you are surrounded by flames cauterize your wounds healing you a small amount every few seconds.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: Self +Heal Over Time",
   "icon": "flamingshield_cauterizing",
   "auto_issue": false,
@@ -82,6 +82,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Sentinel_Defense.Fiery_Aura"
 }

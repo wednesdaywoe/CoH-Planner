@@ -1,21 +1,21 @@
 {
   "key": "Epic.Brute_Mu_Mastery",
   "display_name": "Mu Mastery",
-  "help": "P2730572537",
+  "help": "Scirocco has taught you the ancient powers of the Mu. In their eternal struggle against the Oranbega, the Mu have unlocked many mystical powers, including their very signature crimson lightning. Now you possess their secrets.",
   "short_help": "Mu Mastery",
   "icon": "brute_mu_mastery_set.ico",
   "powers": [
-    "Ball_Lightning",
-    "Electrifying_Fences",
-    "Mu_Lightning",
-    "Static_Discharge",
-    "Summon_Striker"
+    "Epic.Brute_Mu_Mastery.Ball_Lightning",
+    "Epic.Brute_Mu_Mastery.Electrifying_Fences",
+    "Epic.Brute_Mu_Mastery.Mu_Lightning",
+    "Epic.Brute_Mu_Mastery.Static_Discharge",
+    "Epic.Brute_Mu_Mastery.Summon_Striker"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    34,
+    34,
+    40,
+    43
   ]
 }

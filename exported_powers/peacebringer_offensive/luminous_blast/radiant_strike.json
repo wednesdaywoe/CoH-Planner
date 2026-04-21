@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Radiant Strike",
   "display_fullname": "Peacebringer Offensive Luminous Blast Radiant Strike",
-  "display_help": "Z93TZDEF5FBJWEM9GH2ES7K65Q",
-  "display_short_help": "6AYYPFAGBMZTWSVDUXV3F6Q4W3",
+  "display_help": "The Radiant Strike is a slow melee attack, but makes up for it with superior damage. Radiant Strike releases Kheldian light on impact, which can Knock Back foes, bring down fliers, and reduce a target's Defense.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Melee, High DMG(Smash/Energy), Foe -DEF, Knockback, -Fly",
   "icon": "luminousblast_radiantstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -319,6 +319,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

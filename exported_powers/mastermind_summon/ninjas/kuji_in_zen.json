@@ -3,9 +3,9 @@
   "full_name": "Mastermind_Summon.Ninjas.Kuji_In_Zen",
   "short_name": "Kuji_In_Zen",
   "type": "Click",
-  "display_name": "BLE5XHDFSAVEW4MM6UZ2K43HSQ",
+  "display_name": "Kuji-In Zen",
   "display_fullname": "Mastermind Summon Ninjas Kuji In Zen",
-  "display_help": "8TW5YT9KJWM4YTMVBZM4QT7J63",
+  "display_help": "Kuji-In Zen will permanently bestow the most advanced techniques and powers to all of your Ninja Henchman. The Enlightened Ninja will gain new abilities, powers, and weapons. The powers gained are unique and dependent upon the type of Ninja Henchman that is Enlightened. <br><br>Your Ninja Henchman also gain 3% more Critical Hit chance and the ability to heal themselves periodically with Kuji-In Sha. This power only works on your Ninja Henchmen and you can only Enlighten your Ninja Henchmen once with this power.",
   "display_short_help": "Ranged, Enlighten Ninja Henchman",
   "icon": "ninjas_upgradeequipment.png",
   "auto_issue": false,
@@ -43,6 +43,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Mastermind_Summon.Ninjas"
 }

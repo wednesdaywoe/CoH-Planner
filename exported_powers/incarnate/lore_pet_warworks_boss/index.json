@@ -5,9 +5,9 @@
   "short_help": "Warworks",
   "icon": "lore_pet_warworks_boss_set.ico",
   "powers": [
-    "Cross_Cut",
-    "Plasma_Eye_Beams",
-    "Swipe"
+    "Incarnate.Lore_Pet_Warworks_Boss.Cross_Cut",
+    "Incarnate.Lore_Pet_Warworks_Boss.Plasma_Eye_Beams",
+    "Incarnate.Lore_Pet_Warworks_Boss.Swipe"
   ],
   "available_level": [
     0,

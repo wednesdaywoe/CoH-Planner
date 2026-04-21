@@ -6,7 +6,7 @@
   "display_name": "Beta Decay",
   "display_fullname": "Blaster Support Radiation Manipulation Beta Decay",
   "display_help": "While Beta Decay is active, nearby foes will have their chance to hit and defense decreased slightly. You will gain a recharge bonus per nearby target up to 10 targets. The first target grants the largest benefit.",
-  "display_short_help": "3LXVJ4K888D2WRM39NFQTGF8QX",
+  "display_short_help": "Toggle: PBAoE, Foe -ToHit, -DEF, Self +Recharge(Special)",
   "icon": "atomicmanipulation_decay",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -158,6 +158,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Blaster_Support.Radiation_Manipulation"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Frost Breath",
   "display_fullname": "Dominator Assault Icy Assault Frost Breath",
-  "display_help": "UHM62TXM2693YSXJURH9EZW8FA",
+  "display_help": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Close (Cone), Moderate DoT(Cold), Foe -Recharge, -SPD",
   "icon": "iceassault_frost.png",
   "auto_issue": false,
@@ -217,6 +217,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Dominator_Assault.Icy_Assault"
 }

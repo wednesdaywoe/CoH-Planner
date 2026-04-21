@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fire Sword",
   "display_fullname": "Incarnate Lore Pet Phantoms LT Fire Sword",
-  "display_help": "P4R3228BGYCZY8XXJ4GLDQBKQ2",
+  "display_help": "Through concentration, you can create a Sword of Fire that sets foes ablaze. Successful attacks from the Fire Sword will ignite your target, dealing damage over time.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Melee, Moderate DMG(Fire/Lethal)",
   "icon": "fieryfray_firesword.png",
   "auto_issue": false,

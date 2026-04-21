@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shout",
   "display_fullname": "Dominator Assault Sonic Assault Shout",
-  "display_help": "KLCRD3A3Z8NVY8Z9QNJ3UM2PD2",
-  "display_short_help": "6RR3A5G9TC5JYRBQKXCTP5LNJX",
+  "display_help": "You blast your foe with a tremendous Shout, damaging them. This power applies <color #ffd9b3>Extended Sonic Vibrations</color> that lower resistance for 12s.",
+  "display_short_help": "Ranged, DMG(Energy/Smash), Foe -Res(All)",
   "icon": "sonicmanipulation_shout",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -194,6 +194,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Dominator_Assault.Sonic_Assault"
 }

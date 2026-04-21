@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Throw Spines",
   "display_fullname": "Brute Melee Spines Throw Spines",
-  "display_help": "7W9UQSKAEDACWXCVXQ28VXEQ7S",
-  "display_short_help": "K8ZDFRNGCA9LYNZGSJS22V9WE2",
+  "display_help": "You can throw dozens of Spines in a wide cone in front of you, impaling foes caught within the range. Spine throwing deals moderate damage, and poisons any targets it hits. Spine poison deals additional Toxic damage and Slows affected foes.",
+  "display_short_help": "Ranged (Cone), DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_quillthrowing.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -396,6 +396,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Brute_Melee.Spines"
 }

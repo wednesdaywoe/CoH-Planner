@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Disruptor Blast",
   "display_fullname": "Epic Brute Mace Mastery Disruptor Blast",
-  "display_help": "GZ8AC7PDYEG4WEV4P5QUX2VGRQ",
-  "display_short_help": "6K9ZW5YY6NDUYHMMRFMDCN8B6Q",
+  "display_help": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
   "icon": "arachnos_patron_rangedaoemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -244,6 +244,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Brute_Mace_Mastery"
 }

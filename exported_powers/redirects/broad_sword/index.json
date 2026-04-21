@@ -5,11 +5,11 @@
   "short_help": "Broad Sword",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Head_Splitter",
-    "Head_Splitter_Glance"
+    "Redirects.Broad_Sword.Head_Splitter",
+    "Redirects.Broad_Sword.Head_Splitter_Glance"
   ],
   "available_level": [
-    0,
-    0
+    25,
+    25
   ]
 }

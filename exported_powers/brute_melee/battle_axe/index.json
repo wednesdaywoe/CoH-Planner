@@ -5,25 +5,25 @@
   "short_help": "Battle Axe",
   "icon": "battle_axe_set.ico",
   "powers": [
-    "Beheader",
-    "Build_Up",
-    "Chop",
-    "Cleave",
-    "Gash",
-    "Pendulum",
-    "Swoop",
-    "Taunt",
-    "Whirling_Axe"
+    "Brute_Melee.Battle_Axe.Beheader",
+    "Brute_Melee.Battle_Axe.Build_Up",
+    "Brute_Melee.Battle_Axe.Chop",
+    "Brute_Melee.Battle_Axe.Cleave",
+    "Brute_Melee.Battle_Axe.Gash",
+    "Brute_Melee.Battle_Axe.Pendulum",
+    "Brute_Melee.Battle_Axe.Swoop",
+    "Brute_Melee.Battle_Axe.Taunt",
+    "Brute_Melee.Battle_Axe.Whirling_Axe"
   ],
   "available_level": [
+    1,
+    5,
     0,
+    25,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    7,
+    17,
+    11,
+    21
   ]
 }

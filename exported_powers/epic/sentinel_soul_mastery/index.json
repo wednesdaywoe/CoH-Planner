@@ -5,17 +5,17 @@
   "short_help": "Soul Mastery",
   "icon": "sentinel_soul_mastery_set.ico",
   "powers": [
-    "Darkest_Night",
-    "Midnight_Grasp",
-    "Soul_Storm",
-    "Soul_Tentacles",
-    "Summon_Mistress"
+    "Epic.Sentinel_Soul_Mastery.Darkest_Night",
+    "Epic.Sentinel_Soul_Mastery.Midnight_Grasp",
+    "Epic.Sentinel_Soul_Mastery.Soul_Storm",
+    "Epic.Sentinel_Soul_Mastery.Soul_Tentacles",
+    "Epic.Sentinel_Soul_Mastery.Summon_Mistress"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    40,
+    34,
+    37,
+    34,
+    43
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Poisoned Dagger",
   "display_fullname": "Pool Utility Belt Poisoned Dagger",
-  "display_help": "CM7MRWLWLVAGYYMBHFKPZ7GQH2",
+  "display_help": "You throw an envenomed blade at your target causing a moderate amount of lethal damage and causing them to suffer a fair amount of toxic damage over time. Foes struck by the Poisoned Dagger will also have their damage decreased.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Lethal), Foe Light DoT(Toxic), -DMG",
   "icon": "utilitybelt_poisoneddagger.png",
   "auto_issue": false,

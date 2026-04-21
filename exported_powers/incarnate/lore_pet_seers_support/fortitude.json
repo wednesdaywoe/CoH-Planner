@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fortitude",
   "display_fullname": "Incarnate Lore Pet Seers Support Fortitude",
-  "display_help": "PGFZZWK28D35YYVTQFU5279YDS",
+  "display_help": "Fortitude immensely enhances a single targeted ally's accuracy, damage potential, and defense. The target ally will even take less damage from those few attacks that do hit him. Fortitude even protects the target ally from psionic attacks and damage.<br><br><color #fcfc95>Notes: Fortitude is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ally +DEF, +DMG, +ACC",
   "icon": "empathy_fortitude.png",
   "auto_issue": false,

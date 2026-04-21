@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Stalagmite",
   "display_fullname": "Sentinel Ranged Seismic Blast Stalagmite",
-  "display_help": "XKRG7LWGAFCFW7LLGAXVRGPQVS",
-  "display_short_help": "U77QTJHFT4TPWSXS4YLANNHCZ2",
+  "display_help": "You can cause a Stalagmite to erupt under an enemy dealing minimal Lethal damage, and Disorienting them for a good while. You must be on the ground to activate this power.<br><br>If affected by Seismic Shockwaves, this power will halt the shockwaves and deal extreme damage.<br><br>Stalagmite grants two stacks of Seismic Pressure.",
+  "display_short_help": "Ranged, DMG(Smash), Foe Disorient, Special",
   "icon": "seismicblast_stalagmite",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Sentinel_Ranged.Seismic_Blast"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Blinding Powder",
   "display_fullname": "Sentinel Defense Ninjitsu Blinding Powder",
-  "display_help": "THW3KMS5ZCDLY7X3WAJQ7MWKZ2",
+  "display_help": "You throw a handful of Blinding powder in a wide arc at your foes. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
   "icon": "ninjitsu_blindingpowder.png",
   "auto_issue": false,
@@ -318,6 +318,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Sentinel_Defense.Ninjitsu"
 }

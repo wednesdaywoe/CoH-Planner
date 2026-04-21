@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fault",
   "display_fullname": "Redirects Stone Melee Fault Cone Tanker",
-  "display_help": "4A2YTWJDB6RBY7NRD9FPXYPYZZ",
+  "display_help": "This powerful stomp can cause a seismic disturbance. This will crack the Earth itself and send a Fault towards a targeted foe, throwing him and nearby enemies into the air and possibly Disorienting them. Fault deals no damage on its own.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Close (Targeted AoE), Foe Knockback, Disorient",
   "icon": "stonemelee_fault.png",
   "auto_issue": false,

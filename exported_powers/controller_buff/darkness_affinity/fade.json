@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fade",
   "display_fullname": "Controller Buff Darkness Affinity Fade",
-  "display_help": "RBCALTMQ8RPHWKVLCPBN67GLN3",
+  "display_help": "You partially bring yourself and all nearby allies into the Netherworld vastly increasing their Defense to all attacks and resistance to lethal, smashing, negative energy and psionic damage for a very short period of time as well as dramatically increasing their resistance to Defense Debuffs. This power is best used to help counter a dangerous situation.",
   "display_short_help": "PBAoE Ally, +Defense(All), +Res(Defense Debuffs, Lethal, Smash, Negative, Psionic)",
   "icon": "darknessaffinity_fade.png",
   "auto_issue": false,
@@ -148,6 +148,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Controller_Buff.Darkness_Affinity"
 }

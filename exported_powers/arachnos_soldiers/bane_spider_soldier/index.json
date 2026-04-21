@@ -5,27 +5,27 @@
   "short_help": "Bane Spider Soldier",
   "icon": "bane_spider_soldier_set.ico",
   "powers": [
-    "BS_Bash",
-    "Build_Up",
-    "Crowd_Control",
-    "Mace_Beam",
-    "Mace_Beam_Blast",
-    "Mace_Beam_Volley",
-    "Placate",
-    "Poisonous_Ray",
-    "Pulverize",
-    "Shatter"
+    "Arachnos_Soldiers.Bane_Spider_Soldier.BS_Bash",
+    "Arachnos_Soldiers.Bane_Spider_Soldier.Build_Up",
+    "Arachnos_Soldiers.Bane_Spider_Soldier.Crowd_Control",
+    "Arachnos_Soldiers.Bane_Spider_Soldier.Mace_Beam",
+    "Arachnos_Soldiers.Bane_Spider_Soldier.Mace_Beam_Blast",
+    "Arachnos_Soldiers.Bane_Spider_Soldier.Mace_Beam_Volley",
+    "Arachnos_Soldiers.Bane_Spider_Soldier.Placate",
+    "Arachnos_Soldiers.Bane_Spider_Soldier.Poisonous_Ray",
+    "Arachnos_Soldiers.Bane_Spider_Soldier.Pulverize",
+    "Arachnos_Soldiers.Bane_Spider_Soldier.Shatter"
   ],
   "available_level": [
     0,
+    5,
+    25,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    7,
+    21,
+    11,
+    11,
+    17
   ]
 }

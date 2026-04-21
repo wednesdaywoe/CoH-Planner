@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Possess",
   "display_fullname": "Epic Blaster Dark Mastery Possess",
-  "display_help": "B6DQLD2X3E4KW7NPRKMPSUD33A",
-  "display_short_help": "NAUARYXTNXFQYWLVQ5MS86VBS3",
+  "display_help": "You cause your targeted foe to be possessed by a dark entity from the Netherworld causing them to be confused for a short period of time. While confused they will be unable to tell the difference between friend or foe and will attack nearby allies. Possess will also hinder the target's abilities, lowering their chance ToHit, Damage, Healing, and the strength of their buffs, You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, Target Confuse, -ToHit, -Damage, -Healing, -Special",
   "icon": "dark_mastery_possess",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -205,6 +205,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Blaster_Dark_Mastery"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Blazing Arrow",
   "display_fullname": "Defender Ranged Archery Blazing Arrow",
-  "display_help": "M5GLS52BUTM4Y7N4XJ82Q3WLFA",
-  "display_short_help": "S7KY8SMBY97VWTXR6DUURBYFUX",
+  "display_help": "You fire a Blazing Arrow at your foe, dealing some Lethal damage and causing them to catch on fire and burn.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged, Superior DMG(Lethal), Minor DoT(Fire)",
   "icon": "archery_flamingarrow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -163,6 +163,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Defender_Ranged.Archery"
 }

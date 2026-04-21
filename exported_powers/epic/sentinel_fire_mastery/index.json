@@ -5,17 +5,17 @@
   "short_help": "Fire Mastery",
   "icon": "sentinel_fire_mastery_set.ico",
   "powers": [
-    "Char",
-    "Cremate",
-    "Fire_Cages",
-    "Fire_Sword_Circle",
-    "Warmth"
+    "Epic.Sentinel_Fire_Mastery.Char",
+    "Epic.Sentinel_Fire_Mastery.Cremate",
+    "Epic.Sentinel_Fire_Mastery.Fire_Cages",
+    "Epic.Sentinel_Fire_Mastery.Fire_Sword_Circle",
+    "Epic.Sentinel_Fire_Mastery.Warmth"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    34,
+    34,
+    40,
+    43
   ]
 }

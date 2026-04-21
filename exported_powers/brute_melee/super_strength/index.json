@@ -5,25 +5,25 @@
   "short_help": "Super Strength",
   "icon": "super_strength_set.ico",
   "powers": [
-    "Foot_Stomp",
-    "Hand_Clap",
-    "Haymaker",
-    "Hurl",
-    "Jab",
-    "Knockout_Blow",
-    "Punch",
-    "Rage",
-    "Taunt"
+    "Brute_Melee.Super_Strength.Foot_Stomp",
+    "Brute_Melee.Super_Strength.Hand_Clap",
+    "Brute_Melee.Super_Strength.Haymaker",
+    "Brute_Melee.Super_Strength.Hurl",
+    "Brute_Melee.Super_Strength.Jab",
+    "Brute_Melee.Super_Strength.Knockout_Blow",
+    "Brute_Melee.Super_Strength.Punch",
+    "Brute_Melee.Super_Strength.Rage",
+    "Brute_Melee.Super_Strength.Taunt"
   ],
   "available_level": [
+    25,
+    5,
+    1,
+    21,
     0,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    17,
+    11
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Trip Mine",
   "display_fullname": "Dominator Assault Arsenal Assault Trip Mine",
-  "display_help": "V2HHYS6C5AXRY4MD7ZC4B8CZ4S",
-  "display_short_help": "KGEW4U9GH3FPYDNRNWDEX74ELA",
+  "display_help": "You can place a Trip Mine on the ground. Any villains that pass near the Trip Mine will cause it to explode, damaging all nearby foes and sending them flying.",
+  "display_short_help": "Place Mine: PBAoE, DMG(Fire), Foe Knockback",
   "icon": "assaultweapons_tripmine",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -93,6 +93,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Dominator_Assault.Arsenal_Assault"
 }

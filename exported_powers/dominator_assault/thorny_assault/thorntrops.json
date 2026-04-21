@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Thorntrops",
   "display_fullname": "Dominator Assault Thorny Assault Thorntrops",
-  "display_help": "ZST3CL4ZHB7QYTVQ4934W62DKX",
+  "display_help": "You fling dozens of Thorns into the ground at a targeted location. The small Thorns pepper the ground over a large area. Any enemy that pass over the Thorntrops will be forced to move at a slower rate. They will also take some trivial Lethal damage over time.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
   "icon": "thornyassault_thorntrops.png",
   "auto_issue": false,
@@ -89,6 +89,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Dominator_Assault.Thorny_Assault"
 }

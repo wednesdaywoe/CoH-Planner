@@ -3,10 +3,10 @@
   "full_name": "Controller_Control.Symphony_Control.Dreadful_Discord",
   "short_name": "Dreadful_Discord",
   "type": "Click",
-  "display_name": "9BZG8KYKAPQPWTVYSG2JKV6KZ2",
+  "display_name": "Dreadful Discord",
   "display_fullname": "Controller Control Symphony Control Dreadful Discord",
-  "display_help": "Q26BR35HE37EY2MLXSKV36VFFX",
-  "display_short_help": "YHC6BVPY2LH9YKV8FL6B46FXVA",
+  "display_help": "Dreadful Discord is a terrifying song that will leave your audience shaking in fear.",
+  "display_short_help": "Ranged (Cone), DMG(Psionic), Foe Fear",
   "icon": "symphonycontrol_fearaoe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -340,6 +340,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Controller_Control.Symphony_Control"
 }

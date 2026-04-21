@@ -5,8 +5,8 @@
   "short_help": "Imperial Defense Force",
   "icon": "lore_pet_idf_support_set.ico",
   "powers": [
-    "Deploy_Stimulant",
-    "Shield_Generator"
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant",
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator"
   ],
   "available_level": [
     0,

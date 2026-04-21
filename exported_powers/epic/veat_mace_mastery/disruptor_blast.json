@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Disruptor Blast",
   "display_fullname": "Epic VEAT Mace Mastery Disruptor Blast",
-  "display_help": "GAEZQQBHYP5BYAZALX88J5MWAA",
-  "display_short_help": "6K9ZW5YY6NDUYHMMRFMDCN8B6Q",
+  "display_help": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. Your access to this Adept is very limited. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
   "icon": "arachnos_patron_rangedaoemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -206,6 +206,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.VEAT_Mace_Mastery"
 }

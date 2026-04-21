@@ -3,10 +3,10 @@
   "full_name": "Controller_Control.Symphony_Control.Reverberant",
   "short_name": "Reverberant",
   "type": "Click",
-  "display_name": "W2HFX7W5589HY5NA79TRUWNKK2",
+  "display_name": "Reverberant",
   "display_fullname": "Controller Control Symphony Control Reverberant",
-  "display_help": "5ZHPG4FSQVEZYDM2K7MWNUY57W",
-  "display_short_help": "W6D668HHJ6RMYHZM2B9X5NVVVQ",
+  "display_help": "You summon an entity capable of repeating your songs a short while after you have executed them. <br><br><color #fcfc95>Note: This entity will execute weaker versions of your songs. Type ''/release_pets'' in the chat window to release all your pets.<br><br><color #fcfc95>Recharge: Very Long.</color>",
+  "display_short_help": "Summon Reverberant: Ranged Control Special",
   "icon": "symphonycontrol_pet",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -95,6 +95,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Controller_Control.Symphony_Control"
 }

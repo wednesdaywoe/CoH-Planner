@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Psionic Tornado",
   "display_fullname": "Epic Psionic Mastery Psionic Tornado",
-  "display_help": "JERTWV6GV7MZWAX2PU8L5LJ73A",
-  "display_short_help": "MPN7E54B36TFYXM5PEVNHCLSVX",
+  "display_help": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
   "icon": "psychicblast_psionictornado.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -320,6 +320,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Psionic_Mastery"
 }

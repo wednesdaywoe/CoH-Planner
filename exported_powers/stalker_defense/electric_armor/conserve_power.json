@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Energize",
   "display_fullname": "Stalker Defense Electric Armor Conserve Power",
-  "display_help": "N83UNBYX6D62YFZWJX5SPUQ5WA",
+  "display_help": "You can channel a tremendous amount of electricity through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time.",
   "display_short_help": "Self Endurance Discount, Heal, +Regen",
   "icon": "electricarmor_energize.png",
   "auto_issue": false,
@@ -132,6 +132,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Stalker_Defense.Electric_Armor"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shuriken",
   "display_fullname": "Epic Weapon Mastery Shuriken",
-  "display_help": "NKRZHWF6VYG2WMXDBE7RR8RY2Z",
-  "display_short_help": "NB2XU8MP3FUEW3ZHSEP8PG2N9A",
+  "display_help": "A classic small throwing weapon, you can throw Shurikens at a pretty fast rate of fire. You must be level 38 and have one other Weapon Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Lethal)",
   "icon": "weaponmastery_shuriken.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -291,6 +291,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Weapon_Mastery"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Twilight Grasp",
   "display_fullname": "Corruptor Buff Dark Miasma Twilight Grasp",
-  "display_help": "BSVMV55HABULWDX9KLBMJGM223",
+  "display_help": "You channel Negative Energy from the Netherworld through yourself to a targeted foe. Twilight Grasp drains the power from that target and slowly transfers it to you and all nearby allies. The targeted foe's chance to hit, damage and regeneration rate are reduced, while you and your nearby allies are healed.",
   "display_short_help": "Ranged, Foe -To Hit, -DMG, -Regen, Team Heal",
   "icon": "darkmiasma_twilightgrasp.png",
   "auto_issue": false,

@@ -3,10 +3,10 @@
   "full_name": "Controller_Buff.Marine_Affinity.Shifting_Tides",
   "short_name": "Shifting_Tides",
   "type": "Toggle",
-  "display_name": "C93ZFWP6Y5YNYUNAV9Z2XVP6NA",
+  "display_name": "Shifting Tides",
   "display_fullname": "Controller Buff Marine Affinity Shifting Tides",
-  "display_help": "MJ7FD2HGNTJEYVX4ZHERNTPXFX",
-  "display_short_help": "QJM7CD4MQAXKWYM9EWZBMHTREX",
+  "display_help": "Select either a friend or foe to create a field of shifting tides around them.<br><br>When attacked, foes within the shifting tides will provide you and your allies a stacking Rising Tide buff that increases ToHit, Damage, and Recharge. Enemies may also take bonus damage, with the odds increasing per stack.",
+  "display_short_help": "Toggle: Ranged (Targeted AoE), Team +DMG, +ToHit, +Recharge, Special Damage",
   "icon": "marineaffinity_shiftingtides.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -425,6 +425,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Controller_Buff.Marine_Affinity"
 }

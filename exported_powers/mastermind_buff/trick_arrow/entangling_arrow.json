@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Entangling Arrow",
   "display_fullname": "Mastermind Buff Trick Arrow Entangling Arrow",
-  "display_help": "WA8TTVKJT4ZZY8C7WGA67NKEBA",
+  "display_help": "You entangle a targeted foe causing their reflexes to become slowed and sluggish. This grounds them and causes them to have decreased movement speed and damage resistance. Weaker foes will also be immobilized.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Target Immobilize, -Res(All), -Fly, Slow",
   "icon": "trickarrow_immobilize.png",
   "auto_issue": false,

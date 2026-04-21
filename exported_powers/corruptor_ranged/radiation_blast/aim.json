@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Aim",
   "display_fullname": "Corruptor Ranged Radiation Blast Aim",
-  "display_help": "FFQXGRJYVTLEWYBYMXGFVLBR4A",
+  "display_help": "Greatly increases your chance to hit with attacks for a few seconds. Slightly increases damage.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +To Hit, +DMG",
   "icon": "radiationburst_aim.png",
   "auto_issue": false,
@@ -114,6 +114,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Corruptor_Ranged.Radiation_Blast"
 }

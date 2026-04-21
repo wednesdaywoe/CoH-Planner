@@ -5,25 +5,25 @@
   "short_help": "Poison",
   "icon": "poison_set.ico",
   "powers": [
-    "Alkaloid",
-    "Antidote",
-    "Elixir_of_Life",
-    "Envenom",
-    "Neurotoxic_Breath",
-    "Noxious_Gas",
-    "Paralytic_Poison",
-    "Poison_Trap",
-    "Weaken"
+    "Mastermind_Buff.Poison.Alkaloid",
+    "Mastermind_Buff.Poison.Antidote",
+    "Mastermind_Buff.Poison.Elixir_of_Life",
+    "Mastermind_Buff.Poison.Envenom",
+    "Mastermind_Buff.Poison.Neurotoxic_Breath",
+    "Mastermind_Buff.Poison.Noxious_Gas",
+    "Mastermind_Buff.Poison.Paralytic_Poison",
+    "Mastermind_Buff.Poison.Poison_Trap",
+    "Mastermind_Buff.Poison.Weaken"
   ],
   "available_level": [
     0,
+    19,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9,
+    29,
+    23,
+    27,
+    3
   ]
 }

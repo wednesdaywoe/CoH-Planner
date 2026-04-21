@@ -5,10 +5,10 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_tsoo_boss_set.ico",
   "powers": [
-    "Eye_of_the_Storm",
-    "Mercurial_Blow",
-    "Precise_Strike",
-    "Serpents_Reach"
+    "Incarnate.Lore_Pet_Tsoo_Boss.Eye_of_the_Storm",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Mercurial_Blow",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Precise_Strike",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Serpents_Reach"
   ],
   "available_level": [
     0,

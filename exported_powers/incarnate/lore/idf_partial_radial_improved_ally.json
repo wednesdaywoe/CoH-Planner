@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "IDF Partial Radial Improved Ally",
   "display_fullname": "Incarnate Lore IDF Partial Radial Improved Ally",
-  "display_help": "MW8RLNWS5CPTWWCWB762M6M8GA",
+  "display_help": "Draws forth the essences of a vanquished IDF Battle Orb and Elite Ranger from the Well of the Furies to serve you for 5 minutes. This Battle Orb is capable of attacking as well as support.<br><br>This power also applies an Incarnate Shift. (An Incarnate Shift is a Level Shift which only activates while participating in an Incarnate Trial.).<br><br><color #fcfc95>Notes: IDF Partial Radial Improved Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Summon IDF LT & Support Essences",
   "icon": "incarnate_lore_idf_rare.png",
   "auto_issue": false,

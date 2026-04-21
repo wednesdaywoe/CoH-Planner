@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ice Bolt",
   "display_fullname": "Epic Scrapper Ice Mastery Ice Bolt",
-  "display_help": "MMDQC9LB63UXWQBALZA4FKDF2A",
-  "display_short_help": "7KB7P3REP2LSY5XZMQ9SNA5ZCZ",
+  "display_help": "Ice Bolt quickly pelts an enemy with small icy daggers; their chill Slows a foe's attacks and movement for a time. Fast, but little damage.",
+  "display_short_help": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
   "icon": "ice_mastery_icebolt",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -491,6 +491,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Scrapper_Ice_Mastery"
 }

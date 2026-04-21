@@ -5,10 +5,10 @@
   "short_help": "Demons",
   "icon": "lore_pet_arachnos_boss_set.ico",
   "powers": [
-    "Blackclaw",
-    "Come_Hither",
-    "Fire_Ball",
-    "Hellish_Bolts"
+    "Incarnate.Lore_Pet_Demons_Boss.Blackclaw",
+    "Incarnate.Lore_Pet_Demons_Boss.Come_Hither",
+    "Incarnate.Lore_Pet_Demons_Boss.Fire_Ball",
+    "Incarnate.Lore_Pet_Demons_Boss.Hellish_Bolts"
   ],
   "available_level": [
     0,

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Telekinetic Blow",
   "display_fullname": "Stalker Melee Psionic Melee Telekinetic Blow",
-  "display_help": "H3YP93E3SYC2W3L3EZG3SM99RZ",
-  "display_short_help": "JV2N5TT3AE2AY4MTMBMMD75M2Q",
+  "display_help": "You project telekinetic energy around your fist before delivering a shattering uppercut to your foe dealing high Psionic and Smashing damage and sending them flying into the air. Telekinetic Blow has a high chance of granting you Insight. While you have Insight, Telekinetic Blow will deal additional minor psionic damage over time.",
+  "display_short_help": "Melee, DMG(Psionic/Smash), Foe Knock Up, Self +Insight",
   "icon": "psionicmelee_telekineticblow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -577,6 +577,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Stalker_Melee.Psionic_Melee"
 }

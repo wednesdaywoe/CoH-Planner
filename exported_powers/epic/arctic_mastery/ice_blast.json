@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ice Blast",
   "display_fullname": "Epic Arctic Mastery Ice Blast",
-  "display_help": "R2SMF5YTWE9SYTCWWPYA3QP99X",
-  "display_short_help": "7KB7P3REP2LSY5XZMQ9SNA5ZCZ",
+  "display_help": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
   "icon": "ice_mastery_iceblast",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -230,6 +230,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Arctic_Mastery"
 }

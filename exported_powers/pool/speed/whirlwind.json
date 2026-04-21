@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Whirlwind",
   "display_fullname": "Pool Speed Whirlwind",
-  "display_help": "KWPQGKFTQCSBY6X79BW842BANX",
+  "display_help": "You spin around at an amazing speed to create a Whirlwind around yourself. Any foes that enter this Whirlwind will be tossed into the air.<br><br>You must be at least level 14 and have two other Speed Powers before selecting Whirlwind.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Toggle: PBAoE, Foe Knockback",
   "icon": "superspeed_whirlwind.png",
   "auto_issue": false,
@@ -211,6 +211,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Speed"
 }

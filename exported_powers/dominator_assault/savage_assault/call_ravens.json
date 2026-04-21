@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Unkindness",
   "display_fullname": "Dominator Assault Savage Assault Call Ravens",
-  "display_help": "MLD8LZSU9UDNWCC37BFD4LQDHZ",
-  "display_short_help": "8MS66V2G46DPW3NAZUZWJBJETZ",
+  "display_help": "With a mighty roar, you command an unkindness of ravens to quickly assault and harass your foes. Your foes will suffer Moderate Lethal damage over time and have their speed and defense reduced. The power inflicts lethal damage over time that scales in strength with the number Blood Frenzy stacks. This power grants 2 stacks of Blood Frenzy.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Cone), DoT (Lethal), Foe -Speed, -Defense, -Fly, +2 Blood Frenzy",
   "icon": "savagemelee_callravens",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -260,6 +260,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Dominator_Assault.Savage_Assault"
 }

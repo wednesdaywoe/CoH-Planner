@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Web Grenade",
   "display_fullname": "Mastermind Buff Traps Web Grenade",
-  "display_help": "97R9Z74QRJEPWYZRNWGLFSFH82",
+  "display_help": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Target Immobilize, -Recharge, -Fly",
   "icon": "traps_targetedimmoblize.png",
   "auto_issue": false,

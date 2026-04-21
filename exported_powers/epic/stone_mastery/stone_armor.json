@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Rock Armor",
   "display_fullname": "Epic Stone Mastery Stone Armor",
-  "display_help": "GW94K7GRBHEDYSNBNKMAUNY2T3",
+  "display_help": "Your skin becomes stone while this power is active. Stone Armor makes you highly resistant to Smashing and Lethal attacks. They are less likely to land and affect you. You must be level 38 and have one other Earth Mastery Powers before selecting this power.<br>",
   "display_short_help": "Toggle: Self +DEF(Lethal, Smashing)",
   "icon": "earth_mastery_rockarmor",
   "auto_issue": false,
@@ -187,6 +187,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Stone_Mastery"
 }

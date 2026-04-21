@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Water Spout",
   "display_fullname": "Epic Dominator Leviathan Mastery Water Spout",
-  "display_help": "7ULBX9MFFBFXYMV84DX3TFH9T2",
-  "display_short_help": "YGWP55W3A4FZYNLLYARPNKW98Q",
+  "display_help": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes.",
+  "display_short_help": "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet",
   "icon": "arachnos_patron_dropknockback.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -91,6 +91,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Dominator_Leviathan_Mastery"
 }

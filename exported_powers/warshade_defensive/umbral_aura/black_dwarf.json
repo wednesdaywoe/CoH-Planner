@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Black Dwarf",
   "display_fullname": "Warshade Defensive Umbral Aura Black Dwarf",
-  "display_help": "D2GQ9D6JCR8SW3XUVE82TPN3UX",
+  "display_help": "Kheldians are masters of energy and matter. A Warshade can transform into a massive unstoppable essence draining beast known as a Black Dwarf. When you choose this power, you will have access to 6 other powers that can only be used while in this form. You will not be able to use any other powers while in Black Dwarf form. Black Dwarf has awesome resistance to all damage except Psionics, as well as controlling effects. Black Dwarf also has improved HP and Endurance Recovery, but is limited to melee attacks.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Shapeshift, Special",
   "icon": "umbralaura_blackdwarf.png",
   "auto_issue": false,
@@ -863,6 +863,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

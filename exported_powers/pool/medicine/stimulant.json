@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Injection",
   "display_fullname": "Pool Medicine Stimulant",
-  "display_help": "6CBQ8YGMBTPZYDL53FVRV6MQR2",
+  "display_help": "You fire a small dart at a target. The dart is set up to release a beneficial serum or deleterious toxin, depending on whether it strikes friend or foe.<br><br>If striking a friend, the ally is freed from any Immobilization, Sleep, Disorient, Hold, Fear or Confuse effects and is resistant to such effects for a brief time.<br><br>If striking a foe, the enemy suffers reduced damage potential, attack speed and chance to hit.<br><br>The serum's effects will improve with multiple applications from you, but the toxin's do not. The toxin's effect is also shorter in duration than the serum's effect. Both serum and toxin improve as you advance in level.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, +Status Protection(Ally, PvE), +Status Resistance(Ally, PvP) OR -DMG(Foe, All), -Rech(Foe), -ToHit(Foe)",
   "icon": "medicine_injection.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "One Thousand Cuts",
   "display_fullname": "Stalker Melee Dual Blades High Low",
-  "display_help": "TCL32SASWPAHWNLRX3CEREFKFW",
-  "display_short_help": "F3ABSVDSUSSKY8BD68SJJNB6KS",
+  "display_help": "Unleashes a flurry of attacks on all foes in a cone in front of you, dealing moderate lethal damage to each foe hit. This power is the finishing move for the Weaken combination attack.<br><br><color #ff7f00>Weaken: Sweeping Strike > Power Slice > One Thousand Cuts.</color>",
+  "display_short_help": "Melee (Cone), DMG(Lethal), Foe Knockback",
   "icon": "dualblades_highlow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -739,6 +739,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Stalker_Melee.Dual_Blades"
 }

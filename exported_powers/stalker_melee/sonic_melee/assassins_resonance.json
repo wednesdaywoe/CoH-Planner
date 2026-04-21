@@ -3,10 +3,10 @@
   "full_name": "Stalker_Melee.Sonic_Melee.Assassins_Resonance",
   "short_name": "Assassins_Resonance",
   "type": "Click",
-  "display_name": "J6XENT8M8YTAY7BT8AKV7HNZNS",
+  "display_name": "Assassin's Whisper",
   "display_fullname": "Stalker Melee Sonic Melee Assassins Resonance",
-  "display_help": "6EKEYHTWNB8ZYLX7PP4QF5P8MW",
-  "display_short_help": "D3MCCVJQ7YNDW3BCHTTDMEGZ9Q",
+  "display_help": "A signature Stalker attack. This attack does superior energy and smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you whisper at your unsuspecting foe. Affected target is likely to fall asleep and have their damage resistances lowered. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.",
+  "display_short_help": "Melee, DMG(Energy/Smashing), Sleep, -Res(DMG)",
   "icon": "sonicmanipulation_assassins",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Stalker_Melee.Sonic_Melee"
 }

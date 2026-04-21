@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Nova Blast",
   "display_fullname": "Warshade Offensive Umbral Blast Dark Nova Blast",
-  "display_help": "S8JSLECH9B4YYPNA4URQH5G4KA",
-  "display_short_help": "49G89YJUS2RRYAB42WAPXJASRZ",
+  "display_help": "A much more powerful, yet slower version of Dark Nova Bolt. Dark Nova Blast sends focused negative Nictus energy at a foe. This attack can knock down foes and will leave the targets' attack and movement speed slowed. This power is only available while in Dark Nova Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Ranged, Light DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_shadowblast.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -269,6 +269,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

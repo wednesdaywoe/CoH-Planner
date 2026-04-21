@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Hide",
   "display_fullname": "Stalker Defense Psionic Armor Hide",
-  "display_help": "5LMFNZ66PJ2HWKNX324KQ8WFTA",
+  "display_help": "Hide makes you almost impossible to detect. When properly 'Hidden\", a Stalker can pull off Critical hits with his attacks, and even land a massive 'Assassins Strike' with an Assassins power. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. Unlike most stealth powers, Hide can be used at the same time as other Concealment powers, giving you even greater stealth capability. No Endurance cost.",
   "display_short_help": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
   "icon": "psionicarmor_hide",
   "auto_issue": false,

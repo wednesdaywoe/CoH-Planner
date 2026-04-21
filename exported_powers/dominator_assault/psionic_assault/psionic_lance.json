@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Psionic Lance",
   "display_fullname": "Dominator Assault Psionic Assault Psionic Lance",
-  "display_help": "CZF5QMJPKMXUWDNPTUJPGGZEEZ",
+  "display_help": "This extremely long range Psionic attack has a bonus to Accuracy, and can Slow a target's attack rate. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Sniper, Extreme DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_psioniclance.png",
   "auto_issue": false,
@@ -61,6 +61,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Dominator_Assault.Psionic_Assault"
 }

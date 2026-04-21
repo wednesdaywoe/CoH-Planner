@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Spot Prey",
   "display_fullname": "Dominator Assault Savage Assault Spot Prey",
-  "display_help": "CJED8BFQ3FCPW8B82GM83TFEYX",
+  "display_help": "Greatly boosts your attacks for a few seconds. Slightly increases perception and chance to hit.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self +DMG, +To Hit, +Perception",
   "icon": "savagemelee_aim",
   "auto_issue": false,
@@ -139,6 +139,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Dominator_Assault.Savage_Assault"
 }

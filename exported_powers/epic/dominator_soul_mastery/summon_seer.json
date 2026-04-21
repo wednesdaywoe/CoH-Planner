@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Summon Seer",
   "display_fullname": "Epic Dominator Soul Mastery Summon Seer",
-  "display_help": "BWHXPBFE76DLY5XC9P8TWJQQQZ",
-  "display_short_help": "JPTATCLWPY8LWYLJ8HKEY2VFJS",
+  "display_help": "Ghost Widow has assigned a Fortunata Seer for you to command. Fortunata Seers can glimpse moments into the future. They use this ability to increase the Perception of their teammate. Your access to this Fortunata Seer is very limited. You can only summon her once every 15 minutes and she will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Fortunata Seer: Ranged DMG(Psionic)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -90,6 +90,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Dominator_Soul_Mastery"
 }

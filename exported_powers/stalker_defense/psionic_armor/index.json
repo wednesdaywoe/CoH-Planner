@@ -1,29 +1,29 @@
 {
   "key": "Stalker_Defense.Psionic_Armor",
-  "display_name": "EXXF5G43NLXWWPXQZ7DDC6ZZNZ",
-  "help": "46DZPCMHDYVSWTLVE4CNDWJCJS",
-  "short_help": "EXXF5G43NLXWWPXQZ7DDC6ZZNZ",
+  "display_name": "Psionic Armor",
+  "help": "You use your psionic powers to shield yourself reducing incoming damage, as well as steal your foes own psyche and use it against them, be it by empowering your own regenerative powers, weakening their defenses or completely subduing their will.",
+  "short_help": "Psionic Armor",
   "icon": "dark_armor_set.ico",
   "powers": [
-    "Aura_of_Insanity",
-    "Devour_Psyche",
-    "Fortify_Mind",
-    "Hide",
-    "Impenetrable_Mind",
-    "Memento_Mori",
-    "Precognition",
-    "Psionic_Shield",
-    "Psychic_Wall"
+    "Stalker_Defense.Psionic_Armor.Aura_of_Insanity",
+    "Stalker_Defense.Psionic_Armor.Devour_Psyche",
+    "Stalker_Defense.Psionic_Armor.Fortify_Mind",
+    "Stalker_Defense.Psionic_Armor.Hide",
+    "Stalker_Defense.Psionic_Armor.Impenetrable_Mind",
+    "Stalker_Defense.Psionic_Armor.Memento_Mori",
+    "Stalker_Defense.Psionic_Armor.Precognition",
+    "Stalker_Defense.Psionic_Armor.Psionic_Shield",
+    "Stalker_Defense.Psionic_Armor.Psychic_Wall"
   ],
   "available_level": [
+    27,
+    15,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    9,
+    29,
+    23,
+    3,
     0
   ]
 }

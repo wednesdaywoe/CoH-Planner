@@ -5,19 +5,19 @@
   "short_help": "Force of Will",
   "icon": "force_of_will_set.ico",
   "powers": [
-    "Mighty_Leap",
-    "Project_Will",
-    "Stomp",
-    "Unleash_Potential",
-    "Wall_of_Force",
-    "Weaken_Resolve"
+    "Pool.Force_of_Will.Mighty_Leap",
+    "Pool.Force_of_Will.Project_Will",
+    "Pool.Force_of_Will.Stomp",
+    "Pool.Force_of_Will.Unleash_Potential",
+    "Pool.Force_of_Will.Wall_of_Force",
+    "Pool.Force_of_Will.Weaken_Resolve"
   ],
   "available_level": [
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
+    4294967295,
+    19,
+    13,
     0
   ]
 }

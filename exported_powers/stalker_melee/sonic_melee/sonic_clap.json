@@ -3,10 +3,10 @@
   "full_name": "Stalker_Melee.Sonic_Melee.Sonic_Clap",
   "short_name": "Sonic_Clap",
   "type": "Click",
-  "display_name": "8ABT3PMXJ4HSYAB3SP6L49DGTQ",
+  "display_name": "Sonic Clap",
   "display_fullname": "Stalker Melee Sonic Melee Sonic Clap",
-  "display_help": "L7EPQJBW646FWDX3Q8AEJM8KJ3",
-  "display_short_help": "ZP5G6C6AFAZKWJMW6S2YJE88V3",
+  "display_help": "You generate a powerful sonic wave that damages foes in front of you with a decent chance to stun and knock them down. This power will inflict 10% bonus damage against Attuned targets.",
+  "display_short_help": "Melee (Cone), Foe Disorient, Knockdown",
   "icon": "sonicmanipulation_sonicclap",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -828,6 +828,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Stalker_Melee.Sonic_Melee"
 }

@@ -5,9 +5,9 @@
   "short_help": "Clockwork",
   "icon": "lore_pet_clockwork_boss_set.ico",
   "powers": [
-    "Anti-Matter_Beam",
-    "Anti-Matter_Ray",
-    "Particle_Blast"
+    "Incarnate.Lore_Pet_Clockwork_Boss.Anti-Matter_Beam",
+    "Incarnate.Lore_Pet_Clockwork_Boss.Anti-Matter_Ray",
+    "Incarnate.Lore_Pet_Clockwork_Boss.Particle_Blast"
   ],
   "available_level": [
     0,

@@ -1,12 +1,12 @@
 {
   "key": "Redirects.Dual_Pistols",
   "display_name": "Dual Pistols",
-  "help": "PMX48W4B3BKDWQVSNYHETW7UHA",
+  "help": "These powers are used by Dual Pistol powers.",
   "short_help": "Assault Rifle",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Suppressive_Fire",
-    "Suppressive_Fire_Lethal"
+    "Redirects.Dual_Pistols.Suppressive_Fire",
+    "Redirects.Dual_Pistols.Suppressive_Fire_Lethal"
   ],
   "available_level": [
     0,

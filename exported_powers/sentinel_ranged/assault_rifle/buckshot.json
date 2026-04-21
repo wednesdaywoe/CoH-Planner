@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Buckshot",
   "display_fullname": "Sentinel Ranged Assault Rifle Buckshot",
-  "display_help": "3ZX8WCCFFYDHYGC25VJ4TR27SX",
-  "display_short_help": "SFUNKWQCG8Q6WDLNA8B7MP5D4S",
+  "display_help": "Good at close range. Fires a cone of Buckshot pellets and can knock some foes down.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged (Cone), DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_shotgunbuckshot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -306,6 +306,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Sentinel_Ranged.Assault_Rifle"
 }

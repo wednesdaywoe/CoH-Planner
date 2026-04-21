@@ -3,10 +3,10 @@
   "full_name": "Sentinel_Defense.Psionic_Armor.Devour_Psyche",
   "short_name": "Devour_Psyche",
   "type": "Click",
-  "display_name": "Z4BWNEZ592TVWDLS88HH4GS2WA",
+  "display_name": "Devour Psyche",
   "display_fullname": "Sentinel Defense Psionic Armor Devour Psyche",
-  "display_help": "YTSXQW6PBBR8WNZMPDLRMQXZLQ",
-  "display_short_help": "VDNU6KM7DTFKY5NJ7HMYXEU3TZ",
+  "display_help": "You Devour the Psyche of foes in front of you, weakening their Hit Point Regeneration and Endurance Recovery and boosting your own. Hitting any foe with this power will refresh all existing stacks you currently have.<br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>5</color> seconds and each affected foe will increase the recharge by <color #FF7F27>5.5</color> seconds for a maximum total of <color #FF7F27>60</color> seconds.</color>",
+  "display_short_help": "Cone Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery",
   "icon": "psionicarmor_devourpsyche",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -54,6 +54,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Sentinel_Defense.Psionic_Armor"
 }

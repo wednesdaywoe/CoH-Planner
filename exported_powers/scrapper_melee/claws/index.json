@@ -5,25 +5,25 @@
   "short_help": "Claws",
   "icon": "claws_set.ico",
   "powers": [
-    "Eviscerate",
-    "Focus",
-    "Follow_Up",
-    "Shockwave",
-    "Slash",
-    "Spin",
-    "Strike",
-    "Swipe",
-    "Taunt"
+    "Scrapper_Melee.Claws.Eviscerate",
+    "Scrapper_Melee.Claws.Focus",
+    "Scrapper_Melee.Claws.Follow_Up",
+    "Scrapper_Melee.Claws.Shockwave",
+    "Scrapper_Melee.Claws.Slash",
+    "Scrapper_Melee.Claws.Spin",
+    "Scrapper_Melee.Claws.Strike",
+    "Scrapper_Melee.Claws.Swipe",
+    "Scrapper_Melee.Claws.Taunt"
   ],
   "available_level": [
+    21,
+    17,
+    7,
+    25,
+    1,
+    5,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11
   ]
 }

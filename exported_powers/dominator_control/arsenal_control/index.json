@@ -1,29 +1,29 @@
 {
   "key": "Dominator_Control.Arsenal_Control",
-  "display_name": "S4QBXZTMQ8YUY6LSJQASJKPYT3",
-  "help": "YR485ARZJH53WRCA5QXY3J9582",
-  "short_help": "S4QBXZTMQ8YUY6LSJQASJKPYT3",
+  "display_name": "Arsenal Control",
+  "help": "Armed with a state-of-the-art multipurpose rifle, you are able to deliver a wide variety of payloads to control your enemies and render them incapable of responding.",
+  "short_help": "Arsenal Control",
   "icon": "assault_rifle_set.ico",
   "powers": [
-    "Cloaking_Device",
-    "Cryo_Freeze_Ray",
-    "Flash_Bang",
-    "Gun_Drone",
-    "Liquid_Nitrogen",
-    "Sleep_Grenade",
-    "Smoke_Grenade",
-    "Tear_Gas",
-    "Tranquilizer"
+    "Dominator_Control.Arsenal_Control.Cloaking_Device",
+    "Dominator_Control.Arsenal_Control.Cryo_Freeze_Ray",
+    "Dominator_Control.Arsenal_Control.Flash_Bang",
+    "Dominator_Control.Arsenal_Control.Gun_Drone",
+    "Dominator_Control.Arsenal_Control.Liquid_Nitrogen",
+    "Dominator_Control.Arsenal_Control.Sleep_Grenade",
+    "Dominator_Control.Arsenal_Control.Smoke_Grenade",
+    "Dominator_Control.Arsenal_Control.Tear_Gas",
+    "Dominator_Control.Arsenal_Control.Tranquilizer"
   ],
   "available_level": [
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    17,
+    25,
+    5,
+    1,
+    11,
+    21,
     0
   ]
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Thundergust",
   "display_fullname": "Controller Control Wind Control Thundergust",
-  "display_help": "CRW8KK6SWG7NWPZCXVCS8ZGWKA",
+  "display_help": "You unleash a powerful gust of wind in the direction of your foes. This gust has enough force to deal minor smashing damage to your foes and knock them to the ground. The debris blown at your opponent temporarily blinds them, reducing their chance to hit. This power builds Pressure.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Cone), Minor DMG(Smashing), Knockdown(Foe), -ToHit(Foe), Pressure Builder (Self)",
   "icon": "windcontrol_thundergust.png",
   "auto_issue": false,
@@ -372,6 +372,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Controller_Control.Wind_Control"
 }

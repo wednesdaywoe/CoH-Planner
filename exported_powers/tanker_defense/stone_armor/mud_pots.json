@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Mud Pots",
   "display_fullname": "Tanker Defense Stone Armor Mud Pots",
-  "display_help": "NEZZ93U6MJ5UYHLTTAZ5UNJLSW",
+  "display_help": "While this power is active, you draw upon the geothermal power of the Earth to create a bubbling pool of hot mud around you. All foes in melee range will become snared and entrapped in the mud, Immobilizing some and slowing others. The boiling heat from Mud Pots may also deal some damage over time to the snared foes.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: PBAoE, Minor DoT(Fire), Foe Immobilize, -SPD",
   "icon": "stonearmor_clay.png",
   "auto_issue": false,
@@ -297,6 +297,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Tanker_Defense.Stone_Armor"
 }

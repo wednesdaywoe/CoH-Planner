@@ -5,17 +5,17 @@
   "short_help": "Presence",
   "icon": "manipulation_set.ico",
   "powers": [
-    "Challenge",
-    "Intimidate",
-    "Invoke_Panic",
-    "Provoke",
-    "Unrelenting"
+    "Pool.Manipulation.Challenge",
+    "Pool.Manipulation.Intimidate",
+    "Pool.Manipulation.Invoke_Panic",
+    "Pool.Manipulation.Provoke",
+    "Pool.Manipulation.Unrelenting"
   ],
   "available_level": [
     0,
+    13,
+    13,
     0,
-    0,
-    0,
-    0
+    13
   ]
 }

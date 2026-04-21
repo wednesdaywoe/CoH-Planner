@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Disrupt",
   "display_fullname": "Stalker Defense Energy Aura Repulse",
-  "display_help": "Q49XG5K94EW2W4ZP4Q56G3MC4Z",
+  "display_help": "This Toggle power creates a field that periodically sends out waves of intense energy that overload nearby enemy senses leaving them briefly stunned. Disrupt drains a small amount of endurance for each foe it attempts to stun.",
   "display_short_help": "Toggle: PBAoE, Foe Disorient",
   "icon": "energyaura_disrupt.png",
   "auto_issue": false,
@@ -162,6 +162,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Stalker_Defense.Energy_Aura"
 }

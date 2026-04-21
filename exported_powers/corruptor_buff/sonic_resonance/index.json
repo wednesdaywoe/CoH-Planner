@@ -5,25 +5,25 @@
   "short_help": "Sonic Resonance",
   "icon": "sonic_resonance_set.ico",
   "powers": [
-    "Clarity",
-    "Disruption_Field",
-    "Liquefy",
-    "Sonic_Barrier",
-    "Sonic_Cage",
-    "Sonic_Dispersion",
-    "Sonic_Haven",
-    "Sonic_Repulsion",
-    "Sonic_Siphon"
+    "Corruptor_Buff.Sonic_Resonance.Clarity",
+    "Corruptor_Buff.Sonic_Resonance.Disruption_Field",
+    "Corruptor_Buff.Sonic_Resonance.Liquefy",
+    "Corruptor_Buff.Sonic_Resonance.Sonic_Barrier",
+    "Corruptor_Buff.Sonic_Resonance.Sonic_Cage",
+    "Corruptor_Buff.Sonic_Resonance.Sonic_Dispersion",
+    "Corruptor_Buff.Sonic_Resonance.Sonic_Haven",
+    "Corruptor_Buff.Sonic_Resonance.Sonic_Repulsion",
+    "Corruptor_Buff.Sonic_Resonance.Sonic_Siphon"
   ],
   "available_level": [
+    27,
+    15,
+    29,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    9,
+    19,
+    3,
+    23,
     0
   ]
 }

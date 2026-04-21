@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Incendiary Ammunition",
   "display_fullname": "Blaster Ranged Dual Pistols Incendiary Ammunition",
-  "display_help": "X4PN85E9UFDBWKN2FFXBC467RQ",
+  "display_help": "While this toggle is active you will be equipped with 'Incendiary Rounds.' Most of your Dual Pistol attacks will have their secondary damage converted to fire damage and inflict a minor damage over time effect.<br><br>In order to earn this power, you must purchase the Swap Ammo power.",
   "display_short_help": "Toggle: Ammo Change (Fire), Special",
   "icon": "dualpistols_incendiaryammo.png",
   "auto_issue": true,
@@ -405,6 +405,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Blaster_Ranged.Dual_Pistols"
 }

@@ -5,25 +5,25 @@
   "short_help": "Ninjas",
   "icon": "ninjas_set.ico",
   "powers": [
-    "Aimed_Shot",
-    "Call_Genin",
-    "Call_Jounin",
-    "Fistful_of_Arrows",
-    "Kuji_In_Zen",
-    "Oni",
-    "Smoke_Flash",
-    "Snap_Shot",
-    "Train_Ninjas"
+    "Mastermind_Summon.Ninjas.Aimed_Shot",
+    "Mastermind_Summon.Ninjas.Call_Genin",
+    "Mastermind_Summon.Ninjas.Call_Jounin",
+    "Mastermind_Summon.Ninjas.Fistful_of_Arrows",
+    "Mastermind_Summon.Ninjas.Kuji_In_Zen",
+    "Mastermind_Summon.Ninjas.Oni",
+    "Mastermind_Summon.Ninjas.Smoke_Flash",
+    "Mastermind_Summon.Ninjas.Snap_Shot",
+    "Mastermind_Summon.Ninjas.Train_Ninjas"
   ],
   "available_level": [
+    1,
     0,
+    11,
+    7,
+    25,
+    21,
+    17,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    5
   ]
 }

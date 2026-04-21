@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Dimension Shift",
   "display_fullname": "Dominator Control Gravity Control Dimension Shift",
-  "display_help": "SUPLX2298AWFWRCGFD6B6XRXSW",
+  "display_help": "Location-targeted AoE toggle. This power folds space in an area, immobilizing and phasing all targets within the sphere. Enemies who enter the area become immobilized and phased for the duration of the effect. Allies who enter the sphere's area of effect will enter the phase as well, allowing them to combat phased enemies. Detoggling this power ends the effect, bringing the phased creatures back into the physical world. Maintaining this dimensional distortion is taxing on the user, and cannot be done for more than 20 seconds.",
   "display_short_help": "Toggle, Ranged (Location AoE), Foe Intangible",
   "icon": "gravitycontrol_dimensionshift2.png",
   "auto_issue": false,
@@ -195,6 +195,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Dominator_Control.Gravity_Control"
 }

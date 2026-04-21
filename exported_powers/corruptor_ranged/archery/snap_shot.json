@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Snap Shot",
   "display_fullname": "Corruptor Ranged Archery Snap Shot",
-  "display_help": "G9M5D4QB7F8WYANZWBYRRP8MZA",
+  "display_help": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Moderate DMG(Lethal)",
   "icon": "archery_quickarrow.png",
   "auto_issue": false,

@@ -3,10 +3,10 @@
   "full_name": "Stalker_Melee.Sonic_Melee.Attune",
   "short_name": "Attune",
   "type": "Toggle",
-  "display_name": "M69A6D2C3D29YYBJ6FCM37NTYZ",
+  "display_name": "Attune",
   "display_fullname": "Stalker Melee Sonic Melee Attune",
-  "display_help": "T2R59GS4MT77WUZUM4YLVRP2BS",
-  "display_short_help": "D7TDTS7Z77X9W7M42TNR43CFSA",
+  "display_help": "A high-intensity sound wave that matches the resonant frequency of your target. This power inflicts continuous damage over time as well as making the target vulnerable to additional effects from all your attacks.",
+  "display_short_help": "Melee Toggle, DMG(Energy), Foe DOT(Energy), Special",
   "icon": "sonicmanipulation_dot",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -421,6 +421,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Stalker_Melee.Sonic_Melee"
 }

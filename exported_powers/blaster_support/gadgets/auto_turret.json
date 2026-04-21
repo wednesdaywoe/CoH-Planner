@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Gun Drone",
   "display_fullname": "Blaster Support Gadgets Auto Turret",
-  "display_help": "VX6UNHMV5UQ4WSMGTK67K9BFX3",
+  "display_help": "You can summon a Gun Drone. The Drone has an extremely fast fire rate and is equipped with a customized tracking system. Once locked on, the Drone will continue to unload a volley of lead into the target until it is destroyed. Enemies hit by the drone, as well as those near it, will prioritize attacking it over it's owner. The Drone is armored, but can be destroyed.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Build Turret: Ranged, Moderate DMG(Lethal)",
   "icon": "gadgets_turret.png",
   "auto_issue": false,
@@ -101,6 +101,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Gadgets"
 }

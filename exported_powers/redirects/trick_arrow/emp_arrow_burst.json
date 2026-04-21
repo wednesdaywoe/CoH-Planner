@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "EMP Arrow",
   "display_fullname": "Redirects Trick Arrow EMP Arrow Burst",
-  "display_help": "W5MV73ZLFHYKWNBVGXSVUATNMS",
+  "display_help": "EMP Arrow unleashes a massive pulse of electromagnetic energy on impact. Allies that enter the field will see an increase to their damage resistances against all damage except Toxic. They are also protected from status effects, knockbacks, endurance drain, recovery debuffs and recharge debuffs. Only one EMP Field can be sustained at once. This EMP will affect enemy machines adversively, and is even powerful enough to affect synaptic brain patterns. It will incapacitate all foes in its radius. Machines and robots are more likely to take high damage.<br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "AoE, Foe Hold, -Boost, Special vs. Robots",
   "icon": "trickarrow_stun.png",
   "auto_issue": false,
@@ -519,6 +519,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 31,
   "powerset": "Redirects.Trick_Arrow"
 }

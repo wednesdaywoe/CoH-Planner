@@ -5,27 +5,27 @@
   "short_help": "Regeneration",
   "icon": "regeneration_set.ico",
   "powers": [
-    "Dull_Pain",
-    "Fast_Healing",
-    "Instant_Healing",
-    "Instant_Regeneration",
-    "Integration",
-    "Moment_of_Glory",
-    "Quick_Recovery",
-    "Reconstruction",
-    "Resist_Disorientation",
-    "Revive"
+    "Scrapper_Defense.Regeneration.Dull_Pain",
+    "Scrapper_Defense.Regeneration.Fast_Healing",
+    "Scrapper_Defense.Regeneration.Instant_Healing",
+    "Scrapper_Defense.Regeneration.Instant_Regeneration",
+    "Scrapper_Defense.Regeneration.Integration",
+    "Scrapper_Defense.Regeneration.Moment_of_Glory",
+    "Scrapper_Defense.Regeneration.Quick_Recovery",
+    "Scrapper_Defense.Regeneration.Reconstruction",
+    "Scrapper_Defense.Regeneration.Resist_Disorientation",
+    "Scrapper_Defense.Regeneration.Revive"
   ],
   "available_level": [
+    27,
     0,
+    23,
+    23,
+    15,
+    29,
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    19,
+    9
   ]
 }

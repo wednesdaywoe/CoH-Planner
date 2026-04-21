@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Midnight Grasp",
   "display_fullname": "Blaster Support Darkness Manipulation Midnight Grasp",
-  "display_help": "UW2CLMLFD2F2YTCQ5W2XSZM3Z2",
+  "display_help": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe and continuously drain his life force.",
   "display_short_help": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "darknessmanipulation_midnightgrasp.png",
   "auto_issue": false,
@@ -309,6 +309,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Darkness_Manipulation"
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Dark Embrace",
   "display_fullname": "Brute Defense Dark Armor Dark Embrace",
-  "display_help": "87RS4KL5UR86W5NEJ4R57L92HA",
+  "display_help": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
   "icon": "darkarmor_darkembrace.png",
   "auto_issue": false,

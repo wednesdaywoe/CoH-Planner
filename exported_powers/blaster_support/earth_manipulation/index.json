@@ -1,29 +1,29 @@
 {
   "key": "Blaster_Support.Earth_Manipulation",
-  "display_name": "VNBAKUQ5CPXJWTV8NZPRLN4DC2",
-  "help": "KHHJYE38ZU6HYUN23PC58QXRRZ",
-  "short_help": "VNBAKUQ5CPXJWTV8NZPRLN4DC2",
+  "display_name": "Earth Manipulation",
+  "help": "You can control the forces of the Earth. You can manipulate earth and stone to defeat your foes. The crushing force of many Earth Powers can reduce a target's Defense, while most Stone attacks will knock foes off their feet.",
+  "short_help": "Earth Manipulation",
   "icon": "electricity_manipulation_set.ico",
   "powers": [
-    "Beryl_Crystals",
-    "Build_Up",
-    "Fracture",
-    "Heavy_Mallet",
-    "Mud_Bath",
-    "Salt_Crystals",
-    "Seismic_Smash",
-    "Stone_Prison",
-    "Tremor"
+    "Blaster_Support.Earth_Manipulation.Beryl_Crystals",
+    "Blaster_Support.Earth_Manipulation.Build_Up",
+    "Blaster_Support.Earth_Manipulation.Fracture",
+    "Blaster_Support.Earth_Manipulation.Heavy_Mallet",
+    "Blaster_Support.Earth_Manipulation.Mud_Bath",
+    "Blaster_Support.Earth_Manipulation.Salt_Crystals",
+    "Blaster_Support.Earth_Manipulation.Seismic_Smash",
+    "Blaster_Support.Earth_Manipulation.Stone_Prison",
+    "Blaster_Support.Earth_Manipulation.Tremor"
   ],
   "available_level": [
+    23,
+    9,
+    27,
     0,
+    19,
+    3,
+    29,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15
   ]
 }

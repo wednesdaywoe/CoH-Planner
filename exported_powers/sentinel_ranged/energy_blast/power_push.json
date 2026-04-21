@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Power Push",
   "display_fullname": "Sentinel Ranged Energy Blast Power Push",
-  "display_help": "D7FN8EQXEKD2YENCQVXWH5F453",
-  "display_short_help": "YER24EDNUSXGWUL8SZTZR9LKTW",
+  "display_help": "This ranged attack deals little damage, but sends the target flying for a great distance.",
+  "display_short_help": "Ranged DMG(Energy/Smash), Foe High Knockback",
   "icon": "powerblast_powerpush.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -382,6 +382,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Sentinel_Ranged.Energy_Blast"
 }

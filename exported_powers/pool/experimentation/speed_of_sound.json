@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Speed of Sound",
   "display_fullname": "Pool Experimentation Speed of Sound",
-  "display_help": "P64D3X86W9PYWZL2QJLQXXPUR3",
+  "display_help": "Your experiments have yielded incredible results. By activating this power, you're able to run at incredible speeds. In fact, while this power is active, you gain access to the Jaunt power. Jaunt allows you to teleport to a distant location once every short while. Speed of Sound also increases your maximum run speed by 30% whilst it is active.<br><br>Speed of Sound can be active at the same time as other run speed toggles, but only the strongest run speed buff will apply.",
   "display_short_help": "Toggle: Self +Speed, (Special)",
   "icon": "experimentation_speedofsound.png",
   "auto_issue": false,
@@ -236,6 +236,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Pool.Experimentation"
 }

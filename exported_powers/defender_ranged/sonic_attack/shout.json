@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shout",
   "display_fullname": "Defender Ranged Sonic Attack Shout",
-  "display_help": "CPVQF9XZTYLUYHL5A2HZL5YRJQ",
-  "display_short_help": "KWKW3XDTAVQVWHZYGASSX3SMZW",
+  "display_help": "You blast your foe with a tremendous Shout, damaging them.",
+  "display_short_help": "Ranged, High DMG(Smashing/Energy), Foe -Res(All)",
   "icon": "sonicblast_heavy.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -220,6 +220,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Defender_Ranged.Sonic_Attack"
 }

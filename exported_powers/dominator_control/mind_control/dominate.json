@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dominate",
   "display_fullname": "Dominator Control Mind Control Dominate",
-  "display_help": "F8QTCFLRA6RLWPB5BV9D63LYH2",
-  "display_short_help": "BH76B2RX3KA7W8M73MM5S5QYY2",
+  "display_help": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in their own mind and unable to defend themself.",
+  "display_short_help": "Ranged, Light DMG(Psionic), Foe Hold",
   "icon": "mentalcontrol_command.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -255,6 +255,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Dominator_Control.Mind_Control"
 }

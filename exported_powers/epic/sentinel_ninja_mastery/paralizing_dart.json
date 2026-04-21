@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Paralyzing Dart",
   "display_fullname": "Epic Sentinel Ninja Mastery Paralizing Dart",
-  "display_help": "S684FTD9AHAJWJNJXWT4TZ79MX",
-  "display_short_help": "3DZDTCXNC975YANZEP34YDWVUA",
+  "display_help": "Paralyzing Darts do minor toxic damage over time and incapacitate your foe. You must be level 38 and have one other Weapon Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DoT(Toxic), Foe Hold",
   "icon": "ninjatools_hold",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -396,6 +396,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Sentinel_Ninja_Mastery"
 }

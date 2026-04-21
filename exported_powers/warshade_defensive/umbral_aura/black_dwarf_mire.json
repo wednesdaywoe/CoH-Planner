@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Black Dwarf Mire",
   "display_fullname": "Warshade Defensive Umbral Aura Black Dwarf Mire",
-  "display_help": "3S8CHSLGCRSGWRBAZCFV83463S",
-  "display_short_help": "7RUUCJPPJBV4WMLB8RAWSN9972",
+  "display_help": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC",
   "icon": "umbralaura_blackdwarfmire.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -204,6 +204,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

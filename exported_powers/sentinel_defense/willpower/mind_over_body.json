@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Mind Over Body",
   "display_fullname": "Sentinel Defense Willpower Mind Over Body",
-  "display_help": "D5HKXSATRSJ5WZZWE2WQYVXB4Z",
+  "display_help": "When you toggle on this power, you empower your Mind Over Body to become highly resistant to Smashing, Lethal and Psionic damage.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Self +Res(Smash, Lethal, Psionics)",
   "icon": "willpower_mindoverbody.png",
   "auto_issue": false,

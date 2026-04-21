@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Repel",
   "display_fullname": "Corruptor Buff Kinetics Repel",
-  "display_help": "EBYCQGSTQF2KWYZJXVQ975SAFS",
+  "display_help": "Repel creates a zone of kinetic energy that violently repels nearby foes. Each foe that is repelled costs additional Endurance.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Toggle: Self AoE Knockback",
   "icon": "kineticboost_repel.png",
   "auto_issue": false,
@@ -170,6 +170,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Corruptor_Buff.Kinetics"
 }

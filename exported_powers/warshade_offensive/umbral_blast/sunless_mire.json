@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Sunless Mire",
   "display_fullname": "Warshade Offensive Umbral Blast Sunless Mire",
-  "display_help": "UBHDA55LVJ62YRL25DKQK4YBUZ",
-  "display_short_help": "W5C7VV5ECU3GYNVD62S447Y6U3",
+  "display_help": "Sunless Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +To Hit",
   "icon": "umbralblast_sunlessmire.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -249,6 +249,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

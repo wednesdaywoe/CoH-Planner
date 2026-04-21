@@ -5,25 +5,25 @@
   "short_help": "Ninjitsu",
   "icon": "ninjitsu_set.ico",
   "powers": [
-    "Blinding_Powder",
-    "Bo_Ryaku",
-    "Danger_Sense",
-    "Kuji-In_Retsu",
-    "Kuji-In_Rin",
-    "Kuji-In_Sha",
-    "Ninja_Reflexes",
-    "Seishinteki_Kyoyo",
-    "Shinobi-Iri"
+    "Sentinel_Defense.Ninjitsu.Blinding_Powder",
+    "Sentinel_Defense.Ninjitsu.Bo_Ryaku",
+    "Sentinel_Defense.Ninjitsu.Danger_Sense",
+    "Sentinel_Defense.Ninjitsu.Kuji-In_Retsu",
+    "Sentinel_Defense.Ninjitsu.Kuji-In_Rin",
+    "Sentinel_Defense.Ninjitsu.Kuji-In_Sha",
+    "Sentinel_Defense.Ninjitsu.Ninja_Reflexes",
+    "Sentinel_Defense.Ninjitsu.Seishinteki_Kyoyo",
+    "Sentinel_Defense.Ninjitsu.Shinobi-Iri"
   ],
   "available_level": [
+    27,
+    23,
     0,
+    29,
+    9,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    3
   ]
 }

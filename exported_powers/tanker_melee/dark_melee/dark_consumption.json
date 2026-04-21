@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Consumption",
   "display_fullname": "Tanker Melee Dark Melee Dark Consumption",
-  "display_help": "NQ5DYD965ZTFYNV7NY4M44D4XZ",
-  "display_short_help": "Z9ZGVCZAG89WW5LUYQVP8J5EJA",
+  "display_help": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE DMG(Negative), Self +End",
   "icon": "shadowfighting_darkconsumption.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Tanker_Melee.Dark_Melee"
 }

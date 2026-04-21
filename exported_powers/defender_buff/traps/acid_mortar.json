@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Acid Mortar",
   "display_fullname": "Defender Buff Traps Acid Mortar",
-  "display_help": "VFV5BNKCTHNZWUMKWTQATAHXEA",
-  "display_short_help": "H77EBWNGK3NKWEM82UG2EVJUW2",
+  "display_help": "You can place a small Mortar on the ground. If an enemy passes nearby, the Mortar will fire an Acid grenade at the target. The grenade will explodes in a small shower of acid on impact. This acid eats through armor, causing minor damage over time. It reduces the target's Defense as well as his Damage Resistance. The mortar will last up to 60 seconds and will fire up to 10 grenades. It can be destroyed by your foes.",
+  "display_short_help": "Place Trap: Ranged (AoE), DoT(Toxic), Foe -Res(All), -DEF",
   "icon": "traps_droppedaoedebuffdefense.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -89,6 +89,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Defender_Buff.Traps"
 }

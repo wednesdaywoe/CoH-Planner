@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Increase Density",
   "display_fullname": "Defender Buff Kinetics Increase Density",
-  "display_help": "C7NFBLH3YLEHYJBRCYU84KG7Z2",
+  "display_help": "Increases an ally's mass, freeing them from any Disorient, Immobilization, or Hold effects and leaving them resistant to such effects for a while. Increase Density also protects the target from Knockback, Repel and enemy Teleportation, as well as Smashing and Energy damage. Because the target grows more dense, their movement speed is Slowed. Although the Damage Resistance and slowing effect will not stack with multiple applications, the rest of the effects of Increase Density will. You cannot use this power on yourself.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Ally Special",
   "icon": "kineticboost_increasedensity.png",
   "auto_issue": false,
@@ -321,6 +321,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Defender_Buff.Kinetics"
 }

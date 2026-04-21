@@ -6,7 +6,7 @@
   "display_name": "Jolting Chain",
   "display_fullname": "Controller Control Electric Control Jolting Chain",
   "display_help": "You can send a bolt of electricity through multiple opponents, causing a muscle spasm and dealing minor damage. Each foe is knocked down, and the electric charge can fork several times, jumping to several opponents rapidly.",
-  "display_short_help": "A5658A5DECVKYVVCB27XBNSDNW",
+  "display_short_help": "Ranged Chain AoE, DMG(Energy), Foe Knockdown, -End",
   "icon": "electriccontrol_joltingchain.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -341,6 +341,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Controller_Control.Electric_Control"
 }

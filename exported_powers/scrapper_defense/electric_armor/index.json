@@ -5,25 +5,25 @@
   "short_help": "Electric Armor",
   "icon": "electric_armor_set.ico",
   "powers": [
-    "Charged_Armor",
-    "Conductive_Shield",
-    "Energize",
-    "Grounded",
-    "Lightning_Field",
-    "Lightning_Reflexes",
-    "Power_Sink",
-    "Power_Surge",
-    "Static_Shield"
+    "Scrapper_Defense.Electric_Armor.Charged_Armor",
+    "Scrapper_Defense.Electric_Armor.Conductive_Shield",
+    "Scrapper_Defense.Electric_Armor.Energize",
+    "Scrapper_Defense.Electric_Armor.Grounded",
+    "Scrapper_Defense.Electric_Armor.Lightning_Field",
+    "Scrapper_Defense.Electric_Armor.Lightning_Reflexes",
+    "Scrapper_Defense.Electric_Armor.Power_Sink",
+    "Scrapper_Defense.Electric_Armor.Power_Surge",
+    "Scrapper_Defense.Electric_Armor.Static_Shield"
   ],
   "available_level": [
     0,
+    3,
+    19,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    23,
+    27,
+    29,
+    9
   ]
 }

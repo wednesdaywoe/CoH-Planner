@@ -6,7 +6,7 @@
   "display_name": "Time Lord",
   "display_fullname": "Blaster Support Time Manipulation Time Lord",
   "display_help": "You are a time lord, for you time is just a small hurdle that can easily be overcome or ignored. As a time lord, all your attacks recharge faster and you are resistant to energy attacks in addition to disorient effects, movement debuffs and recharge debuffs. If you are affected by the Accelerated effect, your powers will recharge even faster and you will become nearly immune to recharge debuffs. This power is always on and cost no endurance.",
-  "display_short_help": "CBA2W7R6FST3YTND8L4DBZD2N2",
+  "display_short_help": "Auto: Self +Recharge, +Resist(Energy, Disorient, Slow)",
   "icon": "timemanipulation_timelord",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -300,6 +300,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Time_Manipulation"
 }

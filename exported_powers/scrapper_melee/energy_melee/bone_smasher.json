@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bone Smasher",
   "display_fullname": "Scrapper Melee Energy Melee Bone Smasher",
-  "display_help": "9JKYZWDFZ7V7W4VNZ7FFG5ZHN2",
-  "display_short_help": "KANGSZB7ZDQMWZX7Q38RNJAHTZ",
+  "display_help": "This melee attack deals a good amount of damage and has a good chance to Disorient the target.",
+  "display_short_help": "Melee, DMG(Smash/Energy), Disorient",
   "icon": "powerpunch_bonesmasher.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -407,6 +407,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Scrapper_Melee.Energy_Melee"
 }

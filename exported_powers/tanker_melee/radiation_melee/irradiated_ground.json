@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Irradiated Ground",
   "display_fullname": "Tanker Melee Radiation Melee Irradiated Ground",
-  "display_help": "28RFSJUF2SHNWXBMGXCATPP7ZX",
-  "display_short_help": "NB3A3ZQZUUJCY8VL48PTRVBXWX",
+  "display_help": "While active you will scorch the earth beneath you leaving toxic clouds of radioactive gas in your wake. Foes that enter these clouds will suffer Minor Toxic damage, have their defense reduced and also have a tiny chance of being Contaminated. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target.",
+  "display_short_help": "Toggle, DoT(Toxic) Patch, Foe -Def, Special",
   "icon": "radiationmelee_irradiatedground.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -93,6 +93,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Tanker_Melee.Radiation_Melee"
 }

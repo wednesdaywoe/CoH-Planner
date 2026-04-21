@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Teleport",
   "display_fullname": "Redirects Pool Teleportation Teleport Hover",
-  "display_help": "295G9ZHARUP4Y4X6PULCGNQA4W",
+  "display_help": "After a Teleporting, you find yourself temporarly between dimensions. This allows you to stay still even while in mid air. Any movement will snap you out of this state and gravity will once more affect you.<br><br><color #fcfc95>Notes: Teleport is unaffected by Recharge Time changes.</color>",
   "display_short_help": "Between Dimensions",
   "icon": "teleportation_teleport.png",
   "auto_issue": false,

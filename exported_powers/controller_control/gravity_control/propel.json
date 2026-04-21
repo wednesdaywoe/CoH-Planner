@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Propel",
   "display_fullname": "Controller Control Gravity Control Propel",
-  "display_help": "W5LHF9352YP6YGCHQRP9DQH59A",
-  "display_short_help": "KCNQXP7K458WWTVE7RWFK932UA",
+  "display_help": "You can open a gravitational rift and retrieve a heavy object, then Propel it at your foes for Smashing Damage. This power can deal bonus damage when used against targets under the effects of Gravity Distortion. This attack's force is so strong that it can knockback additional nearby enemies.",
+  "display_short_help": "Ranged, DMG(Smash), Foe Knockback",
   "icon": "gravitycontrol_propel.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -366,6 +366,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Controller_Control.Gravity_Control"
 }

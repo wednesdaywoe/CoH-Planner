@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Freerunning",
   "display_fullname": "Pool Utility Belt Freerunning",
-  "display_help": "KMTCLQXK6APPWABLTP8687WYSZ",
+  "display_help": "You are skilled at using your environment to your advantage to quickly traverse any obstacles that you come across. Freerunning grants you a considerable boost to both your jump height and run speed. While this power is active, you will also have access to the Athletics power which when clicked will boost this power's effects for a short time.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self, +Jump, +Run Speed, +Special",
   "icon": "utilitybelt_freerunning.png",
   "auto_issue": false,
@@ -443,6 +443,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Pool.Utility_Belt"
 }

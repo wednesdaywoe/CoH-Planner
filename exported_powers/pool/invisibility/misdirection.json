@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Misdirection",
   "display_fullname": "Pool Invisibility Misdirection",
-  "display_help": "PXFD9KJET956YMX2HVBVX2ZW4Z",
+  "display_help": "You redirect the anger of enemies around you, placating them. This causes them to break off their attacks. The momentary lack of awareness this causes also leads to reduced resistance to damage for a short time.<br><br>You must be at least level 14 and have trained any two other Concealment powers before you can train this power.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE, Foe Placate, -Res(All)",
   "icon": "invisibility_placate.png",
   "auto_issue": false,
@@ -166,6 +166,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Invisibility"
 }

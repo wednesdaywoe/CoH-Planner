@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Power Surge",
   "display_fullname": "Tanker Defense Electric Armor Power Surge",
-  "display_help": "42U22TV8LRFYYGCU33Y5BX6DEQ",
-  "display_short_help": "4BPSBGY7SCX9Y3BV3LATP4TP23",
+  "display_help": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics, as well as Disorient, Sleep, Hold, Immobilize, Knockback, End Drain, Recovery DeBuff, and enemy Teleportation. Your Regeneration rate and Endurance recovery are also increased. As Power Surge wears off, the charge in your body explodes in a massive EMP pulse.",
+  "display_short_help": "Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery, +Special",
   "icon": "electricarmor_selfbuffdefense.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -519,6 +519,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Tanker_Defense.Electric_Armor"
 }

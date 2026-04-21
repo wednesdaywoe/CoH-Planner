@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Grenade",
   "display_fullname": "Incarnate Lore Pet Longbow Boss Grenade",
-  "display_help": "PKWPB8N7WVGPY3MU6SVLDQ5ANA",
+  "display_help": "Grenade!<br><br><color #fcfc95>Notes: Grenade is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Targeted AoE Lethal/Smash, Knockback",
   "icon": "assaultweapons_arm30grenade.png",
   "auto_issue": false,

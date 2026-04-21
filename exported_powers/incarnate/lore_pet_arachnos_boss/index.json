@@ -5,9 +5,9 @@
   "short_help": "Arachnos",
   "icon": "lore_pet_arachnos_boss_set.ico",
   "powers": [
-    "Claw_Pierce",
-    "Toxic_Claws",
-    "Venom_Burst"
+    "Incarnate.Lore_Pet_Arachnos_Boss.Claw_Pierce",
+    "Incarnate.Lore_Pet_Arachnos_Boss.Toxic_Claws",
+    "Incarnate.Lore_Pet_Arachnos_Boss.Venom_Burst"
   ],
   "available_level": [
     0,

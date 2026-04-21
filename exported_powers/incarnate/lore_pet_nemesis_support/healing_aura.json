@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Healing Aura",
   "display_fullname": "Incarnate Lore Pet Nemesis Support Healing Aura",
-  "display_help": "XT48DZMBJC4TY9NLUCJPQ3YM53",
+  "display_help": "Healing Aura restores some Hit Points to you and all nearby heroes. Healing Aura is not as potent as Heal Other, but can heal multiple targets at once.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Team +Heal",
   "icon": "empathy_healingaura.png",
   "auto_issue": false,

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ice Slash",
   "display_fullname": "Dominator Assault Icy Assault Greater Ice Sword",
-  "display_help": "WW89GW3MXC44WJLS9SYQHN34F2",
-  "display_short_help": "57QWTJNHAPTLYFVFUXXMSTUFKS",
+  "display_help": "Ice Slash allows the user to create a blade of solid ice and strike a foe for high damage. Being hit by Ice Slash will Slow a foes' attack and movement speed, due to the intense chill.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Superior DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "iceassault_iceswordcleave.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -266,6 +266,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Dominator_Assault.Icy_Assault"
 }

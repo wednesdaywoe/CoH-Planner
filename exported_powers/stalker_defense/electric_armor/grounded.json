@@ -5,8 +5,8 @@
   "type": "Auto",
   "display_name": "Grounded",
   "display_fullname": "Stalker Defense Electric Armor Grounded",
-  "display_help": "P7S352KBHDFXYLL4T5M75F6NKX",
-  "display_short_help": "73Q6SU9QBXX5W4X29LMCESAM2A",
+  "display_help": "You are Grounded and naturally very resistant to Energy and Negative Energy damage. You also have added resistance to Endurance Drain effects. Additionally, Grounded provides Immobilize, Knockback protection and the Grounded status, but only for up to 5 seconds after being near the ground. This power is always on and costs no Endurance.",
+  "display_short_help": "Auto: Self +Res (All DMG but Toxic and Psionics, End Drain, Immobilize, KB)",
   "icon": "electricarmor_selfresistenergies.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -329,6 +329,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Stalker_Defense.Electric_Armor"
 }

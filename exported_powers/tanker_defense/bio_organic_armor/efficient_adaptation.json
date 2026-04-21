@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Efficient Adaptation",
   "display_fullname": "Tanker Defense Bio Organic Armor Efficient Adaptation",
-  "display_help": "NMN5HX6USR5ZWXX9DEG3ZTL2DS",
+  "display_help": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to become evenly distributed along your body. While active Hardened Carapace grants a minor Endurance Discount, Inexhaustible grants additional regeneration and recovery, Ablative Carapace grants a bonus to regeneration, Evolving Armor grants additional regeneration and recovery for nearby targets, and both DNA Siphon and Parasitic Aura grant increased regeneration and recovery. Efficient Adaptation costs no endurance.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Bio Armor Efficient Mode",
   "icon": "bioorganicarmor_efficientadaptation.png",
   "auto_issue": true,
@@ -80,6 +80,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Tanker_Defense.Bio_Organic_Armor"
 }

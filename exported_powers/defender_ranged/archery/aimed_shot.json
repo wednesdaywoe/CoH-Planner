@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Aimed Shot",
   "display_fullname": "Defender Ranged Archery Aimed Shot",
-  "display_help": "AVLUHESTQNKXWEXGLKKRPEDY8X",
+  "display_help": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Light DMG(Lethal)",
   "icon": "archery_mediumarrow.png",
   "auto_issue": false,

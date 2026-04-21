@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Resurrect",
   "display_fullname": "Corruptor Buff Empathy Resurrect",
-  "display_help": "YX4Y75S5SPMEYNMDJFSBNTKKYX",
+  "display_help": "Resurrects a fallen ally with full Hit Points and Endurance. The Resurrected target is left protected from XP Debt for 90 seconds.",
   "display_short_help": "Ally Rez",
   "icon": "empathy_resurrect.png",
   "auto_issue": false,
@@ -172,6 +172,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Corruptor_Buff.Empathy"
 }

@@ -5,7 +5,7 @@
   "short_help": "Clockwork",
   "icon": "antimatterrayburn_set.ico",
   "powers": [
-    "Anti-Matter_Particles"
+    "Incarnate.AntiMatterRayBurn.Anti-Matter_Particles"
   ],
   "available_level": [
     0

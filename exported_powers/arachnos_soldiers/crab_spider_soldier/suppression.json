@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Suppression",
   "display_fullname": "Arachnos Soldiers Crab Spider Soldier Suppression",
-  "display_help": "3EH72VVLGUYVW8NUVF6LXA8Z8A",
-  "display_short_help": "P5JXEVZYLZWAY9VE6EWHV7TVJ2",
+  "display_help": "Your Longfang Channelgun may also fire long bursts of energy, causing moderate damage in an large cone in front of you.",
+  "display_short_help": "Ranged Cone, DoT (Energy), Foe -DEF",
   "icon": "crabspider_suppression.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -204,6 +204,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Arachnos_Soldiers.Crab_Spider_Soldier"
 }

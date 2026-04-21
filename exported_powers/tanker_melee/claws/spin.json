@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Spin",
   "display_fullname": "Tanker Melee Claws Spin",
-  "display_help": "AXBFKM5H38NJWNNDVRDVCKYBHS",
-  "display_short_help": "G2M77TSMNCZMWSZ4Q99QULSJFQ",
+  "display_help": "You spin around in a circle, attacking everyone within melee range with a Strike attack.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Lethal)",
   "icon": "claws_spinningclawsattack.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -163,6 +163,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Tanker_Melee.Claws"
 }

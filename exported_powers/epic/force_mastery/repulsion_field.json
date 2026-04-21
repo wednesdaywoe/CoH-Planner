@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Repulsion Field",
   "display_fullname": "Epic Force Mastery Repulsion Field",
-  "display_help": "GRXY2LU882HEWKZE85WEX8Z73Z",
+  "display_help": "This Toggle power creates a field that violently repels nearby foes. Each villain that is repelled costs you additional Endurance.",
   "display_short_help": "Toggle: PBAoE Knockback",
   "icon": "forcefield_repulsionfield.png",
   "auto_issue": false,
@@ -120,6 +120,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Force_Mastery"
 }

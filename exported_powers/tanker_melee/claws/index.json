@@ -5,25 +5,25 @@
   "short_help": "Claws",
   "icon": "claws_set.ico",
   "powers": [
-    "Eviscerate",
-    "Focus",
-    "Follow_Up",
-    "Shockwave",
-    "Slash",
-    "Spin",
-    "Strike",
-    "Swipe",
-    "Taunt"
+    "Tanker_Melee.Claws.Eviscerate",
+    "Tanker_Melee.Claws.Focus",
+    "Tanker_Melee.Claws.Follow_Up",
+    "Tanker_Melee.Claws.Shockwave",
+    "Tanker_Melee.Claws.Slash",
+    "Tanker_Melee.Claws.Spin",
+    "Tanker_Melee.Claws.Strike",
+    "Tanker_Melee.Claws.Swipe",
+    "Tanker_Melee.Claws.Taunt"
   ],
   "available_level": [
+    27,
+    23,
+    19,
+    29,
+    3,
+    15,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9
   ]
 }

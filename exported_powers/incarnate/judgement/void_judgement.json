@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Void Judgement",
   "display_fullname": "Incarnate Judgement Void Judgement",
-  "display_help": "Z8W84DQ9LWXVY9LWX22EXC7Z62",
+  "display_help": "PBAoE Extreme DMG(Negative Energy).<br><br><color #fcfc95>Notes: Void Judgement is unaffected by Recharge Time, Radius or Arc changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "PBAoE Extreme DMG(Negative Energy)",
   "icon": "incarnate_judgement_void_common.png",
   "auto_issue": false,

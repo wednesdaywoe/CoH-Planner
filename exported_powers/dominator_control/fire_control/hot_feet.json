@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Hot Feet",
   "display_fullname": "Dominator Control Fire Control Hot Feet",
-  "display_help": "ZPGLMN8WAAGSW8BDHB38497UBZ",
+  "display_help": "While active, you heat the earth in a large area around yourself. Enemy movement is Slowed as they attempt to flee the immediate area. All foes in the affected area may suffer some damage over time. You cannot fly and must be near the ground to use this power.",
   "display_short_help": "Toggle: PBAoE, Minor DoT(Fire), Foe -SPD",
   "icon": "firetrap_hotfeet.png",
   "auto_issue": false,
@@ -225,6 +225,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Dominator_Control.Fire_Control"
 }

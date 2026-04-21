@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Bright Nova Bolt",
   "display_fullname": "Peacebringer Offensive Luminous Blast Bright Nova Bolt",
-  "display_help": "C5XWHN2Z7RFYYTZCPUUECL88GZ",
+  "display_help": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's defense. This power is only available while in Bright Nova Form.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Minor DMG(Energy), Foe -DEF",
   "icon": "luminousblast_gleamingbolt.png",
   "auto_issue": true,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

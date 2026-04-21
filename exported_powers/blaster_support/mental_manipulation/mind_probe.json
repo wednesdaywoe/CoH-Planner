@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Mind Probe",
   "display_fullname": "Blaster Support Mental Manipulation Mind Probe",
-  "display_help": "SS52W4SS64RSYWNUSKDJF9CULZ",
+  "display_help": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wrecks havoc on your foes synapses, dealing moderate Psionic Damage while reducing their attack speed.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, Moderate DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mindprobe.png",
   "auto_issue": false,

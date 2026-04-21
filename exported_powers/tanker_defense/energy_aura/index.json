@@ -5,25 +5,25 @@
   "short_help": "Energy Aura",
   "icon": "energy_aura_set.ico",
   "powers": [
-    "Dampening_Field",
-    "Energize",
-    "Energy_Drain",
-    "Energy_Protection",
-    "Energy_Reserve",
-    "Entropy_Shield",
-    "Kinetic_Shield",
-    "Overload",
-    "Power_Shield"
+    "Tanker_Defense.Energy_Aura.Dampening_Field",
+    "Tanker_Defense.Energy_Aura.Energize",
+    "Tanker_Defense.Energy_Aura.Energy_Drain",
+    "Tanker_Defense.Energy_Aura.Energy_Protection",
+    "Tanker_Defense.Energy_Aura.Energy_Reserve",
+    "Tanker_Defense.Energy_Aura.Entropy_Shield",
+    "Tanker_Defense.Energy_Aura.Kinetic_Shield",
+    "Tanker_Defense.Energy_Aura.Overload",
+    "Tanker_Defense.Energy_Aura.Power_Shield"
   ],
   "available_level": [
     0,
+    17,
+    21,
+    7,
+    11,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25,
+    1
   ]
 }

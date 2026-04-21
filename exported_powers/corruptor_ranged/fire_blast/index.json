@@ -5,25 +5,25 @@
   "short_help": "Fire Blast",
   "icon": "fire_blast_set.ico",
   "powers": [
-    "Aim",
-    "Blaze",
-    "Blazing_Bolt",
-    "Fire_Ball",
-    "Fire_Blast",
-    "Fire_Breath",
-    "Flares",
-    "Inferno",
-    "Rain_of_Fire"
+    "Corruptor_Ranged.Fire_Blast.Aim",
+    "Corruptor_Ranged.Fire_Blast.Blaze",
+    "Corruptor_Ranged.Fire_Blast.Blazing_Bolt",
+    "Corruptor_Ranged.Fire_Blast.Fire_Ball",
+    "Corruptor_Ranged.Fire_Blast.Fire_Blast",
+    "Corruptor_Ranged.Fire_Blast.Fire_Breath",
+    "Corruptor_Ranged.Fire_Blast.Flares",
+    "Corruptor_Ranged.Fire_Blast.Inferno",
+    "Corruptor_Ranged.Fire_Blast.Rain_of_Fire"
   ],
   "available_level": [
+    11,
+    17,
+    21,
+    1,
     0,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25,
+    5
   ]
 }

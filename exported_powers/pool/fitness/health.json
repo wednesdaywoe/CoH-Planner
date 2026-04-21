@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Health",
   "display_fullname": "Pool Fitness Health",
-  "display_help": "NKL96X6D7VZ4YEZB635CRR5KS3",
+  "display_help": "You heal slightly faster than a normal person. Your improved Health also grants you resistance to Sleep.<br><br>This ability is always on and does not cost any Endurance.<br><br>You must be at least level 14 and have Swift or Hurdle before selecting Health.",
   "display_short_help": "Auto: Self +Regeneration, Res(Sleep)",
   "icon": "fitness_health.png",
   "auto_issue": false,
@@ -105,6 +105,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Fitness"
 }

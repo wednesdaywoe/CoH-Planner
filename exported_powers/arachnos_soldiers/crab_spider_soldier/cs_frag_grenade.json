@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Frag Grenade",
   "display_fullname": "Arachnos Soldiers Crab Spider Soldier CS Frag Grenade",
-  "display_help": "PV7GZQQ9A8B7W5LHMMNUBS95QZ",
-  "display_short_help": "4B922EKTDDMGWXBZBDC33KKX83",
+  "display_help": "Launches an M30 Grenade at long range from an arm of your backpack. The explosion from this grenade affects all within the blast and can knock them back.<br><br><color #fcfc95>Notes: If you take this power, you cannot take the Wolf Spider version.</color>",
+  "display_short_help": "Ranged(Targeted AoE), DMG(Lethal/Fire), Foe Knockback",
   "icon": "crabspider_fraggrenade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -292,6 +292,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Arachnos_Soldiers.Crab_Spider_Soldier"
 }

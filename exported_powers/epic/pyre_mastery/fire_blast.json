@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fire Blast",
   "display_fullname": "Epic Pyre Mastery Fire Blast",
-  "display_help": "HYNVMGN6A7J3WRLJGTFYDAVNHW",
-  "display_short_help": "TWT6UAF9EHRFW6ZRH3V32NM983",
+  "display_help": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DMG(Fire)",
   "icon": "fireblast_fireblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -226,6 +226,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Pyre_Mastery"
 }

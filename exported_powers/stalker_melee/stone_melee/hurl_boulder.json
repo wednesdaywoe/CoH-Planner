@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Hurl Boulder",
   "display_fullname": "Stalker Melee Stone Melee Hurl Boulder",
-  "display_help": "LR66ZXSNS7RTWGMP3XJKSYB9SX",
-  "display_short_help": "LSXCXRSG28TDY5NMRUXP7YR6RX",
+  "display_help": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals high damage, and can knock foes back and even drop them out of the air if they are flying.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Ranged, Moderate DMG(Smashing), Foe Knockback, -Fly",
   "icon": "stonemelee_hurlboulder.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -440,6 +440,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Stalker_Melee.Stone_Melee"
 }

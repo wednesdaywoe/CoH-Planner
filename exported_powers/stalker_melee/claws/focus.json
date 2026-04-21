@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Focus",
   "display_fullname": "Stalker Melee Claws Focus",
-  "display_help": "NHMSHCS5BJKUWZNDXL8QFA94QS",
-  "display_short_help": "RUK2TK2YFMSJYTX7EE9NLWJYQ2",
+  "display_help": "Projects a burst of Focused power over a short distance. Focus deals high lethal damage and can possibly knock down your foe.",
+  "display_short_help": "Ranged, DMG(Lethal), Knockback",
   "icon": "claws_focus.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -376,6 +376,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Stalker_Melee.Claws"
 }

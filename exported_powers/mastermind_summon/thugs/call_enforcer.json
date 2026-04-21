@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Call Enforcer",
   "display_fullname": "Mastermind Summon Thugs Call Enforcer",
-  "display_help": "KQPWSUTMCWX9W5XM9F2RQEL3HX",
+  "display_help": "Calls forth one to two Thug Enforcers (depending on your level) to do your bidding. Thug Enforcers carry a Sub-machine Gun, and possess good leadership skills. Their weapon of choice is an UZI, and can be equipped to carry up to 2 at once.<br><br>You may only have 2 Thug Enforcers under your control at any given time. If you attempt to call more Enforcers, you can only replace the ones you have lost in battle. If you already have two, the power will fail.",
   "display_short_help": "Summon Enforcer",
   "icon": "thugs_enlistlieutenant.png",
   "auto_issue": false,
@@ -177,6 +177,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Mastermind_Summon.Thugs"
 }

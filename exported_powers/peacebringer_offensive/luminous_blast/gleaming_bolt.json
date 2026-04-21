@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Gleaming Bolt",
   "display_fullname": "Peacebringer Offensive Luminous Blast Gleaming Bolt",
-  "display_help": "KKD7BZKCS5RVWNM8RUD5G9XFUW",
+  "display_help": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's Defense. This power can be used while in Dwarf form, although only at a reduced range. While in dwarf form, this power will inflict a stronger Defense debuff, in addition to taunt its target.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Minor DMG(Energy), Foe -DEF",
   "icon": "luminousblast_gleamingbolt.png",
   "auto_issue": false,

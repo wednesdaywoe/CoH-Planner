@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Battle Drones",
   "display_fullname": "Mastermind Summon Robotics Battle Drones",
-  "display_help": "3XCDXZ7TKYQ9W8MWPDB3LTD9JZ",
+  "display_help": "Construct one to three Battle Drones (depending on your level) to do your bidding. Drones start out with only basic weaponry, but can be upgraded with heavier energy weapons. Drones can Super Leap.<br><br>You may only have 3 Drones under your control at any given time. If you attempt to construct more Drones, you can only replace the ones you have lost in battle. If you already have three, the power will fail.<br><br>In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "display_short_help": "Summon Battle Drones",
   "icon": "robotics_buildrobotarmy.png",
   "auto_issue": false,

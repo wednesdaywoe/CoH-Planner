@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Mental Strike",
   "display_fullname": "Brute Melee Psionic Melee Mental Strike",
-  "display_help": "B7ZD3MERSGKQWVN4YDFKHS6XXX",
+  "display_help": "You project psionic energy around your fist and strike at your foe dealing light Psionic and Smashing damage. Affected foes will have their recharge rate reduced. Mental Strike has a small chance to grant you Insight. While you have Insight, Mental Strike will deal additional minor psionic damage over time.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Melee, Light DMG(Psionic/Smash), Foe -Rech; Self +Insight",
   "icon": "psionicmelee_mentalstrike.png",
   "auto_issue": false,

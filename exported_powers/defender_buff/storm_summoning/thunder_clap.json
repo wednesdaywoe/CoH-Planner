@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Thunder Clap",
   "display_fullname": "Defender Buff Storm Summoning Thunder Clap",
-  "display_help": "R2JZA4C2NT4JYRN99GRDWQ7DJS",
+  "display_help": "You can call forth a tremendous Thunder Clap that will Disorient most foes in a large area around you.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Foe Disorient",
   "icon": "stormsummoning_thunderclap.png",
   "auto_issue": false,
@@ -123,6 +123,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Defender_Buff.Storm_Summoning"
 }

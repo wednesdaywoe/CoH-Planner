@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Longfang",
   "display_fullname": "Arachnos Soldiers Crab Spider Soldier Longfang",
-  "display_help": "UFA2XA9KQR5LY4B3EB4T92QZAZ",
-  "display_short_help": "STB7LVZCBDH6WNLJERFJLYXXYZ",
+  "display_help": "Your Longfang Channelgun may also fire short bursts, causing greater damage. This attack also reduces your foe's defense.",
+  "display_short_help": "Ranged, DMG(Lethal), Foe -DEF",
   "icon": "crabspider_longfang.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -164,6 +164,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Arachnos_Soldiers.Crab_Spider_Soldier"
 }

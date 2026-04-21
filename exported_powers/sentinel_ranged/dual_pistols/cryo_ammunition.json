@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Cryo Ammunition",
   "display_fullname": "Sentinel Ranged Dual Pistols Cryo Ammunition",
-  "display_help": "VWLUUVKSZZ8QWWBK8SDGA86EPA",
+  "display_help": "While this toggle is active you will be equipped with 'Cryo Rounds'. Most of your Dual Pistol attacks will have their secondary damage converted to cold damage and inflict a minor slow effect on the target.<br><br>Cryo Rounds are more aerodynamic, being able to travel a greater distance.<br><br>In order to earn this power, you must purchase the Swap Ammo power.",
   "display_short_help": "Toggle: Ammo Change (Cold), Special",
   "icon": "dualpistols_cryoammo.png",
   "auto_issue": true,
@@ -430,6 +430,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Sentinel_Ranged.Dual_Pistols"
 }

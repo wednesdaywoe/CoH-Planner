@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Bright Nova",
   "display_fullname": "Peacebringer Offensive Luminous Blast Bright Nova",
-  "display_help": "UACCF6S2M269WSBLWZL5A4R9NA",
+  "display_help": "Kheldians are masters of energy and matter. A Peacebringer can transform into a flying energy beast known as a Bright Nova. When you choose this power, you will have access to 4 very powerful ranged attacks that can only be used while in this form. You will not be able to use any other powers while in Bright Nova form. Bright Nova can fly, has increased Accuracy, and improved Endurance Recovery, but has no defense.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Toggle: Shapeshift, Special",
   "icon": "luminousblast_brightnova.png",
   "auto_issue": false,
@@ -440,6 +440,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

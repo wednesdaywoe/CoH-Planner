@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Infiltration",
   "display_fullname": "Pool Invisibility Invisibility",
-  "display_help": "6WGJX3YNT4NQWEVSVUMP354993",
+  "display_help": "You blend into your environment and swiftly make your way while attempting to stay undetected. Infiltration grants you a considerable boost to both your jump height and run speed. Even if discovered, you are hard to see and have a bonus to Defense from all attacks. If, however, you attack while using this power, you will be discovered and will lose your Stealth and Defense bonus provided by this power.<br><br>Infiltration can be active at the same time as other running and jumping toggles, but only the strongest run speed buff and strongest jumping buff will apply.",
   "display_short_help": "Toggle: Self, +Jump, +Run Speed, Self Stealth, +DEF(All)",
   "icon": "invisibility_infiltration",
   "auto_issue": false,
@@ -628,6 +628,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Pool.Invisibility"
 }

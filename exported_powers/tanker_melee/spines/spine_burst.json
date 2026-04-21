@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Spine Burst",
   "display_fullname": "Tanker Melee Spines Spine Burst",
-  "display_help": "G4MCQR8MPRPBY8CQGQK782CKAS",
-  "display_short_help": "W639U6EJPKANYLMA3K3JHLQHV3",
+  "display_help": "You can fling dozens of Spines in all directions. These Spines only travel a short distance, but they can deal moderate damage and poison any target close to you. Spine poison deals additional Toxic damage and Slows affected foes.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE Melee, DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_flingquills.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -329,6 +329,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Tanker_Melee.Spines"
 }

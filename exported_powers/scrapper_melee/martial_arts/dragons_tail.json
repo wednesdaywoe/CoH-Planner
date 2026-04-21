@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dragon's Tail",
   "display_fullname": "Scrapper Melee Martial Arts Dragons Tail",
-  "display_help": "7TTLLUXG3RX9W7BTBFBR3KACAQ",
-  "display_short_help": "FEPJTNABGB55W2BGW4WDKKFMPZ",
+  "display_help": "This low spinning kick deals slightly more damage than Thunder Kick, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.",
+  "display_short_help": "PBAoE Melee, DMG(Smash), Foe Knockback",
   "icon": "martialarts_monkeysweep.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -357,6 +357,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Scrapper_Melee.Martial_Arts"
 }

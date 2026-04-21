@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Telekinetic Blast",
   "display_fullname": "Defender Ranged Psychic Blast Telekinetic blast",
-  "display_help": "F98BVZVVZFZSW5X6J6LNJTFJGS",
-  "display_short_help": "CSHXG5QKNDYXY9LTDB5S8YQW3S",
+  "display_help": "You can use Telekinesis to Blast a targeted foe with the power of your mind. This attack deals Smashing and Psionic damage, and can knock your opponent back.",
+  "display_short_help": "Ranged, DMG(Smash/Psionic), Foe Knockback",
   "icon": "psychicblast_telekineticblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -231,6 +231,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Defender_Ranged.Psychic_Blast"
 }

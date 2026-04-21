@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Rise of the Phoenix",
   "display_fullname": "Epic Fire Mastery Rise of the Phoenix",
-  "display_help": "GYCGRAT95H9FWCXXATSJS285UX",
+  "display_help": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
   "display_short_help": "Self Rez, Special",
   "icon": "firemastery_riseofthephoenix.png",
   "auto_issue": false,
@@ -214,6 +214,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Fire_Mastery"
 }

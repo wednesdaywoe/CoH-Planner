@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Stygian Circle",
   "display_fullname": "Warshade Defensive Umbral Aura Stygian Circle",
-  "display_help": "452LZ3GJW6ZTYJBMHH4MDFAGFZ",
+  "display_help": "You can tap into your Nictus power to drain the remaining essence of all nearby defeated foes to heal yourself, and recover Endurance. The more defeated foes affected, the more you will be healed. Additionally, the more powerful the defeated foes you drain, the more health you will recover.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE Self +HP (Special), +End",
   "icon": "umbralaura_stygiancircle.png",
   "auto_issue": false,
@@ -263,6 +263,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

@@ -5,25 +5,25 @@
   "short_help": "War Mace",
   "icon": "war_mace_set.ico",
   "powers": [
-    "Bash",
-    "Build_Up",
-    "Clobber",
-    "Crowd_Control",
-    "Jawbreaker",
-    "Pulverize",
-    "Shatter",
-    "Taunt",
-    "Whirling_Mace"
+    "Brute_Melee.War_Mace.Bash",
+    "Brute_Melee.War_Mace.Build_Up",
+    "Brute_Melee.War_Mace.Clobber",
+    "Brute_Melee.War_Mace.Crowd_Control",
+    "Brute_Melee.War_Mace.Jawbreaker",
+    "Brute_Melee.War_Mace.Pulverize",
+    "Brute_Melee.War_Mace.Shatter",
+    "Brute_Melee.War_Mace.Taunt",
+    "Brute_Melee.War_Mace.Whirling_Mace"
   ],
   "available_level": [
     0,
+    5,
+    7,
+    25,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    21,
+    11,
+    17
   ]
 }

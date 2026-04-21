@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Consume",
   "display_fullname": "Epic Fire Mastery Consume",
-  "display_help": "26A7TUMQGD53YJX4M3D5TYHVS2",
-  "display_short_help": "W6DQSHP7VWQHWBVJRZH52FA5QA",
+  "display_help": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
+  "display_short_help": "PBAoE, DMG(Fire), Self +End",
   "icon": "firemastery_consume.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -270,6 +270,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Fire_Mastery"
 }

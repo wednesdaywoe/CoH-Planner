@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fistful of Arrows",
   "display_fullname": "Mastermind Summon Ninjas Fistful of Arrows",
-  "display_help": "Q6YBZHJFK44BYZVJ6X9M3Z8LNA",
+  "display_help": "You fire a fistful of arrows at foes in a cone in front of you. Good at close range.<br><br><color #fcfc95>Sensei's Guidance:</color><br>Hitting with this power will grant your Ninja Henchman +3% Critical Hit chance for 30 seconds. This does not stack from the same power.",
   "display_short_help": "Ranged (Cone), DMG(Lethal)",
   "icon": "ninjas_fistfullarrows.png",
   "auto_issue": false,
@@ -190,6 +190,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Mastermind_Summon.Ninjas"
 }

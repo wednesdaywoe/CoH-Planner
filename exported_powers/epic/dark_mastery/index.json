@@ -5,17 +5,17 @@
   "short_help": "Dark Mastery",
   "icon": "dark_mastery_set.ico",
   "powers": [
-    "Dark_Consumption",
-    "Dark_Embrace",
-    "Oppressive_Gloom",
-    "Soul_Drain",
-    "Soul_Transfer"
+    "Epic.Dark_Mastery.Dark_Consumption",
+    "Epic.Dark_Mastery.Dark_Embrace",
+    "Epic.Dark_Mastery.Oppressive_Gloom",
+    "Epic.Dark_Mastery.Soul_Drain",
+    "Epic.Dark_Mastery.Soul_Transfer"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    37,
+    34,
+    43,
+    40
   ]
 }

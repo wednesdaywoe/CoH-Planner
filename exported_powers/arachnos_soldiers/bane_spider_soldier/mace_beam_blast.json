@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mace Beam Blast",
   "display_fullname": "Arachnos Soldiers Bane Spider Soldier Mace Beam Blast",
-  "display_help": "FLX9GC8973RUYCV8SDKQYVFX52",
-  "display_short_help": "6K9ZW5YY6NDUYHMMRFMDCN8B6Q",
+  "display_help": "The Nullifier Mace is capable of firing a tremendous bolt of force from the end of it. The Mace Beam Blast is a Light damage area of effect attack, foes struck by the blast will be knocked back.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
   "icon": "banespider_macebeamblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -231,6 +231,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Arachnos_Soldiers.Bane_Spider_Soldier"
 }

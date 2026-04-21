@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Nano Repair",
   "display_fullname": "Incarnate Lore Pet Clockwork Support Nano Repair",
-  "display_help": "AQHAE5JSXRKKYXMDLBE32894AS",
+  "display_help": "Heals a single targeted ally and heals them for additional health over time. You cannot use this power to heal yourself.<br><br><color #fcfc95>Notes: Nano Repair is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ally Heal, Heal over Time",
   "icon": "empathy_healother.png",
   "auto_issue": false,

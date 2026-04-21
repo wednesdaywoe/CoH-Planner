@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Tar Patch",
   "display_fullname": "Epic Tank Dark Mastery Tar Patch",
-  "display_help": "X8AJXFKWJHN4WWXBKSSPTA42TW",
+  "display_help": "Drops a large patch of viscous Negative Energy which dramatically slows down enemies that run through it and reduces their damage resistance. Affected targets stuck in the Tar Patch cannot jump or fly. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
   "display_short_help": "Ranged (Location AoE), Target -Speed, -Res, -Fly",
   "icon": "dark_mastery_tarpatch",
   "auto_issue": false,
@@ -92,6 +92,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Tank_Dark_Mastery"
 }

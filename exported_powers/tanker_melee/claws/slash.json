@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Slash",
   "display_fullname": "Tanker Melee Claws Slash",
-  "display_help": "4YX2YWMHATAHY5NQX858VZFBHZ",
-  "display_short_help": "BHNVJKHZ6NXEWUV5YA62URYP7A",
+  "display_help": "You Slash at your foe with your claws, dealing a good amount of lethal damage, but with a longer recharge rate than Swipe or Strike . This attack can reduce a target's Defense, making him easier to hit.",
+  "display_short_help": "Melee, DMG(Lethal), Foe -DEF",
   "icon": "claws_slash.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -277,6 +277,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Tanker_Melee.Claws"
 }

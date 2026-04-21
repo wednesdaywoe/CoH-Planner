@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Flashing Steel",
   "display_fullname": "Stalker Melee Ninja Sword Slice",
-  "display_help": "NBCW25Q5JNVWYEN3L9AFBPB8R3",
-  "display_short_help": "7JP6SNY6QX82YNLNL4ZT8UVJFZ",
+  "display_help": "You swing your Ninja Blade in a wide arc in front of you, slicing multiple foes with lethal damage. This attack can reduce a target's Defense, making them easier to hit. If executed while hidden, all affected targets have a chance to be hit with a Critical for extra damage.",
+  "display_short_help": "Melee (Cone), DMG(Lethal), Foe -Def",
   "icon": "katana_slice.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -401,6 +401,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Stalker_Melee.Ninja_Sword"
 }

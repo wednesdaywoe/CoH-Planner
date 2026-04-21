@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "White Dwarf Strike",
   "display_fullname": "Inherent Inherent White Dwarf Strike",
-  "display_help": "BBQBF3R37FC5YLXWRC4ZZNTGSX",
-  "display_short_help": "P9V6QTKXXH7AW5ZXFDLVG43MGQ",
+  "display_help": "The White Dwarf Strike is a moderate melee attack that releases Kheldian light on impact, which can Knock Down foes, and reduce a target's Defense. This power is only available while in White Dwarf Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
+  "display_short_help": "Melee, Light DMG(Smash/Energy), Foe -DEF, Knockback",
   "icon": "luminousaura_whitedwarfstrike.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -366,6 +366,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Inherent.Inherent"
 }

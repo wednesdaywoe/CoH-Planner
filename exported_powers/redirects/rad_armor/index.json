@@ -5,13 +5,13 @@
   "short_help": "Radiation Armor",
   "icon": "blind_set.ico",
   "powers": [
-    "Ground_Zero_Ally",
-    "Ground_Zero_Foe",
-    "Radiation_Therapy"
+    "Redirects.Rad_Armor.Ground_Zero_Ally",
+    "Redirects.Rad_Armor.Ground_Zero_Foe",
+    "Redirects.Rad_Armor.Radiation_Therapy"
   ],
   "available_level": [
-    0,
-    0,
-    0
+    34,
+    34,
+    15
   ]
 }

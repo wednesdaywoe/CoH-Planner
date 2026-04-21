@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Clarity",
   "display_fullname": "Corruptor Buff Sonic Resonance Clarity",
-  "display_help": "CE9ZPNFUHD9CWMX6WZZGST2N9W",
+  "display_help": "By bouncing a carefully pitched sound wave off an ally's ear drum, you can free him from any Disorient, Hold, Sleep, Confusion, Fear, and Immobilize effects, and leave them resistant to such effects for a good while. Protection will improve with multiple applications and as you advance in level. Clarity also provides your ally's enhanced perception.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confusion), +Perception",
   "icon": "sonicdebuff_dispel.png",
   "auto_issue": false,
@@ -276,6 +276,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Corruptor_Buff.Sonic_Resonance"
 }

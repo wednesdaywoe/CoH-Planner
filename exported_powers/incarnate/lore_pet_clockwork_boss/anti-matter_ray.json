@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Anti-Matter Ray",
   "display_fullname": "Incarnate Lore Pet Clockwork Boss Anti-Matter Ray",
-  "display_help": "NDE8JRTBRMX2YYN89JSUFU9WSZ",
+  "display_help": "All foes that pass through these Anti-Matter particles will suffer intense Energy Damage and have their defense reduced substantially.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Superior DoT(Energy), Foe -Def",
   "icon": "powerblast_powerburst.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Hoarfrost",
   "display_fullname": "Epic Defender Ice Mastery Hoarfrost",
-  "display_help": "2XCVP7Y5T2ZCWTB7HDKZ3Y5KYQ",
+  "display_help": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
   "display_short_help": "Self Heal, +Max HP, Res(Toxic)",
   "icon": "ice_mastery_hoarfrost",
   "auto_issue": false,
@@ -158,6 +158,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Defender_Ice_Mastery"
 }

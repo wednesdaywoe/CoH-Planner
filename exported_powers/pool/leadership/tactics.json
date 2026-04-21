@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Tactics",
   "display_fullname": "Pool Leadership Tactics",
-  "display_help": "FZLDF7YVRL4CWSVNPE9JP5DSVX",
+  "display_help": "While this power is active, your chance to hit and that of all your nearby teammates is increased. Your advanced Tactics also protect you and your team from Confuse and Fear effects, as well as your Perception so you can detect Stealthy foes.<br><br>You must be at least level 14 and have one other Leadership powers before selecting Tactics.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
   "icon": "leadership_tactics.png",
   "auto_issue": false,
@@ -264,6 +264,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Leadership"
 }

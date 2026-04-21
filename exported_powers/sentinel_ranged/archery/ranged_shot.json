@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Perfect Shot",
   "display_fullname": "Sentinel Ranged Archery Ranged Shot",
-  "display_help": "9H3JBHJFYC6QWPX5WJ7K2P3F2W",
+  "display_help": "A perfectly aimed and fast shot that blasts your foes.<br><br><color #fcfc95>Damage: High.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, High DMG(Lethal)",
   "icon": "archery_heavy",
   "auto_issue": false,
@@ -229,6 +229,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Sentinel_Ranged.Archery"
 }

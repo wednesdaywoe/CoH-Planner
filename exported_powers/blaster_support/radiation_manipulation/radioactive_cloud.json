@@ -6,7 +6,7 @@
   "display_name": "Radioactive Cloud",
   "display_fullname": "Blaster Support Radiation Manipulation Radioactive Cloud",
   "display_help": "When activated, you generate toxic radioactive gas around yourself. Any nearby foes may be overcome by the gas, leaving them choking or barfing helplessly. Choking foes might temporarily snap out of it when hit, barfing foes are more likely to be too sick to counterattack.",
-  "display_short_help": "9X9JHL5UFF7FYTL8XJ5C2KHPK2",
+  "display_short_help": "PBAoE, Foe Hold, Immobilize",
   "icon": "atomicmanipulation_holdpbaoe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -302,6 +302,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Radiation_Manipulation"
 }

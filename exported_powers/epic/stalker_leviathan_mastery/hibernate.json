@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Hibernate",
   "display_fullname": "Epic Stalker Leviathan Mastery Hibernate",
-  "display_help": "ENDT5WLLF3XSW9X3DHY3GY96WW",
+  "display_help": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
   "display_short_help": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
   "icon": "arachnos_patron_selfbuffresistancephysical.png",
   "auto_issue": false,
@@ -256,6 +256,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Stalker_Leviathan_Mastery"
 }

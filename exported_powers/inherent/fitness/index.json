@@ -5,10 +5,10 @@
   "short_help": "Fitness",
   "icon": "fitness_set.ico",
   "powers": [
-    "Health",
-    "Hurdle",
-    "Stamina",
-    "Swift"
+    "Inherent.Fitness.Health",
+    "Inherent.Fitness.Hurdle",
+    "Inherent.Fitness.Stamina",
+    "Inherent.Fitness.Swift"
   ],
   "available_level": [
     0,

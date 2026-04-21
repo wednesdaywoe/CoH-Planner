@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Mental Blast",
   "display_fullname": "Incarnate Lore Pet Arachnos Support Attack Mental Blast",
-  "display_help": "VZTKVAT2UFM3YGNNCPS7276CMX",
+  "display_help": "The Mental Blast has slowed your Attack rate.<br><br><color #fcfc95>Notes: Mental Blast is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "-Recharge",
   "icon": "fortunatatraining_mentalblast.png",
   "auto_issue": false,

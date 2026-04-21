@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Molten Embrace",
   "display_fullname": "Sentinel Defense Fiery Aura Molten Embrace",
-  "display_help": "KEKHKP26J8DMYYMWLCP7PD9YRS",
+  "display_help": "Molten Embrace superheats your attacks, increasing the damage they inflict. In addition, all your attacks will have a chance to inflict fire damage over time.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Toggle: +Dmg, +Special",
   "icon": "flamingshield_fieryembrace.png",
   "auto_issue": false,

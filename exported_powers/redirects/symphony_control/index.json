@@ -1,17 +1,17 @@
 {
   "key": "Redirects.Symphony_Control",
-  "display_name": "8G9SKEGUVC8WY8ZRMBDYPK6R9Q",
+  "display_name": "Symphony Control",
   "help": "These powers are used by Kinetics powers.",
   "short_help": "Kinetics",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Aria_of_Stasis_FX",
-    "Impassioned_Serenade_Controller",
-    "Impassioned_Serenade_Dominator"
+    "Redirects.Symphony_Control.Aria_of_Stasis_FX",
+    "Redirects.Symphony_Control.Impassioned_Serenade_Controller",
+    "Redirects.Symphony_Control.Impassioned_Serenade_Dominator"
   ],
   "available_level": [
     0,
-    0,
-    0
+    5,
+    5
   ]
 }

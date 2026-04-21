@@ -5,8 +5,8 @@
   "short_help": "Arachnos",
   "icon": "lore_pet_arachnos_support_set.ico",
   "powers": [
-    "Mind_Link",
-    "Soothe"
+    "Incarnate.Lore_Pet_Arachnos_Support.Mind_Link",
+    "Incarnate.Lore_Pet_Arachnos_Support.Soothe"
   ],
   "available_level": [
     0,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Discharge",
   "display_fullname": "Redirects Shock Therapy Galvanic Sentinel Discharge",
-  "display_help": "H22A7XD5T6NCWBX3V3UNV8KGSQ",
+  "display_help": "Unleash a blast of electrical energy around your target, draining them and all nearby enemies of some endurance. This will also reduce their regeneration, recovery, and damage dealt for a short period of time.<br><br><color #fcfc95>Notes: Discharge is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged (Targeted AoE), Foe -DMG, -End, -Recovery, -Regen",
   "icon": "shocktherapy_discharge.png",
   "auto_issue": false,

@@ -5,17 +5,17 @@
   "short_help": "Leviathan Mastery",
   "icon": "dominator_leviathan_mastery_set.ico",
   "powers": [
-    "Chum_Spray",
-    "Hibernate",
-    "Shark_Skin",
-    "Summon_Coralax",
-    "Water_Spout"
+    "Epic.Dominator_Leviathan_Mastery.Chum_Spray",
+    "Epic.Dominator_Leviathan_Mastery.Hibernate",
+    "Epic.Dominator_Leviathan_Mastery.Shark_Skin",
+    "Epic.Dominator_Leviathan_Mastery.Summon_Coralax",
+    "Epic.Dominator_Leviathan_Mastery.Water_Spout"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    37,
+    40,
+    43,
+    34
   ]
 }

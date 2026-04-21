@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "DNA Siphon",
   "display_fullname": "Brute Defense Bio Organic Armor DNA Siphon",
-  "display_help": "5RS6R8NWHF98YYB9Z4C7NFG9TW",
+  "display_help": "You can siphon genetic material from nearby enemies, causing a minor amount of Lethal damage and a minor amount of Toxic damage over time. Living enemies will provide the user with a small boost to health and endurance. These foes will have their regeneration rate reduced for a short period of time. Defeated enemies provide a weaker sample of material and thus will boost recovery and regeneration for a short while. While Efficient Adaptation is active, this power will grant bonus regeneration and recovery per defeated target hit. While Defensive Adaptation is active, this power will grant bonus health per living target hit. While Offensive Adaptation is active this power's regeneration debuff is increased in effectiveness.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Click, PBAoE Minor DMG(Lethal/Toxic) Foe -Regen, Taunt, Self +HP, +End, +Special",
   "icon": "bioorganicarmor_dnasiphon.png",
   "auto_issue": false,
@@ -481,6 +481,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Brute_Defense.Bio_Organic_Armor"
 }

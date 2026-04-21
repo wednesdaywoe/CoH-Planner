@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Minerals",
   "display_fullname": "Stalker Defense Stone Armor Mineral Armor",
-  "display_help": "LC9GVR2LC87UWZMFLLDFEVQKWX",
-  "display_short_help": "R7F33Z49QJ6FWRCMNMGF4LZ433",
+  "display_help": "Activating this power summons several rare earth rock Minerals to orbit around you. These Minerals can disperse thought patterns and make Psionic attacks less likely to hit. They also bring clarity of the mind reducing the recharge time of your powers, increasing your Perception, and making you resistant to Confusion.<br><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Toggle: Self +Recharge, +DEF(Psionic), Res(Confuse), +Perception",
   "icon": "stonearmor_mineralcrust.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -312,6 +312,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Stalker_Defense.Stone_Armor"
 }

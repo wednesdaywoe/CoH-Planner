@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Placate",
   "display_fullname": "Stalker Melee Stone Melee Placate",
-  "display_help": "37WSB9EKKLA4W5VRTEU5VLVTNQ",
+  "display_help": "Allows you to trick a foe to no longer attack you. A Successful Placate will also Hide you. This Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit or an Assassins Blow. However, if you attack a Placated Foe, he will be able to attack you back.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Foe Placate, Self Stealth/Hide",
   "icon": "stonemelee_placate",
   "auto_issue": false,
@@ -337,6 +337,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Stalker_Melee.Stone_Melee"
 }

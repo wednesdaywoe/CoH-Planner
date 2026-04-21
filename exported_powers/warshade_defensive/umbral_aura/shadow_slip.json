@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Shadow Slip",
   "display_fullname": "Warshade Defensive Umbral Aura Shadow Slip",
-  "display_help": "EEVKLM4B745WY2ZCCMDMM4DDLS",
+  "display_help": "Shadow Slip teleports enemies from up to 100ft away into melee range of the caster.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Melee (PBAoE), Foe Teleport",
   "icon": "umbralaura_shadowslip.png",
   "auto_issue": false,
@@ -111,6 +111,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

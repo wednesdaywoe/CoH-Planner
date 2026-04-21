@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Cremate",
   "display_fullname": "Epic Sentinel Fire Mastery Cremate",
-  "display_help": "QFLY43F9DW2ZW2BHH9LWDEQL8S",
-  "display_short_help": "RZNJ83EZ72PPWRMH7DRXTFP963",
+  "display_help": "A slow but devastating attack. Cremate clobbers your foes with a massive 2 handed fiery smash that leaves your foe set on fire.",
+  "display_short_help": "Melee, DMG(Smash/Fire)",
   "icon": "firetrap_punch",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -318,6 +318,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Fire_Mastery"
 }

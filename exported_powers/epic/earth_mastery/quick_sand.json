@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Quicksand",
   "display_fullname": "Epic Earth Mastery Quick Sand",
-  "display_help": "52QD49Q4A8KTWQCSC9ALLBV642",
+  "display_help": "You can cause the ground to liquefy like Quicksand at a targeted location. Any foes that pass through the Quicksand will become snared, their movement will be dramatically Slowed, and their Defense reduced. Foes trapped in the Quicksand cannot jump or Fly. You must be level 41 and have one other Earth Mastery Powers before selecting this power.",
   "display_short_help": "Ranged (Location AoE), Foe -Speed, -Jump, -Fly, -DEF",
   "icon": "earth_mastery_quicksand",
   "auto_issue": false,
@@ -88,6 +88,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Earth_Mastery"
 }

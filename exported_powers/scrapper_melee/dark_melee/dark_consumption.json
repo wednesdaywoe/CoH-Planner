@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Consumption",
   "display_fullname": "Scrapper Melee Dark Melee Dark Consumption",
-  "display_help": "9ENDWX77PNE4YTCW7EWNVL8T4W",
-  "display_short_help": "PKGVXHRCQ9UQWRC2KASDMESVSW",
+  "display_help": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance.",
+  "display_short_help": "PBAoE Light DMG(Negative), Self +End",
   "icon": "shadowfighting_darkconsumption.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -264,6 +264,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Scrapper_Melee.Dark_Melee"
 }

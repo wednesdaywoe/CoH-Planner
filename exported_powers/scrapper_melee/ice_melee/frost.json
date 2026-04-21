@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Frost",
   "display_fullname": "Scrapper Melee Ice Melee Frost",
-  "display_help": "D9KXN27HMVWCWZCTQMKRTUY95Q",
-  "display_short_help": "AV2K7W734QF3WVVNYLBGUJU23S",
+  "display_help": "You create a short cone of Frost in front of you that can deal some damage and Slow a foe's speed, due to their uncontrollable shivering.",
+  "display_short_help": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
   "icon": "icyonslaught_frost.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -384,6 +384,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Scrapper_Melee.Ice_Melee"
 }

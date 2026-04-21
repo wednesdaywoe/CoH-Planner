@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ice Sword Circle",
   "display_fullname": "Dominator Assault Icy Assault Ice Sword Circle",
-  "display_help": "SUWDNKDW2RU3YKZ8MBDC4BVT2Q",
-  "display_short_help": "4H9LCWEFMWXLYCBU9BK7Q4F7FX",
+  "display_help": "Mastery of your Ice Sword has enabled you to make an attack on every foe within melee distance. This will slash and chill your enemies, dealing moderate damage and slowing all affected targets' movement and attack speed.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE Melee, Light DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "iceassault_iceswordcircle.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -266,6 +266,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Dominator_Assault.Icy_Assault"
 }

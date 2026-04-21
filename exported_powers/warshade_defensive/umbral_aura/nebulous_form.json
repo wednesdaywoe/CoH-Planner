@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Nebulous Form",
   "display_fullname": "Warshade Defensive Umbral Aura Nebulous Form",
-  "display_help": "X4XHEAEPY3LSY7N657JE5TDDN3",
+  "display_help": "You can Phase Shift to become out of sync with normal space. Although you do not become completely Invisible, you are translucent and hard to see. You are intangible, and cannot affect or be affected by those in normal space. Even gravity has a weak hold on you. You can jump great distances while in Nebulous Form. However, after 30 seconds the phase out effect will wear off. 30 seconds later, if this power is still active the user will become phased out once again. Cannot be used with Rest.<br><br>Nebulous Form can be active at the same time as other jumping toggles, but only the strongest jump buff will apply.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Toggle: Self Intangible, +Jump",
   "icon": "umbralaura_nebulousform.png",
   "auto_issue": false,
@@ -378,6 +378,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

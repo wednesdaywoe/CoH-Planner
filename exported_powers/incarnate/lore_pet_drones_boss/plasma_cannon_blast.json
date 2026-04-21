@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Plasma Cannon Blast",
   "display_fullname": "Incarnate Lore Pet Drones Boss Plasma Cannon Blast",
-  "display_help": "JSJLJ2UTJ95VWJNSJMZC8YWX8Q",
+  "display_help": "The Robotic Drones are equipped with plasma turrets capable of dealing energy damage. Burns from these blasts reduce a target's regeneration rate for a short time.<br><br><color #fcfc95>Notes: Plasma Cannon Blast is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
   "display_short_help": "Ranged, Moderate DMG(Energy), Foe -Regen",
   "icon": "assaultweapons_shotgunslug.png",
   "auto_issue": false,

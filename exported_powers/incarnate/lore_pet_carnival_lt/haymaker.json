@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Haymaker",
   "display_fullname": "Incarnate Lore Pet Carnival LT Haymaker",
-  "display_help": "TJ98V9RN93MQWJXDTYWAQJKZSA",
+  "display_help": "A slow but devastating attack, the Haymaker has a great chance of knocking your opponent down.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Melee, Moderate DMG(Smash), Knockback",
   "icon": "superstrength_haymaker.png",
   "auto_issue": false,

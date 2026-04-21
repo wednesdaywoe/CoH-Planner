@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fearsome Stare",
   "display_fullname": "Dominator Control Darkness Control Fearsome Stare",
-  "display_help": "QSTD7Q8EETB7WWMU4CPKJJKA53",
+  "display_help": "Instills tremendous Fear within a cone area in front of you, causing all affected targets to tremble in Terror uncontrollably.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged (Cone), Foe Fear, -To Hit",
   "icon": "darknesscontrol_fearsomestare.png",
   "auto_issue": false,
@@ -239,6 +239,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Dominator_Control.Darkness_Control"
 }

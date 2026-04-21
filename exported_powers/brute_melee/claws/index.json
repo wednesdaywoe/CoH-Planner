@@ -5,25 +5,25 @@
   "short_help": "Claws",
   "icon": "claws_set.ico",
   "powers": [
-    "Eviscerate",
-    "Focus",
-    "Follow_Up",
-    "Shockwave",
-    "Slash",
-    "Spin",
-    "Strike",
-    "Swipe",
-    "Taunt"
+    "Brute_Melee.Claws.Eviscerate",
+    "Brute_Melee.Claws.Focus",
+    "Brute_Melee.Claws.Follow_Up",
+    "Brute_Melee.Claws.Shockwave",
+    "Brute_Melee.Claws.Slash",
+    "Brute_Melee.Claws.Spin",
+    "Brute_Melee.Claws.Strike",
+    "Brute_Melee.Claws.Swipe",
+    "Brute_Melee.Claws.Taunt"
   ],
   "available_level": [
+    21,
+    17,
+    7,
+    25,
+    1,
+    5,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11
   ]
 }

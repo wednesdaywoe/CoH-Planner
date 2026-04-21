@@ -5,25 +5,25 @@
   "short_help": "Atomic Manipulation",
   "icon": "radiation_manipulation_set.ico",
   "powers": [
-    "Atom_Smasher",
-    "Beta_Decay",
-    "Electron_Shackles",
-    "Ionize",
-    "Metabolic_Acceleration",
-    "Negatron_Slam",
-    "Positron_Cell",
-    "Positronic_Fist",
-    "Radioactive_Cloud"
+    "Blaster_Support.Radiation_Manipulation.Atom_Smasher",
+    "Blaster_Support.Radiation_Manipulation.Beta_Decay",
+    "Blaster_Support.Radiation_Manipulation.Electron_Shackles",
+    "Blaster_Support.Radiation_Manipulation.Ionize",
+    "Blaster_Support.Radiation_Manipulation.Metabolic_Acceleration",
+    "Blaster_Support.Radiation_Manipulation.Negatron_Slam",
+    "Blaster_Support.Radiation_Manipulation.Positron_Cell",
+    "Blaster_Support.Radiation_Manipulation.Positronic_Fist",
+    "Blaster_Support.Radiation_Manipulation.Radioactive_Cloud"
   ],
   "available_level": [
+    23,
+    15,
     0,
+    9,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3,
+    29,
+    27
   ]
 }

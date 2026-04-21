@@ -3,10 +3,10 @@
   "full_name": "Mastermind_Buff.Marine_Affinity.Call_Depths",
   "short_name": "Call_Depths",
   "type": "Click",
-  "display_name": "VWU59ZBF3A29WGN78699F4JAMX",
+  "display_name": "Power of the Depths",
   "display_fullname": "Mastermind Buff Marine Affinity Call Depths",
-  "display_help": "S7MVRR57DPHSYRVUYEW2683P8A",
-  "display_short_help": "E8CB6A6AY8TGYCLM44YGU2XQ3Z",
+  "display_help": "Becoming a conduit of the ocean itself, you acclimate your allies to the incredible forces of the deep! This boosts the maximum hit points, maximum endurance, regeneration, and attack range of all nearby allies. Some of these effects will decay over time to a lower value.<br><br>If Power of the Depths is activated inside a <color #fcfc95>Tide Pool</color>, the marine life present will be thrown into a brief frenzy! While frenzied, the Tide Pool has a chance to knock over enemies and the damage buff and debuff is stronger.",
+  "display_short_help": "PBAoE, Team +MaxHP, +MaxEnd, +Regen, +Range",
   "icon": "marineaffinity_powerofthedepths.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -279,6 +279,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Mastermind_Buff.Marine_Affinity"
 }

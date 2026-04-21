@@ -5,25 +5,25 @@
   "short_help": "Martial Arts",
   "icon": "martial_arts_set.ico",
   "powers": [
-    "Cobra_Strike",
-    "Crane_Kick",
-    "Crippling_Axe_Kick",
-    "Dragons_Tail",
-    "Eagles_Claw",
-    "Focus_Chi",
-    "Storm_Kick",
-    "Thunder_Kick",
-    "Warriors_Provocation"
+    "Brute_Melee.Martial_Arts.Cobra_Strike",
+    "Brute_Melee.Martial_Arts.Crane_Kick",
+    "Brute_Melee.Martial_Arts.Crippling_Axe_Kick",
+    "Brute_Melee.Martial_Arts.Dragons_Tail",
+    "Brute_Melee.Martial_Arts.Eagles_Claw",
+    "Brute_Melee.Martial_Arts.Focus_Chi",
+    "Brute_Melee.Martial_Arts.Storm_Kick",
+    "Brute_Melee.Martial_Arts.Thunder_Kick",
+    "Brute_Melee.Martial_Arts.Warriors_Provocation"
   ],
   "available_level": [
+    1,
+    7,
+    17,
+    21,
+    25,
+    5,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    11
   ]
 }

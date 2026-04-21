@@ -5,9 +5,9 @@
   "short_help": "Vanguard",
   "icon": "lore_pet_vanguard_lt_set.ico",
   "powers": [
-    "Bayonet",
-    "Burst",
-    "Willie_Pete_Round"
+    "Incarnate.Lore_Pet_Vanguard_LT.Bayonet",
+    "Incarnate.Lore_Pet_Vanguard_LT.Burst",
+    "Incarnate.Lore_Pet_Vanguard_LT.Willie_Pete_Round"
   ],
   "available_level": [
     0,

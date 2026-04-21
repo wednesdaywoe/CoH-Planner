@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Guarded Spin",
   "display_fullname": "Tanker Melee Staff Fighting Guarded Spin",
-  "display_help": "XAU3J6ZCF3EAYWCA585TN7JRPA",
-  "display_short_help": "3Y9QTHUKJGLMWTXG3WXCNBUUXZ",
+  "display_help": "You spin your staff like a propeller in front of you dealing Smashing damage to enemies in your frontal arc and deflecting any incoming attacks, thus boosting your Melee and Lethal defense briefly. While a form is active, this power will build one level of Perfection.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>5</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "Melee (Cone), DMG(Smash), Self +Def(Melee, Lethal)",
   "icon": "stafffighting_guardedspin.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -315,6 +315,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Tanker_Melee.Staff_Fighting"
 }

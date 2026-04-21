@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Explode",
   "display_fullname": "Incarnate Lore Pet Nemesis Boss Explode",
-  "display_help": "WEZW86SHJA36YRZVZC27XUZC8Z",
+  "display_help": "When Warhulks are destroyed, they tend to explode.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Extremely Long.</color>",
   "display_short_help": "Post Death Special",
   "icon": "fireblast_inferno.png",
   "auto_issue": false,

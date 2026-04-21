@@ -5,10 +5,10 @@
   "short_help": "Vanguard",
   "icon": "lore_pet_vanguard_boss_set.ico",
   "powers": [
-    "Ball_Lightning",
-    "Freezing_Sphere",
-    "Ice_Blast",
-    "Life_Drain"
+    "Incarnate.Lore_Pet_Vanguard_Boss.Ball_Lightning",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Freezing_Sphere",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Ice_Blast",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Life_Drain"
   ],
   "available_level": [
     0,

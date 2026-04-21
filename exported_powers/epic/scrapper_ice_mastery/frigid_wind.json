@@ -3,10 +3,10 @@
   "full_name": "Epic.Scrapper_Ice_Mastery.Frigid_Wind",
   "short_name": "Frigid_Wind",
   "type": "Click",
-  "display_name": "TM8KBSHVKZYTYNB3KWG573ARLS",
+  "display_name": "Frigid Wind",
   "display_fullname": "Epic Scrapper Ice Mastery Frigid Wind",
-  "display_help": "GZ2C4JZCNAVMWFXFYL2PZ8EK9Q",
-  "display_short_help": "AV2K7W734QF3WVVNYLBGUJU23S",
+  "display_help": "Unleashes a cone of icy wind that can Slow your opponents' movement and attacks. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
+  "display_short_help": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
   "icon": "ice_mastery_frigidwind",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -486,6 +486,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Scrapper_Ice_Mastery"
 }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Defensive Adaptation",
   "display_fullname": "Stalker Defense Bio Organic Armor Defensive Adaptation",
-  "display_help": "EAE3QP55HP9FWHVQP3PJU9M2CZ",
+  "display_help": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to become dense and durable. While active Hardened Carapace grants additional resistance to Lethal, Smashing and Toxic damage, Boundless Energy grants additional Maximum HP, Environmental Modification grants additional defense and also grants a small amount of Maximum HP, Ablative Carapace grants additional damage absorption, DNA Siphon grants additional health per target hit and Parasitic Aura grants additional damage absorption per target hit. Genetic Corruption will also grant a small amount of additional damage resistance and increase the potency of the power's damage debuff. Additionally, many of your damaging attacks will heal you for a minor amount of health. However, the bulkiness of this adaptation reduces your damage moderately. Defensive Adaptation costs no endurance.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Bio Armor Defensive Mode",
   "icon": "bioorganicarmor_defensiveadaptation.png",
   "auto_issue": true,
@@ -205,6 +205,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Stalker_Defense.Bio_Organic_Armor"
 }

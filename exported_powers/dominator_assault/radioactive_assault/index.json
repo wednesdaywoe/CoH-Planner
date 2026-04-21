@@ -5,25 +5,25 @@
   "short_help": "Radioactive Assault",
   "icon": "radioactive_assault_set.ico",
   "powers": [
-    "Atom_Smasher",
-    "Contaminated_Strike",
-    "Devastating_Blow",
-    "Electron_Haze",
-    "Fusion",
-    "Neutrino_Bolt",
-    "Proton_Volley",
-    "Radiation_Siphon",
-    "X-Ray_Beam"
+    "Dominator_Assault.Radioactive_Assault.Atom_Smasher",
+    "Dominator_Assault.Radioactive_Assault.Contaminated_Strike",
+    "Dominator_Assault.Radioactive_Assault.Devastating_Blow",
+    "Dominator_Assault.Radioactive_Assault.Electron_Haze",
+    "Dominator_Assault.Radioactive_Assault.Fusion",
+    "Dominator_Assault.Radioactive_Assault.Neutrino_Bolt",
+    "Dominator_Assault.Radioactive_Assault.Proton_Volley",
+    "Dominator_Assault.Radioactive_Assault.Radiation_Siphon",
+    "Dominator_Assault.Radioactive_Assault.X-Ray_Beam"
   ],
   "available_level": [
+    23,
     0,
+    29,
+    9,
+    15,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    27,
+    19,
+    3
   ]
 }

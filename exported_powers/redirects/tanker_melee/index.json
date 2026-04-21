@@ -5,7 +5,7 @@
   "short_help": "Tanker Melee",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Savage_Leap"
+    "Redirects.Tanker_Melee.Savage_Leap"
   ],
   "available_level": [
     0

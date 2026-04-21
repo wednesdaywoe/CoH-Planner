@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Mass Levitate",
   "display_fullname": "Tanker Melee Psionic Melee Mass Levitate",
-  "display_help": "D9LU8RTDQLEXYFBWPU98BAX9DZ",
-  "display_short_help": "DPMV7TLXKHNFWZVZGXB262ZB7W",
+  "display_help": "You build up a large amount of telekinetic energy and release it causing nearby foes to be flung into the air. Affected foes will suffer high Smashing damage. If the caster has Insight when this power is used Mass Levitate will also cause a moderate amount of Psionic damage over time.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE, DMG(Smash), Foe Knock Up, +Insight",
   "icon": "psionicmelee_masslevitate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -340,6 +340,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Tanker_Melee.Psionic_Melee"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Netherworld Tentacles",
   "display_fullname": "Epic Sentinel Dark Mastery Netherworld Tentacles",
-  "display_help": "XAGNLC64PVYQYUCPUCZUC3MNNA",
-  "display_short_help": "4T7Y5X78XDS7YVXWD8U7ESMCVZ",
+  "display_help": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their chance to hit.",
+  "display_short_help": "Ranged (Cone), DoT(Negative), Foe Immobilize, -To Hit, -Fly",
   "icon": "darknesscontrol_livingshadows.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -372,6 +372,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Dark_Mastery"
 }

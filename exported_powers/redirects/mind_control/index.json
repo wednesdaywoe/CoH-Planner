@@ -5,21 +5,21 @@
   "short_help": "Mind Control",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "Anomaly",
-    "Levitate",
-    "Levitate_Anomaly",
-    "Mass_Confusion",
-    "Mesmerize_Anomaly",
-    "Resistance",
-    "Total_Domination"
+    "Redirects.Mind_Control.Anomaly",
+    "Redirects.Mind_Control.Levitate",
+    "Redirects.Mind_Control.Levitate_Anomaly",
+    "Redirects.Mind_Control.Mass_Confusion",
+    "Redirects.Mind_Control.Mesmerize_Anomaly",
+    "Redirects.Mind_Control.Resistance",
+    "Redirects.Mind_Control.Total_Domination"
   ],
   "available_level": [
     0,
     0,
     0,
+    25,
     0,
     0,
-    0,
-    0
+    17
   ]
 }

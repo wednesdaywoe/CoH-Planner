@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Time Shift",
   "display_fullname": "Blaster Support Time Manipulation Time Shift",
-  "display_help": "TZCUDFPWR8GTWBXEWUPHYBGSSZ",
-  "display_short_help": "Z32J6RFX64BVYBXHA7C6QVQZDW",
+  "display_help": "You shift time on an area, replacing your foes with future or past versions of themselves. This shift can be very disorienting and will incapacitate affected foes. Stronger foes may be able to resist the effect, but they still will have their movement speed and accuracy reduced. Targets affected by the Delayed effect will suffer from a more powerful disorientation, however its benefits are brief.<br><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "Ranged (Targeted AoE), Foe Disorient, -SPD, -ToHit",
   "icon": "timemanipulation_timeshift",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -388,6 +388,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Time_Manipulation"
 }

@@ -5,25 +5,25 @@
   "short_help": "Super Strength",
   "icon": "super_strength_set.ico",
   "powers": [
-    "Foot_Stomp",
-    "Hand_Clap",
-    "Haymaker",
-    "Hurl",
-    "Jab",
-    "Knockout_Blow",
-    "Punch",
-    "Rage",
-    "Taunt"
+    "Tanker_Melee.Super_Strength.Foot_Stomp",
+    "Tanker_Melee.Super_Strength.Hand_Clap",
+    "Tanker_Melee.Super_Strength.Haymaker",
+    "Tanker_Melee.Super_Strength.Hurl",
+    "Tanker_Melee.Super_Strength.Jab",
+    "Tanker_Melee.Super_Strength.Knockout_Blow",
+    "Tanker_Melee.Super_Strength.Punch",
+    "Tanker_Melee.Super_Strength.Rage",
+    "Tanker_Melee.Super_Strength.Taunt"
   ],
   "available_level": [
+    29,
+    15,
+    3,
+    27,
     0,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    23,
+    9
   ]
 }

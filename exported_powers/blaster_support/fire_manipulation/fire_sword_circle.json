@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fire Sword Circle",
   "display_fullname": "Blaster Support Fire Manipulation Fire Sword Circle",
-  "display_help": "5VST2B2CVP76YEZBRJBH7JC3DZ",
-  "display_short_help": "8GH4PHQ5ZKV4YSB5WPP7XDVY2S",
+  "display_help": "Mastery of your Fire Sword has enabled you to make an attack on every foe within melee distance. This will slash and burn your enemies, dealing minor damage and setting them ablaze.",
+  "display_short_help": "PBAoE Melee, DMG(Fire/Lethal)",
   "icon": "firemanipulation_fireswordcircle.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -232,6 +232,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Blaster_Support.Fire_Manipulation"
 }

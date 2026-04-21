@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Crack Whip",
   "display_fullname": "Mastermind Summon Demon Summoning Crack Whip",
-  "display_help": "XVXZTLCCLZUCWUC62ZJ3HG5NJ2",
-  "display_short_help": "66ZDAHNZQZXHWXBENPH3RZVTRX",
+  "display_help": "You channel hellfire into your whip and make an impressive sweep causing high fire damage to enemies within a wide cone and also cause some toxic damage over time. Whip Crack has a larger range than most melee cones. Targets that are struck will also have their resistance to damage reduced for a short time, may suffer toxic damage over time and may be knocked down.",
+  "display_short_help": "Short Ranged (Cone), Moderate DMG(Fire), Foe -Res, Knockdown, DoT(Toxic)",
   "icon": "demonsummoning_crackwhip.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -303,6 +303,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Mastermind_Summon.Demon_Summoning"
 }

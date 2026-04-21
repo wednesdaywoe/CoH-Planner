@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Burst",
   "display_fullname": "Incarnate Lore Pet Vanguard LT Burst",
-  "display_help": "DAYPWZHCD2KHWVCQBYMBYCYFHZ",
+  "display_help": "Your Defense has been reduced by the Submachine Gun.<br><br><color #fcfc95>Notes: Burst is unaffected by Range changes.</color><br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "-Def",
   "icon": "assaultweapons_arburst.png",
   "auto_issue": false,

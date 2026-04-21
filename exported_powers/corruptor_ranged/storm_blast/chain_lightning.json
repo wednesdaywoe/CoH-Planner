@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Chain Lightning",
   "display_fullname": "Corruptor Ranged Storm Blast Chain Lightning",
-  "display_help": "D2GSP5658ZYBYWCTVVPK4HAWSZ",
-  "display_short_help": "FEHD9QP6M6Z6W6XXEUBS6NL72W",
+  "display_help": "Calls a bolt of lightning from the clouds to strike your target, which then chains outward to additional enemies. Creatures unfortunate enough to be struck will be dealt Energy damage and be sapped of some endurance.<br><br>While in a <color #fcfc95>Storm Cell</color>, the main target of Chain Lightning will experience additional endurance drain over time.",
+  "display_short_help": "Ranged Chain, DoT(Energy), Foe -End",
   "icon": "stormblast_chainlightning.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -595,6 +595,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Corruptor_Ranged.Storm_Blast"
 }

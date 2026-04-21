@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Offensive Adaptation",
   "display_fullname": "Sentinel Defense Bio Organic Armor Offensive Adaptation",
-  "display_help": "8Y4AR9FZ2DZ2WTMXXZ773PV9F3",
+  "display_help": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to sprout spines and become much lighter. While active Hardened Carapace increases your damage slightly, Environmental Adaptation grants you a moderate to hit buff, Athletic Regulation will increase your run and flight speeds, Genomic Evolution grants a small range buff, and the regeneration debuff from Parasitic Leech will be increased. Additionally, many of your damaging powers will inflict a minor amount of additional Toxic damage. While Offensive Adaptation is active your Defense and Damage Resistance is reduced slightly.<br><br>Offensive Adaptation costs no endurance.",
   "display_short_help": "Toggle: Bio Armor Offensive Mode",
   "icon": "bioorganicarmor_offensiveadaptation.png",
   "auto_issue": true,
@@ -205,6 +205,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Sentinel_Defense.Bio_Organic_Armor"
 }

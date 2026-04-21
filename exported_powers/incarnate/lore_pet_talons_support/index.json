@@ -5,8 +5,8 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_talons_support_set.ico",
   "powers": [
-    "Debilitating_Song",
-    "Seductive_Song"
+    "Incarnate.Lore_Pet_Talons_Support.Debilitating_Song",
+    "Incarnate.Lore_Pet_Talons_Support.Seductive_Song"
   ],
   "available_level": [
     0,

@@ -5,7 +5,7 @@
   "short_help": "Ninja Training",
   "icon": "blaster_ninja_training_set.ico",
   "powers": [
-    "Shinobi_Proc"
+    "Redirects.Blaster_Ninja_Training.Shinobi_Proc"
   ],
   "available_level": [
     0

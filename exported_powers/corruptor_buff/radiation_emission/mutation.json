@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Mutation",
   "display_fullname": "Corruptor Buff Radiation Emission Mutation",
-  "display_help": "DGUXV3P5ANTYWPL24F2PRGJFBQ",
+  "display_help": "Using a concentrated burst of radiation, you can revive a fallen ally and Mutate them into a killing machine. The Mutated target has increased damage, chance to hit, Endurance recovery, and attack speed and is protected from XP Debt for 90 seconds. The entire experience is very taxing on your ally, and they will soon be severely weakened. All effects of the Mutation will eventually wear off.",
   "display_short_help": "Close, Ally Rez, Special",
   "icon": "radiationpoisoning_mutation.png",
   "auto_issue": false,
@@ -389,6 +389,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Corruptor_Buff.Radiation_Emission"
 }

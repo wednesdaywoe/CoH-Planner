@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Flamethrower",
   "display_fullname": "Sentinel Ranged Assault Rifle Flamethrower",
-  "display_help": "5NQQWB8JSJNZYRVZ2ZQFRVRE3W",
-  "display_short_help": "CTTBYUDBEPTTYNX2S83T8Z97CS",
+  "display_help": "Spews forth a cone of flames from underneath the barrel of your assault rifle, setting foes on fire. Very accurate and very deadly at medium range.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ranged (Cone), DoT(Fire)",
   "icon": "assaultweapons_arflamethrower.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -229,6 +229,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Sentinel_Ranged.Assault_Rifle"
 }

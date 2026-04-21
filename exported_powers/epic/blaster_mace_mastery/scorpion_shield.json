@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Scorpion Shield",
   "display_fullname": "Epic Blaster Mace Mastery Scorpion Shield",
-  "display_help": "U6TZLKZT7ZUZY3MJCQ58BUKBHZ",
+  "display_help": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
   "display_short_help": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
   "icon": "arachnos_patron_defensebuff.png",
   "auto_issue": false,
@@ -237,6 +237,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Blaster_Mace_Mastery"
 }

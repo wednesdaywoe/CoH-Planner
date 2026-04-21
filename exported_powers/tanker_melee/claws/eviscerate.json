@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Eviscerate",
   "display_fullname": "Tanker Melee Claws Eviscerate",
-  "display_help": "R694VLTZY6VRWCCT52U6XPQ7N2",
-  "display_short_help": "EYH8PB4DDDQYW4NTPLSQU4U793",
+  "display_help": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>5</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "Melee (Cone), DMG(Lethal), Foe -DEF",
   "icon": "claws_evicerate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -241,6 +241,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Tanker_Melee.Claws"
 }

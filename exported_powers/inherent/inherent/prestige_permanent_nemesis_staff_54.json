@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Nemesis Staff",
   "display_fullname": "Inherent Inherent prestige Permanent Nemesis Staff 54",
-  "display_help": "AAUD93HPC6R4YHNXPCF3A6LBU2",
+  "display_help": "This strange, steam-powered staff shoots a bolt of energy that deals damage, knocks back foes.Damage enhancing powers do not apply to the Nemesis Staff.<br><br><color #fcfc95>Damage: Moderate.</color>",
   "display_short_help": "Ranged, Moderate DMG(Smash), Foe Knockback",
   "icon": "veteran_nemesisstaff.png",
   "auto_issue": true,

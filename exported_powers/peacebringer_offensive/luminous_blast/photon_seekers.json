@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Photon Seekers",
   "display_fullname": "Peacebringer Offensive Luminous Blast Photon Seekers",
-  "display_help": "7UTKFB8ZWL54WWCULSN4NZYHWW",
+  "display_help": "You manifest 3 spheres of light from your Kheldian essence. These spheres will follow you until they detect an enemy target. The Photon Seekers will then zero in on their targets and detonate on impact. The explosion is small but devastating and may affect multiple foes if they are near the target.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Summon Drones: Ranged Special, High DMG(Energy)",
   "icon": "luminousblast_photonseekers.png",
   "auto_issue": false,
@@ -149,6 +149,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

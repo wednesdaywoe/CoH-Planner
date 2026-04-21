@@ -5,7 +5,7 @@
   "short_help": "Incarnate",
   "icon": "omega_set.ico",
   "powers": [
-    "Nothing"
+    "Incarnate.Omega.Nothing"
   ],
   "available_level": [
     0

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Bright Nova Blast",
   "display_fullname": "Peacebringer Offensive Luminous Blast Bright Nova Blast",
-  "display_help": "N3BXWD9E7TR8YTVHS5UQKE7ZHA",
-  "display_short_help": "YSJY7CG82XB6WAZ5TWKRMGA2YW",
+  "display_help": "A much more powerful, yet slower version of Bright Nova Bolt. Bright Nova Blast sends a focused blast of Kheldian energy at a foe that can knock him back and reduce his defense. This power is only available while in Bright Nova Form.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Ranged, Light DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_gleamingblast.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -245,6 +245,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

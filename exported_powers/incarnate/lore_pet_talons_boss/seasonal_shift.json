@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Seasonal Shift",
   "display_fullname": "Incarnate Lore Pet Talons Boss Seasonal Shift",
-  "display_help": "FPGVT2R9S7Y3WECYPBMRX8K7X3",
+  "display_help": "You rapidly draw in an immense amount of energy from the outer reaches of a 30' radius around you, igniting it in a fiery burst. The region within 15' of you burns, causing fire damage and reduction in chance to hit on enemy targets, while the region between 15' and 30' of you freezes, causing cold damage and reducing enemy targets' movement and attack speeds.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Moderate DoT (Fire or Cold), Special",
   "icon": "talonsofvengeance_seasonalshift.png",
   "auto_issue": false,

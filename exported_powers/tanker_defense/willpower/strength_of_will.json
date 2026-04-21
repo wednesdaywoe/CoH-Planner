@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Strength of Will",
   "display_fullname": "Tanker Defense Willpower Strength of Will",
-  "display_help": "CPES7FMP2U2BWGLFBKFMTCZJG2",
+  "display_help": "When you activate this power, you not only become extremely resistant to most damage, but also to Disorient, Immobilization, Hold, Knockback, Repel and Sleep effects. Strength of Will costs little Endurance to activate and increases your recovery for its duration, but when it wears off you are left exhausted, and substantially drained of Endurance.<br><br><color #fcfc95>Notes: Strength of Will is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG), +Recovery",
   "icon": "willpower_strengthofwill.png",
   "auto_issue": false,
@@ -404,6 +404,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Tanker_Defense.Willpower"
 }

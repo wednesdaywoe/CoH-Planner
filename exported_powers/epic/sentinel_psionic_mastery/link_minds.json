@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Link Minds",
   "display_fullname": "Epic Sentinel Psionic Mastery Link Minds",
-  "display_help": "5TPCWTG83BR8Y3BSYKDHXZLRBQ",
+  "display_help": "Your Mind Link Power will enable you to link the minds of all your teammates who are near you for the next 90 seconds. This shared link improves your team's chance to hit foes, your defensive abilities and reduces psionic damage. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
   "display_short_help": "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
   "icon": "mentalcontrol_mindlink",
   "auto_issue": false,
@@ -143,6 +143,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Sentinel_Psionic_Mastery"
 }

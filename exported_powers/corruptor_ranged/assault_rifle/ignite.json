@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ignite",
   "display_fullname": "Corruptor Ranged Assault Rifle Ignite",
-  "display_help": "BPJ5UX9M95KBYAL2YSFZYYD943",
-  "display_short_help": "DR5L4ZJ3LQDPWNCU4YNB66EHRQ",
+  "display_help": "Sprays a target with accelerant from your flamethrower, igniting it and causing extreme damage over time. Also sets the location on fire if the target is grounded, inflicting damage to additional foes that step in the area.",
+  "display_short_help": "Ranged, DoT(Fire)",
   "icon": "assaultweapons_dot",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -399,6 +399,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Corruptor_Ranged.Assault_Rifle"
 }

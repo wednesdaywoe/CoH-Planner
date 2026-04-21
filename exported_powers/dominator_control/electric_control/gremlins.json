@@ -6,7 +6,7 @@
   "display_name": "Gremlins",
   "display_fullname": "Dominator Control Electric Control Gremlins",
   "display_help": "Mastery over electricity allows you to create almost sentient elementals of lightning. These elementals are mischievous in nature, and enjoy creating havoc and interfering with electronic equipment or magical cantrips. They also never work alone, where there is one Gremlin, there is often another nearby.",
-  "display_short_help": "WJKU73LUUFUQW8LNS4ZDPLH3H2",
+  "display_short_help": "Summon Gremlins: Melee DMG(Energy)",
   "icon": "electriccontrol_gremlins.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -121,6 +121,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Dominator_Control.Electric_Control"
 }

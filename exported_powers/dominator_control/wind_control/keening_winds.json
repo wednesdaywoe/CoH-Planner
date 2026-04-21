@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Keening Winds",
   "display_fullname": "Dominator Control Wind Control Keening Winds",
-  "display_help": "FA8GUXRMGUMEWECL7775874P7S",
+  "display_help": "You create a sphere of variable speed winds that generate strong friction within the turbulence of the air. This creates odd echoes and sounds that confuse foes caught within the burst. The loss of confidence your foes suffer due their confusion causes them to lose endurance over a few seconds, while you gain endurance due to a boost in confidence you enjoy from seeing your foes struggle. This power builds Pressure.<br><br><color #fcfc95>Damage: None.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Ranged (Targeted AoE), Confuse(Foe), EndDrain(Foe), +End(Self)",
   "icon": "windcontrol_keeningwinds.png",
   "auto_issue": false,
@@ -321,6 +321,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Dominator_Control.Wind_Control"
 }

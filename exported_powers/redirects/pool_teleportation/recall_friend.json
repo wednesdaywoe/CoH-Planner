@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Recall Friend",
   "display_fullname": "Redirects Pool Teleportation Recall Friend",
-  "display_help": "ELDXA23KKDS9WPCZQVMBTVZ932",
+  "display_help": "You can Teleport one of your teammates to yourself. The target must be a teammate or leaguemate and can be selected from the Team Window. You can also rescue a fallen teammate who may be in a hostile location, as long as he is on the same map. Range is not infinite, but extremely long and can be enhanced. This power can be interrupted.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Zone-Range: Teleport Teammate",
   "icon": "teleportation_recallteleport.png",
   "auto_issue": false,

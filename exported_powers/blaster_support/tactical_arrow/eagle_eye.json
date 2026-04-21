@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Eagle Eye",
   "display_fullname": "Blaster Support Tactical Arrow Eagle Eye",
-  "display_help": "FXDH2YP93FBXYVNY2BNF9MJ2MZ",
-  "display_short_help": "W97JBN47RN9VWKBPVWP8BGCGEX",
+  "display_help": "You have developed an incredible eyesight. Your accuracy is dramatically improved and your perception increased allowing you to better see distant and stealthy foes. You have also become resistant to powers that debuff your accuracy or chance to hit. In addition to being more accurate, your training also allows you to regenerate health and recovery endurance at an accelerated rate while this power is active. However, only half of this regeneration bonus is enhanceable.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle: Self +ACC, +Perception, +Res(DeBuff ToHit), +Regeneration, +Recovery",
   "icon": "tacticalarrow_eagleeye.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -232,6 +232,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Blaster_Support.Tactical_Arrow"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Summon Demonlings",
   "display_fullname": "Mastermind Summon Demon Summoning Summon Demonlings",
-  "display_help": "D6KPDECLS2LKY5BKZQW6YJR6P3",
+  "display_help": "Call forth up to three demonlings (depending on your level) to do your bidding. The first demonling is adept at manipulating fire, the second blasts your foes with cold attacks and the third is able to wield hellfire to deal fire/toxic damage.<br><br>You may only have three demonlings under your command at any given time. If you attempt to summon more demonlings, you can only replace those that have been lost in battle. If you already have your maximum allowed amount, the power will fail.<br><br>In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "display_short_help": "Summon Demonlings",
   "icon": "demonsummoning_summondemonlings.png",
   "auto_issue": false,

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Teleport Foe",
   "display_fullname": "Redirects Pool Teleportation Teleport Foe",
-  "display_help": "M9XKW5BR4BJEYEZVE9XATFMTEA",
+  "display_help": "You can Teleport a single foe directly next to yourself. A successful hit must be made in order to Teleport the target, and some powerful foes cannot be Teleported. Enemy players that are teleported will be temporarily out of phase, and cannot be targeted or damaged. This power can be interrupted.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Ranged, Teleport Foe",
   "icon": "teleportation_teleportfoe.png",
   "auto_issue": false,

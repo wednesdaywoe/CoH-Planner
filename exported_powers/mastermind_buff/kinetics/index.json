@@ -5,25 +5,25 @@
   "short_help": "Kinetics",
   "icon": "kinetics_set.ico",
   "powers": [
-    "Fulcrum_Shift",
-    "Increase_Density",
-    "Inertial_Reduction",
-    "Repel",
-    "Siphon_Power",
-    "Siphon_Speed",
-    "Speed_Boost",
-    "Transference",
-    "Transfusion"
+    "Mastermind_Buff.Kinetics.Fulcrum_Shift",
+    "Mastermind_Buff.Kinetics.Increase_Density",
+    "Mastermind_Buff.Kinetics.Inertial_Reduction",
+    "Mastermind_Buff.Kinetics.Repel",
+    "Mastermind_Buff.Kinetics.Siphon_Power",
+    "Mastermind_Buff.Kinetics.Siphon_Speed",
+    "Mastermind_Buff.Kinetics.Speed_Boost",
+    "Mastermind_Buff.Kinetics.Transference",
+    "Mastermind_Buff.Kinetics.Transfusion"
   ],
   "available_level": [
+    29,
+    15,
+    23,
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    9,
+    19,
+    27,
     0
   ]
 }

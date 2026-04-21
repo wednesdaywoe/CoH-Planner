@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fissure",
   "display_fullname": "Epic Stone Mastery Fissure",
-  "display_help": "3M3N55ZNPTZKWUVMNPRNPW2STZ",
-  "display_short_help": "NCFGY6YQKA4NYYXEJ6CZTY9XWA",
+  "display_help": "This powerful stomp can cause a seismic disturbance. This will crack the Earth itself and send a Fault towards a targeted foe. Affected targets take moderate damage and may be thrown in the air and possibly Disoriented.",
+  "display_short_help": "Close (Targeted AoE), DMG(Lethal/Smash), Foe Knockback, Disorient",
   "icon": "earth_mastery_fissure",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -358,6 +358,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Stone_Mastery"
 }

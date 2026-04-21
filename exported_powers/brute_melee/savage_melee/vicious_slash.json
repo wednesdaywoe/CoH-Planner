@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Vicious Slash",
   "display_fullname": "Brute Melee Savage Melee Vicious Slash",
-  "display_help": "3KMKEYP8HUV8Y2CK3FZ5DNLAPA",
-  "display_short_help": "BS4B4EEYMBCKYXC3EXMRPGTECQ",
+  "display_help": "You tear at your foe with both hands dealing high lethal damage and causing minor lethal damage over time. Foes struck by this attack have a high chance to be knocked down.",
+  "display_short_help": "Melee, DMG(Lethal), Foe DoT (Lethal), Knockdown, Self +2 Blood Frenzy",
   "icon": "savagemelee_viciousslash.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -364,6 +364,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Brute_Melee.Savage_Melee"
 }

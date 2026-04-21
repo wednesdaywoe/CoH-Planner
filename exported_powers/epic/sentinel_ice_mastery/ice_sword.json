@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Ice Sword",
   "display_fullname": "Epic Sentinel Ice Mastery Ice Sword",
-  "display_help": "DJA5H993TZHAYBNXYDTBJ3TLV3",
-  "display_short_help": "SVQVWXU72WCRYJV95LJMDNKTC3",
+  "display_help": "You create a blade of solid ice that deals higher damage then Frozen Fists. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.",
+  "display_short_help": "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "ice_mastery_icesword",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -345,6 +345,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Ice_Mastery"
 }

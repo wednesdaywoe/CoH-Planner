@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Fly",
   "display_fullname": "Pool Flight Fly",
-  "display_help": "PY3TKHPVXW7UW2ZG6QJ48ECPWQ",
+  "display_help": "Fly allows you to travel large distances quickly. Fly also increases your maximum flying speed by 50% and gives you access to the Afterburner power whilst it is active.<br><br>If you attack a target while this power is on, your flight speed will be temporarily reduced to Hover speed.<br><br>Fly can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
   "display_short_help": "Toggle: Self Fly",
   "icon": "flight_travelflight.png",
   "auto_issue": false,
@@ -414,6 +414,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Pool.Flight"
 }

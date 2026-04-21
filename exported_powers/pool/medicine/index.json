@@ -5,17 +5,17 @@
   "short_help": "Medicine",
   "icon": "medicine_set.ico",
   "powers": [
-    "Aid_Other",
-    "Aid_Self",
-    "Field_Medic",
-    "Resuscitate",
-    "Stimulant"
+    "Pool.Medicine.Aid_Other",
+    "Pool.Medicine.Aid_Self",
+    "Pool.Medicine.Field_Medic",
+    "Pool.Medicine.Resuscitate",
+    "Pool.Medicine.Stimulant"
   ],
   "available_level": [
     0,
-    0,
-    0,
-    0,
+    13,
+    13,
+    13,
     0
   ]
 }

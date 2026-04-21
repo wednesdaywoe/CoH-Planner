@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Telekinetic Thrust",
   "display_fullname": "Blaster Support Mental Manipulation Telekinetic Thrust",
-  "display_help": "CR46DZLCKF5SYLB59L2UPPTPZ3",
-  "display_short_help": "V6VPCZL6A5CLWMVPYSPPVDKSW3",
+  "display_help": "A focused attack of intense mental power that violently sends a nearby foe flying. Deals minimal damage, but can be very effective.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Melee, Superior DMG(Psionic/Smash), Foe Knockback",
   "icon": "psionicassault_telekineticthrust.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -245,6 +245,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Mental_Manipulation"
 }

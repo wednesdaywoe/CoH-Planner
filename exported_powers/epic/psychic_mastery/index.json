@@ -5,17 +5,17 @@
   "short_help": "Psionic Mastery",
   "icon": "psychic_mastery_set.ico",
   "powers": [
-    "Dominate",
-    "Mass_Hypnosis",
-    "Mind_Over_Body",
-    "Telekinesis",
-    "World_of_Confusion"
+    "Epic.Psychic_Mastery.Dominate",
+    "Epic.Psychic_Mastery.Mass_Hypnosis",
+    "Epic.Psychic_Mastery.Mind_Over_Body",
+    "Epic.Psychic_Mastery.Telekinesis",
+    "Epic.Psychic_Mastery.World_of_Confusion"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    34,
+    34,
+    37,
+    43,
+    40
   ]
 }

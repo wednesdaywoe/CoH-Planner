@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Enflame",
   "display_fullname": "Pool Sorcery Enflame",
-  "display_help": "FTDDFW3DM9FMY5NMUDGJC9SVMX",
-  "display_short_help": "NX7N5G7VYBVMYJCAMDPNMX2BM3",
+  "display_help": "This ritual allows you to imbue an ally or curse a foe with a fiery spell. If Enflame is cast on an ally or a foe they will leave a fiery trail behind them that will damage foes.<br><br>You can cancel this power at any time, or it will automatically end after 60 seconds.<br><br>You must be at least level 14 and have two other Sorcery powers before selecting Enflame.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle: Ranged Friend/Foe, Special",
   "icon": "sorcerypool_enflame.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -113,6 +113,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Sorcery"
 }

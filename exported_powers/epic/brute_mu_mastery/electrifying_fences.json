@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Electrifying Fences",
   "display_fullname": "Epic Brute Mu Mastery Electrifying Fences",
-  "display_help": "TBXY7JMNS9UMWVVDTVU3TWNWRS",
-  "display_short_help": "BQUVZAPWNK4VWCMSD7KGD8U7UW",
+  "display_help": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance.",
+  "display_short_help": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
   "icon": "arachnos_patron_rangedaoeimmobilize.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -342,6 +342,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Brute_Mu_Mastery"
 }

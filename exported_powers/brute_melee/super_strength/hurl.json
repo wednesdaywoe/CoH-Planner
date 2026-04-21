@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Hurl",
   "display_fullname": "Brute Melee Super Strength Hurl",
-  "display_help": "27CMHGC69A4GWYZMGU5PCT2AAW",
-  "display_short_help": "FV2RB27X2KBUYCMP954FQEZJKA",
+  "display_help": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals high damage, and can knock foes back and even drop them out of the air if they are flying.",
+  "display_short_help": "Ranged, DMG(Smashing), Knockback, -Fly",
   "icon": "superstrength_hurl.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -279,6 +279,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 21,
   "powerset": "Brute_Melee.Super_Strength"
 }

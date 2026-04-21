@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Pulsar",
   "display_fullname": "Peacebringer Offensive Luminous Blast Pulsar",
-  "display_help": "Z3CWG3RN6HXWW2VGLH6J7FBJS3",
+  "display_help": "Generates a brilliant pulse of Kheldian light around you that stuns nearby foes. Affected foes are Disoriented and unable to defend themselves.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "PBAoE, Foe Disorient",
   "icon": "luminousblast_pulsar.png",
   "auto_issue": false,
@@ -163,6 +163,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

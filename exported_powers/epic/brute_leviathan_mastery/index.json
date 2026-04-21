@@ -5,17 +5,17 @@
   "short_help": "Leviathan Mastery",
   "icon": "brute_leviathan_mastery_set.ico",
   "powers": [
-    "Arctic_Breath",
-    "Chum_Spray",
-    "School_of_Sharks",
-    "Spirit_Shark",
-    "Summon_Guardian"
+    "Epic.Brute_Leviathan_Mastery.Arctic_Breath",
+    "Epic.Brute_Leviathan_Mastery.Chum_Spray",
+    "Epic.Brute_Leviathan_Mastery.School_of_Sharks",
+    "Epic.Brute_Leviathan_Mastery.Spirit_Shark",
+    "Epic.Brute_Leviathan_Mastery.Summon_Guardian"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    40,
+    37,
+    34,
+    34,
+    43
   ]
 }

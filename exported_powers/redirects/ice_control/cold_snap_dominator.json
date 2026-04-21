@@ -3,10 +3,10 @@
   "full_name": "Redirects.Ice_Control.Cold_Snap_Dominator",
   "short_name": "Cold_Snap_Dominator",
   "type": "Click",
-  "display_name": "KQVQS5VYG5EGW8BVGBNY78RKN2",
+  "display_name": "Cold Snap",
   "display_fullname": "Redirects Ice Control Cold Snap Dominator",
-  "display_help": "MFJAADCDNLLPWVVTZLWF8Z9YWQ",
-  "display_short_help": "65ZGYTD7SZJYY3Z8JAD7B25USW",
+  "display_help": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes and might leave them trembling.",
+  "display_short_help": "Ranged (Cone), Foe Fear, -SPD, -Recharge",
   "icon": "iceformation_shiver.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -206,6 +206,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Redirects.Ice_Control"
 }

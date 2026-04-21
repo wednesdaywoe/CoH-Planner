@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Vorpal Radial Judgement",
   "display_fullname": "Incarnate Judgement Vorpal Radial Judgement",
-  "display_help": "V6LZDVNT9TASYVN46KMASQGX4Q",
+  "display_help": "Self-Targeted Wide Cone AoE, Extreme DMG(Smashing).<br><br><color #fcfc95>Notes: Vorpal Radial Judgement is unaffected by Recharge Time, Range, Radius or Arc changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self-Targeted Wide Cone AoE, Extreme DMG(Smashing)",
   "icon": "incarnate_judgement_vorpal_uncommon.png",
   "auto_issue": false,

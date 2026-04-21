@@ -1,29 +1,29 @@
 {
   "key": "Sentinel_Defense.Stone_Armor",
   "display_name": "Stone Armor",
-  "help": "5TW6ZL4QLQUJW6MAC8MMU8PB4Z",
+  "help": "You can transform your skin into various forms of rock and stone. Stone Armor is one of the few Sentinel Defensive Power Sets that offers defense to Psionics.",
   "short_help": "Stone Armor",
   "icon": "stone_armor_set.ico",
   "powers": [
-    "Brimstone_Armor",
-    "Crystal_Armor",
-    "Earths_Embrace",
-    "Geode",
-    "Mineral_Armor",
-    "Rooted",
-    "Stone_Armor",
-    "Stone_Skin",
-    "Terra_Firma"
+    "Sentinel_Defense.Stone_Armor.Brimstone_Armor",
+    "Sentinel_Defense.Stone_Armor.Crystal_Armor",
+    "Sentinel_Defense.Stone_Armor.Earths_Embrace",
+    "Sentinel_Defense.Stone_Armor.Geode",
+    "Sentinel_Defense.Stone_Armor.Mineral_Armor",
+    "Sentinel_Defense.Stone_Armor.Rooted",
+    "Sentinel_Defense.Stone_Armor.Stone_Armor",
+    "Sentinel_Defense.Stone_Armor.Stone_Skin",
+    "Sentinel_Defense.Stone_Armor.Terra_Firma"
   ],
   "available_level": [
+    23,
+    19,
+    3,
+    29,
+    27,
+    15,
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9
   ]
 }

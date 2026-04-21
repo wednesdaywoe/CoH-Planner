@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Offensive Adaptation",
   "display_fullname": "Stalker Defense Bio Organic Armor Offensive Adaptation",
-  "display_help": "MF9RG2V2TWGSY9LVHBZU4XH8MW",
+  "display_help": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to sprout spines and become much lighter. While active Hardened Carapace increases your damage slightly, Environmental Modification grants you a moderate to hit buff, and debuff effects from DNA Siphon and Parasitic Aura are increased moderately. Genetic Corruption will have its chance to put enemies to sleep increased. Additionally, many of your damaging powers will inflict a minor amount of additional Toxic damage. While Offensive Adaptation is active your Defense and Damage Resistance is reduced slightly. Offensive Adaptation costs no endurance.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Bio Armor Offensive Mode",
   "icon": "bioorganicarmor_offensiveadaptation.png",
   "auto_issue": true,
@@ -205,6 +205,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Stalker_Defense.Bio_Organic_Armor"
 }

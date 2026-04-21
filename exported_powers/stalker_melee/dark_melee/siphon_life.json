@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Siphon Life",
   "display_fullname": "Stalker Melee Dark Melee Siphon Life",
-  "display_help": "XHJXQAKCUSF6WTMSTNL4MS93E2",
-  "display_short_help": "82WQDWP8HRNNYCVAZADJJDUPWA",
+  "display_help": "You tap the power of the Netherworld and create a life transferring conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes Siphoned in this manner have their chance to hit reduced.",
+  "display_short_help": "Melee, DMG(Negative), Foe -To Hit, Self +HP",
   "icon": "shadowfighting_siphonlife.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -376,6 +376,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Stalker_Melee.Dark_Melee"
 }

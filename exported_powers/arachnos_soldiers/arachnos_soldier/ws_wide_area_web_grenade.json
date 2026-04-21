@@ -6,7 +6,7 @@
   "display_name": "Wide Area Web Grenade",
   "display_fullname": "Arachnos Soldiers Arachnos Soldier WS Wide Area Web Grenade",
   "display_help": "Launches a Grenade at long range from under the barrel of your Assault rifle. It explodes into a field of sticky webs which slow and can immobilize all foes within its radius.",
-  "display_short_help": "45LJK8RY7G9JWNB4J9NLCB38JX",
+  "display_short_help": "Ranged (Targeted AoE), Foe Immobilize, -SPD, -Recharge, -Fly, -Jump",
   "icon": "arachnossoldier_wideareawebgrenade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -64,6 +64,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Arachnos_Soldiers.Arachnos_Soldier"
 }

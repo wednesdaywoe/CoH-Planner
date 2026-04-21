@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Cremate",
   "display_fullname": "Brute Melee Fiery Melee Combustion",
-  "display_help": "RHEJYGY3TZYJW9NEVGQLK9F4E3",
-  "display_short_help": "A8AGMFGWZHEUWQVQ7DBDK5GEMA",
+  "display_help": "A slow but devastating attack. Cremate clobbers your foes with a massive 2 handed fiery smash knocks down and leaves your foe on fire.",
+  "display_short_help": "Melee, DMG(Fire), Knockup",
   "icon": "fieryfray_scorch.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -279,6 +279,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Brute_Melee.Fiery_Melee"
 }

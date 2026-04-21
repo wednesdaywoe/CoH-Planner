@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Arctic Fog",
   "display_fullname": "Controller Buff Cold Domination Arctic Fog",
-  "display_help": "K9N3749CXJ92W3VDPUY5P9CZY3",
+  "display_help": "Your mastery of Cold allows you to hide yourself and all nearby allies within thick Arctic Fog. Arctic Fog makes you and your allies harder to see and increases your Defense to area effect, melee and ranged attacks, as well as your resistance to Slow, Fire, Cold, and Energy damage.",
   "display_short_help": "Toggle: PBAoE, Team Stealth, +DEF, +Res(Fire, Cold, Energy, Slow)",
   "icon": "colddomination_arcticfog.png",
   "auto_issue": false,
@@ -290,6 +290,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Controller_Buff.Cold_Domination"
 }

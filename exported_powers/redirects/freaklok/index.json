@@ -5,7 +5,7 @@
   "short_help": "Freaklok",
   "icon": "freaklok_set.ico",
   "powers": [
-    "Immolation"
+    "Redirects.Freaklok.Immolation"
   ],
   "available_level": [
     0

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Call Genin",
   "display_fullname": "Mastermind Summon Ninjas Call Genin",
-  "display_help": "EAW3PQN2ME43WDNCAE9E2QXAR2",
+  "display_help": "Calls forth one to three Genin Ninja (depending on your level) to do your bidding. Genin have good reflexes and jumping skill, but they are still the lowest rank Ninja and only possess the most rudimentary skills, However, they can be trained in more advanced techniques and weapons.<br><br>You may only have 3 Genin under your control at any given time. If you attempt to call Genin, you can only replace the ones you have lost in battle. If you already have three, the power will fail.<br><br>In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "display_short_help": "Summon Genin",
   "icon": "ninjas_callgenin.png",
   "auto_issue": false,

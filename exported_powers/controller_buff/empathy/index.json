@@ -5,25 +5,25 @@
   "short_help": "Empathy",
   "icon": "empathy_set.ico",
   "powers": [
-    "Absorb_Pain",
-    "Adrenalin_Boost",
-    "Clear_Mind",
-    "Fortitude",
-    "Heal_Other",
-    "Recovery_Aura",
-    "Regeneration_Aura",
-    "Resurrect",
-    "Siphon_Energy"
+    "Controller_Buff.Empathy.Absorb_Pain",
+    "Controller_Buff.Empathy.Adrenalin_Boost",
+    "Controller_Buff.Empathy.Clear_Mind",
+    "Controller_Buff.Empathy.Fortitude",
+    "Controller_Buff.Empathy.Heal_Other",
+    "Controller_Buff.Empathy.Recovery_Aura",
+    "Controller_Buff.Empathy.Regeneration_Aura",
+    "Controller_Buff.Empathy.Resurrect",
+    "Controller_Buff.Empathy.Siphon_Energy"
   ],
   "available_level": [
+    3,
+    29,
+    15,
+    19,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    23,
+    27,
+    9,
     0
   ]
 }

@@ -5,12 +5,12 @@
   "short_help": "Kinetics",
   "icon": "tanker_melee_set.ico",
   "powers": [
-    "KineticTransfer",
-    "KineticTransferBuff",
-    "KineticTransferBuffSelf",
-    "SiphonPower",
-    "Transference",
-    "Transfusion"
+    "Redirects.Kinetics.KineticTransfer",
+    "Redirects.Kinetics.KineticTransferBuff",
+    "Redirects.Kinetics.KineticTransferBuffSelf",
+    "Redirects.Kinetics.SiphonPower",
+    "Redirects.Kinetics.Transference",
+    "Redirects.Kinetics.Transfusion"
   ],
   "available_level": [
     0,

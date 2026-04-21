@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Cosmic Balance",
   "display_fullname": "Inherent Inherent Cosmic Balance",
-  "display_help": "48QFCJMG5VMBWKNB48YZDF8RCA",
+  "display_help": "Kheldians naturally thrive off the energy and essence of their teammates. Peacebringers' metamorphic nature allows them to bring balance to their team. Your Damage will increase for each nearby Tanker, Mastermind, Corruptor or Defender teammate. Your Damage Resistance will increase for each nearby Scrapper, Sentinel, Brute, Stalker or Blaster teammate. Each nearby Controller or Dominator teammate will grant you limited Protection from Control effects. Finally, each nearby Peacebringer, Warshade, or teamed Arachnos Soldier or Widow grants you some resistance to attack time slow effects. You cannot put Enhancements in this power.",
   "display_short_help": "Auto: Special",
   "icon": "inherentpeacebringer_interspaciallink.png",
   "auto_issue": true,

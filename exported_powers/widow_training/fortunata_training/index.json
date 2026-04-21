@@ -5,27 +5,27 @@
   "short_help": "Fortunata Training",
   "icon": "fortunata_training_set.ico",
   "powers": [
-    "FRT_Aim",
-    "FRT_Dominate",
-    "FRT_Mental_Blast",
-    "FRT_Psionic_Lance",
-    "FRT_Psychic_Scream",
-    "FRT_Psychic_Wail",
-    "FRT_Scramble_Thoughts",
-    "FRT_Subdue",
-    "FRT_Telekinetic_Blast",
-    "FRT_Total_Domination"
+    "Widow_Training.Fortunata_Training.FRT_Aim",
+    "Widow_Training.Fortunata_Training.FRT_Dominate",
+    "Widow_Training.Fortunata_Training.FRT_Mental_Blast",
+    "Widow_Training.Fortunata_Training.FRT_Psionic_Lance",
+    "Widow_Training.Fortunata_Training.FRT_Psychic_Scream",
+    "Widow_Training.Fortunata_Training.FRT_Psychic_Wail",
+    "Widow_Training.Fortunata_Training.FRT_Scramble_Thoughts",
+    "Widow_Training.Fortunata_Training.FRT_Subdue",
+    "Widow_Training.Fortunata_Training.FRT_Telekinetic_Blast",
+    "Widow_Training.Fortunata_Training.FRT_Total_Domination"
   ],
   "available_level": [
+    5,
+    11,
     0,
+    11,
+    7,
+    27,
+    17,
+    1,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    25
   ]
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "M30 Grenade",
   "display_fullname": "Mastermind Summon Mercenaries M30 Grenade",
-  "display_help": "V9RT6K4KMTJJYXLZGXMDTJ3APW",
-  "display_short_help": "EX2367US4FYNWJZYE7ARDK8E5S",
+  "display_help": "Launches a Grenade at long range from beneath the barrel of your Assault Rifle. This explosion affects all within the blast radius, and can knock them back.<br><br><color #fcfc95>Focus Fire:</color><br>The main target struck by this attack will take 3.33% increased damage from any Mercenary Henchmen regardless of their owners for 30 seconds. This does effect does not stack from the same power or from multiple Masterminds.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Lethal/Fire), Knockback",
   "icon": "paramilitary_assaultriflegrenade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -315,6 +315,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Mastermind_Summon.Mercenaries"
 }

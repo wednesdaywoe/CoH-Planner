@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Shadow Cloak",
   "display_fullname": "Warshade Defensive Umbral Aura Shadow Cloak",
-  "display_help": "LZ3SJGADCHYTY3CBET9AU2WMFW",
+  "display_help": "You surround yourself with shadowy particles that bend the light around you, making you difficult to spot at a distance. You can be seen only at close range, or if you attack a target. Even if seen, the Shadow Cloak grants you a bonus to Defense and some protection from Immobilization. Shadow Cloak also allows you to see things in a new light, allowing you to better see stealthy foes.",
   "display_short_help": "Toggle: Self Stealth, +DEF, +Perception, Res (Immobilize)",
   "icon": "umbralaura_shadowcloak.png",
   "auto_issue": false,
@@ -386,6 +386,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

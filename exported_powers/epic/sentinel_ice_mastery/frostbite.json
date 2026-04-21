@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Frostbite",
   "display_fullname": "Epic Sentinel Ice Mastery Frostbite",
-  "display_help": "HAYS5SRJ47JDY5CMD6T5Y8K7BZ",
-  "display_short_help": "RQ4CZMXKVFCZYGVYRXSWNKPER3",
+  "display_help": "Immobilizes a group of foes in icy traps. Deals minimal Cold damage over time and slightly Slows the targets. Slower and less damaging than Chilblain, but can capture multiple targets. More resilient foes may only be Slowed.",
+  "display_short_help": "Ranged (Targeted AoE), DoT(Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "ice_mastery_frostbite",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -424,6 +424,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Sentinel_Ice_Mastery"
 }

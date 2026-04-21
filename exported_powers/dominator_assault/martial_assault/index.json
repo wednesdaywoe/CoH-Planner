@@ -5,25 +5,25 @@
   "short_help": "Martial Assault",
   "icon": "martial_assault_set.ico",
   "powers": [
-    "Caltrops",
-    "Dragons_Tail",
-    "Envenomed_Blades",
-    "Explosive_Shuriken",
-    "Masterful_Throw",
-    "Shuriken_Throw",
-    "Spinning_Kick",
-    "Thunder_Kick",
-    "Trick_Shot"
+    "Dominator_Assault.Martial_Assault.Caltrops",
+    "Dominator_Assault.Martial_Assault.Dragons_Tail",
+    "Dominator_Assault.Martial_Assault.Envenomed_Blades",
+    "Dominator_Assault.Martial_Assault.Explosive_Shuriken",
+    "Dominator_Assault.Martial_Assault.Masterful_Throw",
+    "Dominator_Assault.Martial_Assault.Shuriken_Throw",
+    "Dominator_Assault.Martial_Assault.Spinning_Kick",
+    "Dominator_Assault.Martial_Assault.Thunder_Kick",
+    "Dominator_Assault.Martial_Assault.Trick_Shot"
   ],
   "available_level": [
+    23,
+    19,
+    15,
+    29,
+    27,
     0,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    3
   ]
 }

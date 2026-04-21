@@ -1,23 +1,23 @@
 {
   "key": "Pool.Flight",
   "display_name": "Flight",
-  "help": "5LCLZNXZTELKYVNBZEWZKPAR7X",
+  "help": "Grants you various travel and flying combat abilities.",
   "short_help": "Flight",
   "icon": "flight_set.ico",
   "powers": [
-    "Afterburner",
-    "Air_Superiority",
-    "Combat_Flight",
-    "Fly",
-    "Fly_Boost",
-    "Group_Fly"
+    "Pool.Flight.Afterburner",
+    "Pool.Flight.Air_Superiority",
+    "Pool.Flight.Combat_Flight",
+    "Pool.Flight.Fly",
+    "Pool.Flight.Fly_Boost",
+    "Pool.Flight.Group_Fly"
   ],
   "available_level": [
+    13,
     0,
     0,
-    0,
-    0,
-    0,
-    0
+    3,
+    4294967295,
+    13
   ]
 }

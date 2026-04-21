@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Electric Shackles",
   "display_fullname": "Epic Charge Mastery Electric Shackles",
-  "display_help": "NBUPRKY78RULWLNFSZXABXZHKQ",
-  "display_short_help": "J5BTGZUP65X7W7BM2EZJVK87V3",
+  "display_help": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you.",
+  "display_short_help": "Ranged, DMG(Energy), Foe Hold, -End",
   "icon": "electrical_mastery_shocking_bolt.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -303,6 +303,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Charge_Mastery"
 }

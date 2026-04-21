@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Shocking Bolt",
   "display_fullname": "Epic Electricity Mastery Shocking Bolt",
-  "display_help": "T8DGSN6HJT4YYBX4LSEK3MTKGS",
-  "display_short_help": "LGMG2FAQPKR5YNV9JBQ6VXJR4W",
+  "display_help": "Holds a distant foe by shocking him with electricity. The seized target is left writhing in agony and is unable to defend himself. Shocking Bolt also drains some Endurance from the target over time. A portion of drained Endurance may be returned to you. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged, DoT(Energy), Foe Hold, -END",
   "icon": "electricitymastery_shockingbolt.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -355,6 +355,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 40,
   "powerset": "Epic.Electricity_Mastery"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Guarded Spin",
   "display_fullname": "Stalker Melee Staff Fighting Guarded Spin",
-  "display_help": "J865JFKLD3QBWWNCPYNBXCSEBZ",
-  "display_short_help": "3Y9QTHUKJGLMWTXG3WXCNBUUXZ",
+  "display_help": "You spin your staff like a propeller in front of you dealing Smashing damage to enemies in your frontal arc and deflecting any incoming attacks, thus boosting your Melee and Lethal defense briefly. This power grants one stack of Perfection of Body.",
+  "display_short_help": "Melee (Cone), DMG(Smash), Self +Def(Melee, Lethal)",
   "icon": "stafffighting_guardedspin.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -472,6 +472,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Stalker_Melee.Staff_Fighting"
 }

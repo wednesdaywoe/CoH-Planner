@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Crippling Axe Kick",
   "display_fullname": "Brute Melee Martial Arts Crippling Axe Kick",
-  "display_help": "HGD2HVD32C73WZL247Z2MSHR4W",
-  "display_short_help": "G7FLYM8TU5XDYVX74PH3P5VMVS",
+  "display_help": "You can perform a Crippling Axe Kick that deals superior smashing damage, reduces the targets defense, may Immobilize, and Slowing their run speed. Crippling Axe Kick may also knock some flying entities out of the sky.",
+  "display_short_help": "Melee, DMG(Smash), Foe Immobilize, -SPD, -Fly, -DEF",
   "icon": "martialarts_cripplinghookkick.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -381,6 +381,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Brute_Melee.Martial_Arts"
 }

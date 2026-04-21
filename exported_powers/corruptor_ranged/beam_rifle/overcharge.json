@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Overcharge",
   "display_fullname": "Corruptor Ranged Beam Rifle Overcharge",
-  "display_help": "A2DDFASDZ2HBYYMPVT3UBXER5S",
-  "display_short_help": "MDLT8E4JRPTUWLMK4TCMMBSS8X",
+  "display_help": "You overcharge your Beam Rifle and release a massive blast of energy at a group of distant foes causing Extreme Energy damage, causing Minor Energy damage over time, reducing the defense of all affected foes and potentially stunning affected foes. If Overcharge strikes a target suffering from the Disintegrating effect they will be affected by a longer stun.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Energy), Foe Minor DoT (Energy), -Def(All), Disorient, Special",
   "icon": "beamrifle_overcharge.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -418,6 +418,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Corruptor_Ranged.Beam_Rifle"
 }

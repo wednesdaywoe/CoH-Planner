@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Spring Attack",
   "display_fullname": "Pool Leaping Spring Attack",
-  "display_help": "WZQVG3E5MJJZY8ZWL4442REE83",
-  "display_short_help": "YL8XUYUELUW6YMB3WLLCMUP3FX",
+  "display_help": "You leap into the air and smash down among ranks of foes in the blink of an eye. Using this power allows you to jump to a selected area to deal significant smashing damage to all foes near the location you teleport to, most foes that are struck by your Spring Attack will be knocked down.<br><br>You must be at least level 14 and have two other Leaping Powers before selecting Spring Attack.",
+  "display_short_help": "PBAoE DMG(Smash), Foe Knockdown; Self Teleport",
   "icon": "jump_springattack.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -116,6 +116,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Leaping"
 }

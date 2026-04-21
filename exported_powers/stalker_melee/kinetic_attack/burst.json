@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Burst",
   "display_fullname": "Stalker Melee Kinetic Attack Burst",
-  "display_help": "8K2ZSGA9VD7MWMZEUCDNA3S5S2",
-  "display_short_help": "X2JLD7H4HUAFWPBZKLKT5VBD32",
+  "display_help": "By focusing your energy into the muscles in your arms, you can launch a dizzying flurry of attacks against every foe in melee range. Some foes may be hit hard enough to be knocked down as well.",
+  "display_short_help": "PBAoE Melee, DMG(Smash/Energy), Foe Knockdown",
   "icon": "kineticattack_burst.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -507,6 +507,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Stalker_Melee.Kinetic_Attack"
 }

@@ -5,25 +5,25 @@
   "short_help": "Fire Control",
   "icon": "fire_control_set.ico",
   "powers": [
-    "Bonfire",
-    "Char",
-    "Cinders",
-    "Fire_Cages",
-    "Fire_Imps",
-    "Flashfire",
-    "Hot_Feet",
-    "Ring_of_Fire",
-    "Smoke"
+    "Dominator_Control.Fire_Control.Bonfire",
+    "Dominator_Control.Fire_Control.Char",
+    "Dominator_Control.Fire_Control.Cinders",
+    "Dominator_Control.Fire_Control.Fire_Cages",
+    "Dominator_Control.Fire_Control.Fire_Imps",
+    "Dominator_Control.Fire_Control.Flashfire",
+    "Dominator_Control.Fire_Control.Hot_Feet",
+    "Dominator_Control.Fire_Control.Ring_of_Fire",
+    "Dominator_Control.Fire_Control.Smoke"
   ],
   "available_level": [
+    21,
     0,
+    17,
+    1,
+    25,
+    11,
+    7,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    5
   ]
 }

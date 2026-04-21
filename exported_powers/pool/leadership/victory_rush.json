@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Victory Rush",
   "display_fullname": "Pool Leadership Victory Rush",
-  "display_help": "978TKKH4N6B7YXVHEWJ955GYSZ",
+  "display_help": "The defeat of an opponent gives your team a rush of adrenaline. The excitement of your victory increases the recovery and reduces the endurance cost of your powers. This effect extends to your teammates as well. The total strength of this bonus is dependent upon the rank of the enemy on which this is cast, with Archvillains and Giant Monsters providing the greatest benefit. This power does not stack with multiple castings.<br><br>You must be at least level 14 and have two other Leadership powers before selecting Victory Rush.<br><br><color #fcfc95>Notes: Victory Rush is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Ranged (Targeted AoE), Team +Recovery, -End Cost",
   "icon": "leadership_victoryrush.png",
   "auto_issue": false,
@@ -378,6 +378,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Leadership"
 }

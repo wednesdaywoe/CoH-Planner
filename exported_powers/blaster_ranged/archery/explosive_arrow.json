@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Explosive Arrow",
   "display_fullname": "Blaster Ranged Archery Explosive Arrow",
-  "display_help": "SPU7S5JFX58PYJCLJGNWYVKPFZ",
-  "display_short_help": "EX2367US4FYNWJZYE7ARDK8E5S",
+  "display_help": "You fire a grenade-tipped arrow at long range. This explosion affects all within the blast radius, and can knock them back.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Lethal/Fire), Knockback",
   "icon": "archery_explodingarrow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -360,6 +360,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Blaster_Ranged.Archery"
 }

@@ -5,25 +5,25 @@
   "short_help": "Darkness Manipulation",
   "icon": "darkness_manipulation_set.ico",
   "powers": [
-    "Dark_Consumption",
-    "Dark_Pit",
-    "Death_Shroud",
-    "Midnight_Grasp",
-    "Penumbral_Grasp",
-    "Shadow_Maul",
-    "Smite",
-    "Soul_Drain",
-    "Touch_of_Fear"
+    "Blaster_Support.Darkness_Manipulation.Dark_Consumption",
+    "Blaster_Support.Darkness_Manipulation.Dark_Pit",
+    "Blaster_Support.Darkness_Manipulation.Death_Shroud",
+    "Blaster_Support.Darkness_Manipulation.Midnight_Grasp",
+    "Blaster_Support.Darkness_Manipulation.Penumbral_Grasp",
+    "Blaster_Support.Darkness_Manipulation.Shadow_Maul",
+    "Blaster_Support.Darkness_Manipulation.Smite",
+    "Blaster_Support.Darkness_Manipulation.Soul_Drain",
+    "Blaster_Support.Darkness_Manipulation.Touch_of_Fear"
   ],
   "available_level": [
+    23,
+    27,
+    3,
+    29,
     0,
+    9,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    15,
+    19
   ]
 }

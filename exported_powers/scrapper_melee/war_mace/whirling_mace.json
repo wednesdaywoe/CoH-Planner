@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Whirling Mace",
   "display_fullname": "Scrapper Melee War Mace Whirling Mace",
-  "display_help": "NGHUFFWMFNCYY2V7SNJM6VLSGX",
-  "display_short_help": "TZVXYND4RFJUYTZEN3VTKBRQ8S",
+  "display_help": "You swing your mace in a circle all around you, attacking everyone in melee range. Your Whirling Mace deals moderate damage, and has a chance to Disorient every foe you hit.",
+  "display_short_help": "PBAoE Melee, DMG(Smash), Minor Disorient",
   "icon": "mace_whirlingmace.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -353,6 +353,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Scrapper_Melee.War_Mace"
 }

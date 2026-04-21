@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Abyssal Empowerment",
   "display_fullname": "Mastermind Summon Demon Summoning Abyssal Empowerment",
-  "display_help": "Y9DLTG6L3AZXWGN3NR2QQ8LCAS",
+  "display_help": "Abyssal Empowerment will permanently unseal the most powerful powers in your Demon Henchmen's infernal repertoire. The Empowered Demons will gain new abilities and powers. The powers gained are unique and dependent upon the type of Demon Henchman that is Empowered.<br><br>Abyssal Empowerment only works on your Demon Henchmen and you can only Empower your Demon Henchmen once with this power.",
   "display_short_help": "Ranged, Empower Demon Henchman",
   "icon": "demonsummoning_abyssalempowerment.png",
   "auto_issue": false,
@@ -43,6 +43,6 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Mastermind_Summon.Demon_Summoning"
 }

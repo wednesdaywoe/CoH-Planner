@@ -5,25 +5,25 @@
   "short_help": "Nature Affinity",
   "icon": "nature_affinity_set.ico",
   "powers": [
-    "Corrosive_Sap",
-    "Lifegiving_Spores",
-    "Overgrowth",
-    "Raging_Tempest",
-    "Rebirth",
-    "Regrowth",
-    "Spore_Cloud",
-    "Wild_Bastion",
-    "Wild_Growth"
+    "Corruptor_Buff.Nature_Affinity.Corrosive_Sap",
+    "Corruptor_Buff.Nature_Affinity.Lifegiving_Spores",
+    "Corruptor_Buff.Nature_Affinity.Overgrowth",
+    "Corruptor_Buff.Nature_Affinity.Raging_Tempest",
+    "Corruptor_Buff.Nature_Affinity.Rebirth",
+    "Corruptor_Buff.Nature_Affinity.Regrowth",
+    "Corruptor_Buff.Nature_Affinity.Spore_Cloud",
+    "Corruptor_Buff.Nature_Affinity.Wild_Bastion",
+    "Corruptor_Buff.Nature_Affinity.Wild_Growth"
   ],
   "available_level": [
     0,
+    15,
+    29,
+    27,
+    23,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    9,
+    19,
+    3
   ]
 }

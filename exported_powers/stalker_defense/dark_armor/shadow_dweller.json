@@ -5,8 +5,8 @@
   "type": "Auto",
   "display_name": "Shadow Dweller",
   "display_fullname": "Stalker Defense Dark Armor Shadow Dweller",
-  "display_help": "SNDLS7DTSN39WHL7RGNCR66S5S",
-  "display_short_help": "PVCHAF5P7HWKYXL3LLH8D4FGNQ",
+  "display_help": "You are a true Shadow Dweller of the Netherworld. Your affinity for the shadows grants you an inherent bonus to all Defense, as well as an increased regeneration, Perception and a resistance to Immobilization. Your Perception bonus and resistance to Immobilization improves over level. Shadow Dweller is an Auto power. It is always on and costs no Endurance.",
+  "display_short_help": "Auto: Self +Regen, +DEF(All), +Res(Immobilize), +Perception",
   "icon": "darkarmor_selfbuffdefense.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -269,6 +269,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Stalker_Defense.Dark_Armor"
 }

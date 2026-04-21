@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Ring of Fire",
   "display_fullname": "Controller Control Fire Control Ring of Fire",
-  "display_help": "PSR7PHEUKPBKYWCSEJM5PL4CZX",
+  "display_help": "Immobilizes your target in a Ring of Fire, dealing Fire damage over time. More resilient foes may require multiple Fire Rings to Immobilize.",
   "display_short_help": "Ranged, Moderate DoT(Fire), Foe Immobilize",
   "icon": "firetrap_ringoffire.png",
   "auto_issue": false,

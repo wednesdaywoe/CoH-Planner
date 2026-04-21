@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Greater Fire Sword",
   "display_fullname": "Epic Defender Fire Mastery Greater Fire Sword",
-  "display_help": "R742Z74CRPWJW6B595NMJS2VCA",
-  "display_short_help": "JAP4KZNGFJM4YANPGFKAGDR7JQ",
+  "display_help": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
+  "display_short_help": "Melee, DMG(Fire)",
   "icon": "firemastery_greaterfiresword.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -162,6 +162,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Defender_Fire_Mastery"
 }

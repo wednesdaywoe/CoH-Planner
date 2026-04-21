@@ -5,13 +5,13 @@
   "short_help": "Devices",
   "icon": "gadgets_set.ico",
   "powers": [
-    "Remote_Bomb_Blaster_Info",
-    "Remote_Bomb_Info",
-    "Remote_Bomb_Self",
-    "Remote_Bomb_Target",
-    "Temp_Bomb",
-    "Temporal_BubbleFX",
-    "Time_Bomb"
+    "Redirects.Gadgets.Remote_Bomb_Blaster_Info",
+    "Redirects.Gadgets.Remote_Bomb_Info",
+    "Redirects.Gadgets.Remote_Bomb_Self",
+    "Redirects.Gadgets.Remote_Bomb_Target",
+    "Redirects.Gadgets.Temp_Bomb",
+    "Redirects.Gadgets.Temporal_BubbleFX",
+    "Redirects.Gadgets.Time_Bomb"
   ],
   "available_level": [
     0,

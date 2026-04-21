@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Howl",
   "display_fullname": "Corruptor Ranged Sonic Attack Howl",
-  "display_help": "TXBWQH74GU5YWZBG4EBHX5PHTS",
-  "display_short_help": "CAKKZM8NDTSEW6ZWN3XW4BAZNX",
+  "display_help": "A short ranged sonic attack that can hit multiple enemies in an arc in front of you.",
+  "display_short_help": "Ranged Cone, Minor DMG(Smashing/Energy), Foe -Res(All)",
   "icon": "sonicblast_cone.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -353,6 +353,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Corruptor_Ranged.Sonic_Attack"
 }

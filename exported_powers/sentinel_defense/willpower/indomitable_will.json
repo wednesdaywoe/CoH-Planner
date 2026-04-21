@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Indomitable Will",
   "display_fullname": "Sentinel Defense Willpower Indomitable Will",
-  "display_help": "CBHC44LX5786W2NTMKP28QKTDS",
+  "display_help": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusions, Repel, Knockback and Hold effects. Indomitable Will also grants a moderate defense to Psionic based attacks.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Toggle: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback). DEF(Psionics)",
   "icon": "willpower_indomitablewill.png",
   "auto_issue": false,
@@ -491,6 +491,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Sentinel_Defense.Willpower"
 }

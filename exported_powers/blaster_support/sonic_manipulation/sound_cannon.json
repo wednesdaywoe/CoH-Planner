@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Sound Cannon",
   "display_fullname": "Blaster Support Sonic Manipulation Sound Cannon",
-  "display_help": "YD2G2CRVXPK7YWBMSH36HPTXH2",
+  "display_help": "You generate a powerful sonic wave that will knock back and disorient foes in front of you for a short time.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Ranged (Cone), Foe Disorient, Knockback",
   "icon": "sonicmanipulation_soundcannon",
   "auto_issue": false,
@@ -215,6 +215,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 27,
   "powerset": "Blaster_Support.Sonic_Manipulation"
 }

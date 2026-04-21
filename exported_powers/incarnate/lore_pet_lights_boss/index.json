@@ -5,10 +5,10 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_lights_boss_set.ico",
   "powers": [
-    "Northern_Lights_Blast",
-    "Northern_Lights_Bolt",
-    "Northern_Lights_Detonation",
-    "Northern_Lights_Scatter"
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Blast",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Bolt",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Detonation",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Scatter"
   ],
   "available_level": [
     0,

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Mighty Leap",
   "display_fullname": "Pool Force of Will Mighty Leap",
-  "display_help": "397L9PHFUJ6BWZCCKL33WHSFG2",
+  "display_help": "While this power is active you're able to leap great distances and jump incredibly high. In addition, while this power is active you're able to use Takeoff, which will knockdown nearby foes and increases jump speed. Mighty Leap also increases your maximum jumping speed by 35% whilst it is active.<br><br>Mighty Leap can be active at the same time as other jumping toggles, but only the strongest jump buff will apply.",
   "display_short_help": "Toggle: Self Long Jump, (Special)",
   "icon": "forceofwill_mightyleap.png",
   "auto_issue": false,
@@ -386,6 +386,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 3,
   "powerset": "Pool.Force_of_Will"
 }

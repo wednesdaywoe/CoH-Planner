@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Group Fly",
   "display_fullname": "Pool Flight Group Fly",
-  "display_help": "57BXGNB864HSWLZ589DTXPPRGS",
+  "display_help": "You can endow your nearby teammates with Flight. Be mindful! Your friends will fall if you run out of Endurance or if they travel too far away from you. Group Fly travel speed is slower than Fly.<br><br>You must be at least level 14 and have two other Flight Powers before selecting Group Fly.",
   "display_short_help": "Toggle: Team Fly",
   "icon": "flight_groupfly.png",
   "auto_issue": false,
@@ -374,6 +374,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 13,
   "powerset": "Pool.Flight"
 }

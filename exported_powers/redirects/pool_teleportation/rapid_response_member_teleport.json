@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Monitor Duty Teleporter",
   "display_fullname": "Redirects Pool Teleportation Rapid Response Member Teleport",
-  "display_help": "RSAEJBKANMGCW4NV6LKS3MRXGQ",
+  "display_help": "You have earned the ability to teleport back to your supergroup base from your diligent duty guarding your base. Using this power will teleport you back to your supergroup base. Additional uses of this power can be gained by logging out near a Supergroup base portal.<br><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Teleport to Base",
   "icon": "dayjob_teleport.png",
   "auto_issue": false,

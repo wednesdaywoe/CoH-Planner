@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Empty Clips",
   "display_fullname": "Corruptor Ranged Dual Pistols Empty Clips",
-  "display_help": "28S7WMJ9QPRUWJXQHUS4FBH2KW",
-  "display_short_help": "WUSDQZARLTZMWRB3FHE6RW2JA2",
+  "display_help": "You empty the clips of both your pistols in an arc of suppression fire. This attack can blast multiple foes in the affected cone area, and has a small chance of knocking some foes down. Affected targets will have their defense reduced slightly as well if Standard Ammo is equipped.<br><br>Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.<br><br>Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockdown to:<br><br><color #9bfafa>*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.</color><br><color #fac39b>*A minor damage over time effect if 'Incendiary Ammo' is loaded.</color><br><color #9efa9b>*A -damage effect if 'Chemical Ammo' is loaded.</color>",
+  "display_short_help": "Ranged (Cone), DMG(Lethal/Special), Foe -Defense, Knockdown/Special",
   "icon": "dualpistols_emptyclips.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -1186,6 +1186,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Corruptor_Ranged.Dual_Pistols"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Summon Striker",
   "display_fullname": "Epic Brute Mu Mastery Summon Striker",
-  "display_help": "ZFWJGXAQ22SBYBL6U43CJV3YRW",
-  "display_short_help": "LMLXKCWH9E5TYRVSZ3LZDF2RGQ",
+  "display_help": "Scirocco has shown you how to call upon a mystical Mu Striker to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Striker is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
+  "display_short_help": "Summon Mu Strike: Ranged DMG(Energy)",
   "icon": "arachnos_patron_summononepet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -90,6 +90,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 43,
   "powerset": "Epic.Brute_Mu_Mastery"
 }

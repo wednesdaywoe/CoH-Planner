@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Photon Grenade",
   "display_fullname": "Mastermind Summon Robotics Photon Grenade",
-  "display_help": "QDM9829WARU4Y6B233LP4HP3CX",
-  "display_short_help": "FEG7RMFRD6APWVZFAFPDRYN64S",
+  "display_help": "Launches an Energy Grenade at long range from your Pulse Rifle. The energy from this explosion can Disorient some targets in the affected area and debuffs their regeneration.<br><br><color #fcfc95>Laser Burn:</color><br>Targets struck by this attack will have their Regeneration debuffed for 30 seconds.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Energy), Disorient, -Regen",
   "icon": "robotics_laserriflestungrenade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -307,6 +307,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Mastermind_Summon.Robotics"
 }

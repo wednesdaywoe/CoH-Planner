@@ -3,10 +3,10 @@
   "full_name": "Brute_Defense.Psionic_Armor.Consume_Psyche",
   "short_name": "Consume_Psyche",
   "type": "Click",
-  "display_name": "E6MZRP8JQJ32YTV9GEPQBLYNBZ",
+  "display_name": "Consume Psyche",
   "display_fullname": "Brute Defense Psionic Armor Consume Psyche",
-  "display_help": "7YDA9UWN2N65WSNDBWHXWY52P2",
-  "display_short_help": "LW9WAMW92T6RYQM3NRCKCA9D2X",
+  "display_help": "You Consume the Psyche of nearby foes, thus weakening their Hit Point Regeneration and Endurance Recovery and boosting your own. Hitting any foe with this power will refresh all existing stacks you currently have.<br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>5</color> seconds and each affected foe will increase the recharge by <color #FF7F27>5.5</color> seconds for a maximum total of <color #FF7F27>60</color> seconds.</color>",
+  "display_short_help": "PBAoE Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery",
   "icon": "psionicarmor_consumepsyche",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -55,6 +55,6 @@
       "show_in_info": true
     }
   ],
-  "available_level": 0,
+  "available_level": 9,
   "powerset": "Brute_Defense.Psionic_Armor"
 }

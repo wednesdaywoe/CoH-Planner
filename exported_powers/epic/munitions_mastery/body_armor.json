@@ -5,8 +5,8 @@
   "type": "Auto",
   "display_name": "Body Armor",
   "display_fullname": "Epic Munitions Mastery Body Armor",
-  "display_help": "S5PJ9U5W8H4UYHMYM8L9B5BPGA",
-  "display_short_help": "T9PQ7H95258XW2N4VPM76GCE9S",
+  "display_help": "You have Body Armor that will reduce all damage except Psionic. This power is always on, and costs no Endurance.",
+  "display_short_help": "Auto: Self +Res (All but Psionic)",
   "icon": "munitionsmastery_bodyarmor.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -159,6 +159,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 34,
   "powerset": "Epic.Munitions_Mastery"
 }

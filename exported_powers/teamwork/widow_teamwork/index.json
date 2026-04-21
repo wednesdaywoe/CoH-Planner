@@ -5,21 +5,21 @@
   "short_help": "Widow Teamwork",
   "icon": "widow_teamwork_set.ico",
   "powers": [
-    "Elude",
-    "Mental_Training",
-    "NW_Mask_Presence",
-    "NW_Mind_Link",
-    "NW_Tactical_Training:_Vengeance",
-    "Pain_Tolerance",
-    "Placate"
+    "Teamwork.Widow_Teamwork.Elude",
+    "Teamwork.Widow_Teamwork.Mental_Training",
+    "Teamwork.Widow_Teamwork.NW_Mask_Presence",
+    "Teamwork.Widow_Teamwork.NW_Mind_Link",
+    "Teamwork.Widow_Teamwork.NW_Tactical_Training:_Vengeance",
+    "Teamwork.Widow_Teamwork.Pain_Tolerance",
+    "Teamwork.Widow_Teamwork.Placate"
   ],
   "available_level": [
+    29,
+    21,
+    19,
+    23,
+    27,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    23
   ]
 }

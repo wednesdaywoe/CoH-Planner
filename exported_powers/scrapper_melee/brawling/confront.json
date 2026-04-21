@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Confront",
   "display_fullname": "Scrapper Melee Brawling Confront",
-  "display_help": "9W38C647B859YCCCCYXK7FPN8Q",
+  "display_help": "Challenges a foe to attack you. Useful to pull a foe off an ally who finds themselves in over their head. A To Hit check is required to Taunt enemy players, but is not needed against critter targets.",
   "display_short_help": "Ranged, Foe Taunt",
   "icon": "brawling_confront.png",
   "auto_issue": false,
@@ -199,6 +199,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 11,
   "powerset": "Scrapper_Melee.Brawling"
 }

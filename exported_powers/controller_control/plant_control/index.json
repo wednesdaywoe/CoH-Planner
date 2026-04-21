@@ -5,25 +5,25 @@
   "short_help": "Plant Control",
   "icon": "plant_control_set.ico",
   "powers": [
-    "Carrion_Creepers",
-    "Entangle",
-    "Fly_Trap",
-    "Roots",
-    "Seeds_of_Confusion",
-    "Spirit_Tree",
-    "Spore_Burst",
-    "Strangler",
-    "Vines"
+    "Controller_Control.Plant_Control.Carrion_Creepers",
+    "Controller_Control.Plant_Control.Entangle",
+    "Controller_Control.Plant_Control.Fly_Trap",
+    "Controller_Control.Plant_Control.Roots",
+    "Controller_Control.Plant_Control.Seeds_of_Confusion",
+    "Controller_Control.Plant_Control.Spirit_Tree",
+    "Controller_Control.Plant_Control.Spore_Burst",
+    "Controller_Control.Plant_Control.Strangler",
+    "Controller_Control.Plant_Control.Vines"
   ],
   "available_level": [
+    21,
     0,
+    25,
+    1,
+    7,
+    11,
+    5,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    17
   ]
 }

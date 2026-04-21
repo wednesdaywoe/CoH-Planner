@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Fault",
   "display_fullname": "Scrapper Melee Stone Melee Fault",
-  "display_help": "F3HXLLAENAFZYGLBH9N8LSAKYS",
-  "display_short_help": "E4M7QSKGRPHPWPLN2EVJ3EXWT3",
+  "display_help": "This powerful stomp can cause a seismic disturbance. This will crack the Earth itself and send a Fault towards a targeted foe, throwing him and nearby enemies into the air and possibly Disorienting them. Fault has a chance of dealing damage to foes in between you and your target.",
+  "display_short_help": "Close (Targeted AoE), DMG(Smashing), Foe Knockback, Disorient",
   "icon": "stonemelee_fault.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -126,6 +126,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 7,
   "powerset": "Scrapper_Melee.Stone_Melee"
 }

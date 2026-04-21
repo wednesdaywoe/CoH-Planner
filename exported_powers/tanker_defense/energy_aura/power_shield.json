@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Power Shield",
   "display_fullname": "Tanker Defense Energy Aura Power Shield",
-  "display_help": "9QLHSSMBQKQHYBB8XNUQ3RM2TW",
+  "display_help": "This Power Shield creates a Electro-Magnetic shield around you that can deflect non-physical attacks. Your Defense to Fire, Cold, Energy and Negative Energy attacks is increased as these attacks are reflected or refracted off the shield. Power Shield also grants you good resistance to Defense Debuffs. Power Shield also adds Psionic Defense and an Elusivity defense bonus to Fire, Cold, Energy and Psionic Attacks in PVP zones.",
   "display_short_help": "Toggle: Self +DEF(Fire, Cold, Energy, Negative), Res(DeBuff DEF)",
   "icon": "energyaura_powershield.png",
   "auto_issue": false,
@@ -245,6 +245,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Tanker_Defense.Energy_Aura"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Total Focus",
   "display_fullname": "Blaster Support Energy Manipulation Total Focus",
-  "display_help": "TQK3ML82TKXTYSLPZYZSQV8BNQ",
+  "display_help": "Total Focus is complete mastery over Energy Melee. This is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee, Extreme DMG(Energy/Smash), Foe Disorient",
   "icon": "energymanipulation_totalfocus.png",
   "auto_issue": false,
@@ -237,6 +237,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Energy_Manipulation"
 }

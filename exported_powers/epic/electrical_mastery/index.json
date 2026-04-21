@@ -5,17 +5,17 @@
   "short_help": "Electricity Mastery",
   "icon": "electrical_mastery_set.ico",
   "powers": [
-    "Charged_Armor",
-    "EM_Pulse",
-    "Shocking_Bolt",
-    "Static_Discharge",
-    "Surge_of_Power"
+    "Epic.Electrical_Mastery.Charged_Armor",
+    "Epic.Electrical_Mastery.EM_Pulse",
+    "Epic.Electrical_Mastery.Shocking_Bolt",
+    "Epic.Electrical_Mastery.Static_Discharge",
+    "Epic.Electrical_Mastery.Surge_of_Power"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    43,
+    34,
+    34,
+    40
   ]
 }

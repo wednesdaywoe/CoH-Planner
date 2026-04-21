@@ -5,9 +5,9 @@
   "short_help": "Incarnate",
   "icon": "lore_pet_talons_lt_set.ico",
   "powers": [
-    "Ice_Arrow",
-    "Screech",
-    "Snap_Shot"
+    "Incarnate.Lore_Pet_Talons_LT.Ice_Arrow",
+    "Incarnate.Lore_Pet_Talons_LT.Screech",
+    "Incarnate.Lore_Pet_Talons_LT.Snap_Shot"
   ],
   "available_level": [
     0,

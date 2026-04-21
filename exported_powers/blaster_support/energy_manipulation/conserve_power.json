@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Energize",
   "display_fullname": "Blaster Support Energy Manipulation Conserve Power",
-  "display_help": "28BYWV3QHBFYWVVK4DS96T5EK3",
+  "display_help": "You can channel a tremendous amount of energy through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers, boost your regeneration dramatically, and make you resistant to Stuns for a short time.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Self Endurance Discount, Heal, +Regen, Res(Stun)",
   "icon": "energymanipulation_conservepower.png",
   "auto_issue": false,
@@ -237,6 +237,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 15,
   "powerset": "Blaster_Support.Energy_Manipulation"
 }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Transfusion",
   "display_fullname": "Mastermind Buff Kinetics Transfusion",
-  "display_help": "X3DGCS9YUKU7WJM4TGMSWZGSMS",
+  "display_help": "Transfusion drains an enemy of some Endurance and reduces the target's Regeneration rate, and transfers that energy, in the form of Hit Points, to all allies near the affected foe. You can use Transfusion to heal yourself as well as your allies.<br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "Ranged, Foe -End, -Regen, Team Heal",
   "icon": "kineticboost_transfusion.png",
   "auto_issue": false,

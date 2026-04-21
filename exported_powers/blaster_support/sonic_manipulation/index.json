@@ -5,25 +5,25 @@
   "short_help": "Sonic Manipulation",
   "icon": "sonic_manipulation_set.ico",
   "powers": [
-    "Build_Up",
-    "Deafening_Wave",
-    "Disruption_Aura",
-    "Earsplitter",
-    "Echo_Chamber",
-    "Sonic_Thrust",
-    "Sound_Barrier",
-    "Sound_Cannon",
-    "Strident_Echo"
+    "Blaster_Support.Sonic_Manipulation.Build_Up",
+    "Blaster_Support.Sonic_Manipulation.Deafening_Wave",
+    "Blaster_Support.Sonic_Manipulation.Disruption_Aura",
+    "Blaster_Support.Sonic_Manipulation.Earsplitter",
+    "Blaster_Support.Sonic_Manipulation.Echo_Chamber",
+    "Blaster_Support.Sonic_Manipulation.Sonic_Thrust",
+    "Blaster_Support.Sonic_Manipulation.Sound_Barrier",
+    "Blaster_Support.Sonic_Manipulation.Sound_Cannon",
+    "Blaster_Support.Sonic_Manipulation.Strident_Echo"
   ],
   "available_level": [
+    9,
+    15,
+    23,
+    29,
+    3,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    19,
+    27,
     0
   ]
 }

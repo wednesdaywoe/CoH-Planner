@@ -6,7 +6,7 @@
   "display_name": "Phantom Army",
   "display_fullname": "Controller Control Illusion Control Decoy",
   "display_help": "You can fabricate 3 Phantom heroes around a targeted foe. These Phantoms are not real, and are indestructible. Their attacks are similar to Spectral Wounds. Though they deal damage, it is illusory and will heal if the victim survives long enough. Phantoms are short lived and cannot be buffed or healed.",
-  "display_short_help": "U83QN7SG5GULWFB8MSZQPETRF3",
+  "display_short_help": "Summon Decoys: Ranged DMG(Psionic)",
   "icon": "illusions_phantomarmy.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -302,6 +302,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Controller_Control.Illusion_Control"
 }

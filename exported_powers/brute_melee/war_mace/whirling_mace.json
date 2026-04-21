@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Whirling Mace",
   "display_fullname": "Brute Melee War Mace Whirling Mace",
-  "display_help": "XUPEZCK48YBVWWB4LXXFK27AWS",
-  "display_short_help": "4RX49TLXEBWMYUMPAJG65WDX3S",
+  "display_help": "You swing your mace in a circle all around you, attacking everyone in melee range. Your Whirling Mace deals moderate damage, and has a chance to Disorient every foe you hit.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE Melee, Light DMG(Smashing), Minor Disorient",
   "icon": "mace_whirlingmace.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Brute_Melee.War_Mace"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Dark Obliteration",
   "display_fullname": "Epic Dominator Soul Mastery Dark Obliteration",
-  "display_help": "RYDJLD23F9H5YAZ2S9SQ6QJ563",
-  "display_short_help": "AQR8UJBG9QEZWAZWM5V2B6GTKA",
+  "display_help": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
+  "display_short_help": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
   "icon": "arachnos_patron_rangedaoemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 37,
   "powerset": "Epic.Dominator_Soul_Mastery"
 }

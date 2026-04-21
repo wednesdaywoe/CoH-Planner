@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Sound Booster",
   "display_fullname": "Tanker Melee Sonic Melee Build Up",
-  "display_help": "GWQ89J6HZTG4Y6VMQSL6FU4H3Z",
+  "display_help": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit. Moderately increases the duration of mez effects. Moderately increases the chance for Sound Manipulation powers to induce migraines.<br>",
   "display_short_help": "Self +DMG, +To Hit, +Special",
   "icon": "sonicmanipulation_buildup",
   "auto_issue": false,
@@ -169,6 +169,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 19,
   "powerset": "Tanker_Melee.Sonic_Melee"
 }

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Nova",
   "display_fullname": "Blaster Ranged Energy Blast Nova",
-  "display_help": "PDGKZBN7GPPBWMMWNU85GMVJJW",
-  "display_short_help": "XKB2MEMEU6ULY4V6WYFJZ33N93",
+  "display_help": "You can explode in a tremendous blast of energy, sending nearby foes flying. The Nova deals extreme Energy and Smashing damage to all nearby foes.",
+  "display_short_help": "PBAoE, DMG(Energy), Foe Knockback",
   "icon": "powerblast_novablast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -237,6 +237,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 25,
   "powerset": "Blaster_Ranged.Energy_Blast"
 }

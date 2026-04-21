@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Tremor",
   "display_fullname": "Tanker Melee Stone Melee Tremor",
-  "display_help": "ALVVBUJZWY4LWZVTWHJG9C7KLZ",
-  "display_short_help": "TTHWVP29NLLCWBLYC8F6KQBA53",
+  "display_help": "You can cause a localized earthquake immediately around you. This will deal moderate damage to every foe in melee range, while knocking them back.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_short_help": "PBAoE, DMG(Smash), Knockback",
   "icon": "stonemelee_tremor.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -244,6 +244,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 23,
   "powerset": "Tanker_Melee.Stone_Melee"
 }

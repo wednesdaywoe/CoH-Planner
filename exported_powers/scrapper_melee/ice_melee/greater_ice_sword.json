@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Greater Ice Sword",
   "display_fullname": "Scrapper Melee Ice Melee Greater Ice Sword",
-  "display_help": "DXV9LYCHYWLNYWNX7C4EAGHBMQ",
-  "display_short_help": "SVQVWXU72WCRYJV95LJMDNKTC3",
+  "display_help": "Your mastery of Ice allows you to create an enhanced blade of solid ice that deals above average damage. Being hit by the Greater Ice Sword will Slow a villain's attack and movement speed, due to the intense chill.",
+  "display_short_help": "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "icyonslaught_greatericesword.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -393,6 +393,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 17,
   "powerset": "Scrapper_Melee.Ice_Melee"
 }

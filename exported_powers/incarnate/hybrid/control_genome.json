@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Control Genome",
   "display_fullname": "Incarnate Hybrid Control Genome",
-  "display_help": "DXTCNTZ357VPWHZP8NFPTSEJCS",
+  "display_help": "Toggle: Chance for Lethal damage to Controlled enemies. This ability gives a 10% chance for its effects to occur when their conditions are met. Equipping this Hybrid power grants a passive boost to Status Resistance at all times.<br><br><color #fcfc95>Notes: Control Genome is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Toggle: Chance for Lethal damage (Special)",
   "icon": "incarnate_hybrid_control_common.png",
   "auto_issue": false,

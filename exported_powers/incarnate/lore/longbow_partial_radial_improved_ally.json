@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Longbow Partial Radial Improved Ally",
   "display_fullname": "Incarnate Lore Longbow Partial Radial Improved Ally",
-  "display_help": "RM7ZX4A7LYRRY8NHQLWHJZL9W2",
+  "display_help": "Draws forth the essences of a vanquished Longbow Warden and Nullifier from the Well of the Furies to serve you for 5 minutes. This Warden is capable of attacking as well as support.<br><br>This power also applies an Incarnate Shift. (An Incarnate Shift is a Level Shift which only activates while participating in an Incarnate Trial.).<br><br><color #fcfc95>Notes: Longbow Partial Radial Improved Ally is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
   "display_short_help": "Summon Longbow LT & Support Essences",
   "icon": "incarnate_lore_longbow_rare.png",
   "auto_issue": false,

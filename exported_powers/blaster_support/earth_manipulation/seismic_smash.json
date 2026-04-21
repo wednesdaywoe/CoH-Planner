@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Seismic Smash",
   "display_fullname": "Blaster Support Earth Manipulation Seismic Smash",
-  "display_help": "VYVPC4BS3G9HYEZ2K9TYSZVTRA",
+  "display_help": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage and may Hold the target if they are not defeated outright.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Melee, Extreme DMG(Smashing), Foe Hold",
   "icon": "earthmanip_seismicsmash",
   "auto_issue": false,
@@ -247,6 +247,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 29,
   "powerset": "Blaster_Support.Earth_Manipulation"
 }

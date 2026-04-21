@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Cutting Beam",
   "display_fullname": "Blaster Ranged Beam Rifle Cutting Beam",
-  "display_help": "HQMRLJ83FY3PY9ZWUYDTXQPPBW",
-  "display_short_help": "952ZUMWJR7KRWWZ7YYUBXHHUGA",
+  "display_help": "You fire a constant stream of energy from your weapon and sweep it in a broad arc blasting all foes in a wide cone in front of you. Cutting beam deals Moderate Energy damage and reduces the targets' Defense. This power will cause Minor Energy damage over time if the target is suffering from the Disintegrating effect.",
+  "display_short_help": "Ranged (Cone), DMG(Energy), Foe -Def(All), Special",
   "icon": "beamrifle_cuttingbeam.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -254,6 +254,6 @@
       "templates": []
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Blaster_Ranged.Beam_Rifle"
 }

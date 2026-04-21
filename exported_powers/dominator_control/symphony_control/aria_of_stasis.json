@@ -3,10 +3,10 @@
   "full_name": "Dominator_Control.Symphony_Control.Aria_of_Stasis",
   "short_name": "Aria_of_Stasis",
   "type": "Click",
-  "display_name": "NJPEZJFEVZLTW5VWW7AV8UZ43A",
+  "display_name": "Aria of Stasis",
   "display_fullname": "Dominator Control Symphony Control Aria of Stasis",
-  "display_help": "HEFY58KGY3ATYEVQSTD4GNLF2Z",
-  "display_short_help": "C2ANR2HMA8CWW9LXSDLNH846JZ",
+  "display_help": "Aria of Stasis roots your audience in place and causes psionic damage. Stronger foes might still be able to move, but will do so at a reduced speed.",
+  "display_short_help": "Ranged (Cone), DMG(Psionic), Foe Immobilize, -SPD",
   "icon": "symphonycontrol_immobaoe",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -440,6 +440,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 1,
   "powerset": "Dominator_Control.Symphony_Control"
 }

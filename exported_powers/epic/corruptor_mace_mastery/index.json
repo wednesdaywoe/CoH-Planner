@@ -5,17 +5,17 @@
   "short_help": "Mace Mastery",
   "icon": "corruptor_mace_mastery_set.ico",
   "powers": [
-    "Focused_Accuracy",
-    "Scorpion_Shield",
-    "Summon_Disruptor",
-    "Web_Cocoon",
-    "Web_Envelope"
+    "Epic.Corruptor_Mace_Mastery.Focused_Accuracy",
+    "Epic.Corruptor_Mace_Mastery.Scorpion_Shield",
+    "Epic.Corruptor_Mace_Mastery.Summon_Disruptor",
+    "Epic.Corruptor_Mace_Mastery.Web_Cocoon",
+    "Epic.Corruptor_Mace_Mastery.Web_Envelope"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
-    0
+    37,
+    34,
+    43,
+    40,
+    34
   ]
 }
