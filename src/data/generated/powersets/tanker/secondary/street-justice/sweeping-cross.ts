@@ -16,12 +16,13 @@ export const SweepingCross: Power = {
   "shortHelp": "Melee (Cone), DMG(Smash), Foe Disorient, Finisher",
   "icon": "brawling_sweepingcross.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 1.309,
+    "arc": 1.3089969158172607,
     "recharge": 8,
     "endurance": 8.528,
     "castTime": 1.67,
@@ -34,13 +35,6 @@ export const SweepingCross: Power = {
     "Recharge",
     "Damage",
     "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [
@@ -63,6 +57,31 @@ export const SweepingCross: Power = {
       "type": "Smashing",
       "scale": 1.805,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.5389,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.6158,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.7235,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.9236,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2796,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -72,7 +91,7 @@ export const SweepingCross: Power = {
       "table": "Melee_Stun"
     },
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

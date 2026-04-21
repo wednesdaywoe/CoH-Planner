@@ -1,43 +1,43 @@
 /**
  * Crab Spider Soldier Powerset
- * Crab Spiders are heavy infantry in the Arachnos Organization. Their distinctive backpack
- * provides powerful ranged energy weapons and devastating melee claw attacks.
+ * Crab Spiders are heavy infantry in the Arachnos Organization, with a wide array of ranged and melee combat skills.
  *
  * Archetype: arachnos-soldier
- * Category: Epic
+ * Category: epic
+ * Source: arachnos_soldiers/crab_spider_soldier
  */
 
 import type { Powerset } from '@/types';
 
-import { Channelgun } from './channelgun';
-import { Slice } from './slice';
-import { Longfang } from './longfang';
-import { Aim } from './aim';
-import { Suppression } from './suppression';
-import { ArmLash } from './arm-lash';
-import { VenomGrenade } from './venom-grenade';
-import { FragGrenade } from './frag-grenade';
-import { Frenzy } from './frenzy';
-import { OmegaManeuver } from './omega-maneuver';
+import { Aim as Aim } from './aim';
+import { ArmLash as ArmLash } from './arm-lash';
+import { Channelgun as Channelgun } from './channelgun';
+import { FragGrenade as FragGrenade } from './cs-frag-grenade';
+import { VenomGrenade as VenomGrenade } from './cs-venom-grenade';
+import { Frenzy as Frenzy } from './frenzy';
+import { Longfang as Longfang } from './longfang';
+import { OmegaManeuver as OmegaManeuver } from './omega-maneuver';
+import { Slice as Slice } from './slice';
+import { Suppression as Suppression } from './suppression';
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/crab-spider-soldier',
   name: 'Crab Spider Soldier',
-  description: 'Crab Spiders are heavy infantry in the Arachnos Organization. Their distinctive backpack provides powerful ranged energy weapons and devastating melee claw attacks.',
-  icon: 'crab_spider_soldier_set.png',
+  description: 'Crab Spiders are heavy infantry in the Arachnos Organization, with a wide array of ranged and melee combat skills.',
+  icon: 'crab_spider_soldier_set.ico',
   archetype: 'arachnos-soldier',
   category: 'epic',
   powers: [
-    Channelgun,
-    Slice,
-    Longfang,
     Aim,
-    Suppression,
     ArmLash,
-    VenomGrenade,
+    Channelgun,
     FragGrenade,
+    VenomGrenade,
     Frenzy,
+    Longfang,
     OmegaManeuver,
+    Slice,
+    Suppression,
   ],
 };
 

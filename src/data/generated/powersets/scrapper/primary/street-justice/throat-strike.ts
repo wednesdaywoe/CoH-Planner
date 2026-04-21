@@ -16,6 +16,7 @@ export const RibCracker: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe -Res (All), -Dmg, Combo Builder",
   "icon": "brawling_throatstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -29,11 +30,6 @@ export const RibCracker: Power = {
     "Recharge",
     "Damage",
     "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [
@@ -51,6 +47,16 @@ export const RibCracker: Power = {
       "type": "Smashing",
       "scale": 1.32,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.4218,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.4218,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

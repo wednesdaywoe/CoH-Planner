@@ -60,7 +60,7 @@ if (!categoryInfo) {
 }
 
 // Resolve powerset's display name via its index.json
-const rawPsPath = path.join(REPO, 'raw_data_homecoming-20251209_7415', 'powers', category, powerset);
+const rawPsPath = path.join(REPO, 'exported_powers', category, powerset);
 if (!fs.existsSync(rawPsPath)) {
   console.error(`Powerset not found at ${rawPsPath}`);
   process.exit(1);

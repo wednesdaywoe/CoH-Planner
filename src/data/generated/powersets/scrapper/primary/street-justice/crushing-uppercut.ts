@@ -16,6 +16,7 @@ export const CrushingUppercut: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe Knock Up, Disorient, Finisher",
   "icon": "brawling_crushinguppercut.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -32,14 +33,6 @@ export const CrushingUppercut: Power = {
     "Knockback",
     "Damage",
     "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Knockback",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [
@@ -72,11 +65,36 @@ export const CrushingUppercut: Power = {
       "type": "Smashing",
       "scale": 3.18,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.6417,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.7738,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.9587,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 3.3021,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.6417,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockup": {
-      "scale": 3,
+      "scale": 6,
       "table": "Melee_Knockback"
     },
     "stun": {

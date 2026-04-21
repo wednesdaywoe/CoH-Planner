@@ -1,45 +1,16 @@
 /**
- * Confuse
- * Ranged, Target Confuse
+ * Confuse — COMPOSED EXPORT
  *
- * Source: teamwork/fortunata_teamwork/confuse.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs teamwork fortunata_teamwork
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Confuse as base } from '@/data/generated/powersets/arachnos-widow/epic/fortunata-teamwork/confuse';
+import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/fortunata-teamwork/confuse';
 
-export const Confuse: Power = {
-  "name": "Confuse",
-  "internalName": "Confuse",
-  "available": 23,
-  "description": "You can Confuse an enemy, forcing him to believe his friends are not who they appear to be. If successful, the enemy will ignore you and attack his own allies. If you Confuse someone before he has noticed you, your presence will continue to be masked. You will not receive any Experience Points for foes defeated entirely by a Confused enemy.",
-  "shortHelp": "Ranged, Target Confuse",
-  "icon": "fortunatateamwork_confuse.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Confuse",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Confuse"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 2
-  },
-  "targetType": "Foe (Alive)",
-  "effects": {
-    "confuse": {
-      "mag": 3,
-      "scale": 20,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const Confuse: Power = withOverrides(base, overrides);

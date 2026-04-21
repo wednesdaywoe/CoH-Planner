@@ -1,60 +1,16 @@
 /**
- * Mace Beam Blast
- * Ranged(Targeted AoE), Light DMG(Smash/Energy), Foe Knockback
+ * Mace Beam Blast — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs arachnos_soldiers bane_spider_soldier
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MaceBeamBlast as base } from '@/data/generated/powersets/arachnos-soldier/epic/bane-spider-soldier/mace-beam-blast';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/bane-spider-soldier/mace-beam-blast';
 
-export const MaceBeamBlast: Power = {
-  "name": "Mace Beam Blast",
-  "internalName": "Mace_Beam_Blast",
-  "available": 1,
-  "description": "The Nullifier Mace is capable of firing a tremendous bolt of force from the end of it. The Mace Beam Blast is a light damage area of effect attack. Foes struck by the blast may be knocked back. Damage: Light",
-  "shortHelp": "Ranged(Targeted AoE), Light DMG(Smash/Energy), Foe Knockback",
-  "icon": "banespider_macebeamblast.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged AoE Damage",
-    "Soldiers of Arachnos Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 12,
-    "endurance": 13,
-    "castTime": 1.67,
-    "radius": 15,
-    "maxTargets": 10
-  },
-  "targetType": "Foe (Alive)",
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const MaceBeamBlast: Power = withOverrides(base, overrides);

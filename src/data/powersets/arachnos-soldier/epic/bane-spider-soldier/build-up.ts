@@ -1,34 +1,16 @@
 /**
- * Build Up
- * Self +DMG, +ToHit
+ * Build Up — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs arachnos_soldiers bane_spider_soldier
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BuildUp as base } from '@/data/generated/powersets/arachnos-soldier/epic/bane-spider-soldier/build-up';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/bane-spider-soldier/build-up';
 
-export const BuildUp: Power = {
-  "name": "Build Up",
-  "internalName": "Build_Up",
-  "available": 5,
-  "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit. Recharge: Long",
-  "shortHelp": "Self +DMG, +ToHit",
-  "icon": "banespider_buildup.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "Soldiers of Arachnos Archetype Sets",
-    "To Hit Buff"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "targetType": "Self"
-};
+export const BuildUp: Power = withOverrides(base, overrides);

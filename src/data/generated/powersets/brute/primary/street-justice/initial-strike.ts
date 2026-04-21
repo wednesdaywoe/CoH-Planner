@@ -16,6 +16,7 @@ export const InitialStrike: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe Disorient, Combo Builder",
   "icon": "brawling_initialstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -32,21 +33,23 @@ export const InitialStrike: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.42,
-    "table": "Melee_Damage",
-    "duration": 0.4,
-    "tickRate": 0.33
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.42,
+      "table": "Melee_Damage",
+      "duration": 0.4,
+      "tickRate": 0.33000001311302185
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.54,
+      "table": "Melee_PvPDamage",
+      "duration": 0.4,
+      "tickRate": 0.33000001311302185
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 2,

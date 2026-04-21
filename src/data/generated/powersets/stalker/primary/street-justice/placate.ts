@@ -16,6 +16,7 @@ export const Placate: Power = {
   "shortHelp": "Ranged, Foe Placate, Self Stealth/Hide",
   "icon": "brawling_placate.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -30,13 +31,10 @@ export const Placate: Power = {
     "Range",
     "Recharge"
   ],
-  "allowedSetCategories": [
-    "Threat Duration"
-  ],
   "maxSlots": 6,
   "effects": {
     "placate": {
-      "scale": 10,
+      "scale": 6,
       "table": "Melee_Taunt"
     },
     "stealth": {
@@ -46,10 +44,6 @@ export const Placate: Power = {
       },
       "stealthPvP": {
         "scale": 380,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.2,
         "table": "Melee_Ones"
       }
     },

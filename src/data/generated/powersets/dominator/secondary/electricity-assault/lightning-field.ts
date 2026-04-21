@@ -16,6 +16,7 @@ export const LightningBolt: Power = {
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -End",
   "icon": "electricalassault_lightningbolt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -32,21 +33,23 @@ export const LightningBolt: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.8891,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_Ones"
+      "scale": 2,
+      "table": "Ranged_EndDrain"
     },
     "recoveryDebuff": {
       "scale": 1,

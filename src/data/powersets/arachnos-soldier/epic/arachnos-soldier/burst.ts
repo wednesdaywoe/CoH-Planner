@@ -1,56 +1,16 @@
 /**
- * Burst
- * Ranged, Moderate DMG(Lethal), Foe -DEF
+ * Burst — COMPOSED EXPORT
  *
- * Source: arachnos_soldiers/arachnos_soldier/burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs arachnos_soldiers arachnos_soldier
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Burst as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/burst';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/burst';
 
-export const Burst: Power = {
-  "name": "Burst",
-  "internalName": "Burst",
-  "available": 1,
-  "description": "Quickly fires a Burst of rounds at a single target at long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense. Damage: Moderate(DoT)",
-  "shortHelp": "Ranged, Moderate DMG(Lethal), Foe -DEF",
-  "icon": "arachnossoldier_burst.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Soldiers of Arachnos Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1
-  },
-  "targetType": "Foe (Alive)",
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.5467,
-    "table": "Ranged_Damage",
-    "duration": 0.7,
-    "tickRate": 0.3
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    }
-  }
-};
+export const Burst: Power = withOverrides(base, overrides);

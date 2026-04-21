@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { Shock as Shock } from './shock';
-import { RejuvenatingCircuit as RejuvenatingCircuit } from './rejuvenating-circuit';
+import { AmpUp as AmpUp } from './amp-up';
+import { Defibrillate as Defibrillate } from './defibrillate';
 import { GalvanicSentinel as GalvanicSentinel } from './discharge';
+import { EmpoweringCircuit as EmpoweringCircuit } from './empowering-circuit';
 import { EnergizingCircuit as EnergizingCircuit } from './energizing-circuit';
 import { FaradayCage as FaradayCage } from './faraday-cage';
-import { EmpoweringCircuit as EmpoweringCircuit } from './empowering-circuit';
-import { Defibrillate as Defibrillate } from './defibrillate';
 import { InsulatingCircuit as InsulatingCircuit } from './insulating-circuit';
-import { AmpUp as AmpUp } from './amp-up';
+import { RejuvenatingCircuit as RejuvenatingCircuit } from './rejuvenating-circuit';
+import { Shock as Shock } from './shock';
 
 export const powerset: Powerset = {
   id: 'corruptor/electrical-affinity',
   name: 'Electrical Affinity',
   description: 'You are able to control and manipulate electricity to aid your allies and weaken your enemies. Some Electrical Affinity powers build Static, which increases the number of targets your Circuit powers can chain to.',
-  icon: 'shock_therapy_set.png',
+  icon: 'shock_therapy_set.ico',
   archetype: 'corruptor',
   category: 'secondary',
   powers: [
-    Shock,
-    RejuvenatingCircuit,
+    AmpUp,
+    Defibrillate,
     GalvanicSentinel,
+    EmpoweringCircuit,
     EnergizingCircuit,
     FaradayCage,
-    EmpoweringCircuit,
-    Defibrillate,
     InsulatingCircuit,
-    AmpUp,
+    RejuvenatingCircuit,
+    Shock,
   ],
 };
 

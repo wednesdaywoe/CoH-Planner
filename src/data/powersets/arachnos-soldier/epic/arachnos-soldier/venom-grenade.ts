@@ -1,55 +1,16 @@
 /**
- * Venom Grenade
- * Ranged(Targeted AoE), DoT(Toxic), -Res(All)
+ * Venom Grenade — COMPOSED EXPORT
  *
- * Source: arachnos_soldiers/arachnos_soldier/venom_grenade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs arachnos_soldiers arachnos_soldier
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { VenomGrenade as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/venom-grenade';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/venom-grenade';
 
-export const VenomGrenade: Power = {
-  "name": "Venom Grenade",
-  "internalName": "Venom_Grenade",
-  "available": 11,
-  "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect. NOTE: If you take this power you cannot also take the Crab Spider version. Damage: Moderate",
-  "shortHelp": "Ranged(Targeted AoE), DoT(Toxic), -Res(All)",
-  "icon": "arachnossoldier_venomgrenade.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Soldiers of Arachnos Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 24,
-    "endurance": 11.856,
-    "castTime": 1.67,
-    "radius": 20,
-    "maxTargets": 10
-  },
-  "targetType": "Foe (Alive)",
-  "damage": {
-    "type": "Toxic",
-    "scale": 0.1964,
-    "table": "Ranged_Damage",
-    "duration": 4.125,
-    "tickRate": 1
-  },
-  "effects": {
-    "resistanceDebuff": {
-      "scale": -2,
-      "table": "Ranged_Res_Dmg"
-    }
-  }
-};
+export const VenomGrenade: Power = withOverrides(base, overrides);

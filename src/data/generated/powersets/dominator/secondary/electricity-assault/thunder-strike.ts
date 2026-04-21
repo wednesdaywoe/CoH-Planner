@@ -16,12 +16,13 @@ export const StaticDischarge: Power = {
   "shortHelp": "Ranged (Cone), Light DMG(Energy), -END",
   "icon": "electricalassault_staticdischarge.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 40,
     "radius": 40,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 16,
     "endurance": 15.184,
     "castTime": 2.07,
@@ -35,21 +36,23 @@ export const StaticDischarge: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.23,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1.23,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.0458,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Ranged_Ones"
+      "scale": 1.25,
+      "table": "Ranged_EndDrain"
     },
     "recoveryDebuff": {
       "scale": 1,

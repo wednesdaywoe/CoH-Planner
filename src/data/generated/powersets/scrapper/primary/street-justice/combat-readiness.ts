@@ -29,9 +29,6 @@ export const CombatReadiness: Power = {
     "Recharge",
     "ToHit"
   ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
   "maxSlots": 6,
   "effects": {
     "tohitBuff": {

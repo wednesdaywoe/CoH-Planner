@@ -1,34 +1,16 @@
 /**
- * Aim
- * Self +ToHit, +DMG
+ * Aim — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs arachnos_soldiers crab_spider_soldier
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Aim as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
 
-export const Aim: Power = {
-  "name": "Aim",
-  "internalName": "Aim",
-  "available": 5,
-  "description": "Greatly increases the chance to hit and damage of your attacks for a few seconds. Recharge: Long",
-  "shortHelp": "Self +ToHit, +DMG",
-  "icon": "crabspider_aim.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "Soldiers of Arachnos Archetype Sets",
-    "To Hit Buff"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "targetType": "Self"
-};
+export const Aim: Power = withOverrides(base, overrides);

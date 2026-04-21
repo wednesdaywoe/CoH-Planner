@@ -1,59 +1,16 @@
 /**
- * Heavy Burst
- * Ranged Cone, Moderate DMG(Lethal), Foe -DEF
+ * Heavy Burst — COMPOSED EXPORT
  *
- * Source: arachnos_soldiers/arachnos_soldier/heavy_burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs arachnos_soldiers arachnos_soldier
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HeavyBurst as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/heavy-burst';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/heavy-burst';
 
-export const HeavyBurst: Power = {
-  "name": "Heavy Burst",
-  "internalName": "Heavy_Burst",
-  "available": 7,
-  "description": "Fires a Heavy Burst of rounds at foes in a long cone in front of the user. Can also reduce the targets' defense. Damage: Moderate(DoT)",
-  "shortHelp": "Ranged Cone, Moderate DMG(Lethal), Foe -DEF",
-  "icon": "arachnossoldier_heavyburst.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged AoE Damage",
-    "Soldiers of Arachnos Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 2.5,
-    "radius": 50,
-    "arc": 0.5236,
-    "maxTargets": 10
-  },
-  "targetType": "Foe (Alive)",
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.1557,
-    "table": "Ranged_Damage",
-    "duration": 2,
-    "tickRate": 0.3
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    }
-  }
-};
+export const HeavyBurst: Power = withOverrides(base, overrides);

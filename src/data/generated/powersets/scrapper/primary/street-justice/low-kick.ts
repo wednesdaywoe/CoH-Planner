@@ -16,6 +16,7 @@ export const ShinBreaker: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe -Speed, -Defense, Combo Builder",
   "icon": "brawling_lowkick.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -31,13 +32,6 @@ export const ShinBreaker: Power = {
     "Defense Debuff",
     "Damage",
     "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defense Debuff",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Slow Movement",
-    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [
@@ -55,6 +49,16 @@ export const ShinBreaker: Power = {
       "type": "Smashing",
       "scale": 1.64,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.4942,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.4942,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

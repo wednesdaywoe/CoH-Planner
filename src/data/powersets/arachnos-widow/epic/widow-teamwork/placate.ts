@@ -1,59 +1,16 @@
 /**
- * Placate
- * Ranged, Foe Placate, Self Stealth/Hide
+ * Placate — COMPOSED EXPORT
  *
- * Source: teamwork/widow_teamwork/placate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs teamwork widow_teamwork
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Placate as base } from '@/data/generated/powersets/arachnos-widow/epic/widow-teamwork/placate';
+import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/widow-teamwork/placate';
 
-export const Placate: Power = {
-  "name": "Placate",
-  "internalName": "Placate",
-  "available": 23,
-  "description": "Allow you to trick a foe to no longer attack you. A Successful Placate will also grant you stealth. However, if you attack a Placated Foe, he will be able to attack you back.",
-  "shortHelp": "Ranged, Foe Placate, Self Stealth/Hide",
-  "icon": "widowteamwork_placate.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Threat Duration"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 35,
-    "endurance": 2.6,
-    "castTime": 0.8,
-    "radius": 15,
-    "maxTargets": 5
-  },
-  "targetType": "Foe (Alive)",
-  "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 150,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 380,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 10,
-    "durations": {
-      "stealth": 10
-    }
-  }
-};
+export const Placate: Power = withOverrides(base, overrides);

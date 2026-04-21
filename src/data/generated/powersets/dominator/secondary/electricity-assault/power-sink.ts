@@ -16,6 +16,7 @@ export const ThunderStrike: Power = {
   "shortHelp": "Melee (AoE), Superior DMG(Smash, Energy), Foe Disorient, Knockback",
   "icon": "electricalassault_thunderstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -32,13 +33,6 @@ export const ThunderStrike: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -50,6 +44,16 @@ export const ThunderStrike: Power = {
       "type": "Energy",
       "scale": 0.876,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.953,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.837,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -66,7 +70,7 @@ export const ThunderStrike: Power = {
       "recoveryDebuff": 4
     },
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "buffDuration": 4

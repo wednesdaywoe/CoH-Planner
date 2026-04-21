@@ -16,6 +16,7 @@ export const Taunt: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "brawling_taunt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -31,13 +32,10 @@ export const Taunt: Power = {
     "Recharge",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Threat Duration"
-  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {
-      "scale": 20,
+      "scale": 5,
       "table": "Melee_Taunt"
     },
     "rangeBuff": {

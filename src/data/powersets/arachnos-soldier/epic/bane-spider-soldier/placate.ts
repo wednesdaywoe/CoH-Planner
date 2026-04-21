@@ -1,36 +1,16 @@
 /**
- * Placate
- * Melee, Foe Placate, Self Hide
+ * Placate — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs arachnos_soldiers bane_spider_soldier
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Placate as base } from '@/data/generated/powersets/arachnos-soldier/epic/bane-spider-soldier/placate';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/bane-spider-soldier/placate';
 
-export const Placate: Power = {
-  "name": "Placate",
-  "internalName": "Placate",
-  "available": 21,
-  "description": "Allows you to trick a foe to no longer attack you. A successful Placate will also Hide you. The Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit. However, if you attack a Placated Foe, he will be able to attack you back. Recharge: Long",
-  "shortHelp": "Melee, Foe Placate, Self Hide",
-  "icon": "banespider_placate.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Taunt"
-  ],
-  "allowedSetCategories": [
-    "Soldiers of Arachnos Archetype Sets",
-    "Threat Duration"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 60,
-    "endurance": 10.4,
-    "castTime": 1
-  },
-  "targetType": "Foe (Alive)"
-};
+export const Placate: Power = withOverrides(base, overrides);

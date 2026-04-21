@@ -1,43 +1,43 @@
 /**
  * Bane Spider Soldier Powerset
- * Bane Spiders are elite operatives of the Arachnos Organization. Armed with the powerful
- * Nullifier Mace, they combine strong melee attacks with ranged energy blasts and stealth tactics.
+ * Bane Spiders are the commandos of the Arachnos organization, providing excellent stealth and offensive capabilities.
  *
  * Archetype: arachnos-soldier
- * Category: Epic
+ * Category: epic
+ * Source: arachnos_soldiers/bane_spider_soldier
  */
 
 import type { Powerset } from '@/types';
 
-import { Bash } from './bash';
-import { MaceBeam } from './mace-beam';
-import { MaceBeamBlast } from './mace-beam-blast';
-import { BuildUp } from './build-up';
-import { MaceBeamVolley } from './mace-beam-volley';
-import { PoisonousRay } from './poisonous-ray';
-import { Pulverize } from './pulverize';
-import { Shatter } from './shatter';
-import { Placate } from './placate';
-import { CrowdControl } from './crowd-control';
+import { Bash as Bash } from './bs-bash';
+import { BuildUp as BuildUp } from './build-up';
+import { CrowdControl as CrowdControl } from './crowd-control';
+import { MaceBeam as MaceBeam } from './mace-beam';
+import { MaceBeamBlast as MaceBeamBlast } from './mace-beam-blast';
+import { MaceBeamVolley as MaceBeamVolley } from './mace-beam-volley';
+import { Placate as Placate } from './placate';
+import { PoisonousRay as PoisonousRay } from './poisonous-ray';
+import { Pulverize as Pulverize } from './pulverize';
+import { Shatter as Shatter } from './shatter';
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/bane-spider-soldier',
   name: 'Bane Spider Soldier',
-  description: 'Bane Spiders are elite operatives of the Arachnos Organization. Armed with the powerful Nullifier Mace, they combine strong melee attacks with ranged energy blasts and stealth tactics.',
-  icon: 'bane_spider_soldier_set.png',
+  description: 'Bane Spiders are the commandos of the Arachnos organization, providing excellent stealth and offensive capabilities.',
+  icon: 'bane_spider_soldier_set.ico',
   archetype: 'arachnos-soldier',
   category: 'epic',
   powers: [
     Bash,
+    BuildUp,
+    CrowdControl,
     MaceBeam,
     MaceBeamBlast,
-    BuildUp,
     MaceBeamVolley,
+    Placate,
     PoisonousRay,
     Pulverize,
     Shatter,
-    Placate,
-    CrowdControl,
   ],
 };
 

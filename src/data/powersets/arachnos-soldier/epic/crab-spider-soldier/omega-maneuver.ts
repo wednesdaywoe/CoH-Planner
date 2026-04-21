@@ -1,61 +1,16 @@
 /**
- * Omega Maneuver
- * Ranged(Location AoE), Extreme DMG(Smash/Energy), Foe Disorient
+ * Omega Maneuver — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs arachnos_soldiers crab_spider_soldier
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { OmegaManeuver as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/omega-maneuver';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/omega-maneuver';
 
-export const OmegaManeuver: Power = {
-  "name": "Omega Maneuver",
-  "internalName": "Omega_Maneuver",
-  "available": 25,
-  "description": "You launch a devastating Omega Maneuver from your Crab Spider backpack. A powerful explosive is fired at a targeted location, detonating with extreme force dealing extreme Smashing and Energy damage. Foes struck may be disoriented. Recharge: Very Long",
-  "shortHelp": "Ranged(Location AoE), Extreme DMG(Smash/Energy), Foe Disorient",
-  "icon": "crabspider_omegamaneuver.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Stun",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Soldiers of Arachnos Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 240,
-    "endurance": 26,
-    "castTime": 2.5,
-    "radius": 15,
-    "maxTargets": 16
-  },
-  "targetType": "Foe (Alive)",
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    }
-  }
-};
+export const OmegaManeuver: Power = withOverrides(base, overrides);

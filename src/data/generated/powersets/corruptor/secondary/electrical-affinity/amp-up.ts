@@ -12,11 +12,10 @@ export const AmpUp: Power = {
   "name": "Amp Up",
   "internalName": "Amp_Up",
   "available": 29,
-  "description": "Empower an ally with raw energy, causing all of their abilities to unleash chained bolts of electricity at nearby foes. These bolts drain a small amount of endurance and have a chance to knock up the target. Amp Up also moderately increases their attack rate and greatly boosts the secondary effects of their powers. Their power effects like heals, defense debuffs, endurance drains, disorients, holds, immobilizes and more, are all improved.Recharge: Very Long.",
+  "description": "Empower an ally with raw energy, causing all of their abilities to unleash chained bolts of electricity at nearby foes. These bolts drain a small amount of endurance and have a chance to knock up the target. Amp Up also moderately increases their attack rate and greatly boosts the secondary effects of their powers. Their power effects like heals, defense debuffs, endurance drains, disorients, holds, immobilizes and more, are all improved.",
   "shortHelp": "Ranged, Ally +Special, +Recharge",
   "icon": "shocktherapy_ampup.png",
   "powerType": "Click",
-  "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

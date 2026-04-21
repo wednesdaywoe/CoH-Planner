@@ -12,11 +12,10 @@ export const InsulatingCircuit: Power = {
   "name": "Insulating Circuit",
   "internalName": "Insulating_Circuit",
   "available": 27,
-  "description": "Create a circuit of protective energy between several nearby allies, granting them a small protective shield. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Insulating Circuit grants 1 stack of Static.Recharge: Slow.",
+  "description": "Create a circuit of protective energy between several nearby allies, granting them a small protective shield. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Insulating Circuit grants 1 stack of Static.",
   "shortHelp": "Ranged (Chain), Ally +Absorb, Self +Static",
   "icon": "shocktherapy_insulatingcircuit.png",
   "powerType": "Click",
-  "targetType": "Ally (Alive)",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
@@ -31,9 +30,6 @@ export const InsulatingCircuit: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
     "Healing"
   ],
   "maxSlots": 6,

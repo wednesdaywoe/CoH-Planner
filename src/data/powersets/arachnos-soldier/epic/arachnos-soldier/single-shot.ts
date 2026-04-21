@@ -1,58 +1,16 @@
 /**
- * Single Shot
- * Ranged, Minor DMG(Lethal), Foe -DEF
+ * Single Shot — COMPOSED EXPORT
  *
- * Source: arachnos_soldiers/arachnos_soldier/single_shot.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs arachnos_soldiers arachnos_soldier
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SingleShot as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/single-shot';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/single-shot';
 
-export const SingleShot: Power = {
-  "name": "Single Shot",
-  "internalName": "Single_Shot",
-  "available": 0,
-  "description": "A quick single shot from the Arachnos Sub-machinegun. Extremely accurate. Damage: Minor",
-  "shortHelp": "Ranged, Minor DMG(Lethal), Foe -DEF",
-  "icon": "arachnossoldier_singleshot.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Soldiers of Arachnos Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1.05,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 0.9
-  },
-  "targetType": "Foe (Alive)",
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "buffDuration": 5,
-    "durations": {
-      "defenseDebuff": 5
-    }
-  }
-};
+export const SingleShot: Power = withOverrides(base, overrides);

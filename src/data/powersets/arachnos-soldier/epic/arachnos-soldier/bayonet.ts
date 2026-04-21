@@ -1,53 +1,16 @@
 /**
- * Bayonet
- * Melee, Moderate DMG(Lethal), DoT(Lethal)
+ * Bayonet — COMPOSED EXPORT
  *
- * Source: arachnos_soldiers/arachnos_soldier/bayonet.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs arachnos_soldiers arachnos_soldier
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Bayonet as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/bayonet';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/bayonet';
 
-export const Bayonet: Power = {
-  "name": "Bayonet",
-  "internalName": "Bayonet",
-  "available": 11,
-  "description": "Your weapon includes a bayonet attachment which you can use to stab at your enemies for lethal damage as well as causing them to bleed losing health over time. NOTE: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device. Damage: Moderate",
-  "shortHelp": "Melee, Moderate DMG(Lethal), DoT(Lethal)",
-  "icon": "arachnossoldier_bayonet.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Soldiers of Arachnos Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.67
-  },
-  "targetType": "Foe (Alive)",
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.44,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.12,
-      "table": "Melee_Damage",
-      "duration": 5.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const Bayonet: Power = withOverrides(base, overrides);
