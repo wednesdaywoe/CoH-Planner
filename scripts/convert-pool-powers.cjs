@@ -251,12 +251,16 @@ function convertPool(poolId) {
 
   // Get power order from index. Old (CoD2) layout used `power_names`; the new
   // bin-export layout uses `powers`. Probe both.
+  // NOTE: bin-export's `powers` array is alphabetical (CoD2's was game-pick
+  // order). We sort by `available_level` after collecting so the displayed
+  // pick order matches the game (Boxing/Kick before Tough/Weave, Hasten
+  // before Burnout, Stealth before Infiltration, etc.).
   const powerNames = poolIndex.power_names || poolIndex.powers || [];
   const availableLevels = poolIndex.available_level || [];
 
+  const collected = [];
   for (let i = 0; i < powerNames.length; i++) {
     const fullName = powerNames[i];
-    // Extract power file name from full name: "Pool.Fighting.Boxing" → "boxing.json"
     const parts = fullName.split('.');
     const powerFile = parts[parts.length - 1].toLowerCase() + '.json';
     const filePath = path.join(poolPath, powerFile);
@@ -267,11 +271,20 @@ function convertPool(poolId) {
     }
 
     const rawJson = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    const rank = i + 1;
     const availableLevel = availableLevels[i] || 0;
-    const power = convertPoolPower(rawJson, rank, availableLevel);
-    pool.powers.push(power);
+    collected.push({ rawJson, availableLevel, originalIndex: i });
   }
+
+  // Sort by available_level (game pick order); ties keep original listing order
+  collected.sort((a, b) => {
+    if (a.availableLevel !== b.availableLevel) return a.availableLevel - b.availableLevel;
+    return a.originalIndex - b.originalIndex;
+  });
+
+  collected.forEach((entry, idx) => {
+    const power = convertPoolPower(entry.rawJson, idx + 1, entry.availableLevel);
+    pool.powers.push(power);
+  });
 
   return pool;
 }

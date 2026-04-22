@@ -230,13 +230,15 @@ function convertEpicPool(poolId, existingPool) {
     powers: [],
   };
 
-  // Get power order from index
+  // Get power order from index. Bin-export `powers` array is alphabetical
+  // (CoD2 was game-pick order); sort by available_level so the displayed
+  // pick order matches the in-game leveling sequence.
   const powerNames = poolIndex.power_names || [];
   const availableLevels = poolIndex.available_level || [];
 
+  const collected = [];
   for (let i = 0; i < powerNames.length; i++) {
     const fullName = powerNames[i];
-    // Extract power file name: "Epic.Blaster_Dark_Mastery.Murky_Cloud" → "murky_cloud.json"
     const parts = fullName.split('.');
     const powerFile = parts[parts.length - 1].toLowerCase() + '.json';
     const filePath = path.join(poolPath, powerFile);
@@ -247,11 +249,19 @@ function convertEpicPool(poolId, existingPool) {
     }
 
     const rawJson = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    const rank = i + 1;
     const availableLevel = availableLevels[i] !== undefined ? availableLevels[i] : 34;
-    const power = convertEpicPower(rawJson, rank, availableLevel);
-    pool.powers.push(power);
+    collected.push({ rawJson, availableLevel, originalIndex: i });
   }
+
+  collected.sort((a, b) => {
+    if (a.availableLevel !== b.availableLevel) return a.availableLevel - b.availableLevel;
+    return a.originalIndex - b.originalIndex;
+  });
+
+  collected.forEach((entry, idx) => {
+    const power = convertEpicPower(entry.rawJson, idx + 1, entry.availableLevel);
+    pool.powers.push(power);
+  });
 
   return pool;
 }

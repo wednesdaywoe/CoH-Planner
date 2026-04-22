@@ -215,9 +215,42 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Shiver",
+        "fullName": "Epic.Arctic_Mastery.Shiver",
+        "rank": 4,
+        "available": 40,
+        "description": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
+        "icon": "ice_mastery_shiver.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Slow Movement"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 12.48,
+          "activationTime": 2.17,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 2.356194496154785,
+          "maxTargets": 10
+        }
+      },
+      {
         "name": "Ice Storm",
         "fullName": "Epic.Arctic_Mastery.Ice_Storm",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Location AoE), DoT(Cold), Foe -Recharge, -SPD",
@@ -250,39 +283,6 @@ export const EPIC_POOLS_RAW = {
             "duration": 15
           }
         }
-      },
-      {
-        "name": "Shiver",
-        "fullName": "Epic.Arctic_Mastery.Shiver",
-        "rank": 5,
-        "available": 40,
-        "description": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
-        "icon": "ice_mastery_shiver.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Slow Movement"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 12.48,
-          "activationTime": 2.17,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 2.356194496154785,
-          "maxTargets": 10
-        }
       }
     ]
   },
@@ -297,63 +297,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Black Hole",
-        "fullName": "Epic.Blaster_Dark_Mastery.Black_Hole",
-        "rank": 1,
-        "available": 40,
-        "description": "Opens up a Black Hole to the Netherworld that temporarily pulls in all foes within its grasp. If the main target is immune to the pull, it will become phase shifted and are completely intangible. They are hard to see, and cannot affect or be affected by those in normal space.",
-        "shortHelp": "Ranged (Targeted AoE), Foe Intangible",
-        "icon": "dark_mastery_blackhole.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 240,
-          "endurance": 13,
-          "activationTime": 1.03,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 10,
-          "repel": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "repel": 0.75,
-            "immobilize": 4,
-            "threatDebuff": 4
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 3,
-            "table": "Ranged_Ones"
-          },
-          "effectDuration": 4,
-          "threatDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "P801416744",
-            "duration": 30
-          },
-          "buffDuration": 4
-        }
-      },
-      {
         "name": "Fearsome Stare",
         "fullName": "Epic.Blaster_Dark_Mastery.Fearsome_Stare",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Instills tremendous Fear within a cone area in front of you, causing all affected targets to tremble in Terror uncontrollably.",
         "shortHelp": "Ranged (Cone), Foe Fear, -To Hit",
@@ -394,7 +340,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Murky Cloud",
         "fullName": "Epic.Blaster_Dark_Mastery.Murky_Cloud",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
@@ -443,7 +389,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Possess",
         "fullName": "Epic.Blaster_Dark_Mastery.Possess",
-        "rank": 4,
+        "rank": 3,
         "available": 37,
         "description": "You cause your targeted foe to be possessed by a dark entity from the Netherworld causing them to be confused for a short period of time. While confused they will be unable to tell the difference between friend or foe and will attack nearby allies. Possess will also hinder the target's abilities, lowering their chance ToHit, Damage, Healing, and the strength of their buffs, You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Target Confuse, -ToHit, -Damage, -Healing, -Special",
@@ -526,6 +472,60 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Black Hole",
+        "fullName": "Epic.Blaster_Dark_Mastery.Black_Hole",
+        "rank": 4,
+        "available": 40,
+        "description": "Opens up a Black Hole to the Netherworld that temporarily pulls in all foes within its grasp. If the main target is immune to the pull, it will become phase shifted and are completely intangible. They are hard to see, and cannot affect or be affected by those in normal space.",
+        "shortHelp": "Ranged (Targeted AoE), Foe Intangible",
+        "icon": "dark_mastery_blackhole.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 240,
+          "endurance": 13,
+          "activationTime": 1.03,
+          "effectArea": "AoE",
+          "radius": 20,
+          "maxTargets": 10,
+          "repel": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "repel": 0.75,
+            "immobilize": 4,
+            "threatDebuff": 4
+          },
+          "immobilize": {
+            "mag": 1,
+            "scale": 3,
+            "table": "Ranged_Ones"
+          },
+          "effectDuration": 4,
+          "threatDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "P801416744",
+            "duration": 30
+          },
+          "buffDuration": 4
+        }
+      },
+      {
         "name": "Soul Consumption",
         "fullName": "Epic.Blaster_Dark_Mastery.Soul_Consumption",
         "rank": 5,
@@ -595,100 +595,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Mace Beam Volley",
-        "fullName": "Epic.Blaster_Mace_Mastery.Mace_Beam_Volley",
-        "rank": 1,
-        "available": 37,
-        "description": "Fires a volley of multiple kinetic energy blasts from your Nullifier Mace. These blast spread out in a wide cone and are powerful enough to knock down some foes. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), DMG(Energy), Foe Knockback",
-        "icon": "arachnos_patron_rangedconemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 50,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 2,
-          "effectArea": "Cone",
-          "radius": 50,
-          "arc": 0.6108652353286743,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1.1489,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.2118,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
-        }
-      },
-      {
-        "name": "Summon Spiderlings",
-        "fullName": "Epic.Blaster_Mace_Mastery.Power_Boost",
-        "rank": 2,
-        "available": 40,
-        "description": "Black Scorpion has granted you access to a small squadron of Arachnobot Spiderlings. Three Spiderlings that are one level less than you will show up when summoned. Your access to these Arachnobots is very limited. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Summon Spiderlings: Ranged DMG(Lethal)",
-        "icon": "arachnos_patron_summononepet.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 900,
-          "endurance": 20.8,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
-            "duration": 240,
-            "entityCount": 3
-          }
-        }
-      },
-      {
         "name": "Scorpion Shield",
         "fullName": "Epic.Blaster_Mace_Mastery.Scorpion_Shield",
-        "rank": 3,
+        "rank": 1,
         "available": 34,
         "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
@@ -738,65 +647,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Web Cocoon",
-        "fullName": "Epic.Blaster_Mace_Mastery.Web_Cocoon",
-        "rank": 4,
-        "available": 43,
-        "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
-        "icon": "arachnos_patron_targetedhold.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.1169,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.345,
-              "table": "Melee_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Web Envelope",
         "fullName": "Epic.Blaster_Mace_Mastery.Web_Envelope",
-        "rank": 5,
+        "rank": 2,
         "available": 34,
         "description": "The Nullifier Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
@@ -864,6 +717,153 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 15
         }
+      },
+      {
+        "name": "Mace Beam Volley",
+        "fullName": "Epic.Blaster_Mace_Mastery.Mace_Beam_Volley",
+        "rank": 3,
+        "available": 37,
+        "description": "Fires a volley of multiple kinetic energy blasts from your Nullifier Mace. These blast spread out in a wide cone and are powerful enough to knock down some foes. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), DMG(Energy), Foe Knockback",
+        "icon": "arachnos_patron_rangedconemoderatedmg.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 50,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 2,
+          "effectArea": "Cone",
+          "radius": 50,
+          "arc": 0.6108652353286743,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1.1489,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.2118,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
+        }
+      },
+      {
+        "name": "Summon Spiderlings",
+        "fullName": "Epic.Blaster_Mace_Mastery.Power_Boost",
+        "rank": 4,
+        "available": 40,
+        "description": "Black Scorpion has granted you access to a small squadron of Arachnobot Spiderlings. Three Spiderlings that are one level less than you will show up when summoned. Your access to these Arachnobots is very limited. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Summon Spiderlings: Ranged DMG(Lethal)",
+        "icon": "arachnos_patron_summononepet.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "activationTime": 3.03,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+            "duration": 240,
+            "entityCount": 3
+          }
+        }
+      },
+      {
+        "name": "Web Cocoon",
+        "fullName": "Epic.Blaster_Mace_Mastery.Web_Cocoon",
+        "rank": 5,
+        "available": 43,
+        "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
+        "icon": "arachnos_patron_targetedhold.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.1169,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.345,
+              "table": "Melee_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
+        }
       }
     ]
   },
@@ -923,59 +923,51 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Electric Shackles",
-        "fullName": "Epic.Blaster_Mu_Mastery.Electric_Shackles",
+        "name": "Static Discharge",
+        "fullName": "Epic.Blaster_Mu_Mastery.Static_Discharge",
         "rank": 2,
-        "available": 43,
-        "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
-        "icon": "arachnos_patron_targetedhold.png",
+        "available": 34,
+        "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area.",
+        "shortHelp": "Ranged (Cone), DMG(Energy), -END",
+        "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
+        "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Hold",
           "Range",
           "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Holds",
-          "Ranged Damage",
+          "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 60,
+          "range": 40,
           "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
+          "endurance": 15.184,
+          "activationTime": 2.07,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "maxTargets": 10,
           "damage": [
             {
               "type": "Energy",
-              "scale": 0.15,
-              "table": "Ranged_Damage",
-              "duration": 6.3,
-              "tickRate": 1
+              "scale": 0.96,
+              "table": "Ranged_Damage"
             },
             {
               "type": "Energy",
-              "scale": 0.4113,
-              "table": "Ranged_PvPDamage",
-              "duration": 6.3,
-              "tickRate": 1
+              "scale": 1.3147,
+              "table": "Ranged_PvPDamage"
             }
           ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
           "enduranceDrain": {
             "scale": 1.25,
             "table": "Ranged_EndDrain"
@@ -985,19 +977,62 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "durations": {
-            "recoveryDebuff": 8
+            "recoveryDebuff": 4
           },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 8
+          "buffDuration": 4
+        }
+      },
+      {
+        "name": "Summon Adept",
+        "fullName": "Epic.Blaster_Mu_Mastery.Thunder_Strike",
+        "rank": 3,
+        "available": 37,
+        "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
+        "icon": "arachnos_patron_summononepet.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Hold",
+          "Recharge",
+          "Sleep",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Holds",
+          "Ranged AoE Damage",
+          "Sleep",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "activationTime": 1.17,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Adept",
+            "duration": 240
+          }
         }
       },
       {
         "name": "Electrifying Fences",
         "fullName": "Epic.Blaster_Mu_Mastery.Electrifying_Fences",
-        "rank": 3,
+        "rank": 4,
         "available": 40,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
@@ -1077,51 +1112,59 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Static Discharge",
-        "fullName": "Epic.Blaster_Mu_Mastery.Static_Discharge",
-        "rank": 4,
-        "available": 34,
-        "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area.",
-        "shortHelp": "Ranged (Cone), DMG(Energy), -END",
-        "icon": "arachnos_patron_rangedconemoderatedmg.png",
+        "name": "Electric Shackles",
+        "fullName": "Epic.Blaster_Mu_Mastery.Electric_Shackles",
+        "rank": 5,
+        "available": 43,
+        "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
+        "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
-        "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
+          "Hold",
           "Range",
           "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Holds",
+          "Ranged Damage",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 40,
+          "range": 60,
           "recharge": 24,
-          "endurance": 15.184,
-          "activationTime": 2.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
+          "endurance": 8.528,
+          "activationTime": 2.17,
+          "effectArea": "SingleTarget",
           "damage": [
             {
               "type": "Energy",
-              "scale": 0.96,
-              "table": "Ranged_Damage"
+              "scale": 0.15,
+              "table": "Ranged_Damage",
+              "duration": 6.3,
+              "tickRate": 1
             },
             {
               "type": "Energy",
-              "scale": 1.3147,
-              "table": "Ranged_PvPDamage"
+              "scale": 0.4113,
+              "table": "Ranged_PvPDamage",
+              "duration": 6.3,
+              "tickRate": 1
             }
           ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
           "enduranceDrain": {
             "scale": 1.25,
             "table": "Ranged_EndDrain"
@@ -1131,56 +1174,13 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "durations": {
-            "recoveryDebuff": 4
+            "recoveryDebuff": 8
           },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 4
-        }
-      },
-      {
-        "name": "Summon Adept",
-        "fullName": "Epic.Blaster_Mu_Mastery.Thunder_Strike",
-        "rank": 5,
-        "available": 37,
-        "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
-        "icon": "arachnos_patron_summononepet.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Hold",
-          "Recharge",
-          "Sleep",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Holds",
-          "Ranged AoE Damage",
-          "Sleep",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 900,
-          "endurance": 20.8,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Mu_Adept",
-            "duration": 240
-          }
+          "buffDuration": 8
         }
       }
     ]
@@ -1285,107 +1285,106 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Fire Ball",
-        "fullName": "Epic.Blaze_Mastery.Fire_Ball",
+        "name": "Ring of Fire",
+        "fullName": "Epic.Blaze_Mastery.Ring_of_Fire",
         "rank": 2,
-        "available": 43,
-        "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
-        "icon": "fireblast_fireball.png",
+        "available": 34,
+        "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.",
+        "shortHelp": "Ranged, DoT(Fire), Foe Immobilize",
+        "icon": "pyremastery_ringoffire.png",
         "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
+        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceReduction",
+          "Immobilize",
           "Range",
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Immobilize",
+          "Ranged Damage",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
           "damage": [
             {
-              "type": "Smashing",
-              "scale": 0.1977,
-              "table": "Melee_Damage"
-            },
-            {
               "type": "Fire",
-              "scale": 0.7008,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
+              "scale": 0.1897,
               "table": "Melee_Damage",
-              "duration": 2.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.1611,
-              "table": "Melee_PvPDamage"
+              "duration": 9.2,
+              "tickRate": 2
             },
             {
               "type": "Fire",
-              "scale": 0.5712,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.0732,
+              "scale": 0.3078,
               "table": "Melee_PvPDamage",
-              "duration": 2.1,
-              "tickRate": 1
+              "duration": 9.2,
+              "tickRate": 2
             },
             {
               "type": "Fire",
-              "scale": 0.8985,
+              "scale": 0.9483,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Fire",
-              "scale": 0.8985,
+              "scale": 0.9483,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Fire",
-              "scale": 0.7323,
+              "scale": 1.539,
               "table": "Melee_PvPDamage"
             },
             {
               "type": "Fire",
-              "scale": 0.8985,
+              "scale": 0.8621,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Fire",
-              "scale": 0.8985,
+              "scale": 0.8621,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Fire",
-              "scale": 0.7323,
+              "scale": 1.539,
               "table": "Melee_PvPDamage"
             },
             {
               "type": "Fire",
-              "scale": 0.7323,
+              "scale": 1.539,
               "table": "Melee_PvPDamage"
             }
-          ]
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -1555,106 +1554,107 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Ring of Fire",
-        "fullName": "Epic.Blaze_Mastery.Ring_of_Fire",
+        "name": "Fire Ball",
+        "fullName": "Epic.Blaze_Mastery.Fire_Ball",
         "rank": 5,
-        "available": 34,
-        "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.",
-        "shortHelp": "Ranged, DoT(Fire), Foe Immobilize",
-        "icon": "pyremastery_ringoffire.png",
+        "available": 43,
+        "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
+        "icon": "fireblast_fireball.png",
         "powerType": "Click",
-        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
+        "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Immobilize",
           "Range",
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Ranged Damage",
+          "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 50,
-          "recharge": 8,
-          "endurance": 7.8,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
           "damage": [
             {
+              "type": "Smashing",
+              "scale": 0.1977,
+              "table": "Melee_Damage"
+            },
+            {
               "type": "Fire",
-              "scale": 0.1897,
+              "scale": 0.7008,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
               "table": "Melee_Damage",
-              "duration": 9.2,
-              "tickRate": 2
+              "duration": 2.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Smashing",
+              "scale": 0.1611,
+              "table": "Melee_PvPDamage"
             },
             {
               "type": "Fire",
-              "scale": 0.3078,
+              "scale": 0.5712,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0732,
               "table": "Melee_PvPDamage",
-              "duration": 9.2,
-              "tickRate": 2
+              "duration": 2.1,
+              "tickRate": 1
             },
             {
               "type": "Fire",
-              "scale": 0.9483,
+              "scale": 0.8985,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Fire",
-              "scale": 0.9483,
+              "scale": 0.8985,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Fire",
-              "scale": 1.539,
+              "scale": 0.7323,
               "table": "Melee_PvPDamage"
             },
             {
               "type": "Fire",
-              "scale": 0.8621,
+              "scale": 0.8985,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Fire",
-              "scale": 0.8621,
+              "scale": 0.8985,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Fire",
-              "scale": 1.539,
+              "scale": 0.7323,
               "table": "Melee_PvPDamage"
             },
             {
               "type": "Fire",
-              "scale": 1.539,
+              "scale": 0.7323,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          ]
         }
       }
     ]
@@ -1702,9 +1702,176 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Focused Accuracy",
+        "fullName": "Epic.Body_Mastery.Focused_Accuracy",
+        "rank": 2,
+        "available": 34,
+        "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active.",
+        "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+        "icon": "gadgets_targetingdrone.png",
+        "powerType": "Toggle",
+        "requires": "$archetype @Class_Scrapper ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "ToHit"
+        ],
+        "allowedSetCategories": [
+          "To Hit Buff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Laser Beam Eyes",
+        "fullName": "Epic.Body_Mastery.Laser_Beam_Eyes",
+        "rank": 3,
+        "available": 37,
+        "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can not miss and will reduce the target's Defense. Damage inflicted will fluctuate the current hit roll. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
+        "icon": "bodymastery_laserbeameyes.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.889,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.889,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.889,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 6
+          },
+          "buffDuration": 6
+        }
+      },
+      {
+        "name": "Physical Perfection",
+        "fullName": "Epic.Body_Mastery.Physical_Perfection",
+        "rank": 4,
+        "available": 40,
+        "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
+        "shortHelp": "Auto: Self, +Regeneration, +Recovery",
+        "icon": "bodymastery_physicalperfection.png",
+        "powerType": "Auto",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "Healing"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25,
+            "recoveryBuff": 10.25
+          },
+          "recoveryBuff": {
+            "scale": 0.125,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10.25
+        }
+      },
+      {
         "name": "Energy Torrent",
         "fullName": "Epic.Body_Mastery.Energy_Torrent",
-        "rank": 2,
+        "rank": 5,
         "available": 43,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.<br>",
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
@@ -1797,173 +1964,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           }
         }
-      },
-      {
-        "name": "Focused Accuracy",
-        "fullName": "Epic.Body_Mastery.Focused_Accuracy",
-        "rank": 3,
-        "available": 34,
-        "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active.",
-        "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
-        "icon": "gadgets_targetingdrone.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Scrapper ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "ToHit"
-        ],
-        "allowedSetCategories": [
-          "To Hit Buff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.156,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
-        "name": "Laser Beam Eyes",
-        "fullName": "Epic.Body_Mastery.Laser_Beam_Eyes",
-        "rank": 4,
-        "available": 37,
-        "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can not miss and will reduce the target's Defense. Damage inflicted will fluctuate the current hit roll. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
-        "icon": "bodymastery_laserbeameyes.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.889,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.889,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.889,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 6
-          },
-          "buffDuration": 6
-        }
-      },
-      {
-        "name": "Physical Perfection",
-        "fullName": "Epic.Body_Mastery.Physical_Perfection",
-        "rank": 5,
-        "available": 40,
-        "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
-        "shortHelp": "Auto: Self, +Regeneration, +Recovery",
-        "icon": "bodymastery_physicalperfection.png",
-        "powerType": "Auto",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification",
-          "Healing"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Healing"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "regenBuff": 10.25,
-            "recoveryBuff": 10.25
-          },
-          "recoveryBuff": {
-            "scale": 0.125,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 10.25
-        }
       }
     ]
   },
@@ -2009,91 +2009,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Energy Torrent",
-        "fullName": "Epic.Body_Mastery_Stalker.Energy_Torrent",
-        "rank": 2,
-        "available": 43,
-        "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
-        "icon": "bodymastery_energytorrent.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 24,
-          "endurance": 11.856,
-          "activationTime": 1.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.2874,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.6706,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.2658,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.6203,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8861,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8861,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Melee_InherentDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Melee_Ones"
-          }
-        }
-      },
-      {
         "name": "Focused Accuracy",
         "fullName": "Epic.Body_Mastery_Stalker.Focused_Accuracy",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
@@ -2144,7 +2062,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Body_Mastery_Stalker.Laser_Beam_Eyes",
-        "rank": 4,
+        "rank": 3,
         "available": 37,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can not miss and will reduce the target's Defense. Damage inflicted will fluctuate the current hit roll. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
@@ -2228,7 +2146,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Body_Mastery_Stalker.Physical_Perfection",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
@@ -2261,6 +2179,88 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 10.25
         }
+      },
+      {
+        "name": "Energy Torrent",
+        "fullName": "Epic.Body_Mastery_Stalker.Energy_Torrent",
+        "rank": 5,
+        "available": 43,
+        "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
+        "icon": "bodymastery_energytorrent.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 40,
+          "recharge": 24,
+          "endurance": 11.856,
+          "activationTime": 1.07,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2874,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.6706,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 0.2658,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.6203,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.8861,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.8861,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.958,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.958,
+              "table": "Melee_InherentDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 1.34,
+            "table": "Melee_Ones"
+          }
+        }
       }
     ]
   },
@@ -2275,9 +2275,220 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "School of Sharks",
+        "fullName": "Epic.Brute_Leviathan_Mastery.School_of_Sharks",
+        "rank": 1,
+        "available": 34,
+        "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
+        "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
+        "icon": "arachnos_patron_coneimmobilize.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "activationTime": 2.37,
+          "effectArea": "Cone",
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.1673,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.0837,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.124,
+              "table": "Ranged_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1102,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
+        "name": "Spirit Shark",
+        "fullName": "Epic.Brute_Leviathan_Mastery.Spirit_Shark",
+        "rank": 2,
+        "available": 34,
+        "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
+        "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
+        "icon": "arachnos_patron_targetedrangedhighdmg.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 13,
+          "endurance": 7.28,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.84,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.14,
+              "table": "Ranged_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.14,
+              "table": "Ranged_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Lethal",
+              "scale": 1.392,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.232,
+              "table": "Ranged_PvPDamage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          ],
+          "knockback": {
+            "scale": 1.4,
+            "table": "Ranged_Knockback"
+          }
+        }
+      },
+      {
+        "name": "Bile Spray",
+        "fullName": "Epic.Brute_Leviathan_Mastery.Chum_Spray",
+        "rank": 3,
+        "available": 37,
+        "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), DoT(Toxic)",
+        "icon": "arachnos_patron_rangedconemoderatedmg.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1.6,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.7,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.6132,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.0682,
+              "table": "Ranged_PvPDamage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ]
+        }
+      },
+      {
         "name": "Arctic Breath",
         "fullName": "Epic.Brute_Leviathan_Mastery.Arctic_Breath",
-        "rank": 1,
+        "rank": 4,
         "available": 40,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this freezing acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take cold damage over time, and have their damage resistance, Defense, movement rate, and recharge rate reduced. This ice will stick to foes, causing them to fall down occasionally. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
@@ -2388,217 +2599,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Bile Spray",
-        "fullName": "Epic.Brute_Leviathan_Mastery.Chum_Spray",
-        "rank": 2,
-        "available": 37,
-        "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), DoT(Toxic)",
-        "icon": "arachnos_patron_rangedconemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1.6,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.7,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.6132,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.0682,
-              "table": "Ranged_PvPDamage",
-              "duration": 4.25,
-              "tickRate": 1
-            }
-          ]
-        }
-      },
-      {
-        "name": "School of Sharks",
-        "fullName": "Epic.Brute_Leviathan_Mastery.School_of_Sharks",
-        "rank": 3,
-        "available": 34,
-        "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
-        "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
-        "icon": "arachnos_patron_coneimmobilize.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 16,
-          "endurance": 8.6008,
-          "activationTime": 2.37,
-          "effectArea": "Cone",
-          "radius": 50,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.1673,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.0837,
-              "table": "Ranged_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.124,
-              "table": "Ranged_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.1102,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
-        }
-      },
-      {
-        "name": "Spirit Shark",
-        "fullName": "Epic.Brute_Leviathan_Mastery.Spirit_Shark",
-        "rank": 4,
-        "available": 34,
-        "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
-        "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
-        "icon": "arachnos_patron_targetedrangedhighdmg.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 13,
-          "endurance": 7.28,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.84,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.14,
-              "table": "Ranged_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.14,
-              "table": "Ranged_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.392,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.232,
-              "table": "Ranged_PvPDamage",
-              "duration": 3.2,
-              "tickRate": 1
-            }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Ranged_Knockback"
-          }
-        }
-      },
-      {
         "name": "Summon Guardian",
         "fullName": "Epic.Brute_Leviathan_Mastery.Summon_Guardian",
         "rank": 5,
@@ -2654,111 +2654,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Disruptor Blast",
-        "fullName": "Epic.Brute_Mace_Mastery.Disruptor_Blast",
-        "rank": 1,
-        "available": 40,
-        "description": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
-        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 2,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.9477,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
-        }
-      },
-      {
-        "name": "Focused Accuracy",
-        "fullName": "Epic.Brute_Mace_Mastery.Focused_Accuracy",
-        "rank": 2,
-        "available": 37,
-        "description": "When this power is activated, the Villain focuses their senses to dramatically improve their accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
-        "icon": "arachnos_patron_selftohitbuff.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "ToHit"
-        ],
-        "allowedSetCategories": [
-          "To Hit Buff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.156,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Ranged_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 10.5,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Ranged_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Ranged_Ones"
-            }
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Mace Blast",
         "fullName": "Epic.Brute_Mace_Mastery.Mace_Blast",
-        "rank": 3,
+        "rank": 1,
         "available": 34,
         "description": "The Executioner's Mace is capable of firing a powerful bolt of kinetic energy. The blast is powerful enough that it may knock some foes back. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
         "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
@@ -2805,50 +2703,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Summon Blaster",
-        "fullName": "Epic.Brute_Mace_Mastery.Summon_Blaster",
-        "rank": 4,
-        "available": 43,
-        "description": "Black Scorpion has granted you an Arachnobot Blaster for you to command. Arachnobot Blasters were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Your access to this Arachnobot is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
-        "icon": "arachnos_patron_summononepet.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Knockback",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Immobilize",
-          "Knockback",
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 900,
-          "endurance": 20.8,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Arachnobot_Blaster",
-            "duration": 240
-          }
-        }
-      },
-      {
         "name": "Web Envelope",
         "fullName": "Epic.Brute_Mace_Mastery.Web_Envelope",
-        "rank": 5,
+        "rank": 2,
         "available": 34,
         "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
@@ -2916,6 +2773,149 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 15
         }
+      },
+      {
+        "name": "Focused Accuracy",
+        "fullName": "Epic.Brute_Mace_Mastery.Focused_Accuracy",
+        "rank": 3,
+        "available": 37,
+        "description": "When this power is activated, the Villain focuses their senses to dramatically improve their accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+        "icon": "arachnos_patron_selftohitbuff.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "ToHit"
+        ],
+        "allowedSetCategories": [
+          "To Hit Buff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Ranged_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 10.5,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Ranged_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Ranged_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Disruptor Blast",
+        "fullName": "Epic.Brute_Mace_Mastery.Disruptor_Blast",
+        "rank": 4,
+        "available": 40,
+        "description": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
+        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 2,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.9477,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
+        }
+      },
+      {
+        "name": "Summon Blaster",
+        "fullName": "Epic.Brute_Mace_Mastery.Summon_Blaster",
+        "rank": 5,
+        "available": 43,
+        "description": "Black Scorpion has granted you an Arachnobot Blaster for you to command. Arachnobot Blasters were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Your access to this Arachnobot is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
+        "icon": "arachnos_patron_summononepet.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Knockback",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Immobilize",
+          "Knockback",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "activationTime": 3.03,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Blaster",
+            "duration": 240
+          }
+        }
       }
     ]
   },
@@ -2930,82 +2930,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Ball Lightning",
-        "fullName": "Epic.Brute_Mu_Mastery.Ball_Lightning",
-        "rank": 1,
-        "available": 37,
-        "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
-        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.3,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.18,
-              "table": "Ranged_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.2242,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.1046,
-              "table": "Melee_PvPDamage",
-              "duration": 3.1,
-              "tickRate": 1
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 1.25,
-            "table": "Ranged_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "buffDuration": 4
-        }
-      },
-      {
         "name": "Electrifying Fences",
         "fullName": "Epic.Brute_Mu_Mastery.Electrifying_Fences",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
@@ -3087,7 +3014,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mu Lightning",
         "fullName": "Epic.Brute_Mu_Mastery.Mu_Lightning",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you.",
         "shortHelp": "Ranged, DMG(Energy), Foe -End",
@@ -3141,6 +3068,79 @@ export const EPIC_POOLS_RAW = {
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
+        }
+      },
+      {
+        "name": "Ball Lightning",
+        "fullName": "Epic.Brute_Mu_Mastery.Ball_Lightning",
+        "rank": 3,
+        "available": 37,
+        "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
+        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1.07,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.3,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.18,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Energy",
+              "scale": 0.2242,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.1046,
+              "table": "Melee_PvPDamage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 1.25,
+            "table": "Ranged_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
           },
           "buffDuration": 4
         }
@@ -3261,88 +3261,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Dark Obliteration",
-        "fullName": "Epic.Brute_Soul_Mastery.Dark_Obliteration",
-        "rank": 1,
-        "available": 40,
-        "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
-        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.9,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.7323,
-              "table": "Melee_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
-        "name": "Darkest Night",
-        "fullName": "Epic.Brute_Soul_Mastery.Darkest_Night",
-        "rank": 2,
-        "available": 37,
-        "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
-        "icon": "arachnos_patron_aoedamagedebuff.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "To Hit Debuff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 20,
-          "endurance": 0.26,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10
-        }
-      },
-      {
         "name": "Gloom",
         "fullName": "Epic.Brute_Soul_Mastery.Gloom",
-        "rank": 3,
+        "rank": 1,
         "available": 34,
         "description": "Gloom slowly drains a target of life, while reducing his Accuracy. Slower than Dark Blast, but deals more damage over time.",
         "shortHelp": "Ranged, DoT(Negative), Foe -ACC",
@@ -3392,7 +3313,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Tentacles",
         "fullName": "Epic.Brute_Soul_Mastery.Soul_Tentacles",
-        "rank": 4,
+        "rank": 2,
         "available": 34,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
@@ -3468,6 +3389,85 @@ export const EPIC_POOLS_RAW = {
             "mezResistance": 15
           },
           "buffDuration": 15
+        }
+      },
+      {
+        "name": "Darkest Night",
+        "fullName": "Epic.Brute_Soul_Mastery.Darkest_Night",
+        "rank": 3,
+        "available": 37,
+        "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
+        "icon": "arachnos_patron_aoedamagedebuff.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "To Hit Debuff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 20,
+          "endurance": 0.26,
+          "activationTime": 2.37,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 10
+        }
+      },
+      {
+        "name": "Dark Obliteration",
+        "fullName": "Epic.Brute_Soul_Mastery.Dark_Obliteration",
+        "rank": 4,
+        "available": 40,
+        "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
+        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.9,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.7323,
+              "table": "Melee_PvPDamage"
+            }
+          ]
         }
       },
       {
@@ -3591,63 +3591,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "ESD",
-        "fullName": "Epic.Charge_Mastery.EM_Pulse",
-        "rank": 2,
-        "available": 43,
-        "description": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and leave them incapacitated and Disoriented for a while. Additionally, most machines and robots will take moderate high damage. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
-        "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
-        "icon": "electrical_mastery_em_pulse.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Stuns"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 180,
-          "endurance": 20.18,
-          "activationTime": 2.93,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Energy",
-            "scale": 1.64,
-            "table": "Ranged_Damage"
-          },
-          "stun": {
-            "mag": 3,
-            "scale": 8,
-            "table": "Ranged_Immobilize"
-          },
-          "enduranceDrain": {
-            "scale": 66.67,
-            "table": "Ranged_EndDrain"
-          },
-          "regenDebuff": {
-            "scale": 30,
-            "table": "Ranged_Res_Boolean"
-          },
-          "durations": {
-            "regenDebuff": 5
-          },
-          "buffDuration": 5
-        }
-      },
-      {
         "name": "Static Discharge",
         "fullName": "Epic.Charge_Mastery.Static_Discharge",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
@@ -3694,6 +3640,85 @@ export const EPIC_POOLS_RAW = {
             "scale": 6.25,
             "table": "Ranged_EndDrain"
           }
+        }
+      },
+      {
+        "name": "Thunder Strike",
+        "fullName": "Epic.Charge_Mastery.Thunder_Strike",
+        "rank": 3,
+        "available": 37,
+        "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
+        "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
+        "icon": "chargemastery_thunderstrike.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Melee AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 40,
+          "endurance": 18.512,
+          "activationTime": 2.53,
+          "effectArea": "AoE",
+          "radius": 10,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 2.98,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.42,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 2.971,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.3506,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 2,
+            "table": "Melee_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "stun": {
+            "mag": 3,
+            "scale": 5,
+            "table": "Melee_Stun"
+          },
+          "knockback": {
+            "scale": 1.28,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -3774,82 +3799,57 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Thunder Strike",
-        "fullName": "Epic.Charge_Mastery.Thunder_Strike",
+        "name": "ESD",
+        "fullName": "Epic.Charge_Mastery.EM_Pulse",
         "rank": 5,
-        "available": 37,
-        "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
-        "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
-        "icon": "chargemastery_thunderstrike.png",
+        "available": 43,
+        "description": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and leave them incapacitated and Disoriented for a while. Additionally, most machines and robots will take moderate high damage. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
+        "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
+        "icon": "electrical_mastery_em_pulse.png",
         "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
+        "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
-          "Damage",
+          "EnduranceModification",
           "EnduranceReduction",
-          "Knockback",
           "Recharge",
           "Stun"
         ],
         "allowedSetCategories": [
-          "Knockback",
-          "Melee AoE Damage",
-          "Stuns",
-          "Universal Damage Sets"
+          "Endurance Modification",
+          "Stuns"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 7,
-          "recharge": 40,
-          "endurance": 18.512,
-          "activationTime": 2.53,
+          "recharge": 180,
+          "endurance": 20.18,
+          "activationTime": 2.93,
           "effectArea": "AoE",
-          "radius": 10,
+          "radius": 25,
           "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 2.98,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.42,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.971,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.3506,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 2,
-            "table": "Melee_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 2,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
+          "damage": {
+            "type": "Energy",
+            "scale": 1.64,
+            "table": "Ranged_Damage"
           },
           "stun": {
             "mag": 3,
-            "scale": 5,
-            "table": "Melee_Stun"
+            "scale": 8,
+            "table": "Ranged_Immobilize"
           },
-          "knockback": {
-            "scale": 1.28,
-            "table": "Melee_Ones"
+          "enduranceDrain": {
+            "scale": 66.67,
+            "table": "Ranged_EndDrain"
           },
-          "buffDuration": 4
+          "regenDebuff": {
+            "scale": 30,
+            "table": "Ranged_Res_Boolean"
+          },
+          "durations": {
+            "regenDebuff": 5
+          },
+          "buffDuration": 5
         }
       }
     ]
@@ -3922,9 +3922,157 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Ice Blast",
+        "fullName": "Epic.Chill_Mastery.Ice_Blast",
+        "rank": 2,
+        "available": 34,
+        "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
+        "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
+        "icon": "ice_mastery_iceblast.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Mastermind ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1.889,
+              "table": "Ranged_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Hoarfrost",
+        "fullName": "Epic.Chill_Mastery.Hoarfrost",
+        "rank": 3,
+        "available": 37,
+        "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
+        "icon": "ice_mastery_hoarfrost.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Healing",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Healing",
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 540,
+          "endurance": 14.56,
+          "activationTime": 0.73,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "durations": {
+            "maxHPBuff": 120,
+            "resistance": 120
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 120
+        }
+      },
+      {
+        "name": "Frozen Armor",
+        "fullName": "Epic.Chill_Mastery.Snow_Storm",
+        "rank": 4,
+        "available": 40,
+        "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
+        "icon": "ice_mastery_frozenarmor.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets",
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.73,
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "cold": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Hibernate",
         "fullName": "Epic.Chill_Mastery.Hibernate",
-        "rank": 2,
+        "rank": 5,
         "available": 43,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
@@ -4001,154 +4149,6 @@ export const EPIC_POOLS_RAW = {
           "onlyAffectsSelf": {
             "scale": 0.75,
             "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
-        "name": "Hoarfrost",
-        "fullName": "Epic.Chill_Mastery.Hoarfrost",
-        "rank": 3,
-        "available": 37,
-        "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
-        "icon": "ice_mastery_hoarfrost.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Healing",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Healing",
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 14.56,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
-          "maxHPBuff": {
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
-          "durations": {
-            "maxHPBuff": 120,
-            "resistance": 120
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "buffDuration": 120
-        }
-      },
-      {
-        "name": "Ice Blast",
-        "fullName": "Epic.Chill_Mastery.Ice_Blast",
-        "rank": 4,
-        "available": 34,
-        "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
-        "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
-        "icon": "ice_mastery_iceblast.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Mastermind ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Ranged Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.889,
-              "table": "Ranged_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
-        "name": "Frozen Armor",
-        "fullName": "Epic.Chill_Mastery.Snow_Storm",
-        "rank": 5,
-        "available": 40,
-        "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
-        "icon": "ice_mastery_frozenarmor.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets",
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1,
-              "table": "Melee_Res_Dmg"
-            }
           },
           "buffDuration": 0.75
         }
@@ -4238,9 +4238,88 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Snow Storm",
+        "fullName": "Epic.Cold_Mastery.Snow_Storm",
+        "rank": 2,
+        "available": 34,
+        "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes.",
+        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge",
+        "icon": "ice_mastery_snowstorm.png",
+        "powerType": "Toggle",
+        "requires": "$archetype @Class_Blaster ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Slow Movement"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 20,
+          "endurance": 0.26,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 25,
+          "maxTargets": 10
+        }
+      },
+      {
+        "name": "Hoarfrost",
+        "fullName": "Epic.Cold_Mastery.Hoarfrost",
+        "rank": 3,
+        "available": 37,
+        "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
+        "icon": "ice_mastery_hoarfrost.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Healing",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Healing",
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 540,
+          "endurance": 14.56,
+          "activationTime": 0.73,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "durations": {
+            "maxHPBuff": 120,
+            "resistance": 120
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 120
+        }
+      },
+      {
         "name": "Frozen Armor",
         "fullName": "Epic.Cold_Mastery.Frozen_Armor",
-        "rank": 2,
+        "rank": 4,
         "available": 40,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
@@ -4294,7 +4373,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hibernate",
         "fullName": "Epic.Cold_Mastery.Hibernate",
-        "rank": 3,
+        "rank": 5,
         "available": 43,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
@@ -4374,85 +4453,6 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 0.75
         }
-      },
-      {
-        "name": "Hoarfrost",
-        "fullName": "Epic.Cold_Mastery.Hoarfrost",
-        "rank": 4,
-        "available": 37,
-        "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
-        "icon": "ice_mastery_hoarfrost.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Healing",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Healing",
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 14.56,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
-          "maxHPBuff": {
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
-          "durations": {
-            "maxHPBuff": 120,
-            "resistance": 120
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "buffDuration": 120
-        }
-      },
-      {
-        "name": "Snow Storm",
-        "fullName": "Epic.Cold_Mastery.Snow_Storm",
-        "rank": 5,
-        "available": 34,
-        "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes.",
-        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge",
-        "icon": "ice_mastery_snowstorm.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Blaster ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Slow Movement"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 20,
-          "endurance": 0.26,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 10
-        }
       }
     ]
   },
@@ -4523,9 +4523,123 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Murky Cloud",
+        "fullName": "Epic.Controller_Dark_Mastery.Murky_Cloud",
+        "rank": 2,
+        "available": 34,
+        "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
+        "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
+        "icon": "dark_mastery_murkycloud.png",
+        "powerType": "Toggle",
+        "requires": "$archetype @Class_Controller ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "fire": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Umbral Torrent",
+        "fullName": "Epic.Controller_Dark_Mastery.Torrent",
+        "rank": 3,
+        "available": 37,
+        "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
+        "icon": "dark_mastery_umbraltorrent.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Knockback",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 30,
+          "endurance": 14.352,
+          "activationTime": 1.03,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.8471,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.8471,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Knockback"
+          }
+        }
+      },
+      {
         "name": "Midnight Grasp",
         "fullName": "Epic.Controller_Dark_Mastery.Gather_Shadows",
-        "rank": 2,
+        "rank": 4,
         "available": 40,
         "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
@@ -4599,58 +4713,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Murky Cloud",
-        "fullName": "Epic.Controller_Dark_Mastery.Murky_Cloud",
-        "rank": 3,
-        "available": 34,
-        "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
-        "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
-        "icon": "dark_mastery_murkycloud.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Controller ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.104,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "fire": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "cold": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Soul Consumption",
         "fullName": "Epic.Controller_Dark_Mastery.Soul_Consumption",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "You consume life and soul from all enemies nearby, thus siginficantly increasing your maximum hitpoints and endurance. The more foes affected, the stronger the effect. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
@@ -4703,71 +4768,6 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 60
         }
-      },
-      {
-        "name": "Umbral Torrent",
-        "fullName": "Epic.Controller_Dark_Mastery.Torrent",
-        "rank": 5,
-        "available": 37,
-        "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
-        "icon": "dark_mastery_umbraltorrent.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Knockback",
-          "Ranged AoE Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 30,
-          "endurance": 14.352,
-          "activationTime": 1.03,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Knockback"
-          }
-        }
       }
     ]
   },
@@ -4782,121 +4782,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Disruptor Blast",
-        "fullName": "Epic.Controller_Mace_Mastery.Disruptor_Blast",
-        "rank": 1,
-        "available": 37,
-        "description": "Fires a tremendous charge of kinetic energy from your Bane Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
-        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 2,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.9477,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.9477,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
-        }
-      },
-      {
-        "name": "Focused Accuracy",
-        "fullName": "Epic.Controller_Mace_Mastery.Personal_Force_Field",
-        "rank": 2,
-        "available": 40,
-        "description": "When this power is activated, the Villain focuses their senses to dramatically improve their range and accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
-        "icon": "arachnos_patron_selftohitbuff.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "ToHit"
-        ],
-        "allowedSetCategories": [
-          "To Hit Buff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.156,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Poisonous Ray",
         "fullName": "Epic.Controller_Mace_Mastery.Poisonous_Ray",
-        "rank": 3,
+        "rank": 1,
         "available": 34,
         "description": "The Bane Mace can fire a nasty Poison Ray. This toxin is suspended in a polarized plasma field and delivered like an energy blast. Upon impact, the toxin directly attacks the immune system, reducing the affected targets Defense and Damage Resistance as it deals toxic damage.",
         "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
@@ -5009,7 +4897,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Scorpion Shield",
         "fullName": "Epic.Controller_Mace_Mastery.Scorpion_Shield",
-        "rank": 4,
+        "rank": 2,
         "available": 34,
         "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
@@ -5054,6 +4942,118 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.75,
               "table": "Melee_Res_Dmg"
             }
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Disruptor Blast",
+        "fullName": "Epic.Controller_Mace_Mastery.Disruptor_Blast",
+        "rank": 3,
+        "available": 37,
+        "description": "Fires a tremendous charge of kinetic energy from your Bane Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
+        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 2,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Ranged_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.9477,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.9477,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
+        }
+      },
+      {
+        "name": "Focused Accuracy",
+        "fullName": "Epic.Controller_Mace_Mastery.Personal_Force_Field",
+        "rank": 4,
+        "available": 40,
+        "description": "When this power is activated, the Villain focuses their senses to dramatically improve their range and accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+        "icon": "arachnos_patron_selftohitbuff.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "ToHit"
+        ],
+        "allowedSetCategories": [
+          "To Hit Buff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
           },
           "buffDuration": 0.75
         }
@@ -5287,9 +5287,67 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Rise of the Phoenix",
+        "fullName": "Epic.Corruptor_Fire_Mastery.Rise_of_the_Phoenix",
+        "rank": 4,
+        "available": 40,
+        "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 41 and have one other Fire Mastery Powers before selecting this power.<br>",
+        "shortHelp": "Self Rez, Special",
+        "icon": "flamingshield_riseofthephoenix.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Damage",
+          "EnduranceModification",
+          "Healing",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Accurate Healing",
+          "Endurance Modification",
+          "Healing",
+          "Ranged AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 300,
+          "activationTime": 1.5,
+          "effectArea": "Location",
+          "damage": {
+            "type": "Heal",
+            "scale": 5,
+            "table": "Melee_HealSelf",
+            "duration": 0.5,
+            "tickRate": 1
+          },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Phoenix",
+            "duration": 5
+          },
+          "untouchable": {
+            "scale": 15,
+            "table": "Melee_Ones"
+          },
+          "enduranceGain": {
+            "scale": 50,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 50,
+            "scale": 4,
+            "table": "Melee_Ones"
+          }
+        }
+      },
+      {
         "name": "Greater Fire Sword",
         "fullName": "Epic.Corruptor_Fire_Mastery.Greater_Fire_Sword",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Melee, DMG(Fire)",
@@ -5344,64 +5402,6 @@ export const EPIC_POOLS_RAW = {
             }
           ]
         }
-      },
-      {
-        "name": "Rise of the Phoenix",
-        "fullName": "Epic.Corruptor_Fire_Mastery.Rise_of_the_Phoenix",
-        "rank": 5,
-        "available": 40,
-        "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 41 and have one other Fire Mastery Powers before selecting this power.<br>",
-        "shortHelp": "Self Rez, Special",
-        "icon": "flamingshield_riseofthephoenix.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Damage",
-          "EnduranceModification",
-          "Healing",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Accurate Healing",
-          "Endurance Modification",
-          "Healing",
-          "Ranged AoE Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 300,
-          "activationTime": 1.5,
-          "effectArea": "Location",
-          "damage": {
-            "type": "Heal",
-            "scale": 5,
-            "table": "Melee_HealSelf",
-            "duration": 0.5,
-            "tickRate": 1
-          },
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Phoenix",
-            "duration": 5
-          },
-          "untouchable": {
-            "scale": 15,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 50,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 50,
-            "scale": 4,
-            "table": "Melee_Ones"
-          }
-        }
       }
     ]
   },
@@ -5416,93 +5416,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Hibernate",
-        "fullName": "Epic.Corruptor_Leviathan_Mastery.Hibernate",
-        "rank": 1,
-        "available": 37,
-        "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
-        "icon": "arachnos_patron_selfbuffresistancephysical.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Healing",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Healing"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 240,
-          "endurance": 0.13,
-          "activationTime": 0.07,
-          "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "regenBuff": 0.75,
-            "recoveryBuff": 0.75,
-            "mezResistance": 0.75,
-            "knockup": 0.75,
-            "knockback": 0.75,
-            "slow": 0.75
-          },
-          "recoveryBuff": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "knockback": {
-              "scale": 10,
-              "table": "Melee_Ones"
-            }
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 10000,
-              "table": "Melee_Ones"
-            }
-          },
-          "selfPenalty": true,
-          "immobilize": {
-            "mag": 1000,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "onlyAffectsSelf": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "School of Sharks",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.School_of_Sharks",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
@@ -5593,7 +5509,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shark Skin",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Shark_Skin",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing and cold damage.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
@@ -5631,6 +5547,90 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Hibernate",
+        "fullName": "Epic.Corruptor_Leviathan_Mastery.Hibernate",
+        "rank": 3,
+        "available": 37,
+        "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
+        "icon": "arachnos_patron_selfbuffresistancephysical.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 0.13,
+          "activationTime": 0.07,
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 0.75,
+            "recoveryBuff": 0.75,
+            "mezResistance": 0.75,
+            "knockup": 0.75,
+            "knockback": 0.75,
+            "slow": 0.75
+          },
+          "recoveryBuff": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            },
+            "knockback": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            }
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "slow": {
+            "fly": {
+              "scale": 10000,
+              "table": "Melee_Ones"
+            }
+          },
+          "selfPenalty": true,
+          "immobilize": {
+            "mag": 1000,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
           },
           "buffDuration": 0.75
         }
@@ -5763,60 +5763,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Focused Accuracy",
-        "fullName": "Epic.Corruptor_Mace_Mastery.Focused_Accuracy",
-        "rank": 1,
-        "available": 37,
-        "description": "When this power is activated, the Villain focuses their senses to dramatically improve their range and accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
-        "icon": "arachnos_patron_selftohitbuff.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "ToHit"
-        ],
-        "allowedSetCategories": [
-          "To Hit Buff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.156,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Scorpion Shield",
         "fullName": "Epic.Corruptor_Mace_Mastery.Scorpion_Shield",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
@@ -5866,122 +5815,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Summon Disruptor",
-        "fullName": "Epic.Corruptor_Mace_Mastery.Summon_Disruptor",
-        "rank": 3,
-        "available": 43,
-        "description": "Black Scorpion has granted you an Arachnobot Disruptor for you to command. Arachnobots were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Your access to this Arachnobot is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
-        "icon": "arachnos_patron_summononepet.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Holds",
-          "Immobilize",
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 900,
-          "endurance": 20.8,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
-            "duration": 240
-          }
-        }
-      },
-      {
-        "name": "Web Cocoon",
-        "fullName": "Epic.Corruptor_Mace_Mastery.Web_Cocoon",
-        "rank": 4,
-        "available": 40,
-        "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
-        "icon": "arachnos_patron_targetedhold.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.1169,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.345,
-              "table": "Melee_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1169,
-              "table": "Melee_InherentDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.345,
-              "table": "Melee_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Web Envelope",
         "fullName": "Epic.Corruptor_Mace_Mastery.Web_Envelope",
-        "rank": 5,
+        "rank": 2,
         "available": 34,
         "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
@@ -6063,6 +5899,170 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 15
         }
+      },
+      {
+        "name": "Focused Accuracy",
+        "fullName": "Epic.Corruptor_Mace_Mastery.Focused_Accuracy",
+        "rank": 3,
+        "available": 37,
+        "description": "When this power is activated, the Villain focuses their senses to dramatically improve their range and accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+        "icon": "arachnos_patron_selftohitbuff.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "ToHit"
+        ],
+        "allowedSetCategories": [
+          "To Hit Buff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.156,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Web Cocoon",
+        "fullName": "Epic.Corruptor_Mace_Mastery.Web_Cocoon",
+        "rank": 4,
+        "available": 40,
+        "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
+        "icon": "arachnos_patron_targetedhold.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.1169,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.345,
+              "table": "Melee_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1169,
+              "table": "Melee_InherentDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.345,
+              "table": "Melee_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
+        }
+      },
+      {
+        "name": "Summon Disruptor",
+        "fullName": "Epic.Corruptor_Mace_Mastery.Summon_Disruptor",
+        "rank": 5,
+        "available": 43,
+        "description": "Black Scorpion has granted you an Arachnobot Disruptor for you to command. Arachnobots were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Your access to this Arachnobot is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
+        "icon": "arachnos_patron_summononepet.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Hold",
+          "Immobilize",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Holds",
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "activationTime": 3.03,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
+            "duration": 240
+          }
+        }
       }
     ]
   },
@@ -6122,48 +6122,48 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Energize",
-        "fullName": "Epic.Corruptor_Mu_Mastery.Conserve_Power",
+        "name": "Power Sink",
+        "fullName": "Epic.Corruptor_Mu_Mastery.Power_Sink",
         "rank": 2,
-        "available": 40,
-        "description": "You can channel a tremendous amount of electricity through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Self Endurance Discount, Heal, +Regen",
-        "icon": "arachnos_patron_conservepower.png",
+        "available": 34,
+        "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.",
+        "shortHelp": "PBAoE, Self +End, Foe -End",
+        "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
+        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
+          "EnduranceModification",
           "EnduranceReduction",
-          "Healing",
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Healing"
+          "Endurance Modification"
         ],
         "effects": {
           "accuracy": 1,
-          "recharge": 240,
-          "endurance": 10.4,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 2.5,
-            "table": "Melee_HealSelf"
+          "recharge": 120,
+          "endurance": 13,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 10,
+          "maxTargets": 10,
+          "enduranceDrain": {
+            "scale": 10,
+            "table": "Melee_EndDrain"
           },
-          "enduranceDiscount": {
-            "scale": 0.5,
-            "table": "Melee_Stun"
-          },
-          "durations": {
-            "enduranceDiscount": 30,
-            "regenBuff": 30
-          },
-          "regenBuff": {
+          "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "buffDuration": 30
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -6253,48 +6253,48 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Power Sink",
-        "fullName": "Epic.Corruptor_Mu_Mastery.Power_Sink",
+        "name": "Energize",
+        "fullName": "Epic.Corruptor_Mu_Mastery.Conserve_Power",
         "rank": 4,
-        "available": 34,
-        "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.",
-        "shortHelp": "PBAoE, Self +End, Foe -End",
-        "icon": "arachnos_patron_pbaoedrain.png",
+        "available": 40,
+        "description": "You can channel a tremendous amount of electricity through your body for a short period of time. Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Self Endurance Discount, Heal, +Regen",
+        "icon": "arachnos_patron_conservepower.png",
         "powerType": "Click",
-        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "EnduranceModification",
           "EnduranceReduction",
+          "Healing",
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Endurance Modification"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
-          "recharge": 120,
-          "endurance": 13,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "enduranceDrain": {
-            "scale": 10,
-            "table": "Melee_EndDrain"
+          "recharge": 240,
+          "endurance": 10.4,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 2.5,
+            "table": "Melee_HealSelf"
           },
-          "recoveryDebuff": {
+          "enduranceDiscount": {
+            "scale": 0.5,
+            "table": "Melee_Stun"
+          },
+          "durations": {
+            "enduranceDiscount": 30,
+            "regenBuff": 30
+          },
+          "regenBuff": {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 4
+          "buffDuration": 30
         }
       },
       {
@@ -6402,9 +6402,77 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Soul Storm",
+        "fullName": "Epic.Corruptor_Soul_Mastery.Soul_Storm",
+        "rank": 2,
+        "available": 34,
+        "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 41 and have Soul Drain or Dark Embrace before selecting this power.",
+        "shortHelp": "Ranged, DoT(Negative), Foe Hold",
+        "icon": "arachnos_patron_targetedhold.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.11,
+              "table": "Ranged_Damage",
+              "duration": 10,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.2879,
+              "table": "Ranged_PvPDamage",
+              "duration": 10,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.11,
+              "table": "Ranged_InherentDamage",
+              "duration": 10,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.2879,
+              "table": "Ranged_PvPDamage",
+              "duration": 10,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
+        }
+      },
+      {
         "name": "Power Boost",
         "fullName": "Epic.Corruptor_Soul_Mastery.Power_Boost",
-        "rank": 2,
+        "rank": 3,
         "available": 37,
         "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Self +Special",
@@ -6504,7 +6572,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Drain",
         "fullName": "Epic.Corruptor_Soul_Mastery.Soul_Drain",
-        "rank": 3,
+        "rank": 4,
         "available": 40,
         "description": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE DMG(Negative), Self +DMG, +ACC",
@@ -6562,74 +6630,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Buff_Dmg"
           },
           "buffDuration": 30
-        }
-      },
-      {
-        "name": "Soul Storm",
-        "fullName": "Epic.Corruptor_Soul_Mastery.Soul_Storm",
-        "rank": 4,
-        "available": 34,
-        "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 41 and have Soul Drain or Dark Embrace before selecting this power.",
-        "shortHelp": "Ranged, DoT(Negative), Foe Hold",
-        "icon": "arachnos_patron_targetedhold.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Ranged_Damage",
-              "duration": 10,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.2879,
-              "table": "Ranged_PvPDamage",
-              "duration": 10,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Ranged_InherentDamage",
-              "duration": 10,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.2879,
-              "table": "Ranged_PvPDamage",
-              "duration": 10,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
         }
       },
       {
@@ -6738,9 +6738,50 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Oppressive Gloom",
+        "fullName": "Epic.Dark_Mastery.Oppressive_Gloom",
+        "rank": 2,
+        "available": 34,
+        "description": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use.",
+        "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
+        "icon": "dark_mastery_oppressivegloom.png",
+        "powerType": "Toggle",
+        "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Stuns"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 16,
+          "endurance": 0.156,
+          "activationTime": 1.17,
+          "effectArea": "AoE",
+          "radius": 12,
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1521,
+            "table": "Melee_Damage"
+          },
+          "stun": {
+            "mag": 2,
+            "scale": 6,
+            "table": "Melee_Stun"
+          }
+        }
+      },
+      {
         "name": "Dark Embrace",
         "fullName": "Epic.Dark_Mastery.Dark_Embrace",
-        "rank": 2,
+        "rank": 3,
         "available": 37,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Toxic, and Negative Energy damage. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
@@ -6787,42 +6828,64 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Oppressive Gloom",
-        "fullName": "Epic.Dark_Mastery.Oppressive_Gloom",
-        "rank": 3,
-        "available": 34,
-        "description": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use.",
-        "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
-        "icon": "dark_mastery_oppressivegloom.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
+        "name": "Soul Transfer",
+        "fullName": "Epic.Dark_Mastery.Soul_Transfer",
+        "rank": 4,
+        "available": 40,
+        "description": "Should you fall in battle, you can perform a Soul Transfer, sucking the life force of all foes around you to bring yourself back from the brink of death. The more foes nearby, the more life is restored to you. Drained foes are left Disoriented. The dark effects of this Soul Transfer will actually leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds. There must be at least one foe nearby to fuel the Transfer and revive yourself. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
+        "shortHelp": "Self Rez, Special",
+        "icon": "dark_mastery_soultransfer.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceReduction",
+          "Damage",
+          "EnduranceModification",
+          "Healing",
           "Recharge",
           "Stun"
         ],
         "allowedSetCategories": [
-          "Stuns"
+          "Accurate Healing",
+          "Endurance Modification",
+          "Healing",
+          "Melee AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 0.156,
+          "recharge": 450,
           "activationTime": 1.17,
           "effectArea": "AoE",
-          "radius": 12,
+          "radius": 25,
           "maxTargets": 10,
-          "damage": {
-            "type": "Special",
-            "scale": 0.1521,
-            "table": "Melee_Damage"
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Heal",
+              "scale": 3,
+              "table": "Melee_Heal",
+              "duration": 0.5,
+              "tickRate": 1
+            }
+          ],
+          "enduranceGain": {
+            "scale": 30,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 50,
+            "scale": 4,
+            "table": "Melee_Ones"
           },
           "stun": {
-            "mag": 2,
-            "scale": 6,
+            "mag": 30,
+            "scale": 8,
             "table": "Melee_Stun"
           }
         }
@@ -6830,7 +6893,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Spirit Drain",
         "fullName": "Epic.Dark_Mastery.Soul_Drain",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Using this power, you can drain the spirits of your foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Damged AoE, DMG(Negative), Self +DMG, +ACC",
@@ -6891,69 +6954,6 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 15
         }
-      },
-      {
-        "name": "Soul Transfer",
-        "fullName": "Epic.Dark_Mastery.Soul_Transfer",
-        "rank": 5,
-        "available": 40,
-        "description": "Should you fall in battle, you can perform a Soul Transfer, sucking the life force of all foes around you to bring yourself back from the brink of death. The more foes nearby, the more life is restored to you. Drained foes are left Disoriented. The dark effects of this Soul Transfer will actually leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds. There must be at least one foe nearby to fuel the Transfer and revive yourself. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
-        "shortHelp": "Self Rez, Special",
-        "icon": "dark_mastery_soultransfer.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Damage",
-          "EnduranceModification",
-          "Healing",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Accurate Healing",
-          "Endurance Modification",
-          "Healing",
-          "Melee AoE Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 450,
-          "activationTime": 1.17,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Heal",
-              "scale": 3,
-              "table": "Melee_Heal",
-              "duration": 0.5,
-              "tickRate": 1
-            }
-          ],
-          "enduranceGain": {
-            "scale": 30,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 50,
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "mag": 30,
-            "scale": 8,
-            "table": "Melee_Stun"
-          }
-        }
       }
     ]
   },
@@ -6968,9 +6968,184 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Petrifying Gaze",
+        "fullName": "Epic.Darkness_Mastery.Petrifying_Gaze",
+        "rank": 1,
+        "available": 34,
+        "description": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless.",
+        "shortHelp": "Ranged, DMG(Negative), Foe Hold",
+        "icon": "darknessmastery_petrifyinggaze.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 2.529,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 2.529,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 2.529,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 2.529,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
+        }
+      },
+      {
+        "name": "Umbral Torrent",
+        "fullName": "Epic.Darkness_Mastery.Torrent",
+        "rank": 2,
+        "available": 34,
+        "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit.",
+        "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
+        "icon": "darkcast_torrent.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Knockback",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 30,
+          "endurance": 14.352,
+          "activationTime": 1.03,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.8471,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.8471,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.8471,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.8471,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Knockback"
+          }
+        }
+      },
+      {
         "name": "Dark Blast",
         "fullName": "Epic.Darkness_Mastery.Dark_Blast",
-        "rank": 1,
+        "rank": 3,
         "available": 37,
         "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy. You must be level 38 and have one other Dark Mastery Powers before selecting this power",
         "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
@@ -7051,7 +7226,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Night Fall",
         "fullName": "Epic.Darkness_Mastery.Night_Fall",
-        "rank": 2,
+        "rank": 4,
         "available": 40,
         "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe -To Hit",
@@ -7137,94 +7312,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Petrifying Gaze",
-        "fullName": "Epic.Darkness_Mastery.Petrifying_Gaze",
-        "rank": 3,
-        "available": 34,
-        "description": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless.",
-        "shortHelp": "Ranged, DMG(Negative), Foe Hold",
-        "icon": "darknessmastery_petrifyinggaze.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.529,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.529,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.529,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.529,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Tenebrous Tentacles",
         "fullName": "Epic.Darkness_Mastery.Tenebrous_Tentacles",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their Accuracy. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize, -ACC",
@@ -7338,96 +7428,6 @@ export const EPIC_POOLS_RAW = {
             "mezResistance": 15
           },
           "buffDuration": 15
-        }
-      },
-      {
-        "name": "Umbral Torrent",
-        "fullName": "Epic.Darkness_Mastery.Torrent",
-        "rank": 5,
-        "available": 34,
-        "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit.",
-        "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
-        "icon": "darkcast_torrent.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Knockback",
-          "Ranged AoE Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 30,
-          "endurance": 14.352,
-          "activationTime": 1.03,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Knockback"
-          }
         }
       }
     ]
@@ -7596,58 +7596,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Greater Fire Sword",
-        "fullName": "Epic.Defender_Fire_Mastery.Greater_Fire_Sword",
-        "rank": 4,
-        "available": 43,
-        "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
-        "shortHelp": "Melee, DMG(Fire)",
-        "icon": "firemastery_greaterfiresword.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Melee Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 7,
-          "recharge": 24,
-          "endurance": 12.688,
-          "activationTime": 1.37,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 2.44,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 2.319,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.2,
-              "table": "Melee_Damage",
-              "duration": 4.1,
-              "tickRate": 1
-            }
-          ]
-        }
-      },
-      {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Defender_Fire_Mastery.Rise_of_the_Phoenix",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Self Rez, Special",
@@ -7700,6 +7651,55 @@ export const EPIC_POOLS_RAW = {
             "scale": 4,
             "table": "Melee_Ones"
           }
+        }
+      },
+      {
+        "name": "Greater Fire Sword",
+        "fullName": "Epic.Defender_Fire_Mastery.Greater_Fire_Sword",
+        "rank": 5,
+        "available": 43,
+        "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
+        "shortHelp": "Melee, DMG(Fire)",
+        "icon": "firemastery_greaterfiresword.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Melee Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.2,
+          "range": 7,
+          "recharge": 24,
+          "endurance": 12.688,
+          "activationTime": 1.37,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 2.44,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 2.319,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.2,
+              "table": "Melee_Damage",
+              "duration": 4.1,
+              "tickRate": 1
+            }
+          ]
         }
       }
     ]
@@ -7870,49 +7870,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Ice Elemental",
-        "fullName": "Epic.Defender_Ice_Mastery.Ice_Elemental",
-        "rank": 4,
-        "available": 43,
-        "description": "You can create a very powerful entity of animated ice at a targeted location. Ice Elemental possesses several ice powers to attack any nearby foes and can be healed and buffed like any teammate. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Summon Ice Elemental: Melee DMG(Lethal/Cold)",
-        "icon": "ice_mastery_iceelemental.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 900,
-          "endurance": 20.8,
-          "activationTime": 1.87,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "P1712748702",
-            "duration": 240
-          }
-        }
-      },
-      {
         "name": "Build Up",
         "fullName": "Epic.Defender_Ice_Mastery.Ice_Slick",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your Accuracy.<br><br><color #fcfc95>Recharge: Long.</color>",
         "shortHelp": "Self +DMG, +To Hit",
@@ -7948,6 +7908,46 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 10
         }
+      },
+      {
+        "name": "Ice Elemental",
+        "fullName": "Epic.Defender_Ice_Mastery.Ice_Elemental",
+        "rank": 5,
+        "available": 43,
+        "description": "You can create a very powerful entity of animated ice at a targeted location. Ice Elemental possesses several ice powers to attack any nearby foes and can be healed and buffed like any teammate. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Summon Ice Elemental: Melee DMG(Lethal/Cold)",
+        "icon": "ice_mastery_iceelemental.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "activationTime": 1.87,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "P1712748702",
+            "duration": 240
+          }
+        }
       }
     ]
   },
@@ -7962,40 +7962,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Darkest Night",
-        "fullName": "Epic.Dominator_Dark_Mastery.Darkest_Night",
-        "rank": 1,
-        "available": 37,
-        "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
-        "icon": "dark_mastery_darkestnight.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "To Hit Debuff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 20,
-          "endurance": 0.26,
-          "activationTime": 3.17,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10
-        }
-      },
-      {
         "name": "Murky Cloud",
         "fullName": "Epic.Dominator_Dark_Mastery.Murky_Cloud",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
@@ -8042,9 +8011,134 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Tar Patch",
+        "fullName": "Epic.Dominator_Dark_Mastery.Tar_Patch",
+        "rank": 2,
+        "available": 34,
+        "description": "Drops a large patch of viscous Negative Energy which dramatically slows down enemies that run through it and reduces their damage resistance. Affected targets stuck in the Tar Patch cannot jump or fly.",
+        "shortHelp": "Ranged (Location AoE), Target -Speed, -Res, -Fly",
+        "icon": "dark_mastery_tarpatch.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Dominator ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Slow Movement"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 7.8,
+          "activationTime": 3.1,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "PL_StaticObject",
+            "displayName": "Tar Patch",
+            "powers": [
+              "Redirects.Dark_Miasma.Tar_Epic"
+            ],
+            "duration": 45
+          }
+        }
+      },
+      {
+        "name": "Darkest Night",
+        "fullName": "Epic.Dominator_Dark_Mastery.Darkest_Night",
+        "rank": 3,
+        "available": 37,
+        "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
+        "icon": "dark_mastery_darkestnight.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "To Hit Debuff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 20,
+          "endurance": 0.26,
+          "activationTime": 3.17,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 10
+        }
+      },
+      {
+        "name": "Umbral Torrent",
+        "fullName": "Epic.Dominator_Dark_Mastery.Torrent",
+        "rank": 4,
+        "available": 40,
+        "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
+        "icon": "dark_mastery_umbraltorrent.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Knockback",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 30,
+          "endurance": 14.352,
+          "activationTime": 1.03,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.8471,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Knockback"
+          }
+        }
+      },
+      {
         "name": "Soul Consumption",
         "fullName": "Epic.Dominator_Dark_Mastery.Soul_Consumption",
-        "rank": 3,
+        "rank": 5,
         "available": 43,
         "description": "You consume life and soul from all enemies nearby, thus siginficantly increasing your maximum hitpoints and endurance. The more foes affected, the stronger the effect. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
@@ -8096,100 +8190,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_HealSelf"
           },
           "buffDuration": 60
-        }
-      },
-      {
-        "name": "Tar Patch",
-        "fullName": "Epic.Dominator_Dark_Mastery.Tar_Patch",
-        "rank": 4,
-        "available": 34,
-        "description": "Drops a large patch of viscous Negative Energy which dramatically slows down enemies that run through it and reduces their damage resistance. Affected targets stuck in the Tar Patch cannot jump or fly.",
-        "shortHelp": "Ranged (Location AoE), Target -Speed, -Res, -Fly",
-        "icon": "dark_mastery_tarpatch.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Dominator ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Slow Movement"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 180,
-          "endurance": 7.8,
-          "activationTime": 3.1,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "PL_StaticObject",
-            "displayName": "Tar Patch",
-            "powers": [
-              "Redirects.Dark_Miasma.Tar_Epic"
-            ],
-            "duration": 45
-          }
-        }
-      },
-      {
-        "name": "Umbral Torrent",
-        "fullName": "Epic.Dominator_Dark_Mastery.Torrent",
-        "rank": 5,
-        "available": 40,
-        "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
-        "icon": "dark_mastery_umbraltorrent.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Knockback",
-          "Ranged AoE Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 30,
-          "endurance": 14.352,
-          "activationTime": 1.03,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Knockback"
-          }
         }
       }
     ]
@@ -8275,9 +8275,51 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Water Spout",
+        "fullName": "Epic.Dominator_Leviathan_Mastery.Water_Spout",
+        "rank": 2,
+        "available": 34,
+        "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes.",
+        "shortHelp": "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet",
+        "icon": "arachnos_patron_dropknockback.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Damage",
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Knockback",
+          "Ranged AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.3,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 20.8,
+          "activationTime": 1.17,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Water_Spout",
+            "duration": 30
+          }
+        }
+      },
+      {
         "name": "Hibernate",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Hibernate",
-        "rank": 2,
+        "rank": 3,
         "available": 37,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
@@ -8361,7 +8403,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shark Skin",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Shark_Skin",
-        "rank": 3,
+        "rank": 4,
         "available": 40,
         "description": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing and cold damage. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
@@ -8406,7 +8448,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Coralax",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Summon_Coralax",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Captain Mako has shown you how to summon a Coralax Blue Hybrid to do your bidding. The Coralax are humans who have been infected with living coral. Your access to this Hybrid is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Summon Hybrid: Ranged DMG(Lethal)",
@@ -8439,48 +8481,6 @@ export const EPIC_POOLS_RAW = {
             "duration": 240
           }
         }
-      },
-      {
-        "name": "Water Spout",
-        "fullName": "Epic.Dominator_Leviathan_Mastery.Water_Spout",
-        "rank": 5,
-        "available": 34,
-        "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes.",
-        "shortHelp": "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet",
-        "icon": "arachnos_patron_dropknockback.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Damage",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Knockback",
-          "Ranged AoE Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.3,
-          "range": 60,
-          "recharge": 180,
-          "endurance": 20.8,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Water_Spout",
-            "duration": 30
-          }
-        }
       }
     ]
   },
@@ -8495,9 +8495,174 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Poisonous Ray",
+        "fullName": "Epic.Dominator_Mace_Mastery.Poisonous_Ray",
+        "rank": 1,
+        "available": 34,
+        "description": "The Bane Mace can fire a nasty Poison Ray. This toxin is suspended in a polarized plasma field and delivered like an energy blast. Upon impact, the toxin directly attacks the immune system, reducing the affected targets Defense and Damage Resistance as it deals toxic damage.",
+        "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
+        "icon": "arachnos_patron_targeteddebuffdefense.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Dominator == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 24,
+          "endurance": 11.856,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.05,
+              "table": "Ranged_Damage",
+              "duration": 9.3,
+              "tickRate": 1
+            },
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Ranged_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.38,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1255,
+              "table": "Ranged_PvPDamage",
+              "duration": 9.3,
+              "tickRate": 1
+            },
+            {
+              "type": "Energy",
+              "scale": 2.76,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 30,
+            "resistanceDebuff": 30
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            }
+          },
+          "buffDuration": 30
+        }
+      },
+      {
+        "name": "Scorpion Shield",
+        "fullName": "Epic.Dominator_Mace_Mastery.Scorpion_Shield",
+        "rank": 2,
+        "available": 34,
+        "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
+        "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
+        "icon": "arachnos_patron_defensebuff.png",
+        "powerType": "Toggle",
+        "requires": "$archetype @Class_Dominator == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Disruptor Blast",
         "fullName": "Epic.Dominator_Mace_Mastery.Disruptor_Blast",
-        "rank": 1,
+        "rank": 3,
         "available": 37,
         "description": "Fires a tremendous charge of kinetic energy from your Bane Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
@@ -8558,7 +8723,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Personal Force Field",
         "fullName": "Epic.Dominator_Mace_Mastery.Personal_Force_Field",
-        "rank": 2,
+        "rank": 4,
         "available": 40,
         "description": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Def, Res(All)",
@@ -8672,171 +8837,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Poisonous Ray",
-        "fullName": "Epic.Dominator_Mace_Mastery.Poisonous_Ray",
-        "rank": 3,
-        "available": 34,
-        "description": "The Bane Mace can fire a nasty Poison Ray. This toxin is suspended in a polarized plasma field and delivered like an energy blast. Upon impact, the toxin directly attacks the immune system, reducing the affected targets Defense and Damage Resistance as it deals toxic damage.",
-        "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
-        "icon": "arachnos_patron_targeteddebuffdefense.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Dominator == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 24,
-          "endurance": 11.856,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.05,
-              "table": "Ranged_Damage",
-              "duration": 9.3,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.38,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1255,
-              "table": "Ranged_PvPDamage",
-              "duration": 9.3,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 2.76,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 30,
-            "resistanceDebuff": 30
-          },
-          "resistanceDebuff": {
-            "smashing": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "cold": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "energy": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "negative": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "psionic": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            }
-          },
-          "buffDuration": 30
-        }
-      },
-      {
-        "name": "Scorpion Shield",
-        "fullName": "Epic.Dominator_Mace_Mastery.Scorpion_Shield",
-        "rank": 4,
-        "available": 34,
-        "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
-        "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
-        "icon": "arachnos_patron_defensebuff.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Dominator == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Summon Tarantula",
         "fullName": "Epic.Dominator_Mace_Mastery.Summon_Tarantula",
         "rank": 5,
@@ -8891,9 +8891,99 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Charged Armor",
+        "fullName": "Epic.Dominator_Mu_Mastery.Charged_Armor",
+        "rank": 1,
+        "available": 34,
+        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
+        "icon": "arachnos_patron_resistbuff.png",
+        "powerType": "Toggle",
+        "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Power Sink",
+        "fullName": "Epic.Dominator_Mu_Mastery.Power_Sink",
+        "rank": 2,
+        "available": 34,
+        "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.",
+        "shortHelp": "PBAoE, Self +End, Foe -End",
+        "icon": "arachnos_patron_pbaoedrain.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 120,
+          "endurance": 13,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 10,
+          "maxTargets": 10,
+          "enduranceDrain": {
+            "scale": 10,
+            "table": "Melee_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
+        }
+      },
+      {
         "name": "Ball Lightning",
         "fullName": "Epic.Dominator_Mu_Mastery.Ball_Lightning",
-        "rank": 1,
+        "rank": 3,
         "available": 37,
         "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
@@ -8974,138 +9064,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Charged Armor",
-        "fullName": "Epic.Dominator_Mu_Mastery.Charged_Armor",
-        "rank": 2,
-        "available": 34,
-        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
-        "icon": "arachnos_patron_resistbuff.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
-        "name": "Power Sink",
-        "fullName": "Epic.Dominator_Mu_Mastery.Power_Sink",
-        "rank": 3,
-        "available": 34,
-        "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.",
-        "shortHelp": "PBAoE, Self +End, Foe -End",
-        "icon": "arachnos_patron_pbaoedrain.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 13,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "enduranceDrain": {
-            "scale": 10,
-            "table": "Melee_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 4
-        }
-      },
-      {
-        "name": "Summon Guardian",
-        "fullName": "Epic.Dominator_Mu_Mastery.Summon_Guardian",
-        "rank": 4,
-        "available": 43,
-        "description": "Scirocco has shown you how to call upon a mystical Mu Guardian to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Guardian is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Summon Mu Guardian: Ranged DMG(Energy)",
-        "icon": "arachnos_patron_summononepet.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Hold",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Holds",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 900,
-          "endurance": 20.8,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Mu_Guardian",
-            "duration": 240
-          }
-        }
-      },
-      {
         "name": "Surge of Power",
         "fullName": "Epic.Dominator_Mu_Mastery.Surge_of_Power",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics, and your endurance recovery is also increased. Expending all this energy will leave you exhausted, drained of all your endurance and unable to recover endurance for a short time. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Self, +Res(Special)",
@@ -9177,6 +9138,45 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "buffDuration": 120
+        }
+      },
+      {
+        "name": "Summon Guardian",
+        "fullName": "Epic.Dominator_Mu_Mastery.Summon_Guardian",
+        "rank": 5,
+        "available": 43,
+        "description": "Scirocco has shown you how to call upon a mystical Mu Guardian to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Guardian is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Summon Mu Guardian: Ranged DMG(Energy)",
+        "icon": "arachnos_patron_summononepet.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Hold",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Holds",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "activationTime": 1.17,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Guardian",
+            "duration": 240
+          }
         }
       }
     ]
@@ -9465,101 +9465,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Fossilize",
-        "fullName": "Epic.Earth_Mastery.Fossilize",
-        "rank": 1,
-        "available": 37,
-        "description": "Encases a single target within solid stone. The stone slowly crushes the victim, dealing Smashing damage. The Fossilized victim is held helpless and unable to defend himself. You must be level 38 and have one other Earth Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DMG(Smash), Foe Hold, -DEF",
-        "icon": "earth_mastery_fossilize.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 2.809,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          },
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 12
-          },
-          "buffDuration": 12
-        }
-      },
-      {
-        "name": "Quicksand",
-        "fullName": "Epic.Earth_Mastery.Quick_Sand",
-        "rank": 2,
-        "available": 40,
-        "description": "You can cause the ground to liquefy like Quicksand at a targeted location. Any foes that pass through the Quicksand will become snared, their movement will be dramatically Slowed, and their Defense reduced. Foes trapped in the Quicksand cannot jump or Fly. You must be level 41 and have one other Earth Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Location AoE), Foe -Speed, -Jump, -Fly, -DEF",
-        "icon": "earth_mastery_quicksand.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Slow Movement"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 90,
-          "recharge": 60,
-          "endurance": 7.8,
-          "activationTime": 3.1,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "P1397656559",
-            "duration": 45
-          }
-        }
-      },
-      {
         "name": "Salt Crystals",
         "fullName": "Epic.Earth_Mastery.Salt_Crystals",
-        "rank": 3,
+        "rank": 1,
         "available": 34,
         "description": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "PBAoE, Foe Sleep, -DEF",
@@ -9600,69 +9508,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Stalagmites",
-        "fullName": "Epic.Earth_Mastery.Stalagmites",
-        "rank": 4,
-        "available": 43,
-        "description": "You can cause Stalagmites to erupt all around an enemy, slicing all nearby foes. The Stalagmites deal Lethal damage, and reduce the affected targets Defense. Some affected foes may be Disorient for a short while. You must be on the ground to activate this power. You must be level 44 and have two other Earth Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Lethal), Foe -DEF, Minor Disorient",
-        "icon": "earth_mastery_rangedaoe.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.7323,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.8985,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "stun": {
-            "mag": 3,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
-          },
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 12
-          },
-          "buffDuration": 12
-        }
-      },
-      {
         "name": "Stone Prison",
         "fullName": "Epic.Earth_Mastery.Stone_Prison",
-        "rank": 5,
+        "rank": 2,
         "available": 34,
         "description": "Immobilizes a single target within an earthy formation and deals some Smashing damage over time. Some more resilient foes may require multiple attacks to Immobilize. Stone Prison can also reduce a target's Defense.",
         "shortHelp": "Ranged, DoT(Smash), Foe Immobilize, -DEF, -Fly",
@@ -9731,6 +9579,158 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 15
         }
+      },
+      {
+        "name": "Fossilize",
+        "fullName": "Epic.Earth_Mastery.Fossilize",
+        "rank": 3,
+        "available": 37,
+        "description": "Encases a single target within solid stone. The stone slowly crushes the victim, dealing Smashing damage. The Fossilized victim is held helpless and unable to defend himself. You must be level 38 and have one other Earth Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DMG(Smash), Foe Hold, -DEF",
+        "icon": "earth_mastery_fossilize.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2.07,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 2.809,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 12
+          },
+          "buffDuration": 12
+        }
+      },
+      {
+        "name": "Quicksand",
+        "fullName": "Epic.Earth_Mastery.Quick_Sand",
+        "rank": 4,
+        "available": 40,
+        "description": "You can cause the ground to liquefy like Quicksand at a targeted location. Any foes that pass through the Quicksand will become snared, their movement will be dramatically Slowed, and their Defense reduced. Foes trapped in the Quicksand cannot jump or Fly. You must be level 41 and have one other Earth Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Location AoE), Foe -Speed, -Jump, -Fly, -DEF",
+        "icon": "earth_mastery_quicksand.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Slow Movement"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 90,
+          "recharge": 60,
+          "endurance": 7.8,
+          "activationTime": 3.1,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "P1397656559",
+            "duration": 45
+          }
+        }
+      },
+      {
+        "name": "Stalagmites",
+        "fullName": "Epic.Earth_Mastery.Stalagmites",
+        "rank": 5,
+        "available": 43,
+        "description": "You can cause Stalagmites to erupt all around an enemy, slicing all nearby foes. The Stalagmites deal Lethal damage, and reduce the affected targets Defense. Some affected foes may be Disorient for a short while. You must be on the ground to activate this power. You must be level 44 and have two other Earth Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Lethal), Foe -DEF, Minor Disorient",
+        "icon": "earth_mastery_rangedaoe.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.7323,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.8985,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "stun": {
+            "mag": 3,
+            "scale": 1,
+            "table": "Ranged_PvPMez"
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 12
+          },
+          "buffDuration": 12
+        }
       }
     ]
   },
@@ -9745,113 +9745,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Charged Armor",
-        "fullName": "Epic.Electrical_Mastery.Charged_Armor",
-        "rank": 1,
-        "available": 37,
-        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
-        "icon": "electrical_mastery_charged_armor.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
-        "name": "EM Pulse",
-        "fullName": "Epic.Electrical_Mastery.EM_Pulse",
-        "rank": 2,
-        "available": 43,
-        "description": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and leave them incapacitated and Disoriented for a while. Additionally, most machines and robots will take moderate high damage. However, this power uses a lot of endurance and leaves you unable to recover endurance for a while. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
-        "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
-        "icon": "electrical_mastery_em_pulse.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Stuns"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 800,
-          "endurance": 20.8,
-          "activationTime": 2.93,
-          "effectArea": "AoE",
-          "radius": 40,
-          "maxTargets": 16,
-          "damage": {
-            "type": "Energy",
-            "scale": 1.64,
-            "table": "Ranged_Damage"
-          },
-          "stun": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "enduranceDrain": {
-            "scale": 66.67,
-            "table": "Ranged_EndDrain"
-          },
-          "regenDebuff": {
-            "scale": 30,
-            "table": "Ranged_Res_Boolean"
-          },
-          "durations": {
-            "regenDebuff": 15,
-            "recoveryDebuff": 15
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 15
-        }
-      },
-      {
         "name": "Shocking Bolt",
         "fullName": "Epic.Electrical_Mastery.Shocking_Bolt",
-        "rank": 3,
+        "rank": 1,
         "available": 34,
         "description": "Holds a distant foe by shocking him with electricity. The seized target is left writhing in agony and is unable to defend himself. Shocking Bolt also drains some Endurance from the target over time. A portion of drained Endurance may be returned to you.",
         "shortHelp": "Ranged, DoT(Energy), Foe Hold, -END",
@@ -9919,7 +9815,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Static Discharge",
         "fullName": "Epic.Electrical_Mastery.Static_Discharge",
-        "rank": 4,
+        "rank": 2,
         "available": 34,
         "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
@@ -9969,9 +9865,54 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Charged Armor",
+        "fullName": "Epic.Electrical_Mastery.Charged_Armor",
+        "rank": 3,
+        "available": 37,
+        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
+        "icon": "electrical_mastery_charged_armor.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Surge of Power",
         "fullName": "Epic.Electrical_Mastery.Surge_of_Power",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics. However, expending all this energy will leave you exhausted, and drained of all endurance. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Self, +Res(Special)",
@@ -10044,6 +9985,65 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 120
         }
+      },
+      {
+        "name": "EM Pulse",
+        "fullName": "Epic.Electrical_Mastery.EM_Pulse",
+        "rank": 5,
+        "available": 43,
+        "description": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and leave them incapacitated and Disoriented for a while. Additionally, most machines and robots will take moderate high damage. However, this power uses a lot of endurance and leaves you unable to recover endurance for a while. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
+        "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
+        "icon": "electrical_mastery_em_pulse.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Stuns"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 800,
+          "endurance": 20.8,
+          "activationTime": 2.93,
+          "effectArea": "AoE",
+          "radius": 40,
+          "maxTargets": 16,
+          "damage": {
+            "type": "Energy",
+            "scale": 1.64,
+            "table": "Ranged_Damage"
+          },
+          "stun": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 66.67,
+            "table": "Ranged_EndDrain"
+          },
+          "regenDebuff": {
+            "scale": 30,
+            "table": "Ranged_Res_Boolean"
+          },
+          "durations": {
+            "regenDebuff": 15,
+            "recoveryDebuff": 15
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
+        }
       }
     ]
   },
@@ -10058,54 +10058,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Charged Armor",
-        "fullName": "Epic.Electricity_Mastery.Charged_Armor",
-        "rank": 1,
-        "available": 37,
-        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
-        "icon": "electricitymastery_chargedarmor.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Electric Fence",
         "fullName": "Epic.Electricity_Mastery.Electric_Fence",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Surrounds and Immobilizes a single target in an Electric Fence. Deals some damage over time and slowly drains some Endurance. Useful for keeping villains at bay.",
         "shortHelp": "Ranged, DoT(Energy), Foe Immobilize, -End",
@@ -10197,136 +10152,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Power Sink",
-        "fullName": "Epic.Electricity_Mastery.Power_Sink",
-        "rank": 3,
-        "available": 43,
-        "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
-        "shortHelp": "PBAoE, Self +End, Foe -End",
-        "icon": "electricitymanipulation_powersink.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 13,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 12,
-          "maxTargets": 10,
-          "enduranceDrain": {
-            "scale": 43,
-            "table": "Melee_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 4
-        }
-      },
-      {
-        "name": "Shocking Bolt",
-        "fullName": "Epic.Electricity_Mastery.Shocking_Bolt",
-        "rank": 4,
-        "available": 40,
-        "description": "Holds a distant foe by shocking him with electricity. The seized target is left writhing in agony and is unable to defend himself. Shocking Bolt also drains some Endurance from the target over time. A portion of drained Endurance may be returned to you. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DoT(Energy), Foe Hold, -END",
-        "icon": "electricitymastery_shockingbolt.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.552,
-              "table": "Ranged_PvPDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.1,
-              "table": "Ranged_InherentDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.552,
-              "table": "Ranged_PvPDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          },
-          "enduranceDrain": {
-            "scale": 3,
-            "table": "Ranged_EndDrain"
-          },
-          "durations": {
-            "enduranceDrain": 8.1
-          },
-          "enduranceGain": {
-            "scale": 5.33,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 8.1
-        }
-      },
-      {
         "name": "Thunder Strike",
         "fullName": "Epic.Electricity_Mastery.Thunder_Strike",
-        "rank": 5,
+        "rank": 2,
         "available": 34,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave.",
         "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback",
@@ -10421,6 +10249,178 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 4
         }
+      },
+      {
+        "name": "Charged Armor",
+        "fullName": "Epic.Electricity_Mastery.Charged_Armor",
+        "rank": 3,
+        "available": 37,
+        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
+        "icon": "electricitymastery_chargedarmor.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Shocking Bolt",
+        "fullName": "Epic.Electricity_Mastery.Shocking_Bolt",
+        "rank": 4,
+        "available": 40,
+        "description": "Holds a distant foe by shocking him with electricity. The seized target is left writhing in agony and is unable to defend himself. Shocking Bolt also drains some Endurance from the target over time. A portion of drained Endurance may be returned to you. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DoT(Energy), Foe Hold, -END",
+        "icon": "electricitymastery_shockingbolt.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 4.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Energy",
+              "scale": 0.552,
+              "table": "Ranged_PvPDamage",
+              "duration": 4.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Energy",
+              "scale": 0.1,
+              "table": "Ranged_InherentDamage",
+              "duration": 4.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Energy",
+              "scale": 0.552,
+              "table": "Ranged_PvPDamage",
+              "duration": 4.2,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 3,
+            "table": "Ranged_EndDrain"
+          },
+          "durations": {
+            "enduranceDrain": 8.1
+          },
+          "enduranceGain": {
+            "scale": 5.33,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8.1
+        }
+      },
+      {
+        "name": "Power Sink",
+        "fullName": "Epic.Electricity_Mastery.Power_Sink",
+        "rank": 5,
+        "available": 43,
+        "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance. You must be level 44 and have two other Electricity Mastery Powers before selecting this power.",
+        "shortHelp": "PBAoE, Self +End, Foe -End",
+        "icon": "electricitymanipulation_powersink.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 120,
+          "endurance": 13,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 12,
+          "maxTargets": 10,
+          "enduranceDrain": {
+            "scale": 43,
+            "table": "Melee_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
+        }
       }
     ]
   },
@@ -10467,71 +10467,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Energy Torrent",
-        "fullName": "Epic.Energy_Mastery.Energy_Torrent",
-        "rank": 2,
-        "available": 43,
-        "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), Light DMG(Energy/Smash), Foe Knockback",
-        "icon": "powerblast_energytorrent.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 24,
-          "endurance": 11.856,
-          "activationTime": 1.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.2874,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.6706,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.2658,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.6203,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Melee_Ones"
-          }
-        }
-      },
-      {
         "name": "Focused Accuracy",
         "fullName": "Epic.Energy_Mastery.Focused_Accuracy",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
@@ -10582,7 +10520,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Energy_Mastery.Laser_Beam_Eyes",
-        "rank": 4,
+        "rank": 3,
         "available": 37,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can not miss and will reduce the target's Defense. Damage inflicted will fluctuate the current hit roll. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Light DMG(Energy), Foe -DEF",
@@ -10646,7 +10584,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Energy_Mastery.Physical_Perfection",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
@@ -10679,57 +10617,14 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 10.25
         }
-      }
-    ]
-  },
-  "energy_mastery_brute": {
-    "id": "energy_mastery_brute",
-    "name": "Energy Mastery",
-    "displayName": "Energy Mastery",
-    "archetype": "brute",
-    "description": "You have Mastery over your bodies Energy to increase your power and even hurl energy at your foes.",
-    "icon": "energy_mastery_brute_set.ico",
-    "requires": "",
-    "minLevel": 35,
-    "powers": [
-      {
-        "name": "Superior Conditioning",
-        "fullName": "Epic.Energy_Mastery_Brute.Conserve_Power",
-        "rank": 1,
-        "available": 34,
-        "description": "Your Superior Condition has increased your maximum endurance by 5%.",
-        "shortHelp": "Self +Endurance",
-        "icon": "energymastery_conservepower.png",
-        "powerType": "Auto",
-        "requires": "$archetype @Class_Brute ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "effectArea": "SingleTarget",
-          "maxEndBuff": {
-            "scale": 5,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "maxEndBuff": 10.25
-          },
-          "buffDuration": 10.25
-        }
       },
       {
         "name": "Energy Torrent",
-        "fullName": "Epic.Energy_Mastery_Brute.Energy_Torrent",
-        "rank": 2,
+        "fullName": "Epic.Energy_Mastery.Energy_Torrent",
+        "rank": 5,
         "available": 43,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
+        "shortHelp": "Ranged (Cone), Light DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_energytorrent.png",
         "powerType": "Click",
         "requires": "Epic ownPowerNum? 1 >",
@@ -10784,11 +10679,54 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           }
         }
+      }
+    ]
+  },
+  "energy_mastery_brute": {
+    "id": "energy_mastery_brute",
+    "name": "Energy Mastery",
+    "displayName": "Energy Mastery",
+    "archetype": "brute",
+    "description": "You have Mastery over your bodies Energy to increase your power and even hurl energy at your foes.",
+    "icon": "energy_mastery_brute_set.ico",
+    "requires": "",
+    "minLevel": 35,
+    "powers": [
+      {
+        "name": "Superior Conditioning",
+        "fullName": "Epic.Energy_Mastery_Brute.Conserve_Power",
+        "rank": 1,
+        "available": 34,
+        "description": "Your Superior Condition has increased your maximum endurance by 5%.",
+        "shortHelp": "Self +Endurance",
+        "icon": "energymastery_conservepower.png",
+        "powerType": "Auto",
+        "requires": "$archetype @Class_Brute ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 10,
+          "effectArea": "SingleTarget",
+          "maxEndBuff": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "maxEndBuff": 10.25
+          },
+          "buffDuration": 10.25
+        }
       },
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Energy_Mastery_Brute.Focused_Accuracy",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active.",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
@@ -10839,7 +10777,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Energy_Mastery_Brute.Laser_Beam_Eyes",
-        "rank": 4,
+        "rank": 3,
         "available": 37,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can not miss and will reduce the target's Defense. Damage inflicted will fluctuate the current hit roll. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
@@ -10903,7 +10841,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Energy_Mastery_Brute.Physical_Perfection",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Energy Mastery Powers before selecting this power.<br>",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
@@ -10936,6 +10874,68 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 10.25
         }
+      },
+      {
+        "name": "Energy Torrent",
+        "fullName": "Epic.Energy_Mastery_Brute.Energy_Torrent",
+        "rank": 5,
+        "available": 43,
+        "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
+        "icon": "powerblast_energytorrent.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 40,
+          "recharge": 24,
+          "endurance": 11.856,
+          "activationTime": 1.07,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2874,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.6706,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 0.2658,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.6203,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 1.34,
+            "table": "Melee_Ones"
+          }
+        }
       }
     ]
   },
@@ -10950,9 +10950,109 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Temp Invulnerability",
+        "fullName": "Epic.Field_Mastery.Personal_Force_Field",
+        "rank": 1,
+        "available": 34,
+        "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage.",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
+        "icon": "fieldmastery_tempinvulnerability.png",
+        "powerType": "Toggle",
+        "requires": "$archetype @Class_Mastermind ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Power Blast",
+        "fullName": "Epic.Field_Mastery.Power_Blast",
+        "rank": 2,
+        "available": 34,
+        "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock him back.",
+        "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
+        "icon": "powerblast_powerblast.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Mastermind ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.8,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 0.3778,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.3778,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
+        }
+      },
+      {
         "name": "Energy Torrent",
         "fullName": "Epic.Field_Mastery.Energy_Torrent",
-        "rank": 1,
+        "rank": 3,
         "available": 37,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
@@ -11012,9 +11112,70 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Explosive Blast",
+        "fullName": "Epic.Field_Mastery.Repulsion_Bomb",
+        "rank": 4,
+        "available": 40,
+        "description": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target. Explosive Blast may knock targets backwards. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
+        "icon": "powerblast_explosion.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1.67,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.4,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.6797,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 4,
+            "table": "Ranged_Knockback"
+          },
+          "stun": {
+            "mag": 2,
+            "scale": 1,
+            "table": "Ranged_PvPMez"
+          }
+        }
+      },
+      {
         "name": "Force of Nature",
         "fullName": "Epic.Field_Mastery.Foce_of_Nature",
-        "rank": 2,
+        "rank": 5,
         "available": 43,
         "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your endurance recovery is also increased. Force of Nature costs little endurance to activate, but when it wears off you are left exhausted, and drained of almost all endurance, and unable to recover endurance for a short while. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Self, +Res(All DMG but Psionics)",
@@ -11087,167 +11248,6 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 120
         }
-      },
-      {
-        "name": "Temp Invulnerability",
-        "fullName": "Epic.Field_Mastery.Personal_Force_Field",
-        "rank": 3,
-        "available": 34,
-        "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage.",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
-        "icon": "fieldmastery_tempinvulnerability.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Mastermind ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
-        "name": "Power Blast",
-        "fullName": "Epic.Field_Mastery.Power_Blast",
-        "rank": 4,
-        "available": 34,
-        "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock him back.",
-        "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
-        "icon": "powerblast_powerblast.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Mastermind ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 8.528,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.2,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.3778,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.3778,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
-        }
-      },
-      {
-        "name": "Explosive Blast",
-        "fullName": "Epic.Field_Mastery.Repulsion_Bomb",
-        "rank": 5,
-        "available": 40,
-        "description": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target. Explosive Blast may knock targets backwards. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
-        "icon": "powerblast_explosion.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1.67,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.4,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.6797,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 4,
-            "table": "Ranged_Knockback"
-          },
-          "stun": {
-            "mag": 2,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
-          }
-        }
       }
     ]
   },
@@ -11262,71 +11262,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Consume",
-        "fullName": "Epic.Fire_Mastery.Consume",
-        "rank": 1,
-        "available": 43,
-        "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
-        "shortHelp": "PBAoE, DMG(Fire), Self +End",
-        "icon": "firemastery_consume.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Melee AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 360,
-          "endurance": 0.52,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.4,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.4,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.4,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "enduranceGain": {
-            "scale": 20,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 0.05,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryBuff": 15
-          },
-          "buffDuration": 15
-        }
-      },
-      {
         "name": "Fire Ball",
         "fullName": "Epic.Fire_Mastery.Fire_Ball",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
@@ -11403,7 +11341,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Blast",
         "fullName": "Epic.Fire_Mastery.Fire_Blast",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.",
         "shortHelp": "Ranged, DMG(Fire)",
@@ -11463,7 +11401,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Shield",
         "fullName": "Epic.Fire_Mastery.Fire_Shield",
-        "rank": 4,
+        "rank": 3,
         "available": 37,
         "description": "While this power is active, you get a good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
@@ -11512,7 +11450,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Fire_Mastery.Rise_of_the_Phoenix",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Self Rez, Special",
@@ -11566,6 +11504,68 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           }
         }
+      },
+      {
+        "name": "Consume",
+        "fullName": "Epic.Fire_Mastery.Consume",
+        "rank": 5,
+        "available": 43,
+        "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
+        "shortHelp": "PBAoE, DMG(Fire), Self +End",
+        "icon": "firemastery_consume.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Melee AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 360,
+          "endurance": 0.52,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 20,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 0.4,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.4,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.4,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "enduranceGain": {
+            "scale": 20,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 0.05,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 15
+          },
+          "buffDuration": 15
+        }
       }
     ]
   },
@@ -11580,85 +11580,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Melt Armor",
-        "fullName": "Epic.Fire_Mastery_Dominator.Consume",
-        "rank": 1,
-        "available": 43,
-        "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
-        "icon": "pyremastery_meltarmor.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 200,
-          "endurance": 18.2,
-          "activationTime": 1.5,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 40,
-            "resistanceDebuff": 40
-          },
-          "resistanceDebuff": {
-            "smashing": {
-              "scale": 3,
-              "table": "Ranged_Debuff_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 3,
-              "table": "Ranged_Debuff_Res_Dmg"
-            },
-            "fire": {
-              "scale": 3,
-              "table": "Ranged_Debuff_Res_Dmg"
-            },
-            "cold": {
-              "scale": 3,
-              "table": "Ranged_Debuff_Res_Dmg"
-            },
-            "energy": {
-              "scale": 3,
-              "table": "Ranged_Debuff_Res_Dmg"
-            },
-            "negative": {
-              "scale": 3,
-              "table": "Ranged_Debuff_Res_Dmg"
-            },
-            "psionic": {
-              "scale": 3,
-              "table": "Ranged_Debuff_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 3,
-              "table": "Ranged_Debuff_Res_Dmg"
-            }
-          },
-          "buffDuration": 40
-        }
-      },
-      {
         "name": "Fire Ball",
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Ball",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
@@ -11735,7 +11659,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rain of Fire",
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Blast",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area.",
         "shortHelp": "Ranged (Location AoE), DoT(Fire), -SPD",
@@ -11771,7 +11695,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Shield",
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Shield",
-        "rank": 4,
+        "rank": 3,
         "available": 37,
         "description": "While this power is active, you get a good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
@@ -11820,7 +11744,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Fire_Mastery_Dominator.Rise_of_the_Phoenix",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. You must be level 41 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Self Rez, Special",
@@ -11873,6 +11797,82 @@ export const EPIC_POOLS_RAW = {
             "scale": 4,
             "table": "Melee_Ones"
           }
+        }
+      },
+      {
+        "name": "Melt Armor",
+        "fullName": "Epic.Fire_Mastery_Dominator.Consume",
+        "rank": 5,
+        "available": 43,
+        "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
+        "icon": "pyremastery_meltarmor.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Accurate Defense Debuff",
+          "Defense Debuff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 200,
+          "endurance": 18.2,
+          "activationTime": 1.5,
+          "effectArea": "AoE",
+          "radius": 10,
+          "maxTargets": 10,
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 40,
+            "resistanceDebuff": 40
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 3,
+              "table": "Ranged_Debuff_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 3,
+              "table": "Ranged_Debuff_Res_Dmg"
+            },
+            "fire": {
+              "scale": 3,
+              "table": "Ranged_Debuff_Res_Dmg"
+            },
+            "cold": {
+              "scale": 3,
+              "table": "Ranged_Debuff_Res_Dmg"
+            },
+            "energy": {
+              "scale": 3,
+              "table": "Ranged_Debuff_Res_Dmg"
+            },
+            "negative": {
+              "scale": 3,
+              "table": "Ranged_Debuff_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 3,
+              "table": "Ranged_Debuff_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 3,
+              "table": "Ranged_Debuff_Res_Dmg"
+            }
+          },
+          "buffDuration": 40
         }
       }
     ]
@@ -12178,86 +12178,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Force of Nature",
-        "fullName": "Epic.Force_Mastery.Foce_of_Nature",
-        "rank": 1,
-        "available": 43,
-        "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your endurance recovery is also increased. Force of Nature costs little endurance to activate, but when it wears off you are left exhausted, and drained of almost all endurance, and unable to recover endurance for a short while. You must be level 44 and have two other Force Mastery Powers before selecting this power.",
-        "shortHelp": "Self, +Res(All DMG but Psionics)",
-        "icon": "forcemastery_unstoppable.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 1000,
-          "endurance": 2.6,
-          "activationTime": 3.1,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "cold": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 120,
-            "recoveryBuff": 120,
-            "recoveryDebuff": 15
-          },
-          "recoveryBuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "enduranceDrain": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 120
-        }
-      },
-      {
         "name": "Personal Force Field",
         "fullName": "Epic.Force_Mastery.Personal_Force_Field",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest.",
         "shortHelp": "Toggle: Self +Def, Res(All)",
@@ -12371,9 +12294,87 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Repulsion Field",
+        "fullName": "Epic.Force_Mastery.Repulsion_Field",
+        "rank": 2,
+        "available": 34,
+        "description": "This Toggle power creates a field that violently repels nearby foes. Each villain that is repelled costs you additional Endurance.",
+        "shortHelp": "Toggle: PBAoE Knockback",
+        "icon": "forcefield_repulsionfield.png",
+        "powerType": "Toggle",
+        "requires": "$archetype @Class_Blaster ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Knockback",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 40,
+          "endurance": 0.325,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 9,
+          "maxTargets": 10,
+          "knockback": {
+            "scale": 6,
+            "table": "Ranged_Knockback"
+          },
+          "durations": {
+            "knockback": 0.5
+          },
+          "buffDuration": 0.5
+        }
+      },
+      {
+        "name": "Temp Invulnerability",
+        "fullName": "Epic.Force_Mastery.Temp_Invulnerability",
+        "rank": 3,
+        "available": 37,
+        "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Force Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
+        "icon": "forcemastery_temporaryinvulnerabilty.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Force Bomb",
         "fullName": "Epic.Force_Mastery.Repulsion_Bomb",
-        "rank": 3,
+        "rank": 4,
         "available": 40,
         "description": "A powerful Force Bomb is hurled at your foes dealing a moderate amount of damage and knocking them off of their feet. Foes struck by Repulsion Bomb have a chance to become disoriented, and the force of the blow will leave their armor shattered, lowering their damage resistance. You must be level 41 and have one other Force Mastery Powers before selecting this power.<br>",
         "shortHelp": "Ranged (Targeted AoE), DMG(Smash), Foe -Res, Knockdown, Disorient",
@@ -12460,81 +12461,80 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Repulsion Field",
-        "fullName": "Epic.Force_Mastery.Repulsion_Field",
-        "rank": 4,
-        "available": 34,
-        "description": "This Toggle power creates a field that violently repels nearby foes. Each villain that is repelled costs you additional Endurance.",
-        "shortHelp": "Toggle: PBAoE Knockback",
-        "icon": "forcefield_repulsionfield.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Blaster ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Knockback",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 40,
-          "endurance": 0.325,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 9,
-          "maxTargets": 10,
-          "knockback": {
-            "scale": 6,
-            "table": "Ranged_Knockback"
-          },
-          "durations": {
-            "knockback": 0.5
-          },
-          "buffDuration": 0.5
-        }
-      },
-      {
-        "name": "Temp Invulnerability",
-        "fullName": "Epic.Force_Mastery.Temp_Invulnerability",
+        "name": "Force of Nature",
+        "fullName": "Epic.Force_Mastery.Foce_of_Nature",
         "rank": 5,
-        "available": 37,
-        "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Force Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
-        "icon": "forcemastery_temporaryinvulnerabilty.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
+        "available": 43,
+        "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your endurance recovery is also increased. Force of Nature costs little endurance to activate, but when it wears off you are left exhausted, and drained of almost all endurance, and unable to recover endurance for a short while. You must be level 44 and have two other Force Mastery Powers before selecting this power.",
+        "shortHelp": "Self, +Res(All DMG but Psionics)",
+        "icon": "forcemastery_unstoppable.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
+          "EnduranceModification",
           "EnduranceReduction",
           "Recharge",
           "Resistance"
         ],
         "allowedSetCategories": [
+          "Endurance Modification",
           "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
+          "recharge": 1000,
+          "endurance": 2.6,
+          "activationTime": 3.1,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
-              "scale": 3,
+              "scale": 5,
               "table": "Melee_Res_Dmg"
             },
             "lethal": {
-              "scale": 3,
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
               "table": "Melee_Res_Dmg"
             }
           },
           "durations": {
-            "resistance": 0.75
+            "resistance": 120,
+            "recoveryBuff": 120,
+            "recoveryDebuff": 15
           },
-          "buffDuration": 0.75
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 120
         }
       }
     ]
@@ -12591,9 +12591,59 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Fire Blast",
+        "fullName": "Epic.Heat_Mastery_Stalker.Fire_Blast",
+        "rank": 2,
+        "available": 34,
+        "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.",
+        "shortHelp": "Ranged, DMG(Fire)",
+        "icon": "fireblast_fireblast.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Mastermind ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 1.1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 1.889,
+              "table": "Ranged_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
         "name": "Fire Ball",
         "fullName": "Epic.Heat_Mastery_Stalker.Fire_Ball",
-        "rank": 2,
+        "rank": 3,
         "available": 37,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
@@ -12648,56 +12698,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage",
               "duration": 2.1,
               "tickRate": 1
-            }
-          ]
-        }
-      },
-      {
-        "name": "Fire Blast",
-        "fullName": "Epic.Heat_Mastery_Stalker.Fire_Blast",
-        "rank": 3,
-        "available": 34,
-        "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.",
-        "shortHelp": "Ranged, DMG(Fire)",
-        "icon": "fireblast_fireblast.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Mastermind ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 1.1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 1.889,
-              "table": "Ranged_PvPDamage"
             }
           ]
         }
@@ -12827,129 +12827,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Frost Breath",
-        "fullName": "Epic.Ice_Mastery.Frost_Breath",
-        "rank": 1,
-        "available": 40,
-        "description": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range. You must have two other Ice Mastery power to select this power. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
-        "icon": "ice_mastery_frostbreath.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 40,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 2.67,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 0.7,
-              "table": "Ranged_Damage",
-              "duration": 0.6,
-              "tickRate": 0.5
-            },
-            {
-              "type": "Cold",
-              "scale": 0.7,
-              "table": "Ranged_InherentDamage",
-              "duration": 0.6,
-              "tickRate": 0.5
-            },
-            {
-              "type": "Cold",
-              "scale": 0.5477,
-              "table": "Ranged_PvPDamage",
-              "duration": 0.6,
-              "tickRate": 0.5
-            },
-            {
-              "type": "Cold",
-              "scale": 0.5477,
-              "table": "Ranged_PvPDamage",
-              "duration": 0.6,
-              "tickRate": 0.5
-            }
-          ]
-        }
-      },
-      {
-        "name": "Frozen Armor",
-        "fullName": "Epic.Ice_Mastery.Frozen_Armor",
-        "rank": 2,
-        "available": 37,
-        "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
-        "icon": "ice_mastery_frozenarmor.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets",
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Hibernate",
         "fullName": "Epic.Ice_Mastery.Hibernate",
-        "rank": 3,
+        "rank": 1,
         "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
@@ -13033,7 +12913,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Blast",
         "fullName": "Epic.Ice_Mastery.Ice_Blast",
-        "rank": 4,
+        "rank": 2,
         "available": 34,
         "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
         "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
@@ -13081,6 +12961,126 @@ export const EPIC_POOLS_RAW = {
               "type": "Cold",
               "scale": 1.889,
               "table": "Ranged_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Frozen Armor",
+        "fullName": "Epic.Ice_Mastery.Frozen_Armor",
+        "rank": 3,
+        "available": 37,
+        "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
+        "icon": "ice_mastery_frozenarmor.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets",
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.73,
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "cold": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Frost Breath",
+        "fullName": "Epic.Ice_Mastery.Frost_Breath",
+        "rank": 4,
+        "available": 40,
+        "description": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range. You must have two other Ice Mastery power to select this power. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
+        "icon": "ice_mastery_frostbreath.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.2,
+          "range": 40,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 2.67,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 0.5235987901687622,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 0.7,
+              "table": "Ranged_Damage",
+              "duration": 0.6,
+              "tickRate": 0.5
+            },
+            {
+              "type": "Cold",
+              "scale": 0.7,
+              "table": "Ranged_InherentDamage",
+              "duration": 0.6,
+              "tickRate": 0.5
+            },
+            {
+              "type": "Cold",
+              "scale": 0.5477,
+              "table": "Ranged_PvPDamage",
+              "duration": 0.6,
+              "tickRate": 0.5
+            },
+            {
+              "type": "Cold",
+              "scale": 0.5477,
+              "table": "Ranged_PvPDamage",
+              "duration": 0.6,
+              "tickRate": 0.5
             }
           ]
         }
@@ -13135,112 +13135,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Hoarfrost",
-        "fullName": "Epic.Ice_Mastery_Dominator.Frost_Breath",
-        "rank": 1,
-        "available": 40,
-        "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
-        "icon": "ice_mastery_hoarfrost.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Healing",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Healing",
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 14.56,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
-          "maxHPBuff": {
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
-          "durations": {
-            "maxHPBuff": 120,
-            "resistance": 120
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "buffDuration": 120
-        }
-      },
-      {
-        "name": "Frozen Armor",
-        "fullName": "Epic.Ice_Mastery_Dominator.Frozen_Armor",
-        "rank": 2,
-        "available": 37,
-        "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
-        "icon": "ice_mastery_frozenarmor.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets",
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Hibernate",
         "fullName": "Epic.Ice_Mastery_Dominator.Hibernate",
-        "rank": 3,
+        "rank": 1,
         "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
@@ -13324,7 +13221,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Sleet",
         "fullName": "Epic.Ice_Mastery_Dominator.Ice_Blast",
-        "rank": 4,
+        "rank": 2,
         "available": 34,
         "description": "Summons a Sleet Storm at a targeted location. Sleet deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm.",
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
@@ -13364,6 +13261,109 @@ export const EPIC_POOLS_RAW = {
             ],
             "duration": 15
           }
+        }
+      },
+      {
+        "name": "Frozen Armor",
+        "fullName": "Epic.Ice_Mastery_Dominator.Frozen_Armor",
+        "rank": 3,
+        "available": 37,
+        "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
+        "icon": "ice_mastery_frozenarmor.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets",
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.73,
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "cold": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Hoarfrost",
+        "fullName": "Epic.Ice_Mastery_Dominator.Frost_Breath",
+        "rank": 4,
+        "available": 40,
+        "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
+        "icon": "ice_mastery_hoarfrost.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Healing",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Healing",
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 540,
+          "endurance": 14.56,
+          "activationTime": 0.73,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "durations": {
+            "maxHPBuff": 120,
+            "resistance": 120
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -13416,46 +13416,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Dark Pit",
-        "fullName": "Epic.Mastermind_Dark_Mastery.Dark_Pit",
-        "rank": 1,
-        "available": 37,
-        "description": "Envelops a targeted foe and any nearby enemies in a pit of Negative Energy. The attack deals no damage, but Disorients all affected foes for a good while. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), Foe Disorient",
-        "icon": "dark_mastery_darkpit.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Stuns"
-        ],
-        "effects": {
-          "accuracy": 0.8,
-          "range": 70,
-          "recharge": 180,
-          "endurance": 20.18,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 10,
-          "stun": {
-            "mag": 3,
-            "scale": 8,
-            "table": "Ranged_Stun"
-          }
-        }
-      },
-      {
         "name": "Murky Cloud",
         "fullName": "Epic.Mastermind_Dark_Mastery.Murky_Cloud",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
@@ -13502,9 +13465,117 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Shadowy Binds",
+        "fullName": "Epic.Mastermind_Dark_Mastery.Shadowy_Binds",
+        "rank": 2,
+        "available": 34,
+        "description": "You take control of your victim's shadow causing it to entangle and bind its owner thus leaving them immobilized and suffering from negative energy damage over time and reducing their chance to hit. Immobilized foes cannot move but can still attack.",
+        "shortHelp": "Ranged, Moderate DoT(Negative), Foe Immobilize, -To Hit, -Fly",
+        "icon": "dark_mastery_penumbralgrasp.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Mastermind ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Immobilize",
+          "Ranged Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.2,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "activationTime": 1.2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.1724,
+              "table": "Ranged_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Negative",
+              "scale": 0.312,
+              "table": "Ranged_PvPDamage",
+              "duration": 9.2,
+              "tickRate": 2
+            }
+          ],
+          "immobilize": {
+            "mag": 5,
+            "scale": 1,
+            "table": "Ranged_PvPMez"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
+        "name": "Dark Pit",
+        "fullName": "Epic.Mastermind_Dark_Mastery.Dark_Pit",
+        "rank": 3,
+        "available": 37,
+        "description": "Envelops a targeted foe and any nearby enemies in a pit of Negative Energy. The attack deals no damage, but Disorients all affected foes for a good while. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), Foe Disorient",
+        "icon": "dark_mastery_darkpit.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Stuns"
+        ],
+        "effects": {
+          "accuracy": 0.8,
+          "range": 70,
+          "recharge": 180,
+          "endurance": 20.18,
+          "activationTime": 1.07,
+          "effectArea": "AoE",
+          "radius": 20,
+          "maxTargets": 10,
+          "stun": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Stun"
+          }
+        }
+      },
+      {
         "name": "Possess",
         "fullName": "Epic.Mastermind_Dark_Mastery.Possess",
-        "rank": 3,
+        "rank": 4,
         "available": 40,
         "description": "You cause your targeted foe to be possessed by a dark entity from the Netherworld causing them to be confused for a short period of time. While confused they will be unable to tell the difference between friend or foe and will attack nearby allies. Possess will also hinder the target's abilities, lowering their chance ToHit, Damage, Healing, and the strength of their buffs, You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Target Confuse, -ToHit, -Damage, -Healing, -Special",
@@ -13584,77 +13655,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "buffDuration": 30
-        }
-      },
-      {
-        "name": "Shadowy Binds",
-        "fullName": "Epic.Mastermind_Dark_Mastery.Shadowy_Binds",
-        "rank": 4,
-        "available": 34,
-        "description": "You take control of your victim's shadow causing it to entangle and bind its owner thus leaving them immobilized and suffering from negative energy damage over time and reducing their chance to hit. Immobilized foes cannot move but can still attack.",
-        "shortHelp": "Ranged, Moderate DoT(Negative), Foe Immobilize, -To Hit, -Fly",
-        "icon": "dark_mastery_penumbralgrasp.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Mastermind ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Immobilize",
-          "Ranged Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 50,
-          "recharge": 8,
-          "endurance": 7.8,
-          "activationTime": 1.2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.1724,
-              "table": "Ranged_Damage",
-              "duration": 9.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Negative",
-              "scale": 0.312,
-              "table": "Ranged_PvPDamage",
-              "duration": 9.2,
-              "tickRate": 2
-            }
-          ],
-          "immobilize": {
-            "mag": 5,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
         }
       },
       {
@@ -13787,64 +13787,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Knockout Blow",
-        "fullName": "Epic.Mastermind_Leviathan_Mastery.Knockout_Blow",
-        "rank": 2,
-        "available": 37,
-        "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
-        "shortHelp": "Melee, DMG(Smash), Foe Hold",
-        "icon": "arachnos_patron_koblow.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Knockback",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Knockback",
-          "Melee Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 13.199999809265137,
-          "recharge": 40,
-          "endurance": 18.512,
-          "activationTime": 2.23,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 3.56,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 3.561,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Stun"
-          },
-          "knockup": {
-            "scale": 6,
-            "table": "Melee_Knockback"
-          }
-        }
-      },
-      {
         "name": "School of Sharks",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.School_of_Sharks",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
@@ -13920,6 +13865,61 @@ export const EPIC_POOLS_RAW = {
             "mezResistance": 15
           },
           "buffDuration": 15
+        }
+      },
+      {
+        "name": "Knockout Blow",
+        "fullName": "Epic.Mastermind_Leviathan_Mastery.Knockout_Blow",
+        "rank": 3,
+        "available": 37,
+        "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
+        "shortHelp": "Melee, DMG(Smash), Foe Hold",
+        "icon": "arachnos_patron_koblow.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Knockback",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Knockback",
+          "Melee Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.2,
+          "range": 13.199999809265137,
+          "recharge": 40,
+          "endurance": 18.512,
+          "activationTime": 2.23,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 3.56,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 3.561,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Stun"
+          },
+          "knockup": {
+            "scale": 6,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -14044,9 +14044,133 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Scorpion Shield",
+        "fullName": "Epic.Mastermind_Mace_Mastery.Scorpion_Shield",
+        "rank": 1,
+        "available": 34,
+        "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
+        "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
+        "icon": "arachnos_patron_defensebuff.png",
+        "powerType": "Toggle",
+        "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Web Envelope",
+        "fullName": "Epic.Mastermind_Mace_Mastery.Web_Envelope",
+        "rank": 2,
+        "available": 34,
+        "description": "The Nullifier Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
+        "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
+        "icon": "arachnos_patron_rangedaoeimmobilize.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 50,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "activationTime": 2,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.0837,
+              "table": "Ranged_Damage",
+              "duration": 5.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.2503,
+              "table": "Ranged_PvPDamage",
+              "duration": 5.2,
+              "tickRate": 2
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
         "name": "Mace Beam Volley",
         "fullName": "Epic.Mastermind_Mace_Mastery.Mace_Beam_Volley",
-        "rank": 1,
+        "rank": 3,
         "available": 37,
         "description": "Fires a volley of multiple kinetic energy blasts from your Nullifier Mace. These blast spread out in a wide cone and are powerful enough to knock down some foes. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy), Foe Knockback",
@@ -14098,7 +14222,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Power Boost",
         "fullName": "Epic.Mastermind_Mace_Mastery.Power_Boost",
-        "rank": 2,
+        "rank": 4,
         "available": 40,
         "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Self +Special",
@@ -14196,61 +14320,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Scorpion Shield",
-        "fullName": "Epic.Mastermind_Mace_Mastery.Scorpion_Shield",
-        "rank": 3,
-        "available": 34,
-        "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
-        "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
-        "icon": "arachnos_patron_defensebuff.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Web Cocoon",
         "fullName": "Epic.Mastermind_Mace_Mastery.Web_Cocoon",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
@@ -14301,78 +14373,6 @@ export const EPIC_POOLS_RAW = {
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
-        }
-      },
-      {
-        "name": "Web Envelope",
-        "fullName": "Epic.Mastermind_Mace_Mastery.Web_Envelope",
-        "rank": 5,
-        "available": 34,
-        "description": "The Nullifier Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
-        "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
-        "icon": "arachnos_patron_rangedaoeimmobilize.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Immobilize",
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 50,
-          "recharge": 16,
-          "endurance": 8.6008,
-          "activationTime": 2,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.0837,
-              "table": "Ranged_Damage",
-              "duration": 5.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.2503,
-              "table": "Ranged_PvPDamage",
-              "duration": 5.2,
-              "tickRate": 2
-            }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
         }
       }
     ]
@@ -14433,59 +14433,51 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Electric Shackles",
-        "fullName": "Epic.Mastermind_Mu_Mastery.Electric_Shackles",
+        "name": "Static Discharge",
+        "fullName": "Epic.Mastermind_Mu_Mastery.Static_Discharge",
         "rank": 2,
-        "available": 43,
-        "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
-        "icon": "arachnos_patron_targetedhold.png",
+        "available": 34,
+        "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area.",
+        "shortHelp": "Ranged (Cone), DMG(Energy), -END",
+        "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
+        "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Hold",
           "Range",
           "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Holds",
-          "Ranged Damage",
+          "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 60,
+          "range": 40,
           "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
+          "endurance": 15.184,
+          "activationTime": 2.07,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "maxTargets": 10,
           "damage": [
             {
               "type": "Energy",
-              "scale": 0.15,
-              "table": "Ranged_Damage",
-              "duration": 6.3,
-              "tickRate": 1
+              "scale": 0.96,
+              "table": "Ranged_Damage"
             },
             {
               "type": "Energy",
-              "scale": 0.4113,
-              "table": "Ranged_PvPDamage",
-              "duration": 6.3,
-              "tickRate": 1
+              "scale": 1.3147,
+              "table": "Ranged_PvPDamage"
             }
           ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
           "enduranceDrain": {
             "scale": 1.25,
             "table": "Ranged_EndDrain"
@@ -14495,19 +14487,100 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "durations": {
-            "recoveryDebuff": 8
+            "recoveryDebuff": 4
           },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 8
+          "buffDuration": 4
+        }
+      },
+      {
+        "name": "Thunder Strike",
+        "fullName": "Epic.Mastermind_Mu_Mastery.Thunder_Strike",
+        "rank": 3,
+        "available": 37,
+        "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
+        "icon": "arachnos_patron_meleetargetedaoe.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Knockback",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Knockback",
+          "Melee AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 40,
+          "endurance": 18.512,
+          "activationTime": 2.53,
+          "effectArea": "AoE",
+          "radius": 10,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 2.98,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.42,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 2.971,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.3506,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 2,
+            "table": "Melee_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "stun": {
+            "mag": 3,
+            "scale": 5,
+            "table": "Melee_Stun"
+          },
+          "knockback": {
+            "scale": 1.28,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Electrifying Fences",
         "fullName": "Epic.Mastermind_Mu_Mastery.Electrifying_Fences",
-        "rank": 3,
+        "rank": 4,
         "available": 40,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
@@ -14587,51 +14660,59 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Static Discharge",
-        "fullName": "Epic.Mastermind_Mu_Mastery.Static_Discharge",
-        "rank": 4,
-        "available": 34,
-        "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area.",
-        "shortHelp": "Ranged (Cone), DMG(Energy), -END",
-        "icon": "arachnos_patron_rangedconemoderatedmg.png",
+        "name": "Electric Shackles",
+        "fullName": "Epic.Mastermind_Mu_Mastery.Electric_Shackles",
+        "rank": 5,
+        "available": 43,
+        "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
+        "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
-        "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
+          "Hold",
           "Range",
           "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
+          "Holds",
+          "Ranged Damage",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 40,
+          "range": 60,
           "recharge": 24,
-          "endurance": 15.184,
-          "activationTime": 2.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
+          "endurance": 8.528,
+          "activationTime": 2.17,
+          "effectArea": "SingleTarget",
           "damage": [
             {
               "type": "Energy",
-              "scale": 0.96,
-              "table": "Ranged_Damage"
+              "scale": 0.15,
+              "table": "Ranged_Damage",
+              "duration": 6.3,
+              "tickRate": 1
             },
             {
               "type": "Energy",
-              "scale": 1.3147,
-              "table": "Ranged_PvPDamage"
+              "scale": 0.4113,
+              "table": "Ranged_PvPDamage",
+              "duration": 6.3,
+              "tickRate": 1
             }
           ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
           "enduranceDrain": {
             "scale": 1.25,
             "table": "Ranged_EndDrain"
@@ -14641,94 +14722,13 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "durations": {
-            "recoveryDebuff": 4
+            "recoveryDebuff": 8
           },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 4
-        }
-      },
-      {
-        "name": "Thunder Strike",
-        "fullName": "Epic.Mastermind_Mu_Mastery.Thunder_Strike",
-        "rank": 5,
-        "available": 37,
-        "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
-        "icon": "arachnos_patron_meleetargetedaoe.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Knockback",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Knockback",
-          "Melee AoE Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 40,
-          "endurance": 18.512,
-          "activationTime": 2.53,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 2.98,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.42,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.971,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.3506,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 2,
-            "table": "Melee_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 2,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "stun": {
-            "mag": 3,
-            "scale": 5,
-            "table": "Melee_Stun"
-          },
-          "knockback": {
-            "scale": 1.28,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 4
+          "buffDuration": 8
         }
       }
     ]
@@ -14886,63 +14886,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Soul Storm",
-        "fullName": "Epic.Mastermind_Soul_Mastery.Soul_Storm",
-        "rank": 4,
-        "available": 43,
-        "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DoT(Negative), Foe Hold",
-        "icon": "arachnos_patron_targetedhold.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Ranged_Damage",
-              "duration": 10,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.2879,
-              "table": "Ranged_PvPDamage",
-              "duration": 10,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Soul Tentacles",
         "fullName": "Epic.Mastermind_Soul_Mastery.Soul_Tentacles",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
@@ -15019,6 +14965,60 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 15
         }
+      },
+      {
+        "name": "Soul Storm",
+        "fullName": "Epic.Mastermind_Soul_Mastery.Soul_Storm",
+        "rank": 5,
+        "available": 43,
+        "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 44 and have two other Soul Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DoT(Negative), Foe Hold",
+        "icon": "arachnos_patron_targetedhold.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.11,
+              "table": "Ranged_Damage",
+              "duration": 10,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.2879,
+              "table": "Ranged_PvPDamage",
+              "duration": 10,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
+        }
       }
     ]
   },
@@ -15033,44 +15033,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Harmonic Mind",
-        "fullName": "Epic.Melee_Psionic_Mastery.Harmonic_Mind",
-        "rank": 1,
-        "available": 40,
-        "description": "By achieving perfect harmony of body, mind and spirit you are able to conserve and recover endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
-        "shortHelp": "Auto: Self, +Recovery, Endurance Discount",
-        "icon": "psionic_mastery_harmonicmind.png",
-        "powerType": "Auto",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "effectArea": "SingleTarget",
-          "recoveryBuff": {
-            "scale": 0.125,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryBuff": 10.25,
-            "enduranceDiscount": 10.25
-          },
-          "enduranceDiscount": {
-            "scale": 0.125,
-            "table": "Melee_Stun"
-          },
-          "buffDuration": 10.25
-        }
-      },
-      {
         "name": "Mental Blast",
         "fullName": "Epic.Melee_Psionic_Mastery.Mental_Blast",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
@@ -15148,7 +15113,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Psionic Lance",
         "fullName": "Epic.Melee_Psionic_Mastery.Psionic_Lance",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "This extremely long range Psionic attack has a bonus to Accuracy, and can Slow a target's attack rate. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
         "shortHelp": "Sniper, DMG(Psionic), Target -Recharge",
@@ -15179,48 +15144,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Psionic Nexus",
-        "fullName": "Epic.Melee_Psionic_Mastery.Psionic_Nexus",
-        "rank": 4,
-        "available": 43,
-        "description": "You create a nexus of psionic energy at your location.",
-        "shortHelp": "Summon Psionic Nexus: Ranged DMG(Psionic)",
-        "icon": "psionic_mastery_psionicnexus.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Knockback",
-          "Range",
-          "Recharge",
-          "Sleep",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Immobilize",
-          "Knockback",
-          "Ranged AoE Damage",
-          "Sleep",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 900,
-          "endurance": 20.8,
-          "activationTime": 2,
-          "effectArea": "Location"
-        }
-      },
-      {
         "name": "Psychic Scream",
         "fullName": "Epic.Melee_Psionic_Mastery.Psychic_Scream",
-        "rank": 5,
+        "rank": 3,
         "available": 37,
         "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.",
         "shortHelp": "Ranged (Cone), DMG(Psionic), Foe -Recharge",
@@ -15296,6 +15222,80 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage"
             }
           ]
+        }
+      },
+      {
+        "name": "Harmonic Mind",
+        "fullName": "Epic.Melee_Psionic_Mastery.Harmonic_Mind",
+        "rank": 4,
+        "available": 40,
+        "description": "By achieving perfect harmony of body, mind and spirit you are able to conserve and recover endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
+        "shortHelp": "Auto: Self, +Recovery, Endurance Discount",
+        "icon": "psionic_mastery_harmonicmind.png",
+        "powerType": "Auto",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "effectArea": "SingleTarget",
+          "recoveryBuff": {
+            "scale": 0.125,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 10.25,
+            "enduranceDiscount": 10.25
+          },
+          "enduranceDiscount": {
+            "scale": 0.125,
+            "table": "Melee_Stun"
+          },
+          "buffDuration": 10.25
+        }
+      },
+      {
+        "name": "Psionic Nexus",
+        "fullName": "Epic.Melee_Psionic_Mastery.Psionic_Nexus",
+        "rank": 5,
+        "available": 43,
+        "description": "You create a nexus of psionic energy at your location.",
+        "shortHelp": "Summon Psionic Nexus: Ranged DMG(Psionic)",
+        "icon": "psionic_mastery_psionicnexus.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Knockback",
+          "Range",
+          "Recharge",
+          "Sleep",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Immobilize",
+          "Knockback",
+          "Ranged AoE Damage",
+          "Sleep",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 900,
+          "endurance": 20.8,
+          "activationTime": 2,
+          "effectArea": "Location"
         }
       }
     ]
@@ -15433,45 +15433,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "LRM Rocket",
-        "fullName": "Epic.Munitions_Mastery.LRM_Rocket",
-        "rank": 3,
-        "available": 43,
-        "description": "The LRM Rocket is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. The LRM Rocket is bulky, awkward to use and you must take your time to aim, so this attack can be interrupted. You must be level 44 and have two other Arsenal Mastery Powers before selecting this power. If you are engaged in battle this attack becomes instant-cast, but inflicts lower damage on a reduced area and range.",
-        "shortHelp": "Interruptible (Targeted AoE), DMG(Lethal/Smash), Foe Knockback",
-        "icon": "munitionsmastery_lrmrocket.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Interrupt",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 150,
-          "recharge": 240,
-          "endurance": 18.2,
-          "activationTime": 3.87,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 16
-        }
-      },
-      {
         "name": "Sleep Grenade",
         "fullName": "Epic.Munitions_Mastery.Sleep_Grenade",
-        "rank": 4,
+        "rank": 3,
         "available": 37,
         "description": "The Sleep Grenade can be launched at long range from beneath the barrel of your Assault Rifle. It releases a cloud of gas that will make enemies fall asleep. You must be level 35 and have one other Arsenal Mastery powers before selecting this power.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "Ranged (Targeted AoE), Minor DMG(Smash), Foe Sleep",
@@ -15516,7 +15480,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Surveillance",
         "fullName": "Epic.Munitions_Mastery.Surveillance",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "When this power is activated, you focus your senses to analyze your target's defensive capabilities and discover their weaknesses. By sharing your knowledge of the target's weaknesses with your team mates, you effectively reduce their defense and resistance to damage. Your Combat Attributes Window will also show the combat attributes of the target. You must be level 41 and have one other Arsenal Mastery powers before selecting this power.",
         "shortHelp": "Ranged Foe -DEF, -RES (All)",
@@ -15585,6 +15549,42 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 20
         }
+      },
+      {
+        "name": "LRM Rocket",
+        "fullName": "Epic.Munitions_Mastery.LRM_Rocket",
+        "rank": 5,
+        "available": 43,
+        "description": "The LRM Rocket is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. The LRM Rocket is bulky, awkward to use and you must take your time to aim, so this attack can be interrupted. You must be level 44 and have two other Arsenal Mastery Powers before selecting this power. If you are engaged in battle this attack becomes instant-cast, but inflicts lower damage on a reduced area and range.",
+        "shortHelp": "Interruptible (Targeted AoE), DMG(Lethal/Smash), Foe Knockback",
+        "icon": "munitionsmastery_lrmrocket.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Interrupt",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 150,
+          "recharge": 240,
+          "endurance": 18.2,
+          "activationTime": 3.87,
+          "effectArea": "AoE",
+          "radius": 20,
+          "maxTargets": 16
+        }
       }
     ]
   },
@@ -15631,86 +15631,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Force of Nature",
-        "fullName": "Epic.Power_Mastery.Force_of_Nature",
-        "rank": 2,
-        "available": 40,
-        "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your Endurance recovery is also increased. Force of Nature costs little Endurance to activate, but when it wears off you are left exhausted, and drained of almost all Endurance, and unable to recover Endurance for a short while. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
-        "shortHelp": "Self, +Res(All DMG but Psionics)",
-        "icon": "powermastery_forceofnature.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 1000,
-          "endurance": 2.6,
-          "activationTime": 3.1,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "cold": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 120,
-            "recoveryBuff": 120,
-            "recoveryDebuff": 15
-          },
-          "recoveryBuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "enduranceDrain": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 120
-        }
-      },
-      {
         "name": "Power Build Up",
         "fullName": "Epic.Power_Mastery.Power_Build_Up",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "Your mastery of power and energy allows you to greatly increase the damage you deal for a few seconds, as well as slightly increasing your Accuracy Additionally, Power Build Up greatly boosts the secondary effects of your powers. Your powers effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved.",
         "shortHelp": "Self +DMG, +ACC, +Special",
@@ -15813,7 +15736,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Power_Mastery.Temp_Invulnerability",
-        "rank": 4,
+        "rank": 3,
         "available": 37,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
@@ -15849,6 +15772,83 @@ export const EPIC_POOLS_RAW = {
             "resistance": 0.75
           },
           "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Force of Nature",
+        "fullName": "Epic.Power_Mastery.Force_of_Nature",
+        "rank": 4,
+        "available": 40,
+        "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your Endurance recovery is also increased. Force of Nature costs little Endurance to activate, but when it wears off you are left exhausted, and drained of almost all Endurance, and unable to recover Endurance for a short while. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
+        "shortHelp": "Self, +Res(All DMG but Psionics)",
+        "icon": "powermastery_forceofnature.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 1000,
+          "endurance": 2.6,
+          "activationTime": 3.1,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 120,
+            "recoveryBuff": 120,
+            "recoveryDebuff": 15
+          },
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -15965,9 +15965,119 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Power Blast",
+        "fullName": "Epic.Primal_Forces_Mastery.Power_Blast",
+        "rank": 2,
+        "available": 34,
+        "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock him back.",
+        "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
+        "icon": "powerblast_powerblast.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Controller ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.8,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 0.3778,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.5112,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Ranged_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.889,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
+        }
+      },
+      {
+        "name": "Temp Invulnerability",
+        "fullName": "Epic.Primal_Forces_Mastery.Temp_Invulnerability",
+        "rank": 3,
+        "available": 37,
+        "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
+        "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Energy Torrent",
         "fullName": "Epic.Primal_Forces_Mastery.Energy_Torrent",
-        "rank": 2,
+        "rank": 4,
         "available": 40,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 41 and have one other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
@@ -16037,78 +16147,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Power Blast",
-        "fullName": "Epic.Primal_Forces_Mastery.Power_Blast",
-        "rank": 3,
-        "available": 34,
-        "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock him back.",
-        "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
-        "icon": "powerblast_powerblast.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Controller ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 8.528,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.2,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.3778,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.5112,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.889,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
-        }
-      },
-      {
         "name": "Power Boost",
         "fullName": "Epic.Primal_Forces_Mastery.Power_Boost",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Self +Special",
@@ -16204,47 +16245,6 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 15
         }
-      },
-      {
-        "name": "Temp Invulnerability",
-        "fullName": "Epic.Primal_Forces_Mastery.Temp_Invulnerability",
-        "rank": 5,
-        "available": 37,
-        "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
-        "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
       }
     ]
   },
@@ -16291,9 +16291,114 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Energy Transfer",
+        "fullName": "Epic.Primal_Forces_Mastery_Dominator.Energy_Transfer",
+        "rank": 2,
+        "available": 34,
+        "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target.",
+        "shortHelp": "Melee, DMG(Energy/Smash), Foe Disorient, Self -HP",
+        "icon": "primalforcesmasterydominator_energytransfer.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Dominator ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Melee Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.2,
+          "range": 7,
+          "recharge": 20,
+          "endurance": 15.288,
+          "activationTime": 2.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1.56,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 1.0742,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.9949,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Special",
+              "scale": 3,
+              "table": "Melee_Damage"
+            }
+          ],
+          "stun": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Stun"
+          }
+        }
+      },
+      {
+        "name": "Temp Invulnerability",
+        "fullName": "Epic.Primal_Forces_Mastery_Dominator.Temp_Invulnerability",
+        "rank": 3,
+        "available": 37,
+        "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
+        "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Energy Torrent",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Energy_Torrent",
-        "rank": 2,
+        "rank": 4,
         "available": 40,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. You must be level 41 and have one other Energy Mastery Powers before selecting this power.<br>",
         "shortHelp": "Ranged (Cone), Light DMG(Energy/Smash), Foe Knockback",
@@ -16363,73 +16468,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Energy Transfer",
-        "fullName": "Epic.Primal_Forces_Mastery_Dominator.Energy_Transfer",
-        "rank": 3,
-        "available": 34,
-        "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target.",
-        "shortHelp": "Melee, DMG(Energy/Smash), Foe Disorient, Self -HP",
-        "icon": "primalforcesmasterydominator_energytransfer.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Dominator ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Melee Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 7,
-          "recharge": 20,
-          "endurance": 15.288,
-          "activationTime": 2.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1.56,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 3,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.0742,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.9949,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Special",
-              "scale": 3,
-              "table": "Melee_Damage"
-            }
-          ],
-          "stun": {
-            "mag": 3,
-            "scale": 8,
-            "table": "Melee_Stun"
-          }
-        }
-      },
-      {
         "name": "Explosive Blast",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Explosive_Blast",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target. Explosive Blast may knock targets backwards. You must be level 44 and have two other Energy Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
@@ -16480,47 +16521,6 @@ export const EPIC_POOLS_RAW = {
             "scale": 4,
             "table": "Ranged_Knockback"
           }
-        }
-      },
-      {
-        "name": "Temp Invulnerability",
-        "fullName": "Epic.Primal_Forces_Mastery_Dominator.Temp_Invulnerability",
-        "rank": 5,
-        "available": 37,
-        "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. You must be level 38 and have one other Energy Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
-        "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
         }
       }
     ]
@@ -16702,9 +16702,53 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "World of Confusion",
+        "fullName": "Epic.Psionic_Mastery.World_of_Confusion",
+        "rank": 4,
+        "available": 40,
+        "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
+        "icon": "psionicmastery_worldofconfusion.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Confuse",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Confuse",
+          "Melee AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 15,
+          "endurance": 0.52,
+          "activationTime": 1.67,
+          "effectArea": "AoE",
+          "radius": 12,
+          "maxTargets": 10,
+          "damage": {
+            "type": "Psionic",
+            "scale": 0.12,
+            "table": "Ranged_Damage",
+            "tickRate": 2
+          },
+          "confuse": {
+            "mag": 2,
+            "scale": 1,
+            "table": "Ranged_PvPMez"
+          }
+        }
+      },
+      {
         "name": "Psionic Tornado",
         "fullName": "Epic.Psionic_Mastery.Psionic_Tornado",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
@@ -16759,50 +16803,6 @@ export const EPIC_POOLS_RAW = {
           "knockup": {
             "scale": 2.8,
             "table": "Ranged_Ones"
-          }
-        }
-      },
-      {
-        "name": "World of Confusion",
-        "fullName": "Epic.Psionic_Mastery.World_of_Confusion",
-        "rank": 5,
-        "available": 40,
-        "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
-        "icon": "psionicmastery_worldofconfusion.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Confuse",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Confuse",
-          "Melee AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 15,
-          "endurance": 0.52,
-          "activationTime": 1.67,
-          "effectArea": "AoE",
-          "radius": 12,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Psionic",
-            "scale": 0.12,
-            "table": "Ranged_Damage",
-            "tickRate": 2
-          },
-          "confuse": {
-            "mag": 2,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
           }
         }
       }
@@ -17023,9 +17023,53 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "World of Confusion",
+        "fullName": "Epic.Psionic_Mastery_Domingator.World_of_Confusion",
+        "rank": 4,
+        "available": 40,
+        "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.<br>",
+        "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
+        "icon": "psionicmastery_worldofconfusion.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Confuse",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Confuse",
+          "Melee AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 15,
+          "endurance": 0.52,
+          "activationTime": 1.67,
+          "effectArea": "AoE",
+          "radius": 12,
+          "maxTargets": 10,
+          "damage": {
+            "type": "Psionic",
+            "scale": 0.12,
+            "table": "Ranged_Damage",
+            "tickRate": 2
+          },
+          "confuse": {
+            "mag": 2,
+            "scale": 1.5,
+            "table": "Ranged_Ones"
+          }
+        }
+      },
+      {
         "name": "Psionic Tornado",
         "fullName": "Epic.Psionic_Mastery_Domingator.Psionic_Tornado",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
@@ -17069,50 +17113,6 @@ export const EPIC_POOLS_RAW = {
           ],
           "knockup": {
             "scale": 1.34,
-            "table": "Ranged_Ones"
-          }
-        }
-      },
-      {
-        "name": "World of Confusion",
-        "fullName": "Epic.Psionic_Mastery_Domingator.World_of_Confusion",
-        "rank": 5,
-        "available": 40,
-        "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.<br>",
-        "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
-        "icon": "psionicmastery_worldofconfusion.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Confuse",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Confuse",
-          "Melee AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 15,
-          "endurance": 0.52,
-          "activationTime": 1.67,
-          "effectArea": "AoE",
-          "radius": 12,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Psionic",
-            "scale": 0.12,
-            "table": "Ranged_Damage",
-            "tickRate": 2
-          },
-          "confuse": {
-            "mag": 2,
-            "scale": 1.5,
             "table": "Ranged_Ones"
           }
         }
@@ -17272,9 +17272,53 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "World of Confusion",
+        "fullName": "Epic.Psychic_Mastery.World_of_Confusion",
+        "rank": 4,
+        "available": 40,
+        "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You must have two other Psychic Mastery powers to select this power. You will not receive any Experience Points for foes defeated by Confused enemies. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
+        "icon": "psychicmastery_worldofconfusion.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Confuse",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Confuse",
+          "Melee AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.52,
+          "activationTime": 1.67,
+          "effectArea": "AoE",
+          "radius": 12,
+          "maxTargets": 10,
+          "damage": {
+            "type": "Psionic",
+            "scale": 0.12,
+            "table": "Ranged_Damage",
+            "tickRate": 2
+          },
+          "confuse": {
+            "mag": 2,
+            "scale": 1,
+            "table": "Ranged_PvPMez"
+          }
+        }
+      },
+      {
         "name": "Telekinesis",
         "fullName": "Epic.Psychic_Mastery.Telekinesis",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Lifts a foe, and any nearby foes, off the ground and repels them. The targets are helpless, unable to move, and will continue to hover away, picking up any passing targets, as long as you keep this power active. Keeping up this level of concentration costs a lot of Endurance. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe Immobilize, Repel",
@@ -17325,50 +17369,6 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           },
           "buffDuration": 0.75
-        }
-      },
-      {
-        "name": "World of Confusion",
-        "fullName": "Epic.Psychic_Mastery.World_of_Confusion",
-        "rank": 5,
-        "available": 40,
-        "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You must have two other Psychic Mastery powers to select this power. You will not receive any Experience Points for foes defeated by Confused enemies. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
-        "icon": "psychicmastery_worldofconfusion.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Confuse",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Confuse",
-          "Melee AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.52,
-          "activationTime": 1.67,
-          "effectArea": "AoE",
-          "radius": 12,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Psionic",
-            "scale": 0.12,
-            "table": "Ranged_Damage",
-            "tickRate": 2
-          },
-          "confuse": {
-            "mag": 2,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
-          }
         }
       }
     ]
@@ -17438,72 +17438,71 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Fire Ball",
-        "fullName": "Epic.Pyre_Mastery.Fire_Ball",
+        "name": "Ring of Fire",
+        "fullName": "Epic.Pyre_Mastery.Ring_of_Fire",
         "rank": 2,
-        "available": 43,
-        "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
-        "icon": "fireblast_fireball.png",
+        "available": 34,
+        "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.",
+        "shortHelp": "Ranged, DoT(Fire), Foe Immobilize",
+        "icon": "pyremastery_ringoffire.png",
         "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
+        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceReduction",
+          "Immobilize",
           "Range",
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Immobilize",
+          "Ranged Damage",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
           "damage": [
             {
-              "type": "Smashing",
-              "scale": 0.2,
-              "table": "Ranged_Damage"
+              "type": "Fire",
+              "scale": 0.1897,
+              "table": "Ranged_Damage",
+              "duration": 9.2,
+              "tickRate": 2
             },
             {
               "type": "Fire",
-              "scale": 0.7,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 2.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.0732,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.6591,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.0732,
+              "scale": 0.3078,
               "table": "Melee_PvPDamage",
-              "duration": 2.1,
-              "tickRate": 1
+              "duration": 9.2,
+              "tickRate": 2
             }
-          ]
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -17633,71 +17632,72 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Ring of Fire",
-        "fullName": "Epic.Pyre_Mastery.Ring_of_Fire",
+        "name": "Fire Ball",
+        "fullName": "Epic.Pyre_Mastery.Fire_Ball",
         "rank": 5,
-        "available": 34,
-        "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.",
-        "shortHelp": "Ranged, DoT(Fire), Foe Immobilize",
-        "icon": "pyremastery_ringoffire.png",
+        "available": 43,
+        "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
+        "icon": "fireblast_fireball.png",
         "powerType": "Click",
-        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
+        "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Immobilize",
           "Range",
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Ranged Damage",
+          "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 50,
-          "recharge": 8,
-          "endurance": 7.8,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
           "damage": [
             {
-              "type": "Fire",
-              "scale": 0.1897,
-              "table": "Ranged_Damage",
-              "duration": 9.2,
-              "tickRate": 2
+              "type": "Smashing",
+              "scale": 0.2,
+              "table": "Ranged_Damage"
             },
             {
               "type": "Fire",
-              "scale": 0.3078,
-              "table": "Melee_PvPDamage",
-              "duration": 9.2,
-              "tickRate": 2
-            }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
+              "scale": 0.7,
+              "table": "Ranged_Damage"
             },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Smashing",
+              "scale": 0.0732,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.6591,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0732,
+              "table": "Melee_PvPDamage",
+              "duration": 2.1,
+              "tickRate": 1
             }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          ]
         }
       }
     ]
@@ -17713,9 +17713,159 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Frozen Spear",
+        "fullName": "Epic.Scrapper_Ice_Mastery.Frozen_Spear",
+        "rank": 1,
+        "available": 34,
+        "description": "A focused spear of ice that can travel great distances with high Accuracy. Frozen Spear slows its target and has a high chance of encasing them in a frail block of ice, but can break free if disturbed. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
+        "shortHelp": "Sniper, DMG(Cold), Foe Sleep, -Recharge, -SPD",
+        "icon": "ice_mastery_frozenspear.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Interrupt",
+          "Range",
+          "Recharge",
+          "Sleep",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Sleep",
+          "Slow Movement",
+          "Sniper Attacks",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 150,
+          "recharge": 24,
+          "endurance": 14.352,
+          "activationTime": 1.33,
+          "effectArea": "SingleTarget"
+        }
+      },
+      {
+        "name": "Ice Bolt",
+        "fullName": "Epic.Scrapper_Ice_Mastery.Ice_Bolt",
+        "rank": 2,
+        "available": 34,
+        "description": "Ice Bolt quickly pelts an enemy with small icy daggers; their chill Slows a foe's attacks and movement for a time. Fast, but little damage.",
+        "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
+        "icon": "ice_mastery_icebolt.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1.2602,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1.42,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1.42,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1.42,
+              "table": "Melee_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Shiver",
+        "fullName": "Epic.Scrapper_Ice_Mastery.Shiver",
+        "rank": 3,
+        "available": 37,
+        "description": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
+        "icon": "ice_mastery_shiver.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Slow Movement"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 12.48,
+          "activationTime": 2.17,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 2.356194496154785,
+          "maxTargets": 10
+        }
+      },
+      {
         "name": "Frigid Wind",
         "fullName": "Epic.Scrapper_Ice_Mastery.Frigid_Wind",
-        "rank": 1,
+        "rank": 4,
         "available": 40,
         "description": "Unleashes a cone of icy wind that can Slow your opponents' movement and attacks. You must be level 41 and have one other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
@@ -17800,126 +17950,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Frozen Spear",
-        "fullName": "Epic.Scrapper_Ice_Mastery.Frozen_Spear",
-        "rank": 2,
-        "available": 34,
-        "description": "A focused spear of ice that can travel great distances with high Accuracy. Frozen Spear slows its target and has a high chance of encasing them in a frail block of ice, but can break free if disturbed. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
-        "shortHelp": "Sniper, DMG(Cold), Foe Sleep, -Recharge, -SPD",
-        "icon": "ice_mastery_frozenspear.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Interrupt",
-          "Range",
-          "Recharge",
-          "Sleep",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Ranged Damage",
-          "Sleep",
-          "Slow Movement",
-          "Sniper Attacks",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 150,
-          "recharge": 24,
-          "endurance": 14.352,
-          "activationTime": 1.33,
-          "effectArea": "SingleTarget"
-        }
-      },
-      {
-        "name": "Ice Bolt",
-        "fullName": "Epic.Scrapper_Ice_Mastery.Ice_Bolt",
-        "rank": 3,
-        "available": 34,
-        "description": "Ice Bolt quickly pelts an enemy with small icy daggers; their chill Slows a foe's attacks and movement for a time. Fast, but little damage.",
-        "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
-        "icon": "ice_mastery_icebolt.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Ranged Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.2602,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
         "name": "Ice Elemental",
         "fullName": "Epic.Scrapper_Ice_Mastery.Ice_Elemental",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "You can create a very powerful entity of animated ice at a targeted location. Ice Elemental possesses several ice powers to attack any nearby foes and can be healed and buffed like any teammate. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
         "shortHelp": "Summon Ice Elemental: Melee DMG(Lethal/Cold)",
@@ -17955,39 +17988,6 @@ export const EPIC_POOLS_RAW = {
             "duration": 240
           }
         }
-      },
-      {
-        "name": "Shiver",
-        "fullName": "Epic.Scrapper_Ice_Mastery.Shiver",
-        "rank": 5,
-        "available": 37,
-        "description": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
-        "icon": "ice_mastery_shiver.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Slow Movement"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 12.48,
-          "activationTime": 2.17,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 2.356194496154785,
-          "maxTargets": 10
-        }
       }
     ]
   },
@@ -18002,173 +18002,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Darkest Night",
-        "fullName": "Epic.Sentinel_Dark_Mastery.Darkest_Night",
-        "rank": 1,
-        "available": 43,
-        "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
-        "icon": "darknesscontrol_debuff.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "To Hit Debuff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 20,
-          "endurance": 0.26,
-          "activationTime": 3.17,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10
-        }
-      },
-      {
-        "name": "Engulfing Darkness",
-        "fullName": "Epic.Sentinel_Dark_Mastery.Engulfing_Darkness",
-        "rank": 2,
-        "available": 40,
-        "description": "You release a burst of negative energy to foes around you dealing moderate Negative Energy damage, reducing their chance to hit and sapping their health over time. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
-        "shortHelp": "PBAoE, DMG(Negative), Foe -To Hit, DoT(Negative)",
-        "icon": "darknesscontrol_pbaoe.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Melee AoE Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 36,
-          "endurance": 16.848,
-          "activationTime": 2,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.1,
-              "table": "Melee_InherentDamage",
-              "duration": 3.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.9969,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.9969,
-              "table": "Melee_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
-        "name": "Netherworld Grasp",
-        "fullName": "Epic.Sentinel_Dark_Mastery.Netherworld_Grasp",
-        "rank": 3,
-        "available": 37,
-        "description": "Mastery over the forces of the Netherworld allows you to summon dark tentacles to render your target helpless and inflicting moderate negative energy damage. Even if the target is powerful enough to resist the power's hold effect they will have their chance to hit reduced. You must be level 38 and have one other Dark Mastery Powers before selecting this power.<br>",
-        "shortHelp": "Ranged, DMG(Negative), Foe Hold, -To Hit",
-        "icon": "darknesscontrol_darkgrasp.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Holds",
-          "Ranged Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.809,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.809,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "hold": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
-          }
-        }
-      },
-      {
         "name": "Netherworld Tentacles",
         "fullName": "Epic.Sentinel_Dark_Mastery.Netherworld_Tentacles",
-        "rank": 4,
+        "rank": 1,
         "available": 34,
         "description": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their chance to hit.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize, -To Hit, -Fly",
@@ -18256,7 +18092,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Smite",
         "fullName": "Epic.Sentinel_Dark_Mastery.Smite",
-        "rank": 5,
+        "rank": 2,
         "available": 34,
         "description": "You wrap your fists with Negative Energy channeled from the Netherworlds, then perform a Smite that deals more damage than Shadow Punch, but has a longer recharge time. Smite clouds the target's vision, lowering their chance to hit for a short time.",
         "shortHelp": "Melee, DMG(Smash/Negative), Foe -To Hit",
@@ -18326,6 +18162,170 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage"
             }
           ]
+        }
+      },
+      {
+        "name": "Netherworld Grasp",
+        "fullName": "Epic.Sentinel_Dark_Mastery.Netherworld_Grasp",
+        "rank": 3,
+        "available": 37,
+        "description": "Mastery over the forces of the Netherworld allows you to summon dark tentacles to render your target helpless and inflicting moderate negative energy damage. Even if the target is powerful enough to resist the power's hold effect they will have their chance to hit reduced. You must be level 38 and have one other Dark Mastery Powers before selecting this power.<br>",
+        "shortHelp": "Ranged, DMG(Negative), Foe Hold, -To Hit",
+        "icon": "darknesscontrol_darkgrasp.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Holds",
+          "Ranged Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2.07,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Ranged_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 2.809,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 2.809,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "hold": {
+            "mag": 4,
+            "scale": 1,
+            "table": "Ranged_PvPMez"
+          }
+        }
+      },
+      {
+        "name": "Engulfing Darkness",
+        "fullName": "Epic.Sentinel_Dark_Mastery.Engulfing_Darkness",
+        "rank": 4,
+        "available": 40,
+        "description": "You release a burst of negative energy to foes around you dealing moderate Negative Energy damage, reducing their chance to hit and sapping their health over time. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
+        "shortHelp": "PBAoE, DMG(Negative), Foe -To Hit, DoT(Negative)",
+        "icon": "darknesscontrol_pbaoe.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Melee AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 36,
+          "endurance": 16.848,
+          "activationTime": 2,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1,
+              "table": "Melee_InherentDamage",
+              "duration": 3.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.9969,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.9969,
+              "table": "Melee_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Darkest Night",
+        "fullName": "Epic.Sentinel_Dark_Mastery.Darkest_Night",
+        "rank": 5,
+        "available": 43,
+        "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 44 and have two other Dark Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
+        "icon": "darknesscontrol_debuff.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "To Hit Debuff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 20,
+          "endurance": 0.26,
+          "activationTime": 3.17,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 10
         }
       }
     ]
@@ -18521,76 +18521,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Shocking Field",
-        "fullName": "Epic.Sentinel_Electricity_Mastery.Lightning_Field",
-        "rank": 3,
-        "available": 40,
-        "description": "While active, you emit a storm of electricity that constantly damages all nearby foes. Enemies shocked by this field will continue to take electric damage over time for a while. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: PBAoE, DoT(Energy), Foe -End",
-        "icon": "electriccontrol_lightningfield.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Melee AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 20,
-          "endurance": 1.04,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.17,
-              "table": "Melee_Damage",
-              "duration": 10,
-              "tickRate": 2.0999999046325684
-            },
-            {
-              "type": "Energy",
-              "scale": 0.17,
-              "table": "Melee_InherentDamage",
-              "duration": 10,
-              "tickRate": 2.0999999046325684
-            },
-            {
-              "type": "Energy",
-              "scale": 0.17,
-              "table": "Melee_PvPDamage",
-              "duration": 10,
-              "tickRate": 2.0999999046325684
-            },
-            {
-              "type": "Energy",
-              "scale": 0.17,
-              "table": "Melee_PvPDamage",
-              "duration": 10,
-              "tickRate": 2.0999999046325684
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 1,
-            "table": "Melee_EndDrain"
-          }
-        }
-      },
-      {
         "name": "Paralyzing Jolt",
         "fullName": "Epic.Sentinel_Electricity_Mastery.Paralyzing_Jolt",
-        "rank": 4,
+        "rank": 3,
         "available": 37,
         "description": "You strike an enemy with a powerful jolt of electricity, disorienting him, draining some endurance and causing moderate damage over time. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe Stun, -End",
@@ -18662,6 +18595,73 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Shocking Field",
+        "fullName": "Epic.Sentinel_Electricity_Mastery.Lightning_Field",
+        "rank": 4,
+        "available": 40,
+        "description": "While active, you emit a storm of electricity that constantly damages all nearby foes. Enemies shocked by this field will continue to take electric damage over time for a while. You must be level 41 and have one other Electricity Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: PBAoE, DoT(Energy), Foe -End",
+        "icon": "electriccontrol_lightningfield.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Melee AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 20,
+          "endurance": 1.04,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 10,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.17,
+              "table": "Melee_Damage",
+              "duration": 10,
+              "tickRate": 2.0999999046325684
+            },
+            {
+              "type": "Energy",
+              "scale": 0.17,
+              "table": "Melee_InherentDamage",
+              "duration": 10,
+              "tickRate": 2.0999999046325684
+            },
+            {
+              "type": "Energy",
+              "scale": 0.17,
+              "table": "Melee_PvPDamage",
+              "duration": 10,
+              "tickRate": 2.0999999046325684
+            },
+            {
+              "type": "Energy",
+              "scale": 0.17,
+              "table": "Melee_PvPDamage",
+              "duration": 10,
+              "tickRate": 2.0999999046325684
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_EndDrain"
+          }
+        }
+      },
+      {
         "name": "Rehabilitating Circuit",
         "fullName": "Epic.Sentinel_Electricity_Mastery.Rehabilitating_Circuit",
         "rank": 5,
@@ -18709,77 +18709,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Char",
-        "fullName": "Epic.Sentinel_Fire_Mastery.Char",
-        "rank": 1,
-        "available": 37,
-        "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DoT(Fire), Foe Hold",
-        "icon": "firetrap_hold.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 1.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Melee_InherentDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.4218,
-              "table": "Melee_PvPDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.4218,
-              "table": "Melee_PvPDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Cremate",
         "fullName": "Epic.Sentinel_Fire_Mastery.Cremate",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "A slow but devastating attack. Cremate clobbers your foes with a massive 2 handed fiery smash that leaves your foe set on fire.",
         "shortHelp": "Melee, DMG(Smash/Fire)",
@@ -18845,7 +18777,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Fire Cages",
         "fullName": "Epic.Sentinel_Fire_Mastery.Fire_Cages",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "Immobilizes a group of foes in Fire Cages, dealing Fire damage over time. More resilient foes may require multiple Fire Cages to Immobilize. Fire Cages is slower and less damaging than Ring of Fire, but can capture multiple targets.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Fire), Foe Immobilize",
@@ -18924,6 +18856,74 @@ export const EPIC_POOLS_RAW = {
             "mezResistance": 12
           },
           "buffDuration": 12
+        }
+      },
+      {
+        "name": "Char",
+        "fullName": "Epic.Sentinel_Fire_Mastery.Char",
+        "rank": 3,
+        "available": 37,
+        "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial. You must be level 38 and have one other Fire Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DoT(Fire), Foe Hold",
+        "icon": "firetrap_hold.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 1.07,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 4.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Melee_InherentDamage",
+              "duration": 4.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.4218,
+              "table": "Melee_PvPDamage",
+              "duration": 4.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.4218,
+              "table": "Melee_PvPDamage",
+              "duration": 4.2,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -19040,95 +19040,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Block of Ice",
-        "fullName": "Epic.Sentinel_Ice_Mastery.Block_of_Ice",
-        "rank": 1,
-        "available": 37,
-        "description": "You can freeze a single foe in a Block of Ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be held, but all affected targets will be Slowed. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge",
-        "icon": "ice_mastery_blockofice.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 1.87,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 2.669,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 2.669,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 10,
-            "knockup": 10,
-            "knockback": 10
-          },
-          "knockup": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "knockback": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 10
-        }
-      },
-      {
         "name": "Frostbite",
         "fullName": "Epic.Sentinel_Ice_Mastery.Frostbite",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Immobilizes a group of foes in icy traps. Deals minimal Cold damage over time and slightly Slows the targets. Slower and less damaging than Chilblain, but can capture multiple targets. More resilient foes may only be Slowed.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Cold), Foe Immobilize, -SPD, -Recharge",
@@ -19212,9 +19126,159 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Ice Sword",
+        "fullName": "Epic.Sentinel_Ice_Mastery.Ice_Sword",
+        "rank": 2,
+        "available": 34,
+        "description": "You create a blade of solid ice that deals higher damage then Frozen Fists. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.",
+        "shortHelp": "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
+        "icon": "ice_mastery_icesword.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Sentinel ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Melee Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 20,
+          "endurance": 10.192,
+          "activationTime": 1.33,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.96,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.96,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 2.131,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 2.131,
+              "table": "Melee_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Block of Ice",
+        "fullName": "Epic.Sentinel_Ice_Mastery.Block_of_Ice",
+        "rank": 3,
+        "available": 37,
+        "description": "You can freeze a single foe in a Block of Ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be held, but all affected targets will be Slowed. You must be level 38 and have one other Ice Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge",
+        "icon": "ice_mastery_blockofice.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 1.87,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 2.669,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Cold",
+              "scale": 2.669,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 10,
+            "knockup": 10,
+            "knockback": 10
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10
+        }
+      },
+      {
         "name": "Frozen Aura",
         "fullName": "Epic.Sentinel_Ice_Mastery.Frozen_Aura",
-        "rank": 3,
+        "rank": 4,
         "available": 40,
         "description": "Your mastery of cold enables you to dramatically lower the temperature immediately around you. When you perform a Frozen Aura, nearby foes will be frozen within a fragile casing of ice and suffer a moderate amount of cold damage. These frozen foes will break free if attacked. Frozen Aura deals moderate damage. You must be level 41 and have one other Ice Mastery Powers before selecting this power.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "PBAoE, DMG(Cold), Foe Sleep",
@@ -19282,70 +19346,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Ice Sword",
-        "fullName": "Epic.Sentinel_Ice_Mastery.Ice_Sword",
-        "rank": 4,
-        "available": 34,
-        "description": "You create a blade of solid ice that deals higher damage then Frozen Fists. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.",
-        "shortHelp": "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
-        "icon": "ice_mastery_icesword.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Sentinel ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Melee Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 20,
-          "endurance": 10.192,
-          "activationTime": 1.33,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.96,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.96,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 2.131,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 2.131,
-              "table": "Melee_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
         "name": "Snow Storm",
         "fullName": "Epic.Sentinel_Ice_Mastery.Snow_Storm",
         "rank": 5,
@@ -19388,9 +19388,267 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Knockout Blow",
+        "fullName": "Epic.Sentinel_Leviathan_Mastery.Knockout_Blow",
+        "rank": 1,
+        "available": 34,
+        "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target.",
+        "shortHelp": "Melee, DMG(Smash), Foe Hold",
+        "icon": "arachnos_patron_koblow.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Knockback",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Knockback",
+          "Melee Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.2,
+          "range": 13.199999809265137,
+          "recharge": 40,
+          "endurance": 18.512,
+          "activationTime": 2.23,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 3.56,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 3.56,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 3.561,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 3.561,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Stun"
+          },
+          "knockup": {
+            "scale": 6,
+            "table": "Melee_Knockback"
+          }
+        }
+      },
+      {
+        "name": "School of Sharks",
+        "fullName": "Epic.Sentinel_Leviathan_Mastery.School_of_Sharks",
+        "rank": 2,
+        "available": 34,
+        "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
+        "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
+        "icon": "arachnos_patron_coneimmobilize.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 16,
+          "endurance": 10.795,
+          "activationTime": 2.37,
+          "effectArea": "Cone",
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.1339,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.0595,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1339,
+              "table": "Ranged_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.0595,
+              "table": "Ranged_InherentDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.124,
+              "table": "Ranged_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1102,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.124,
+              "table": "Ranged_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1102,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
+        "name": "Spirit Shark Jaws",
+        "fullName": "Epic.Sentinel_Leviathan_Mastery.Spirit_Shark_Jaws",
+        "rank": 3,
+        "available": 37,
+        "description": "You can summon a massive Spirit Shark that will attack your foe from below. The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
+        "icon": "arachnos_patron_targetedhold.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 1.87,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.2,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.2,
+              "table": "Ranged_InherentDamage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Ranged_InherentDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.5861,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.2604,
+              "table": "Ranged_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.5861,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.2604,
+              "table": "Ranged_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
+        }
+      },
+      {
         "name": "Arctic Breath",
         "fullName": "Epic.Sentinel_Leviathan_Mastery.Arctic_Breath",
-        "rank": 1,
+        "rank": 4,
         "available": 40,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this freezing acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take cold damage over time, and have their Defense, movement rate, and recharge rate reduced. This ice will stick to foes, causing them to fall down occasionally. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF, knock down",
@@ -19525,264 +19783,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Knockout Blow",
-        "fullName": "Epic.Sentinel_Leviathan_Mastery.Knockout_Blow",
-        "rank": 2,
-        "available": 34,
-        "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target.",
-        "shortHelp": "Melee, DMG(Smash), Foe Hold",
-        "icon": "arachnos_patron_koblow.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Knockback",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Knockback",
-          "Melee Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 13.199999809265137,
-          "recharge": 40,
-          "endurance": 18.512,
-          "activationTime": 2.23,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 3.56,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 3.56,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 3.561,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 3.561,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Stun"
-          },
-          "knockup": {
-            "scale": 6,
-            "table": "Melee_Knockback"
-          }
-        }
-      },
-      {
-        "name": "School of Sharks",
-        "fullName": "Epic.Sentinel_Leviathan_Mastery.School_of_Sharks",
-        "rank": 3,
-        "available": 34,
-        "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
-        "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
-        "icon": "arachnos_patron_coneimmobilize.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 16,
-          "endurance": 10.795,
-          "activationTime": 2.37,
-          "effectArea": "Cone",
-          "radius": 50,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.1339,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.0595,
-              "table": "Ranged_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.1339,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.0595,
-              "table": "Ranged_InherentDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.124,
-              "table": "Ranged_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.1102,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.124,
-              "table": "Ranged_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.1102,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
-        }
-      },
-      {
-        "name": "Spirit Shark Jaws",
-        "fullName": "Epic.Sentinel_Leviathan_Mastery.Spirit_Shark_Jaws",
-        "rank": 4,
-        "available": 37,
-        "description": "You can summon a massive Spirit Shark that will attack your foe from below. The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
-        "icon": "arachnos_patron_targetedhold.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 1.87,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.2,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.2,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.1,
-              "table": "Ranged_InherentDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.5861,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.2604,
-              "table": "Ranged_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.5861,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.2604,
-              "table": "Ranged_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Summon Coralax",
         "fullName": "Epic.Sentinel_Leviathan_Mastery.Summon_Coralax",
         "rank": 5,
@@ -19832,62 +19832,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Coordinated Targeting",
-        "fullName": "Epic.Sentinel_Mace_Mastery.Focused_Accuracy",
-        "rank": 1,
-        "available": 40,
-        "description": "When this power is activated, the Villain and allies focus their offensive to dramatically improve their accuracy. Additionally, Coordinated Targeting increases the team's Perception, allowing to better see stealthy foes. It also grants resistance to powers that DeBuff Accuracy. Coordinated Targeting is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Coordinated Targeting drains Endurance while active. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Team +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
-        "icon": "arachnos_patron_teamtohitbuff.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "ToHit"
-        ],
-        "allowedSetCategories": [
-          "To Hit Buff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.312,
-          "activationTime": 1.17,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 16,
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Ranged_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Ranged_Res_Boolean"
-            },
-            "perception": {
-              "scale": 2,
-              "table": "Ranged_Res_Boolean"
-            }
-          },
-          "perceptionBuff": {
-            "scale": 5,
-            "table": "Ranged_Buff_ToHit"
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Pulverize",
         "fullName": "Epic.Sentinel_Mace_Mastery.Pulverize",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You are capable of Pulverizing a foe with your Nullifier Mace dealing high damage, causing toxic damage over time. Pulverize will occasionally disorient foes as well.",
         "shortHelp": "Melee, High DMG(Smash), Minor DoT(Toxic), Foe Disorient",
@@ -19958,121 +19905,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Summon Tarantula",
-        "fullName": "Epic.Sentinel_Mace_Mastery.Summon_Tarantula",
-        "rank": 3,
-        "available": 43,
-        "description": "Black Scorpion has granted you an Toxic Tarantula for you to command. Weaver One developed the Tarantula Exoskeleton Armor, which so radically transforms an Arachnos troop that hardly anything human is recognizable. Your access to this Tarantula is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Summon Tarantula: Ranged Moderate DMG(Toxic)",
-        "icon": "arachnos_patron_summononepet.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Immobilize",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Immobilize",
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 900,
-          "endurance": 20.8,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
-            "duration": 240
-          }
-        }
-      },
-      {
-        "name": "Web Cocoon",
-        "fullName": "Epic.Sentinel_Mace_Mastery.Web_Cocoon",
-        "rank": 4,
-        "available": 37,
-        "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
-        "icon": "arachnos_patron_targetedhold.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.1169,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1169,
-              "table": "Melee_InherentDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.345,
-              "table": "Melee_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.345,
-              "table": "Melee_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Web Envelope",
         "fullName": "Epic.Sentinel_Mace_Mastery.Web_Envelope",
-        "rank": 5,
+        "rank": 2,
         "available": 34,
         "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
@@ -20154,6 +19989,171 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 15
         }
+      },
+      {
+        "name": "Web Cocoon",
+        "fullName": "Epic.Sentinel_Mace_Mastery.Web_Cocoon",
+        "rank": 3,
+        "available": 37,
+        "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
+        "icon": "arachnos_patron_targetedhold.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.1169,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1169,
+              "table": "Melee_InherentDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.345,
+              "table": "Melee_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.345,
+              "table": "Melee_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
+        }
+      },
+      {
+        "name": "Coordinated Targeting",
+        "fullName": "Epic.Sentinel_Mace_Mastery.Focused_Accuracy",
+        "rank": 4,
+        "available": 40,
+        "description": "When this power is activated, the Villain and allies focus their offensive to dramatically improve their accuracy. Additionally, Coordinated Targeting increases the team's Perception, allowing to better see stealthy foes. It also grants resistance to powers that DeBuff Accuracy. Coordinated Targeting is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Coordinated Targeting drains Endurance while active. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Team +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+        "icon": "arachnos_patron_teamtohitbuff.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "ToHit"
+        ],
+        "allowedSetCategories": [
+          "To Hit Buff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.312,
+          "activationTime": 1.17,
+          "effectArea": "AoE",
+          "radius": 25,
+          "maxTargets": 16,
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Ranged_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Ranged_Res_Boolean"
+            },
+            "perception": {
+              "scale": 2,
+              "table": "Ranged_Res_Boolean"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 5,
+            "table": "Ranged_Buff_ToHit"
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Summon Tarantula",
+        "fullName": "Epic.Sentinel_Mace_Mastery.Summon_Tarantula",
+        "rank": 5,
+        "available": 43,
+        "description": "Black Scorpion has granted you an Toxic Tarantula for you to command. Weaver One developed the Tarantula Exoskeleton Armor, which so radically transforms an Arachnos troop that hardly anything human is recognizable. Your access to this Tarantula is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Summon Tarantula: Ranged Moderate DMG(Toxic)",
+        "icon": "arachnos_patron_summononepet.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Immobilize",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "activationTime": 3.03,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
+            "duration": 240
+          }
+        }
       }
     ]
   },
@@ -20168,95 +20168,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Electric Shackles",
-        "fullName": "Epic.Sentinel_Mu_Mastery.Electric_Shackles",
-        "rank": 1,
-        "available": 37,
-        "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
-        "icon": "arachnos_patron_targetedhold.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.15,
-              "table": "Ranged_Damage",
-              "duration": 6.3,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.15,
-              "table": "Ranged_InherentDamage",
-              "duration": 6.3,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.4113,
-              "table": "Ranged_PvPDamage",
-              "duration": 6.3,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.4113,
-              "table": "Ranged_PvPDamage",
-              "duration": 6.3,
-              "tickRate": 1
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 1.25,
-            "table": "Ranged_EndDrain"
-          },
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 8
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 8
-        }
-      },
-      {
         "name": "Electrifying Fences",
         "fullName": "Epic.Sentinel_Mu_Mastery.Electrifying_Fences",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
@@ -20350,126 +20264,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Static Discharge",
-        "fullName": "Epic.Sentinel_Mu_Mastery.Static_Discharge",
-        "rank": 3,
-        "available": 40,
-        "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), DMG(Energy), -END",
-        "icon": "arachnos_patron_rangedconemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 24,
-          "endurance": 15.184,
-          "activationTime": 2.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.1803,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.1803,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 1.25,
-            "table": "Ranged_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 4
-        }
-      },
-      {
-        "name": "Summon Adept",
-        "fullName": "Epic.Sentinel_Mu_Mastery.Summon_Adept",
-        "rank": 4,
-        "available": 43,
-        "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
-        "icon": "arachnos_patron_summononepet.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Hold",
-          "Recharge",
-          "Sleep",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Holds",
-          "Ranged AoE Damage",
-          "Sleep",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 900,
-          "endurance": 20.8,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Mu_Adept",
-            "duration": 240
-          }
-        }
-      },
-      {
         "name": "Thunder Strike",
         "fullName": "Epic.Sentinel_Mu_Mastery.Thunder_Strike",
-        "rank": 5,
+        "rank": 2,
         "available": 34,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained.",
         "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
@@ -20566,6 +20363,209 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 4
         }
+      },
+      {
+        "name": "Electric Shackles",
+        "fullName": "Epic.Sentinel_Mu_Mastery.Electric_Shackles",
+        "rank": 3,
+        "available": 37,
+        "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
+        "icon": "arachnos_patron_targetedhold.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.15,
+              "table": "Ranged_Damage",
+              "duration": 6.3,
+              "tickRate": 1
+            },
+            {
+              "type": "Energy",
+              "scale": 0.15,
+              "table": "Ranged_InherentDamage",
+              "duration": 6.3,
+              "tickRate": 1
+            },
+            {
+              "type": "Energy",
+              "scale": 0.4113,
+              "table": "Ranged_PvPDamage",
+              "duration": 6.3,
+              "tickRate": 1
+            },
+            {
+              "type": "Energy",
+              "scale": 0.4113,
+              "table": "Ranged_PvPDamage",
+              "duration": 6.3,
+              "tickRate": 1
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 1.25,
+            "table": "Ranged_EndDrain"
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8
+        }
+      },
+      {
+        "name": "Static Discharge",
+        "fullName": "Epic.Sentinel_Mu_Mastery.Static_Discharge",
+        "rank": 4,
+        "available": 40,
+        "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), DMG(Energy), -END",
+        "icon": "arachnos_patron_rangedconemoderatedmg.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 40,
+          "recharge": 24,
+          "endurance": 15.184,
+          "activationTime": 2.07,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.958,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.958,
+              "table": "Ranged_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.1803,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.1803,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 1.25,
+            "table": "Ranged_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
+        }
+      },
+      {
+        "name": "Summon Adept",
+        "fullName": "Epic.Sentinel_Mu_Mastery.Summon_Adept",
+        "rank": 5,
+        "available": 43,
+        "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
+        "icon": "arachnos_patron_summononepet.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Hold",
+          "Recharge",
+          "Sleep",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Holds",
+          "Ranged AoE Damage",
+          "Sleep",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "activationTime": 1.17,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Adept",
+            "duration": 240
+          }
+        }
       }
     ]
   },
@@ -20617,41 +20617,66 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Kemuridama",
-        "fullName": "Epic.Sentinel_Ninja_Mastery.Kemuridama",
+        "name": "Sting of the Wasp",
+        "fullName": "Epic.Sentinel_Ninja_Mastery.Sting_of_the_Wasp",
         "rank": 2,
-        "available": 43,
-        "description": "You activate a kemuridama smoke bomb at your feet. The resulting flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. A mixture of toxins in the smoke also weaken your foes, reducing how much damage they inflict in addition to lowering their chance to hit. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.<br>",
-        "shortHelp": "PBAoE, Foe Placate -DMG -To Hit",
-        "icon": "ninjatools_placate.png",
+        "available": 34,
+        "description": "You perform a standard attack with your Ninja Blade. This attack is slower than Gambler's Cut, but deals more lethal damage. Sting of the Wasp can reduce a target's Defense, making them easier to hit.",
+        "shortHelp": "Melee, DMG(Lethal), Foe -Def",
+        "icon": "ninjatools_katanalight.png",
         "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
+        "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
+          "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Taunt",
-          "ToHit Debuff"
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Threat Duration",
-          "To Hit Debuff"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Melee Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
-          "accuracy": 1.4,
-          "recharge": 120,
-          "endurance": 15.6,
-          "activationTime": 1.83,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 10,
-          "placate": {
-            "scale": 6,
-            "table": "Ranged_Taunt"
-          }
+          "accuracy": 1.05,
+          "range": 7,
+          "recharge": 10,
+          "endurance": 6.032,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 1.16,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 1.16,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 1.619,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 1.619,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "defenseDebuff": {
+            "scale": 1,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 10
+          },
+          "buffDuration": 10
         }
       },
       {
@@ -20723,72 +20748,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Sting of the Wasp",
-        "fullName": "Epic.Sentinel_Ninja_Mastery.Sting_of_the_Wasp",
-        "rank": 4,
-        "available": 34,
-        "description": "You perform a standard attack with your Ninja Blade. This attack is slower than Gambler's Cut, but deals more lethal damage. Sting of the Wasp can reduce a target's Defense, making them easier to hit.",
-        "shortHelp": "Melee, DMG(Lethal), Foe -Def",
-        "icon": "ninjatools_katanalight.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Sentinel ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Melee Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 7,
-          "recharge": 10,
-          "endurance": 6.032,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 1.16,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.16,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.619,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.619,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "defenseDebuff": {
-            "scale": 1,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 10
-          },
-          "buffDuration": 10
-        }
-      },
-      {
         "name": "The Lotus Drops",
         "fullName": "Epic.Sentinel_Ninja_Mastery.The_Lotus_Drops",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense. You must be level 41 and have one other Weapon Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Melee, DMG(Lethal), Foe -Def",
@@ -20862,6 +20824,44 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 10
         }
+      },
+      {
+        "name": "Kemuridama",
+        "fullName": "Epic.Sentinel_Ninja_Mastery.Kemuridama",
+        "rank": 5,
+        "available": 43,
+        "description": "You activate a kemuridama smoke bomb at your feet. The resulting flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. A mixture of toxins in the smoke also weaken your foes, reducing how much damage they inflict in addition to lowering their chance to hit. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.<br>",
+        "shortHelp": "PBAoE, Foe Placate -DMG -To Hit",
+        "icon": "ninjatools_placate.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Taunt",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Threat Duration",
+          "To Hit Debuff"
+        ],
+        "effects": {
+          "accuracy": 1.4,
+          "recharge": 120,
+          "endurance": 15.6,
+          "activationTime": 1.83,
+          "effectArea": "AoE",
+          "radius": 20,
+          "maxTargets": 10,
+          "placate": {
+            "scale": 6,
+            "table": "Ranged_Taunt"
+          }
+        }
       }
     ]
   },
@@ -20876,9 +20876,98 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Mass Hypnosis",
+        "fullName": "Epic.Sentinel_Psionic_Mastery.Mass_Hypnosis",
+        "rank": 1,
+        "available": 34,
+        "description": "Hypnotizes a group of foes at a distance and puts them to Sleep. The targets will remain asleep for some time, but will awaken if attacked. This power deals no damage, but if done discreetly, the targets will never be aware of your presence.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
+        "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
+        "icon": "mentalcontrol_masshypnosis.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Sentinel ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Sleep"
+        ],
+        "allowedSetCategories": [
+          "Sleep"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 90,
+          "endurance": 15.6,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 25,
+          "maxTargets": 16,
+          "sleep": {
+            "mag": 4,
+            "scale": 1,
+            "table": "Ranged_PvPMez"
+          }
+        }
+      },
+      {
+        "name": "Mind Probe",
+        "fullName": "Epic.Sentinel_Psionic_Mastery.Mind_Probe",
+        "rank": 2,
+        "available": 34,
+        "description": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wreaks havoc on your foes synapses, dealing high Psionic Damage while reducing their attack speed.",
+        "shortHelp": "Melee, DMG(Psionic), Target -Recharge",
+        "icon": "mentalcontrol_mindprobe.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Sentinel ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Melee Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 20,
+          "endurance": 10.192,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Psionic",
+              "scale": 1.96,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 1.96,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 2.019,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 2.019,
+              "table": "Melee_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
         "name": "Dominate",
         "fullName": "Epic.Sentinel_Psionic_Mastery.Dominate",
-        "rank": 1,
+        "rank": 3,
         "available": 37,
         "description": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in their own mind and unable to defend themselves. You must be level 38 and have one other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Psionic), Foe Hold",
@@ -20936,9 +21025,69 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Psychic Shockwave",
+        "fullName": "Epic.Sentinel_Psionic_Mastery.Psychic_Shockwave",
+        "rank": 4,
+        "available": 40,
+        "description": "Psychic Shockwave is a devastating Psionic attack that wracks the minds of all nearby foes. Affected foes may have a reduced attack rate and may be left Disoriented. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
+        "shortHelp": "PBAoE, DMG(Psionic), Foe Disorient -Recharge",
+        "icon": "mentalcontrol_psionicshockwave.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Melee AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 40,
+          "endurance": 18.512,
+          "activationTime": 1.97,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Psionic",
+              "scale": 1.0954,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 1.0954,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 0.7935,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 0.7935,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "stun": {
+            "mag": 2,
+            "scale": 6,
+            "table": "Melee_Stun"
+          }
+        }
+      },
+      {
         "name": "Link Minds",
         "fullName": "Epic.Sentinel_Psionic_Mastery.Link_Minds",
-        "rank": 2,
+        "rank": 5,
         "available": 43,
         "description": "Your Mind Link Power will enable you to link the minds of all your teammates who are near you for the next 90 seconds. This shared link improves your team's chance to hit foes, your defensive abilities and reduces psionic damage. You must be level 44 and have two other Psionic Mastery Powers before selecting this power.",
         "shortHelp": "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
@@ -21025,155 +21174,6 @@ export const EPIC_POOLS_RAW = {
           },
           "buffDuration": 90
         }
-      },
-      {
-        "name": "Mass Hypnosis",
-        "fullName": "Epic.Sentinel_Psionic_Mastery.Mass_Hypnosis",
-        "rank": 3,
-        "available": 34,
-        "description": "Hypnotizes a group of foes at a distance and puts them to Sleep. The targets will remain asleep for some time, but will awaken if attacked. This power deals no damage, but if done discreetly, the targets will never be aware of your presence.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
-        "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
-        "icon": "mentalcontrol_masshypnosis.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Sentinel ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Sleep"
-        ],
-        "allowedSetCategories": [
-          "Sleep"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 90,
-          "endurance": 15.6,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 16,
-          "sleep": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
-          }
-        }
-      },
-      {
-        "name": "Mind Probe",
-        "fullName": "Epic.Sentinel_Psionic_Mastery.Mind_Probe",
-        "rank": 4,
-        "available": 34,
-        "description": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wreaks havoc on your foes synapses, dealing high Psionic Damage while reducing their attack speed.",
-        "shortHelp": "Melee, DMG(Psionic), Target -Recharge",
-        "icon": "mentalcontrol_mindprobe.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Sentinel ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Melee Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 20,
-          "endurance": 10.192,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Psionic",
-              "scale": 1.96,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.96,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 2.019,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 2.019,
-              "table": "Melee_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
-        "name": "Psychic Shockwave",
-        "fullName": "Epic.Sentinel_Psionic_Mastery.Psychic_Shockwave",
-        "rank": 5,
-        "available": 40,
-        "description": "Psychic Shockwave is a devastating Psionic attack that wracks the minds of all nearby foes. Affected foes may have a reduced attack rate and may be left Disoriented. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
-        "shortHelp": "PBAoE, DMG(Psionic), Foe Disorient -Recharge",
-        "icon": "mentalcontrol_psionicshockwave.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 40,
-          "endurance": 18.512,
-          "activationTime": 1.97,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Psionic",
-              "scale": 1.0954,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.0954,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.7935,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.7935,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "stun": {
-            "mag": 2,
-            "scale": 6,
-            "table": "Melee_Stun"
-          }
-        }
       }
     ]
   },
@@ -21188,40 +21188,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Darkest Night",
-        "fullName": "Epic.Sentinel_Soul_Mastery.Darkest_Night",
-        "rank": 1,
-        "available": 40,
-        "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
-        "icon": "arachnos_patron_aoedamagedebuff.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "To Hit Debuff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 20,
-          "endurance": 0.26,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10
-        }
-      },
-      {
         "name": "Midnight Grasp",
         "fullName": "Epic.Sentinel_Soul_Mastery.Midnight_Grasp",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.",
         "shortHelp": "Melee, DMG(Negative), Foe Immobilize, -To Hit",
@@ -21295,77 +21264,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Soul Storm",
-        "fullName": "Epic.Sentinel_Soul_Mastery.Soul_Storm",
-        "rank": 3,
-        "available": 37,
-        "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DoT(Negative), Foe Hold",
-        "icon": "arachnos_patron_targetedhold.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Ranged_Damage",
-              "duration": 10,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Ranged_InherentDamage",
-              "duration": 10,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.2879,
-              "table": "Ranged_PvPDamage",
-              "duration": 10,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.2879,
-              "table": "Ranged_PvPDamage",
-              "duration": 10,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Soul Tentacles",
         "fullName": "Epic.Sentinel_Soul_Mastery.Soul_Tentacles",
-        "rank": 4,
+        "rank": 2,
         "available": 34,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
@@ -21468,6 +21369,105 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Soul Storm",
+        "fullName": "Epic.Sentinel_Soul_Mastery.Soul_Storm",
+        "rank": 3,
+        "available": 37,
+        "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DoT(Negative), Foe Hold",
+        "icon": "arachnos_patron_targetedhold.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.11,
+              "table": "Ranged_Damage",
+              "duration": 10,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.11,
+              "table": "Ranged_InherentDamage",
+              "duration": 10,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.2879,
+              "table": "Ranged_PvPDamage",
+              "duration": 10,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.2879,
+              "table": "Ranged_PvPDamage",
+              "duration": 10,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
+        }
+      },
+      {
+        "name": "Darkest Night",
+        "fullName": "Epic.Sentinel_Soul_Mastery.Darkest_Night",
+        "rank": 4,
+        "available": 40,
+        "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
+        "icon": "arachnos_patron_aoedamagedebuff.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "To Hit Debuff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 20,
+          "endurance": 0.26,
+          "activationTime": 2.37,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 10
+        }
+      },
+      {
         "name": "Summon Mistress",
         "fullName": "Epic.Sentinel_Soul_Mastery.Summon_Mistress",
         "rank": 5,
@@ -21524,93 +21524,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Hibernate",
-        "fullName": "Epic.Stalker_Leviathan_Mastery.Hibernate",
-        "rank": 1,
-        "available": 37,
-        "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
-        "icon": "arachnos_patron_selfbuffresistancephysical.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Healing",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Healing"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 240,
-          "endurance": 0.13,
-          "activationTime": 0.07,
-          "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "regenBuff": 0.75,
-            "recoveryBuff": 0.75,
-            "mezResistance": 0.75,
-            "knockup": 0.75,
-            "knockback": 0.75,
-            "slow": 0.75
-          },
-          "recoveryBuff": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "knockback": {
-              "scale": 10,
-              "table": "Melee_Ones"
-            }
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "slow": {
-            "fly": {
-              "scale": 10000,
-              "table": "Melee_Ones"
-            }
-          },
-          "selfPenalty": true,
-          "immobilize": {
-            "mag": 1000,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "onlyAffectsSelf": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Spirit Shark",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Spirit_Shark",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
         "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
@@ -21713,9 +21629,135 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Water Spout",
+        "fullName": "Epic.Stalker_Leviathan_Mastery.Water_Spout",
+        "rank": 2,
+        "available": 34,
+        "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes.",
+        "shortHelp": "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet",
+        "icon": "arachnos_patron_dropknockback.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Damage",
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Knockback",
+          "Ranged AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.3,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 20.8,
+          "activationTime": 1.17,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Water_Spout_Stalker",
+            "duration": 30
+          }
+        }
+      },
+      {
+        "name": "Hibernate",
+        "fullName": "Epic.Stalker_Leviathan_Mastery.Hibernate",
+        "rank": 3,
+        "available": 37,
+        "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
+        "icon": "arachnos_patron_selfbuffresistancephysical.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 0.13,
+          "activationTime": 0.07,
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 0.75,
+            "recoveryBuff": 0.75,
+            "mezResistance": 0.75,
+            "knockup": 0.75,
+            "knockback": 0.75,
+            "slow": 0.75
+          },
+          "recoveryBuff": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            },
+            "knockback": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            }
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "slow": {
+            "fly": {
+              "scale": 10000,
+              "table": "Melee_Ones"
+            }
+          },
+          "selfPenalty": true,
+          "immobilize": {
+            "mag": 1000,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Spirit Shark Jaws",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Spirit_Shark_Jaws",
-        "rank": 3,
+        "rank": 4,
         "available": 40,
         "description": "You can summon a massive Spirit Shark that will attack your foe from below. The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
@@ -21814,7 +21856,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Summon Guardian",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Summon_Guardian",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Captain Mako has shown you how to summon a Coralax Guardian Warder to do your bidding. These creatures are composed of living coral made from the sea-goddess Merulina. Your access to this Guardian is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 44 and have two other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Summon Warder: Ranged DMG(Smashing)",
@@ -21853,48 +21895,6 @@ export const EPIC_POOLS_RAW = {
             "duration": 240
           }
         }
-      },
-      {
-        "name": "Water Spout",
-        "fullName": "Epic.Stalker_Leviathan_Mastery.Water_Spout",
-        "rank": 5,
-        "available": 34,
-        "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes.",
-        "shortHelp": "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet",
-        "icon": "arachnos_patron_dropknockback.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Damage",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Knockback",
-          "Ranged AoE Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.3,
-          "range": 60,
-          "recharge": 180,
-          "endurance": 20.8,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Water_Spout_Stalker",
-            "duration": 30
-          }
-        }
       }
     ]
   },
@@ -21909,9 +21909,128 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Mace Beam",
+        "fullName": "Epic.Stalker_Mace_Mastery.Mace_Beam",
+        "rank": 1,
+        "available": 34,
+        "description": "Fires an extremely long range and accurate beam of kinetic Energy from the Bane Mace that deals tremendous damage and knocks the target back.This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+        "shortHelp": "Sniper, DMG(Energy), Foe Knockback",
+        "icon": "arachnos_patron_targetedrangedsnipe.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Interrupt",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Sniper Attacks",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 150,
+          "recharge": 24,
+          "endurance": 14.352,
+          "activationTime": 2,
+          "effectArea": "SingleTarget"
+        }
+      },
+      {
+        "name": "Mace Blast",
+        "fullName": "Epic.Stalker_Mace_Mastery.Mace_Blast",
+        "rank": 2,
+        "available": 34,
+        "description": "The Bane Mace is capable of firing a bolt of kinetic energy. The blast is powerful enough that it may knockback some foes. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
+        "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
+        "icon": "arachnos_patron_targetedrangedmoddmg.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 12,
+          "endurance": 6.864,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1.32,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 2.16,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.32,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.32,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 2.28,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.32,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.32,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 2.28,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 2.28,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 1.4,
+            "table": "Melee_Ones"
+          }
+        }
+      },
+      {
         "name": "Disruptor Blast",
         "fullName": "Epic.Stalker_Mace_Mastery.Disruptor_Blast",
-        "rank": 1,
+        "rank": 3,
         "available": 37,
         "description": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. You must be level 44 and have two other Mace Mastery powers before selecting this power. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
@@ -21995,167 +22114,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Mace Beam",
-        "fullName": "Epic.Stalker_Mace_Mastery.Mace_Beam",
-        "rank": 2,
-        "available": 34,
-        "description": "Fires an extremely long range and accurate beam of kinetic Energy from the Bane Mace that deals tremendous damage and knocks the target back.This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
-        "shortHelp": "Sniper, DMG(Energy), Foe Knockback",
-        "icon": "arachnos_patron_targetedrangedsnipe.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Interrupt",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Sniper Attacks",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 150,
-          "recharge": 24,
-          "endurance": 14.352,
-          "activationTime": 2,
-          "effectArea": "SingleTarget"
-        }
-      },
-      {
-        "name": "Mace Blast",
-        "fullName": "Epic.Stalker_Mace_Mastery.Mace_Blast",
-        "rank": 3,
-        "available": 34,
-        "description": "The Bane Mace is capable of firing a bolt of kinetic energy. The blast is powerful enough that it may knockback some foes. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
-        "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
-        "icon": "arachnos_patron_targetedrangedmoddmg.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 6.864,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.16,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.28,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.28,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.28,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Melee_Ones"
-          }
-        }
-      },
-      {
-        "name": "Summon Spiderlings",
-        "fullName": "Epic.Stalker_Mace_Mastery.Summon_Spiderlings",
-        "rank": 4,
-        "available": 43,
-        "description": "Black Scorpion has granted you access to a small squadron of Arachnobot Spiderlings. Three Spiderlings that are one level less than you will show up when summoned. Your access to these Arachnobots is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
-        "shortHelp": "Summon Spiderlings: Ranged DMG(Lethal)",
-        "icon": "arachnos_patron_summononepet.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 900,
-          "endurance": 20.8,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
-            "duration": 240,
-            "entityCount": 3
-          }
-        }
-      },
-      {
         "name": "Web Cocoon",
         "fullName": "Epic.Stalker_Mace_Mastery.Web_Cocoon",
-        "rank": 5,
+        "rank": 4,
         "available": 40,
         "description": "The Bane Mace can fire a more powerful version the common web grenade. The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed. Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
@@ -22242,6 +22203,45 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Immobilize"
           }
         }
+      },
+      {
+        "name": "Summon Spiderlings",
+        "fullName": "Epic.Stalker_Mace_Mastery.Summon_Spiderlings",
+        "rank": 5,
+        "available": 43,
+        "description": "Black Scorpion has granted you access to a small squadron of Arachnobot Spiderlings. Three Spiderlings that are one level less than you will show up when summoned. Your access to these Arachnobots is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
+        "shortHelp": "Summon Spiderlings: Ranged DMG(Lethal)",
+        "icon": "arachnos_patron_summononepet.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 900,
+          "endurance": 20.8,
+          "activationTime": 3.03,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+            "duration": 240,
+            "entityCount": 3
+          }
+        }
       }
     ]
   },
@@ -22256,9 +22256,140 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Mu Bolts",
+        "fullName": "Epic.Stalker_Mu_Mastery.Mu_Bolts",
+        "rank": 1,
+        "available": 34,
+        "description": "You can quickly hurl small bolts of Mu electricity at foes, dealing some damage and draining some Endurance. Some of this Endurance may transfer back to you. Mu Bolts deals light damage but recharges quickly.",
+        "shortHelp": "Ranged, DMG(Energy), Foe -End",
+        "icon": "arachnos_patron_targetedrangedmoddmg.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.459,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.459,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.459,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.459,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 0.125,
+            "table": "Melee_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 2
+          },
+          "enduranceGain": {
+            "scale": 3.25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 2
+        }
+      },
+      {
+        "name": "Zapp",
+        "fullName": "Epic.Stalker_Mu_Mastery.Zapp",
+        "rank": 2,
+        "available": 34,
+        "description": "A focused blast of Mu electrical energy that can travel great distances with high Accuracy. Zapp drains Endurance, some of which may transfer back to you.This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
+        "shortHelp": "Sniper, DMG(Energy), Foe -End",
+        "icon": "arachnos_patron_targetedrangedsnipe.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Interrupt",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Ranged Damage",
+          "Sniper Attacks",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 150,
+          "recharge": 24,
+          "endurance": 14.352,
+          "activationTime": 1.33,
+          "effectArea": "SingleTarget"
+        }
+      },
+      {
         "name": "Ball Lightning",
         "fullName": "Epic.Stalker_Mu_Mastery.Ball_Lightning",
-        "rank": 1,
+        "rank": 3,
         "available": 37,
         "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
@@ -22366,7 +22497,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Stalker_Mu_Mastery.Electric_Shackles",
-        "rank": 2,
+        "rank": 4,
         "available": 40,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. You must be level 41 and have one other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
@@ -22471,105 +22602,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Mu Bolts",
-        "fullName": "Epic.Stalker_Mu_Mastery.Mu_Bolts",
-        "rank": 3,
-        "available": 34,
-        "description": "You can quickly hurl small bolts of Mu electricity at foes, dealing some damage and draining some Endurance. Some of this Endurance may transfer back to you. Mu Bolts deals light damage but recharges quickly.",
-        "shortHelp": "Ranged, DMG(Energy), Foe -End",
-        "icon": "arachnos_patron_targetedrangedmoddmg.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.459,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.459,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.459,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.459,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 0.125,
-            "table": "Melee_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 2
-          },
-          "enduranceGain": {
-            "scale": 3.25,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 2
-        }
-      },
-      {
         "name": "Summon Adept",
         "fullName": "Epic.Stalker_Mu_Mastery.Summon_Adept",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You must be level 44 and have two other Mu Mastery Powers before selecting this power.",
         "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
@@ -22607,41 +22642,6 @@ export const EPIC_POOLS_RAW = {
             "entity": "Pets_Patron_Powers_Mu_Adept",
             "duration": 240
           }
-        }
-      },
-      {
-        "name": "Zapp",
-        "fullName": "Epic.Stalker_Mu_Mastery.Zapp",
-        "rank": 5,
-        "available": 34,
-        "description": "A focused blast of Mu electrical energy that can travel great distances with high Accuracy. Zapp drains Endurance, some of which may transfer back to you.This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
-        "shortHelp": "Sniper, DMG(Energy), Foe -End",
-        "icon": "arachnos_patron_targetedrangedsnipe.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Interrupt",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Ranged Damage",
-          "Sniper Attacks",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 150,
-          "recharge": 24,
-          "endurance": 14.352,
-          "activationTime": 1.33,
-          "effectArea": "SingleTarget"
         }
       }
     ]
@@ -22991,58 +22991,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Embrace of the Earth",
-        "fullName": "Epic.Stone_Mastery.Earths_Embrace",
-        "rank": 1,
-        "available": 43,
-        "description": "You are so connected to the Earth, you can draw upon its power to add to your own health. Activating this power increases your maximum Hit Points, and grants you resistance to Toxic Damage. You must be level 44 and have two other Earth Mastery Powers before selecting this power.",
-        "shortHelp": "Self +HP",
-        "icon": "earth_mastery_earthsembrace.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Healing",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Healing",
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 360,
-          "endurance": 10.4,
-          "activationTime": 2.03,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 4,
-            "table": "Melee_HealSelf"
-          },
-          "maxHPBuff": {
-            "scale": 4,
-            "table": "Melee_HealSelf"
-          },
-          "durations": {
-            "maxHPBuff": 120,
-            "resistance": 120
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 2,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "buffDuration": 120
-        }
-      },
-      {
         "name": "Fissure",
         "fullName": "Epic.Stone_Mastery.Fissure",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "This powerful stomp can cause a seismic disturbance. This will crack the Earth itself and send a Fault towards a targeted foe. Affected targets take moderate damage and may be thrown in the air and possibly Disoriented.",
         "shortHelp": "Close (Targeted AoE), DMG(Lethal/Smash), Foe Knockback, Disorient",
@@ -23110,7 +23061,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Hurl Boulder",
         "fullName": "Epic.Stone_Mastery.Hurl_Boulder",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack is close ranged, deals high damage, and can knock foes back.",
         "shortHelp": "Ranged, DMG(Smash), Foe Knockback",
@@ -23164,6 +23115,47 @@ export const EPIC_POOLS_RAW = {
             "scale": 6,
             "table": "Melee_Knockback"
           }
+        }
+      },
+      {
+        "name": "Rock Armor",
+        "fullName": "Epic.Stone_Mastery.Stone_Armor",
+        "rank": 3,
+        "available": 37,
+        "description": "Your skin becomes stone while this power is active. Stone Armor makes you highly resistant to Smashing and Lethal attacks. They are less likely to land and affect you. You must be level 38 and have one other Earth Mastery Powers before selecting this power.<br>",
+        "shortHelp": "Toggle: Self +DEF(Lethal, Smashing)",
+        "icon": "earth_mastery_rockarmor.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 4,
+          "endurance": 0.104,
+          "activationTime": 0.73,
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.6,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.6,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -23226,44 +23218,52 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Rock Armor",
-        "fullName": "Epic.Stone_Mastery.Stone_Armor",
+        "name": "Embrace of the Earth",
+        "fullName": "Epic.Stone_Mastery.Earths_Embrace",
         "rank": 5,
-        "available": 37,
-        "description": "Your skin becomes stone while this power is active. Stone Armor makes you highly resistant to Smashing and Lethal attacks. They are less likely to land and affect you. You must be level 38 and have one other Earth Mastery Powers before selecting this power.<br>",
-        "shortHelp": "Toggle: Self +DEF(Lethal, Smashing)",
-        "icon": "earth_mastery_rockarmor.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
+        "available": 43,
+        "description": "You are so connected to the Earth, you can draw upon its power to add to your own health. Activating this power increases your maximum Hit Points, and grants you resistance to Toxic Damage. You must be level 44 and have two other Earth Mastery Powers before selecting this power.",
+        "shortHelp": "Self +HP",
+        "icon": "earth_mastery_earthsembrace.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Defense",
           "EnduranceReduction",
-          "Recharge"
+          "Healing",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Defense Sets"
+          "Healing",
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.104,
-          "activationTime": 0.73,
+          "recharge": 360,
+          "endurance": 10.4,
+          "activationTime": 2.03,
           "effectArea": "SingleTarget",
-          "defenseBuff": {
-            "smashing": {
-              "scale": 1.6,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.6,
-              "table": "Melee_Buff_Def"
-            }
+          "damage": {
+            "type": "Heal",
+            "scale": 4,
+            "table": "Melee_HealSelf"
+          },
+          "maxHPBuff": {
+            "scale": 4,
+            "table": "Melee_HealSelf"
           },
           "durations": {
-            "defenseBuff": 0.75
+            "maxHPBuff": 120,
+            "resistance": 120
           },
-          "buffDuration": 0.75
+          "resistance": {
+            "toxic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 120
         }
       }
     ]
@@ -23279,108 +23279,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Dark Blast",
-        "fullName": "Epic.Tank_Dark_Mastery.Dark_Blast",
-        "rank": 1,
-        "available": 37,
-        "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy. You must be level 35 and have Torrent or Petrifying Gaze before selecting this power. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
-        "icon": "dark_mastery_darkblast.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Ranged Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
-        "name": "Night Fall",
-        "fullName": "Epic.Tank_Dark_Mastery.Night_Fall",
-        "rank": 2,
-        "available": 40,
-        "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), DMG(Negative), Foe -To Hit",
-        "icon": "dark_mastery_nightfall.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 20,
-          "endurance": 13.104,
-          "activationTime": 2,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.3490658700466156,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Ranged_Damage",
-              "duration": 2.8,
-              "tickRate": 0.30000001192092896
-            },
-            {
-              "type": "Negative",
-              "scale": 0.0938,
-              "table": "Ranged_PvPDamage",
-              "duration": 2.8,
-              "tickRate": 0.30000001192092896
-            }
-          ]
-        }
-      },
-      {
         "name": "Penumbral Grasp",
         "fullName": "Epic.Tank_Dark_Mastery.Penumbral_Grasp",
-        "rank": 3,
+        "rank": 1,
         "available": 34,
         "description": "Penumbral Grasp deals moderate Negative Energy damage, reduces their chance to hit and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.",
         "shortHelp": "Ranged, DOT(Negative), Foe Immobilize, -To Hit",
@@ -23451,7 +23352,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Petrifying Gaze",
         "fullName": "Epic.Tank_Dark_Mastery.Petrifying_Gaze",
-        "rank": 4,
+        "rank": 2,
         "available": 34,
         "description": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless.",
         "shortHelp": "Ranged, DMG(Negative), Foe Hold",
@@ -23496,6 +23397,105 @@ export const EPIC_POOLS_RAW = {
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
+        }
+      },
+      {
+        "name": "Dark Blast",
+        "fullName": "Epic.Tank_Dark_Mastery.Dark_Blast",
+        "rank": 3,
+        "available": 37,
+        "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy. You must be level 35 and have Torrent or Petrifying Gaze before selecting this power. You must be level 38 and have one other Dark Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
+        "icon": "dark_mastery_darkblast.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Ranged Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1.42,
+              "table": "Melee_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Night Fall",
+        "fullName": "Epic.Tank_Dark_Mastery.Night_Fall",
+        "rank": 4,
+        "available": 40,
+        "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), DMG(Negative), Foe -To Hit",
+        "icon": "dark_mastery_nightfall.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 20,
+          "endurance": 13.104,
+          "activationTime": 2,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 0.3490658700466156,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.11,
+              "table": "Ranged_Damage",
+              "duration": 2.8,
+              "tickRate": 0.30000001192092896
+            },
+            {
+              "type": "Negative",
+              "scale": 0.0938,
+              "table": "Ranged_PvPDamage",
+              "duration": 2.8,
+              "tickRate": 0.30000001192092896
+            }
+          ]
         }
       },
       {
@@ -23600,87 +23600,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Harmonic Mind",
-        "fullName": "Epic.Tank_Psionic_Mastery.Harmonic_Mind",
-        "rank": 2,
-        "available": 37,
-        "description": "By achieving perfect harmony of body, mind and spirit you are able to conserve and recover endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 38 and have one other Psionic Mastery Powers before selecting this power.",
-        "shortHelp": "Auto: Self, +Recovery, Endurance Discount",
-        "icon": "psionic_mastery_harmonicmind.png",
-        "powerType": "Auto",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "effectArea": "SingleTarget",
-          "recoveryBuff": {
-            "scale": 0.125,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryBuff": 10.25,
-            "enduranceDiscount": 10.25
-          },
-          "enduranceDiscount": {
-            "scale": 0.125,
-            "table": "Melee_Stun"
-          },
-          "buffDuration": 10.25
-        }
-      },
-      {
-        "name": "Mental Blast",
-        "fullName": "Epic.Tank_Psionic_Mastery.Mental_Blast",
-        "rank": 3,
-        "available": 40,
-        "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
-        "icon": "psionic_mastery_mentalblast.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 100,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Psionic",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.889,
-              "table": "Melee_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
         "name": "Mesmerize",
         "fullName": "Epic.Tank_Psionic_Mastery.Mesmerize",
-        "rank": 4,
+        "rank": 2,
         "available": 34,
         "description": "Mesmerize painfully assails a target with psychic energy, rendering them unconscious. The target will remain asleep for some time, but will awaken if attacked.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "Ranged, DMG(Psionic), Foe Sleep",
@@ -23730,6 +23652,84 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Ranged_PvPMez"
           }
+        }
+      },
+      {
+        "name": "Harmonic Mind",
+        "fullName": "Epic.Tank_Psionic_Mastery.Harmonic_Mind",
+        "rank": 3,
+        "available": 37,
+        "description": "By achieving perfect harmony of body, mind and spirit you are able to conserve and recover endurance slightly faster than normal. This power is always active and consumes no endurance. You must be level 38 and have one other Psionic Mastery Powers before selecting this power.",
+        "shortHelp": "Auto: Self, +Recovery, Endurance Discount",
+        "icon": "psionic_mastery_harmonicmind.png",
+        "powerType": "Auto",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "effectArea": "SingleTarget",
+          "recoveryBuff": {
+            "scale": 0.125,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 10.25,
+            "enduranceDiscount": 10.25
+          },
+          "enduranceDiscount": {
+            "scale": 0.125,
+            "table": "Melee_Stun"
+          },
+          "buffDuration": 10.25
+        }
+      },
+      {
+        "name": "Mental Blast",
+        "fullName": "Epic.Tank_Psionic_Mastery.Mental_Blast",
+        "rank": 4,
+        "available": 40,
+        "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed. You must be level 41 and have one other Psionic Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
+        "icon": "psionic_mastery_mentalblast.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 100,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Psionic",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 1.889,
+              "table": "Melee_PvPDamage"
+            }
+          ]
         }
       },
       {
@@ -23797,9 +23797,220 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "School of Sharks",
+        "fullName": "Epic.VEAT_Leviathan_Mastery.School_of_Sharks",
+        "rank": 1,
+        "available": 34,
+        "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
+        "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
+        "icon": "arachnos_patron_coneimmobilize.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "activationTime": 2.37,
+          "effectArea": "Cone",
+          "radius": 50,
+          "arc": 0.5235987901687622,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.1673,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.0837,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.124,
+              "table": "Ranged_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1102,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
+        "name": "Spirit Shark",
+        "fullName": "Epic.VEAT_Leviathan_Mastery.Spirit_Shark",
+        "rank": 2,
+        "available": 34,
+        "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
+        "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
+        "icon": "arachnos_patron_targetedrangedhighdmg.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 13,
+          "endurance": 7.28,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.84,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.14,
+              "table": "Ranged_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.14,
+              "table": "Ranged_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Lethal",
+              "scale": 1.0694,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.1782,
+              "table": "Ranged_PvPDamage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          ],
+          "knockback": {
+            "scale": 1.4,
+            "table": "Ranged_Knockback"
+          }
+        }
+      },
+      {
+        "name": "Bile Spray",
+        "fullName": "Epic.VEAT_Leviathan_Mastery.Chum_Spray",
+        "rank": 3,
+        "available": 37,
+        "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Cone), DoT(Toxic)",
+        "icon": "arachnos_patron_rangedconemoderatedmg.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1.6,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.7,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.6132,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.0682,
+              "table": "Ranged_PvPDamage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ]
+        }
+      },
+      {
         "name": "Arctic Breath",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Arctic_Breath",
-        "rank": 1,
+        "rank": 4,
         "available": 40,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this freezing acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take cold damage over time, and have their damage resistance, Defense, movement rate, and recharge rate reduced. This ice will stick to foes, causing them to fall down occasionally. You must be level 41 and have one other Leviathan Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
@@ -23910,217 +24121,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Bile Spray",
-        "fullName": "Epic.VEAT_Leviathan_Mastery.Chum_Spray",
-        "rank": 2,
-        "available": 37,
-        "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Cone), DoT(Toxic)",
-        "icon": "arachnos_patron_rangedconemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1.6,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.7,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.6132,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.0682,
-              "table": "Ranged_PvPDamage",
-              "duration": 4.25,
-              "tickRate": 1
-            }
-          ]
-        }
-      },
-      {
-        "name": "School of Sharks",
-        "fullName": "Epic.VEAT_Leviathan_Mastery.School_of_Sharks",
-        "rank": 3,
-        "available": 34,
-        "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
-        "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
-        "icon": "arachnos_patron_coneimmobilize.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Immobilize",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 16,
-          "endurance": 8.6008,
-          "activationTime": 2.37,
-          "effectArea": "Cone",
-          "radius": 50,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.1673,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.0837,
-              "table": "Ranged_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.124,
-              "table": "Ranged_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.1102,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
-        }
-      },
-      {
-        "name": "Spirit Shark",
-        "fullName": "Epic.VEAT_Leviathan_Mastery.Spirit_Shark",
-        "rank": 4,
-        "available": 34,
-        "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
-        "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
-        "icon": "arachnos_patron_targetedrangedhighdmg.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 13,
-          "endurance": 7.28,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.84,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.14,
-              "table": "Ranged_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.14,
-              "table": "Ranged_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.0694,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.1782,
-              "table": "Ranged_PvPDamage",
-              "duration": 3.2,
-              "tickRate": 1
-            }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Ranged_Knockback"
-          }
-        }
-      },
-      {
         "name": "Summon Guardian",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Summon_Guardian",
         "rank": 5,
@@ -24176,9 +24176,130 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Mace Blast",
+        "fullName": "Epic.VEAT_Mace_Mastery.Mace_Blast",
+        "rank": 1,
+        "available": 34,
+        "description": "The Executioner's Mace is capable of firing a powerful bolt of kinetic energy. The blast is powerful enough that it may knock some foes back. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
+        "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
+        "icon": "arachnos_patron_targetedrangedhighdmg.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 80,
+          "recharge": 12,
+          "endurance": 6.864,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1.32,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 2.16,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 1.4,
+            "table": "Ranged_Ones"
+          }
+        }
+      },
+      {
+        "name": "Web Envelope",
+        "fullName": "Epic.VEAT_Mace_Mastery.Web_Envelope",
+        "rank": 2,
+        "available": 34,
+        "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
+        "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
+        "icon": "arachnos_patron_rangedaoeimmobilize.png",
+        "powerType": "Click",
+        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 50,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "activationTime": 2,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.0837,
+              "table": "Ranged_Damage",
+              "duration": 5.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.2503,
+              "table": "Ranged_PvPDamage",
+              "duration": 5.2,
+              "tickRate": 2
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
         "name": "Disruptor Blast",
         "fullName": "Epic.VEAT_Mace_Mastery.Disruptor_Blast",
-        "rank": 1,
+        "rank": 3,
         "available": 37,
         "description": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes. Some affected foes may be knocked back by the force of the blast. Your access to this Adept is very limited. You must be level 38 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
@@ -24229,7 +24350,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Shatter Armor",
         "fullName": "Epic.VEAT_Mace_Mastery.Focused_Accuracy",
-        "rank": 2,
+        "rank": 4,
         "available": 40,
         "description": "You deliver a punishing blow with your Arachnos Mace dealing superior damage and reducing the target's resistance to damage for a short time. You must be level 41 and have one other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Melee, DMG(Smash), Foe -Res",
@@ -24307,58 +24428,9 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Mace Blast",
-        "fullName": "Epic.VEAT_Mace_Mastery.Mace_Blast",
-        "rank": 3,
-        "available": 34,
-        "description": "The Executioner's Mace is capable of firing a powerful bolt of kinetic energy. The blast is powerful enough that it may knock some foes back. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
-        "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
-        "icon": "arachnos_patron_targetedrangedhighdmg.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 6.864,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.16,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Ranged_Ones"
-          }
-        }
-      },
-      {
         "name": "Summon Blaster",
         "fullName": "Epic.VEAT_Mace_Mastery.Summon_Blaster",
-        "rank": 4,
+        "rank": 5,
         "available": 43,
         "description": "Black Scorpion has granted you an Arachnobot Blaster for you to command. Arachnobot Blasters were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Your access to this Arachnobot is very limited. You must be level 44 and have two other Mace Mastery Powers before selecting this power.",
         "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
@@ -24395,78 +24467,6 @@ export const EPIC_POOLS_RAW = {
             "duration": 240
           }
         }
-      },
-      {
-        "name": "Web Envelope",
-        "fullName": "Epic.VEAT_Mace_Mastery.Web_Envelope",
-        "rank": 5,
-        "available": 34,
-        "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
-        "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
-        "icon": "arachnos_patron_rangedaoeimmobilize.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Immobilize",
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 50,
-          "recharge": 16,
-          "endurance": 8.6008,
-          "activationTime": 2,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.0837,
-              "table": "Ranged_Damage",
-              "duration": 5.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.2503,
-              "table": "Ranged_PvPDamage",
-              "duration": 5.2,
-              "tickRate": 2
-            }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
-        }
       }
     ]
   },
@@ -24481,82 +24481,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Ball Lightning",
-        "fullName": "Epic.VEAT_Mu_Mastery.Ball_Lightning",
-        "rank": 1,
-        "available": 37,
-        "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
-        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.3,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.18,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.2242,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.1046,
-              "table": "Melee_PvPDamage",
-              "duration": 3.1,
-              "tickRate": 1
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 1.25,
-            "table": "Melee_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "buffDuration": 4
-        }
-      },
-      {
         "name": "Electrifying Fences",
         "fullName": "Epic.VEAT_Mu_Mastery.Electrifying_Fences",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
@@ -24638,7 +24565,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mu Lightning",
         "fullName": "Epic.VEAT_Mu_Mastery.Mu_Lightning",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you.",
         "shortHelp": "Ranged, DMG(Energy), Foe -End",
@@ -24692,6 +24619,79 @@ export const EPIC_POOLS_RAW = {
           "enduranceGain": {
             "scale": 4.29,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 4
+        }
+      },
+      {
+        "name": "Ball Lightning",
+        "fullName": "Epic.VEAT_Mu_Mastery.Ball_Lightning",
+        "rank": 3,
+        "available": 37,
+        "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
+        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1.07,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.18,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Energy",
+              "scale": 0.2242,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.1046,
+              "table": "Melee_PvPDamage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 1.25,
+            "table": "Melee_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
           },
           "buffDuration": 4
         }
@@ -24812,88 +24812,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Dark Obliteration",
-        "fullName": "Epic.VEAT_Soul_Mastery.Dark_Obliteration",
-        "rank": 1,
-        "available": 37,
-        "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
-        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.9,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.7323,
-              "table": "Melee_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
-        "name": "Darkest Night",
-        "fullName": "Epic.VEAT_Soul_Mastery.Darkest_Night",
-        "rank": 2,
-        "available": 40,
-        "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
-        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
-        "icon": "arachnos_patron_aoedamagedebuff.png",
-        "powerType": "Toggle",
-        "requires": "Epic ownPowerNum? 0 >",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "To Hit Debuff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 20,
-          "endurance": 0.26,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10
-        }
-      },
-      {
         "name": "Gloom",
         "fullName": "Epic.VEAT_Soul_Mastery.Gloom",
-        "rank": 3,
+        "rank": 1,
         "available": 34,
         "description": "Gloom slowly drains a target of life, while reducing his Accuracy. Slower than Dark Blast, but deals more damage over time.",
         "shortHelp": "Ranged, DoT(Negative), Foe -ACC",
@@ -24943,7 +24864,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Soul Tentacles",
         "fullName": "Epic.VEAT_Soul_Mastery.Soul_Tentacles",
-        "rank": 4,
+        "rank": 2,
         "available": 34,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
@@ -25019,6 +24940,85 @@ export const EPIC_POOLS_RAW = {
             "mezResistance": 15
           },
           "buffDuration": 15
+        }
+      },
+      {
+        "name": "Dark Obliteration",
+        "fullName": "Epic.VEAT_Soul_Mastery.Dark_Obliteration",
+        "rank": 3,
+        "available": 37,
+        "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. You must be level 38 and have one other Soul Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
+        "icon": "arachnos_patron_rangedaoemoderatedmg.png",
+        "powerType": "Click",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.9,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.7323,
+              "table": "Melee_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Darkest Night",
+        "fullName": "Epic.VEAT_Soul_Mastery.Darkest_Night",
+        "rank": 4,
+        "available": 40,
+        "description": "While active, you channel Negative Energy onto a targeted foe. Darkest Night decreases the damage potential and chance to hit of the target, and all foes nearby, as long as you keep the power active. You must be level 41 and have one other Soul Mastery Powers before selecting this power.",
+        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
+        "icon": "arachnos_patron_aoedamagedebuff.png",
+        "powerType": "Toggle",
+        "requires": "Epic ownPowerNum? 0 >",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "To Hit Debuff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 20,
+          "endurance": 0.26,
+          "activationTime": 2.37,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 10
         }
       },
       {
@@ -25107,63 +25107,84 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Exploding Shuriken",
-        "fullName": "Epic.Weapon_Mastery.Exploding_Shuriken",
+        "name": "Web Grenade",
+        "fullName": "Epic.Weapon_Mastery.Web_Grenade",
         "rank": 2,
-        "available": 43,
-        "description": "This small throwing star is rigged to explode on impact. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Lethal)",
-        "icon": "weaponmastery_explodingshuriken.png",
+        "available": 34,
+        "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
+        "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
+        "icon": "gadgets_webgrenade.png",
         "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
+        "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceReduction",
+          "Immobilize",
           "Range",
-          "Recharge"
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Immobilize",
+          "Ranged Damage",
+          "Slow Movement",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "activationTime": 1.37,
+          "effectArea": "SingleTarget",
           "damage": [
             {
-              "type": "Lethal",
-              "scale": 0.9,
+              "type": "Smashing",
+              "scale": 0.8621,
               "table": "Melee_Damage"
             },
             {
-              "type": "Lethal",
-              "scale": 0.7323,
+              "type": "Smashing",
+              "scale": 1.679,
               "table": "Melee_PvPDamage"
             },
             {
-              "type": "Lethal",
-              "scale": 0.9,
+              "type": "Smashing",
+              "scale": 0.8621,
               "table": "Melee_InherentDamage"
             },
             {
-              "type": "Lethal",
-              "scale": 0.9,
+              "type": "Smashing",
+              "scale": 0.8621,
               "table": "Melee_InherentDamage"
             },
             {
-              "type": "Lethal",
-              "scale": 0.7323,
+              "type": "Smashing",
+              "scale": 1.679,
               "table": "Melee_PvPDamage"
             }
-          ]
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -25276,84 +25297,63 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Web Grenade",
-        "fullName": "Epic.Weapon_Mastery.Web_Grenade",
+        "name": "Exploding Shuriken",
+        "fullName": "Epic.Weapon_Mastery.Exploding_Shuriken",
         "rank": 5,
-        "available": 34,
-        "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
-        "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
-        "icon": "gadgets_webgrenade.png",
+        "available": 43,
+        "description": "This small throwing star is rigged to explode on impact. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Lethal)",
+        "icon": "weaponmastery_explodingshuriken.png",
         "powerType": "Click",
-        "requires": "$archetype @Class_Scrapper ==",
+        "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Immobilize",
           "Range",
-          "Recharge",
-          "Slow"
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Ranged Damage",
-          "Slow Movement",
+          "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 50,
-          "recharge": 8,
-          "endurance": 7.8,
-          "activationTime": 1.37,
-          "effectArea": "SingleTarget",
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
           "damage": [
             {
-              "type": "Smashing",
-              "scale": 0.8621,
+              "type": "Lethal",
+              "scale": 0.9,
               "table": "Melee_Damage"
             },
             {
-              "type": "Smashing",
-              "scale": 1.679,
+              "type": "Lethal",
+              "scale": 0.7323,
               "table": "Melee_PvPDamage"
             },
             {
-              "type": "Smashing",
-              "scale": 0.8621,
+              "type": "Lethal",
+              "scale": 0.9,
               "table": "Melee_InherentDamage"
             },
             {
-              "type": "Smashing",
-              "scale": 0.8621,
+              "type": "Lethal",
+              "scale": 0.9,
               "table": "Melee_InherentDamage"
             },
             {
-              "type": "Smashing",
-              "scale": 1.679,
+              "type": "Lethal",
+              "scale": 0.7323,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          ]
         }
       }
     ]
@@ -25406,68 +25406,89 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Exploding Shuriken",
-        "fullName": "Epic.Weapon_Mastery_Stalker.Exploding_Shuriken",
+        "name": "Web Grenade",
+        "fullName": "Epic.Weapon_Mastery_Stalker.Web_Grenade",
         "rank": 2,
-        "available": 43,
-        "description": "This small throwing star is rigged to explode on impact. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.<br>",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Lethal)",
-        "icon": "weaponmastery_explodingshuriken.png",
+        "available": 34,
+        "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
+        "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
+        "icon": "gadgets_webgrenade.png",
         "powerType": "Click",
-        "requires": "Epic ownPowerNum? 1 >",
+        "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceReduction",
+          "Immobilize",
           "Range",
-          "Recharge"
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Immobilize",
+          "Ranged Damage",
+          "Slow Movement",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "activationTime": 1.37,
+          "effectArea": "SingleTarget",
           "damage": [
             {
-              "type": "Lethal",
-              "scale": 0.9,
-              "table": "Melee_Damage"
+              "type": "Smashing",
+              "scale": 0.8621,
+              "table": "Ranged_Damage"
             },
             {
-              "type": "Lethal",
-              "scale": 0.7323,
+              "type": "Smashing",
+              "scale": 1.679,
               "table": "Melee_PvPDamage"
             },
             {
               "type": "Lethal",
-              "scale": 0.9,
+              "scale": 0.8621,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Lethal",
-              "scale": 0.9,
+              "scale": 0.8621,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Lethal",
-              "scale": 0.7323,
+              "scale": 1.679,
               "table": "Melee_PvPDamage"
             },
             {
               "type": "Lethal",
-              "scale": 0.7323,
+              "scale": 1.679,
               "table": "Melee_PvPDamage"
             }
-          ]
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -25585,89 +25606,68 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Web Grenade",
-        "fullName": "Epic.Weapon_Mastery_Stalker.Web_Grenade",
+        "name": "Exploding Shuriken",
+        "fullName": "Epic.Weapon_Mastery_Stalker.Exploding_Shuriken",
         "rank": 5,
-        "available": 34,
-        "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
-        "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
-        "icon": "gadgets_webgrenade.png",
+        "available": 43,
+        "description": "This small throwing star is rigged to explode on impact. You must be level 44 and have two other Weapon Mastery Powers before selecting this power.<br>",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Lethal)",
+        "icon": "weaponmastery_explodingshuriken.png",
         "powerType": "Click",
-        "requires": "$archetype @Class_Stalker ==",
+        "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Immobilize",
           "Range",
-          "Recharge",
-          "Slow"
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Ranged Damage",
-          "Slow Movement",
+          "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
-          "range": 50,
-          "recharge": 8,
-          "endurance": 7.8,
-          "activationTime": 1.37,
-          "effectArea": "SingleTarget",
+          "range": 80,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
           "damage": [
             {
-              "type": "Smashing",
-              "scale": 0.8621,
-              "table": "Ranged_Damage"
+              "type": "Lethal",
+              "scale": 0.9,
+              "table": "Melee_Damage"
             },
             {
-              "type": "Smashing",
-              "scale": 1.679,
+              "type": "Lethal",
+              "scale": 0.7323,
               "table": "Melee_PvPDamage"
             },
             {
               "type": "Lethal",
-              "scale": 0.8621,
+              "scale": 0.9,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Lethal",
-              "scale": 0.8621,
+              "scale": 0.9,
               "table": "Melee_InherentDamage"
             },
             {
               "type": "Lethal",
-              "scale": 1.679,
+              "scale": 0.7323,
               "table": "Melee_PvPDamage"
             },
             {
               "type": "Lethal",
-              "scale": 1.679,
+              "scale": 0.7323,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          ]
         }
       }
     ]
