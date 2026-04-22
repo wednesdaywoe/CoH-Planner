@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BloodThirst as BloodThirst } from './blood-thirst';
-import { Hemorrhage as Hemorrhage } from './hemorrhage';
 import { MaimingSlash as MaimingSlash } from './maiming-slash';
-import { RendingFlurry as RendingFlurry } from './rending-flurry';
-import { SavageLeap as SavageLeap } from './savage-leap';
 import { SavageStrike as SavageStrike } from './savage-strike';
 import { Shred as Shred } from './shred';
-import { Taunt as Taunt } from './taunt';
+import { BloodThirst as BloodThirst } from './blood-thirst';
 import { ViciousSlash as ViciousSlash } from './vicious-slash';
+import { Taunt as Taunt } from './taunt';
+import { RendingFlurry as RendingFlurry } from './rending-flurry';
+import { Hemorrhage as Hemorrhage } from './hemorrhage';
+import { SavageLeap as SavageLeap } from './savage-leap';
 
 export const powerset: Powerset = {
   id: 'brute/savage-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    BloodThirst,
-    Hemorrhage,
     MaimingSlash,
-    RendingFlurry,
-    SavageLeap,
     SavageStrike,
     Shred,
-    Taunt,
+    BloodThirst,
     ViciousSlash,
+    Taunt,
+    RendingFlurry,
+    Hemorrhage,
+    SavageLeap,
   ],
 };
 

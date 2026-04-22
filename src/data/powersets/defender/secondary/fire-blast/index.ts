@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { FireBlast as FireBlast } from './fire-blast';
+import { Flares as Flares } from './flares';
+import { FireBall as FireBall } from './fire-ball';
+import { RainofFire as RainofFire } from './rain-of-fire';
+import { FireBreath as FireBreath } from './fire-breath';
 import { Aim as Aim } from './aim';
 import { Blaze as Blaze } from './blaze';
 import { BlazingBolt as BlazingBolt } from './blazing-bolt';
-import { FireBall as FireBall } from './fire-ball';
-import { FireBlast as FireBlast } from './fire-blast';
-import { FireBreath as FireBreath } from './fire-breath';
-import { Flares as Flares } from './flares';
 import { Inferno as Inferno } from './inferno';
-import { RainofFire as RainofFire } from './rain-of-fire';
 
 export const powerset: Powerset = {
   id: 'defender/fire-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'defender',
   category: 'secondary',
   powers: [
+    FireBlast,
+    Flares,
+    FireBall,
+    RainofFire,
+    FireBreath,
     Aim,
     Blaze,
     BlazingBolt,
-    FireBall,
-    FireBlast,
-    FireBreath,
-    Flares,
     Inferno,
-    RainofFire,
   ],
 };
 

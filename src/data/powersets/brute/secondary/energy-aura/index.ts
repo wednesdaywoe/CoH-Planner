@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Energize as Energize } from './conserve-power';
 import { DampeningField as DampeningField } from './dampening-field';
+import { KineticShield as KineticShield } from './kinetic-shield';
+import { PowerShield as PowerShield } from './power-shield';
+import { EntropicAura as EntropicAura } from './entropy-shield';
+import { EnergyProtection as EnergyProtection } from './energy-protection';
 import { EnergyCloak as EnergyCloak } from './energy-cloak';
 import { EnergyDrain as EnergyDrain } from './energy-drain';
-import { EnergyProtection as EnergyProtection } from './energy-protection';
-import { EntropicAura as EntropicAura } from './entropy-shield';
-import { KineticShield as KineticShield } from './kinetic-shield';
+import { Energize as Energize } from './conserve-power';
 import { Overload as Overload } from './overload';
-import { PowerShield as PowerShield } from './power-shield';
 
 export const powerset: Powerset = {
   id: 'brute/energy-aura',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'secondary',
   powers: [
-    Energize,
     DampeningField,
+    KineticShield,
+    PowerShield,
+    EntropicAura,
+    EnergyProtection,
     EnergyCloak,
     EnergyDrain,
-    EnergyProtection,
-    EntropicAura,
-    KineticShield,
+    Energize,
     Overload,
-    PowerShield,
   ],
 };
 

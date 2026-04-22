@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Bash as Bash } from './bash';
+import { Pulverize as Pulverize } from './pulverize';
+import { Jawbreaker as Jawbreaker } from './jawbreaker';
 import { BuildUp as BuildUp } from './build-up';
 import { Clobber as Clobber } from './clobber';
 import { Confront as Confront } from './confront';
-import { CrowdControl as CrowdControl } from './crowd-control';
-import { Jawbreaker as Jawbreaker } from './jawbreaker';
-import { Pulverize as Pulverize } from './pulverize';
-import { Shatter as Shatter } from './shatter';
 import { WhirlingMace as WhirlingMace } from './whirling-mace';
+import { Shatter as Shatter } from './shatter';
+import { CrowdControl as CrowdControl } from './crowd-control';
 
 export const powerset: Powerset = {
   id: 'scrapper/war-mace',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Bash,
+    Pulverize,
+    Jawbreaker,
     BuildUp,
     Clobber,
     Confront,
-    CrowdControl,
-    Jawbreaker,
-    Pulverize,
-    Shatter,
     WhirlingMace,
+    Shatter,
+    CrowdControl,
   ],
 };
 

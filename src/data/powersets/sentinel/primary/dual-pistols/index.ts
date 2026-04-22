@@ -9,18 +9,18 @@
 
 import type { Powerset } from '@/types';
 
-import { BulletRain as BulletRain } from './bullet-rain';
-import { ChemicalAmmunition as ChemicalAmmunition } from './chemical-ammunition';
-import { CryoAmmunition as CryoAmmunition } from './cryo-ammunition';
 import { DualWield as DualWield } from './dual-wield';
-import { EmptyClips as EmptyClips } from './empty-clips';
-import { ExecutionersShot as ExecutionersShot } from './executioners-shot';
-import { HailofBullets as HailofBullets } from './hail-of-bullets';
-import { IncendiaryAmmunition as IncendiaryAmmunition } from './incendiary-ammunition';
-import { PiercingRounds as PiercingRounds } from './piercing-rounds';
 import { Pistols as Pistols } from './pistols';
+import { EmptyClips as EmptyClips } from './empty-clips';
 import { SuppressiveFire as SuppressiveFire } from './suppressive-fire';
 import { SwapAmmo as SwapAmmo } from './swap-ammo';
+import { BulletRain as BulletRain } from './bullet-rain';
+import { ExecutionersShot as ExecutionersShot } from './executioners-shot';
+import { PiercingRounds as PiercingRounds } from './piercing-rounds';
+import { HailofBullets as HailofBullets } from './hail-of-bullets';
+import { ChemicalAmmunition as ChemicalAmmunition } from './chemical-ammunition';
+import { CryoAmmunition as CryoAmmunition } from './cryo-ammunition';
+import { IncendiaryAmmunition as IncendiaryAmmunition } from './incendiary-ammunition';
 
 export const powerset: Powerset = {
   id: 'sentinel/dual-pistols',
@@ -30,18 +30,18 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    BulletRain,
-    ChemicalAmmunition,
-    CryoAmmunition,
     DualWield,
-    EmptyClips,
-    ExecutionersShot,
-    HailofBullets,
-    IncendiaryAmmunition,
-    PiercingRounds,
     Pistols,
+    EmptyClips,
     SuppressiveFire,
     SwapAmmo,
+    BulletRain,
+    ExecutionersShot,
+    PiercingRounds,
+    HailofBullets,
+    ChemicalAmmunition,
+    CryoAmmunition,
+    IncendiaryAmmunition,
   ],
 };
 

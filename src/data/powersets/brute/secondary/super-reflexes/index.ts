@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Agile as Agile } from './agile';
-import { Dodge as Dodge } from './dodge';
-import { Elude as Elude } from './elude';
-import { Evasion as Evasion } from './evasion';
 import { FocusedFighting as FocusedFighting } from './focused-fighting';
 import { FocusedSenses as FocusedSenses } from './focused-senses';
-import { Lucky as Lucky } from './lucky';
+import { Agile as Agile } from './agile';
 import { PracticedBrawler as PracticedBrawler } from './practiced-brawler';
+import { Dodge as Dodge } from './dodge';
+import { Evasion as Evasion } from './evasion';
+import { Lucky as Lucky } from './lucky';
 import { Quickness as Quickness } from './quickness';
+import { Elude as Elude } from './elude';
 
 export const powerset: Powerset = {
   id: 'brute/super-reflexes',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'secondary',
   powers: [
-    Agile,
-    Dodge,
-    Elude,
-    Evasion,
     FocusedFighting,
     FocusedSenses,
-    Lucky,
+    Agile,
     PracticedBrawler,
+    Dodge,
+    Evasion,
+    Lucky,
     Quickness,
+    Elude,
   ],
 };
 

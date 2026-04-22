@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { CallBruiser as CallBruiser } from './call-bruiser';
-import { CallEnforcer as CallEnforcer } from './call-enforcer';
 import { CallThugs as CallThugs } from './call-thugs';
-import { DualWield as DualWield } from './dual-wield';
-import { EmptyClips as EmptyClips } from './empty-clips';
-import { EquipThugs as EquipThugs } from './equip-thugs';
-import { GangWar as GangWar } from './gang-war';
 import { Pistols as Pistols } from './pistols';
+import { DualWield as DualWield } from './dual-wield';
+import { EquipThugs as EquipThugs } from './equip-thugs';
+import { EmptyClips as EmptyClips } from './empty-clips';
+import { CallEnforcer as CallEnforcer } from './call-enforcer';
+import { GangWar as GangWar } from './gang-war';
+import { CallBruiser as CallBruiser } from './call-bruiser';
 import { UpgradeEquipment as UpgradeEquipment } from './upgrade-equipment';
 
 export const powerset: Powerset = {
@@ -27,14 +27,14 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'primary',
   powers: [
-    CallBruiser,
-    CallEnforcer,
     CallThugs,
-    DualWield,
-    EmptyClips,
-    EquipThugs,
-    GangWar,
     Pistols,
+    DualWield,
+    EquipThugs,
+    EmptyClips,
+    CallEnforcer,
+    GangWar,
+    CallBruiser,
     UpgradeEquipment,
   ],
 };

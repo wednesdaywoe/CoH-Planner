@@ -14,7 +14,7 @@ export const MudBath: Power = {
   "available": 19,
   "description": "While this power is active, you draw upon the geothermal power of the Earth to create a bubbling pool of hot mud around you. All foes in melee range will become snared and entrapped in the mud, slowing them down. You recover a small amount of health every few seconds while this power is active.Recharge: Fast.",
   "shortHelp": "Toggle: PBAoE, -SPD, Self +Heal Over Time, +Recovery",
-  "icon": "earthmanip_mudbath",
+  "icon": "earthmanip_mudbath.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",

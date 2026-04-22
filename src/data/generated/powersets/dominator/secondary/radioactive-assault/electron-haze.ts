@@ -14,7 +14,7 @@ export const ElectronHaze: Power = {
   "available": 9,
   "description": "A short range conical blast of free electrons. This attack can bypass some of a target's defenses and reduce the target's Defense. It can also knock some targets down. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: Moderate.Recharge: Slow.",
   "shortHelp": "Close, Moderate Moderate DMG(Energy), Foe -DEF, Knockback",
-  "icon": "radioactiveassault_electronhaze",
+  "icon": "radioactiveassault_electronhaze.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { AlphaBarrier as AlphaBarrier } from './alpha-barrier';
-import { FalloutShelter as FalloutShelter } from './fallout-shelter';
 import { GammaBoost as GammaBoost } from './gamma-boost';
-import { GroundZero as GroundZero } from './ground-zero';
-import { Meltdown as Meltdown } from './meltdown';
+import { ProtonArmor as ProtonArmor } from './proton-armor';
+import { FalloutShelter as FalloutShelter } from './fallout-shelter';
+import { ProtonTherapy as ProtonTherapy } from './proton-therapy';
 import { ParticleAcceleration as ParticleAcceleration } from './particle-acceleration';
 import { ParticleShielding as ParticleShielding } from './particle-shielding';
-import { ProtonArmor as ProtonArmor } from './proton-armor';
-import { ProtonTherapy as ProtonTherapy } from './proton-therapy';
+import { GroundZero as GroundZero } from './ground-zero';
+import { Meltdown as Meltdown } from './meltdown';
 
 export const powerset: Powerset = {
   id: 'sentinel/radiation-armor',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     AlphaBarrier,
-    FalloutShelter,
     GammaBoost,
-    GroundZero,
-    Meltdown,
+    ProtonArmor,
+    FalloutShelter,
+    ProtonTherapy,
     ParticleAcceleration,
     ParticleShielding,
-    ProtonArmor,
-    ProtonTherapy,
+    GroundZero,
+    Meltdown,
   ],
 };
 

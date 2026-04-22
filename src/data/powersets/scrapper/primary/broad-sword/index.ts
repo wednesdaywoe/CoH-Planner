@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
+import { Hack as Hack } from './hack';
+import { Slash as Slash } from './slash';
 import { BoomerangSlice as BoomerangSlice } from './boomerang-slice';
 import { Slice as Slice } from './slice';
 import { BuildUp as BuildUp } from './build-up';
-import { Disembowel as Disembowel } from './disembowel';
-import { Hack as Hack } from './hack';
-import { HeadSplitter as HeadSplitter } from './head-splitter';
 import { Parry as Parry } from './parry';
-import { Slash as Slash } from './slash';
 import { Confront as Confront } from './taunt';
 import { WhirlingSword as WhirlingSword } from './whirling-sword';
+import { Disembowel as Disembowel } from './disembowel';
+import { HeadSplitter as HeadSplitter } from './head-splitter';
 
 export const powerset: Powerset = {
   id: 'scrapper/broad-sword',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
+    Hack,
+    Slash,
     BoomerangSlice,
     Slice,
     BuildUp,
-    Disembowel,
-    Hack,
-    HeadSplitter,
     Parry,
-    Slash,
     Confront,
     WhirlingSword,
+    Disembowel,
+    HeadSplitter,
   ],
 };
 

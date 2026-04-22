@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { CauterizingAura as CauterizingAura } from './blazing-aura';
-import { BuildUp as BuildUp } from './build-up';
-import { Burn as Burn } from './burn';
-import { Combustion as Combustion } from './combustion';
-import { Consume as Consume } from './consume';
 import { FireSword as FireSword } from './fire-sword';
-import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
-import { HotFeet as HotFeet } from './hot-feet';
 import { RingofFire as RingofFire } from './ring-of-fire';
+import { Combustion as Combustion } from './combustion';
+import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
+import { BuildUp as BuildUp } from './build-up';
+import { CauterizingAura as CauterizingAura } from './blazing-aura';
+import { Consume as Consume } from './consume';
+import { Burn as Burn } from './burn';
+import { HotFeet as HotFeet } from './hot-feet';
 
 export const powerset: Powerset = {
   id: 'blaster/fire-manipulation',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    CauterizingAura,
-    BuildUp,
-    Burn,
-    Combustion,
-    Consume,
     FireSword,
-    FireSwordCircle,
-    HotFeet,
     RingofFire,
+    Combustion,
+    FireSwordCircle,
+    BuildUp,
+    CauterizingAura,
+    Consume,
+    Burn,
+    HotFeet,
   ],
 };
 

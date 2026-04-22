@@ -9,11 +9,11 @@
 
 import type { Powerset } from '@/types';
 
-import { AuraofConfusion as AuraofConfusion } from './aura-of-confusion';
-import { Confuse as Confuse } from './confuse';
 import { FateSealed as FateSealed } from './fate-sealed';
 import { MaskPresence as MaskPresence } from './frt-mask-presence';
+import { Confuse as Confuse } from './confuse';
 import { MindLink as MindLink } from './frt-mind-link';
+import { AuraofConfusion as AuraofConfusion } from './aura-of-confusion';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/fortunata-teamwork',
@@ -23,11 +23,11 @@ export const powerset: Powerset = {
   archetype: 'arachnos-widow',
   category: 'epic',
   powers: [
-    AuraofConfusion,
-    Confuse,
     FateSealed,
     MaskPresence,
+    Confuse,
     MindLink,
+    AuraofConfusion,
   ],
 };
 

@@ -14,7 +14,7 @@ export const CloakingDevice: Power = {
   "available": 7,
   "description": "This Cloaking Device is the ultimate in infiltration technology. It uses an LCD body coating to become all but impossible to detect. While concealed you can only be seen at very close range. If you attack while concealed, you will be discovered. Even if discovered, you are hard to see but will retain some of your Defense bonus to all attacks.",
   "shortHelp": "Toggle: Self Stealth, +DEF(All)",
-  "icon": "arsenalcontrol_cloakingdevice",
+  "icon": "arsenalcontrol_cloakingdevice.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
 import { ChargedBrawl as ChargedBrawl } from './charged-brawl';
 import { ChargedBolts as ChargedBolts } from './electric-fence';
-import { HavocPunch as HavocPunch } from './havok-punch';
-import { Zapp as Zapp } from './lightning-clap';
 import { LightningBolt as LightningBolt } from './lightning-field';
+import { HavocPunch as HavocPunch } from './havok-punch';
+import { BuildUp as BuildUp } from './build-up';
+import { Zapp as Zapp } from './lightning-clap';
+import { StaticDischarge as StaticDischarge } from './thunder-strike';
 import { ThunderStrike as ThunderStrike } from './power-sink';
 import { VoltaicSentinel as VoltaicSentinel } from './shocking-grasp';
-import { StaticDischarge as StaticDischarge } from './thunder-strike';
 
 export const powerset: Powerset = {
   id: 'dominator/electricity-assault',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    BuildUp,
     ChargedBrawl,
     ChargedBolts,
-    HavocPunch,
-    Zapp,
     LightningBolt,
+    HavocPunch,
+    BuildUp,
+    Zapp,
+    StaticDischarge,
     ThunderStrike,
     VoltaicSentinel,
-    StaticDischarge,
   ],
 };
 

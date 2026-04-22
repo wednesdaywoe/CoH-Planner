@@ -14,7 +14,7 @@ export const CryoFreezeRay: Power = {
   "available": 0,
   "description": "The Cryo Freeze Ray encases your foe in a block of ice, holding him helpless in place for a while and dealing some cold damage.",
   "shortHelp": "Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge, -Fly",
-  "icon": "arsenalcontrol_beanbag",
+  "icon": "arsenalcontrol_beanbag.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

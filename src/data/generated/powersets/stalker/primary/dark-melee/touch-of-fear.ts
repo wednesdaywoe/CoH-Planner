@@ -14,7 +14,7 @@ export const TouchofFear: Power = {
   "available": 21,
   "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have their chance to hit reduced.",
   "shortHelp": "Melee (Targeted AoE), DMG(Negative), Fear, Foe -To Hit",
-  "icon": "shadowfighting_touchoffearaoe",
+  "icon": "shadowfighting_touchoffearaoe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",

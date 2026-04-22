@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Crush as Crush } from './crush';
+import { Lift as Lift } from './lift';
+import { GravityDistortion as GravityDistortion } from './gravity-distortion';
+import { Propel as Propel } from './propel';
 import { CrushingField as CrushingField } from './crushing-field';
 import { DimensionShift as DimensionShift } from './dimension-shift';
-import { GravityDistortion as GravityDistortion } from './gravity-distortion';
 import { GravityDistortionField as GravityDistortionField } from './gravity-distortion-field';
-import { Lift as Lift } from './lift';
-import { Propel as Propel } from './propel';
-import { Singularity as Singularity } from './singularity';
 import { Wormhole as Wormhole } from './wormhole';
+import { Singularity as Singularity } from './singularity';
 
 export const powerset: Powerset = {
   id: 'dominator/gravity-control',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Crush,
+    Lift,
+    GravityDistortion,
+    Propel,
     CrushingField,
     DimensionShift,
-    GravityDistortion,
     GravityDistortionField,
-    Lift,
-    Propel,
-    Singularity,
     Wormhole,
+    Singularity,
   ],
 };
 

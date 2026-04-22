@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Attune as Attune } from './attune';
-import { SoundBooster as SoundBooster } from './build-up';
-import { DeafeningWave as DeafeningWave } from './deafening-wave';
-import { Earsplitter as Earsplitter } from './earsplitter';
-import { SandmansWhisper as SandmansWhisper } from './sandmans-whisper';
-import { SonicClap as SonicClap } from './sonic-clap';
 import { SonicThrust as SonicThrust } from './sonic-thrust';
 import { StridentEcho as StridentEcho } from './strident-echo';
+import { Attune as Attune } from './attune';
+import { SoundBooster as SoundBooster } from './build-up';
+import { SonicClap as SonicClap } from './sonic-clap';
 import { Taunt as Taunt } from './taunt';
+import { SandmansWhisper as SandmansWhisper } from './sandmans-whisper';
+import { DeafeningWave as DeafeningWave } from './deafening-wave';
+import { Earsplitter as Earsplitter } from './earsplitter';
 
 export const powerset: Powerset = {
   id: 'brute/sonic-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    Attune,
-    SoundBooster,
-    DeafeningWave,
-    Earsplitter,
-    SandmansWhisper,
-    SonicClap,
     SonicThrust,
     StridentEcho,
+    Attune,
+    SoundBooster,
+    SonicClap,
     Taunt,
+    SandmansWhisper,
+    DeafeningWave,
+    Earsplitter,
   ],
 };
 

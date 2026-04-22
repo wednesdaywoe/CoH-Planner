@@ -14,7 +14,7 @@ export const Unkindness: Power = {
   "available": 9,
   "description": "With a mighty roar, you command an unkindness of ravens to quickly assault and harass your foes. Your foes will suffer Moderate Lethal damage over time and have their speed and defense reduced. The power inflicts lethal damage over time that scales in strength with the number Blood Frenzy stacks. This power grants 2 stacks of Blood Frenzy.Damage: Light.Recharge: Slow.",
   "shortHelp": "Ranged (Cone), DoT (Lethal), Foe -Speed, -Defense, -Fly, +2 Blood Frenzy",
-  "icon": "savagemelee_callravens",
+  "icon": "savagemelee_callravens.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsBlaze as AssassinsBlaze } from './assassins-blaze';
-import { BreathofFire as BreathofFire } from './breath-of-fire';
-import { BuildUp as BuildUp } from './build-up';
-import { Cremate as Cremate } from './cremate';
 import { FireSword as FireSword } from './fire-sword';
+import { Scorch as Scorch } from './scorch';
+import { Cremate as Cremate } from './cremate';
+import { AssassinsBlaze as AssassinsBlaze } from './assassins-blaze';
+import { BuildUp as BuildUp } from './build-up';
+import { Placate as Placate } from './placate';
+import { BreathofFire as BreathofFire } from './breath-of-fire';
 import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
 import { GreaterFireSword as GreaterFireSword } from './greater-fire-sword';
-import { Placate as Placate } from './placate';
-import { Scorch as Scorch } from './scorch';
 
 export const powerset: Powerset = {
   id: 'stalker/fiery-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsBlaze,
-    BreathofFire,
-    BuildUp,
-    Cremate,
     FireSword,
+    Scorch,
+    Cremate,
+    AssassinsBlaze,
+    BuildUp,
+    Placate,
+    BreathofFire,
     FireSwordCircle,
     GreaterFireSword,
-    Placate,
-    Scorch,
   ],
 };
 

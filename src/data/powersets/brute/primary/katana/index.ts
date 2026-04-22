@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
-import { SoaringDragon as SoaringDragon } from './disembowel';
 import { StingoftheWasp as StingoftheWasp } from './hack';
-import { GoldenDragonfly as GoldenDragonfly } from './head-splitter';
-import { DivineAvalanche as DivineAvalanche } from './parry';
 import { GamblersCut as GamblersCut } from './slash';
 import { FlashingSteel as FlashingSteel } from './slice';
+import { BuildUp as BuildUp } from './build-up';
+import { DivineAvalanche as DivineAvalanche } from './parry';
 import { DragonsRoar as DragonsRoar } from './taunt';
 import { TheLotusDrops as TheLotusDrops } from './whirling-sword';
+import { SoaringDragon as SoaringDragon } from './disembowel';
+import { GoldenDragonfly as GoldenDragonfly } from './head-splitter';
 
 export const powerset: Powerset = {
   id: 'brute/katana',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    BuildUp,
-    SoaringDragon,
     StingoftheWasp,
-    GoldenDragonfly,
-    DivineAvalanche,
     GamblersCut,
     FlashingSteel,
+    BuildUp,
+    DivineAvalanche,
     DragonsRoar,
     TheLotusDrops,
+    SoaringDragon,
+    GoldenDragonfly,
   ],
 };
 

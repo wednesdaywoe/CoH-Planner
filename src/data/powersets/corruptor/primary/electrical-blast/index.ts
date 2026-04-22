@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { ChargeUp as ChargeUp } from './aim';
-import { BallLightning as BallLightning } from './ball-lightning';
 import { ChargedBolts as ChargedBolts } from './charged-bolts';
 import { LightningBolt as LightningBolt } from './lightning-bolt';
+import { BallLightning as BallLightning } from './ball-lightning';
 import { ShortCircuit as ShortCircuit } from './short-circuit';
-import { TeslaCage as TeslaCage } from './tesla-cage';
-import { ThunderousBlast as ThunderousBlast } from './thunderous-blast';
-import { VoltaicSentinel as VoltaicSentinel } from './voltaic-sentinel';
+import { ChargeUp as ChargeUp } from './aim';
 import { Zapp as Zapp } from './zapp';
+import { TeslaCage as TeslaCage } from './tesla-cage';
+import { VoltaicSentinel as VoltaicSentinel } from './voltaic-sentinel';
+import { ThunderousBlast as ThunderousBlast } from './thunderous-blast';
 
 export const powerset: Powerset = {
   id: 'corruptor/electrical-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'corruptor',
   category: 'primary',
   powers: [
-    ChargeUp,
-    BallLightning,
     ChargedBolts,
     LightningBolt,
+    BallLightning,
     ShortCircuit,
-    TeslaCage,
-    ThunderousBlast,
-    VoltaicSentinel,
+    ChargeUp,
     Zapp,
+    TeslaCage,
+    VoltaicSentinel,
+    ThunderousBlast,
   ],
 };
 

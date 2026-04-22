@@ -14,7 +14,7 @@ export const Tombstone: Power = {
   "available": 23,
   "description": "Create a giant pillar of stone, creating a Tombstone around your target, dealing extreme damage and limiting their ability to jump and fly for a short time. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle, this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Tombstone grants two stacks of Seismic Pressure.",
   "shortHelp": "Sniper, DMG(Smash), Foe -Jump, -Fly",
-  "icon": "seismicblast_snipe",
+  "icon": "seismicblast_snipe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

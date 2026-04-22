@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { ArcticFog as ArcticFog } from './arctic-fog';
-import { Benumb as Benumb } from './benumb';
-import { Frostwork as Frostwork } from './frostwork';
-import { GlacialShield as GlacialShield } from './glacial-shield';
-import { HeatLoss as HeatLoss } from './heat-loss';
 import { IceShield as IceShield } from './ice-shield';
 import { Infrigidate as Infrigidate } from './infrigidate';
-import { Sleet as Sleet } from './sleet';
 import { SnowStorm as SnowStorm } from './snow-storm';
+import { GlacialShield as GlacialShield } from './glacial-shield';
+import { Frostwork as Frostwork } from './frostwork';
+import { ArcticFog as ArcticFog } from './arctic-fog';
+import { Benumb as Benumb } from './benumb';
+import { Sleet as Sleet } from './sleet';
+import { HeatLoss as HeatLoss } from './heat-loss';
 
 export const powerset: Powerset = {
   id: 'controller/cold-domination',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    ArcticFog,
-    Benumb,
-    Frostwork,
-    GlacialShield,
-    HeatLoss,
     IceShield,
     Infrigidate,
-    Sleet,
     SnowStorm,
+    GlacialShield,
+    Frostwork,
+    ArcticFog,
+    Benumb,
+    Sleet,
+    HeatLoss,
   ],
 };
 

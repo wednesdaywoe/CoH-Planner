@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AtomSmasher as AtomSmasher } from './atom-smasher';
-import { BetaDecay as BetaDecay } from './beta-decay';
 import { ElectronShackles as ElectronShackles } from './electron-shackles';
-import { Ionize as Ionize } from './ionize';
-import { MetabolicAcceleration as MetabolicAcceleration } from './metabolic-acceleration';
 import { NegatronSlam as NegatronSlam } from './negatron-slam';
 import { PositronCell as PositronCell } from './positron-cell';
-import { PositronicFist as PositronicFist } from './positronic-fist';
+import { Ionize as Ionize } from './ionize';
+import { BetaDecay as BetaDecay } from './beta-decay';
+import { MetabolicAcceleration as MetabolicAcceleration } from './metabolic-acceleration';
+import { AtomSmasher as AtomSmasher } from './atom-smasher';
 import { RadioactiveCloud as RadioactiveCloud } from './radioactive-cloud';
+import { PositronicFist as PositronicFist } from './positronic-fist';
 
 export const powerset: Powerset = {
   id: 'blaster/atomic-manipulation',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    AtomSmasher,
-    BetaDecay,
     ElectronShackles,
-    Ionize,
-    MetabolicAcceleration,
     NegatronSlam,
     PositronCell,
-    PositronicFist,
+    Ionize,
+    BetaDecay,
+    MetabolicAcceleration,
+    AtomSmasher,
     RadioactiveCloud,
+    PositronicFist,
   ],
 };
 

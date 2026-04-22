@@ -14,7 +14,7 @@ export const SoundBarrier: Power = {
   "available": 19,
   "description": "Creates a barrier around the caster which reduces incoming energy and smashing damage, provides protection against sleep effects and grants an absorption shield. Recovery is also increased.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +Absorb, +Recovery, +Res(Smashing, Energy, Sleep)",
-  "icon": "sonicmanipulation_soundbarrier",
+  "icon": "sonicmanipulation_soundbarrier.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",

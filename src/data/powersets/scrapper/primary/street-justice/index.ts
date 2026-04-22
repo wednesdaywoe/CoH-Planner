@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { CombatReadiness as CombatReadiness } from './combat-readiness';
-import { Confront as Confront } from './confront';
-import { CrushingUppercut as CrushingUppercut } from './crushing-uppercut';
 import { HeavyBlow as HeavyBlow } from './heavy-blow';
 import { InitialStrike as InitialStrike } from './initial-strike';
-import { ShinBreaker as ShinBreaker } from './low-kick';
-import { SpinningStrike as SpinningStrike } from './spinning-strike';
 import { SweepingCross as SweepingCross } from './sweeping-cross';
+import { CombatReadiness as CombatReadiness } from './combat-readiness';
 import { RibCracker as RibCracker } from './throat-strike';
+import { Confront as Confront } from './confront';
+import { SpinningStrike as SpinningStrike } from './spinning-strike';
+import { ShinBreaker as ShinBreaker } from './low-kick';
+import { CrushingUppercut as CrushingUppercut } from './crushing-uppercut';
 
 export const powerset: Powerset = {
   id: 'scrapper/street-justice',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    CombatReadiness,
-    Confront,
-    CrushingUppercut,
     HeavyBlow,
     InitialStrike,
-    ShinBreaker,
-    SpinningStrike,
     SweepingCross,
+    CombatReadiness,
     RibCracker,
+    Confront,
+    SpinningStrike,
+    ShinBreaker,
+    CrushingUppercut,
   ],
 };
 

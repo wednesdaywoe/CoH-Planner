@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { ChronoShift as ChronoShift } from './chrono-shift';
+import { TemporalMending as TemporalMending } from './temporal-mending';
+import { TimeCrawl as TimeCrawl } from './time-crawl';
+import { TimesJuncture as TimesJuncture } from './times-juncture';
+import { TemporalSelection as TemporalSelection } from './temporal-selection';
 import { DistortionField as DistortionField } from './distortion-field';
+import { TimeStop as TimeStop } from './time-stop';
 import { Farsight as Farsight } from './farsight';
 import { SlowedResponse as SlowedResponse } from './slowed-response';
-import { TemporalMending as TemporalMending } from './temporal-mending';
-import { TemporalSelection as TemporalSelection } from './temporal-selection';
-import { TimeCrawl as TimeCrawl } from './time-crawl';
-import { TimeStop as TimeStop } from './time-stop';
-import { TimesJuncture as TimesJuncture } from './times-juncture';
+import { ChronoShift as ChronoShift } from './chrono-shift';
 
 export const powerset: Powerset = {
   id: 'corruptor/time-manipulation',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'corruptor',
   category: 'secondary',
   powers: [
-    ChronoShift,
+    TemporalMending,
+    TimeCrawl,
+    TimesJuncture,
+    TemporalSelection,
     DistortionField,
+    TimeStop,
     Farsight,
     SlowedResponse,
-    TemporalMending,
-    TemporalSelection,
-    TimeCrawl,
-    TimeStop,
-    TimesJuncture,
+    ChronoShift,
   ],
 };
 

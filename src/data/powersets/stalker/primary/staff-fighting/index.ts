@@ -9,13 +9,13 @@
 
 import type { Powerset } from '@/types';
 
+import { MercurialBlow as MercurialBlow } from './mercurial-blow';
+import { PreciseStrike as PreciseStrike } from './precise-strike';
+import { GuardedSpin as GuardedSpin } from './guarded-spin';
 import { AssassinsStaff as AssassinsStaff } from './assassins-staff';
 import { BuildUp as BuildUp } from './build-up';
-import { EyeoftheStorm as EyeoftheStorm } from './eye-of-the-storm';
-import { GuardedSpin as GuardedSpin } from './guarded-spin';
-import { MercurialBlow as MercurialBlow } from './mercurial-blow';
 import { Placate as Placate } from './placate';
-import { PreciseStrike as PreciseStrike } from './precise-strike';
+import { EyeoftheStorm as EyeoftheStorm } from './eye-of-the-storm';
 import { SerpentsReach as SerpentsReach } from './serpents-reach';
 import { SkySplitter as SkySplitter } from './sky-splitter';
 
@@ -27,13 +27,13 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
+    MercurialBlow,
+    PreciseStrike,
+    GuardedSpin,
     AssassinsStaff,
     BuildUp,
-    EyeoftheStorm,
-    GuardedSpin,
-    MercurialBlow,
     Placate,
-    PreciseStrike,
+    EyeoftheStorm,
     SerpentsReach,
     SkySplitter,
   ],

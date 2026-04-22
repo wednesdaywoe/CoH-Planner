@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Aim as Aim } from './aim';
-import { Blaze as Blaze } from './blaze';
-import { BlazingBlast as BlazingBlast } from './blazing-blast';
-import { FireBall as FireBall } from './fire-ball';
 import { FireBlast as FireBlast } from './fire-blast';
-import { FireBreath as FireBreath } from './fire-breath';
 import { Flares as Flares } from './flares';
-import { Inferno as Inferno } from './inferno';
+import { FireBall as FireBall } from './fire-ball';
+import { Blaze as Blaze } from './blaze';
+import { Aim as Aim } from './aim';
+import { FireBreath as FireBreath } from './fire-breath';
+import { BlazingBlast as BlazingBlast } from './blazing-blast';
 import { RainofFire as RainofFire } from './rain-of-fire';
+import { Inferno as Inferno } from './inferno';
 
 export const powerset: Powerset = {
   id: 'sentinel/fire-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    Aim,
-    Blaze,
-    BlazingBlast,
-    FireBall,
     FireBlast,
-    FireBreath,
     Flares,
-    Inferno,
+    FireBall,
+    Blaze,
+    Aim,
+    FireBreath,
+    BlazingBlast,
     RainofFire,
+    Inferno,
   ],
 };
 

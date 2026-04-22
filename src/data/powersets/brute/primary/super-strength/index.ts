@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { FootStomp as FootStomp } from './foot-stomp';
-import { HandClap as HandClap } from './hand-clap';
-import { Haymaker as Haymaker } from './haymaker';
-import { Hurl as Hurl } from './hurl';
 import { Jab as Jab } from './jab';
-import { KnockoutBlow as KnockoutBlow } from './knockout-blow';
 import { Punch as Punch } from './punch';
-import { Rage as Rage } from './rage';
+import { Haymaker as Haymaker } from './haymaker';
+import { HandClap as HandClap } from './hand-clap';
+import { KnockoutBlow as KnockoutBlow } from './knockout-blow';
 import { Taunt as Taunt } from './taunt';
+import { Rage as Rage } from './rage';
+import { Hurl as Hurl } from './hurl';
+import { FootStomp as FootStomp } from './foot-stomp';
 
 export const powerset: Powerset = {
   id: 'brute/super-strength',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    FootStomp,
-    HandClap,
-    Haymaker,
-    Hurl,
     Jab,
-    KnockoutBlow,
     Punch,
-    Rage,
+    Haymaker,
+    HandClap,
+    KnockoutBlow,
     Taunt,
+    Rage,
+    Hurl,
+    FootStomp,
   ],
 };
 

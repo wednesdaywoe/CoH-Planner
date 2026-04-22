@@ -14,7 +14,7 @@ export const DampingBubble: Power = {
   "available": 29,
   "description": "Creates a large bubble at your location which protects all allies inside. While active, this power will grant resistance to Accuracy, Defense, Regeneration, Perception, and Slow debuffs on yourself and allies. Foes within this bubble will have the strength of their Accuracy, Defense, Regeneration, Perception, and Speed debuff powers weakened directly.",
   "shortHelp": "Location (PBAoE), Team +Res(Accuracy, Defense, Perception, Recharge, Regen, Speed, ToHit), Foe -Str(Defense, Perception, Regen, Speed, ToHit)",
-  "icon": "forcefield_dampeningbubble",
+  "icon": "forcefield_dampeningbubble.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { ArcofDestruction as ArcofDestruction } from './arc-of-destruction';
-import { BuildMomentum as BuildMomentum } from './build-up';
 import { CrushingBlow as CrushingBlow } from './crushing-blow';
 import { DefensiveSweep as DefensiveSweep } from './defensive-sweep';
-import { FollowThrough as FollowThrough } from './follow-through';
-import { RendArmor as RendArmor } from './shatter-armor';
 import { TitanSweep as TitanSweep } from './sweeping-strike';
 import { Taunt as Taunt } from './taunt';
+import { FollowThrough as FollowThrough } from './follow-through';
+import { BuildMomentum as BuildMomentum } from './build-up';
+import { RendArmor as RendArmor } from './shatter-armor';
 import { WhirlingSmash as WhirlingSmash } from './whirling-slice';
+import { ArcofDestruction as ArcofDestruction } from './arc-of-destruction';
 
 export const powerset: Powerset = {
   id: 'tanker/titan-weapons',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    ArcofDestruction,
-    BuildMomentum,
     CrushingBlow,
     DefensiveSweep,
-    FollowThrough,
-    RendArmor,
     TitanSweep,
     Taunt,
+    FollowThrough,
+    BuildMomentum,
+    RendArmor,
     WhirlingSmash,
+    ArcofDestruction,
   ],
 };
 

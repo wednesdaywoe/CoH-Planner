@@ -14,7 +14,7 @@ export const DreadfulDiscord: Power = {
   "available": 7,
   "description": "Dreadful Discord is a terrifying song that will leave your audience shaking in fear.",
   "shortHelp": "Ranged (Cone), DMG(Psionic), Foe Fear",
-  "icon": "symphonycontrol_fearaoe",
+  "icon": "symphonycontrol_fearaoe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

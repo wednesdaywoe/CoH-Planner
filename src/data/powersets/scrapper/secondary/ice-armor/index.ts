@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
-import { EnergyAbsorption as EnergyAbsorption } from './energy-absorption';
-import { GlacialArmor as GlacialArmor } from './glacial-armor';
 import { Hoarfrost as Hoarfrost } from './hoarfrost';
 import { FrozenArmor as FrozenArmor } from './ice-armor';
+import { Rime as Rime } from './rime-ice';
+import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
+import { WetIce as WetIce } from './wet-ice';
+import { GlacialArmor as GlacialArmor } from './glacial-armor';
+import { EnergyAbsorption as EnergyAbsorption } from './energy-absorption';
+import { Permafrost as Permafrost } from './permafrost';
 import { Icicles as Icicles } from './icicles';
 import { IcyBastion as IcyBastion } from './icy-bastion';
-import { Permafrost as Permafrost } from './permafrost';
-import { Rime as Rime } from './rime-ice';
-import { WetIce as WetIce } from './wet-ice';
 
 export const powerset: Powerset = {
   id: 'scrapper/ice-armor',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'secondary',
   powers: [
-    ChillingEmbrace,
-    EnergyAbsorption,
-    GlacialArmor,
     Hoarfrost,
     FrozenArmor,
+    Rime,
+    ChillingEmbrace,
+    WetIce,
+    GlacialArmor,
+    EnergyAbsorption,
+    Permafrost,
     Icicles,
     IcyBastion,
-    Permafrost,
-    Rime,
-    WetIce,
   ],
 };
 

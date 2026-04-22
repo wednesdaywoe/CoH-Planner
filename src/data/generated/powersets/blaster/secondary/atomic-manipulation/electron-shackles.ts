@@ -14,7 +14,7 @@ export const ElectronShackles: Power = {
   "available": 0,
   "description": "Immobilizes a single target and deals some energy damage over time. Some more resilient foes may require multiple attacks to Immobilize. Electron Shackles can also reduce a target's Defense and will surround it in negatively charged particles. Hitting a foe that has positive charged particles will trigger a Gamma Burst.",
   "shortHelp": "Ranged, DoT(Energy), Foe Immobilize, -DEF, +Negatrons",
-  "icon": "atomicmanipulation_immob",
+  "icon": "atomicmanipulation_immob.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

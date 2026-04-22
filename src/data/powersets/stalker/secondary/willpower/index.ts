@@ -9,13 +9,13 @@
 
 import type { Powerset } from '@/types';
 
-import { FastHealing as FastHealing } from './fast-healing';
-import { HeightenedSenses as HeightenedSenses } from './heightened-senses';
 import { Hide as Hide } from './hide';
 import { HighPainTolerance as HighPainTolerance } from './high-pain-tolerance';
-import { IndomitableWill as IndomitableWill } from './indomitable-will';
-import { MindOverBody as MindOverBody } from './mind-over-body';
 import { Reconstruction as Reconstruction } from './reconstruction';
+import { MindOverBody as MindOverBody } from './mind-over-body';
+import { IndomitableWill as IndomitableWill } from './indomitable-will';
+import { HeightenedSenses as HeightenedSenses } from './heightened-senses';
+import { FastHealing as FastHealing } from './fast-healing';
 import { Resurgence as Resurgence } from './resurgence';
 import { StrengthofWill as StrengthofWill } from './strength-of-will';
 
@@ -27,13 +27,13 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    FastHealing,
-    HeightenedSenses,
     Hide,
     HighPainTolerance,
-    IndomitableWill,
-    MindOverBody,
     Reconstruction,
+    MindOverBody,
+    IndomitableWill,
+    HeightenedSenses,
+    FastHealing,
     Resurgence,
     StrengthofWill,
   ],

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BlackHole as BlackHole } from './black-hole';
-import { DarkServant as DarkServant } from './dark-servant';
-import { DarkestNight as DarkestNight } from './darkest-night';
-import { Fade as Fade } from './fade';
-import { HowlingTwilight as HowlingTwilight } from './howling-twilight';
-import { ShadowFall as ShadowFall } from './shadow-fall';
-import { SoulAbsorption as SoulAbsorption } from './soul-absorption';
 import { TarPatch as TarPatch } from './tar-patch';
 import { TwilightGrasp as TwilightGrasp } from './twilight-grasp';
+import { DarkestNight as DarkestNight } from './darkest-night';
+import { HowlingTwilight as HowlingTwilight } from './howling-twilight';
+import { ShadowFall as ShadowFall } from './shadow-fall';
+import { Fade as Fade } from './fade';
+import { SoulAbsorption as SoulAbsorption } from './soul-absorption';
+import { BlackHole as BlackHole } from './black-hole';
+import { DarkServant as DarkServant } from './dark-servant';
 
 export const powerset: Powerset = {
   id: 'controller/darkness-affinity',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    BlackHole,
-    DarkServant,
-    DarkestNight,
-    Fade,
-    HowlingTwilight,
-    ShadowFall,
-    SoulAbsorption,
     TarPatch,
     TwilightGrasp,
+    DarkestNight,
+    HowlingTwilight,
+    ShadowFall,
+    Fade,
+    SoulAbsorption,
+    BlackHole,
+    DarkServant,
   ],
 };
 

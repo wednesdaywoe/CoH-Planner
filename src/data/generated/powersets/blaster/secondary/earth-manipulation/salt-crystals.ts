@@ -14,7 +14,7 @@ export const SaltCrystals: Power = {
   "available": 3,
   "description": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required against AVs and players, as well as to make secondary effects apply.Recharge: Slow.",
   "shortHelp": "PBAoE, Foe Sleep, -DEF",
-  "icon": "earthmanip_saltcrystals",
+  "icon": "earthmanip_saltcrystals.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",

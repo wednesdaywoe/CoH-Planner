@@ -146,6 +146,7 @@ export {
   SLOT_GRANTS,
   getSlotsGrantedAtLevel,
   getTotalSlotsAtLevel,
+  getNextGrantLevel,
   // Enhancement availability
   ENHANCEMENT_AVAILABILITY,
   isEnhancementAvailable,

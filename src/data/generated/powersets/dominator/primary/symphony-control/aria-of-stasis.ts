@@ -14,7 +14,7 @@ export const AriaofStasis: Power = {
   "available": 1,
   "description": "Aria of Stasis roots your audience in place and causes psionic damage. Stronger foes might still be able to move, but will do so at a reduced speed.",
   "shortHelp": "Ranged (Cone), DMG(Psionic), Foe Immobilize, -SPD",
-  "icon": "symphonycontrol_immobaoe",
+  "icon": "symphonycontrol_immobaoe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

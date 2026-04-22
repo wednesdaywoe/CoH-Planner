@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AcidMortar as AcidMortar } from './acid-mortar';
 import { Caltrops as Caltrops } from './caltrops';
-import { Detonator as Detonator } from './detonator';
+import { WebGrenade as WebGrenade } from './web-grenade';
+import { TriageBeacon as TriageBeacon } from './triage-beacon';
+import { AcidMortar as AcidMortar } from './acid-mortar';
 import { ForceFieldGenerator as ForceFieldGenerator } from './force-field-generator';
 import { PoisonTrap as PoisonTrap } from './poison-trap';
 import { SeekerDrones as SeekerDrones } from './seeker-drones';
-import { TriageBeacon as TriageBeacon } from './triage-beacon';
 import { TripMine as TripMine } from './trip-mine';
-import { WebGrenade as WebGrenade } from './web-grenade';
+import { Detonator as Detonator } from './detonator';
 
 export const powerset: Powerset = {
   id: 'mastermind/traps',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    AcidMortar,
     Caltrops,
-    Detonator,
+    WebGrenade,
+    TriageBeacon,
+    AcidMortar,
     ForceFieldGenerator,
     PoisonTrap,
     SeekerDrones,
-    TriageBeacon,
     TripMine,
-    WebGrenade,
+    Detonator,
   ],
 };
 

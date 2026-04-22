@@ -10,13 +10,13 @@
 import type { Powerset } from '@/types';
 
 import { Burst as Burst } from './burst';
-import { Commando as Commando } from './commando';
+import { Soldiers as Soldiers } from './soldiers';
+import { Slug as Slug } from './slug';
 import { EquipMercenary as EquipMercenary } from './equip-mercenary';
 import { M30Grenade as M30Grenade } from './m30-grenade';
-import { Serum as Serum } from './serum';
-import { Slug as Slug } from './slug';
-import { Soldiers as Soldiers } from './soldiers';
 import { SpecOps as SpecOps } from './spec-ops';
+import { Serum as Serum } from './serum';
+import { Commando as Commando } from './commando';
 import { TacticalUpgrade as TacticalUpgrade } from './tactical-upgrade';
 
 export const powerset: Powerset = {
@@ -28,13 +28,13 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Burst,
-    Commando,
+    Soldiers,
+    Slug,
     EquipMercenary,
     M30Grenade,
-    Serum,
-    Slug,
-    Soldiers,
     SpecOps,
+    Serum,
+    Commando,
     TacticalUpgrade,
   ],
 };

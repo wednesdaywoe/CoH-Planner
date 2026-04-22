@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
-import { FreezingTouch as FreezingTouch } from './freezing-touch';
-import { Frost as Frost } from './frost';
-import { FrozenAura as FrozenAura } from './frozen-aura';
 import { FrozenFists as FrozenFists } from './frozen-fists';
+import { Frost as Frost } from './frost';
+import { Taunt as Taunt } from './taunt';
+import { BuildUp as BuildUp } from './build-up';
+import { IcePatch as IcePatch } from './ice-patch';
+import { FreezingTouch as FreezingTouch } from './freezing-touch';
 import { GreaterIceSword as GreaterIceSword } from './greater-ice-sword';
 import { IceSword as IceSword } from './ice-sword';
-import { IcePatch as IcePatch } from './ice-patch';
-import { Taunt as Taunt } from './taunt';
+import { FrozenAura as FrozenAura } from './frozen-aura';
 
 export const powerset: Powerset = {
   id: 'tanker/ice-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    BuildUp,
-    FreezingTouch,
-    Frost,
-    FrozenAura,
     FrozenFists,
+    Frost,
+    Taunt,
+    BuildUp,
+    IcePatch,
+    FreezingTouch,
     GreaterIceSword,
     IceSword,
-    IcePatch,
-    Taunt,
+    FrozenAura,
   ],
 };
 

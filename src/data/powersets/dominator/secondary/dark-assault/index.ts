@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { DarkBlast as DarkBlast } from './dark-blast';
-import { MoonBeam as MoonBeam } from './death-shroud';
-import { GatherShadows as GatherShadows } from './gather-shadows';
-import { Gloom as Gloom } from './gloom';
-import { LifeDrain as LifeDrain } from './life-drain';
-import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
-import { EngulfingDarkness as EngulfingDarkness } from './moonbeam';
-import { NightFall as NightFall } from './night-fall';
 import { Smite as Smite } from './smite';
+import { Gloom as Gloom } from './gloom';
+import { NightFall as NightFall } from './night-fall';
+import { GatherShadows as GatherShadows } from './gather-shadows';
+import { EngulfingDarkness as EngulfingDarkness } from './moonbeam';
+import { LifeDrain as LifeDrain } from './life-drain';
+import { MoonBeam as MoonBeam } from './death-shroud';
+import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 
 export const powerset: Powerset = {
   id: 'dominator/dark-assault',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     DarkBlast,
-    MoonBeam,
-    GatherShadows,
-    Gloom,
-    LifeDrain,
-    MidnightGrasp,
-    EngulfingDarkness,
-    NightFall,
     Smite,
+    Gloom,
+    NightFall,
+    GatherShadows,
+    EngulfingDarkness,
+    LifeDrain,
+    MoonBeam,
+    MidnightGrasp,
   ],
 };
 

@@ -10,7 +10,7 @@ import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import { useHistoryStore } from '@/stores/historyStore';
 import { useOnboardingStore, useOnboardingCurrentStep } from '@/stores/onboardingStore';
 import { supabase } from '@/lib/supabase';
-import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/data';
+import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel } from '@/data';
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, OPPORTUNITY_CRIT_MULTIPLIER } from '@/utils/calculations';
@@ -230,37 +230,140 @@ export function Header() {
   );
 }
 
-// ---- Level Up Mode Button ----
+// ---- Level Up Mode Button + Progression Panel ----
+
+function countManualPowerPicks(build: ReturnType<typeof useBuildStore.getState>['build']): number {
+  const nonGranted = (powers: { isAutoGranted?: boolean }[]) =>
+    powers.filter((p) => !p.isAutoGranted).length;
+  return (
+    nonGranted(build.primary.powers) +
+    nonGranted(build.secondary.powers) +
+    build.pools.reduce((sum, pool) => sum + nonGranted(pool.powers), 0) +
+    (build.epicPool ? nonGranted(build.epicPool.powers) : 0)
+  );
+}
+
+function countManualPlacedSlots(build: ReturnType<typeof useBuildStore.getState>['build']): number {
+  const extra = (powers: { slots: unknown[] }[]) =>
+    powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0);
+  return (
+    extra(build.primary.powers) +
+    extra(build.secondary.powers) +
+    build.pools.reduce((sum, pool) => sum + extra(pool.powers), 0) +
+    (build.epicPool ? extra(build.epicPool.powers) : 0) +
+    extra(build.inherents)
+  );
+}
 
 function LevelUpModeButton() {
   const levelUpMode = useUIStore((s) => s.levelUpMode);
   const toggleLevelUpMode = useUIStore((s) => s.toggleLevelUpMode);
+  const build = useBuildStore((s) => s.build);
+  const setLevel = useBuildStore((s) => s.setLevel);
+
+  const level = build.level;
+  const picksAvailable = getPowerPicksAtLevel(level);
+  const slotsAvailable = getTotalSlotsAtLevel(level);
+  const picksUsed = countManualPowerPicks(build);
+  const slotsUsed = countManualPlacedSlots(build);
+  const picksPending = Math.max(0, picksAvailable - picksUsed);
+  const slotsPending = Math.max(0, slotsAvailable - slotsUsed);
+  const ready = picksPending === 0 && slotsPending === 0;
+  const nextLevel = getNextGrantLevel(level);
+  const atMax = level >= MAX_LEVEL;
+
+  const handleLevelUp = () => {
+    if (!ready || atMax) return;
+    setLevel(nextLevel);
+  };
+
+  if (!levelUpMode) {
+    return (
+      <button
+        onClick={toggleLevelUpMode}
+        title="Turn on Level Up Mode — gates enhancements and powers by your current level"
+        className="flex items-center gap-1 px-2 py-1 rounded border border-slate-600 bg-slate-700/50 text-xs font-medium text-slate-400 hover:text-slate-200 transition-colors"
+      >
+        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        </svg>
+        <span className="hidden lg:inline">Level Up</span>
+      </button>
+    );
+  }
 
   return (
-    <button
-      onClick={toggleLevelUpMode}
-      title={levelUpMode
-        ? 'Level Up Mode: ON — enhancements filtered to your character level'
-        : 'Level Up Mode: OFF — show all enhancements regardless of level'}
-      className={`flex items-center gap-1 px-2 py-1 rounded border text-xs font-medium transition-colors ${
-        levelUpMode
-          ? 'border-emerald-500 bg-emerald-600/20 text-emerald-300 hover:bg-emerald-600/30'
-          : 'border-slate-600 bg-slate-700/50 text-slate-400 hover:text-slate-200'
-      }`}
-    >
-      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-      <span className="hidden lg:inline">Level Up</span>
-    </button>
+    <div className="flex items-center gap-1 px-2 py-1 rounded border border-emerald-500 bg-emerald-600/10 text-xs">
+      <button
+        onClick={toggleLevelUpMode}
+        title="Turn off Level Up Mode"
+        className="text-emerald-300 hover:text-emerald-200 flex items-center gap-1"
+      >
+        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        </svg>
+        <span className="hidden md:inline font-medium">Level Up</span>
+      </button>
+
+      <span className="w-px h-4 bg-emerald-500/40 mx-1" />
+
+      {ready ? (
+        atMax ? (
+          <span className="text-slate-400 px-1">At max level</span>
+        ) : (
+          <button
+            onClick={handleLevelUp}
+            className="flex items-center gap-1 px-2 py-0.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded font-medium transition-colors"
+            title={`Advance to level ${nextLevel}`}
+          >
+            <span>→ Lvl {nextLevel}</span>
+          </button>
+        )
+      ) : (
+        <div className="flex items-center gap-2 px-1">
+          {picksPending > 0 && (
+            <span className="text-amber-300 tabular-nums" title={`${picksUsed}/${picksAvailable} powers picked at level ${level}`}>
+              {picksPending} pwr
+            </span>
+          )}
+          {slotsPending > 0 && (
+            <span className="text-amber-300 tabular-nums" title={`${slotsUsed}/${slotsAvailable} slots placed at level ${level}`}>
+              {slotsPending} slot{slotsPending > 1 ? 's' : ''}
+            </span>
+          )}
+          <span className="text-slate-500 hidden md:inline">to use</span>
+        </div>
+      )}
+    </div>
   );
 }
 
 // ---- Inline Level Slider ----
 
 function HeaderLevelSlider() {
-  const level = useBuildStore((s) => s.build.level);
+  const build = useBuildStore((s) => s.build);
+  const level = build.level;
   const setLevel = useBuildStore((s) => s.setLevel);
+  const levelUpMode = useUIStore((s) => s.levelUpMode);
+
+  // In Level Up mode, compute whether the user has used all grants at the current level.
+  // If not, block upward advancement so picks/slots must be placed before advancing.
+  const picksAvailable = getPowerPicksAtLevel(level);
+  const slotsAvailable = getTotalSlotsAtLevel(level);
+  const picksUsed = countManualPowerPicks(build);
+  const slotsUsed = countManualPlacedSlots(build);
+  const readyToAdvance = picksUsed >= picksAvailable && slotsUsed >= slotsAvailable;
+  const forwardGated = levelUpMode && !readyToAdvance;
+  const upDisabled = level >= MAX_LEVEL || forwardGated;
+  const upTitle = forwardGated
+    ? `Use all ${picksAvailable} power pick${picksAvailable > 1 ? 's' : ''} and ${slotsAvailable} slot${slotsAvailable > 1 ? 's' : ''} first`
+    : undefined;
+
+  // Clamp forward motion in Level Up mode. Backward motion is always allowed.
+  const safeSetLevel = (next: number) => {
+    if (forwardGated && next > level) return;
+    setLevel(next);
+  };
 
   return (
     <div className="flex items-center gap-1 px-2 py-1 rounded border border-slate-600 bg-slate-700/50" data-onboarding="level-slider">
@@ -275,7 +378,8 @@ function HeaderLevelSlider() {
       <span className="text-sm font-bold text-emerald-400 w-6 text-center">{level}</span>
       <button
         onClick={() => setLevel(level + 1)}
-        disabled={level >= MAX_LEVEL}
+        disabled={upDisabled}
+        title={upTitle}
         className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
       >
         +
@@ -284,7 +388,7 @@ function HeaderLevelSlider() {
         value={level}
         min={1}
         max={MAX_LEVEL}
-        onChange={(e) => setLevel(Number(e.target.value))}
+        onChange={(e) => safeSetLevel(Number(e.target.value))}
         className="w-24"
         showValue={false}
         showRange={false}

@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Entangle as Entangle } from './entangle';
-import { Ripper as Ripper } from './ripper';
 import { Skewer as Skewer } from './skewer';
-import { SporeCloud as SporeCloud } from './spore-cloud';
 import { Strangler as Strangler } from './strangler';
-import { ThornBurst as ThornBurst } from './thorn-burst';
 import { Toxins as Toxins } from './toxins';
-import { Vines as Vines } from './vines';
+import { SporeCloud as SporeCloud } from './spore-cloud';
 import { WildFortress as WildFortress } from './wild-fortress';
+import { Ripper as Ripper } from './ripper';
+import { Vines as Vines } from './vines';
+import { ThornBurst as ThornBurst } from './thorn-burst';
 
 export const powerset: Powerset = {
   id: 'blaster/plant-manipulation',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     Entangle,
-    Ripper,
     Skewer,
-    SporeCloud,
     Strangler,
-    ThornBurst,
     Toxins,
-    Vines,
+    SporeCloud,
     WildFortress,
+    Ripper,
+    Vines,
+    ThornBurst,
   ],
 };
 

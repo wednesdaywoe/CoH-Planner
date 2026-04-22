@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Barrage as Barrage } from './barrage';
+import { EnergyPunch as EnergyPunch } from './energy-punch';
 import { BoneSmasher as BoneSmasher } from './bone-smasher';
 import { BuildUp as BuildUp } from './build-up';
-import { EnergyPunch as EnergyPunch } from './energy-punch';
-import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
-import { PowerCrash as PowerCrash } from './stun';
+import { WhirlingHands as WhirlingHands } from './whirling-hands';
 import { Taunt as Taunt } from './taunt';
 import { TotalFocus as TotalFocus } from './total-focus';
-import { WhirlingHands as WhirlingHands } from './whirling-hands';
+import { PowerCrash as PowerCrash } from './stun';
+import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
 
 export const powerset: Powerset = {
   id: 'brute/energy-melee',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Barrage,
+    EnergyPunch,
     BoneSmasher,
     BuildUp,
-    EnergyPunch,
-    EnergyTransfer,
-    PowerCrash,
+    WhirlingHands,
     Taunt,
     TotalFocus,
-    WhirlingHands,
+    PowerCrash,
+    EnergyTransfer,
   ],
 };
 

@@ -9,18 +9,18 @@
 
 import type { Powerset } from '@/types';
 
-import { Confront as Confront } from './confront';
+import { MercurialBlow as MercurialBlow } from './mercurial-blow';
+import { PreciseStrike as PreciseStrike } from './precise-strike';
+import { GuardedSpin as GuardedSpin } from './guarded-spin';
 import { EyeoftheStorm as EyeoftheStorm } from './eye-of-the-storm';
+import { StaffMastery as StaffMastery } from './staff-mastery';
+import { Confront as Confront } from './confront';
+import { SerpentsReach as SerpentsReach } from './serpents-reach';
+import { InnocuousStrikes as InnocuousStrikes } from './innocuous-strikes';
+import { SkySplitter as SkySplitter } from './sky-splitter';
 import { FormoftheBody as FormoftheBody } from './form-of-the-body';
 import { FormoftheMind as FormoftheMind } from './form-of-the-mind';
 import { FormoftheSoul as FormoftheSoul } from './form-of-the-soul';
-import { GuardedSpin as GuardedSpin } from './guarded-spin';
-import { InnocuousStrikes as InnocuousStrikes } from './innocuous-strikes';
-import { MercurialBlow as MercurialBlow } from './mercurial-blow';
-import { PreciseStrike as PreciseStrike } from './precise-strike';
-import { SerpentsReach as SerpentsReach } from './serpents-reach';
-import { SkySplitter as SkySplitter } from './sky-splitter';
-import { StaffMastery as StaffMastery } from './staff-mastery';
 
 export const powerset: Powerset = {
   id: 'scrapper/staff-fighting',
@@ -30,18 +30,18 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    Confront,
+    MercurialBlow,
+    PreciseStrike,
+    GuardedSpin,
     EyeoftheStorm,
+    StaffMastery,
+    Confront,
+    SerpentsReach,
+    InnocuousStrikes,
+    SkySplitter,
     FormoftheBody,
     FormoftheMind,
     FormoftheSoul,
-    GuardedSpin,
-    InnocuousStrikes,
-    MercurialBlow,
-    PreciseStrike,
-    SerpentsReach,
-    SkySplitter,
-    StaffMastery,
   ],
 };
 

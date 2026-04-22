@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Alkaloid as Alkaloid } from './alkaloid';
-import { Antidote as Antidote } from './antidote';
-import { ElixirofLife as ElixirofLife } from './elixir-of-life';
 import { Envenom as Envenom } from './envenom';
+import { Weaken as Weaken } from './weaken';
 import { NeurotoxicBreath as NeurotoxicBreath } from './neurotoxic-breath';
+import { ElixirofLife as ElixirofLife } from './elixir-of-life';
+import { Antidote as Antidote } from './antidote';
 import { ParalyticPoison as ParalyticPoison } from './paralytic-poison';
 import { PoisonTrap as PoisonTrap } from './poison-trap';
 import { VenomousGas as VenomousGas } from './venomous-gas';
-import { Weaken as Weaken } from './weaken';
 
 export const powerset: Powerset = {
   id: 'defender/poison',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Alkaloid,
-    Antidote,
-    ElixirofLife,
     Envenom,
+    Weaken,
     NeurotoxicBreath,
+    ElixirofLife,
+    Antidote,
     ParalyticPoison,
     PoisonTrap,
     VenomousGas,
-    Weaken,
   ],
 };
 

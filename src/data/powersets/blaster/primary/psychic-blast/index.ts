@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { PsychicFocus as PsychicFocus } from './aim';
 import { MentalBlast as MentalBlast } from './mental-blast';
+import { DominateWill as DominateWill } from './will-domination';
+import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
 import { PsionicDarts as PsionicDarts } from './psionic-dart';
+import { PsychicFocus as PsychicFocus } from './aim';
 import { PsionicLance as PsionicLance } from './psionic-lance';
 import { PsionicTornado as PsionicTornado } from './psionic-tornado';
-import { PsychicWail as PsychicWail } from './psychic-wail';
 import { ScrambleMinds as ScrambleMinds } from './scramble-thoughts';
-import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
-import { DominateWill as DominateWill } from './will-domination';
+import { PsychicWail as PsychicWail } from './psychic-wail';
 
 export const powerset: Powerset = {
   id: 'blaster/psychic-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'primary',
   powers: [
-    PsychicFocus,
     MentalBlast,
+    DominateWill,
+    TelekineticBlast,
     PsionicDarts,
+    PsychicFocus,
     PsionicLance,
     PsionicTornado,
-    PsychicWail,
     ScrambleMinds,
-    TelekineticBlast,
-    DominateWill,
+    PsychicWail,
   ],
 };
 

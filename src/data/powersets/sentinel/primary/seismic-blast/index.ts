@@ -10,15 +10,15 @@
 import type { Powerset } from '@/types';
 
 import { Encase as Encase } from './encase';
-import { Entomb as Entomb } from './entomb';
-import { Gravestone as Gravestone } from './gravestone';
-import { Meteor as Meteor } from './meteor';
-import { RockShards as RockShards } from './rock-shards';
-import { SeismicForce as SeismicForce } from './seismic-force';
 import { Shatter as Shatter } from './shatter';
 import { SeismicShockwaves as SeismicShockwaves } from './shockwaves';
-import { Stalagmite as Stalagmite } from './stalagmite';
+import { RockShards as RockShards } from './rock-shards';
+import { Entomb as Entomb } from './entomb';
+import { SeismicForce as SeismicForce } from './seismic-force';
 import { Upthrust as Upthrust } from './upthrust';
+import { Gravestone as Gravestone } from './gravestone';
+import { Stalagmite as Stalagmite } from './stalagmite';
+import { Meteor as Meteor } from './meteor';
 
 export const powerset: Powerset = {
   id: 'sentinel/seismic-blast',
@@ -29,15 +29,15 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Encase,
-    Entomb,
-    Gravestone,
-    Meteor,
-    RockShards,
-    SeismicForce,
     Shatter,
     SeismicShockwaves,
-    Stalagmite,
+    RockShards,
+    Entomb,
+    SeismicForce,
     Upthrust,
+    Gravestone,
+    Stalagmite,
+    Meteor,
   ],
 };
 

@@ -14,7 +14,7 @@ export const Hide: Power = {
   "available": 0,
   "description": "Hide makes you almost impossible to detect. When properly 'Hidden\", a Stalker can pull off Critical hits with his attacks, and even land a massive 'Assassins Strike' with an Assassins power. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. Unlike most stealth powers, Hide can be used at the same time as other Concealment powers, giving you even greater stealth capability. No Endurance cost.",
   "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
-  "icon": "psionicarmor_hide",
+  "icon": "psionicarmor_hide.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",

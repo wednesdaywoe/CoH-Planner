@@ -14,7 +14,7 @@ export const Shockwave: Power = {
   "available": 9,
   "description": "You can call forth a tremendous Shockwave that knocks back foes and deals Smashing damage in a wide cone area.",
   "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
-  "icon": "sonicmanipulation_shockwave",
+  "icon": "sonicmanipulation_shockwave.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

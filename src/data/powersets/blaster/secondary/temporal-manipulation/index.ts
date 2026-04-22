@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { AgingTouch as AgingTouch } from './aging-touch';
+import { TimeWall as TimeWall } from './time-wall';
+import { TimeStop as TimeStop } from './time-stop';
 import { Chronos as Chronos } from './chronological-selection';
 import { EndofTime as EndofTime } from './end-of-time';
-import { FuturePain as FuturePain } from './future-pain';
 import { TemporalHealing as TemporalHealing } from './temporal-healing';
-import { TimeLord as TimeLord } from './time-lord';
+import { FuturePain as FuturePain } from './future-pain';
 import { TimeShift as TimeShift } from './time-shift';
-import { TimeStop as TimeStop } from './time-stop';
-import { TimeWall as TimeWall } from './time-wall';
+import { TimeLord as TimeLord } from './time-lord';
 
 export const powerset: Powerset = {
   id: 'blaster/temporal-manipulation',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     AgingTouch,
+    TimeWall,
+    TimeStop,
     Chronos,
     EndofTime,
-    FuturePain,
     TemporalHealing,
-    TimeLord,
+    FuturePain,
     TimeShift,
-    TimeStop,
-    TimeWall,
+    TimeLord,
   ],
 };
 

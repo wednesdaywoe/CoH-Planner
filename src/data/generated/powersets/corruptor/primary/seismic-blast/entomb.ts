@@ -14,7 +14,7 @@ export const Entomb: Power = {
   "available": 5,
   "description": "Entomb foes in a giant boulder, dealing high damage and lowering their defense. They will also become heavy, limiting their ability to jump and fly for a short time. Entomb grants two stacks of Seismic Pressure.",
   "shortHelp": "Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF",
-  "icon": "seismicblast_entomb",
+  "icon": "seismicblast_entomb.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

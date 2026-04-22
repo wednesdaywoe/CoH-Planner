@@ -14,7 +14,7 @@ export const SonicClap: Power = {
   "available": 15,
   "description": "You generate a powerful sonic wave that damages foes in front of you with a decent chance to stun and knock them down. This power will inflict 10% bonus damage against Attuned targets.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Melee (Cone), Foe Disorient, Knockdown",
-  "icon": "sonicmanipulation_sonicclap",
+  "icon": "sonicmanipulation_sonicclap.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

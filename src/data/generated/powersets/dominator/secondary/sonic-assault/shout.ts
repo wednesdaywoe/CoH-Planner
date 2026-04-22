@@ -14,7 +14,7 @@ export const Shout: Power = {
   "available": 27,
   "description": "You blast your foe with a tremendous Shout, damaging them. This power applies Extended Sonic Vibrations that lower resistance for 12s.",
   "shortHelp": "Ranged, DMG(Energy/Smash), Foe -Res(All)",
-  "icon": "sonicmanipulation_shout",
+  "icon": "sonicmanipulation_shout.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

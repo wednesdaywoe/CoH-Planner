@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { MentalBlast as MentalBlast } from './mental-blast';
-import { PsionicLance as PsionicLance } from './psionic-lance';
-import { PsionicTornado as PsionicTornado } from './psionic-tornado';
-import { PsychicScream as PsychicScream } from './psychic-scream';
-import { PsychicWail as PsychicWail } from './psychic-wail';
-import { ScrambleMinds as ScrambleMinds } from './scramble-thoughts';
 import { Subdue as Subdue } from './subdue';
 import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
+import { PsychicScream as PsychicScream } from './psychic-scream';
 import { WillDomination as WillDomination } from './will-domination';
+import { PsionicLance as PsionicLance } from './psionic-lance';
+import { PsionicTornado as PsionicTornado } from './psionic-tornado';
+import { ScrambleMinds as ScrambleMinds } from './scramble-thoughts';
+import { PsychicWail as PsychicWail } from './psychic-wail';
 
 export const powerset: Powerset = {
   id: 'corruptor/psychic-blast',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     MentalBlast,
-    PsionicLance,
-    PsionicTornado,
-    PsychicScream,
-    PsychicWail,
-    ScrambleMinds,
     Subdue,
     TelekineticBlast,
+    PsychicScream,
     WillDomination,
+    PsionicLance,
+    PsionicTornado,
+    ScrambleMinds,
+    PsychicWail,
   ],
 };
 

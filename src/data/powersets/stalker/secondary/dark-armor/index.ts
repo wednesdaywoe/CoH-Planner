@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { CloakofFear as CloakofFear } from './cloak-of-fear';
 import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
-import { DarkRegeneration as DarkRegeneration } from './dark-regeneration';
 import { Hide as Hide } from './hide';
 import { MurkyCloud as MurkyCloud } from './murky-cloud';
-import { ObscureSustenance as ObscureSustenance } from './obscure-sustenance';
-import { ObsidianShield as ObsidianShield } from './obsidian-shield';
-import { OppressiveGloom as OppressiveGloom } from './oppressive-gloom';
 import { ShadowDweller as ShadowDweller } from './shadow-dweller';
+import { ObsidianShield as ObsidianShield } from './obsidian-shield';
+import { DarkRegeneration as DarkRegeneration } from './dark-regeneration';
+import { ObscureSustenance as ObscureSustenance } from './obscure-sustenance';
+import { CloakofFear as CloakofFear } from './cloak-of-fear';
+import { OppressiveGloom as OppressiveGloom } from './oppressive-gloom';
 import { SoulTransfer as SoulTransfer } from './soul-transfer';
 
 export const powerset: Powerset = {
@@ -28,15 +28,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    CloakofFear,
     DarkEmbrace,
-    DarkRegeneration,
     Hide,
     MurkyCloud,
-    ObscureSustenance,
-    ObsidianShield,
-    OppressiveGloom,
     ShadowDweller,
+    ObsidianShield,
+    DarkRegeneration,
+    ObscureSustenance,
+    CloakofFear,
+    OppressiveGloom,
     SoulTransfer,
   ],
 };

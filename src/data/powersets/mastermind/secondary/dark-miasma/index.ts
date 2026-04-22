@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BlackHole as BlackHole } from './black-hole';
-import { DarkServant as DarkServant } from './dark-servant';
-import { DarkestNight as DarkestNight } from './darkest-night';
-import { FearsomeStare as FearsomeStare } from './fearsome-stare';
-import { HowlingTwilight as HowlingTwilight } from './howling-twilight';
-import { PetrifyingGaze as PetrifyingGaze } from './petrifying-gaze';
-import { ShadowFall as ShadowFall } from './shadow-fall';
 import { TarPatch as TarPatch } from './tar-patch';
 import { TwilightGrasp as TwilightGrasp } from './twilight-grasp';
+import { DarkestNight as DarkestNight } from './darkest-night';
+import { HowlingTwilight as HowlingTwilight } from './howling-twilight';
+import { ShadowFall as ShadowFall } from './shadow-fall';
+import { FearsomeStare as FearsomeStare } from './fearsome-stare';
+import { PetrifyingGaze as PetrifyingGaze } from './petrifying-gaze';
+import { BlackHole as BlackHole } from './black-hole';
+import { DarkServant as DarkServant } from './dark-servant';
 
 export const powerset: Powerset = {
   id: 'mastermind/dark-miasma',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    BlackHole,
-    DarkServant,
-    DarkestNight,
-    FearsomeStare,
-    HowlingTwilight,
-    PetrifyingGaze,
-    ShadowFall,
     TarPatch,
     TwilightGrasp,
+    DarkestNight,
+    HowlingTwilight,
+    ShadowFall,
+    FearsomeStare,
+    PetrifyingGaze,
+    BlackHole,
+    DarkServant,
   ],
 };
 

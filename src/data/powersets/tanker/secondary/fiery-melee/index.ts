@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { FireSword as FireSword } from './fire-sword';
+import { Scorch as Scorch } from './scorch';
+import { Combustion as Combustion } from './combustion';
+import { Taunt as Taunt } from './taunt';
 import { FieryBreath as FieryBreath } from './breath-of-fire';
 import { BuildUp as BuildUp } from './build-up';
-import { Combustion as Combustion } from './combustion';
-import { FireSword as FireSword } from './fire-sword';
 import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
-import { GreaterFireSword as GreaterFireSword } from './greater-fire-sword';
 import { Incinerate as Incinerate } from './incinerate';
-import { Scorch as Scorch } from './scorch';
-import { Taunt as Taunt } from './taunt';
+import { GreaterFireSword as GreaterFireSword } from './greater-fire-sword';
 
 export const powerset: Powerset = {
   id: 'tanker/fiery-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
+    FireSword,
+    Scorch,
+    Combustion,
+    Taunt,
     FieryBreath,
     BuildUp,
-    Combustion,
-    FireSword,
     FireSwordCircle,
-    GreaterFireSword,
     Incinerate,
-    Scorch,
-    Taunt,
+    GreaterFireSword,
   ],
 };
 

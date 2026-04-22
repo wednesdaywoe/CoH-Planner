@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Boggle as Boggle } from './boggle';
+import { MentalStrike as MentalStrike } from './mental-strike';
+import { TelekineticBlow as TelekineticBlow } from './telekinetic-blow';
+import { Taunt as Taunt } from './taunt';
+import { PsiBladeSweep as PsiBladeSweep } from './psi-blade-sweep';
 import { Concentration as Concentration } from './concentration';
+import { Boggle as Boggle } from './boggle';
 import { GreaterPsiBlade as GreaterPsiBlade } from './greater-psi-blade';
 import { PsiBlade as PsiBlade } from './psi-blade';
 import { MassLevitate as MassLevitate } from './mass-levitate';
-import { MentalStrike as MentalStrike } from './mental-strike';
-import { PsiBladeSweep as PsiBladeSweep } from './psi-blade-sweep';
-import { Taunt as Taunt } from './taunt';
-import { TelekineticBlow as TelekineticBlow } from './telekinetic-blow';
 
 export const powerset: Powerset = {
   id: 'tanker/psionic-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    Boggle,
+    MentalStrike,
+    TelekineticBlow,
+    Taunt,
+    PsiBladeSweep,
     Concentration,
+    Boggle,
     GreaterPsiBlade,
     PsiBlade,
     MassLevitate,
-    MentalStrike,
-    PsiBladeSweep,
-    Taunt,
-    TelekineticBlow,
   ],
 };
 

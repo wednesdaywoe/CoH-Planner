@@ -14,7 +14,7 @@ export const HypnotizingLights: Power = {
   "available": 7,
   "description": "You conjure a whirl of lights with differing effects depending on the distance from which it is viewed. Most all targets within the area will be placed into a sleep like trance. Up to five enemies within 20 feet of the display are Confused and receive Psionic damage over time.Notes: Although this power is Auto Hit, it requires a To Hit check to apply Deep Sleep. If the Hit check is missed, and the target is not an AV, the weaker form of Sleep will be applied.",
   "shortHelp": "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep",
-  "icon": "pyrotechnic_hypnotizinglights",
+  "icon": "pyrotechnic_hypnotizinglights.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

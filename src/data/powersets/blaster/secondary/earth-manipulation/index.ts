@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BerylCrystals as BerylCrystals } from './beryl-crystals';
-import { BuildUp as BuildUp } from './build-up';
-import { Fracture as Fracture } from './fracture';
 import { HeavyMallet as HeavyMallet } from './heavy-mallet';
-import { MudBath as MudBath } from './mud-bath';
-import { SaltCrystals as SaltCrystals } from './salt-crystals';
-import { SeismicSmash as SeismicSmash } from './seismic-smash';
 import { StonePrison as StonePrison } from './stone-prison';
+import { SaltCrystals as SaltCrystals } from './salt-crystals';
+import { BuildUp as BuildUp } from './build-up';
 import { Tremor as Tremor } from './tremor';
+import { MudBath as MudBath } from './mud-bath';
+import { BerylCrystals as BerylCrystals } from './beryl-crystals';
+import { Fracture as Fracture } from './fracture';
+import { SeismicSmash as SeismicSmash } from './seismic-smash';
 
 export const powerset: Powerset = {
   id: 'blaster/earth-manipulation',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    BerylCrystals,
-    BuildUp,
-    Fracture,
     HeavyMallet,
-    MudBath,
-    SaltCrystals,
-    SeismicSmash,
     StonePrison,
+    SaltCrystals,
+    BuildUp,
     Tremor,
+    MudBath,
+    BerylCrystals,
+    Fracture,
+    SeismicSmash,
   ],
 };
 

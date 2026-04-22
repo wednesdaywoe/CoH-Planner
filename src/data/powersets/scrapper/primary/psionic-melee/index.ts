@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Boggle as Boggle } from './boggle';
+import { MentalStrike as MentalStrike } from './mental-strike';
+import { TelekineticBlow as TelekineticBlow } from './telekinetic-blow';
 import { Concentration as Concentration } from './concentration';
+import { PsiBladeSweep as PsiBladeSweep } from './psi-blade-sweep';
 import { Confront as Confront } from './confront';
+import { Boggle as Boggle } from './boggle';
 import { GreaterPsiBlade as GreaterPsiBlade } from './greater-psi-blade';
 import { PsiBlade as PsiBlade } from './psi-blade';
 import { MassLevitate as MassLevitate } from './mass-levitate';
-import { MentalStrike as MentalStrike } from './mental-strike';
-import { PsiBladeSweep as PsiBladeSweep } from './psi-blade-sweep';
-import { TelekineticBlow as TelekineticBlow } from './telekinetic-blow';
 
 export const powerset: Powerset = {
   id: 'scrapper/psionic-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    Boggle,
+    MentalStrike,
+    TelekineticBlow,
     Concentration,
+    PsiBladeSweep,
     Confront,
+    Boggle,
     GreaterPsiBlade,
     PsiBlade,
     MassLevitate,
-    MentalStrike,
-    PsiBladeSweep,
-    TelekineticBlow,
   ],
 };
 

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Caltrops as Caltrops } from './caltrops';
-import { DragonsTail as DragonsTail } from './dragons-tail';
-import { EnvenomedBlades as EnvenomedBlades } from './envenomed-blades';
-import { ExplosiveShuriken as ExplosiveShuriken } from './explosive-shuriken';
-import { MasterfulThrow as MasterfulThrow } from './masterful-throw';
 import { ShurikenThrow as ShurikenThrow } from './shuriken-throw';
-import { SpinningKick as SpinningKick } from './spinning-kick';
 import { ThunderKick as ThunderKick } from './thunder-kick';
 import { TrickShot as TrickShot } from './trick-shot';
+import { SpinningKick as SpinningKick } from './spinning-kick';
+import { EnvenomedBlades as EnvenomedBlades } from './envenomed-blades';
+import { DragonsTail as DragonsTail } from './dragons-tail';
+import { Caltrops as Caltrops } from './caltrops';
+import { MasterfulThrow as MasterfulThrow } from './masterful-throw';
+import { ExplosiveShuriken as ExplosiveShuriken } from './explosive-shuriken';
 
 export const powerset: Powerset = {
   id: 'dominator/martial-assault',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    Caltrops,
-    DragonsTail,
-    EnvenomedBlades,
-    ExplosiveShuriken,
-    MasterfulThrow,
     ShurikenThrow,
-    SpinningKick,
     ThunderKick,
     TrickShot,
+    SpinningKick,
+    EnvenomedBlades,
+    DragonsTail,
+    Caltrops,
+    MasterfulThrow,
+    ExplosiveShuriken,
   ],
 };
 

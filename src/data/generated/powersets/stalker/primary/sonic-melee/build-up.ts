@@ -14,7 +14,7 @@ export const BuildUp: Power = {
   "available": 7,
   "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.",
   "shortHelp": "Self +DMG, +To Hit",
-  "icon": "sonicmanipulation_buildup",
+  "icon": "sonicmanipulation_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

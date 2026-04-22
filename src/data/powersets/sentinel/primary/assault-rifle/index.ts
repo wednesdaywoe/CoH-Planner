@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Aim as Aim } from './aim';
 import { DisorientingShot as DisorientingShot } from './beanbag';
-import { Buckshot as Buckshot } from './buckshot';
 import { Burst as Burst } from './burst';
-import { Flamethrower as Flamethrower } from './flamethrower';
-import { FullAuto as FullAuto } from './full-auto';
-import { Ignite as Ignite } from './incinerator';
-import { M30Grenade as M30Grenade } from './m30-grenade';
+import { Buckshot as Buckshot } from './buckshot';
 import { Slug as Slug } from './slug';
+import { Aim as Aim } from './aim';
+import { M30Grenade as M30Grenade } from './m30-grenade';
+import { Flamethrower as Flamethrower } from './flamethrower';
+import { Ignite as Ignite } from './incinerator';
+import { FullAuto as FullAuto } from './full-auto';
 
 export const powerset: Powerset = {
   id: 'sentinel/assault-rifle',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    Aim,
     DisorientingShot,
-    Buckshot,
     Burst,
-    Flamethrower,
-    FullAuto,
-    Ignite,
-    M30Grenade,
+    Buckshot,
     Slug,
+    Aim,
+    M30Grenade,
+    Flamethrower,
+    Ignite,
+    FullAuto,
   ],
 };
 

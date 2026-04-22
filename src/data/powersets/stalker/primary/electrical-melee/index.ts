@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsShock as AssassinsShock } from './assassins-strike';
-import { BuildUp as BuildUp } from './build-up';
-import { ChainInduction as ChainInduction } from './chain-induction';
 import { ChargedBrawl as ChargedBrawl } from './charged-brawl';
 import { HavocPunch as HavocPunch } from './havoc-punch';
 import { JacobsLadder as JacobsLadder } from './jacobs-ladder';
+import { AssassinsShock as AssassinsShock } from './assassins-strike';
+import { BuildUp as BuildUp } from './build-up';
+import { Placate as Placate } from './placate';
+import { ChainInduction as ChainInduction } from './chain-induction';
 import { ThunderStrike as ThunderStrike } from './lightning-clap';
 import { LightningRod as LightningRod } from './lightning-rod';
-import { Placate as Placate } from './placate';
 
 export const powerset: Powerset = {
   id: 'stalker/electrical-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsShock,
-    BuildUp,
-    ChainInduction,
     ChargedBrawl,
     HavocPunch,
     JacobsLadder,
+    AssassinsShock,
+    BuildUp,
+    Placate,
+    ChainInduction,
     ThunderStrike,
     LightningRod,
-    Placate,
   ],
 };
 

@@ -9,12 +9,12 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
-import { Eviscerate as Eviscerate } from './nw-eviscerate';
 import { MentalBlast as MentalBlast } from './nw-mental-blast';
-import { PsychicScream as PsychicScream } from './nw-psychic-scream';
-import { Slash as Slash } from './nw-slash';
+import { BuildUp as BuildUp } from './build-up';
 import { SmokeGrenade as SmokeGrenade } from './nw-smoke-grenade';
+import { Slash as Slash } from './nw-slash';
+import { Eviscerate as Eviscerate } from './nw-eviscerate';
+import { PsychicScream as PsychicScream } from './nw-psychic-scream';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/night-widow-training',
@@ -24,12 +24,12 @@ export const powerset: Powerset = {
   archetype: 'arachnos-widow',
   category: 'epic',
   powers: [
-    BuildUp,
-    Eviscerate,
     MentalBlast,
-    PsychicScream,
-    Slash,
+    BuildUp,
     SmokeGrenade,
+    Slash,
+    Eviscerate,
+    PsychicScream,
   ],
 };
 

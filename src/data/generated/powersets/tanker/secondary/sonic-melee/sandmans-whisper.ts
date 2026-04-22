@@ -14,7 +14,7 @@ export const SandmansWhisper: Power = {
   "available": 23,
   "description": "You whisper in your foe's ear with a slumbering effect. Affected foe might fall asleep and will have their damage resistance lowered. This power will inflict 10% bonus damage against Attuned targets.",
   "shortHelp": "Melee, DMG(Smashing/Energy), Foe Sleep, -Res(DMG)",
-  "icon": "sonicmanipulation_whisper2",
+  "icon": "sonicmanipulation_whisper2.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

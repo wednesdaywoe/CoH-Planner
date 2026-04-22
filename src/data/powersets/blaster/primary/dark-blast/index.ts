@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AbyssalGaze as AbyssalGaze } from './abyssal-gaze';
-import { Aim as Aim } from './aim';
-import { Blackstar as Blackstar } from './blackstar';
 import { DarkBlast as DarkBlast } from './dark-blast';
 import { Gloom as Gloom } from './gloom';
-import { LifeDrain as LifeDrain } from './life-drain';
+import { UmbralTorrent as UmbralTorrent } from './umbral-torrent';
+import { Aim as Aim } from './aim';
 import { Moonbeam as Moonbeam } from './moonbeam';
 import { TenebrousTentacles as TenebrousTentacles } from './tenebrous-tentacles';
-import { UmbralTorrent as UmbralTorrent } from './umbral-torrent';
+import { AbyssalGaze as AbyssalGaze } from './abyssal-gaze';
+import { LifeDrain as LifeDrain } from './life-drain';
+import { Blackstar as Blackstar } from './blackstar';
 
 export const powerset: Powerset = {
   id: 'blaster/dark-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'primary',
   powers: [
-    AbyssalGaze,
-    Aim,
-    Blackstar,
     DarkBlast,
     Gloom,
-    LifeDrain,
+    UmbralTorrent,
+    Aim,
     Moonbeam,
     TenebrousTentacles,
-    UmbralTorrent,
+    AbyssalGaze,
+    LifeDrain,
+    Blackstar,
   ],
 };
 

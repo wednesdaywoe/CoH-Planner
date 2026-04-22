@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsIceSword as AssassinsIceSword } from './assassins-ice-swords';
-import { BuildUp as BuildUp } from './build-up';
-import { FreezingTouch as FreezingTouch } from './freezing-touch';
-import { Frost as Frost } from './frost';
-import { FrozenAura as FrozenAura } from './frozen-aura';
 import { FrozenFists as FrozenFists } from './frozen-fists';
-import { IcePatch as IcePatch } from './ice-patch';
 import { IceSword as IceSword } from './ice-sword';
+import { Frost as Frost } from './frost';
+import { AssassinsIceSword as AssassinsIceSword } from './assassins-ice-swords';
 import { Placate as Placate } from './placate';
+import { BuildUp as BuildUp } from './build-up';
+import { IcePatch as IcePatch } from './ice-patch';
+import { FreezingTouch as FreezingTouch } from './freezing-touch';
+import { FrozenAura as FrozenAura } from './frozen-aura';
 
 export const powerset: Powerset = {
   id: 'stalker/ice-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsIceSword,
-    BuildUp,
-    FreezingTouch,
-    Frost,
-    FrozenAura,
     FrozenFists,
-    IcePatch,
     IceSword,
+    Frost,
+    AssassinsIceSword,
     Placate,
+    BuildUp,
+    IcePatch,
+    FreezingTouch,
+    FrozenAura,
   ],
 };
 

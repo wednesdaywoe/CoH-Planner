@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { DarkBlast as DarkBlast } from './dark-blast';
-import { DarkEmpowerment as DarkEmpowerment } from './dark-empowerment';
-import { EnchantUndead as EnchantUndead } from './enchant-undead';
+import { ZombieHorde as ZombieHorde } from './zombie-horde';
 import { Gloom as Gloom } from './gloom';
-import { Lich as Lich } from './lich';
+import { EnchantUndead as EnchantUndead } from './enchant-undead';
 import { LifeDrain as LifeDrain } from './life-drain';
 import { GraveKnight as GraveKnight } from './skeletal-warriors';
 import { SoulExtraction as SoulExtraction } from './soul-extraction';
-import { ZombieHorde as ZombieHorde } from './zombie-horde';
+import { Lich as Lich } from './lich';
+import { DarkEmpowerment as DarkEmpowerment } from './dark-empowerment';
 
 export const powerset: Powerset = {
   id: 'mastermind/necromancy',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     DarkBlast,
-    DarkEmpowerment,
-    EnchantUndead,
+    ZombieHorde,
     Gloom,
-    Lich,
+    EnchantUndead,
     LifeDrain,
     GraveKnight,
     SoulExtraction,
-    ZombieHorde,
+    Lich,
+    DarkEmpowerment,
   ],
 };
 

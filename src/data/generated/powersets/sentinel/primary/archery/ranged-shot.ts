@@ -14,7 +14,7 @@ export const PerfectShot: Power = {
   "available": 21,
   "description": "A perfectly aimed and fast shot that blasts your foes.Damage: High.Recharge: Slow.",
   "shortHelp": "Ranged, High DMG(Lethal)",
-  "icon": "archery_heavy",
+  "icon": "archery_heavy.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

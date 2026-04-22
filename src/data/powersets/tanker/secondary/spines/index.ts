@@ -10,13 +10,13 @@
 import type { Powerset } from '@/types';
 
 import { BarbSwipe as BarbSwipe } from './barb-swipe';
-import { BuildUp as BuildUp } from './build-up';
-import { Impale as Impale } from './impale';
 import { Lunge as Lunge } from './lunge';
-import { Quills as Quills } from './quills';
-import { Ripper as Ripper } from './ripper';
 import { SpineBurst as SpineBurst } from './spine-burst';
 import { Taunt as Taunt } from './taunt';
+import { Ripper as Ripper } from './ripper';
+import { BuildUp as BuildUp } from './build-up';
+import { Impale as Impale } from './impale';
+import { Quills as Quills } from './quills';
 import { ThrowSpines as ThrowSpines } from './throw-spines';
 
 export const powerset: Powerset = {
@@ -28,13 +28,13 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     BarbSwipe,
-    BuildUp,
-    Impale,
     Lunge,
-    Quills,
-    Ripper,
     SpineBurst,
     Taunt,
+    Ripper,
+    BuildUp,
+    Impale,
+    Quills,
     ThrowSpines,
   ],
 };

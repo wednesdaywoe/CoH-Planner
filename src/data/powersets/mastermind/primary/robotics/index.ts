@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { AssaultBot as AssaultBot } from './assault-bot';
 import { BattleDrones as BattleDrones } from './battle-drones';
+import { PulseRifleBlast as PulseRifleBlast } from './pulse-rifle-blast';
+import { PulseRifleBurst as PulseRifleBurst } from './pulse-rifle-burst';
 import { EquipRobot as EquipRobot } from './equip-robot';
 import { PhotonGrenade as PhotonGrenade } from './photon-grenade';
 import { ProtectorBots as ProtectorBots } from './protector-bots';
-import { PulseRifleBlast as PulseRifleBlast } from './pulse-rifle-blast';
-import { PulseRifleBurst as PulseRifleBurst } from './pulse-rifle-burst';
 import { MaintenanceDrone as MaintenanceDrone } from './repair';
+import { AssaultBot as AssaultBot } from './assault-bot';
 import { UpgradeRobot as UpgradeRobot } from './upgrade-robot';
 
 export const powerset: Powerset = {
@@ -27,14 +27,14 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'primary',
   powers: [
-    AssaultBot,
     BattleDrones,
+    PulseRifleBlast,
+    PulseRifleBurst,
     EquipRobot,
     PhotonGrenade,
     ProtectorBots,
-    PulseRifleBlast,
-    PulseRifleBurst,
     MaintenanceDrone,
+    AssaultBot,
     UpgradeRobot,
   ],
 };

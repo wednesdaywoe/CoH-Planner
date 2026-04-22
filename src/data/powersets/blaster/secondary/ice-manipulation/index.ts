@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
 import { Chilblain as Chilblain } from './chilblain';
+import { FrozenFists as FrozenFists } from './frozen-fists';
+import { IceSword as IceSword } from './ice-sword';
 import { FrigidProtection as FrigidProtection } from './chilling-embrace';
+import { BuildUp as BuildUp } from './build-up';
+import { IcePatch as IcePatch } from './ice-patch';
+import { Shiver as Shiver } from './shiver';
 import { FreezingTouch as FreezingTouch } from './freezing-touch';
 import { FrozenAura as FrozenAura } from './frozen-aura';
-import { FrozenFists as FrozenFists } from './frozen-fists';
-import { IcePatch as IcePatch } from './ice-patch';
-import { IceSword as IceSword } from './ice-sword';
-import { Shiver as Shiver } from './shiver';
 
 export const powerset: Powerset = {
   id: 'blaster/ice-manipulation',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    BuildUp,
     Chilblain,
+    FrozenFists,
+    IceSword,
     FrigidProtection,
+    BuildUp,
+    IcePatch,
+    Shiver,
     FreezingTouch,
     FrozenAura,
-    FrozenFists,
-    IcePatch,
-    IceSword,
-    Shiver,
   ],
 };
 

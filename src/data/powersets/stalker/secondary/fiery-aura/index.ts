@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { Burn as Burn } from './burn';
-import { CauterizingBlaze as CauterizingBlaze } from './cauterizing-blaze';
-import { Consume as Consume } from './consume';
 import { FireShield as FireShield } from './fire-shield';
-import { HealingFlames as HealingFlames } from './healing-flames';
 import { Hide as Hide } from './hide';
 import { PhoenixRising as PhoenixRising } from './phoenix-rising';
-import { PlasmaShield as PlasmaShield } from './plasma-shield';
-import { PhoenixRising as PhoenixRising2 } from './rise-of-the-phoenix';
+import { HealingFlames as HealingFlames } from './healing-flames';
 import { TemperatureProtection as TemperatureProtection } from './temperature-protection';
+import { PlasmaShield as PlasmaShield } from './plasma-shield';
+import { Consume as Consume } from './consume';
+import { Burn as Burn } from './burn';
+import { CauterizingBlaze as CauterizingBlaze } from './cauterizing-blaze';
+import { PhoenixRising as PhoenixRising2 } from './rise-of-the-phoenix';
 
 export const powerset: Powerset = {
   id: 'stalker/fiery-aura',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    Burn,
-    CauterizingBlaze,
-    Consume,
     FireShield,
-    HealingFlames,
     Hide,
     PhoenixRising,
-    PlasmaShield,
-    PhoenixRising2,
+    HealingFlames,
     TemperatureProtection,
+    PlasmaShield,
+    Consume,
+    Burn,
+    CauterizingBlaze,
+    PhoenixRising2,
   ],
 };
 

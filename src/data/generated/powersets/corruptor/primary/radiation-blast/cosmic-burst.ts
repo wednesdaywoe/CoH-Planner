@@ -14,7 +14,7 @@ export const CosmicBurst: Power = {
   "available": 17,
   "description": "Cosmic Burst smashes the target with cosmic particles. The attack is devastating and can leave most targets Disoriented and with reduced Defense.",
   "shortHelp": "Ranged, DMG(Energy), Foe Disorient, -DEF",
-  "icon": "radiationburst_cosmicburst",
+  "icon": "radiationburst_cosmicburst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

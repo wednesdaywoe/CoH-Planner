@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { NimbleSlash as NimbleSlash } from './light-opening';
+import { PowerSlice as PowerSlice } from './moderate-opening';
+import { AblatingStrike as AblatingStrike } from './moderate-bridge';
 import { TyphoonsEdge as TyphoonsEdge } from './aoe-bridge';
 import { BlindingFeint as BlindingFeint } from './follow-up';
-import { OneThousandCuts as OneThousandCuts } from './high-low';
-import { NimbleSlash as NimbleSlash } from './light-opening';
-import { AblatingStrike as AblatingStrike } from './moderate-bridge';
-import { PowerSlice as PowerSlice } from './moderate-opening';
+import { Taunt as Taunt } from './taunt';
 import { VengefulSlice as VengefulSlice } from './special-1';
 import { SweepingStrike as SweepingStrike } from './special-2';
-import { Taunt as Taunt } from './taunt';
+import { OneThousandCuts as OneThousandCuts } from './high-low';
 
 export const powerset: Powerset = {
   id: 'brute/dual-blades',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
+    NimbleSlash,
+    PowerSlice,
+    AblatingStrike,
     TyphoonsEdge,
     BlindingFeint,
-    OneThousandCuts,
-    NimbleSlash,
-    AblatingStrike,
-    PowerSlice,
+    Taunt,
     VengefulSlice,
     SweepingStrike,
-    Taunt,
+    OneThousandCuts,
   ],
 };
 

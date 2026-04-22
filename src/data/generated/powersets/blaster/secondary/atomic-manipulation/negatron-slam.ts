@@ -14,7 +14,7 @@ export const NegatronSlam: Power = {
   "available": 0,
   "description": "You channel a greater amount of radiation into your fists and deliver a hard-hitting blow that deals Energy and Smashing damage to the target as well as reduce their Defense for a short time. The affected target will also be surrounded in negatively charged particles. Hitting a foe that has positive charged particles will trigger a Gamma Burst.",
   "shortHelp": "Melee, DMG(Energy/Smash), Foe Knockdown, -DEF, Special, +Negatrons",
-  "icon": "atomicmanipulation_weakpunch",
+  "icon": "atomicmanipulation_weakpunch.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

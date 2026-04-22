@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BloodThirst as BloodThirst } from './blood-thirst';
-import { Confront as Confront } from './confront';
-import { Hemorrhage as Hemorrhage } from './hemorrhage';
 import { MaimingSlash as MaimingSlash } from './maiming-slash';
-import { RendingFlurry as RendingFlurry } from './rending-flurry';
-import { SavageLeap as SavageLeap } from './savage-leap';
 import { SavageStrike as SavageStrike } from './savage-strike';
 import { Shred as Shred } from './shred';
+import { BloodThirst as BloodThirst } from './blood-thirst';
 import { ViciousSlash as ViciousSlash } from './vicious-slash';
+import { Confront as Confront } from './confront';
+import { RendingFlurry as RendingFlurry } from './rending-flurry';
+import { Hemorrhage as Hemorrhage } from './hemorrhage';
+import { SavageLeap as SavageLeap } from './savage-leap';
 
 export const powerset: Powerset = {
   id: 'scrapper/savage-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    BloodThirst,
-    Confront,
-    Hemorrhage,
     MaimingSlash,
-    RendingFlurry,
-    SavageLeap,
     SavageStrike,
     Shred,
+    BloodThirst,
     ViciousSlash,
+    Confront,
+    RendingFlurry,
+    Hemorrhage,
+    SavageLeap,
   ],
 };
 

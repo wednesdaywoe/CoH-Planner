@@ -14,7 +14,7 @@ export const Pendulum: Power = {
   "available": 7,
   "description": "This attack swings your Battle Axe directly in front of you. Foes struck by this attack are dealt heavy damage, and may be knocked down.",
   "shortHelp": "Melee (Targeted AoE), DMG(Lethal), Foe Knockdown",
-  "icon": "battleaxe_taoe",
+  "icon": "battleaxe_taoe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",

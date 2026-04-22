@@ -13,11 +13,11 @@ import { ChargedArmor as ChargedArmor } from './charged-armor';
 import { ChargedShield as ChargedShield } from './charged-shield';
 import { ConductiveShield as ConductiveShield } from './conductive-shield';
 import { Energize as Energize } from './energize';
+import { StaticShield as StaticShield } from './static-shield';
 import { Grounded as Grounded } from './grounded';
 import { LightningReflexes as LightningReflexes } from './lightning-reflexes';
 import { PowerSink as PowerSink } from './power-sink';
 import { PowerSurge as PowerSurge } from './power-surge';
-import { StaticShield as StaticShield } from './static-shield';
 
 export const powerset: Powerset = {
   id: 'sentinel/electric-armor',
@@ -31,11 +31,11 @@ export const powerset: Powerset = {
     ChargedShield,
     ConductiveShield,
     Energize,
+    StaticShield,
     Grounded,
     LightningReflexes,
     PowerSink,
     PowerSurge,
-    StaticShield,
   ],
 };
 

@@ -14,7 +14,7 @@ export const PsionicStrike: Power = {
   "available": 11,
   "description": "This extremely accurate attack does moderate Psionic damage and can Slow a target's attack rate.Damage: Superior.Recharge: Slow.",
   "shortHelp": "Ranged, Superior DMG(Psionic), Target -Recharge",
-  "icon": "psychicblast_heavy",
+  "icon": "psychicblast_heavy.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

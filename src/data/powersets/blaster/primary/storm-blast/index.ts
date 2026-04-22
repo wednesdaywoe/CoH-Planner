@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Intensify as Intensify } from './aim';
-import { CategoryFive as CategoryFive } from './category-five';
-import { ChainLightning as ChainLightning } from './chain-lightning';
-import { Cloudburst as Cloudburst } from './cloudburst';
-import { DirectStrike as DirectStrike } from './direct-strike';
 import { Gust as Gust } from './gust';
 import { Hailstones as Hailstones } from './hailstones';
 import { JetStream as JetStream } from './jet-stream';
 import { StormCell as StormCell } from './storm-cell';
+import { Intensify as Intensify } from './aim';
+import { DirectStrike as DirectStrike } from './direct-strike';
+import { ChainLightning as ChainLightning } from './chain-lightning';
+import { Cloudburst as Cloudburst } from './cloudburst';
+import { CategoryFive as CategoryFive } from './category-five';
 
 export const powerset: Powerset = {
   id: 'blaster/storm-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'primary',
   powers: [
-    Intensify,
-    CategoryFive,
-    ChainLightning,
-    Cloudburst,
-    DirectStrike,
     Gust,
     Hailstones,
     JetStream,
     StormCell,
+    Intensify,
+    DirectStrike,
+    ChainLightning,
+    Cloudburst,
+    CategoryFive,
   ],
 };
 

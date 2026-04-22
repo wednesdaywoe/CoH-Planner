@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { PsychicFocus as PsychicFocus } from './aim';
 import { MentalBlast as MentalBlast } from './mental-blast';
+import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
+import { PsychicScream as PsychicScream } from './psychic-scream';
+import { WillDomination as WillDomination } from './will-domination';
+import { PsychicFocus as PsychicFocus } from './aim';
 import { PsionicStrike as PsionicStrike } from './psionic-strike';
 import { PsionicTornado as PsionicTornado } from './psionic-tornado';
-import { PsychicScream as PsychicScream } from './psychic-scream';
-import { PsychicWail as PsychicWail } from './psychic-wail';
 import { ScrambleThoughts as ScrambleThoughts } from './scramble-thoughts';
-import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
-import { WillDomination as WillDomination } from './will-domination';
+import { PsychicWail as PsychicWail } from './psychic-wail';
 
 export const powerset: Powerset = {
   id: 'sentinel/psychic-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    PsychicFocus,
     MentalBlast,
+    TelekineticBlast,
+    PsychicScream,
+    WillDomination,
+    PsychicFocus,
     PsionicStrike,
     PsionicTornado,
-    PsychicScream,
-    PsychicWail,
     ScrambleThoughts,
-    TelekineticBlast,
-    WillDomination,
+    PsychicWail,
   ],
 };
 

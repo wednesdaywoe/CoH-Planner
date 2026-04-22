@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Bash as Bash } from './bash';
-import { BuildUp as BuildUp } from './build-up';
-import { Clobber as Clobber } from './clobber';
-import { CrowdControl as CrowdControl } from './crowd-control';
-import { Jawbreaker as Jawbreaker } from './jawbreaker';
 import { Pulverize as Pulverize } from './pulverize';
-import { Shatter as Shatter } from './shatter';
+import { Jawbreaker as Jawbreaker } from './jawbreaker';
 import { Taunt as Taunt } from './taunt';
+import { BuildUp as BuildUp } from './build-up';
 import { WhirlingMace as WhirlingMace } from './whirling-mace';
+import { Clobber as Clobber } from './clobber';
+import { Shatter as Shatter } from './shatter';
+import { CrowdControl as CrowdControl } from './crowd-control';
 
 export const powerset: Powerset = {
   id: 'tanker/war-mace',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     Bash,
-    BuildUp,
-    Clobber,
-    CrowdControl,
-    Jawbreaker,
     Pulverize,
-    Shatter,
+    Jawbreaker,
     Taunt,
+    BuildUp,
     WhirlingMace,
+    Clobber,
+    Shatter,
+    CrowdControl,
   ],
 };
 

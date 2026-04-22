@@ -21,6 +21,7 @@ const {
   extractEffects,
   extractDamage,
   inferAllowedSetCategories,
+  normalizeIconPath,
   collectAllTemplates,
   RAW_DATA_PATH,
   BIN_BOOST_MAP,
@@ -127,7 +128,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   if (rawJson.display_short_help) {
     power.shortHelp = rawJson.display_short_help.replace(/\u00a0/g, ' ');
   }
-  power.icon = rawJson.icon || '';
+  power.icon = normalizeIconPath(rawJson.icon || '');
   power.powerType = rawJson.type || 'Click';
 
   // Requires

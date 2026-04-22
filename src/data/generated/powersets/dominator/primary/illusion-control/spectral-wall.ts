@@ -14,7 +14,7 @@ export const SpectralWall: Power = {
   "available": 0,
   "description": "Creates an illusionary wall of specters that prevents enemies from moving. As the foe is surrounded, they take psionic damage over time.",
   "shortHelp": "Ranged, DoT (Psionic), Foe Immobilize, -ToHit",
-  "icon": "illusions_immob",
+  "icon": "illusions_immob.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

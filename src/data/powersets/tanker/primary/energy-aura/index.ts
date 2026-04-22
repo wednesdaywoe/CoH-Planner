@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { DampeningField as DampeningField } from './dampening-field';
-import { Energize as Energize } from './energize';
-import { EnergyDrain as EnergyDrain } from './energy-drain';
+import { KineticShield as KineticShield } from './kinetic-shield';
+import { PowerShield as PowerShield } from './power-shield';
+import { EntropicAura as EntropicAura } from './entropy-shield';
 import { EnergyProtection as EnergyProtection } from './energy-protection';
 import { PowerArmor as PowerArmor } from './energy-reserve';
-import { EntropicAura as EntropicAura } from './entropy-shield';
-import { KineticShield as KineticShield } from './kinetic-shield';
+import { Energize as Energize } from './energize';
+import { EnergyDrain as EnergyDrain } from './energy-drain';
 import { Overload as Overload } from './overload';
-import { PowerShield as PowerShield } from './power-shield';
 
 export const powerset: Powerset = {
   id: 'tanker/energy-aura',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     DampeningField,
-    Energize,
-    EnergyDrain,
+    KineticShield,
+    PowerShield,
+    EntropicAura,
     EnergyProtection,
     PowerArmor,
-    EntropicAura,
-    KineticShield,
+    Energize,
+    EnergyDrain,
     Overload,
-    PowerShield,
   ],
 };
 

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { DarkBlast as DarkBlast } from './dark-blast';
+import { Gloom as Gloom } from './gloom';
+import { UmbralTorrent as UmbralTorrent } from './umbral-torrent';
 import { AbyssalGaze as AbyssalGaze } from './abyssal-gaze';
 import { Aim as Aim } from './aim';
-import { AntumbralBeam as AntumbralBeam } from './antumbral-beam';
-import { Blackstar as Blackstar } from './blackstar';
-import { DarkBlast as DarkBlast } from './dark-blast';
 import { DarkObliteration as DarkObliteration } from './dark-obliteration';
-import { Gloom as Gloom } from './gloom';
+import { AntumbralBeam as AntumbralBeam } from './antumbral-beam';
 import { LifeDrain as LifeDrain } from './life-drain';
-import { UmbralTorrent as UmbralTorrent } from './umbral-torrent';
+import { Blackstar as Blackstar } from './blackstar';
 
 export const powerset: Powerset = {
   id: 'sentinel/dark-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
+    DarkBlast,
+    Gloom,
+    UmbralTorrent,
     AbyssalGaze,
     Aim,
-    AntumbralBeam,
-    Blackstar,
-    DarkBlast,
     DarkObliteration,
-    Gloom,
+    AntumbralBeam,
     LifeDrain,
-    UmbralTorrent,
+    Blackstar,
   ],
 };
 

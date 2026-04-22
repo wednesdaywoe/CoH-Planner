@@ -9,24 +9,24 @@
 
 import type { Powerset } from '@/types';
 
+import { GleamingBolt as GleamingBolt } from './gleaming-bolt';
+import { GlintingEye as GlintingEye } from './glinting-eye';
+import { GleamingBlast as GleamingBlast } from './gleaming-blast';
 import { BrightNova as BrightNova } from './bright-nova';
 import { BrightNovaBlast as BrightNovaBlast } from './bright-nova-blast';
 import { BrightNovaBolt as BrightNovaBolt } from './bright-nova-bolt';
 import { BrightNovaDetonation as BrightNovaDetonation } from './bright-nova-detonation';
 import { BrightNovaScatter as BrightNovaScatter } from './bright-nova-scatter';
-import { InnerLight as InnerLight } from './build-up';
-import { DawnStrike as DawnStrike } from './dawn-strike';
-import { GleamingBlast as GleamingBlast } from './gleaming-blast';
-import { GleamingBolt as GleamingBolt } from './gleaming-bolt';
-import { GlintingEye as GlintingEye } from './glinting-eye';
-import { GlowingTouch as GlowingTouch } from './glowing-touch';
-import { IncandescentStrike as IncandescentStrike } from './incandescent-strike';
-import { LuminousDetonation as LuminousDetonation } from './luminous-detonation';
-import { PhotonSeekers as PhotonSeekers } from './photon-seekers';
-import { ProtonScatter as ProtonScatter } from './proton-scatter';
-import { Pulsar as Pulsar } from './pulsar';
 import { RadiantStrike as RadiantStrike } from './radiant-strike';
+import { ProtonScatter as ProtonScatter } from './proton-scatter';
+import { InnerLight as InnerLight } from './build-up';
+import { LuminousDetonation as LuminousDetonation } from './luminous-detonation';
+import { IncandescentStrike as IncandescentStrike } from './incandescent-strike';
+import { Pulsar as Pulsar } from './pulsar';
+import { GlowingTouch as GlowingTouch } from './glowing-touch';
 import { SolarFlare as SolarFlare } from './solar-flare';
+import { PhotonSeekers as PhotonSeekers } from './photon-seekers';
+import { DawnStrike as DawnStrike } from './dawn-strike';
 
 export const powerset: Powerset = {
   id: 'peacebringer/luminous-blast',
@@ -36,24 +36,24 @@ export const powerset: Powerset = {
   archetype: 'peacebringer',
   category: 'epic',
   powers: [
+    GleamingBolt,
+    GlintingEye,
+    GleamingBlast,
     BrightNova,
     BrightNovaBlast,
     BrightNovaBolt,
     BrightNovaDetonation,
     BrightNovaScatter,
-    InnerLight,
-    DawnStrike,
-    GleamingBlast,
-    GleamingBolt,
-    GlintingEye,
-    GlowingTouch,
-    IncandescentStrike,
-    LuminousDetonation,
-    PhotonSeekers,
-    ProtonScatter,
-    Pulsar,
     RadiantStrike,
+    ProtonScatter,
+    InnerLight,
+    LuminousDetonation,
+    IncandescentStrike,
+    Pulsar,
+    GlowingTouch,
     SolarFlare,
+    PhotonSeekers,
+    DawnStrike,
   ],
 };
 

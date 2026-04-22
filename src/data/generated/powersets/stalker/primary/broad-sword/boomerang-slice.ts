@@ -14,7 +14,7 @@ export const BoomerangSlice: Power = {
   "available": 1,
   "description": "You toss your sword outward in a Boomerang Slice, attacking all enemies in front of you. This attack wounds your opponents, causing them to take minor damage over time and reduces their defense and damage resistance.Every 15 seconds, you can perform a more powerful, Rending Slice on your main target.This power is mutually exclusive from Slice.",
   "shortHelp": "Melee (Cone), DMG(Lethal), Foe -DEF, -RES",
-  "icon": "broadsword_boomerangslice",
+  "icon": "broadsword_boomerangslice.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

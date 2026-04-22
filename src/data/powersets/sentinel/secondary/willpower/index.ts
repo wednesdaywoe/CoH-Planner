@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { FastHealing as FastHealing } from './fast-healing';
-import { HeightenedSenses as HeightenedSenses } from './heightened-senses';
 import { HighPainTolerance as HighPainTolerance } from './high-pain-tolerance';
-import { IndomitableWill as IndomitableWill } from './indomitable-will';
 import { MindOverBody as MindOverBody } from './mind-over-body';
+import { FastHealing as FastHealing } from './fast-healing';
+import { IndomitableWill as IndomitableWill } from './indomitable-will';
+import { UptotheChallenge as UptotheChallenge } from './up-to-the-challenge';
 import { QuickRecovery as QuickRecovery } from './quick-recovery';
+import { HeightenedSenses as HeightenedSenses } from './heightened-senses';
 import { Resurgence as Resurgence } from './resurgence';
 import { StrengthofWill as StrengthofWill } from './strength-of-will';
-import { UptotheChallenge as UptotheChallenge } from './up-to-the-challenge';
 
 export const powerset: Powerset = {
   id: 'sentinel/willpower',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    FastHealing,
-    HeightenedSenses,
     HighPainTolerance,
-    IndomitableWill,
     MindOverBody,
+    FastHealing,
+    IndomitableWill,
+    UptotheChallenge,
     QuickRecovery,
+    HeightenedSenses,
     Resurgence,
     StrengthofWill,
-    UptotheChallenge,
   ],
 };
 

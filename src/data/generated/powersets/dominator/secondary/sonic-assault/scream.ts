@@ -14,7 +14,7 @@ export const Scream: Power = {
   "available": 3,
   "description": "Your Scream can cause serious damage to a target. This power applies Lingering Sonic Vibrations that lower resistance for 10s.",
   "shortHelp": "Ranged, DMG(Energy/Smash), Foe -Res(All)",
-  "icon": "sonicmanipulation_scream",
+  "icon": "sonicmanipulation_scream.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

@@ -14,7 +14,7 @@ export const AuraofInsanity: Power = {
   "available": 27,
   "description": "You emit a powerful psychic aura that causes the minds of those around you to become weak and distracted. Foes may be stunned, held, terrified or even confused in your presence, in addition to suffering a debuff derived from the applied control effect. Those that resist these effects will suffer damage over time. This power allows you to use your own Hit Points to keep enemies near you disabled. The power costs no endurance but can be dangerous to use.Notes: Mez enhancements on this power enhance its magnitude instead of its duration.",
   "shortHelp": "Toggle: PBAoE, Foe Confuse, Disorient, Sleep, Hold, Fear, DoT(Psionic), +Special",
-  "icon": "psionicarmor_worldofconfusion",
+  "icon": "psionicarmor_worldofconfusion.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",

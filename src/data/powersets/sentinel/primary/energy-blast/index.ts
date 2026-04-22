@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Aim as Aim } from './aim';
+import { PowerBlast as PowerBlast } from './power-blast';
 import { EnergyTorrent as EnergyTorrent } from './energy-torrent';
+import { PowerBurst as PowerBurst } from './power-burst';
+import { Aim as Aim } from './aim';
+import { PowerPush as PowerPush } from './power-push';
 import { ExplosiveBlast as ExplosiveBlast } from './explosive-blast';
 import { FocusedPowerBolt as FocusedPowerBolt } from './focused-power-bolt';
 import { PowerBolt as PowerBolt } from './power-bolt';
 import { Nova as Nova } from './nova';
-import { PowerBlast as PowerBlast } from './power-blast';
-import { PowerBurst as PowerBurst } from './power-burst';
-import { PowerPush as PowerPush } from './power-push';
 
 export const powerset: Powerset = {
   id: 'sentinel/energy-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    Aim,
+    PowerBlast,
     EnergyTorrent,
+    PowerBurst,
+    Aim,
+    PowerPush,
     ExplosiveBlast,
     FocusedPowerBolt,
     PowerBolt,
     Nova,
-    PowerBlast,
-    PowerBurst,
-    PowerPush,
   ],
 };
 

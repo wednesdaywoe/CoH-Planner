@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AtomSmasher as AtomSmasher } from './atom-smasher';
 import { ContaminatedStrike as ContaminatedStrike } from './contaminated-strike';
-import { DevastatingBlow as DevastatingBlow } from './devastating-blow';
+import { NeutrinoBolt as NeutrinoBolt } from './neutrino-bolt';
+import { XRayBeam as XRayBeam } from './x-ray-beam';
 import { ElectronHaze as ElectronHaze } from './electron-haze';
 import { Fusion as Fusion } from './fusion';
-import { NeutrinoBolt as NeutrinoBolt } from './neutrino-bolt';
-import { ProtonVolley as ProtonVolley } from './proton-volley';
 import { RadiationSiphon as RadiationSiphon } from './radiation-siphon';
-import { XRayBeam as XRayBeam } from './x-ray-beam';
+import { AtomSmasher as AtomSmasher } from './atom-smasher';
+import { ProtonVolley as ProtonVolley } from './proton-volley';
+import { DevastatingBlow as DevastatingBlow } from './devastating-blow';
 
 export const powerset: Powerset = {
   id: 'dominator/radioactive-assault',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    AtomSmasher,
     ContaminatedStrike,
-    DevastatingBlow,
+    NeutrinoBolt,
+    XRayBeam,
     ElectronHaze,
     Fusion,
-    NeutrinoBolt,
-    ProtonVolley,
     RadiationSiphon,
-    XRayBeam,
+    AtomSmasher,
+    ProtonVolley,
+    DevastatingBlow,
   ],
 };
 

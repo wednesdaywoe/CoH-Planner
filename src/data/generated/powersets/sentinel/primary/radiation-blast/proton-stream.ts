@@ -14,7 +14,7 @@ export const ProtonStream: Power = {
   "available": 17,
   "description": "Hurls a volley of alpha particles at your target. Proton Volley is highly accurate and will reduce the target's Defense.",
   "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
-  "icon": "radiationburst_heavy",
+  "icon": "radiationburst_heavy.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

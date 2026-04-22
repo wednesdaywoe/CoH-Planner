@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Energize as Energize } from './conserve-power';
-import { EnergyDrain as EnergyDrain } from './energy-drain';
-import { KineticDampening as KineticDampening } from './energy-protection';
-import { EntropyShield as EntropyShield } from './entropy-shield';
 import { Hide as Hide } from './hide';
 import { KineticShield as KineticShield } from './kinetic-shield';
-import { Overload as Overload } from './overload';
 import { PowerShield as PowerShield } from './power-shield';
+import { EntropyShield as EntropyShield } from './entropy-shield';
+import { KineticDampening as KineticDampening } from './energy-protection';
 import { Disrupt as Disrupt } from './repulse';
+import { EnergyDrain as EnergyDrain } from './energy-drain';
+import { Energize as Energize } from './conserve-power';
+import { Overload as Overload } from './overload';
 
 export const powerset: Powerset = {
   id: 'stalker/energy-aura',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    Energize,
-    EnergyDrain,
-    KineticDampening,
-    EntropyShield,
     Hide,
     KineticShield,
-    Overload,
     PowerShield,
+    EntropyShield,
+    KineticDampening,
     Disrupt,
+    EnergyDrain,
+    Energize,
+    Overload,
   ],
 };
 

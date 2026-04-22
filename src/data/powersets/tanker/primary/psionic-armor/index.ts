@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AuraofInsanity as AuraofInsanity } from './aura-of-insanity';
-import { ConsumePsyche as ConsumePsyche } from './consume-psyche';
-import { PsychokineticBarrier as PsychokineticBarrier } from './fortify-mind';
-import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
-import { ImposePresence as ImposePresence } from './impose-presence';
-import { MementoMori as MementoMori } from './memento-mori';
-import { Precognition as Precognition } from './precognition';
 import { PsionicShield as PsionicShield } from './psionic-shield';
 import { PsychicWall as PsychicWall } from './psychic-wall';
+import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
+import { ConsumePsyche as ConsumePsyche } from './consume-psyche';
+import { ImposePresence as ImposePresence } from './impose-presence';
+import { PsychokineticBarrier as PsychokineticBarrier } from './fortify-mind';
+import { Precognition as Precognition } from './precognition';
+import { AuraofInsanity as AuraofInsanity } from './aura-of-insanity';
+import { MementoMori as MementoMori } from './memento-mori';
 
 export const powerset: Powerset = {
   id: 'tanker/psionic-armor',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'primary',
   powers: [
-    AuraofInsanity,
-    ConsumePsyche,
-    PsychokineticBarrier,
-    ImpenetrableMind,
-    ImposePresence,
-    MementoMori,
-    Precognition,
     PsionicShield,
     PsychicWall,
+    ImpenetrableMind,
+    ConsumePsyche,
+    ImposePresence,
+    PsychokineticBarrier,
+    Precognition,
+    AuraofInsanity,
+    MementoMori,
   ],
 };
 

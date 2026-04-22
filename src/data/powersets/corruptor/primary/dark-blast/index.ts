@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Blackstar as Blackstar } from './blackstar';
 import { DarkBlast as DarkBlast } from './dark-blast';
-import { DarkPit as DarkPit } from './dark-pit';
 import { Gloom as Gloom } from './gloom';
-import { LifeDrain as LifeDrain } from './life-drain';
 import { Moonbeam as Moonbeam } from './moonbeam';
-import { NightFall as NightFall } from './night-fall';
+import { DarkPit as DarkPit } from './dark-pit';
 import { TenebrousTentacles as TenebrousTentacles } from './tenebrous-tentacles';
+import { NightFall as NightFall } from './night-fall';
 import { Torrent as Torrent } from './torrent';
+import { LifeDrain as LifeDrain } from './life-drain';
+import { Blackstar as Blackstar } from './blackstar';
 
 export const powerset: Powerset = {
   id: 'corruptor/dark-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'corruptor',
   category: 'primary',
   powers: [
-    Blackstar,
     DarkBlast,
-    DarkPit,
     Gloom,
-    LifeDrain,
     Moonbeam,
-    NightFall,
+    DarkPit,
     TenebrousTentacles,
+    NightFall,
     Torrent,
+    LifeDrain,
+    Blackstar,
   ],
 };
 

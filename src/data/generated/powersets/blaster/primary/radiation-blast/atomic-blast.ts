@@ -14,7 +14,7 @@ export const AtomicBlast: Power = {
   "available": 25,
   "description": "This attack taps most of your stored energy to deal a devastating Atomic Blast which deals Extreme Energy and Smashing damage. Any foes left standing will have their Defense greatly reduced and may be left helplessly choking on toxic vapors.",
   "shortHelp": "PBAoE, DMG(Energy/Smash), Foe Hold, -DEF",
-  "icon": "radiationburst_atomicblast",
+  "icon": "radiationburst_atomicblast.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",

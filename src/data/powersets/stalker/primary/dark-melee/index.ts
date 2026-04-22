@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { ShadowPunch as ShadowPunch } from './shadow-punch';
+import { Smite as Smite } from './smite';
+import { ShadowMaul as ShadowMaul } from './shadow-maul';
 import { AssassinsEclipse as AssassinsEclipse } from './assassins-eclipse';
 import { BuildUp as BuildUp } from './build-up';
-import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 import { Placate as Placate } from './placate';
-import { ShadowMaul as ShadowMaul } from './shadow-maul';
-import { ShadowPunch as ShadowPunch } from './shadow-punch';
 import { SiphonLife as SiphonLife } from './siphon-life';
-import { Smite as Smite } from './smite';
 import { TouchofFear as TouchofFear } from './touch-of-fear';
+import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 
 export const powerset: Powerset = {
   id: 'stalker/dark-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
+    ShadowPunch,
+    Smite,
+    ShadowMaul,
     AssassinsEclipse,
     BuildUp,
-    MidnightGrasp,
     Placate,
-    ShadowMaul,
-    ShadowPunch,
     SiphonLife,
-    Smite,
     TouchofFear,
+    MidnightGrasp,
   ],
 };
 

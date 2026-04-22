@@ -14,7 +14,7 @@ export const Ripper: Power = {
   "available": 23,
   "description": "You can unleash a spectacular slashing maneuver that attacks all foes in a wide arc directly in front of you. Ripper deals massive damage and poisons multiple targets. It can even knock foes down. Thorn poison deals additional Toxic damage and can reduce your foes Defense.Damage: Superior.Recharge: Slow.",
   "shortHelp": "Melee (Cone), DMG(Lethal), DoT(Toxic), Foe Knockdown, -DEF",
-  "icon": "plantmanipulation_ripper",
+  "icon": "plantmanipulation_ripper.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

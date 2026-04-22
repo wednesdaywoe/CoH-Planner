@@ -14,7 +14,7 @@ export const AntumbralBeam: Power = {
   "available": 17,
   "description": "An extremely focused beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit.",
   "shortHelp": "Ranged, DMG(Negative), Target -To Hit",
-  "icon": "darkcast_heavy",
+  "icon": "darkcast_heavy.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

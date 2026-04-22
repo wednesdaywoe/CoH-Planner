@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AtomSmasher as AtomSmasher } from './atom-smasher';
 import { ContaminatedStrike as ContaminatedStrike } from './contaminated-strike';
-import { DevastatingBlow as DevastatingBlow } from './devastating-blow';
-import { Fusion as Fusion } from './fusion';
-import { IrradiatedGround as IrradiatedGround } from './irradiated-ground';
-import { ProtonSweep as ProtonSweep } from './proton-sweep';
-import { RadiationSiphon as RadiationSiphon } from './radiation-siphon';
 import { RadioactiveSmash as RadioactiveSmash } from './radioactive-smash';
+import { ProtonSweep as ProtonSweep } from './proton-sweep';
+import { Fusion as Fusion } from './fusion';
+import { RadiationSiphon as RadiationSiphon } from './radiation-siphon';
 import { Taunt as Taunt } from './taunt';
+import { IrradiatedGround as IrradiatedGround } from './irradiated-ground';
+import { DevastatingBlow as DevastatingBlow } from './devastating-blow';
+import { AtomSmasher as AtomSmasher } from './atom-smasher';
 
 export const powerset: Powerset = {
   id: 'brute/radiation-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    AtomSmasher,
     ContaminatedStrike,
-    DevastatingBlow,
-    Fusion,
-    IrradiatedGround,
-    ProtonSweep,
-    RadiationSiphon,
     RadioactiveSmash,
+    ProtonSweep,
+    Fusion,
+    RadiationSiphon,
     Taunt,
+    IrradiatedGround,
+    DevastatingBlow,
+    AtomSmasher,
   ],
 };
 

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { StormKick as StormKick } from './storm-kick';
+import { ThunderKick as ThunderKick } from './thunder-kick';
 import { CobraStrike as CobraStrike } from './cobra-strike';
+import { FocusChi as FocusChi } from './focus-chi';
 import { CraneKick as CraneKick } from './crane-kick';
+import { WarriorsChallenge as WarriorsChallenge } from './warriors-challenge';
 import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
 import { DragonsTail as DragonsTail } from './dragons-tail';
 import { EaglesClaw as EaglesClaw } from './eagles-claw';
-import { FocusChi as FocusChi } from './focus-chi';
-import { StormKick as StormKick } from './storm-kick';
-import { ThunderKick as ThunderKick } from './thunder-kick';
-import { WarriorsChallenge as WarriorsChallenge } from './warriors-challenge';
 
 export const powerset: Powerset = {
   id: 'scrapper/martial-arts',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
+    StormKick,
+    ThunderKick,
     CobraStrike,
+    FocusChi,
     CraneKick,
+    WarriorsChallenge,
     CripplingAxeKick,
     DragonsTail,
     EaglesClaw,
-    FocusChi,
-    StormKick,
-    ThunderKick,
-    WarriorsChallenge,
   ],
 };
 

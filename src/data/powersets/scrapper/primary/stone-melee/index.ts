@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
-import { Confront as Confront } from './confront';
-import { Fault as Fault } from './fault';
-import { HeavyMallet as HeavyMallet } from './heavy-mallet';
-import { HurlBoulder as HurlBoulder } from './hurl-boulder';
-import { SeismicSmash as SeismicSmash } from './seismic-smash';
 import { StoneFist as StoneFist } from './stone-fist';
 import { StoneMallet as StoneMallet } from './stone-mallet';
+import { HeavyMallet as HeavyMallet } from './heavy-mallet';
+import { BuildUp as BuildUp } from './build-up';
+import { Fault as Fault } from './fault';
+import { Confront as Confront } from './confront';
+import { SeismicSmash as SeismicSmash } from './seismic-smash';
+import { HurlBoulder as HurlBoulder } from './hurl-boulder';
 import { Tremor as Tremor } from './tremor';
 
 export const powerset: Powerset = {
@@ -27,14 +27,14 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    BuildUp,
-    Confront,
-    Fault,
-    HeavyMallet,
-    HurlBoulder,
-    SeismicSmash,
     StoneFist,
     StoneMallet,
+    HeavyMallet,
+    BuildUp,
+    Fault,
+    Confront,
+    SeismicSmash,
+    HurlBoulder,
     Tremor,
   ],
 };

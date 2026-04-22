@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { DarkConsumption as DarkConsumption } from './dark-consumption';
-import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
-import { ShadowMaul as ShadowMaul } from './shadow-maul';
 import { ShadowPunch as ShadowPunch } from './shadow-punch';
-import { SiphonLife as SiphonLife } from './siphon-life';
 import { Smite as Smite } from './smite';
-import { SoulDrain as SoulDrain } from './soul-drain';
-import { Taunt as Taunt } from './taunt';
+import { ShadowMaul as ShadowMaul } from './shadow-maul';
 import { TouchofFear as TouchofFear } from './touch-of-fear';
+import { SiphonLife as SiphonLife } from './siphon-life';
+import { Taunt as Taunt } from './taunt';
+import { DarkConsumption as DarkConsumption } from './dark-consumption';
+import { SoulDrain as SoulDrain } from './soul-drain';
+import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 
 export const powerset: Powerset = {
   id: 'brute/dark-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    DarkConsumption,
-    MidnightGrasp,
-    ShadowMaul,
     ShadowPunch,
-    SiphonLife,
     Smite,
-    SoulDrain,
-    Taunt,
+    ShadowMaul,
     TouchofFear,
+    SiphonLife,
+    Taunt,
+    DarkConsumption,
+    SoulDrain,
+    MidnightGrasp,
   ],
 };
 

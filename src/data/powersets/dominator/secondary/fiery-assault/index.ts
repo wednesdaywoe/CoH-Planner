@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Blaze as Blaze } from './blaze';
-import { BlazingBolt as BlazingBolt } from './blazing-bolt';
-import { Combustion as Combustion } from './combustion';
-import { Consume as Consume } from './consume';
-import { EmbraceofFire as EmbraceofFire } from './fiery-embrace';
-import { FireBlast as FireBlast } from './fire-blast';
-import { FireBreath as FireBreath } from './fire-breath';
 import { Flares as Flares } from './flares';
 import { Incinerate as Incinerate } from './incinerate';
+import { FireBreath as FireBreath } from './fire-breath';
+import { FireBlast as FireBlast } from './fire-blast';
+import { EmbraceofFire as EmbraceofFire } from './fiery-embrace';
+import { Combustion as Combustion } from './combustion';
+import { Consume as Consume } from './consume';
+import { BlazingBolt as BlazingBolt } from './blazing-bolt';
+import { Blaze as Blaze } from './blaze';
 
 export const powerset: Powerset = {
   id: 'dominator/fiery-assault',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    Blaze,
-    BlazingBolt,
-    Combustion,
-    Consume,
-    EmbraceofFire,
-    FireBlast,
-    FireBreath,
     Flares,
     Incinerate,
+    FireBreath,
+    FireBlast,
+    EmbraceofFire,
+    Combustion,
+    Consume,
+    BlazingBolt,
+    Blaze,
   ],
 };
 

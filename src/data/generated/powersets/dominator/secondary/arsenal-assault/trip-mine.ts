@@ -14,7 +14,7 @@ export const TripMine: Power = {
   "available": 19,
   "description": "You can place a Trip Mine on the ground. Any villains that pass near the Trip Mine will cause it to explode, damaging all nearby foes and sending them flying.",
   "shortHelp": "Place Mine: PBAoE, DMG(Fire), Foe Knockback",
-  "icon": "assaultweapons_tripmine",
+  "icon": "assaultweapons_tripmine.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

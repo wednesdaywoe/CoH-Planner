@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { MindProbe as MindProbe } from './mind-probe';
+import { Subdual as Subdual } from './subdual';
+import { WorldofConfusion as WorldofConfusion } from './world-of-confusion';
+import { PsychicScream as PsychicScream } from './psychic-scream';
 import { Concentration as Concentration } from './build-up';
 import { DrainPsyche as DrainPsyche } from './drain-psyche';
-import { MindProbe as MindProbe } from './mind-probe';
-import { PsychicScream as PsychicScream } from './psychic-scream';
-import { PsychicShockwave as PsychicShockwave } from './psychic-shockwave';
 import { Scare as Scare } from './scare';
-import { Subdual as Subdual } from './subdual';
+import { PsychicShockwave as PsychicShockwave } from './psychic-shockwave';
 import { TelekineticThrust as TelekineticThrust } from './telekinetic-thrust';
-import { WorldofConfusion as WorldofConfusion } from './world-of-confusion';
 
 export const powerset: Powerset = {
   id: 'blaster/mental-manipulation',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
+    MindProbe,
+    Subdual,
+    WorldofConfusion,
+    PsychicScream,
     Concentration,
     DrainPsyche,
-    MindProbe,
-    PsychicScream,
-    PsychicShockwave,
     Scare,
-    Subdual,
+    PsychicShockwave,
     TelekineticThrust,
-    WorldofConfusion,
   ],
 };
 

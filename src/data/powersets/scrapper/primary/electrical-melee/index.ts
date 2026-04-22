@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
-import { ChainInduction as ChainInduction } from './chain-induction';
 import { ChargedBrawl as ChargedBrawl } from './charged-brawl';
-import { Confront as Confront } from './confront';
 import { HavocPunch as HavocPunch } from './havoc-punch';
 import { JacobsLadder as JacobsLadder } from './jacobs-ladder';
+import { BuildUp as BuildUp } from './build-up';
+import { ThunderStrike as ThunderStrike } from './thunder-strike';
+import { Confront as Confront } from './confront';
+import { ChainInduction as ChainInduction } from './chain-induction';
 import { LightningClap as LightningClap } from './lightning-clap';
 import { LightningRod as LightningRod } from './lightning-rod';
-import { ThunderStrike as ThunderStrike } from './thunder-strike';
 
 export const powerset: Powerset = {
   id: 'scrapper/electrical-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    BuildUp,
-    ChainInduction,
     ChargedBrawl,
-    Confront,
     HavocPunch,
     JacobsLadder,
+    BuildUp,
+    ThunderStrike,
+    Confront,
+    ChainInduction,
     LightningClap,
     LightningRod,
-    ThunderStrike,
   ],
 };
 

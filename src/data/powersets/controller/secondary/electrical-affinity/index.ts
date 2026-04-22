@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AmpUp as AmpUp } from './amp-up';
-import { Defibrillate as Defibrillate } from './defibrillate';
-import { GalvanicSentinel as GalvanicSentinel } from './discharge';
-import { EmpoweringCircuit as EmpoweringCircuit } from './empowering-circuit';
-import { EnergizingCircuit as EnergizingCircuit } from './energizing-circuit';
-import { FaradayCage as FaradayCage } from './faraday-cage';
-import { InsulatingCircuit as InsulatingCircuit } from './insulating-circuit';
 import { RejuvenatingCircuit as RejuvenatingCircuit } from './rejuvenating-circuit';
 import { Shock as Shock } from './shock';
+import { GalvanicSentinel as GalvanicSentinel } from './discharge';
+import { EnergizingCircuit as EnergizingCircuit } from './energizing-circuit';
+import { FaradayCage as FaradayCage } from './faraday-cage';
+import { EmpoweringCircuit as EmpoweringCircuit } from './empowering-circuit';
+import { Defibrillate as Defibrillate } from './defibrillate';
+import { InsulatingCircuit as InsulatingCircuit } from './insulating-circuit';
+import { AmpUp as AmpUp } from './amp-up';
 
 export const powerset: Powerset = {
   id: 'controller/electrical-affinity',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    AmpUp,
-    Defibrillate,
-    GalvanicSentinel,
-    EmpoweringCircuit,
-    EnergizingCircuit,
-    FaradayCage,
-    InsulatingCircuit,
     RejuvenatingCircuit,
     Shock,
+    GalvanicSentinel,
+    EnergizingCircuit,
+    FaradayCage,
+    EmpoweringCircuit,
+    Defibrillate,
+    InsulatingCircuit,
+    AmpUp,
   ],
 };
 

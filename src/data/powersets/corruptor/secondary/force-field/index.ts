@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { DeflectionShield as DeflectionShield } from './deflection-shield';
-import { DispersionBubble as DispersionBubble } from './dispersion-bubble';
-import { RepulsionBolt as RepulsionBolt } from './force-bolt';
-import { DampingBubble as DampingBubble } from './force-bubble';
-import { InsulationShield as InsulationShield } from './insulation-shield';
 import { PersonalForceField as PersonalForceField } from './personal-force-field';
+import { RepulsionBolt as RepulsionBolt } from './force-bolt';
+import { InsulationShield as InsulationShield } from './insulation-shield';
 import { DetentionField as DetentionField } from './refraction-shield';
-import { ForceBomb as ForceBomb } from './repulsion-bomb';
+import { DispersionBubble as DispersionBubble } from './dispersion-bubble';
 import { RepulsionField as RepulsionField } from './repulsion-field';
+import { ForceBomb as ForceBomb } from './repulsion-bomb';
+import { DampingBubble as DampingBubble } from './force-bubble';
 
 export const powerset: Powerset = {
   id: 'corruptor/force-field',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     DeflectionShield,
-    DispersionBubble,
-    RepulsionBolt,
-    DampingBubble,
-    InsulationShield,
     PersonalForceField,
+    RepulsionBolt,
+    InsulationShield,
     DetentionField,
-    ForceBomb,
+    DispersionBubble,
     RepulsionField,
+    ForceBomb,
+    DampingBubble,
   ],
 };
 

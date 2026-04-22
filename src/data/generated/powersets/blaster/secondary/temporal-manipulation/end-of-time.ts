@@ -14,7 +14,7 @@ export const EndofTime: Power = {
   "available": 15,
   "description": "You open a gate in time that can suck in enemies and send them into a distant unknown future. The affected enemies will be quickly returned to the present time, but not before being temporarily exposed to radiation and the bitter cold of an empty void, reducing their regeneration rate. Targets affected by the Delayed effect will suffer bonus damage.Damage: Moderate.Recharge: Slow.",
   "shortHelp": "PBAoE, DMG(Cold/Energy), Foe -Regen",
-  "icon": "timemanipulation_endoftime",
+  "icon": "timemanipulation_endoftime.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",

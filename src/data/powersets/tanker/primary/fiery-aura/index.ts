@@ -10,15 +10,15 @@
 import type { Powerset } from '@/types';
 
 import { BlazingAura as BlazingAura } from './blazing-aura';
-import { Burn as Burn } from './burn';
-import { Consume as Consume } from './consume';
-import { FieryEmbrace as FieryEmbrace } from './fiery-embrace';
 import { FireShield as FireShield } from './fire-shield';
-import { HealingFlames as HealingFlames } from './healing-flames';
 import { PhoenixRising as PhoenixRising } from './phoenix-rising';
-import { PlasmaShield as PlasmaShield } from './plasma-sheild';
-import { PhoenixRising as PhoenixRising2 } from './rise-of-the-phoenix';
+import { HealingFlames as HealingFlames } from './healing-flames';
 import { TemperatureProtection as TemperatureProtection } from './temperature-protection';
+import { Consume as Consume } from './consume';
+import { PlasmaShield as PlasmaShield } from './plasma-sheild';
+import { Burn as Burn } from './burn';
+import { FieryEmbrace as FieryEmbrace } from './fiery-embrace';
+import { PhoenixRising as PhoenixRising2 } from './rise-of-the-phoenix';
 
 export const powerset: Powerset = {
   id: 'tanker/fiery-aura',
@@ -29,15 +29,15 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     BlazingAura,
-    Burn,
-    Consume,
-    FieryEmbrace,
     FireShield,
-    HealingFlames,
     PhoenixRising,
-    PlasmaShield,
-    PhoenixRising2,
+    HealingFlames,
     TemperatureProtection,
+    Consume,
+    PlasmaShield,
+    Burn,
+    FieryEmbrace,
+    PhoenixRising2,
   ],
 };
 

@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
-import { EnergyAbsorption as EnergyAbsorption } from './energy-absorption';
 import { FrozenArmor as FrozenArmor } from './frozen-armor';
-import { GlacialArmor as GlacialArmor } from './glacial-armor';
 import { Hide as Hide } from './hide';
 import { Hoarfrost as Hoarfrost } from './hoarfrost';
-import { IcyBastion as IcyBastion } from './icy-bastion';
-import { Permafrost as Permafrost } from './permafrost';
 import { Rime as Rime } from './rime-ice';
 import { WetIce as WetIce } from './wet-ice';
+import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
+import { Permafrost as Permafrost } from './permafrost';
+import { GlacialArmor as GlacialArmor } from './glacial-armor';
+import { EnergyAbsorption as EnergyAbsorption } from './energy-absorption';
+import { IcyBastion as IcyBastion } from './icy-bastion';
 
 export const powerset: Powerset = {
   id: 'stalker/ice-armor',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    ChillingEmbrace,
-    EnergyAbsorption,
     FrozenArmor,
-    GlacialArmor,
     Hide,
     Hoarfrost,
-    IcyBastion,
-    Permafrost,
     Rime,
     WetIce,
+    ChillingEmbrace,
+    Permafrost,
+    GlacialArmor,
+    EnergyAbsorption,
+    IcyBastion,
   ],
 };
 

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { StormKick as StormKick } from './storm-kick';
+import { ThunderKick as ThunderKick } from './thunder-kick';
 import { CobraStrike as CobraStrike } from './cobra-strike';
+import { FocusChi as FocusChi } from './focus-chi';
 import { CraneKick as CraneKick } from './crane-kick';
+import { WarriorsProvocation as WarriorsProvocation } from './warriors-provocation';
 import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
 import { DragonsTail as DragonsTail } from './dragons-tail';
 import { EaglesClaw as EaglesClaw } from './eagles-claw';
-import { FocusChi as FocusChi } from './focus-chi';
-import { StormKick as StormKick } from './storm-kick';
-import { ThunderKick as ThunderKick } from './thunder-kick';
-import { WarriorsProvocation as WarriorsProvocation } from './warriors-provocation';
 
 export const powerset: Powerset = {
   id: 'brute/martial-arts',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
+    StormKick,
+    ThunderKick,
     CobraStrike,
+    FocusChi,
     CraneKick,
+    WarriorsProvocation,
     CripplingAxeKick,
     DragonsTail,
     EaglesClaw,
-    FocusChi,
-    StormKick,
-    ThunderKick,
-    WarriorsProvocation,
   ],
 };
 

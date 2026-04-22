@@ -14,7 +14,7 @@ export const Stalagmite: Power = {
   "available": 27,
   "description": "You can cause a Stalagmite to erupt under an enemy dealing minimal Lethal damage, and Disorienting them for a good while. You must be on the ground to activate this power.If affected by Seismic Shockwaves, this power will halt the shockwaves and deal extreme damage.Stalagmite grants two stacks of Seismic Pressure.",
   "shortHelp": "Ranged, DMG(Smash), Foe Disorient, Special",
-  "icon": "seismicblast_stalagmite",
+  "icon": "seismicblast_stalagmite.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

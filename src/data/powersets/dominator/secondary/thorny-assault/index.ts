@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './aim';
+import { Skewer as Skewer } from './skewer';
+import { ThornyDarts as ThornyDarts } from './thorny-darts';
 import { FlingThorns as FlingThorns } from './fling-thorns';
 import { Impale as Impale } from './impale';
-import { Ripper as Ripper } from './ripper';
-import { Skewer as Skewer } from './skewer';
-import { ThornBarrage as ThornBarrage } from './thorn-barrage';
+import { BuildUp as BuildUp } from './aim';
 import { ThornBurst as ThornBurst } from './thorn-burst';
 import { Thorntrops as Thorntrops } from './thorntrops';
-import { ThornyDarts as ThornyDarts } from './thorny-darts';
+import { Ripper as Ripper } from './ripper';
+import { ThornBarrage as ThornBarrage } from './thorn-barrage';
 
 export const powerset: Powerset = {
   id: 'dominator/thorny-assault',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    BuildUp,
+    Skewer,
+    ThornyDarts,
     FlingThorns,
     Impale,
-    Ripper,
-    Skewer,
-    ThornBarrage,
+    BuildUp,
     ThornBurst,
     Thorntrops,
-    ThornyDarts,
+    Ripper,
+    ThornBarrage,
   ],
 };
 

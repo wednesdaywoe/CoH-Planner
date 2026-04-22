@@ -14,7 +14,7 @@ export const Buttstroke: Power = {
   "available": 0,
   "description": "A smash with the butt of your rifle with a high chance of disorienting.",
   "shortHelp": "Melee, DMG(Smash), Foe Disorient",
-  "icon": "assaultweapons_riflebutt",
+  "icon": "assaultweapons_riflebutt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

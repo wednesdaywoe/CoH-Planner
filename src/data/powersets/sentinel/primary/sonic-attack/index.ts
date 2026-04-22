@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Amplify as Amplify } from './amplify';
-import { DreadfulWail as DreadfulWail } from './dreadful-wail';
-import { Howl as Howl } from './howl';
 import { Scream as Scream } from './scream';
-import { Screech as Screech } from './screech';
-import { Shockwave as Shockwave } from './shockwave';
-import { Shout as Shout } from './shout';
 import { Shriek as Shriek } from './shriek';
+import { Howl as Howl } from './howl';
+import { Shout as Shout } from './shout';
+import { Amplify as Amplify } from './amplify';
+import { Shockwave as Shockwave } from './shockwave';
 import { SirensSong as SirensSong } from './sirens-song';
+import { Screech as Screech } from './screech';
+import { DreadfulWail as DreadfulWail } from './dreadful-wail';
 
 export const powerset: Powerset = {
   id: 'sentinel/sonic-attack',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    Amplify,
-    DreadfulWail,
-    Howl,
     Scream,
-    Screech,
-    Shockwave,
-    Shout,
     Shriek,
+    Howl,
+    Shout,
+    Amplify,
+    Shockwave,
     SirensSong,
+    Screech,
+    DreadfulWail,
   ],
 };
 

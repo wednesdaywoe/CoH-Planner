@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { Confront as Confront } from './confront';
+import { PoisonDart as PoisonDart } from './poison-dart';
+import { Swipe as Swipe } from './swipe';
+import { Strike as Strike } from './lunge';
 import { DartBurst as DartBurst } from './dart-burst';
 import { FollowUp as FollowUp } from './follow-up';
-import { Strike as Strike } from './lunge';
-import { PoisonDart as PoisonDart } from './poison-dart';
 import { Spin as Spin } from './spin';
 import { Lunge as Lunge } from './strike';
-import { Swipe as Swipe } from './swipe';
+import { Confront as Confront } from './confront';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/widow-training',
@@ -26,14 +26,14 @@ export const powerset: Powerset = {
   archetype: 'arachnos-widow',
   category: 'epic',
   powers: [
-    Confront,
+    PoisonDart,
+    Swipe,
+    Strike,
     DartBurst,
     FollowUp,
-    Strike,
-    PoisonDart,
     Spin,
     Lunge,
-    Swipe,
+    Confront,
   ],
 };
 

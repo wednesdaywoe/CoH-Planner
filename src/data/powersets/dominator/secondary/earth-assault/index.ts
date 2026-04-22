@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Fissure as Fissure } from './fissure';
-import { HeavyMallet as HeavyMallet } from './heavy-mallet';
-import { HurlBoulder as HurlBoulder } from './hurl-boulder';
-import { MudPots as MudPots } from './mud-pots';
-import { PowerUp as PowerUp } from './power-boost';
-import { SeismicSmash as SeismicSmash } from './seismic-smash';
 import { StoneMallet as StoneMallet } from './stone-mallet';
 import { StoneSpears as StoneSpears } from './stone-spears';
 import { Tremor as Tremor } from './tremor';
+import { HurlBoulder as HurlBoulder } from './hurl-boulder';
+import { PowerUp as PowerUp } from './power-boost';
+import { HeavyMallet as HeavyMallet } from './heavy-mallet';
+import { SeismicSmash as SeismicSmash } from './seismic-smash';
+import { MudPots as MudPots } from './mud-pots';
+import { Fissure as Fissure } from './fissure';
 
 export const powerset: Powerset = {
   id: 'dominator/earth-assault',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    Fissure,
-    HeavyMallet,
-    HurlBoulder,
-    MudPots,
-    PowerUp,
-    SeismicSmash,
     StoneMallet,
     StoneSpears,
     Tremor,
+    HurlBoulder,
+    PowerUp,
+    HeavyMallet,
+    SeismicSmash,
+    MudPots,
+    Fissure,
   ],
 };
 

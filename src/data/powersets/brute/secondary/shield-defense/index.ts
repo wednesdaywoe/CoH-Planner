@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Deflection as Deflection } from './active-defense';
-import { AgainstAllOdds as AgainstAllOdds } from './against-all-odds';
-import { ActiveDefense as ActiveDefense } from './battle-agility';
 import { BattleAgility as BattleAgility } from './deflection';
-import { GrantCover as GrantCover } from './grant-cover';
-import { OnewiththeShield as OnewiththeShield } from './one-with-the-shield';
-import { PhalanxFighting as PhalanxFighting } from './phalanx-fighting';
-import { ShieldCharge as ShieldCharge } from './shield-charge';
 import { TrueGrit as TrueGrit } from './true-grit';
+import { ActiveDefense as ActiveDefense } from './battle-agility';
+import { AgainstAllOdds as AgainstAllOdds } from './against-all-odds';
+import { PhalanxFighting as PhalanxFighting } from './phalanx-fighting';
+import { GrantCover as GrantCover } from './grant-cover';
+import { ShieldCharge as ShieldCharge } from './shield-charge';
+import { OnewiththeShield as OnewiththeShield } from './one-with-the-shield';
 
 export const powerset: Powerset = {
   id: 'brute/shield-defense',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     Deflection,
-    AgainstAllOdds,
-    ActiveDefense,
     BattleAgility,
-    GrantCover,
-    OnewiththeShield,
-    PhalanxFighting,
-    ShieldCharge,
     TrueGrit,
+    ActiveDefense,
+    AgainstAllOdds,
+    PhalanxFighting,
+    GrantCover,
+    ShieldCharge,
+    OnewiththeShield,
   ],
 };
 

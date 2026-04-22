@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { CorrosiveEnzymes as CorrosiveEnzymes } from './corrosive-sap';
-import { LifegivingSpores as LifegivingSpores } from './lifegiving-spores';
-import { Overgrowth as Overgrowth } from './overgrowth';
-import { EntanglingAura as EntanglingAura } from './raging-tempest';
-import { Rebirth as Rebirth } from './rebirth';
 import { Regrowth as Regrowth } from './regrowth';
-import { SporeCloud as SporeCloud } from './spore-cloud';
-import { WildBastion as WildBastion } from './wild-bastion';
 import { WildGrowth as WildGrowth } from './wild-growth';
+import { SporeCloud as SporeCloud } from './spore-cloud';
+import { LifegivingSpores as LifegivingSpores } from './lifegiving-spores';
+import { WildBastion as WildBastion } from './wild-bastion';
+import { Rebirth as Rebirth } from './rebirth';
+import { EntanglingAura as EntanglingAura } from './raging-tempest';
+import { Overgrowth as Overgrowth } from './overgrowth';
 
 export const powerset: Powerset = {
   id: 'controller/nature-affinity',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     CorrosiveEnzymes,
-    LifegivingSpores,
-    Overgrowth,
-    EntanglingAura,
-    Rebirth,
     Regrowth,
-    SporeCloud,
-    WildBastion,
     WildGrowth,
+    SporeCloud,
+    LifegivingSpores,
+    WildBastion,
+    Rebirth,
+    EntanglingAura,
+    Overgrowth,
   ],
 };
 

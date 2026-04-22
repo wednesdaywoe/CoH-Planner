@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
-import { ChainInduction as ChainInduction } from './chain-induction';
 import { ChargedBrawl as ChargedBrawl } from './charged-brawl';
 import { HavocPunch as HavocPunch } from './havoc-punch';
 import { JacobsLadder as JacobsLadder } from './jacobs-ladder';
-import { LightningClap as LightningClap } from './lightning-clap';
-import { LightningRod as LightningRod } from './lightning-rod';
 import { Taunt as Taunt } from './taunt';
 import { ThunderStrike as ThunderStrike } from './thunder-strike';
+import { BuildUp as BuildUp } from './build-up';
+import { ChainInduction as ChainInduction } from './chain-induction';
+import { LightningClap as LightningClap } from './lightning-clap';
+import { LightningRod as LightningRod } from './lightning-rod';
 
 export const powerset: Powerset = {
   id: 'tanker/electrical-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    BuildUp,
-    ChainInduction,
     ChargedBrawl,
     HavocPunch,
     JacobsLadder,
-    LightningClap,
-    LightningRod,
     Taunt,
     ThunderStrike,
+    BuildUp,
+    ChainInduction,
+    LightningClap,
+    LightningRod,
   ],
 };
 

@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { Bayonet as Bayonet } from './bayonet';
-import { Burst as Burst } from './burst';
-import { FragGrenade as FragGrenade } from './frag-grenade';
-import { HeavyBurst as HeavyBurst } from './heavy-burst';
 import { Pummel as Pummel } from './pummel';
 import { SingleShot as SingleShot } from './single-shot';
-import { VenomGrenade as VenomGrenade } from './venom-grenade';
+import { Burst as Burst } from './burst';
 import { WideAreaWebGrenade as WideAreaWebGrenade } from './ws-wide-area-web-grenade';
+import { HeavyBurst as HeavyBurst } from './heavy-burst';
+import { Bayonet as Bayonet } from './bayonet';
+import { VenomGrenade as VenomGrenade } from './venom-grenade';
+import { FragGrenade as FragGrenade } from './frag-grenade';
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/arachnos-soldier',
@@ -26,14 +26,14 @@ export const powerset: Powerset = {
   archetype: 'arachnos-soldier',
   category: 'epic',
   powers: [
-    Bayonet,
-    Burst,
-    FragGrenade,
-    HeavyBurst,
     Pummel,
     SingleShot,
-    VenomGrenade,
+    Burst,
     WideAreaWebGrenade,
+    HeavyBurst,
+    Bayonet,
+    VenomGrenade,
+    FragGrenade,
   ],
 };
 

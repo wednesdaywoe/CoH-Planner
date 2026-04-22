@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AuraofMadness as AuraofMadness } from './aura-of-insanity';
+import { Hide as Hide } from './hide';
+import { PsychicWall as PsychicWall } from './psychic-wall';
+import { PsionicShield as PsionicShield } from './psionic-shield';
+import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
 import { DevourPsyche as DevourPsyche } from './devour-psyche';
 import { PsychokineticBarrier as PsychokineticBarrier } from './fortify-mind';
-import { Hide as Hide } from './hide';
-import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
-import { MementoMori as MementoMori } from './memento-mori';
 import { Precognition as Precognition } from './precognition';
-import { PsionicShield as PsionicShield } from './psionic-shield';
-import { PsychicWall as PsychicWall } from './psychic-wall';
+import { AuraofMadness as AuraofMadness } from './aura-of-insanity';
+import { MementoMori as MementoMori } from './memento-mori';
 
 export const powerset: Powerset = {
   id: 'stalker/psionic-armor',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    AuraofMadness,
+    Hide,
+    PsychicWall,
+    PsionicShield,
+    ImpenetrableMind,
     DevourPsyche,
     PsychokineticBarrier,
-    Hide,
-    ImpenetrableMind,
-    MementoMori,
     Precognition,
-    PsionicShield,
-    PsychicWall,
+    AuraofMadness,
+    MementoMori,
   ],
 };
 

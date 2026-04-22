@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { FastHealing as FastHealing } from './fast-healing';
-import { HeightenedSenses as HeightenedSenses } from './heightened-senses';
 import { HighPainTolerance as HighPainTolerance } from './high-pain-tolerance';
-import { IndomitableWill as IndomitableWill } from './indomitable-will';
 import { MindOverBody as MindOverBody } from './mind-over-body';
-import { QuickRecovery as QuickRecovery } from './quick-recovery';
-import { Resurgence as Resurgence } from './resurgence';
+import { FastHealing as FastHealing } from './fast-healing';
+import { IndomitableWill as IndomitableWill } from './indomitable-will';
 import { RisetotheChallenge as RisetotheChallenge } from './rise-to-the-challenge';
+import { QuickRecovery as QuickRecovery } from './quick-recovery';
+import { HeightenedSenses as HeightenedSenses } from './heightened-senses';
+import { Resurgence as Resurgence } from './resurgence';
 import { StrengthofWill as StrengthofWill } from './strength-of-will';
 
 export const powerset: Powerset = {
@@ -27,14 +27,14 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'secondary',
   powers: [
-    FastHealing,
-    HeightenedSenses,
     HighPainTolerance,
-    IndomitableWill,
     MindOverBody,
-    QuickRecovery,
-    Resurgence,
+    FastHealing,
+    IndomitableWill,
     RisetotheChallenge,
+    QuickRecovery,
+    HeightenedSenses,
+    Resurgence,
     StrengthofWill,
   ],
 };

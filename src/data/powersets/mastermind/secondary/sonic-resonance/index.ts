@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Clarity as Clarity } from './clarity';
-import { DisruptionField as DisruptionField } from './disruption-field';
-import { Liquefy as Liquefy } from './liquefy';
 import { SonicBarrier as SonicBarrier } from './sonic-barrier';
-import { SonicCage as SonicCage } from './sonic-cage';
-import { SonicDispersion as SonicDispersion } from './sonic-dispersion';
-import { SonicHaven as SonicHaven } from './sonic-haven';
-import { SonicRepulsion as SonicRepulsion } from './sonic-repulsion';
 import { SonicSiphon as SonicSiphon } from './sonic-siphon';
+import { SonicHaven as SonicHaven } from './sonic-haven';
+import { SonicCage as SonicCage } from './sonic-cage';
+import { DisruptionField as DisruptionField } from './disruption-field';
+import { SonicDispersion as SonicDispersion } from './sonic-dispersion';
+import { SonicRepulsion as SonicRepulsion } from './sonic-repulsion';
+import { Clarity as Clarity } from './clarity';
+import { Liquefy as Liquefy } from './liquefy';
 
 export const powerset: Powerset = {
   id: 'mastermind/sonic-resonance',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    Clarity,
-    DisruptionField,
-    Liquefy,
     SonicBarrier,
-    SonicCage,
-    SonicDispersion,
-    SonicHaven,
-    SonicRepulsion,
     SonicSiphon,
+    SonicHaven,
+    SonicCage,
+    DisruptionField,
+    SonicDispersion,
+    SonicRepulsion,
+    Clarity,
+    Liquefy,
   ],
 };
 

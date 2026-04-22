@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Confuse as Confuse } from './confuse';
-import { Dominate as Dominate } from './dominate';
 import { Levitate as Levitate } from './levitate';
-import { MassConfusion as MassConfusion } from './mass-confusion';
-import { MassHypnosis as MassHypnosis } from './mass-hypnosis';
 import { Mesmerize as Mesmerize } from './mesmerize';
+import { Dominate as Dominate } from './dominate';
+import { Confuse as Confuse } from './confuse';
+import { MassHypnosis as MassHypnosis } from './mass-hypnosis';
 import { Telekinesis as Telekinesis } from './telekinesis';
-import { Terrify as Terrify } from './terrify';
 import { TotalDomination as TotalDomination } from './total-domination';
+import { Terrify as Terrify } from './terrify';
+import { MassConfusion as MassConfusion } from './mass-confusion';
 
 export const powerset: Powerset = {
   id: 'dominator/mind-control',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    Confuse,
-    Dominate,
     Levitate,
-    MassConfusion,
-    MassHypnosis,
     Mesmerize,
+    Dominate,
+    Confuse,
+    MassHypnosis,
     Telekinesis,
-    Terrify,
     TotalDomination,
+    Terrify,
+    MassConfusion,
   ],
 };
 

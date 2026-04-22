@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Aim as Aim } from './aim';
-import { AtomicBlast as AtomicBlast } from './atomic-blast';
-import { CosmicBurst as CosmicBurst } from './cosmic-burst';
-import { ElectronHaze as ElectronHaze } from './electron-haze';
-import { Irradiate as Irradiate } from './irradiate';
 import { NeutrinoBolt as NeutrinoBolt } from './neutrino-bolt';
-import { NeutronBomb as NeutronBomb } from './neutron-bomb';
-import { ProtonVolley as ProtonVolley } from './proton-volley';
 import { XRayBeam as XRayBeam } from './x-ray-beam';
+import { Irradiate as Irradiate } from './irradiate';
+import { ElectronHaze as ElectronHaze } from './electron-haze';
+import { ProtonVolley as ProtonVolley } from './proton-volley';
+import { Aim as Aim } from './aim';
+import { CosmicBurst as CosmicBurst } from './cosmic-burst';
+import { NeutronBomb as NeutronBomb } from './neutron-bomb';
+import { AtomicBlast as AtomicBlast } from './atomic-blast';
 
 export const powerset: Powerset = {
   id: 'corruptor/radiation-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'corruptor',
   category: 'primary',
   powers: [
-    Aim,
-    AtomicBlast,
-    CosmicBurst,
-    ElectronHaze,
-    Irradiate,
     NeutrinoBolt,
-    NeutronBomb,
-    ProtonVolley,
     XRayBeam,
+    Irradiate,
+    ElectronHaze,
+    ProtonVolley,
+    Aim,
+    CosmicBurst,
+    NeutronBomb,
+    AtomicBlast,
   ],
 };
 

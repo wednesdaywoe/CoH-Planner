@@ -10,13 +10,13 @@
 import type { Powerset } from '@/types';
 
 import { DarkGrasp as DarkGrasp } from './dark-grasp';
-import { FearsomeStare as FearsomeStare } from './fearsome-stare';
-import { Haunt as Haunt } from './haunt';
-import { HeartofDarkness as HeartofDarkness } from './heart-of-darkness';
+import { ShadowyBinds as ShadowyBinds } from './shadowy-binds';
 import { LivingShadows as LivingShadows } from './living-shadows';
 import { Possess as Possess } from './possess';
+import { FearsomeStare as FearsomeStare } from './fearsome-stare';
+import { HeartofDarkness as HeartofDarkness } from './heart-of-darkness';
+import { Haunt as Haunt } from './haunt';
 import { ShadowField as ShadowField } from './shadow-field';
-import { ShadowyBinds as ShadowyBinds } from './shadowy-binds';
 import { UmbraBeast as UmbraBeast } from './umbra-beast';
 
 export const powerset: Powerset = {
@@ -28,13 +28,13 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     DarkGrasp,
-    FearsomeStare,
-    Haunt,
-    HeartofDarkness,
+    ShadowyBinds,
     LivingShadows,
     Possess,
+    FearsomeStare,
+    HeartofDarkness,
+    Haunt,
     ShadowField,
-    ShadowyBinds,
     UmbraBeast,
   ],
 };

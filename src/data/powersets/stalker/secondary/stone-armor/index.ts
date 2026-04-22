@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { Hide as Hide } from './hide';
+import { StoneSkin as StoneSkin } from './stone-skin';
+import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
+import { Rooted as Rooted } from './rooted';
+import { CrystalArmor as CrystalArmor } from './crystal-armor';
 import { BrimstoneArmor as BrimstoneArmor } from './brimstone-armor';
 import { RockArmor as RockArmor } from './stone-armor';
-import { CrystalArmor as CrystalArmor } from './crystal-armor';
-import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
-import { Geode as Geode } from './geode';
-import { Hide as Hide } from './hide';
 import { Minerals as Minerals } from './mineral-armor';
-import { Rooted as Rooted } from './rooted';
-import { StoneSkin as StoneSkin } from './stone-skin';
+import { Geode as Geode } from './geode';
 
 export const powerset: Powerset = {
   id: 'stalker/stone-armor',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
+    Hide,
+    StoneSkin,
+    EarthsEmbrace,
+    Rooted,
+    CrystalArmor,
     BrimstoneArmor,
     RockArmor,
-    CrystalArmor,
-    EarthsEmbrace,
-    Geode,
-    Hide,
     Minerals,
-    Rooted,
-    StoneSkin,
+    Geode,
   ],
 };
 

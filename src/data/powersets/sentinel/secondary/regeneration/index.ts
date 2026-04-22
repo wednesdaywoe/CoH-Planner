@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AilmentResistance as AilmentResistance } from './dismiss-pain';
 import { FastHealing as FastHealing } from './fast-healing';
-import { ReactiveRegeneration as ReactiveRegeneration } from './instant-regeneration';
-import { Integration as Integration } from './integration';
-import { MomentofGlory as MomentofGlory } from './moment-of-glory';
-import { QuickRecovery as QuickRecovery } from './quick-recovery';
 import { Reconstruction as Reconstruction } from './reconstruction';
+import { QuickRecovery as QuickRecovery } from './quick-recovery';
+import { AilmentResistance as AilmentResistance } from './dismiss-pain';
+import { Integration as Integration } from './integration';
 import { Resilience as Resilience } from './resilience';
+import { ReactiveRegeneration as ReactiveRegeneration } from './instant-regeneration';
 import { SecondWind as SecondWind } from './second-wind';
+import { MomentofGlory as MomentofGlory } from './moment-of-glory';
 
 export const powerset: Powerset = {
   id: 'sentinel/regeneration',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    AilmentResistance,
     FastHealing,
-    ReactiveRegeneration,
-    Integration,
-    MomentofGlory,
-    QuickRecovery,
     Reconstruction,
+    QuickRecovery,
+    AilmentResistance,
+    Integration,
     Resilience,
+    ReactiveRegeneration,
     SecondWind,
+    MomentofGlory,
   ],
 };
 

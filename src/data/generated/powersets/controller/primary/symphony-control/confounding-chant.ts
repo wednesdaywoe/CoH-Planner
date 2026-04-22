@@ -14,7 +14,7 @@ export const ConfoundingChant: Power = {
   "available": 17,
   "description": "Confounding Chant will disorient anyone that hears it, while dealing psionic damage over time. Note: this power's damage over time will extend its duration but only inflict its damage if the foe is stunned.",
   "shortHelp": "Ranged (Cone), DoT(Psionic), Foe Disorient",
-  "icon": "symphonycontrol_stunaoe",
+  "icon": "symphonycontrol_stunaoe.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AtomSmasher as AtomSmasher } from './atom-smasher';
-import { Confront as Confront } from './confront';
 import { ContaminatedStrike as ContaminatedStrike } from './contaminated-strike';
-import { DevastatingBlow as DevastatingBlow } from './devastating-blow';
-import { Fusion as Fusion } from './fusion';
-import { IrradiatedGround as IrradiatedGround } from './irradiated-ground';
-import { ProtonSweep as ProtonSweep } from './proton-sweep';
-import { RadiationSiphon as RadiationSiphon } from './radiation-siphon';
 import { RadioactiveSmash as RadioactiveSmash } from './radioactive-smash';
+import { ProtonSweep as ProtonSweep } from './proton-sweep';
+import { Fusion as Fusion } from './fusion';
+import { RadiationSiphon as RadiationSiphon } from './radiation-siphon';
+import { Confront as Confront } from './confront';
+import { IrradiatedGround as IrradiatedGround } from './irradiated-ground';
+import { DevastatingBlow as DevastatingBlow } from './devastating-blow';
+import { AtomSmasher as AtomSmasher } from './atom-smasher';
 
 export const powerset: Powerset = {
   id: 'scrapper/radiation-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    AtomSmasher,
-    Confront,
     ContaminatedStrike,
-    DevastatingBlow,
-    Fusion,
-    IrradiatedGround,
-    ProtonSweep,
-    RadiationSiphon,
     RadioactiveSmash,
+    ProtonSweep,
+    Fusion,
+    RadiationSiphon,
+    Confront,
+    IrradiatedGround,
+    DevastatingBlow,
+    AtomSmasher,
   ],
 };
 

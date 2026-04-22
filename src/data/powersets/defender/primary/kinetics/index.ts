@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { IncreaseDensity as IncreaseDensity } from './increase-density';
-import { InertialReduction as InertialReduction } from './inertial-reduction';
-import { FulcrumShift as FulcrumShift } from './kinetic-transfer';
-import { Repel as Repel } from './repel';
 import { SiphonPower as SiphonPower } from './siphon-power';
-import { SiphonSpeed as SiphonSpeed } from './siphon-speed';
-import { SpeedBoost as SpeedBoost } from './speed-boost';
-import { Transference as Transference } from './transference';
 import { Transfusion as Transfusion } from './transfusion';
+import { Repel as Repel } from './repel';
+import { SiphonSpeed as SiphonSpeed } from './siphon-speed';
+import { IncreaseDensity as IncreaseDensity } from './increase-density';
+import { SpeedBoost as SpeedBoost } from './speed-boost';
+import { InertialReduction as InertialReduction } from './inertial-reduction';
+import { Transference as Transference } from './transference';
+import { FulcrumShift as FulcrumShift } from './kinetic-transfer';
 
 export const powerset: Powerset = {
   id: 'defender/kinetics',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'defender',
   category: 'primary',
   powers: [
-    IncreaseDensity,
-    InertialReduction,
-    FulcrumShift,
-    Repel,
     SiphonPower,
-    SiphonSpeed,
-    SpeedBoost,
-    Transference,
     Transfusion,
+    Repel,
+    SiphonSpeed,
+    IncreaseDensity,
+    SpeedBoost,
+    InertialReduction,
+    Transference,
+    FulcrumShift,
   ],
 };
 

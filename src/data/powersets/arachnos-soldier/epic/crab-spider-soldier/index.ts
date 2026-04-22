@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { Aim as Aim } from './aim';
-import { ArmLash as ArmLash } from './arm-lash';
 import { Channelgun as Channelgun } from './channelgun';
-import { FragGrenade as FragGrenade } from './cs-frag-grenade';
-import { VenomGrenade as VenomGrenade } from './cs-venom-grenade';
-import { Frenzy as Frenzy } from './frenzy';
-import { Longfang as Longfang } from './longfang';
-import { OmegaManeuver as OmegaManeuver } from './omega-maneuver';
 import { Slice as Slice } from './slice';
+import { Longfang as Longfang } from './longfang';
+import { Aim as Aim } from './aim';
 import { Suppression as Suppression } from './suppression';
+import { ArmLash as ArmLash } from './arm-lash';
+import { VenomGrenade as VenomGrenade } from './cs-venom-grenade';
+import { FragGrenade as FragGrenade } from './cs-frag-grenade';
+import { Frenzy as Frenzy } from './frenzy';
+import { OmegaManeuver as OmegaManeuver } from './omega-maneuver';
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/crab-spider-soldier',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'arachnos-soldier',
   category: 'epic',
   powers: [
-    Aim,
-    ArmLash,
     Channelgun,
-    FragGrenade,
-    VenomGrenade,
-    Frenzy,
-    Longfang,
-    OmegaManeuver,
     Slice,
+    Longfang,
+    Aim,
     Suppression,
+    ArmLash,
+    VenomGrenade,
+    FragGrenade,
+    Frenzy,
+    OmegaManeuver,
   ],
 };
 

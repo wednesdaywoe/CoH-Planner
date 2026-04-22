@@ -9,18 +9,18 @@
 
 import type { Powerset } from '@/types';
 
-import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
-import { Adaptation as Adaptation } from './adaptation';
-import { AthleticRegulation as AthleticRegulation } from './athletic-regulation';
-import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
-import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
-import { EnvironmentalAdaptation as EnvironmentalAdaptation } from './environmental-adaptation';
-import { GenomicEvolution as GenomicEvolution } from './genomic-evolution';
 import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { Inexhaustible as Inexhaustible } from './inexhaustible';
-import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
-import { ParasiticLeech as ParasiticLeech } from './parasitic-leech';
+import { EnvironmentalAdaptation as EnvironmentalAdaptation } from './environmental-adaptation';
+import { Adaptation as Adaptation } from './adaptation';
+import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
 import { RebuildDNA as RebuildDNA } from './rebuild-dna';
+import { AthleticRegulation as AthleticRegulation } from './athletic-regulation';
+import { GenomicEvolution as GenomicEvolution } from './genomic-evolution';
+import { ParasiticLeech as ParasiticLeech } from './parasitic-leech';
+import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
+import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
+import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 
 export const powerset: Powerset = {
   id: 'sentinel/bio-armor',
@@ -30,18 +30,18 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    AblativeCarapace,
-    Adaptation,
-    AthleticRegulation,
-    DefensiveAdaptation,
-    EfficientAdaptation,
-    EnvironmentalAdaptation,
-    GenomicEvolution,
     HardenedCarapace,
     Inexhaustible,
-    OffensiveAdaptation,
-    ParasiticLeech,
+    EnvironmentalAdaptation,
+    Adaptation,
+    AblativeCarapace,
     RebuildDNA,
+    AthleticRegulation,
+    GenomicEvolution,
+    ParasiticLeech,
+    DefensiveAdaptation,
+    EfficientAdaptation,
+    OffensiveAdaptation,
   ],
 };
 

@@ -14,7 +14,7 @@ export const RadioactiveCloud: Power = {
   "available": 27,
   "description": "When activated, you generate toxic radioactive gas around yourself. Any nearby foes may be overcome by the gas, leaving them choking or barfing helplessly. Choking foes might temporarily snap out of it when hit, barfing foes are more likely to be too sick to counterattack.",
   "shortHelp": "PBAoE, Foe Hold, Immobilize",
-  "icon": "atomicmanipulation_holdpbaoe",
+  "icon": "atomicmanipulation_holdpbaoe.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",

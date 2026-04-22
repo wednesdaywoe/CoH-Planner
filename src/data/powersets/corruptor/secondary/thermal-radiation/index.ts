@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Cauterize as Cauterize } from './cauterize';
 import { FireShield as FireShield } from './fire-shield';
-import { Forge as Forge } from './forge';
-import { HeatExhaustion as HeatExhaustion } from './heat-exhaustion';
-import { MeltArmor as MeltArmor } from './melt-armor';
+import { Warmth as Warmth } from './warmth';
+import { Cauterize as Cauterize } from './cauterize';
 import { PlasmaShield as PlasmaShield } from './plasma-shield';
 import { PowerofthePhoenix as PowerofthePhoenix } from './power-of-the-phoenix';
 import { Thaw as Thaw } from './thaw';
-import { Warmth as Warmth } from './warmth';
+import { Forge as Forge } from './forge';
+import { HeatExhaustion as HeatExhaustion } from './heat-exhaustion';
+import { MeltArmor as MeltArmor } from './melt-armor';
 
 export const powerset: Powerset = {
   id: 'corruptor/thermal-radiation',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'corruptor',
   category: 'secondary',
   powers: [
-    Cauterize,
     FireShield,
-    Forge,
-    HeatExhaustion,
-    MeltArmor,
+    Warmth,
+    Cauterize,
     PlasmaShield,
     PowerofthePhoenix,
     Thaw,
-    Warmth,
+    Forge,
+    HeatExhaustion,
+    MeltArmor,
   ],
 };
 

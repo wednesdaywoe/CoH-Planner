@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Energize as Energize } from './energize';
-import { EntropyShield as EntropyShield } from './entropy-shield';
 import { KineticDampening as KineticDampening } from './kinetic-dampening';
 import { KineticShield as KineticShield } from './kinetic-shield';
-import { Overload as Overload } from './overload';
-import { PowerArmor as PowerArmor } from './power-armor';
-import { PowerDrain as PowerDrain } from './power-drain';
 import { PowerShield as PowerShield } from './power-shield';
+import { Energize as Energize } from './energize';
+import { EntropyShield as EntropyShield } from './entropy-shield';
+import { PowerArmor as PowerArmor } from './power-armor';
 import { RepellingForce as RepellingForce } from './repelling-force';
+import { PowerDrain as PowerDrain } from './power-drain';
+import { Overload as Overload } from './overload';
 
 export const powerset: Powerset = {
   id: 'sentinel/energy-aura',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    Energize,
-    EntropyShield,
     KineticDampening,
     KineticShield,
-    Overload,
-    PowerArmor,
-    PowerDrain,
     PowerShield,
+    Energize,
+    EntropyShield,
+    PowerArmor,
     RepellingForce,
+    PowerDrain,
+    Overload,
   ],
 };
 

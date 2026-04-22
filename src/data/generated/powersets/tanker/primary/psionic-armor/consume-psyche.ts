@@ -14,7 +14,7 @@ export const ConsumePsyche: Power = {
   "available": 5,
   "description": "You Consume the Psyche of nearby foes, thus weakening their Hit Point Regeneration and Endurance Recovery and boosting your own. Hitting any foe with this power will refresh all existing stacks you currently have.Notes: This power has adaptive recharge. It has a base recharge of 5 seconds and each affected foe will increase the recharge by 5.5 seconds for a maximum total of 60 seconds.",
   "shortHelp": "PBAoE Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery",
-  "icon": "psionicarmor_consumepsyche",
+  "icon": "psionicarmor_consumepsyche.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",

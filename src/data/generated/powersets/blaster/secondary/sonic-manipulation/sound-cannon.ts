@@ -14,7 +14,7 @@ export const SoundCannon: Power = {
   "available": 27,
   "description": "You generate a powerful sonic wave that will knock back and disorient foes in front of you for a short time.Recharge: Long.",
   "shortHelp": "Ranged (Cone), Foe Disorient, Knockback",
-  "icon": "sonicmanipulation_soundcannon",
+  "icon": "sonicmanipulation_soundcannon.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Aim as Aim } from './aim';
 import { ChargedShot as ChargedShot } from './charged-shot';
+import { SingleShot as SingleShot } from './single-shot';
 import { CuttingBeam as CuttingBeam } from './cutting-beam';
 import { Disintegrate as Disintegrate } from './disintegrate';
+import { Aim as Aim } from './aim';
 import { LancerShot as LancerShot } from './lancer-shot';
-import { Overcharge as Overcharge } from './overcharge';
-import { PiercingBeam as PiercingBeam } from './piercing-beam';
 import { RefractorBeam as RefractorBeam } from './refractor-beam';
-import { SingleShot as SingleShot } from './single-shot';
+import { PiercingBeam as PiercingBeam } from './piercing-beam';
+import { Overcharge as Overcharge } from './overcharge';
 
 export const powerset: Powerset = {
   id: 'sentinel/beam-rifle',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    Aim,
     ChargedShot,
+    SingleShot,
     CuttingBeam,
     Disintegrate,
+    Aim,
     LancerShot,
-    Overcharge,
-    PiercingBeam,
     RefractorBeam,
-    SingleShot,
+    PiercingBeam,
+    Overcharge,
   ],
 };
 

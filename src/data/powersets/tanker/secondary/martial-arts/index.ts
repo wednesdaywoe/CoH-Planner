@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { CobraStrike as CobraStrike } from './cobra-strike';
-import { CraneKick as CraneKick } from './crane-kick';
-import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
-import { DragonsTail as DragonsTail } from './dragons-tail';
-import { EaglesClaw as EaglesClaw } from './eagles-claw';
-import { FocusChi as FocusChi } from './focus-chi';
 import { StormKick as StormKick } from './storm-kick';
 import { ThunderKick as ThunderKick } from './thunder-kick';
+import { CobraStrike as CobraStrike } from './cobra-strike';
 import { WarriorsProvocation as WarriorsProvocation } from './warriors-provocation';
+import { CraneKick as CraneKick } from './crane-kick';
+import { DragonsTail as DragonsTail } from './dragons-tail';
+import { FocusChi as FocusChi } from './focus-chi';
+import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
+import { EaglesClaw as EaglesClaw } from './eagles-claw';
 
 export const powerset: Powerset = {
   id: 'tanker/martial-arts',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    CobraStrike,
-    CraneKick,
-    CripplingAxeKick,
-    DragonsTail,
-    EaglesClaw,
-    FocusChi,
     StormKick,
     ThunderKick,
+    CobraStrike,
     WarriorsProvocation,
+    CraneKick,
+    DragonsTail,
+    FocusChi,
+    CripplingAxeKick,
+    EaglesClaw,
   ],
 };
 

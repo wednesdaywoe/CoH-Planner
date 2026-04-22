@@ -9,24 +9,24 @@
 
 import type { Powerset } from '@/types';
 
-import { DarkExtraction as DarkExtraction } from './dark-extraction';
-import { DarkDetonation as DarkDetonation } from './dark-matter-detonation';
+import { EbonEye as EbonEye } from './ebon-eye';
+import { ShadowBolt as ShadowBolt } from './shadow-bolt';
+import { GravimetricSnare as GravimetricSnare } from './gravimetric-snare';
 import { DarkNova as DarkNova } from './dark-nova';
 import { DarkNovaBlast as DarkNovaBlast } from './dark-nova-blast';
 import { DarkNovaBolt as DarkNovaBolt } from './dark-nova-bolt';
 import { DarkNovaDetonation as DarkNovaDetonation } from './dark-nova-detonation';
 import { DarkNovaEmanation as DarkNovaEmanation } from './dark-nova-emanation';
-import { EbonEye as EbonEye } from './ebon-eye';
-import { EssenceDrain as EssenceDrain } from './essence-drain';
-import { GravimetricSnare as GravimetricSnare } from './gravimetric-snare';
-import { GraviticEmanation as GraviticEmanation } from './gravitic-emanation';
-import { GravityWell as GravityWell } from './gravity-well';
-import { Quasar as Quasar } from './quasar';
 import { ShadowBlast as ShadowBlast } from './shadow-blast';
-import { ShadowBolt as ShadowBolt } from './shadow-bolt';
 import { StarlessStep as StarlessStep } from './starless-step';
 import { SunlessMire as SunlessMire } from './sunless-mire';
+import { DarkDetonation as DarkDetonation } from './dark-matter-detonation';
+import { GravityWell as GravityWell } from './gravity-well';
+import { EssenceDrain as EssenceDrain } from './essence-drain';
+import { GraviticEmanation as GraviticEmanation } from './gravitic-emanation';
 import { UnchainEssence as UnchainEssence } from './unchain-essence';
+import { DarkExtraction as DarkExtraction } from './dark-extraction';
+import { Quasar as Quasar } from './quasar';
 
 export const powerset: Powerset = {
   id: 'warshade/umbral-blast',
@@ -36,24 +36,24 @@ export const powerset: Powerset = {
   archetype: 'warshade',
   category: 'epic',
   powers: [
-    DarkExtraction,
-    DarkDetonation,
+    EbonEye,
+    ShadowBolt,
+    GravimetricSnare,
     DarkNova,
     DarkNovaBlast,
     DarkNovaBolt,
     DarkNovaDetonation,
     DarkNovaEmanation,
-    EbonEye,
-    EssenceDrain,
-    GravimetricSnare,
-    GraviticEmanation,
-    GravityWell,
-    Quasar,
     ShadowBlast,
-    ShadowBolt,
     StarlessStep,
     SunlessMire,
+    DarkDetonation,
+    GravityWell,
+    EssenceDrain,
+    GraviticEmanation,
     UnchainEssence,
+    DarkExtraction,
+    Quasar,
   ],
 };
 

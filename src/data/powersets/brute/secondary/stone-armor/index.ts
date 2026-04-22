@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BrimstoneArmor as BrimstoneArmor } from './brimstone-armor';
-import { CrystalArmor as CrystalArmor } from './crystal-armor';
-import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
-import { GraniteArmor as GraniteArmor } from './granite-armor';
-import { Minerals as Minerals } from './minerals';
-import { MudPots as MudPots } from './mud-pots';
 import { RockArmor as RockArmor } from './rock-armor';
-import { Rooted as Rooted } from './rooted';
 import { StoneSkin as StoneSkin } from './stone-skin';
+import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
+import { MudPots as MudPots } from './mud-pots';
+import { Rooted as Rooted } from './rooted';
+import { CrystalArmor as CrystalArmor } from './crystal-armor';
+import { Minerals as Minerals } from './minerals';
+import { BrimstoneArmor as BrimstoneArmor } from './brimstone-armor';
+import { GraniteArmor as GraniteArmor } from './granite-armor';
 
 export const powerset: Powerset = {
   id: 'brute/stone-armor',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'secondary',
   powers: [
-    BrimstoneArmor,
-    CrystalArmor,
-    EarthsEmbrace,
-    GraniteArmor,
-    Minerals,
-    MudPots,
     RockArmor,
-    Rooted,
     StoneSkin,
+    EarthsEmbrace,
+    MudPots,
+    Rooted,
+    CrystalArmor,
+    Minerals,
+    BrimstoneArmor,
+    GraniteArmor,
   ],
 };
 

@@ -14,7 +14,7 @@ export const NeutrinoBolt: Power = {
   "available": 0,
   "description": "A very quick, but low damage attack. Neutrino Bolt can reduce the target's Defense. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: Light.Recharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Energy), Foe -DEF",
-  "icon": "radioactiveassault_neutrinoblast",
+  "icon": "radioactiveassault_neutrinoblast.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { ChargeUp as ChargeUp } from './aim';
-import { BallLightning as BallLightning } from './ball-lightning';
 import { ChargedBolts as ChargedBolts } from './charged-bolts';
 import { LightningBolt as LightningBolt } from './lightning-bolt';
-import { ShortCircuit as ShortCircuit } from './short-circuit';
-import { TeslaCage as TeslaCage } from './tesla-cage';
-import { ThunderousBlast as ThunderousBlast } from './thunderous-blast';
-import { VoltaicSentinel as VoltaicSentinel } from './voltaic-sentinel';
+import { BallLightning as BallLightning } from './ball-lightning';
 import { ZappingBolt as ZappingBolt } from './zapping-bolt';
+import { ChargeUp as ChargeUp } from './aim';
+import { TeslaCage as TeslaCage } from './tesla-cage';
+import { VoltaicSentinel as VoltaicSentinel } from './voltaic-sentinel';
+import { ShortCircuit as ShortCircuit } from './short-circuit';
+import { ThunderousBlast as ThunderousBlast } from './thunderous-blast';
 
 export const powerset: Powerset = {
   id: 'sentinel/electrical-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    ChargeUp,
-    BallLightning,
     ChargedBolts,
     LightningBolt,
-    ShortCircuit,
-    TeslaCage,
-    ThunderousBlast,
-    VoltaicSentinel,
+    BallLightning,
     ZappingBolt,
+    ChargeUp,
+    TeslaCage,
+    VoltaicSentinel,
+    ShortCircuit,
+    ThunderousBlast,
   ],
 };
 

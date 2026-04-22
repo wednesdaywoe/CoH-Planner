@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { SonicThrust as SonicThrust } from './sonic-thrust';
+import { StridentEcho as StridentEcho } from './strident-echo';
+import { EchoChamber as EchoChamber } from './echo-chamber';
 import { SoundBooster as SoundBooster } from './build-up';
 import { DeafeningWave as DeafeningWave } from './deafening-wave';
-import { DisruptionAura as DisruptionAura } from './disruption-aura';
-import { Earsplitter as Earsplitter } from './earsplitter';
-import { EchoChamber as EchoChamber } from './echo-chamber';
-import { SonicThrust as SonicThrust } from './sonic-thrust';
 import { SoundBarrier as SoundBarrier } from './sound-barrier';
+import { DisruptionAura as DisruptionAura } from './disruption-aura';
 import { SoundCannon as SoundCannon } from './sound-cannon';
-import { StridentEcho as StridentEcho } from './strident-echo';
+import { Earsplitter as Earsplitter } from './earsplitter';
 
 export const powerset: Powerset = {
   id: 'blaster/sonic-manipulation',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
+    SonicThrust,
+    StridentEcho,
+    EchoChamber,
     SoundBooster,
     DeafeningWave,
-    DisruptionAura,
-    Earsplitter,
-    EchoChamber,
-    SonicThrust,
     SoundBarrier,
+    DisruptionAura,
     SoundCannon,
-    StridentEcho,
+    Earsplitter,
   ],
 };
 

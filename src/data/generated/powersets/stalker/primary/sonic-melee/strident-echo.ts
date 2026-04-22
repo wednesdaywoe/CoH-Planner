@@ -14,7 +14,7 @@ export const StridentEcho: Power = {
   "available": 0,
   "description": "Strident Echo deals minor damage over time. It has a low chance of causing a migraine, leaving the target shaking in pain and helpless. This power will inflict a strong additional damage over time effect against Attuned targets.",
   "shortHelp": "Melee, DMG(Energy/Smash), -Res(Debuffs), Foe Chance for Hold",
-  "icon": "sonicmanipulation_stridentecho",
+  "icon": "sonicmanipulation_stridentecho.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

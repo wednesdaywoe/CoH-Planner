@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsBlow as AssassinsBlow } from './assassins-blow';
-import { CobraStrike as CobraStrike } from './cobra-strike';
-import { CraneKick as CraneKick } from './crane-kick';
-import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
-import { EaglesClaw as EaglesClaw } from './eagles-claw';
-import { FocusChi as FocusChi } from './focus-chi';
-import { Placate as Placate } from './placate';
 import { StormKick as StormKick } from './storm-kick';
 import { ThunderKick as ThunderKick } from './thunder-kick';
+import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
+import { AssassinsBlow as AssassinsBlow } from './assassins-blow';
+import { FocusChi as FocusChi } from './focus-chi';
+import { Placate as Placate } from './placate';
+import { CobraStrike as CobraStrike } from './cobra-strike';
+import { CraneKick as CraneKick } from './crane-kick';
+import { EaglesClaw as EaglesClaw } from './eagles-claw';
 
 export const powerset: Powerset = {
   id: 'stalker/martial-arts',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsBlow,
-    CobraStrike,
-    CraneKick,
-    CripplingAxeKick,
-    EaglesClaw,
-    FocusChi,
-    Placate,
     StormKick,
     ThunderKick,
+    CripplingAxeKick,
+    AssassinsBlow,
+    FocusChi,
+    Placate,
+    CobraStrike,
+    CraneKick,
+    EaglesClaw,
   ],
 };
 

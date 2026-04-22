@@ -14,7 +14,7 @@ export const HymnofDissonance: Power = {
   "available": 0,
   "description": "Hymn of Dissonance causes pain on its listener, disruptive enough to hold them in place. Stronger foes might persist, but will still attack at a reduced speed.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Hold, -Recharge",
-  "icon": "symphonycontrol_holdst",
+  "icon": "symphonycontrol_holdst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

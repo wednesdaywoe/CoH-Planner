@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { BoneSmasher as BoneSmasher } from './bone-smasher';
-import { PowerBlast as PowerBlast } from './power-blast';
 import { PowerBolt as PowerBolt } from './power-bolt';
-import { PowerUp as PowerUp } from './power-boost';
-import { PowerBurst as PowerBurst } from './power-burst';
 import { PowerPush as PowerPush } from './power-push';
-import { SniperBlast as SniperBlast } from './sniper-blast';
-import { TotalFocus as TotalFocus } from './total-focus';
+import { PowerBlast as PowerBlast } from './power-blast';
+import { PowerUp as PowerUp } from './power-boost';
 import { WhirlingHands as WhirlingHands } from './whirling-hands';
+import { TotalFocus as TotalFocus } from './total-focus';
+import { SniperBlast as SniperBlast } from './sniper-blast';
+import { PowerBurst as PowerBurst } from './power-burst';
 
 export const powerset: Powerset = {
   id: 'dominator/energy-assault',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     BoneSmasher,
-    PowerBlast,
     PowerBolt,
-    PowerUp,
-    PowerBurst,
     PowerPush,
-    SniperBlast,
-    TotalFocus,
+    PowerBlast,
+    PowerUp,
     WhirlingHands,
+    TotalFocus,
+    SniperBlast,
+    PowerBurst,
   ],
 };
 

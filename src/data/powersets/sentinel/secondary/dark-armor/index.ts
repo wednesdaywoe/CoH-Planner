@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
+import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
+import { ShadowDweller as ShadowDweller } from './tenebrous-regeneration';
+import { MurkyCloud as MurkyCloud } from './murky-cloud';
+import { ObsidianShield as ObsidianShield } from './obsidian-shield';
+import { DarkRegeneration as DarkRegeneration } from './dark-regeneration';
+import { ObscureSustenance as ObscureSustenance } from './obscure-sustenance';
 import { CloakofDarkness as CloakofDarkness } from './cloak-of-darkness';
 import { CloakofFear as CloakofFear } from './cloak-of-fear';
-import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
-import { DarkRegeneration as DarkRegeneration } from './dark-regeneration';
-import { MurkyCloud as MurkyCloud } from './murky-cloud';
-import { ObscureSustenance as ObscureSustenance } from './obscure-sustenance';
-import { ObsidianShield as ObsidianShield } from './obsidian-shield';
 import { OppressiveGloom as OppressiveGloom } from './oppressive-gloom';
 import { SoulTransfer as SoulTransfer } from './soul-transfer';
-import { ShadowDweller as ShadowDweller } from './tenebrous-regeneration';
 
 export const powerset: Powerset = {
   id: 'sentinel/dark-armor',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
+    DarkEmbrace,
+    ShadowDweller,
+    MurkyCloud,
+    ObsidianShield,
+    DarkRegeneration,
+    ObscureSustenance,
     CloakofDarkness,
     CloakofFear,
-    DarkEmbrace,
-    DarkRegeneration,
-    MurkyCloud,
-    ObscureSustenance,
-    ObsidianShield,
     OppressiveGloom,
     SoulTransfer,
-    ShadowDweller,
   ],
 };
 

@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { Agile as Agile } from './agile';
-import { Dodge as Dodge } from './dodge';
-import { Elude as Elude } from './elude';
-import { Enduring as Enduring } from './enduring';
-import { Evasion as Evasion } from './evasion';
 import { FocusedFighting as FocusedFighting } from './focused-fighting';
 import { FocusedSenses as FocusedSenses } from './focused-senses';
+import { Agile as Agile } from './agile';
 import { MasterBrawler as MasterBrawler } from './master-brawler';
 import { PracticedBrawler as PracticedBrawler } from './practiced-brawler';
+import { Enduring as Enduring } from './enduring';
+import { Dodge as Dodge } from './dodge';
 import { Quickness as Quickness } from './quickness';
+import { Evasion as Evasion } from './evasion';
+import { Elude as Elude } from './elude';
 
 export const powerset: Powerset = {
   id: 'sentinel/super-reflexes',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    Agile,
-    Dodge,
-    Elude,
-    Enduring,
-    Evasion,
     FocusedFighting,
     FocusedSenses,
+    Agile,
     MasterBrawler,
     PracticedBrawler,
+    Enduring,
+    Dodge,
     Quickness,
+    Evasion,
+    Elude,
   ],
 };
 

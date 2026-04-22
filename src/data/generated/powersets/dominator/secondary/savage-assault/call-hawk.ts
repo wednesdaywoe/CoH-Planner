@@ -14,7 +14,7 @@ export const CallHawk: Power = {
   "available": 27,
   "description": "You call forth a hawk ally to swoop in and viciously peck at your target causing High Lethal damage. The attack often catches foes off their guard and can knock them down as well as reducing their chance to hit. This power's damage over time effect will scale with the number of stacks of Blood Frenzy. Using this power with 5 stacks of Blood Frenzy causes you to become Exhausted for a short time, but the duration of its damage over time effect is increased. While exhausted you cannot gain Blood Frenzy.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Ranged, Foe DoT (Lethal), -To Hit, Knockdown, -Fly",
-  "icon": "savagemelee_callhawk",
+  "icon": "savagemelee_callhawk.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

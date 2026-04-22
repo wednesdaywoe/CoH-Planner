@@ -14,7 +14,7 @@ export const TearGas: Power = {
   "available": 21,
   "description": "The Tear Gas canister serves as the ultimate crowd control tool, rendering enemies incapacitated and choking, thereby preventing them from taking any action while also debuffing their damage output.",
   "shortHelp": "Ranged (Location AoE), DoT(Toxic), Foe Hold -DMG",
-  "icon": "arsenalcontrol_teargas",
+  "icon": "arsenalcontrol_teargas.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",

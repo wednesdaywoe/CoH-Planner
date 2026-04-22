@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsCorruption as AssassinsCorruption } from './assassins-corruption';
-import { AtomSmasher as AtomSmasher } from './atom-smasher';
-import { BuildUp as BuildUp } from './build-up';
 import { ContaminatedStrike as ContaminatedStrike } from './contaminated-strike';
-import { DevastatingBlow as DevastatingBlow } from './devastating-blow';
-import { Placate as Placate } from './placate';
-import { ProtonSweep as ProtonSweep } from './proton-sweep';
-import { RadiationSiphon as RadiationSiphon } from './radiation-siphon';
 import { RadioactiveSmash as RadioactiveSmash } from './radioactive-smash';
+import { ProtonSweep as ProtonSweep } from './proton-sweep';
+import { AssassinsCorruption as AssassinsCorruption } from './assassins-corruption';
+import { BuildUp as BuildUp } from './build-up';
+import { Placate as Placate } from './placate';
+import { RadiationSiphon as RadiationSiphon } from './radiation-siphon';
+import { DevastatingBlow as DevastatingBlow } from './devastating-blow';
+import { AtomSmasher as AtomSmasher } from './atom-smasher';
 
 export const powerset: Powerset = {
   id: 'stalker/radiation-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsCorruption,
-    AtomSmasher,
-    BuildUp,
     ContaminatedStrike,
-    DevastatingBlow,
-    Placate,
-    ProtonSweep,
-    RadiationSiphon,
     RadioactiveSmash,
+    ProtonSweep,
+    AssassinsCorruption,
+    BuildUp,
+    Placate,
+    RadiationSiphon,
+    DevastatingBlow,
+    AtomSmasher,
   ],
 };
 

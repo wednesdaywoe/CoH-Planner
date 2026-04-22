@@ -14,7 +14,7 @@ export const Cleave: Power = {
   "available": 29,
   "description": "This is an attempt to split your opponent in two with one fell swoop of your Battle Axe. It is an extremely devastating attack that deals massive damage and can knock foes to the ground. The power of this attack can actually extend a short distance through multiple foes.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Ranged, DMG(Lethal), Foe Knockdown",
-  "icon": "battleaxe_cleaveplayer",
+  "icon": "battleaxe_cleaveplayer.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",

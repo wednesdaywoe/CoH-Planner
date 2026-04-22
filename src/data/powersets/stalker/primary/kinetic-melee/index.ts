@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
 import { BodyBlow as BodyBlow } from './body-blow';
-import { BuildUp as BuildUp } from './build-up';
-import { Burst as Burst } from './burst';
-import { FocusedBurst as FocusedBurst } from './focused-burst';
-import { Placate as Placate } from './placate';
 import { QuickStrike as QuickStrike } from './quick-strike';
 import { SmashingBlow as SmashingBlow } from './smashing-blow';
+import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
+import { BuildUp as BuildUp } from './build-up';
+import { Placate as Placate } from './placate';
+import { Burst as Burst } from './burst';
+import { FocusedBurst as FocusedBurst } from './focused-burst';
 import { ConcentratedStrike as ConcentratedStrike } from './total-focus';
 
 export const powerset: Powerset = {
@@ -27,14 +27,14 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsStrike,
     BodyBlow,
-    BuildUp,
-    Burst,
-    FocusedBurst,
-    Placate,
     QuickStrike,
     SmashingBlow,
+    AssassinsStrike,
+    BuildUp,
+    Placate,
+    Burst,
+    FocusedBurst,
     ConcentratedStrike,
   ],
 };

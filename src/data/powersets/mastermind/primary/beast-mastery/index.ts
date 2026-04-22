@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { CallHawk as CallHawk } from './call-hawk';
-import { CallRavens as CallRavens } from './call-locusts';
 import { CallSwarm as CallSwarm } from './call-swarm';
+import { SummonWolves as SummonWolves } from './summon-wolves';
+import { CallHawk as CallHawk } from './call-hawk';
+import { TrainBeasts as TrainBeasts } from './train-beasts';
+import { CallRavens as CallRavens } from './call-locusts';
+import { SummonLions as SummonLions } from './summon-lions';
 import { FortifyPack as FortifyPack } from './fortify-pack';
 import { SummonDireWolf as SummonDireWolf } from './summon-dire-wolf';
-import { SummonLions as SummonLions } from './summon-lions';
-import { SummonWolves as SummonWolves } from './summon-wolves';
 import { TameBeasts as TameBeasts } from './tame-beasts';
-import { TrainBeasts as TrainBeasts } from './train-beasts';
 
 export const powerset: Powerset = {
   id: 'mastermind/beast-mastery',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'primary',
   powers: [
-    CallHawk,
-    CallRavens,
     CallSwarm,
+    SummonWolves,
+    CallHawk,
+    TrainBeasts,
+    CallRavens,
+    SummonLions,
     FortifyPack,
     SummonDireWolf,
-    SummonLions,
-    SummonWolves,
     TameBeasts,
-    TrainBeasts,
   ],
 };
 

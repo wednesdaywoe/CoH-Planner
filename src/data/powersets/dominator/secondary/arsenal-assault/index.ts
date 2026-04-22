@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Buckshot as Buckshot } from './buckshot';
 import { Burst as Burst } from './burst';
 import { Buttstroke as Buttstroke } from './buttstroke';
+import { Buckshot as Buckshot } from './buckshot';
 import { ElbowStrike as ElbowStrike } from './heavy-blow';
-import { Ignite as Ignite } from './ignite';
 import { PowerUp as PowerUp } from './power-up';
-import { SniperRifle as SniperRifle } from './sniper-rifle';
-import { TargetingDrone as TargetingDrone } from './targeting-drone';
 import { TripMine as TripMine } from './trip-mine';
+import { TargetingDrone as TargetingDrone } from './targeting-drone';
+import { SniperRifle as SniperRifle } from './sniper-rifle';
+import { Ignite as Ignite } from './ignite';
 
 export const powerset: Powerset = {
   id: 'dominator/arsenal-assault',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    Buckshot,
     Burst,
     Buttstroke,
+    Buckshot,
     ElbowStrike,
-    Ignite,
     PowerUp,
-    SniperRifle,
-    TargetingDrone,
     TripMine,
+    TargetingDrone,
+    SniperRifle,
+    Ignite,
   ],
 };
 

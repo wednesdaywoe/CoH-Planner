@@ -14,7 +14,7 @@ export const ElbowStrike: Power = {
   "available": 9,
   "description": "You strike your foe with a powerful punch dealing Smashing damage and knocking the target back.",
   "shortHelp": "Melee, DMG(Smash), Foe Knockback",
-  "icon": "assaultweapons_heavyblow",
+  "icon": "assaultweapons_heavyblow.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

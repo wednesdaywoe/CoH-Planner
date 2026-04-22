@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AimedShot as AimedShot } from './aimed-shot';
 import { CallGenin as CallGenin } from './call-genin';
-import { CallJounin as CallJounin } from './call-jounin';
-import { FistfulofArrows as FistfulofArrows } from './fistful-of-arrows';
-import { KujiInZen as KujiInZen } from './kuji-in-zen';
-import { Oni as Oni } from './oni';
-import { SmokeFlash as SmokeFlash } from './smoke-flash';
 import { SnapShot as SnapShot } from './snap-shot';
+import { AimedShot as AimedShot } from './aimed-shot';
 import { TrainNinjas as TrainNinjas } from './train-ninjas';
+import { FistfulofArrows as FistfulofArrows } from './fistful-of-arrows';
+import { CallJounin as CallJounin } from './call-jounin';
+import { SmokeFlash as SmokeFlash } from './smoke-flash';
+import { Oni as Oni } from './oni';
+import { KujiInZen as KujiInZen } from './kuji-in-zen';
 
 export const powerset: Powerset = {
   id: 'mastermind/ninjas',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'primary',
   powers: [
-    AimedShot,
     CallGenin,
-    CallJounin,
-    FistfulofArrows,
-    KujiInZen,
-    Oni,
-    SmokeFlash,
     SnapShot,
+    AimedShot,
     TrainNinjas,
+    FistfulofArrows,
+    CallJounin,
+    SmokeFlash,
+    Oni,
+    KujiInZen,
   ],
 };
 

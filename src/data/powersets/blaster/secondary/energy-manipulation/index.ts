@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { BoneSmasher as BoneSmasher } from './bone-smasher';
-import { BoostRange as BoostRange } from './boost-range';
-import { BuildUp as BuildUp } from './build-up';
-import { Energize as Energize } from './conserve-power';
 import { EnergyPunch as EnergyPunch } from './energy-punch';
-import { PowerBoost as PowerBoost } from './power-boost';
 import { PowerThrust as PowerThrust } from './power-thrust';
+import { BuildUp as BuildUp } from './build-up';
+import { BoneSmasher as BoneSmasher } from './bone-smasher';
+import { Energize as Energize } from './conserve-power';
 import { Stun as Stun } from './stun';
+import { PowerBoost as PowerBoost } from './power-boost';
+import { BoostRange as BoostRange } from './boost-range';
 import { TotalFocus as TotalFocus } from './total-focus';
 
 export const powerset: Powerset = {
@@ -27,14 +27,14 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    BoneSmasher,
-    BoostRange,
-    BuildUp,
-    Energize,
     EnergyPunch,
-    PowerBoost,
     PowerThrust,
+    BuildUp,
+    BoneSmasher,
+    Energize,
     Stun,
+    PowerBoost,
+    BoostRange,
     TotalFocus,
   ],
 };

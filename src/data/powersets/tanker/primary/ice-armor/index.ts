@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
-import { EnergyAbsorption as EnergyAbsorption } from './energy-absorption';
-import { GlacialArmor as GlacialArmor } from './glacial-armor';
-import { IcyBastion as IcyBastion } from './hibernate';
 import { Hoarfrost as Hoarfrost } from './hoarfrost';
 import { FrozenArmor as FrozenArmor } from './ice-armor';
-import { Icicles as Icicles } from './icicles';
-import { Permafrost as Permafrost } from './permafrost';
 import { Rime as Rime } from './rime-ice';
+import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
 import { WetIce as WetIce } from './wet-ice';
+import { Permafrost as Permafrost } from './permafrost';
+import { Icicles as Icicles } from './icicles';
+import { GlacialArmor as GlacialArmor } from './glacial-armor';
+import { EnergyAbsorption as EnergyAbsorption } from './energy-absorption';
+import { IcyBastion as IcyBastion } from './hibernate';
 
 export const powerset: Powerset = {
   id: 'tanker/ice-armor',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'primary',
   powers: [
-    ChillingEmbrace,
-    EnergyAbsorption,
-    GlacialArmor,
-    IcyBastion,
     Hoarfrost,
     FrozenArmor,
-    Icicles,
-    Permafrost,
     Rime,
+    ChillingEmbrace,
     WetIce,
+    Permafrost,
+    Icicles,
+    GlacialArmor,
+    EnergyAbsorption,
+    IcyBastion,
   ],
 };
 

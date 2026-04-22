@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { CombatReadiness as CombatReadiness } from './combat-readiness';
-import { CrushingUppercut as CrushingUppercut } from './crushing-uppercut';
 import { HeavyBlow as HeavyBlow } from './heavy-blow';
 import { InitialStrike as InitialStrike } from './initial-strike';
-import { ShinBreaker as ShinBreaker } from './low-kick';
-import { SpinningStrike as SpinningStrike } from './spinning-strike';
 import { SweepingCross as SweepingCross } from './sweeping-cross';
-import { Taunt as Taunt } from './taunt';
+import { CombatReadiness as CombatReadiness } from './combat-readiness';
 import { RibCracker as RibCracker } from './throat-strike';
+import { Taunt as Taunt } from './taunt';
+import { SpinningStrike as SpinningStrike } from './spinning-strike';
+import { ShinBreaker as ShinBreaker } from './low-kick';
+import { CrushingUppercut as CrushingUppercut } from './crushing-uppercut';
 
 export const powerset: Powerset = {
   id: 'brute/street-justice',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    CombatReadiness,
-    CrushingUppercut,
     HeavyBlow,
     InitialStrike,
-    ShinBreaker,
-    SpinningStrike,
     SweepingCross,
-    Taunt,
+    CombatReadiness,
     RibCracker,
+    Taunt,
+    SpinningStrike,
+    ShinBreaker,
+    CrushingUppercut,
   ],
 };
 

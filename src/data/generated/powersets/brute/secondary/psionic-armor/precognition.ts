@@ -14,7 +14,7 @@ export const Precognition: Power = {
   "available": 23,
   "description": "Precognition allows you to read your enemies' minds, letting you see their attacks before they happen and increasing your perception. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +DEF(Melee, Ranged, AoE, Psionic), Res(DeBuff DEF), +Perception",
-  "icon": "psionicarmor_precognition",
+  "icon": "psionicarmor_precognition.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",

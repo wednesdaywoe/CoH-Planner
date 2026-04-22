@@ -14,7 +14,7 @@ export const AtomSmasher: Power = {
   "available": 23,
   "description": "You charge up a dangerously unstable amount of radioactive energy into a single fist before driving it into the ground and causing a small explosion. Foes caught in the blast will suffer Energy and Toxic damage and have their defense reduced.",
   "shortHelp": "PBAoE, DMG(Toxic/Energy), Foe Disorient, -DEF, Special",
-  "icon": "atomicmanipulation_atomsmasher",
+  "icon": "atomicmanipulation_atomsmasher.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",

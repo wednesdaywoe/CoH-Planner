@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { ChainFences as ChainFences } from './chain-fences';
 import { ElectricFence as ElectricFence } from './electric-fence';
-import { Gremlins as Gremlins } from './gremlins';
-import { JoltingChain as JoltingChain } from './jolting-chain';
-import { TeslaCoil as TeslaCoil } from './paralyzing-blast';
-import { StaticField as StaticField } from './static-field';
-import { ConductiveAura as ConductiveAura } from './stunning-aura';
-import { SynapticOverload as SynapticOverload } from './synaptic-overload';
 import { TeslaCage as TeslaCage } from './tesla-cage';
+import { ChainFences as ChainFences } from './chain-fences';
+import { JoltingChain as JoltingChain } from './jolting-chain';
+import { ConductiveAura as ConductiveAura } from './stunning-aura';
+import { StaticField as StaticField } from './static-field';
+import { TeslaCoil as TeslaCoil } from './paralyzing-blast';
+import { SynapticOverload as SynapticOverload } from './synaptic-overload';
+import { Gremlins as Gremlins } from './gremlins';
 
 export const powerset: Powerset = {
   id: 'dominator/electric-control',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    ChainFences,
     ElectricFence,
-    Gremlins,
-    JoltingChain,
-    TeslaCoil,
-    StaticField,
-    ConductiveAura,
-    SynapticOverload,
     TeslaCage,
+    ChainFences,
+    JoltingChain,
+    ConductiveAura,
+    StaticField,
+    TeslaCoil,
+    SynapticOverload,
+    Gremlins,
   ],
 };
 

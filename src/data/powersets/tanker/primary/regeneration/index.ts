@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { SecondWind as SecondWind } from './dull-pain';
 import { FastHealing as FastHealing } from './fast-healing';
-import { ReactiveRegeneration as ReactiveRegeneration } from './instant-healing';
-import { Integration as Integration } from './integration';
-import { MomentofGlory as MomentofGlory } from './moment-of-glory';
-import { QuickRecovery as QuickRecovery } from './quick-recovery';
 import { Reconstruction as Reconstruction } from './reconstruction';
-import { Resilience as Resilience } from './resist-disorientation';
+import { QuickRecovery as QuickRecovery } from './quick-recovery';
 import { AilmentResistance as AilmentResistance } from './revive';
+import { Integration as Integration } from './integration';
+import { Resilience as Resilience } from './resist-disorientation';
+import { ReactiveRegeneration as ReactiveRegeneration } from './instant-healing';
+import { SecondWind as SecondWind } from './dull-pain';
+import { MomentofGlory as MomentofGlory } from './moment-of-glory';
 
 export const powerset: Powerset = {
   id: 'tanker/regeneration',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'primary',
   powers: [
-    SecondWind,
     FastHealing,
-    ReactiveRegeneration,
-    Integration,
-    MomentofGlory,
-    QuickRecovery,
     Reconstruction,
-    Resilience,
+    QuickRecovery,
     AilmentResistance,
+    Integration,
+    Resilience,
+    ReactiveRegeneration,
+    SecondWind,
+    MomentofGlory,
   ],
 };
 

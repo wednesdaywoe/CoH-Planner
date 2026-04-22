@@ -14,7 +14,7 @@ export const Earsplitter: Power = {
   "available": 29,
   "description": "You generate an earsplitting sound wave right in the face of your foe, inflicting great damage. It has a good chance of causing a migraine, leaving them shaking in pain and helpless.",
   "shortHelp": "Melee, DMG(Energy/Smash), Foe Chance for Hold",
-  "icon": "sonicmanipulation_earsplitter",
+  "icon": "sonicmanipulation_earsplitter.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

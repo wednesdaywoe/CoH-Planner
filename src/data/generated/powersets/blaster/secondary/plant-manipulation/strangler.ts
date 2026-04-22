@@ -14,7 +14,7 @@ export const Strangler: Power = {
   "available": 3,
   "description": "Holds a distant foe by Strangling him with massive root-like vines. The target is held helpless, while he is slowly crushed by the vines.Damage: Moderate.Recharge: Slow.",
   "shortHelp": "Ranged, DoT(Smash), Foe Hold",
-  "icon": "plantmanipulation_strangler",
+  "icon": "plantmanipulation_strangler.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

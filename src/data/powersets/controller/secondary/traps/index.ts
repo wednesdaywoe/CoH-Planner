@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AcidMortar as AcidMortar } from './acid-mortar';
 import { Caltrops as Caltrops } from './caltrops';
+import { WebGrenade as WebGrenade } from './web-grenade';
+import { TriageBeacon as TriageBeacon } from './triage-beacon';
+import { AcidMortar as AcidMortar } from './acid-mortar';
 import { ForceFieldGenerator as ForceFieldGenerator } from './force-field-generator';
 import { PoisonTrap as PoisonTrap } from './poison-trap';
 import { SeekerDrones as SeekerDrones } from './seeker-drones';
-import { TemporalBomb as TemporalBomb } from './time-bomb';
-import { TriageBeacon as TriageBeacon } from './triage-beacon';
 import { TripMine as TripMine } from './trip-mine';
-import { WebGrenade as WebGrenade } from './web-grenade';
+import { TemporalBomb as TemporalBomb } from './time-bomb';
 
 export const powerset: Powerset = {
   id: 'controller/traps',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    AcidMortar,
     Caltrops,
+    WebGrenade,
+    TriageBeacon,
+    AcidMortar,
     ForceFieldGenerator,
     PoisonTrap,
     SeekerDrones,
-    TemporalBomb,
-    TriageBeacon,
     TripMine,
-    WebGrenade,
+    TemporalBomb,
   ],
 };
 

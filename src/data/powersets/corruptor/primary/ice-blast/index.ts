@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { IceBolt as IceBolt } from './ice-bolt';
+import { FrostBreath as FrostBreath } from './frost-breath';
 import { Aim as Aim } from './aim';
-import { BitterFreezeRay as BitterFreezeRay } from './bitter-freeze-ray';
-import { FreezeRay as FreezeRay } from './freeze-ray';
+import { IceStorm as IceStorm } from './ice-storm';
 import { BitterIceBlast as BitterIceBlast } from './bitter-ice-blast';
 import { IceBlast as IceBlast } from './ice-blast';
+import { BitterFreezeRay as BitterFreezeRay } from './bitter-freeze-ray';
+import { FreezeRay as FreezeRay } from './freeze-ray';
 import { Blizzard as Blizzard } from './blizzard';
-import { FrostBreath as FrostBreath } from './frost-breath';
-import { IceBolt as IceBolt } from './ice-bolt';
-import { IceStorm as IceStorm } from './ice-storm';
 
 export const powerset: Powerset = {
   id: 'corruptor/ice-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'corruptor',
   category: 'primary',
   powers: [
+    IceBolt,
+    FrostBreath,
     Aim,
-    BitterFreezeRay,
-    FreezeRay,
+    IceStorm,
     BitterIceBlast,
     IceBlast,
+    BitterFreezeRay,
+    FreezeRay,
     Blizzard,
-    FrostBreath,
-    IceBolt,
-    IceStorm,
   ],
 };
 

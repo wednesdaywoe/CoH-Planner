@@ -9,18 +9,18 @@
 
 import type { Powerset } from '@/types';
 
-import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
-import { Adaptation as Adaptation } from './adaptation';
-import { BoundlessEnergy as BoundlessEnergy } from './boundless-energy';
-import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
-import { DNASiphon as DNASiphon } from './dna-siphon';
-import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
-import { EnvironmentalModification as EnvironmentalModification } from './environmental-adaptation';
-import { GeneticCorruption as GeneticCorruption } from './genetic-corruption';
 import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { Hide as Hide } from './hide';
-import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
+import { BoundlessEnergy as BoundlessEnergy } from './boundless-energy';
+import { EnvironmentalModification as EnvironmentalModification } from './environmental-adaptation';
+import { Adaptation as Adaptation } from './adaptation';
+import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
+import { DNASiphon as DNASiphon } from './dna-siphon';
+import { GeneticCorruption as GeneticCorruption } from './genetic-corruption';
 import { ParasiticAura as ParasiticAura } from './parasitic-aura';
+import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
+import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
+import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 
 export const powerset: Powerset = {
   id: 'stalker/bio-armor',
@@ -30,18 +30,18 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    AblativeCarapace,
-    Adaptation,
-    BoundlessEnergy,
-    DefensiveAdaptation,
-    DNASiphon,
-    EfficientAdaptation,
-    EnvironmentalModification,
-    GeneticCorruption,
     HardenedCarapace,
     Hide,
-    OffensiveAdaptation,
+    BoundlessEnergy,
+    EnvironmentalModification,
+    Adaptation,
+    AblativeCarapace,
+    DNASiphon,
+    GeneticCorruption,
     ParasiticAura,
+    DefensiveAdaptation,
+    EfficientAdaptation,
+    OffensiveAdaptation,
   ],
 };
 

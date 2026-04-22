@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { GunDrone as GunDrone } from './auto-turret';
 import { Caltrops as Caltrops } from './caltrops';
-import { FieldOperative as FieldOperative } from './cloaking-device';
-import { SmokeGrenade as SmokeGrenade } from './smoke-grenade';
-import { TargetingDrone as TargetingDrone } from './targeting-drone';
-import { Taser as Taser } from './taser';
-import { RemoteBomb as RemoteBomb } from './time-bomb';
-import { TripMine as TripMine } from './trip-mine';
 import { ToxicWebGrenade as ToxicWebGrenade } from './web-grenade';
+import { Taser as Taser } from './taser';
+import { TargetingDrone as TargetingDrone } from './targeting-drone';
+import { SmokeGrenade as SmokeGrenade } from './smoke-grenade';
+import { FieldOperative as FieldOperative } from './cloaking-device';
+import { TripMine as TripMine } from './trip-mine';
+import { RemoteBomb as RemoteBomb } from './time-bomb';
+import { GunDrone as GunDrone } from './auto-turret';
 
 export const powerset: Powerset = {
   id: 'blaster/devices',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    GunDrone,
     Caltrops,
-    FieldOperative,
-    SmokeGrenade,
-    TargetingDrone,
-    Taser,
-    RemoteBomb,
-    TripMine,
     ToxicWebGrenade,
+    Taser,
+    TargetingDrone,
+    SmokeGrenade,
+    FieldOperative,
+    TripMine,
+    RemoteBomb,
+    GunDrone,
   ],
 };
 

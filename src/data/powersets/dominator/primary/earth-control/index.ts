@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AnimateStone as AnimateStone } from './animate-stone';
-import { Earthquake as Earthquake } from './earthquake';
 import { Fossilize as Fossilize } from './fossilize';
+import { StonePrison as StonePrison } from './stone-prison';
+import { StoneCages as StoneCages } from './stone-cages';
 import { Quicksand as Quicksand } from './quicksand';
 import { SaltCrystals as SaltCrystals } from './salt-crystals';
 import { Stalagmites as Stalagmites } from './stalagmites';
-import { StoneCages as StoneCages } from './stone-cages';
-import { StonePrison as StonePrison } from './stone-prison';
+import { Earthquake as Earthquake } from './earthquake';
 import { VolcanicGasses as VolcanicGasses } from './volcanic-gasses';
+import { AnimateStone as AnimateStone } from './animate-stone';
 
 export const powerset: Powerset = {
   id: 'dominator/earth-control',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    AnimateStone,
-    Earthquake,
     Fossilize,
+    StonePrison,
+    StoneCages,
     Quicksand,
     SaltCrystals,
     Stalagmites,
-    StoneCages,
-    StonePrison,
+    Earthquake,
     VolcanicGasses,
+    AnimateStone,
   ],
 };
 

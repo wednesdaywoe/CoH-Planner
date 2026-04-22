@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
 import { ChargedBrawl as ChargedBrawl } from './charged-brawl';
 import { ElectricFence as ElectricFence } from './electric-fence';
+import { BuildUp as BuildUp } from './build-up';
 import { HavocPunch as HavocPunch } from './havok-punch';
-import { Dynamo as Dynamo } from './lightning-clap';
-import { ForceofThunder as ForceofThunder } from './lightning-field';
-import { PowerSink as PowerSink } from './power-sink';
-import { ShockingGrasp as ShockingGrasp } from './shocking-grasp';
 import { ThunderStrike as ThunderStrike } from './thunder-strike';
+import { Dynamo as Dynamo } from './lightning-clap';
+import { PowerSink as PowerSink } from './power-sink';
+import { ForceofThunder as ForceofThunder } from './lightning-field';
+import { ShockingGrasp as ShockingGrasp } from './shocking-grasp';
 
 export const powerset: Powerset = {
   id: 'blaster/electricity-manipulation',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    BuildUp,
     ChargedBrawl,
     ElectricFence,
+    BuildUp,
     HavocPunch,
-    Dynamo,
-    ForceofThunder,
-    PowerSink,
-    ShockingGrasp,
     ThunderStrike,
+    Dynamo,
+    PowerSink,
+    ForceofThunder,
+    ShockingGrasp,
   ],
 };
 

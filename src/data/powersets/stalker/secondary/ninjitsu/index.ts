@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BlindingPowder as BlindingPowder } from './blinding-powder';
-import { Caltrops as Caltrops } from './caltrops';
-import { DangerSense as DangerSense } from './danger-sense';
 import { Hide as Hide } from './hide';
-import { KujiInRetsu as KujiInRetsu } from './kuji-in-retsu';
+import { NinjaReflexes as NinjaReflexes } from './ninja-reflexes';
+import { DangerSense as DangerSense } from './danger-sense';
+import { Caltrops as Caltrops } from './caltrops';
 import { KujiInRin as KujiInRin } from './kuji-in-rin';
 import { KujiInSha as KujiInSha } from './kuji-in-sha';
-import { NinjaReflexes as NinjaReflexes } from './ninja-reflexes';
 import { SmokeFlash as SmokeFlash } from './smoke-flash';
+import { BlindingPowder as BlindingPowder } from './blinding-powder';
+import { KujiInRetsu as KujiInRetsu } from './kuji-in-retsu';
 
 export const powerset: Powerset = {
   id: 'stalker/ninjitsu',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    BlindingPowder,
-    Caltrops,
-    DangerSense,
     Hide,
-    KujiInRetsu,
+    NinjaReflexes,
+    DangerSense,
+    Caltrops,
     KujiInRin,
     KujiInSha,
-    NinjaReflexes,
     SmokeFlash,
+    BlindingPowder,
+    KujiInRetsu,
   ],
 };
 

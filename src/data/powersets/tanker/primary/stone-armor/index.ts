@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BrimstoneArmor as BrimstoneArmor } from './brimstone-armor';
-import { RockArmor as RockArmor } from './stone-armor';
-import { CrystalArmor as CrystalArmor } from './crystal-armor';
+import { StoneSkin as StoneSkin } from './stone-skin';
 import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
-import { GraniteArmor as GraniteArmor } from './granite-armor';
-import { Minerals as Minerals } from './mineral-armor';
 import { MudPots as MudPots } from './mud-pots';
 import { Rooted as Rooted } from './rooted';
-import { StoneSkin as StoneSkin } from './stone-skin';
+import { CrystalArmor as CrystalArmor } from './crystal-armor';
+import { Minerals as Minerals } from './mineral-armor';
+import { BrimstoneArmor as BrimstoneArmor } from './brimstone-armor';
+import { RockArmor as RockArmor } from './stone-armor';
+import { GraniteArmor as GraniteArmor } from './granite-armor';
 
 export const powerset: Powerset = {
   id: 'tanker/stone-armor',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'primary',
   powers: [
-    BrimstoneArmor,
-    RockArmor,
-    CrystalArmor,
+    StoneSkin,
     EarthsEmbrace,
-    GraniteArmor,
-    Minerals,
     MudPots,
     Rooted,
-    StoneSkin,
+    CrystalArmor,
+    Minerals,
+    BrimstoneArmor,
+    RockArmor,
+    GraniteArmor,
   ],
 };
 

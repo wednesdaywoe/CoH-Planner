@@ -14,7 +14,7 @@ export const RebuildDNA: Power = {
   "available": 19,
   "description": "You rebuild your genetic makeup to restore some of your health and endurance.*While Offensive Adaptation is active, this power's will increase your perception.*While Defensive Adaptation is active, this power will grant bonus health.*While Efficient Adaptation is active, this power will grant bonus endurance.Bonuses granted from Adaptations are unenhanceable.",
   "shortHelp": "Self +HP, +End, +Special",
-  "icon": "bioorganicarmor_rebuilddna",
+  "icon": "bioorganicarmor_rebuilddna.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
-import { ChainInduction as ChainInduction } from './chain-induction';
 import { ChargedBrawl as ChargedBrawl } from './charged-brawl';
 import { HavocPunch as HavocPunch } from './havoc-punch';
 import { JacobsLadder as JacobsLadder } from './jacobs-ladder';
+import { BuildUp as BuildUp } from './build-up';
+import { ThunderStrike as ThunderStrike } from './thunder-strike';
+import { Taunt as Taunt } from './taunt';
+import { ChainInduction as ChainInduction } from './chain-induction';
 import { LightningClap as LightningClap } from './lightning-clap';
 import { LightningRod as LightningRod } from './lightning-rod';
-import { Taunt as Taunt } from './taunt';
-import { ThunderStrike as ThunderStrike } from './thunder-strike';
 
 export const powerset: Powerset = {
   id: 'brute/electrical-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    BuildUp,
-    ChainInduction,
     ChargedBrawl,
     HavocPunch,
     JacobsLadder,
+    BuildUp,
+    ThunderStrike,
+    Taunt,
+    ChainInduction,
     LightningClap,
     LightningRod,
-    Taunt,
-    ThunderStrike,
   ],
 };
 

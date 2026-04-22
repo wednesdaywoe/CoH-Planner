@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BlindingPowder as BlindingPowder } from './blinding-powder';
-import { BoRyaku as BoRyaku } from './bo-ryaku';
 import { DangerSense as DangerSense } from './danger-sense';
-import { KujiInRetsu as KujiInRetsu } from './kuji-in-retsu';
-import { KujiInRin as KujiInRin } from './kuji-in-rin';
-import { KujiInSha as KujiInSha } from './kuji-in-sha';
 import { NinjaReflexes as NinjaReflexes } from './ninja-reflexes';
-import { SeishintekiKyoyo as SeishintekiKyoyo } from './seishinteki-kyoyo';
 import { ShinobiIri as ShinobiIri } from './shinobi-iri';
+import { KujiInRin as KujiInRin } from './kuji-in-rin';
+import { SeishintekiKyoyo as SeishintekiKyoyo } from './seishinteki-kyoyo';
+import { KujiInSha as KujiInSha } from './kuji-in-sha';
+import { BoRyaku as BoRyaku } from './bo-ryaku';
+import { BlindingPowder as BlindingPowder } from './blinding-powder';
+import { KujiInRetsu as KujiInRetsu } from './kuji-in-retsu';
 
 export const powerset: Powerset = {
   id: 'sentinel/ninjitsu',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    BlindingPowder,
-    BoRyaku,
     DangerSense,
-    KujiInRetsu,
-    KujiInRin,
-    KujiInSha,
     NinjaReflexes,
-    SeishintekiKyoyo,
     ShinobiIri,
+    KujiInRin,
+    SeishintekiKyoyo,
+    KujiInSha,
+    BoRyaku,
+    BlindingPowder,
+    KujiInRetsu,
   ],
 };
 

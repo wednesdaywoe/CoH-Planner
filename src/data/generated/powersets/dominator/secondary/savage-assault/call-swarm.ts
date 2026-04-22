@@ -14,7 +14,7 @@ export const CallSwarm: Power = {
   "available": 0,
   "description": "You summon a swarm of stinging insects to harass your foe causing Light Lethal damage over time and reducing both their movement speed and defense. This power grants 1 stack of Blood Frenzy.Damage: Light.Recharge: Fast.",
   "shortHelp": "Ranged, DoT (Lethal), Foe -Defense, -Speed, +1 Blood Frenzy",
-  "icon": "savagemelee_callswarm",
+  "icon": "savagemelee_callswarm.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

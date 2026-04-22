@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { CarrionCreepers as CarrionCreepers } from './carrion-creepers';
 import { Entangle as Entangle } from './entangle';
-import { FlyTrap as FlyTrap } from './fly-trap';
+import { Strangler as Strangler } from './strangler';
 import { Roots as Roots } from './roots';
+import { SporeBurst as SporeBurst } from './spore-burst';
 import { SeedsofConfusion as SeedsofConfusion } from './seeds-of-confusion';
 import { SpiritTree as SpiritTree } from './spirit-tree';
-import { SporeBurst as SporeBurst } from './spore-burst';
-import { Strangler as Strangler } from './strangler';
 import { Vines as Vines } from './vines';
+import { CarrionCreepers as CarrionCreepers } from './carrion-creepers';
+import { FlyTrap as FlyTrap } from './fly-trap';
 
 export const powerset: Powerset = {
   id: 'dominator/plant-control',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    CarrionCreepers,
     Entangle,
-    FlyTrap,
+    Strangler,
     Roots,
+    SporeBurst,
     SeedsofConfusion,
     SpiritTree,
-    SporeBurst,
-    Strangler,
     Vines,
+    CarrionCreepers,
+    FlyTrap,
   ],
 };
 

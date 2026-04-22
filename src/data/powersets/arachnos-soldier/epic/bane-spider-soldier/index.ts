@@ -10,15 +10,15 @@
 import type { Powerset } from '@/types';
 
 import { Bash as Bash } from './bs-bash';
-import { BuildUp as BuildUp } from './build-up';
-import { CrowdControl as CrowdControl } from './crowd-control';
 import { MaceBeam as MaceBeam } from './mace-beam';
 import { MaceBeamBlast as MaceBeamBlast } from './mace-beam-blast';
+import { BuildUp as BuildUp } from './build-up';
 import { MaceBeamVolley as MaceBeamVolley } from './mace-beam-volley';
-import { Placate as Placate } from './placate';
 import { PoisonousRay as PoisonousRay } from './poisonous-ray';
 import { Pulverize as Pulverize } from './pulverize';
 import { Shatter as Shatter } from './shatter';
+import { Placate as Placate } from './placate';
+import { CrowdControl as CrowdControl } from './crowd-control';
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/bane-spider-soldier',
@@ -29,15 +29,15 @@ export const powerset: Powerset = {
   category: 'epic',
   powers: [
     Bash,
-    BuildUp,
-    CrowdControl,
     MaceBeam,
     MaceBeamBlast,
+    BuildUp,
     MaceBeamVolley,
-    Placate,
     PoisonousRay,
     Pulverize,
     Shatter,
+    Placate,
+    CrowdControl,
   ],
 };
 

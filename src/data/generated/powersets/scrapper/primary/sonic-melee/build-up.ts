@@ -14,7 +14,7 @@ export const SoundBooster: Power = {
   "available": 7,
   "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit. Moderately increases the duration of mez effects. Moderately increases the chance for Sound Manipulation powers to induce migraines.",
   "shortHelp": "Self +DMG, +To Hit, +Special",
-  "icon": "sonicmanipulation_buildup",
+  "icon": "sonicmanipulation_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

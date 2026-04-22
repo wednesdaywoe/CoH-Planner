@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { AquaBolt as AquaBolt } from './aqua-bolt';
-import { Dehydrate as Dehydrate } from './dehydrate';
-import { Geyser as Geyser } from './geyser';
 import { HydroBlast as HydroBlast } from './hydro-blast';
-import { SteamSpray as SteamSpray } from './steam-spray';
-import { TidalForces as TidalForces } from './tidal-forces';
 import { WaterBurst as WaterBurst } from './water-burst';
-import { WaterJet as WaterJet } from './water-jet';
 import { Whirlpool as Whirlpool } from './whirlpool';
+import { TidalForces as TidalForces } from './tidal-forces';
+import { Dehydrate as Dehydrate } from './dehydrate';
+import { WaterJet as WaterJet } from './water-jet';
+import { SteamSpray as SteamSpray } from './steam-spray';
+import { Geyser as Geyser } from './geyser';
 
 export const powerset: Powerset = {
   id: 'corruptor/water-blast',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     AquaBolt,
-    Dehydrate,
-    Geyser,
     HydroBlast,
-    SteamSpray,
-    TidalForces,
     WaterBurst,
-    WaterJet,
     Whirlpool,
+    TidalForces,
+    Dehydrate,
+    WaterJet,
+    SteamSpray,
+    Geyser,
   ],
 };
 

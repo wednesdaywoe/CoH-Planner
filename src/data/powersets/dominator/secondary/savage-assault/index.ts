@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { CallSwarm as CallSwarm } from './call-swarm';
+import { MaimingSlash as MaimingSlash } from './maiming-slash';
+import { ViciousSlash as ViciousSlash } from './vicious-slash';
+import { Unkindness as Unkindness } from './call-ravens';
+import { SpotPrey as SpotPrey } from './spot-prey';
+import { RendingFlurry as RendingFlurry } from './rending-flurry';
 import { BloodCraze as BloodCraze } from './blood-craze';
 import { CallHawk as CallHawk } from './call-hawk';
-import { Unkindness as Unkindness } from './call-ravens';
-import { CallSwarm as CallSwarm } from './call-swarm';
 import { FeralCharge as FeralCharge } from './feral-charge';
-import { MaimingSlash as MaimingSlash } from './maiming-slash';
-import { RendingFlurry as RendingFlurry } from './rending-flurry';
-import { SpotPrey as SpotPrey } from './spot-prey';
-import { ViciousSlash as ViciousSlash } from './vicious-slash';
 
 export const powerset: Powerset = {
   id: 'dominator/savage-assault',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
+    CallSwarm,
+    MaimingSlash,
+    ViciousSlash,
+    Unkindness,
+    SpotPrey,
+    RendingFlurry,
     BloodCraze,
     CallHawk,
-    Unkindness,
-    CallSwarm,
     FeralCharge,
-    MaimingSlash,
-    RendingFlurry,
-    SpotPrey,
-    ViciousSlash,
   ],
 };
 

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { ShadowPunch as ShadowPunch } from './shadow-punch';
+import { Smite as Smite } from './smite';
+import { ShadowMaul as ShadowMaul } from './shadow-maul';
+import { Taunt as Taunt } from './taunt';
+import { SiphonLife as SiphonLife } from './siphon-life';
+import { TouchofFear as TouchofFear } from './touch-of-fear';
+import { SoulDrain as SoulDrain } from './soul-drain';
 import { DarkConsumption as DarkConsumption } from './dark-consumption';
 import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
-import { ShadowMaul as ShadowMaul } from './shadow-maul';
-import { ShadowPunch as ShadowPunch } from './shadow-punch';
-import { SiphonLife as SiphonLife } from './siphon-life';
-import { Smite as Smite } from './smite';
-import { SoulDrain as SoulDrain } from './soul-drain';
-import { Taunt as Taunt } from './taunt';
-import { TouchofFear as TouchofFear } from './touch-of-fear';
 
 export const powerset: Powerset = {
   id: 'tanker/dark-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
+    ShadowPunch,
+    Smite,
+    ShadowMaul,
+    Taunt,
+    SiphonLife,
+    TouchofFear,
+    SoulDrain,
     DarkConsumption,
     MidnightGrasp,
-    ShadowMaul,
-    ShadowPunch,
-    SiphonLife,
-    Smite,
-    SoulDrain,
-    Taunt,
-    TouchofFear,
   ],
 };
 

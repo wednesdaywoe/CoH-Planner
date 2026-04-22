@@ -14,7 +14,7 @@ export const LiquidNitrogen: Power = {
   "available": 5,
   "description": "The Liquid Nitrogen dispenser can spray a target location with liquid nitrogen creating a large patch of ice. Those caught in the patch of ice are dramatically slowed, tend to fall down taking damage, and will be unable to jump.",
   "shortHelp": "Ranged (Location AoE), DoT(Cold), Knockdown, -SPD",
-  "icon": "arsenalcontrol_liquidnitrogen",
+  "icon": "arsenalcontrol_liquidnitrogen.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",

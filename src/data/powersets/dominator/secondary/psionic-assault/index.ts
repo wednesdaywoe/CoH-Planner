@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { DrainPsyche as DrainPsyche } from './drain-psyche';
-import { MentalBlast as MentalBlast } from './mental-blast';
 import { MindProbe as MindProbe } from './mind-probe';
 import { PsionicDart as PsionicDart } from './psionic-dart';
-import { PsionicLance as PsionicLance } from './psionic-lance';
-import { PsychicScream as PsychicScream } from './psychic-scream';
-import { PsychicShockwave as PsychicShockwave } from './psychic-shockwave';
-import { Subdue as Subdue } from './subdue';
 import { TelekineticThrust as TelekineticThrust } from './telekinetic-thrust';
+import { MentalBlast as MentalBlast } from './mental-blast';
+import { PsychicScream as PsychicScream } from './psychic-scream';
+import { DrainPsyche as DrainPsyche } from './drain-psyche';
+import { Subdue as Subdue } from './subdue';
+import { PsionicLance as PsionicLance } from './psionic-lance';
+import { PsychicShockwave as PsychicShockwave } from './psychic-shockwave';
 
 export const powerset: Powerset = {
   id: 'dominator/psionic-assault',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    DrainPsyche,
-    MentalBlast,
     MindProbe,
     PsionicDart,
-    PsionicLance,
-    PsychicScream,
-    PsychicShockwave,
-    Subdue,
     TelekineticThrust,
+    MentalBlast,
+    PsychicScream,
+    DrainPsyche,
+    Subdue,
+    PsionicLance,
+    PsychicShockwave,
   ],
 };
 

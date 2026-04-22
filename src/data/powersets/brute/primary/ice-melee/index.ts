@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
-import { FreezingTouch as FreezingTouch } from './freezing-touch';
-import { Frost as Frost } from './frost';
-import { FrozenAura as FrozenAura } from './frozen-aura';
 import { FrozenFists as FrozenFists } from './frozen-fists';
-import { GreaterIceSword as GreaterIceSword } from './greater-ice-sword';
-import { IceSword as IceSword } from './ice-sword';
+import { Frost as Frost } from './frost';
+import { BuildUp as BuildUp } from './build-up';
 import { IcePatch as IcePatch } from './ice-patch';
 import { Taunt as Taunt } from './taunt';
+import { GreaterIceSword as GreaterIceSword } from './greater-ice-sword';
+import { IceSword as IceSword } from './ice-sword';
+import { FreezingTouch as FreezingTouch } from './freezing-touch';
+import { FrozenAura as FrozenAura } from './frozen-aura';
 
 export const powerset: Powerset = {
   id: 'brute/ice-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    BuildUp,
-    FreezingTouch,
-    Frost,
-    FrozenAura,
     FrozenFists,
-    GreaterIceSword,
-    IceSword,
+    Frost,
+    BuildUp,
     IcePatch,
     Taunt,
+    GreaterIceSword,
+    IceSword,
+    FreezingTouch,
+    FrozenAura,
   ],
 };
 

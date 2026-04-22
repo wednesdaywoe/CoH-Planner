@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsSlash as AssassinsSlash } from './assassins-slash';
-import { Slash as Slash } from './slash';
+import { Hack as Hack } from './hack';
 import { BoomerangSlice as BoomerangSlice } from './boomerang-slice';
 import { Slice as Slice } from './slice';
+import { AssassinsSlash as AssassinsSlash } from './assassins-slash';
+import { Slash as Slash } from './slash';
 import { BuildUp as BuildUp } from './build-up';
-import { Disembowel as Disembowel } from './disembowel';
-import { Hack as Hack } from './hack';
-import { HeadSplitter as HeadSplitter } from './head-splitter';
-import { Parry as Parry } from './parry';
 import { Placate as Placate } from './placate';
+import { Parry as Parry } from './parry';
+import { Disembowel as Disembowel } from './disembowel';
+import { HeadSplitter as HeadSplitter } from './head-splitter';
 
 export const powerset: Powerset = {
   id: 'stalker/broad-sword',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsSlash,
-    Slash,
+    Hack,
     BoomerangSlice,
     Slice,
+    AssassinsSlash,
+    Slash,
     BuildUp,
-    Disembowel,
-    Hack,
-    HeadSplitter,
-    Parry,
     Placate,
+    Parry,
+    Disembowel,
+    HeadSplitter,
   ],
 };
 

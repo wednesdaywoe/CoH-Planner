@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BuildUp as BuildUp } from './build-up';
-import { Fault as Fault } from './fault';
-import { HeavyMallet as HeavyMallet } from './heavy-mallet';
-import { HurlBoulder as HurlBoulder } from './hurl-boulder';
-import { SeismicSmash as SeismicSmash } from './seismic-smash';
 import { StoneFist as StoneFist } from './stone-fist';
 import { StoneMallet as StoneMallet } from './stone-mallet';
+import { HeavyMallet as HeavyMallet } from './heavy-mallet';
 import { Taunt as Taunt } from './taunt';
+import { BuildUp as BuildUp } from './build-up';
+import { Fault as Fault } from './fault';
 import { Tremor as Tremor } from './tremor';
+import { HurlBoulder as HurlBoulder } from './hurl-boulder';
+import { SeismicSmash as SeismicSmash } from './seismic-smash';
 
 export const powerset: Powerset = {
   id: 'tanker/stone-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    BuildUp,
-    Fault,
-    HeavyMallet,
-    HurlBoulder,
-    SeismicSmash,
     StoneFist,
     StoneMallet,
+    HeavyMallet,
     Taunt,
+    BuildUp,
+    Fault,
     Tremor,
+    HurlBoulder,
+    SeismicSmash,
   ],
 };
 

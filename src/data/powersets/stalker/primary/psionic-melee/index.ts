@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { MentalStrike as MentalStrike } from './mental-strike';
+import { TelekineticBlow as TelekineticBlow } from './telekinetic-blow';
 import { AssassinsPsiBlade as AssassinsPsiBlade } from './assassins-psi-blade';
 import { PsiBlade as PsiBlade } from './psi-blade';
-import { Boggle as Boggle } from './boggle';
 import { Concentration as Concentration } from './concentration';
+import { Placate as Placate } from './placate';
+import { Boggle as Boggle } from './boggle';
 import { GreaterPsiBlade as GreaterPsiBlade } from './greater-psi-blade';
 import { MassLevitate as MassLevitate } from './mass-levitate';
-import { MentalStrike as MentalStrike } from './mental-strike';
-import { Placate as Placate } from './placate';
-import { TelekineticBlow as TelekineticBlow } from './telekinetic-blow';
 
 export const powerset: Powerset = {
   id: 'stalker/psionic-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
+    MentalStrike,
+    TelekineticBlow,
     AssassinsPsiBlade,
     PsiBlade,
-    Boggle,
     Concentration,
+    Placate,
+    Boggle,
     GreaterPsiBlade,
     MassLevitate,
-    MentalStrike,
-    Placate,
-    TelekineticBlow,
   ],
 };
 

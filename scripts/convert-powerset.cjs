@@ -1627,6 +1627,16 @@ const ICON_OVERRIDES = {
   // Sonic Melee icons now extracted from live pigg — no overrides needed
 };
 
+// Ensure icon path has a file extension. Bin export emits bare names like
+// "atomicmanipulation_weakpunch"; the planner's icon resolver expects ".png"
+// (or .ico for set icons). Append .png if no extension is present.
+function normalizeIconPath(icon) {
+  if (!icon) return icon;
+  // Already has an extension
+  if (/\.[a-z0-9]{2,4}$/i.test(icon)) return icon;
+  return icon + '.png';
+}
+
 // Additional allowedEnhancements not present in boosts_allowed but confirmed in-game
 const ALLOWED_ENHANCEMENT_OVERRIDES = {
   // Storm Blast: Cloudburst accepts Slow in-game despite missing from binary data
@@ -1647,7 +1657,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     available: availableLevel,
     description: powerJson.display_help?.replace(/<[^>]+>/g, '').trim(),
     shortHelp: powerJson.display_short_help,
-    icon: ICON_OVERRIDES[powerJson.icon] || powerJson.icon,
+    icon: normalizeIconPath(ICON_OVERRIDES[powerJson.icon] || powerJson.icon),
     // Map bin's "GlobalBoost" to the planner's "Global Enhancement" type.
     // Other types (Click/Toggle/Auto) match between bin and planner.
     powerType: powerJson.type === 'GlobalBoost' ? 'Global Enhancement' : powerJson.type,
@@ -1858,18 +1868,25 @@ function convertPowerset(category, powersetName) {
   for (const file of powerFiles) {
     const powerJson = JSON.parse(fs.readFileSync(path.join(rawPath, file), 'utf-8'));
 
-    // Find the available level for this power
+    // Find the available level for this power. The bin-export `powers` array
+    // is alphabetical (CoD2's `power_names` was game-pick order), so we use
+    // available_level as the canonical sort key — matches in-game pick order.
     const powerIndex = indexJson.power_names.findIndex(n =>
       n.toLowerCase().endsWith(powerJson.name.toLowerCase())
     );
     const availableLevel = powerIndex >= 0 ? indexJson.available_level[powerIndex] : 0;
 
     const power = convertPower(powerJson, availableLevel, categoryInfo.archetype, categoryInfo.type);
-    powers.push({ power, powerIndex: powerIndex >= 0 ? powerIndex : 999, file });
+    powers.push({ power, powerIndex: powerIndex >= 0 ? powerIndex : 999, availableLevel, file });
   }
 
-  // Sort powers by their index in the powerset definition (game order)
-  powers.sort((a, b) => a.powerIndex - b.powerIndex);
+  // Sort by available_level (game pick order). Ties broken by powerIndex so
+  // same-level powers (e.g. two level-0 starters) keep a deterministic order
+  // matching the bin's input listing.
+  powers.sort((a, b) => {
+    if (a.availableLevel !== b.availableLevel) return a.availableLevel - b.availableLevel;
+    return a.powerIndex - b.powerIndex;
+  });
 
   // Write individual power files into the three layers.
   //   - generated/<power>.ts: always rewritten with the fresh extraction
@@ -2008,6 +2025,7 @@ module.exports = {
   extractEffects,
   extractDamage,
   inferAllowedSetCategories,
+  normalizeIconPath,
   toKebabCase,
   CATEGORY_MAP,
   BOOST_TYPE_MAP,

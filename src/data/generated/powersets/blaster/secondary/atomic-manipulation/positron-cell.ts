@@ -14,7 +14,7 @@ export const PositronCell: Power = {
   "available": 3,
   "description": "Encases a single target in a cage made of positrons. The radiation emitted slowly hurts the victim, inflicting energy damage over time. The encased victim is held helpless and unable to defend themselves in addition to being surrounded by positively charged particles. Hitting a foe that has negatively charged particles will trigger a Gamma Burst.",
   "shortHelp": "Ranged, DoT(Energy), Foe Hold, -DEF, +Positrons",
-  "icon": "atomicmanipulation_hold",
+  "icon": "atomicmanipulation_hold.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

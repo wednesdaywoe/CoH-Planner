@@ -14,7 +14,7 @@ export const Ignite: Power = {
   "available": 21,
   "description": "Sprays a target with accelerant from your flamethrower, igniting it and causing extreme damage over time. Also sets the location on fire if the target is grounded, inflicting damage to additional foes that step in the area.",
   "shortHelp": "Ranged, DoT(Fire)",
-  "icon": "assaultweapons_dot",
+  "icon": "assaultweapons_dot.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

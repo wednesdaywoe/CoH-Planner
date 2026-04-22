@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsClaw as AssassinsClaw } from './assassins-claw';
-import { BuildUp as BuildUp } from './build-up';
-import { Eviscerate as Eviscerate } from './eviscerate';
-import { Focus as Focus } from './focus';
-import { Placate as Placate } from './placate';
-import { Shockwave as Shockwave } from './shockwave';
-import { Slash as Slash } from './slash';
 import { Strike as Strike } from './strike';
 import { Swipe as Swipe } from './swipe';
+import { Slash as Slash } from './slash';
+import { AssassinsClaw as AssassinsClaw } from './assassins-claw';
+import { BuildUp as BuildUp } from './build-up';
+import { Placate as Placate } from './placate';
+import { Focus as Focus } from './focus';
+import { Eviscerate as Eviscerate } from './eviscerate';
+import { Shockwave as Shockwave } from './shockwave';
 
 export const powerset: Powerset = {
   id: 'stalker/claws',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsClaw,
-    BuildUp,
-    Eviscerate,
-    Focus,
-    Placate,
-    Shockwave,
-    Slash,
     Strike,
     Swipe,
+    Slash,
+    AssassinsClaw,
+    BuildUp,
+    Placate,
+    Focus,
+    Eviscerate,
+    Shockwave,
   ],
 };
 

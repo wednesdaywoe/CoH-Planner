@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { BarbSwipe as BarbSwipe } from './barb-swipe';
-import { BuildUp as BuildUp } from './build-up';
+import { Lunge as Lunge } from './lunge';
 import { SpineBurst as SpineBurst } from './fling-quills';
 import { Quills as Quills } from './quills';
+import { BuildUp as BuildUp } from './build-up';
 import { Impale as Impale } from './impale';
-import { Lunge as Lunge } from './lunge';
-import { ThrowSpines as ThrowSpines } from './quill-throwing';
-import { Ripper as Ripper } from './ripper';
 import { Confront as Confront } from './taunt';
+import { Ripper as Ripper } from './ripper';
+import { ThrowSpines as ThrowSpines } from './quill-throwing';
 
 export const powerset: Powerset = {
   id: 'scrapper/spines',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     BarbSwipe,
-    BuildUp,
+    Lunge,
     SpineBurst,
     Quills,
+    BuildUp,
     Impale,
-    Lunge,
-    ThrowSpines,
-    Ripper,
     Confront,
+    Ripper,
+    ThrowSpines,
   ],
 };
 

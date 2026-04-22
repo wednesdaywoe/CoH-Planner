@@ -14,7 +14,7 @@ export const AgingTouch: Power = {
   "available": 0,
   "description": "You touch an enemy and accelerate their aging process causing exhaustion and psionic damage. Affected enemies will continue to age for a limited time, and suffering psionic damage over time. Targets affected by the Delayed effect will suffer from additional psionic damage over time.Damage: Moderate.Recharge: Moderate.",
   "shortHelp": "Melee, DMG(Psionic), DoT(Psionic), Foe -End Over Time",
-  "icon": "timemanipulation_agingtouch",
+  "icon": "timemanipulation_agingtouch.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

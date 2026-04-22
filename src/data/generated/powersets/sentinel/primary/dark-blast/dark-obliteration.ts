@@ -14,7 +14,7 @@ export const DarkObliteration: Power = {
   "available": 11,
   "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
-  "icon": "darkcast_darkobliteration",
+  "icon": "darkcast_darkobliteration.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",

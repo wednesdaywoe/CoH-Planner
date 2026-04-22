@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsFrenzy as AssassinsFrenzy } from './assassins-frenzy';
-import { BuildUp as BuildUp } from './build-up';
-import { Hemorrhage as Hemorrhage } from './hemorrhage';
 import { MaimingSlash as MaimingSlash } from './maiming-slash';
-import { Placate as Placate } from './placate';
-import { RendingFlurry as RendingFlurry } from './rending-flurry';
-import { SavageLeap as SavageLeap } from './savage-leap';
 import { SavageStrike as SavageStrike } from './savage-strike';
 import { Shred as Shred } from './shred';
+import { AssassinsFrenzy as AssassinsFrenzy } from './assassins-frenzy';
+import { BuildUp as BuildUp } from './build-up';
+import { Placate as Placate } from './placate';
+import { RendingFlurry as RendingFlurry } from './rending-flurry';
+import { Hemorrhage as Hemorrhage } from './hemorrhage';
+import { SavageLeap as SavageLeap } from './savage-leap';
 
 export const powerset: Powerset = {
   id: 'stalker/savage-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsFrenzy,
-    BuildUp,
-    Hemorrhage,
     MaimingSlash,
-    Placate,
-    RendingFlurry,
-    SavageLeap,
     SavageStrike,
     Shred,
+    AssassinsFrenzy,
+    BuildUp,
+    Placate,
+    RendingFlurry,
+    Hemorrhage,
+    SavageLeap,
   ],
 };
 

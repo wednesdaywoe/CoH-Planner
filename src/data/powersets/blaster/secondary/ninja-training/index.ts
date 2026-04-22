@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BlindingPowder as BlindingPowder } from './blinding-powder';
-import { ChokingPowder as ChokingPowder } from './choking-powder';
-import { GoldenDragonfly as GoldenDragonfly } from './golden-dragonfly';
 import { ImmobilizingDart as ImmobilizingDart } from './immobilizing-dart';
-import { KujiInToh as KujiInToh } from './kuji-in-toh';
-import { Shinobi as Shinobi } from './kyokan';
-import { SmokeFlash as SmokeFlash } from './smoke-flash';
 import { StingoftheWasp as StingoftheWasp } from './sting-of-the-wasp';
+import { ChokingPowder as ChokingPowder } from './choking-powder';
+import { Shinobi as Shinobi } from './kyokan';
 import { TheLotusDrops as TheLotusDrops } from './the-lotus-drops';
+import { KujiInToh as KujiInToh } from './kuji-in-toh';
+import { SmokeFlash as SmokeFlash } from './smoke-flash';
+import { BlindingPowder as BlindingPowder } from './blinding-powder';
+import { GoldenDragonfly as GoldenDragonfly } from './golden-dragonfly';
 
 export const powerset: Powerset = {
   id: 'blaster/ninja-training',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    BlindingPowder,
-    ChokingPowder,
-    GoldenDragonfly,
     ImmobilizingDart,
-    KujiInToh,
-    Shinobi,
-    SmokeFlash,
     StingoftheWasp,
+    ChokingPowder,
+    Shinobi,
     TheLotusDrops,
+    KujiInToh,
+    SmokeFlash,
+    BlindingPowder,
+    GoldenDragonfly,
   ],
 };
 

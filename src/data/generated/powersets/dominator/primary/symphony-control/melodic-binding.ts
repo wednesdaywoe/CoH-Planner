@@ -14,7 +14,7 @@ export const MelodicBinding: Power = {
   "available": 0,
   "description": "Melodic Binding immobilizes your target in place and inflict psionic damage. Stronger foes might still be able to move, but will do so at a reduced speed.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Immobilize, -SPD",
-  "icon": "symphonycontrol_immobst",
+  "icon": "symphonycontrol_immobst.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

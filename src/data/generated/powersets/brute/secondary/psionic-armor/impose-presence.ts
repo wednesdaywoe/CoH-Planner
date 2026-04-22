@@ -14,7 +14,7 @@ export const ImposePresence: Power = {
   "available": 15,
   "description": "Impose your presence on nearby enemies, slowing their attack rate down and increasing your defense and chance to hit.",
   "shortHelp": "Toggle: Self +DEF(Melee, Ranged), +To Hit, Foe -Recharge",
-  "icon": "psionicarmor_imposepresence",
+  "icon": "psionicarmor_imposepresence.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",

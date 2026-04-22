@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Foresight as Foresight } from './foresight';
 import { IndomitableWill as IndomitableWill } from './indomitable-will';
+import { Foresight as Foresight } from './foresight';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/teamwork',
@@ -20,8 +20,8 @@ export const powerset: Powerset = {
   archetype: 'arachnos-widow',
   category: 'epic',
   powers: [
-    Foresight,
     IndomitableWill,
+    Foresight,
   ],
 };
 

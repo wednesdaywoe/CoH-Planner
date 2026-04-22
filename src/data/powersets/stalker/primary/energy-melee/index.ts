@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
 import { Barrage as Barrage } from './barrage';
-import { BoneSmasher as BoneSmasher } from './bone-smasher';
-import { BuildUp as BuildUp } from './build-up';
 import { EnergyPunch as EnergyPunch } from './energy-punch';
-import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
+import { BoneSmasher as BoneSmasher } from './bone-smasher';
+import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
+import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { PowerCrash as PowerCrash } from './stun';
 import { TotalFocus as TotalFocus } from './total-focus';
+import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
 
 export const powerset: Powerset = {
   id: 'stalker/energy-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsStrike,
     Barrage,
-    BoneSmasher,
-    BuildUp,
     EnergyPunch,
-    EnergyTransfer,
+    BoneSmasher,
+    AssassinsStrike,
+    BuildUp,
     Placate,
     PowerCrash,
     TotalFocus,
+    EnergyTransfer,
   ],
 };
 

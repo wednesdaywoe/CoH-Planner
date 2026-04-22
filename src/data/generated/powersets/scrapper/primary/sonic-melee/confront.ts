@@ -14,7 +14,7 @@ export const Confront: Power = {
   "available": 11,
   "description": "Challenges a foe to attack you. Useful to pull a villain off an ally who finds themselves in over their head. A To Hit check required to Taunt enemy players, but is not needed against critter targets.",
   "shortHelp": "Ranged, Foe Taunt",
-  "icon": "sonicmanipulation_confront",
+  "icon": "sonicmanipulation_confront.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

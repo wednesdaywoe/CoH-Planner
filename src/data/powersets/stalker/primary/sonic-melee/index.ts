@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsWhisper as AssassinsWhisper } from './assassins-resonance';
-import { Attune as Attune } from './attune';
-import { BuildUp as BuildUp } from './build-up';
-import { DeafeningWave as DeafeningWave } from './deafening-wave';
-import { Earsplitter as Earsplitter } from './earsplitter';
-import { Placate as Placate } from './placate';
-import { SonicClap as SonicClap } from './sonic-clap';
 import { SonicThrust as SonicThrust } from './sonic-thrust';
 import { StridentEcho as StridentEcho } from './strident-echo';
+import { Attune as Attune } from './attune';
+import { AssassinsWhisper as AssassinsWhisper } from './assassins-resonance';
+import { BuildUp as BuildUp } from './build-up';
+import { Placate as Placate } from './placate';
+import { SonicClap as SonicClap } from './sonic-clap';
+import { DeafeningWave as DeafeningWave } from './deafening-wave';
+import { Earsplitter as Earsplitter } from './earsplitter';
 
 export const powerset: Powerset = {
   id: 'stalker/sonic-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsWhisper,
-    Attune,
-    BuildUp,
-    DeafeningWave,
-    Earsplitter,
-    Placate,
-    SonicClap,
     SonicThrust,
     StridentEcho,
+    Attune,
+    AssassinsWhisper,
+    BuildUp,
+    Placate,
+    SonicClap,
+    DeafeningWave,
+    Earsplitter,
   ],
 };
 

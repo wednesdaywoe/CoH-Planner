@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
+import { HymnofDissonance as HymnofDissonance } from './hymn-of-dissonance';
+import { MelodicBinding as MelodicBinding } from './melodic-binding';
 import { AriaofStasis as AriaofStasis } from './aria-of-stasis';
-import { ChordsofDespair as ChordsofDespair } from './chords-of-despair';
-import { ConfoundingChant as ConfoundingChant } from './confounding-chant';
+import { ImpassionedSerenade as ImpassionedSerenade } from './impassioned-serenade';
 import { DreadfulDiscord as DreadfulDiscord } from './dreadful-discord';
 import { EnfeeblingLullaby as EnfeeblingLullaby } from './enfeebling-lullaby';
-import { HymnofDissonance as HymnofDissonance } from './hymn-of-dissonance';
-import { ImpassionedSerenade as ImpassionedSerenade } from './impassioned-serenade';
-import { MelodicBinding as MelodicBinding } from './melodic-binding';
+import { ConfoundingChant as ConfoundingChant } from './confounding-chant';
+import { ChordsofDespair as ChordsofDespair } from './chords-of-despair';
 import { Reverberant as Reverberant } from './reverberant';
 
 export const powerset: Powerset = {
@@ -27,14 +27,14 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'primary',
   powers: [
+    HymnofDissonance,
+    MelodicBinding,
     AriaofStasis,
-    ChordsofDespair,
-    ConfoundingChant,
+    ImpassionedSerenade,
     DreadfulDiscord,
     EnfeeblingLullaby,
-    HymnofDissonance,
-    ImpassionedSerenade,
-    MelodicBinding,
+    ConfoundingChant,
+    ChordsofDespair,
     Reverberant,
   ],
 };

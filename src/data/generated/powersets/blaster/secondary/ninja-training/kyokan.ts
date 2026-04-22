@@ -14,7 +14,7 @@ export const Shinobi: Power = {
   "available": 9,
   "description": "A shinobi is a master of stealth and assassination. While this power is active you will be very hard to detect, and your first strike out of the shadows will deal extra damage. Even while detected, a shinobi is a deadly foe and able to deal lethal critical strikes.",
   "shortHelp": "Toggle: Self Stealth, +DEF(All), +Special",
-  "icon": "ninjatools_assassin",
+  "icon": "ninjatools_assassin.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",

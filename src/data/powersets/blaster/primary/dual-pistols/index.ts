@@ -9,18 +9,18 @@
 
 import type { Powerset } from '@/types';
 
+import { DualWield as DualWield } from './dual-wield';
+import { Pistols as Pistols } from './pistols';
+import { EmptyClips as EmptyClips } from './empty-clips';
+import { SwapAmmo as SwapAmmo } from './swap-ammo';
 import { BulletRain as BulletRain } from './bullet-rain';
+import { SuppressiveFire as SuppressiveFire } from './suppressive-fire';
+import { ExecutionersShot as ExecutionersShot } from './executioners-shot';
+import { PiercingRounds as PiercingRounds } from './piercing-rounds';
+import { HailofBullets as HailofBullets } from './hail-of-bullets';
 import { ChemicalAmmunition as ChemicalAmmunition } from './chemical-ammunition';
 import { CryoAmmunition as CryoAmmunition } from './cryo-ammunition';
-import { DualWield as DualWield } from './dual-wield';
-import { EmptyClips as EmptyClips } from './empty-clips';
-import { ExecutionersShot as ExecutionersShot } from './executioners-shot';
-import { HailofBullets as HailofBullets } from './hail-of-bullets';
 import { IncendiaryAmmunition as IncendiaryAmmunition } from './incendiary-ammunition';
-import { PiercingRounds as PiercingRounds } from './piercing-rounds';
-import { Pistols as Pistols } from './pistols';
-import { SuppressiveFire as SuppressiveFire } from './suppressive-fire';
-import { SwapAmmo as SwapAmmo } from './swap-ammo';
 
 export const powerset: Powerset = {
   id: 'blaster/dual-pistols',
@@ -30,18 +30,18 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'primary',
   powers: [
+    DualWield,
+    Pistols,
+    EmptyClips,
+    SwapAmmo,
     BulletRain,
+    SuppressiveFire,
+    ExecutionersShot,
+    PiercingRounds,
+    HailofBullets,
     ChemicalAmmunition,
     CryoAmmunition,
-    DualWield,
-    EmptyClips,
-    ExecutionersShot,
-    HailofBullets,
     IncendiaryAmmunition,
-    PiercingRounds,
-    Pistols,
-    SuppressiveFire,
-    SwapAmmo,
   ],
 };
 

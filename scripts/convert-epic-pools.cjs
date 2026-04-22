@@ -27,6 +27,7 @@ const {
   EFFECT_AREA_MAP,
   BIN_BOOST_MAP,
   inferAllowedSetCategories,
+  normalizeIconPath,
 } = require('./convert-powerset.cjs');
 
 // Bin export writes epic pool powers under `<RAW_DATA_PATH>/epic/`.
@@ -91,7 +92,7 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   if (rawJson.display_short_help) {
     power.shortHelp = rawJson.display_short_help.replace(/\u00a0/g, ' ');
   }
-  power.icon = rawJson.icon || '';
+  power.icon = normalizeIconPath(rawJson.icon || '');
   // Map bin's "GlobalBoost" to the planner's "Global Enhancement" type.
   power.powerType = rawJson.type === 'GlobalBoost' ? 'Global Enhancement' : (rawJson.type || 'Click');
 

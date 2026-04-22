@@ -14,7 +14,7 @@ export const Reverberant: Power = {
   "available": 25,
   "description": "You summon an entity capable of repeating your songs a short while after you have executed them. Note: This entity will execute weaker versions of your songs. Type ''/release_pets'' in the chat window to release all your pets.Recharge: Very Long.",
   "shortHelp": "Summon Reverberant: Ranged Control Special",
-  "icon": "symphonycontrol_pet",
+  "icon": "symphonycontrol_pet.png",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",

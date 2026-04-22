@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { FreezingRain as FreezingRain } from './freezing-rain';
 import { Gale as Gale } from './gale';
-import { Hurricane as Hurricane } from './hurricane';
-import { LightningStorm as LightningStorm } from './lightning-storm';
 import { O2Boost as O2Boost } from './o2-boost';
 import { SnowStorm as SnowStorm } from './snow-storm';
 import { SteamyMist as SteamyMist } from './steamy-mist';
+import { FreezingRain as FreezingRain } from './freezing-rain';
+import { Hurricane as Hurricane } from './hurricane';
 import { ThunderClap as ThunderClap } from './thunder-clap';
 import { Tornado as Tornado } from './tornado';
+import { LightningStorm as LightningStorm } from './lightning-storm';
 
 export const powerset: Powerset = {
   id: 'mastermind/storm-summoning',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    FreezingRain,
     Gale,
-    Hurricane,
-    LightningStorm,
     O2Boost,
     SnowStorm,
     SteamyMist,
+    FreezingRain,
+    Hurricane,
     ThunderClap,
     Tornado,
+    LightningStorm,
   ],
 };
 

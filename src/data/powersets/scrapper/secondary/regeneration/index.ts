@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { SecondWind as SecondWind } from './dull-pain';
 import { FastHealing as FastHealing } from './fast-healing';
+import { Reconstruction as Reconstruction } from './reconstruction';
+import { QuickRecovery as QuickRecovery } from './quick-recovery';
+import { AilmentResistance as AilmentResistance } from './revive';
+import { Integration as Integration } from './integration';
+import { Resilience as Resilience } from './resist-disorientation';
 import { InstantHealing as InstantHealing } from './instant-healing';
 import { ReactiveRegeneration as ReactiveRegeneration } from './instant-regeneration';
-import { Integration as Integration } from './integration';
+import { SecondWind as SecondWind } from './dull-pain';
 import { MomentofGlory as MomentofGlory } from './moment-of-glory';
-import { QuickRecovery as QuickRecovery } from './quick-recovery';
-import { Reconstruction as Reconstruction } from './reconstruction';
-import { Resilience as Resilience } from './resist-disorientation';
-import { AilmentResistance as AilmentResistance } from './revive';
 
 export const powerset: Powerset = {
   id: 'scrapper/regeneration',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'secondary',
   powers: [
-    SecondWind,
     FastHealing,
+    Reconstruction,
+    QuickRecovery,
+    AilmentResistance,
+    Integration,
+    Resilience,
     InstantHealing,
     ReactiveRegeneration,
-    Integration,
+    SecondWind,
     MomentofGlory,
-    QuickRecovery,
-    Reconstruction,
-    Resilience,
-    AilmentResistance,
   ],
 };
 

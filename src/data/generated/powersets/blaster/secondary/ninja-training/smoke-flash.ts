@@ -14,7 +14,7 @@ export const SmokeFlash: Power = {
   "available": 23,
   "description": "You throw a smoke bomb at your feet. The resulting flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. Enemies will be distracted and confused, making them more vulnerable to attacks for a short time.Recharge: Long.",
   "shortHelp": "PBAoE, Foe Placate, -Res",
-  "icon": "ninjatools_placate",
+  "icon": "ninjatools_placate.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",

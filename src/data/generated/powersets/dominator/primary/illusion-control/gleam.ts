@@ -14,7 +14,7 @@ export const Gleam: Power = {
   "available": 11,
   "description": "Multiple flashing lights go off around enemies, disorienting and damaging them. Gleam deals minimal Psionic damage, and can Disorient all affected targets for a good while.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Psionic), Foe Disorient",
-  "icon": "illusions_stun",
+  "icon": "illusions_stun.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",

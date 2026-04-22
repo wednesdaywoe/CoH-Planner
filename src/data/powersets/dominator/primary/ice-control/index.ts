@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { ArcticAir as ArcticAir } from './arctic-air';
 import { BlockofIce as BlockofIce } from './block-of-ice';
 import { Chilblain as Chilblain } from './chilblain';
-import { FlashFreeze as FlashFreeze } from './flash-freeze';
 import { Frostbite as Frostbite } from './frostbite';
-import { Glacier as Glacier } from './glacier';
-import { IceSlick as IceSlick } from './ice-slick';
-import { JackFrost as JackFrost } from './jack-frost';
+import { ArcticAir as ArcticAir } from './arctic-air';
 import { ColdSnap as ColdSnap } from './shiver';
+import { IceSlick as IceSlick } from './ice-slick';
+import { FlashFreeze as FlashFreeze } from './flash-freeze';
+import { Glacier as Glacier } from './glacier';
+import { JackFrost as JackFrost } from './jack-frost';
 
 export const powerset: Powerset = {
   id: 'dominator/ice-control',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    ArcticAir,
     BlockofIce,
     Chilblain,
-    FlashFreeze,
     Frostbite,
-    Glacier,
-    IceSlick,
-    JackFrost,
+    ArcticAir,
     ColdSnap,
+    IceSlick,
+    FlashFreeze,
+    Glacier,
+    JackFrost,
   ],
 };
 

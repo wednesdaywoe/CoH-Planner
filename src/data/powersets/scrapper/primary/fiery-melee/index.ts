@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { BreathofFire as BreathofFire } from './breath-of-fire';
-import { BuildUp as BuildUp } from './build-up';
-import { Cremate as Cremate } from './cremate';
 import { FireSword as FireSword } from './fire-sword';
-import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
-import { GreaterFireSword as GreaterFireSword } from './greater-fire-sword';
-import { Incinerate as Incinerate } from './incinerate';
-import { Confront as Confront } from './provoke';
 import { Scorch as Scorch } from './scorch';
+import { Cremate as Cremate } from './cremate';
+import { BuildUp as BuildUp } from './build-up';
+import { BreathofFire as BreathofFire } from './breath-of-fire';
+import { Confront as Confront } from './provoke';
+import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
+import { Incinerate as Incinerate } from './incinerate';
+import { GreaterFireSword as GreaterFireSword } from './greater-fire-sword';
 
 export const powerset: Powerset = {
   id: 'scrapper/fiery-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    BreathofFire,
-    BuildUp,
-    Cremate,
     FireSword,
-    FireSwordCircle,
-    GreaterFireSword,
-    Incinerate,
-    Confront,
     Scorch,
+    Cremate,
+    BuildUp,
+    BreathofFire,
+    Confront,
+    FireSwordCircle,
+    Incinerate,
+    GreaterFireSword,
   ],
 };
 

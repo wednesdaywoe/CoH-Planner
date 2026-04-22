@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
-import { BuildUp as BuildUp } from './build-up';
-import { CrushingUppercut as CrushingUppercut } from './crushing-uppercut';
 import { HeavyBlow as HeavyBlow } from './heavy-blow';
 import { InitialStrike as InitialStrike } from './initial-strike';
-import { ShinBreaker as ShinBreaker } from './low-kick';
+import { SweepingCross as SweepingCross } from './sweeping-cross';
+import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
+import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { SpinningStrike as SpinningStrike } from './spinning-strike';
-import { SweepingCross as SweepingCross } from './sweeping-cross';
+import { ShinBreaker as ShinBreaker } from './low-kick';
+import { CrushingUppercut as CrushingUppercut } from './crushing-uppercut';
 
 export const powerset: Powerset = {
   id: 'stalker/street-justice',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsStrike,
-    BuildUp,
-    CrushingUppercut,
     HeavyBlow,
     InitialStrike,
-    ShinBreaker,
+    SweepingCross,
+    AssassinsStrike,
+    BuildUp,
     Placate,
     SpinningStrike,
-    SweepingCross,
+    ShinBreaker,
+    CrushingUppercut,
   ],
 };
 

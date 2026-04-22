@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { CloakofDarkness as CloakofDarkness } from './cloak-of-darkness';
-import { CloakofFear as CloakofFear } from './cloak-of-fear';
 import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
-import { DarkRegeneration as DarkRegeneration } from './dark-regeneration';
 import { DeathShroud as DeathShroud } from './death-shroud';
 import { MurkyCloud as MurkyCloud } from './murky-cloud';
-import { ObscureSustenance as ObscureSustenance } from './obscure-sustenance';
 import { ObsidianShield as ObsidianShield } from './obsidian-shield';
+import { DarkRegeneration as DarkRegeneration } from './dark-regeneration';
+import { ObscureSustenance as ObscureSustenance } from './obscure-sustenance';
+import { CloakofDarkness as CloakofDarkness } from './cloak-of-darkness';
+import { CloakofFear as CloakofFear } from './cloak-of-fear';
 import { OppressiveGloom as OppressiveGloom } from './oppressive-gloom';
 import { SoulTransfer as SoulTransfer } from './soul-transfer';
 
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'primary',
   powers: [
-    CloakofDarkness,
-    CloakofFear,
     DarkEmbrace,
-    DarkRegeneration,
     DeathShroud,
     MurkyCloud,
-    ObscureSustenance,
     ObsidianShield,
+    DarkRegeneration,
+    ObscureSustenance,
+    CloakofDarkness,
+    CloakofFear,
     OppressiveGloom,
     SoulTransfer,
   ],

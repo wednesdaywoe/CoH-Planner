@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { AssassinsImpaler as AssassinsImpaler } from './assassins-impaler';
 import { BarbSwipe as BarbSwipe } from './barb-swipe';
-import { BuildUp as BuildUp } from './build-up';
-import { Impale as Impale } from './impale';
 import { Lunge as Lunge } from './lunge';
-import { Placate as Placate } from './placate';
-import { Ripper as Ripper } from './ripper';
 import { SpineBurst as SpineBurst } from './spine-burst';
+import { AssassinsImpaler as AssassinsImpaler } from './assassins-impaler';
+import { BuildUp as BuildUp } from './build-up';
+import { Placate as Placate } from './placate';
+import { Impale as Impale } from './impale';
+import { Ripper as Ripper } from './ripper';
 import { ThrowSpines as ThrowSpines } from './throw-spines';
 
 export const powerset: Powerset = {
@@ -27,14 +27,14 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    AssassinsImpaler,
     BarbSwipe,
-    BuildUp,
-    Impale,
     Lunge,
-    Placate,
-    Ripper,
     SpineBurst,
+    AssassinsImpaler,
+    BuildUp,
+    Placate,
+    Impale,
+    Ripper,
     ThrowSpines,
   ],
 };

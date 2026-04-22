@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { EagleEye as EagleEye } from './eagle-eye';
 import { ElectrifiedNetArrow as ElectrifiedNetArrow } from './electrified-net-arrow';
-import { ESDArrow as ESDArrow } from './emp-arrow';
-import { FlashArrow as FlashArrow } from './flash-arrow';
 import { GlueArrow as GlueArrow } from './glue-arrow';
-import { OilSlickArrow as OilSlickArrow } from './gymnastics';
 import { IceArrow as IceArrow } from './ice-arrow';
-import { Gymnastics as Gymnastics } from './quickness';
 import { Upshot as Upshot } from './upshot';
+import { FlashArrow as FlashArrow } from './flash-arrow';
+import { EagleEye as EagleEye } from './eagle-eye';
+import { Gymnastics as Gymnastics } from './quickness';
+import { ESDArrow as ESDArrow } from './emp-arrow';
+import { OilSlickArrow as OilSlickArrow } from './gymnastics';
 
 export const powerset: Powerset = {
   id: 'blaster/tactical-arrow',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    EagleEye,
     ElectrifiedNetArrow,
-    ESDArrow,
-    FlashArrow,
     GlueArrow,
-    OilSlickArrow,
     IceArrow,
-    Gymnastics,
     Upshot,
+    FlashArrow,
+    EagleEye,
+    Gymnastics,
+    ESDArrow,
+    OilSlickArrow,
   ],
 };
 

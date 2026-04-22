@@ -14,7 +14,7 @@ export const PsychokineticBarrier: Power = {
   "available": 19,
   "description": "You can erect a temporary wall of crystalized psionic energy that will absorb a large amount of damage before breaking off. Psychokinetic Barrier will grant a moderate amount of absorption and reduce the effect debuffs have on you.",
   "shortHelp": "Self, +Absorb, +MaxHP, +Regeneration, +Res(-Regeneration, -Recovery, -Recharge, -Endurance)",
-  "icon": "psionicarmor_psychokineticbarrier",
+  "icon": "psionicarmor_psychokineticbarrier.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

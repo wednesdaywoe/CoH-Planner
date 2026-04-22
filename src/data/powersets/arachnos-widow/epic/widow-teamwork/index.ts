@@ -9,12 +9,12 @@
 
 import type { Powerset } from '@/types';
 
-import { Elude as Elude } from './elude';
-import { MentalTraining as MentalTraining } from './mental-training';
-import { MaskPresence as MaskPresence } from './nw-mask-presence';
-import { MindLink as MindLink } from './nw-mind-link';
 import { PainTolerance as PainTolerance } from './pain-tolerance';
+import { MaskPresence as MaskPresence } from './nw-mask-presence';
+import { MentalTraining as MentalTraining } from './mental-training';
+import { MindLink as MindLink } from './nw-mind-link';
 import { Placate as Placate } from './placate';
+import { Elude as Elude } from './elude';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/widow-teamwork',
@@ -24,12 +24,12 @@ export const powerset: Powerset = {
   archetype: 'arachnos-widow',
   category: 'epic',
   powers: [
-    Elude,
-    MentalTraining,
-    MaskPresence,
-    MindLink,
     PainTolerance,
+    MaskPresence,
+    MentalTraining,
+    MindLink,
     Placate,
+    Elude,
   ],
 };
 

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { DarkConsumption as DarkConsumption } from './dark-consumption';
-import { DarkPit as DarkPit } from './dark-pit';
-import { DeathShroud as DeathShroud } from './death-shroud';
-import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 import { PenumbralGrasp as PenumbralGrasp } from './penumbral-grasp';
-import { ShadowMaul as ShadowMaul } from './shadow-maul';
 import { Smite as Smite } from './smite';
+import { DeathShroud as DeathShroud } from './death-shroud';
+import { ShadowMaul as ShadowMaul } from './shadow-maul';
 import { SoulDrain as SoulDrain } from './soul-drain';
 import { TouchoftheBeyond as TouchoftheBeyond } from './touch-of-fear';
+import { DarkConsumption as DarkConsumption } from './dark-consumption';
+import { DarkPit as DarkPit } from './dark-pit';
+import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 
 export const powerset: Powerset = {
   id: 'blaster/darkness-manipulation',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    DarkConsumption,
-    DarkPit,
-    DeathShroud,
-    MidnightGrasp,
     PenumbralGrasp,
-    ShadowMaul,
     Smite,
+    DeathShroud,
+    ShadowMaul,
     SoulDrain,
     TouchoftheBeyond,
+    DarkConsumption,
+    DarkPit,
+    MidnightGrasp,
   ],
 };
 

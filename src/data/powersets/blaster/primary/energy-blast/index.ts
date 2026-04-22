@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Aim as Aim } from './aim';
-import { EnergyTorrent as EnergyTorrent } from './energy-torrent';
-import { ExplosiveBlast as ExplosiveBlast } from './explosive-blast';
-import { Nova as Nova } from './nova';
 import { PowerBlast as PowerBlast } from './power-blast';
 import { PowerBolt as PowerBolt } from './power-bolt';
+import { EnergyTorrent as EnergyTorrent } from './energy-torrent';
 import { PowerBurst as PowerBurst } from './power-burst';
-import { PowerPush as PowerPush } from './power-push';
 import { SniperBlast as SniperBlast } from './sniper-blast';
+import { Aim as Aim } from './aim';
+import { PowerPush as PowerPush } from './power-push';
+import { ExplosiveBlast as ExplosiveBlast } from './explosive-blast';
+import { Nova as Nova } from './nova';
 
 export const powerset: Powerset = {
   id: 'blaster/energy-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'primary',
   powers: [
-    Aim,
-    EnergyTorrent,
-    ExplosiveBlast,
-    Nova,
     PowerBlast,
     PowerBolt,
+    EnergyTorrent,
     PowerBurst,
-    PowerPush,
     SniperBlast,
+    Aim,
+    PowerPush,
+    ExplosiveBlast,
+    Nova,
   ],
 };
 

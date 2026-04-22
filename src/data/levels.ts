@@ -135,6 +135,19 @@ export function getTotalSlotsAtLevel(level: number): number {
   return total;
 }
 
+/**
+ * Find the next level above `currentLevel` that grants a power pick or slots.
+ * Used by Level Up mode to advance to the next meaningful milestone.
+ * Returns MAX_LEVEL if no further grants exist.
+ */
+export function getNextGrantLevel(currentLevel: number): number {
+  const grantLevels = new Set<number>();
+  for (const l of POWER_PICK_LEVELS) grantLevels.add(l);
+  for (const l of Object.keys(SLOT_GRANTS)) grantLevels.add(Number(l));
+  const sorted = [...grantLevels].sort((a, b) => a - b);
+  return sorted.find((l) => l > currentLevel) ?? MAX_LEVEL;
+}
+
 // ============================================
 // ENHANCEMENT AVAILABILITY
 // ============================================

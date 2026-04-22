@@ -14,7 +14,7 @@ export const BuildUp: Power = {
   "available": 9,
   "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.Recharge: Long.",
   "shortHelp": "Self +DMG, +To Hit",
-  "icon": "earthmanip_buildup",
+  "icon": "earthmanip_buildup.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

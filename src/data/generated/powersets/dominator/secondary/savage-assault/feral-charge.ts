@@ -14,7 +14,7 @@ export const FeralCharge: Power = {
   "available": 29,
   "description": "You throw yourself at your target while slashing and tearing wildly dealing moderate lethal damage and causing it to suffer from additional minor lethal damage over time. The damage of this power can increase based on how far away you charge from, with up to double damage dealt at its strongest. Feral Charge builds 1 stacks of Blood Frenzy for every 20 ft in between your target and you, up to 3 stacks.Damage: Light.Recharge: Moderate.",
   "shortHelp": "Melee, DMG(Lethal), Foe DoT (Lethal), +3 Blood Frenzy, Self Teleport",
-  "icon": "savagemelee_feralcharge",
+  "icon": "savagemelee_feralcharge.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

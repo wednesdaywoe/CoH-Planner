@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { SecondWind as SecondWind } from './dull-pain';
-import { FastHealing as FastHealing } from './fast-healing';
 import { Hide as Hide } from './hide';
+import { Reconstruction as Reconstruction } from './reconstruction';
+import { FastHealing as FastHealing } from './fast-healing';
+import { AilmentResistance as AilmentResistance } from './revive';
+import { Integration as Integration } from './integration';
+import { Resilience as Resilience } from './resilience';
 import { InstantHealing as InstantHealing } from './instant-healing';
 import { ReactiveRegeneration as ReactiveRegeneration } from './instant-regeneration';
-import { Integration as Integration } from './integration';
+import { SecondWind as SecondWind } from './dull-pain';
 import { MomentofGlory as MomentofGlory } from './moment-of-glory';
-import { Reconstruction as Reconstruction } from './reconstruction';
-import { Resilience as Resilience } from './resilience';
-import { AilmentResistance as AilmentResistance } from './revive';
 
 export const powerset: Powerset = {
   id: 'stalker/regeneration',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    SecondWind,
-    FastHealing,
     Hide,
+    Reconstruction,
+    FastHealing,
+    AilmentResistance,
+    Integration,
+    Resilience,
     InstantHealing,
     ReactiveRegeneration,
-    Integration,
+    SecondWind,
     MomentofGlory,
-    Reconstruction,
-    Resilience,
-    AilmentResistance,
   ],
 };
 

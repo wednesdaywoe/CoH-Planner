@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { DampeningField as DampeningField } from './dampening-field';
-import { Energize as Energize } from './efficiency';
-import { EnergyCloak as EnergyCloak } from './energy-cloak';
-import { EnergyDrain as EnergyDrain } from './energy-drain';
-import { EnergyProtection as EnergyProtection } from './energy-protection';
-import { EntropicAura as EntropicAura } from './entropy-shield';
 import { KineticShield as KineticShield } from './kinetic-shield';
-import { Overload as Overload } from './overload';
 import { PowerShield as PowerShield } from './power-shield';
+import { EntropicAura as EntropicAura } from './entropy-shield';
+import { EnergyProtection as EnergyProtection } from './energy-protection';
+import { EnergyCloak as EnergyCloak } from './energy-cloak';
+import { Energize as Energize } from './efficiency';
+import { EnergyDrain as EnergyDrain } from './energy-drain';
+import { Overload as Overload } from './overload';
 
 export const powerset: Powerset = {
   id: 'scrapper/energy-aura',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     DampeningField,
-    Energize,
-    EnergyCloak,
-    EnergyDrain,
-    EnergyProtection,
-    EntropicAura,
     KineticShield,
-    Overload,
     PowerShield,
+    EntropicAura,
+    EnergyProtection,
+    EnergyCloak,
+    Energize,
+    EnergyDrain,
+    Overload,
   ],
 };
 

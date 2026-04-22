@@ -14,7 +14,7 @@ export const DevourPsyche: Power = {
   "available": 15,
   "description": "You Devour the Psyche of foes in front of you, weakening their Hit Point Regeneration and Endurance Recovery and boosting your own. Hitting any foe with this power will refresh all existing stacks you currently have.Notes: This power has adaptive recharge. It has a base recharge of 5 seconds and each affected foe will increase the recharge by 5.5 seconds for a maximum total of 60 seconds.",
   "shortHelp": "Cone Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery",
-  "icon": "psionicarmor_devourpsyche",
+  "icon": "psionicarmor_devourpsyche.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",

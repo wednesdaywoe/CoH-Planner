@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Barrage as Barrage } from './barrage';
+import { EnergyPunch as EnergyPunch } from './energy-punch';
 import { BoneSmasher as BoneSmasher } from './bone-smasher';
 import { BuildUp as BuildUp } from './build-up';
-import { Confront as Confront } from './confront';
-import { EnergyPunch as EnergyPunch } from './energy-punch';
-import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
 import { PowerCrash as PowerCrash } from './power-crash';
-import { TotalFocus as TotalFocus } from './total-focus';
+import { Confront as Confront } from './confront';
 import { WhirlingHands as WhirlingHands } from './whirling-hands';
+import { TotalFocus as TotalFocus } from './total-focus';
+import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
 
 export const powerset: Powerset = {
   id: 'scrapper/energy-melee',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Barrage,
+    EnergyPunch,
     BoneSmasher,
     BuildUp,
-    Confront,
-    EnergyPunch,
-    EnergyTransfer,
     PowerCrash,
-    TotalFocus,
+    Confront,
     WhirlingHands,
+    TotalFocus,
+    EnergyTransfer,
   ],
 };
 

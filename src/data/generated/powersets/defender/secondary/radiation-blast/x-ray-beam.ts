@@ -14,7 +14,7 @@ export const XRayBeam: Power = {
   "available": 0,
   "description": "You can emit a beam of X-Ray energy from your eyes, dealing moderate Energy damage. This attack can bypass some defenses and can reduce the target's Defense.",
   "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
-  "icon": "radiationburst_xraybeam",
+  "icon": "radiationburst_xraybeam.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

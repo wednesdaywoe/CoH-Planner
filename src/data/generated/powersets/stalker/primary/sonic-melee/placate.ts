@@ -14,7 +14,7 @@ export const Placate: Power = {
   "available": 11,
   "description": "Allows you to trick a foe to no longer attack you. A Successful Placate will also Hide you. This Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit or an Assassins Blow. However, if you attack a Placated Foe, he will be able to attack you back.",
   "shortHelp": "Ranged, Foe Placate, Self Stealth/Hide",
-  "icon": "sonicmanipulation_placate",
+  "icon": "sonicmanipulation_placate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",

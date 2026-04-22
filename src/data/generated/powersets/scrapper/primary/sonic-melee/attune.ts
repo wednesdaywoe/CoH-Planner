@@ -14,7 +14,7 @@ export const Attune: Power = {
   "available": 1,
   "description": "A high-intensity sound wave that matches the resonant frequency of your target. This power inflicts continuous damage over time as well as making the target vulnerable to additional effects from all your attacks.",
   "shortHelp": "Melee Toggle, DMG(Energy), Foe DOT(Energy), Special",
-  "icon": "sonicmanipulation_dot",
+  "icon": "sonicmanipulation_dot.png",
   "powerType": "Toggle",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

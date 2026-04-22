@@ -14,7 +14,7 @@ export const ExplosiveBouquet: Power = {
   "available": 21,
   "description": "You create an explosion of light and sound in a flower formation. Foes inside the blast radius will be Held and Blasted Off into the air.Notes: This power has adaptive recharge. It has a base recharge of 8 seconds and each affected foe will increase the recharge by 14.5 seconds for a maximum total of 240 seconds.",
   "shortHelp": "Ranged (AoE), Foe Hold, Blast Off",
-  "icon": "pyrotechnic_explosivebouquet",
+  "icon": "pyrotechnic_explosivebouquet.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",

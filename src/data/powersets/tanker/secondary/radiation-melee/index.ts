@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { AtomSmasher as AtomSmasher } from './atom-smasher';
 import { ContaminatedStrike as ContaminatedStrike } from './contaminated-strike';
-import { DevastatingBlow as DevastatingBlow } from './devastating-blow';
+import { RadioactiveSmash as RadioactiveSmash } from './radioactive-smash';
+import { ProtonSweep as ProtonSweep } from './proton-sweep';
+import { Taunt as Taunt } from './taunt';
+import { RadiationSiphon as RadiationSiphon } from './radiation-siphon';
 import { Fusion as Fusion } from './fusion';
 import { IrradiatedGround as IrradiatedGround } from './irradiated-ground';
-import { ProtonSweep as ProtonSweep } from './proton-sweep';
-import { RadiationSiphon as RadiationSiphon } from './radiation-siphon';
-import { RadioactiveSmash as RadioactiveSmash } from './radioactive-smash';
-import { Taunt as Taunt } from './taunt';
+import { DevastatingBlow as DevastatingBlow } from './devastating-blow';
+import { AtomSmasher as AtomSmasher } from './atom-smasher';
 
 export const powerset: Powerset = {
   id: 'tanker/radiation-melee',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    AtomSmasher,
     ContaminatedStrike,
-    DevastatingBlow,
+    RadioactiveSmash,
+    ProtonSweep,
+    Taunt,
+    RadiationSiphon,
     Fusion,
     IrradiatedGround,
-    ProtonSweep,
-    RadiationSiphon,
-    RadioactiveSmash,
-    Taunt,
+    DevastatingBlow,
+    AtomSmasher,
   ],
 };
 

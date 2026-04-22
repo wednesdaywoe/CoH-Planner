@@ -14,7 +14,7 @@ export const EnergyFlight: Power = {
   "available": 0,
   "description": "Energy Flight allows you to travel large distances quickly. Energy Flight also increases your maximum flying speed by 50% and gives you access to the Quantum Acceleration power whilst it is active.If you attack a target while this power is on, your flight speed will be temporarily reduced to Hover speed.Energy Flight can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
   "shortHelp": "Toggle: Self Fly",
-  "icon": "luminousaura_energyflight",
+  "icon": "luminousaura_energyflight.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",

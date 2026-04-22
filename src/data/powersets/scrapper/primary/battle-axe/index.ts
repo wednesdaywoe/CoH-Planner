@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Beheader as Beheader } from './beheader';
-import { BuildUp as BuildUp } from './build-up';
 import { Chop as Chop } from './chop';
-import { Cleave as Cleave } from './cleave';
-import { Confront as Confront } from './confront';
 import { Gash as Gash } from './gash';
+import { BuildUp as BuildUp } from './build-up';
 import { Pendulum as Pendulum } from './pendulum';
+import { Confront as Confront } from './confront';
 import { Swoop as Swoop } from './swoop';
 import { AxeCyclone as AxeCyclone } from './whirling-axe';
+import { Cleave as Cleave } from './cleave';
 
 export const powerset: Powerset = {
   id: 'scrapper/battle-axe',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Beheader,
-    BuildUp,
     Chop,
-    Cleave,
-    Confront,
     Gash,
+    BuildUp,
     Pendulum,
+    Confront,
     Swoop,
     AxeCyclone,
+    Cleave,
   ],
 };
 

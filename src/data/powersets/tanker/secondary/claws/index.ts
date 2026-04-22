@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Eviscerate as Eviscerate } from './eviscerate';
-import { Focus as Focus } from './focus';
-import { FollowUp as FollowUp } from './follow-up';
-import { Shockwave as Shockwave } from './shockwave';
-import { Slash as Slash } from './slash';
-import { Spin as Spin } from './spin';
 import { Strike as Strike } from './strike';
 import { Swipe as Swipe } from './swipe';
+import { Slash as Slash } from './slash';
 import { Taunt as Taunt } from './taunt';
+import { Spin as Spin } from './spin';
+import { FollowUp as FollowUp } from './follow-up';
+import { Focus as Focus } from './focus';
+import { Eviscerate as Eviscerate } from './eviscerate';
+import { Shockwave as Shockwave } from './shockwave';
 
 export const powerset: Powerset = {
   id: 'tanker/claws',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    Eviscerate,
-    Focus,
-    FollowUp,
-    Shockwave,
-    Slash,
-    Spin,
     Strike,
     Swipe,
+    Slash,
     Taunt,
+    Spin,
+    FollowUp,
+    Focus,
+    Eviscerate,
+    Shockwave,
   ],
 };
 

@@ -14,7 +14,7 @@ export const BlazingBlast: Power = {
   "available": 17,
   "description": "An extremely quick long range beam of fire that blasts your foes and pushes them away.",
   "shortHelp": "Ranged, DMG(Fire), DoT(Fire), Foe Knockback, Repel",
-  "icon": "fireblast_heavy",
+  "icon": "fireblast_heavy.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

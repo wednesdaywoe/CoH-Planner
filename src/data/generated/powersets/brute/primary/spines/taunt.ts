@@ -14,7 +14,7 @@ export const Taunt: Power = {
   "available": 11,
   "description": "Taunt foes to attack you. Useful to pull enemies off allies and keep them attacking you to raise your Fury. A To Hit check is required to Taunt enemy players, but is not needed against critter targets.",
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
-  "icon": "spines_taunt",
+  "icon": "spines_taunt.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",

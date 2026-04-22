@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { IceBolt as IceBolt } from './ice-bolt';
+import { FrostBreath as FrostBreath } from './frost-breath';
+import { ChillingRay as ChillingRay } from './chilling-ray';
 import { Aim as Aim } from './aim';
-import { BitterFreezeRay as BitterFreezeRay } from './bitter-freeze-ray';
+import { IceStorm as IceStorm } from './ice-storm';
 import { BitterIceBlast as BitterIceBlast } from './bitter-ice-blast';
 import { IceBlast as IceBlast } from './ice-blast';
+import { BitterFreezeRay as BitterFreezeRay } from './bitter-freeze-ray';
 import { Blizzard as Blizzard } from './blizzard';
-import { ChillingRay as ChillingRay } from './chilling-ray';
-import { FrostBreath as FrostBreath } from './frost-breath';
-import { IceBolt as IceBolt } from './ice-bolt';
-import { IceStorm as IceStorm } from './ice-storm';
 
 export const powerset: Powerset = {
   id: 'sentinel/ice-blast',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
+    IceBolt,
+    FrostBreath,
+    ChillingRay,
     Aim,
-    BitterFreezeRay,
+    IceStorm,
     BitterIceBlast,
     IceBlast,
+    BitterFreezeRay,
     Blizzard,
-    ChillingRay,
-    FrostBreath,
-    IceBolt,
-    IceStorm,
   ],
 };
 

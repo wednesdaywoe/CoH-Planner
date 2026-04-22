@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
+import { HealOther as HealOther } from './heal-other';
+import { HealingAura as HealingAura } from './siphon-energy';
 import { AbsorbPain as AbsorbPain } from './absorb-pain';
-import { AdrenalinBoost as AdrenalinBoost } from './adrenalin-boost';
+import { Resurrect as Resurrect } from './resurrect';
 import { ClearMind as ClearMind } from './clear-mind';
 import { Fortitude as Fortitude } from './fortitude';
-import { HealOther as HealOther } from './heal-other';
 import { RecoveryAura as RecoveryAura } from './recovery-aura';
 import { RegenerationAura as RegenerationAura } from './regeneration-aura';
-import { Resurrect as Resurrect } from './resurrect';
-import { HealingAura as HealingAura } from './siphon-energy';
+import { AdrenalinBoost as AdrenalinBoost } from './adrenalin-boost';
 
 export const powerset: Powerset = {
   id: 'mastermind/empathy',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
+    HealOther,
+    HealingAura,
     AbsorbPain,
-    AdrenalinBoost,
+    Resurrect,
     ClearMind,
     Fortitude,
-    HealOther,
     RecoveryAura,
     RegenerationAura,
-    Resurrect,
-    HealingAura,
+    AdrenalinBoost,
   ],
 };
 

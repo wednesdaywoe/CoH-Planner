@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { AlphaBarrier as AlphaBarrier } from './alpha-barrier';
-import { FalloutShelter as FalloutShelter } from './fallout-shelter';
-import { GammaBoost as GammaBoost } from './gamma-boost';
-import { GroundZero as GroundZero } from './ground-zero';
 import { Hide as Hide } from './hide';
-import { Meltdown as Meltdown } from './meltdown';
-import { ParticleShielding as ParticleShielding } from './particle-shielding';
+import { GammaBoost as GammaBoost } from './gamma-boost';
 import { ProtonArmor as ProtonArmor } from './proton-armor';
+import { FalloutShelter as FalloutShelter } from './fallout-shelter';
 import { RadiationTherapy as RadiationTherapy } from './radiation-therapy';
+import { ParticleShielding as ParticleShielding } from './particle-shielding';
+import { GroundZero as GroundZero } from './ground-zero';
+import { Meltdown as Meltdown } from './meltdown';
 
 export const powerset: Powerset = {
   id: 'stalker/radiation-armor',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     AlphaBarrier,
-    FalloutShelter,
-    GammaBoost,
-    GroundZero,
     Hide,
-    Meltdown,
-    ParticleShielding,
+    GammaBoost,
     ProtonArmor,
+    FalloutShelter,
     RadiationTherapy,
+    ParticleShielding,
+    GroundZero,
+    Meltdown,
   ],
 };
 

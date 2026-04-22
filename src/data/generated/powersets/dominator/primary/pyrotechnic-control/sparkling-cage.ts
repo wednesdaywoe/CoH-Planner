@@ -14,7 +14,7 @@ export const SparklingCage: Power = {
   "available": 0,
   "description": "Immobilizes your target in a ring of pyrotechnic energy, dealing Fire and Energy damage over time. More resilient foes may require multiple Sparkling Cages to Immobilize.This power has a chance of Blasting Off targets into the air.",
   "shortHelp": "Ranged, Moderate DoT(Fire, Energy), Foe Immobilize,Chance for Blast Off",
-  "icon": "pyrotechnic_sparklingcage",
+  "icon": "pyrotechnic_sparklingcage.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",

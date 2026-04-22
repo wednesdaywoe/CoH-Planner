@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { Beanbag as Beanbag } from './beanbag';
-import { Buckshot as Buckshot } from './buckshot';
 import { Burst as Burst } from './burst';
-import { Flamethrower as Flamethrower } from './flamethrower';
-import { FullAuto as FullAuto } from './full-auto';
-import { Ignite as Ignite } from './ignite';
-import { M30Grenade as M30Grenade } from './m30-grenade';
-import { SniperRifle as SniperRifle } from './sniper-rifle';
 import { Slug as Slug } from './tranquilizer-dart';
+import { Buckshot as Buckshot } from './buckshot';
+import { M30Grenade as M30Grenade } from './m30-grenade';
+import { Beanbag as Beanbag } from './beanbag';
+import { SniperRifle as SniperRifle } from './sniper-rifle';
+import { Flamethrower as Flamethrower } from './flamethrower';
+import { Ignite as Ignite } from './ignite';
+import { FullAuto as FullAuto } from './full-auto';
 
 export const powerset: Powerset = {
   id: 'blaster/assault-rifle',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'primary',
   powers: [
-    Beanbag,
-    Buckshot,
     Burst,
-    Flamethrower,
-    FullAuto,
-    Ignite,
-    M30Grenade,
-    SniperRifle,
     Slug,
+    Buckshot,
+    M30Grenade,
+    Beanbag,
+    SniperRifle,
+    Flamethrower,
+    Ignite,
+    FullAuto,
   ],
 };
 

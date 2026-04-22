@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { Aim as Aim } from './frt-aim';
-import { Dominate as Dominate } from './frt-dominate';
 import { MentalBlast as MentalBlast } from './frt-mental-blast';
-import { PsionicTornado as PsionicTornado } from './frt-psionic-lance';
-import { PsychicScream as PsychicScream } from './frt-psychic-scream';
-import { PsychicWail as PsychicWail } from './frt-psychic-wail';
-import { ScrambleThoughts as ScrambleThoughts } from './frt-scramble-thoughts';
-import { Subdue as Subdue } from './frt-subdue';
 import { TelekineticBlast as TelekineticBlast } from './frt-telekinetic-blast';
+import { Subdue as Subdue } from './frt-subdue';
+import { Aim as Aim } from './frt-aim';
+import { PsychicScream as PsychicScream } from './frt-psychic-scream';
+import { Dominate as Dominate } from './frt-dominate';
+import { PsionicTornado as PsionicTornado } from './frt-psionic-lance';
+import { ScrambleThoughts as ScrambleThoughts } from './frt-scramble-thoughts';
 import { TotalDomination as TotalDomination } from './frt-total-domination';
+import { PsychicWail as PsychicWail } from './frt-psychic-wail';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/fortunata-training',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'arachnos-widow',
   category: 'epic',
   powers: [
-    Aim,
-    Dominate,
     MentalBlast,
-    PsionicTornado,
-    PsychicScream,
-    PsychicWail,
-    ScrambleThoughts,
-    Subdue,
     TelekineticBlast,
+    Subdue,
+    Aim,
+    PsychicScream,
+    Dominate,
+    PsionicTornado,
+    ScrambleThoughts,
     TotalDomination,
+    PsychicWail,
   ],
 };
 

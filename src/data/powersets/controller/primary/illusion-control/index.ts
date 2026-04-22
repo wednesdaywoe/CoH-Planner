@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Blind as Blind } from './blind';
+import { SpectralWounds as SpectralWounds } from './spectral-wounds';
 import { Deceive as Deceive } from './deceive';
-import { PhantomArmy as PhantomArmy } from './decoy';
 import { Flash as Flash } from './flash';
 import { GroupInvisibility as GroupInvisibility } from './group-invisibility';
 import { SuperiorInvisibility as SuperiorInvisibility } from './invisibility';
-import { Phantasm as Phantasm } from './phantasm';
+import { PhantomArmy as PhantomArmy } from './decoy';
 import { SpectralTerror as SpectralTerror } from './spectral-terror';
-import { SpectralWounds as SpectralWounds } from './spectral-wounds';
+import { Phantasm as Phantasm } from './phantasm';
 
 export const powerset: Powerset = {
   id: 'controller/illusion-control',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Blind,
+    SpectralWounds,
     Deceive,
-    PhantomArmy,
     Flash,
     GroupInvisibility,
     SuperiorInvisibility,
-    Phantasm,
+    PhantomArmy,
     SpectralTerror,
-    SpectralWounds,
+    Phantasm,
   ],
 };
 

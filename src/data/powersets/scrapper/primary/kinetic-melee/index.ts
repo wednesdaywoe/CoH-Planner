@@ -10,13 +10,13 @@
 import type { Powerset } from '@/types';
 
 import { BodyBlow as BodyBlow } from './body-blow';
-import { Burst as Burst } from './burst';
-import { Confront as Confront } from './confront';
-import { FocusedBurst as FocusedBurst } from './focused-burst';
-import { PowerSiphon as PowerSiphon } from './power-siphon';
 import { QuickStrike as QuickStrike } from './quick-strike';
-import { RepulsingTorrent as RepulsingTorrent } from './repulsing-torrent';
 import { SmashingBlow as SmashingBlow } from './smashing-blow';
+import { PowerSiphon as PowerSiphon } from './power-siphon';
+import { RepulsingTorrent as RepulsingTorrent } from './repulsing-torrent';
+import { Confront as Confront } from './confront';
+import { Burst as Burst } from './burst';
+import { FocusedBurst as FocusedBurst } from './focused-burst';
 import { ConcentratedStrike as ConcentratedStrike } from './total-focus';
 
 export const powerset: Powerset = {
@@ -28,13 +28,13 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     BodyBlow,
-    Burst,
-    Confront,
-    FocusedBurst,
-    PowerSiphon,
     QuickStrike,
-    RepulsingTorrent,
     SmashingBlow,
+    PowerSiphon,
+    RepulsingTorrent,
+    Confront,
+    Burst,
+    FocusedBurst,
     ConcentratedStrike,
   ],
 };

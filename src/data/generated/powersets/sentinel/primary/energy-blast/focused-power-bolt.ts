@@ -14,7 +14,7 @@ export const FocusedPowerBolt: Power = {
   "available": 21,
   "description": "A focused and very accurate blast that deals tremendous damage.",
   "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
-  "icon": "powerblast_heavy",
+  "icon": "powerblast_heavy.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
