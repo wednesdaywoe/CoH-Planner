@@ -148,6 +148,20 @@ def power_to_dict(pw, msgs=None) -> dict:
             }
             if t.params:
                 tmpl_dict['params'] = t.params
+            # Cancel/suppress events from the AttribMod tail. Only emit when
+            # non-empty to keep the JSON small (most templates have neither).
+            if t.cancel_events:
+                tmpl_dict['cancel_events'] = t.cancel_events
+            if t.suppress_events:
+                tmpl_dict['suppress_events'] = t.suppress_events
+            # Raw values from the AttribMod tail. Bit meanings of `flags_raw`
+            # not yet decoded but the bitmask is consistent enough that
+            # downstream code can pattern-match (0x420 = IgnoreResistance,
+            # 0x430 = IgnoreStrength + IgnoreResistance, etc.).
+            if t.flags_raw:
+                tmpl_dict['flags_raw'] = t.flags_raw
+            if t.boost_mod_allowed_id:
+                tmpl_dict['boost_mod_allowed_id'] = t.boost_mod_allowed_id
             out['templates'].append(tmpl_dict)
         children = getattr(eg, 'child_groups', None) or []
         if children:

@@ -86,7 +86,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_JackFrost",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

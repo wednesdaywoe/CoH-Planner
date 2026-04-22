@@ -16,12 +16,13 @@ export const LifeDrain: Power = {
   "shortHelp": "Ranged, DMG(Negative), Target -To Hit, Self +HP",
   "icon": "necromancy_lifedrain.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "recharge": 8,
-    "endurance": 8.53,
+    "endurance": 8.528,
     "castTime": 1.93
   },
   "allowedEnhancements": [
@@ -49,9 +50,21 @@ export const LifeDrain: Power = {
       "table": "Ranged_Damage"
     },
     {
+      "type": "Negative",
+      "scale": 2.071,
+      "table": "Ranged_PvPDamage"
+    },
+    {
       "type": "Heal",
       "scale": 1,
       "table": "Ranged_HealSelf"
     }
-  ]
+  ],
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Enslaved_Specter3",
+      "duration": 30
+    }
+  }
 };

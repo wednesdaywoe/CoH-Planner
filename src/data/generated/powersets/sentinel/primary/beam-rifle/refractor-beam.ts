@@ -14,8 +14,9 @@ export const RefractorBeam: Power = {
   "available": 17,
   "description": "You carefully calibrate your rifle and shoot a refractor beam that will split up on impact, dealing moderate energy damage and reducing the defense of your target and 9 nearby foes. The beam has a high chance to split again off the secondary targets, hitting up to 10 foes. If the target is also suffering from the Disintegrating effect it will suffer additional damage over time.",
   "shortHelp": "Chain, DMG(Energy), Special",
-  "icon": "beamrifle_refractorbeam.png",
+  "icon": "beamrifle_refractorbeam",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.05,
@@ -50,8 +51,44 @@ export const RefractorBeam: Power = {
     },
     {
       "type": "Energy",
+      "scale": 0.9,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
       "scale": 0.099,
       "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 1.5
+    },
+    {
+      "type": "Energy",
+      "scale": 0.099,
+      "table": "Ranged_InherentDamage",
+      "duration": 3.1,
+      "tickRate": 1.5
+    },
+    {
+      "type": "Energy",
+      "scale": 0.68,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.68,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.075,
+      "table": "Ranged_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 1.5
+    },
+    {
+      "type": "Energy",
+      "scale": 0.075,
+      "table": "Ranged_PvPDamage",
       "duration": 3.1,
       "tickRate": 1.5
     }

@@ -84,13 +84,14 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
+            "entity_def": "P3955584513",
             "redirects": [
               "Pets.Sleet_Epic.Sleet",
               "Pets.Sleet_Epic.Avoid"
             ],
-            "priority_list": "P3955584513"
-          }
+            "priority_list": "Sleet"
+          },
+          "flags_raw": 112
         }
       ]
     }

@@ -104,7 +104,8 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         }
       ]
     }

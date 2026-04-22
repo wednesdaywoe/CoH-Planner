@@ -84,7 +84,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -146,7 +147,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -171,7 +173,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -202,7 +205,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -240,7 +244,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -265,7 +270,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         }
       ]
     },
@@ -303,7 +309,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -341,7 +348,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectInteract",
+              "event_id": 33,
+              "duration": 10.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 1280
         }
       ]
     },
@@ -385,7 +401,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

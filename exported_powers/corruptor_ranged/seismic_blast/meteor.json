@@ -92,7 +92,8 @@
               "Redirects.Seismic_Blast.Meteor"
             ],
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     }

@@ -16,6 +16,7 @@ export const BitterIceBlast: Power = {
   "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD, -To Hit",
   "icon": "iceblast_bitterfrostblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -42,9 +43,16 @@ export const BitterIceBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.6292,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

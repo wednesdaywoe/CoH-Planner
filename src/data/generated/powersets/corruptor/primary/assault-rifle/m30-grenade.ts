@@ -16,6 +16,7 @@ export const M30Grenade: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Lethal/Fire), Knockback",
   "icon": "assaultweapons_arm30grenade.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.05,
@@ -51,11 +52,41 @@ export const M30Grenade: Power = {
       "type": "Lethal",
       "scale": 0.45,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.9,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.2243,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.4486,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.6797,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.1045,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.1045,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 4,
       "table": "Ranged_Knockback"
     }
   }

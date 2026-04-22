@@ -34,9 +34,7 @@
     "EnduranceDiscount",
     "Recharge"
   ],
-  "allowed_boostset_cats": [
-    "lumnEndgame.NictusFX"
-  ],
+  "allowed_boostset_cats": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility && Pool.Invisibility.Stealth Pool.Invisibility.Invisibility && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Invisibility && ||",
@@ -78,7 +76,21 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -103,7 +115,21 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -128,7 +154,33 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "HitByFoe",
+              "event_id": 17,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -153,7 +205,16 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 2080
         },
         {
           "attribs": [
@@ -178,7 +239,16 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 2080
         },
         {
           "attribs": [
@@ -203,7 +273,16 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 2080
         },
         {
           "attribs": [
@@ -228,7 +307,16 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -259,7 +347,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.NoPhase"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

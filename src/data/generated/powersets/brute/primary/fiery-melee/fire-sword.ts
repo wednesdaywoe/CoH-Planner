@@ -16,6 +16,7 @@ export const FireSword: Power = {
   "shortHelp": "Melee, DMG(Fire), -Defense",
   "icon": "fieryfray_firesword.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -53,6 +54,11 @@ export const FireSword: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.571,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Fire",

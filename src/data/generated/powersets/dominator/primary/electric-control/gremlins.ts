@@ -35,17 +35,26 @@ export const Gremlins: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Endurance Modification",
+    "Knockback",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Gremlin",
-      "copyBoosts": true,
-      "entityCount": 2
+      "duration": 99999,
+      "entities": [
+        {
+          "entity": "P3273083397",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Gremlin",
+          "count": 1
+        }
+      ]
     }
   }
 };

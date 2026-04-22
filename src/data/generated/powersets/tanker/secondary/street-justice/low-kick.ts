@@ -34,6 +34,15 @@ export const ShinBreaker: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Melee Damage",
+    "Slow Movement",
+    "Tanker Archetype Sets",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -16,6 +16,7 @@ export const PowerPush: Power = {
   "shortHelp": "Ranged DMG(Energy/Smash), Foe High Knockback",
   "icon": "powerblast_powerpush.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,11 +50,41 @@ export const PowerPush: Power = {
       "type": "Energy",
       "scale": 1.312,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.328,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.312,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.298,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.192,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.298,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.192,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 8,
+      "scale": 16,
       "table": "Ranged_Knockback"
     }
   }

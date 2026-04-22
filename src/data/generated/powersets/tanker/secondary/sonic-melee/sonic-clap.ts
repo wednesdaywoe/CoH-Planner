@@ -14,14 +14,15 @@ export const SonicClap: Power = {
   "available": 15,
   "description": "You generate a powerful sonic wave that damages foes in front of you with a decent chance to stun and knock them down. This power will inflict 10% bonus damage against Attuned targets.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Melee (Cone), Foe Disorient, Knockdown",
-  "icon": "sonicmanipulation_sonicclap.png",
+  "icon": "sonicmanipulation_sonicclap",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 22.5,
     "radius": 22.5,
-    "arc": 3.1416,
+    "arc": 3.1415927410125732,
     "recharge": 8,
     "endurance": 8.528,
     "castTime": 1.23,
@@ -55,17 +56,27 @@ export const SonicClap: Power = {
       "type": "Energy",
       "scale": 0.3919,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.3779,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3779,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.65,
+      "scale": 1.3,
       "table": "Melee_Ones"
     },
     "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Fear"
+      "mag": 3,
+      "scale": 1,
+      "table": "Melee_PvPMez"
     }
   }
 };

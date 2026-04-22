@@ -12,7 +12,7 @@ export const RadiantAura: Power = {
   "name": "Radiant Aura",
   "internalName": "Radiant_Aura",
   "available": 0,
-  "description": "You can use Radiant Aura to heal some of your wounds, and the wounds of your group. This power has a small radius, so your allies need to be near you if they wish to be affected.Recharge: Moderate.",
+  "description": "You can use Radiant Aura to heal some of your wounds, and the wounds of your group. This power has a small radius, so your allies need to be near you if they wish to be affected.",
   "shortHelp": "PBAoE, Ally +Heal",
   "icon": "radiationpoisoning_radiationemission.png",
   "powerType": "Click",
@@ -22,7 +22,7 @@ export const RadiantAura: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 8,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 2.03,
     "maxTargets": 255
   },

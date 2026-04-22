@@ -16,6 +16,7 @@ export const SporeBurst: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Deep Sleep",
   "icon": "plantcontrol_sporeburst.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -40,9 +41,9 @@ export const SporeBurst: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Sleep"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

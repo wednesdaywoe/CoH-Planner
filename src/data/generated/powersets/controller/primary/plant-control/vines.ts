@@ -16,6 +16,7 @@ export const Vines: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Hold, -DMG, -DoT(Toxic)",
   "icon": "plantcontrol_vines.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 0.8,
@@ -35,22 +36,21 @@ export const Vines: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Holds",
-    "Ranged AoE Damage",
+    "Ranged Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
-      "displayName": "Vines",
+      "isPseudoPet": false,
+      "entity": "Vines",
       "powers": [
         "Villain_Pets.Vines.Self_Destruct",
         "Pets.ResistAll.ResistAll",
         "Villain_Pets.Vines.Vines_Pulse",
         "Villain_Pets.Vines.Vines_Debuff",
         "Villain_Pets.Vines.Vines_OneShot"
-      ],
-      "copyBoosts": true
+      ]
     }
   }
 };

@@ -16,6 +16,7 @@ export const Shriek: Power = {
   "shortHelp": "Ranged, DMG(Smashing/Energy), Foe -Resist",
   "icon": "sonicblast_quick.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -47,6 +48,11 @@ export const Shriek: Power = {
       "type": "Energy",
       "scale": 0.42,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.22,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

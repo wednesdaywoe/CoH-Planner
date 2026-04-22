@@ -16,6 +16,7 @@ export const EnergyTransfer: Power = {
   "shortHelp": "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
   "icon": "powerpunch_energytransfer.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -51,6 +52,46 @@ export const EnergyTransfer: Power = {
       "type": "Energy",
       "scale": 1.2768,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Heal",
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2768,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Special",
+      "scale": -1,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Energy",
+      "scale": 4.055,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Heal",
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1354,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Heal",
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1354,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Special",

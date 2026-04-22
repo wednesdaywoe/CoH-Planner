@@ -16,6 +16,7 @@ export const BlockofIce: Power = {
   "shortHelp": "Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge",
   "icon": "iceformation_blockofice.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -41,16 +42,23 @@ export const BlockofIce: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.0291,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "mezResistance": {
       "knockup": {

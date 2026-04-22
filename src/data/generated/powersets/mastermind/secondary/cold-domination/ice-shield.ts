@@ -23,7 +23,7 @@ export const IceShield: Power = {
     "range": 80,
     "radius": 30,
     "recharge": 2,
-    "endurance": 9.75,
+    "endurance": 7.8,
     "castTime": 1.17,
     "maxTargets": 255
   },

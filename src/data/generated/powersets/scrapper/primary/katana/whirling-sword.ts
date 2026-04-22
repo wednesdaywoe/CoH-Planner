@@ -56,6 +56,16 @@ export const TheLotusDrops: Power = {
     },
     {
       "type": "Lethal",
+      "scale": 1.2805,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.2805,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
       "scale": 1,
       "table": "Melee_InherentDamage"
     },

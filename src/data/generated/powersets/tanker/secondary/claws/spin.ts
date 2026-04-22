@@ -40,9 +40,16 @@ export const Spin: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.89,
-    "table": "Melee_Damage"
-  }
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.89,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.3139,
+      "table": "Melee_PvPDamage"
+    }
+  ]
 };

@@ -14,14 +14,15 @@ export const DreadfulDiscord: Power = {
   "available": 7,
   "description": "Dreadful Discord is a terrifying song that will leave your audience shaking in fear.",
   "shortHelp": "Ranged (Cone), DMG(Psionic), Foe Fear",
-  "icon": "symphonycontrol_fearaoe.png",
+  "icon": "symphonycontrol_fearaoe",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 70,
     "radius": 70,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 40,
     "endurance": 8.528,
     "castTime": 2.17,
@@ -42,16 +43,23 @@ export const DreadfulDiscord: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.5,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.7437,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "fear": {
       "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Fear"
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

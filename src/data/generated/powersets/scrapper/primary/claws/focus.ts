@@ -16,6 +16,7 @@ export const Focus: Power = {
   "shortHelp": "Ranged, DMG(Lethal), Knockback",
   "icon": "claws_focus.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -47,6 +48,16 @@ export const Focus: Power = {
     },
     {
       "type": "Lethal",
+      "scale": 1.1799,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.1799,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
       "scale": 1.39,
       "table": "Melee_InherentDamage"
     },
@@ -58,7 +69,7 @@ export const Focus: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

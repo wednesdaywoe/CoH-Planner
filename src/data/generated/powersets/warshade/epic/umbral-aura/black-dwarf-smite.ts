@@ -16,6 +16,7 @@ export const BlackDwarfSmite: Power = {
   "shortHelp": "Melee, Light DMG(Negative/Smash), Foe -Recharge, -SPD, -Fly, Disorient",
   "icon": "umbralaura_blackdwarfsmite.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -52,6 +53,16 @@ export const BlackDwarfSmite: Power = {
       "type": "Negative",
       "scale": 1,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.507,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.521,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
@@ -61,7 +72,7 @@ export const BlackDwarfSmite: Power = {
       "table": "Melee_Immobilize"
     },
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "taunt": {
@@ -69,5 +80,5 @@ export const BlackDwarfSmite: Power = {
       "table": "Melee_InherentTaunt"
     }
   },
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf && !Inherent.Inherent.Black_Dwarf_Smite"
+  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Smite ! &&"
 };

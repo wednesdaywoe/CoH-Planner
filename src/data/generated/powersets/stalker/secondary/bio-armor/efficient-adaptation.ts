@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EfficientAdaptation: Power = {
   "name": "Efficient Adaptation",
   "internalName": "Efficient_Adaptation",
-  "available": -1,
+  "available": 4294967295,
   "description": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to become evenly distributed along your body. While active Hardened Carapace grants a minor Endurance Discount, Boundless Energy grants additional regeneration and recovery, Ablative Carapace grants a bonus to regeneration and both DNA Siphon and Parasitic Aura grant increased regeneration and recovery and Genetic Corruption grants a minor regeneration buff. Efficient Adaptation costs no endurance.Recharge: Fast.",
   "shortHelp": "Toggle: Bio Armor Efficient Mode",
   "icon": "bioorganicarmor_efficientadaptation.png",
@@ -26,6 +26,5 @@ export const EfficientAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation",
-  "mechanicType": "childToggle"
+  "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation"
 };

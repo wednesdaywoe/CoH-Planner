@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RockArmor: Power = {
   "name": "Rock Armor",
   "internalName": "Stone_Armor",
-  "available": 0,
+  "available": 23,
   "description": "Your skin becomes stone while this power is active. Rock Armor protects you from Smashing and Lethal attacks. They are less likely to land and affect you. Stone Armor also grants you resistance to Defense DeBuffs.Recharge: Fast.",
   "shortHelp": "Toggle: Self +DEF(Lethal, Smashing), Res(DeBuff DEF)",
   "icon": "stonearmor_stonearmor.png",

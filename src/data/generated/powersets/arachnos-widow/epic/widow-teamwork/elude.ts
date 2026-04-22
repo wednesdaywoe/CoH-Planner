@@ -32,6 +32,10 @@ export const Elude: Power = {
     "Recharge",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Endurance Modification"
+  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

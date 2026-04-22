@@ -16,6 +16,7 @@ export const HurlBoulder: Power = {
   "shortHelp": "Ranged, High DMG(Smash), Foe Knockback, -Fly",
   "icon": "earthassault_hurlboulder.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,14 +39,21 @@ export const HurlBoulder: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.9301,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 3,
+      "scale": 6,
       "table": "Ranged_Knockback"
     }
   }

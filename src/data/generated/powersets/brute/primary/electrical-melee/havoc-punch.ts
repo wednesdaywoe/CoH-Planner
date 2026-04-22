@@ -16,6 +16,7 @@ export const HavocPunch: Power = {
   "shortHelp": "Melee, DMG(Smash/Energy), Foe Sleep, -End",
   "icon": "electricmelee_targetedmoderatedmg.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -52,28 +53,38 @@ export const HavocPunch: Power = {
       "type": "Smashing",
       "scale": 0.52,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.0139,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.676,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.1,
+      "scale": 2,
+      "table": "Melee_EndDrain"
+    },
+    "enduranceGain": {
+      "scale": 6.864,
       "table": "Melee_Ones"
     },
-    "sleep": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Sleep"
-    },
     "recoveryDebuff": {
-      "scale": 1,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "durations": {
       "recoveryDebuff": 4
     },
-    "enduranceGain": {
-      "scale": 3.432,
-      "table": "Melee_Ones"
+    "sleep": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Melee_Sleep"
     },
     "buffDuration": 4
   }

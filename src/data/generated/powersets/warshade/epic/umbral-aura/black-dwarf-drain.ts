@@ -16,6 +16,7 @@ export const BlackDwarfDrain: Power = {
   "shortHelp": "Melee, Light DMG(Negative), Foe -Recharge, -SPD; Self +HP",
   "icon": "umbralaura_essencedrain.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -59,5 +60,5 @@ export const BlackDwarfDrain: Power = {
       "table": "Melee_InherentTaunt"
     }
   },
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf && !Inherent.Inherent.Black_Dwarf_Drain"
+  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Drain ! &&"
 };

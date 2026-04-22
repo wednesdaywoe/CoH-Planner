@@ -85,7 +85,8 @@
             "power_names": [
               "Redirects.Shock_Therapy.Shock_Therapy_Amp_Up"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         }
       ]
     },
@@ -158,7 +160,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "me.NictusFX"
+          "stack_key": "me.NictusFX",
+          "flags_raw": 263216
         }
       ]
     },
@@ -197,7 +200,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "me.NictusFX"
+          "stack_key": "me.NictusFX",
+          "flags_raw": 263216
         }
       ]
     }

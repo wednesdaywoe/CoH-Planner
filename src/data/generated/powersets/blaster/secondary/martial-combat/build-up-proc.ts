@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ReachfortheLimit: Power = {
   "name": "Reach for the Limit",
   "internalName": "Build_Up_Proc",
-  "available": -1,
+  "available": 4294967295,
   "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "martialmanipulation_reachforthelimit.png",
@@ -24,6 +24,11 @@ export const ReachfortheLimit: Power = {
   },
   "allowedEnhancements": [
     "Damage"
+  ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "requires": "Blaster_Support.Martial_Manipulation.Reach_for_the_Limit"

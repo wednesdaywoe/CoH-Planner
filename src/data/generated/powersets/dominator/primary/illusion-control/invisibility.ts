@@ -37,6 +37,58 @@ export const SuperiorInvisibility: Power = {
   "effects": {
     "defenseBuff": {
       "ranged": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "defenseBuffSuppressible": 0.75,
+      "threatDebuff": 0.75,
+      "stealth": 0.75
+    },
+    "defenseBuffSuppressible": {
+      "ranged": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -81,16 +133,11 @@ export const SuperiorInvisibility: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "stealth": 0.75,
-      "threatDebuff": 0.75
+    "threatDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "stealth": {
-      "translucency": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
       "stealthPvP": {
         "scale": 1000,
         "table": "Melee_Ones"
@@ -99,10 +146,6 @@ export const SuperiorInvisibility: Power = {
         "scale": 200,
         "table": "Melee_Ones"
       }
-    },
-    "threatDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
     },
     "buffDuration": 0.75
   }

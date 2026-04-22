@@ -23,7 +23,7 @@ export const DisruptionField: Power = {
     "range": 70,
     "radius": 15,
     "recharge": 8,
-    "endurance": 0.325,
+    "endurance": 0.26,
     "castTime": 2.7,
     "activatePeriod": 0.5,
     "maxTargets": 16

@@ -20,7 +20,7 @@ export const MudPots: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "radius": 15,
+    "radius": 12,
     "recharge": 4,
     "endurance": 1.04,
     "castTime": 2.03,

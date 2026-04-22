@@ -32,6 +32,9 @@ export const Shock: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification"
+  ],
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {

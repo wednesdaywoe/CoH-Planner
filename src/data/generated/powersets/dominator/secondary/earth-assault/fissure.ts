@@ -16,6 +16,7 @@ export const Fissure: Power = {
   "shortHelp": "Close (Targeted AoE), Light DMG(Smash), Foe Knockback, Disorient",
   "icon": "earthassault_fissure.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -43,14 +44,21 @@ export const Fissure: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.17,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.17,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8606,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Ranged_Ones"
     },
     "stun": {

@@ -16,6 +16,7 @@ export const AquaBolt: Power = {
   "shortHelp": "Ranged, DMG(Cold/Smash), Foe -Def, +Wet, Self +Tidal Power",
   "icon": "waterblast_aquabolt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,6 +51,36 @@ export const AquaBolt: Power = {
       "type": "Cold",
       "scale": 0.63,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.21,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.63,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4026,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.8174,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4026,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.8174,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

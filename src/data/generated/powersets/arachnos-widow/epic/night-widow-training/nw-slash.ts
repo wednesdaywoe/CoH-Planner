@@ -16,6 +16,7 @@ export const Slash: Power = {
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "nightwidowtraining_slash.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -42,7 +43,24 @@ export const Slash: Power = {
       "scale": 1.3723,
       "table": "Melee_Damage",
       "duration": 0.6,
-      "tickRate": 0.4
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.7446,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.9855,
+      "table": "Melee_PvPDamage",
+      "duration": 0.6,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.6292,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Toxic",

@@ -14,7 +14,7 @@ export const PowerUp: Power = {
   "available": 15,
   "description": "Boosts the damage and secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes and more, are all improved. The effects of Power Up last a short while, and only the next couple of attacks will be boosted.",
   "shortHelp": "Self +Special, +Dmg(All)",
-  "icon": "assaultweapons_powerup.png",
+  "icon": "assaultweapons_powerup",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

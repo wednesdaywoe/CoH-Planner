@@ -16,12 +16,13 @@ export const HeatLoss: Power = {
   "shortHelp": "Ranged (Foe AoE), Foe -RES, -END, Slow; Team +END, +Recovery",
   "icon": "colddomination_heatloss.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 70,
     "recharge": 360,
-    "endurance": 19.5,
+    "endurance": 15.6,
     "castTime": 2.17
   },
   "allowedEnhancements": [

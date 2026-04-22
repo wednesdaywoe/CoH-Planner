@@ -16,12 +16,13 @@ export const CallSwarm: Power = {
   "shortHelp": "Ranged, Light DoT(Lethal), Foe -Defense, -Speed",
   "icon": "beastmastery_callswarm.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "recharge": 3,
-    "endurance": 4.37,
+    "endurance": 4.368,
     "castTime": 1
   },
   "allowedEnhancements": [
@@ -41,13 +42,22 @@ export const CallSwarm: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.1848,
-    "table": "Ranged_Damage",
-    "duration": 3.1,
-    "tickRate": 0.75
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.1848,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.244,
+      "table": "Ranged_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,

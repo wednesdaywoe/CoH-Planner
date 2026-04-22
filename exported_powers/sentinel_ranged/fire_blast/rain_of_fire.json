@@ -89,7 +89,8 @@
               "Pets.RainofFire_Sentinel.RainofFire"
             ],
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

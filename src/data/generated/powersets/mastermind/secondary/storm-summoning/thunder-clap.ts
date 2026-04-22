@@ -22,7 +22,7 @@ export const ThunderClap: Power = {
     "accuracy": 0.8,
     "radius": 25,
     "recharge": 45,
-    "endurance": 13,
+    "endurance": 10.4,
     "castTime": 2.37,
     "maxTargets": 16
   },

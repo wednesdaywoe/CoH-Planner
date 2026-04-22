@@ -16,6 +16,7 @@ export const FreezingTouch: Power = {
   "shortHelp": "Melee, High DMG(Cold), Foe Hold",
   "icon": "icemanipulation_freezingtouch.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,13 +39,27 @@ export const FreezingTouch: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.19,
-    "table": "Melee_Damage",
-    "duration": 10.1,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 0.19,
+      "table": "Melee_Damage",
+      "duration": 10.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 0.75,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.0682,
+      "table": "Melee_PvPDamage",
+      "duration": 10.1,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "mezResistance": {
       "knockup": {
@@ -73,10 +88,6 @@ export const FreezingTouch: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 6
   }

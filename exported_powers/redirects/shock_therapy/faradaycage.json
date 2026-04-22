@@ -82,7 +82,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -109,7 +115,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         }
       ]
     },
@@ -149,7 +156,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -176,7 +184,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -201,7 +210,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -228,7 +238,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         }
       ]
     },
@@ -268,7 +279,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -295,7 +307,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -320,7 +333,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -347,7 +361,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -375,7 +390,8 @@
           "caster_stack": "Unlimited",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "thColumn.5thColumnEndgame.NictusFX"
+          "stack_key": "thColumn.5thColumnEndgame.NictusFX",
+          "flags_raw": 263216
         }
       ]
     }

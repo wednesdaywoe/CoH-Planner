@@ -79,7 +79,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -109,7 +110,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Burst_of_Speed",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -141,7 +143,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         }
       ]
     },
@@ -185,7 +188,8 @@
             "power_names": [
               "Blaster_Support.Martial_Manipulation.Burst_of_Speed"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },

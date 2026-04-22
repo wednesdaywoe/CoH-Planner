@@ -16,12 +16,13 @@ export const OneThousandCuts: Power = {
   "shortHelp": "Melee (Cone), DMG(Lethal), Foe Knockback",
   "icon": "dualblades_highlow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 15,
     "endurance": 14.352,
     "castTime": 3.3,
@@ -47,12 +48,34 @@ export const OneThousandCuts: Power = {
       "scale": 0.151,
       "table": "Melee_Damage",
       "duration": 2.05,
-      "tickRate": 0.2
+      "tickRate": 0.20000000298023224
     },
     {
       "type": "Lethal",
       "scale": 0.7,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.2096,
+      "table": "Melee_PvPDamage",
+      "duration": 2.05,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.3319,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.6725,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.6375,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Lethal",
@@ -67,7 +90,7 @@ export const OneThousandCuts: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

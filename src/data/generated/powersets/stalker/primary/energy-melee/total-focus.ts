@@ -16,6 +16,7 @@ export const TotalFocus: Power = {
   "shortHelp": "Melee, DMG(Smash/Energy), Foe DisorientMelee, Extreme(Energy/Smash), Foe Disorient, +Energy Focus",
   "icon": "powerpunch_totalfocus.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -53,6 +54,31 @@ export const TotalFocus: Power = {
       "type": "Energy",
       "scale": 1,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8319,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.139,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8344,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8344,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

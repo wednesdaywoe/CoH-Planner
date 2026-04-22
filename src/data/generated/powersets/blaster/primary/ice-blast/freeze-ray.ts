@@ -11,11 +11,12 @@ import type { Power } from '@/types';
 export const FreezeRay: Power = {
   "name": "Freeze Ray",
   "internalName": "Freeze_Ray",
-  "available": 7,
+  "available": 21,
   "description": "Freeze Ray encases your foe in a block of ice, holding them helpless in place for a while. While frozen, your foe will take Cold damage over time.",
   "shortHelp": "Ranged, DMG(Cold), Foe Hold",
   "icon": "iceblast_freezeray.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -44,7 +45,7 @@ export const FreezeRay: Power = {
     "scale": 0.2,
     "table": "Ranged_Damage",
     "duration": 2,
-    "tickRate": 0.2
+    "tickRate": 0.20000000298023224
   },
   "effects": {
     "hold": {

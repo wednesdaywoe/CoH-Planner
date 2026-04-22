@@ -16,6 +16,7 @@ export const Roots: Power = {
   "shortHelp": "Ranged (Targeted AoE), DoT(Smashing, Lethal), Foe Immobilize",
   "icon": "plantcontrol_roots.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.9,
@@ -55,13 +56,27 @@ export const Roots: Power = {
       "table": "Ranged_Damage",
       "duration": 5.2,
       "tickRate": 2
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.0651,
+      "table": "Ranged_PvPDamage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.0651,
+      "table": "Ranged_PvPDamage",
+      "duration": 5.2,
+      "tickRate": 2
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
+      "mag": 5,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "mezResistance": {
       "knockup": {

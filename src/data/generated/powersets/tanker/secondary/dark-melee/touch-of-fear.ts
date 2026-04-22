@@ -14,8 +14,9 @@ export const TouchofFear: Power = {
   "available": 19,
   "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Melee (Targeted AoE), DMG(Negative), Fear, Foe -To Hit",
-  "icon": "shadowfighting_touchoffearaoe.png",
+  "icon": "shadowfighting_touchoffearaoe",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -45,13 +46,29 @@ export const TouchofFear: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.1726,
-    "table": "Melee_Damage",
-    "duration": 3.1,
-    "tickRate": 0.75
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.1726,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    },
+    {
+      "type": "Negative",
+      "scale": 0.2209,
+      "table": "Melee_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    },
+    {
+      "type": "Negative",
+      "scale": 0.1989,
+      "table": "Melee_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    }
+  ],
   "effects": {
     "fear": {
       "mag": 3,

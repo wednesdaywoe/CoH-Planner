@@ -16,12 +16,13 @@ export const CallRavens: Power = {
   "shortHelp": "Ranged (Cone), Moderate DoT(Lethal), Foe -Speed, -Defense, -Fly",
   "icon": "beastmastery_calllocusts.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.155,
     "range": 40,
     "radius": 40,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 14,
     "endurance": 13.52,
     "castTime": 2.17,
@@ -44,13 +45,22 @@ export const CallRavens: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.3036,
-    "table": "Ranged_Damage",
-    "duration": 3.1,
-    "tickRate": 0.75
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.3036,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.2638,
+      "table": "Ranged_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,

@@ -14,8 +14,9 @@ export const TimeWall: Power = {
   "available": 0,
   "description": "You create a time barrier to immobilize a single enemy. Enemies behind this barrier will have time slow down around them reducing their attack rate. Enemies that are strong enough to cross the barrier will still have their movement speed reduced. Time is slowed to such an extreme that their wounds will take longer to heal, reducing their regeneration rate. Time Wall applies the Delayed effect on its target. Damage, debuff and control effects from other Temporal Manipulation powers are increased on targets affected by Delayed.Damage: Moderate.Recharge: Fast.",
   "shortHelp": "Ranged, DMG(Energy), Foe Immobilize, -SPD, -Recharge, -Regen, Special",
-  "icon": "timemanipulation_timewall.png",
+  "icon": "timemanipulation_timewall",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,11 +42,18 @@ export const TimeWall: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.68,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -53,7 +61,7 @@ export const TimeWall: Power = {
       "table": "Ranged_Immobilize"
     },
     "regenDebuff": {
-      "scale": 0.25,
+      "scale": 0.45,
       "table": "Ranged_Ones"
     },
     "durations": {

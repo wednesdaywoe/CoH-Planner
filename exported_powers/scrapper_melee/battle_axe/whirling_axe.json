@@ -82,7 +82,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Event_35"
+          ],
+          "flags_raw": 66816
         },
         {
           "attribs": [
@@ -107,7 +111,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -138,7 +143,8 @@
             "power_names": [
               "Redirects.Battle_Axe.Battle_Axe"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ],
       "child_effects": [
@@ -188,7 +194,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1280
                 }
               ]
             },
@@ -226,7 +233,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1280
                 }
               ]
             },
@@ -264,7 +272,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1280
                 }
               ]
             },
@@ -302,7 +311,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1280
                 }
               ]
             }
@@ -344,7 +354,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Event_35"
+          ],
+          "flags_raw": 65856
         }
       ],
       "child_effects": [
@@ -382,7 +396,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -413,7 +428,8 @@
                 "power_names": [
                   "Redirects.Battle_Axe.Battle_Axe"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ],
           "child_effects": [
@@ -451,7 +467,16 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "suppress_events": [
+                    {
+                      "event": "MissionObjectInteract",
+                      "event_id": 33,
+                      "duration": 10.0,
+                      "flag": 0
+                    }
+                  ],
+                  "flags_raw": 1280
                 }
               ]
             }

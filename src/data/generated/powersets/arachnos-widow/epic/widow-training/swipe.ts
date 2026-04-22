@@ -16,6 +16,7 @@ export const Swipe: Power = {
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "widowtraining_swipe.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,6 +42,21 @@ export const Swipe: Power = {
       "type": "Lethal",
       "scale": 0.8,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.5333,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.141,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.761,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Toxic",

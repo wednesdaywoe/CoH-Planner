@@ -74,5 +74,6 @@ export const Lucky: Power = {
       }
     },
     "buffDuration": 0.75
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

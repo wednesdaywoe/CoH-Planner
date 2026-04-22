@@ -12,10 +12,11 @@ export const Resurrect: Power = {
   "name": "Resurrect",
   "internalName": "Resurrect",
   "available": 9,
-  "description": "Resurrects a fallen ally with full Hit Points and Endurance. The Resurrected target is left protected from XP Debt for 90 seconds.Recharge: Long.",
+  "description": "Resurrects a fallen ally with full Hit Points and Endurance. The Resurrected target is left protected from XP Debt for 90 seconds.",
   "shortHelp": "Ally Rez",
   "icon": "empathy_resurrect.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,6 +42,16 @@ export const Resurrect: Power = {
     "enduranceGain": {
       "scale": 1,
       "table": "Ranged_Ones"
-    }
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 300,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 15
+    },
+    "buffDuration": 15
   }
 };

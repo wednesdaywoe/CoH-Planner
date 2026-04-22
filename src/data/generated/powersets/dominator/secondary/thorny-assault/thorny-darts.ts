@@ -16,6 +16,7 @@ export const ThornyDarts: Power = {
   "shortHelp": "Ranged, Light DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_darts.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -51,6 +52,11 @@ export const ThornyDarts: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.7733,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

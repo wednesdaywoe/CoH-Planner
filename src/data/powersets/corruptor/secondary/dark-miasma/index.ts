@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { TwilightGrasp as TwilightGrasp } from './twilight-grasp';
-import { TarPatch as TarPatch } from './tar-patch';
-import { DarkestNight as DarkestNight } from './darkest-night';
-import { HowlingTwilight as HowlingTwilight } from './howling-twilight';
-import { ShadowFall as ShadowFall } from './shadow-fall';
-import { FearsomeStare as FearsomeStare } from './fearsome-stare';
-import { PetrifyingGaze as PetrifyingGaze } from './petrifying-gaze';
 import { BlackHole as BlackHole } from './black-hole';
 import { DarkServant as DarkServant } from './dark-servant';
+import { DarkestNight as DarkestNight } from './darkest-night';
+import { FearsomeStare as FearsomeStare } from './fearsome-stare';
+import { HowlingTwilight as HowlingTwilight } from './howling-twilight';
+import { PetrifyingGaze as PetrifyingGaze } from './petrifying-gaze';
+import { ShadowFall as ShadowFall } from './shadow-fall';
+import { TarPatch as TarPatch } from './tar-patch';
+import { TwilightGrasp as TwilightGrasp } from './twilight-grasp';
 
 export const powerset: Powerset = {
   id: 'corruptor/dark-miasma',
   name: 'Dark Miasma',
   description: 'Focus the dark power of the Netherworld to weaken your foes. Dark Miasma focuses on draining your opponent.',
-  icon: 'dark_miasma_set.png',
+  icon: 'dark_miasma_set.ico',
   archetype: 'corruptor',
   category: 'secondary',
   powers: [
-    TwilightGrasp,
-    TarPatch,
-    DarkestNight,
-    HowlingTwilight,
-    ShadowFall,
-    FearsomeStare,
-    PetrifyingGaze,
     BlackHole,
     DarkServant,
+    DarkestNight,
+    FearsomeStare,
+    HowlingTwilight,
+    PetrifyingGaze,
+    ShadowFall,
+    TarPatch,
+    TwilightGrasp,
   ],
 };
 

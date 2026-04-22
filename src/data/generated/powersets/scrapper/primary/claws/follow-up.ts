@@ -16,6 +16,7 @@ export const FollowUp: Power = {
   "shortHelp": "Melee, DMG(Lethal), Self +DMG +To Hit",
   "icon": "claws_feint.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -43,6 +44,16 @@ export const FollowUp: Power = {
       "type": "Lethal",
       "scale": 0.8,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4609,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4609,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Lethal",

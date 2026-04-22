@@ -91,7 +91,8 @@
               "Pets.VoltaicSentinel_PseudoPet.Electrical_Field"
             ],
             "priority_list": "Pet_NoCollision"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

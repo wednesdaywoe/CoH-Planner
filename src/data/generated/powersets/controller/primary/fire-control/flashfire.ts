@@ -16,6 +16,7 @@ export const Flashfire: Power = {
   "shortHelp": "Ranged (Targeted AoE), Minor DMG(Fire), Foe Disorient",
   "icon": "firetrap_flashfire.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -41,18 +42,34 @@ export const Flashfire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.06,
-    "table": "Ranged_Damage",
-    "duration": 4,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.06,
+      "table": "Ranged_Damage",
+      "duration": 4,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.06,
+      "table": "Ranged_InherentDamage",
+      "duration": 4,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0179,
+      "table": "Ranged_PvPDamage",
+      "duration": 4,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

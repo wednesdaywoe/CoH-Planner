@@ -84,7 +84,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -109,7 +110,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ],
       "child_effects": [
@@ -147,7 +149,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -185,7 +188,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 9472
             }
           ]
         },
@@ -223,7 +227,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -263,7 +268,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -288,7 +294,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ],
       "child_effects": [
@@ -326,7 +333,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -364,7 +372,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -402,7 +411,16 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "MissionObjectInteract",
+                  "event_id": 33,
+                  "duration": 10.0,
+                  "flag": 0
+                }
+              ],
+              "flags_raw": 1280
             }
           ]
         }
@@ -442,7 +460,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1284
         }
       ]
     },
@@ -486,7 +505,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -530,7 +550,8 @@
             "power_names": [
               "Redirects.Rad_Melee.Radioactive_Smash_AoE"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -574,7 +595,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Assassins_Focus"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

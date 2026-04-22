@@ -79,7 +79,8 @@
             "power_names": [
               "Redirects.Inherents.Fury_Proc"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Redirects.Inherents.Fury_Proc"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

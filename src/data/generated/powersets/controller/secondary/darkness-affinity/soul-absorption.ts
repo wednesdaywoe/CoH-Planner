@@ -34,6 +34,7 @@ export const SoulAbsorption: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Accurate To-Hit Debuff",
     "Endurance Modification",
     "Healing",
@@ -43,9 +44,8 @@ export const SoulAbsorption: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_SoulAbsorptionBuff",
-      "duration": 1,
-      "copyBoosts": true
+      "entity": "P4006859605",
+      "duration": 1
     }
   }
 };

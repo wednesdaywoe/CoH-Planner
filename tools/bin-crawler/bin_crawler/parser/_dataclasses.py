@@ -35,6 +35,13 @@ class EffectTemplate:
     cancel_events: list[str] = field(default_factory=list)
     boost_mod_allowed: str = ""
     flags: list[str] = field(default_factory=list)
+    # Raw flag bitmask from the binary (bit meanings not yet decoded — see
+    # the AttribMod tail comment in _powers.py). Stored alongside `flags`
+    # so downstream consumers can pattern-match common values like 0x420
+    # (IgnoreResistance) and 0x430 (IgnoreStrength + IgnoreResistance)
+    # without waiting for the full bit-to-name table.
+    flags_raw: int = 0
+    boost_mod_allowed_id: int = 0
     mode_name: str | None = None
     suppress_events: list[dict] = field(default_factory=list)
     required_events: list[str] = field(default_factory=list)

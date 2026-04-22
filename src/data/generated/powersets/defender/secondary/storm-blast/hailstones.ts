@@ -16,6 +16,7 @@ export const Hailstones: Power = {
   "shortHelp": "Ranged, DMG(Cold), Chance for Knockdown",
   "icon": "stormblast_hailstones.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,7 +51,7 @@ export const Hailstones: Power = {
       "scale": 0.25,
       "table": "Ranged_Damage",
       "duration": 1,
-      "tickRate": 0.3
+      "tickRate": 0.30000001192092896
     }
   ],
   "effects": {

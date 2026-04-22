@@ -11,11 +11,12 @@ import type { Power } from '@/types';
 export const IceSword: Power = {
   "name": "Ice Sword",
   "internalName": "Ice_Sword",
-  "available": 0,
+  "available": 27,
   "description": "You create a blade of solid ice that deals good damage. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.Damage: High.Recharge: Moderate.",
   "shortHelp": "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "iceassault_icesword.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -47,6 +48,16 @@ export const IceSword: Power = {
       "type": "Cold",
       "scale": 1.1951,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.6924,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.0386,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

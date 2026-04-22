@@ -50,11 +50,31 @@ export const Tremor: Power = {
       "type": "Smashing",
       "scale": 1.04,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.04,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.0924,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.0924,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.0924,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

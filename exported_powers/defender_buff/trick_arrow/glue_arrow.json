@@ -88,7 +88,8 @@
             "redirects": [
               "Redirects.Trick_Arrow.GlueArrow"
             ]
-          }
+          },
+          "flags_raw": 16704
         }
       ]
     }

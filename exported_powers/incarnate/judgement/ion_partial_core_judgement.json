@@ -84,7 +84,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -109,7 +110,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -147,7 +149,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -185,7 +188,8 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -210,7 +214,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -240,7 +245,8 @@
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Ion_Partial_Core_Judgement_Jump1",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 17456
         }
       ]
     },
@@ -278,7 +284,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -316,7 +323,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

@@ -41,13 +41,8 @@ export const RainofFire: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_RainofFire",
-      "duration": 15,
-      "copyBoosts": true
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
+      "entity": "P1985334123",
+      "duration": 15
     }
   }
 };

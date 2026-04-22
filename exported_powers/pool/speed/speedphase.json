@@ -74,7 +74,34 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 4.0,
+              "flag": 1
+            },
+            {
+              "event": "Event_12",
+              "event_id": 12,
+              "duration": 4.0,
+              "flag": 1
+            },
+            {
+              "event": "Damaged",
+              "event_id": 21,
+              "duration": 4.0,
+              "flag": 1
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 4.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1072
         }
       ]
     }

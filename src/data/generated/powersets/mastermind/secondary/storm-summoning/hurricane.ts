@@ -22,7 +22,7 @@ export const Hurricane: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 10,
-    "endurance": 0.2031,
+    "endurance": 0.1625,
     "castTime": 2.03,
     "activatePeriod": 0.25,
     "maxTargets": 16
@@ -45,14 +45,14 @@ export const Hurricane: Power = {
     },
     "durations": {
       "rangeBuff": 10,
-      "repel": 1.05
+      "repel": 0.75
     },
     "repel": {
-      "scale": 1,
+      "scale": 2,
       "table": "Ranged_Ones"
     },
     "knockback": {
-      "scale": 4,
+      "scale": 8,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

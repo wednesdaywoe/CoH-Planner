@@ -49,6 +49,16 @@ export const IceSwordCircle: Power = {
       "type": "Cold",
       "scale": 0.595,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.8997,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.8997,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

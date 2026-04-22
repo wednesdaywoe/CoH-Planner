@@ -83,7 +83,8 @@
             "type": "EntCreate",
             "entity_def": "P2832274689",
             "priority_list": "Pets_Enflame_Pet"
-          }
+          },
+          "flags_raw": 320
         },
         {
           "attribs": [
@@ -108,7 +109,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

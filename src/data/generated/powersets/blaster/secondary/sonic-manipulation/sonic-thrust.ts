@@ -14,8 +14,9 @@ export const SonicThrust: Power = {
   "available": 0,
   "description": "A focused attack of intense sonic power that violently sends a nearby foe flying. Deals minimal damage, but can be very effective.Damage: Minor.Recharge: Fast.",
   "shortHelp": "Melee, DMG(Energy/Smash), Foe Knockback/Repel",
-  "icon": "sonicmanipulation_sonicthrust.png",
+  "icon": "sonicmanipulation_sonicthrust",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,11 +49,21 @@ export const SonicThrust: Power = {
       "type": "Energy",
       "scale": 0.4,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4061,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.4061,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 8,
+      "scale": 16,
       "table": "Melee_Knockback"
     },
     "repel": {

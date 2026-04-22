@@ -16,6 +16,7 @@ export const BrightNovaBolt: Power = {
   "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
   "icon": "luminousblast_gleamingbolt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,11 +41,18 @@ export const BrightNovaBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.6,
-    "table": "Ranged_InherentDamage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.6,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.812,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,
@@ -55,5 +63,5 @@ export const BrightNovaBolt: Power = {
     },
     "buffDuration": 3
   },
-  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova && !Inherent.Inherent.Bright_Nova_Bolt"
+  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Bolt ! &&"
 };

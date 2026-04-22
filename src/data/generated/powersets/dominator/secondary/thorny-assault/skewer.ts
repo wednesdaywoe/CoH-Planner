@@ -16,6 +16,7 @@ export const Skewer: Power = {
   "shortHelp": "Melee, Moderate DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_skewer.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,6 +51,11 @@ export const Skewer: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.1428,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

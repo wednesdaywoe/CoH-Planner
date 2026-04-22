@@ -10,32 +10,32 @@
 import type { Powerset } from '@/types';
 
 import { ChargedArmor as ChargedArmor } from './charged-armor';
-import { LightningField as LightningField } from './lightning-field';
 import { ConductiveShield as ConductiveShield } from './conductive-shield';
-import { StaticShield as StaticShield } from './static-shield';
-import { Grounded as Grounded } from './grounded';
 import { Energize as Energize } from './energize';
+import { Grounded as Grounded } from './grounded';
+import { LightningField as LightningField } from './lightning-field';
 import { LightningReflexes as LightningReflexes } from './lightning-reflexes';
 import { PowerSink as PowerSink } from './power-sink';
 import { PowerSurge as PowerSurge } from './power-surge';
+import { StaticShield as StaticShield } from './static-shield';
 
 export const powerset: Powerset = {
   id: 'tanker/electric-armor',
   name: 'Electric Armor',
   description: 'Your entire body is basically a powerful capacitor. You can store and release massive amounts of electricity that can absorb damage directed at you. Electric Armor offers better than average resistance to just about all types of damage, including Psionic, but has no defense boosting powers or resistance to Toxic. Electric Armor also offers superior resistance to Energy damage and Endurance Drain.',
-  icon: 'electric_armor_set.png',
+  icon: 'electric_armor_set.ico',
   archetype: 'tanker',
   category: 'primary',
   powers: [
     ChargedArmor,
-    LightningField,
     ConductiveShield,
-    StaticShield,
-    Grounded,
     Energize,
+    Grounded,
+    LightningField,
     LightningReflexes,
     PowerSink,
     PowerSurge,
+    StaticShield,
   ],
 };
 

@@ -16,6 +16,7 @@ export const Smoke: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe -Perception, -To Hit",
   "icon": "firetrap_smoke.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -34,6 +35,7 @@ export const Smoke: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
     "To Hit Debuff"
   ],
   "maxSlots": 6,
@@ -43,8 +45,8 @@ export const Smoke: Power = {
       "table": "Ranged_Ones"
     },
     "durations": {
-      "perceptionDebuff": 60
+      "perceptionDebuff": 20
     },
-    "buffDuration": 60
+    "buffDuration": 20
   }
 };

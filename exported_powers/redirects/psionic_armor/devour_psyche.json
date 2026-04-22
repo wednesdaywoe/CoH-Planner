@@ -81,7 +81,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -106,7 +107,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -131,7 +133,8 @@
           "caster_stack": "Individual",
           "stack": "RefreshToCount",
           "stack_limit": 10,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -156,7 +159,8 @@
           "caster_stack": "Individual",
           "stack": "RefreshToCount",
           "stack_limit": 10,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -189,7 +193,8 @@
               "Sentinel_Defense.Psionic_Armor.Devour_Psyche",
               "Stalker_Defense.Psionic_Armor.Devour_Psyche"
             ]
-          }
+          },
+          "flags_raw": 196928
         },
         {
           "attribs": [
@@ -214,7 +219,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 66816
         }
       ]
     },
@@ -252,7 +258,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         },
         {
           "attribs": [
@@ -277,7 +284,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         },
         {
           "attribs": [
@@ -302,7 +310,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -340,7 +349,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         },
         {
           "attribs": [
@@ -365,7 +375,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         },
         {
           "attribs": [
@@ -390,7 +401,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

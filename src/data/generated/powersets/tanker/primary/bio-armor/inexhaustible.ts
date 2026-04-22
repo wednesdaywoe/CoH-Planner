@@ -65,5 +65,6 @@ export const Inexhaustible: Power = {
       }
     },
     "buffDuration": 5.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

@@ -82,7 +82,8 @@
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Fate_Vanguard_LT",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -112,7 +113,8 @@
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Fate_Vanguard_Support_Protected",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

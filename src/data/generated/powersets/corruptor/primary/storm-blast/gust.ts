@@ -16,6 +16,7 @@ export const Gust: Power = {
   "shortHelp": "Ranged, DMG(Smash), -Fly",
   "icon": "stormblast_gust.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,7 +49,12 @@ export const Gust: Power = {
       "scale": 0.05,
       "table": "Ranged_Damage",
       "duration": 1.5,
-      "tickRate": 0.4
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
     }
   ]
 };

@@ -16,6 +16,7 @@ export const EnchantUndead: Power = {
   "shortHelp": "Ranged, Enchant Undead Henchman",
   "icon": "necromancy_enchantundead.png",
   "powerType": "Click",
+  "targetType": "Self",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

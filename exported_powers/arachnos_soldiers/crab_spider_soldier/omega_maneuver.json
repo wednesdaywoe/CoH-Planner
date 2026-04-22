@@ -84,9 +84,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Omega_Bomb"
-          }
+            "entity_def": "Pets_Omega_Bomb",
+            "priority_list": "PL_SpawnFlying"
+          },
+          "flags_raw": 112
         }
       ]
     }

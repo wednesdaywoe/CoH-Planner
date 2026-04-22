@@ -16,14 +16,15 @@ export const FearsomeStare: Power = {
   "shortHelp": "Ranged (Cone), Foe Fear, -To Hit",
   "icon": "darkmiasma_fearsomeaura.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 70,
     "radius": 70,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 40,
-    "endurance": 10.66,
+    "endurance": 8.528,
     "castTime": 2.03,
     "maxTargets": 16
   },

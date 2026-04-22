@@ -16,6 +16,7 @@ export const TotalDomination: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "fortunatatraining_totaldomination.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -34,15 +35,14 @@ export const TotalDomination: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Soldiers of Arachnos Archetype Sets"
+    "Holds"
   ],
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

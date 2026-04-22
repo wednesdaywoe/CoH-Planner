@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.prestige_BlackWolf_Pet"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Vanity_Pets.prestige_BlackWolf_Pet"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

@@ -14,7 +14,7 @@ export const Irradiate: Power = {
   "available": 1,
   "description": "You can emit lethal amounts of radiation in all directions, damaging all nearby foes for a short time. Like other Radiation attacks, this power can bypass some of a target's defenses. Irradiate severely reduces the target's Defense.",
   "shortHelp": "Close (AoE), DoT(Energy), Foe -DEF",
-  "icon": "radiationburst_irradiate.png",
+  "icon": "radiationburst_irradiate",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
@@ -41,13 +41,22 @@ export const Irradiate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.1,
-    "table": "Ranged_Damage",
-    "duration": 4.6,
-    "tickRate": 0.5
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 4.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Energy",
+      "scale": 0.0287,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.6,
+      "tickRate": 0.5
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 3,
@@ -55,10 +64,6 @@ export const Irradiate: Power = {
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   }

@@ -12,16 +12,17 @@ export const PiercingRounds: Power = {
   "name": "Piercing Rounds",
   "internalName": "Piercing_Rounds",
   "available": 21,
-  "description": "You fire your pistols with deadly precision in a very narrow cone, piercing up to three enemies. Piercing Rounds deals Superior lethal damage and reduces targets' Damage Resistance for a short time.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic, and a secondary effect will be included in this attack:*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.*A minor damage over time effect if 'Incendiary Ammo' is loaded.*A -damage effect if 'Chemical Ammo' is loaded.Damage: High.Recharge: Slow.",
+  "description": "You fire your pistols with deadly precision in a very narrow cone, piercing up to three enemies. Piercing Rounds deals Superior lethal damage and reduces targets' Damage Resistance for a short time.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic, and a secondary effect will be included in this attack:*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.*A minor damage over time effect if 'Incendiary Ammo' is loaded.*A -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "Narrow Ranged (Cone), DMG(Lethal/Special), Foes -Res(All)/Special",
   "icon": "dualpistols_piercingrounds.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.1,
     "range": 60,
     "radius": 60,
-    "arc": 0.0873,
+    "arc": 0.0872664675116539,
     "recharge": 15,
     "endurance": 14.352,
     "castTime": 2.5,
@@ -45,20 +46,23 @@ export const PiercingRounds: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 1.61,
+      "scale": 2.3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1725,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
     },
     {
       "type": "Lethal",
-      "scale": 0.69,
-      "table": "Ranged_Damage"
+      "scale": 2.3,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.2907,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.2907,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

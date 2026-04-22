@@ -16,6 +16,7 @@ export const KeeningWinds: Power = {
   "shortHelp": "Ranged (Targeted AoE), Confuse(Foe), EndDrain(Foe), +End(Self)",
   "icon": "windcontrol_keeningwinds.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -42,13 +43,13 @@ export const KeeningWinds: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Fear"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "enduranceDrain": {
-      "scale": 0.04,
-      "table": "Ranged_Ones"
+      "scale": 2.5,
+      "table": "Ranged_EndDrain"
     },
     "durations": {
       "enduranceDrain": 2.1
@@ -60,5 +61,5 @@ export const KeeningWinds: Power = {
     },
     "buffDuration": 2.1
   },
-  "requires": "char>accesslevel >= 0"
+  "requires": "accesslevel char> 0 >="
 };

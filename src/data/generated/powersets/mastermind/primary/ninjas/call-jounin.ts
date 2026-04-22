@@ -45,10 +45,9 @@ export const CallJounin: Power = {
     "Confuse",
     "Defense Debuff",
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Sleep",
+    "Slow Movement",
     "Stuns",
     "Threat Duration",
     "To Hit Debuff",
@@ -59,7 +58,7 @@ export const CallJounin: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Jonin",
-      "copyBoosts": true,
+      "duration": 99999,
       "entityCount": 2
     }
   }

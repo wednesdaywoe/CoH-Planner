@@ -44,5 +44,6 @@ export const Absorption: Power = {
       "resistance": 10.25
     },
     "buffDuration": 10.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

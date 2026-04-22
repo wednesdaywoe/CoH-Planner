@@ -20,7 +20,7 @@ export const WorldofConfusion: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "radius": 8,
+    "radius": 12,
     "recharge": 10,
     "endurance": 0.52,
     "castTime": 1.67,
@@ -43,15 +43,15 @@ export const WorldofConfusion: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",
-    "scale": 0.12,
+    "scale": 0.0943,
     "table": "Ranged_Damage",
     "tickRate": 2
   },
   "effects": {
     "confuse": {
       "mag": 2,
-      "scale": 1.5,
-      "table": "Ranged_Ones"
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

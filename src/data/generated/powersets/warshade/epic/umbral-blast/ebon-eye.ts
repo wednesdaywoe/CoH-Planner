@@ -16,6 +16,7 @@ export const EbonEye: Power = {
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_eboneye.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
@@ -38,10 +39,5 @@ export const EbonEye: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  }
+  "maxSlots": 6
 };

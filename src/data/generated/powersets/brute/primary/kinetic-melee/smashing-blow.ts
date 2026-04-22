@@ -16,6 +16,7 @@ export const SmashingBlow: Power = {
   "shortHelp": "Melee, DMG(Smash/Energy), Foe Disorient",
   "icon": "kineticattack_smashingblow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -43,13 +44,23 @@ export const SmashingBlow: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 1,
+      "scale": 0.48,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.48,
+      "scale": 1,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.456,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.064,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

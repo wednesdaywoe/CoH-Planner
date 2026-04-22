@@ -16,6 +16,7 @@ export const Screech: Power = {
   "shortHelp": "Ranged, High DMG(Smashing/Energy), Foe Disorient, -Res(All)",
   "icon": "sonicblast_stun.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,6 +50,26 @@ export const Screech: Power = {
       "type": "Energy",
       "scale": 1.14,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.28,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.965,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.965,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.93,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

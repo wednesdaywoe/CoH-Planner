@@ -85,7 +85,8 @@
             "type": "EntCreate",
             "entity_def": "MastermindPets_Demon_Prince",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -131,7 +132,8 @@
             "power_names": [
               "Mastermind_Summon.Demon_Summoning.Summon_Demon_Prince"
             ]
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     }

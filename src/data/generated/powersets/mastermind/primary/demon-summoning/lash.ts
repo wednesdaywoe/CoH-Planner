@@ -16,12 +16,13 @@ export const Lash: Power = {
   "shortHelp": "Close, Moderate DMG(Fire), Foe -Res, Knockdown, Minor DoT(Toxic)",
   "icon": "demonsummoning_lash.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 20,
     "recharge": 5,
-    "endurance": 6.03,
+    "endurance": 6.032,
     "castTime": 1.8
   },
   "allowedEnhancements": [
@@ -44,6 +45,11 @@ export const Lash: Power = {
       "table": "Ranged_Damage"
     },
     {
+      "type": "Fire",
+      "scale": 1.86,
+      "table": "Ranged_PvPDamage"
+    },
+    {
       "type": "Toxic",
       "scale": 0.21,
       "table": "Ranged_Damage",
@@ -53,7 +59,7 @@ export const Lash: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.64,
+      "scale": 1.28,
       "table": "Ranged_Knockback"
     },
     "resistanceDebuff": {

@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.Alt_Magic_Carpet"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Prestige_Travel.Alt_Magic_Carpet"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

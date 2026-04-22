@@ -95,7 +95,8 @@
               "Redirects.Assault_Rifle.Sleep_Grenade_Damage"
             ],
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 16704
         }
       ]
     }

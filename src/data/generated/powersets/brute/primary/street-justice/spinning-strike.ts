@@ -35,6 +35,13 @@ export const SpinningStrike: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Brute Archetype Sets",
+    "Knockback",
+    "Melee AoE Damage",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

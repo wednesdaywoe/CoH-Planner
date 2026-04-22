@@ -77,7 +77,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -108,7 +109,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Plant_Manipulation_Toxins"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

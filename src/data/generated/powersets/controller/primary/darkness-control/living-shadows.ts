@@ -16,12 +16,13 @@ export const LivingShadows: Power = {
   "shortHelp": "Ranged (Cone), Minor DoT(Negative), Foe Immobilize, -To Hit, -Fly",
   "icon": "darknesscontrol_livingshadows.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "radius": 60,
-    "arc": 1.0472,
+    "arc": 1.0471975803375244,
     "recharge": 8,
     "endurance": 13,
     "castTime": 1.67,
@@ -45,13 +46,36 @@ export const LivingShadows: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.13,
-    "table": "Ranged_Damage",
-    "duration": 5.2,
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.13,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Negative",
+      "scale": 0.13,
+      "table": "Ranged_InherentDamage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Negative",
+      "scale": 0.2129,
+      "table": "Ranged_PvPDamage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Negative",
+      "scale": 0.1064,
+      "table": "Ranged_PvPDamage",
+      "duration": 5.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,

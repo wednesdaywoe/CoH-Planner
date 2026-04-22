@@ -14,8 +14,9 @@ export const AntumbralBeam: Power = {
   "available": 17,
   "description": "An extremely focused beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit.",
   "shortHelp": "Ranged, DMG(Negative), Target -To Hit",
-  "icon": "darkcast_heavy.png",
+  "icon": "darkcast_heavy",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -40,9 +41,26 @@ export const AntumbralBeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 2.76,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 2.76,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.76,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.449,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.449,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

@@ -16,12 +16,13 @@ export const SonicSiphon: Power = {
   "shortHelp": "Ranged, Foe -Res(All)",
   "icon": "sonicdebuff_debuffdamres.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "recharge": 16,
-    "endurance": 10.66,
+    "endurance": 8.528,
     "castTime": 2.17
   },
   "allowedEnhancements": [

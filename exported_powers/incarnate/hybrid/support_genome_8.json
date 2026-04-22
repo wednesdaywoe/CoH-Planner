@@ -106,7 +106,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "hColumn.5thColumnEndgame.NictusFX"
+          "stack_key": "hColumn.5thColumnEndgame.NictusFX",
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -141,7 +142,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "Column.5thColumnEndgame.NictusFX"
+          "stack_key": "Column.5thColumnEndgame.NictusFX",
+          "flags_raw": 96
         }
       ]
     },
@@ -179,7 +181,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "hColumn.5thColumnEndgame.NictusFX"
+          "stack_key": "hColumn.5thColumnEndgame.NictusFX",
+          "flags_raw": 96
         }
       ]
     },
@@ -232,7 +235,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "hColumn.5thColumnEndgame.NictusFX"
+          "stack_key": "hColumn.5thColumnEndgame.NictusFX",
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -267,7 +271,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "Column.5thColumnEndgame.NictusFX"
+          "stack_key": "Column.5thColumnEndgame.NictusFX",
+          "flags_raw": 96
         }
       ]
     },
@@ -305,7 +310,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "hColumn.5thColumnEndgame.NictusFX"
+          "stack_key": "hColumn.5thColumnEndgame.NictusFX",
+          "flags_raw": 96
         }
       ]
     },
@@ -349,7 +355,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Support_Boost_Very_Rare"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -380,7 +387,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Support_Boost_Very_Rare"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

@@ -22,7 +22,7 @@ export const Sleet: Power = {
     "accuracy": 1,
     "range": 60,
     "recharge": 60,
-    "endurance": 22.75,
+    "endurance": 18.2,
     "castTime": 2.03
   },
   "allowedEnhancements": [
@@ -44,14 +44,13 @@ export const Sleet: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
-      "displayName": "Sleet",
+      "isPseudoPet": false,
+      "entity": "P3955584513",
       "powers": [
         "Pets.Sleet.Sleet",
         "Pets.Sleet.Avoid"
       ],
-      "duration": 15,
-      "copyBoosts": true
+      "duration": 15
     }
   }
 };

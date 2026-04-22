@@ -12,7 +12,7 @@ export const RejuvenatingCircuit: Power = {
   "name": "Rejuvenating Circuit",
   "internalName": "Rejuvenating_Circuit",
   "available": 0,
-  "description": "Create a circuit of healing energy between several nearby allies, healing them for a small amount. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Rejuvenating Circuit grants 1 stack of Static.Recharge: Moderate.",
+  "description": "Create a circuit of healing energy between several nearby allies, healing them for a small amount. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Rejuvenating Circuit grants 1 stack of Static.",
   "shortHelp": "Ranged (Chain), Ally Heal, Self +Static",
   "icon": "shocktherapy_rejuvenatingcircuit.png",
   "powerType": "Click",
@@ -23,7 +23,7 @@ export const RejuvenatingCircuit: Power = {
     "range": 80,
     "radius": 25,
     "recharge": 8,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 1.17,
     "maxTargets": 5
   },
@@ -37,9 +37,16 @@ export const RejuvenatingCircuit: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1.55,
-    "table": "Ranged_Heal"
-  }
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 1.55,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.41,
+      "table": "Ranged_Heal"
+    }
+  ]
 };

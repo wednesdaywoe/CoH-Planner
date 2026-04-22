@@ -35,9 +35,7 @@
     "Recharge",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [
-    "lumnEndgame.NictusFX"
-  ],
+  "allowed_boostset_cats": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",
@@ -79,7 +77,21 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 2096
         },
         {
           "attribs": [
@@ -104,7 +116,21 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -154,7 +180,21 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -186,7 +226,21 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -226,7 +280,16 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -257,7 +320,16 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -289,7 +361,16 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1072
         }
       ]
     }

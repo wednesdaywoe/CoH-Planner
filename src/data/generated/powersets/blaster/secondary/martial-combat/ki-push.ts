@@ -16,6 +16,7 @@ export const KiPush: Power = {
   "shortHelp": "Melee, Light DMG(Smash), Foe Repel, KB",
   "icon": "martialmanipulation_kipush.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,14 +39,21 @@ export const KiPush: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.1409,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "repel": {
-      "scale": 4,
+      "scale": 6,
       "table": "Melee_Ones"
     },
     "durations": {
@@ -60,7 +68,7 @@ export const KiPush: Power = {
     },
     "effectDuration": 2,
     "knockback": {
-      "scale": 4,
+      "scale": 8,
       "table": "Melee_Knockback"
     },
     "damageBuff": {

@@ -29,22 +29,26 @@ export const NebulousForm: Power = {
     "Recharge",
     "Jump"
   ],
-  "allowedSetCategories": [
-    "Leaping",
-    "Leaping & Sprints",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {
-      "translucency": {
-        "scale": 0.1,
+      "stealthPvE": {
+        "scale": 20,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 222,
         "table": "Melee_Ones"
       }
     },
     "durations": {
       "stealth": 0.75,
+      "threatDebuff": 0.75,
       "movement": 0.75
+    },
+    "threatDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "movement": {
       "jumpHeight": {

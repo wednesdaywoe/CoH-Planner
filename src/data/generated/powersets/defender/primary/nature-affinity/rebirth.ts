@@ -12,11 +12,10 @@ export const Rebirth: Power = {
   "name": "Rebirth",
   "internalName": "Rebirth",
   "available": 17,
-  "description": "Rebirth can either greatly heal a conscious ally for a large amount of health over time or it can revive a fallen ally with a large amount of health and endurance and cause them to recover health over time. This power also grants 3 stacks of Bloom.Recharge: Long.",
+  "description": "Rebirth can either greatly heal a conscious ally for a large amount of health over time or it can revive a fallen ally with a large amount of health and endurance and cause them to recover health over time. This power also grants 3 stacks of Bloom.",
   "shortHelp": "Ranged, Ally Rez, +Heal Over Time, Special, +3 Bloom",
   "icon": "natureaffinity_rebirth.png",
   "powerType": "Click",
-  "targetType": "Teammate",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -36,25 +35,5 @@ export const Rebirth: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Heal",
-      "scale": 5,
-      "table": "Ranged_Heal"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.4545,
-      "table": "Ranged_Heal",
-      "duration": 10.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    }
-  }
+  "maxSlots": 6
 };

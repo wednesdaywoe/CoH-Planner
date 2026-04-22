@@ -43,5 +43,5 @@ export const InstantHealing: Power = {
     },
     "buffDuration": 90
   },
-  "requires": "!Scrapper_Defense.Regeneration.Instant_Regeneration"
+  "requires": "Scrapper_Defense.Regeneration.Instant_Regeneration !"
 };

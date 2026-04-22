@@ -12,7 +12,7 @@ export const Soothe: Power = {
   "name": "Soothe",
   "internalName": "Soothe",
   "available": 0,
-  "description": "You heal an ally by numbing their pain and calming their mind. You cannot use this power on yourself.Recharge: Fast.",
+  "description": "You heal an ally by numbing their pain and calming their mind. You cannot use this power on yourself.",
   "shortHelp": "Ally Heal",
   "icon": "paindomination_soothe.png",
   "powerType": "Click",
@@ -22,7 +22,7 @@ export const Soothe: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 4,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 2.27
   },
   "allowedEnhancements": [

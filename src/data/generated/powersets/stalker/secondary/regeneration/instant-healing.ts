@@ -43,5 +43,5 @@ export const InstantHealing: Power = {
     },
     "buffDuration": 90
   },
-  "requires": "!Stalker_Defense.Regeneration.Instant_Regeneration"
+  "requires": "Stalker_Defense.Regeneration.Instant_Regeneration !"
 };

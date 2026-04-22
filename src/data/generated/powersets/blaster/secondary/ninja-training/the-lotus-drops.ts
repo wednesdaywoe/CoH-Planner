@@ -14,7 +14,7 @@ export const TheLotusDrops: Power = {
   "available": 15,
   "description": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense.Damage: Moderate.Recharge: Slow.",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), Foe -Def",
-  "icon": "ninjatools_katanaaoe.png",
+  "icon": "ninjatools_katanaaoe",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
@@ -53,6 +53,18 @@ export const TheLotusDrops: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.0836,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.13,
+      "table": "Melee_PvPDamage",
+      "duration": 2.1,
+      "tickRate": 1
     }
   ],
   "effects": {
@@ -62,10 +74,6 @@ export const TheLotusDrops: Power = {
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   }

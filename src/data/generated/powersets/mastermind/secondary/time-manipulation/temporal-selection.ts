@@ -22,7 +22,7 @@ export const TemporalSelection: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 120,
-    "endurance": 13,
+    "endurance": 10.4,
     "castTime": 2.27
   },
   "allowedEnhancements": [

@@ -12,7 +12,7 @@ export const Overgrowth: Power = {
   "name": "Overgrowth",
   "internalName": "Overgrowth",
   "available": 29,
-  "description": "Becoming a conduit of nature itself, you greatly boost the damage, to hit and endurance discount of nearby allies for a long period of time. Overgrowth also grants the affected targets 5 stacks of Bloom.Recharge: Very Long.",
+  "description": "Becoming a conduit of nature itself, you greatly boost the damage, to hit and endurance discount of nearby allies for a long period of time. Overgrowth also grants the affected targets 5 stacks of Bloom.",
   "shortHelp": "PBAoE, Team +Damage, +To Hit, +Endurance Discount, +5 Bloom",
   "icon": "natureaffinity_overgrowth.png",
   "powerType": "Click",
@@ -22,7 +22,7 @@ export const Overgrowth: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 255,
-    "endurance": 32.5,
+    "endurance": 26,
     "castTime": 3,
     "maxTargets": 255
   },

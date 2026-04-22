@@ -14,7 +14,7 @@ export const BerylCrystals: Power = {
   "available": 23,
   "description": "Activating this power summons several rare Beryl Crystals to orbit around you. These Crystals can bring clarity of the mind and increase your Accuracy, Perception to see hidden foes, and grant resistance to Confusion, Perception and ToHit debuffs.Recharge: Fast.",
   "shortHelp": "Toggle: Self Res(Confuse, Perception, ToHit), +Perception, Accuracy",
-  "icon": "earthmanip_beryl.png",
+  "icon": "earthmanip_beryl",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",

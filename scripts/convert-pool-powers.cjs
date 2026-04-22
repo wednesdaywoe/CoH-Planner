@@ -21,7 +21,6 @@ const {
   extractEffects,
   extractDamage,
   inferAllowedSetCategories,
-  loadDefSuppressionMap,
   collectAllTemplates,
   RAW_DATA_PATH,
   BIN_BOOST_MAP,
@@ -157,7 +156,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     rawJson.boosts_allowed || [],
     'pool',
     'pool',
-    rawJson.effect_area,
+    EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
     rawJson.range,
   );
   power.allowedSetCategories = inferredCats;
@@ -195,12 +194,9 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     const damage = extractDamage(allTemplates);
     if (damage) effects.damage = damage;
 
-    // Combat-suppression metadata from .def files (used to split stealth defense
-    // into defenseBuff / defenseBuffSuppressible).
-    const defEntries = loadDefSuppressionMap(rawJson.full_name);
-
-    // All other effects
-    const extractedEffects = extractEffects(allTemplates, rawJson.name, defEntries);
+    // All other effects (combat-suppression now flows from template.suppress_events
+    // populated by the binary parser — no .def-file lookup needed).
+    const extractedEffects = extractEffects(allTemplates, rawJson.name);
     if (Object.keys(extractedEffects).length > 0) {
       // Merge extracted effects into the effects object
       // Map certain effect keys to legacy naming for the transformation layer

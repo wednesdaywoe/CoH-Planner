@@ -56,5 +56,6 @@ export const FastHealing: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 10
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

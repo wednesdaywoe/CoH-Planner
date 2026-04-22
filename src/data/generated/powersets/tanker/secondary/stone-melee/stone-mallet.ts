@@ -16,6 +16,7 @@ export const StoneMallet: Power = {
   "shortHelp": "Melee, DMG(Smash), Knockback",
   "icon": "stonemelee_stonemallet.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,14 +41,21 @@ export const StoneMallet: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.64,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.64,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.8469,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

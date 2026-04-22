@@ -33,17 +33,14 @@ export const SummonDemons: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Resist Damage",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "copyBoosts": true,
+      "duration": 99999,
       "entities": [
         {
           "entity": "MastermindPets_Ember_Demon",

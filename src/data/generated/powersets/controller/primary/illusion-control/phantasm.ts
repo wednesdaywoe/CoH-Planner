@@ -36,16 +36,15 @@ export const Phantasm: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Phantasm_Controller",
-      "copyBoosts": true
+      "entity": "P4146085904",
+      "duration": 99999
     }
   }
 };

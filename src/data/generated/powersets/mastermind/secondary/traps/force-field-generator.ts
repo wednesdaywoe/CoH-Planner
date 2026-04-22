@@ -22,7 +22,7 @@ export const ForceFieldGenerator: Power = {
     "accuracy": 1,
     "range": 20,
     "recharge": 15,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 2.03
   },
   "allowedEnhancements": [
@@ -38,8 +38,7 @@ export const ForceFieldGenerator: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_FF_Generator",
-      "duration": 240,
-      "copyBoosts": true
+      "duration": 240
     }
   }
 };

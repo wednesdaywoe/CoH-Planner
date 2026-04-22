@@ -16,6 +16,7 @@ export const RepulsionBolt: Power = {
   "shortHelp": "Ranged, DMG(Smash), Foe Knockback",
   "icon": "forcefield_forcebolt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.4,
@@ -46,7 +47,7 @@ export const RepulsionBolt: Power = {
   },
   "effects": {
     "knockback": {
-      "scale": 9,
+      "scale": 18,
       "table": "Ranged_Knockback"
     },
     "resistanceDebuff": {

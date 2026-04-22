@@ -11,11 +11,12 @@ import type { Power } from '@/types';
 export const IceBlast: Power = {
   "name": "Ice Blast",
   "internalName": "Ice_Blast",
-  "available": 9,
+  "available": 29,
   "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.Damage: Light.Recharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "iceassault_iceblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,6 +49,16 @@ export const IceBlast: Power = {
       "type": "Cold",
       "scale": 1,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.335,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.005,
+      "table": "Ranged_PvPDamage"
     }
   ]
 };

@@ -16,6 +16,7 @@ export const GlintingEye: Power = {
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
   "icon": "luminousblast_glintingeye.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,20 +40,5 @@ export const GlintingEye: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    },
-    "buffDuration": 6
-  }
+  "maxSlots": 6
 };

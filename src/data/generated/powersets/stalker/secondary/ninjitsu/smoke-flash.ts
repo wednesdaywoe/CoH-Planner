@@ -31,6 +31,9 @@ export const SmokeFlash: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "effects": {
     "placate": {

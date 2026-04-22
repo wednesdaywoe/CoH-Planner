@@ -16,6 +16,7 @@ export const ChargedBolts: Power = {
   "shortHelp": "Ranged, DMG(Energy), Foe -End",
   "icon": "electricalbolt_chargedbolts.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,15 +40,44 @@ export const ChargedBolts: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2599,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.252,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.07,
+      "scale": 1.32,
       "table": "Ranged_EndDrain"
-    }
+    },
+    "enduranceGain": {
+      "scale": 5.2,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 0.8,
+      "table": "Ranged_EndDrain"
+    },
+    "durations": {
+      "recoveryDebuff": 5
+    },
+    "buffDuration": 5
   }
 };

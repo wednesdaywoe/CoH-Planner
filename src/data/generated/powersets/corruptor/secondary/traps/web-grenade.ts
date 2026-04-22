@@ -16,6 +16,7 @@ export const WebGrenade: Power = {
   "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
   "icon": "traps_targetedimmoblize.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

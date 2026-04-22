@@ -83,7 +83,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -121,7 +122,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -159,7 +161,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -197,7 +200,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectInteract",
+              "event_id": 33,
+              "duration": 10.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 1280
         }
       ]
     }
@@ -237,7 +249,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -262,7 +275,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         }
       ],
       "child_effects": [
@@ -306,7 +320,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Street_Cred"
                 ]
-              }
+              },
+              "flags_raw": 320
             },
             {
               "attribs": [
@@ -336,7 +351,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_06",
                 "priority_list": "PL_FightPreferRanged"
-              }
+              },
+              "flags_raw": 16496
             }
           ]
         }

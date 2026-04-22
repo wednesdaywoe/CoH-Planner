@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FormoftheMind: Power = {
   "name": "Form of the Mind",
   "internalName": "Form_of_the_Mind",
-  "available": -1,
+  "available": 4294967295,
   "description": "This power is obtained by purchasing Staff Mastery. All Staff Fighting attacks will build a level of Perfection of Mind while this toggle is active. Each level will boost the user's recharge rate slightly. Once the user has built up 3 levels of Perfection of Mind and they execute Eye of the Storm, the attack will slow the targets slightly and will deal additional psychic damage. Executing Sky Splitter with three 3 levels of Perfection of Mind will deal additional psychic damage and grant the user a moderate to hit buff for a short time.",
   "shortHelp": "Toggle: Grants Perfection of Mind levels",
   "icon": "stafffighting_formofthemind.png",
@@ -26,6 +26,5 @@ export const FormoftheMind: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "requires": "Scrapper_Melee.Staff_Fighting.Staff_Mastery",
-  "mechanicType": "childToggle"
+  "requires": "Scrapper_Melee.Staff_Fighting.Staff_Mastery"
 };

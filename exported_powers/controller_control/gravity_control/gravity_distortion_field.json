@@ -93,7 +93,8 @@
               "Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot",
               "Redirects.Gravity_Control.Self_Destruct"
             ]
-          }
+          },
+          "flags_raw": 320
         },
         {
           "attribs": [
@@ -118,7 +119,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 196720
         }
       ]
     }

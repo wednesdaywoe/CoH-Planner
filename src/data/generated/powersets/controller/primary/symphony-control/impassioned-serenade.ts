@@ -14,8 +14,9 @@ export const ImpassionedSerenade: Power = {
   "available": 5,
   "description": "You serenade your target with an impassioned song, charming them into fighting for you.Note: this power inflicts damage over time for up to 30 seconds as long as the target is confused.",
   "shortHelp": "Ranged, DoT(Psionic), Foe Confuse",
-  "icon": "symphonycontrol_confusest.png",
+  "icon": "symphonycontrol_confusest",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -51,13 +52,25 @@ export const ImpassionedSerenade: Power = {
       "table": "Ranged_Damage",
       "duration": 30,
       "tickRate": 1
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.65,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.04,
+      "table": "Ranged_InherentDamage",
+      "duration": 30,
+      "tickRate": 1
     }
   ],
   "effects": {
     "confuse": {
-      "mag": 3,
-      "scale": 20,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

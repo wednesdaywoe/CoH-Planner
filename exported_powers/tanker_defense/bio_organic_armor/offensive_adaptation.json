@@ -31,9 +31,7 @@
     "Self"
   ],
   "boosts_allowed": [],
-  "allowed_boostset_cats": [
-    "me.NictusFX"
-  ],
+  "allowed_boostset_cats": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Tanker_Defense.Bio_Organic_Armor.Evolution",
@@ -75,7 +73,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -106,7 +105,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Offensive_Adaptation_Proc"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -137,7 +137,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Defensive_Adaptation_Proc"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -168,7 +169,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Offensive_Adaptation_Proc"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -200,7 +202,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         }
       ]
     }

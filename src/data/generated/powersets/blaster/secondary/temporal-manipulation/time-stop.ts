@@ -16,6 +16,7 @@ export const TimeStop: Power = {
   "shortHelp": "Ranged, Foe Hold, -Regen, -Heal",
   "icon": "timemanipulation_timestop.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -37,12 +38,12 @@ export const TimeStop: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "regenDebuff": {
-      "scale": 0.5,
+      "scale": 4.5,
       "table": "Ranged_Ones"
     },
     "durations": {

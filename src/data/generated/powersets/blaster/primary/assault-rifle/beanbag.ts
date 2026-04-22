@@ -16,6 +16,7 @@ export const Beanbag: Power = {
   "shortHelp": "Ranged, Minor DMG(Smash), Foe Disorient",
   "icon": "assaultweapons_shotgunbeanbag.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -39,11 +40,18 @@ export const Beanbag: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.98,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.98,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.43,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 3,

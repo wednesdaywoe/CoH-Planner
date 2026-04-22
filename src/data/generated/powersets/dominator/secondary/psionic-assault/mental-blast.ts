@@ -16,6 +16,7 @@ export const MentalBlast: Power = {
   "shortHelp": "Ranged, Moderate DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mentalblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -36,9 +37,16 @@ export const MentalBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.8891,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

@@ -16,6 +16,7 @@ export const Hack: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
   "icon": "sword_hack.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -49,6 +50,26 @@ export const Hack: Power = {
       "type": "Lethal",
       "scale": 1.64,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.64,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.651,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.651,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.651,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

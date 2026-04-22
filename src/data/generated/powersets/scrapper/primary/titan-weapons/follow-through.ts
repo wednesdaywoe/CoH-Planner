@@ -16,6 +16,7 @@ export const FollowThrough: Power = {
   "shortHelp": "Melee, DMG(Smashing), Knockdown, Stun, Requires Momentum",
   "icon": "titanweapons_followthrough.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,6 +49,16 @@ export const FollowThrough: Power = {
     },
     {
       "type": "Smashing",
+      "scale": 1.4209,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.57,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
       "scale": 1.96,
       "table": "Melee_InherentDamage"
     },
@@ -59,7 +70,7 @@ export const FollowThrough: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "stun": {

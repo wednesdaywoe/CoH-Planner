@@ -12,17 +12,18 @@ export const ConcentratedStrike: Power = {
   "name": "Concentrated Strike",
   "internalName": "Total_Focus",
   "available": 25,
-  "description": "Concentrated Strike is a slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Concentrated Strike, recharge time is very long. Concentrated Strike Criticals do not result in extra damage, instead it instantly recharges the Power Siphon power.",
+  "description": "Concentrated Strike is a slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Concentrated Strike, recharge time is very long.",
   "shortHelp": "Melee, DMG(Energy/Smash), Foe Disorient, Special",
   "icon": "kineticattack_totalfocus.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
     "range": 7,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 2.83
+    "castTime": 2.67
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -40,14 +41,59 @@ export const ConcentratedStrike: Power = {
   "maxSlots": 6,
   "damage": [
     {
+      "type": "Energy",
+      "scale": 0.6,
+      "table": "Melee_Damage",
+      "duration": 2,
+      "tickRate": 1.100000023841858
+    },
+    {
+      "type": "Energy",
+      "scale": 1.36,
+      "table": "Melee_Damage"
+    },
+    {
       "type": "Smashing",
       "scale": 1,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 2.56,
-      "table": "Melee_Damage"
+      "scale": 1.1867,
+      "table": "Melee_InherentDamage",
+      "duration": 3,
+      "tickRate": 1.100000023841858
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1867,
+      "table": "Melee_InherentDamage",
+      "duration": 3,
+      "tickRate": 1.100000023841858
+    },
+    {
+      "type": "Energy",
+      "scale": 0.5171,
+      "table": "Melee_PvPDamage",
+      "duration": 2,
+      "tickRate": 1.100000023841858
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1724,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8624,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.023,
+      "table": "Melee_PvPDamage",
+      "duration": 3,
+      "tickRate": 1.100000023841858
     }
   ],
   "effects": {

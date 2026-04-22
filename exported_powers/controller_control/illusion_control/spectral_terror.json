@@ -85,7 +85,8 @@
             "type": "EntCreate",
             "entity_def": "P703765092",
             "priority_list": "Pets_Terror"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

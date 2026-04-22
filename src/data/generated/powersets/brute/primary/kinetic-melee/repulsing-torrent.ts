@@ -16,12 +16,13 @@ export const RepulsingTorrent: Power = {
   "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
   "icon": "kineticattack_repulsingtorrent.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.7854,
+    "range": 30,
+    "radius": 30,
+    "arc": 0.7853981852531433,
     "recharge": 12,
     "endurance": 11.856,
     "castTime": 2,
@@ -47,18 +48,33 @@ export const RepulsingTorrent: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 0.825,
+      "scale": 0.32,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.275,
+      "scale": 0.97,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2801,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8403,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.5461,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 3,
+      "scale": 2,
       "table": "Melee_Knockback"
     }
   }

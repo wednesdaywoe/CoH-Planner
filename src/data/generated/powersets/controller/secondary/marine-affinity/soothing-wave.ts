@@ -22,7 +22,7 @@ export const SoothingWave: Power = {
     "accuracy": 1,
     "range": 45,
     "radius": 45,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 10,
     "endurance": 13.52,
     "castTime": 2,

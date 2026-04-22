@@ -16,6 +16,7 @@ export const SkySplitter: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe Knock Up, Disorient, -Fly, Consumes Perfection",
   "icon": "stafffighting_skysplitter.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -57,6 +58,33 @@ export const SkySplitter: Power = {
       "type": "Smashing",
       "scale": 2.76,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.76,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.4905,
+      "table": "Melee_PvPDamage",
+      "duration": 1.9,
+      "tickRate": 1
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8943,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.981,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.9809,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -66,7 +94,7 @@ export const SkySplitter: Power = {
       "table": "Melee_Stun"
     },
     "knockup": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "resistance": {

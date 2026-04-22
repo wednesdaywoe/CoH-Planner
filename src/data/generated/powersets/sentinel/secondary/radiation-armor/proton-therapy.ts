@@ -14,7 +14,7 @@ export const ProtonTherapy: Power = {
   "available": 15,
   "description": "You concentrate your energies to harness the healing powers of radiation to mend your wounds. The effects of Proton Therapy also leaves you resistant to Toxic damage and regeneration debuffs for a while, in addition to giving you some endurance over time.Recharge: Slow.",
   "shortHelp": "Self Heal, Endurance over time, Res(Toxic, -Regen)",
-  "icon": "radiationarmor_protontherapy.png",
+  "icon": "radiationarmor_protontherapy",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

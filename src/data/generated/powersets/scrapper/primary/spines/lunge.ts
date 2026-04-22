@@ -12,17 +12,18 @@ export const Lunge: Power = {
   "name": "Lunge",
   "internalName": "Lunge",
   "available": 0,
-  "description": "You can lunge forward, stabbing and poisoning a foe with the large Spine on your arm. Lunge deals moderate damage. Spine poison deals additional Toxic damage and Slows affected foes.",
+  "description": "You can lunge forward, stabbing and poisoning a foe with the large Spine on your arm. Lunge deals moderate damage. Spine poison deals additional Toxic damage and Slows affected foes.Hitting with this power will invigorate you and increase the potency of your poison damage over time for a while. This power will be highlighted when you no longer have this buff.",
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic) -SPD, -Recharge",
   "icon": "quills_lunge.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 7,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.63
+    "recharge": 5,
+    "endurance": 6.032,
+    "castTime": 1.33
   },
   "allowedEnhancements": [
     "Slow",
@@ -41,33 +42,43 @@ export const Lunge: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 1.32,
+      "scale": 1.08,
       "table": "Melee_Damage"
     },
     {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 3.1,
+      "duration": 6.1,
       "tickRate": 1
     },
     {
       "type": "Lethal",
-      "scale": 1.32,
+      "scale": 1.531,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.531,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.08,
       "table": "Melee_InherentDamage"
     },
     {
       "type": "Lethal",
-      "scale": 1.32,
+      "scale": 1.08,
       "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 0.33,
+      "mag": 0.33000001311302185,
       "scale": 8,
       "table": "Melee_Immobilize"
     }
   },
-  "requires": "!Scrapper_Defense.Shield_Defense"
+  "requires": "Scrapper_Defense.Shield_Defense !"
 };

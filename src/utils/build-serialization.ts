@@ -333,10 +333,20 @@ export function hydrateBuild(slim: Record<string, any>): Build {
  */
 function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], powerSetId: string): SelectedPower[] {
   return slimPowers.map((slim) => {
-    // Find the matching power definition — prefer internalName, fall back to display name
+    // Find the matching power definition. Lookup order:
+    //   1. exact internalName (fast path)
+    //   2. case-insensitive internalName (covers HC-patch casing changes
+    //      like Tough_Hide → Tough_hide, Telekinetic_Blast → Telekinetic_blast,
+    //      Lingering_radiation → Lingering_Radiation, etc.)
+    //   3. case-insensitive display name (covers renames where the display
+    //      name stayed the same, e.g. "Range" → "Boost_Range" both display "Boost Range")
     let def = slim.internalName
       ? powerDefs.find((p) => p.internalName === slim.internalName)
       : undefined;
+    if (!def && slim.internalName) {
+      const slimNameLower = slim.internalName.toLowerCase();
+      def = powerDefs.find((p) => p.internalName.toLowerCase() === slimNameLower);
+    }
     if (!def) {
       def = powerDefs.find(
         (p) => p.name.toLowerCase() === slim.name.toLowerCase()

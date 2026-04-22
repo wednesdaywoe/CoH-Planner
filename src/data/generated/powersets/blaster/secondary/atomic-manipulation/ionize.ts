@@ -14,7 +14,7 @@ export const Ionize: Power = {
   "available": 9,
   "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.",
   "shortHelp": "Self +DMG, +ToHit",
-  "icon": "atomicmanipulation_buildup.png",
+  "icon": "atomicmanipulation_buildup",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

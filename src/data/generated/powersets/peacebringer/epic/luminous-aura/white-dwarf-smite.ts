@@ -16,6 +16,7 @@ export const WhiteDwarfSmite: Power = {
   "shortHelp": "Melee, Light DMG(Energy/Smash), Foe -DEF, -Fly, Disorient",
   "icon": "luminousaura_whitedwarfsmite.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -53,11 +54,21 @@ export const WhiteDwarfSmite: Power = {
       "type": "Energy",
       "scale": 1,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.507,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.521,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "stun": {
@@ -78,5 +89,5 @@ export const WhiteDwarfSmite: Power = {
     },
     "buffDuration": 10
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf && !Inherent.Inherent.White_Dwarf_Smite"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Smite ! &&"
 };

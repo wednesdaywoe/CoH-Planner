@@ -82,7 +82,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         }
       ],
       "child_effects": [
@@ -120,7 +121,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -158,7 +160,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -198,7 +201,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         }
       ],
       "child_effects": [
@@ -236,7 +240,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -274,7 +279,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -321,7 +327,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -346,7 +353,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -377,7 +385,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

@@ -31,9 +31,7 @@
     "Self"
   ],
   "boosts_allowed": [],
-  "allowed_boostset_cats": [
-    "Endgame.NictusFX"
-  ],
+  "allowed_boostset_cats": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo",
@@ -75,7 +73,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -100,7 +99,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -125,7 +125,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -150,7 +151,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -175,7 +177,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -200,7 +203,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -225,7 +229,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -250,7 +255,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -275,7 +281,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -300,7 +307,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -325,7 +333,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -350,7 +359,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -375,7 +385,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -400,7 +411,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -425,7 +437,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         }
       ]
     }

@@ -16,6 +16,7 @@ export const StormKick: Power = {
   "shortHelp": "Melee, DMG(Smash), Self +Defense(Melee, Ranged, AoE)",
   "icon": "martialarts_stormkick.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -38,11 +39,18 @@ export const StormKick: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.32,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.32,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.221,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseBuff": {
       "ranged": {

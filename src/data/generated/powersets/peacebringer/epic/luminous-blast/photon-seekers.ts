@@ -34,8 +34,7 @@ export const PhotonSeekers: Power = {
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
     "Knockback",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Melee Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -43,7 +42,6 @@ export const PhotonSeekers: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 60,
-      "copyBoosts": true,
       "entities": [
         {
           "entity": "Pets_LightDrone1",

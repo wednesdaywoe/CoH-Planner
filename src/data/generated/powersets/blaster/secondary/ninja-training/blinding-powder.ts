@@ -14,14 +14,15 @@ export const BlindingPowder: Power = {
   "available": 27,
   "description": "You throw a handful of Blinding powder in a wide arc at your foes. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.Recharge: Long.",
   "shortHelp": "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
-  "icon": "ninjatools_blindingpowder.png",
+  "icon": "ninjatools_blindingpowder",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 0.8,
     "range": 25,
     "radius": 25,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 90,
     "endurance": 7.8,
     "castTime": 1.07,
@@ -58,10 +59,6 @@ export const BlindingPowder: Power = {
     },
     "durations": {
       "perceptionDebuff": 20
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 20
   }

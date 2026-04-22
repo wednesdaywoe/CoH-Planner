@@ -16,6 +16,7 @@ export const SniperRifle: Power = {
   "shortHelp": "Sniper, DMG(Lethal), Foe Knockback, Self +Range",
   "icon": "assaultweapons_sniperrifle.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,24 +41,5 @@ export const SniperRifle: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    },
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
-    },
-    "buffDuration": 10
-  }
+  "maxSlots": 6
 };

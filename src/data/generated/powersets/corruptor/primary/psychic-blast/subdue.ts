@@ -16,6 +16,7 @@ export const Subdue: Power = {
   "shortHelp": "Ranged, DMG(Psionic), Foe Immobilize",
   "icon": "psychicblast_subdue.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,11 +40,28 @@ export const Subdue: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.2599,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.2599,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,

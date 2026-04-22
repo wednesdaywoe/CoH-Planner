@@ -16,12 +16,13 @@ export const ProtonScatter: Power = {
   "shortHelp": "Ranged (Cone), Light DMG(Energy), Foe -DEF",
   "icon": "luminousblast_protonscatter.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 40,
     "radius": 40,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 12,
     "endurance": 11.856,
     "castTime": 2.17,
@@ -43,11 +44,18 @@ export const ProtonScatter: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.99,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.99,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.008,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,

@@ -22,7 +22,7 @@ export const DarkServant: Power = {
     "accuracy": 1,
     "range": 60,
     "recharge": 500,
-    "endurance": 32.5,
+    "endurance": 26,
     "castTime": 3.17
   },
   "allowedEnhancements": [
@@ -47,8 +47,7 @@ export const DarkServant: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_V_DarkServant",
-      "duration": 240,
-      "copyBoosts": true
+      "duration": 240
     }
   }
 };

@@ -16,6 +16,7 @@ export const HellonEarth: Power = {
   "shortHelp": "Ranged, Pet +Dmg, +To Hit, Summon Living Hellfire",
   "icon": "demonsummoning_hellonearth.png",
   "powerType": "Click",
+  "targetType": "Self",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -33,9 +34,8 @@ export const HellonEarth: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged Damage",
+    "To Hit Buff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -55,7 +55,6 @@ export const HellonEarth: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Living_Hellfire",
-      "copyBoosts": true,
       "entityCount": 10
     },
     "buffDuration": 90

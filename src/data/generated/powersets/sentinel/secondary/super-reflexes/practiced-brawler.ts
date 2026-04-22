@@ -80,5 +80,5 @@ export const PracticedBrawler: Power = {
     },
     "buffDuration": 120
   },
-  "requires": "!Sentinel_Defense.Super_Reflexes.Master_Brawler"
+  "requires": "Sentinel_Defense.Super_Reflexes.Master_Brawler !"
 };

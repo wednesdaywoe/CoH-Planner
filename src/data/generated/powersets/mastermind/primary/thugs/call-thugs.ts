@@ -12,7 +12,7 @@ export const CallThugs: Power = {
   "name": "Call Thugs",
   "internalName": "Call_Thugs",
   "available": 0,
-  "description": "Calls forth one to three Thugs (depending on your level) to do your bidding. The third Thug you gain will be an Arsonist. Thugs use Dual Pistols and can be taught additional pistol attacks.You may only have 3 Thugs under your control at any given time. If you attempt to call more Thugs, you can only replace the ones you have lost in battle. If you already have three, the power will fail.",
+  "description": "Calls forth one to three Thugs (depending on your level) to do your bidding. The third Thug you gain will be an Arsonist. Thugs use Dual Pistols and can be taught additional pistol attacks.You may only have 3 Thugs under your control at any given time. If you attempt to call more Thugs, you can only replace the ones you have lost in battle. If you already have three, the power will fail.In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "shortHelp": "Summon Punks",
   "icon": "thugs_hireposse.png",
   "powerType": "Click",
@@ -33,16 +33,14 @@ export const CallThugs: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "copyBoosts": true,
+      "duration": 99999,
       "entities": [
         {
           "entity": "MastermindPets_Thug",
@@ -53,6 +51,15 @@ export const CallThugs: Power = {
           "count": 1
         }
       ]
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "immobilize": {
+      "mag": 500,
+      "scale": 3,
+      "table": "Melee_Ones"
     }
   }
 };

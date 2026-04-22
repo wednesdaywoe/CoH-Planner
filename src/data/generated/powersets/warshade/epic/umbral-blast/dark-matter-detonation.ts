@@ -16,6 +16,7 @@ export const DarkDetonation: Power = {
   "shortHelp": "Ranged (Targeted AoE), Light DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_darkmatterdetonation.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -43,14 +44,21 @@ export const DarkDetonation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.9,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.9,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.6797,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 4,
       "table": "Ranged_Knockback"
     }
   }

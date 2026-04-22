@@ -86,7 +86,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Fear"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -117,7 +118,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Fear"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -148,7 +150,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Immobilize"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -179,7 +182,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Immobilize"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -210,7 +214,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Stun"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -241,7 +246,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Stun"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -266,7 +272,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -297,7 +304,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_Very_Rare"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -328,7 +336,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_Very_Rare"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

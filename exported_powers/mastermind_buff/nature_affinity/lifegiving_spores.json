@@ -88,7 +88,8 @@
               "Pets.ResistAll.ResistAll",
               "Pets.Lifegiving_Spores.Lifegiving_Spores"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

@@ -12,7 +12,7 @@ export const AdrenalinBoost: Power = {
   "name": "Adrenalin Boost",
   "internalName": "Adrenalin_Boost",
   "available": 29,
-  "description": "Dramatically increases an ally's Endurance Recovery, Hit Point Regeneration and attack rate for 90 seconds. Also grants the target high resistance to slow effects.Recharge: Very Long.",
+  "description": "Dramatically increases an ally's Endurance Recovery, Hit Point Regeneration and attack rate for 90 seconds. Also grants the target high resistance to slow effects.",
   "shortHelp": "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)",
   "icon": "empathy_adrenalinboost.png",
   "powerType": "Click",
@@ -22,7 +22,7 @@ export const AdrenalinBoost: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 300,
-    "endurance": 13,
+    "endurance": 10.4,
     "castTime": 2.27
   },
   "allowedEnhancements": [

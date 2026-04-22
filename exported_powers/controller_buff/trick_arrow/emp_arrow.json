@@ -92,7 +92,8 @@
               "Redirects.Trick_Arrow.EMP_Arrow",
               "Redirects.Trick_Arrow.EMP_Arrow_Fx"
             ]
-          }
+          },
+          "flags_raw": 16704
         },
         {
           "attribs": [
@@ -123,7 +124,8 @@
             "power_names": [
               "Redirects.Trick_Arrow.EMP_Arrow_Burst"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

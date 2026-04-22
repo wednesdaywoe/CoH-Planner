@@ -16,12 +16,13 @@ export const SirensSong: Power = {
   "shortHelp": "Ranged (Cone), Minor DMG(Energy), Foe Sleep",
   "icon": "sonicblast_sleep.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 40,
     "radius": 40,
-    "arc": 0.8727,
+    "arc": 0.8726646304130554,
     "recharge": 16,
     "endurance": 15.184,
     "castTime": 1.86,
@@ -51,7 +52,27 @@ export const SirensSong: Power = {
     {
       "type": "Energy",
       "scale": 1.1902,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1902,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1902,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9546,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9546,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

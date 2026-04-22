@@ -22,7 +22,7 @@ export const Clarity: Power = {
     "accuracy": 1,
     "range": 70,
     "recharge": 4,
-    "endurance": 6.5,
+    "endurance": 5.2,
     "castTime": 1.5
   },
   "allowedEnhancements": [

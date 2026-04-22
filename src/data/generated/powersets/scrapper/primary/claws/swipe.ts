@@ -16,6 +16,7 @@ export const Swipe: Power = {
   "shortHelp": "Melee, DMG(Lethal)",
   "icon": "claws_clawsswipe.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -44,6 +45,16 @@ export const Swipe: Power = {
     },
     {
       "type": "Lethal",
+      "scale": 1.077,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.0489,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
       "scale": 0.76,
       "table": "Melee_InherentDamage"
     },
@@ -53,5 +64,5 @@ export const Swipe: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "requires": "!Scrapper_Defense.Shield_Defense"
+  "requires": "Scrapper_Defense.Shield_Defense !"
 };

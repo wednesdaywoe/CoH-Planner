@@ -68,5 +68,6 @@ export const RepellingForce: Power = {
       "defenseBuff": 10.3
     },
     "buffDuration": 10.3
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

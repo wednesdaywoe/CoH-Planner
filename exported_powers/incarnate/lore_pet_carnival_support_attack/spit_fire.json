@@ -82,7 +82,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -112,7 +113,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Burn",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 17664
         }
       ]
     }

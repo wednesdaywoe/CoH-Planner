@@ -21,10 +21,10 @@ export const StormCell: Power = {
   "stats": {
     "accuracy": 1,
     "range": 40,
-    "radius": 25,
-    "recharge": 60,
-    "endurance": 15.6,
-    "castTime": 2.03
+    "radius": 30,
+    "recharge": 15,
+    "endurance": 5,
+    "castTime": 1.17
   },
   "allowedEnhancements": [
     "EnduranceModification",
@@ -45,15 +45,16 @@ export const StormCell: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "Storm Cell",
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Redirects.Storm_Blast.StormCell_Tempest_Sentinel",
-        "Redirects.Storm_Blast.StormCell_SelfDestruct"
+        "Redirects.Storm_Blast.StormCell_SelfDestruct",
+        "Redirects.Storm_Blast.Lightning_Proc"
       ],
-      "duration": 60,
-      "copyBoosts": true
+      "duration": 60
     }
   }
 };

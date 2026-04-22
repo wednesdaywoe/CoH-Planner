@@ -64,5 +64,5 @@ export const ObscureSustenance: Power = {
     },
     "buffDuration": 60
   },
-  "requires": "!Sentinel_Defense.Dark_Armor.Dark_Regeneration"
+  "requires": "Sentinel_Defense.Dark_Armor.Dark_Regeneration !"
 };

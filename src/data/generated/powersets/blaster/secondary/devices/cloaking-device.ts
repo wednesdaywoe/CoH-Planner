@@ -42,10 +42,6 @@ export const FieldOperative: Power = {
         "scale": 35.5,
         "table": "Melee_Ones"
       },
-      "translucency": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"
@@ -55,9 +51,64 @@ export const FieldOperative: Power = {
       "stealth": 0.75,
       "defenseBuff": 0.75,
       "regenBuff": 0.75,
-      "recoveryBuff": 0.75
+      "recoveryBuff": 0.75,
+      "defenseBuffSuppressible": 0.75
     },
     "defenseBuff": {
+      "ranged": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "regenBuff": {
+      "scale": 2.25,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "defenseBuffSuppressible": {
       "ranged": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
@@ -102,14 +153,6 @@ export const FieldOperative: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       }
-    },
-    "regenBuff": {
-      "scale": 2.25,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
     },
     "buffDuration": 0.75
   }

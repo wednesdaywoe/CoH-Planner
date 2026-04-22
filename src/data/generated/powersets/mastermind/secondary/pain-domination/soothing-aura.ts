@@ -12,7 +12,7 @@ export const SuppressPain: Power = {
   "name": "Suppress Pain",
   "internalName": "Soothing_Aura",
   "available": 19,
-  "description": "While this power is active all nearby allies will have their regeneration rate increased dramatically.Recharge: Moderate.",
+  "description": "While this power is active all nearby allies will have their regeneration rate increased dramatically.",
   "shortHelp": "Toggle: PBAoE, Ally +Regeneration",
   "icon": "paindomination_soothingaura.png",
   "powerType": "Toggle",

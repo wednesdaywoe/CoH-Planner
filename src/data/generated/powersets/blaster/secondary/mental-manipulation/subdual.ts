@@ -16,6 +16,7 @@ export const Subdual: Power = {
   "shortHelp": "Ranged, Moderate DOT(Psionic), Foe Immobilize",
   "icon": "mentalcontrol_subdue.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,13 +40,22 @@ export const Subdual: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.2,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.3458,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,

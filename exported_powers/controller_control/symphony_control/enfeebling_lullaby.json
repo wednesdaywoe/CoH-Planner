@@ -83,7 +83,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Sleep",
+              "event_id": 26,
+              "duration": 1.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -115,7 +124,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         }
       ],
       "child_effects": [
@@ -153,7 +163,16 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "Sleep",
+                  "event_id": 26,
+                  "duration": 1.0,
+                  "flag": 1
+                }
+              ],
+              "flags_raw": 1280
             }
           ]
         }
@@ -205,7 +224,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 2560
             }
           ],
           "child_effects": [
@@ -243,7 +263,8 @@
                   "caster_stack": "Individual",
                   "stack": "Replace",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 2560
                 }
               ]
             }
@@ -283,7 +304,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 2560
             }
           ],
           "child_effects": [
@@ -321,7 +343,8 @@
                   "caster_stack": "Individual",
                   "stack": "Replace",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 2560
                 }
               ]
             }
@@ -363,7 +386,40 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Stunned",
+              "event_id": 23,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Event_24",
+              "event_id": 24,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Held",
+              "event_id": 25,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Sleep",
+              "event_id": 26,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Confused",
+              "event_id": 27,
+              "duration": 15.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 2560
         }
       ]
     }
@@ -409,7 +465,8 @@
             "power_names": [
               "Pets.Reverberant.Enfeebling_Lullaby"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

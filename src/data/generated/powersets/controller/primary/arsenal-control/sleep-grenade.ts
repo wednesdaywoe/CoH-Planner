@@ -14,7 +14,7 @@ export const SleepGrenade: Power = {
   "available": 1,
   "description": "The Sleep Grenade can be launched at long range from beneath the barrel of your Assault Rifle. It releases a cloud of gas that will make enemies drowsy, slow, and fall asleep.",
   "shortHelp": "Ranged (Location AoE), DMG(Toxic), Foe Sleep, -SPD, -Recharge, -Fly",
-  "icon": "arsenalcontrol_sleepgrenade.png",
+  "icon": "arsenalcontrol_sleepgrenade",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
@@ -45,14 +45,14 @@ export const SleepGrenade: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
+      "entity": "Class_Minion_Pets",
       "displayName": "Sleep Grenade",
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Redirects.Assault_Rifle.Sleep_Grenade",
         "Redirects.Assault_Rifle.Sleep_Grenade_Damage"
       ],
-      "duration": 30,
-      "copyBoosts": true
+      "duration": 30
     }
   }
 };

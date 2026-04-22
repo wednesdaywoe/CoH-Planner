@@ -22,7 +22,7 @@ export const BarrierReef: Power = {
     "accuracy": 1,
     "range": 40,
     "recharge": 30,
-    "endurance": 16.9,
+    "endurance": 13.52,
     "castTime": 2.37
   },
   "allowedEnhancements": [
@@ -41,8 +41,7 @@ export const BarrierReef: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Wellspring",
-      "duration": 240,
-      "copyBoosts": true
+      "duration": 240
     }
   }
 };

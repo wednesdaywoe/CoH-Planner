@@ -16,6 +16,7 @@ export const Downdraft: Power = {
   "shortHelp": "Ranged, Hold(Foe), -Movement(Foe), -Rech(Foe), -Fly(Foe), Pressure Builder (Self)",
   "icon": "windcontrol_downdraft.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -41,16 +42,33 @@ export const Downdraft: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.0291,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.0145,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "mezResistance": {
       "knockup": {
@@ -67,5 +85,5 @@ export const Downdraft: Power = {
     },
     "buffDuration": 12
   },
-  "requires": "char>accesslevel >= 0"
+  "requires": "accesslevel char> 0 >="
 };

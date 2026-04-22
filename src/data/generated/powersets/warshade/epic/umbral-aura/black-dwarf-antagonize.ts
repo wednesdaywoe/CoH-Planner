@@ -16,6 +16,7 @@ export const BlackDwarfAntagonize: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "umbralaura_antagonize.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.5,
@@ -37,7 +38,7 @@ export const BlackDwarfAntagonize: Power = {
   "maxSlots": 6,
   "effects": {
     "taunt": {
-      "scale": 20,
+      "scale": 5,
       "table": "Melee_Taunt"
     },
     "rangeBuff": {
@@ -49,5 +50,5 @@ export const BlackDwarfAntagonize: Power = {
     },
     "buffDuration": 12
   },
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf && !Inherent.Inherent.Black_Dwarf_Antagonize"
+  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Antagonize ! &&"
 };

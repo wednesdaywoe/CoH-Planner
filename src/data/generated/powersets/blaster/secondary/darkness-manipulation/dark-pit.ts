@@ -16,6 +16,7 @@ export const DarkPit: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Disorient",
   "icon": "darknessmanipulation_darkpit.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -39,13 +40,14 @@ export const DarkPit: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Stun"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "damageBuff": {
       "scale": 0.018,
-      "table": "Ranged_Ones"
+      "table": "Ranged_Ones",
+      "perTarget": 0.018
     },
     "durations": {
       "damageBuff": 8.57

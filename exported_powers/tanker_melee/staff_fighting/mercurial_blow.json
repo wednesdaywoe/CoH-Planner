@@ -95,7 +95,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -120,7 +121,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1284
             }
           ]
         },
@@ -158,7 +160,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -198,7 +201,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -223,7 +227,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1284
         }
       ]
     }
@@ -269,7 +274,8 @@
             "power_names": [
               "Redirects.Staff_Melee.Perfection_Level"
             ]
-          }
+          },
+          "flags_raw": 197888
         }
       ]
     }

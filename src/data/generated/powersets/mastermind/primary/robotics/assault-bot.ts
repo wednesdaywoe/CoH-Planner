@@ -34,9 +34,7 @@ export const AssaultBot: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],
@@ -45,7 +43,7 @@ export const AssaultBot: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Assault_Bot",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

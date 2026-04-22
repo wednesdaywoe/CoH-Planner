@@ -16,6 +16,7 @@ export const RingofFire: Power = {
   "shortHelp": "Ranged, Moderate DoT(Fire), Foe Immobilize",
   "icon": "firetrap_ringoffire.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -39,18 +40,27 @@ export const RingofFire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2758,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
+      "mag": 5,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "mezResistance": {
       "knockup": {

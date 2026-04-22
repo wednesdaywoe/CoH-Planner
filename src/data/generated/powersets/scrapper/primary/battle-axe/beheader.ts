@@ -16,6 +16,7 @@ export const Beheader: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe Knockdown, -Defense",
   "icon": "battleaxe_chop.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.15,
@@ -56,11 +57,21 @@ export const Beheader: Power = {
       "type": "Lethal",
       "scale": 1,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.26,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.26,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "defenseDebuff": {

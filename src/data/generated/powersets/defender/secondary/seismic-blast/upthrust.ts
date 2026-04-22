@@ -14,8 +14,9 @@ export const Upthrust: Power = {
   "available": 19,
   "description": "You channel seismic energy into the earth, causing a micro-fault to erupt under your target. This causes a shard of rock to thrust upward out of the ground, dealing smashing damage and lowering their defense. Affected foes will become heavy, limiting their ability to jump and fly for a short time. The force of the eruption can knockback enemies.Upthrust grants two stacks of Seismic Pressure.",
   "shortHelp": "Targeted AoE, DMG(Smash), -Fly, -Defense, Chance to Knockback",
-  "icon": "seismicblast_upthrust.png",
+  "icon": "seismicblast_upthrust",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -44,11 +45,23 @@ export const Upthrust: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.8985,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.8985,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.5785,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.3015,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 0.7,
@@ -58,7 +71,7 @@ export const Upthrust: Power = {
       "defenseDebuff": 16
     },
     "knockback": {
-      "scale": 0.33,
+      "scale": 0.66,
       "table": "Ranged_Ones"
     },
     "buffDuration": 16

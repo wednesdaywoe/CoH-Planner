@@ -9,39 +9,39 @@
 
 import type { Powerset } from '@/types';
 
-import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
-import { Inexhaustible as Inexhaustible } from './inexhaustible';
+import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
 import { Adaptation as Adaptation } from './adaptation';
-import { EnvironmentalAdaptation as EnvironmentalAdaptation } from './environmental-adaptation';
-import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
+import { AthleticRegulation as AthleticRegulation } from './athletic-regulation';
 import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
 import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
-import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
-import { RebuildDNA as RebuildDNA } from './rebuild-dna';
-import { AthleticRegulation as AthleticRegulation } from './athletic-regulation';
+import { EnvironmentalAdaptation as EnvironmentalAdaptation } from './environmental-adaptation';
 import { GenomicEvolution as GenomicEvolution } from './genomic-evolution';
+import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
+import { Inexhaustible as Inexhaustible } from './inexhaustible';
+import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 import { ParasiticLeech as ParasiticLeech } from './parasitic-leech';
+import { RebuildDNA as RebuildDNA } from './rebuild-dna';
 
 export const powerset: Powerset = {
   id: 'sentinel/bio-armor',
   name: 'Bio Armor',
   description: 'Your body is shielded by an incredibly durable Bio Armor that evolves based upon your environment. You are also able to siphon genetic data from your foes to empower yourself as well as shift from a Defensive, Offensive and Efficient form. Bio Armor provides good damage resistance and defense, a fair amount of regeneration and a good number of offensive/debuff power options.',
-  icon: 'bio_organic_armor_set.png',
+  icon: 'bio_organic_armor_set.ico',
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    HardenedCarapace,
-    Inexhaustible,
+    AblativeCarapace,
     Adaptation,
-    EnvironmentalAdaptation,
-    OffensiveAdaptation,
+    AthleticRegulation,
     DefensiveAdaptation,
     EfficientAdaptation,
-    AblativeCarapace,
-    RebuildDNA,
-    AthleticRegulation,
+    EnvironmentalAdaptation,
     GenomicEvolution,
+    HardenedCarapace,
+    Inexhaustible,
+    OffensiveAdaptation,
     ParasiticLeech,
+    RebuildDNA,
   ],
 };
 

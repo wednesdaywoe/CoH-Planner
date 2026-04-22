@@ -38,8 +38,7 @@ export const ForceFieldGenerator: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_FF_Generator_Defender",
-      "duration": 240,
-      "copyBoosts": true
+      "duration": 240
     }
   }
 };

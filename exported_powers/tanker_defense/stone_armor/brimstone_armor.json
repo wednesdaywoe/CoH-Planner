@@ -35,9 +35,7 @@
     "EnduranceDiscount",
     "Recharge"
   ],
-  "allowed_boostset_cats": [
-    "5thColumnEndgame.NictusFX"
-  ],
+  "allowed_boostset_cats": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",
@@ -82,7 +80,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -107,7 +111,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -148,7 +158,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -173,7 +184,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         }
       ]
     },
@@ -217,7 +229,8 @@
             "power_names": [
               "Redirects.Stone_Armor.Brimstone_Proc_Tanker"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -248,7 +261,8 @@
             "power_names": [
               "Redirects.Stone_Armor.Brimstone_Proc_Tanker"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

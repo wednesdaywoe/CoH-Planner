@@ -20,7 +20,7 @@ export const Evasion: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "radius": 8,
+    "radius": 12,
     "recharge": 4,
     "endurance": 0.52,
     "castTime": 3,

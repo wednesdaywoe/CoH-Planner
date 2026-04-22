@@ -14,8 +14,9 @@ export const Shatter: Power = {
   "available": 0,
   "description": "Cover a foe in stone shards and shatter them, inflicting light damage and lowering their defense. They will also become heavy, limiting their ability to jump and fly for a short time. Shatter grants two stacks of Seismic Pressure.",
   "shortHelp": "Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF",
-  "icon": "seismicblast_encase.png",
+  "icon": "seismicblast_encase",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,11 +41,28 @@ export const Shatter: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.48,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.48,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.48,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.611,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.611,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,

@@ -43,8 +43,7 @@ export const Earthquake: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Earthquake",
-      "duration": 30,
-      "copyBoosts": true
+      "duration": 30
     }
   }
 };

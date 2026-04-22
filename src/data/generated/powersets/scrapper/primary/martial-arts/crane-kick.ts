@@ -16,6 +16,7 @@ export const CraneKick: Power = {
   "shortHelp": "Melee, High DMG(Smash), Knockback",
   "icon": "martialarts_cranekick.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -53,11 +54,21 @@ export const CraneKick: Power = {
       "type": "Smashing",
       "scale": 1.96,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.9689,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.9689,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 3,
+      "scale": 6,
       "table": "Melee_Knockback"
     }
   }

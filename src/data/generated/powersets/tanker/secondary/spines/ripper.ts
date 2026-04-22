@@ -16,12 +16,13 @@ export const Ripper: Power = {
   "shortHelp": "Melee (Cone), DMG(Lethal), DoT(Toxic), Knockback, -SPD, -Recharge",
   "icon": "quills_bonesword.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 11,
     "endurance": 11.024,
     "castTime": 2.33,
@@ -55,17 +56,27 @@ export const Ripper: Power = {
       "type": "Toxic",
       "scale": 0.2,
       "table": "Melee_Damage",
-      "duration": 4.1,
+      "duration": 7.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.9689,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.5021,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "immobilize": {
-      "mag": 0.67,
+      "mag": 0.6700000166893005,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

@@ -16,6 +16,7 @@ export const TotalDomination: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "mentalcontrol_freeze.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -40,9 +41,9 @@ export const TotalDomination: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

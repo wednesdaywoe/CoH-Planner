@@ -12,17 +12,18 @@ export const Impale: Power = {
   "name": "Impale",
   "internalName": "Impale",
   "available": 7,
-  "description": "You can throw a single large Spine at a targeted foe. This Spine does only moderate damage, but carries a large amount of the Spine toxin. A successful attack can completely Immobilize most foes, as well as Slowing them and dealing Toxic poison damage. Impale can also bring down flying entities.",
+  "description": "You can throw a single large Spine at a targeted foe. This Spine does only moderate damage, but carries a large amount of the Spine toxin. A successful attack can completely Immobilize most foes, as well as Slowing them, reducing their regeneration, and dealing Toxic poison damage for a long duration that starts strong and decays over time. Impale can also bring down flying entities.",
   "shortHelp": "Ranged, DMG(Lethal), DoT(Toxic), Immobilize, -Recharge, -Fly",
   "icon": "quills_impale.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 40,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 2.43
+    "recharge": 10,
+    "endurance": 10.192,
+    "castTime": 2.23
   },
   "allowedEnhancements": [
     "Slow",
@@ -48,11 +49,21 @@ export const Impale: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Lethal",
+      "scale": 2.421,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Toxic",
-      "scale": 0.1,
+      "scale": 0.2,
       "table": "Melee_Damage",
-      "duration": 4.1,
+      "duration": 15.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.421,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Lethal",
@@ -70,6 +81,14 @@ export const Impale: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Melee_Immobilize"
-    }
+    },
+    "regenDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
   }
 };

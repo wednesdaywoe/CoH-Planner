@@ -12,7 +12,7 @@ export const RegenerationAura: Power = {
   "name": "Regeneration Aura",
   "internalName": "Regeneration_Aura",
   "available": 27,
-  "description": "The Regeneration Aura dramatically increases the healing rate of all nearby heroes for a limited time. Emitting this Aura costs you a lot of Endurance, and it takes a long time to recharge.Recharge: Very Long.",
+  "description": "The Regeneration Aura dramatically increases the healing rate of all nearby heroes for a limited time. Emitting this Aura costs you a lot of Endurance, and it takes a long time to recharge.",
   "shortHelp": "PBAoE, Ally +Regeneration",
   "icon": "empathy_regenerationaura.png",
   "powerType": "Click",
@@ -22,7 +22,7 @@ export const RegenerationAura: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 500,
-    "endurance": 32.5,
+    "endurance": 26,
     "castTime": 2.03,
     "maxTargets": 255
   },

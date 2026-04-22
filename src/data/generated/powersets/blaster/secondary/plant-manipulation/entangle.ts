@@ -16,6 +16,7 @@ export const Entangle: Power = {
   "shortHelp": "Ranged, DoT(Smash/Lethal), Foe Immobilize, -Fly",
   "icon": "plantmanipulation_entangle.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -53,6 +54,20 @@ export const Entangle: Power = {
       "table": "Ranged_Damage",
       "duration": 9.2,
       "tickRate": 2
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.14,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.14,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
     }
   ],
   "effects": {
@@ -73,10 +88,6 @@ export const Entangle: Power = {
     },
     "durations": {
       "mezResistance": 15
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 15
   }

@@ -95,7 +95,8 @@
               "Redirects.Electric_Control.Tesla_Coil_OneShot",
               "Redirects.Electric_Control.Self_Destruct"
             ]
-          }
+          },
+          "flags_raw": 320
         },
         {
           "attribs": [
@@ -120,7 +121,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 196720
         }
       ]
     }

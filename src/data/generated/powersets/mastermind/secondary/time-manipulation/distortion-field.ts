@@ -22,7 +22,7 @@ export const DistortionField: Power = {
     "accuracy": 1,
     "range": 70,
     "recharge": 60,
-    "endurance": 18.2,
+    "endurance": 14.56,
     "castTime": 2.03
   },
   "allowedEnhancements": [
@@ -41,8 +41,7 @@ export const DistortionField: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_DistortionField_Mastermind",
-      "duration": 45,
-      "copyBoosts": true
+      "duration": 45
     }
   }
 };

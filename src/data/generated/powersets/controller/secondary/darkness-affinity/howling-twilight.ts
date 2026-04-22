@@ -16,14 +16,15 @@ export const HowlingTwilight: Power = {
   "shortHelp": "Ranged (AoE), Minor DMG(Negative), Target Slow, -Recharge, -Regen, Disorient, Ally Rez",
   "icon": "darkmiasma_howlingtwilight.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "radius": 15,
     "recharge": 180,
-    "endurance": 26,
-    "castTime": 3.17,
+    "endurance": 10.4,
+    "castTime": 1.83,
     "maxTargets": 16
   },
   "allowedEnhancements": [
@@ -35,6 +36,7 @@ export const HowlingTwilight: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
@@ -55,16 +57,15 @@ export const HowlingTwilight: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_HowlingVillain",
-      "duration": 1,
-      "copyBoosts": true
+      "duration": 1
     },
     "stun": {
-      "mag": 2,
-      "scale": 15,
-      "table": "Ranged_Ones"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "regenDebuff": {
-      "scale": 5,
+      "scale": 35,
       "table": "Ranged_Ones"
     },
     "durations": {

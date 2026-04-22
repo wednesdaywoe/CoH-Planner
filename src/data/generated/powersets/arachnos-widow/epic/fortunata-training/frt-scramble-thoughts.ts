@@ -16,6 +16,7 @@ export const ScrambleThoughts: Power = {
   "shortHelp": "Ranged, DoT(Psionic), Foe Disorient",
   "icon": "fortunatatraining_scramblethoughts.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -32,19 +33,26 @@ export const ScrambleThoughts: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged Damage",
+    "Melee Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.25,
-    "table": "Ranged_Damage",
-    "duration": 4.1,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.25,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.44,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 4,

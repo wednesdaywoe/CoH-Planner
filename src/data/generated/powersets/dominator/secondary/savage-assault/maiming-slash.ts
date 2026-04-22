@@ -16,6 +16,7 @@ export const MaimingSlash: Power = {
   "shortHelp": "Melee, DMG(Lethal), DoT (Lethal), Foe -Speed, +1 Blood Frenzy",
   "icon": "savagemelee_maimingslash.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -47,6 +48,18 @@ export const MaimingSlash: Power = {
       "type": "Lethal",
       "scale": 0.209,
       "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4193,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.1136,
+      "table": "Melee_PvPDamage",
       "duration": 3.1,
       "tickRate": 1
     }

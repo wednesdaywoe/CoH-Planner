@@ -16,6 +16,7 @@ export const Haunt: Power = {
   "shortHelp": "Foe Targeted, Summon Shades",
   "icon": "darknesscontrol_haunt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -35,9 +36,9 @@ export const Haunt: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Controller Archetype Sets",
     "Fear",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
@@ -46,7 +47,6 @@ export const Haunt: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Shade",
-      "copyBoosts": true,
       "entityCount": 2
     }
   }

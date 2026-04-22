@@ -14,8 +14,9 @@ export const NeutrinoBolt: Power = {
   "available": 0,
   "description": "A very quick, but low damage attack. Neutrino Bolt can reduce the target's Defense. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: Light.Recharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Energy), Foe -DEF",
-  "icon": "radioactiveassault_neutrinoblast.png",
+  "icon": "radioactiveassault_neutrinoblast",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,11 +40,18 @@ export const NeutrinoBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2572,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,

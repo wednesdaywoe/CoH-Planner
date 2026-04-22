@@ -16,13 +16,14 @@ export const Brine: Power = {
   "shortHelp": "Ranged, Foe -Resist(All), -MaxHP",
   "icon": "marineaffinity_brine.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "recharge": 60,
-    "endurance": 8.75,
-    "castTime": 2.07
+    "endurance": 7,
+    "castTime": 1.33
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -32,7 +33,8 @@ export const Brine: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing"
+    "Accurate Healing",
+    "Healing"
   ],
   "maxSlots": 6,
   "effects": {
@@ -75,7 +77,7 @@ export const Brine: Power = {
       "maxHPBuff": 60
     },
     "maxHPBuff": {
-      "scale": 2,
+      "scale": 3,
       "table": "Ranged_Heal"
     },
     "buffDuration": 60

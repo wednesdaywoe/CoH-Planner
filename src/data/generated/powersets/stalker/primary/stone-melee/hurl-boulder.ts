@@ -16,6 +16,7 @@ export const HurlBoulder: Power = {
   "shortHelp": "Ranged, Moderate DMG(Smashing), Foe Knockback, -Fly",
   "icon": "stonemelee_hurlboulder.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,11 +50,31 @@ export const HurlBoulder: Power = {
       "type": "Smashing",
       "scale": 1.64,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.64,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.47,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.47,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.47,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 3,
+      "scale": 6,
       "table": "Melee_Knockback"
     }
   }

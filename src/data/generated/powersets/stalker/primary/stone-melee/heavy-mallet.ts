@@ -16,6 +16,7 @@ export const SeismicMallet: Power = {
   "shortHelp": "Melee, Superior DMG(Smashing), Knockback, Hold",
   "icon": "stonemelee_heavymallet.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,11 +51,31 @@ export const SeismicMallet: Power = {
       "type": "Smashing",
       "scale": 2.92,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.92,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.181,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.181,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.181,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "hold": {

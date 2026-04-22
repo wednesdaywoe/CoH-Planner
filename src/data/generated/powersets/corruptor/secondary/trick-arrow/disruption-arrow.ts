@@ -37,14 +37,14 @@ export const DisruptionArrow: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "Disruption Arrow",
       "powers": [
         "Redirects.Trick_Arrow.Disruption_Arrow",
         "Pets.ResistAll.ResistAll"
       ],
-      "duration": 45,
-      "copyBoosts": true
+      "duration": 45
     }
   }
 };

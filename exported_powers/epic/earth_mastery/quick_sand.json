@@ -83,7 +83,8 @@
             "type": "EntCreate",
             "entity_def": "P1397656559",
             "priority_list": "Pets_Epic_Quicksand"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

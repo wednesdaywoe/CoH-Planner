@@ -16,6 +16,7 @@ export const GreaterIceSword: Power = {
   "shortHelp": "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "icyonslaught_greatericesword.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -58,6 +59,21 @@ export const GreaterIceSword: Power = {
       "type": "Cold",
       "scale": 1.96,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.078,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.1222,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.2002,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

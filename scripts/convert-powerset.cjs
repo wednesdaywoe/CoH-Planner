@@ -15,10 +15,6 @@ const path = require('path');
 // retired now that the encoded-string resolver lands the missing
 // display_help / display_short_help strings.
 const RAW_DATA_PATH = path.join(__dirname, '../exported_powers');
-// Raw .powers def files — authoritative source for AttribMod tail metadata
-// (Suppress events, flags) that the binary parser doesn't yet reverse-engineer.
-// Used for in-combat suppression of stealth defense buffs (Hide, Stealth, etc.).
-const RAW_DEFS_PATH = path.join(__dirname, '../raw defs');
 // The convert writes into three parallel trees (see src/data/README.md):
 //   generated/  — full auto-extraction, overwritten on every run
 //   overrides/  — hand-written deltas, scaffolded as empty stubs, never overwritten
@@ -377,120 +373,13 @@ function resolveRedirectPath(powerName) {
   return path.join(RAW_DATA_PATH, filePath);
 }
 
-// ============================================================================
-// .def file metadata (Suppress events for in-combat-suppressed defense buffs)
-// ----------------------------------------------------------------------------
-// The binary parser doesn't yet extract `Suppress` events from the AttribMod
-// tail (audit notes call this out as TODO). Until it does, we parse the
-// raw .powers def files directly to surface combat-suppression metadata for
-// stealth powers (Hide, Stealth, Invisibility, Shadow Fall, …).
-//
-// `loadDefSuppressionMap(fullName)` returns a list of entries each describing
-// one AttribMod block from the .def file with its attribs, scale, table, and
-// whether it's suppressed by combat events. Templates from the JSON export
-// are matched against these entries in `extractEffects` so we can route
-// suppressible portions into `effects.defenseBuffSuppressible`.
-// ============================================================================
-
-const COMBAT_SUPPRESS_EVENTS = new Set(['Attacked', 'Damaged', 'MissionObjectClick', 'PseudoPetAttacked']);
-const _defSuppressionCache = new Map();
-
-/**
- * Map a power's full_name (e.g. "Stalker_Defense.Ninjitsu.Hide") to its
- * .powers def file path under raw defs/. Returns null if the file is absent.
- */
-function _defPathForFullName(fullName) {
-  if (!fullName) return null;
-  const parts = fullName.split('.');
-  const candidate = path.join(RAW_DEFS_PATH, ...parts) + '.powers';
-  return fs.existsSync(candidate) ? candidate : null;
-}
-
-function _normalizeDefAttrib(token) {
-  // .def uses k-prefixed enum names like kSmashing_Attack, kRanged_Attack.
-  // Strip the k prefix and the _Attack suffix so it matches JSON template attribs
-  // (Smashing, Ranged, Area, Melee, …). Some attribs (kAOE_Attack) need a remap.
-  let s = token.startsWith('k') ? token.slice(1) : token;
-  s = s.replace(/_Attack$/i, '');
-  // .def uses AOE / .def uses Negative_Energy; JSON uses Area / Negative_Energy
-  if (s === 'AOE') s = 'Area';
-  return s;
-}
-
-/**
- * Parse the raw .powers def file and extract one entry per AttribMod block
- * describing its Attrib(s), Scale, Table, and combat-suppression status.
- */
-function loadDefSuppressionMap(fullName) {
-  if (_defSuppressionCache.has(fullName)) return _defSuppressionCache.get(fullName);
-  const defPath = _defPathForFullName(fullName);
-  if (!defPath) {
-    _defSuppressionCache.set(fullName, null);
-    return null;
-  }
-  const text = fs.readFileSync(defPath, 'utf-8');
-  const entries = [];
-  // Walk AttribMod { ... } blocks via a brace-aware scan.
-  let i = 0;
-  while (true) {
-    const idx = text.indexOf('AttribMod', i);
-    if (idx < 0) break;
-    const open = text.indexOf('{', idx);
-    if (open < 0) break;
-    // Find matching close brace
-    let depth = 1;
-    let j = open + 1;
-    while (j < text.length && depth > 0) {
-      const ch = text[j];
-      if (ch === '{') depth++;
-      else if (ch === '}') depth--;
-      j++;
-    }
-    const block = text.slice(open + 1, j - 1);
-    i = j;
-
-    // Extract Attrib line: "    Attrib kFoo kBar ..."
-    const attribMatch = block.match(/^\s*Attrib\s+(.+)$/m);
-    if (!attribMatch) continue;
-    const attribs = new Set(attribMatch[1].trim().split(/\s+/).map(_normalizeDefAttrib));
-    const scaleMatch = block.match(/^\s*Scale\s+([\d.\-]+)/m);
-    const tableMatch = block.match(/^\s*Table\s+"([^"]+)"/m);
-    const scale = scaleMatch ? parseFloat(scaleMatch[1]) : 0;
-    const table = tableMatch ? tableMatch[1] : '';
-    // Suppress lines: "    Suppress <Event> <count> <flag>" — combat-related
-    // events (Attacked, Damaged, etc.) suppress the buff in combat.
-    const suppressLines = block.match(/^\s*Suppress\s+(\w+)/gm) || [];
-    const suppressedInCombat = suppressLines.some(line => {
-      const m = line.match(/^\s*Suppress\s+(\w+)/);
-      return m && COMBAT_SUPPRESS_EVENTS.has(m[1]);
-    });
-    entries.push({ attribs, scale, table, suppressedInCombat });
-  }
-  _defSuppressionCache.set(fullName, entries);
-  return entries;
-}
-
-/**
- * Decide whether a JSON template represents a combat-suppressed AttribMod
- * by matching it against entries from the .def file. Match key is
- * (attribs set, scale rounded, table). Returns false when no .def is found
- * (preserving legacy behavior — no fields treated as suppressible).
- */
-function templateIsCombatSuppressed(template, defEntries) {
-  if (!defEntries || defEntries.length === 0) return false;
-  const tplAttribs = new Set((template.attribs || []).map(a => a.replace(/^k/, '').replace(/_Attack$/i, '')));
-  const tplScale = Math.round((template.scale || 0) * 10000) / 10000;
-  const tplTable = template.table || '';
-  for (const entry of defEntries) {
-    if (entry.table !== tplTable) continue;
-    if (Math.round(entry.scale * 10000) / 10000 !== tplScale) continue;
-    if (entry.attribs.size !== tplAttribs.size) continue;
-    let ok = true;
-    for (const a of entry.attribs) { if (!tplAttribs.has(a)) { ok = false; break; } }
-    if (ok) return entry.suppressedInCombat;
-  }
-  return false;
-}
+// Combat-suppressing events from EVENT_NAME (parser/_enums.py). When an
+// AttribMod's Suppress array lists any of these, the buff is suppressed
+// during combat (the In-Combat toggle in the planner removes it from totals).
+const COMBAT_SUPPRESS_EVENTS = new Set([
+  'Attacked', 'Damaged', 'MissionObjectClick', 'PseudoPetAttacked',
+  'PseudoPetHelped', 'Helped', 'HitByFoe', 'CommandedPet',
+]);
 
 /**
  * Recursively collect templates from effects, following Execute_Power references
@@ -614,7 +503,9 @@ function toKebabCase(name) {
     .replace(/^-|-$/g, '');
 }
 
-// Valid target types (mapped from raw data to our TypeScript types)
+// Valid target types (mapped from raw data to our TypeScript types).
+// The raw bin format uses some short names ('Friend', 'Position', 'MyPet')
+// where CoD2 used longer ones ('Ally (Alive)', 'Location', 'Ally'). Map both.
 const TARGET_TYPE_MAP = {
   'Self': 'Self',
   'Foe': 'Foe',
@@ -629,6 +520,16 @@ const TARGET_TYPE_MAP = {
   'Any': 'Any',
   'Dead Teammate': 'Dead Teammate',
   'Teleport': 'Teleport',
+  // Bin-format short names (CoD2 used the longer forms above).
+  'Friend': 'Ally (Alive)',                   // alive friendly target (most heal/buff powers)
+  'DeadOrAliveFoe': 'Foe',                    // Foe regardless of alive/dead state
+  'DeadPlayerFriend': 'Dead Teammate',        // resurrect-on-dead-ally powers
+  'DeadMyPet': 'Dead Teammate',               // resurrect-on-dead-pet
+  'DeadOrAliveMyPet': 'Ally',                 // pet manipulation, dead or alive
+  'MyCreator': 'Self',                        // pet powers referencing summoner
+  'MyCreation': 'Ally',                       // pet's own pet/summon
+  'Position': 'Location',                     // ground-targeted (caltrops, trip mine)
+  'DeadOrAliveLeaguemate': 'Teammate',
   // Map invalid types to closest valid equivalent
   'Anything': 'Location',
   'Leaguemate': 'Teammate',
@@ -915,7 +816,7 @@ function extractDamage(templates) {
  * - "Magnitude" = magnitude-based effect
  * - "Duration" = duration-based effect (used for mez)
  */
-function extractEffects(templates, powerName, defEntries = null) {
+function extractEffects(templates, powerName) {
   const effects = {};
   const unmappedAttribs = new Set();
 
@@ -925,21 +826,20 @@ function extractEffects(templates, powerName, defEntries = null) {
     // Skip deactivation-only effects (temporary bursts on toggle off, e.g., Reaction Time speed burst)
     if (template.application_type === 'OnDeactivate') continue;
 
-    // Combat-suppressed defense: route to defenseBuffSuppressible so the In-Combat
-    // toggle can suppress it (matches stealth powers like Hide, Stealth, Invisibility,
-    // Shadow Fall — their out-of-combat-only defense bonuses).
-    // The binary parser doesn't extract Suppress events yet; metadata comes from the
-    // .def file via loadDefSuppressionMap (see top of file). Fallback: legacy
-    // suppress_events check on the template itself, in case future parser changes
-    // populate them directly.
-    const isSuppressedByDef = templateIsCombatSuppressed(template, defEntries);
-    const isSuppressedByJson = template.suppress_events?.some(
-      se => se.event === 'AttackedOther' || se.event === 'Healed' || se.event === 'Moved'
+    // Combat-suppressed defense: route to defenseBuffSuppressible so the
+    // In-Combat toggle can suppress it. Two sources mark a template as
+    // combat-suppressed:
+    //   1. Template-level Suppress events (parsed from binary AttribMod tail,
+    //      see EVENT_NAME enum and _parse_effect_template) — used by Hide
+    //      and similar powers that explicitly list Attacked/Damaged/etc as
+    //      suppression triggers.
+    //   2. Ancestor Effect with requires_expression like
+    //      `Attacked source.EventTimeSince> 10 >` — used by pool Stealth,
+    //      Invisibility, etc. Set as `_combatGated` by collectAllTemplates.
+    const isSuppressedByEvents = template.suppress_events?.some(
+      se => COMBAT_SUPPRESS_EVENTS.has(se.event)
     );
-    // _combatGated is set by collectAllTemplates when an ancestor Effect's
-    // requires_expression gates the buff to "out of combat for N seconds"
-    // (pool Stealth, Invisibility, etc).
-    const isCombatSuppressed = isSuppressedByDef || isSuppressedByJson || template._combatGated;
+    const isCombatSuppressed = isSuppressedByEvents || template._combatGated;
 
     const aspect = template.aspect?.toLowerCase();
     const scale = template.scale || 0;
@@ -1536,8 +1436,11 @@ function detectStackingEffects(rawJson) {
   let maxStacks = null;
 
   // === AoE per-target stacking (Stack/Continuous + Replace) ===
-  // Only for AoE/Cone powers with maxTargets > 1 (not 255 = team-wide)
-  const effectArea = rawJson.effect_area;
+  // Only for AoE/Cone powers with maxTargets > 1 (not 255 = team-wide).
+  // Normalize through EFFECT_AREA_MAP — bin format uses "Sphere" for what
+  // the planner calls "AoE", and missing this normalization here was the
+  // cause of Invincibility losing its perTarget metadata on regen.
+  const effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
   const maxTargets = rawJson.max_targets_hit;
   const isAoEWithTargets = (effectArea === 'AoE' || effectArea === 'Cone') &&
     maxTargets && maxTargets > 1 && maxTargets !== 255;
@@ -1745,7 +1648,9 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     description: powerJson.display_help?.replace(/<[^>]+>/g, '').trim(),
     shortHelp: powerJson.display_short_help,
     icon: ICON_OVERRIDES[powerJson.icon] || powerJson.icon,
-    powerType: powerJson.type,
+    // Map bin's "GlobalBoost" to the planner's "Global Enhancement" type.
+    // Other types (Click/Toggle/Auto) match between bin and planner.
+    powerType: powerJson.type === 'GlobalBoost' ? 'Global Enhancement' : powerJson.type,
     targetType: mappedTargetType,
     effectArea: EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area,
   };
@@ -1786,7 +1691,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     powerJson.boosts_allowed || [],
     archetypeId,
     powerType,
-    powerJson.effect_area,
+    EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area,
     powerJson.range,
   );
   if (inferred.length > 0) {
@@ -1859,15 +1764,11 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     }
   }
 
-  // Load .def-file metadata once for this power so extractEffects can split
-  // combat-suppressible defense buffs into effects.defenseBuffSuppressible.
-  const defEntries = loadDefSuppressionMap(powerJson.full_name);
-
   if (allTemplates.length > 0) {
     const damage = extractDamage(allTemplates);
     if (damage) power.damage = damage;
 
-    const effects = extractEffects(allTemplates, powerJson.name, defEntries);
+    const effects = extractEffects(allTemplates, powerJson.name);
 
     // Detect per-target stacking (Stack/Continuous templates, Execute_Power redirects)
     const stackingResult = detectStackingEffects(powerJson);
@@ -2004,17 +1905,17 @@ export const ${exportName}: Power = ${JSON.stringify(power, null, 2)};
 `;
     fs.writeFileSync(path.join(generatedDir, powerFileName), generatedContent);
 
-    // 2. & 3. overrides + composed — scaffolded together only if neither
-    //    exists. This avoids a footgun where an override file sits beside
-    //    a pre-layering single-file composed that doesn't import it; any
-    //    content added to the orphan override would silently have no effect.
-    //    When only composed exists (the pre-layering shape), we leave both
-    //    alone and leave migration as a deliberate per-power task.
+    // 2. & 3. overrides + composed — scaffolded individually if missing.
+    //    Each is independent; a missing composed gets created (importing
+    //    whatever override exists or scaffolding an empty one), and a
+    //    missing override gets an empty stub. Both are safe-to-rebuild —
+    //    the composed file is just the layering shim, and the empty
+    //    override is a no-op.
     const composedPath = path.join(composedDir, powerFileName);
     const overridePath = path.join(overridesDir, powerFileName);
     const composedExists = fs.existsSync(composedPath);
     const overrideExists = fs.existsSync(overridePath);
-    if (!composedExists && !overrideExists) {
+    if (!overrideExists) {
       const overrideContent = `/**
  * ${power.name} — OVERRIDES LAYER
  *
@@ -2029,7 +1930,8 @@ import type { Power } from '@/types';
 export const overrides: Partial<Power> = {};
 `;
       fs.writeFileSync(overridePath, overrideContent);
-
+    }
+    if (!composedExists) {
       const composedContent = `/**
  * ${power.name} — COMPOSED EXPORT
  *
@@ -2106,7 +2008,6 @@ module.exports = {
   extractEffects,
   extractDamage,
   inferAllowedSetCategories,
-  loadDefSuppressionMap,
   toKebabCase,
   CATEGORY_MAP,
   BOOST_TYPE_MAP,

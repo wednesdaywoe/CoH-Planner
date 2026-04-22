@@ -16,6 +16,7 @@ export const Shout: Power = {
   "shortHelp": "Ranged, DMG(Smashing/Energy), Foe -Res(All)",
   "icon": "sonicblast_heavy.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -47,6 +48,16 @@ export const Shout: Power = {
       "type": "Energy",
       "scale": 0.98,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.1,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

@@ -87,7 +87,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Patron_Powers_Coral_Guardian_Warder",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

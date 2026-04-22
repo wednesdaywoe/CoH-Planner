@@ -16,6 +16,7 @@ export const AssassinsFrenzy: Power = {
   "shortHelp": "Melee, DMG(Lethal)), Self +1 Blood Frenzy",
   "icon": "savagemelee_assassinstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -36,26 +37,5 @@ export const AssassinsFrenzy: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 2.5,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 8
-    },
-    "buffDuration": 8
-  }
+  "maxSlots": 6
 };

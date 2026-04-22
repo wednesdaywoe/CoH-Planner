@@ -16,12 +16,13 @@ export const TenebrousTentacles: Power = {
   "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "darkcast_tenebroustentacles.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 40,
     "radius": 40,
-    "arc": 0.6981,
+    "arc": 0.6981317400932312,
     "recharge": 10,
     "endurance": 10.192,
     "castTime": 1.67,
@@ -57,6 +58,66 @@ export const TenebrousTentacles: Power = {
       "type": "Negative",
       "scale": 0.135,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 7.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.135,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.0447,
+      "table": "Ranged_PvPDamage",
+      "duration": 7.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.0618,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.0447,
+      "table": "Ranged_PvPDamage",
+      "duration": 7.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.0618,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.125,
+      "table": "Ranged_PvPDamage",
+      "duration": 7.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.969,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.0447,
+      "table": "Ranged_PvPDamage",
+      "duration": 7.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.0618,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

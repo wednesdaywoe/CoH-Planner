@@ -12,7 +12,7 @@ export const EnforcedMorale: Power = {
   "name": "Enforced Morale",
   "internalName": "Enforced_Morale",
   "available": 15,
-  "description": "Enforced Morale frees an ally from any Disorient, Hold, Sleep, Fear, Confuse and Immobilize effects and leaves them resistant to such effects for a good while. Also, Enforced Morale grants the target clearer Perception to see hidden foes, and a minor recharge and movement speed boost. The Protection and Movement boosts will improve with multiple applications and as you advance in level, although the Recharge and Movement boosts will only apply for the first few applications. If the ally is not damaged, Enforced Morale will cause them some pain before granting its benefits.Damage: Light.Recharge: Fast.",
+  "description": "Enforced Morale frees an ally from any Disorient, Hold, Sleep, Fear, Confuse and Immobilize effects and leaves them resistant to such effects for a good while. Also, Enforced Morale grants the target clearer Perception to see hidden foes, and a minor recharge and movement speed boost. The Protection and Movement boosts will improve with multiple applications and as you advance in level, although the Recharge and Movement boosts will only apply for the first few applications. If the ally is not damaged, Enforced Morale will cause them some pain before granting its benefits.",
   "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception, +Recharge, +Speed, Light DMG",
   "icon": "paindomination_enforcedmorale.png",
   "powerType": "Click",
@@ -22,7 +22,7 @@ export const EnforcedMorale: Power = {
     "accuracy": 1,
     "range": 70,
     "recharge": 4,
-    "endurance": 6.5,
+    "endurance": 5.2,
     "castTime": 1
   },
   "allowedEnhancements": [
@@ -82,7 +82,27 @@ export const EnforcedMorale: Power = {
     },
     "mezResistance": {
       "sleep": {
-        "scale": 5,
+        "scale": 13,
+        "table": "Ranged_Res_Boolean"
+      },
+      "confuse": {
+        "scale": 3,
+        "table": "Ranged_Res_Boolean"
+      },
+      "fear": {
+        "scale": 3,
+        "table": "Ranged_Res_Boolean"
+      },
+      "hold": {
+        "scale": 3,
+        "table": "Ranged_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 3,
+        "table": "Ranged_Res_Boolean"
+      },
+      "stun": {
+        "scale": 3,
         "table": "Ranged_Res_Boolean"
       }
     },

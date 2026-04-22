@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.prestige_Pocket_D_VIP_Pass"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

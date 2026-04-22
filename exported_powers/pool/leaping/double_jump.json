@@ -73,7 +73,13 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 263200
         }
       ]
     },
@@ -121,7 +127,8 @@
               "Prestige.Prestige_Travel.prestige_Jump_Pack_Temp",
               "Prestige.Prestige_Travel.Prestige_Steam_Jump"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -146,7 +153,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 3120
         }
       ]
     }

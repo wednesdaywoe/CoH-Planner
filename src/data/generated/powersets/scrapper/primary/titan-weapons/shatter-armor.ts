@@ -16,6 +16,7 @@ export const RendArmor: Power = {
   "shortHelp": "Melee, DMG(Smashing), Foe -Def(All), -Res(All)",
   "icon": "titanweapons_shatterarmor.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,67 +39,5 @@ export const RendArmor: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2.92,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.92,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.92,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10,
-      "resistanceDebuff": 8
-    },
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      }
-    },
-    "buffDuration": 10
-  }
+  "maxSlots": 6
 };

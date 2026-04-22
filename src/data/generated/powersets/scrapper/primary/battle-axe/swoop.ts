@@ -16,6 +16,7 @@ export const Swoop: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe Knockup",
   "icon": "battleaxe_swoop.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -53,11 +54,21 @@ export const Swoop: Power = {
       "type": "Lethal",
       "scale": 2.28,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.839,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.839,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockup": {
-      "scale": 3,
+      "scale": 6,
       "table": "Melee_Knockback"
     }
   }

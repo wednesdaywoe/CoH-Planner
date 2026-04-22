@@ -34,6 +34,9 @@ export const WideAreaWebGrenade: Power = {
     "Immobilize",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Immobilize"
+  ],
   "maxSlots": 6,
   "effects": {
     "immobilize": {

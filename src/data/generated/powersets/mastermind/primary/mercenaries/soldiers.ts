@@ -12,8 +12,8 @@ export const Soldiers: Power = {
   "name": "Soldiers",
   "internalName": "Soldiers",
   "available": 0,
-  "description": "Calls forth one to three Mercenary Soldiers (depending on your level) to do your bidding. The third Soldier you gain will be a Medic. All Soldiers use Sub Machine Guns, but these can be upgraded.You may only have 3 Soldiers under your control at any given time. If you attempt to call more Soldiers, you can only replace the ones you have lost in battle. If you already have three, the power will fail.",
-  "shortHelp": "Summon Soldier",
+  "description": "Calls forth one to three Mercenary Soldiers (depending on your level) to do your bidding. The third Soldier you gain will be a Medic. All Soldiers use Sub Machine Guns, but these can be upgraded.You may only have 3 Soldiers under your control at any given time. If you attempt to call more Soldiers, you can only replace the ones you have lost in battle. If you already have three, the power will fail.In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
+  "shortHelp": "P2937209522",
   "icon": "paramilitary_draftarmy.png",
   "powerType": "Click",
   "targetType": "Location",
@@ -35,19 +35,18 @@ export const Soldiers: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Accurate Healing",
     "Defense Debuff",
     "Healing",
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "copyBoosts": true,
+      "duration": 99999,
       "entities": [
         {
           "entity": "MastermindPets_Soldier",
@@ -58,6 +57,15 @@ export const Soldiers: Power = {
           "count": 1
         }
       ]
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "immobilize": {
+      "mag": 500,
+      "scale": 3,
+      "table": "Melee_Ones"
     }
   }
 };

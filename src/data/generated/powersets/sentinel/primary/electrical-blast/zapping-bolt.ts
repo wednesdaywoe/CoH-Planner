@@ -16,6 +16,7 @@ export const ZappingBolt: Power = {
   "shortHelp": "Ranged, DMG(Energy), Foe -End",
   "icon": "electricalbolt_heavy.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -39,15 +40,56 @@ export const ZappingBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.96,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.392,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.392,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.96,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.96,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.5,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.5,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.15,
+      "scale": 3.15,
       "table": "Ranged_EndDrain"
+    },
+    "enduranceGain": {
+      "scale": 7.2,
+      "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -55,10 +97,6 @@ export const ZappingBolt: Power = {
     },
     "durations": {
       "recoveryDebuff": 4
-    },
-    "enduranceGain": {
-      "scale": 7.2,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 4
   }

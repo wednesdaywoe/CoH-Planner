@@ -16,6 +16,7 @@ export const TeslaCage: Power = {
   "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
   "icon": "electricalbolt_telsacage.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
@@ -38,24 +39,59 @@ export const TeslaCage: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Holds",
-    "Ranged Damage",
     "Sentinel Archetype Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.456,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.456,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.28,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.35,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.35,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.049,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.049,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.2,
-      "table": "Ranged_Ones"
+      "scale": 2.5,
+      "table": "Ranged_EndDrain"
     },
-    "hold": {
-      "mag": 3,
-      "scale": 8,
+    "enduranceGain": {
+      "scale": 6.86,
       "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
@@ -64,6 +100,11 @@ export const TeslaCage: Power = {
     },
     "durations": {
       "recoveryDebuff": 8
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 8
   }

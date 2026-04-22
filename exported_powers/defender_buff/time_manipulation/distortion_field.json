@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_DistortionField_Defender",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

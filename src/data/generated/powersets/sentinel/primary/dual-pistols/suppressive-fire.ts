@@ -16,6 +16,7 @@ export const SuppressiveFire: Power = {
   "shortHelp": "Ranged, DMG(Lethal/Special), Foe Disorient/Special",
   "icon": "dualpistols_suppressivefire.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
@@ -44,13 +45,33 @@ export const SuppressiveFire: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 0.05,
+      "scale": 0.0984,
       "table": "Ranged_Damage"
     },
     {
       "type": "Lethal",
-      "scale": 0.05,
-      "table": "Ranged_Damage"
+      "scale": 0.1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.0984,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.0666,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.0666,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.0666,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

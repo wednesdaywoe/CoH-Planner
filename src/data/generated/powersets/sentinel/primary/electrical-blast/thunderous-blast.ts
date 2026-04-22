@@ -16,6 +16,7 @@ export const ThunderousBlast: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_thunderouseblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.4,
@@ -51,11 +52,31 @@ export const ThunderousBlast: Power = {
       "type": "Smashing",
       "scale": 0.928,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.928,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.5128,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3025,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
-    "enduranceDrain": {
-      "scale": 0.3,
+    "enduranceGain": {
+      "scale": 13.86,
       "table": "Ranged_EndDrain"
     },
     "recoveryDebuff": {
@@ -64,6 +85,10 @@ export const ThunderousBlast: Power = {
     },
     "durations": {
       "recoveryDebuff": 10
+    },
+    "enduranceDrain": {
+      "scale": 25,
+      "table": "Ranged_EndDrain"
     },
     "buffDuration": 10
   }

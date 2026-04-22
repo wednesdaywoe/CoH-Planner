@@ -83,7 +83,8 @@
               "Redirects.Comeback.Comeback",
               "Redirects.Comeback.Debt_Protection"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

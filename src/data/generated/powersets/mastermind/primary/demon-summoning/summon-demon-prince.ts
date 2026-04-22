@@ -35,9 +35,7 @@ export const SummonDemonPrince: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Sleep",
     "Slow Movement",
     "Universal Damage Sets"
@@ -47,7 +45,7 @@ export const SummonDemonPrince: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Demon_Prince",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

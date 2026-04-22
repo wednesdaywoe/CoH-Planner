@@ -16,6 +16,7 @@ export const EnergyTransfer: Power = {
   "shortHelp": "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
   "icon": "powerpunch_energytransfer.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -43,6 +44,11 @@ export const EnergyTransfer: Power = {
       "type": "Energy",
       "scale": 4.56,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 4.055,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Special",

@@ -16,6 +16,7 @@ export const SoaringDragon: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe Knockup, -DEF",
   "icon": "katana_disembowel.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -51,11 +52,31 @@ export const SoaringDragon: Power = {
       "type": "Lethal",
       "scale": 1.8,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.8,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.691,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.691,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.691,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockup": {
-      "scale": 2,
+      "scale": 4,
       "table": "Melee_Knockback"
     },
     "defenseDebuff": {

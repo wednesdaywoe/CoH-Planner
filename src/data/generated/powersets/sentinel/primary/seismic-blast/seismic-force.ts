@@ -14,7 +14,7 @@ export const SeismicForce: Power = {
   "available": 7,
   "description": "Greatly increases your attacks' chance to hit for a few seconds. Slightly increases damage and range.If affected by Seismic Shockwaves, this power will halt the shockwaves and will decrease the cooldown of all recharging Seismic Blast attacks by a moderate amount.",
   "shortHelp": "Self +To Hit, +DMG, +Range, +Special",
-  "icon": "seismicblast_aim.png",
+  "icon": "seismicblast_aim",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

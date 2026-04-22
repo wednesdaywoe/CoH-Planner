@@ -14,7 +14,7 @@ export const MaintenanceDrone: Power = {
   "available": 17,
   "description": "This sturdy Maintenance Drone serves as a health battery reserve for your machines. As your other drones are hurt, it will use its own health to heal other drones. Once all its health is used up, it will self destruct. Maintenance Drone does not regenerate health, and can't be healed.",
   "shortHelp": "Summon Maintenance Robot",
-  "icon": "robotics_maintenancebot.png",
+  "icon": "robotics_maintenancebot",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
@@ -39,7 +39,7 @@ export const MaintenanceDrone: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Maintenance_Bot",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

@@ -87,7 +87,8 @@
             "type": "EntCreate",
             "entity_def": "P3876726645",
             "priority_list": "Pets_WindControl_Vortex_Controller"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

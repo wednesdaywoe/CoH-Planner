@@ -37,6 +37,7 @@ export const DarkRegeneration: Power = {
     "Accurate Healing",
     "Healing",
     "Melee AoE Damage",
+    "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -52,5 +53,5 @@ export const DarkRegeneration: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "requires": "!Stalker_Defense.Dark_Armor.Obscure_Sustenance"
+  "requires": "Stalker_Defense.Dark_Armor.Obscure_Sustenance !"
 };

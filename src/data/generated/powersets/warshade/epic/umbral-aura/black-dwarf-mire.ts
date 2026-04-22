@@ -62,5 +62,5 @@ export const BlackDwarfMire: Power = {
     },
     "buffDuration": 10
   },
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf && !Inherent.Inherent.Black_Dwarf_Mire"
+  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Mire ! &&"
 };

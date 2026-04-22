@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { FrozenFists as FrozenFists } from './frozen-fists';
-import { IceSword as IceSword } from './ice-sword';
-import { Frost as Frost } from './frost';
 import { BuildUp as BuildUp } from './build-up';
-import { IcePatch as IcePatch } from './ice-patch';
 import { Confront as Confront } from './confront';
-import { GreaterIceSword as GreaterIceSword } from './greater-ice-sword';
 import { FreezingTouch as FreezingTouch } from './freezing-touch';
+import { Frost as Frost } from './frost';
 import { FrozenAura as FrozenAura } from './frozen-aura';
+import { FrozenFists as FrozenFists } from './frozen-fists';
+import { GreaterIceSword as GreaterIceSword } from './greater-ice-sword';
+import { IceSword as IceSword } from './ice-sword';
+import { IcePatch as IcePatch } from './ice-patch';
 
 export const powerset: Powerset = {
   id: 'scrapper/ice-melee',
   name: 'Ice Melee',
   description: 'Ice Melee allows the player to use Cold-based attacks, and even conjure up frozen melee weapons. Ice Melee powers are known for their ability to slow an opponent.',
-  icon: 'ice_melee_set.png',
+  icon: 'ice_melee_set.ico',
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    FrozenFists,
-    IceSword,
-    Frost,
     BuildUp,
-    IcePatch,
     Confront,
-    GreaterIceSword,
     FreezingTouch,
+    Frost,
     FrozenAura,
+    FrozenFists,
+    GreaterIceSword,
+    IceSword,
+    IcePatch,
   ],
 };
 

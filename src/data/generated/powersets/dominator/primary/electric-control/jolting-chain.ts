@@ -16,6 +16,7 @@ export const JoltingChain: Power = {
   "shortHelp": "Ranged Chain AoE, DMG(Energy), Foe Knockdown, -End",
   "icon": "electriccontrol_joltingchain.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
@@ -38,18 +39,24 @@ export const JoltingChain: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Knockback",
-    "Ranged Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.2,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.7272,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.66,
+      "scale": 1.32,
       "table": "Ranged_Ones"
     },
     "enduranceDrain": {

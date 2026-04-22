@@ -16,6 +16,7 @@ export const ElectricFence: Power = {
   "shortHelp": "Ranged, DoT(Energy), Foe Immobilize, -End, -Fly, -Knockback",
   "icon": "electriccontrol_electricfence.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -41,22 +42,45 @@ export const ElectricFence: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.2,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2,
+      "table": "Ranged_InherentDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3458,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1729,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
+      "mag": 5,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "enduranceDrain": {
-      "scale": 0.028,
-      "table": "Ranged_Ones"
+      "scale": 1,
+      "table": "Ranged_EndDrain"
     },
     "durations": {
       "enduranceDrain": 6.2,

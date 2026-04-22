@@ -16,6 +16,7 @@ export const ShieldCharge: Power = {
   "shortHelp": "PBAoE Superior DMG(Smashing), Foe Knockdown; Self Teleport",
   "icon": "shielddefense_shieldcharge.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,
@@ -35,7 +36,7 @@ export const ShieldCharge: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "Ranged AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"
@@ -49,8 +50,7 @@ export const ShieldCharge: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Shield_Charge_Tanker",
-      "duration": 4,
-      "copyBoosts": true
+      "duration": 4
     }
   }
 };

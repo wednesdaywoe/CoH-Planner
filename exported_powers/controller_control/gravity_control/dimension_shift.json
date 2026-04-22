@@ -85,7 +85,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Dimension_Shift",
             "priority_list": "PFX"
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -115,7 +116,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Dimension_Shift_Phased",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -160,7 +162,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Dimension_Shift",
             "priority_list": "PFX"
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -190,7 +193,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Dimension_Shift_Phased",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

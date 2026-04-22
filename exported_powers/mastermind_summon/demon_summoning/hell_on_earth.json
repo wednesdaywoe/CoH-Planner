@@ -80,7 +80,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -112,7 +113,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -140,9 +142,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Living_Hellfire"
-          }
+            "entity_def": "Pets_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -170,9 +173,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Living_Hellfire"
-          }
+            "entity_def": "Pets_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -200,9 +204,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Living_Hellfire"
-          }
+            "entity_def": "Pets_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -230,9 +235,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Living_Hellfire"
-          }
+            "entity_def": "Pets_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags_raw": 112
         }
       ]
     },
@@ -273,9 +279,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Living_Hellfire"
-          }
+            "entity_def": "Pets_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags_raw": 112
         }
       ]
     },
@@ -316,9 +323,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Living_Hellfire"
-          }
+            "entity_def": "Pets_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags_raw": 112
         }
       ]
     },
@@ -359,9 +367,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Living_Hellfire"
-          }
+            "entity_def": "Pets_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags_raw": 112
         }
       ]
     },
@@ -402,9 +411,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Living_Hellfire"
-          }
+            "entity_def": "Pets_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags_raw": 112
         }
       ]
     },
@@ -445,9 +455,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Living_Hellfire"
-          }
+            "entity_def": "Pets_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags_raw": 112
         }
       ]
     },
@@ -488,9 +499,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "Pets_Living_Hellfire"
-          }
+            "entity_def": "Pets_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags_raw": 112
         }
       ]
     }

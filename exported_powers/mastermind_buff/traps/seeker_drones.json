@@ -86,7 +86,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Traps_Seeker1",
             "priority_list": "PL_SpawnFlying"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -116,7 +117,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Traps_Seeker2",
             "priority_list": "PL_SpawnFlying"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

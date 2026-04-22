@@ -12,17 +12,18 @@ export const LightningClap: Power = {
   "name": "Lightning Clap",
   "internalName": "Lightning_Clap",
   "available": 27,
-  "description": "You can clap your hands together to release a violent Lightning Clap. The Lightning Clap can knock down most nearby foes, Disorienting many of them. Lightning Clap deals no damage.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE, Foe Disorient, Knockback",
-  "icon": "electricmelee_pbaoestun.png",
+  "description": "You can clap your hands together to release a violent Lightning Clap at your target. The Lightning Clap does energy damage to your main target and can knock down most nearby foes, Disorienting many of them.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
+  "shortHelp": "Melee AoE, Foe Damage, Disorient, Knockdown",
+  "icon": "electricmelee_taoestun",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
-    "accuracy": 0.8,
+    "accuracy": 1,
+    "range": 7,
     "radius": 15,
-    "recharge": 30,
-    "endurance": 13,
+    "recharge": 15,
+    "endurance": 6.9535,
     "castTime": 1.23,
     "maxTargets": 10
   },
@@ -32,14 +33,30 @@ export const LightningClap: Power = {
     "Stun",
     "Recharge",
     "Knockback",
+    "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Melee AoE Damage",
     "Stuns",
-    "Threat Duration"
+    "Tanker Archetype Sets",
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 2.76,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.861,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 2,

@@ -40,9 +40,17 @@ export const SpiritTree: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Spirit_Tree",
       "duration": 60,
-      "copyBoosts": true
+      "entities": [
+        {
+          "entity": "P1734497484",
+          "count": 1
+        },
+        {
+          "entity": "PL_StaticObject",
+          "count": 1
+        }
+      ]
     }
   }
 };

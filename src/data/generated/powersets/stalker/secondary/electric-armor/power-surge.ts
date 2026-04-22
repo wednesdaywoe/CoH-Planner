@@ -34,6 +34,7 @@ export const PowerSurge: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Endurance Modification",
     "Healing",
     "Holds",
@@ -85,7 +86,6 @@ export const PowerSurge: Power = {
       "repel": 30,
       "mezResistance": 30,
       "debuffResistance": 30,
-      "stealth": 29,
       "hold": 30,
       "immobilize": 30,
       "stun": 30,
@@ -140,12 +140,6 @@ export const PowerSurge: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      }
-    },
     "hold": {
       "mag": 3,
       "scale": 15,
@@ -168,12 +162,12 @@ export const PowerSurge: Power = {
       "table": "Melee_Res_Boolean"
     },
     "enduranceDrain": {
-      "scale": 0.55,
-      "table": "Ranged_Ones"
+      "scale": 16.67,
+      "table": "Ranged_EndDrain"
     },
     "regenDebuff": {
-      "scale": 10,
-      "table": "Ranged_Ones"
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
     },
     "buffDuration": 30
   }

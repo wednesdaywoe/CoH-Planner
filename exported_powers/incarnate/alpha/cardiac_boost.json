@@ -79,7 +79,8 @@
             "power_names": [
               "Incarnate.Alpha_Silent.Endurance_Reduction_Common"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Incarnate.Alpha_Silent.Endurance_Reduction_Common"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -135,7 +137,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         }
       ]
     }

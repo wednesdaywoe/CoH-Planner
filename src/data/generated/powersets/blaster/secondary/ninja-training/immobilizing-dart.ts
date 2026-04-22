@@ -14,8 +14,9 @@ export const ImmobilizingDart: Power = {
   "available": 0,
   "description": "Immobilizing Darts do minor toxic damage over time and weakens your foe's legs. They will either be entirely unable to move, or severely slowed down.Damage: Minor.Recharge: Fast.",
   "shortHelp": "Ranged, Minor DoT(Toxic), Foe Immobilize",
-  "icon": "ninjatools_immob.png",
+  "icon": "ninjatools_immob",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -39,22 +40,27 @@ export const ImmobilizingDart: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Toxic",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 3.1,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Toxic",
+      "scale": 0.2,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.322,
+      "table": "Ranged_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     }
   }
 };

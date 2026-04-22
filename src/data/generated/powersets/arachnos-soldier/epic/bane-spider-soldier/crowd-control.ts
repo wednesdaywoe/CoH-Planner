@@ -35,6 +35,12 @@ export const CrowdControl: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee AoE Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

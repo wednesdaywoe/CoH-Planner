@@ -16,6 +16,7 @@ export const WhiteDwarfAntagonize: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "luminousaura_antagonize.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.5,
@@ -37,7 +38,7 @@ export const WhiteDwarfAntagonize: Power = {
   "maxSlots": 6,
   "effects": {
     "taunt": {
-      "scale": 20,
+      "scale": 5,
       "table": "Melee_Taunt"
     },
     "rangeBuff": {
@@ -49,5 +50,5 @@ export const WhiteDwarfAntagonize: Power = {
     },
     "buffDuration": 12
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf && !Inherent.Inherent.White_Dwarf_Antagonize"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Antagonize ! &&"
 };

@@ -94,5 +94,6 @@ export const StoneSkin: Power = {
     },
     "buffDuration": 10.25
   },
-  "requires": "!Brute_Melee.Claws"
+  "requires": "Brute_Melee.Claws !",
+  "mechanicType": "parentMechanic"
 };

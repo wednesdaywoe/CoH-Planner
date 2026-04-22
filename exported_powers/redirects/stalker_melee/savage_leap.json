@@ -172,7 +172,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Assassins_Focus"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

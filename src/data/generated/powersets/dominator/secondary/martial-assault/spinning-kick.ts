@@ -22,7 +22,7 @@ export const SpinningKick: Power = {
     "accuracy": 1.05,
     "range": 9,
     "radius": 9,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 10,
     "endurance": 10.192,
     "castTime": 1.07,
@@ -41,14 +41,21 @@ export const SpinningKick: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.3434,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.3434,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.403,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.66,
+      "scale": 1.32,
       "table": "Melee_Ones"
     }
   }

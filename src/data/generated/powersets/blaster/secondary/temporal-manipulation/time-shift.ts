@@ -14,8 +14,9 @@ export const TimeShift: Power = {
   "available": 27,
   "description": "You shift time on an area, replacing your foes with future or past versions of themselves. This shift can be very disorienting and will incapacitate affected foes. Stronger foes may be able to resist the effect, but they still will have their movement speed and accuracy reduced. Targets affected by the Delayed effect will suffer from a more powerful disorientation, however its benefits are brief.Recharge: Long.",
   "shortHelp": "Ranged (Targeted AoE), Foe Disorient, -SPD, -ToHit",
-  "icon": "timemanipulation_timeshift.png",
+  "icon": "timemanipulation_timeshift",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -44,9 +45,9 @@ export const TimeShift: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "damageBuff": {
       "scale": 0.033,

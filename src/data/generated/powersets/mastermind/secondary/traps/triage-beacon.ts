@@ -21,7 +21,7 @@ export const TriageBeacon: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 200,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 2.77
   },
   "allowedEnhancements": [
@@ -37,8 +37,7 @@ export const TriageBeacon: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_Triage_Beacon",
-      "duration": 90,
-      "copyBoosts": true
+      "duration": 90
     }
   }
 };

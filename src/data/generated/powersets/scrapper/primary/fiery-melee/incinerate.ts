@@ -16,6 +16,7 @@ export const Incinerate: Power = {
   "shortHelp": "Melee, DoT (Fire)",
   "icon": "fieryfray_incinerate.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -53,6 +54,18 @@ export const Incinerate: Power = {
       "type": "Fire",
       "scale": 2.5,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1969,
+      "table": "Melee_PvPDamage",
+      "duration": 4.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 1.9689,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

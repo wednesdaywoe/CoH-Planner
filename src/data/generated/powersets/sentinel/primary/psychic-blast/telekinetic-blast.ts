@@ -16,6 +16,7 @@ export const TelekineticBlast: Power = {
   "shortHelp": "Ranged, Light DMG(Smash/Psionic), Foe Knockback",
   "icon": "psychicblast_telekineticblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,11 +50,31 @@ export const TelekineticBlast: Power = {
       "type": "Psionic",
       "scale": 1,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.32,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.34,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.34,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 8,
       "table": "Ranged_Knockback"
     }
   }

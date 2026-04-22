@@ -43,9 +43,8 @@ export const IceStorm: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_IceStorm_Defender",
-      "duration": 15,
-      "copyBoosts": true
+      "entity": "P1985334123",
+      "duration": 15
     }
   }
 };

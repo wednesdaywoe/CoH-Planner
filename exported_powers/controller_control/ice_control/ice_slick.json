@@ -87,7 +87,8 @@
             "type": "EntCreate",
             "entity_def": "P4026445528",
             "priority_list": "Pets_IceSlick"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

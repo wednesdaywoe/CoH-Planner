@@ -22,7 +22,7 @@ export const ChronoShift: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 360,
-    "endurance": 26,
+    "endurance": 20.8,
     "castTime": 2.03,
     "maxTargets": 255
   },

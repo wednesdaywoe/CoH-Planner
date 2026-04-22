@@ -12,7 +12,7 @@ export const CategoryFive: Power = {
   "name": "Category Five",
   "internalName": "Category_Five",
   "available": 25,
-  "description": "Summons a severe storm that begins light, but grows in power until it becomes a raging engine of destruction. Left on its own, the Category Five storm is capable of delivering moderate damage. As it grows in power, foes may begin to fling through the air. In addition, each use of your Storm Blast powers is capable of delivering lightning attacks within the Category Five storm, delivering energy damage.",
+  "description": "Summons a severe storm that begins light, but grows in power until it becomes a raging engine of destruction. Left on its own, the Category Five storm is capable of delivering moderate damage. As it grows in power, foes may begin to fling through the air.",
   "shortHelp": "Ranged (Location AoE), DoT(Energy), +Wet",
   "icon": "stormblast_categoryfive.png",
   "powerType": "Click",
@@ -43,14 +43,15 @@ export const CategoryFive: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "Category Five",
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Redirects.Storm_Blast.Category_Five_Sentinel"
       ],
-      "duration": 20,
-      "copyBoosts": true
+      "duration": 15,
+      "entityCount": 2
     }
   }
 };

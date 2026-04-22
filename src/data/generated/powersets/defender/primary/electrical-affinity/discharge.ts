@@ -32,6 +32,9 @@ export const GalvanicSentinel: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification"
+  ],
   "maxSlots": 6,
   "effects": {
     "summon": {

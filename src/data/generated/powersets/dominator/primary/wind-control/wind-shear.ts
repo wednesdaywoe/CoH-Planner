@@ -34,10 +34,9 @@ export const WindShear: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
-    "Dominator Archetype Sets",
     "Slow Movement",
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "requires": "char>accesslevel >= 0"
+  "requires": "accesslevel char> 0 >="
 };

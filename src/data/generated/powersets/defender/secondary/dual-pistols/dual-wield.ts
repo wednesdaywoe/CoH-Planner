@@ -16,6 +16,7 @@ export const DualWield: Power = {
   "shortHelp": "Ranged, DMG(Lethal/Special), Foe Knockback/Special",
   "icon": "dualpistols_dualwield.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
@@ -44,25 +45,18 @@ export const DualWield: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 0.924,
+      "scale": 1.32,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.113,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
     },
     {
       "type": "Lethal",
-      "scale": 0.396,
-      "table": "Ranged_Damage"
+      "scale": 1.809,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.75,
+      "scale": 1.5,
       "table": "Ranged_Knockback"
     }
   }

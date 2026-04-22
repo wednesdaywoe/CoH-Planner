@@ -12,10 +12,11 @@ export const GreaterPsiBlade: Power = {
   "name": "Greater Psi Blade",
   "internalName": "Greater_Psi_Blade",
   "available": 21,
-  "description": "You focus and create a more powerful Psi Blade projection before slashing at your foe to deal superior Psionic and Lethal damage. The affected foe will have their recharge reduced moderately and be left held for a short time. Greater Psi Blade will cause additional damage and cause this power's hold to last for a longer duration if you have Insight. Using this power removes Insight.",
+  "description": "You focus and create a more powerful Psi Blade projection before slashing at your foe to deal superior Psionic and Lethal damage. The affected foe will have their recharge reduced moderately and be left held for a short time. Greater Psi Blade will cause additional damage and cause this power's hold to be even more powerful if you have Insight. Using this power removes Insight.",
   "shortHelp": "Melee, DMG(Psionic/Lethal), Foe -Rech, Hold; Self -Insight",
   "icon": "psionicmelee_greaterpsiblade.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -56,8 +57,38 @@ export const GreaterPsiBlade: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1.3463,
+      "scale": 2.6925,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.656,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.6875,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.0625,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.75,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.75,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.65,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

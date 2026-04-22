@@ -16,6 +16,7 @@ export const Hemorrhage: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe Special DoT (Lethal), -Blood Frenzy",
   "icon": "savagemelee_hemorrhage.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -44,22 +45,28 @@ export const Hemorrhage: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.343,
-      "table": "Melee_Damage",
-      "duration": 5.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.326,
-      "table": "Melee_Damage",
-      "duration": 4.1,
-      "tickRate": 1
+      "scale": 2.6,
+      "table": "Melee_InherentDamage"
     },
     {
       "type": "Lethal",
       "scale": 2.6,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.6898,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.36,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.36,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

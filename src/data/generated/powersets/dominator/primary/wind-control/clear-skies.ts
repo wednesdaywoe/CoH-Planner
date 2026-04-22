@@ -49,6 +49,6 @@ export const ClearSkies: Power = {
     },
     "buffDuration": 2.1
   },
-  "requires": "Dominator_Control.Wind_Control.Vacuum && Dominator_Control.Wind_Control.Vortex && (char>accesslevel >= 0)",
+  "requires": "accesslevel char> 0 >= Dominator_Control.Wind_Control.Vortex && Dominator_Control.Wind_Control.Vacuum &&",
   "mechanicType": "parentMechanic"
 };

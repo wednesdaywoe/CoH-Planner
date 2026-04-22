@@ -16,6 +16,7 @@ export const Zapp: Power = {
   "shortHelp": "Sniper, DMG(Energy), Foe -End",
   "icon": "electricalbolt_zapp.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,16 +41,5 @@ export const Zapp: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.3,
-      "table": "Ranged_EndDrain"
-    }
-  }
+  "maxSlots": 6
 };

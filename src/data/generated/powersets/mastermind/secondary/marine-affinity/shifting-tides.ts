@@ -16,14 +16,14 @@ export const ShiftingTides: Power = {
   "shortHelp": "Toggle: Ranged (Targeted AoE), Team +DMG, +ToHit, +Recharge, Special Damage",
   "icon": "marineaffinity_shiftingtides.png",
   "powerType": "Toggle",
-  "targetType": "Any",
+  "targetType": "Ally",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "radius": 25,
     "recharge": 15,
-    "endurance": 0.0975,
+    "endurance": 0.078,
     "castTime": 1.17,
     "activatePeriod": 0.1,
     "maxTargets": 16
@@ -35,7 +35,7 @@ export const ShiftingTides: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "To Hit Buff",
     "Universal Damage Sets"
   ],

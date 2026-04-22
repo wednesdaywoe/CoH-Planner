@@ -16,6 +16,7 @@ export const StormKick: Power = {
   "shortHelp": "Melee, DMG(Smash)",
   "icon": "martialarts_stormkick.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -51,6 +52,16 @@ export const StormKick: Power = {
       "type": "Smashing",
       "scale": 1.32,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.221,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.221,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

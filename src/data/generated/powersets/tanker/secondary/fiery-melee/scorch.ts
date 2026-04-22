@@ -16,6 +16,7 @@ export const Scorch: Power = {
   "shortHelp": "Melee, DMG(Fire),",
   "icon": "fieryfray_scorch.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,6 +51,11 @@ export const Scorch: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.22,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Fire",

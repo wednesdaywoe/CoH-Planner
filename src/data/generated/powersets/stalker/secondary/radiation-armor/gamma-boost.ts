@@ -60,5 +60,6 @@ export const GammaBoost: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 1.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

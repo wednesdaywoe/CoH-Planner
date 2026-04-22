@@ -22,7 +22,7 @@ export const RepulsionField: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 20,
-    "endurance": 0.2031,
+    "endurance": 0.1625,
     "castTime": 2.03,
     "activatePeriod": 0.25,
     "maxTargets": 16
@@ -38,16 +38,20 @@ export const RepulsionField: Power = {
   "maxSlots": 6,
   "effects": {
     "knockback": {
-      "scale": 3,
+      "scale": 6,
       "table": "Ranged_Knockback"
     },
     "repel": {
-      "scale": 10,
+      "scale": 20,
       "table": "Ranged_Ones"
     },
     "durations": {
-      "repel": 0.25
+      "repel": 0.5
     },
-    "buffDuration": 0.25
+    "enduranceDrain": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 0.5
   }
 };

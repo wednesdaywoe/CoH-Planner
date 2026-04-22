@@ -16,6 +16,7 @@ export const PenetratingRay: Power = {
   "shortHelp": "Sniper, DMG(Energy), Self +Range, Foe Knockdown, Special",
   "icon": "beamrifle_penetratingray.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -40,37 +41,5 @@ export const PenetratingRay: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.304,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1.5
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    },
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
-  }
+  "maxSlots": 6
 };

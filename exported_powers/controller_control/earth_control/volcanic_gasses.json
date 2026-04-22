@@ -85,7 +85,8 @@
             "type": "EntCreate",
             "entity_def": "P4176979480",
             "priority_list": "Pets_Volcanicgas"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -115,7 +116,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Volcanicgeyser",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -145,7 +147,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Volcanicgeyser",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -175,7 +178,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Volcanicgeyser",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -205,7 +209,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Volcanicgeyser",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -235,7 +240,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Volcanicgeyser",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -265,7 +271,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Volcanicgeyser",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

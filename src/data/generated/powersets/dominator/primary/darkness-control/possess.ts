@@ -16,6 +16,7 @@ export const Possess: Power = {
   "shortHelp": "Ranged, Target Confuse",
   "icon": "darknesscontrol_possess.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,

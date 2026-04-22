@@ -14,7 +14,7 @@ export const TriCannon: Power = {
   "available": 25,
   "description": "The Tri-Cannon is the perfect companion in the field. It has an extremely fast fire rate and is equipped with a customized tracking system. Once locked on, it will continue to unload a volley of lead into the target until it is destroyed. Enemies around the Tri-Cannon, as well as those hit by it, will prioritize attacking it over its owner. It is armored and can take significant amounts of damage.",
   "shortHelp": "Build Tri-Cannon: Ranged, DMG(Lethal)",
-  "icon": "arsenalcontrol_gunturret.png",
+  "icon": "arsenalcontrol_gunturret",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
@@ -33,8 +33,7 @@ export const TriCannon: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"
   ],
@@ -42,8 +41,8 @@ export const TriCannon: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_GunDrone_Tri",
-      "copyBoosts": true
+      "entity": "P3912486950",
+      "duration": 99999
     }
   }
 };

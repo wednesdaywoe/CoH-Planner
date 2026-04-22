@@ -14,8 +14,9 @@ export const Taunt: Power = {
   "available": 9,
   "description": "Taunts a foe, and some nearby foes, to attack you. Useful for pulling villains off an ally who find themselves in over their head. Taunted foes tend to ignore other Heroes and focus on you for quite a while, so use this power cautiously. A To Hit check is required to Taunt enemy players, but is not needed against critter targets.",
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
-  "icon": "spines_taunt.png",
+  "icon": "spines_taunt",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -37,7 +38,7 @@ export const Taunt: Power = {
   "maxSlots": 6,
   "effects": {
     "taunt": {
-      "scale": 20,
+      "scale": 5,
       "table": "Melee_Taunt"
     },
     "rangeBuff": {

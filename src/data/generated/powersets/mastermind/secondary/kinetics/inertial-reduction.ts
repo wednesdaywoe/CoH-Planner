@@ -22,7 +22,7 @@ export const InertialReduction: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 60,
-    "endurance": 29.25,
+    "endurance": 23.4,
     "castTime": 2.03,
     "maxTargets": 255
   },
@@ -30,11 +30,6 @@ export const InertialReduction: Power = {
     "EnduranceReduction",
     "Recharge",
     "Jump"
-  ],
-  "allowedSetCategories": [
-    "Leaping",
-    "Leaping & Sprints",
-    "Universal Travel"
   ],
   "maxSlots": 6
 };

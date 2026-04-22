@@ -11,11 +11,12 @@ import type { Power } from '@/types';
 export const PowerBolt: Power = {
   "name": "Power Bolt",
   "internalName": "Power_Bolt",
-  "available": 0,
+  "available": 21,
   "description": "A quick attack that rapidly hurls small bolts of energy at foes, sometimes knocking them down. Fast, but little damage.",
   "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_powerbolts.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,11 +50,31 @@ export const PowerBolt: Power = {
       "type": "Energy",
       "scale": 0.8,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.7,
+      "scale": 1.4,
       "table": "Ranged_Knockback"
     }
   }

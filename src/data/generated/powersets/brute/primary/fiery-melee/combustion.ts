@@ -16,6 +16,7 @@ export const Cremate: Power = {
   "shortHelp": "Melee, DMG(Fire), Knockup",
   "icon": "fieryfray_scorch.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,6 +49,11 @@ export const Cremate: Power = {
     },
     {
       "type": "Fire",
+      "scale": 1.77,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Fire",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 3.1,
@@ -56,7 +62,7 @@ export const Cremate: Power = {
   ],
   "effects": {
     "knockup": {
-      "scale": 0.75,
+      "scale": 1.5,
       "table": "Melee_Ones"
     }
   }

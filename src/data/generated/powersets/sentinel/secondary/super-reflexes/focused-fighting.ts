@@ -64,6 +64,10 @@ export const FocusedFighting: Power = {
       "knockback": {
         "scale": 100,
         "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
       }
     },
     "knockup": {

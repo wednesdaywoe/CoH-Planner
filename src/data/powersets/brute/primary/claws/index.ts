@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { Swipe as Swipe } from './swipe';
-import { Strike as Strike } from './strike';
+import { Eviscerate as Eviscerate } from './eviscerate';
+import { Focus as Focus } from './focus';
+import { FollowUp as FollowUp } from './follow-up';
+import { Shockwave as Shockwave } from './shockwave';
 import { Slash as Slash } from './slash';
 import { Spin as Spin } from './spin';
-import { FollowUp as FollowUp } from './follow-up';
+import { Strike as Strike } from './strike';
+import { Swipe as Swipe } from './swipe';
 import { Taunt as Taunt } from './taunt';
-import { Focus as Focus } from './focus';
-import { Eviscerate as Eviscerate } from './eviscerate';
-import { Shockwave as Shockwave } from './shockwave';
 
 export const powerset: Powerset = {
   id: 'brute/claws',
   name: 'Claws',
   description: 'Claws are bones or blades that extend from your hands and cause Lethal damage. The lightweight, natural feel of claws gives this power set a reduced Endurance cost and faster attack rate than other Brute melee sets.',
-  icon: 'claws_set.png',
+  icon: 'claws_set.ico',
   archetype: 'brute',
   category: 'primary',
   powers: [
-    Swipe,
-    Strike,
+    Eviscerate,
+    Focus,
+    FollowUp,
+    Shockwave,
     Slash,
     Spin,
-    FollowUp,
+    Strike,
+    Swipe,
     Taunt,
-    Focus,
-    Eviscerate,
-    Shockwave,
   ],
 };
 

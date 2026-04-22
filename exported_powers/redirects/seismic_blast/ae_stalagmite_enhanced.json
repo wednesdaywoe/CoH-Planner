@@ -83,7 +83,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ],
       "child_effects": [
@@ -127,7 +128,8 @@
                 "power_names": [
                   "Defender_Ranged.Seismic_Blast.Shockwaves"
                 ]
-              }
+              },
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -158,7 +160,8 @@
                 "power_names": [
                   "Redirects.Seismic_Blast.Shockwaves_Buff"
                 ]
-              }
+              },
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -183,7 +186,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -214,7 +218,8 @@
                 "power_names": [
                   "Defender_Ranged.Seismic_Blast.Stalagmite"
                 ]
-              }
+              },
+              "flags_raw": 65648
             }
           ]
         }
@@ -254,7 +259,40 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Stunned",
+              "event_id": 23,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Event_24",
+              "event_id": 24,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Held",
+              "event_id": 25,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Sleep",
+              "event_id": 26,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Confused",
+              "event_id": 27,
+              "duration": 15.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 2560
         }
       ]
     },
@@ -292,7 +330,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     }
@@ -344,7 +383,8 @@
               "Defender_Ranged.Seismic_Blast.Tombstone",
               "Defender_Ranged.Seismic_Blast.Upthrust"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

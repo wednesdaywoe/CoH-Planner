@@ -16,6 +16,7 @@ export const SavageLeap: Power = {
   "shortHelp": "PBAoE, DMG(Lethal), Foe DoT (Lethal), Self 1 to 3 Blood Frenzy, Teleport",
   "icon": "savagemelee_savageleap.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -33,12 +34,10 @@ export const SavageLeap: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "Ranged Damage",
     "Tanker Archetype Sets",
-    "Teleport",
     "Threat Duration",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

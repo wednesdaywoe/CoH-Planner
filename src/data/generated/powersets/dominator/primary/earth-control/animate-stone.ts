@@ -35,9 +35,10 @@ export const AnimateStone: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Knockback",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
+    "Stuns",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -45,7 +46,7 @@ export const AnimateStone: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Stone",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

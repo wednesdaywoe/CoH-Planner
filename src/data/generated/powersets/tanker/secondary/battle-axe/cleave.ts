@@ -14,8 +14,9 @@ export const Cleave: Power = {
   "available": 29,
   "description": "This is an attempt to split your opponent in two with one fell swoop of your Battle Axe. It is an extremely devastating attack that deals massive damage and can knock foes to the ground. The power of this attack can actually extend a short distance through multiple foes.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Ranged, DMG(Lethal), Foe Knockdown",
-  "icon": "battleaxe_cleaveplayer.png",
+  "icon": "battleaxe_cleaveplayer",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.05,
@@ -42,14 +43,26 @@ export const Cleave: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 2.7601,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 2.7601,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.8145,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.9432,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

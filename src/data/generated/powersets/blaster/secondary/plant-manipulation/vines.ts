@@ -14,8 +14,9 @@ export const Vines: Power = {
   "available": 27,
   "description": "Creates a field of Strangler Vines that can Hold multiple foes at range. The affected targets are held helpless by the massive root-like vines. Some are likely to free their arms and attack, but will still be unable to move. Unlike the power Strangler, this power does not deal any damage, but it can Hold multiple foes at once.Recharge: Long.",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold, Immobilize",
-  "icon": "plantmanipulation_vines.png",
+  "icon": "plantmanipulation_vines",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -40,14 +41,10 @@ export const Vines: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
     "hold": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "immobilize": {
       "mag": 3,

@@ -42,8 +42,7 @@ export const Thorntrops: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Thorntrops",
-      "duration": 45,
-      "copyBoosts": true
+      "duration": 45
     }
   }
 };

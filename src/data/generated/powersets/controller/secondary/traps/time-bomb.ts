@@ -16,7 +16,6 @@ export const TemporalBomb: Power = {
   "shortHelp": "Place Bomb: PBAoE, DMG(Lethal/Fire), Foe Knockback, Special",
   "icon": "traps_remotebomb.png",
   "powerType": "Click",
-  "targetType": "Location",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 2
@@ -33,7 +32,7 @@ export const TemporalBomb: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Knockback",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],
@@ -42,19 +41,10 @@ export const TemporalBomb: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 360,
-      "copyBoosts": true,
       "entities": [
         {
-          "entity": "Pets_Bomb",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Controller",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Corruptor",
-          "count": 1
+          "entity": "P3912486950",
+          "count": 4
         },
         {
           "entity": "Pets_Bomb_Temporal",
@@ -63,16 +53,8 @@ export const TemporalBomb: Power = {
         {
           "entity": "Pets_Bomb_Temporal_Defender",
           "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Defender",
-          "count": 1
         }
       ]
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     }
   }
 };

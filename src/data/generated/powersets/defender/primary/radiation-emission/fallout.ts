@@ -12,10 +12,11 @@ export const Fallout: Power = {
   "name": "Fallout",
   "internalName": "Fallout",
   "available": 21,
-  "description": "After an ally falls in battle, you can activate this power to extract the energy from their body to deal a massive amount of Energy damage to any nearby foes. All affected foes are extremely weakened by the Fallout, and their chance to hit, Defense, Damage and Damage Resistance is severely reduced.Damage: Extreme.Recharge: Very Long.",
+  "description": "After an ally falls in battle, you can activate this power to extract the energy from their body to deal a massive amount of Energy damage to any nearby foes. All affected foes are extremely weakened by the Fallout, and their chance to hit, Defense, Damage and Damage Resistance is severely reduced.",
   "shortHelp": "Post-Defeat: PBAoE, Extreme DMG(Energy), Foe -To Hit, -DEF, -DMG, -Res(All)",
   "icon": "radiationpoisoning_fallout.png",
   "powerType": "Click",
+  "targetType": "Location",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -36,8 +37,9 @@ export const Fallout: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
+    "Defender Archetype Sets",
     "Defense Debuff",
-    "Ranged AoE Damage",
+    "Ranged Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
@@ -45,9 +47,8 @@ export const Fallout: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Fallout",
-      "duration": 1,
-      "copyBoosts": true
+      "entity": "P2158078059",
+      "duration": 1
     }
   }
 };

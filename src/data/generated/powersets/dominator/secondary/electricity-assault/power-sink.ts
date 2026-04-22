@@ -33,6 +33,13 @@ export const ThunderStrike: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Dominator Archetype Sets",
+    "Knockback",
+    "Melee Damage",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

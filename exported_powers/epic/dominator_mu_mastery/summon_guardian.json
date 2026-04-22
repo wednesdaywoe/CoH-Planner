@@ -85,7 +85,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Patron_Powers_Mu_Guardian",
             "priority_list": "PL_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

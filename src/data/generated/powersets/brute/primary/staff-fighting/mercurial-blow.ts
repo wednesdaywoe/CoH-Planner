@@ -16,6 +16,7 @@ export const MercurialBlow: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe -Def",
   "icon": "stafffighting_mercurialblow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -41,11 +42,18 @@ export const MercurialBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.84,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.84,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.22,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,
@@ -56,5 +64,5 @@ export const MercurialBlow: Power = {
     },
     "buffDuration": 8
   },
-  "requires": "!Brute_Defense.Shield_Defense"
+  "requires": "Brute_Defense.Shield_Defense !"
 };

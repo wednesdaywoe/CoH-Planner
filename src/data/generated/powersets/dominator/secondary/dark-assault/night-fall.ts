@@ -16,12 +16,13 @@ export const NightFall: Power = {
   "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe -To Hit",
   "icon": "darknessassault_nightfall.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "radius": 60,
-    "arc": 0.3491,
+    "arc": 0.3490658700466156,
     "recharge": 14,
     "endurance": 17.3829,
     "castTime": 2,
@@ -42,11 +43,20 @@ export const NightFall: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.1459,
-    "table": "Ranged_Damage",
-    "duration": 2.8,
-    "tickRate": 0.3
-  }
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.1459,
+      "table": "Ranged_Damage",
+      "duration": 2.8,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Negative",
+      "scale": 0.0936,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.8,
+      "tickRate": 0.30000001192092896
+    }
+  ]
 };

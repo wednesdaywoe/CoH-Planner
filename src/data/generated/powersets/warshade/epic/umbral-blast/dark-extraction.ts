@@ -16,6 +16,7 @@ export const DarkExtraction: Power = {
   "shortHelp": "Summon Essence: Ranged Moderate DMG (Negative)",
   "icon": "umbralblast_darkextraction.png",
   "powerType": "Click",
+  "targetType": "DeadFoe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -34,16 +35,15 @@ export const DarkExtraction: Power = {
   ],
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged Damage",
+    "Slow Movement",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Warshade_Extraction",
-      "copyBoosts": true
+      "entity": "Pets_Warshade_Extraction"
     }
   }
 };

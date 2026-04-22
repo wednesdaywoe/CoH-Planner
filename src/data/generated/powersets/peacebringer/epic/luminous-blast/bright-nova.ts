@@ -32,9 +32,7 @@ export const BrightNova: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Flight",
-    "To Hit Buff",
-    "Universal Travel"
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "effects": {

@@ -86,7 +86,8 @@
             "power_names": [
               "Incarnate.Genesis_Silent.Lore_Data_Boost_3"
             ]
-          }
+          },
+          "flags_raw": 112
         }
       ]
     }

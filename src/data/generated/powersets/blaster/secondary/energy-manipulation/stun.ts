@@ -16,6 +16,7 @@ export const Stun: Power = {
   "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient, Special",
   "icon": "energymanipulation_stun.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -55,10 +56,6 @@ export const Stun: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Stun"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Melee_Ones"
     }
   }
 };

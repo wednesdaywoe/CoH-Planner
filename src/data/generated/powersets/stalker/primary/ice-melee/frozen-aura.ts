@@ -54,12 +54,37 @@ export const FrozenAura: Power = {
     {
       "type": "Cold",
       "scale": 1.424,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.424,
       "table": "Melee_Damage"
     },
     {
       "type": "Cold",
       "scale": 1.424,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.424,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.068,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.068,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.068,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

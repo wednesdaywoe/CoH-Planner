@@ -89,7 +89,8 @@
             "redirects": [
               "Pets.Static_Field_Controller.Static_Field"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

@@ -10,32 +10,32 @@
 import type { Powerset } from '@/types';
 
 import { DarkBlast as DarkBlast } from './dark-blast';
-import { ZombieHorde as ZombieHorde } from './zombie-horde';
-import { Gloom as Gloom } from './gloom';
+import { DarkEmpowerment as DarkEmpowerment } from './dark-empowerment';
 import { EnchantUndead as EnchantUndead } from './enchant-undead';
+import { Gloom as Gloom } from './gloom';
+import { Lich as Lich } from './lich';
 import { LifeDrain as LifeDrain } from './life-drain';
 import { GraveKnight as GraveKnight } from './skeletal-warriors';
 import { SoulExtraction as SoulExtraction } from './soul-extraction';
-import { Lich as Lich } from './lich';
-import { DarkEmpowerment as DarkEmpowerment } from './dark-empowerment';
+import { ZombieHorde as ZombieHorde } from './zombie-horde';
 
 export const powerset: Powerset = {
   id: 'mastermind/necromancy',
   name: 'Necromancy',
   description: 'Command the forces of Death. Necromancy allows you to summon undead henchmen to do your bidding. Some Necromancy powers can even grant your undead henchmen additional powers. Most Undead Henchmen generally have good resistances to Cold, Negative Energy, and Psionic damage as well as Sleep, Fear and Disorient. Undead Henchman cannot be resurrected.',
-  icon: 'necromancy_set.png',
+  icon: 'necromancy_set.ico',
   archetype: 'mastermind',
   category: 'primary',
   powers: [
     DarkBlast,
-    ZombieHorde,
-    Gloom,
+    DarkEmpowerment,
     EnchantUndead,
+    Gloom,
+    Lich,
     LifeDrain,
     GraveKnight,
     SoulExtraction,
-    Lich,
-    DarkEmpowerment,
+    ZombieHorde,
   ],
 };
 

@@ -14,7 +14,7 @@ export const AuraofMadness: Power = {
   "available": 27,
   "description": "You emit a powerful psychic aura that causes the minds of those around you to become weak and distracted. Foes may be stunned, held, terrified or even confused in your presence, in addition to suffering a debuff derived from the applied control effect. Those that resist these effects will see their damage reduced. This power allows you to use your own Hit Points to keep enemies near you disabled. The power costs no endurance but can be dangerous to use.Notes: Mez enhancements on this power enhance its magnitude instead of its duration.",
   "shortHelp": "Toggle: PBAoE, Foe Confuse, Disorient, Sleep, Hold, Fear, -Damage(All), +Special",
-  "icon": "psionicarmor_auraofinsanity.png",
+  "icon": "psionicarmor_worldofconfusion",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
@@ -102,29 +102,29 @@ export const AuraofMadness: Power = {
       "table": "Melee_Debuff_Def"
     },
     "confuse": {
-      "mag": 2,
-      "scale": 2,
+      "mag": 2.5,
+      "scale": 2.5,
       "table": "Melee_Ones"
     },
     "effectDuration": 4,
     "stun": {
-      "mag": 2,
-      "scale": 2,
+      "mag": 2.5,
+      "scale": 2.5,
       "table": "Melee_Ones"
     },
     "sleep": {
-      "mag": 2,
-      "scale": 2,
+      "mag": 2.5,
+      "scale": 2.5,
       "table": "Melee_Ones"
     },
     "hold": {
-      "mag": 2,
-      "scale": 2,
+      "mag": 2.5,
+      "scale": 2.5,
       "table": "Melee_Ones"
     },
     "fear": {
-      "mag": 2,
-      "scale": 2,
+      "mag": 2.5,
+      "scale": 2.5,
       "table": "Melee_Ones"
     },
     "buffDuration": 4

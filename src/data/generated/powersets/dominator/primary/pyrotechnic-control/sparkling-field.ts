@@ -14,8 +14,9 @@ export const SparklingChain: Power = {
   "available": 1,
   "description": "Immobilizes a group of foes one by one in a chain formation, dealing Fire and Energy damage over time to each enemy in the chain. More resilient foes may require multiple casts to Immobilize. Sparkling Chain is slower and less damaging than Sparkling Cage, but can capture multiple targets.This power has a chance of Blasting Off targets into the air. This chance is greater on the initial target of Sparkling Chain.",
   "shortHelp": "Ranged Chain AoE, Minor DoT(Fire, Energy), Foe Immobilize,Chance for Blast Off",
-  "icon": "pyrotechnic_sparklingfield.png",
+  "icon": "pyrotechnic_sparklingfield",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 0.9,
@@ -37,7 +38,6 @@ export const SparklingChain: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Immobilize",
-    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -55,13 +55,27 @@ export const SparklingChain: Power = {
       "table": "Ranged_Damage",
       "duration": 5.2,
       "tickRate": 2
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0345,
+      "table": "Ranged_PvPDamage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 0.0345,
+      "table": "Ranged_PvPDamage",
+      "duration": 5.2,
+      "tickRate": 2
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
+      "mag": 5,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "mezResistance": {
       "knockback": {
@@ -76,6 +90,10 @@ export const SparklingChain: Power = {
     "knockback": {
       "scale": 20,
       "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
     },
     "resistanceDebuff": {
       "smashing": {

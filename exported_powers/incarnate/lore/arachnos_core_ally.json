@@ -83,7 +83,8 @@
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Lore_Arachnos_Boss",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

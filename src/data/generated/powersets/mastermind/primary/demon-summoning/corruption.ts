@@ -16,12 +16,13 @@ export const Corruption: Power = {
   "shortHelp": "Ranged, Light DMG(Fire), Foe Minor DoT (Toxic), -Res",
   "icon": "demonsummoning_corruption.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "recharge": 3,
-    "endurance": 4.37,
+    "endurance": 4.368,
     "castTime": 1.23
   },
   "allowedEnhancements": [
@@ -41,6 +42,11 @@ export const Corruption: Power = {
       "type": "Fire",
       "scale": 0.76,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.421,
+      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Toxic",

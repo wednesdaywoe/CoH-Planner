@@ -83,7 +83,8 @@
             "type": "EntCreate",
             "entity_def": "MastermindPets_Thug",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -126,7 +127,8 @@
             "type": "EntCreate",
             "entity_def": "MastermindPets_Thug",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -169,7 +171,8 @@
             "type": "EntCreate",
             "entity_def": "MastermindPets_Thug_Arsonist",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -215,7 +218,8 @@
             "power_names": [
               "Mastermind_Summon.Thugs.Call_Thugs"
             ]
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     },
@@ -255,7 +259,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 8.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 66592
         },
         {
           "attribs": [
@@ -280,7 +293,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 8.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -305,7 +327,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 8.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 84016
         }
       ]
     }

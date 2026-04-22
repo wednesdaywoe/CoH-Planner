@@ -16,6 +16,7 @@ export const StunningShot: Power = {
   "shortHelp": "Ranged Disorient, Minor DMG(Smashing)",
   "icon": "archery_stunarrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.155,

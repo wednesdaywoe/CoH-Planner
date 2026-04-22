@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { DefensiveSweep as DefensiveSweep } from './defensive-sweep';
-import { CrushingBlow as CrushingBlow } from './crushing-blow';
-import { TitanSweep as TitanSweep } from './sweeping-strike';
-import { BuildMomentum as BuildMomentum } from './build-up';
-import { FollowThrough as FollowThrough } from './follow-through';
-import { Taunt as Taunt } from './taunt';
-import { RendArmor as RendArmor } from './shatter-armor';
-import { WhirlingSmash as WhirlingSmash } from './whirling-slice';
 import { ArcofDestruction as ArcofDestruction } from './arc-of-destruction';
+import { BuildMomentum as BuildMomentum } from './build-up';
+import { CrushingBlow as CrushingBlow } from './crushing-blow';
+import { DefensiveSweep as DefensiveSweep } from './defensive-sweep';
+import { FollowThrough as FollowThrough } from './follow-through';
+import { RendArmor as RendArmor } from './shatter-armor';
+import { TitanSweep as TitanSweep } from './sweeping-strike';
+import { Taunt as Taunt } from './taunt';
+import { WhirlingSmash as WhirlingSmash } from './whirling-slice';
 
 export const powerset: Powerset = {
   id: 'brute/titan-weapons',
   name: 'Titan Weapons',
   description: 'You wield an over-sized weapon of some sort; a gigantic sword, mace or axe or possibly even a railroad crossing sign. The weapon\'s sheer mass gives it great destructive power, and your immense strength and skill allow you to use it as a devastating weapon. Titan Weapons as a set, has exceptional area of effect capability, while retaining a strong single target ability. Certain powers can only be used as follow up attacks and are grayed out when first entering combat, while others allow you to build up momentum and accelerate your attack speed for a few moments. Momentum is gained by using a Titan Weapon power when you don\'t already have Momentum. This effect lasts for 5 seconds. Once Momentum wears off, another Titan Weapon attack must be used to grant Momentum again.',
-  icon: 'titan_weapons_set.png',
+  icon: 'titan_weapons_set.ico',
   archetype: 'brute',
   category: 'primary',
   powers: [
-    DefensiveSweep,
-    CrushingBlow,
-    TitanSweep,
-    BuildMomentum,
-    FollowThrough,
-    Taunt,
-    RendArmor,
-    WhirlingSmash,
     ArcofDestruction,
+    BuildMomentum,
+    CrushingBlow,
+    DefensiveSweep,
+    FollowThrough,
+    RendArmor,
+    TitanSweep,
+    Taunt,
+    WhirlingSmash,
   ],
 };
 

@@ -16,6 +16,7 @@ export const Dehydrate: Power = {
   "shortHelp": "Ranged, DMG(Cold/Smash), Foe -Speed, -Defense, DoT(Cold), Self +Heal Over Time, +/- Tidal Power",
   "icon": "waterblast_dehydrate.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -57,9 +58,19 @@ export const Dehydrate: Power = {
       "table": "Ranged_Damage"
     },
     {
+      "type": "Smashing",
+      "scale": 0.5073,
+      "table": "Ranged_PvPDamage"
+    },
+    {
       "type": "Cold",
-      "scale": 0.1488,
-      "table": "Ranged_Damage",
+      "scale": 1.5219,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.121,
+      "table": "Ranged_PvPDamage",
       "duration": 4.1,
       "tickRate": 1
     },

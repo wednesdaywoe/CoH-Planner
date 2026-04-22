@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "P1712748702",
             "priority_list": "Pets_CatherineWheel_Controller"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

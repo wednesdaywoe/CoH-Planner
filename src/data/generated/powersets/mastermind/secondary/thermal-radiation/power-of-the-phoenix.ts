@@ -16,6 +16,7 @@ export const PowerofthePhoenix: Power = {
   "shortHelp": "Ally Rez, Special",
   "icon": "thermalradiation_phoenix.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -33,9 +34,10 @@ export const PowerofthePhoenix: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Endurance Modification",
     "Healing",
-    "Ranged AoE Damage",
+    "Melee Damage",
     "Stuns",
     "Universal Damage Sets"
   ],
@@ -50,20 +52,26 @@ export const PowerofthePhoenix: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Phoenix",
-      "duration": 5,
-      "copyBoosts": true
+      "entity": "P297828065",
+      "duration": 5
     },
     "untouchable": {
       "scale": 10,
       "table": "Ranged_Ones"
     },
     "durations": {
-      "untouchable": 15
+      "untouchable": 15,
+      "stealth": 15
     },
     "enduranceGain": {
       "scale": 70,
       "table": "Ranged_Ones"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 300,
+        "table": "Melee_Ones"
+      }
     },
     "buffDuration": 15
   }

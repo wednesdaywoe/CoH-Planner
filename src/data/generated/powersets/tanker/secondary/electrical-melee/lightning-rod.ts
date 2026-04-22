@@ -16,6 +16,7 @@ export const LightningRod: Power = {
   "shortHelp": "PBAoE DMG(Energy), Foe Knockback; Self Teleport;",
   "icon": "electricmelee_pbaoeteleport.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,
@@ -35,17 +36,27 @@ export const LightningRod: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "Ranged AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
+      "displayName": "Lightning Rod",
+      "powers": [
+        "Pets.Lightning_Rod_Universal.Lightning_Rod_Center",
+        "Pets.Lightning_Rod_Universal.Lightning_Rod",
+        "Pets.ResistAll.ResistAll"
+      ],
+      "duration": 1
     }
   }
 };

@@ -16,6 +16,7 @@ export const BrightNovaBlast: Power = {
   "shortHelp": "Ranged, Light DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_gleamingblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -42,14 +43,21 @@ export const BrightNovaBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_InherentDamage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.932,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 1,
+      "scale": 2,
       "table": "Ranged_Knockback"
     },
     "defenseDebuff": {
@@ -61,5 +69,5 @@ export const BrightNovaBlast: Power = {
     },
     "buffDuration": 6
   },
-  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova && !Inherent.Inherent.Bright_Nova_Blast"
+  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Blast ! &&"
 };

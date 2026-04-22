@@ -92,7 +92,8 @@
               "Redirects.Pyrotechnic_Control.GlitteringColumn_ToHitAura",
               "Redirects.Pyrotechnic_Control.GlitteringColumn_SelfDestruct"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

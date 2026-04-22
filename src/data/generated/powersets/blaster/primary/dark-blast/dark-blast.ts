@@ -16,6 +16,7 @@ export const DarkBlast: Power = {
   "shortHelp": "Ranged, DMG(Negative), Foe -To Hit",
   "icon": "darkcast_darkblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,9 +41,16 @@ export const DarkBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.2602,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

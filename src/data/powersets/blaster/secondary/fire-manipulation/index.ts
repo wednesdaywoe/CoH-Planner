@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { RingofFire as RingofFire } from './ring-of-fire';
-import { FireSword as FireSword } from './fire-sword';
-import { Combustion as Combustion } from './combustion';
-import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
-import { BuildUp as BuildUp } from './build-up';
 import { CauterizingAura as CauterizingAura } from './blazing-aura';
-import { Consume as Consume } from './consume';
+import { BuildUp as BuildUp } from './build-up';
 import { Burn as Burn } from './burn';
+import { Combustion as Combustion } from './combustion';
+import { Consume as Consume } from './consume';
+import { FireSword as FireSword } from './fire-sword';
+import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
 import { HotFeet as HotFeet } from './hot-feet';
+import { RingofFire as RingofFire } from './ring-of-fire';
 
 export const powerset: Powerset = {
   id: 'blaster/fire-manipulation',
   name: 'Fire Manipulation',
   description: 'Fire Manipulation lets you surround yourself with various manifestations of fire and flames, assaulting and burning nearby foes. Fire Manipulation powers tend to set foes ablaze for added damage over time.',
-  icon: 'fire_manipulation_set.png',
+  icon: 'fire_manipulation_set.ico',
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    RingofFire,
-    FireSword,
-    Combustion,
-    FireSwordCircle,
-    BuildUp,
     CauterizingAura,
-    Consume,
+    BuildUp,
     Burn,
+    Combustion,
+    Consume,
+    FireSword,
+    FireSwordCircle,
     HotFeet,
+    RingofFire,
   ],
 };
 

@@ -55,5 +55,5 @@ export const DarkRegeneration: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "requires": "!Tanker_Defense.Dark_Armor.Obscure_Sustenance"
+  "requires": "Tanker_Defense.Dark_Armor.Obscure_Sustenance !"
 };

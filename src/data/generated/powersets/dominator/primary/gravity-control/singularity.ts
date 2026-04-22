@@ -36,9 +36,11 @@ export const Singularity: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
+    "Holds",
+    "Immobilize",
     "Knockback",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -46,7 +48,7 @@ export const Singularity: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Singularity",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

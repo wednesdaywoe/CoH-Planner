@@ -86,7 +86,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX"
+          "stack_key": "ame.NictusFX",
+          "flags_raw": 263216
         },
         {
           "attribs": [
@@ -113,7 +114,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX"
+          "stack_key": "ame.NictusFX",
+          "flags_raw": 263216
         },
         {
           "attribs": [
@@ -138,7 +140,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX"
+          "stack_key": "ame.NictusFX",
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -169,7 +172,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX"
+          "stack_key": "ame.NictusFX",
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -194,7 +198,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX"
+          "stack_key": "ame.NictusFX",
+          "flags_raw": 263200
         }
       ]
     },
@@ -237,7 +242,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX"
+          "stack_key": "ame.NictusFX",
+          "flags_raw": 263200
         }
       ]
     },
@@ -279,7 +285,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX"
+          "stack_key": "ame.NictusFX",
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -304,7 +311,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX"
+          "stack_key": "ame.NictusFX",
+          "flags_raw": 263200
         }
       ]
     }

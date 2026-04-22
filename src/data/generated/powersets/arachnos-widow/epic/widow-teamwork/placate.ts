@@ -33,6 +33,9 @@ export const Placate: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "effects": {
     "placate": {

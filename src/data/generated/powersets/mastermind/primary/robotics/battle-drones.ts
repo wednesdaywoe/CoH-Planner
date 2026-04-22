@@ -12,7 +12,7 @@ export const BattleDrones: Power = {
   "name": "Battle Drones",
   "internalName": "Battle_Drones",
   "available": 0,
-  "description": "Construct one to three Battle Drones (depending on your level) to do your bidding. Drones start out with only basic weaponry, but can be upgraded with heavier energy weapons. Drones can Super Leap.You may only have 3 Drones under your control at any given time. If you attempt to construct more Drones, you can only replace the ones you have lost in battle. If you already have three, the power will fail.",
+  "description": "Construct one to three Battle Drones (depending on your level) to do your bidding. Drones start out with only basic weaponry, but can be upgraded with heavier energy weapons. Drones can Super Leap.You may only have 3 Drones under your control at any given time. If you attempt to construct more Drones, you can only replace the ones you have lost in battle. If you already have three, the power will fail.In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "shortHelp": "Summon Battle Drones",
   "icon": "robotics_buildrobotarmy.png",
   "powerType": "Click",
@@ -33,9 +33,7 @@ export const BattleDrones: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -43,8 +41,17 @@ export const BattleDrones: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Droid",
-      "copyBoosts": true,
+      "duration": 99999,
       "entityCount": 3
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "immobilize": {
+      "mag": 500,
+      "scale": 3,
+      "table": "Melee_Ones"
     }
   }
 };

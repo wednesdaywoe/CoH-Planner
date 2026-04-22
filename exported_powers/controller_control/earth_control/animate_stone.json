@@ -86,7 +86,8 @@
             "type": "EntCreate",
             "entity_def": "P388854299",
             "priority_list": "Pets_Stone_Controller"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

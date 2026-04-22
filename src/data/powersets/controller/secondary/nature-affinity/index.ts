@@ -10,32 +10,32 @@
 import type { Powerset } from '@/types';
 
 import { CorrosiveEnzymes as CorrosiveEnzymes } from './corrosive-sap';
-import { Regrowth as Regrowth } from './regrowth';
-import { WildGrowth as WildGrowth } from './wild-growth';
-import { SporeCloud as SporeCloud } from './spore-cloud';
 import { LifegivingSpores as LifegivingSpores } from './lifegiving-spores';
-import { WildBastion as WildBastion } from './wild-bastion';
-import { Rebirth as Rebirth } from './rebirth';
-import { EntanglingAura as EntanglingAura } from './raging-tempest';
 import { Overgrowth as Overgrowth } from './overgrowth';
+import { EntanglingAura as EntanglingAura } from './raging-tempest';
+import { Rebirth as Rebirth } from './rebirth';
+import { Regrowth as Regrowth } from './regrowth';
+import { SporeCloud as SporeCloud } from './spore-cloud';
+import { WildBastion as WildBastion } from './wild-bastion';
+import { WildGrowth as WildGrowth } from './wild-growth';
 
 export const powerset: Powerset = {
   id: 'controller/nature-affinity',
   name: 'Nature Affinity',
   description: 'You have command over the forces of nature and are able to call forth primal energies to aid your allies and hinder your foes. Many of your powers place a Bloom effect on you and your allies. Each stack of Bloom boosts healing effects on the affected targets by a 4% for 30 seconds. Bloom can stack up to 5 times.',
-  icon: 'nature_affinity_set.png',
+  icon: 'nature_affinity_set.ico',
   archetype: 'controller',
   category: 'secondary',
   powers: [
     CorrosiveEnzymes,
-    Regrowth,
-    WildGrowth,
-    SporeCloud,
     LifegivingSpores,
-    WildBastion,
-    Rebirth,
-    EntanglingAura,
     Overgrowth,
+    EntanglingAura,
+    Rebirth,
+    Regrowth,
+    SporeCloud,
+    WildBastion,
+    WildGrowth,
   ],
 };
 

@@ -16,6 +16,7 @@ export const Jab: Power = {
   "shortHelp": "Melee, DMG(Smash), Disorient",
   "icon": "superstrength_jab.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,11 +41,18 @@ export const Jab: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.68,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.68,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.229,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 2,

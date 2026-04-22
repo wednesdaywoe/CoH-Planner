@@ -16,6 +16,7 @@ export const EaglesClaw: Power = {
   "shortHelp": "Melee, Extreme DMG(Smash), DoT(Lethal), Foe Minor Disorient, +Special",
   "icon": "martialmanipulation_eaglesclaw.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -50,6 +51,11 @@ export const EaglesClaw: Power = {
       "table": "Melee_Damage",
       "duration": 5,
       "tickRate": 0.5
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.8907,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

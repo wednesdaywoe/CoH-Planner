@@ -45,5 +45,6 @@ export const QuickRecovery: Power = {
       }
     },
     "buffDuration": 10.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

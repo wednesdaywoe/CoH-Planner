@@ -16,6 +16,7 @@ export const DarkGrasp: Power = {
   "shortHelp": "Ranged, High DMG(Negative), Foe Hold, -To Hit",
   "icon": "darknesscontrol_darkgrasp.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -42,16 +43,33 @@ export const DarkGrasp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.889,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.9445,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

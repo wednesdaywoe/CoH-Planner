@@ -16,6 +16,7 @@ export const ThunderStrike: Power = {
   "shortHelp": "Melee (AoE), DMG(Energy), Foe Disorient, Knockback, -End",
   "icon": "electricmelee_targetedaoeheavydmg.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -45,18 +46,8 @@ export const ThunderStrike: Power = {
   "damage": [
     {
       "type": "Energy",
-      "scale": 2.98,
+      "scale": 2.56,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.98,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.98,
-      "table": "Melee_InherentDamage"
     },
     {
       "type": "Energy",
@@ -65,26 +56,56 @@ export const ThunderStrike: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.42,
+      "scale": 2.56,
       "table": "Melee_InherentDamage"
     },
     {
       "type": "Energy",
       "scale": 0.42,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.56,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.42,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.971,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3506,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.971,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3506,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
-    "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Melee_Ones"
-    },
     "recoveryDebuff": {
-      "scale": 1,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "durations": {
       "recoveryDebuff": 4
+    },
+    "enduranceDrain": {
+      "scale": 2,
+      "table": "Melee_EndDrain"
     },
     "stun": {
       "mag": 3,
@@ -92,7 +113,7 @@ export const ThunderStrike: Power = {
       "table": "Melee_Stun"
     },
     "knockback": {
-      "scale": 0.64,
+      "scale": 1.28,
       "table": "Melee_Ones"
     },
     "buffDuration": 4

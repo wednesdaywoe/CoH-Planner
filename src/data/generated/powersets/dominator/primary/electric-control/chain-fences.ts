@@ -16,6 +16,7 @@ export const ChainFences: Power = {
   "shortHelp": "Ranged AoE, DMG(Energy), Foe Immobilize, -End, -Fly",
   "icon": "electriccontrol_chainfences.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.9,
@@ -55,6 +56,11 @@ export const ChainFences: Power = {
       "table": "Ranged_Damage",
       "duration": 5.2,
       "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 1.539,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
@@ -64,8 +70,8 @@ export const ChainFences: Power = {
       "table": "Ranged_Immobilize"
     },
     "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_Ones"
+      "scale": 2,
+      "table": "Ranged_EndDrain"
     },
     "recoveryDebuff": {
       "scale": 1,

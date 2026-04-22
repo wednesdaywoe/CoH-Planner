@@ -78,7 +78,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         },
         {
           "attribs": [
@@ -105,7 +106,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -130,7 +132,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         },
         {
           "attribs": [
@@ -155,7 +158,16 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -180,7 +192,28 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "HitByFoe",
+              "event_id": 17,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1280
         }
       ]
     },
@@ -218,7 +251,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         }
       ],
       "child_effects": [
@@ -268,7 +302,8 @@
                   "caster_stack": "Individual",
                   "stack": "Replace",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 2560
                 },
                 {
                   "attribs": [
@@ -293,7 +328,8 @@
                   "caster_stack": "Individual",
                   "stack": "Replace",
                   "stack_limit": 2,
-                  "stack_key": "S/5THCOLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS"
+                  "stack_key": "S/5THCOLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+                  "flags_raw": 264704
                 }
               ]
             },
@@ -331,7 +367,8 @@
                   "caster_stack": "Individual",
                   "stack": "Replace",
                   "stack_limit": 2,
-                  "stack_key": "S/5THCOLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS"
+                  "stack_key": "S/5THCOLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+                  "flags_raw": 264704
                 }
               ]
             }
@@ -373,7 +410,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -411,7 +449,16 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Event_28",
+              "event_id": 28,
+              "duration": 15.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 2560
         }
       ],
       "child_effects": [
@@ -449,7 +496,16 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "Event_28",
+                  "event_id": 28,
+                  "duration": 15.0,
+                  "flag": 0
+                }
+              ],
+              "flags_raw": 2560
             }
           ]
         }

@@ -16,6 +16,7 @@ export const AmpUp: Power = {
   "shortHelp": "Ranged, Ally +Special, +Recharge",
   "icon": "shocktherapy_ampup.png",
   "powerType": "Click",
+  "targetType": "Ally (Alive)",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

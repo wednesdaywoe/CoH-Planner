@@ -12,7 +12,7 @@ export const ZombieHorde: Power = {
   "name": "Zombie Horde",
   "internalName": "Zombie_Horde",
   "available": 0,
-  "description": "Summons one to three Zombies (depending on your level) to do your bidding. Zombies are very tough but can be slow and stupid. They start out with only rudimentary melee attacks, but can be empowered with range and even life draining powers.You may only have 3 Zombies under your control at any given time. If you attempt to summon more Zombies, you can only replace the ones you have lost in battle. If you already have three, the power will fail.",
+  "description": "Summons one to three Zombies (depending on your level) to do your bidding. Zombies are very tough but can be slow and stupid. They start out with only rudimentary melee attacks, but can be empowered with range and even life draining powers.You may only have 3 Zombies under your control at any given time. If you attempt to summon more Zombies, you can only replace the ones you have lost in battle. If you already have three, the power will fail.In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "shortHelp": "Summon Zombies",
   "icon": "necromancy_callzombiehorde.png",
   "powerType": "Click",
@@ -33,9 +33,7 @@ export const ZombieHorde: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
@@ -44,8 +42,17 @@ export const ZombieHorde: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Zombie",
-      "copyBoosts": true,
+      "duration": 99999,
       "entityCount": 3
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "immobilize": {
+      "mag": 500,
+      "scale": 3,
+      "table": "Melee_Ones"
     }
   }
 };

@@ -16,6 +16,7 @@ export const Lunge: Power = {
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "widowtraining_lunge.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,6 +42,21 @@ export const Lunge: Power = {
       "type": "Lethal",
       "scale": 1.824,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.216,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.461,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.9745,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Toxic",

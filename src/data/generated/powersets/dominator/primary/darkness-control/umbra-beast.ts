@@ -37,10 +37,10 @@ export const UmbraBeast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Dominator Archetype Sets",
     "Fear",
     "Immobilize",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
@@ -48,8 +48,8 @@ export const UmbraBeast: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Umbra_Beast",
-      "copyBoosts": true
+      "entity": "P2987067974",
+      "duration": 99999
     }
   }
 };

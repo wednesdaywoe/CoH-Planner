@@ -16,6 +16,7 @@ export const QuickStrike: Power = {
   "shortHelp": "Melee, DMG(Smash/Energy), Foe -DMG, Knockdown",
   "icon": "kineticattack_quickstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -43,18 +44,28 @@ export const QuickStrike: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 0.63,
+      "scale": 0.21,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.21,
+      "scale": 0.63,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.3303,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.7707,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.7,
+      "scale": 0.8934,
       "table": "Melee_Ones"
     }
   }

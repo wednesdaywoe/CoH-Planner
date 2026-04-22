@@ -16,6 +16,7 @@ export const TrainBeasts: Power = {
   "shortHelp": "Ranged, Train Beast Henchmen",
   "icon": "beastmastery_trainbeasts.png",
   "powerType": "Click",
+  "targetType": "Self",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

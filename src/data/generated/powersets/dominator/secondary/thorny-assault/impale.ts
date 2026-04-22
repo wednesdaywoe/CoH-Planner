@@ -16,6 +16,7 @@ export const Impale: Power = {
   "shortHelp": "Ranged, High DMG(Lethal), DoT(Toxic), Immobilize, -DEF, -SPD, -Fly, -Jump",
   "icon": "thornyassault_impale.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,6 +50,11 @@ export const Impale: Power = {
       "type": "Lethal",
       "scale": 1.96,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4748,
+      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Toxic",

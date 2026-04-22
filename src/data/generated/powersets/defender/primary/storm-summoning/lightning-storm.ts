@@ -44,9 +44,8 @@ export const LightningStorm: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_LightningStorm",
-      "duration": 60,
-      "copyBoosts": true
+      "entity": "P1985334123",
+      "duration": 60
     }
   }
 };

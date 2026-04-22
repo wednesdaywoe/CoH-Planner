@@ -16,6 +16,7 @@ export const Taser: Power = {
   "shortHelp": "Melee, High DMG(Energy), Foe Disorient",
   "icon": "gadgets_taser.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -33,25 +34,28 @@ export const Taser: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Ranged Damage",
+    "Melee Damage",
     "Stuns",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.96,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.5,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     }
   }
 };

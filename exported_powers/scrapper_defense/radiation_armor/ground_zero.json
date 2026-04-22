@@ -92,7 +92,8 @@
               "Redirects.Rad_Armor.Ground_Zero_Ally",
               "Redirects.Rad_Armor.Ground_Zero_Foe"
             ]
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     }

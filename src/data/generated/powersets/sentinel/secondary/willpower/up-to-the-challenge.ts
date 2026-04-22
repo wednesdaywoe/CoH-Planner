@@ -40,8 +40,8 @@ export const UptotheChallenge: Power = {
       "table": "Melee_Ones"
     },
     "durations": {
-      "regenBuff": 1.125
+      "regenBuff": 1.12
     },
-    "buffDuration": 1.125
+    "buffDuration": 1.12
   }
 };

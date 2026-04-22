@@ -16,6 +16,7 @@ export const WaterJet: Power = {
   "shortHelp": "Ranged, DMG(Cold/Smash), Foe -Speed, Self +/-Tidal Power",
   "icon": "waterblast_waterjet.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,17 +39,5 @@ export const WaterJet: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.49,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.47,
-      "table": "Ranged_Damage"
-    }
-  ]
+  "maxSlots": 6
 };

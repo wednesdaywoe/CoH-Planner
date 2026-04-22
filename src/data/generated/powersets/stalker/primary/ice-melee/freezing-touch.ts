@@ -16,6 +16,7 @@ export const FreezingTouch: Power = {
   "shortHelp": "Melee, DoT(Cold), Foe Hold",
   "icon": "icyonslaught_freezingtouch.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,6 +51,28 @@ export const FreezingTouch: Power = {
       "type": "Cold",
       "scale": 2.92,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.92,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.1577,
+      "table": "Melee_PvPDamage",
+      "duration": 2.6,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Cold",
+      "scale": 1.74,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.74,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

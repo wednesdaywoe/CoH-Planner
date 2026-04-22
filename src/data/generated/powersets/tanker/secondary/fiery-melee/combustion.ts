@@ -59,6 +59,18 @@ export const Combustion: Power = {
       "table": "Melee_Damage",
       "duration": 7.1,
       "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.5616,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1123,
+      "table": "Melee_PvPDamage",
+      "duration": 7.1,
+      "tickRate": 0.75
     }
   ]
 };

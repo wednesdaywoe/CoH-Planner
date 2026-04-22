@@ -16,12 +16,13 @@ export const ShadowMaul: Power = {
   "shortHelp": "Melee (Cone), DoT(Smash/Negative), Foe -To Hit",
   "icon": "shadowfighting_shadowmaul.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 2.0944,
+    "arc": 2.094395160675049,
     "recharge": 11,
     "endurance": 11.024,
     "castTime": 2.37,
@@ -61,6 +62,42 @@ export const ShadowMaul: Power = {
       "type": "Negative",
       "scale": 1.6183,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.6183,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2385,
+      "table": "Melee_PvPDamage",
+      "duration": 2,
+      "tickRate": 0.625
+    },
+    {
+      "type": "Negative",
+      "scale": 0.2385,
+      "table": "Melee_PvPDamage",
+      "duration": 2,
+      "tickRate": 0.625
+    },
+    {
+      "type": "Negative",
+      "scale": 1.9076,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.9076,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.2955,
+      "table": "Melee_PvPDamage",
+      "duration": 2,
+      "tickRate": 1.25
     }
   ]
 };

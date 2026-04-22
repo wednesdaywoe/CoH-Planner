@@ -82,7 +82,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 66816
         },
         {
           "attribs": [
@@ -107,7 +108,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 66816
         }
       ],
       "child_effects": [
@@ -145,7 +147,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -170,7 +173,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -195,7 +199,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1056
             }
           ],
           "child_effects": [
@@ -233,7 +238,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1280
                 }
               ]
             },
@@ -278,7 +284,8 @@
                       "Controller_Control.Mind_Control.Telekinesis",
                       "Dominator_Control.Mind_Control.Telekinesis"
                     ]
-                  }
+                  },
+                  "flags_raw": 82992
                 }
               ],
               "child_effects": [
@@ -316,7 +323,8 @@
                       "caster_stack": "Individual",
                       "stack": "Stack",
                       "stack_limit": 2,
-                      "stack_key": null
+                      "stack_key": null,
+                      "flags_raw": 66816
                     },
                     {
                       "attribs": [
@@ -341,7 +349,8 @@
                       "caster_stack": "Individual",
                       "stack": "Stack",
                       "stack_limit": 2,
-                      "stack_key": null
+                      "stack_key": null,
+                      "flags_raw": 66816
                     }
                   ]
                 }
@@ -383,7 +392,16 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "MissionObjectInteract",
+                  "event_id": 33,
+                  "duration": 10.0,
+                  "flag": 0
+                }
+              ],
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -408,7 +426,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -433,7 +452,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1056
             }
           ],
           "child_effects": [
@@ -471,7 +491,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1280
                 }
               ]
             },
@@ -516,7 +537,8 @@
                       "Controller_Control.Mind_Control.Telekinesis",
                       "Dominator_Control.Mind_Control.Telekinesis"
                     ]
-                  }
+                  },
+                  "flags_raw": 82992
                 }
               ],
               "child_effects": [
@@ -554,7 +576,8 @@
                       "caster_stack": "Individual",
                       "stack": "Stack",
                       "stack_limit": 2,
-                      "stack_key": null
+                      "stack_key": null,
+                      "flags_raw": 66816
                     },
                     {
                       "attribs": [
@@ -579,7 +602,8 @@
                       "caster_stack": "Individual",
                       "stack": "Stack",
                       "stack_limit": 2,
-                      "stack_key": null
+                      "stack_key": null,
+                      "flags_raw": 66816
                     }
                   ]
                 }

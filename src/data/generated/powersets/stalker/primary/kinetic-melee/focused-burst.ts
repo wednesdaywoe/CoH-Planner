@@ -12,17 +12,20 @@ export const FocusedBurst: Power = {
   "name": "Focused Burst",
   "internalName": "Focused_Burst",
   "available": 21,
-  "description": "Projects a burst of focused power over a short distance. Focused Burst deals high damage and can possibly knock down your foe.",
-  "shortHelp": "Ranged, DMG(Smash/Energy), Foe Knockdown",
+  "description": "Projects a burst of focused power over a short distance that can bounce between nearby targets. Focused Burst deals high damage and can possibly knock down your foes.",
+  "shortHelp": "Ranged Chain, DMG(Smash/Energy), Foe Knockdown",
   "icon": "kineticattack_focusedburst.png",
   "powerType": "Click",
-  "effectArea": "SingleTarget",
+  "targetType": "Foe",
+  "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
     "range": 40,
+    "radius": 8,
     "recharge": 8,
     "endurance": 8.528,
-    "castTime": 2
+    "castTime": 2,
+    "maxTargets": 5
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -34,7 +37,6 @@ export const FocusedBurst: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
@@ -42,23 +44,48 @@ export const FocusedBurst: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 1.23,
+      "scale": 0.41,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.41,
+      "scale": 1.23,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
       "scale": 1.64,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.64,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.636,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.484,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.12,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.12,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

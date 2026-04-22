@@ -1,9 +1,9 @@
 /**
- * Psychokinetic Barrier (Fortify_Mind) — COMPOSED EXPORT
+ * Psychokinetic Barrier — COMPOSED EXPORT
  *
  * The planner imports from here. Composes the auto-generated power object
- * with hand-written overrides via `withOverrides`. Both layers evolve
- * independently — see src/data/README.md for the layering pattern.
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
  *
  * To re-generate the base power:
  *   node scripts/convert-powerset.cjs brute_defense psionic_armor

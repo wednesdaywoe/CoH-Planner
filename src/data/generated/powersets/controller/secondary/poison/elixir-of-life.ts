@@ -12,17 +12,20 @@ export const ElixirofLife: Power = {
   "name": "Elixir of Life",
   "internalName": "Elixir_of_Life",
   "available": 15,
-  "description": "With this Elixir, you can revive a fallen ally and turn him into a killing machine. The revived target has increased damage, chance to hit, Endurance recovery, and attack speed, and gains a resistance to Toxic damage. A brew of this sort is not without its side effects. The revived target will soon become very sick and severely weak after about 90 seconds. All effects of the Elixir will eventually wear off. Elixir of Life can only be used on Players and cannot be used on your Henchmen.Recharge: Long.",
+  "description": "With this Elixir, you can revive a fallen ally and turn him into a killing machine. The revived target has increased damage, chance to hit, Endurance recovery, and attack speed, and gains a resistance to Toxic damage. A brew of this sort is not without its side effects. The revived target will soon become very sick and severely weak after about 90 seconds. All effects of the Elixir will eventually wear off. Elixir of Life can only be used on Players and cannot be used on your Henchmen.",
   "shortHelp": "Close, Ally Rez, Special",
   "icon": "poison_elixiroflife.png",
   "powerType": "Click",
-  "effectArea": "SingleTarget",
+  "targetType": "Dead Teammate",
+  "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
     "range": 15,
+    "radius": 15,
     "recharge": 120,
     "endurance": 5.2,
-    "castTime": 1.83
+    "castTime": 1.83,
+    "maxTargets": 5
   },
   "allowedEnhancements": [
     "Resistance",
@@ -58,6 +61,7 @@ export const ElixirofLife: Power = {
       "damageBuff": 90,
       "tohitBuff": 90,
       "resistance": 90,
+      "stealth": 15,
       "hold": 4
     },
     "rechargeBuff": {
@@ -76,6 +80,12 @@ export const ElixirofLife: Power = {
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
+      }
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 300,
+        "table": "Melee_Ones"
       }
     },
     "hold": {

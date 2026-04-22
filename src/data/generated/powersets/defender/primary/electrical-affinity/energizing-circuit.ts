@@ -16,6 +16,7 @@ export const EnergizingCircuit: Power = {
   "shortHelp": "Ranged (Chain), Ally +End, +Recharge, Self +Static",
   "icon": "shocktherapy_energizingcircuit.png",
   "powerType": "Click",
+  "targetType": "Ally (Alive)",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
@@ -31,6 +32,9 @@ export const EnergizingCircuit: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge"
+  ],
+  "allowedSetCategories": [
+    "Endurance Modification"
   ],
   "maxSlots": 6,
   "effects": {

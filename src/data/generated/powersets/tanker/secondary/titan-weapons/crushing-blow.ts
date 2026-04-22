@@ -16,6 +16,7 @@ export const CrushingBlow: Power = {
   "shortHelp": "Melee, DMG(Smashing), -DEF",
   "icon": "titanweapons_crushingblow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,20 +42,5 @@ export const CrushingBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.64,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  },
-  "requires": "!Tanker_Defense.Shield_Defense"
+  "requires": "Tanker_Defense.Shield_Defense !"
 };

@@ -12,7 +12,7 @@ export const AbsorbPain: Power = {
   "name": "Absorb Pain",
   "internalName": "Absorb_Pain",
   "available": 3,
-  "description": "Dramatically heals an ally's wounds. This power has only a tiny Endurance cost, but it requires you to sacrifice some of your Hit Points. Absorbing someone's pain can be quite dramatic, and afterwards you will be briefly unable to heal your own wounds by any means.Recharge: Slow.",
+  "description": "Dramatically heals an ally's wounds. This power has only a tiny Endurance cost, but it requires you to sacrifice some of your Hit Points. Absorbing someone's pain can be quite dramatic, and afterwards you will be briefly unable to heal your own wounds by any means.",
   "shortHelp": "Ally Strong Heal, Self Moderate DMG(Special)",
   "icon": "empathy_absorbpain.png",
   "powerType": "Click",

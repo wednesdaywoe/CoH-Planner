@@ -22,7 +22,7 @@ export const Repel: Power = {
     "accuracy": 1,
     "radius": 9,
     "recharge": 20,
-    "endurance": 0.4063,
+    "endurance": 0.325,
     "castTime": 1.07,
     "activatePeriod": 0.5,
     "maxTargets": 16
@@ -38,12 +38,16 @@ export const Repel: Power = {
   "maxSlots": 6,
   "effects": {
     "knockback": {
-      "scale": 3,
+      "scale": 6,
       "table": "Ranged_Knockback"
     },
     "enduranceDrain": {
-      "scale": 1,
+      "scale": 2,
       "table": "Ranged_Ones"
-    }
+    },
+    "durations": {
+      "knockback": 0.5
+    },
+    "buffDuration": 0.5
   }
 };

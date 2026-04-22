@@ -73,7 +73,15 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Attacked",
+            "Event_11",
+            "Event_15",
+            "MissionObjectClick",
+            "Event_38"
+          ],
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -98,7 +106,15 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Attacked",
+            "Event_11",
+            "Event_15",
+            "MissionObjectClick",
+            "Event_38"
+          ],
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -125,7 +141,15 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Attacked",
+            "Event_11",
+            "Event_15",
+            "MissionObjectClick",
+            "Event_38"
+          ],
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -150,7 +174,15 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Attacked",
+            "Event_11",
+            "Event_15",
+            "MissionObjectClick",
+            "Event_38"
+          ],
+          "flags_raw": 3120
         }
       ],
       "child_effects": [
@@ -188,7 +220,35 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Attacked",
+                "Event_11",
+                "Event_15",
+                "MissionObjectClick",
+                "Event_38"
+              ],
+              "suppress_events": [
+                {
+                  "event": "Attacked",
+                  "event_id": 2,
+                  "duration": 10.0,
+                  "flag": 1
+                },
+                {
+                  "event": "HitByFoe",
+                  "event_id": 17,
+                  "duration": 10.0,
+                  "flag": 1
+                },
+                {
+                  "event": "MissionObjectClick",
+                  "event_id": 37,
+                  "duration": 10.0,
+                  "flag": 1
+                }
+              ],
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -213,7 +273,35 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Attacked",
+                "Event_11",
+                "Event_15",
+                "MissionObjectClick",
+                "Event_38"
+              ],
+              "suppress_events": [
+                {
+                  "event": "Attacked",
+                  "event_id": 2,
+                  "duration": 10.0,
+                  "flag": 1
+                },
+                {
+                  "event": "Event_12",
+                  "event_id": 12,
+                  "duration": 10.0,
+                  "flag": 1
+                },
+                {
+                  "event": "HitByFoe",
+                  "event_id": 17,
+                  "duration": 10.0,
+                  "flag": 1
+                }
+              ],
+              "flags_raw": 1056
             },
             {
               "attribs": [
@@ -238,7 +326,35 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Attacked",
+                "Event_11",
+                "Event_15",
+                "MissionObjectClick",
+                "Event_38"
+              ],
+              "suppress_events": [
+                {
+                  "event": "Attacked",
+                  "event_id": 2,
+                  "duration": 10.0,
+                  "flag": 1
+                },
+                {
+                  "event": "HitByFoe",
+                  "event_id": 17,
+                  "duration": 10.0,
+                  "flag": 1
+                },
+                {
+                  "event": "MissionObjectClick",
+                  "event_id": 37,
+                  "duration": 10.0,
+                  "flag": 1
+                }
+              ],
+              "flags_raw": 1072
             }
           ]
         }

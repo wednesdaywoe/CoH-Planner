@@ -43,16 +43,18 @@ const CATEGORIES = {
   'sentinel_defense': { archetype: 'sentinel', type: 'secondary' },
 };
 
-// Also handle EAT/VEAT categories
+// EAT/VEAT categories. Bin export uses different names than the old
+// CoD2 archive — Kheldians are "_defensive"/"_offensive" instead of
+// "_defense"/"_ranged"; SoA spans 4 source categories that all land
+// under arachnos-soldier/epic. Match the CATEGORY_MAP in convert-powerset.cjs.
 const EXTRA_CATEGORIES = {
-  'peacebringer_defense': { archetype: 'peacebringer', type: 'primary' },
-  'peacebringer_ranged': { archetype: 'peacebringer', type: 'secondary' },
-  'warshade_defense': { archetype: 'warshade', type: 'primary' },
-  'warshade_ranged': { archetype: 'warshade', type: 'secondary' },
-  'arachnos_soldier_ranged': { archetype: 'arachnos-soldier', type: 'primary' },
-  'arachnos_soldier_support': { archetype: 'arachnos-soldier', type: 'secondary' },
-  'arachnos_widow_melee': { archetype: 'arachnos-widow', type: 'primary' },
-  'arachnos_widow_support': { archetype: 'arachnos-widow', type: 'secondary' },
+  'peacebringer_defensive': { archetype: 'peacebringer', type: 'epic' },
+  'peacebringer_offensive': { archetype: 'peacebringer', type: 'epic' },
+  'warshade_defensive':     { archetype: 'warshade',     type: 'epic' },
+  'warshade_offensive':     { archetype: 'warshade',     type: 'epic' },
+  'arachnos_soldiers':      { archetype: 'arachnos-soldier', type: 'epic' },
+  'widow_training':         { archetype: 'arachnos-widow',   type: 'epic' },
+  'teamwork':               { archetype: 'arachnos-widow',   type: 'epic' },
 };
 
 const ALL_CATEGORIES = { ...CATEGORIES, ...EXTRA_CATEGORIES };
@@ -64,7 +66,18 @@ const errors = [];
 
 console.log(`=== Batch Powerset Conversion${force ? ' (FORCE)' : ''} ===\n`);
 
-const powersPath = path.join(RAW_DATA_PATH, 'powers');
+// Bin export writes categories at <RAW_DATA_PATH>/<category>/.
+// Old CoD2 layout had an extra `powers/` segment. Probe both.
+const powersPath = (() => {
+  const newLayout = RAW_DATA_PATH;  // categories are direct children
+  const oldLayout = path.join(RAW_DATA_PATH, 'powers');
+  // Detect by checking for any known category directory
+  for (const cat of Object.keys(ALL_CATEGORIES)) {
+    if (fs.existsSync(path.join(newLayout, cat))) return newLayout;
+    if (fs.existsSync(path.join(oldLayout, cat))) return oldLayout;
+  }
+  return newLayout;
+})();
 
 for (const [category, info] of Object.entries(ALL_CATEGORIES)) {
   const categoryPath = path.join(powersPath, category);

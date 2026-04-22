@@ -16,6 +16,7 @@ export const PowerBlast: Power = {
   "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_powerblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,11 +50,21 @@ export const PowerBlast: Power = {
       "type": "Energy",
       "scale": 1,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.7556,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1333,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1,
+      "scale": 2,
       "table": "Ranged_Knockback"
     }
   }

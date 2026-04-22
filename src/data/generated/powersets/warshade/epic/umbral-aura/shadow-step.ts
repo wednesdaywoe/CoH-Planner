@@ -16,6 +16,7 @@ export const ShadowStep: Power = {
   "shortHelp": "Ranged (Location), Self Teleport",
   "icon": "umbralaura_teleportself.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,
@@ -27,22 +28,8 @@ export const ShadowStep: Power = {
     "EnduranceReduction",
     "Range"
   ],
-  "allowedSetCategories": [
-    "Teleport",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 0.6,
-      "movement": 15
-    },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
@@ -65,7 +52,15 @@ export const ShadowStep: Power = {
         "table": "Melee_Ones"
       }
     },
+    "durations": {
+      "movement": 15,
+      "untouchable": 1
+    },
+    "untouchable": {
+      "scale": 1000,
+      "table": "Ranged_Ones"
+    },
     "buffDuration": 15
   },
-  "requires": "!Inherent.Inherent.Shadow_Step"
+  "requires": "Inherent.Inherent.Shadow_Step !"
 };

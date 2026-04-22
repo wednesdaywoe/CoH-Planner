@@ -47,8 +47,7 @@ export const Blizzard: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Corruptor_Blizzard",
-      "duration": 15,
-      "copyBoosts": true
+      "duration": 15
     }
   }
 };

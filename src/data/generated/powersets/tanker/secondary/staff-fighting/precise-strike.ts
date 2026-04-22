@@ -16,6 +16,7 @@ export const PreciseStrike: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe Disorient",
   "icon": "stafffighting_precisestrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
@@ -40,11 +41,18 @@ export const PreciseStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.32,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.32,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.431,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 2,
@@ -52,5 +60,5 @@ export const PreciseStrike: Power = {
       "table": "Melee_Stun"
     }
   },
-  "requires": "!Tanker_Defense.Shield_Defense"
+  "requires": "Tanker_Defense.Shield_Defense !"
 };

@@ -34,10 +34,10 @@ export const CallBruiser: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Holds",
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
+    "Stuns",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -45,7 +45,7 @@ export const CallBruiser: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Thug_Boss",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

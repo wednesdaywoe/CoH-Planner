@@ -16,6 +16,7 @@ export const PsionicTornado: Power = {
   "shortHelp": "Ranged (Targeted AoE), Dmg(Psionic), Foe Knockback",
   "icon": "psychicblast_psionictornado.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -41,14 +42,21 @@ export const PsionicTornado: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.7634,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockup": {
-      "scale": 1.4,
+      "scale": 2.8,
       "table": "Ranged_Ones"
     }
   }

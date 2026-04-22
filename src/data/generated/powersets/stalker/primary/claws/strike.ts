@@ -16,6 +16,7 @@ export const Strike: Power = {
   "shortHelp": "Melee, DMG(Lethal)",
   "icon": "claws_clawsstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -46,7 +47,27 @@ export const Strike: Power = {
       "type": "Lethal",
       "scale": 1.08,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.08,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.347,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.347,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.347,
+      "table": "Melee_PvPDamage"
     }
   ],
-  "requires": "!Stalker_Defense.Shield_Defense"
+  "requires": "Stalker_Defense.Shield_Defense !"
 };

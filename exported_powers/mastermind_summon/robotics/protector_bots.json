@@ -86,7 +86,8 @@
             "type": "EntCreate",
             "entity_def": "MastermindPets_Protector_Bot",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -129,7 +130,8 @@
             "type": "EntCreate",
             "entity_def": "MastermindPets_Protector_Bot",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -175,7 +177,8 @@
             "power_names": [
               "Mastermind_Summon.Robotics.Protector_Bots"
             ]
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     }

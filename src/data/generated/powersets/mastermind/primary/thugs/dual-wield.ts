@@ -16,12 +16,13 @@ export const DualWield: Power = {
   "shortHelp": "Ranged, DMG(Lethal), Foe Knockback",
   "icon": "thugs_targetedrangedheavydmg.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
     "range": 80,
     "recharge": 6,
-    "endurance": 6.86,
+    "endurance": 6.864,
     "castTime": 1.2
   },
   "allowedEnhancements": [
@@ -38,17 +39,31 @@ export const DualWield: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.66,
-    "table": "Ranged_Damage",
-    "duration": 0.3,
-    "tickRate": 0.25
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.66,
+      "table": "Ranged_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.74,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.64,
+      "scale": 1.28,
       "table": "Ranged_Knockback"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Thug_Pose_06",
+      "duration": 35
     }
   }
 };

@@ -16,6 +16,7 @@ export const SiphonLife: Power = {
   "shortHelp": "Melee, DMG(Negative), Foe -To Hit, Self +HP",
   "icon": "shadowfighting_siphonlife.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -54,6 +55,11 @@ export const SiphonLife: Power = {
       "type": "Heal",
       "scale": 1,
       "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.1509,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

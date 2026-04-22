@@ -32,13 +32,8 @@ export const IcePatch: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_IcePatch",
-      "duration": 30,
-      "copyBoosts": true
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
+      "entity": "P3663385126",
+      "duration": 30
     }
   }
 };

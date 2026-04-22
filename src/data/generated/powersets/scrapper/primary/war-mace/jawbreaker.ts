@@ -16,6 +16,7 @@ export const Jawbreaker: Power = {
   "shortHelp": "Melee, DMG(Smash), Knockup",
   "icon": "mace_jawbreaker.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -46,6 +47,16 @@ export const Jawbreaker: Power = {
     },
     {
       "type": "Smashing",
+      "scale": 1.8833,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.8833,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
       "scale": 1.96,
       "table": "Melee_InherentDamage"
     },
@@ -57,7 +68,7 @@ export const Jawbreaker: Power = {
   ],
   "effects": {
     "knockup": {
-      "scale": 2,
+      "scale": 4,
       "table": "Melee_Knockback"
     }
   }

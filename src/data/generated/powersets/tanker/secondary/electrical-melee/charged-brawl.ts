@@ -16,6 +16,7 @@ export const ChargedBrawl: Power = {
   "shortHelp": "Melee, DMG(Smash/Energy), Target Sleep, -End,",
   "icon": "electricmelee_targetedminordmg.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -52,23 +53,33 @@ export const ChargedBrawl: Power = {
       "type": "Smashing",
       "scale": 0.34,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6606,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4404,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
+    "enduranceDrain": {
+      "scale": 1.25,
+      "table": "Melee_EndDrain"
+    },
+    "enduranceGain": {
+      "scale": 4.368,
+      "table": "Melee_Ones"
+    },
     "recoveryDebuff": {
-      "scale": 1,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "durations": {
       "recoveryDebuff": 2
-    },
-    "enduranceGain": {
-      "scale": 2.184,
-      "table": "Melee_Ones"
-    },
-    "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Melee_Ones"
     },
     "sleep": {
       "mag": 2,

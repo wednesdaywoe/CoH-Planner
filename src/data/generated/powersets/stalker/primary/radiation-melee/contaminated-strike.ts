@@ -16,6 +16,7 @@ export const ContaminatedStrike: Power = {
   "shortHelp": "Melee, DMG(Energy/Smash), Foe -Def, Special",
   "icon": "radiationmelee_contaminatedstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -37,6 +38,7 @@ export const ContaminatedStrike: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Stalker Archetype Sets",
+    "Threat Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -57,8 +59,38 @@ export const ContaminatedStrike: Power = {
       "table": "Melee_InherentDamage"
     },
     {
+      "type": "Energy",
+      "scale": 0.84,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2752,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8257,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.101,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.101,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Toxic",
       "scale": 0.168,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1319,
       "table": "Melee_Damage"
     }
   ],

@@ -81,7 +81,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -106,7 +107,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1049856
         }
       ]
     },
@@ -145,7 +147,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Event_29",
+              "event_id": 29,
+              "duration": 15.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -170,7 +181,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Event_29",
+              "event_id": 29,
+              "duration": 15.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 1049856
         }
       ]
     }

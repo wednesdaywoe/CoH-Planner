@@ -16,6 +16,7 @@ export const Transfusion: Power = {
   "shortHelp": "Ranged, Foe -End, -Regen, Team Heal",
   "icon": "kineticboost_transfusion.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -45,12 +46,12 @@ export const Transfusion: Power = {
   },
   "effects": {
     "enduranceDrain": {
-      "scale": 0.1,
+      "scale": 3.43,
       "table": "Ranged_EndDrain"
     },
     "regenDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
+      "scale": 11.5,
+      "table": "Ranged_Res_Boolean"
     },
     "durations": {
       "regenDebuff": 20

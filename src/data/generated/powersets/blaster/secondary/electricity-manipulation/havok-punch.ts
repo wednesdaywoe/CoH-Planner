@@ -16,6 +16,7 @@ export const HavocPunch: Power = {
   "shortHelp": "Melee, DMG(Smash/Energy), Foe Sleep, -End, Knock back",
   "icon": "electricitymanipulation_havokpunch.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -52,12 +53,17 @@ export const HavocPunch: Power = {
       "type": "Energy",
       "scale": 2,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.01,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
+      "scale": 4,
+      "table": "Melee_EndDrain"
     },
     "sleep": {
       "mag": 3,
@@ -65,7 +71,7 @@ export const HavocPunch: Power = {
       "table": "Melee_Sleep"
     },
     "knockback": {
-      "scale": 0.75,
+      "scale": 1.5,
       "table": "Melee_Knockback"
     },
     "recoveryDebuff": {

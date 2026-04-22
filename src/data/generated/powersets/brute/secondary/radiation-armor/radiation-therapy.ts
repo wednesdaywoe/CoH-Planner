@@ -70,8 +70,8 @@ export const RadiationTherapy: Power = {
       "table": "Melee_Ones"
     },
     "regenDebuff": {
-      "scale": 1.5,
-      "table": "Melee_Ones"
+      "scale": 3.75,
+      "table": "Melee_Res_Boolean"
     },
     "durations": {
       "regenDebuff": 30

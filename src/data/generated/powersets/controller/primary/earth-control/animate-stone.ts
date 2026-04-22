@@ -35,17 +35,18 @@ export const AnimateStone: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Knockback",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
+    "Stuns",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Stone_Controller",
-      "copyBoosts": true
+      "entity": "P388854299",
+      "duration": 99999
     }
   }
 };

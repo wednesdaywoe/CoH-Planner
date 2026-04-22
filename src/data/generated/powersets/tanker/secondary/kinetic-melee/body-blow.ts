@@ -16,6 +16,7 @@ export const BodyBlow: Power = {
   "shortHelp": "Melee, DMG(Smash/Energy), Foe Disorient",
   "icon": "kineticattack_bodyblow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -43,13 +44,23 @@ export const BodyBlow: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 0.87,
+      "scale": 0.29,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.29,
+      "scale": 0.87,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4047,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9443,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

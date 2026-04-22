@@ -14,14 +14,15 @@ export const GoldenDragonfly: Power = {
   "available": 29,
   "description": "You perform a devastating Golden Dragonfly attack that deals a massive amount of damage and can even knock a foe down to the ground and reduce their Defense. The power of this attack can actually extend a short distance through multiple foes.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Melee, Extreme DMG(Lethal), Foe Knockback, -DEF",
-  "icon": "ninjatools_goldendragonfly.png",
+  "icon": "ninjatools_goldendragonfly",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
     "range": 10,
     "radius": 10,
-    "arc": 0.3491,
+    "arc": 0.3490658700466156,
     "recharge": 20,
     "endurance": 11.856,
     "castTime": 1.83,
@@ -44,14 +45,21 @@ export const GoldenDragonfly: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 3.56,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 3.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.481,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "defenseDebuff": {
@@ -60,10 +68,6 @@ export const GoldenDragonfly: Power = {
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   }

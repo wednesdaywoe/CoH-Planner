@@ -16,13 +16,14 @@ export const Disembowel: Power = {
   "shortHelp": "Melee, DMG(Lethal), Knockup, Foe -DEF",
   "icon": "sword_disembowel.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
     "range": 7,
     "recharge": 10,
     "endurance": 10.192,
-    "castTime": 1.8
+    "castTime": 1.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -51,11 +52,31 @@ export const Disembowel: Power = {
       "type": "Lethal",
       "scale": 1.96,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.96,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.85,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.85,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.85,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockup": {
-      "scale": 2,
+      "scale": 4,
       "table": "Melee_Knockback"
     },
     "defenseDebuff": {

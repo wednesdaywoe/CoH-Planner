@@ -14,8 +14,9 @@ export const ElectronShackles: Power = {
   "available": 0,
   "description": "Immobilizes a single target and deals some energy damage over time. Some more resilient foes may require multiple attacks to Immobilize. Electron Shackles can also reduce a target's Defense and will surround it in negatively charged particles. Hitting a foe that has positive charged particles will trigger a Gamma Burst.",
   "shortHelp": "Ranged, DoT(Energy), Foe Immobilize, -DEF, +Negatrons",
-  "icon": "atomicmanipulation_immob.png",
+  "icon": "atomicmanipulation_immob",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -42,13 +43,22 @@ export const ElectronShackles: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.115,
-    "table": "Ranged_Damage",
-    "duration": 4.75,
-    "tickRate": 0.5
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.115,
+      "table": "Ranged_Damage",
+      "duration": 4.75,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2758,
+      "table": "Ranged_PvPDamage",
+      "duration": 8.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -72,10 +82,6 @@ export const ElectronShackles: Power = {
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 15
   }

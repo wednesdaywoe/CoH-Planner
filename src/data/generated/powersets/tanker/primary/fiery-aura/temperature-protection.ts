@@ -10,7 +10,7 @@ import type { Power } from '@/types';
 
 export const TemperatureProtection: Power = {
   "name": "Temperature Protection",
-  "internalName": "Temperature_Protection",
+  "internalName": "Temperature_protection",
   "available": 5,
   "description": "Temperature Protection gives you strong resistance to Fire damage, some resistance to Cold damage and slow effects, and grants minor, unenhanceable regeneration as well as provide very minor Knockback Protection. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res(Fire, Cold, Slow, Knock), +Regen",
@@ -70,5 +70,6 @@ export const TemperatureProtection: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 10
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

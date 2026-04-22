@@ -14,8 +14,9 @@ export const Buttstroke: Power = {
   "available": 0,
   "description": "A smash with the butt of your rifle with a high chance of disorienting.",
   "shortHelp": "Melee, DMG(Smash), Foe Disorient",
-  "icon": "assaultweapons_riflebutt.png",
+  "icon": "assaultweapons_riflebutt",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -38,11 +39,18 @@ export const Buttstroke: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.64,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.64,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.539,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 3,

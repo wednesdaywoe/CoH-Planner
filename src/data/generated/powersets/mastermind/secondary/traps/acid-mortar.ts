@@ -21,7 +21,7 @@ export const AcidMortar: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 90,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 2.77
   },
   "allowedEnhancements": [
@@ -34,7 +34,7 @@ export const AcidMortar: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Ranged AoE Damage",
+    "Melee Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -42,8 +42,7 @@ export const AcidMortar: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_Acid_Mortar",
-      "duration": 60,
-      "copyBoosts": true
+      "duration": 60
     }
   }
 };

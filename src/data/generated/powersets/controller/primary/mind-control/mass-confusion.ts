@@ -16,6 +16,7 @@ export const MassConfusion: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Confuse",
   "icon": "mentalcontrol_confuse.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

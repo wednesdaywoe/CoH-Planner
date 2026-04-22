@@ -16,6 +16,7 @@ export const AcidArrow: Power = {
   "shortHelp": "Ranged AoE Minor DoT(Toxic), Foe -Res(Special), Res(Heal), -DEF",
   "icon": "trickarrow_debuffdefense.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

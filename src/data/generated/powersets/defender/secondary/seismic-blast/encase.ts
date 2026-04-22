@@ -14,8 +14,9 @@ export const Encase: Power = {
   "available": 0,
   "description": "Encase a foe in stone for a short moment, dealing damage and lowering their defense. The enemy will also become heavy, limiting their ability to jump and fly for a short time. Encase grants two stacks of Seismic Pressure.",
   "shortHelp": "Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF",
-  "icon": "seismicblast_shatter.png",
+  "icon": "seismicblast_shatter",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,11 +41,18 @@ export const Encase: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 0.5,

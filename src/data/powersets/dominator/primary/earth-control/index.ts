@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { StonePrison as StonePrison } from './stone-prison';
+import { AnimateStone as AnimateStone } from './animate-stone';
+import { Earthquake as Earthquake } from './earthquake';
 import { Fossilize as Fossilize } from './fossilize';
-import { StoneCages as StoneCages } from './stone-cages';
 import { Quicksand as Quicksand } from './quicksand';
 import { SaltCrystals as SaltCrystals } from './salt-crystals';
 import { Stalagmites as Stalagmites } from './stalagmites';
-import { Earthquake as Earthquake } from './earthquake';
+import { StoneCages as StoneCages } from './stone-cages';
+import { StonePrison as StonePrison } from './stone-prison';
 import { VolcanicGasses as VolcanicGasses } from './volcanic-gasses';
-import { AnimateStone as AnimateStone } from './animate-stone';
 
 export const powerset: Powerset = {
   id: 'dominator/earth-control',
   name: 'Earth Control',
   description: 'You can control the forces of the Earth. You can manipulate earth and stone to defeat your foes. The crushing force of many Earth Powers can reduce a target\'s Defense. Being of the Earth, many of these powers need to be performed while on the ground.',
-  icon: 'earth_control_set.png',
+  icon: 'earth_control_set.ico',
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    StonePrison,
+    AnimateStone,
+    Earthquake,
     Fossilize,
-    StoneCages,
     Quicksand,
     SaltCrystals,
     Stalagmites,
-    Earthquake,
+    StoneCages,
+    StonePrison,
     VolcanicGasses,
-    AnimateStone,
   ],
 };
 

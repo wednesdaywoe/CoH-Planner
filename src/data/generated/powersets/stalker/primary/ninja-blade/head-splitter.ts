@@ -16,12 +16,13 @@ export const GoldenDragonfly: Power = {
   "shortHelp": "Melee, High DMG(Lethal), Foe Knockback, -DEF",
   "icon": "katana_headsplitter.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
     "range": 10,
     "radius": 10,
-    "arc": 0.3491,
+    "arc": 0.3490658700466156,
     "recharge": 12,
     "endurance": 11.856,
     "castTime": 1.83,
@@ -54,11 +55,31 @@ export const GoldenDragonfly: Power = {
       "type": "Lethal",
       "scale": 2.28,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.28,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.1609,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.1609,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.1609,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "defenseDebuff": {

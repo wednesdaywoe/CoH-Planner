@@ -16,6 +16,7 @@ export const IceSword: Power = {
   "shortHelp": "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "icemanipulation_icesword.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,12 +49,11 @@ export const IceSword: Power = {
       "type": "Cold",
       "scale": 1,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.7308,
+      "table": "Melee_PvPDamage"
     }
-  ],
-  "effects": {
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
+  ]
 };

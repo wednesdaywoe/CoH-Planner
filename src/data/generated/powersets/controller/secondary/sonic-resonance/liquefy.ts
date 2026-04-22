@@ -38,6 +38,7 @@ export const Liquefy: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
+    "Controller Archetype Sets",
     "Defense Debuff",
     "Holds",
     "Ranged AoE Damage",
@@ -47,14 +48,13 @@ export const Liquefy: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
-      "displayName": "Liquefy",
+      "isPseudoPet": false,
+      "entity": "P258400189",
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Pets.Liquefy.Liquefy"
       ],
-      "duration": 30,
-      "copyBoosts": true
+      "duration": 30
     }
   }
 };

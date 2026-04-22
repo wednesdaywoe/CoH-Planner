@@ -78,7 +78,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 262240
         },
         {
           "attribs": [
@@ -103,7 +104,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 262240
         },
         {
           "attribs": [
@@ -128,7 +135,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 262240
         },
         {
           "attribs": [
@@ -153,7 +166,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 262240
         }
       ],
       "child_effects": [
@@ -191,7 +210,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -216,7 +236,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             }
           ]
         }
@@ -256,7 +277,8 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "flags_raw": 262240
         },
         {
           "attribs": [
@@ -281,7 +303,13 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 262240
         },
         {
           "attribs": [
@@ -306,7 +334,13 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 262240
         },
         {
           "attribs": [
@@ -331,7 +365,13 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 262240
         },
         {
           "attribs": [
@@ -356,7 +396,8 @@
           "caster_stack": "Individual",
           "stack": "Continuous",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         }
       ],
       "child_effects": [
@@ -394,7 +435,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -419,7 +461,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             }
           ]
         },
@@ -457,7 +500,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 263200
             }
           ]
         },
@@ -495,7 +539,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1056
             }
           ]
         }

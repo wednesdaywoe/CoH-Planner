@@ -86,7 +86,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Patron_Powers_Arachnobot_Blaster",
             "priority_list": "PL_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

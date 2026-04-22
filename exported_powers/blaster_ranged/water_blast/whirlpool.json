@@ -86,7 +86,8 @@
             "type": "EntCreate",
             "entity_def": "P2995632953",
             "priority_list": "Pets_Whirlpool_Blaster"
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -118,7 +119,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         }
       ]
     }
@@ -170,7 +172,8 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 197680
         }
       ]
     }

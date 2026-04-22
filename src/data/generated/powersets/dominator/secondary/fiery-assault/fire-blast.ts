@@ -16,6 +16,7 @@ export const FireBlast: Power = {
   "shortHelp": "Ranged, High DMG(Fire)",
   "icon": "fireassault_fireblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,6 +49,11 @@ export const FireBlast: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.56,
+      "table": "Ranged_PvPDamage"
     }
   ]
 };

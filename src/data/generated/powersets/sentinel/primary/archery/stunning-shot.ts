@@ -16,6 +16,7 @@ export const StunningShot: Power = {
   "shortHelp": "Ranged Disorient, Moderate DMG(Smashing)",
   "icon": "archery_stunarrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.155,
@@ -39,16 +40,33 @@ export const StunningShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.42,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.42,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.64,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 3,
-      "scale": 4,
-      "table": "Ranged_Stun"
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

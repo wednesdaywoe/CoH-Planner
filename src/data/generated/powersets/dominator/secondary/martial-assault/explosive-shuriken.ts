@@ -16,6 +16,7 @@ export const ExplosiveShuriken: Power = {
   "shortHelp": "Ranged, Superior DMG(Fire), Minor Splash Damage (Fire DoT)",
   "icon": "martialassault_explosiveshuriken.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -36,9 +37,16 @@ export const ExplosiveShuriken: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 2.049,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

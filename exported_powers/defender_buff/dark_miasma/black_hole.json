@@ -93,7 +93,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 320
             }
           ]
         },
@@ -132,7 +133,11 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Event_34"
+              ],
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -157,7 +162,11 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Event_34"
+              ],
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -182,7 +191,11 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Event_34"
+              ],
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -207,7 +220,11 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Event_34"
+              ],
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -237,7 +254,11 @@
                 "type": "EntCreate",
                 "entity_def": "P801416744",
                 "priority_list": "4ZHT57JXQFE7YRCXF9A9MULCEQ"
-              }
+              },
+              "cancel_events": [
+                "Event_34"
+              ],
+              "flags_raw": 1072
             }
           ]
         },
@@ -276,7 +297,16 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "Event_29",
+                  "event_id": 29,
+                  "duration": 15.0,
+                  "flag": 0
+                }
+              ],
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -301,7 +331,16 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "Event_29",
+                  "event_id": 29,
+                  "duration": 15.0,
+                  "flag": 0
+                }
+              ],
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -326,7 +365,16 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "Event_29",
+                  "event_id": 29,
+                  "duration": 15.0,
+                  "flag": 0
+                }
+              ],
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -351,7 +399,16 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "Event_29",
+                  "event_id": 29,
+                  "duration": 15.0,
+                  "flag": 0
+                }
+              ],
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -376,7 +433,11 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Event_34"
+              ],
+              "flags_raw": 1072
             }
           ]
         }

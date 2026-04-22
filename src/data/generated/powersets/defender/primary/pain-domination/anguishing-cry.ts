@@ -12,7 +12,7 @@ export const AnguishingCry: Power = {
   "name": "Anguishing Cry",
   "internalName": "Anguishing_Cry",
   "available": 21,
-  "description": "You let out an Anguishing Cry causing a great deal of pain in your foes reducing their resistance and defense to damage for a short time.Recharge: Long.",
+  "description": "You let out an Anguishing Cry causing a great deal of pain in your foes reducing their resistance and defense to damage for a short time.",
   "shortHelp": "PBAoE, Foe -RES(All), -DEF(All)",
   "icon": "paindomination_anguishingcry.png",
   "powerType": "Click",

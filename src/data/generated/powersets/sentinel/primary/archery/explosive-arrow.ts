@@ -16,6 +16,7 @@ export const ExplosiveArrow: Power = {
   "shortHelp": "Ranged (Targeted AoE), Light DMG(Lethal/Fire), Knockback",
   "icon": "archery_explodingarrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.155,
@@ -51,11 +52,61 @@ export const ExplosiveArrow: Power = {
       "type": "Lethal",
       "scale": 0.45,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.45,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.45,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.2677,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2677,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.2677,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2677,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.58,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.16,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.58,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.16,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 4,
       "table": "Ranged_Knockback"
     }
   }

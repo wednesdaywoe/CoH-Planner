@@ -16,6 +16,7 @@ export const BoneSmasher: Power = {
   "shortHelp": "Melee, Superior DMG(Smash/Energy), Foe Disorient",
   "icon": "energymanipulation_bonesmasher.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,6 +49,16 @@ export const BoneSmasher: Power = {
       "type": "Energy",
       "scale": 1.82,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.603,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.407,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -55,10 +66,6 @@ export const BoneSmasher: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     }
   }
 };

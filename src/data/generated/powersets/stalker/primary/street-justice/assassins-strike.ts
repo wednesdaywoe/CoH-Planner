@@ -32,5 +32,10 @@ export const AssassinsStrike: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6
 };

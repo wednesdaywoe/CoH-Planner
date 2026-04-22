@@ -78,7 +78,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -103,7 +104,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -133,7 +135,8 @@
             "type": "EntCreate",
             "entity_def": "P2051536888",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -158,7 +161,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -183,7 +187,28 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "HitByFoe",
+              "event_id": 17,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -208,7 +233,28 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "HitByFoe",
+              "event_id": 17,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -235,7 +281,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         },
         {
           "attribs": [
@@ -260,7 +307,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -291,7 +339,8 @@
             "power_names": [
               "Incarnate.Destiny_Silent.Level_Shift"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -322,7 +371,8 @@
             "power_names": [
               "Incarnate.Destiny_Silent.Level_Shift"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

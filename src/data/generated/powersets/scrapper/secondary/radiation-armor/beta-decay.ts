@@ -20,7 +20,7 @@ export const BetaDecay: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "radius": 8,
+    "radius": 12,
     "recharge": 10,
     "endurance": 0.208,
     "castTime": 0.67,

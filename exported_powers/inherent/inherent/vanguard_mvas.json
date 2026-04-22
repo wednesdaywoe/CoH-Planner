@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.Vanguard_MVAS"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Vanity_Pets.Vanguard_MVAS"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

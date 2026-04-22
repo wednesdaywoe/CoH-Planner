@@ -16,6 +16,7 @@ export const AssassinsPsiBlade: Power = {
   "shortHelp": "Melee, DMG(Psionic/Smash), +Insight",
   "icon": "psionicmelee_assassinspsiblade.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -35,33 +36,5 @@ export const AssassinsPsiBlade: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.875,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.5625,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 8
-    },
-    "buffDuration": 8
-  }
+  "maxSlots": 6
 };

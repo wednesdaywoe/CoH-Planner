@@ -36,19 +36,5 @@ export const RendingFlurry: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.182,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.095,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ]
+  "maxSlots": 6
 };

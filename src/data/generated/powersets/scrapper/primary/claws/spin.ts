@@ -46,6 +46,16 @@ export const Spin: Power = {
     },
     {
       "type": "Lethal",
+      "scale": 1.4388,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4388,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
       "scale": 1.58,
       "table": "Melee_InherentDamage"
     },

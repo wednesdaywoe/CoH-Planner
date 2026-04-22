@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Traps_Mine",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

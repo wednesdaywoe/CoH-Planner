@@ -37,7 +37,7 @@ export const SeekerDrones: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
-    "Pet Damage",
+    "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",
     "Universal Damage Sets"
@@ -47,7 +47,6 @@ export const SeekerDrones: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 240,
-      "copyBoosts": true,
       "entities": [
         {
           "entity": "Pets_Traps_Seeker1",

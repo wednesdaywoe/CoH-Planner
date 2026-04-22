@@ -16,6 +16,7 @@ export const AbyssalEmpowerment: Power = {
   "shortHelp": "Ranged, Empower Demon Henchman",
   "icon": "demonsummoning_abyssalempowerment.png",
   "powerType": "Click",
+  "targetType": "Self",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

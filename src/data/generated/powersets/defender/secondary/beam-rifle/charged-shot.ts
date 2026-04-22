@@ -16,6 +16,7 @@ export const ChargedShot: Power = {
   "shortHelp": "Ranged, DMG(Energy), Foe Knockdown, Special",
   "icon": "beamrifle_chargedshot.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -47,13 +48,23 @@ export const ChargedShot: Power = {
     },
     {
       "type": "Energy",
+      "scale": 1.8889,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
       "scale": 0.246,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2833,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Ranged_Ones"
     }
   }

@@ -16,6 +16,7 @@ export const RejuvenatingCircuit: Power = {
   "shortHelp": "Ranged (Chain), Ally Heal, Self +Static",
   "icon": "shocktherapy_rejuvenatingcircuit.png",
   "powerType": "Click",
+  "targetType": "Ally (Alive)",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
@@ -30,6 +31,9 @@ export const RejuvenatingCircuit: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Healing"
+  ],
+  "allowedSetCategories": [
     "Healing"
   ],
   "maxSlots": 6,

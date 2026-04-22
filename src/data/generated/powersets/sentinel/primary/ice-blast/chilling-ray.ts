@@ -16,6 +16,7 @@ export const ChillingRay: Power = {
   "shortHelp": "Ranged, DMG(Cold), Foe Sleep",
   "icon": "iceblast_freezeray.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,7 +51,27 @@ export const ChillingRay: Power = {
     {
       "type": "Cold",
       "scale": 1.64,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.64,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.64,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.889,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.889,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

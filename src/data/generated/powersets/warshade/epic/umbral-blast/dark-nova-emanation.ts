@@ -16,12 +16,13 @@ export const DarkNovaEmanation: Power = {
   "shortHelp": "Ranged (Cone), Light DMG(Negative), Foe -Recharge, -SPD, Knockback",
   "icon": "umbralblast_graviticemanation.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "radius": 60,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 12,
     "endurance": 11.856,
     "castTime": 1.5,
@@ -44,10 +45,17 @@ export const DarkNovaEmanation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.99,
-    "table": "Ranged_InherentDamage"
-  },
-  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova && !Inherent.Inherent.Dark_Nova_Emanation"
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.99,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.7544,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
+  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Emanation ! &&"
 };

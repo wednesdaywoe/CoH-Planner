@@ -14,7 +14,7 @@ export const ImpenetrableMind: Power = {
   "available": 1,
   "description": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Knockback and Hold effects. Impenetrable Mind also grants moderate resistance to Psionic based attacks.",
   "shortHelp": "Toggle: Self Res (Psionics, Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Knockback)",
-  "icon": "psionicarmor_impenetrablemind.png",
+  "icon": "psionicarmor_impenetrablemind",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",

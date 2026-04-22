@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.prestige_Permanent_Undead_Slaying_Axe"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.Event_Freakshow_Boss"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Prestige_Costumes.Freakshow_Boss"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

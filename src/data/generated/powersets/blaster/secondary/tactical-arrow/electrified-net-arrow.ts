@@ -16,6 +16,7 @@ export const ElectrifiedNetArrow: Power = {
   "shortHelp": "Ranged, DoT(Energy), Foe Immobilize, -Fly, -Recharge, -SPD, -Jump",
   "icon": "tacticalarrow_immobilize.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -41,13 +42,22 @@ export const ElectrifiedNetArrow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 8.2,
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.2,
+      "table": "Ranged_Damage",
+      "duration": 8.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 0.252,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -66,10 +76,6 @@ export const ElectrifiedNetArrow: Power = {
     },
     "durations": {
       "mezResistance": 15
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 15
   }

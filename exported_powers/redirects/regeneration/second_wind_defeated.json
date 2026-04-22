@@ -97,7 +97,8 @@
                 "power_names": [
                   "Redirects.Regeneration.Second_Wind"
                 ]
-              }
+              },
+              "flags_raw": 17664
             }
           ]
         },
@@ -153,7 +154,8 @@
                     "power_names": [
                       "Temporary_Powers.Temporary_Powers.Revive"
                     ]
-                  }
+                  },
+                  "flags_raw": 83200
                 },
                 {
                   "attribs": [
@@ -178,7 +180,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1056
                 }
               ]
             },
@@ -216,7 +219,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1056
                 },
                 {
                   "attribs": [
@@ -241,7 +245,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 17440
                 },
                 {
                   "attribs": [
@@ -273,7 +278,8 @@
                       "Redirects.Comeback.Comeback",
                       "Redirects.Comeback.Debt_Protection"
                     ]
-                  }
+                  },
+                  "flags_raw": 1280
                 }
               ],
               "child_effects": [
@@ -311,7 +317,8 @@
                       "caster_stack": "Individual",
                       "stack": "Stack",
                       "stack_limit": 2,
-                      "stack_key": null
+                      "stack_key": null,
+                      "flags_raw": 18480
                     }
                   ]
                 }

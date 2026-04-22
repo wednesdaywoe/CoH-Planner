@@ -22,7 +22,7 @@ export const Farsight: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 240,
-    "endurance": 19.5,
+    "endurance": 15.6,
     "castTime": 2.03,
     "maxTargets": 255
   },

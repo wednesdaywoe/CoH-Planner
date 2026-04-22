@@ -16,6 +16,7 @@ export const ViciousSlash: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe DoT (Lethal), Knockdown, Self +2 Blood Frenzy",
   "icon": "savagemelee_viciousslash.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -52,11 +53,23 @@ export const ViciousSlash: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.929,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.1546,
+      "table": "Melee_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 1
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

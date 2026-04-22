@@ -16,6 +16,7 @@ export const Propel: Power = {
   "shortHelp": "Ranged, DMG(Smash), Foe Knockback",
   "icon": "gravitycontrol_propel.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -36,7 +37,7 @@ export const Propel: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged Damage",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -45,6 +46,11 @@ export const Propel: Power = {
       "type": "Smashing",
       "scale": 1.96,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.769,
+      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Smashing",

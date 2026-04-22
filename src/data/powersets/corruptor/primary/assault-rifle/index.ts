@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { Burst as Burst } from './burst';
-import { Slug as Slug } from './slug';
-import { Buckshot as Buckshot } from './buckshot';
-import { M30Grenade as M30Grenade } from './m30-grenade';
 import { Beanbag as Beanbag } from './beanbag';
-import { SniperRifle as SniperRifle } from './sniper-rifle';
+import { Buckshot as Buckshot } from './buckshot';
+import { Burst as Burst } from './burst';
 import { Flamethrower as Flamethrower } from './flamethrower';
-import { Ignite as Ignite } from './ignite';
 import { FullAuto as FullAuto } from './full-auto';
+import { Ignite as Ignite } from './ignite';
+import { M30Grenade as M30Grenade } from './m30-grenade';
+import { Slug as Slug } from './slug';
+import { SniperRifle as SniperRifle } from './sniper-rifle';
 
 export const powerset: Powerset = {
   id: 'corruptor/assault-rifle',
   name: 'Assault Rifle',
   description: 'The Assault Rifle is a state-of-the-art piece of hardware. It is equipped to handle an impressive arsenal of munitions and firing modes. The Assault Rifle is also equipped with the latest in targeting technology, and is a very accurate weapon.',
-  icon: 'assault_rifle_set.png',
+  icon: 'assault_rifle_set.ico',
   archetype: 'corruptor',
   category: 'primary',
   powers: [
-    Burst,
-    Slug,
-    Buckshot,
-    M30Grenade,
     Beanbag,
-    SniperRifle,
+    Buckshot,
+    Burst,
     Flamethrower,
-    Ignite,
     FullAuto,
+    Ignite,
+    M30Grenade,
+    Slug,
+    SniperRifle,
   ],
 };
 

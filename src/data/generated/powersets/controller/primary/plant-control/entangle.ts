@@ -16,6 +16,7 @@ export const Entangle: Power = {
   "shortHelp": "Ranged, DoT(Smashing, Lethal), Foe Immobilize",
   "icon": "plantcontrol_entangle.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -53,13 +54,48 @@ export const Entangle: Power = {
       "table": "Ranged_Damage",
       "duration": 9.2,
       "tickRate": 2
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.2,
+      "table": "Ranged_InherentDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.14,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.14,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.07,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.07,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
+      "mag": 5,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "mezResistance": {
       "knockup": {

@@ -16,12 +16,13 @@ export const SnapShot: Power = {
   "shortHelp": "Ranged, DMG(Lethal)",
   "icon": "ninjas_quickshot.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.155,
     "range": 80,
     "recharge": 2,
-    "endurance": 3.54,
+    "endurance": 3.536,
     "castTime": 1
   },
   "allowedEnhancements": [
@@ -36,9 +37,16 @@ export const SnapShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.68,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.68,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.18,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

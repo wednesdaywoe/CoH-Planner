@@ -22,7 +22,7 @@ export const Frostwork: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 60,
-    "endurance": 18.2,
+    "endurance": 14.56,
     "castTime": 1.17
   },
   "allowedEnhancements": [

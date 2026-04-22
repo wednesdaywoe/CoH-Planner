@@ -94,7 +94,8 @@
               "Redirects.Assault_Rifle.Tear_Gas_OneShot",
               "Pets.ResistAll.ResistAll"
             ]
-          }
+          },
+          "flags_raw": 16704
         }
       ]
     }

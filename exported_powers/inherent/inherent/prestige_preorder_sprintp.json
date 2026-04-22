@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.prestige_preorder_Sprintp"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Prestige_Sprints.prestige_preorder_Sprintp"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

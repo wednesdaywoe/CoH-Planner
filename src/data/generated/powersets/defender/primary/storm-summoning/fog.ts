@@ -45,14 +45,14 @@ export const FreezingRain: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "P1985334123",
       "displayName": "Freezing Rain",
       "powers": [
         "Pets.Freezing_Rain.FreezingRain",
         "Pets.Freezing_Rain.Avoid"
       ],
-      "duration": 15,
-      "copyBoosts": true
+      "duration": 15
     }
   }
 };

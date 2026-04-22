@@ -10,56 +10,56 @@
 import type { Powerset } from '@/types';
 
 import { Absorption as Absorption } from './absorption';
-import { ShadowStep as ShadowStep } from './shadow-step';
-import { GravityShield as GravityShield } from './gravity-shield';
-import { OrbitingDeath as OrbitingDeath } from './orbiting-death';
-import { PenumbralShield as PenumbralShield } from './penumbral-shield';
-import { ShadowRecall as ShadowRecall } from './shadow-recall';
-import { ShadowCloak as ShadowCloak } from './shadow-cloak';
-import { TwilightShield as TwilightShield } from './twilight-shield';
 import { BlackDwarf as BlackDwarf } from './black-dwarf';
-import { BlackDwarfStrike as BlackDwarfStrike } from './black-dwarf-strike';
-import { BlackDwarfSmite as BlackDwarfSmite } from './black-dwarf-smite';
+import { BlackDwarfAntagonize as BlackDwarfAntagonize } from './black-dwarf-antagonize';
 import { BlackDwarfDrain as BlackDwarfDrain } from './black-dwarf-drain';
 import { BlackDwarfMire as BlackDwarfMire } from './black-dwarf-mire';
+import { BlackDwarfSmite as BlackDwarfSmite } from './black-dwarf-smite';
 import { BlackDwarfStep as BlackDwarfStep } from './black-dwarf-step';
-import { BlackDwarfAntagonize as BlackDwarfAntagonize } from './black-dwarf-antagonize';
-import { StygianCircle as StygianCircle } from './stygian-circle';
-import { NebulousForm as NebulousForm } from './nebulous-form';
-import { ShadowSlip as ShadowSlip } from './shadow-slip';
-import { InkyAspect as InkyAspect } from './inky-aspect';
-import { StygianReturn as StygianReturn } from './stygian-return';
+import { BlackDwarfStrike as BlackDwarfStrike } from './black-dwarf-strike';
 import { Eclipse as Eclipse } from './eclipse';
+import { GravityShield as GravityShield } from './gravity-shield';
+import { InkyAspect as InkyAspect } from './inky-aspect';
+import { NebulousForm as NebulousForm } from './nebulous-form';
+import { OrbitingDeath as OrbitingDeath } from './orbiting-death';
+import { PenumbralShield as PenumbralShield } from './penumbral-shield';
+import { ShadowCloak as ShadowCloak } from './shadow-cloak';
+import { ShadowRecall as ShadowRecall } from './shadow-recall';
+import { ShadowSlip as ShadowSlip } from './shadow-slip';
+import { ShadowStep as ShadowStep } from './shadow-step';
+import { StygianCircle as StygianCircle } from './stygian-circle';
+import { StygianReturn as StygianReturn } from './stygian-return';
+import { TwilightShield as TwilightShield } from './twilight-shield';
 
 export const powerset: Powerset = {
   id: 'warshade/umbral-aura',
   name: 'Umbral Aura',
   description: 'Warshades can generate Dark Fields to give themselves incredible defensive capabilities.',
-  icon: 'umbral_aura_set.png',
+  icon: 'umbral_aura_set.ico',
   archetype: 'warshade',
   category: 'epic',
   powers: [
     Absorption,
-    ShadowStep,
-    GravityShield,
-    OrbitingDeath,
-    PenumbralShield,
-    ShadowRecall,
-    ShadowCloak,
-    TwilightShield,
     BlackDwarf,
-    BlackDwarfStrike,
-    BlackDwarfSmite,
+    BlackDwarfAntagonize,
     BlackDwarfDrain,
     BlackDwarfMire,
+    BlackDwarfSmite,
     BlackDwarfStep,
-    BlackDwarfAntagonize,
-    StygianCircle,
-    NebulousForm,
-    ShadowSlip,
-    InkyAspect,
-    StygianReturn,
+    BlackDwarfStrike,
     Eclipse,
+    GravityShield,
+    InkyAspect,
+    NebulousForm,
+    OrbitingDeath,
+    PenumbralShield,
+    ShadowCloak,
+    ShadowRecall,
+    ShadowSlip,
+    ShadowStep,
+    StygianCircle,
+    StygianReturn,
+    TwilightShield,
   ],
 };
 

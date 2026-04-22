@@ -16,11 +16,12 @@ export const Pistols: Power = {
   "shortHelp": "Ranged, DMG(Lethal)",
   "icon": "thugs_targetedrangedminordmg.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
     "range": 80,
-    "recharge": 3,
+    "recharge": 4,
     "endurance": 5.2,
     "castTime": 1.2
   },
@@ -36,9 +37,23 @@ export const Pistols: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Ranged_Damage"
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Thug_Pose_06",
+      "duration": 35
+    }
   }
 };

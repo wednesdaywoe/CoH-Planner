@@ -42,10 +42,9 @@ export const RainofArrows: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 3,
-      "copyBoosts": true,
       "entities": [
         {
-          "entity": "Pets_RainofArrows_Visual",
+          "entity": "P4047293352",
           "count": 1
         },
         {
@@ -53,10 +52,6 @@ export const RainofArrows: Power = {
           "count": 1
         }
       ]
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     }
   }
 };

@@ -16,6 +16,7 @@ export const Char: Power = {
   "shortHelp": "Ranged, Moderate DoT(Fire), Foe Hold",
   "icon": "firetrap_soot.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -39,18 +40,27 @@ export const Char: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 4.2,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 4.2,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2938,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.2,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

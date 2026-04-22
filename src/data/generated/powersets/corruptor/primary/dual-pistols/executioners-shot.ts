@@ -16,6 +16,7 @@ export const ExecutionersShot: Power = {
   "shortHelp": "Ranged, DMG(Lethal/Special), Foe -Defense, Knockback/Special",
   "icon": "dualpistols_executionersshot.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.25,
@@ -47,32 +48,35 @@ export const ExecutionersShot: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 1.484,
+      "scale": 2.12,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.169,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
     },
     {
       "type": "Lethal",
-      "scale": 0.636,
-      "table": "Ranged_Damage"
+      "scale": 2.12,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.969,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.969,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "defenseDebuff": {
-      "scale": 1.125,
+      "scale": 1.25,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 8
     },
     "knockback": {
-      "scale": 1,
+      "scale": 2,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 8

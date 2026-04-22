@@ -86,7 +86,8 @@
             "power_names": [
               "Pets.HeatLoss.Heat_Loss_Debuff"
             ]
-          }
+          },
+          "flags_raw": 65856
         },
         {
           "attribs": [
@@ -117,7 +118,8 @@
             "power_names": [
               "Pets.HeatLoss.Heat_Loss_Buff_Self"
             ]
-          }
+          },
+          "flags_raw": 65856
         }
       ]
     }

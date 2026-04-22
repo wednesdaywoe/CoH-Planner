@@ -14,7 +14,7 @@ export const Meteor: Power = {
   "available": 25,
   "description": "You call down a meteor strike from the sky at a specified location. All targets within 25' are caught in the blast radius, taking extreme damage and being knocked back.",
   "shortHelp": "Ranged (Location AoE), DMG(Smash/Fire), Foe Knockback",
-  "icon": "seismicblast_meteor.png",
+  "icon": "seismicblast_meteor",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
@@ -42,14 +42,13 @@ export const Meteor: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
-      "displayName": "Meteor",
+      "isPseudoPet": false,
+      "entity": "Meteor",
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Redirects.Seismic_Blast.Sentinel_Meteor"
       ],
-      "duration": 10,
-      "copyBoosts": true
+      "duration": 10
     }
   }
 };

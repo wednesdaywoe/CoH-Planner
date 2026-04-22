@@ -16,6 +16,7 @@ export const PowerSlice: Power = {
   "shortHelp": "Melee, DMG(Lethal)",
   "icon": "dualblades_moderateopening.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -42,7 +43,19 @@ export const PowerSlice: Power = {
       "scale": 0.3867,
       "table": "Melee_Damage",
       "duration": 1,
-      "tickRate": 0.4
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.5266,
+      "table": "Melee_PvPDamage",
+      "duration": 1,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.5799,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Lethal",
@@ -55,5 +68,5 @@ export const PowerSlice: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "requires": "!Scrapper_Defense.Shield_Defense"
+  "requires": "Scrapper_Defense.Shield_Defense !"
 };

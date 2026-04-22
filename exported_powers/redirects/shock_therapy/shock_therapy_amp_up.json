@@ -86,7 +86,8 @@
             "power_names": [
               "Redirects.Shock_Therapy.Shock_Therapy_Amp_Up_Enemy_Chain_Doom"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ],
       "child_effects": [
@@ -124,7 +125,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1288
             }
           ]
         },
@@ -162,7 +164,16 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "MissionObjectInteract",
+                  "event_id": 33,
+                  "duration": 10.0,
+                  "flag": 0
+                }
+              ],
+              "flags_raw": 1288
             }
           ]
         }
@@ -202,7 +213,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

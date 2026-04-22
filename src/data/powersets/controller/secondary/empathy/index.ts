@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { HealingAura as HealingAura } from './siphon-energy';
-import { HealOther as HealOther } from './heal-other';
 import { AbsorbPain as AbsorbPain } from './absorb-pain';
-import { Resurrect as Resurrect } from './resurrect';
+import { AdrenalinBoost as AdrenalinBoost } from './adrenalin-boost';
 import { ClearMind as ClearMind } from './clear-mind';
 import { Fortitude as Fortitude } from './fortitude';
+import { HealOther as HealOther } from './heal-other';
 import { RecoveryAura as RecoveryAura } from './recovery-aura';
 import { RegenerationAura as RegenerationAura } from './regeneration-aura';
-import { AdrenalinBoost as AdrenalinBoost } from './adrenalin-boost';
+import { Resurrect as Resurrect } from './resurrect';
+import { HealingAura as HealingAura } from './siphon-energy';
 
 export const powerset: Powerset = {
   id: 'controller/empathy',
   name: 'Empathy',
   description: 'Empathy gives you the ability to heal and aid allies as well as yourself. Empathy has no offensive powers, but its heals and buffs are unmatched.',
-  icon: 'empathy_set.png',
+  icon: 'empathy_set.ico',
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    HealingAura,
-    HealOther,
     AbsorbPain,
-    Resurrect,
+    AdrenalinBoost,
     ClearMind,
     Fortitude,
+    HealOther,
     RecoveryAura,
     RegenerationAura,
-    AdrenalinBoost,
+    Resurrect,
+    HealingAura,
   ],
 };
 

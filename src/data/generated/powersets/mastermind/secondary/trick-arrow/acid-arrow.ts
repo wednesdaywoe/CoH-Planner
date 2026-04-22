@@ -16,13 +16,14 @@ export const AcidArrow: Power = {
   "shortHelp": "Ranged AoE Minor DoT(Toxic), Foe -Res(Special), Res(Heal), -DEF",
   "icon": "trickarrow_debuffdefense.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "radius": 15,
     "recharge": 20,
-    "endurance": 9.75,
+    "endurance": 7.8,
     "castTime": 1.83,
     "maxTargets": 16
   },

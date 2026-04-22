@@ -76,7 +76,16 @@
           "caster_stack": "Unlimited",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectInteract",
+              "event_id": 33,
+              "duration": 10.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 1288
         }
       ]
     }

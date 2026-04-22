@@ -23,7 +23,7 @@ export const DarkestNight: Power = {
     "range": 70,
     "radius": 25,
     "recharge": 10,
-    "endurance": 0.325,
+    "endurance": 0.26,
     "castTime": 3.17,
     "activatePeriod": 0.5,
     "maxTargets": 16
@@ -35,7 +35,6 @@ export const DarkestNight: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
     "To Hit Debuff"
   ],
   "maxSlots": 6

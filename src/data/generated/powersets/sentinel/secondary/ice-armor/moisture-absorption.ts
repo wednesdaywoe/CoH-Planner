@@ -16,6 +16,7 @@ export const MoistureAbsorption: Power = {
   "shortHelp": "Close AoE, Self +End, +DEF(All but Psionics), Res (Slow), Foe -End",
   "icon": "icearmor_energyabsorption.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -39,8 +40,8 @@ export const MoistureAbsorption: Power = {
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
+      "scale": 16.5,
+      "table": "Melee_EndDrain"
     },
     "enduranceGain": {
       "scale": 15,

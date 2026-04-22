@@ -85,7 +85,8 @@
             "type": "EntCreate",
             "entity_def": "MastermindPets_Thug_Boss",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -131,7 +132,8 @@
             "power_names": [
               "Mastermind_Summon.Thugs.Call_Bruiser"
             ]
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     }

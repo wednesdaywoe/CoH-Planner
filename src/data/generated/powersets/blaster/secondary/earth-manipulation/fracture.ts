@@ -14,8 +14,9 @@ export const Fracture: Power = {
   "available": 27,
   "description": "You can Fracture the ground around an enemy, disorienting all affected targets for a good while. You must be on the ground to activate this power.Recharge: Long.",
   "shortHelp": "Ranged (Targeted AoE), Foe Disorient, -DEF",
-  "icon": "earthmanip_fracture.png",
+  "icon": "earthmanip_fracture",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -49,9 +50,9 @@ export const Fracture: Power = {
       "defenseDebuff": 10
     },
     "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Stun"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "buffDuration": 10
   }

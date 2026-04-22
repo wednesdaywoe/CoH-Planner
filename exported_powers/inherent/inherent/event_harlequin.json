@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.Event_Harlequin"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Prestige_Costumes.Harlequin"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

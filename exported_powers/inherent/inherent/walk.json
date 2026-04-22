@@ -31,14 +31,7 @@
     "Self"
   ],
   "boosts_allowed": [],
-  "allowed_boostset_cats": [
-    "thColumn.5thColumnEndgame.NictusFX",
-    "umn.5thColumnEndgame.NictusFX",
-    "hColumn.5thColumnEndgame.NictusFX",
-    "mn.5thColumnEndgame.NictusFX",
-    "5thColumn.5thColumnEndgame.NictusFX",
-    "lumn.5thColumnEndgame.NictusFX"
-  ],
+  "allowed_boostset_cats": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",
@@ -80,7 +73,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -105,7 +104,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -130,7 +135,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -155,7 +166,8 @@
           "caster_stack": "Individual",
           "stack": "Overlap",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -180,7 +192,8 @@
           "caster_stack": "Individual",
           "stack": "Overlap",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -205,7 +218,8 @@
           "caster_stack": "Individual",
           "stack": "Overlap",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -230,7 +244,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -255,7 +270,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         }
       ]
     }

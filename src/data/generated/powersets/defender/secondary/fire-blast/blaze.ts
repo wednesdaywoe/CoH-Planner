@@ -16,6 +16,7 @@ export const Blaze: Power = {
   "shortHelp": "Ranged, DMG(Fire)",
   "icon": "fireblast_blaze.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,6 +50,11 @@ export const Blaze: Power = {
       "table": "Ranged_Damage",
       "duration": 4.1,
       "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.4999,
+      "table": "Ranged_PvPDamage"
     }
   ]
 };

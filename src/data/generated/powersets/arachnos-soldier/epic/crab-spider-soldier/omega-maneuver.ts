@@ -34,11 +34,18 @@ export const OmegaManeuver: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Stuns",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P536219010",
+      "entity": "Pets_Omega_Bomb",
       "duration": 5
     }
   }

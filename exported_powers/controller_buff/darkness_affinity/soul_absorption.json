@@ -84,9 +84,10 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P536219010",
-            "priority_list": "P4006859605"
-          }
+            "entity_def": "P4006859605",
+            "priority_list": "Pets_SoulAbsorptionBuff"
+          },
+          "flags_raw": 112
         }
       ]
     },
@@ -124,7 +125,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

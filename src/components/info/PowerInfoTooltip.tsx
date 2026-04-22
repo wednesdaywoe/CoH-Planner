@@ -415,18 +415,24 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       {/* Summon/Pet Info with DPS and Effects */}
       {effects?.summon && (
         <div className="bg-indigo-900/30 rounded p-1 border border-indigo-500/30 text-[9px]">
-          {/* Entity labels */}
+          {/* Entity labels — filter visual-only / opaque P-hash entities
+              (Rain of Arrows pairs `Pets_RainofArrows` with a `P4047293352`
+              visual marker that's just FX). Keep entries with PET_ENTITIES
+              data OR a recognizable real pet-name prefix. */}
           {effects.summon.entities ? (
-            // Multi-entity: show each entity type
-            effects.summon.entities.map((e) => {
-              const displayName = e.entity.replace(/^(Pets_|MastermindPets_)/i, '').replace(/_/g, ' ');
-              return (
-                <div key={e.entity} className="flex items-center gap-1">
-                  <span className="text-indigo-400">🐾</span>
-                  <span className="text-slate-200">{displayName}{e.count > 1 ? ` x${e.count}` : ''}</span>
-                </div>
-              );
-            })
+            effects.summon.entities
+              .filter((e) =>
+                /^(Pets_|MastermindPets_|Villain_Pets_|VillainPets_)/i.test(e.entity),
+              )
+              .map((e) => {
+                const displayName = e.entity.replace(/^(Pets_|MastermindPets_)/i, '').replace(/_/g, ' ');
+                return (
+                  <div key={e.entity} className="flex items-center gap-1">
+                    <span className="text-indigo-400">🐾</span>
+                    <span className="text-slate-200">{displayName}{e.count > 1 ? ` x${e.count}` : ''}</span>
+                  </div>
+                );
+              })
           ) : (
             // Single entity
             <div className="flex items-center gap-1">

@@ -11,11 +11,12 @@ import type { Power } from '@/types';
 export const PsiBlade: Power = {
   "name": "Psi Blade",
   "internalName": "Psi_Blade",
-  "available": 0,
+  "available": 21,
   "description": "You lash at your foe's mind with a mentally projected blade of psychic energy to deal moderate Psionic and Lethal damage. Affected foes will have their recharge rate reduced. Psi Blade has a moderate chance to grant you Insight. While you have Insight, Psi Blade will deal additional minor psionic damage over time.Damage: Moderate.Recharge: Fast.",
   "shortHelp": "Melee, Moderate DMG(Psionic/Lethal), Foe -Rech, Self +Insight",
   "icon": "psionicmelee_psiblade.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,10 +51,20 @@ export const PsiBlade: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Lethal",
+      "scale": 0.3827,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Psionic",
-      "scale": 0.2285,
+      "scale": 1.1482,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.1799,
       "table": "Melee_Damage",
-      "duration": 3.1,
+      "duration": 2.1,
       "tickRate": 1
     }
   ]

@@ -14,7 +14,7 @@ export const OilSlickArrow: Power = {
   "available": 29,
   "description": "On impact, this arrow creates an oil slick that Slows foes in the area and may cause them to slip and fall. The oil slick is very flammable and may burst into flames if fire is used near it.Recharge: Long.",
   "shortHelp": "Ranged (Location AoE), Foe Knockdown, -SPD, -Jump, +Special",
-  "icon": "tacticalarrow_knockdown.png",
+  "icon": "tacticalarrow_knockdown",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
@@ -42,13 +42,8 @@ export const OilSlickArrow: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_OilSlickOil_Blaster",
-      "duration": 30,
-      "copyBoosts": true
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
+      "entity": "P4100491214",
+      "duration": 30
     }
   }
 };

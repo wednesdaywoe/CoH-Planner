@@ -41,11 +41,18 @@ export const HotFeet: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.25,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.25,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2033,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "fear": {
       "mag": 3,

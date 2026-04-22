@@ -73,12 +73,24 @@ export const DNASiphon: Power = {
       "table": "Melee_Ones",
       "perTarget": 5
     },
-    "regenDebuff": {
-      "scale": 1.33,
-      "table": "Melee_Ones"
+    "regenBuff": {
+      "scale": 0.26,
+      "table": "Melee_Ones",
+      "perTarget": 0.26
     },
     "durations": {
+      "regenBuff": 30,
+      "recoveryBuff": 30,
       "regenDebuff": 30
+    },
+    "recoveryBuff": {
+      "scale": 0.2188,
+      "table": "Melee_Ones",
+      "perTarget": 0.2188
+    },
+    "regenDebuff": {
+      "scale": 2.66,
+      "table": "Melee_Res_Boolean"
     },
     "buffDuration": 30
   }

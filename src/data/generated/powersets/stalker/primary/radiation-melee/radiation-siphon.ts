@@ -16,6 +16,7 @@ export const RadiationSiphon: Power = {
   "shortHelp": "Melee, DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
   "icon": "radiationmelee_radiationsiphon.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,6 +41,7 @@ export const RadiationSiphon: Power = {
     "Healing",
     "Melee Damage",
     "Stalker Archetype Sets",
+    "Threat Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -60,6 +62,31 @@ export const RadiationSiphon: Power = {
       "table": "Melee_InherentDamage"
     },
     {
+      "type": "Energy",
+      "scale": 1.96,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.5902,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.7707,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.361,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.361,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Heal",
       "scale": 0.6667,
       "table": "Melee_HealSelf",
@@ -69,6 +96,11 @@ export const RadiationSiphon: Power = {
     {
       "type": "Toxic",
       "scale": 0.392,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1503,
       "table": "Melee_Damage"
     }
   ],

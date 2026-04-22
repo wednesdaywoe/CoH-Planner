@@ -16,12 +16,13 @@ export const PsiBladeSweep: Power = {
   "shortHelp": "Melee (Cone), DMG(Psionic/Lethal), Foe Disorient, -Rech; Self +Insight",
   "icon": "psionicmelee_psibladesweep.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 1.2217,
+    "arc": 1.2217304706573486,
     "recharge": 8,
     "endurance": 8.528,
     "castTime": 1.77,
@@ -53,11 +54,31 @@ export const PsiBladeSweep: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Lethal",
+      "scale": 0.402,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Psionic",
-      "scale": 0.236,
+      "scale": 1.206,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.351,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.1858,
       "table": "Melee_Damage",
-      "duration": 3.1,
+      "duration": 2.1,
       "tickRate": 1
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.608,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Psionic",

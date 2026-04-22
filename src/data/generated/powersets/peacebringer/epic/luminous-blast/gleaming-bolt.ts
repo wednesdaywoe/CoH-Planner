@@ -16,6 +16,7 @@ export const GleamingBolt: Power = {
   "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
   "icon": "luminousblast_gleamingbolt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,20 +40,5 @@ export const GleamingBolt: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.6,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 3
-    },
-    "buffDuration": 3
-  }
+  "maxSlots": 6
 };

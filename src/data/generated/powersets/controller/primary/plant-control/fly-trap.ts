@@ -36,17 +36,18 @@ export const FlyTrap: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Controller Archetype Sets",
     "Defense Debuff",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Immobilize",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Fly_Trap_Controller",
-      "copyBoosts": true
+      "entity": "P1721012894",
+      "duration": 99999
     }
   }
 };

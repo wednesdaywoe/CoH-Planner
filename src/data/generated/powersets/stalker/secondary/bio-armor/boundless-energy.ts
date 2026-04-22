@@ -65,5 +65,6 @@ export const BoundlessEnergy: Power = {
       }
     },
     "buffDuration": 5.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

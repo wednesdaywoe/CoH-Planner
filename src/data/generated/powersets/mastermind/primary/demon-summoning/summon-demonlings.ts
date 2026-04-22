@@ -12,7 +12,7 @@ export const SummonDemonlings: Power = {
   "name": "Summon Demonlings",
   "internalName": "Summon_Demonlings",
   "available": 0,
-  "description": "Call forth up to three demonlings (depending on your level) to do your bidding. The first demonling is adept at manipulating fire, the second blasts your foes with cold attacks and the third is able to wield hellfire to deal fire/toxic damage.You may only have three demonlings under your command at any given time. If you attempt to summon more demonlings, you can only replace those that have been lost in battle. If you already have your maximum allowed amount, the power will fail.",
+  "description": "Call forth up to three demonlings (depending on your level) to do your bidding. The first demonling is adept at manipulating fire, the second blasts your foes with cold attacks and the third is able to wield hellfire to deal fire/toxic damage.You may only have three demonlings under your command at any given time. If you attempt to summon more demonlings, you can only replace those that have been lost in battle. If you already have your maximum allowed amount, the power will fail.In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "shortHelp": "Summon Demonlings",
   "icon": "demonsummoning_summondemonlings.png",
   "powerType": "Click",
@@ -32,9 +32,7 @@ export const SummonDemonlings: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],
@@ -42,7 +40,7 @@ export const SummonDemonlings: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "copyBoosts": true,
+      "duration": 99999,
       "entities": [
         {
           "entity": "MastermindPets_Fiery_Demonling",
@@ -57,6 +55,15 @@ export const SummonDemonlings: Power = {
           "count": 1
         }
       ]
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "immobilize": {
+      "mag": 500,
+      "scale": 3,
+      "table": "Melee_Ones"
     }
   }
 };

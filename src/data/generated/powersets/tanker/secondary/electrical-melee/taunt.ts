@@ -16,6 +16,7 @@ export const Taunt: Power = {
   "shortHelp": "Ranged, Foe Taunt",
   "icon": "electricmelee_targetedtaunt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -37,7 +38,7 @@ export const Taunt: Power = {
   "maxSlots": 6,
   "effects": {
     "taunt": {
-      "scale": 20,
+      "scale": 5,
       "table": "Melee_Taunt"
     },
     "rangeBuff": {

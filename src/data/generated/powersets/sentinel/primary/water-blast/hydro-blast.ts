@@ -16,6 +16,7 @@ export const HydroBlast: Power = {
   "shortHelp": "Ranged, DMG(Cold/Smash), Foe -Speed, Knockdown, +Wet, Self +Tidal Power",
   "icon": "waterblast_hydroblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -51,11 +52,41 @@ export const HydroBlast: Power = {
       "type": "Cold",
       "scale": 1.11,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.37,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.11,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.7396,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.11,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.7396,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.11,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Ranged_Ones"
     }
   }

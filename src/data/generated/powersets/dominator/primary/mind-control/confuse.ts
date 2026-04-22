@@ -16,6 +16,7 @@ export const Confuse: Power = {
   "shortHelp": "Ranged, Target Confuse",
   "icon": "mentalcontrol_mindcontrol.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,

@@ -24,9 +24,19 @@ const {
   extractDamage,
   collectAllTemplates,
   RAW_DATA_PATH,
+  EFFECT_AREA_MAP,
+  BIN_BOOST_MAP,
+  inferAllowedSetCategories,
 } = require('./convert-powerset.cjs');
 
-const RAW_POWERS_PATH = path.join(RAW_DATA_PATH, 'powers', 'epic');
+// Bin export writes epic pool powers under `<RAW_DATA_PATH>/epic/`.
+// Old CoD2 layout had an extra `powers/` segment. Probe both.
+const RAW_POWERS_PATH = (() => {
+  const newLayout = path.join(RAW_DATA_PATH, 'epic');
+  const oldLayout = path.join(RAW_DATA_PATH, 'powers', 'epic');
+  if (fs.existsSync(newLayout)) return newLayout;
+  return oldLayout;
+})();
 // Layered output (see src/data/README.md):
 //   - OUTPUT_PATH: the auto-extracted data lives here, overwritten on --apply
 //   - COMPOSED_PATH: hand-edit-safe facade that merges in overrides
@@ -82,7 +92,8 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     power.shortHelp = rawJson.display_short_help.replace(/\u00a0/g, ' ');
   }
   power.icon = rawJson.icon || '';
-  power.powerType = rawJson.type || 'Click';
+  // Map bin's "GlobalBoost" to the planner's "Global Enhancement" type.
+  power.powerType = rawJson.type === 'GlobalBoost' ? 'Global Enhancement' : (rawJson.type || 'Click');
 
   // Requires
   if (rawJson.requires && rawJson.requires !== '') {
@@ -95,15 +106,23 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   power.maxSlots = rawJson.max_boosts !== undefined && rawJson.max_boosts !== null
     ? rawJson.max_boosts : 6;
 
-  // Allowed enhancements (using BOOST_TYPE_MAP)
+  // Allowed enhancements: bin export uses short names (BIN_BOOST_MAP);
+  // CoD2 used long ones (BOOST_TYPE_MAP). Try both.
   const enhancements = (rawJson.boosts_allowed || [])
-    .map(b => BOOST_TYPE_MAP[b])
+    .map(b => BOOST_TYPE_MAP[b] || BIN_BOOST_MAP[b])
     .filter(Boolean);
   power.allowedEnhancements = [...new Set(enhancements)].sort();
 
-  // Allowed set categories (using SET_CATEGORY_MAP)
-  power.allowedSetCategories = (rawJson.allowed_boostset_cats || [])
-    .map(c => SET_CATEGORY_MAP[c] || c);
+  // Allowed IO set categories — inferred from boost types (the bin parser's
+  // allowed_boostset_cats field is broken; see PARSER_TODO.md). Epic powers
+  // don't grant ATO categories, so pass 'epic' as both archetype and role.
+  power.allowedSetCategories = inferAllowedSetCategories(
+    rawJson.boosts_allowed || [],
+    'epic',
+    'epic',
+    EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
+    rawJson.range,
+  );
 
   // Effects object (legacy format: stats mixed in with effects)
   const effects = {};
@@ -115,7 +134,8 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   if (rawJson.endurance_cost) effects.endurance = rawJson.endurance_cost;
   if (rawJson.activation_time) effects.activationTime = rawJson.activation_time;
   if (rawJson.effect_area && rawJson.effect_area !== 'None') {
-    effects.effectArea = rawJson.effect_area;
+    // Bin format uses "Sphere" for what the planner calls "AoE"; normalize.
+    effects.effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
   }
   if (rawJson.radius && rawJson.radius > 0) effects.radius = rawJson.radius;
   if (rawJson.arc && rawJson.arc > 0) effects.arc = rawJson.arc;
@@ -146,6 +166,28 @@ function convertEpicPower(rawJson, rank, availableLevel) {
 }
 
 // ============================================
+// POOL ID -> ARCHETYPE INFERENCE
+// ============================================
+
+// For pool IDs that aren't in the existing data, infer the archetype from the
+// pool ID prefix (e.g. "blaster_dark_mastery" -> "blaster"). VEAT pools start
+// with "veat_" and belong to the Arachnos archetypes. Shared/no-prefix pools
+// (e.g. "cold_mastery") need an explicit archetype tag in the override layer.
+const ARCHETYPE_PREFIXES = [
+  'arachnos_soldier', 'arachnos_widow', 'peacebringer', 'warshade',
+  'blaster', 'brute', 'controller', 'corruptor', 'defender', 'dominator',
+  'mastermind', 'scrapper', 'sentinel', 'stalker', 'tanker',
+];
+
+function inferArchetypeFromPoolId(poolId) {
+  if (poolId.startsWith('veat_')) return 'arachnos_soldier';
+  for (const at of ARCHETYPE_PREFIXES) {
+    if (poolId.startsWith(at + '_')) return at;
+  }
+  return ''; // unknown — needs override
+}
+
+// ============================================
 // CONVERT A SINGLE EPIC POOL
 // ============================================
 
@@ -165,13 +207,21 @@ function convertEpicPool(poolId, existingPool) {
 
   const poolIndex = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
 
+  // Compatibility: bin export uses `powers` + `help`; CoD2 used
+  // `power_names` + `display_help`. Normalize so the rest of this
+  // function can use the CoD2 names.
+  if (!poolIndex.power_names && poolIndex.powers) poolIndex.power_names = poolIndex.powers;
+  if (!poolIndex.display_help && poolIndex.help) poolIndex.display_help = poolIndex.help;
+  if (!poolIndex.display_short_help && poolIndex.short_help) poolIndex.display_short_help = poolIndex.short_help;
+
   // Build pool metadata — preserve archetype/minLevel from existing data,
-  // use raw data for display info
+  // use raw data for display info. When existing data is absent (fresh
+  // discovery), infer archetype from the pool ID prefix.
   const pool = {
     id: poolId,
     name: poolIndex.display_name || (existingPool ? existingPool.name : poolId),
     displayName: poolIndex.display_name || (existingPool ? existingPool.displayName : poolId),
-    archetype: existingPool ? existingPool.archetype : '',
+    archetype: existingPool ? existingPool.archetype : inferArchetypeFromPoolId(poolId),
     description: poolIndex.display_help || (existingPool ? existingPool.description : ''),
     icon: poolIndex.icon || (existingPool ? existingPool.icon : ''),
     requires: poolIndex.requires || '',
@@ -247,15 +297,32 @@ function main() {
   const existingPools = loadExistingPools();
   const existingIds = Object.keys(existingPools);
 
+  // Discover pools on disk too — bin export may have added new pools that
+  // aren't yet in the committed file. Union with existing IDs so the no-filter
+  // run picks up everything.
+  let discoveredIds = [];
+  try {
+    discoveredIds = fs.readdirSync(RAW_POWERS_PATH).filter((entry) => {
+      const indexFile = path.join(RAW_POWERS_PATH, entry, 'index.json');
+      return fs.existsSync(indexFile);
+    });
+  } catch (_) {
+    // RAW_POWERS_PATH missing — fall through to existingIds
+  }
+  const allKnownIds = [...new Set([...existingIds, ...discoveredIds])].sort();
+
   // Determine which pools to convert
   let poolIds;
   if (poolFilter) {
     poolIds = [poolFilter];
   } else if (archFilter) {
-    poolIds = existingIds.filter(id => existingPools[id].archetype === archFilter);
+    poolIds = allKnownIds.filter(id => {
+      const at = existingPools[id]?.archetype || inferArchetypeFromPoolId(id);
+      return at === archFilter;
+    });
     console.log(`Filtering to archetype "${archFilter}": ${poolIds.length} pools\n`);
   } else {
-    poolIds = existingIds;
+    poolIds = allKnownIds;
   }
 
   const allPools = {};

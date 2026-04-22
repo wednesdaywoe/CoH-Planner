@@ -16,6 +16,7 @@ export const TeslaCage: Power = {
   "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
   "icon": "electriccontrol_teslacage.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -41,20 +42,37 @@ export const TeslaCage: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.8891,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9445,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Ranged_Ones"
+      "scale": 1.25,
+      "table": "Ranged_EndDrain"
     },
     "recoveryDebuff": {
       "scale": 1,

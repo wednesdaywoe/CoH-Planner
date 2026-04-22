@@ -49,6 +49,11 @@ export const Quills: Power = {
     },
     {
       "type": "Lethal",
+      "scale": 0.1183,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
       "scale": 0.15,
       "table": "Melee_InherentDamage"
     },
@@ -60,7 +65,7 @@ export const Quills: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 0.33,
+      "mag": 0.33000001311302185,
       "scale": 3,
       "table": "Melee_Immobilize"
     }

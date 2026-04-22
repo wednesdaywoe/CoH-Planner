@@ -24,5 +24,5 @@ export const EvolvingArmor: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "mechanicType": "hiddenPassive"
+  "mechanicType": "parentMechanic"
 };

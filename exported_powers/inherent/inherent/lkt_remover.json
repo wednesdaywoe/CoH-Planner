@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.LKT_Remover"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

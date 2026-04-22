@@ -16,12 +16,13 @@ export const PetrifyingGaze: Power = {
   "shortHelp": "Ranged Hold",
   "icon": "darkmiasma_petrifyinggaze.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 70,
     "recharge": 16,
-    "endurance": 9.75,
+    "endurance": 7.8,
     "castTime": 1.67
   },
   "allowedEnhancements": [

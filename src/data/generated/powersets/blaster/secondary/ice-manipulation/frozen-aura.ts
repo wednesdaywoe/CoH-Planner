@@ -50,17 +50,18 @@ export const FrozenAura: Power = {
       "type": "Cold",
       "scale": 1.424,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.068,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "sleep": {
-      "mag": 2,
-      "scale": 20,
-      "table": "Ranged_Sleep"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

@@ -14,8 +14,9 @@ export const Dazzle: Power = {
   "available": 0,
   "description": "Incapacitates a distant foe with a brilliant explosion of pyrotechnic energy. The target is left helpless for the duration.This power has a chance of Blasting Off targets into the air.",
   "shortHelp": "Ranged, Moderate DMG (Fire, Energy), Foe Hold, Chance for Blast Off",
-  "icon": "pyrotechnic_dazzle.png",
+  "icon": "pyrotechnic_dazzle",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -49,17 +50,51 @@ export const Dazzle: Power = {
       "type": "Energy",
       "scale": 0.5,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.3134,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3134,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.5,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.5,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.3134,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3134,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "knockback": {
       "scale": 20,
       "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
     },
     "resistanceDebuff": {
       "smashing": {

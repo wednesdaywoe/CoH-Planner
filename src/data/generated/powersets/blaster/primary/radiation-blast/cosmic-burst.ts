@@ -14,8 +14,9 @@ export const CosmicBurst: Power = {
   "available": 17,
   "description": "Cosmic Burst smashes the target with cosmic particles. The attack is devastating and can leave most targets Disoriented and with reduced Defense.",
   "shortHelp": "Ranged, DMG(Energy), Foe Disorient, -DEF",
-  "icon": "radiationburst_cosmicburst.png",
+  "icon": "radiationburst_cosmicburst",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -42,11 +43,18 @@ export const CosmicBurst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 2.12,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 2.12,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.2493,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 3,
@@ -59,10 +67,6 @@ export const CosmicBurst: Power = {
     },
     "durations": {
       "defenseDebuff": 12
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 12
   }

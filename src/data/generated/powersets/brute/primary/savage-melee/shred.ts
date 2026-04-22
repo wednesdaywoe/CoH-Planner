@@ -16,12 +16,13 @@ export const Shred: Power = {
   "shortHelp": "Melee (Cone), Foe DoT (Lethal), -Def(All), Self +1 Blood Frenzy",
   "icon": "savagemelee_shred.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 1.3963,
+    "arc": 1.3962634801864624,
     "recharge": 7.5,
     "endurance": 8.11,
     "castTime": 2.17,
@@ -50,7 +51,7 @@ export const Shred: Power = {
       "scale": 0.21,
       "table": "Melee_Damage",
       "duration": 2,
-      "tickRate": 0.35
+      "tickRate": 0.3499999940395355
     },
     {
       "type": "Lethal",
@@ -58,6 +59,27 @@ export const Shred: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.2991,
+      "table": "Melee_PvPDamage",
+      "duration": 2,
+      "tickRate": 0.3499999940395355
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.1435,
+      "table": "Melee_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.1061,
+      "table": "Melee_PvPDamage",
+      "duration": 2,
+      "tickRate": 0.6000000238418579
     }
   ],
   "effects": {

@@ -16,6 +16,7 @@ export const IceBolt: Power = {
   "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
   "icon": "iceblast_bolt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,9 +40,26 @@ export const IceBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.84,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 0.84,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.84,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.22,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.22,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

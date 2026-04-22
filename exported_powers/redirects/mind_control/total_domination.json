@@ -82,7 +82,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ],
       "child_effects": [
@@ -120,7 +121,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 2560
             },
             {
               "attribs": [
@@ -145,7 +147,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -183,7 +186,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 2560
             },
             {
               "attribs": [
@@ -208,7 +212,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -248,7 +253,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -286,7 +292,40 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Stunned",
+              "event_id": 23,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Event_24",
+              "event_id": 24,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Held",
+              "event_id": 25,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Sleep",
+              "event_id": 26,
+              "duration": 15.0,
+              "flag": 0
+            },
+            {
+              "event": "Confused",
+              "event_id": 27,
+              "duration": 15.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 2560
         }
       ]
     },
@@ -324,7 +363,21 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Event_1056964608",
+              "event_id": 1056964608,
+              "duration": 0.0,
+              "flag": 0
+            },
+            {
+              "event": "Event_251658240",
+              "event_id": 251658240,
+              "duration": 2.6470174032149496e-23,
+              "flag": 125
+            }
+          ]
         }
       ],
       "child_effects": [
@@ -362,7 +415,21 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "Event_1056964608",
+                  "event_id": 1056964608,
+                  "duration": 0.0,
+                  "flag": 0
+                },
+                {
+                  "event": "Event_1056964608",
+                  "event_id": 1056964608,
+                  "duration": 9012119139778560.0,
+                  "flag": 2835354086
+                }
+              ]
             }
           ]
         }

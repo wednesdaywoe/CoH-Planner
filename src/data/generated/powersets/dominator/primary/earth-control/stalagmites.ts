@@ -16,6 +16,7 @@ export const Stalagmites: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Lethal), Foe Disorient, -DEF",
   "icon": "earthgrasp_stalagmites.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -48,9 +49,9 @@ export const Stalagmites: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "defenseDebuff": {
       "scale": 2,

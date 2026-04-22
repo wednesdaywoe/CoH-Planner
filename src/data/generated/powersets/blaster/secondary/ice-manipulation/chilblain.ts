@@ -16,6 +16,7 @@ export const Chilblain: Power = {
   "shortHelp": "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "icemanipulation_chillblains.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,13 +42,22 @@ export const Chilblain: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 0.2,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Cold",
+      "scale": 0.2758,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -66,10 +76,6 @@ export const Chilblain: Power = {
     },
     "durations": {
       "mezResistance": 15
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 15
   }

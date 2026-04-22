@@ -16,6 +16,7 @@ export const Vacuum: Power = {
   "shortHelp": "Ranged (Targeted AoE), Hold (Foe), Moderate DoT (Lethal), -Movement(Foe), -Rech(Foe), -ToHit(Foe), Special(Pet), Pressure Consumer (Self)",
   "icon": "windcontrol_vacuum.png",
   "powerType": "Click",
+  "targetType": "Any",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,7 +39,7 @@ export const Vacuum: Power = {
     "Accurate To-Hit Debuff",
     "Dominator Archetype Sets",
     "Holds",
-    "Ranged AoE Damage",
+    "Ranged Damage",
     "Slow Movement",
     "To Hit Debuff",
     "Universal Damage Sets"
@@ -57,17 +58,11 @@ export const Vacuum: Power = {
     }
   ],
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_WindControl_Vacuum_Dominator",
-      "duration": 8,
-      "copyBoosts": true
-    },
     "hold": {
       "mag": 4,
       "scale": 4,
       "table": "Ranged_Ones"
     }
   },
-  "requires": "char>accesslevel >= 0"
+  "requires": "accesslevel char> 0 >="
 };

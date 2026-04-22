@@ -16,13 +16,14 @@ export const PhotonGrenade: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Disorient, -Regen",
   "icon": "robotics_laserriflestungrenade.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "radius": 15,
     "recharge": 16,
-    "endurance": 15.18,
+    "endurance": 15.184,
     "castTime": 1.87,
     "maxTargets": 10
   },
@@ -40,14 +41,21 @@ export const PhotonGrenade: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.8985,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.8985,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.7228,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "regenDebuff": {
-      "scale": 2,
+      "scale": 6,
       "table": "Ranged_Ones"
     },
     "durations": {

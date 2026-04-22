@@ -20,7 +20,7 @@ export const ChillingEmbrace: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "radius": 15,
+    "radius": 12,
     "recharge": 2,
     "endurance": 0.52,
     "castTime": 0.73,

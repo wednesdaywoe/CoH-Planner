@@ -16,13 +16,14 @@ export const SlowedResponse: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe -Defense, -Resistance",
   "icon": "timemanipulation_slowedresponse.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "radius": 25,
     "recharge": 90,
-    "endurance": 19.5,
+    "endurance": 15.6,
     "castTime": 2.27,
     "maxTargets": 16
   },

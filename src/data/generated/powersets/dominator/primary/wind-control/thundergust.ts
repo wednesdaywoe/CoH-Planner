@@ -21,7 +21,7 @@ export const Thundergust: Power = {
   "stats": {
     "accuracy": 1,
     "radius": 60,
-    "arc": 0.6981,
+    "arc": 0.6981317400932312,
     "recharge": 30,
     "endurance": 13,
     "castTime": 2.17,
@@ -38,21 +38,28 @@ export const Thundergust: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Knockback",
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.24,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.24,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.5829,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Ranged_Ones"
     }
   },
-  "requires": "char>accesslevel >= 0"
+  "requires": "accesslevel char> 0 >="
 };

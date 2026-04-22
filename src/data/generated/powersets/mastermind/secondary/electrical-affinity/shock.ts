@@ -12,16 +12,17 @@ export const Shock: Power = {
   "name": "Shock",
   "internalName": "Shock",
   "available": 0,
-  "description": "Strike a single foe with a highly-charged electrical shock, draining some endurance and moderately reducing their recovery, regeneration and damage output.Recharge: Slow.",
+  "description": "Strike a single foe with a highly-charged electrical shock, draining some endurance and moderately reducing their recovery, regeneration and damage output.",
   "shortHelp": "Ranged, Foe -DMG, -End, -Recovery, -Regen",
   "icon": "shocktherapy_shock.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "recharge": 12,
-    "endurance": 10.66,
+    "endurance": 8.528,
     "castTime": 2
   },
   "allowedEnhancements": [
@@ -49,7 +50,7 @@ export const Shock: Power = {
       "table": "Ranged_Ones"
     },
     "enduranceDrain": {
-      "scale": 0.16,
+      "scale": 5.16,
       "table": "Ranged_EndDrain"
     },
     "buffDuration": 25

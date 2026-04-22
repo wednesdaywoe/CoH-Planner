@@ -43,9 +43,8 @@ export const SpectralTerror: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Terror",
-      "duration": 45,
-      "copyBoosts": true
+      "entity": "P703765092",
+      "duration": 45
     }
   }
 };

@@ -23,7 +23,7 @@ export const DeflectionShield: Power = {
     "range": 80,
     "radius": 30,
     "recharge": 2,
-    "endurance": 9.75,
+    "endurance": 7.8,
     "castTime": 2.07,
     "maxTargets": 255
   },

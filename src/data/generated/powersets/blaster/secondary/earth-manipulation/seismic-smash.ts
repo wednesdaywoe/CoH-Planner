@@ -14,8 +14,9 @@ export const SeismicSmash: Power = {
   "available": 29,
   "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage and may Hold the target if they are not defeated outright.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Melee, Extreme DMG(Smashing), Foe Hold",
-  "icon": "earthmanip_seismicsmash.png",
+  "icon": "earthmanip_seismicsmash",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -38,11 +39,18 @@ export const SeismicSmash: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 3.56,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 3.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.2499,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
       "mag": 3,

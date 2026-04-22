@@ -16,6 +16,7 @@ export const ChainLightning: Power = {
   "shortHelp": "Ranged Chain, DoT(Energy), Foe -End",
   "icon": "stormblast_chainlightning.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1.15,
@@ -37,7 +38,6 @@ export const ChainLightning: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Endurance Modification",
-    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -49,15 +49,35 @@ export const ChainLightning: Power = {
     },
     {
       "type": "Energy",
+      "scale": 1.16,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.324,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
       "scale": 0.04,
-      "table": "Ranged_Damage",
+      "table": "Ranged_PvPDamage",
       "duration": 2.2,
-      "tickRate": 0.6
+      "tickRate": 0.6000000238418579
+    },
+    {
+      "type": "Energy",
+      "scale": 1.3527,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.484,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.10500000000000001,
+      "scale": 1.98,
       "table": "Ranged_EndDrain"
     },
     "durations": {

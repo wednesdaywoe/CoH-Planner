@@ -16,6 +16,7 @@ export const PulseRifleBlast: Power = {
   "shortHelp": "Ranged, DMG(Energy), -Regen",
   "icon": "robotics_laserrifleburst.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -36,14 +37,21 @@ export const PulseRifleBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "regenDebuff": {
-      "scale": 2,
+      "scale": 6,
       "table": "Ranged_Ones"
     },
     "durations": {

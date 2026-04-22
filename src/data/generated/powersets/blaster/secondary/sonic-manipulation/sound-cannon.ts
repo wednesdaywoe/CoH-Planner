@@ -14,14 +14,15 @@ export const SoundCannon: Power = {
   "available": 27,
   "description": "You generate a powerful sonic wave that will knock back and disorient foes in front of you for a short time.Recharge: Long.",
   "shortHelp": "Ranged (Cone), Foe Disorient, Knockback",
-  "icon": "sonicmanipulation_soundcannon.png",
+  "icon": "sonicmanipulation_soundcannon",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 0.8,
     "range": 45,
     "radius": 45,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 90,
     "endurance": 20.18,
     "castTime": 1.5,
@@ -42,12 +43,12 @@ export const SoundCannon: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Fear"
+      "mag": 3,
+      "scale": 1,
+      "table": "Melee_PvPMez"
     },
     "knockback": {
-      "scale": 0.65,
+      "scale": 1.3,
       "table": "Melee_Ones"
     }
   }

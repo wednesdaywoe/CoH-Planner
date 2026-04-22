@@ -22,7 +22,7 @@ export const PoweroftheDepths: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 240,
-    "endurance": 32.5,
+    "endurance": 26,
     "castTime": 3,
     "maxTargets": 255
   },

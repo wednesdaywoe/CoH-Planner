@@ -41,9 +41,7 @@ export const Lich: Power = {
     "Holds",
     "Immobilize",
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
@@ -52,7 +50,7 @@ export const Lich: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Lich",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

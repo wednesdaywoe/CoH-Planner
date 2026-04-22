@@ -12,7 +12,7 @@ export const Inferno: Power = {
   "name": "Inferno",
   "internalName": "Inferno",
   "available": 25,
-  "description": "Unleashes a massive fiery explosion to devastate all nearby enemies and set them ablaze. Inferno deals Extreme Fire damage to all nearby foes and inflicts Moderate Fire damage over time.Damage: Extreme.Recharge: Long.",
+  "description": "Unleashes a massive fiery explosion to devastate all nearby enemies and set them ablaze. Inferno deals Extreme Fire damage to all nearby foes and inflicts Moderate Fire damage over time.",
   "shortHelp": "PBAoE, DMG(Fire/Smash), DoT(Fire)",
   "icon": "fireblast_inferno.png",
   "powerType": "Click",
@@ -40,14 +40,24 @@ export const Inferno: Power = {
   "maxSlots": 6,
   "damage": [
     {
+      "type": "Fire",
+      "scale": 2.253,
+      "table": "Ranged_Damage"
+    },
+    {
       "type": "Smashing",
       "scale": 0.928,
       "table": "Ranged_Damage"
     },
     {
+      "type": "Smashing",
+      "scale": 0.928,
+      "table": "Ranged_InherentDamage"
+    },
+    {
       "type": "Fire",
-      "scale": 2.253,
-      "table": "Ranged_Damage"
+      "scale": 1.525,
+      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Fire",

@@ -31,9 +31,10 @@ export const PhoenixRising: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Stalker Archetype Sets",
     "Stuns",
     "Universal Damage Sets"
@@ -46,13 +47,8 @@ export const PhoenixRising: Power = {
   },
   "effects": {
     "knockback": {
-      "scale": 4.1,
+      "scale": 8.1,
       "table": "Melee_Knockback"
-    },
-    "stun": {
-      "mag": 4,
-      "scale": 10,
-      "table": "Melee_Stun"
     }
   }
 };

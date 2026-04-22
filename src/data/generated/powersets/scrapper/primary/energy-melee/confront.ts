@@ -14,8 +14,9 @@ export const Confront: Power = {
   "available": 11,
   "description": "Challenges a foe to attack you. Useful to pull a villain off an ally who finds themselves in over their head. A To Hit check required to Taunt enemy players, but is not needed against critter targets.",
   "shortHelp": "Ranged, Foe Taunt",
-  "icon": "powerpunch_challenge.png",
+  "icon": "powerpunch_challenge",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -42,7 +43,7 @@ export const Confront: Power = {
       "rangeBuff": 12
     },
     "taunt": {
-      "scale": 15,
+      "scale": 4,
       "table": "Melee_Taunt"
     },
     "buffDuration": 12

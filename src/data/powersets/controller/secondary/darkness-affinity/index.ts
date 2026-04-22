@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { TwilightGrasp as TwilightGrasp } from './twilight-grasp';
-import { TarPatch as TarPatch } from './tar-patch';
-import { DarkestNight as DarkestNight } from './darkest-night';
-import { HowlingTwilight as HowlingTwilight } from './howling-twilight';
-import { ShadowFall as ShadowFall } from './shadow-fall';
-import { Fade as Fade } from './fade';
-import { SoulAbsorption as SoulAbsorption } from './soul-absorption';
 import { BlackHole as BlackHole } from './black-hole';
 import { DarkServant as DarkServant } from './dark-servant';
+import { DarkestNight as DarkestNight } from './darkest-night';
+import { Fade as Fade } from './fade';
+import { HowlingTwilight as HowlingTwilight } from './howling-twilight';
+import { ShadowFall as ShadowFall } from './shadow-fall';
+import { SoulAbsorption as SoulAbsorption } from './soul-absorption';
+import { TarPatch as TarPatch } from './tar-patch';
+import { TwilightGrasp as TwilightGrasp } from './twilight-grasp';
 
 export const powerset: Powerset = {
   id: 'controller/darkness-affinity',
   name: 'Darkness Affinity',
   description: 'Focus the dark power of the Netherworld to weaken your foes and aid your allies. Darkness Affinity focuses on draining your opponent.',
-  icon: 'darkness_affinity_set.png',
+  icon: 'darkness_affinity_set.ico',
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    TwilightGrasp,
-    TarPatch,
-    DarkestNight,
-    HowlingTwilight,
-    ShadowFall,
-    Fade,
-    SoulAbsorption,
     BlackHole,
     DarkServant,
+    DarkestNight,
+    Fade,
+    HowlingTwilight,
+    ShadowFall,
+    SoulAbsorption,
+    TarPatch,
+    TwilightGrasp,
   ],
 };
 

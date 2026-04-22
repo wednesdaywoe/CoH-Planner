@@ -16,12 +16,13 @@ export const SteamSpray: Power = {
   "shortHelp": "Ranged (Cone), DMG(Fire), Foe -Defense, DoT(Fire), +Wet, Self +Tidal Power",
   "icon": "waterblast_steamspray.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.2,
     "range": 40,
     "radius": 40,
-    "arc": 0.8727,
+    "arc": 0.8726646304130554,
     "recharge": 20,
     "endurance": 18.512,
     "castTime": 2.53,
@@ -53,10 +54,52 @@ export const SteamSpray: Power = {
     },
     {
       "type": "Fire",
+      "scale": 0.835,
+      "table": "Ranged_InherentDamage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.6055,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.6055,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1,
+      "table": "Ranged_InherentDamage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.4855,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 1.4855,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.6,
+      "tickRate": 0.5
     }
   ],
   "effects": {

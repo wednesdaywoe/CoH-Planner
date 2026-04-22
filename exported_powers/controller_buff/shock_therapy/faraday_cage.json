@@ -93,7 +93,8 @@
               "Redirects.Shock_Therapy.FaradayCageFx",
               "Redirects.Shock_Therapy.FaradayStatic"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

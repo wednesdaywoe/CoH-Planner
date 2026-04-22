@@ -12,7 +12,7 @@ export const EntanglingAura: Power = {
   "name": "Entangling Aura",
   "internalName": "Raging_Tempest",
   "available": 27,
-  "description": "While this power is active there is a high chance that entangling vines will grasp nearby foes and render them held for a short time.Recharge: Slow.",
+  "description": "While this power is active there is a high chance that entangling vines will grasp nearby foes and render them held for a short time.",
   "shortHelp": "Toggle, Foe Hold",
   "icon": "natureaffinity_ragingtempest.png",
   "powerType": "Toggle",
@@ -22,7 +22,7 @@ export const EntanglingAura: Power = {
     "accuracy": 1,
     "radius": 15,
     "recharge": 20,
-    "endurance": 1.625,
+    "endurance": 1.3,
     "castTime": 2.03,
     "activatePeriod": 2,
     "maxTargets": 16

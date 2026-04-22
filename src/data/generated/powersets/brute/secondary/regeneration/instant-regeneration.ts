@@ -58,8 +58,7 @@ export const ReactiveRegeneration: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 20,
-    "maxStacks": 20
+    "buffDuration": 20
   },
-  "requires": "!Brute_Defense.Regeneration.Instant_Healing"
+  "requires": "Brute_Defense.Regeneration.Instant_Healing !"
 };

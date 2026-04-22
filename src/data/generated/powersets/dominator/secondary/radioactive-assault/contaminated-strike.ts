@@ -16,6 +16,7 @@ export const ContaminatedStrike: Power = {
   "shortHelp": "Melee, High DMG(Energy/Smash), Foe -Def, Special",
   "icon": "radioactiveassault_contaminatedstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,6 +49,16 @@ export const ContaminatedStrike: Power = {
       "type": "Energy",
       "scale": 1.23,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.3253,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9758,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

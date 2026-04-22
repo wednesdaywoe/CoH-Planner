@@ -12,7 +12,7 @@ export const RainofFire: Power = {
   "name": "Rain of Fire",
   "internalName": "Rain_of_Fire",
   "available": 21,
-  "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area.Recharge: Long.",
+  "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area.",
   "shortHelp": "Ranged (Location AoE), DoT(Fire), Foe -SPD",
   "icon": "fireblast_rainoffire.png",
   "powerType": "Click",
@@ -41,9 +41,13 @@ export const RainofFire: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_RainofFire_Sentinel",
-      "duration": 15,
-      "copyBoosts": true
+      "entity": "P1985334123",
+      "displayName": "Rain of Fire",
+      "powers": [
+        "Pets.RainofFire_Sentinel.Avoid",
+        "Pets.RainofFire_Sentinel.RainofFire"
+      ],
+      "duration": 15
     }
   }
 };

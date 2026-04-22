@@ -14,8 +14,9 @@ export const Gravestone: Power = {
   "available": 17,
   "description": "Create a giant pillar of stone, creating a Gravestone around your target, dealing extreme damage and limiting their ability to jump and fly for a short time.Gravestone grants two stacks of Seismic Pressure.",
   "shortHelp": "Ranged, DMG(Smash), Foe -Jump, -Fly",
-  "icon": "seismicblast_gravestone.png",
+  "icon": "seismicblast_gravestone",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -37,9 +38,26 @@ export const Gravestone: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.28,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.049,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.049,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

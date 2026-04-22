@@ -34,6 +34,13 @@ export const HurlBoulder: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Brute Archetype Sets",
+    "Knockback",
+    "Ranged Damage",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

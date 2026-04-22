@@ -53,7 +53,8 @@ export const Resurgence: Power = {
       "rechargeBuff": 90,
       "damageBuff": 90,
       "tohitBuff": 90,
-      "untouchable": 15
+      "untouchable": 15,
+      "stealth": 15
     },
     "rechargeBuff": {
       "scale": 1,
@@ -70,6 +71,12 @@ export const Resurgence: Power = {
     "untouchable": {
       "scale": 10,
       "table": "Melee_Ones"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 300,
+        "table": "Melee_Ones"
+      }
     },
     "buffDuration": 90
   }

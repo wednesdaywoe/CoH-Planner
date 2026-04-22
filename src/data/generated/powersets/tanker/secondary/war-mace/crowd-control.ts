@@ -16,12 +16,13 @@ export const CrowdControl: Power = {
   "shortHelp": "Melee (Cone), DMG(Smash), Knockback",
   "icon": "mace_crowdcontrol.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
     "range": 8,
     "radius": 8,
-    "arc": 3.1416,
+    "arc": 3.1415927410125732,
     "recharge": 12,
     "endurance": 11.856,
     "castTime": 2,
@@ -43,14 +44,26 @@ export const CrowdControl: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.61,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.61,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.516,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.764,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

@@ -90,7 +90,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Reverberant_Controller",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

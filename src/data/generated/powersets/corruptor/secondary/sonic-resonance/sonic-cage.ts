@@ -16,6 +16,7 @@ export const SonicCage: Power = {
   "shortHelp": "Ranged, Foe Capture (Special)",
   "icon": "sonicdebuff_hold.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.4,
@@ -34,23 +35,23 @@ export const SonicCage: Power = {
   "effects": {
     "untouchable": {
       "scale": 4,
-      "table": "Ranged_Immobilize"
+      "table": "Ranged_Ones"
     },
     "durations": {
-      "untouchable": 30,
-      "onlyAffectsSelf": 30,
-      "immobilize": 30
+      "untouchable": 4,
+      "onlyAffectsSelf": 4,
+      "immobilize": 4
     },
     "onlyAffectsSelf": {
       "scale": 4,
-      "table": "Ranged_Immobilize"
+      "table": "Ranged_Ones"
     },
     "immobilize": {
       "mag": 1,
       "scale": 4,
       "table": "Ranged_Immobilize"
     },
-    "effectDuration": 30,
-    "buffDuration": 30
+    "effectDuration": 4,
+    "buffDuration": 4
   }
 };

@@ -16,6 +16,7 @@ export const Slash: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
   "icon": "claws_slash.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,6 +50,21 @@ export const Slash: Power = {
       "type": "Lethal",
       "scale": 0.66,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.7615,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.7615,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.5229,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Lethal",

@@ -16,6 +16,7 @@ export const AimedShot: Power = {
   "shortHelp": "Ranged, DMG(Lethal)",
   "icon": "archery_mediumarrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.155,
@@ -37,11 +38,18 @@ export const AimedShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.32,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.32,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.8092,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "damageBuff": {
       "scale": 0.11,

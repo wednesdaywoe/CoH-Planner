@@ -42,14 +42,29 @@ export const DreadfulWail: Power = {
   "maxSlots": 6,
   "damage": [
     {
+      "type": "Energy",
+      "scale": 2.253,
+      "table": "Ranged_Damage"
+    },
+    {
       "type": "Smashing",
       "scale": 0.928,
       "table": "Ranged_Damage"
     },
     {
+      "type": "Smashing",
+      "scale": 0.928,
+      "table": "Ranged_InherentDamage"
+    },
+    {
       "type": "Energy",
-      "scale": 2.253,
-      "table": "Ranged_Damage"
+      "scale": 0.471,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8741,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

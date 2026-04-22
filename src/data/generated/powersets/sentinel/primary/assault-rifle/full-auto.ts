@@ -16,12 +16,13 @@ export const FullAuto: Power = {
   "shortHelp": "Ranged (Cone), DoT(Lethal), +Special",
   "icon": "assaultweapons_arfullauto.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.35,
     "range": 40,
     "radius": 40,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 90,
     "endurance": 15.6,
     "castTime": 2.5,
@@ -46,14 +47,28 @@ export const FullAuto: Power = {
       "scale": 0.2261,
       "table": "Ranged_Damage",
       "duration": 2,
-      "tickRate": 0.2
+      "tickRate": 0.20000000298023224
     },
     {
       "type": "Lethal",
       "scale": 0.0935,
       "table": "Ranged_Damage",
       "duration": 2,
-      "tickRate": 0.2
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.0935,
+      "table": "Ranged_InherentDamage",
+      "duration": 2,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.1891,
+      "table": "Ranged_PvPDamage",
+      "duration": 2,
+      "tickRate": 0.20000000298023224
     }
   ]
 };

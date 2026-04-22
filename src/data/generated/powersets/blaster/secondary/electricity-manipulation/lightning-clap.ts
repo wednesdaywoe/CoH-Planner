@@ -34,6 +34,7 @@ export const Dynamo: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Blaster Archetype Sets",
     "Endurance Modification",
     "Healing",
@@ -59,7 +60,7 @@ export const Dynamo: Power = {
       "table": "Melee_EndDrain"
     },
     "regenBuff": {
-      "scale": 1.125,
+      "scale": 2.25,
       "table": "Melee_Ones"
     },
     "durations": {

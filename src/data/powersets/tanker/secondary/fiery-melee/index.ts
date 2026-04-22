@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { Scorch as Scorch } from './scorch';
-import { FireSword as FireSword } from './fire-sword';
-import { Combustion as Combustion } from './combustion';
-import { Taunt as Taunt } from './taunt';
-import { BreathofFire as BreathofFire } from './breath-of-fire';
+import { FieryBreath as FieryBreath } from './breath-of-fire';
 import { BuildUp as BuildUp } from './build-up';
+import { Combustion as Combustion } from './combustion';
+import { FireSword as FireSword } from './fire-sword';
 import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
-import { Incinerate as Incinerate } from './incinerate';
 import { GreaterFireSword as GreaterFireSword } from './greater-fire-sword';
+import { Incinerate as Incinerate } from './incinerate';
+import { Scorch as Scorch } from './scorch';
+import { Taunt as Taunt } from './taunt';
 
 export const powerset: Powerset = {
   id: 'tanker/fiery-melee',
   name: 'Fiery Melee',
   description: 'Fiery Melee allows you to attack with fire, and even conjure up flaming melee weapons. Fiery Melee powers tend to set foes ablaze for added Damage Over Time.',
-  icon: 'fiery_melee_set.png',
+  icon: 'fiery_melee_set.ico',
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    Scorch,
-    FireSword,
-    Combustion,
-    Taunt,
-    BreathofFire,
+    FieryBreath,
     BuildUp,
+    Combustion,
+    FireSword,
     FireSwordCircle,
-    Incinerate,
     GreaterFireSword,
+    Incinerate,
+    Scorch,
+    Taunt,
   ],
 };
 

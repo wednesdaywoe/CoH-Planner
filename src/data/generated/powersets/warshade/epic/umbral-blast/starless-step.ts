@@ -16,6 +16,7 @@ export const StarlessStep: Power = {
   "shortHelp": "Ranged (Location), Self Teleport, ToHit",
   "icon": "umbralblast_starlessstep.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,
@@ -31,9 +32,7 @@ export const StarlessStep: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Teleport",
-    "To Hit Buff",
-    "Universal Travel"
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "effects": {

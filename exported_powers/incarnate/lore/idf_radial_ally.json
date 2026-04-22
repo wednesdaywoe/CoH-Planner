@@ -83,7 +83,8 @@
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Lore_IDF_LT",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -113,7 +114,8 @@
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Lore_IDF_Support",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

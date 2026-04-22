@@ -96,7 +96,39 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Stunned",
+                "Held",
+                "Sleep"
+              ],
+              "suppress_events": [
+                {
+                  "event": "Attacked",
+                  "event_id": 2,
+                  "duration": 8.0,
+                  "flag": 1
+                },
+                {
+                  "event": "Damaged",
+                  "event_id": 21,
+                  "duration": 8.0,
+                  "flag": 1
+                },
+                {
+                  "event": "MissionObjectClick",
+                  "event_id": 37,
+                  "duration": 8.0,
+                  "flag": 1
+                },
+                {
+                  "event": "PseudoPetAttacked",
+                  "event_id": 47,
+                  "duration": 8.0,
+                  "flag": 1
+                }
+              ],
+              "flags_raw": 1072
             }
           ]
         },
@@ -149,7 +181,13 @@
                   "caster_stack": "Individual",
                   "stack": "Replace",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "cancel_events": [
+                    "Stunned",
+                    "Held",
+                    "Sleep"
+                  ],
+                  "flags_raw": 1056
                 }
               ]
             },
@@ -197,7 +235,20 @@
                   "caster_stack": "Individual",
                   "stack": "Suppress",
                   "stack_limit": 2,
-                  "stack_key": "NictusFX"
+                  "stack_key": "NictusFX",
+                  "cancel_events": [
+                    "Attacked",
+                    "Helped",
+                    "HitByFoe",
+                    "Stunned",
+                    "Held",
+                    "Sleep",
+                    "MissionObjectClick",
+                    "CommandedPet",
+                    "PseudoPetAttacked",
+                    "PseudoPetHelped"
+                  ],
+                  "flags_raw": 263200
                 }
               ]
             }
@@ -259,7 +310,8 @@
                   "caster_stack": "Individual",
                   "stack": "Replace",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1056
                 }
               ]
             },
@@ -307,7 +359,20 @@
                   "caster_stack": "Individual",
                   "stack": "Suppress",
                   "stack_limit": 2,
-                  "stack_key": "NictusFX"
+                  "stack_key": "NictusFX",
+                  "cancel_events": [
+                    "Attacked",
+                    "Helped",
+                    "HitByFoe",
+                    "Stunned",
+                    "Held",
+                    "Sleep",
+                    "MissionObjectClick",
+                    "CommandedPet",
+                    "PseudoPetAttacked",
+                    "PseudoPetHelped"
+                  ],
+                  "flags_raw": 263200
                 }
               ]
             }
@@ -347,7 +412,16 @@
               "caster_stack": "Individual",
               "stack": "Suppress",
               "stack_limit": 2,
-              "stack_key": "NictusFX"
+              "stack_key": "NictusFX",
+              "cancel_events": [
+                "Attacked",
+                "HitByFoe",
+                "Stunned",
+                "Held",
+                "Sleep",
+                "MissionObjectClick"
+              ],
+              "flags_raw": 263200
             }
           ]
         },
@@ -385,7 +459,16 @@
               "caster_stack": "Individual",
               "stack": "Suppress",
               "stack_limit": 2,
-              "stack_key": "NictusFX"
+              "stack_key": "NictusFX",
+              "cancel_events": [
+                "Attacked",
+                "HitByFoe",
+                "Stunned",
+                "Held",
+                "Sleep",
+                "MissionObjectClick"
+              ],
+              "flags_raw": 263200
             },
             {
               "attribs": [
@@ -410,7 +493,36 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Attacked",
+                "HitByFoe",
+                "Stunned",
+                "Held",
+                "Sleep",
+                "MissionObjectClick"
+              ],
+              "suppress_events": [
+                {
+                  "event": "Attacked",
+                  "event_id": 2,
+                  "duration": 10.0,
+                  "flag": 1
+                },
+                {
+                  "event": "Damaged",
+                  "event_id": 21,
+                  "duration": 10.0,
+                  "flag": 1
+                },
+                {
+                  "event": "MissionObjectClick",
+                  "event_id": 37,
+                  "duration": 10.0,
+                  "flag": 1
+                }
+              ],
+              "flags_raw": 1072
             }
           ]
         }

@@ -14,8 +14,9 @@ export const DarkObliteration: Power = {
   "available": 11,
   "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
-  "icon": "darkcast_darkobliteration.png",
+  "icon": "darkcast_darkobliteration",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -42,9 +43,26 @@ export const DarkObliteration: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.9,
-    "table": "Melee_Damage"
-  }
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.9,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.9,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.5354,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.5354,
+      "table": "Melee_PvPDamage"
+    }
+  ]
 };

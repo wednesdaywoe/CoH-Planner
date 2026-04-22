@@ -44,10 +44,6 @@ export const GroupInvisibility: Power = {
       "stealthPvP": {
         "scale": 667,
         "table": "Ranged_Ones"
-      },
-      "translucency": {
-        "scale": 0.3,
-        "table": "Ranged_Ones"
       }
     },
     "durations": {

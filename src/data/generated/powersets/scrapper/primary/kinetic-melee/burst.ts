@@ -23,7 +23,7 @@ export const Burst: Power = {
     "radius": 8,
     "recharge": 15,
     "endurance": 14.3,
-    "castTime": 2.67,
+    "castTime": 2.53,
     "maxTargets": 10
   },
   "allowedEnhancements": [
@@ -42,29 +42,48 @@ export const Burst: Power = {
   "maxSlots": 6,
   "damage": [
     {
+      "type": "Energy",
+      "scale": 0.1254,
+      "table": "Melee_Damage",
+      "duration": 1.9,
+      "tickRate": 0.4000000059604645
+    },
+    {
       "type": "Smashing",
-      "scale": 0.75,
+      "scale": 0.6272,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.25,
+      "scale": 1.2543,
       "table": "Melee_InherentDamage"
     },
     {
       "type": "Energy",
-      "scale": 1.25,
+      "scale": 1.2543,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1512,
+      "table": "Melee_PvPDamage",
+      "duration": 1.9,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.5038,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2596,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 0.8934,
       "table": "Melee_Ones"
     }
   }

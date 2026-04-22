@@ -35,8 +35,10 @@ export const JackFrost: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Dominator Archetype Sets",
+    "Holds",
+    "Ranged AoE Damage",
+    "Slow Movement",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -44,7 +46,7 @@ export const JackFrost: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_JackFrost",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

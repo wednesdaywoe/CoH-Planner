@@ -16,12 +16,13 @@ export const InnocuousStrikes: Power = {
   "shortHelp": "Melee (Cone), DMG(Smash), Foe Immobilize, -Speed",
   "icon": "stafffighting_innocuousstrikes.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
     "range": 9,
     "radius": 9,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 10,
     "endurance": 10.192,
     "castTime": 2.17,
@@ -45,13 +46,29 @@ export const InnocuousStrikes: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.332,
-    "table": "Melee_Damage",
-    "duration": 1.7,
-    "tickRate": 0.4
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.332,
+      "table": "Melee_Damage",
+      "duration": 1.7,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.3418,
+      "table": "Melee_PvPDamage",
+      "duration": 1.7,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.122,
+      "table": "Melee_PvPDamage",
+      "duration": 1.7,
+      "tickRate": 0.4000000059604645
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,

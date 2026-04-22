@@ -73,7 +73,8 @@
           "caster_stack": "Individual",
           "stack": "Continuous",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 3120
         }
       ],
       "child_effects": [
@@ -117,7 +118,8 @@
                 "power_names": [
                   "Blaster_Ranged.Seismic_Blast.Shockwaves"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         },
@@ -161,7 +163,8 @@
                 "power_names": [
                   "Corruptor_Ranged.Seismic_Blast.Shockwaves"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         },
@@ -205,7 +208,8 @@
                 "power_names": [
                   "Defender_Ranged.Seismic_Blast.Shockwaves"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         },
@@ -249,7 +253,8 @@
                 "power_names": [
                   "Sentinel_Ranged.Seismic_Blast.Shockwaves"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         }
@@ -298,7 +303,8 @@
               "Defender_Ranged.Seismic_Blast.Shockwaves",
               "Sentinel_Ranged.Seismic_Blast.Shockwaves"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -345,7 +351,8 @@
               "Defender_Ranged.Seismic_Blast.Shockwaves",
               "Sentinel_Ranged.Seismic_Blast.Shockwaves"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

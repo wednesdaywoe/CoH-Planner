@@ -16,6 +16,7 @@ export const SeismicSmash: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe Hold",
   "icon": "stonemelee_seismicsmash.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -40,11 +41,18 @@ export const SeismicSmash: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 3.56,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 3.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.2499,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
       "mag": 4,

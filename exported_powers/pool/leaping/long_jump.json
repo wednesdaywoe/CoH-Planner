@@ -78,7 +78,21 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -103,7 +117,21 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -128,7 +156,21 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "tusFX"
+          "stack_key": "tusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 263216
         },
         {
           "attribs": [
@@ -153,7 +195,21 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -178,7 +234,21 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 263200
         }
       ]
     },
@@ -218,7 +288,13 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -243,7 +319,13 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -268,7 +350,13 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -293,7 +381,13 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX"
+          "stack_key": "ictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -318,7 +412,13 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "tusFX"
+          "stack_key": "tusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 263216
         }
       ]
     },
@@ -356,7 +456,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 3120
         },
         {
           "attribs": [
@@ -381,7 +482,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         }
       ]
     }

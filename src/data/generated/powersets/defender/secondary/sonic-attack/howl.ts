@@ -16,12 +16,13 @@ export const Howl: Power = {
   "shortHelp": "Ranged Cone, Minor DMG(Smashing/Energy), Foe -Res(All)",
   "icon": "sonicblast_cone.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 50,
     "radius": 50,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 8,
     "endurance": 8.528,
     "castTime": 1.6,
@@ -50,6 +51,21 @@ export const Howl: Power = {
       "type": "Energy",
       "scale": 0.3347,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.3755,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3755,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.84,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

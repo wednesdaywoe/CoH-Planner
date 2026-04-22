@@ -20,9 +20,9 @@ export const WhirlingSword: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.05,
-    "radius": 8,
-    "recharge": 14,
-    "endurance": 13.52,
+    "radius": 10,
+    "recharge": 20,
+    "endurance": 18.512,
     "castTime": 2.67,
     "maxTargets": 10
   },
@@ -46,8 +46,13 @@ export const WhirlingSword: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 1.18,
+      "scale": 1.424,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.2276,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Lethal",

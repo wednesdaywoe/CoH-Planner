@@ -86,7 +86,8 @@
             "power_names": [
               "Villain_Pets.Traps_Set_TimeBomb.Time_Bomb"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

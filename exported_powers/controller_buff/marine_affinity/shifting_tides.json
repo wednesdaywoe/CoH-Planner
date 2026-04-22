@@ -84,7 +84,8 @@
             "power_names": [
               "Redirects.Marine_Affinity.Shifting_Tides"
             ]
-          }
+          },
+          "flags_raw": 17664
         }
       ]
     },
@@ -122,7 +123,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 66816
         },
         {
           "attribs": [
@@ -147,7 +149,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -179,7 +182,8 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -204,7 +208,8 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -229,7 +234,8 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         }
       ]
     },
@@ -267,7 +273,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 66816
         }
       ]
     },
@@ -311,7 +318,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Rising_Tide"
             ]
-          }
+          },
+          "flags_raw": 16480
         }
       ],
       "child_effects": [
@@ -349,7 +357,8 @@
               "caster_stack": "Individual",
               "stack": "Refresh",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 112
             }
           ]
         },
@@ -387,7 +396,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -418,7 +428,8 @@
                 "power_names": [
                   "Redirects.Marine_Affinity.Shifting_Tides_FX"
                 ]
-              }
+              },
+              "flags_raw": 17664
             }
           ]
         }

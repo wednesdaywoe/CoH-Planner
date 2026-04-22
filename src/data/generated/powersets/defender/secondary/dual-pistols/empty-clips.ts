@@ -16,12 +16,13 @@ export const EmptyClips: Power = {
   "shortHelp": "Ranged (Cone), DMG(Lethal/Special), Foe -Defense, Knockdown/Special",
   "icon": "dualpistols_emptyclips.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.1,
     "range": 40,
     "radius": 40,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 10,
     "endurance": 10.192,
     "castTime": 1.67,
@@ -50,22 +51,15 @@ export const EmptyClips: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 0.182,
+      "scale": 0.26,
       "table": "Ranged_Damage",
       "duration": 1.6,
       "tickRate": 0.5
     },
     {
-      "type": "Fire",
-      "scale": 0.113,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
       "type": "Lethal",
-      "scale": 0.078,
-      "table": "Ranged_Damage",
+      "scale": 0.2612,
+      "table": "Ranged_PvPDamage",
       "duration": 1.6,
       "tickRate": 0.5
     }
@@ -79,7 +73,7 @@ export const EmptyClips: Power = {
       "defenseDebuff": 8
     },
     "knockback": {
-      "scale": 0.4,
+      "scale": 0.8,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 8

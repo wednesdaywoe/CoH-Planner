@@ -31,6 +31,7 @@ export const StygianReturn: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Healing",
     "Kheldian Archetype Sets",
     "Melee AoE Damage",
@@ -67,7 +68,14 @@ export const StygianReturn: Power = {
       "table": "Melee_Ones"
     },
     "durations": {
-      "untouchable": 15
+      "untouchable": 15,
+      "stealth": 15
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 300,
+        "table": "Melee_Ones"
+      }
     },
     "buffDuration": 15
   }

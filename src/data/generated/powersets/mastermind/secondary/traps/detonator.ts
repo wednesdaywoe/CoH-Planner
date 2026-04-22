@@ -16,6 +16,7 @@ export const Detonator: Power = {
   "shortHelp": "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_aoemassivedamage.png",
   "powerType": "Click",
+  "targetType": "Self",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -34,7 +35,7 @@ export const Detonator: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
+    "Ranged Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

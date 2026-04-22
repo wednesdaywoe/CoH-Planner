@@ -86,7 +86,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Assault_Total_Core_Graft"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -117,7 +118,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Assault_Total_Core_Graft"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -148,7 +150,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Assault_Boost_Rare"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -179,7 +182,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Assault_Boost_Rare"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

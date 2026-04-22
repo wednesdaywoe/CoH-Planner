@@ -16,6 +16,7 @@ export const SiphonSpeed: Power = {
   "shortHelp": "Ranged, Foe -Speed, -Recharge, Self +Speed, +Recharge",
   "icon": "kineticboost_siphonspeed.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

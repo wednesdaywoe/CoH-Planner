@@ -16,12 +16,13 @@ export const PsychicScream: Power = {
   "shortHelp": "Ranged (Cone), DMG(Psionic), Foe -Recharge",
   "icon": "nightwidowtraining_psychicscream.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 50,
     "radius": 50,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 20,
     "endurance": 21.157,
     "castTime": 2,
@@ -40,9 +41,21 @@ export const PsychicScream: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.4931,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.4931,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.9541,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.6459,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

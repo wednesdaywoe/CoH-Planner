@@ -87,7 +87,8 @@
             "power_names": [
               "Redirects.Electric_Control.Tesla_Coil_Chain"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

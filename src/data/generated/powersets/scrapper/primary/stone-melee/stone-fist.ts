@@ -16,6 +16,7 @@ export const StoneFist: Power = {
   "shortHelp": "Melee DMG(Smashing), Foe Minor Disorient",
   "icon": "stonemelee_stonefist.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -53,6 +54,16 @@ export const StoneFist: Power = {
       "type": "Smashing",
       "scale": 1,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.141,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.141,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

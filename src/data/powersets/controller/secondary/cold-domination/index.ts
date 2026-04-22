@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { Infrigidate as Infrigidate } from './infrigidate';
-import { IceShield as IceShield } from './ice-shield';
-import { SnowStorm as SnowStorm } from './snow-storm';
-import { GlacialShield as GlacialShield } from './glacial-shield';
-import { Frostwork as Frostwork } from './frostwork';
 import { ArcticFog as ArcticFog } from './arctic-fog';
 import { Benumb as Benumb } from './benumb';
-import { Sleet as Sleet } from './sleet';
+import { Frostwork as Frostwork } from './frostwork';
+import { GlacialShield as GlacialShield } from './glacial-shield';
 import { HeatLoss as HeatLoss } from './heat-loss';
+import { IceShield as IceShield } from './ice-shield';
+import { Infrigidate as Infrigidate } from './infrigidate';
+import { Sleet as Sleet } from './sleet';
+import { SnowStorm as SnowStorm } from './snow-storm';
 
 export const powerset: Powerset = {
   id: 'controller/cold-domination',
   name: 'Cold Domination',
   description: 'Cold Domination powers allow you to manipulate cold and ice to protect your allies and weaken your enemies.',
-  icon: 'cold_domination_set.png',
+  icon: 'cold_domination_set.ico',
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    Infrigidate,
-    IceShield,
-    SnowStorm,
-    GlacialShield,
-    Frostwork,
     ArcticFog,
     Benumb,
-    Sleet,
+    Frostwork,
+    GlacialShield,
     HeatLoss,
+    IceShield,
+    Infrigidate,
+    Sleet,
+    SnowStorm,
   ],
 };
 

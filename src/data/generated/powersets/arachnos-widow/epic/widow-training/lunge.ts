@@ -16,6 +16,7 @@ export const Strike: Power = {
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
   "icon": "widowtraining_strike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,6 +42,21 @@ export const Strike: Power = {
       "type": "Lethal",
       "scale": 1.4373,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.9582,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.539,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.0265,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Toxic",

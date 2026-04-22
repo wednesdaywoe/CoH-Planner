@@ -23,7 +23,7 @@ export const EMPArrow: Power = {
     "range": 70,
     "radius": 35,
     "recharge": 300,
-    "endurance": 29.25,
+    "endurance": 23.4,
     "castTime": 1.83,
     "maxTargets": 16
   },
@@ -47,14 +47,14 @@ export const EMPArrow: Power = {
   },
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "EMP Field",
       "powers": [
         "Redirects.Trick_Arrow.EMP_Arrow",
         "Redirects.Trick_Arrow.EMP_Arrow_Fx"
       ],
-      "duration": 240,
-      "copyBoosts": true
+      "duration": 240
     },
     "absorb": {
       "scale": 2,
@@ -73,8 +73,8 @@ export const EMPArrow: Power = {
       "regenDebuff": 45
     },
     "enduranceDrain": {
-      "scale": 0.4,
-      "table": "Ranged_Ones"
+      "scale": 16.67,
+      "table": "Ranged_EndDrain"
     },
     "confuse": {
       "mag": 1,
@@ -112,8 +112,8 @@ export const EMPArrow: Power = {
       "table": "Ranged_Res_Boolean"
     },
     "regenDebuff": {
-      "scale": 10,
-      "table": "Ranged_Ones"
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
     },
     "buffDuration": 45
   }

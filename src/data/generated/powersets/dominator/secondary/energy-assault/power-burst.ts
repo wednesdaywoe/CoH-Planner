@@ -16,6 +16,7 @@ export const PowerBurst: Power = {
   "shortHelp": "Ranged, Superior DMG(Energy/Smash), Foe Knockback, Special",
   "icon": "energyassault_powerburst.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -53,11 +54,26 @@ export const PowerBurst: Power = {
       "type": "Energy",
       "scale": 1.69,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8516,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2774,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6387,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 4,
       "table": "Ranged_Knockback"
     }
   }

@@ -1,5 +1,5 @@
 /**
- * Breath of Fire — COMPOSED EXPORT
+ * Fiery Breath — COMPOSED EXPORT
  *
  * The planner imports from here. Composes the auto-generated power object
  * with hand-written overrides via `withOverrides`. See src/data/README.md
@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BreathofFire as base } from '@/data/generated/powersets/tanker/secondary/fiery-melee/breath-of-fire';
+import { FieryBreath as base } from '@/data/generated/powersets/tanker/secondary/fiery-melee/breath-of-fire';
 import { overrides } from '@/data/overrides/powersets/tanker/secondary/fiery-melee/breath-of-fire';
 
-export const BreathofFire: Power = withOverrides(base, overrides);
+export const FieryBreath: Power = withOverrides(base, overrides);

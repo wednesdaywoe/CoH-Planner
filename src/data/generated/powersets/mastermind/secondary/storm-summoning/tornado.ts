@@ -22,7 +22,7 @@ export const Tornado: Power = {
     "accuracy": 1.3,
     "range": 60,
     "recharge": 60,
-    "endurance": 26,
+    "endurance": 20.8,
     "castTime": 1.17
   },
   "allowedEnhancements": [
@@ -38,9 +38,7 @@ export const Tornado: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],
@@ -49,8 +47,7 @@ export const Tornado: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Tornado",
-      "duration": 30,
-      "copyBoosts": true
+      "duration": 30
     }
   }
 };

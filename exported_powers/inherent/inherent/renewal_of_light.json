@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.Renewal_of_Light"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

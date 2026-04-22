@@ -16,6 +16,7 @@ export const Smite: Power = {
   "shortHelp": "Melee, DMG(Smash/Negative), Foe -To Hit",
   "icon": "shadowfighting_smite.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -54,6 +55,31 @@ export const Smite: Power = {
       "type": "Negative",
       "scale": 1.32,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.3297,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.9892,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.319,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.319,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

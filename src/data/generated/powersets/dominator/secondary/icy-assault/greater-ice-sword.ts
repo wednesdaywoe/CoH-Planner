@@ -16,6 +16,7 @@ export const IceSlash: Power = {
   "shortHelp": "Melee, Superior DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "iceassault_iceswordcleave.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -47,6 +48,16 @@ export const IceSlash: Power = {
       "type": "Cold",
       "scale": 1.54,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.1805,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.1805,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

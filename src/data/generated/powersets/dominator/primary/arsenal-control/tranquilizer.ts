@@ -14,8 +14,9 @@ export const Tranquilizer: Power = {
   "available": 0,
   "description": "The Tranquilizing Dart is the perfect tool to sideline a single foe. It deals some toxic damage and can render the target unconscious, allowing you to focus on more important targets. The target remains asleep for some time, but will awaken if attacked.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.",
   "shortHelp": "Ranged, DMG(Toxic), Foe Sleep, -SPD",
-  "icon": "arsenalcontrol_tranquilizer.png",
+  "icon": "arsenalcontrol_tranquilizer",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.15,
@@ -51,13 +52,18 @@ export const Tranquilizer: Power = {
       "type": "Toxic",
       "scale": 1,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 1.54,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "sleep": {
-      "mag": 3.5,
-      "scale": 30,
-      "table": "Ranged_Sleep"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

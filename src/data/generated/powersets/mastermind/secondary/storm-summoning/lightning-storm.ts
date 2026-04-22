@@ -21,7 +21,7 @@ export const LightningStorm: Power = {
   "stats": {
     "accuracy": 1.4,
     "recharge": 90,
-    "endurance": 39,
+    "endurance": 31.2,
     "castTime": 2.03
   },
   "allowedEnhancements": [
@@ -44,8 +44,7 @@ export const LightningStorm: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_LightningStorm_Controller",
-      "duration": 60,
-      "copyBoosts": true
+      "duration": 60
     }
   }
 };

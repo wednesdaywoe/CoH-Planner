@@ -14,14 +14,15 @@ export const HypnotizingLights: Power = {
   "available": 7,
   "description": "You conjure a whirl of lights with differing effects depending on the distance from which it is viewed. Most all targets within the area will be placed into a sleep like trance. Up to five enemies within 20 feet of the display are Confused and receive Psionic damage over time.Notes: Although this power is Auto Hit, it requires a To Hit check to apply Deep Sleep. If the Hit check is missed, and the target is not an AV, the weaker form of Sleep will be applied.",
   "shortHelp": "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep",
-  "icon": "pyrotechnic_hypnotizinglights.png",
+  "icon": "pyrotechnic_hypnotizinglights",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "radius": 70,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 45,
     "endurance": 8.528,
     "castTime": 1.67,
@@ -44,18 +45,41 @@ export const HypnotizingLights: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.1,
-    "table": "Ranged_Damage",
-    "duration": 5,
-    "tickRate": 0.5
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 5,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.1,
+      "table": "Ranged_InherentDamage",
+      "duration": 5,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.0627,
+      "table": "Ranged_PvPDamage",
+      "duration": 5,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.0627,
+      "table": "Ranged_PvPDamage",
+      "duration": 5,
+      "tickRate": 0.5
+    }
+  ],
   "effects": {
     "sleep": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Sleep"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "confuse": {
       "mag": 3,

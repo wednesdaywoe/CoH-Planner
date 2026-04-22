@@ -91,7 +91,8 @@
             "power_names": [
               "Redirects.Stone_Melee.Fault_Tanker"
             ]
-          }
+          },
+          "flags_raw": 66816
         },
         {
           "attribs": [
@@ -122,7 +123,8 @@
             "power_names": [
               "Redirects.Stone_Melee.Fault_Cone_Tanker"
             ]
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     }

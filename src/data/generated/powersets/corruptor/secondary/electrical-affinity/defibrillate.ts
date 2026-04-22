@@ -16,6 +16,7 @@ export const Defibrillate: Power = {
   "shortHelp": "Melee (Targeted AoE), Ally Rez, Foe Sleep, -End, -Recovery",
   "icon": "shocktherapy_defibrillate.png",
   "powerType": "Click",
+  "targetType": "Ally",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -30,6 +31,10 @@ export const Defibrillate: Power = {
     "Sleep",
     "Recharge",
     "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Sleep"
   ],
   "maxSlots": 6,
   "damage": {

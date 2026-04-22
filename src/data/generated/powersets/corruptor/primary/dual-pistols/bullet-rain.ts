@@ -16,6 +16,7 @@ export const BulletRain: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Lethal/Special), Knockback/Special",
   "icon": "dualpistols_explosiveclip.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.1,
@@ -46,30 +47,37 @@ export const BulletRain: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 0.233,
+      "scale": 0.3323,
       "table": "Ranged_Damage",
       "duration": 1.1,
       "tickRate": 0.5
     },
     {
-      "type": "Fire",
-      "scale": 0.113,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
+      "type": "Lethal",
+      "scale": 0.3323,
+      "table": "Ranged_InherentDamage",
+      "duration": 1.1,
+      "tickRate": 0.5
     },
     {
       "type": "Lethal",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
+      "scale": 0.2348,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.1,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.2348,
+      "table": "Ranged_PvPDamage",
       "duration": 1.1,
       "tickRate": 0.5
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 2,
-      "table": "Ranged_Ones"
+      "scale": 4,
+      "table": "Ranged_Knockback"
     }
   }
 };

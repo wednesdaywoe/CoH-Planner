@@ -16,6 +16,7 @@ export const StingoftheWasp: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe -Def",
   "icon": "katana_hack.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -47,6 +48,16 @@ export const StingoftheWasp: Power = {
     },
     {
       "type": "Lethal",
+      "scale": 1.4189,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4189,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
       "scale": 1.16,
       "table": "Melee_InherentDamage"
     },
@@ -66,5 +77,5 @@ export const StingoftheWasp: Power = {
     },
     "buffDuration": 10
   },
-  "requires": "!Scrapper_Defense.Shield_Defense"
+  "requires": "Scrapper_Defense.Shield_Defense !"
 };

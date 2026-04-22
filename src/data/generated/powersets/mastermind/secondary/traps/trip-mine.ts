@@ -21,7 +21,7 @@ export const TripMine: Power = {
   "stats": {
     "accuracy": 1.2,
     "recharge": 20,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 5
   },
   "allowedEnhancements": [
@@ -33,7 +33,7 @@ export const TripMine: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -41,8 +41,7 @@ export const TripMine: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_Mine",
-      "duration": 260,
-      "copyBoosts": true
+      "duration": 260
     }
   }
 };

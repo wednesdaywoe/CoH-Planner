@@ -95,7 +95,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -120,7 +121,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1284
             }
           ]
         },
@@ -158,7 +160,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -210,7 +213,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -235,7 +239,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1284
             }
           ]
         },
@@ -273,7 +278,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -313,7 +319,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }
@@ -365,7 +372,8 @@
               "Corruptor_Ranged.Seismic_Blast.Tombstone",
               "Corruptor_Ranged.Seismic_Blast.Upthrust"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ],
       "child_effects": [
@@ -409,7 +417,8 @@
                 "power_names": [
                   "Redirects.Seismic_Blast.Seismic_Stress_Release"
                 ]
-              }
+              },
+              "flags_raw": 320
             }
           ]
         },
@@ -453,7 +462,8 @@
                 "power_names": [
                   "Redirects.Seismic_Blast.Seismic_Stress"
                 ]
-              }
+              },
+              "flags_raw": 196928
             },
             {
               "attribs": [
@@ -484,7 +494,8 @@
                 "power_names": [
                   "Redirects.Seismic_Blast.Seismic_Stress"
                 ]
-              }
+              },
+              "flags_raw": 196928
             }
           ]
         }

@@ -16,6 +16,7 @@ export const DominateWill: Power = {
   "shortHelp": "Ranged, DMG(Psionic), Foe Sleep",
   "icon": "psychicblast_willdomination.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,11 +40,18 @@ export const DominateWill: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.2602,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "sleep": {
       "mag": 3,

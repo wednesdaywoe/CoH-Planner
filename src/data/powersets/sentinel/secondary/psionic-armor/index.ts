@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { PsychicWall as PsychicWall } from './psychic-wall';
-import { PsionicShield as PsionicShield } from './psionic-shield';
-import { MaskPresence as MaskPresence } from './mask-presence';
-import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
+import { AuraofMadness as AuraofMadness } from './aura-of-insanity';
 import { DevourPsyche as DevourPsyche } from './devour-psyche';
 import { PsychokineticBarrier as PsychokineticBarrier } from './fortify-mind';
-import { Precognition as Precognition } from './precognition';
-import { AuraofMadness as AuraofMadness } from './aura-of-insanity';
+import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
+import { MaskPresence as MaskPresence } from './mask-presence';
 import { MementoMori as MementoMori } from './memento-mori';
+import { Precognition as Precognition } from './precognition';
+import { PsionicShield as PsionicShield } from './psionic-shield';
+import { PsychicWall as PsychicWall } from './psychic-wall';
 
 export const powerset: Powerset = {
   id: 'sentinel/psionic-armor',
   name: 'Psionic Armor',
   description: 'You use your psionic powers to shield yourself reducing incoming damage, as well as steal your foes own psyche and use it against them, be it by empowering your own regenerative powers, weakening their defenses or completely subduing their will.',
-  icon: 'dark_armor_set.png',
+  icon: 'dark_armor_set.ico',
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    PsychicWall,
-    PsionicShield,
-    MaskPresence,
-    ImpenetrableMind,
+    AuraofMadness,
     DevourPsyche,
     PsychokineticBarrier,
-    Precognition,
-    AuraofMadness,
+    ImpenetrableMind,
+    MaskPresence,
     MementoMori,
+    Precognition,
+    PsionicShield,
+    PsychicWall,
   ],
 };
 

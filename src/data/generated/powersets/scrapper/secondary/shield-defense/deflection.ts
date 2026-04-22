@@ -57,5 +57,5 @@ export const BattleAgility: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "!(Scrapper_Melee.Claws || Scrapper_Melee.Dual_Blades || Scrapper_Melee.Katana || Scrapper_Melee.Quills || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Titan_Weapons)"
+  "requires": "Scrapper_Melee.Claws Scrapper_Melee.Katana || Scrapper_Melee.Dual_Blades || Scrapper_Melee.Quills || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Titan_Weapons || !"
 };

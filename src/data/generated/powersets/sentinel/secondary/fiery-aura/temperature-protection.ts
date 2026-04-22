@@ -70,5 +70,6 @@ export const TemperatureProtection: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 10
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

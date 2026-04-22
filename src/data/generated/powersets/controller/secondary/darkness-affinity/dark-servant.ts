@@ -37,6 +37,7 @@ export const DarkServant: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
+    "Controller Archetype Sets",
     "Healing",
     "Holds",
     "Immobilize",
@@ -47,8 +48,7 @@ export const DarkServant: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_V_DarkServant",
-      "duration": 240,
-      "copyBoosts": true
+      "duration": 240
     }
   }
 };

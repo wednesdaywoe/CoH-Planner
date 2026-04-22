@@ -35,9 +35,7 @@
     "SpeedFlying",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [
-    ".NictusFX"
-  ],
+  "allowed_boostset_cats": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && ||",
@@ -79,7 +77,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -104,7 +103,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -129,7 +134,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -154,7 +165,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         }
       ],
       "child_effects": [
@@ -194,7 +211,13 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Stunned",
+                "Held",
+                "Sleep"
+              ],
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -220,7 +243,13 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Stunned",
+                "Held",
+                "Sleep"
+              ],
+              "flags_raw": 1072
             }
           ]
         },
@@ -260,7 +289,13 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "cancel_events": [
+                "Stunned",
+                "Held",
+                "Sleep"
+              ],
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -286,7 +321,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             }
           ]
         },
@@ -324,7 +360,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1056
             }
           ]
         }
@@ -374,7 +411,46 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "Helped",
+              "event_id": 4,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 37,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "CommandedPet",
+              "event_id": 41,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "PseudoPetAttacked",
+              "event_id": 47,
+              "duration": 10.0,
+              "flag": 1
+            },
+            {
+              "event": "PseudoPetHelped",
+              "event_id": 48,
+              "duration": 10.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -399,7 +475,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

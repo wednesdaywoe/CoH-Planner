@@ -16,6 +16,7 @@ export const TelekineticBlow: Power = {
   "shortHelp": "Melee, DMG(Psionic/Smash), Foe Knock Up, Self +Insight",
   "icon": "psionicmelee_telekineticblow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -52,16 +53,26 @@ export const TelekineticBlow: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Smashing",
+      "scale": 0.4472,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Psionic",
-      "scale": 0.18,
+      "scale": 1.3417,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.1417,
       "table": "Melee_Damage",
-      "duration": 3.1,
+      "duration": 2.1,
       "tickRate": 1
     }
   ],
   "effects": {
     "knockup": {
-      "scale": 1,
+      "scale": 2,
       "table": "Melee_Knockback"
     }
   }

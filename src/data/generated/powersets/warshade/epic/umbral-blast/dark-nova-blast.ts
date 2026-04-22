@@ -16,6 +16,7 @@ export const DarkNovaBlast: Power = {
   "shortHelp": "Ranged, Light DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_shadowblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,16 +42,23 @@ export const DarkNovaBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Ranged_InherentDamage"
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.932,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 1,
+      "scale": 2,
       "table": "Ranged_Knockback"
     }
   },
-  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova && !Inherent.Inherent.Dark_Nova_Blast"
+  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Blast ! &&"
 };

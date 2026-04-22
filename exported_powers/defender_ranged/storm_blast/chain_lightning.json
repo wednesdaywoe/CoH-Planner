@@ -83,7 +83,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 66816
         }
       ]
     },
@@ -121,7 +122,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -146,7 +148,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ],
       "child_effects": [
@@ -184,7 +187,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -224,7 +228,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -249,7 +254,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -274,7 +280,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ],
       "child_effects": [
@@ -312,7 +319,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -337,7 +345,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -385,7 +394,8 @@
             "power_names": [
               "Redirects.Storm_Blast.StormCell_LightningAura"
             ]
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -410,7 +420,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         }
       ]
     },
@@ -454,7 +465,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ],
       "child_effects": [
@@ -510,7 +522,8 @@
                     "power_names": [
                       "Redirects.Storm_Blast.StormCell_WindSpeed"
                     ]
-                  }
+                  },
+                  "flags_raw": 1280
                 }
               ]
             }

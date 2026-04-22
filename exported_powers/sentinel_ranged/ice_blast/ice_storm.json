@@ -90,7 +90,8 @@
               "Pets.IceStorm_Sentinel.IceStorm"
             ],
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

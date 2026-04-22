@@ -35,7 +35,7 @@ export const AcidMortar: Power = {
     "Accurate Defense Debuff",
     "Corruptor Archetype Sets",
     "Defense Debuff",
-    "Ranged Damage",
+    "Melee Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -43,8 +43,7 @@ export const AcidMortar: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_Acid_Mortar",
-      "duration": 60,
-      "copyBoosts": true
+      "duration": 60
     }
   }
 };

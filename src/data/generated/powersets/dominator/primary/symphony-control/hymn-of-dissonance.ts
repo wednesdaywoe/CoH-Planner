@@ -14,8 +14,9 @@ export const HymnofDissonance: Power = {
   "available": 0,
   "description": "Hymn of Dissonance causes pain on its listener, disruptive enough to hold them in place. Stronger foes might persist, but will still attack at a reduced speed.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Hold, -Recharge",
-  "icon": "symphonycontrol_holdst.png",
+  "icon": "symphonycontrol_holdst",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -39,16 +40,23 @@ export const HymnofDissonance: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.889,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Melee_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Melee_PvPMez"
     }
   }
 };

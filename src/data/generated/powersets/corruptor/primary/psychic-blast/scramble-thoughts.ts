@@ -14,8 +14,9 @@ export const ScrambleMinds: Power = {
   "available": 21,
   "description": "Painfully scrambles the synapses of a targeted foe, leaving them dramatically Disoriented for a short duration. The effects of this power can jump from one foe to another in a chain dealing damage and applying a random mental effects to each target.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Disorient",
-  "icon": "psychicblast_scrambleminds.png",
+  "icon": "psychicblast_scrambleminds",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
@@ -36,16 +37,42 @@ export const ScrambleMinds: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
-    "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.7262,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.7262,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.36,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.7262,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 3,
@@ -63,8 +90,8 @@ export const ScrambleMinds: Power = {
       "table": "Ranged_Stun"
     },
     "placate": {
-      "scale": 10,
-      "table": "Ranged_Stun"
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "fear": {
       "mag": 3,

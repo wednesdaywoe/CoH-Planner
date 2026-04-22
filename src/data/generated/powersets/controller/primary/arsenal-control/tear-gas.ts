@@ -14,7 +14,7 @@ export const TearGas: Power = {
   "available": 21,
   "description": "The Tear Gas canister serves as the ultimate crowd control tool, rendering enemies incapacitated and choking, thereby preventing them from taking any action while also debuffing their damage output.",
   "shortHelp": "Ranged (Location AoE), DoT(Toxic), Foe Hold, -DMG",
-  "icon": "arsenalcontrol_teargas.png",
+  "icon": "arsenalcontrol_teargas",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
@@ -43,7 +43,8 @@ export const TearGas: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "Tear Gas",
       "powers": [
         "Redirects.Assault_Rifle.Tear_Gas",
@@ -51,8 +52,7 @@ export const TearGas: Power = {
         "Redirects.Assault_Rifle.Tear_Gas_OneShot",
         "Pets.ResistAll.ResistAll"
       ],
-      "duration": 60,
-      "copyBoosts": true
+      "duration": 60
     }
   }
 };

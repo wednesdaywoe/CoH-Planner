@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
+import { AccelerateMetabolism as AccelerateMetabolism } from './accelerate-metabolism';
+import { ChokingCloud as ChokingCloud } from './choking-cloud';
+import { EMPulse as EMPulse } from './em-pulse';
+import { EnervatingField as EnervatingField } from './enervating-field';
+import { Fallout as Fallout } from './fallout';
+import { LingeringRadiation as LingeringRadiation } from './lingering-radiation';
+import { Mutation as Mutation } from './mutation';
 import { RadiantAura as RadiantAura } from './radiant-aura';
 import { RadiationInfection as RadiationInfection } from './radiation-infection';
-import { AccelerateMetabolism as AccelerateMetabolism } from './accelerate-metabolism';
-import { EnervatingField as EnervatingField } from './enervating-field';
-import { Mutation as Mutation } from './mutation';
-import { LingeringRadiation as LingeringRadiation } from './lingering-radiation';
-import { ChokingCloud as ChokingCloud } from './choking-cloud';
-import { Fallout as Fallout } from './fallout';
-import { EMPulse as EMPulse } from './em-pulse';
 
 export const powerset: Powerset = {
   id: 'mastermind/radiation-emission',
   name: 'Radiation Emission',
   description: 'Radiation Emission powers allow you to manipulate atomic particles and waves to protect your allies and weaken your enemies.',
-  icon: 'radiation_emission_set.png',
+  icon: 'radiation_emission_set.ico',
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
+    AccelerateMetabolism,
+    ChokingCloud,
+    EMPulse,
+    EnervatingField,
+    Fallout,
+    LingeringRadiation,
+    Mutation,
     RadiantAura,
     RadiationInfection,
-    AccelerateMetabolism,
-    EnervatingField,
-    Mutation,
-    LingeringRadiation,
-    ChokingCloud,
-    Fallout,
-    EMPulse,
   ],
 };
 

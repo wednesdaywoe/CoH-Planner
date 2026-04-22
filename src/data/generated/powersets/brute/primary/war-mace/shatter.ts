@@ -16,12 +16,13 @@ export const Shatter: Power = {
   "shortHelp": "Melee (Cone), DMG(Smashing), Knockback",
   "icon": "mace_shatter.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
     "range": 8,
     "radius": 8,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 12,
     "endurance": 11.856,
     "castTime": 2.33,
@@ -43,14 +44,26 @@ export const Shatter: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.28,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.0804,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4306,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

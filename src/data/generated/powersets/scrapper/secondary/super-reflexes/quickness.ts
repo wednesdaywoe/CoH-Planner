@@ -58,5 +58,6 @@ export const Quickness: Power = {
       }
     },
     "buffDuration": 10.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

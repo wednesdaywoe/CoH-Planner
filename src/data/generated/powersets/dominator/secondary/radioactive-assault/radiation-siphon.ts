@@ -16,6 +16,7 @@ export const RadiationSiphon: Power = {
   "shortHelp": "Melee, Superior DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
   "icon": "radioactiveassault_radiationsiphon.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -37,7 +38,6 @@ export const RadiationSiphon: Power = {
     "Accurate Healing",
     "Defense Debuff",
     "Healing",
-    "Knockback",
     "Melee Damage",
     "Universal Damage Sets"
   ],
@@ -52,6 +52,16 @@ export const RadiationSiphon: Power = {
       "type": "Energy",
       "scale": 1.71,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.6071,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.8286,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Heal",

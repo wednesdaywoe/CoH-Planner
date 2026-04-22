@@ -16,6 +16,7 @@ export const LifeDrain: Power = {
   "shortHelp": "Ranged, DMG(Negative), Target -To Hit, Self +HP",
   "icon": "darkcast_lifedrain.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,6 +49,21 @@ export const LifeDrain: Power = {
       "type": "Negative",
       "scale": 1.64,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.64,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.0709,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.0709,
+      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Heal",

@@ -42,14 +42,21 @@ export const Quasar: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 4,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 4,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.7474,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 10,
+      "scale": 20,
       "table": "Ranged_Knockback"
     }
   }

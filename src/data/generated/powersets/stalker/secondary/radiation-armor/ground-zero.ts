@@ -36,6 +36,7 @@ export const GroundZero: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Accurate Healing",
     "Defense Debuff",
     "Healing",
     "Melee AoE Damage",

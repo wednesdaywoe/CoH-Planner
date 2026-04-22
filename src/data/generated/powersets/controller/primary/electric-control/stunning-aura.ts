@@ -33,14 +33,15 @@ export const ConductiveAura: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Endurance Modification",
     "Healing"
   ],
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_Ones"
+      "scale": 5,
+      "table": "Ranged_EndDrain"
     },
     "regenBuff": {
       "scale": 0.05,

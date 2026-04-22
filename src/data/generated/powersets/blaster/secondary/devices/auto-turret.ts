@@ -33,8 +33,7 @@ export const GunDrone: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Ranged Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"
   ],
@@ -42,13 +41,8 @@ export const GunDrone: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Turret",
-      "duration": 90,
-      "copyBoosts": true
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
+      "entity": "P3912486950",
+      "duration": 90
     }
   }
 };

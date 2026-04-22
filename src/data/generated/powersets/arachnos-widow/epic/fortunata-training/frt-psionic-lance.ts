@@ -16,6 +16,7 @@ export const PsionicTornado: Power = {
   "shortHelp": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
   "icon": "fortunatatraining_psionictornado.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -41,16 +42,32 @@ export const PsionicTornado: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.2034,
-    "table": "Ranged_Damage",
-    "duration": 4.1,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.2034,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.1429,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.4288,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.1,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "knockup": {
-      "scale": 1.4,
+      "scale": 2.8,
       "table": "Ranged_Ones"
     }
   }

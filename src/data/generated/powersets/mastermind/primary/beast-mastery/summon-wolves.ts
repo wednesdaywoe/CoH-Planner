@@ -12,7 +12,7 @@ export const SummonWolves: Power = {
   "name": "Summon Wolves",
   "internalName": "Summon_Wolves",
   "available": 0,
-  "description": "Calls forth one to three Wolves to do your bidding. The third one summoned will be an Alpha Wolf, which grants some leadership bonuses to the pack. Wolves have no ranged attacks, but can quickly close in on their prey.You may only have 3 Wolves under your control at any given time. If you attempt to call more Wolves, you can only replace the ones you have lost in battle. If you already have three, the power will fail.Wolf attacks have a chance to build a charge of Pack Mentality. Pack Mentality is a Damage buff aura that radiates from the Mastermind and can stack up to 10 times.",
+  "description": "Calls forth one to three Wolves to do your bidding. The third one summoned will be an Alpha Wolf, which grants some leadership bonuses to the pack. Wolves have no ranged attacks, but can quickly close in on their prey.You may only have 3 Wolves under your control at any given time. If you attempt to call more Wolves, you can only replace the ones you have lost in battle. If you already have three, the power will fail.Wolf attacks have a chance to build a charge of Pack Mentality. Pack Mentality is a Damage buff aura that radiates from the Mastermind and can stack up to 10 times.In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "shortHelp": "Summon Wolves",
   "icon": "beastmastery_summonwolves.png",
   "powerType": "Click",
@@ -38,14 +38,8 @@ export const SummonWolves: Power = {
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
     "Defense Debuff",
-    "Healing",
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Running",
-    "Running & Sprints",
-    "To Hit Buff",
+    "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
@@ -53,7 +47,7 @@ export const SummonWolves: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "copyBoosts": true,
+      "duration": 99999,
       "entities": [
         {
           "entity": "MastermindPets_Howler_Wolf",
@@ -64,6 +58,15 @@ export const SummonWolves: Power = {
           "count": 1
         }
       ]
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "immobilize": {
+      "mag": 500,
+      "scale": 3,
+      "table": "Melee_Ones"
     }
   }
 };

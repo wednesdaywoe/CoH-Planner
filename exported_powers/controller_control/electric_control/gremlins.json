@@ -86,7 +86,8 @@
             "type": "EntCreate",
             "entity_def": "P3273083397",
             "priority_list": "Pets_Gremlin_Controller"
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -116,7 +117,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Gremlin_Controller",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

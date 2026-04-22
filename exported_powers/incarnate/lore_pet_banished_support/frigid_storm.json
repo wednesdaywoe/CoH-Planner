@@ -88,7 +88,8 @@
               "Pets.ResistAll.ResistAll"
             ],
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 16704
         }
       ]
     }

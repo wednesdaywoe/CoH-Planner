@@ -16,6 +16,7 @@ export const GamblersCut: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe -Def",
   "icon": "katana_slash.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -51,6 +52,28 @@ export const GamblersCut: Power = {
       "type": "Lethal",
       "scale": 0.84,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.84,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.4945,
+      "table": "Melee_PvPDamage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.989,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.989,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -63,5 +86,5 @@ export const GamblersCut: Power = {
     },
     "buffDuration": 6
   },
-  "requires": "!Stalker_Defense.Shield_Defense"
+  "requires": "Stalker_Defense.Shield_Defense !"
 };

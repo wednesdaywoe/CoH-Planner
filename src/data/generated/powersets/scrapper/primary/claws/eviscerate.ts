@@ -16,12 +16,13 @@ export const Eviscerate: Power = {
   "shortHelp": "Melee (Cone), DMG(Lethal), +Special",
   "icon": "claws_evicerate.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 8.867,
     "endurance": 8.875,
     "castTime": 2.33,
@@ -44,6 +45,21 @@ export const Eviscerate: Power = {
       "type": "Lethal",
       "scale": 1.99,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.9009,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.4848,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.9009,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Lethal",

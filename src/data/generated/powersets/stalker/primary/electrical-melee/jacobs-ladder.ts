@@ -16,14 +16,15 @@ export const JacobsLadder: Power = {
   "shortHelp": "Melee (Cone), DMG(Energy), Foe Sleep, -End",
   "icon": "electricmelee_conemoderatedmg.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 0.8727,
-    "recharge": 8,
-    "endurance": 8.528,
+    "arc": 0.8726646304130554,
+    "recharge": 9,
+    "endurance": 9.36,
     "castTime": 1.67,
     "maxTargets": 5
   },
@@ -46,31 +47,56 @@ export const JacobsLadder: Power = {
   "damage": [
     {
       "type": "Energy",
-      "scale": 1.5,
+      "scale": 1.5233,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 1.5,
+      "scale": 1.5233,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.5233,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.6325,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2965,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.6325,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.6325,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.07,
+      "scale": 1.25,
+      "table": "Melee_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 2,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 2
     },
     "sleep": {
       "mag": 2,
       "scale": 6,
       "table": "Melee_Sleep"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 2
     },
     "buffDuration": 2
   }

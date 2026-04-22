@@ -16,13 +16,14 @@ export const ForceBomb: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Smash), Foe Knockdown, Disorient",
   "icon": "forcefield_repulsionbomb.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.2,
     "range": 70,
     "radius": 12,
     "recharge": 30,
-    "endurance": 21.125,
+    "endurance": 16.9,
     "castTime": 1.67,
     "maxTargets": 16
   },
@@ -86,13 +87,13 @@ export const ForceBomb: Power = {
       "resistanceDebuff": 30
     },
     "knockback": {
-      "scale": 9,
+      "scale": 9.67,
       "table": "Ranged_Ones"
     },
     "stun": {
       "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Stun"
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "buffDuration": 30
   }

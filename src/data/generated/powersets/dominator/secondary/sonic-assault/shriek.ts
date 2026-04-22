@@ -14,8 +14,9 @@ export const Shriek: Power = {
   "available": 0,
   "description": "You let forth a quick Shriek, damaging your target. This power applies Short Sonic Vibrations that lower resistance for 8s.",
   "shortHelp": "Ranged, DMG(Energy/Smash), Foe -Res(All)",
-  "icon": "sonicmanipulation_shriek.png",
+  "icon": "sonicmanipulation_shriek",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -46,6 +47,11 @@ export const Shriek: Power = {
       "type": "Energy",
       "scale": 0.42,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.22,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

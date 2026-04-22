@@ -44,14 +44,13 @@ export const Sleet: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
-      "displayName": "Sleet",
+      "isPseudoPet": false,
+      "entity": "P3955584513",
       "powers": [
         "Pets.Sleet.Sleet",
         "Pets.Sleet.Avoid"
       ],
-      "duration": 15,
-      "copyBoosts": true
+      "duration": 15
     }
   }
 };

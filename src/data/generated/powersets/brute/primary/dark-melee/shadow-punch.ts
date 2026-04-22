@@ -16,6 +16,7 @@ export const ShadowPunch: Power = {
   "shortHelp": "Melee, DMG(Smash/Negative), Foe -To Hit",
   "icon": "shadowfighting_shadowpunch.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -51,6 +52,16 @@ export const ShadowPunch: Power = {
       "type": "Negative",
       "scale": 0.5,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4404,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.6606,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

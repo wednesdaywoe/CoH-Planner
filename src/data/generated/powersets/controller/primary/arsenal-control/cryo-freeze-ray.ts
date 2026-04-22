@@ -14,8 +14,9 @@ export const CryoFreezeRay: Power = {
   "available": 0,
   "description": "The Cryo Freeze Ray encases your foe in a block of ice, holding him helpless in place for a while and dealing some cold damage.",
   "shortHelp": "Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge, -Fly",
-  "icon": "arsenalcontrol_beanbag.png",
+  "icon": "arsenalcontrol_beanbag",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.25,
@@ -41,11 +42,28 @@ export const CryoFreezeRay: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.889,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.889,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
       "mag": 3,

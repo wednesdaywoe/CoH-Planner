@@ -80,7 +80,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Shield_Charge_Stalker",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

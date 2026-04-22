@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "P3912486950",
             "priority_list": "Pets_GunDrone_Tri"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

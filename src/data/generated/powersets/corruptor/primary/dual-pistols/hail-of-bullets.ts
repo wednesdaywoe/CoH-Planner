@@ -48,21 +48,26 @@ export const HailofBullets: Power = {
       "scale": 0.3178,
       "table": "Ranged_Damage",
       "duration": 2.3,
-      "tickRate": 0.2
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
     },
     {
       "type": "Lethal",
       "scale": 0.1362,
       "table": "Ranged_Damage",
       "duration": 2.3,
-      "tickRate": 0.2
+      "tickRate": 0.20000000298023224
     },
     {
       "type": "Fire",
       "scale": 0.1362,
       "table": "Ranged_Damage",
       "duration": 2.3,
-      "tickRate": 0.2
+      "tickRate": 0.20000000298023224
     },
     {
       "type": "Fire",
@@ -72,23 +77,42 @@ export const HailofBullets: Power = {
       "tickRate": 1
     },
     {
-      "type": "Cold",
-      "scale": 0.1362,
-      "table": "Ranged_Damage",
+      "type": "Lethal",
+      "scale": 0.1335,
+      "table": "Ranged_PvPDamage",
       "duration": 2.3,
-      "tickRate": 0.2
+      "tickRate": 0.20000000298023224
     },
     {
-      "type": "Toxic",
-      "scale": 0.1362,
-      "table": "Ranged_Damage",
+      "type": "Lethal",
+      "scale": 0.6223,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.0568,
+      "table": "Ranged_PvPDamage",
       "duration": 2.3,
-      "tickRate": 0.2
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0568,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.3,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1627,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.1,
+      "tickRate": 1
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.8,
+      "scale": 1.6,
       "table": "Ranged_Ones"
     },
     "durations": {

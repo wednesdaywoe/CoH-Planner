@@ -94,7 +94,8 @@
               "Villain_Pets.Creeper_Patch.Bramble",
               "Villain_Pets.Creeper_Patch.FX"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

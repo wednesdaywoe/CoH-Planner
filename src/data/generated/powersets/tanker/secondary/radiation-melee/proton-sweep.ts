@@ -16,12 +16,13 @@ export const ProtonSweep: Power = {
   "shortHelp": "Melee Cone, DoT(Energy/Toxic), Foe -Def, Special",
   "icon": "radiationmelee_protonsweep.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 1.309,
+    "arc": 1.3089969158172607,
     "recharge": 8,
     "endurance": 8.528,
     "castTime": 1.67,
@@ -39,6 +40,7 @@ export const ProtonSweep: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Knockback",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
@@ -59,6 +61,27 @@ export const ProtonSweep: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1154,
+      "table": "Melee_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.2693,
+      "table": "Melee_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1751,
+      "table": "Melee_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 2
     }
   ],
   "effects": {

@@ -16,6 +16,7 @@ export const SnapShot: Power = {
   "shortHelp": "Ranged, Minor DMG(Lethal)",
   "icon": "archery_quickarrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.155,
@@ -37,9 +38,16 @@ export const SnapShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.68,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.68,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.1799,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

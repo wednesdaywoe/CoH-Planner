@@ -16,6 +16,7 @@ export const BlazingArrow: Power = {
   "shortHelp": "Ranged, DMG(Lethal), DoT(Fire)",
   "icon": "archery_flamingarrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.155,
@@ -44,10 +45,15 @@ export const BlazingArrow: Power = {
       "table": "Ranged_Damage"
     },
     {
+      "type": "Lethal",
+      "scale": 2.0813,
+      "table": "Ranged_PvPDamage"
+    },
+    {
       "type": "Fire",
       "scale": 0.125,
       "table": "Ranged_Damage",
-      "duration": 4.125,
+      "duration": 4.12,
       "tickRate": 1
     }
   ],

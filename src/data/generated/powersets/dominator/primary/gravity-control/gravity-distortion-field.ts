@@ -16,6 +16,7 @@ export const GravityDistortionField: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
   "icon": "gravitycontrol_gravitydistortionfield.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 0.8,
@@ -36,22 +37,22 @@ export const GravityDistortionField: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Holds",
-    "Ranged AoE Damage",
+    "Ranged Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "Gravity Distortion Field",
       "powers": [
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Pulse",
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Slow",
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot",
         "Redirects.Gravity_Control.Self_Destruct"
-      ],
-      "copyBoosts": true
+      ]
     }
   }
 };

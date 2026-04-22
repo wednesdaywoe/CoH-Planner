@@ -16,6 +16,7 @@ export const Mesmerize: Power = {
   "shortHelp": "Ranged, DMG(Psionic), Foe Deep Sleep",
   "icon": "mentalcontrol_hypnotize.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
@@ -48,14 +49,34 @@ export const Mesmerize: Power = {
     {
       "type": "Psionic",
       "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.809,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.9045,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "sleep": {
-      "mag": 3.5,
-      "scale": 30,
-      "table": "Ranged_Sleep"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

@@ -23,7 +23,7 @@ export const SpeedBoost: Power = {
     "range": 50,
     "radius": 30,
     "recharge": 2,
-    "endurance": 9.75,
+    "endurance": 7.8,
     "castTime": 1,
     "maxTargets": 255
   },
@@ -35,10 +35,7 @@ export const SpeedBoost: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Endurance Modification",
-    "Running",
-    "Running & Sprints",
-    "Universal Travel"
+    "Endurance Modification"
   ],
   "maxSlots": 6,
   "effects": {

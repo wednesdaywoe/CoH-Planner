@@ -14,8 +14,9 @@ export const NeutrinoBolt: Power = {
   "available": 0,
   "description": "A very quick, but low damage attack. Neutrino Bolt can reduce the target's Defense.",
   "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
-  "icon": "radiationburst_neutrinoblast.png",
+  "icon": "radiationburst_neutrinoblast",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,11 +41,28 @@ export const NeutrinoBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.6,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.6,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1599,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1599,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,

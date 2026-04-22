@@ -16,6 +16,7 @@ export const ThunderKick: Power = {
   "shortHelp": "Melee, DMG(Smash), Minor Disorient",
   "icon": "martialarts_thunderkick.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -53,6 +54,16 @@ export const ThunderKick: Power = {
       "type": "Smashing",
       "scale": 0.84,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.101,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.101,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

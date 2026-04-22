@@ -14,14 +14,15 @@ export const Gleam: Power = {
   "available": 11,
   "description": "Multiple flashing lights go off around enemies, disorienting and damaging them. Gleam deals minimal Psionic damage, and can Disorient all affected targets for a good while.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Psionic), Foe Disorient",
-  "icon": "illusions_stun.png",
+  "icon": "illusions_stun",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
     "range": 70,
     "radius": 25,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 90,
     "endurance": 15.6,
     "castTime": 1.5,
@@ -42,16 +43,23 @@ export const Gleam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.25,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.25,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.25,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

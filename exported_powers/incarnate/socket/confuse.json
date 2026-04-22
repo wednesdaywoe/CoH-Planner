@@ -80,7 +80,8 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2580
         }
       ]
     },
@@ -118,7 +119,16 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Event_28",
+              "event_id": 28,
+              "duration": 15.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 2580
         }
       ]
     }

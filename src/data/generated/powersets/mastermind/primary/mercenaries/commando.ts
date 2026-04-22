@@ -36,9 +36,7 @@ export const Commando: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -46,7 +44,7 @@ export const Commando: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Commando",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

@@ -92,7 +92,8 @@
               "Redirects.Pyrotechnic_Control.Hypnotizing_Lights",
               "Redirects.Pyrotechnic_Control.HypnotizingLights_Narrow"
             ]
-          }
+          },
+          "flags_raw": 197888
         }
       ]
     }

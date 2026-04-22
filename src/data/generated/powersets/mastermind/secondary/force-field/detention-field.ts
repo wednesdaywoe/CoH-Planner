@@ -16,12 +16,13 @@ export const DetentionField: Power = {
   "shortHelp": "Ranged, Foe Capture (Special)",
   "icon": "forcefield_refractionshield.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
     "range": 80,
     "recharge": 60,
-    "endurance": 13,
+    "endurance": 10.4,
     "castTime": 2.07
   },
   "allowedEnhancements": [
@@ -37,20 +38,20 @@ export const DetentionField: Power = {
       "scale": 4,
       "table": "Ranged_Immobilize"
     },
-    "effectDuration": 30,
+    "effectDuration": 4,
     "durations": {
-      "immobilize": 30,
-      "untouchable": 30,
-      "onlyAffectsSelf": 30
+      "immobilize": 4,
+      "untouchable": 4,
+      "onlyAffectsSelf": 4
     },
     "untouchable": {
       "scale": 4,
-      "table": "Ranged_Immobilize"
+      "table": "Ranged_Ones"
     },
     "onlyAffectsSelf": {
       "scale": 4,
-      "table": "Ranged_Immobilize"
+      "table": "Ranged_Ones"
     },
-    "buffDuration": 30
+    "buffDuration": 4
   }
 };

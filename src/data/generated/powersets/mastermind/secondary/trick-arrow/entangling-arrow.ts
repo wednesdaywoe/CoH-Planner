@@ -16,12 +16,13 @@ export const EntanglingArrow: Power = {
   "shortHelp": "Ranged, Target Immobilize, -Res(All), -Fly, Slow",
   "icon": "trickarrow_immobilize.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
     "range": 80,
     "recharge": 4,
-    "endurance": 6.5,
+    "endurance": 5.2,
     "castTime": 1
   },
   "allowedEnhancements": [
@@ -49,7 +50,7 @@ export const EntanglingArrow: Power = {
       }
     },
     "durations": {
-      "mezResistance": 30,
+      "mezResistance": 15,
       "resistanceDebuff": 30
     },
     "resistanceDebuff": {

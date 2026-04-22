@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "P1734497484",
             "priority_list": "Pets_Spirit_Tree"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -117,7 +118,8 @@
             "redirects": [
               "Villain_Pets.Spirit_Tree_Aura.Spirit_Tree"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

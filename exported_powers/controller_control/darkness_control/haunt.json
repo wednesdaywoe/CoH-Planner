@@ -86,7 +86,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Shade",
             "priority_list": "PFX"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -116,7 +117,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Shade",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -147,7 +149,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Haunted"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

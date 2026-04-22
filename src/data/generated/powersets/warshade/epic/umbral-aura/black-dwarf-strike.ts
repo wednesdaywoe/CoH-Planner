@@ -16,6 +16,7 @@ export const BlackDwarfStrike: Power = {
   "shortHelp": "Melee, Light DMG(Smash/Negative), Foe -Recharge, -SPD, Knockback",
   "icon": "umbralaura_blackdwarfstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,11 +51,21 @@ export const BlackDwarfStrike: Power = {
       "type": "Negative",
       "scale": 0.5,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.5435,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.0885,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "taunt": {
@@ -62,5 +73,5 @@ export const BlackDwarfStrike: Power = {
       "table": "Melee_InherentTaunt"
     }
   },
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf && !Inherent.Inherent.Black_Dwarf_Strike"
+  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Strike ! &&"
 };

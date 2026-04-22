@@ -14,8 +14,9 @@ export const PositronicFist: Power = {
   "available": 29,
   "description": "You hammer your foe with a brutal smashing attack charged with a lethal dose of radiation. Your target will suffer Energy and Smashing damage, will have its defense reduced and will be disoriented for a short time in addition to being surrounded by positively charged particles. Hitting a foe that has negatively charged particles will trigger a Gamma Burst.",
   "shortHelp": "Melee, DMG(Energy/Smash), Foe Disorient, -DEF, +Positrons",
-  "icon": "atomicmanipulation_heavypunch.png",
+  "icon": "atomicmanipulation_heavypunch",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -51,6 +52,16 @@ export const PositronicFist: Power = {
       "type": "Energy",
       "scale": 2.67,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.7672,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.3015,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -65,10 +76,6 @@ export const PositronicFist: Power = {
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   }

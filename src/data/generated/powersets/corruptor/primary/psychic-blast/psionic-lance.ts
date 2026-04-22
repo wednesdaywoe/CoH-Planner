@@ -16,6 +16,7 @@ export const PsionicLance: Power = {
   "shortHelp": "Sniper, DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_psioniclance.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,10 +39,5 @@ export const PsionicLance: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  }
+  "maxSlots": 6
 };

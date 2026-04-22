@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { RockArmor as RockArmor } from './stone-armor';
-import { StoneSkin as StoneSkin } from './stone-skin';
-import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
-import { TerraFirma as TerraFirma } from './terra-firma';
-import { Rooted as Rooted } from './rooted';
-import { CrystalArmor as CrystalArmor } from './crystal-armor';
 import { BrimstoneArmor as BrimstoneArmor } from './brimstone-armor';
-import { Minerals as Minerals } from './mineral-armor';
+import { RockArmor as RockArmor } from './stone-armor';
+import { CrystalArmor as CrystalArmor } from './crystal-armor';
+import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
 import { Geode as Geode } from './geode';
+import { Minerals as Minerals } from './mineral-armor';
+import { Rooted as Rooted } from './rooted';
+import { StoneSkin as StoneSkin } from './stone-skin';
+import { TerraFirma as TerraFirma } from './terra-firma';
 
 export const powerset: Powerset = {
   id: 'sentinel/stone-armor',
   name: 'Stone Armor',
   description: 'You can transform your skin into various forms of rock and stone. Stone Armor is one of the few Sentinel Defensive Power Sets that offers defense to Psionics.',
-  icon: 'stone_armor_set.png',
+  icon: 'stone_armor_set.ico',
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    RockArmor,
-    StoneSkin,
-    EarthsEmbrace,
-    TerraFirma,
-    Rooted,
-    CrystalArmor,
     BrimstoneArmor,
-    Minerals,
+    RockArmor,
+    CrystalArmor,
+    EarthsEmbrace,
     Geode,
+    Minerals,
+    Rooted,
+    StoneSkin,
+    TerraFirma,
   ],
 };
 

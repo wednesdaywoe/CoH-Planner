@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.prestige_Base_Teleport"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Prestige_Travel.prestige_Base_Teleport"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

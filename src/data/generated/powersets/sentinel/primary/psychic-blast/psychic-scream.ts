@@ -16,12 +16,13 @@ export const PsychicScream: Power = {
   "shortHelp": "Ranged (Cone), Light DMG(Psionic), Foe -Recharge",
   "icon": "psychicblast_psychicscream.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 50,
     "radius": 50,
-    "arc": 1.2217,
+    "arc": 1.2217304706573486,
     "recharge": 12,
     "endurance": 11.856,
     "castTime": 1.87,
@@ -40,9 +41,26 @@ export const PsychicScream: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.04,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.04,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.04,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.6877,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.6877,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

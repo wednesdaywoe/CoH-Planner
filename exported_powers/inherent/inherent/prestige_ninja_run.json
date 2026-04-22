@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.Prestige_Ninja_Run"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Prestige_Travel.Prestige_Ninja_Run"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

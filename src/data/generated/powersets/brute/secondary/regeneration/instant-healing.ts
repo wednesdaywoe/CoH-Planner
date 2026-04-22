@@ -43,5 +43,5 @@ export const InstantHealing: Power = {
     },
     "buffDuration": 90
   },
-  "requires": "!Brute_Defense.Regeneration.Instant_Regeneration"
+  "requires": "Brute_Defense.Regeneration.Instant_Regeneration !"
 };

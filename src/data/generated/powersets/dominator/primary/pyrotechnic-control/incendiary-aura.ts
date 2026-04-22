@@ -14,7 +14,7 @@ export const IncendiaryAura: Power = {
   "available": 17,
   "description": "You create an aura of pyrotechnic energy around yourself that has combustible properties. Enemies within range of the power have a persistent chance of Blasting Off into the air, as well as suffer from reduced ToHit and Defense.",
   "shortHelp": "Toggle: PBAoE, Chance for Blast Off. -ToHit, -Defense",
-  "icon": "pyrotechnic_incendiaryaura.png",
+  "icon": "pyrotechnic_incendiaryaura",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
@@ -42,6 +42,10 @@ export const IncendiaryAura: Power = {
     "knockback": {
       "scale": 20,
       "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
     },
     "resistanceDebuff": {
       "smashing": {

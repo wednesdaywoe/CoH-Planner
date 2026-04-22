@@ -35,6 +35,7 @@ export const Consume: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
@@ -47,6 +48,11 @@ export const Consume: Power = {
       "type": "Fire",
       "scale": 0.4,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.4,
+      "table": "Melee_InherentDamage"
     },
     {
       "type": "Fire",

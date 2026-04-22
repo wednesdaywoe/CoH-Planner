@@ -42,13 +42,8 @@ export const Caltrops: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Caltrops",
-      "duration": 45,
-      "copyBoosts": true
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
+      "entity": "P1814112202",
+      "duration": 45
     }
   }
 };

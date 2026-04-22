@@ -16,6 +16,7 @@ export const WhiteDwarfStep: Power = {
   "shortHelp": "Ranged (Location), Self Teleport",
   "icon": "luminousaura_teleportself.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,
@@ -27,22 +28,8 @@ export const WhiteDwarfStep: Power = {
     "EnduranceReduction",
     "Range"
   ],
-  "allowedSetCategories": [
-    "Teleport",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 1.5,
-      "movement": 15
-    },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
@@ -65,7 +52,15 @@ export const WhiteDwarfStep: Power = {
         "table": "Melee_Ones"
       }
     },
+    "durations": {
+      "movement": 15,
+      "untouchable": 3
+    },
+    "untouchable": {
+      "scale": 1000,
+      "table": "Ranged_Ones"
+    },
     "buffDuration": 15
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf && !Inherent.Inherent.White_Dwarf_Step"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Step ! &&"
 };

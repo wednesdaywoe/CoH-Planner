@@ -16,6 +16,7 @@ export const CripplingAxeKick: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe Immobilize, -SPD, -Fly, -DEF",
   "icon": "martialarts_cripplinghookkick.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -45,11 +46,18 @@ export const CripplingAxeKick: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.12,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.12,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.9599,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 2,

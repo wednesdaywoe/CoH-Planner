@@ -82,7 +82,21 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Event_1082130432",
+              "event_id": 1082130432,
+              "duration": 0.0,
+              "flag": 0
+            },
+            {
+              "event": "Event_4096",
+              "event_id": 4096,
+              "duration": 0.0,
+              "flag": 17937664
+            }
+          ]
         }
       ]
     },
@@ -122,7 +136,8 @@
           "caster_stack": "Individual",
           "stack": "Continuous",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -147,7 +162,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         }
       ]
     },
@@ -187,7 +203,8 @@
           "caster_stack": "Individual",
           "stack": "Continuous",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -212,7 +229,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         }
       ]
     },
@@ -262,7 +280,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 2564
             }
           ]
         },
@@ -300,7 +319,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 2564
             }
           ]
         }
@@ -346,7 +366,8 @@
             "power_names": [
               "Redirects.Inherents.Fury_Proc_Aura"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

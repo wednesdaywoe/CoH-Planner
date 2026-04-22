@@ -16,6 +16,7 @@ export const Barrage: Power = {
   "shortHelp": "Melee, DMG(Smash/Energy), Foe Disorient, Special",
   "icon": "powerpunch_quick.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -57,6 +58,35 @@ export const Barrage: Power = {
       "type": "Energy",
       "scale": 1.32,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.4713,
+      "table": "Melee_PvPDamage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.3142,
+      "table": "Melee_PvPDamage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Energy",
+      "scale": 1.571,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.571,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

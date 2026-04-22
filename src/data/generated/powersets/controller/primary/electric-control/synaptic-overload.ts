@@ -16,6 +16,7 @@ export const SynapticOverload: Power = {
   "shortHelp": "Ranged Chain AoE, Foe Confuse, -End",
   "icon": "electriccontrol_synapticoverload.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
@@ -36,7 +37,8 @@ export const SynapticOverload: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
-    "Controller Archetype Sets"
+    "Controller Archetype Sets",
+    "Endurance Modification"
   ],
   "maxSlots": 6,
   "effects": {
@@ -46,8 +48,8 @@ export const SynapticOverload: Power = {
       "table": "Ranged_Immobilize"
     },
     "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_Ones"
+      "scale": 2,
+      "table": "Ranged_EndDrain"
     },
     "recoveryDebuff": {
       "scale": 1,

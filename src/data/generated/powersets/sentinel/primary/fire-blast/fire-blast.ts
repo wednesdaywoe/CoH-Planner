@@ -12,10 +12,11 @@ export const FireBlast: Power = {
   "name": "Fire Blast",
   "internalName": "Fire_Blast",
   "available": 0,
-  "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.Damage: Heavy.Recharge: Fast.",
+  "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.",
   "shortHelp": "Ranged, DMG(Fire), DoT(Fire)",
   "icon": "fireblast_fireblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -45,10 +46,25 @@ export const FireBlast: Power = {
     },
     {
       "type": "Fire",
+      "scale": 1.16,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Fire",
       "scale": 0.15,
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.44,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.44,
+      "table": "Ranged_PvPDamage"
     }
   ]
 };

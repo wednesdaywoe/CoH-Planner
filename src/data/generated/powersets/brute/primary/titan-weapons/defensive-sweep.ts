@@ -16,12 +16,13 @@ export const DefensiveSweep: Power = {
   "shortHelp": "Melee(Cone), DMG(Smashing), Self +DEF(Melee, Smash)",
   "icon": "titanweapons_defensivesweep.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 10,
     "radius": 10,
-    "arc": 2.0944,
+    "arc": 2.094395160675049,
     "recharge": 4,
     "endurance": 5.356,
     "castTime": 2.2,
@@ -43,26 +44,5 @@ export const DefensiveSweep: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.6684,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10
-    },
-    "buffDuration": 10
-  },
-  "requires": "!Brute_Defense.Shield_Defense"
+  "requires": "Brute_Defense.Shield_Defense !"
 };

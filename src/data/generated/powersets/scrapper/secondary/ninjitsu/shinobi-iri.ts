@@ -60,10 +60,6 @@ export const ShinobiIri: Power = {
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
       }
     },
     "buffDuration": 0.75

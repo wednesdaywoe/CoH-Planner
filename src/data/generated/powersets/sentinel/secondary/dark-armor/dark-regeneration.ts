@@ -34,6 +34,7 @@ export const DarkRegeneration: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Healing",
     "Melee AoE Damage",
     "Sentinel Archetype Sets",
@@ -52,5 +53,5 @@ export const DarkRegeneration: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "requires": "!Sentinel_Defense.Dark_Armor.Obscure_Sustenance"
+  "requires": "Sentinel_Defense.Dark_Armor.Obscure_Sustenance !"
 };

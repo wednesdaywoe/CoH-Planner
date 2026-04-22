@@ -41,9 +41,9 @@ export const Glacier: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "mezResistance": {
       "knockup": {

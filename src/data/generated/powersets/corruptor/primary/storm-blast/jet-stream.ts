@@ -16,12 +16,13 @@ export const JetStream: Power = {
   "shortHelp": "Ranged (Cone), DMG(Smashing), Foe Knockdown or Repel",
   "icon": "stormblast_jetstream.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 50,
     "radius": 50,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 10,
     "endurance": 10.192,
     "castTime": 1.67,
@@ -42,11 +43,18 @@ export const JetStream: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.8,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.8,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "repel": {
       "scale": 4,

@@ -16,6 +16,7 @@ export const Subdue: Power = {
   "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Immobilize",
   "icon": "psionicassault_subdue.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,11 +40,18 @@ export const Subdue: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.9076,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,

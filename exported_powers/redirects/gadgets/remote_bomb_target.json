@@ -89,7 +89,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Time_Bomb"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -114,7 +115,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 4211984
         }
       ]
     },
@@ -157,7 +159,8 @@
             "type": "EntCreate",
             "entity_def": "P3912486950",
             "priority_list": "Pets_Bomb"
-          }
+          },
+          "flags_raw": 17664
         }
       ],
       "child_effects": [
@@ -214,7 +217,8 @@
             "type": "EntCreate",
             "entity_def": "P3912486950",
             "priority_list": "Pets_Bomb_Controller"
-          }
+          },
+          "flags_raw": 17664
         }
       ]
     },
@@ -257,7 +261,8 @@
             "type": "EntCreate",
             "entity_def": "P3912486950",
             "priority_list": "Pets_Bomb_Corruptor"
-          }
+          },
+          "flags_raw": 17664
         },
         {
           "attribs": [
@@ -287,7 +292,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Bomb_Temporal",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 17664
         }
       ]
     },
@@ -330,7 +336,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Bomb_Temporal_Defender",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 17664
         }
       ]
     },
@@ -373,7 +380,8 @@
             "type": "EntCreate",
             "entity_def": "P3912486950",
             "priority_list": "Pets_Bomb_Defender"
-          }
+          },
+          "flags_raw": 17664
         }
       ]
     }

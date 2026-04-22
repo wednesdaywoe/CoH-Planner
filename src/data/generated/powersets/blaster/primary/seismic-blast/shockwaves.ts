@@ -14,7 +14,7 @@ export const SeismicShockwaves: Power = {
   "available": 0,
   "description": "While on the ground, nearby enemies might be knocked down and some of your attacks are empowered.This power is only for short periods of times after being triggered by Seismic Pressure.",
   "shortHelp": "Foe Knock Down, Self Special",
-  "icon": "seismic_power.png",
+  "icon": "seismic_power",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
@@ -28,9 +28,9 @@ export const SeismicShockwaves: Power = {
   "maxSlots": 0,
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   },
-  "mechanicType": "hiddenPassive"
+  "mechanicType": "parentMechanic"
 };

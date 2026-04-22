@@ -16,12 +16,13 @@ export const CuttingBeam: Power = {
   "shortHelp": "Ranged (Cone), DMG(Energy), Foe -Def(All), Special",
   "icon": "beamrifle_cuttingbeam.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
     "range": 40,
     "radius": 40,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 10,
     "endurance": 10.192,
     "castTime": 1.9,
@@ -51,8 +52,44 @@ export const CuttingBeam: Power = {
     },
     {
       "type": "Energy",
+      "scale": 0.943,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.895,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.895,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
       "scale": 0.101,
       "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 0.101,
+      "table": "Ranged_InherentDamage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 0.0958,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 0.0958,
+      "table": "Ranged_PvPDamage",
       "duration": 2.1,
       "tickRate": 1
     }

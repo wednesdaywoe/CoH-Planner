@@ -42,8 +42,7 @@ export const RainofFire: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Corruptor_RainofFire",
-      "duration": 15,
-      "copyBoosts": true
+      "duration": 15
     }
   }
 };

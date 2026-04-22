@@ -16,6 +16,7 @@ export const GleamingBlast: Power = {
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_gleamingblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -42,14 +43,21 @@ export const GleamingBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.889,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 1,
+      "scale": 2,
       "table": "Ranged_Knockback"
     },
     "defenseDebuff": {

@@ -16,6 +16,7 @@ export const Deceive: Power = {
   "shortHelp": "Ranged, Foe Confuse",
   "icon": "illusions_decieve.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,

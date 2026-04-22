@@ -14,8 +14,9 @@ export const ProtonVolley: Power = {
   "available": 27,
   "description": "Hurls a volley of alpha particles over an extremely long range. Proton Volley can bypass some of a target's defenses and reduce the target's Defense. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Sniper, Extreme DMG(Energy), Foe -DEF",
-  "icon": "radioactiveassault_protonvolley.png",
+  "icon": "radioactiveassault_protonvolley",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,22 +41,5 @@ export const ProtonVolley: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.125,
-    "table": "Ranged_Damage",
-    "duration": 1.6,
-    "tickRate": 0.5
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12
-    },
-    "buffDuration": 12
-  }
+  "maxSlots": 6
 };

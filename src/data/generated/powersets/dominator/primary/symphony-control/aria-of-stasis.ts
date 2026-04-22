@@ -14,14 +14,15 @@ export const AriaofStasis: Power = {
   "available": 1,
   "description": "Aria of Stasis roots your audience in place and causes psionic damage. Stronger foes might still be able to move, but will do so at a reduced speed.",
   "shortHelp": "Ranged (Cone), DMG(Psionic), Foe Immobilize, -SPD",
-  "icon": "symphonycontrol_immobaoe.png",
+  "icon": "symphonycontrol_immobaoe",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "radius": 60,
-    "arc": 1.0472,
+    "arc": 1.0471975803375244,
     "recharge": 8,
     "endurance": 13,
     "castTime": 1.5,
@@ -44,11 +45,18 @@ export const AriaofStasis: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.4824,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.5206,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.4824,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "mezResistance": {
       "knockup": {
@@ -64,9 +72,9 @@ export const AriaofStasis: Power = {
       "mezResistance": 15
     },
     "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "buffDuration": 15
   }

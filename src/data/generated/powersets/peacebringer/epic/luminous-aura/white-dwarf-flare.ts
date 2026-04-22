@@ -43,14 +43,21 @@ export const WhiteDwarfFlare: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.9,
-    "table": "Melee_InherentDamage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.9,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9268,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "taunt": {
@@ -66,5 +73,5 @@ export const WhiteDwarfFlare: Power = {
     },
     "buffDuration": 10
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf && !Inherent.Inherent.White_Dwarf_Flare"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Flare ! &&"
 };

@@ -16,6 +16,7 @@ export const Lift: Power = {
   "shortHelp": "Ranged, DMG(Smash), Foe Knock Up",
   "icon": "gravitycontrol_lift.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -46,13 +47,18 @@ export const Lift: Power = {
     },
     {
       "type": "Smashing",
+      "scale": 1.361,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
       "scale": 0.33,
       "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "knockup": {
-      "scale": 6,
+      "scale": 12,
       "table": "Ranged_Knockback"
     }
   }

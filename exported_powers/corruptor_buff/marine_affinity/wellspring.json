@@ -83,7 +83,8 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "Pets_Wellspring"
-          }
+          },
+          "flags_raw": 1281
         }
       ]
     }

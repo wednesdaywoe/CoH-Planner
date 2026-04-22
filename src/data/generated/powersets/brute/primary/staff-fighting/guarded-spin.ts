@@ -16,12 +16,13 @@ export const GuardedSpin: Power = {
   "shortHelp": "Melee (Cone), DMG(Smash), Self +Def(Melee, Lethal)",
   "icon": "stafffighting_guardedspin.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
     "range": 9,
     "radius": 9,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 8,
     "endurance": 8.528,
     "castTime": 1.83,
@@ -43,13 +44,29 @@ export const GuardedSpin: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.2417,
-    "table": "Melee_Damage",
-    "duration": 1.5,
-    "tickRate": 0.3
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.2417,
+      "table": "Melee_Damage",
+      "duration": 1.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2949,
+      "table": "Melee_PvPDamage",
+      "duration": 1.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.1053,
+      "table": "Melee_PvPDamage",
+      "duration": 1.5,
+      "tickRate": 0.30000001192092896
+    }
+  ],
   "effects": {
     "defenseBuff": {
       "melee": {

@@ -30,6 +30,9 @@ export const IndomitableWill: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "confuse": {

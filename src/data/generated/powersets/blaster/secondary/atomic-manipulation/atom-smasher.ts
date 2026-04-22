@@ -14,7 +14,7 @@ export const AtomSmasher: Power = {
   "available": 23,
   "description": "You charge up a dangerously unstable amount of radioactive energy into a single fist before driving it into the ground and causing a small explosion. Foes caught in the blast will suffer Energy and Toxic damage and have their defense reduced.",
   "shortHelp": "PBAoE, DMG(Toxic/Energy), Foe Disorient, -DEF, Special",
-  "icon": "atomicmanipulation_atomsmasher.png",
+  "icon": "atomicmanipulation_atomsmasher",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
@@ -53,6 +53,16 @@ export const AtomSmasher: Power = {
       "type": "Toxic",
       "scale": 1.164,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3331,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.9992,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -67,10 +77,6 @@ export const AtomSmasher: Power = {
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   }

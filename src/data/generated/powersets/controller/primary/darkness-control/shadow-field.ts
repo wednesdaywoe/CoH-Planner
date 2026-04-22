@@ -43,9 +43,8 @@ export const ShadowField: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Shadow_Field_Controller",
-      "duration": 45,
-      "copyBoosts": true
+      "entity": "P4284718959",
+      "duration": 45
     }
   }
 };

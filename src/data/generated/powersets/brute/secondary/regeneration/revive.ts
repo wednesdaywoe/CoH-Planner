@@ -81,5 +81,6 @@ export const AilmentResistance: Power = {
       }
     },
     "buffDuration": 10.3
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

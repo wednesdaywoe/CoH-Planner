@@ -16,6 +16,7 @@ export const MidnightGrasp: Power = {
   "shortHelp": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "darknessassault_midnightgrasp.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -46,6 +47,11 @@ export const MidnightGrasp: Power = {
       "type": "Negative",
       "scale": 2.21,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.0918,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Negative",

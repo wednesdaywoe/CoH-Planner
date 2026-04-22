@@ -14,7 +14,7 @@ export const Rime: Power = {
   "available": 0,
   "description": "Activating this power covers you in a thick layer of rime. The rime can absorb the impact of a limited number of enemy attacks, the lingering moisture increasing your regeneration rate. Rime also grants you resistance to Toxic Damage.This power is mutually exclusive from Hoarfrost",
   "shortHelp": "Self +Regen, +Absorb, Res(Toxic)",
-  "icon": "icearmor_rime.png",
+  "icon": "icearmor_rime",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -57,5 +57,5 @@ export const Rime: Power = {
     },
     "buffDuration": 30
   },
-  "requires": "!Brute_Defense.Ice_Armor.Hoarfrost"
+  "requires": "Brute_Defense.Ice_Armor.Hoarfrost !"
 };

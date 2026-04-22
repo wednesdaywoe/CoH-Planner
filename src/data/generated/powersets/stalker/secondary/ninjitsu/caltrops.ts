@@ -32,6 +32,12 @@ export const Caltrops: Power = {
     "Recharge",
     "Damage"
   ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "effects": {
     "summon": {

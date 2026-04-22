@@ -16,12 +16,13 @@ export const Shockwave: Power = {
   "shortHelp": "Melee (Cone), DMG(Lethal), Foe Knockback",
   "icon": "claws_wave.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 30,
     "radius": 30,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 14.4,
     "endurance": 13.4784,
     "castTime": 1,
@@ -44,14 +45,26 @@ export const Shockwave: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.1301,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.1301,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.7921,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.2119,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.7,
+      "scale": 1.4,
       "table": "Melee_Knockback"
     }
   }

@@ -77,7 +77,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -109,7 +110,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -134,7 +136,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -165,7 +168,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -196,7 +200,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

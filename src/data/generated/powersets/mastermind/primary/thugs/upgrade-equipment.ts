@@ -16,6 +16,7 @@ export const UpgradeEquipment: Power = {
   "shortHelp": "Ranged, Upgrade Thug Henchman",
   "icon": "thugs_upgradeequipment.png",
   "powerType": "Click",
+  "targetType": "Self",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

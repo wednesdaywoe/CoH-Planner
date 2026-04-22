@@ -14,7 +14,7 @@ export const MasterBrawler: Power = {
   "available": 9,
   "description": "Your are a master brawler, as such you have learned when its best to block an attack and absorb damage the most effectively. Using this power when you have the highest amount of endurance but the lowest amount of health will result in the most powerful effect possible. Owning this power will also improve your Focused Fighting and Focused Senses abilities. This power can not be taken if you take Practiced Brawler.Recharge: Slow.",
   "shortHelp": "Self +Absorb +Special",
-  "icon": "superreflexes_block.png",
+  "icon": "superreflexes_block",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -43,5 +43,5 @@ export const MasterBrawler: Power = {
     },
     "buffDuration": 30
   },
-  "requires": "!Sentinel_Defense.Super_Reflexes.Practiced_Brawler"
+  "requires": "Sentinel_Defense.Super_Reflexes.Practiced_Brawler !"
 };

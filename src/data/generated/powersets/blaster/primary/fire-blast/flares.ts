@@ -16,6 +16,7 @@ export const Flares: Power = {
   "shortHelp": "Ranged, DMG(Fire)",
   "icon": "fireblast_flare.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,12 +50,11 @@ export const Flares: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.1874,
+      "table": "Ranged_PvPDamage"
     }
-  ],
-  "effects": {
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
+  ]
 };

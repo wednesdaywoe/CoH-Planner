@@ -59,5 +59,6 @@ export const DampeningField: Power = {
       }
     },
     "buffDuration": 10.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

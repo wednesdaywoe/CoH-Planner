@@ -14,7 +14,7 @@ export const TerraFirma: Power = {
   "available": 9,
   "description": "Being on solid ground allows you to more carefully aim your attack for optimal range. This power increases your chance to hit, accuracy, and range of your attacks and makes you more resistant to To-Hit debuffs, but only applies when you are near the ground.",
   "shortHelp": "Auto: Self +To Hit, +ACC, +Range, Res(ToHit)",
-  "icon": "stonearmor_terrafirma.png",
+  "icon": "stonearmor_terrafirma",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -51,5 +51,6 @@ export const TerraFirma: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 0.75
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

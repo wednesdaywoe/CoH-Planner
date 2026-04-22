@@ -33,6 +33,13 @@ export const InitialStrike: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Stuns",
+    "Tanker Archetype Sets",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

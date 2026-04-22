@@ -57,5 +57,5 @@ export const BattleAgility: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "!(Tanker_Melee.Claws || Tanker_Melee.Dual_Blades || Tanker_Melee.Katana || Tanker_Melee.Spines || Tanker_Melee.Staff_Fighting || Tanker_Melee.Titan_Weapons)"
+  "requires": "Tanker_Melee.Dual_Blades Tanker_Melee.Staff_Fighting || Tanker_Melee.Titan_Weapons || Tanker_Melee.Spines || Tanker_Melee.Katana || Tanker_Melee.Claws || !"
 };

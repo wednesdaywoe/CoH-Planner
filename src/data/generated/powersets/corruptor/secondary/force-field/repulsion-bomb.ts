@@ -16,6 +16,7 @@ export const ForceBomb: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Smash), Foe Knockdown, Disorient",
   "icon": "forcefield_repulsionbomb.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -43,11 +44,18 @@ export const ForceBomb: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.6,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.6,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "resistanceDebuff": {
       "smashing": {
@@ -87,7 +95,7 @@ export const ForceBomb: Power = {
       "resistanceDebuff": 30
     },
     "knockback": {
-      "scale": 9,
+      "scale": 9.67,
       "table": "Ranged_Ones"
     },
     "stun": {

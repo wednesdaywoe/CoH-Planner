@@ -16,6 +16,7 @@ export const MentalStrike: Power = {
   "shortHelp": "Melee, DMG(Psionic/Smash), Foe -Rech; Self +Insight",
   "icon": "psionicmelee_mentalstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,11 +49,26 @@ export const MentalStrike: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Smashing",
+      "scale": 0.305,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Psionic",
-      "scale": 0.084,
+      "scale": 0.915,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.0661,
       "table": "Melee_Damage",
-      "duration": 3.1,
+      "duration": 2.1,
       "tickRate": 1
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.2199,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Psionic",

@@ -16,14 +16,15 @@ export const CrackWhip: Power = {
   "shortHelp": "Short Ranged (Cone), Moderate DMG(Fire), Foe -Res, Knockdown, DoT(Toxic)",
   "icon": "demonsummoning_crackwhip.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 30,
     "radius": 30,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 11,
-    "endurance": 11.02,
+    "endurance": 11.024,
     "castTime": 2.33,
     "maxTargets": 10
   },
@@ -36,7 +37,7 @@ export const CrackWhip: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -45,6 +46,11 @@ export const CrackWhip: Power = {
       "type": "Fire",
       "scale": 1.13,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.407,
+      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Toxic",
@@ -56,7 +62,7 @@ export const CrackWhip: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.64,
+      "scale": 1.28,
       "table": "Ranged_Ones"
     },
     "resistanceDebuff": {

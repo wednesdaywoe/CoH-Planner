@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.Event_KoA"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Prestige_Costumes.Knives_of_Artemis"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

@@ -33,8 +33,7 @@ export const FireImps: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -42,7 +41,7 @@ export const FireImps: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_FireImp",
-      "copyBoosts": true,
+      "duration": 99999,
       "entityCount": 3
     }
   }

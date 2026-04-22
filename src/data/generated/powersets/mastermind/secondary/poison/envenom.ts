@@ -12,17 +12,18 @@ export const Envenom: Power = {
   "name": "Envenom",
   "internalName": "Envenom",
   "available": 0,
-  "description": "You Envenom your foe with a nasty poison, the poison then spreads to nearby foes. The toxin directly attacks the immune system, reducing the affected target's Defense, Damage Resistance and Hit Point Regeneration Rate. The poison is so potent, that the target actually responds less to Healing while affected by the poison. Secondary foes struck by this power will have a lesser effect placed on them while the primary target receives the full effectiveness of the power.Recharge: Slow.",
+  "description": "You Envenom your foe with a nasty poison, the poison then spreads to nearby foes. The toxin directly attacks the immune system, reducing the affected target's Defense, Damage Resistance and Hit Point Regeneration Rate. The poison is so potent, that the target actually responds less to Healing while affected by the poison. Secondary foes struck by this power will have a lesser effect placed on them while the primary target receives the full effectiveness of the power.",
   "shortHelp": "Ranged (Targeted AoE), Foe -RES, -DEF, -Regen, -Heal",
   "icon": "poison_envenomaoe.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
     "range": 70,
     "radius": 8,
     "recharge": 12,
-    "endurance": 13,
+    "endurance": 10.4,
     "castTime": 1.33,
     "maxTargets": 16
   },
@@ -56,8 +57,8 @@ export const Envenom: Power = {
       }
     },
     "regenDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
+      "scale": 5.75,
+      "table": "Ranged_Res_Boolean"
     },
     "resistanceDebuff": {
       "smashing": {

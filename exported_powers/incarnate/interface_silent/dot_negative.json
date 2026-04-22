@@ -92,7 +92,16 @@
               "caster_stack": "Unlimited",
               "stack": "StackThenIgnore",
               "stack_limit": 8,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "Sleep",
+                  "event_id": 26,
+                  "duration": 1.0,
+                  "flag": 1
+                }
+              ],
+              "flags_raw": 1300
             }
           ]
         },
@@ -130,7 +139,16 @@
               "caster_stack": "Unlimited",
               "stack": "StackThenIgnore",
               "stack_limit": 8,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "Sleep",
+                  "event_id": 26,
+                  "duration": 1.0,
+                  "flag": 1
+                }
+              ],
+              "flags_raw": 1300
             }
           ]
         }

@@ -87,7 +87,8 @@
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Lore_Clockwork_AntiMatterRayBurn",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 17456
         }
       ]
     }

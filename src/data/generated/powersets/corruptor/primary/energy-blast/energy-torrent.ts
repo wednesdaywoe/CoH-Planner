@@ -16,12 +16,13 @@ export const EnergyTorrent: Power = {
   "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_energytorrent.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 40,
     "radius": 40,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 12,
     "endurance": 11.856,
     "castTime": 1.07,
@@ -52,11 +53,31 @@ export const EnergyTorrent: Power = {
       "type": "Energy",
       "scale": 0.66,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.96,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2122,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.4723,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6844,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 3,
+      "scale": 6,
       "table": "Ranged_Knockback"
     }
   }

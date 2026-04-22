@@ -16,6 +16,7 @@ export const GlueArrow: Power = {
   "shortHelp": "Ranged (Targeted AoE), DoT(Toxic), Foe -SPD, -Recharge, -Fly, -Jump",
   "icon": "tacticalarrow_slow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -34,7 +35,7 @@ export const GlueArrow: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Ranged AoE Damage",
+    "Ranged Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],
@@ -42,12 +43,7 @@ export const GlueArrow: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_StickyArrow_Blaster",
-      "copyBoosts": true
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
+      "entity": "P4234428342"
     }
   }
 };

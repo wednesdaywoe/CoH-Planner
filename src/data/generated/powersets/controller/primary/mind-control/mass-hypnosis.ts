@@ -16,6 +16,7 @@ export const MassHypnosis: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Deep Sleep",
   "icon": "mentalcontrol_masshypnosis.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -40,9 +41,9 @@ export const MassHypnosis: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Sleep"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

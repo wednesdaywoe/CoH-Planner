@@ -16,6 +16,7 @@ export const Pistols: Power = {
   "shortHelp": "Ranged, DMG(Lethal/Special), Foe -Defense",
   "icon": "dualpistols_pistols.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
@@ -43,20 +44,23 @@ export const Pistols: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 0.7,
+      "scale": 1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.075,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
     },
     {
       "type": "Lethal",
-      "scale": 0.3,
-      "table": "Ranged_Damage"
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

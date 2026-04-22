@@ -16,6 +16,7 @@ export const TelekineticThrust: Power = {
   "shortHelp": "Melee, Superior DMG(Psionic/Smash), Foe Knockback",
   "icon": "psionicassault_telekineticthrust.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,11 +49,16 @@ export const TelekineticThrust: Power = {
       "type": "Psionic",
       "scale": 1.46,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.2088,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 8,
+      "scale": 16,
       "table": "Melee_Knockback"
     },
     "damageBuff": {

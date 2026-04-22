@@ -12,7 +12,7 @@ export const EnergizingCircuit: Power = {
   "name": "Energizing Circuit",
   "internalName": "Energizing_Circuit",
   "available": 9,
-  "description": "Create a circuit of pure energy between several nearby allies, restoring a small amount of their endurance and significantly increasing their attack rate for a short time. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Energizing Circuit grants 1 stack of Static.Recharge: Slow.",
+  "description": "Create a circuit of pure energy between several nearby allies, restoring a small amount of their endurance and significantly increasing their attack rate for a short time. Every stack of Static you have will cause this power to chain to additional allies. The first few targets in the chain receive a more potent effect. Energizing Circuit grants 1 stack of Static.",
   "shortHelp": "Ranged (Chain), Ally +End, +Recharge, Self +Static",
   "icon": "shocktherapy_energizingcircuit.png",
   "powerType": "Click",
@@ -23,7 +23,7 @@ export const EnergizingCircuit: Power = {
     "range": 80,
     "radius": 25,
     "recharge": 35,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 1.67,
     "maxTargets": 5
   },

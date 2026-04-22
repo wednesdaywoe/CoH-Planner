@@ -16,6 +16,7 @@ export const UpgradeRobot: Power = {
   "shortHelp": "Ranged, Upgrade Robot Henchman",
   "icon": "robotics_upgraderobot.png",
   "powerType": "Click",
+  "targetType": "Self",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

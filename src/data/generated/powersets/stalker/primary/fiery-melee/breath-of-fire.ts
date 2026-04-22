@@ -12,19 +12,20 @@ export const BreathofFire: Power = {
   "name": "Breath of Fire",
   "internalName": "Breath_of_Fire",
   "available": 17,
-  "description": "This allows you to spew forth fire from your mouth, burning all foes within its narrow cone. This is a very accurate attack that can deal good damage at a close range.",
+  "description": "This allows you to spew forth fire from your mouth, burning all foes within its narrow cone. This is a very accurate attack that can deal good damage at a close range.This power is mutually exclusive from Combustion",
   "shortHelp": "Close (Cone) DoT (Fire)",
   "icon": "fieryfray_breathingfire.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
-    "accuracy": 1.2,
+    "accuracy": 1,
     "range": 15,
     "radius": 15,
-    "arc": 0.5236,
+    "arc": 2.094395160675049,
     "recharge": 10,
     "endurance": 10.192,
-    "castTime": 2.67,
+    "castTime": 2.4,
     "maxTargets": 10
   },
   "allowedEnhancements": [
@@ -43,22 +44,58 @@ export const BreathofFire: Power = {
   "damage": [
     {
       "type": "Fire",
-      "scale": 0.68,
+      "scale": 0.3744,
       "table": "Melee_Damage",
       "duration": 0.6,
       "tickRate": 0.5
     },
     {
       "type": "Fire",
-      "scale": 0.1,
+      "scale": 0.071,
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
     },
     {
       "type": "Fire",
-      "scale": 1.08,
+      "scale": 1.0852,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.0852,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.6865,
+      "table": "Melee_PvPDamage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2588,
+      "table": "Melee_PvPDamage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0899,
+      "table": "Melee_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.3733,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.3733,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

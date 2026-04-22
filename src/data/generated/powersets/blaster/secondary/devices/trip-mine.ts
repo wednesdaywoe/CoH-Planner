@@ -34,20 +34,15 @@ export const TripMine: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Mine",
-      "duration": 260,
-      "copyBoosts": true
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
+      "entity": "P3912486950",
+      "duration": 260
     }
   }
 };

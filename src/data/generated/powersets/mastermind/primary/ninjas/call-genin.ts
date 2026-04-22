@@ -12,7 +12,7 @@ export const CallGenin: Power = {
   "name": "Call Genin",
   "internalName": "Call_Genin",
   "available": 0,
-  "description": "Calls forth one to three Genin Ninja (depending on your level) to do your bidding. Genin have good reflexes and jumping skill, but they are still the lowest rank Ninja and only possess the most rudimentary skills, However, they can be trained in more advanced techniques and weapons.You may only have 3 Genin under your control at any given time. If you attempt to call Genin, you can only replace the ones you have lost in battle. If you already have three, the power will fail.",
+  "description": "Calls forth one to three Genin Ninja (depending on your level) to do your bidding. Genin have good reflexes and jumping skill, but they are still the lowest rank Ninja and only possess the most rudimentary skills, However, they can be trained in more advanced techniques and weapons.You may only have 3 Genin under your control at any given time. If you attempt to call Genin, you can only replace the ones you have lost in battle. If you already have three, the power will fail.In PvE this power will also summon all your active henchmen so long they are not currentlly engaged in combat and are outside of your Supremacy range.",
   "shortHelp": "Summon Genin",
   "icon": "ninjas_callgenin.png",
   "powerType": "Click",
@@ -35,9 +35,7 @@ export const CallGenin: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],
@@ -46,8 +44,17 @@ export const CallGenin: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Genin",
-      "copyBoosts": true,
+      "duration": 99999,
       "entityCount": 3
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "immobilize": {
+      "mag": 500,
+      "scale": 3,
+      "table": "Melee_Ones"
     }
   }
 };

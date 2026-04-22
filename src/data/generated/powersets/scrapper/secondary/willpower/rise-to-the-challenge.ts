@@ -20,7 +20,7 @@ export const RisetotheChallenge: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "radius": 8,
+    "radius": 12,
     "recharge": 10,
     "endurance": 0.208,
     "castTime": 3,
@@ -47,12 +47,12 @@ export const RisetotheChallenge: Power = {
       "perTarget": 0.25
     },
     "durations": {
-      "regenBuff": 1.125
+      "regenBuff": 1.12
     },
     "taunt": {
       "scale": 1.25,
       "table": "Melee_Ones"
     },
-    "buffDuration": 1.125
+    "buffDuration": 1.12
   }
 };

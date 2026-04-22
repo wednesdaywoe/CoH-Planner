@@ -16,6 +16,7 @@ export const UnchainEssence: Power = {
   "shortHelp": "Ranged (Targeted AoE Special), Superior DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
   "icon": "umbralblast_unchainessence.png",
   "powerType": "Click",
+  "targetType": "DeadFoe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -57,7 +58,7 @@ export const UnchainEssence: Power = {
       "table": "Ranged_Stun"
     },
     "knockback": {
-      "scale": 1,
+      "scale": 2,
       "table": "Ranged_Knockback"
     }
   }

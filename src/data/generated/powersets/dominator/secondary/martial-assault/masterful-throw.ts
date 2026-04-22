@@ -16,6 +16,7 @@ export const MasterfulThrow: Power = {
   "shortHelp": "Sniper, Extreme DMG(Lethal), Foe -To Hit",
   "icon": "martialassault_masterfulthrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,10 +41,5 @@ export const MasterfulThrow: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  }
+  "maxSlots": 6
 };

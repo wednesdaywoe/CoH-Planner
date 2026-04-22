@@ -16,6 +16,7 @@ export const Disintegrate: Power = {
   "shortHelp": "Ranged, DoT(Energy), Foe -Regen, Special",
   "icon": "beamrifle_disintegrate.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
@@ -37,17 +38,26 @@ export const Disintegrate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.216,
-    "table": "Ranged_Damage",
-    "duration": 10.5,
-    "tickRate": 1.11
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.216,
+      "table": "Ranged_Damage",
+      "duration": 10.5,
+      "tickRate": 1.1100000143051147
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2343,
+      "table": "Ranged_PvPDamage",
+      "duration": 10.5,
+      "tickRate": 1.1100000143051147
+    }
+  ],
   "effects": {
     "regenDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
+      "scale": 6,
+      "table": "Ranged_Res_Boolean"
     },
     "durations": {
       "regenDebuff": 15

@@ -16,12 +16,13 @@ export const ShadowMaul: Power = {
   "shortHelp": "Melee (Cone), Superior DoT(Smash/Negative), Foe -To Hit",
   "icon": "darknessmanipulation_shadowmaul.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 14,
     "endurance": 13.52,
     "castTime": 3.07,
@@ -56,12 +57,27 @@ export const ShadowMaul: Power = {
       "table": "Melee_Damage",
       "duration": 2,
       "tickRate": 0.625
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.3886,
+      "table": "Melee_PvPDamage",
+      "duration": 2,
+      "tickRate": 0.625
+    },
+    {
+      "type": "Negative",
+      "scale": 0.3886,
+      "table": "Melee_PvPDamage",
+      "duration": 2,
+      "tickRate": 0.625
     }
   ],
   "effects": {
     "damageBuff": {
       "scale": 0.163,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.163
     },
     "durations": {
       "damageBuff": 10.57

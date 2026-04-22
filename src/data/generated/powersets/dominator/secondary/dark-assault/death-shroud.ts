@@ -16,6 +16,7 @@ export const MoonBeam: Power = {
   "shortHelp": "Sniper, Extreme DMG(Negative), Target -To Hit",
   "icon": "darknessassault_moonbeam.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,10 +41,5 @@ export const MoonBeam: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  }
+  "maxSlots": 6
 };

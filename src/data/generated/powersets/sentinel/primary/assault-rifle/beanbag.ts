@@ -16,6 +16,7 @@ export const DisorientingShot: Power = {
   "shortHelp": "Ranged, DMG(Smash), Foe Disorient",
   "icon": "assaultweapons_shotgunbeanbag.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -39,11 +40,28 @@ export const DisorientingShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.16,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.16,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.16,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.23,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.23,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 3,

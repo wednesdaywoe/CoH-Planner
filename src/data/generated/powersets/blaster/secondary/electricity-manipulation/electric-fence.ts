@@ -16,6 +16,7 @@ export const ElectricFence: Power = {
   "shortHelp": "Ranged, DoT (Energy), Foe Immobilize, -End",
   "icon": "electricitymanipulation_electricfence.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,13 +42,22 @@ export const ElectricFence: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 8.2,
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.2,
+      "table": "Ranged_Damage",
+      "duration": 8.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2758,
+      "table": "Ranged_PvPDamage",
+      "duration": 8.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -55,8 +65,8 @@ export const ElectricFence: Power = {
       "table": "Ranged_Immobilize"
     },
     "enduranceDrain": {
-      "scale": 0.028,
-      "table": "Ranged_Ones"
+      "scale": 1,
+      "table": "Ranged_EndDrain"
     },
     "durations": {
       "enduranceDrain": 6.2,

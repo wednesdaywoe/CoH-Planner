@@ -14,7 +14,7 @@ export const BoRyaku: Power = {
   "available": 23,
   "description": "Bō Ryaku is one of the 18 fundamental skills of the Togakure-ryū school of ninjutsu. Alongside more orthodox and mainstream measures, Bō Ryaku includes use of unorthodox strategies and tactics that help you minimize the amount of damage taken in combat. This power is always on and costs no endurance.",
   "shortHelp": "Auto: Self +Res(Knockback, Knockup, All DMG)",
-  "icon": "ninjitsu_resistance.png",
+  "icon": "ninjitsu_resistance",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -89,5 +89,6 @@ export const BoRyaku: Power = {
       }
     },
     "buffDuration": 10.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

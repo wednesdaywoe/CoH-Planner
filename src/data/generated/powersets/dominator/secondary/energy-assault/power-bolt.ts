@@ -16,6 +16,7 @@ export const PowerBolt: Power = {
   "shortHelp": "Ranged, Light DMG(Energy/Smash), Foe Knockback, Chance for Energy Focus",
   "icon": "energyassault_powerbolt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,11 +49,21 @@ export const PowerBolt: Power = {
       "type": "Energy",
       "scale": 0.6,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.504,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.756,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.7,
+      "scale": 1.4,
       "table": "Ranged_Knockback"
     }
   }

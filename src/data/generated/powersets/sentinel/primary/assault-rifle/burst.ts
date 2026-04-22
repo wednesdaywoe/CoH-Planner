@@ -16,6 +16,7 @@ export const Burst: Power = {
   "shortHelp": "Ranged, DMG(Lethal), Foe -DEF",
   "icon": "assaultweapons_arburst.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -40,13 +41,36 @@ export const Burst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.27,
-    "table": "Ranged_Damage",
-    "duration": 0.91,
-    "tickRate": 0.3
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.27,
+      "table": "Ranged_Damage",
+      "duration": 0.91,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.27,
+      "table": "Ranged_InherentDamage",
+      "duration": 0.91,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.42,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.61,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.42,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.61,
+      "tickRate": 0.30000001192092896
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,

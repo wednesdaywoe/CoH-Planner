@@ -87,7 +87,8 @@
               "Redirects.Trick_Arrow.Disruption_Arrow",
               "Pets.ResistAll.ResistAll"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

@@ -16,6 +16,7 @@ export const WhiteDwarfStrike: Power = {
   "shortHelp": "Melee, Light DMG(Smash/Energy), Foe -DEF, Knockback",
   "icon": "luminousaura_whitedwarfstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -51,11 +52,21 @@ export const WhiteDwarfStrike: Power = {
       "type": "Energy",
       "scale": 0.5,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.6528,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9792,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "taunt": {
@@ -71,5 +82,5 @@ export const WhiteDwarfStrike: Power = {
     },
     "buffDuration": 6
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf && !Inherent.Inherent.White_Dwarf_Strike"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Strike ! &&"
 };

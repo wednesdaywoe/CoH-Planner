@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CryoAmmunition: Power = {
   "name": "Cryo Ammunition",
   "internalName": "Cryo_Ammunition",
-  "available": -1,
+  "available": 4294967295,
   "description": "While this toggle is active you will be equipped with 'Cryo Rounds'. Most of your Dual Pistol attacks will have their secondary damage converted to cold damage and inflict a minor slow effect on the target.Cryo Rounds are more aerodynamic, being able to travel a greater distance.In order to earn this power, you must purchase the Swap Ammo power.",
   "shortHelp": "Toggle: Ammo Change (Cold), Special",
   "icon": "dualpistols_cryoammo.png",
@@ -36,6 +36,5 @@ export const CryoAmmunition: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo",
-  "mechanicType": "childToggle"
+  "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo"
 };

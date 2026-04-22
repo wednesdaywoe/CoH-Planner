@@ -34,11 +34,7 @@ export const CallEnforcer: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Holds",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Stuns",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -46,7 +42,7 @@ export const CallEnforcer: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Thug_Lt",
-      "copyBoosts": true,
+      "duration": 99999,
       "entityCount": 2
     }
   }

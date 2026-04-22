@@ -16,6 +16,7 @@ export const Geyser: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash), Foe DoT(Fire), +Wet, -Speed, Knock Up, Disorient, Self -Tidal Power",
   "icon": "waterblast_geyser.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.4,
@@ -57,6 +58,26 @@ export const Geyser: Power = {
       "table": "Ranged_Damage"
     },
     {
+      "type": "Smashing",
+      "scale": 0.3921,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.1764,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.5,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.8933,
+      "table": "Ranged_PvPDamage"
+    },
+    {
       "type": "Fire",
       "scale": 0.1,
       "table": "Ranged_Damage"
@@ -70,6 +91,21 @@ export const Geyser: Power = {
       "type": "Fire",
       "scale": 0.5,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0784,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1882,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.3921,
+      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Fire",
@@ -107,7 +143,7 @@ export const Geyser: Power = {
       "table": "Ranged_Stun"
     },
     "knockup": {
-      "scale": 1.5,
+      "scale": 3,
       "table": "Ranged_Ones"
     }
   }

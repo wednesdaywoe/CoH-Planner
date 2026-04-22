@@ -14,7 +14,7 @@ export const MaskPresence: Power = {
   "available": 3,
   "description": "Mask Presence makes you almost impossible to detect. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. While stealthed you will get additional defense to all attack types and the strength of your next attack will be more powerful; however, you can only attempt this after spending 8 seconds without attacking.",
   "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged)",
-  "icon": "psionicarmor_maskpresence.png",
+  "icon": "psionicarmor_maskpresence",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -35,7 +35,27 @@ export const MaskPresence: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "damageBuff": {
+      "scale": 4,
+      "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 0.75,
+      "defenseBuff": 0.75,
+      "defenseBuffSuppressible": 0.55,
+      "stealth": 0.75
+    },
     "defenseBuff": {
+      "ranged": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "defenseBuffSuppressible": {
       "ranged": {
         "scale": 1,
         "table": "Melee_Buff_Def"
@@ -80,10 +100,6 @@ export const MaskPresence: Power = {
         "scale": 1,
         "table": "Melee_Buff_Def"
       }
-    },
-    "durations": {
-      "defenseBuff": 0.55,
-      "stealth": 0.75
     },
     "stealth": {
       "stealthPvE": {

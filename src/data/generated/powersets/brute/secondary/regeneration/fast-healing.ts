@@ -45,5 +45,6 @@ export const FastHealing: Power = {
       }
     },
     "buffDuration": 10
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

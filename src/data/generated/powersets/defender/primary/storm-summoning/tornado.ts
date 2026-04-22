@@ -39,8 +39,7 @@ export const Tornado: Power = {
     "Defender Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],
@@ -48,9 +47,8 @@ export const Tornado: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Tornado",
-      "duration": 30,
-      "copyBoosts": true
+      "entity": "P1985334123",
+      "duration": 30
     }
   }
 };

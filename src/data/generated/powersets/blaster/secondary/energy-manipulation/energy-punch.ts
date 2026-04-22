@@ -16,6 +16,7 @@ export const EnergyPunch: Power = {
   "shortHelp": "Melee, High DMG(Smash/Energy), Foe Disorient",
   "icon": "energymanipulation_energypunch.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,6 +49,16 @@ export const EnergyPunch: Power = {
       "type": "Energy",
       "scale": 1,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.6764,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.7046,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -55,10 +66,6 @@ export const EnergyPunch: Power = {
       "mag": 2,
       "scale": 5,
       "table": "Melee_Stun"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     }
   }
 };

@@ -16,12 +16,13 @@ export const Buckshot: Power = {
   "shortHelp": "Ranged (Cone), DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_shotgunbuckshot.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
     "range": 40,
     "radius": 40,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 8,
     "endurance": 8.53,
     "castTime": 0.9,
@@ -42,14 +43,31 @@ export const Buckshot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.91,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.91,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.91,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.625,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.625,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.75,
+      "scale": 1.5,
       "table": "Ranged_Knockback"
     }
   }

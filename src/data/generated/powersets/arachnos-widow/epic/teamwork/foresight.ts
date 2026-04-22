@@ -26,6 +26,10 @@ export const Foresight: Power = {
     "Resistance",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

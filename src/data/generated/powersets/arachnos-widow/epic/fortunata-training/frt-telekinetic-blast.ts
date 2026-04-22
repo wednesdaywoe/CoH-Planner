@@ -16,6 +16,7 @@ export const TelekineticBlast: Power = {
   "shortHelp": "Ranged, DMG(Smash/Psionic), Foe Knockback",
   "icon": "fortunatatraining_telekineticblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,11 +50,21 @@ export const TelekineticBlast: Power = {
       "type": "Psionic",
       "scale": 0.792,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.335,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.005,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 8,
       "table": "Ranged_Knockback"
     }
   }

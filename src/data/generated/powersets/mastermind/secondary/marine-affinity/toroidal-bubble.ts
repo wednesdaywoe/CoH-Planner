@@ -22,7 +22,7 @@ export const ToroidalBubble: Power = {
     "accuracy": 1,
     "radius": 40,
     "recharge": 60,
-    "endurance": 10,
+    "endurance": 8,
     "castTime": 1.77,
     "maxTargets": 255
   },
@@ -35,10 +35,7 @@ export const ToroidalBubble: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Leaping",
-    "Leaping & Sprints",
-    "Resist Damage",
-    "Universal Travel"
+    "Resist Damage"
   ],
   "maxSlots": 6,
   "effects": {

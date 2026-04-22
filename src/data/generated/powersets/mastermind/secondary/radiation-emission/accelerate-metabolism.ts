@@ -12,7 +12,7 @@ export const AccelerateMetabolism: Power = {
   "name": "Accelerate Metabolism",
   "internalName": "Accelerate_Metabolism",
   "available": 3,
-  "description": "Activating this power emits radiation that increases the running speed, attack speed, Endurance recovery, and damage potential of all nearby allies. Affected allies' metabolisms are increased so much that they become resistant to effects such as Sleep, Hold, Disorient, Immobilization and Endurance Drain.Recharge: Very Long.",
+  "description": "Activating this power emits radiation that increases the running speed, attack speed, Endurance recovery, and damage potential of all nearby allies. Affected allies' metabolisms are increased so much that they become resistant to effects such as Sleep, Hold, Disorient, Immobilization and Endurance Drain.",
   "shortHelp": "PBAoE, Ally +SPD, +Recharge, +Recovery, +DMG(All) +Res(Effects)",
   "icon": "radiationpoisoning_acceleratemetabolism.png",
   "powerType": "Click",
@@ -22,7 +22,7 @@ export const AccelerateMetabolism: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 422,
-    "endurance": 19.5,
+    "endurance": 15.6,
     "castTime": 2.03,
     "maxTargets": 255
   },
@@ -33,10 +33,7 @@ export const AccelerateMetabolism: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Endurance Modification",
-    "Running",
-    "Running & Sprints",
-    "Universal Travel"
+    "Endurance Modification"
   ],
   "maxSlots": 6,
   "effects": {

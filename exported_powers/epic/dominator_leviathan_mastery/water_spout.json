@@ -86,7 +86,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Patron_Powers_Water_Spout",
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

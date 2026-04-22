@@ -12,10 +12,11 @@ export const Weaken: Power = {
   "name": "Weaken",
   "internalName": "Weaken",
   "available": 3,
-  "description": "You poison a single foe with a venom that significantly Weakens their strength and and that of nearby foes. The affected primary target's chance to hit and Damage output is severely reduced Additionally, the affected targets secondary power effects are all weakened. The targets power effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all weakened. Secondary foes struck by this power will have a lesser effect placed on them while the primary target receives the full effectiveness of the power.Recharge: Slow.",
+  "description": "You poison a single foe with a venom that significantly Weakens their strength and and that of nearby foes. The affected primary target's chance to hit and Damage output is severely reduced Additionally, the affected targets secondary power effects are all weakened. The targets power effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all weakened. Secondary foes struck by this power will have a lesser effect placed on them while the primary target receives the full effectiveness of the power.",
   "shortHelp": "Ranged (Targeted AoE) Foe -DMG -To Hit, -Special",
   "icon": "poison_weakenaoe.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

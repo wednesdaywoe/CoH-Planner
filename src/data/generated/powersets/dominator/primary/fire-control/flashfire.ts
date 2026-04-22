@@ -16,6 +16,7 @@ export const Flashfire: Power = {
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Fire), Foe Disorient",
   "icon": "firetrap_flashfire.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -50,9 +51,9 @@ export const Flashfire: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

@@ -16,6 +16,7 @@ export const Fault: Power = {
   "shortHelp": "Close (Targeted AoE), Minor DMG(Smashing), Foe Knockback, Disorient",
   "icon": "stonemelee_fault.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 0.8,
@@ -35,13 +36,33 @@ export const Fault: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
+    "Ranged Damage",
     "Stalker Archetype Sets",
     "Stuns",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.2507,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.2507,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.2507,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8593,
+      "table": "Melee_PvPDamage"
+    },
     {
       "type": "Smashing",
       "scale": 0.7825,
@@ -51,17 +72,22 @@ export const Fault: Power = {
       "type": "Smashing",
       "scale": 0.7825,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.7825,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "stun": {
       "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
+      "scale": 1,
+      "table": "Melee_PvPMez"
     }
   }
 };

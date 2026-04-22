@@ -14,8 +14,9 @@ export const PositronCell: Power = {
   "available": 3,
   "description": "Encases a single target in a cage made of positrons. The radiation emitted slowly hurts the victim, inflicting energy damage over time. The encased victim is held helpless and unable to defend themselves in addition to being surrounded by positively charged particles. Hitting a foe that has negatively charged particles will trigger a Gamma Burst.",
   "shortHelp": "Ranged, DoT(Energy), Foe Hold, -DEF, +Positrons",
-  "icon": "atomicmanipulation_hold.png",
+  "icon": "atomicmanipulation_hold",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -42,18 +43,27 @@ export const PositronCell: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 4.2,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 4.2,
+      "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 0.442,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.2,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "defenseDebuff": {
       "scale": 1.5,
@@ -61,10 +71,6 @@ export const PositronCell: Power = {
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   }

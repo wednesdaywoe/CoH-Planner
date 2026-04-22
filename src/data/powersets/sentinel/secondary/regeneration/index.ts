@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { FastHealing as FastHealing } from './fast-healing';
-import { Reconstruction as Reconstruction } from './reconstruction';
-import { QuickRecovery as QuickRecovery } from './quick-recovery';
 import { AilmentResistance as AilmentResistance } from './dismiss-pain';
-import { Integration as Integration } from './integration';
-import { Resilience as Resilience } from './resilience';
+import { FastHealing as FastHealing } from './fast-healing';
 import { ReactiveRegeneration as ReactiveRegeneration } from './instant-regeneration';
-import { SecondWind as SecondWind } from './second-wind';
+import { Integration as Integration } from './integration';
 import { MomentofGlory as MomentofGlory } from './moment-of-glory';
+import { QuickRecovery as QuickRecovery } from './quick-recovery';
+import { Reconstruction as Reconstruction } from './reconstruction';
+import { Resilience as Resilience } from './resilience';
+import { SecondWind as SecondWind } from './second-wind';
 
 export const powerset: Powerset = {
   id: 'sentinel/regeneration',
   name: 'Regeneration',
   description: 'Regeneration lets you regenerate more quickly from damage and effects. Regeneration offers almost no actual damage resistance, but your Hit Point Regeneration can become so incredibly fast, that your wounds heal almost instantly. Those who possess this power set have little downtime.',
-  icon: 'regeneration_set.png',
+  icon: 'regeneration_set.ico',
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    FastHealing,
-    Reconstruction,
-    QuickRecovery,
     AilmentResistance,
-    Integration,
-    Resilience,
+    FastHealing,
     ReactiveRegeneration,
-    SecondWind,
+    Integration,
     MomentofGlory,
+    QuickRecovery,
+    Reconstruction,
+    Resilience,
+    SecondWind,
   ],
 };
 

@@ -14,7 +14,7 @@ export const CombatFlight: Power = {
   "available": 9,
   "description": "For hovering and aerial combat. This power is much slower than Energy Flight, but provides some Defense, offers good air control, costs little Endurance, and has none of the penalties associated with Energy Flight. Switch to this mode when fighting other flying foes.Combat Flight can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
   "shortHelp": "Toggle: Self Fly, +DEF",
-  "icon": "luminousaura_combatflight.png",
+  "icon": "luminousaura_combatflight",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -29,9 +29,7 @@ export const CombatFlight: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets",
-    "Flight",
-    "Universal Travel"
+    "Defense Sets"
   ],
   "maxSlots": 6,
   "effects": {
@@ -105,5 +103,5 @@ export const CombatFlight: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "!Inherent.Inherent.Combat_Flight"
+  "requires": "Inherent.Inherent.Combat_Flight !"
 };

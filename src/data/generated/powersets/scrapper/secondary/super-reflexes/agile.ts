@@ -74,5 +74,6 @@ export const Agile: Power = {
       }
     },
     "buffDuration": 0.75
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

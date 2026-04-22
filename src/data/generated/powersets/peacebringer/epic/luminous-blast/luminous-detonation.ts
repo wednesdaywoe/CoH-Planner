@@ -16,6 +16,7 @@ export const LuminousDetonation: Power = {
   "shortHelp": "Ranged (Targeted AoE), Light DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_luminousdetonation.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -44,14 +45,21 @@ export const LuminousDetonation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.9,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.9,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6797,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 4,
       "table": "Ranged_Knockback"
     },
     "defenseDebuff": {

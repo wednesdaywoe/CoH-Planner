@@ -14,7 +14,7 @@ export const EndofTime: Power = {
   "available": 15,
   "description": "You open a gate in time that can suck in enemies and send them into a distant unknown future. The affected enemies will be quickly returned to the present time, but not before being temporarily exposed to radiation and the bitter cold of an empty void, reducing their regeneration rate. Targets affected by the Delayed effect will suffer bonus damage.Damage: Moderate.Recharge: Slow.",
   "shortHelp": "PBAoE, DMG(Cold/Energy), Foe -Regen",
-  "icon": "timemanipulation_endoftime.png",
+  "icon": "timemanipulation_endoftime",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
@@ -54,11 +54,26 @@ export const EndofTime: Power = {
       "type": "Energy",
       "scale": 0.308,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.7502,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2501,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2501,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "regenDebuff": {
-      "scale": 0.5,
+      "scale": 4.5,
       "table": "Melee_Ones"
     },
     "durations": {

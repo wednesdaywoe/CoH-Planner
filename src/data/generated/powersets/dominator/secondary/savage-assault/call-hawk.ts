@@ -14,8 +14,9 @@ export const CallHawk: Power = {
   "available": 27,
   "description": "You call forth a hawk ally to swoop in and viciously peck at your target causing High Lethal damage. The attack often catches foes off their guard and can knock them down as well as reducing their chance to hit. This power's damage over time effect will scale with the number of stacks of Blood Frenzy. Using this power with 5 stacks of Blood Frenzy causes you to become Exhausted for a short time, but the duration of its damage over time effect is increased. While exhausted you cannot gain Blood Frenzy.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Ranged, Foe DoT (Lethal), -To Hit, Knockdown, -Fly",
-  "icon": "savagemelee_callhawk.png",
+  "icon": "savagemelee_callhawk",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -37,6 +38,7 @@ export const CallHawk: Power = {
     "Accurate To-Hit Debuff",
     "Knockback",
     "Ranged Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -46,26 +48,19 @@ export const CallHawk: Power = {
       "scale": 0.52,
       "table": "Ranged_Damage",
       "duration": 1.3,
-      "tickRate": 0.3
+      "tickRate": 0.30000001192092896
     },
     {
       "type": "Lethal",
-      "scale": 0.2429,
-      "table": "Ranged_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2543,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 1
+      "scale": 0.4683,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.3,
+      "tickRate": 0.30000001192092896
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Ranged_Ones"
     }
   }

@@ -96,7 +96,8 @@
               "caster_stack": "Individual",
               "stack": "Suppress",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -146,7 +147,8 @@
                   "caster_stack": "Individual",
                   "stack": "Suppress",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1280
                 }
               ]
             },
@@ -184,7 +186,16 @@
                   "caster_stack": "Individual",
                   "stack": "Suppress",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "suppress_events": [
+                    {
+                      "event": "Event_0",
+                      "event_id": 0,
+                      "duration": 0.0,
+                      "flag": 12
+                    }
+                  ],
+                  "flags_raw": 5
                 }
               ]
             }
@@ -236,7 +247,8 @@
                   "caster_stack": "Individual",
                   "stack": "Suppress",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1280
                 }
               ]
             },
@@ -274,7 +286,8 @@
                   "caster_stack": "Individual",
                   "stack": "Suppress",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1280
                 }
               ]
             },
@@ -312,7 +325,8 @@
                   "caster_stack": "Individual",
                   "stack": "Suppress",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 1280
                 }
               ]
             }
@@ -352,7 +366,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 112
             }
           ]
         }

@@ -80,7 +80,8 @@
               "Controller_Control.Electric_Control.Synaptic_Overload",
               "Dominator_Control.Electric_Control.Synaptic_Overload"
             ]
-          }
+          },
+          "flags_raw": 196928
         }
       ]
     }

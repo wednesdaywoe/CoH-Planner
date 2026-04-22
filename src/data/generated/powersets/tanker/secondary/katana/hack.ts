@@ -16,6 +16,7 @@ export const StingoftheWasp: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe -Def",
   "icon": "katana_hack.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -41,11 +42,18 @@ export const StingoftheWasp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.16,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.16,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.419,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,
@@ -56,5 +64,5 @@ export const StingoftheWasp: Power = {
     },
     "buffDuration": 10
   },
-  "requires": "!Tanker_Defense.Shield_Defense"
+  "requires": "Tanker_Defense.Shield_Defense !"
 };

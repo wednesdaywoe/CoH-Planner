@@ -14,8 +14,9 @@ export const EchoChamber: Power = {
   "available": 3,
   "description": "Encases the target in a field of sonic waves, dealing energy damage and holding them in place.Damage: Light.Recharge: Slow.",
   "shortHelp": "Ranged, DMG(Energy), Foe Hold",
-  "icon": "sonicmanipulation_echochamber.png",
+  "icon": "sonicmanipulation_echochamber",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,17 +40,24 @@ export const EchoChamber: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage",
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Ranged_Damage",
+      "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 2.21,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
+      "mag": 3,
+      "scale": 1,
+      "table": "Melee_PvPMez"
     }
   }
 };

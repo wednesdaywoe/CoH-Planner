@@ -16,15 +16,16 @@ export const ShoalRush: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe -DEF, -SPD, Special",
   "icon": "marineaffinity_shoalrush.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.2,
     "range": 80,
     "radius": 20,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 15,
-    "endurance": 13,
-    "castTime": 2.17,
+    "endurance": 10.4,
+    "castTime": 1.33,
     "maxTargets": 16
   },
   "allowedEnhancements": [

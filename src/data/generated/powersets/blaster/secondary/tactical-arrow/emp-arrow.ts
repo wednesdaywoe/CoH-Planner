@@ -16,6 +16,7 @@ export const ESDArrow: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Disorient, -End, Special vs. Robots",
   "icon": "tacticalarrow_stun.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -48,22 +49,18 @@ export const ESDArrow: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "enduranceDrain": {
-      "scale": 0.55,
-      "table": "Ranged_Ones"
+      "scale": 16.67,
+      "table": "Ranged_EndDrain"
     },
     "hold": {
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     }
   }
 };

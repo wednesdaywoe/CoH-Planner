@@ -96,7 +96,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_01",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             },
             {
               "attribs": [
@@ -126,7 +127,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_02",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             },
             {
               "attribs": [
@@ -156,7 +158,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_03",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             },
             {
               "attribs": [
@@ -186,7 +189,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_04",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             },
             {
               "attribs": [
@@ -216,7 +220,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_05",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             },
             {
               "attribs": [
@@ -246,7 +251,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_06",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             }
           ]
         },
@@ -289,7 +295,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_07",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             }
           ]
         },
@@ -332,7 +339,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_08",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             }
           ]
         },
@@ -375,7 +383,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_09",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             }
           ]
         },
@@ -418,7 +427,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_02",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             }
           ]
         },
@@ -461,7 +471,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_04",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             }
           ]
         },
@@ -504,7 +515,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_06",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             }
           ]
         },
@@ -547,7 +559,8 @@
                 "type": "EntCreate",
                 "entity_def": "Pets_Thug_Pose_09",
                 "priority_list": "PL_FightPreferMelee"
-              }
+              },
+              "flags_raw": 16496
             }
           ]
         },
@@ -585,7 +598,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -610,7 +624,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -635,7 +650,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -660,7 +676,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }

@@ -86,7 +86,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_1"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -117,7 +118,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_1"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -148,7 +150,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_2"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -179,7 +182,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_2"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -210,7 +214,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_3"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -241,7 +246,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_3"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -272,7 +278,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_4"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -303,7 +310,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_4"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -334,7 +342,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_5"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -365,7 +374,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_5"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -396,7 +406,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_6"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -427,7 +438,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_6"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -458,7 +470,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Containment_5"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -489,7 +502,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Containment_5"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -514,7 +528,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 112
         },
         {
           "attribs": [
@@ -545,7 +560,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_Rare"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -576,7 +592,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Control_Boost_Rare"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

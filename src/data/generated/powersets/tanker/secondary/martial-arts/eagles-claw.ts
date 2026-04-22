@@ -16,6 +16,7 @@ export const EaglesClaw: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe Disorient, +DMG(All)",
   "icon": "martialarts_eaglesclaw.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -40,11 +41,18 @@ export const EaglesClaw: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.28,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.651,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "damageBuff": {
       "scale": 3.3,

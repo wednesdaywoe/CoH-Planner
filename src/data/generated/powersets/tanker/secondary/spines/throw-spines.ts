@@ -16,12 +16,13 @@ export const ThrowSpines: Power = {
   "shortHelp": "Ranged (Cone), DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_quillthrowing.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 30,
     "radius": 30,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 12,
     "endurance": 13,
     "castTime": 1.63,
@@ -49,18 +50,28 @@ export const ThrowSpines: Power = {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 4.1,
+      "duration": 7.1,
       "tickRate": 1
     },
     {
       "type": "Lethal",
       "scale": 1.09,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.7988,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.2222,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 0.67,
+      "mag": 0.6700000166893005,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

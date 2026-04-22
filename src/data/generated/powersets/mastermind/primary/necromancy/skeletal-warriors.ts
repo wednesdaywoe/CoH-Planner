@@ -35,11 +35,10 @@ export const GraveKnight: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Accurate To-Hit Debuff",
     "Defense Debuff",
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
@@ -48,7 +47,7 @@ export const GraveKnight: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Skeletal_Warrior",
-      "copyBoosts": true,
+      "duration": 99999,
       "entityCount": 2
     }
   }

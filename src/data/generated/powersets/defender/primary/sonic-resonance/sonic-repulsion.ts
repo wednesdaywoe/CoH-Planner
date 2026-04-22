@@ -16,7 +16,7 @@ export const SonicRepulsion: Power = {
   "shortHelp": "Toggle: Ranged (Target Ally AoE), Foe Knockback",
   "icon": "sonicdebuff_teamknockback.png",
   "powerType": "Toggle",
-  "targetType": "Teammate (Alive)",
+  "targetType": "Teammate",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -40,12 +40,16 @@ export const SonicRepulsion: Power = {
   "maxSlots": 6,
   "effects": {
     "knockback": {
-      "scale": 3,
+      "scale": 6,
       "table": "Ranged_Knockback"
     },
     "enduranceDrain": {
-      "scale": 1,
+      "scale": 2,
       "table": "Ranged_Ones"
-    }
+    },
+    "durations": {
+      "knockback": 0.5
+    },
+    "buffDuration": 0.5
   }
 };

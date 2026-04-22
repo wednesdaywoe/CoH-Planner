@@ -36,6 +36,11 @@ export const StaticDischarge: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

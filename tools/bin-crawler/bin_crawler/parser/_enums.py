@@ -67,6 +67,27 @@ BOOST_TYPE: dict[int, str] = {
     40: "Incarnate_Destiny",
 }
 
+# Event IDs used in AttribMod CancelEvents and Suppress arrays.
+# Mapped by cross-referencing parsed IDs against .def file event names
+# (see: Pool/Invisibility/Stealth, Stalker_Defense/Ninjitsu/Hide, etc.).
+# Mapping is partial — IDs we haven't confirmed yet are passed through as ints.
+EVENT_NAME: dict[int, str] = {
+    1: "ActivateAttackClick",
+    2: "Attacked",
+    4: "Helped",
+    17: "HitByFoe",
+    21: "Damaged",
+    23: "Stunned",
+    25: "Held",
+    26: "Sleep",
+    27: "Confused",
+    33: "MissionObjectInteract",
+    37: "MissionObjectClick",
+    41: "CommandedPet",
+    47: "PseudoPetAttacked",
+    48: "PseudoPetHelped",
+}
+
 ATTRIB_NAME: dict[int, str] = {
     # Binary stores attrib indices as value * 4 (byte offsets).
     # Divide binary value by 4 to get the index used here.

@@ -14,7 +14,7 @@ export const QuantumManeuvers: Power = {
   "available": 25,
   "description": "While Energy Flight, Combat Flight or Group Energy Flight are active, Quantum Maneuvers increases fly speed and movement control. It will also grant resistance against knockback and protection against -Fly and Immobilization.Quantum Maneuvers' flight speed buff stacks with other flight powers, and isn't suppressed by combat.Notes: Quantum Maneuvers provides a moderate amount of Defense even while on the ground, but this defense is lost if you attack, buff allies, give an order to pets or interact with a mission objective.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +FlySpeed, Res(-Fly, Immobilize), +Def(All), +Flight Control",
-  "icon": "luminousaura_lightofreason.png",
+  "icon": "luminousaura_lightofreason",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -30,9 +30,59 @@ export const QuantumManeuvers: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets",
-    "Flight",
-    "Universal Travel"
+    "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuffSuppressible": {
+      "ranged": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuffSuppressible": 0.2
+    },
+    "buffDuration": 0.2
+  }
 };

@@ -16,12 +16,13 @@ export const PiercingBeam: Power = {
   "shortHelp": "Narrow Ranged (Cone), DMG(Energy), Foes -Res, Special",
   "icon": "beamrifle_piercingbeam.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
     "range": 60,
     "radius": 60,
-    "arc": 0.0873,
+    "arc": 0.0872664675116539,
     "recharge": 14,
     "endurance": 13.52,
     "castTime": 2.33,
@@ -48,8 +49,38 @@ export const PiercingBeam: Power = {
     },
     {
       "type": "Energy",
+      "scale": 2.17,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.591,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.591,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
       "scale": 0.716,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.716,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.7162,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.7162,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

@@ -81,7 +81,8 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "Pets_Traps_FF_Generator"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

@@ -14,8 +14,9 @@ export const ElbowStrike: Power = {
   "available": 9,
   "description": "You strike your foe with a powerful punch dealing Smashing damage and knocking the target back.",
   "shortHelp": "Melee, DMG(Smash), Foe Knockback",
-  "icon": "assaultweapons_heavyblow.png",
+  "icon": "assaultweapons_heavyblow",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -37,14 +38,21 @@ export const ElbowStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.28,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.629,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 1.67,
+      "scale": 3.34,
       "table": "Melee_Ones"
     }
   }

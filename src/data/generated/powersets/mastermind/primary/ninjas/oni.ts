@@ -37,9 +37,7 @@ export const Oni: Power = {
     "Holds",
     "Immobilize",
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -47,7 +45,7 @@ export const Oni: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Oni",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

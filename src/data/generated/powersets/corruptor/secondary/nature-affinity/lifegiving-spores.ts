@@ -12,7 +12,7 @@ export const LifegivingSpores: Power = {
   "name": "Lifegiving Spores",
   "internalName": "Lifegiving_Spores",
   "available": 15,
-  "description": "When activating this power you cause all allies at a selected location to recover a small amount of health and endurance every few seconds as long as they remain within the Lifegiving Spores.Recharge: Fast.",
+  "description": "When activating this power you cause all allies at a selected location to recover a small amount of health and endurance every few seconds as long as they remain within the Lifegiving Spores.",
   "shortHelp": "Toggle (Location AoE), PBAoE +Minor Heal Over Time, +Endurance",
   "icon": "natureaffinity_lifegivingspores.png",
   "powerType": "Toggle",
@@ -40,13 +40,14 @@ export const LifegivingSpores: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "LIfegiving Spores",
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Pets.Lifegiving_Spores.Lifegiving_Spores"
       ],
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

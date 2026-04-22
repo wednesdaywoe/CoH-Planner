@@ -16,12 +16,13 @@ export const GraviticEmanation: Power = {
   "shortHelp": "Ranged (Cone), Minor DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
   "icon": "umbralblast_graviticemanation.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 40,
     "radius": 40,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 45,
     "endurance": 14.352,
     "castTime": 1,
@@ -46,14 +47,21 @@ export const GraviticEmanation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.4,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.4,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.2185,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 5,
+      "scale": 10,
       "table": "Ranged_Knockback"
     },
     "stun": {

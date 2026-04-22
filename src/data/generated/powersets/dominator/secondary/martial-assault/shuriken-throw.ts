@@ -16,6 +16,7 @@ export const ShurikenThrow: Power = {
   "shortHelp": "Ranged, Light DMG(Lethal)",
   "icon": "martialassault_shurikenthrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -36,9 +37,16 @@ export const ShurikenThrow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

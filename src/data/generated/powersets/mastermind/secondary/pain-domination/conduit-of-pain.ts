@@ -12,10 +12,11 @@ export const ConduitofPain: Power = {
   "name": "Conduit of Pain",
   "internalName": "Conduit_of_Pain",
   "available": 9,
-  "description": "You revive a fallen ally by becoming a Conduit of Pain and transferring the pain that was inflicted upon them back upon your enemies. This will briefly empower you increasing your damage output, recovery rate, attack rate and chance to hit. After a minute the effect will wear off leaving you weakened for 30 seconds. Your damage, attack rate and chance to hit will all be reduced during this period.Recharge: Long.",
+  "description": "You revive a fallen ally by becoming a Conduit of Pain and transferring the pain that was inflicted upon them back upon your enemies. This will briefly empower you increasing your damage output, recovery rate, attack rate and chance to hit. After a minute the effect will wear off leaving you weakened for 30 seconds. Your damage, attack rate and chance to hit will all be reduced during this period.",
   "shortHelp": "Ally Rez, Self +DMG, +Recharge, +Recovery, +To Hit, +Special",
   "icon": "paindomination_conduitofpain.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -55,6 +56,7 @@ export const ConduitofPain: Power = {
       "rechargeBuff": 60,
       "damageBuff": 60,
       "tohitBuff": 60,
+      "stealth": 15,
       "damageDebuff": 30,
       "tohitDebuff": 30
     },
@@ -69,6 +71,12 @@ export const ConduitofPain: Power = {
     "tohitBuff": {
       "scale": 2,
       "table": "Ranged_Buff_ToHit"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 300,
+        "table": "Melee_Ones"
+      }
     },
     "damageDebuff": {
       "scale": 3,

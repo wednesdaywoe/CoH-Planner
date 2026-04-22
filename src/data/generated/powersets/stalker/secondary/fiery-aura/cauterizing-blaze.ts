@@ -14,7 +14,7 @@ export const CauterizingBlaze: Power = {
   "available": 27,
   "description": "While active, you are surrounded by flames cauterize your wounds healing you a small amount every few seconds.Recharge: Moderate.",
   "shortHelp": "Toggle: Self +Heal Over Time",
-  "icon": "flamingshield_cauterizing.png",
+  "icon": "flamingshield_cauterizing",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",

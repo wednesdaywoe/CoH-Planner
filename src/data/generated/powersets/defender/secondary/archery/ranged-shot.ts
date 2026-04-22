@@ -16,6 +16,7 @@ export const RangedShot: Power = {
   "shortHelp": "Sniper, High DMG(Lethal)",
   "icon": "archery_sniperarrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.155,
@@ -38,10 +39,5 @@ export const RangedShot: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  }
+  "maxSlots": 6
 };

@@ -22,7 +22,7 @@ export const Caltrops: Power = {
     "accuracy": 1,
     "range": 25,
     "recharge": 45,
-    "endurance": 9.75,
+    "endurance": 7.8,
     "castTime": 1.07
   },
   "allowedEnhancements": [
@@ -42,8 +42,7 @@ export const Caltrops: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Caltrops",
-      "duration": 45,
-      "copyBoosts": true
+      "duration": 45
     }
   }
 };

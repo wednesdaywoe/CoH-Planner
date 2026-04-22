@@ -14,14 +14,15 @@ export const EnfeeblingLullaby: Power = {
   "available": 11,
   "description": "A song that will put even elephants to sleep. Enfeebling Lullaby will relax foes, causing them to sleep and their attacks will do reduced damage for some time.Notes: Although this power is Auto Hit, it requires a To Hit check to apply Deep Sleep. If The Hit check is missed, and the target is not an AV, the weaker form of Sleep will be applied.",
   "shortHelp": "Ranged (Cone), DMG(Psionic), Foe Deep Sleep, -DMG",
-  "icon": "symphonycontrol_sleepst.png",
+  "icon": "symphonycontrol_sleepst",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 70,
     "radius": 70,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 45,
     "endurance": 15.6,
     "castTime": 2.67,
@@ -49,9 +50,9 @@ export const EnfeeblingLullaby: Power = {
   },
   "effects": {
     "sleep": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Sleep"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

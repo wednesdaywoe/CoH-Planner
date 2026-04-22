@@ -14,8 +14,9 @@ export const ProtonStream: Power = {
   "available": 17,
   "description": "Hurls a volley of alpha particles at your target. Proton Volley is highly accurate and will reduce the target's Defense.",
   "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
-  "icon": "radiationburst_heavy.png",
+  "icon": "radiationburst_heavy",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -40,13 +41,36 @@ export const ProtonStream: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.57,
-    "table": "Ranged_Damage",
-    "duration": 0.41,
-    "tickRate": 0.13
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.57,
+      "table": "Ranged_Damage",
+      "duration": 0.41,
+      "tickRate": 0.12999999523162842
+    },
+    {
+      "type": "Energy",
+      "scale": 0.57,
+      "table": "Ranged_InherentDamage",
+      "duration": 0.41,
+      "tickRate": 0.12999999523162842
+    },
+    {
+      "type": "Energy",
+      "scale": 0.5123,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.41,
+      "tickRate": 0.12999999523162842
+    },
+    {
+      "type": "Energy",
+      "scale": 0.5123,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.41,
+      "tickRate": 0.12999999523162842
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 3,

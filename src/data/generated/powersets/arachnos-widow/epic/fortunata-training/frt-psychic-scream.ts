@@ -16,12 +16,13 @@ export const PsychicScream: Power = {
   "shortHelp": "Ranged (Cone), DMG(Psionic), Foe -Recharge",
   "icon": "fortunatatraining_psychicscream.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "radius": 60,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 12,
     "endurance": 13.55,
     "castTime": 2,
@@ -40,9 +41,21 @@ export const PsychicScream: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.951,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.951,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.8321,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.4479,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

@@ -12,10 +12,11 @@ export const Flares: Power = {
   "name": "Flares",
   "internalName": "Flares",
   "available": 0,
-  "description": "A quick attack that throws Flares at the target. Little damage, but very fast.Damage: Moderate.Recharge: Very Fast.",
+  "description": "A quick attack that throws Flares at the target. Little damage, but very fast.",
   "shortHelp": "Ranged, DMG(Fire)",
   "icon": "fireblast_flare.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -45,10 +46,25 @@ export const Flares: Power = {
     },
     {
       "type": "Fire",
+      "scale": 0.68,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Fire",
       "scale": 0.15,
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.18,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.18,
+      "table": "Ranged_PvPDamage"
     }
   ]
 };

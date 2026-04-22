@@ -16,6 +16,7 @@ export const GravityDistortion: Power = {
   "shortHelp": "Ranged, DoT(Smash), Foe Hold, -Fly, +Gravity Distortion",
   "icon": "gravitycontrol_gravitydistortion.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -41,18 +42,41 @@ export const GravityDistortion: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 4.2,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 4.2,
+      "tickRate": 1
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4002,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.2,
+      "tickRate": 1
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.22,
+      "table": "Ranged_InherentDamage",
+      "duration": 4.2,
+      "tickRate": 1
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2001,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.2,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "mezResistance": {
       "knockup": {

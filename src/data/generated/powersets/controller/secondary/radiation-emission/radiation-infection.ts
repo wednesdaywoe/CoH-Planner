@@ -12,7 +12,7 @@ export const RadiationInfection: Power = {
   "name": "Radiation Infection",
   "internalName": "Radiation_Infection",
   "available": 0,
-  "description": "Infects a targeted foe with deadly radiation, severely reducing their chance to hit and Defense. All foes that come near the target will also become infected. The Radiation Infection will last until you deactivate it, or until the original target is defeated.Recharge: Moderate.",
+  "description": "Infects a targeted foe with deadly radiation, severely reducing their chance to hit and Defense. All foes that come near the target will also become infected. The Radiation Infection will last until you deactivate it, or until the original target is defeated.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DEF, -To Hit",
   "icon": "radiationpoisoning_enervatingfield.png",
   "powerType": "Toggle",

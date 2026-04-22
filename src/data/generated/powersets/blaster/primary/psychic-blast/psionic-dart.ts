@@ -16,12 +16,13 @@ export const PsionicDarts: Power = {
   "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_psychicscream.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "radius": 60,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 12,
     "endurance": 11.856,
     "castTime": 1,
@@ -40,9 +41,16 @@ export const PsionicDarts: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.8321,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.8321,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.5767,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

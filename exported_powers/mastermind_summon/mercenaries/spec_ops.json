@@ -87,7 +87,8 @@
             "type": "EntCreate",
             "entity_def": "MastermindPets_Spec_Ops",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -130,7 +131,8 @@
             "type": "EntCreate",
             "entity_def": "MastermindPets_Spec_Ops",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -176,7 +178,8 @@
             "power_names": [
               "Mastermind_Summon.Mercenaries.Spec_Ops"
             ]
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     }

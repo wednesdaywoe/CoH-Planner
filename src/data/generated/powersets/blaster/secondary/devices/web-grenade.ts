@@ -16,6 +16,7 @@ export const ToxicWebGrenade: Power = {
   "shortHelp": "Ranged, Moderate DoT(Toxic), Target Immobilize, -Recharge, -Fly",
   "icon": "gadgets_webgrenade.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,13 +42,22 @@ export const ToxicWebGrenade: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Toxic",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 8.2,
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Toxic",
+      "scale": 0.2,
+      "table": "Ranged_Damage",
+      "duration": 8.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.3038,
+      "table": "Ranged_PvPDamage",
+      "duration": 8.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -66,10 +76,6 @@ export const ToxicWebGrenade: Power = {
     },
     "durations": {
       "mezResistance": 15
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 15
   }

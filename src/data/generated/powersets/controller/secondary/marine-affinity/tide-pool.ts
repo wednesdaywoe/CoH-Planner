@@ -38,14 +38,14 @@ export const TidePool: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "Tide Pool",
       "powers": [
         "Redirects.Marine_Affinity.TidePool_Aura",
         "Redirects.Marine_Affinity.TidePool_Aura_Debuff"
       ],
-      "duration": 240,
-      "copyBoosts": true
+      "duration": 240
     }
   }
 };

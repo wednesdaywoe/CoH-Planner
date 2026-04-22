@@ -57,5 +57,5 @@ export const Hoarfrost: Power = {
     },
     "buffDuration": 120
   },
-  "requires": "!Tanker_Defense.Ice_Armor.Rime_Ice"
+  "requires": "Tanker_Defense.Ice_Armor.Rime_Ice !"
 };

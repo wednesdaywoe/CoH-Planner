@@ -16,6 +16,7 @@ export const HeatExhaustion: Power = {
   "shortHelp": "Ranged Foe -DMG, -END, -Recovery, -Regeneration",
   "icon": "thermalradiation_heatexhaustion.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -33,19 +34,19 @@ export const HeatExhaustion: Power = {
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
     },
     "durations": {
       "regenDebuff": 40,
       "recoveryDebuff": 40
     },
     "recoveryDebuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
+      "scale": 8,
+      "table": "Ranged_Res_Boolean"
     },
     "enduranceDrain": {
-      "scale": 0.26,
+      "scale": 3.59,
       "table": "Ranged_EndDrain"
     },
     "buffDuration": 40

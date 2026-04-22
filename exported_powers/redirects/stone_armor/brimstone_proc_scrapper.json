@@ -93,7 +93,8 @@
             "power_names": [
               "Redirects.Stone_Armor.Thermal"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ],
       "child_effects": [

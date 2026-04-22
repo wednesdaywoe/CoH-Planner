@@ -99,7 +99,8 @@
                 "power_names": [
                   "Redirects.Storm_Blast.StormCell_LightningAura2"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         },
@@ -143,7 +144,8 @@
                 "power_names": [
                   "Redirects.Storm_Blast.StormCell_LightningAura4"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         }

@@ -79,7 +79,8 @@
             "power_names": [
               "Incarnate.Interface_Silent.MaxHP_Debuff"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Incarnate.Interface_Silent.MaxHP_Debuff"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -141,7 +143,8 @@
             "power_names": [
               "Incarnate.Interface_Silent.DoT_Toxic"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -172,7 +175,8 @@
             "power_names": [
               "Incarnate.Interface_Silent.DoT_Toxic"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -197,7 +201,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -222,7 +227,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         }
       ]
     }

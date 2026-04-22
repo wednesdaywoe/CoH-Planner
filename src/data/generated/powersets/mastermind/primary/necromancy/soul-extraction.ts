@@ -41,9 +41,7 @@ export const SoulExtraction: Power = {
     "Accurate To-Hit Debuff",
     "Healing",
     "Holds",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
@@ -52,7 +50,6 @@ export const SoulExtraction: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 30,
-      "copyBoosts": true,
       "entities": [
         {
           "entity": "MastermindPets_Ghost_Boss",

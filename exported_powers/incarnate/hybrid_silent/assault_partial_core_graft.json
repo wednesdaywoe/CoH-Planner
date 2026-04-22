@@ -86,7 +86,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Damage_Boost_5"
             ]
-          }
+          },
+          "flags_raw": 112
         }
       ]
     }

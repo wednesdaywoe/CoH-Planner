@@ -14,7 +14,7 @@ export const MementoMori: Power = {
   "available": 29,
   "description": "Terrify your foes projecting images of their own impending demise into their minds. Memento Mori inflicts fear on targets while healing you even if you have been defeated. Each affected foe will increase your maximum hit points and heal you. Using this power while conscious will give you one opportunity to get back up should you be defeated while its effects are active.Notes: This power recharges in 10 seconds if no foes are hit. Otherwise, it recharges in 300 seconds.",
   "shortHelp": "Self Rez, +Max HP, Special",
-  "icon": "psionicarmor_mementomori.png",
+  "icon": "psionicarmor_mementomori",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
@@ -68,7 +68,14 @@ export const MementoMori: Power = {
     },
     "durations": {
       "untouchable": 15,
+      "stealth": 15,
       "maxHPBuff": 30
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 300,
+        "table": "Melee_Ones"
+      }
     },
     "maxHPBuff": {
       "scale": 3.55,
@@ -84,6 +91,6 @@ export const MementoMori: Power = {
       "scale": 10,
       "table": "Melee_Stun"
     },
-    "buffDuration": 30
+    "buffDuration": 15
   }
 };

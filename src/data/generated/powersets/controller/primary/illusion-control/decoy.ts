@@ -33,18 +33,24 @@ export const PhantomArmy: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Decoy",
       "duration": 60,
-      "copyBoosts": true,
-      "entityCount": 6
+      "entities": [
+        {
+          "entity": "P998401764",
+          "count": 2
+        },
+        {
+          "entity": "Pets_Decoy",
+          "count": 4
+        }
+      ]
     }
   }
 };

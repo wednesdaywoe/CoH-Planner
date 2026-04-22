@@ -16,10 +16,11 @@ export const KnockoutBlow: Power = {
   "shortHelp": "Melee, DMG(Smashing), Foe Hold",
   "icon": "superstrength_knockoutblow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
-    "range": 13.2,
+    "range": 13.199999809265137,
     "recharge": 25,
     "endurance": 18.512,
     "castTime": 2.23
@@ -42,11 +43,18 @@ export const KnockoutBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 3.56,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 3.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.9609,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
       "mag": 3,
@@ -54,7 +62,7 @@ export const KnockoutBlow: Power = {
       "table": "Melee_Stun"
     },
     "knockup": {
-      "scale": 3,
+      "scale": 6,
       "table": "Melee_Knockback"
     }
   }

@@ -12,7 +12,7 @@ export const Fortitude: Power = {
   "name": "Fortitude",
   "internalName": "Fortitude",
   "available": 19,
-  "description": "Fortitude immensely enhances a single ally's chance to hit, Damage, and Defense to all attacks.Recharge: Slow.",
+  "description": "Fortitude immensely enhances a single ally's chance to hit, Damage, and Defense to all attacks.",
   "shortHelp": "Ally +DEF(All), +DMG, +To Hit",
   "icon": "empathy_fortitude.png",
   "powerType": "Click",
@@ -22,7 +22,7 @@ export const Fortitude: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 60,
-    "endurance": 13,
+    "endurance": 10.4,
     "castTime": 2.27
   },
   "allowedEnhancements": [

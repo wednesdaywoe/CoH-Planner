@@ -40,7 +40,7 @@ export const ForceofThunder: Power = {
   "maxSlots": 6,
   "effects": {
     "knockback": {
-      "scale": 1,
+      "scale": 2,
       "table": "Melee_Knockback"
     },
     "stun": {

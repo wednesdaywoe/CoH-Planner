@@ -14,7 +14,7 @@ export const MetabolicAcceleration: Power = {
   "available": 19,
   "description": "You cloak yourself in a field of radiation that increases your attack speed, Endurance recovery and Regeneration rate. However, only half of this regeneration bonus is enhanceable. Your metabolism is increased so much that you become resistant to effects such as Sleep, Hold, Disorient, Immobilization and Endurance Drain.",
   "shortHelp": "Toggle: Self +Recharge, +Regeneration, +Recovery, +Resist(Hold, Immobilize, Disorient, Sleep, End Drain)",
-  "icon": "atomicmanipulation_metabolism.png",
+  "icon": "atomicmanipulation_metabolism",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",

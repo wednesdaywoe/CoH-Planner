@@ -37,8 +37,8 @@ export const Vortex: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Controller Archetype Sets",
+    "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
     "To Hit Debuff",
@@ -48,9 +48,9 @@ export const Vortex: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_WindControl_Vortex_Controller",
-      "copyBoosts": true
+      "entity": "P3876726645",
+      "duration": 99999
     }
   },
-  "requires": "char>accesslevel >= 0"
+  "requires": "accesslevel char> 0 >="
 };

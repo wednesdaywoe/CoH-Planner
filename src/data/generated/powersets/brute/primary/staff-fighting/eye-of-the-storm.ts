@@ -48,7 +48,7 @@ export const EyeoftheStorm: Power = {
       "scale": 0.205,
       "table": "Melee_Damage",
       "duration": 2.3,
-      "tickRate": 0.4
+      "tickRate": 0.4000000059604645
     },
     {
       "type": "Smashing",
@@ -64,6 +64,28 @@ export const EyeoftheStorm: Power = {
       "type": "Energy",
       "scale": 0.492,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.1678,
+      "table": "Melee_PvPDamage",
+      "duration": 2.3,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.0335,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.0335,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.0335,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -110,7 +132,7 @@ export const EyeoftheStorm: Power = {
       "table": "Melee_Debuff_Def"
     },
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "buffDuration": 8

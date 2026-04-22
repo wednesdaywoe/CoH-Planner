@@ -87,7 +87,8 @@
               "Redirects.Marine_Affinity.TidePool_Aura",
               "Redirects.Marine_Affinity.TidePool_Aura_Debuff"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

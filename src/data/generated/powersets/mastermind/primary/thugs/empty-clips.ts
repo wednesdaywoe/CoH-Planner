@@ -16,14 +16,15 @@ export const EmptyClips: Power = {
   "shortHelp": "Ranged (Cone), Knockback",
   "icon": "thugs_conerangedmoderatedmg.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.1,
     "range": 40,
     "radius": 40,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 8,
-    "endurance": 8.53,
+    "endurance": 8.528,
     "castTime": 1.83,
     "maxTargets": 10
   },
@@ -41,17 +42,31 @@ export const EmptyClips: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.2633,
-    "table": "Ranged_Damage",
-    "duration": 0.7,
-    "tickRate": 0.3
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.2633,
+      "table": "Ranged_Damage",
+      "duration": 0.7,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.3057,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.7,
+      "tickRate": 0.30000001192092896
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.64,
+      "scale": 1.28,
       "table": "Ranged_Knockback"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Thug_Pose_06",
+      "duration": 35
     }
   }
 };

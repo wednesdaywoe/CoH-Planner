@@ -95,7 +95,8 @@
                 "power_names": [
                   "Pets.Pool_Leadership_VictoryRush.VictoryRush_AV"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         },
@@ -151,7 +152,8 @@
                     "power_names": [
                       "Pets.Pool_Leadership_VictoryRush.VictoryRush_EB"
                     ]
-                  }
+                  },
+                  "flags_raw": 1280
                 }
               ]
             },
@@ -207,7 +209,8 @@
                         "power_names": [
                           "Pets.Pool_Leadership_VictoryRush.VictoryRush_BS"
                         ]
-                      }
+                      },
+                      "flags_raw": 1280
                     }
                   ]
                 },
@@ -263,7 +266,8 @@
                             "power_names": [
                               "Pets.Pool_Leadership_VictoryRush.VictoryRush_LT"
                             ]
-                          }
+                          },
+                          "flags_raw": 1280
                         }
                       ]
                     },
@@ -319,7 +323,8 @@
                                 "power_names": [
                                   "Pets.Pool_Leadership_VictoryRush.VictoryRush_MN"
                                 ]
-                              }
+                              },
+                              "flags_raw": 1280
                             }
                           ]
                         },
@@ -363,7 +368,8 @@
                                 "power_names": [
                                   "Pets.Pool_Leadership_VictoryRush.VictoryRush_Base"
                                 ]
-                              }
+                              },
+                              "flags_raw": 1280
                             }
                           ]
                         }

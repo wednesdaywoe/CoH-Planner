@@ -16,6 +16,7 @@ export const Scare: Power = {
   "shortHelp": "Ranged, Foe Fear",
   "icon": "mentalcontrol_scare.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

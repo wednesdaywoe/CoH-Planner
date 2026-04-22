@@ -14,7 +14,7 @@ export const PhantomArmy: Power = {
   "available": 17,
   "description": "You can fabricate 3 Phantom heroes around a targeted foe. These Phantoms are not real, and are indestructible. Though they deal damage, it is illusory and will heal if the victim survives long enough. Phantoms are short lived and cannot be buffed or healed.",
   "shortHelp": "Summon Decoys: Ranged DMG(Psionic)",
-  "icon": "illusions_phantomarmy2.png",
+  "icon": "illusions_phantomarmy2",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
@@ -33,18 +33,24 @@ export const PhantomArmy: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Decoy_Dominator",
       "duration": 60,
-      "copyBoosts": true,
-      "entityCount": 6
+      "entities": [
+        {
+          "entity": "P998401764",
+          "count": 2
+        },
+        {
+          "entity": "Pets_Decoy_Dominator",
+          "count": 4
+        }
+      ]
     }
   }
 };

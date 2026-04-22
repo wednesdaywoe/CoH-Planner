@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { Chilblain as Chilblain } from './chilblain';
-import { BlockofIce as BlockofIce } from './block-of-ice';
-import { Frostbite as Frostbite } from './frostbite';
 import { ArcticAir as ArcticAir } from './artic-air';
-import { ColdSnap as ColdSnap } from './shiver';
-import { IceSlick as IceSlick } from './ice-slick';
+import { BlockofIce as BlockofIce } from './block-of-ice';
+import { Chilblain as Chilblain } from './chilblain';
 import { FlashFreeze as FlashFreeze } from './flash-freeze';
+import { Frostbite as Frostbite } from './frostbite';
 import { Glacier as Glacier } from './glacier';
+import { IceSlick as IceSlick } from './ice-slick';
 import { JackFrost as JackFrost } from './jack-frost';
+import { ColdSnap as ColdSnap } from './shiver';
 
 export const powerset: Powerset = {
   id: 'controller/ice-control',
   name: 'Ice Control',
   description: 'You can draw moisture from the air to create Icy formations. With these abilities, you can control ice with remarkable precision to dominate your foes.',
-  icon: 'ice_control_set.png',
+  icon: 'ice_control_set.ico',
   archetype: 'controller',
   category: 'primary',
   powers: [
-    Chilblain,
-    BlockofIce,
-    Frostbite,
     ArcticAir,
-    ColdSnap,
-    IceSlick,
+    BlockofIce,
+    Chilblain,
     FlashFreeze,
+    Frostbite,
     Glacier,
+    IceSlick,
     JackFrost,
+    ColdSnap,
   ],
 };
 

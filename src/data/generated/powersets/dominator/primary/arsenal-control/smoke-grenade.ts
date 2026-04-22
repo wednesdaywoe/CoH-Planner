@@ -14,7 +14,7 @@ export const SmokeCanister: Power = {
   "available": 11,
   "description": "The Smoke Canister is a powerful infiltration tool. Fling it at a target location and it will quickly cover the area in smoke. While engulfed within this smoke, most enemies will not be able to see past normal melee range, although some may have better perception. If the foes are attacked, they will become confused and might attack their allies.",
   "shortHelp": "Ranged (Location AoE), Foe -Perception, -To Hit, Confuse",
-  "icon": "arsenalcontrol_smokegrenade.png",
+  "icon": "arsenalcontrol_smokegrenade",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
@@ -42,15 +42,15 @@ export const SmokeCanister: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "Class_Minion_Pets",
       "displayName": "Smoke Grenade",
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Redirects.Assault_Rifle.Smoke_Grenade",
         "Redirects.Assault_Rifle.Smoke_Confusion"
       ],
-      "duration": 30,
-      "copyBoosts": true
+      "duration": 30
     }
   }
 };

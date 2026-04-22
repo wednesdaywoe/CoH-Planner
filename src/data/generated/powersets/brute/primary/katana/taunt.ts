@@ -16,6 +16,7 @@ export const DragonsRoar: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "katana_tauntaoe.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -44,7 +45,7 @@ export const DragonsRoar: Power = {
       "rangeBuff": 12
     },
     "taunt": {
-      "scale": 20,
+      "scale": 5,
       "table": "Melee_Taunt"
     },
     "buffDuration": 12

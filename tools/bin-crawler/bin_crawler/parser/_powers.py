@@ -20,7 +20,7 @@ from pathlib import Path
 from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import PowerRecord, EffectGroup, EffectTemplate
 from ._enums import (
-    BOOST_TYPE, TARGET_TYPE, ATTRIB_NAME,
+    BOOST_TYPE, TARGET_TYPE, ATTRIB_NAME, EVENT_NAME,
     ATTRIB_MOD_TYPE, ATTRIB_MOD_ASPECT, ATTRIB_MOD_APPLICATION,
     ATTRIB_MOD_TARGET, ATTRIB_MOD_STACK, ATTRIB_MOD_CASTER_STACK,
     PVP_FLAG,
@@ -324,23 +324,72 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     stack_limit = r.read_u4()
     stack_key = r.read_string() or None
 
-    # Cancel events, boost_mod_allowed, flags, etc.
-    # These are the remaining fields — skip to end for now and add them later
-    # as we verify the layout with more test powers
-    cancel_events = []
-    suppress_events = []
-    required_events = []
-    boost_mod_allowed = ""
-    flags = []
+    # AttribMod tail. Per the Ghidra-extracted struct descriptor, layout is:
+    #   CancelEvents, RequiredEvent, Suppress, BoostModAllowed, Flags,
+    #   Messages, FX, Params
+    # Sizes verified empirically against Hide.def + Pool/Invisibility/Stealth.def
+    # in 2026-04-22 audit. Tail-byte param scan is kept as a fallback for the
+    # later fields (Flags / FX / Params) until those are fully decoded.
+
+    # CancelEvents: u4_array of event enum IDs (see EVENT_NAME)
+    cancel_event_ids = r.read_u4_array()
+    cancel_events = [EVENT_NAME.get(v, f"Event_{v}") for v in cancel_event_ids]
+    # RequiredEvent: single u4 (0 = none)
+    _required_event_id = r.read_u4()
+    required_events = (
+        [EVENT_NAME.get(_required_event_id, f"Event_{_required_event_id}")]
+        if _required_event_id != 0 else []
+    )
+    # Suppress: struct_array, each record 12 bytes (event_id u4, duration f4, flag u4).
+    # NB: don't reuse the local `duration` name here — that's the AttribMod's
+    # buff duration read earlier and used in the EffectTemplate constructor.
+    _supp_count = r.read_u4()
+    suppress_events: list[dict] = []
+    try:
+        for _ in range(_supp_count):
+            rec_len = r.read_u4()
+            sub_supp = r.sub_reader(rec_len)
+            ev_id = sub_supp.read_u4()
+            supp_duration = sub_supp.read_f4() if rec_len >= 8 else 0.0
+            flag = sub_supp.read_u4() if rec_len >= 12 else 0
+            suppress_events.append({
+                "event": EVENT_NAME.get(ev_id, f"Event_{ev_id}"),
+                "event_id": ev_id,
+                "duration": supp_duration,
+                "flag": flag,
+            })
+            r._pos += rec_len
+    except Exception:
+        # Defensive — if struct_array misalignment surfaces, stop parsing
+        # the suppress array and let downstream still get whatever we have.
+        pass
+
+    # Tail layout after Suppress (verified against Hide.def + Granite_Armor +
+    # Summon_Demonlings):
+    #   BoostModAllowed (u4) — small enum index, 0 for ~99% of templates
+    #   Flags (u4) — bitmask. Bit meanings not yet decoded; observed values
+    #     suggest 32-bit flag word with combinations like 0x420 (most Hide
+    #     AttribMods, ".def Flags IgnoreResistance"), 0x430 (Hide.def
+    #     "Flags IgnoreStrength IgnoreResistance"). Stored raw for now.
+    #   Then 2-3 zero-filled u4s of unknown semantic (Messages? Mode? counts?)
+    #   Then FX struct_array (count + records) — count > 0 for templates
+    #     with .def FX block; record sizes vary (16 bytes for Hide simple
+    #     ContinuingFX, 40+ bytes for Create_Entity templates).
+    #   Then Params (count + variable data, decoded heuristically below).
+    # We capture BMA + raw Flags reliably and leave the rest to the
+    # tail-byte heuristic scan that already works for Params (Power refs,
+    # EntCreate entity defs).
+    boost_mod_allowed_id = r.read_u4() if r.remaining() >= 4 else 0
+    flags_raw = r.read_u4() if r.remaining() >= 4 else 0
+
+    # Legacy fields preserved for downstream consumers — flags as a string
+    # list is currently empty (bit decoding TBD); BMA exposed as a name
+    # via the simple int → str conversion (won't conflict with any consumer
+    # since it's never been populated before).
+    boost_mod_allowed = str(boost_mod_allowed_id) if boost_mod_allowed_id else ""
+    flags: list[str] = []
     mode_name = None
 
-    # Capture raw tail bytes (everything after stack_key) and post-process.
-    # The full tail layout (CancelEvents, RequiredEvent, Suppress, BoostModAllowed,
-    # Flags, Messages, FX, Params per the Ghidra descriptor) is not fully
-    # reverse-engineered yet; rather than blocking on that, we extract the bits
-    # downstream actually uses (Params for Execute_Power redirects and EntCreate
-    # entity defs) by scanning the tail for u4 values that resolve to plausible
-    # strings in the string table.
     tail_bytes = bytes(r._data[r._pos:r._end])
     r.skip_to_end()
     params = _extract_params(tail_bytes, attribs, r._strtab_base, r._strtab_data)
@@ -371,7 +420,9 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
         suppress_events=suppress_events,
         required_events=required_events,
         boost_mod_allowed=boost_mod_allowed,
+        boost_mod_allowed_id=boost_mod_allowed_id,
         flags=flags,
+        flags_raw=flags_raw,
         mode_name=mode_name,
         params=params,
     )
@@ -756,8 +807,22 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # 73. boosts_allowed (boost_type_array)
     boosts_raw = r.read_u4_array()
     boosts_allowed = [BOOST_TYPE.get(v, f"Unknown({v})") for v in boosts_raw]
-    # 74. allowed_boostset_cats (string_array)
-    allowed_boostset_cats = r.read_string_array()
+    # 74. mode_group_refs (u4_array of small integer indices — NOT
+    # allowed_boostset_cats as this field was previously labeled). Empty for
+    # ~97% of powers; non-empty on mode/stance-setting powers (Hide, Bio Armor
+    # adaptations, Dual Pistols ammo modes, etc.) where the values index into
+    # a mode/group enum whose table we haven't located yet. Decoding this
+    # wrong as a string_array was the source of the long-standing "boostset
+    # cats = olumnEndgame.NictusFX" garbage — the small ints resolved as
+    # string-table offsets happened to land mid-string in FX-path data.
+    #
+    # `allowed_boostset_cats` does not exist in the binary at all. In the
+    # live game, the categories an IO set can slot into are determined at
+    # runtime from the set's own `category` string (see boostsets.bin) plus
+    # the power's boost types. The planner converter does this inference —
+    # see `inferAllowedSetCategories` in scripts/convert-powerset.cjs.
+    r.read_u4_array()
+    allowed_boostset_cats: list[str] = []
 
     # 75-78. exclusion_groups, modes_required, modes_disallowed, modes_suspended (u4_arrays)
     r.read_u4_array()  # exclusion_groups
@@ -905,7 +970,10 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
     r.read_bool()  # 72
     boosts_raw = r.read_u4_array()  # 73
     boosts_allowed = [BOOST_TYPE.get(v, f"Unknown({v})") for v in boosts_raw]
-    allowed_boostset_cats = r.read_string_array()  # 74
+    # 74: u4_array of mode/group refs (see HC parser comment). Not
+    # allowed_boostset_cats — that field doesn't exist in the binary.
+    r.read_u4_array()
+    allowed_boostset_cats: list[str] = []
 
     r.skip_to_end()
 

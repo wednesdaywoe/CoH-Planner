@@ -36,6 +36,13 @@ export const SweepingCross: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Brute Archetype Sets",
+    "Melee AoE Damage",
+    "Stuns",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

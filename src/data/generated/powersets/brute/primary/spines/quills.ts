@@ -39,6 +39,7 @@ export const Quills: Power = {
     "Brute Archetype Sets",
     "Melee AoE Damage",
     "Slow Movement",
+    "Threat Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -49,7 +50,7 @@ export const Quills: Power = {
   },
   "effects": {
     "immobilize": {
-      "mag": 0.33,
+      "mag": 0.33000001311302185,
       "scale": 3,
       "table": "Melee_Immobilize"
     },

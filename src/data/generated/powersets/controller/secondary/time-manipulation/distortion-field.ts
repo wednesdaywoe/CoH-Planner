@@ -42,8 +42,7 @@ export const DistortionField: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_DistortionField_Controller",
-      "duration": 45,
-      "copyBoosts": true
+      "duration": 45
     }
   }
 };

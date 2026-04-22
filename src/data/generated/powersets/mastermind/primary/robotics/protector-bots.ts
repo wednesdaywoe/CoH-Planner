@@ -38,9 +38,7 @@ export const ProtectorBots: Power = {
     "Accurate To-Hit Debuff",
     "Defense Sets",
     "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",
     "Universal Damage Sets"
@@ -50,7 +48,7 @@ export const ProtectorBots: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Protector_Bot",
-      "copyBoosts": true,
+      "duration": 99999,
       "entityCount": 2
     }
   }

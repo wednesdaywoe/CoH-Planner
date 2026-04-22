@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { Burst as Burst } from './burst';
+import { Aim as Aim } from './aim';
 import { DisorientingShot as DisorientingShot } from './beanbag';
 import { Buckshot as Buckshot } from './buckshot';
-import { Slug as Slug } from './slug';
-import { Aim as Aim } from './aim';
-import { M30Grenade as M30Grenade } from './m30-grenade';
+import { Burst as Burst } from './burst';
 import { Flamethrower as Flamethrower } from './flamethrower';
-import { Ignite as Ignite } from './incinerator';
 import { FullAuto as FullAuto } from './full-auto';
+import { Ignite as Ignite } from './incinerator';
+import { M30Grenade as M30Grenade } from './m30-grenade';
+import { Slug as Slug } from './slug';
 
 export const powerset: Powerset = {
   id: 'sentinel/assault-rifle',
   name: 'Assault Rifle',
   description: 'The Assault Rifle is a state-of-the-art piece of hardware. It is equipped to handle an impressive arsenal of munitions and firing modes. The Assault Rifle is also equipped with the latest in targeting technology, and is a very accurate weapon.',
-  icon: 'assault_rifle_set.png',
+  icon: 'assault_rifle_set.ico',
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    Burst,
+    Aim,
     DisorientingShot,
     Buckshot,
-    Slug,
-    Aim,
-    M30Grenade,
+    Burst,
     Flamethrower,
-    Ignite,
     FullAuto,
+    Ignite,
+    M30Grenade,
+    Slug,
   ],
 };
 

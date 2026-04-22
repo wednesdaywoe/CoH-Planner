@@ -30,6 +30,9 @@ export const FaradayCage: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "summon": {

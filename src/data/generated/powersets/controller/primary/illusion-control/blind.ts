@@ -16,6 +16,7 @@ export const Blind: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Psionic), Foe Hold/Sleep",
   "icon": "illusions_blind.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
@@ -41,21 +42,38 @@ export const Blind: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.9291,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.9645,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "sleep": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Melee_Sleep"
+      "mag": 4,
+      "scale": 1,
+      "table": "Melee_PvPMez"
     }
   }
 };

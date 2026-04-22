@@ -20,7 +20,7 @@ export const InkyAspect: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "radius": 8,
+    "radius": 12,
     "recharge": 8,
     "endurance": 0.156,
     "castTime": 1.17,

@@ -16,6 +16,7 @@ export const Breathless: Power = {
   "shortHelp": "Ranged (Targeted AoE), Variable DMG(Lethal), Immobilize (Foe), -DMG(Foe, All), +EndCost(Foe, PvP), Consumes Pressure",
   "icon": "windcontrol_breathless.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.9,
@@ -38,20 +39,34 @@ export const Breathless: Power = {
     "Dominator Archetype Sets",
     "Immobilize",
     "Ranged AoE Damage",
-    "Slow Movement",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.3,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.3944,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    }
+      "mag": 5,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
+    },
+    "enduranceDiscount": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "enduranceDiscount": 15
+    },
+    "buffDuration": 15
   }
 };

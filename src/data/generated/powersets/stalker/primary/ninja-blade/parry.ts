@@ -16,6 +16,7 @@ export const DivineAvalanche: Power = {
   "shortHelp": "Melee, DMG(Lethal), Self +DEF (Melee, Lethal)",
   "icon": "katana_parry.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -48,6 +49,26 @@ export const DivineAvalanche: Power = {
       "type": "Lethal",
       "scale": 0.84,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.84,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.451,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.451,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.451,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

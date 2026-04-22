@@ -16,12 +16,13 @@ export const Transference: Power = {
   "shortHelp": "Ranged (Targeted AoE), Target -End, Team +Recovery, Special",
   "icon": "kineticboost_transferance.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
     "range": 60,
     "recharge": 30,
-    "endurance": 3.25,
+    "endurance": 2.6,
     "castTime": 2.27
   },
   "allowedEnhancements": [
@@ -41,7 +42,7 @@ export const Transference: Power = {
       "table": "Ranged_EndDrain"
     },
     "enduranceDrain": {
-      "scale": 0.45,
+      "scale": 17.12,
       "table": "Ranged_EndDrain"
     }
   }

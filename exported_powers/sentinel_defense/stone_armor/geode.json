@@ -84,7 +84,8 @@
             "power_names": [
               "Redirects.Stone_Armor.Geode_Buff"
             ]
-          }
+          },
+          "flags_raw": 66816
         },
         {
           "attribs": [
@@ -109,7 +110,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -134,7 +141,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         }
       ],
       "child_effects": [
@@ -178,7 +191,8 @@
                 "power_names": [
                   "Sentinel_Defense.Stone_Armor.Geode"
                 ]
-              }
+              },
+              "flags_raw": 1072
             }
           ]
         },
@@ -226,7 +240,8 @@
                   "Redirects.Stone_Armor.Geode"
                 ],
                 "priority_list": "Geode"
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         },
@@ -275,7 +290,8 @@
                   "Redirects.Stone_Armor.Geode_Scaling"
                 ],
                 "priority_list": "Carin_Beacon"
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         }
@@ -316,7 +332,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -342,7 +364,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -367,7 +395,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -392,7 +421,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -426,7 +456,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1072
         }
       ],
       "child_effects": [
@@ -470,7 +501,8 @@
                 "power_names": [
                   "Redirects.Stone_Armor.Thermal"
                 ]
-              }
+              },
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -495,7 +527,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -541,7 +574,8 @@
             "power_names": [
               "Redirects.Stone_Armor.Geode_Pull"
             ]
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     }

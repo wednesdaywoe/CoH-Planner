@@ -14,8 +14,9 @@ export const ChordsofDespair: Power = {
   "available": 21,
   "description": "Your audience falls into deep despair, incapacitating them.Notes: This power has adaptive recharge. It has a base recharge of 8 seconds and each affected foe will increase the recharge by 14.5 seconds for a maximum total of 240 seconds.",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
-  "icon": "symphonycontrol_holdaoe.png",
+  "icon": "symphonycontrol_holdaoe",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,
@@ -40,9 +41,9 @@ export const ChordsofDespair: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

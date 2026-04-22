@@ -16,6 +16,7 @@ export const BitterFreezeRay: Power = {
   "shortHelp": "Ranged, Superior DMG(Cold), Foe Hold",
   "icon": "iceblast_bitterfreezeray.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,11 +42,28 @@ export const BitterFreezeRay: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 2.92,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 2.92,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.92,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.79,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.79,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "hold": {
       "mag": 3,

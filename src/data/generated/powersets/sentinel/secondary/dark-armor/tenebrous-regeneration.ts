@@ -67,5 +67,6 @@ export const ShadowDweller: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 10.3
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

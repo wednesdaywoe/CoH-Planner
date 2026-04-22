@@ -14,7 +14,7 @@ export const ParticleAcceleration: Power = {
   "available": 19,
   "description": "Your Particles have been accelerated allowing you to move faster than normal, as well as resist slow effects. This power is always on and permanently increases your attack rate and movement speed.",
   "shortHelp": "Auto: Self +Recharge, +SPD, Res (Slow)",
-  "icon": "radiationarmor_particleacceleration.png",
+  "icon": "radiationarmor_particleacceleration",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -58,5 +58,6 @@ export const ParticleAcceleration: Power = {
       }
     },
     "buffDuration": 10.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

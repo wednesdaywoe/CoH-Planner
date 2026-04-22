@@ -95,7 +95,8 @@
               "Villain_Pets.Vines.Vines_OneShot"
             ],
             "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
+          },
+          "flags_raw": 320
         },
         {
           "attribs": [
@@ -120,7 +121,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 196720
         }
       ]
     }

@@ -16,6 +16,7 @@ export const TrickShot: Power = {
   "shortHelp": "Ranged, Chain Light DMG(Lethal)",
   "icon": "martialassault_trickshot.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
@@ -34,13 +35,19 @@ export const TrickShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.1,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

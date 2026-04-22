@@ -87,7 +87,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Singularity",
             "priority_list": "PL_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

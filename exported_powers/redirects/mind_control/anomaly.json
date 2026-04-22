@@ -80,7 +80,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Mental_Superiority"
             ]
-          }
+          },
+          "flags_raw": 66608
         }
       ],
       "child_effects": [
@@ -123,7 +124,8 @@
                 "type": "EntCreate",
                 "entity_def": "NDNZFTFG8P9RWWVD74JVVDB2R2",
                 "priority_list": "CE65AHN963G7Y5LUK29EETFAMA"
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         },
@@ -166,7 +168,8 @@
                 "type": "EntCreate",
                 "entity_def": "NDNZFTFG8P9RWWVD74JVVDB2R2",
                 "priority_list": "CE65AHN963G7Y5LUK29EETFAMA"
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         }

@@ -14,7 +14,7 @@ export const PsychicWall: Power = {
   "available": 0,
   "description": "You focus to create a psychic wall that dampens the smashing, lethal and psionic damage.",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionic)",
-  "icon": "psionicarmor_psychicwall.png",
+  "icon": "psionicarmor_psychicwall",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",

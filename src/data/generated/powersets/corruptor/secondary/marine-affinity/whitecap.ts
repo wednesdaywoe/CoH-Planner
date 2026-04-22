@@ -16,13 +16,15 @@ export const Whitecap: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Cold), Foe Knockdown, -Resist(All), Self Teleport, Special",
   "icon": "marineaffinity_whitecap.png",
   "powerType": "Click",
-  "effectArea": "SingleTarget",
+  "targetType": "Dead Teammate",
+  "effectArea": "Location",
   "stats": {
     "accuracy": 1,
     "range": 80,
-    "recharge": 30,
-    "endurance": 18,
-    "castTime": 2
+    "radius": 20,
+    "recharge": 15,
+    "endurance": 14.352,
+    "castTime": 1.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -35,7 +37,7 @@ export const Whitecap: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -90,7 +92,7 @@ export const Whitecap: Power = {
       "resistanceDebuff": 30
     },
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "teleport": {

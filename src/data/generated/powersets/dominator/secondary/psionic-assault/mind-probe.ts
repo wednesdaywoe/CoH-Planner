@@ -16,6 +16,7 @@ export const MindProbe: Power = {
   "shortHelp": "Melee, High DMG(Psionic), Target -Recharge",
   "icon": "psionicassault_mindprobe.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -35,9 +36,16 @@ export const MindProbe: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.96,
-    "table": "Melee_Damage"
-  }
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.619,
+      "table": "Melee_PvPDamage"
+    }
+  ]
 };

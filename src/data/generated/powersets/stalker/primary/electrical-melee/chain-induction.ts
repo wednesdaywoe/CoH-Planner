@@ -16,13 +16,16 @@ export const ChainInduction: Power = {
   "shortHelp": "Melee, DMG(Energy), Foe -End +Special",
   "icon": "electricmelee_targetedchaininduction.png",
   "powerType": "Click",
-  "effectArea": "SingleTarget",
+  "targetType": "Foe",
+  "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
     "range": 7,
+    "radius": 10,
     "recharge": 14,
     "endurance": 10.192,
-    "castTime": 1
+    "castTime": 1,
+    "maxTargets": 5
   },
   "allowedEnhancements": [
     "EnduranceModification",
@@ -33,7 +36,6 @@ export const ChainInduction: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
@@ -48,21 +50,35 @@ export const ChainInduction: Power = {
       "type": "Energy",
       "scale": 1.32,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.6599,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.66,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.66,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Chain_Induction_Jump1",
-      "duration": 1,
-      "copyBoosts": true
+      "scale": 2,
+      "table": "Melee_EndDrain"
     },
     "recoveryDebuff": {
-      "scale": 1,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "durations": {

@@ -16,6 +16,7 @@ export const WillDomination: Power = {
   "shortHelp": "Ranged, DMG(Psionic), Foe Sleep",
   "icon": "psychicblast_willdomination.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,11 +40,18 @@ export const WillDomination: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.6499,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "sleep": {
       "mag": 3,

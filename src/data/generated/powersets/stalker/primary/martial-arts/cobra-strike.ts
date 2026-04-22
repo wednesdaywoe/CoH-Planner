@@ -16,6 +16,7 @@ export const CobraStrike: Power = {
   "shortHelp": "Melee, DMG(Smashing), Foe Disorient",
   "icon": "martialarts_cobrastrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -48,6 +49,26 @@ export const CobraStrike: Power = {
       "type": "Smashing",
       "scale": 1.96,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.96,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.969,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.969,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.969,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

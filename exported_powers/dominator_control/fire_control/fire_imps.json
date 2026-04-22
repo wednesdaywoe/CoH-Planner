@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_FireImp",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -114,7 +115,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_FireImp",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -144,7 +146,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_FireImp",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

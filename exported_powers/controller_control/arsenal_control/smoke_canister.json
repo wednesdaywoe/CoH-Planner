@@ -94,7 +94,8 @@
               "Redirects.Assault_Rifle.Smoke_Confusion"
             ],
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 16704
         }
       ]
     }

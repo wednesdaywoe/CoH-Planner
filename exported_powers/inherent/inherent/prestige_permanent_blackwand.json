@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.prestige_Permanent_Blackwand"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

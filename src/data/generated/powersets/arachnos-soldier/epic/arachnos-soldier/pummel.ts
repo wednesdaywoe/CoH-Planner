@@ -32,6 +32,12 @@ export const Pummel: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

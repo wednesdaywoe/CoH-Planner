@@ -16,6 +16,7 @@ export const PoisonGasArrow: Power = {
   "shortHelp": "Ranged AoE, Foe -DMG, Sleep",
   "icon": "trickarrow_debuffdamage.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.5,
@@ -39,13 +40,13 @@ export const PoisonGasArrow: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "Poison Gas Arrow",
       "powers": [
         "Redirects.Trick_Arrow.PoisonGasArrow"
       ],
-      "duration": 20,
-      "copyBoosts": true
+      "duration": 20
     }
   }
 };

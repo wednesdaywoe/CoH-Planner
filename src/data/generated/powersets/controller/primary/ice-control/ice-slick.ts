@@ -40,9 +40,8 @@ export const IceSlick: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_IceSlick",
-      "duration": 30,
-      "copyBoosts": true
+      "entity": "P4026445528",
+      "duration": 30
     }
   }
 };

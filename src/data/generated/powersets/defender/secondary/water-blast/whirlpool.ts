@@ -46,9 +46,8 @@ export const Whirlpool: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Whirlpool_Defender",
-      "duration": 15,
-      "copyBoosts": true
+      "entity": "P2995632953",
+      "duration": 15
     }
   }
 };

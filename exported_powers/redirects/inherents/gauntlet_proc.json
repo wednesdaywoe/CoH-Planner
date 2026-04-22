@@ -100,7 +100,8 @@
             "power_names": [
               "Redirects.Inherents.Gauntlet_Proc_Aura"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ],
       "child_effects": [
@@ -144,7 +145,8 @@
                 "power_names": [
                   "Redirects.Inherents.Gauntlet_AoE"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         }

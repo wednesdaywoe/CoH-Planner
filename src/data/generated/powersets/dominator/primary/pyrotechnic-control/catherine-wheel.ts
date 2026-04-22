@@ -14,7 +14,7 @@ export const CatherineWheel: Power = {
   "available": 25,
   "description": "You can craft a wheel of pure pyrotechnic energy to assist you in battle. The Catherine Wheel employs a variety of pyrotechnic powers to damage and distract enemies. If an enemy becomes affected by the Blast Off effect from one of your powers, the Catherine Wheel may Intercept the enemy with an attack, dealing additional damage.",
   "shortHelp": "Summon Catherine Wheel: Ranged DMG (Fire, Energy), Special",
-  "icon": "pyrotechnic_catherinewheel.png",
+  "icon": "pyrotechnic_catherinewheel",
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
@@ -33,16 +33,15 @@ export const CatherineWheel: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_CatherineWheel",
-      "copyBoosts": true
+      "entity": "P1712748702",
+      "duration": 99999
     }
   }
 };

@@ -48,6 +48,16 @@ export const WhirlingSmash: Power = {
     },
     {
       "type": "Smashing",
+      "scale": 0.664,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.664,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
       "scale": 1.04,
       "table": "Melee_InherentDamage"
     },
@@ -59,7 +69,7 @@ export const WhirlingSmash: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     }
   }

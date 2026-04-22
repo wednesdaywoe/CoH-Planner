@@ -12,10 +12,11 @@ export const LingeringRadiation: Power = {
   "name": "Lingering Radiation",
   "internalName": "Lingering_radiation",
   "available": 19,
-  "description": "You can emit Lingering Radiation that reduces the attack rate, movement speed, and Regeneration rate of the target, and all nearby foes.Recharge: Long.",
+  "description": "You can emit Lingering Radiation that reduces the attack rate, movement speed, and Regeneration rate of the target, and all nearby foes.",
   "shortHelp": "Ranged (Targeted AoE), Foe -Speed, -Recharge, -Regen",
   "icon": "radiationpoisoning_lingeringradiation.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -39,8 +40,8 @@ export const LingeringRadiation: Power = {
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
     },
     "durations": {
       "regenDebuff": 30

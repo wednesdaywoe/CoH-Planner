@@ -16,12 +16,13 @@ export const DarkBlast: Power = {
   "shortHelp": "Ranged, DMG(Negative), Foe -To Hit",
   "icon": "necromancy_darkblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "recharge": 4,
-    "endurance": 5.46,
+    "endurance": 5.2,
     "castTime": 1
   },
   "allowedEnhancements": [
@@ -39,9 +40,23 @@ export const DarkBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Ranged_Damage"
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Enslaved_Specter",
+      "duration": 30
+    }
   }
 };

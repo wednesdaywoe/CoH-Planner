@@ -22,7 +22,7 @@ export const O2Boost: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 4,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 2.27
   },
   "allowedEnhancements": [

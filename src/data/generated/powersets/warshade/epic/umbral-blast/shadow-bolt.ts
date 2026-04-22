@@ -16,6 +16,7 @@ export const ShadowBolt: Power = {
   "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
   "icon": "umbralblast_shadowbolt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,10 +39,5 @@ export const ShadowBolt: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.6,
-    "table": "Ranged_Damage"
-  }
+  "maxSlots": 6
 };

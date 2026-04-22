@@ -14,14 +14,15 @@ export const Ripper: Power = {
   "available": 23,
   "description": "You can unleash a spectacular slashing maneuver that attacks all foes in a wide arc directly in front of you. Ripper deals massive damage and poisons multiple targets. It can even knock foes down. Thorn poison deals additional Toxic damage and can reduce your foes Defense.Damage: Superior.Recharge: Slow.",
   "shortHelp": "Melee (Cone), DMG(Lethal), DoT(Toxic), Foe Knockdown, -DEF",
-  "icon": "plantmanipulation_ripper.png",
+  "icon": "plantmanipulation_ripper",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 13,
     "endurance": 12.688,
     "castTime": 2.33,
@@ -51,6 +52,11 @@ export const Ripper: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Lethal",
+      "scale": 2.0327,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Toxic",
       "scale": 0.2,
       "table": "Melee_Damage",
@@ -60,7 +66,7 @@ export const Ripper: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "defenseDebuff": {
@@ -69,10 +75,6 @@ export const Ripper: Power = {
     },
     "durations": {
       "defenseDebuff": 12
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 12
   }

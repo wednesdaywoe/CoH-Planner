@@ -36,11 +36,11 @@ export const TargetingDrone: Power = {
   "maxSlots": 6,
   "effects": {
     "damageBuff": {
-      "scale": 1.6,
+      "scale": 4.8,
       "table": "Melee_Buff_Dmg"
     },
     "durations": {
-      "damageBuff": 0.6,
+      "damageBuff": 0.75,
       "tohitBuff": 0.75,
       "debuffResistance": 0.75,
       "perceptionBuff": 0.75

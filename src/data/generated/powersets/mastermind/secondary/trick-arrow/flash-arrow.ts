@@ -16,13 +16,14 @@ export const FlashArrow: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe -Visibility, -To Hit",
   "icon": "trickarrow_blind.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "radius": 35,
     "recharge": 15,
-    "endurance": 9.75,
+    "endurance": 7.8,
     "castTime": 1,
     "maxTargets": 16
   },
@@ -44,8 +45,8 @@ export const FlashArrow: Power = {
       "table": "Ranged_Ones"
     },
     "durations": {
-      "perceptionDebuff": 60
+      "perceptionDebuff": 20
     },
-    "buffDuration": 60
+    "buffDuration": 20
   }
 };

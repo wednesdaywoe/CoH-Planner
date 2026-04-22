@@ -77,7 +77,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -109,7 +110,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 263216
         }
       ]
     },
@@ -155,7 +157,8 @@
               "Corruptor_Ranged.Seismic_Blast.Shockwaves",
               "Defender_Ranged.Seismic_Blast.Shockwaves"
             ]
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -186,7 +189,8 @@
             "power_names": [
               "Redirects.Seismic_Blast.Shockwaves_Buff"
             ]
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -211,7 +215,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

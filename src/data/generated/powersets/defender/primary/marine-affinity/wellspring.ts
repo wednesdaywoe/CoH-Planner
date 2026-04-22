@@ -41,8 +41,7 @@ export const BarrierReef: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Wellspring_Def",
-      "duration": 240,
-      "copyBoosts": true
+      "duration": 240
     }
   }
 };

@@ -16,6 +16,7 @@ export const AssassinsStrike: Power = {
   "shortHelp": "Melee, DMG(Smash/Energy)",
   "icon": "powerpunch_assassinstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -36,33 +37,5 @@ export const AssassinsStrike: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.75,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.75,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 8
-    },
-    "buffDuration": 8
-  }
+  "maxSlots": 6
 };

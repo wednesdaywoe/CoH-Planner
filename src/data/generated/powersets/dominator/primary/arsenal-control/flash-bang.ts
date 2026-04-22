@@ -14,8 +14,9 @@ export const FlashBang: Power = {
   "available": 17,
   "description": "The Flash Bang Grenade is ideal to disorient a group of enemies. Even enemies that are not disoriented will have their chance to hit reduced.",
   "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Disorient, -To Hit",
-  "icon": "arsenalcontrol_flashbang.png",
+  "icon": "arsenalcontrol_flashbang",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.85,
@@ -51,9 +52,9 @@ export const FlashBang: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

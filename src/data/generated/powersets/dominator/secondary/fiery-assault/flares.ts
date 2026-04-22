@@ -16,6 +16,7 @@ export const Flares: Power = {
   "shortHelp": "Ranged, Light DMG(Fire)",
   "icon": "fireassault_flare.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -46,6 +47,11 @@ export const Flares: Power = {
       "type": "Fire",
       "scale": 0.2898,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.22,
+      "table": "Ranged_PvPDamage"
     }
   ]
 };

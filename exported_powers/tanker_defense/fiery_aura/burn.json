@@ -82,7 +82,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ],
       "child_effects": [
@@ -120,7 +121,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -176,7 +178,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 112
             }
           ]
         },
@@ -216,7 +219,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 112
             }
           ]
         },
@@ -263,7 +267,8 @@
                   "Pets.ResistAll.ResistAll",
                   "Redirects.Fiery_Aura.Burn"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         },
@@ -310,7 +315,8 @@
                   "Pets.ResistAll.ResistAll",
                   "Redirects.Fiery_Aura.Burn"
                 ]
-              }
+              },
+              "flags_raw": 1280
             }
           ]
         }

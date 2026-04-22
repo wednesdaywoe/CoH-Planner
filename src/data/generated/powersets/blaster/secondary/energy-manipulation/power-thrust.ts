@@ -16,6 +16,7 @@ export const PowerThrust: Power = {
   "shortHelp": "Melee, Minor DMG(Energy/Smash), Foe Knockback",
   "icon": "energymanipulation_powerthrust.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,16 +49,17 @@ export const PowerThrust: Power = {
       "type": "Energy",
       "scale": 0.4,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.3399,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 8,
+      "scale": 16,
       "table": "Melee_Knockback"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     }
   }
 };

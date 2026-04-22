@@ -89,7 +89,8 @@
               "Pets.ResistAll_NoFly.ResistAll",
               "Redirects.Storm_Blast.Category_Five"
             ]
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -125,7 +126,8 @@
               "Redirects.Storm_Blast.Nukenado_Pulse",
               "Redirects.Storm_Blast.Nukenado_SelfDestruct"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }
@@ -171,7 +173,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

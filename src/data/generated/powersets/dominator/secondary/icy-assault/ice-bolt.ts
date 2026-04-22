@@ -16,6 +16,7 @@ export const IceBolt: Power = {
   "shortHelp": "Ranged, Light DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "iceassault_bolt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -48,6 +49,16 @@ export const IceBolt: Power = {
       "type": "Cold",
       "scale": 0.928,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.26,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.04,
+      "table": "Ranged_PvPDamage"
     }
   ]
 };

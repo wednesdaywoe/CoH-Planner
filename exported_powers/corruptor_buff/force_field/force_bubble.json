@@ -89,7 +89,8 @@
               "Redirects.Force_Field.Dampening_Bubble_Debuff",
               "Redirects.Force_Field.Dampening_BubbleFX"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { TimeWall as TimeWall } from './time-wall';
 import { AgingTouch as AgingTouch } from './aging-touch';
-import { TimeStop as TimeStop } from './time-stop';
 import { Chronos as Chronos } from './chronological-selection';
 import { EndofTime as EndofTime } from './end-of-time';
-import { TemporalHealing as TemporalHealing } from './temporal-healing';
 import { FuturePain as FuturePain } from './future-pain';
-import { TimeShift as TimeShift } from './time-shift';
+import { TemporalHealing as TemporalHealing } from './temporal-healing';
 import { TimeLord as TimeLord } from './time-lord';
+import { TimeShift as TimeShift } from './time-shift';
+import { TimeStop as TimeStop } from './time-stop';
+import { TimeWall as TimeWall } from './time-wall';
 
 export const powerset: Powerset = {
   id: 'blaster/temporal-manipulation',
   name: 'Temporal Manipulation',
   description: 'By gazing into the flow of time you are able to manipulate time itself. Temporal Manipulation allows the wielder to inflict crippling debuffs, and cause mental damage and exhausting your foes by showing them their future and accelerating their aging.',
-  icon: 'time_manipulation_set.png',
+  icon: 'time_manipulation_set.ico',
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    TimeWall,
     AgingTouch,
-    TimeStop,
     Chronos,
     EndofTime,
-    TemporalHealing,
     FuturePain,
-    TimeShift,
+    TemporalHealing,
     TimeLord,
+    TimeShift,
+    TimeStop,
+    TimeWall,
   ],
 };
 

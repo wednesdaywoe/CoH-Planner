@@ -16,6 +16,7 @@ export const Strike: Power = {
   "shortHelp": "Melee, DMG(Lethal)",
   "icon": "claws_clawsstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,10 +39,17 @@ export const Strike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.24,
-    "table": "Melee_Damage"
-  },
-  "requires": "!Tanker_Defense.Shield_Defense && !Tanker_Defense.Stone_Armor"
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.24,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.411,
+      "table": "Melee_PvPDamage"
+    }
+  ],
+  "requires": "Tanker_Defense.Shield_Defense ! Tanker_Defense.Stone_Armor ! &&"
 };

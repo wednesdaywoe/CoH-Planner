@@ -16,12 +16,13 @@ export const BrightNovaScatter: Power = {
   "shortHelp": "Ranged (Cone), Light DMG(Energy), Foe -DEF",
   "icon": "luminousblast_protonscatter.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "radius": 60,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 12,
     "endurance": 11.856,
     "castTime": 1.5,
@@ -43,11 +44,18 @@ export const BrightNovaScatter: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.99,
-    "table": "Ranged_InherentDamage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.99,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.7544,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,
@@ -58,5 +66,5 @@ export const BrightNovaScatter: Power = {
     },
     "buffDuration": 8
   },
-  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova && !Inherent.Inherent.Bright_Nova_Scatter"
+  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Scatter ! &&"
 };

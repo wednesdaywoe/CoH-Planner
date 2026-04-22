@@ -93,7 +93,8 @@
               "Stalker_Defense.Psionic_Armor.Memento_Mori",
               "Tanker_Defense.Psionic_Armor.Memento_Mori"
             ]
-          }
+          },
+          "flags_raw": 196928
         }
       ],
       "child_effects": [
@@ -143,7 +144,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 96
                 },
                 {
                   "attribs": [
@@ -168,7 +170,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 96
                 },
                 {
                   "attribs": [
@@ -200,7 +203,8 @@
                       "Redirects.Comeback.Comeback",
                       "Redirects.Comeback.Debt_Protection"
                     ]
-                  }
+                  },
+                  "flags_raw": 1280
                 }
               ]
             },
@@ -238,7 +242,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": "OLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS"
+                  "stack_key": "OLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+                  "flags_raw": 262240
                 },
                 {
                   "attribs": [
@@ -263,7 +268,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 112
                 }
               ]
             },
@@ -301,7 +307,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 2560
                 }
               ]
             },
@@ -339,7 +346,40 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "suppress_events": [
+                    {
+                      "event": "Stunned",
+                      "event_id": 23,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Event_24",
+                      "event_id": 24,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Held",
+                      "event_id": 25,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Sleep",
+                      "event_id": 26,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Confused",
+                      "event_id": 27,
+                      "duration": 15.0,
+                      "flag": 0
+                    }
+                  ],
+                  "flags_raw": 1051136
                 }
               ]
             }
@@ -379,7 +419,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": "OLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS"
+              "stack_key": "OLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+              "flags_raw": 262240
             },
             {
               "attribs": [
@@ -404,7 +445,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": "OLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS"
+              "stack_key": "OLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+              "flags_raw": 262240
             },
             {
               "attribs": [
@@ -429,7 +471,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 65856
             },
             {
               "attribs": [
@@ -454,7 +497,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 65856
             },
             {
               "attribs": [
@@ -485,7 +529,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Memento_Mori"
                 ]
-              }
+              },
+              "flags_raw": 83200
             }
           ],
           "child_effects": [
@@ -523,7 +568,8 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "flags_raw": 2560
                 }
               ]
             },
@@ -561,7 +607,40 @@
                   "caster_stack": "Individual",
                   "stack": "Stack",
                   "stack_limit": 2,
-                  "stack_key": null
+                  "stack_key": null,
+                  "suppress_events": [
+                    {
+                      "event": "Stunned",
+                      "event_id": 23,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Event_24",
+                      "event_id": 24,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Held",
+                      "event_id": 25,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Sleep",
+                      "event_id": 26,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Confused",
+                      "event_id": 27,
+                      "duration": 15.0,
+                      "flag": 0
+                    }
+                  ],
+                  "flags_raw": 1051136
                 }
               ]
             }

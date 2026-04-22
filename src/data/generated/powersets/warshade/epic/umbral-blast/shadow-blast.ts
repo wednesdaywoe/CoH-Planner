@@ -16,6 +16,7 @@ export const ShadowBlast: Power = {
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_shadowblast.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,14 +42,21 @@ export const ShadowBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.889,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 1,
+      "scale": 2,
       "table": "Ranged_Knockback"
     }
   }

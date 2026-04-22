@@ -16,6 +16,7 @@ export const BurstofSpeed: Power = {
   "shortHelp": "Location AoE Moderate DMG (Smash), Self Teleport",
   "icon": "martialmanipulation_burstofspeed.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,
@@ -33,10 +34,8 @@ export const BurstofSpeed: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Melee AoE Damage",
-    "Teleport",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
@@ -47,8 +46,7 @@ export const BurstofSpeed: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Burst_of_Speed",
-      "duration": 2,
-      "copyBoosts": true
+      "duration": 2
     },
     "damageBuff": {
       "scale": 0.026,

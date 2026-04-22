@@ -91,7 +91,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2"
                 ]
-              }
+              },
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -122,7 +123,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1"
                 ]
-              }
+              },
+              "flags_raw": 1072
             }
           ]
         },
@@ -166,7 +168,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1"
                 ]
-              }
+              },
+              "flags_raw": 1072
             }
           ]
         },
@@ -210,7 +213,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3"
                 ]
-              }
+              },
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -241,7 +245,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2"
                 ]
-              }
+              },
+              "flags_raw": 1072
             }
           ]
         },
@@ -285,7 +290,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2"
                 ]
-              }
+              },
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -316,7 +322,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1"
                 ]
-              }
+              },
+              "flags_raw": 1072
             }
           ]
         },
@@ -360,7 +367,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1"
                 ]
-              }
+              },
+              "flags_raw": 1072
             }
           ]
         },
@@ -404,7 +412,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3"
                 ]
-              }
+              },
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -435,7 +444,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2"
                 ]
-              }
+              },
+              "flags_raw": 1072
             }
           ]
         },
@@ -479,7 +489,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2"
                 ]
-              }
+              },
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -510,7 +521,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1"
                 ]
-              }
+              },
+              "flags_raw": 1072
             }
           ]
         },
@@ -554,7 +566,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1"
                 ]
-              }
+              },
+              "flags_raw": 1072
             }
           ]
         },
@@ -598,7 +611,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
                 ]
-              }
+              },
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -629,7 +643,8 @@
                 "power_names": [
                   "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2"
                 ]
-              }
+              },
+              "flags_raw": 1072
             }
           ]
         }

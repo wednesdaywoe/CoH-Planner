@@ -16,6 +16,7 @@ export const Benumb: Power = {
   "shortHelp": "Ranged Foe -DMG, -END, -Regeneration, -Special",
   "icon": "colddomination_benumb.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -93,12 +94,12 @@ export const Benumb: Power = {
       "table": "Ranged_Stun"
     },
     "regenDebuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
     },
     "enduranceDrain": {
-      "scale": 0.05,
-      "table": "Ranged_Ones"
+      "scale": 5.5,
+      "table": "Ranged_EndDrain"
     },
     "buffDuration": 30
   }

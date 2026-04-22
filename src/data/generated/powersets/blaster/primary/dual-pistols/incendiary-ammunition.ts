@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IncendiaryAmmunition: Power = {
   "name": "Incendiary Ammunition",
   "internalName": "Incendiary_Ammunition",
-  "available": -1,
+  "available": 4294967295,
   "description": "While this toggle is active you will be equipped with 'Incendiary Rounds.' Most of your Dual Pistol attacks will have their secondary damage converted to fire damage and inflict a minor damage over time effect.In order to earn this power, you must purchase the Swap Ammo power.",
   "shortHelp": "Toggle: Ammo Change (Fire), Special",
   "icon": "dualpistols_incendiaryammo.png",
@@ -26,6 +26,5 @@ export const IncendiaryAmmunition: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "requires": "Blaster_Ranged.Dual_Pistols.Swap_Ammo",
-  "mechanicType": "childToggle"
+  "requires": "Blaster_Ranged.Dual_Pistols.Swap_Ammo"
 };

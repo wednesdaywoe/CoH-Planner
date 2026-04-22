@@ -16,6 +16,7 @@ export const SavageStrike: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe DoT (Lethal), Self +1 Blood Frenzy",
   "icon": "savagemelee_savagestrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -44,12 +45,26 @@ export const SavageStrike: Power = {
       "scale": 0.38,
       "table": "Melee_Damage",
       "duration": 0.4,
-      "tickRate": 0.35
+      "tickRate": 0.3499999940395355
     },
     {
       "type": "Lethal",
       "scale": 0.137,
       "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.53,
+      "table": "Melee_PvPDamage",
+      "duration": 0.4,
+      "tickRate": 0.3499999940395355
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.0852,
+      "table": "Melee_PvPDamage",
       "duration": 3.1,
       "tickRate": 1
     }

@@ -16,13 +16,14 @@ export const Slash: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
   "icon": "sword_slash.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
     "range": 7,
     "recharge": 4,
     "endurance": 5.2,
-    "castTime": 1.33
+    "castTime": 1.1
   },
   "allowedEnhancements": [
     "Taunt",
@@ -41,11 +42,18 @@ export const Slash: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.33,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,

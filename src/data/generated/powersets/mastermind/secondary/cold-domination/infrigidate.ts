@@ -16,12 +16,13 @@ export const Infrigidate: Power = {
   "shortHelp": "Ranged Foe -Speed, -Recharge, -DEF, -DMG (Fire)",
   "icon": "colddomination_infrigidate.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "recharge": 15,
-    "endurance": 13,
+    "endurance": 10.4,
     "castTime": 1
   },
   "allowedEnhancements": [

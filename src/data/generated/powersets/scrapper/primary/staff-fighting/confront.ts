@@ -16,6 +16,7 @@ export const Confront: Power = {
   "shortHelp": "Ranged, Foe Taunt",
   "icon": "stafffighting_confront.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -35,7 +36,7 @@ export const Confront: Power = {
   "maxSlots": 6,
   "effects": {
     "taunt": {
-      "scale": 15,
+      "scale": 4,
       "table": "Melee_Taunt"
     },
     "rangeBuff": {

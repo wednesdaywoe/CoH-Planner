@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { Transfusion as Transfusion } from './transfusion';
-import { SiphonPower as SiphonPower } from './siphon-power';
-import { Repel as Repel } from './repel';
-import { SiphonSpeed as SiphonSpeed } from './siphon-speed';
-import { IncreaseDensity as IncreaseDensity } from './increase-density';
-import { SpeedBoost as SpeedBoost } from './speed-boost';
-import { InertialReduction as InertialReduction } from './inertial-reduction';
-import { Transference as Transference } from './transference';
 import { FulcrumShift as FulcrumShift } from './fulcrum-shift';
+import { IncreaseDensity as IncreaseDensity } from './increase-density';
+import { InertialReduction as InertialReduction } from './inertial-reduction';
+import { Repel as Repel } from './repel';
+import { SiphonPower as SiphonPower } from './siphon-power';
+import { SiphonSpeed as SiphonSpeed } from './siphon-speed';
+import { SpeedBoost as SpeedBoost } from './speed-boost';
+import { Transference as Transference } from './transference';
+import { Transfusion as Transfusion } from './transfusion';
 
 export const powerset: Powerset = {
   id: 'mastermind/kinetics',
   name: 'Kinetics',
   description: 'You are a master at manipulating and transferring Kinetic energy. You can manipulate the potential energy found in objects to aid your allies or weaken your foes.',
-  icon: 'kinetics_set.png',
+  icon: 'kinetics_set.ico',
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    Transfusion,
-    SiphonPower,
-    Repel,
-    SiphonSpeed,
-    IncreaseDensity,
-    SpeedBoost,
-    InertialReduction,
-    Transference,
     FulcrumShift,
+    IncreaseDensity,
+    InertialReduction,
+    Repel,
+    SiphonPower,
+    SiphonSpeed,
+    SpeedBoost,
+    Transference,
+    Transfusion,
   ],
 };
 

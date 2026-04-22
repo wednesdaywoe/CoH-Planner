@@ -12,15 +12,16 @@ export const BlackHole: Power = {
   "name": "Black Hole",
   "internalName": "Black_Hole",
   "available": 27,
-  "description": "Opens up a Black Hole to the Netherworld that temporarily pulls in all foes within its grasp. Victims that are immune to the pull become phase shifted and are completely intangible. They are hard to see, and cannot affect or be affected by those in normal space.",
+  "description": "Opens up a Black Hole to the Netherworld that temporarily pulls in all foes within its grasp. If the main target is immune to the pull, it will become phase shifted and are completely intangible. They are hard to see, and cannot affect or be affected by those in normal space.",
   "shortHelp": "Ranged (Targeted AoE), Foe Intangible",
   "icon": "darkmiasma_blackhole.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
     "range": 50,
-    "radius": 20,
+    "radius": 30,
     "recharge": 120,
     "endurance": 13,
     "castTime": 1.03,
@@ -40,19 +41,24 @@ export const BlackHole: Power = {
     },
     "durations": {
       "repel": 0.75,
-      "immobilize": 30,
-      "threatDebuff": 30
+      "immobilize": 4,
+      "threatDebuff": 4
     },
     "immobilize": {
       "mag": 1,
       "scale": 3,
       "table": "Ranged_Ones"
     },
-    "effectDuration": 30,
+    "effectDuration": 4,
     "threatDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 30
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "P801416744",
+      "duration": 30
+    },
+    "buffDuration": 4
   }
 };

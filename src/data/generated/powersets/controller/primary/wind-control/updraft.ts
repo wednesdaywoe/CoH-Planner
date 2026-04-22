@@ -16,6 +16,7 @@ export const Updraft: Power = {
   "shortHelp": "Ranged, High DMG(Smashing), Knockup(Foe), -Fly(Foe), Pressure Builder (Self)",
   "icon": "windcontrol_updraft.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -38,16 +39,33 @@ export const Updraft: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.281,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.6405,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockup": {
-      "scale": 6,
+      "scale": 12,
       "table": "Ranged_Knockback"
     }
   },
-  "requires": "char>accesslevel >= 0"
+  "requires": "accesslevel char> 0 >="
 };

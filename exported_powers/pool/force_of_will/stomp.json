@@ -73,7 +73,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1288
         }
       ]
     },
@@ -111,7 +112,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectInteract",
+              "event_id": 33,
+              "duration": 10.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 1288
         }
       ]
     }
@@ -151,7 +161,21 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "usFX"
+          "stack_key": "usFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "flag": 1
+            }
+          ],
+          "flags_raw": 263216
         },
         {
           "attribs": [
@@ -176,7 +200,8 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "sFX"
+          "stack_key": "sFX",
+          "flags_raw": 263216
         }
       ]
     }

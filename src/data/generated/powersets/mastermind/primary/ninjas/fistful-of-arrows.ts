@@ -16,14 +16,15 @@ export const FistfulofArrows: Power = {
   "shortHelp": "Ranged (Cone), DMG(Lethal)",
   "icon": "ninjas_fistfullarrows.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.155,
     "range": 40,
     "radius": 40,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 8,
-    "endurance": 8.53,
+    "endurance": 8.528,
     "castTime": 1.17,
     "maxTargets": 10
   },
@@ -39,9 +40,16 @@ export const FistfulofArrows: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.91,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.91,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.7125,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

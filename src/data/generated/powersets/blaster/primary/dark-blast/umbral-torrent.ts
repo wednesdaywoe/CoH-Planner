@@ -16,12 +16,13 @@ export const UmbralTorrent: Power = {
   "shortHelp": "Ranged (Cone), DMG(Negative), Foe -To Hit, Knockback",
   "icon": "darkcast_torrent.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "radius": 80,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 15,
     "endurance": 14.352,
     "castTime": 1.03,
@@ -45,14 +46,21 @@ export const UmbralTorrent: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.96,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.96,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.5184,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 5,
+      "scale": 10,
       "table": "Ranged_Knockback"
     }
   }

@@ -22,7 +22,7 @@ export const SeekerDrones: Power = {
     "accuracy": 1.2,
     "range": 60,
     "recharge": 90,
-    "endurance": 19.5,
+    "endurance": 15.6,
     "castTime": 2.03
   },
   "allowedEnhancements": [
@@ -36,7 +36,6 @@ export const SeekerDrones: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Pet Damage",
     "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",
@@ -47,7 +46,6 @@ export const SeekerDrones: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 240,
-      "copyBoosts": true,
       "entities": [
         {
           "entity": "Pets_Traps_Seeker1",

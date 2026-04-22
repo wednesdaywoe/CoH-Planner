@@ -16,6 +16,7 @@ export const Wormhole: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Teleport, Disorient, Knockback",
   "icon": "gravitycontrol_wormhole.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -37,22 +38,10 @@ export const Wormhole: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Knockback",
-    "Stuns",
-    "Teleport",
-    "Universal Travel"
+    "Stuns"
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 1.5,
-      "mezResistance": 15
-    },
     "teleport": {
       "scale": 4.1,
       "table": "Ranged_Ones"
@@ -63,13 +52,16 @@ export const Wormhole: Power = {
         "table": "Ranged_Ones"
       }
     },
+    "durations": {
+      "mezResistance": 15
+    },
     "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "knockback": {
-      "scale": 7,
+      "scale": 14,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 15

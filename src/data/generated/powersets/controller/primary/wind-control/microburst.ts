@@ -16,6 +16,7 @@ export const Microburst: Power = {
   "shortHelp": "Ranged (Targeted AoE), Minor DMG(Smashing), Stun(Foe), -Speed(Foe, All), -Fly(Foe), -Rech(Foe), Chance for -DEF(Foe, All), Consumes Pressure",
   "icon": "windcontrol_microburst.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -46,16 +47,33 @@ export const Microburst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.2,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.2,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.1193,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.0596,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "defenseDebuff": {
       "scale": 2.5,
@@ -66,5 +84,5 @@ export const Microburst: Power = {
     },
     "buffDuration": 12
   },
-  "requires": "char>accesslevel >= 0"
+  "requires": "accesslevel char> 0 >="
 };

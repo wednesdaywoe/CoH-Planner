@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "MastermindPets_Assault_Bot",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -130,7 +131,8 @@
             "power_names": [
               "Mastermind_Summon.Robotics.Assault_Bot"
             ]
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     }

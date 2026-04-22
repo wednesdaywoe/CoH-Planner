@@ -91,7 +91,8 @@
               "Pets.Liquefy.Liquefy"
             ],
             "priority_list": "Liquefy"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -122,7 +123,8 @@
             "power_names": [
               "Pets.Liquefy.LiquefyShock"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

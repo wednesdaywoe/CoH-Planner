@@ -30,7 +30,6 @@ export const Amplify: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Ranged Damage",
     "To Hit Buff"
   ],
   "maxSlots": 6,

@@ -44,10 +44,9 @@ export const VolcanicGasses: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 60,
-      "copyBoosts": true,
       "entities": [
         {
-          "entity": "Pets_Volcanicgas",
+          "entity": "P4176979480",
           "count": 1
         },
         {

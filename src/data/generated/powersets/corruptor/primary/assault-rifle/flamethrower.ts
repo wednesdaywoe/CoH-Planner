@@ -16,12 +16,13 @@ export const Flamethrower: Power = {
   "shortHelp": "Ranged (Cone), DoT(Fire)",
   "icon": "assaultweapons_arflamethrower.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.3,
     "range": 40,
     "radius": 40,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 20,
     "endurance": 18.512,
     "castTime": 2.33,
@@ -40,11 +41,34 @@ export const Flamethrower: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.3872,
-    "table": "Ranged_Damage",
-    "duration": 4.7,
-    "tickRate": 1
-  }
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.3872,
+      "table": "Ranged_Damage",
+      "duration": 4.7,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.3872,
+      "table": "Ranged_InherentDamage",
+      "duration": 4.7,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2379,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.7,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2379,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.7,
+      "tickRate": 1
+    }
+  ]
 };

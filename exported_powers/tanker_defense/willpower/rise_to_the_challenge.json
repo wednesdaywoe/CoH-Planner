@@ -82,7 +82,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -122,7 +123,13 @@
           "caster_stack": "Individual",
           "stack": "Continuous",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -147,7 +154,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -187,7 +200,8 @@
           "caster_stack": "Individual",
           "stack": "Continuous",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -212,7 +226,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         }
       ]
     },
@@ -262,7 +277,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 2564
             }
           ]
         },
@@ -300,7 +316,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 2564
             }
           ]
         }
@@ -346,7 +363,8 @@
             "power_names": [
               "Redirects.Inherents.Gauntlet_Proc_Aura"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

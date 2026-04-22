@@ -16,6 +16,7 @@ export const FollowUp: Power = {
   "shortHelp": "Melee, DMG(Lethal), Self +DMG",
   "icon": "widowtraining_followup.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,11 +39,28 @@ export const FollowUp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.912,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.912,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.608,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.461,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.9745,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "tohitBuff": {
       "scale": 1,
@@ -58,5 +76,5 @@ export const FollowUp: Power = {
     },
     "buffDuration": 10
   },
-  "requires": "!Widow_Training.Night_Widow_Training.Build_Up"
+  "requires": "Widow_Training.Night_Widow_Training.Build_Up !"
 };

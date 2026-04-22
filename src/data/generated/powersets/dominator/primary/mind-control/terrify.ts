@@ -16,12 +16,13 @@ export const Terrify: Power = {
   "shortHelp": "Ranged (Cone), Light DMG(Psionic), Foe Fear(Special)",
   "icon": "mentalcontrol_terrify.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "radius": 60,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 40,
     "endurance": 20.8,
     "castTime": 2.03,
@@ -42,16 +43,23 @@ export const Terrify: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.8426,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "fear": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Fear"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

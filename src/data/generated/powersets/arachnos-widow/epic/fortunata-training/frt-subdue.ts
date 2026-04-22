@@ -16,6 +16,7 @@ export const Subdue: Power = {
   "shortHelp": "Ranged, DMG(Psionic), Foe Immobilize",
   "icon": "fortunatatraining_subdue.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,11 +40,18 @@ export const Subdue: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.728,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.728,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.8889,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,

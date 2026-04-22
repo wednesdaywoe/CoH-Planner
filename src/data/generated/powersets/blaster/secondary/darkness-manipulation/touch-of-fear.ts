@@ -16,7 +16,6 @@ export const TouchoftheBeyond: Power = {
   "shortHelp": "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
   "icon": "darknessmanipulation_touchoffear.png",
   "powerType": "Click",
-  "targetType": "Location",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -35,6 +34,7 @@ export const TouchoftheBeyond: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Accurate To-Hit Debuff",
     "Endurance Modification",
     "Fear",

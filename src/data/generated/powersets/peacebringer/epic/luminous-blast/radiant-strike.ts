@@ -16,6 +16,7 @@ export const RadiantStrike: Power = {
   "shortHelp": "Melee, High DMG(Smash/Energy), Foe -DEF, Knockback, -Fly",
   "icon": "luminousblast_radiantstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -51,11 +52,21 @@ export const RadiantStrike: Power = {
       "type": "Energy",
       "scale": 0.96,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8675,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6816,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 4,
       "table": "Melee_Ones"
     },
     "defenseDebuff": {

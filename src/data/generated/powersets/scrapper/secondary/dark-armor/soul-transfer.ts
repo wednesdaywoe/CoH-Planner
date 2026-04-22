@@ -39,10 +39,25 @@ export const SoulTransfer: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
+    "Scrapper Archetype Sets",
     "Stuns",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.0405,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
+      "scale": 3,
+      "table": "Melee_Heal",
+      "duration": 0.5,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "absorb": {
       "scale": 2.2,
@@ -56,7 +71,9 @@ export const SoulTransfer: Power = {
       "stun": 30,
       "sleep": 30,
       "knockback": 30,
-      "debuffResistance": 30
+      "debuffResistance": 30,
+      "untouchable": 15,
+      "stealth": 15
     },
     "fear": {
       "mag": 1,
@@ -70,12 +87,12 @@ export const SoulTransfer: Power = {
       "table": "Melee_Res_Boolean"
     },
     "immobilize": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
+      "mag": 50,
+      "scale": 4,
+      "table": "Melee_Ones"
     },
     "stun": {
-      "mag": 3,
+      "mag": 30,
       "scale": 10,
       "table": "Melee_Stun"
     },
@@ -96,6 +113,20 @@ export const SoulTransfer: Power = {
       "tohit": {
         "scale": 0.11,
         "table": "Melee_Res_Boolean"
+      }
+    },
+    "enduranceGain": {
+      "scale": 30,
+      "table": "Melee_Ones"
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 300,
+        "table": "Melee_Ones"
       }
     },
     "buffDuration": 30

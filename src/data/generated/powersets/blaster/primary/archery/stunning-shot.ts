@@ -16,6 +16,7 @@ export const StunningShot: Power = {
   "shortHelp": "Ranged Disorient, DMG(Smashing)",
   "icon": "archery_stunarrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.155,
@@ -54,8 +55,8 @@ export const StunningShot: Power = {
     },
     "stun": {
       "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "buffDuration": 8.5
   }

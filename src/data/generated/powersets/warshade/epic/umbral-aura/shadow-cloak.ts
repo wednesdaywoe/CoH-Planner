@@ -105,10 +105,6 @@ export const ShadowCloak: Power = {
     },
     "effectDuration": 0.75,
     "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"

@@ -16,6 +16,7 @@ export const DirectStrike: Power = {
   "shortHelp": "Sniper, DMG(Energy), Foe -End, Special",
   "icon": "stormblast_directstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,11 +42,23 @@ export const DirectStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 4.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 4.5,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 4.5,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "enduranceDrain": {
       "scale": 0.2,
@@ -53,7 +66,7 @@ export const DirectStrike: Power = {
     },
     "stun": {
       "mag": 4,
-      "scale": 2,
+      "scale": 5,
       "table": "Ranged_Stun"
     },
     "rangeBuff": {

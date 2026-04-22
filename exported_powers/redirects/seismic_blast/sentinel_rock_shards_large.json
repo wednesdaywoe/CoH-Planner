@@ -95,7 +95,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -133,7 +134,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -171,7 +173,16 @@
               "caster_stack": "Unlimited",
               "stack": "Ignore",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "MissionObjectInteract",
+                  "event_id": 33,
+                  "duration": 5.0,
+                  "flag": 1
+                }
+              ],
+              "flags_raw": 328
             }
           ]
         }
@@ -211,7 +222,16 @@
           "caster_stack": "Unlimited",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectInteract",
+              "event_id": 33,
+              "duration": 10.0,
+              "flag": 0
+            }
+          ],
+          "flags_raw": 1288
         },
         {
           "attribs": [
@@ -236,7 +256,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -274,7 +295,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -312,7 +334,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -343,7 +366,8 @@
             "power_names": [
               "Sentinel_Ranged.Seismic_Blast.Shockwaves"
             ]
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -374,7 +398,8 @@
             "power_names": [
               "Redirects.Seismic_Blast.Shockwaves_Buff"
             ]
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -405,7 +430,8 @@
             "power_names": [
               "Sentinel_Ranged.Seismic_Blast.Rock_Shards"
             ]
-          }
+          },
+          "flags_raw": 66608
         }
       ]
     }
@@ -457,7 +483,8 @@
               "Sentinel_Ranged.Seismic_Blast.Stalagmite",
               "Sentinel_Ranged.Seismic_Blast.Upthrust"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

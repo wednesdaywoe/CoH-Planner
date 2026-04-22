@@ -85,7 +85,8 @@
             "power_names": [
               "Redirects.Pyrotechnic_Control.CatherineWheel_InterceptProc"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

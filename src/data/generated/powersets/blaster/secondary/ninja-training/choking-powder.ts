@@ -14,8 +14,9 @@ export const ChokingPowder: Power = {
   "available": 3,
   "description": "Toss a fistful of toxic powder at an enemy’s face. This powder will temporarily close the affected foe’s throat making them choke and struggle to grasp for air.Damage: Light.Recharge: Slow.",
   "shortHelp": "Ranged, Moderate DoT(Toxic), Foe Hold",
-  "icon": "ninjatools_hold.png",
+  "icon": "ninjatools_hold",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -39,22 +40,27 @@ export const ChokingPowder: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Toxic",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 4.2,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Toxic",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 4.2,
+      "tickRate": 1
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1348,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.2,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

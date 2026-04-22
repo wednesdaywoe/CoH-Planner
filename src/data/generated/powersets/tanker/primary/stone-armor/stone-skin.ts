@@ -94,5 +94,6 @@ export const StoneSkin: Power = {
     },
     "buffDuration": 10.25
   },
-  "requires": "!Tanker_Melee.Claws"
+  "requires": "Tanker_Melee.Claws !",
+  "mechanicType": "parentMechanic"
 };

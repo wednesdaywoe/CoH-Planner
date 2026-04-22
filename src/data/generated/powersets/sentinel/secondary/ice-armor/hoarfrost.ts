@@ -57,5 +57,5 @@ export const Hoarfrost: Power = {
     },
     "buffDuration": 120
   },
-  "requires": "!Sentinel_Defense.Ice_Armor.Rime_Ice"
+  "requires": "Sentinel_Defense.Ice_Armor.Rime_Ice !"
 };

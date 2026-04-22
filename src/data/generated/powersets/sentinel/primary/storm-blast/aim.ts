@@ -12,7 +12,7 @@ export const Intensify: Power = {
   "name": "Intensify",
   "internalName": "Aim",
   "available": 7,
-  "description": "Greatly increases the chance to hit of your attacks, and slightly increases damage and range for a few seconds. Moderately increases the chance for Storm Blast powers to summon high winds and lightning from your Storm Cell and Category Five while active.",
+  "description": "Greatly increases the chance to hit of your attacks, and slightly increases damage and range for a few seconds. Moderately increases the chance for Storm Blast powers to summon powerful lightning from your Storm Cell while active.",
   "shortHelp": "Self +To Hit, +DMG, +Range, Special",
   "icon": "stormblast_aim.png",
   "powerType": "Click",

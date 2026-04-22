@@ -22,7 +22,7 @@ export const OilSlickArrow: Power = {
     "accuracy": 1,
     "range": 70,
     "recharge": 180,
-    "endurance": 19.5,
+    "endurance": 15.6,
     "castTime": 1.16
   },
   "allowedEnhancements": [
@@ -34,6 +34,7 @@ export const OilSlickArrow: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Accurate Defense Debuff",
     "Defense Debuff",
     "Ranged AoE Damage",
     "Slow Movement",
@@ -44,8 +45,7 @@ export const OilSlickArrow: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_OilSlickOil",
-      "duration": 30,
-      "copyBoosts": true
+      "duration": 30
     }
   }
 };

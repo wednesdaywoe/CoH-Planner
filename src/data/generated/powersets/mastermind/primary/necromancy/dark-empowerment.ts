@@ -16,6 +16,7 @@ export const DarkEmpowerment: Power = {
   "shortHelp": "Ranged, Empower Undead Henchman",
   "icon": "necromancy_darkempowerment.png",
   "powerType": "Click",
+  "targetType": "Self",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

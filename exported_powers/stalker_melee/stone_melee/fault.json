@@ -90,7 +90,8 @@
             "power_names": [
               "Redirects.Stone_Melee.Fault_Stalker"
             ]
-          }
+          },
+          "flags_raw": 66816
         },
         {
           "attribs": [
@@ -121,7 +122,8 @@
             "power_names": [
               "Redirects.Stone_Melee.Fault_Cone_Stalker"
             ]
-          }
+          },
+          "flags_raw": 66816
         },
         {
           "attribs": [
@@ -152,7 +154,8 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Assassins_Focus"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

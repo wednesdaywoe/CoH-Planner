@@ -16,6 +16,7 @@ export const TimeCrawl: Power = {
   "shortHelp": "Ranged Foe, -Speed, -Recharge, -Regen, Special",
   "icon": "timemanipulation_timecrawl.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -37,8 +38,8 @@ export const TimeCrawl: Power = {
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
+      "scale": 4,
+      "table": "Ranged_Res_Boolean"
     },
     "durations": {
       "regenDebuff": 20

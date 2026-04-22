@@ -16,7 +16,6 @@ export const RemoteBomb: Power = {
   "shortHelp": "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
   "icon": "gadgets_remotebomb.png",
   "powerType": "Click",
-  "targetType": "Location",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 2
@@ -31,7 +30,7 @@ export const RemoteBomb: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -39,19 +38,10 @@ export const RemoteBomb: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 360,
-      "copyBoosts": true,
       "entities": [
         {
-          "entity": "Pets_Bomb",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Controller",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Corruptor",
-          "count": 1
+          "entity": "P3912486950",
+          "count": 4
         },
         {
           "entity": "Pets_Bomb_Temporal",
@@ -60,16 +50,8 @@ export const RemoteBomb: Power = {
         {
           "entity": "Pets_Bomb_Temporal_Defender",
           "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Defender",
-          "count": 1
         }
       ]
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     }
   }
 };

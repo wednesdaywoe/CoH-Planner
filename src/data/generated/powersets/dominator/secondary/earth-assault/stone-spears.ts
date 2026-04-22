@@ -16,6 +16,7 @@ export const StoneSpears: Power = {
   "shortHelp": "Ranged, Light DMG(Lethal), Foe Knock Up",
   "icon": "earthassault_stonespears.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,14 +39,21 @@ export const StoneSpears: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.2601,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockup": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Ranged_Ones"
     }
   }

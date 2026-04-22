@@ -14,7 +14,7 @@ export const PowerSink: Power = {
   "available": 27,
   "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance and regeneration rate. If there are no foes within range, you will not gain any Endurance.",
   "shortHelp": "PBAoE, Self +End, +Regen, Foe -End",
-  "icon": "electricarmor_pbaoeregendrain.png",
+  "icon": "electricarmor_pbaoeregendrain",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
@@ -53,8 +53,8 @@ export const PowerSink: Power = {
       "regenBuff": 45
     },
     "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
+      "scale": 10,
+      "table": "Melee_EndDrain"
     },
     "buffDuration": 45
   }

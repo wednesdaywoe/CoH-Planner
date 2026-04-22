@@ -21,7 +21,7 @@ export const PersonalForceField: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 120,
-    "endurance": 0.1625,
+    "endurance": 0.13,
     "castTime": 2.03,
     "activatePeriod": 0.5
   },
@@ -33,5 +33,103 @@ export const PersonalForceField: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "onlyAffectsSelf": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 0.75,
+      "defenseBuffSuppressible": 0.75,
+      "resistance": 0.75
+    },
+    "defenseBuffSuppressible": {
+      "ranged": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 7.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "resistance": {
+      "smashing": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "buffDuration": 0.75
+  }
 };

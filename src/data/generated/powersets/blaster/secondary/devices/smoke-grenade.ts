@@ -16,6 +16,7 @@ export const SmokeGrenade: Power = {
   "shortHelp": "Ranged (Target AoE), Foe -Perception, -To Hit",
   "icon": "gadgets_smokegrenade.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -34,6 +35,7 @@ export const SmokeGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
     "To Hit Debuff"
   ],
   "maxSlots": 6,
@@ -43,12 +45,8 @@ export const SmokeGrenade: Power = {
       "table": "Melee_Ones"
     },
     "durations": {
-      "perceptionDebuff": 60
+      "perceptionDebuff": 20
     },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 60
+    "buffDuration": 20
   }
 };

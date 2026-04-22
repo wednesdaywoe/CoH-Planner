@@ -16,6 +16,7 @@ export const SkySplitter: Power = {
   "shortHelp": "Melee, DMG(Smash), Foe Knock Up, Disorient, -Fly, Consumes Perfection",
   "icon": "stafffighting_skysplitter.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -64,6 +65,28 @@ export const SkySplitter: Power = {
       "type": "Energy",
       "scale": 1.656,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.4905,
+      "table": "Melee_PvPDamage",
+      "duration": 1.9,
+      "tickRate": 1
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8943,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.8943,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8943,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -73,7 +96,7 @@ export const SkySplitter: Power = {
       "table": "Melee_Stun"
     },
     "knockup": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "resistance": {
@@ -121,11 +144,11 @@ export const SkySplitter: Power = {
       "table": "Melee_Buff_ToHit"
     },
     "regenBuff": {
-      "scale": 1.25,
+      "scale": 2.5,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {
-      "scale": 0.83,
+      "scale": 1.66,
       "table": "Melee_Ones"
     },
     "buffDuration": 15

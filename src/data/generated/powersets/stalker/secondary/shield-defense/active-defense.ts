@@ -59,5 +59,5 @@ export const Deflection: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "!(Stalker_Melee.Claws || Stalker_Melee.Dual_Blades || Stalker_Melee.Ninja_Sword || Stalker_Melee.Spines || Stalker_Melee.Staff_Fighting)"
+  "requires": "Stalker_Melee.Claws Stalker_Melee.Ninja_Sword || Stalker_Melee.Dual_Blades || Stalker_Melee.Spines || Stalker_Melee.Staff_Fighting || !"
 };

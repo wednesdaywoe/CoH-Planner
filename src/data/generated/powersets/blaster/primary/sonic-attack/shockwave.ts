@@ -16,12 +16,13 @@ export const Shockwave: Power = {
   "shortHelp": "Ranged (Cone), DMG(Smashing/Energy), Foe Knockback",
   "icon": "sonicblast_knockback.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 50,
     "radius": 50,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 11,
     "endurance": 11.024,
     "castTime": 1.67,
@@ -52,11 +53,21 @@ export const Shockwave: Power = {
       "type": "Energy",
       "scale": 0.4326,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.41,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.41,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 3,
+      "scale": 6,
       "table": "Ranged_Knockback"
     }
   }

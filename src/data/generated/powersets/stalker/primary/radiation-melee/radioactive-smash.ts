@@ -16,6 +16,7 @@ export const RadioactiveSmash: Power = {
   "shortHelp": "Melee, DMG(Energy/Smash), Foe -Def, Knockdown, Special",
   "icon": "radiationmelee_radioactivesmash.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,6 +40,7 @@ export const RadioactiveSmash: Power = {
     "Knockback",
     "Melee Damage",
     "Stalker Archetype Sets",
+    "Threat Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -59,14 +61,44 @@ export const RadioactiveSmash: Power = {
       "table": "Melee_InherentDamage"
     },
     {
+      "type": "Energy",
+      "scale": 1.48,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4325,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2975,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.73,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.73,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Toxic",
       "scale": 0.296,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1724,
       "table": "Melee_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "defenseDebuff": {

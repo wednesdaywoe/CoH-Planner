@@ -45,14 +45,23 @@ export const Burn: Power = {
   },
   "effects": {
     "summon": {
-      "isPseudoPet": true,
-      "displayName": "Burn",
+      "isPseudoPet": false,
+      "entity": "Burn",
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Redirects.Fiery_Aura.Burn"
       ],
-      "duration": 10,
-      "copyBoosts": true
-    }
+      "duration": 10
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 100,
+    "durations": {
+      "immobilize": 100
+    },
+    "buffDuration": 100
   }
 };

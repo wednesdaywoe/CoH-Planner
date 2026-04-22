@@ -47,12 +47,12 @@ export const RisetotheChallenge: Power = {
       "perTarget": 0.25
     },
     "durations": {
-      "regenBuff": 1.125
+      "regenBuff": 1.12
     },
     "taunt": {
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 1.125
+    "buffDuration": 1.12
   }
 };

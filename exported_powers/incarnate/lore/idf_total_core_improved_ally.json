@@ -83,7 +83,8 @@
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Lore_IDF_Boss",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -113,7 +114,8 @@
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Lore_IDF_LT",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -144,7 +146,8 @@
             "power_names": [
               "Incarnate.Lore_Silent.Level_Shift"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -175,7 +178,8 @@
             "power_names": [
               "Incarnate.Lore_Silent.Level_Shift"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

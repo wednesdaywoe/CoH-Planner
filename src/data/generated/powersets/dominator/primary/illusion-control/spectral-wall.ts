@@ -14,8 +14,9 @@ export const SpectralWall: Power = {
   "available": 0,
   "description": "Creates an illusionary wall of specters that prevents enemies from moving. As the foe is surrounded, they take psionic damage over time.",
   "shortHelp": "Ranged, DoT (Psionic), Foe Immobilize, -ToHit",
-  "icon": "illusions_immob.png",
+  "icon": "illusions_immob",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -42,18 +43,27 @@ export const SpectralWall: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.2,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.2982,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
+      "mag": 5,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

@@ -79,7 +79,8 @@
             "power_names": [
               "Redirects.Shock_Therapy.Shock_Therapy_Static"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

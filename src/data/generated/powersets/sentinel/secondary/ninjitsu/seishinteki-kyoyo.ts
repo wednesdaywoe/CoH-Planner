@@ -14,7 +14,7 @@ export const SeishintekiKyoyo: Power = {
   "available": 15,
   "description": "Seishinteki Kyoyo is the spiritual education in Ninjitsu. Your mastery of these spiritual techniques allow you to recover endurance with a short period of meditation.Recharge: Slow.",
   "shortHelp": "Self +Endurance",
-  "icon": "ninjitsu_recovery.png",
+  "icon": "ninjitsu_recovery",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

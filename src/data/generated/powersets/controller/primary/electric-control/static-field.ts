@@ -43,13 +43,13 @@ export const StaticField: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "Static Field",
       "powers": [
         "Pets.Static_Field_Controller.Static_Field"
       ],
-      "duration": 25,
-      "copyBoosts": true
+      "duration": 25
     }
   }
 };

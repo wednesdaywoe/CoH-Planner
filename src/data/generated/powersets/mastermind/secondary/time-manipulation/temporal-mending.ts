@@ -22,7 +22,7 @@ export const TemporalMending: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 18,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 2.03,
     "maxTargets": 255
   },

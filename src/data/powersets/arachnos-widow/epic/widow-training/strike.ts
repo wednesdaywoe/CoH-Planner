@@ -1,5 +1,5 @@
 /**
- * Strike — COMPOSED EXPORT
+ * Lunge — COMPOSED EXPORT
  *
  * The planner imports from here. Composes the auto-generated power object
  * with hand-written overrides via `withOverrides`. See src/data/README.md

@@ -87,24 +87,10 @@ export const ShadowFall: Power = {
     },
     "durations": {
       "defenseBuff": 0.75,
-      "stealth": 0.75,
       "resistance": 0.75,
       "mezResistance": 0.75,
-      "fear": 0.75
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0.7,
-        "table": "Ranged_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      },
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      }
+      "fear": 0.75,
+      "stealth": 0.75
     },
     "resistance": {
       "energy": {
@@ -132,6 +118,16 @@ export const ShadowFall: Power = {
       "table": "Ranged_Res_Boolean"
     },
     "effectDuration": 0.75,
+    "stealth": {
+      "stealthPvP": {
+        "scale": 390,
+        "table": "Melee_Ones"
+      },
+      "stealthPvE": {
+        "scale": 35.5,
+        "table": "Melee_Ones"
+      }
+    },
     "buffDuration": 0.75
   }
 };

@@ -12,7 +12,7 @@ export const Aim: Power = {
   "name": "Aim",
   "internalName": "Aim",
   "available": 7,
-  "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and range.Recharge: Long.",
+  "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and range.",
   "shortHelp": "Self +ToHit, +DMG, +Range",
   "icon": "fireblast_aim.png",
   "powerType": "Click",

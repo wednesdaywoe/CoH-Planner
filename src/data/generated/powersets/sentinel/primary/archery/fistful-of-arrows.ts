@@ -16,12 +16,13 @@ export const FistfulofArrows: Power = {
   "shortHelp": "Ranged (Cone), Light DMG(Lethal)",
   "icon": "archery_conearrow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.155,
     "range": 40,
     "radius": 40,
-    "arc": 0.8727,
+    "arc": 0.8726646304130554,
     "recharge": 8,
     "endurance": 8.53,
     "castTime": 1.17,
@@ -40,9 +41,26 @@ export const FistfulofArrows: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.91,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.91,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.91,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.6273,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.6273,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

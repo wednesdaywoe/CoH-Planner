@@ -21,9 +21,9 @@ export const SpineBurst: Power = {
   "stats": {
     "accuracy": 1,
     "radius": 15,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 3,
+    "recharge": 10,
+    "endurance": 10.192,
+    "castTime": 1.67,
     "maxTargets": 10
   },
   "allowedEnhancements": [
@@ -45,20 +45,25 @@ export const SpineBurst: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 0.9,
+      "scale": 0.6,
       "table": "Melee_Damage"
     },
     {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 3.1,
+      "duration": 6.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.649,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 0.33,
+      "mag": 0.33000001311302185,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

@@ -14,8 +14,9 @@ export const MelodicBinding: Power = {
   "available": 0,
   "description": "Melodic Binding immobilizes your target in place and inflict psionic damage. Stronger foes might still be able to move, but will do so at a reduced speed.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Immobilize, -SPD",
-  "icon": "symphonycontrol_immobst.png",
+  "icon": "symphonycontrol_immobst",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -41,11 +42,18 @@ export const MelodicBinding: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.61,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "mezResistance": {
       "knockup": {
@@ -61,9 +69,9 @@ export const MelodicBinding: Power = {
       "mezResistance": 15
     },
     "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
+      "mag": 5,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "buffDuration": 15
   }

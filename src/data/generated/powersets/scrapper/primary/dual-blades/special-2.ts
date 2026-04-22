@@ -16,12 +16,13 @@ export const SweepingStrike: Power = {
   "shortHelp": "Melee (Cone), DMG(Lethal)",
   "icon": "dualblades_special2.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 11,
     "endurance": 11.024,
     "castTime": 1.23,
@@ -44,6 +45,21 @@ export const SweepingStrike: Power = {
       "type": "Lethal",
       "scale": 1.7,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.3554,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.3456,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.3554,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Lethal",

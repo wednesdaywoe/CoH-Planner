@@ -14,7 +14,7 @@ export const BetaDecay: Power = {
   "available": 15,
   "description": "While Beta Decay is active, nearby foes will have their chance to hit and defense decreased slightly. You will gain a recharge bonus per nearby target up to 10 targets. The first target grants the largest benefit.",
   "shortHelp": "Toggle: PBAoE, Foe -ToHit, -DEF, Self +Recharge(Special)",
-  "icon": "atomicmanipulation_decay.png",
+  "icon": "atomicmanipulation_decay",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",

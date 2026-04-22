@@ -16,12 +16,13 @@ export const FireBreath: Power = {
   "shortHelp": "Close (Cone), DoT(Fire)",
   "icon": "fireblast_arcoffire.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.2,
     "range": 40,
     "radius": 40,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 16,
     "endurance": 15.184,
     "castTime": 2.67,
@@ -40,11 +41,41 @@ export const FireBreath: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.585,
-    "table": "Ranged_Damage",
-    "duration": 2.1,
-    "tickRate": 1
-  }
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.585,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.585,
+      "table": "Ranged_InherentDamage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.4444,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.4444,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.9697,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.1,
+      "tickRate": 1
+    }
+  ]
 };

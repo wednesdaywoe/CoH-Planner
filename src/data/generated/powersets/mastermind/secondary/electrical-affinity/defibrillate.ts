@@ -12,11 +12,11 @@ export const Defibrillate: Power = {
   "name": "Defibrillate",
   "internalName": "Defibrillate",
   "available": 23,
-  "description": "Strike a target with a highly-charged jolt of electricity, reviving all nearby allies and draining all nearby foes. Any enemies affected will be drained of some endurance, have their recovery reduced and be put to sleep for a short time. Defibrillate consumes all stacks of Static, and the strength of the offensive component of this power scales with the number of stacks consumed. Allies will always be revived with full health and endurance regardless of the number of Static stacks consumed.Recharge: Long.",
+  "description": "Strike a target with a highly-charged jolt of electricity, reviving all nearby allies and draining all nearby foes. Any enemies affected will be drained of some endurance, have their recovery reduced and be put to sleep for a short time. Defibrillate consumes all stacks of Static, and the strength of the offensive component of this power scales with the number of stacks consumed. Allies will always be revived with full health and endurance regardless of the number of Static stacks consumed.",
   "shortHelp": "Melee (Targeted AoE), Ally Rez, Foe Sleep, -End, -Recovery",
   "icon": "shocktherapy_defibrillate.png",
   "powerType": "Click",
-  "targetType": "Any",
+  "targetType": "Ally",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,18 +49,24 @@ export const Defibrillate: Power = {
       "scale": 100,
       "table": "Melee_Ones"
     },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 300,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 15
+    },
     "sleep": {
       "mag": 3,
-      "scale": 30,
-      "table": "Ranged_Sleep"
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "enduranceDrain": {
-      "scale": 0.3,
+      "scale": 20.3,
       "table": "Ranged_EndDrain"
     },
-    "recoveryBuff": {
-      "scale": 30,
-      "table": "Ranged_Ones"
-    }
+    "buffDuration": 15
   }
 };

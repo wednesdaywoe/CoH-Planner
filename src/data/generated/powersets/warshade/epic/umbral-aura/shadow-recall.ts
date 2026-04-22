@@ -14,8 +14,9 @@ export const ShadowRecall: Power = {
   "available": 9,
   "description": "You can Teleport a single foe or ally directly next to yourself. A successful hit must be made in order to Teleport the foes. Some powerful foes cannot be Teleported. Enemy players that are teleported will be temporarily out of phase, and cannot be targeted or damaged. This power can be interrupted while teleporting foes.Recharge: Fast.",
   "shortHelp": "Teleport Teamate or Foe",
-  "icon": "umbralaura_shadowrecall.png",
+  "icon": "umbralaura_shadowrecall",
   "powerType": "Click",
+  "targetType": "Any",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -31,26 +32,6 @@ export const ShadowRecall: Power = {
     "Recharge",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Teleport",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
-  "effects": {
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 1.5
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 1.5
-  },
-  "requires": "!Inherent.Inherent.Shadow_Recall"
+  "requires": "Inherent.Inherent.Shadow_Recall !"
 };

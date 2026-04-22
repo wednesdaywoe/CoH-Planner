@@ -84,7 +84,8 @@
             "power_names": [
               "Redirects.Kinetics.KineticTransfer"
             ]
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -115,7 +116,8 @@
             "power_names": [
               "Redirects.Kinetics.KineticTransferBuffSelf"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

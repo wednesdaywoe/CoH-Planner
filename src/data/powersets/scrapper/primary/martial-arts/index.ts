@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { ThunderKick as ThunderKick } from './thunder-kick';
-import { StormKick as StormKick } from './storm-kick';
 import { CobraStrike as CobraStrike } from './cobra-strike';
-import { FocusChi as FocusChi } from './focus-chi';
 import { CraneKick as CraneKick } from './crane-kick';
-import { WarriorsChallenge as WarriorsChallenge } from './warriors-challenge';
 import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
 import { DragonsTail as DragonsTail } from './dragons-tail';
 import { EaglesClaw as EaglesClaw } from './eagles-claw';
+import { FocusChi as FocusChi } from './focus-chi';
+import { StormKick as StormKick } from './storm-kick';
+import { ThunderKick as ThunderKick } from './thunder-kick';
+import { WarriorsChallenge as WarriorsChallenge } from './warriors-challenge';
 
 export const powerset: Powerset = {
   id: 'scrapper/martial-arts',
   name: 'Martial Arts',
   description: 'A compilation of various fighting techniques from around the world, Martial Arts makes you a master in the art of hand to hand combat. Martial Artists tend to be very accurate with their strikes. Like all scrapper powers, all Martial Arts attacks can sometimes land a critical hit for double damage.',
-  icon: 'martial_arts_set.png',
+  icon: 'martial_arts_set.ico',
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    ThunderKick,
-    StormKick,
     CobraStrike,
-    FocusChi,
     CraneKick,
-    WarriorsChallenge,
     CripplingAxeKick,
     DragonsTail,
     EaglesClaw,
+    FocusChi,
+    StormKick,
+    ThunderKick,
+    WarriorsChallenge,
   ],
 };
 

@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "P1985334123",
             "priority_list": "Pets_Defender_RainofFire"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

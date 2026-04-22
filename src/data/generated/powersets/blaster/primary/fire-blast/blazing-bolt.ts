@@ -16,6 +16,7 @@ export const BlazingBolt: Power = {
   "shortHelp": "Sniper, DMG(Fire), Self +Range",
   "icon": "fireblast_blazingbolt.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -38,33 +39,5 @@ export const BlazingBolt: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.225,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
-    },
-    "buffDuration": 10
-  }
+  "maxSlots": 6
 };

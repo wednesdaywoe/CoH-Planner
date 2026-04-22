@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_IceStorm",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -127,7 +128,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Embraced_IceStorm",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

@@ -90,7 +90,8 @@
               "Redirects.Dark_Melee.Touch_of_Fear_AoE_Scrapper",
               "Redirects.Dark_Melee.Touch_of_Fear_ST"
             ]
-          }
+          },
+          "flags_raw": 66816
         }
       ]
     }

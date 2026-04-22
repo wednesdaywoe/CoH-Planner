@@ -48,6 +48,11 @@ export const DarkConsumption: Power = {
     },
     {
       "type": "Negative",
+      "scale": 0.6309,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
       "scale": 0.8,
       "table": "Melee_InherentDamage"
     },

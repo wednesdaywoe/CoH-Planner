@@ -14,7 +14,7 @@ export const PowerArmor: Power = {
   "available": 11,
   "description": "Power Armor increases Hit Points and resistance to all damage types. This power is always on and costs no endurance.",
   "shortHelp": "Auto: Self +MaxHP, +Resist(All DMG)",
-  "icon": "energyaura_powerarmor.png",
+  "icon": "energyaura_powerarmor",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -75,5 +75,6 @@ export const PowerArmor: Power = {
       }
     },
     "buffDuration": 10.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

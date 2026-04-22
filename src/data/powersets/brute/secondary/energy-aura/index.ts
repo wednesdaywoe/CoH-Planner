@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { KineticShield as KineticShield } from './kinetic-shield';
+import { Energize as Energize } from './conserve-power';
 import { DampeningField as DampeningField } from './dampening-field';
-import { PowerShield as PowerShield } from './power-shield';
-import { EntropicAura as EntropicAura } from './entropy-shield';
-import { EnergyProtection as EnergyProtection } from './energy-protection';
 import { EnergyCloak as EnergyCloak } from './energy-cloak';
 import { EnergyDrain as EnergyDrain } from './energy-drain';
-import { Energize as Energize } from './conserve-power';
+import { EnergyProtection as EnergyProtection } from './energy-protection';
+import { EntropicAura as EntropicAura } from './entropy-shield';
+import { KineticShield as KineticShield } from './kinetic-shield';
 import { Overload as Overload } from './overload';
+import { PowerShield as PowerShield } from './power-shield';
 
 export const powerset: Powerset = {
   id: 'brute/energy-aura',
   name: 'Energy Aura',
   description: 'You can surround yourself in powerful defensive Energy Auras that can deflect your foes\' attacks. Like other defensive powers, Energy Auras do not reduce the damage you take, but rather reduce your chance of getting hit by deflecting your foes\' attacks. Energy Auras offer good defense to most attack types, but offer superior defense to Energy based attacks. However, Energy Aura offers no defense to Psionic attacks.',
-  icon: 'energy_aura_set.png',
+  icon: 'energy_aura_set.ico',
   archetype: 'brute',
   category: 'secondary',
   powers: [
-    KineticShield,
+    Energize,
     DampeningField,
-    PowerShield,
-    EntropicAura,
-    EnergyProtection,
     EnergyCloak,
     EnergyDrain,
-    Energize,
+    EnergyProtection,
+    EntropicAura,
+    KineticShield,
     Overload,
+    PowerShield,
   ],
 };
 

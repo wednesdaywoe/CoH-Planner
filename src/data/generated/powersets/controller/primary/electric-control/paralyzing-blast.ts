@@ -14,8 +14,9 @@ export const TeslaCoil: Power = {
   "available": 17,
   "description": "Summoning a large amount of energy that periodically jolts at nearby enemies dealing energy damage and paralizing them for a short time. These foes may be drained of some endurance as well.",
   "shortHelp": "Ranged (Targeted AoE), Foe DMG(Energy), Hold, -End, -Fly, -Jump, -Recharge",
-  "icon": "electriccontrol_paralyzingblast.png",
+  "icon": "electriccontrol_paralyzingblastpatch",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 0.8,
@@ -35,22 +36,23 @@ export const TeslaCoil: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Endurance Modification",
     "Holds",
-    "Ranged AoE Damage",
+    "Ranged Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
       "displayName": "Tesla Coil",
       "powers": [
         "Redirects.Electric_Control.Tesla_Coil_Pulse",
         "Redirects.Electric_Control.Tesla_Coil_Debuff",
         "Redirects.Electric_Control.Tesla_Coil_OneShot",
         "Redirects.Electric_Control.Self_Destruct"
-      ],
-      "copyBoosts": true
+      ]
     }
   }
 };

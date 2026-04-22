@@ -53,5 +53,6 @@ export const PhalanxFighting: Power = {
       "defenseBuff": 1.25
     },
     "buffDuration": 1.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

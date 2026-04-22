@@ -12,7 +12,7 @@ export const Painbringer: Power = {
   "name": "Painbringer",
   "internalName": "Painbringer",
   "available": 29,
-  "description": "You transform an ally to pain incarnate turning them into an inexhaustible killing machine. While the character is imbued with this power they will benefit from incredible health regeneration, endurance recovery and improved damage potential for a short time.Recharge: Very Long.",
+  "description": "You transform an ally to pain incarnate turning them into an inexhaustible killing machine. While the character is imbued with this power they will benefit from incredible health regeneration, endurance recovery and improved damage potential for a short time.",
   "shortHelp": "Ally, +Regeneration, +Recovery, +DMG",
   "icon": "paindomination_painbringer.png",
   "powerType": "Click",
@@ -22,7 +22,7 @@ export const Painbringer: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 300,
-    "endurance": 13,
+    "endurance": 10.4,
     "castTime": 2.27
   },
   "allowedEnhancements": [

@@ -11,20 +11,21 @@ import type { Power } from '@/types';
 export const Slice: Power = {
   "name": "Slice",
   "internalName": "Slice",
-  "available": 3,
-  "description": "You Slice your sword in a wide arc, attacking all enemies in front of you. Slice does less damage than Hack but can hit multiple foes and reduce their defense.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "Melee (Cone), DMG(Lethal), Foe -DEF",
+  "available": 1,
+  "description": "You Slice your sword in a wide arc, attacking all enemies in front of you reducing their defense and damage resistance.Every 15 seconds, you can perform a more powerful, Rending Slice on your main target.This power is mutually exclusive from Boomerang Slice.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
+  "shortHelp": "Melee (Cone), DMG(Lethal), Foe -DEF, -Res(Dmg)",
   "icon": "sword_slice.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
     "range": 7,
     "radius": 7,
-    "arc": 2.2689,
+    "arc": 2.268928050994873,
     "recharge": 8,
     "endurance": 8.528,
-    "castTime": 2,
+    "castTime": 1.83,
     "maxTargets": 5
   },
   "allowedEnhancements": [
@@ -44,19 +45,77 @@ export const Slice: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.23,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.2346,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.8654,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.4946,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.5064,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.8431,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
-      "scale": 1,
+      "scale": 0.5,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10
+      "defenseDebuff": 15,
+      "resistanceDebuff": 15
     },
-    "buffDuration": 10
-  }
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      }
+    },
+    "buffDuration": 15
+  },
+  "requires": "Tanker_Melee.Broad_Sword.Boomerang_Slice !"
 };

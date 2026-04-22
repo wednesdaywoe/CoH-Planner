@@ -58,13 +58,18 @@ export const Consume: Power = {
     },
     "durations": {
       "recoveryBuff": 15,
-      "debuffResistance": 120
+      "debuffResistance": 120,
+      "damageBuff": 9.53
     },
     "debuffResistance": {
       "endurance": {
         "scale": 0.5,
         "table": "Melee_Ones"
       }
+    },
+    "damageBuff": {
+      "scale": 0.033,
+      "table": "Melee_Ones"
     },
     "buffDuration": 120
   }

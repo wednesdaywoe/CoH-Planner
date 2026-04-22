@@ -16,6 +16,7 @@ export const InsulatingCircuit: Power = {
   "shortHelp": "Ranged (Chain), Ally +Absorb, Self +Static",
   "icon": "shocktherapy_insulatingcircuit.png",
   "powerType": "Click",
+  "targetType": "Ally (Alive)",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
@@ -30,6 +31,9 @@ export const InsulatingCircuit: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Healing"
+  ],
+  "allowedSetCategories": [
     "Healing"
   ],
   "maxSlots": 6,

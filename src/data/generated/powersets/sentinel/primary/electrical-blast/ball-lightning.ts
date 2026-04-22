@@ -16,6 +16,7 @@ export const BallLightning: Power = {
   "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
   "icon": "electricalbolt_balllightning.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -44,6 +45,16 @@ export const BallLightning: Power = {
   "damage": [
     {
       "type": "Energy",
+      "scale": 0.18,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.18,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
       "scale": 0.9,
       "table": "Ranged_Damage"
     },
@@ -52,13 +63,71 @@ export const BallLightning: Power = {
       "scale": 0.045,
       "table": "Ranged_Damage",
       "duration": 2.2,
-      "tickRate": 0.6
+      "tickRate": 0.6000000238418579
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.045,
+      "table": "Ranged_InherentDamage",
+      "duration": 2.2,
+      "tickRate": 0.6000000238418579
+    },
+    {
+      "type": "Energy",
+      "scale": 0.11,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.11,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.441,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.0275,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.2,
+      "tickRate": 0.6000000238418579
+    },
+    {
+      "type": "Energy",
+      "scale": 0.441,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.0275,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.2,
+      "tickRate": 0.6000000238418579
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.07,
+      "scale": 1.32,
       "table": "Ranged_EndDrain"
-    }
+    },
+    "enduranceGain": {
+      "scale": 7.58,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 0.8,
+      "table": "Ranged_EndDrain"
+    },
+    "durations": {
+      "recoveryDebuff": 5
+    },
+    "buffDuration": 5
   }
 };

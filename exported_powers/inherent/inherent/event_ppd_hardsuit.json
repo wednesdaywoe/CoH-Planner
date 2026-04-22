@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.Event_PPD_Hardsuit"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Prestige_Costumes.PPD_Hardsuit"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

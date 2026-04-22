@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "P1757360070",
             "priority_list": "Pets_FireImp_Controller"
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -114,7 +115,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_FireImp_Controller",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -144,7 +146,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_FireImp_Controller",
             "priority_list": "Pet"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

@@ -16,12 +16,13 @@ export const TwilightGrasp: Power = {
   "shortHelp": "Ranged, Foe -To Hit, -DMG, -Regen, Team Heal",
   "icon": "darkmiasma_twilightgrasp.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
     "range": 80,
     "recharge": 8,
-    "endurance": 9.75,
+    "endurance": 7.8,
     "castTime": 2.37
   },
   "allowedEnhancements": [
@@ -46,8 +47,8 @@ export const TwilightGrasp: Power = {
   },
   "effects": {
     "regenDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
+      "scale": 11.5,
+      "table": "Ranged_Res_Boolean"
     },
     "durations": {
       "regenDebuff": 20

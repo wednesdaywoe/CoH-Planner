@@ -14,7 +14,7 @@ export const SpotPrey: Power = {
   "available": 15,
   "description": "Greatly boosts your attacks for a few seconds. Slightly increases perception and chance to hit.Recharge: Long.",
   "shortHelp": "Self +DMG, +To Hit, +Perception",
-  "icon": "savagemelee_aim.png",
+  "icon": "savagemelee_aim",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",

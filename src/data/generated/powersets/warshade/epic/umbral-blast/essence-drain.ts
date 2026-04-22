@@ -16,6 +16,7 @@ export const EssenceDrain: Power = {
   "shortHelp": "Melee, Light DMG(Negative), Foe -Recharge, -SPD; Self +HP",
   "icon": "umbralblast_essencedrain.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

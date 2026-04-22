@@ -87,7 +87,8 @@
             "power_names": [
               "Redirects.Shock_Therapy.Defibrillate_Revive"
             ]
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -118,7 +119,8 @@
             "power_names": [
               "Redirects.Shock_Therapy.Defibrillate_Debuff"
             ]
-          }
+          },
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -149,7 +151,8 @@
             "power_names": [
               "Redirects.Shock_Therapy.Consume_Static"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

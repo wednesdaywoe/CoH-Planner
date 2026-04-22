@@ -85,7 +85,8 @@
             "power_names": [
               "Redirects.Fiery_Aura.Phoenix"
             ]
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

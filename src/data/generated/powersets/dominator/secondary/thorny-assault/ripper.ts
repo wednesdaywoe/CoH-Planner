@@ -16,12 +16,13 @@ export const Ripper: Power = {
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), DoT(Toxic) -DEF, Knockback, -SPD",
   "icon": "thornyassault_ripper.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 7,
     "radius": 7,
-    "arc": 1.0472,
+    "arc": 1.0471975803375244,
     "recharge": 15,
     "endurance": 14.352,
     "castTime": 2.33,
@@ -50,6 +51,11 @@ export const Ripper: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Lethal",
+      "scale": 2.1925,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Toxic",
       "scale": 0.2,
       "table": "Melee_Damage",
@@ -59,7 +65,7 @@ export const Ripper: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "defenseDebuff": {

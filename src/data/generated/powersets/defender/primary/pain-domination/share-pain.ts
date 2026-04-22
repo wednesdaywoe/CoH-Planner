@@ -12,7 +12,7 @@ export const SharePain: Power = {
   "name": "Share Pain",
   "internalName": "Share_Pain",
   "available": 1,
-  "description": "Share Pain draws away some of an ally's anguish caused by their wounds, but damages the user. The pain caused by this power causes the user to go into a frenzy, briefly increasing their damage output, however the user cannot be healed and will have their regeneration rate greatly diminished for a short time.Recharge: Slow.",
+  "description": "Share Pain draws away some of an ally's anguish caused by their wounds, but damages the user. The pain caused by this power causes the user to go into a frenzy, briefly increasing their damage output, however the user cannot be healed and will have their regeneration rate greatly diminished for a short time.",
   "shortHelp": "Ally Strong Heal, Self Moderate DMG(Special), +DMG",
   "icon": "paindomination_sharepain.png",
   "powerType": "Click",

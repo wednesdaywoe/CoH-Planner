@@ -16,13 +16,14 @@ export const MeltArmor: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
   "icon": "thermalradiation_meltarmor.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
     "range": 70,
     "radius": 20,
     "recharge": 100,
-    "endurance": 22.75,
+    "endurance": 18.2,
     "castTime": 1.5,
     "maxTargets": 16
   },

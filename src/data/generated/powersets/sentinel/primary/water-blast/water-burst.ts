@@ -16,6 +16,7 @@ export const WaterBurst: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Cold/Smash), Foe -Speed, Knockdown, +Wet, Self -Tidal Power",
   "icon": "waterblast_waterburst.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -55,9 +56,44 @@ export const WaterBurst: Power = {
       "table": "Ranged_Damage"
     },
     {
+      "type": "Smashing",
+      "scale": 0.225,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.675,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2424,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.4502,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2424,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.4502,
+      "table": "Ranged_PvPDamage"
+    },
+    {
       "type": "Cold",
       "scale": 0.045,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.045,
+      "table": "Ranged_InherentDamage"
     },
     {
       "type": "Cold",
@@ -66,13 +102,53 @@ export const WaterBurst: Power = {
     },
     {
       "type": "Cold",
+      "scale": 0.108,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
       "scale": 0.225,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.225,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.0346,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.0346,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.0831,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.0831,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.1732,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.1732,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 2.68,
+      "scale": 5.36,
       "table": "Ranged_Ones"
     }
   }

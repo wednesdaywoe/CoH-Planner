@@ -16,6 +16,7 @@ export const DarkNovaDetonation: Power = {
   "shortHelp": "Ranged (Targeted AoE), Light DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_darkmatterdetonation.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -43,16 +44,23 @@ export const DarkNovaDetonation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.9,
-    "table": "Ranged_InherentDamage"
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.9,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.0302,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 4,
       "table": "Ranged_Knockback"
     }
   },
-  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova && !Inherent.Inherent.Dark_Nova_Detonation"
+  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Detonation ! &&"
 };

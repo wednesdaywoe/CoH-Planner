@@ -26,6 +26,10 @@ export const PainTolerance: Power = {
     "Resistance",
     "Healing"
   ],
+  "allowedSetCategories": [
+    "Healing",
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

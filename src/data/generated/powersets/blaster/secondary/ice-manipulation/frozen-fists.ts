@@ -16,6 +16,7 @@ export const FrozenFists: Power = {
   "shortHelp": "Melee, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "icemanipulation_frozenfist.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -52,12 +53,20 @@ export const FrozenFists: Power = {
       "table": "Melee_Damage",
       "duration": 0.3,
       "tickRate": 0.25
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2064,
+      "table": "Melee_PvPDamage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Cold",
+      "scale": 0.6191,
+      "table": "Melee_PvPDamage",
+      "duration": 0.3,
+      "tickRate": 0.25
     }
-  ],
-  "effects": {
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
+  ]
 };

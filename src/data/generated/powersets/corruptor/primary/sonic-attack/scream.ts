@@ -16,6 +16,7 @@ export const Scream: Power = {
   "shortHelp": "Ranged, Moderate DoT(Smashing/Energy), -Res",
   "icon": "sonicblast_medium.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -49,6 +50,34 @@ export const Scream: Power = {
       "type": "Energy",
       "scale": 0.132,
       "table": "Ranged_Damage",
+      "duration": 1.05,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Energy",
+      "scale": 0.264,
+      "table": "Ranged_InherentDamage",
+      "duration": 1.05,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.1669,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.05,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1669,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.05,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3338,
+      "table": "Ranged_PvPDamage",
       "duration": 1.05,
       "tickRate": 0.25
     }

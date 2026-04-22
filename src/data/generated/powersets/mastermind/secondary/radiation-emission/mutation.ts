@@ -12,10 +12,11 @@ export const Mutation: Power = {
   "name": "Mutation",
   "internalName": "Mutation",
   "available": 15,
-  "description": "Using a concentrated burst of radiation, you can revive a fallen ally and Mutate them into a killing machine. The Mutated target has increased damage, chance to hit, Endurance recovery, and attack speed and is protected from XP Debt for 90 seconds. The entire experience is very taxing on your ally, and they will soon be severely weakened. All effects of the Mutation will eventually wear off.Recharge: Long.",
+  "description": "Using a concentrated burst of radiation, you can revive a fallen ally and Mutate them into a killing machine. The Mutated target has increased damage, chance to hit, Endurance recovery, and attack speed and is protected from XP Debt for 90 seconds. The entire experience is very taxing on your ally, and they will soon be severely weakened. All effects of the Mutation will eventually wear off.",
   "shortHelp": "Close, Ally Rez, Special",
   "icon": "radiationpoisoning_mutation.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -54,7 +55,8 @@ export const Mutation: Power = {
       "recoveryBuff": 90,
       "rechargeBuff": 90,
       "damageBuff": 90,
-      "tohitBuff": 90
+      "tohitBuff": 90,
+      "stealth": 15
     },
     "rechargeBuff": {
       "scale": 1,
@@ -67,6 +69,12 @@ export const Mutation: Power = {
     "tohitBuff": {
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 300,
+        "table": "Melee_Ones"
+      }
     },
     "buffDuration": 90
   }

@@ -31,6 +31,9 @@ export const KujiInRin: Power = {
     "Recharge",
     "Jump"
   ],
+  "allowedSetCategories": [
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "confuse": {

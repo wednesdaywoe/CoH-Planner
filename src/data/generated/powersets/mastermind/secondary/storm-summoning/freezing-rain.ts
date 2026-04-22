@@ -22,7 +22,7 @@ export const FreezingRain: Power = {
     "accuracy": 1,
     "range": 60,
     "recharge": 60,
-    "endurance": 22.75,
+    "endurance": 18.2,
     "castTime": 2.03
   },
   "allowedEnhancements": [
@@ -44,14 +44,14 @@ export const FreezingRain: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "P1985334123",
       "displayName": "Freezing Rain",
       "powers": [
         "Pets.Freezing_Rain.FreezingRain",
         "Pets.Freezing_Rain.Avoid"
       ],
-      "duration": 15,
-      "copyBoosts": true
+      "duration": 15
     }
   }
 };

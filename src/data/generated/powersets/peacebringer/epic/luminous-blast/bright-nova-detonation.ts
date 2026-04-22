@@ -16,6 +16,7 @@ export const BrightNovaDetonation: Power = {
   "shortHelp": "Ranged (Targeted AoE), Light DMG(Smash/Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_luminousdetonation.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -54,11 +55,21 @@ export const BrightNovaDetonation: Power = {
       "type": "Smashing",
       "scale": 0.3,
       "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6871,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.343,
+      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 4,
       "table": "Ranged_Knockback"
     },
     "defenseDebuff": {
@@ -70,5 +81,5 @@ export const BrightNovaDetonation: Power = {
     },
     "buffDuration": 10
   },
-  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova && !Inherent.Inherent.Bright_Nova_Detonation"
+  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Detonation ! &&"
 };

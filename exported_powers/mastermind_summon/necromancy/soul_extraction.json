@@ -82,7 +82,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1296
         }
       ],
       "child_effects": [
@@ -123,9 +124,10 @@
               "stack_key": null,
               "params": {
                 "type": "EntCreate",
-                "entity_def": "P536219010",
-                "priority_list": "MastermindPets_Ghost_Boss"
-              }
+                "entity_def": "MastermindPets_Ghost_Boss",
+                "priority_list": "PL_FightPreferMelee"
+              },
+              "flags_raw": 112
             }
           ]
         },
@@ -166,9 +168,10 @@
               "stack_key": null,
               "params": {
                 "type": "EntCreate",
-                "entity_def": "P536219010",
-                "priority_list": "MastermindPets_Ghost_Lt"
-              }
+                "entity_def": "MastermindPets_Ghost_Lt",
+                "priority_list": "PL_FightPreferMelee"
+              },
+              "flags_raw": 112
             }
           ]
         },
@@ -209,9 +212,10 @@
               "stack_key": null,
               "params": {
                 "type": "EntCreate",
-                "entity_def": "P536219010",
-                "priority_list": "MastermindPets_Ghost_Minion"
-              }
+                "entity_def": "MastermindPets_Ghost_Minion",
+                "priority_list": "PL_FightPreferMelee"
+              },
+              "flags_raw": 112
             }
           ]
         }

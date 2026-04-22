@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.Event_Rikti"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Prestige_Costumes.Rikti_Mentalist"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

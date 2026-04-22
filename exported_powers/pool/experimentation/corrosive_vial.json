@@ -87,7 +87,8 @@
             "redirects": [
               "Redirects.Pool_Experimentation.Corrosive_Vial_Splat"
             ]
-          }
+          },
+          "flags_raw": 16712
         }
       ]
     }

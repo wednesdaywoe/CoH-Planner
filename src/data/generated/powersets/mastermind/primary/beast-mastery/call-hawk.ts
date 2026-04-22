@@ -16,12 +16,13 @@ export const CallHawk: Power = {
   "shortHelp": "Ranged, Moderate DMG(Lethal), Foe -To Hit, Knockdown, -Fly",
   "icon": "beastmastery_callhawk.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "recharge": 6,
-    "endurance": 6.86,
+    "endurance": 6.864,
     "castTime": 1.67
   },
   "allowedEnhancements": [
@@ -41,16 +42,25 @@ export const CallHawk: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.3256,
-    "table": "Ranged_Damage",
-    "duration": 1.3,
-    "tickRate": 0.3
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.3256,
+      "table": "Ranged_Damage",
+      "duration": 1.3,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.398,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.3,
+      "tickRate": 0.30000001192092896
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Ranged_Ones"
     },
     "maxHPBuff": {

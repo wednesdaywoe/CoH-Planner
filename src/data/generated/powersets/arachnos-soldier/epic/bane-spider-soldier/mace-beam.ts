@@ -33,6 +33,12 @@ export const MaceBeam: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

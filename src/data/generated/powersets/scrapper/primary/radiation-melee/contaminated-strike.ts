@@ -16,6 +16,7 @@ export const ContaminatedStrike: Power = {
   "shortHelp": "Melee, DMG(Energy/Smash), Foe -Def, Special",
   "icon": "radiationmelee_contaminatedstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -51,18 +52,23 @@ export const ContaminatedStrike: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Smashing",
+      "scale": 0.2752,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8257,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Toxic",
       "scale": 0.168,
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 0.21,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.63,
+      "type": "Toxic",
+      "scale": 0.1319,
       "table": "Melee_Damage"
     },
     {
@@ -74,6 +80,26 @@ export const ContaminatedStrike: Power = {
       "type": "Energy",
       "scale": 0.63,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.21,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.63,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2752,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8257,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

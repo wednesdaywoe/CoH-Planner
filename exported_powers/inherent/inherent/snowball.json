@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.SnowBall"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -110,7 +111,8 @@
             "power_names": [
               "Prestige.Fun.SnowBall"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

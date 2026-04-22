@@ -39,8 +39,7 @@ export const PoisonTrap: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_Poison_Trap",
-      "duration": 260,
-      "copyBoosts": true
+      "duration": 260
     }
   }
 };

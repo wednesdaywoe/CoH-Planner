@@ -16,6 +16,7 @@ export const GravityWell: Power = {
   "shortHelp": "Melee, Extreme DMG(Negative), Foe Hold -Recharge, -SPD",
   "icon": "umbralblast_gravitywell.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,6 +51,18 @@ export const GravityWell: Power = {
       "type": "Smashing",
       "scale": 0.33,
       "table": "Melee_Damage",
+      "duration": 2.75,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Negative",
+      "scale": 1.1656,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.2463,
+      "table": "Melee_PvPDamage",
       "duration": 2.75,
       "tickRate": 0.5
     }

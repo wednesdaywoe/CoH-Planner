@@ -16,6 +16,7 @@ export const FulcrumShift: Power = {
   "shortHelp": "Ranged (Foe AoE), Foe -DMG, Team +DMG",
   "icon": "kineticboost_kinetictransfer.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

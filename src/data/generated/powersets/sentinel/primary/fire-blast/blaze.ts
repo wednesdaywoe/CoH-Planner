@@ -12,10 +12,11 @@ export const Blaze: Power = {
   "name": "Blaze",
   "internalName": "Blaze",
   "available": 5,
-  "description": "A devastating flame attack.Damage: Extreme.Recharge: Moderate.",
+  "description": "A devastating flame attack.",
   "shortHelp": "Ranged, DMG(Fire), DoT(Fire)",
   "icon": "fireblast_blaze.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -45,10 +46,25 @@ export const Blaze: Power = {
     },
     {
       "type": "Fire",
+      "scale": 1.96,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Fire",
       "scale": 0.225,
       "table": "Ranged_Damage",
       "duration": 4.1,
       "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.5,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.5,
+      "table": "Ranged_PvPDamage"
     }
   ]
 };

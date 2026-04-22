@@ -552,6 +552,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           level={build.level}
           enhancementDamageBonus={enhancementBonuses.damage || 0}
           globalDamageBonus={globalBonusesForCalc.damage || 0}
+          archetypeId={archetypeId ?? undefined}
         />
       )}
 
@@ -1700,6 +1701,9 @@ interface PetDamageDisplayProps {
   level: number;
   enhancementDamageBonus: number;
   globalDamageBonus: number;
+  /** Power's archetype id — used to label the aggregate row "Henchmen"
+   *  (Mastermind) vs the more neutral "Pet" for everyone else. */
+  archetypeId?: string;
 }
 
 /** Effect type display info */
@@ -1996,18 +2000,31 @@ function SingleEntityDisplay({
   );
 }
 
-export function PetDamageDisplay({ summon, level, enhancementDamageBonus, globalDamageBonus }: PetDamageDisplayProps) {
+export function PetDamageDisplay({ summon, level, enhancementDamageBonus, globalDamageBonus, archetypeId }: PetDamageDisplayProps) {
   const [upgradeTier, setUpgradeTier] = useState(0);
 
-  // Build entity list from either entities array or single entity
+  // Build entity list from either entities array or single entity. Filter out
+  // entries we don't have damage data for AND that look visual-only (e.g. Rain
+  // of Arrows summons a `P4047293352` visual entity alongside its real damage
+  // pseudopet `Pets_RainofArrows`). The visual marker has no abilities and
+  // surfaces no useful info to the user — drop it. We keep entries that lack
+  // PET_ENTITIES data IF they at least look like a real entity name (e.g.
+  // `Pets_*`, `MastermindPets_*`) so unmodeled-but-real pets still show up.
   const entityList = useMemo(() => {
-    if (summon.entities) {
-      return summon.entities.map(e => ({ entityName: e.entity, count: e.count }));
-    }
-    if (summon.entity) {
-      return [{ entityName: summon.entity, count: summon.entityCount || 1 }];
-    }
-    return [];
+    const raw = summon.entities
+      ? summon.entities.map(e => ({ entityName: e.entity, count: e.count }))
+      : summon.entity
+        ? [{ entityName: summon.entity, count: summon.entityCount || 1 }]
+        : [];
+    return raw.filter(({ entityName }) => {
+      // Has model data → keep
+      if (PET_ENTITIES[entityName]) return true;
+      // Looks like a real (un-modeled) pet name → keep so we can still surface it
+      if (/^(Pets_|MastermindPets_|Villain_Pets_|VillainPets_)/i.test(entityName)) return true;
+      // P-hashes and other opaque identifiers without model data are
+      // almost always FX / visual placeholders. Drop.
+      return false;
+    });
   }, [summon.entities, summon.entity, summon.entityCount]);
 
   // Check max upgrade tier available across all entities
@@ -2122,11 +2139,15 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
             />
           ))}
 
-          {/* Aggregate total across all entity types */}
+          {/* Aggregate total across all entity types. "Henchmen" only fits
+              Mastermind primary summons; everything else (Lore incarnates,
+              Phantom Army, summons from epic pools, etc.) gets a neutral label. */}
           {hasDamage && (
             <div className="border-t border-indigo-500/30 pt-1.5 mt-1.5">
               <div className="flex items-center gap-1">
-                <span className="text-[10px] text-slate-400 font-medium">Total Henchmen DPS:</span>
+                <span className="text-[10px] text-slate-400 font-medium">
+                  {archetypeId === 'mastermind' ? 'Total Henchmen DPS:' : 'Total Pet DPS:'}
+                </span>
                 <span className="text-[10px] text-red-400 font-medium">{totals.base.toFixed(1)}</span>
                 {hasEnh && <span className="text-[10px] text-green-400">→ {totals.enhanced.toFixed(1)}</span>}
                 {hasBuff && <span className="text-[10px] text-amber-400">→ {totals.final.toFixed(1)}</span>}

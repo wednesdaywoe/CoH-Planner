@@ -16,6 +16,7 @@ export const SpectralWounds: Power = {
   "shortHelp": "Ranged, DMG(Psionic/Special), +Special",
   "icon": "illusions_spectralwounds.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
@@ -46,6 +47,21 @@ export const SpectralWounds: Power = {
       "type": "Special",
       "scale": -0.64,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.389,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.6945,
+      "table": "Ranged_PvPDamage"
     }
   ]
 };

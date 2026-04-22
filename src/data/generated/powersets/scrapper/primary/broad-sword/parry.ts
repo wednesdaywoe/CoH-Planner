@@ -16,6 +16,7 @@ export const Parry: Power = {
   "shortHelp": "Melee, DMG(Lethal), Self +DEF(Melee,Lethal)",
   "icon": "sword_parry.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -53,6 +54,16 @@ export const Parry: Power = {
       "type": "Lethal",
       "scale": 0.84,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4509,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4509,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

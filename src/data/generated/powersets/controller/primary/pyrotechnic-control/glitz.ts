@@ -14,7 +14,7 @@ export const BrilliantBarrage: Power = {
   "available": 11,
   "description": "With a single gesture, you conjure pyrotechnic missiles to assault two locations at once. First, select a target for the first missile and then a location for the second. Enemies near the target you have selected will be bombarded with miniature missiles and Stunned. Meanwhile, enemies near the location you have selected on the ground will be hit by a shrill noisemaking rocket and become Terrified.",
   "shortHelp": "Ranged (AoE), Foe Stun, Foe Terrorize, Minor DMG (Fire, Energy)",
-  "icon": "pyrotechnic_multipurposemissiles.png",
+  "icon": "pyrotechnic_multipurposemissiles",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
@@ -58,24 +58,84 @@ export const BrilliantBarrage: Power = {
     {
       "type": "Fire",
       "scale": 0.1625,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1625,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1019,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1019,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1019,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1019,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1625,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
       "scale": 0.1625,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1625,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1625,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1019,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1019,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1019,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1019,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "fear": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Fear"
+      "mag": 4,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

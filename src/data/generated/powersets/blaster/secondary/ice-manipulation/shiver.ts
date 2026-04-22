@@ -16,12 +16,13 @@ export const Shiver: Power = {
   "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
   "icon": "icemanipulation_shiver.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 60,
     "radius": 60,
-    "arc": 2.3562,
+    "arc": 2.356194496154785,
     "recharge": 12,
     "endurance": 10.4,
     "castTime": 2.17,
@@ -37,11 +38,5 @@ export const Shiver: Power = {
   "allowedSetCategories": [
     "Slow Movement"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
+  "maxSlots": 6
 };

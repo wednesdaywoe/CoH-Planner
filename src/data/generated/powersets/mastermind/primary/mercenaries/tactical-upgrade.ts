@@ -16,6 +16,7 @@ export const TacticalUpgrade: Power = {
   "shortHelp": "Ranged, Upgrade Mercenary Henchman",
   "icon": "paramilitary_tacticalupgrade.png",
   "powerType": "Click",
+  "targetType": "Self",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

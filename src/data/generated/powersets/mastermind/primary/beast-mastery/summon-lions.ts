@@ -33,11 +33,7 @@ export const SummonLions: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Running",
-    "Running & Sprints",
+    "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],
@@ -46,7 +42,7 @@ export const SummonLions: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Lioness",
-      "copyBoosts": true,
+      "duration": 99999,
       "entityCount": 2
     }
   }

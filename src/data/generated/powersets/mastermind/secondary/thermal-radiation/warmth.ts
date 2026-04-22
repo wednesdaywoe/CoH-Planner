@@ -22,7 +22,7 @@ export const Warmth: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 8,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 2.03,
     "maxTargets": 255
   },

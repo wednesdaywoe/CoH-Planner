@@ -16,6 +16,7 @@ export const Eviscerate: Power = {
   "shortHelp": "Melee, DMG(Lethal), +Special",
   "icon": "claws_stalkereviscerate.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -46,6 +47,26 @@ export const Eviscerate: Power = {
       "type": "Lethal",
       "scale": 2.23,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.23,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.3857,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.3857,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.3857,
+      "table": "Melee_PvPDamage"
     }
   ]
 };

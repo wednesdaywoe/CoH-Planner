@@ -14,14 +14,15 @@ export const PowerCrash: Power = {
   "available": 17,
   "description": "You focus your internal energy on your fists and release it once you hit your target unleashing an energy wave that hurts and disorients multiple enemies. This power will hit up to 5 additional foes if used while in Energy Focus mode.Notes: Power Crash is unaffected by Arc changes.",
   "shortHelp": "Melee (Cone), DMG(Smash/Energy), Foe Disorient, Special",
-  "icon": "powerpunch_powercrash.png",
+  "icon": "powerpunch_powercrash",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 10,
     "radius": 10,
-    "arc": 2.0944,
+    "arc": 2.094395160675049,
     "recharge": 16,
     "endurance": 15.184,
     "castTime": 1.8,
@@ -44,6 +45,31 @@ export const PowerCrash: Power = {
   "damage": [
     {
       "type": "Smashing",
+      "scale": 0.6457,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8917,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.5374,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.5374,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.7626,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
       "scale": 0.8198,
       "table": "Melee_Damage"
     },
@@ -56,13 +82,18 @@ export const PowerCrash: Power = {
       "type": "Energy",
       "scale": 1.9519,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.9519,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
     "stun": {
       "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
+      "scale": 1,
+      "table": "Melee_PvPMez"
     }
   }
 };

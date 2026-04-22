@@ -12,10 +12,11 @@ export const BarbSwipe: Power = {
   "name": "Barb Swipe",
   "internalName": "Barb_Swipe",
   "available": 0,
-  "description": "Melee, Light DMG(Lethal), DoT(Toxic), -SPD, -Recharge.",
+  "description": "Shred your opponent with a quick swipe from your Spines. Barb Swipe deals Light Lethal damage and a minor amount of additional Toxic damage over time and Slows affected foes.",
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_swipe.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -47,19 +48,24 @@ export const BarbSwipe: Power = {
       "table": "Melee_Damage"
     },
     {
+      "type": "Lethal",
+      "scale": 1.101,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 2.1,
+      "duration": 3.1,
       "tickRate": 1
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 0.33,
+      "mag": 0.33000001311302185,
       "scale": 8,
       "table": "Melee_Immobilize"
     }
   },
-  "requires": "!Tanker_Defense.Shield_Defense"
+  "requires": "Tanker_Defense.Shield_Defense !"
 };

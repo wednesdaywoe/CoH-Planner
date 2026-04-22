@@ -12,7 +12,7 @@ export const EnervatingField: Power = {
   "name": "Enervating Field",
   "internalName": "Enervating_Field",
   "available": 9,
-  "description": "While this power is active, you irradiate a targeted foe, and all foes nearby, with a deadly dose of radiation. This radiation weakens exposed targets, decreasing the damage of their attacks. It also significantly weakens their resistance, so they will take much more damage from other attacks.Recharge: Moderate.",
+  "description": "While this power is active, you irradiate a targeted foe, and all foes nearby, with a deadly dose of radiation. This radiation weakens exposed targets, decreasing the damage of their attacks. It also significantly weakens their resistance, so they will take much more damage from other attacks.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG, -Res",
   "icon": "radiationpoisoning_radiationinfection.png",
   "powerType": "Toggle",
@@ -23,7 +23,7 @@ export const EnervatingField: Power = {
     "range": 70,
     "radius": 15,
     "recharge": 8,
-    "endurance": 0.325,
+    "endurance": 0.26,
     "castTime": 1.5,
     "activatePeriod": 0.5,
     "maxTargets": 16

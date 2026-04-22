@@ -14,7 +14,7 @@ export const TripMine: Power = {
   "available": 19,
   "description": "You can place a Trip Mine on the ground. Any villains that pass near the Trip Mine will cause it to explode, damaging all nearby foes and sending them flying.",
   "shortHelp": "Place Mine: PBAoE, DMG(Fire), Foe Knockback",
-  "icon": "assaultweapons_tripmine.png",
+  "icon": "assaultweapons_tripmine",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -33,20 +33,19 @@ export const TripMine: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
-      "displayName": "Mine",
+      "isPseudoPet": false,
+      "entity": "Mine",
       "powers": [
         "Pets.Trip_Mine_Dominator.TripMine_Resistance",
         "Pets.Trip_Mine_Dominator.TripMine_Info"
       ],
-      "duration": 170,
-      "copyBoosts": true
+      "duration": 170
     }
   }
 };

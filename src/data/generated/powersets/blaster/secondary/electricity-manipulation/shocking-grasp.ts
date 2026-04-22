@@ -16,6 +16,7 @@ export const ShockingGrasp: Power = {
   "shortHelp": "Melee, DoT (Energy), Target Hold, -End",
   "icon": "electricitymanipulation_shockinggrasp.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -40,13 +41,22 @@ export const ShockingGrasp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.3,
-    "table": "Melee_Damage",
-    "duration": 5.1,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.3,
+      "table": "Melee_Damage",
+      "duration": 5.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2833,
+      "table": "Melee_PvPDamage",
+      "duration": 5.1,
+      "tickRate": 5.099999904632568
+    }
+  ],
   "effects": {
     "hold": {
       "mag": 3,
@@ -54,8 +64,8 @@ export const ShockingGrasp: Power = {
       "table": "Melee_Immobilize"
     },
     "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Melee_Ones"
+      "scale": 2.5,
+      "table": "Melee_EndDrain"
     },
     "durations": {
       "enduranceDrain": 8.1,

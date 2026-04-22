@@ -16,12 +16,13 @@ export const SiphonPower: Power = {
   "shortHelp": "Ranged, Foe -DMG, Team +DMG",
   "icon": "kineticboost_siphonpower.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 80,
     "recharge": 20,
-    "endurance": 13,
+    "endurance": 10.4,
     "castTime": 1.93
   },
   "allowedEnhancements": [

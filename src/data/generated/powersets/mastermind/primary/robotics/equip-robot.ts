@@ -16,6 +16,7 @@ export const EquipRobot: Power = {
   "shortHelp": "Ranged, Equip Robot Henchman",
   "icon": "robotics_equiprobot.png",
   "powerType": "Click",
+  "targetType": "Self",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

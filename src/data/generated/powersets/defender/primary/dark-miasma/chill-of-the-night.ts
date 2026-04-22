@@ -46,9 +46,8 @@ export const DarkServant: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_DarkServant",
-      "duration": 240,
-      "copyBoosts": true
+      "entity": "P4241331532",
+      "duration": 240
     }
   }
 };

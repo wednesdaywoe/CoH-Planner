@@ -16,12 +16,13 @@ export const FrostBreath: Power = {
   "shortHelp": "Close (Cone), Moderate DoT(Cold), Foe -Recharge, -SPD",
   "icon": "iceassault_frost.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.2,
     "range": 40,
     "radius": 40,
-    "arc": 0.5236,
+    "arc": 0.5235987901687622,
     "recharge": 16,
     "endurance": 15.184,
     "castTime": 2.67,
@@ -41,11 +42,20 @@ export const FrostBreath: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.7,
-    "table": "Ranged_Damage",
-    "duration": 0.6,
-    "tickRate": 0.5
-  }
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 0.7,
+      "table": "Ranged_Damage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Cold",
+      "scale": 0.6734,
+      "table": "Ranged_PvPDamage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    }
+  ]
 };

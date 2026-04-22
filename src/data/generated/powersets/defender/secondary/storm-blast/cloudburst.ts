@@ -16,6 +16,7 @@ export const Cloudburst: Power = {
   "shortHelp": "Ranged, DoT(Cold), +Wet, Special",
   "icon": "stormblast_cloudburst.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -25,16 +26,20 @@ export const Cloudburst: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "Slow",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "ToHit Debuff",
     "Damage",
-    "Accuracy",
-    "Slow"
+    "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
     "Defender Archetype Sets",
     "Ranged Damage",
+    "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -43,6 +48,6 @@ export const Cloudburst: Power = {
     "scale": 0.2275,
     "table": "Ranged_Damage",
     "duration": 2.9,
-    "tickRate": 0.3
+    "tickRate": 0.30000001192092896
   }
 };

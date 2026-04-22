@@ -48,5 +48,5 @@ export const BuildUp: Power = {
     },
     "buffDuration": 10
   },
-  "requires": "!Widow_Training.Widow_Training.Follow_Up"
+  "requires": "Widow_Training.Widow_Training.Follow_Up !"
 };

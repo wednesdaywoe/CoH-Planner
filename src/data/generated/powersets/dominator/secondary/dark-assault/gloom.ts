@@ -16,6 +16,7 @@ export const Gloom: Power = {
   "shortHelp": "Ranged, High DoT(Negative), Foe -To Hit",
   "icon": "darknessassault_gloom.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,11 +40,20 @@ export const Gloom: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 3.6,
-    "tickRate": 0.5
-  }
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 3.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Negative",
+      "scale": 0.1863,
+      "table": "Ranged_PvPDamage",
+      "duration": 3.6,
+      "tickRate": 0.5
+    }
+  ]
 };

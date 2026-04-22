@@ -16,6 +16,7 @@ export const DarkPit: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Disorient",
   "icon": "darkcast_darkpit.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 0.8,

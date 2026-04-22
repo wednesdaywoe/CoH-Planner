@@ -90,7 +90,13 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "NictusFX"
+          "stack_key": "NictusFX",
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 263200
         },
         {
           "attribs": [
@@ -115,7 +121,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -142,7 +154,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -182,7 +200,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -207,7 +231,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -232,7 +262,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -272,7 +308,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -310,7 +352,16 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "NictusFX"
+          "stack_key": "NictusFX",
+          "cancel_events": [
+            "Attacked",
+            "HitByFoe",
+            "Stunned",
+            "Held",
+            "Sleep",
+            "MissionObjectClick"
+          ],
+          "flags_raw": 263200
         }
       ]
     },
@@ -348,7 +399,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "NictusFX"
+          "stack_key": "NictusFX",
+          "flags_raw": 265264
         }
       ]
     },
@@ -386,7 +438,16 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "NictusFX"
+          "stack_key": "NictusFX",
+          "cancel_events": [
+            "Attacked",
+            "HitByFoe",
+            "Stunned",
+            "Held",
+            "Sleep",
+            "MissionObjectClick"
+          ],
+          "flags_raw": 263200
         }
       ]
     }

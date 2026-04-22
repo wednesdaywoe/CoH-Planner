@@ -87,23 +87,9 @@ export const ArcticFog: Power = {
     },
     "durations": {
       "defenseBuff": 0.75,
-      "stealth": 0.75,
       "resistance": 0.75,
-      "debuffResistance": 0.75
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0.7,
-        "table": "Ranged_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      },
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      }
+      "debuffResistance": 0.75,
+      "stealth": 0.75
     },
     "resistance": {
       "fire": {
@@ -127,6 +113,16 @@ export const ArcticFog: Power = {
       "recharge": {
         "scale": 0.6,
         "table": "Ranged_Ones"
+      }
+    },
+    "stealth": {
+      "stealthPvP": {
+        "scale": 390,
+        "table": "Melee_Ones"
+      },
+      "stealthPvE": {
+        "scale": 35.5,
+        "table": "Melee_Ones"
       }
     },
     "buffDuration": 0.75

@@ -16,6 +16,7 @@ export const SonicSiphon: Power = {
   "shortHelp": "Ranged, Foe -Res(All)",
   "icon": "sonicdebuff_debuffdamres.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

@@ -16,6 +16,7 @@ export const WarriorsProvocation: Power = {
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "martialarts_warriorsprovocation.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -44,7 +45,7 @@ export const WarriorsProvocation: Power = {
       "rangeBuff": 20
     },
     "taunt": {
-      "scale": 20,
+      "scale": 5,
       "table": "Melee_Taunt"
     },
     "buffDuration": 20

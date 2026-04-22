@@ -95,7 +95,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -133,7 +134,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -165,7 +167,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1296
             },
             {
               "attribs": [
@@ -190,7 +193,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -215,7 +219,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             }
           ],
           "child_effects": [
@@ -261,7 +266,8 @@
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
                     ]
-                  }
+                  },
+                  "flags_raw": 1072
                 }
               ]
             }
@@ -301,7 +307,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -326,7 +333,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -351,7 +359,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -377,7 +386,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1296
             },
             {
               "attribs": [
@@ -404,7 +414,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1296
             }
           ],
           "child_effects": [
@@ -450,7 +461,8 @@
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
                     ]
-                  }
+                  },
+                  "flags_raw": 1072
                 }
               ]
             }
@@ -490,7 +502,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -515,7 +528,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -540,7 +554,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -565,7 +580,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1300
             }
           ],
           "child_effects": [
@@ -611,7 +627,8 @@
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
                     ]
-                  }
+                  },
+                  "flags_raw": 1072
                 }
               ]
             }
@@ -651,7 +668,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -689,7 +707,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }
@@ -741,7 +760,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         },
@@ -779,7 +799,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -811,7 +832,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1296
             },
             {
               "attribs": [
@@ -836,7 +858,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -861,7 +884,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             }
           ],
           "child_effects": [
@@ -907,7 +931,8 @@
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
                     ]
-                  }
+                  },
+                  "flags_raw": 1072
                 }
               ]
             }
@@ -947,7 +972,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -972,7 +998,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -997,7 +1024,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -1023,7 +1051,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1296
             },
             {
               "attribs": [
@@ -1050,7 +1079,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1296
             }
           ],
           "child_effects": [
@@ -1096,7 +1126,8 @@
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
                     ]
-                  }
+                  },
+                  "flags_raw": 1072
                 }
               ]
             }
@@ -1136,7 +1167,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1280
             },
             {
               "attribs": [
@@ -1161,7 +1193,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -1186,7 +1219,8 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1072
             },
             {
               "attribs": [
@@ -1211,7 +1245,8 @@
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "flags_raw": 1300
             }
           ],
           "child_effects": [
@@ -1257,7 +1292,8 @@
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
                     ]
-                  }
+                  },
+                  "flags_raw": 1072
                 }
               ]
             }
@@ -1297,7 +1333,16 @@
               "caster_stack": "Individual",
               "stack": "Stack",
               "stack_limit": 2,
-              "stack_key": null
+              "stack_key": null,
+              "suppress_events": [
+                {
+                  "event": "MissionObjectInteract",
+                  "event_id": 33,
+                  "duration": 10.0,
+                  "flag": 0
+                }
+              ],
+              "flags_raw": 1280
             }
           ]
         }
@@ -1345,7 +1390,8 @@
             "power_names": [
               "Redirects.Staff_Melee.Perfection_Level"
             ]
-          }
+          },
+          "flags_raw": 197888
         }
       ]
     }

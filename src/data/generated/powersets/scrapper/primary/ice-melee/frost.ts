@@ -16,12 +16,13 @@ export const Frost: Power = {
   "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
   "icon": "icyonslaught_frost.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 10,
     "radius": 10,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 11,
     "endurance": 11.024,
     "castTime": 2.27,
@@ -48,7 +49,7 @@ export const Frost: Power = {
       "scale": 0.27,
       "table": "Melee_Damage",
       "duration": 1.1,
-      "tickRate": 0.2
+      "tickRate": 0.20000000298023224
     },
     {
       "type": "Cold",
@@ -59,6 +60,27 @@ export const Frost: Power = {
       "type": "Cold",
       "scale": 1.404,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.2875,
+      "table": "Melee_PvPDamage",
+      "duration": 1.1,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Cold",
+      "scale": 0.176,
+      "table": "Melee_PvPDamage",
+      "duration": 1.1,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Cold",
+      "scale": 0.2875,
+      "table": "Melee_PvPDamage",
+      "duration": 1.1,
+      "tickRate": 0.20000000298023224
     }
   ]
 };

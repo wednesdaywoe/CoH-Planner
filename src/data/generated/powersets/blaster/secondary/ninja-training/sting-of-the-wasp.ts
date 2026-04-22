@@ -14,8 +14,9 @@ export const StingoftheWasp: Power = {
   "available": 0,
   "description": "You perform a standard attack with your Ninja Blade. Sting of the Wasp can reduce a target's Defense, making them easier to hit.Damage: High.Recharge: Moderate.",
   "shortHelp": "Melee, High DMG(Lethal), Foe -Def",
-  "icon": "ninjatools_katanalight.png",
+  "icon": "ninjatools_katanalight",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -39,11 +40,18 @@ export const StingoftheWasp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.96,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.619,
+      "table": "Melee_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,
@@ -51,10 +59,6 @@ export const StingoftheWasp: Power = {
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   }

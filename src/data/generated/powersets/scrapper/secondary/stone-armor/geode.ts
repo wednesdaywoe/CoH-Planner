@@ -59,11 +59,12 @@ export const Geode: Power = {
     },
     "summon": {
       "isPseudoPet": false,
-      "displayName": "Geode",
+      "entity": "Class_Minion_Pets",
       "powers": [
         "Redirects.Stone_Armor.Geode",
         "Redirects.Stone_Armor.Geode_Scaling"
-      ]
+      ],
+      "duration": 99999
     },
     "mezResistance": {
       "knockup": {

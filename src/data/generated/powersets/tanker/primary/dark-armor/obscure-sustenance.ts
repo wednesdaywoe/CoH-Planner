@@ -64,5 +64,5 @@ export const ObscureSustenance: Power = {
     },
     "buffDuration": 60
   },
-  "requires": "!Tanker_Defense.Dark_Armor.Dark_Regeneration"
+  "requires": "Tanker_Defense.Dark_Armor.Dark_Regeneration !"
 };

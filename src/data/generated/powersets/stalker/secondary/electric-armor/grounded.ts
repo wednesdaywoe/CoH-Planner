@@ -83,5 +83,6 @@ export const Grounded: Power = {
     },
     "effectDuration": 1,
     "buffDuration": 1
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

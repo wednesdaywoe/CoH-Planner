@@ -44,7 +44,19 @@ export const TyphoonsEdge: Power = {
       "scale": 0.57,
       "table": "Melee_Damage",
       "duration": 0.6,
-      "tickRate": 0.4
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.7054,
+      "table": "Melee_PvPDamage",
+      "duration": 0.6,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.4108,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Lethal",
@@ -71,7 +83,7 @@ export const TyphoonsEdge: Power = {
       "defenseDebuff": 20
     },
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "buffDuration": 20

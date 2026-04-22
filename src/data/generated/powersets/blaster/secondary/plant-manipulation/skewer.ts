@@ -14,8 +14,9 @@ export const Skewer: Power = {
   "available": 0,
   "description": "You lunge forward with this melee attack and Skewer your foe with the large Thorn on your arm. Deals high damage and poisons your foe. Poison from the Thorns deals additional Toxic damage and can reduce your foes Defense.Damage: Superior.Recharge: Moderate.",
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic), Foe -DEF",
-  "icon": "plantmanipulation_skewer.png",
+  "icon": "plantmanipulation_skewer",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -51,6 +52,11 @@ export const Skewer: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.6608,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -60,10 +66,6 @@ export const Skewer: Power = {
     },
     "durations": {
       "defenseDebuff": 6
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 6
   }

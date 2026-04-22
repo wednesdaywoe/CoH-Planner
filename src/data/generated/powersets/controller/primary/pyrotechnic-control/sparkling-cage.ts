@@ -14,8 +14,9 @@ export const SparklingCage: Power = {
   "available": 0,
   "description": "Immobilizes your target in a ring of pyrotechnic energy, dealing Fire and Energy damage over time. More resilient foes may require multiple Sparkling Cages to Immobilize.This power has a chance of Blasting Off targets into the air.",
   "shortHelp": "Ranged, Moderate DoT(Fire, Energy), Foe Immobilize, Chance for Blast Off",
-  "icon": "pyrotechnic_sparklingcage.png",
+  "icon": "pyrotechnic_sparklingcage",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -53,13 +54,55 @@ export const SparklingCage: Power = {
       "table": "Ranged_Damage",
       "duration": 9.2,
       "tickRate": 2
+    },
+    {
+      "type": "Fire",
+      "scale": 0.069,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 0.069,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 0.11,
+      "table": "Ranged_InherentDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Fire",
+      "scale": 0.11,
+      "table": "Ranged_InherentDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 0.069,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Fire",
+      "scale": 0.069,
+      "table": "Ranged_PvPDamage",
+      "duration": 9.2,
+      "tickRate": 2
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
+      "mag": 5,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "mezResistance": {
       "knockback": {
@@ -74,6 +117,10 @@ export const SparklingCage: Power = {
     "knockback": {
       "scale": 20,
       "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
     },
     "resistanceDebuff": {
       "smashing": {

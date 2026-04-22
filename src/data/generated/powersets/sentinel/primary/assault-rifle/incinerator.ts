@@ -14,8 +14,9 @@ export const Ignite: Power = {
   "available": 21,
   "description": "Sprays a target with accelerant from your flamethrower, igniting it and causing extreme damage over time. Also sets the location on fire if the target is grounded, inflicting damage to additional foes that step in the area.Damage: Extreme.Recharge: Slow.",
   "shortHelp": "Ranged, DoT(Fire), Location AoE, DoT(Fire)",
-  "icon": "assaultweapons_dot.png",
+  "icon": "assaultweapons_dot",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.15,
@@ -32,7 +33,7 @@ export const Ignite: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
+    "Ranged Damage",
     "Sentinel Archetype Sets",
     "Universal Damage Sets"
   ],
@@ -49,19 +50,54 @@ export const Ignite: Power = {
       "table": "Ranged_Damage",
       "duration": 5.25,
       "tickRate": 0.25
+    },
+    {
+      "type": "Fire",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1022,
+      "table": "Ranged_InherentDamage",
+      "duration": 5.25,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Fire",
+      "scale": 0.9077,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0927,
+      "table": "Ranged_PvPDamage",
+      "duration": 5.25,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Fire",
+      "scale": 0.9077,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0927,
+      "table": "Ranged_PvPDamage",
+      "duration": 5.25,
+      "tickRate": 0.25
     }
   ],
   "effects": {
     "summon": {
-      "isPseudoPet": true,
-      "displayName": "Flames",
+      "isPseudoPet": false,
+      "entity": "Flames",
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Redirects.Assault_Rifle.Ignite",
         "Redirects.Assault_Rifle.Avoid"
       ],
-      "duration": 5.5,
-      "copyBoosts": true
+      "duration": 5.5
     }
   }
 };

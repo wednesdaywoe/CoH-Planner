@@ -16,6 +16,7 @@ export const IceArrow: Power = {
   "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge, -DMG, -Special",
   "icon": "trickarrow_hold.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,18 +51,18 @@ export const IceArrow: Power = {
     },
     "durations": {
       "absorb": 60,
-      "enduranceDrain": 60,
-      "confuse": 60,
-      "fear": 60,
-      "hold": 60,
-      "immobilize": 60,
-      "stun": 60,
-      "sleep": 60,
-      "defenseDebuff": 60,
+      "enduranceDrain": 10,
+      "confuse": 10,
+      "fear": 10,
+      "hold": 10,
+      "immobilize": 10,
+      "stun": 10,
+      "sleep": 10,
+      "defenseDebuff": 10,
       "mezResistance": 10
     },
     "enduranceDrain": {
-      "scale": 0.45,
+      "scale": 0.9,
       "table": "Ranged_Special"
     },
     "confuse": {
@@ -69,7 +70,7 @@ export const IceArrow: Power = {
       "scale": 0.45,
       "table": "Ranged_Special"
     },
-    "effectDuration": 60,
+    "effectDuration": 10,
     "fear": {
       "mag": 1,
       "scale": 0.45,
@@ -104,6 +105,6 @@ export const IceArrow: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 60
+    "buffDuration": 10
   }
 };

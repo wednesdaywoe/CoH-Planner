@@ -16,6 +16,7 @@ export const SmokeGrenade: Power = {
   "shortHelp": "Ranged (Target AoE), Foe -Perception, -To Hit",
   "icon": "nightwidowtraining_smokegrenade.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

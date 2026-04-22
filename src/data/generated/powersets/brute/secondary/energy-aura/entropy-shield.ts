@@ -20,7 +20,7 @@ export const EntropicAura: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "radius": 8,
+    "radius": 12,
     "recharge": 10,
     "endurance": 0.52,
     "castTime": 0.73,
@@ -45,6 +45,7 @@ export const EntropicAura: Power = {
     "durations": {
       "rechargeBuff": 2.25,
       "mezResistance": 2.25,
+      "debuffResistance": 2.25,
       "knockup": 2.25,
       "knockback": 2.25,
       "repel": 2.25,
@@ -62,9 +63,23 @@ export const EntropicAura: Power = {
         "scale": 1,
         "table": "Melee_Ones"
       },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
       "repel": {
         "scale": 100,
         "table": "Melee_Ones"
+      }
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
       }
     },
     "knockup": {

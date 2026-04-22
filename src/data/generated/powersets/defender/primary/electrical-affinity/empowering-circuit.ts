@@ -16,6 +16,7 @@ export const EmpoweringCircuit: Power = {
   "shortHelp": "Ranged (Chain), Ally +DMG, +Tohit, Self +Static",
   "icon": "shocktherapy_empoweringcircuit.png",
   "powerType": "Click",
+  "targetType": "Ally (Alive)",
   "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
@@ -31,6 +32,9 @@ export const EmpoweringCircuit: Power = {
     "Range",
     "Recharge",
     "ToHit"
+  ],
+  "allowedSetCategories": [
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "effects": {

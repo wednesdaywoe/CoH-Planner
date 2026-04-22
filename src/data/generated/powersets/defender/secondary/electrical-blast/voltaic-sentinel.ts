@@ -37,21 +37,21 @@ export const VoltaicSentinel: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Endurance Modification",
-    "Pet Damage",
-    "Recharge Intensive Pets",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": true,
+      "isPseudoPet": false,
+      "entity": "P964605222",
       "displayName": "Voltaic Sentinel",
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Pets.VoltaicSentinel_PseudoPet.Electrical_Bolt",
         "Pets.VoltaicSentinel_PseudoPet.Electrical_Field"
       ],
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

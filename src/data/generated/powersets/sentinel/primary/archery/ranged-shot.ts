@@ -14,8 +14,9 @@ export const PerfectShot: Power = {
   "available": 21,
   "description": "A perfectly aimed and fast shot that blasts your foes.Damage: High.Recharge: Slow.",
   "shortHelp": "Ranged, High DMG(Lethal)",
-  "icon": "archery_heavy.png",
+  "icon": "archery_heavy",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.386,
@@ -37,9 +38,26 @@ export const PerfectShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.28,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.049,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.049,
+      "table": "Ranged_PvPDamage"
+    }
+  ]
 };

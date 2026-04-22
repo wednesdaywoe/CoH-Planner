@@ -16,6 +16,7 @@ export const SniperBlast: Power = {
   "shortHelp": "Sniper, Extreme DMG(Energy/Smash), Foe Knockback",
   "icon": "energyassault_sniperblaster.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -39,23 +40,5 @@ export const SniperBlast: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.8,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.7,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    }
-  }
+  "maxSlots": 6
 };

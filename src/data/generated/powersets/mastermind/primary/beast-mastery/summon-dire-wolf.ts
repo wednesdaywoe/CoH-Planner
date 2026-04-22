@@ -34,14 +34,8 @@ export const SummonDireWolf: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
     "Fear",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Running",
-    "Running & Sprints",
+    "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],
@@ -50,7 +44,7 @@ export const SummonDireWolf: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Dire_Wolf",
-      "copyBoosts": true
+      "duration": 99999
     }
   }
 };

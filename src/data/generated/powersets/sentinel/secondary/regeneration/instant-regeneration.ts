@@ -58,7 +58,6 @@ export const ReactiveRegeneration: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 20,
-    "maxStacks": 20
+    "buffDuration": 20
   }
 };

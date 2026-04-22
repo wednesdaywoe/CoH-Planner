@@ -23,7 +23,7 @@ export const SnowStorm: Power = {
     "range": 80,
     "radius": 25,
     "recharge": 10,
-    "endurance": 0.325,
+    "endurance": 0.26,
     "castTime": 2.03,
     "activatePeriod": 0.5,
     "maxTargets": 16

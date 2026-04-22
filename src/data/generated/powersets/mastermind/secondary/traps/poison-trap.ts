@@ -21,7 +21,7 @@ export const PoisonTrap: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 90,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 2.77
   },
   "allowedEnhancements": [
@@ -38,8 +38,7 @@ export const PoisonTrap: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_Poison_Trap",
-      "duration": 260,
-      "copyBoosts": true
+      "duration": 260
     }
   }
 };

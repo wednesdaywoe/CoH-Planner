@@ -83,7 +83,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         }
       ]
     },
@@ -127,7 +128,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Melee_Boost_Common"
             ]
-          }
+          },
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -158,7 +160,8 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Melee_Boost_Common"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     },
@@ -196,7 +199,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 96
         }
       ]
     }

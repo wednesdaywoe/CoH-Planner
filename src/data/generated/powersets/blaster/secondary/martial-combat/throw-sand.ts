@@ -16,12 +16,13 @@ export const ThrowSand: Power = {
   "shortHelp": "Ranged (Cone), Foe Disorient, -Perception",
   "icon": "martialmanipulations_throwsand.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 0.8,
     "range": 40,
     "radius": 40,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 90,
     "endurance": 20.18,
     "castTime": 1.07,
@@ -40,9 +41,9 @@ export const ThrowSand: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Sleep"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "perceptionDebuff": {
       "scale": 0.9,

@@ -12,10 +12,11 @@ export const BlazingBlast: Power = {
   "name": "Blazing Blast",
   "internalName": "Blazing_Blast",
   "available": 17,
-  "description": "An extremely quick long range beam of fire that blasts your foes and pushes them away.Damage: Extreme.Recharge: Slow.",
+  "description": "An extremely quick long range beam of fire that blasts your foes and pushes them away.",
   "shortHelp": "Ranged, DMG(Fire), DoT(Fire), Foe Knockback, Repel",
-  "icon": "fireblast_heavy.png",
+  "icon": "fireblast_heavy",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -40,36 +41,72 @@ export const BlazingBlast: Power = {
   "damage": [
     {
       "type": "Fire",
+      "scale": 0.0985,
+      "table": "Ranged_Damage",
+      "duration": 2.5,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0985,
+      "table": "Ranged_InherentDamage",
+      "duration": 2.5,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Fire",
       "scale": 1,
       "table": "Ranged_Damage"
     },
     {
       "type": "Fire",
-      "scale": 0.0985,
-      "table": "Ranged_Damage",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0946,
+      "table": "Ranged_PvPDamage",
       "duration": 2.5,
-      "tickRate": 0.2
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0946,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.5,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Fire",
+      "scale": 0.8196,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.8196,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "repel": {
-      "scale": 8,
+      "scale": 10,
       "table": "Ranged_Ones"
     },
     "durations": {
-      "repel": 0.61,
-      "hold": 0.61
+      "repel": 0.6,
+      "hold": 0.6
     },
     "hold": {
       "mag": 1,
       "scale": 4,
       "table": "Ranged_Ones"
     },
-    "effectDuration": 0.61,
+    "effectDuration": 0.6,
     "knockback": {
       "scale": 2,
       "table": "Ranged_Knockback"
     },
-    "buffDuration": 0.61
+    "buffDuration": 0.6
   }
 };

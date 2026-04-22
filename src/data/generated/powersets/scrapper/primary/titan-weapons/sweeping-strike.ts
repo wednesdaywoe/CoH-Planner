@@ -16,12 +16,13 @@ export const TitanSweep: Power = {
   "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockdown",
   "icon": "titanweapons_sweepingstrike.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 10,
     "radius": 10,
-    "arc": 2.0944,
+    "arc": 2.094395160675049,
     "recharge": 10,
     "endurance": 10.4982,
     "castTime": 2.43,
@@ -40,28 +41,5 @@ export const TitanSweep: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.3102,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.3102,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.3102,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
+  "maxSlots": 6
 };

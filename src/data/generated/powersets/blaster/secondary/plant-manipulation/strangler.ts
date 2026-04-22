@@ -14,8 +14,9 @@ export const Strangler: Power = {
   "available": 3,
   "description": "Holds a distant foe by Strangling him with massive root-like vines. The target is held helpless, while he is slowly crushed by the vines.Damage: Moderate.Recharge: Slow.",
   "shortHelp": "Ranged, DoT(Smash), Foe Hold",
-  "icon": "plantmanipulation_strangler.png",
+  "icon": "plantmanipulation_strangler",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -39,22 +40,27 @@ export const Strangler: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 4.2,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 4.2,
+      "tickRate": 1
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4979,
+      "table": "Ranged_PvPDamage",
+      "duration": 4.2,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "hold": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     }
   }
 };

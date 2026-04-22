@@ -14,7 +14,7 @@ export const TimeLord: Power = {
   "available": 29,
   "description": "You are a time lord, for you time is just a small hurdle that can easily be overcome or ignored. As a time lord, all your attacks recharge faster and you are resistant to energy attacks in addition to disorient effects, movement debuffs and recharge debuffs. If you are affected by the Accelerated effect, your powers will recharge even faster and you will become nearly immune to recharge debuffs. This power is always on and cost no endurance.",
   "shortHelp": "Auto: Self +Recharge, +Resist(Energy, Disorient, Slow)",
-  "icon": "timemanipulation_timelord.png",
+  "icon": "timemanipulation_timelord",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -63,5 +63,6 @@ export const TimeLord: Power = {
     },
     "effectDuration": 0.5,
     "buffDuration": 0.5
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

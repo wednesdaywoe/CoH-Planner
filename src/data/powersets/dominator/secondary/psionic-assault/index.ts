@@ -9,33 +9,33 @@
 
 import type { Powerset } from '@/types';
 
-import { PsionicDart as PsionicDart } from './psionic-dart';
-import { MindProbe as MindProbe } from './mind-probe';
-import { TelekineticThrust as TelekineticThrust } from './telekinetic-thrust';
-import { MentalBlast as MentalBlast } from './mental-blast';
-import { PsychicScream as PsychicScream } from './psychic-scream';
 import { DrainPsyche as DrainPsyche } from './drain-psyche';
-import { Subdue as Subdue } from './subdue';
+import { MentalBlast as MentalBlast } from './mental-blast';
+import { MindProbe as MindProbe } from './mind-probe';
+import { PsionicDart as PsionicDart } from './psionic-dart';
 import { PsionicLance as PsionicLance } from './psionic-lance';
+import { PsychicScream as PsychicScream } from './psychic-scream';
 import { PsychicShockwave as PsychicShockwave } from './psychic-shockwave';
+import { Subdue as Subdue } from './subdue';
+import { TelekineticThrust as TelekineticThrust } from './telekinetic-thrust';
 
 export const powerset: Powerset = {
   id: 'dominator/psionic-assault',
   name: 'Psionic Assault',
   description: 'Blast your enemies with an array of offensive Psionic powers. Few living beings can resist their effects. Creatures without minds, however, like machines and robots, are much more resistant.',
-  icon: 'psionic_assault_set.png',
+  icon: 'psionic_assault_set.ico',
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    PsionicDart,
-    MindProbe,
-    TelekineticThrust,
-    MentalBlast,
-    PsychicScream,
     DrainPsyche,
-    Subdue,
+    MentalBlast,
+    MindProbe,
+    PsionicDart,
     PsionicLance,
+    PsychicScream,
     PsychicShockwave,
+    Subdue,
+    TelekineticThrust,
   ],
 };
 

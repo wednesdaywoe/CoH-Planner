@@ -74,5 +74,6 @@ export const Dodge: Power = {
       }
     },
     "buffDuration": 0.75
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

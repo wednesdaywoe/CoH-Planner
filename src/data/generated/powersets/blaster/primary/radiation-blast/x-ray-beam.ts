@@ -14,8 +14,9 @@ export const XRayBeam: Power = {
   "available": 0,
   "description": "You can emit a beam of X-Ray energy from your eyes, dealing moderate Energy damage. This attack can bypass some defenses and can reduce the target's Defense.",
   "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
-  "icon": "radiationburst_xraybeam.png",
+  "icon": "radiationburst_xraybeam",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.1,
@@ -40,11 +41,18 @@ export const XRayBeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.8892,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 2,
@@ -52,10 +60,6 @@ export const XRayBeam: Power = {
     },
     "durations": {
       "defenseDebuff": 6
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 6
   }

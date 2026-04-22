@@ -86,7 +86,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_V_DarkServant",
             "priority_list": "PL_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

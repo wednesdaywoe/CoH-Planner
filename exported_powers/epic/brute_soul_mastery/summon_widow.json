@@ -84,7 +84,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Patron_Powers_Blood_Widow",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

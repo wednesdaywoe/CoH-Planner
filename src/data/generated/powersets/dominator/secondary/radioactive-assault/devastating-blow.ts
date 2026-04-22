@@ -16,6 +16,7 @@ export const DevastatingBlow: Power = {
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe -Def, Disorient, Special",
   "icon": "radioactiveassault_devastatingblow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -51,6 +52,16 @@ export const DevastatingBlow: Power = {
       "type": "Energy",
       "scale": 2.67,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.7701,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.3028,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

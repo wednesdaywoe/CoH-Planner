@@ -16,12 +16,13 @@ export const FlingThorns: Power = {
   "shortHelp": "Ranged (Cone), Light DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_flingthorns.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 30,
     "radius": 30,
-    "arc": 1.5708,
+    "arc": 1.5707963705062866,
     "recharge": 10,
     "endurance": 11.1754,
     "castTime": 1.63,
@@ -54,6 +55,11 @@ export const FlingThorns: Power = {
       "table": "Ranged_Damage",
       "duration": 4.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.9411,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

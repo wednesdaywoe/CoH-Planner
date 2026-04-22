@@ -16,6 +16,7 @@ export const SingleShot: Power = {
   "shortHelp": "Ranged, DMG(Energy), Foe Knockdown, Special",
   "icon": "beamrifle_singleshot.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -39,19 +40,26 @@ export const SingleShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2602,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Ranged_Ones"
     },
     "regenDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
+      "scale": 3,
+      "table": "Ranged_Res_Boolean"
     },
     "durations": {
       "regenDebuff": 10

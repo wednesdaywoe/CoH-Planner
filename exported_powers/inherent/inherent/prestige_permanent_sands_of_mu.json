@@ -79,7 +79,8 @@
             "power_names": [
               "Inherent.Inherent.prestige_Permanent_Sands_of_Mu"
             ]
-          }
+          },
+          "flags_raw": 1072
         }
       ]
     }

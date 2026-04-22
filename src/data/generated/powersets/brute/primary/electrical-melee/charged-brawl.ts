@@ -12,10 +12,11 @@ export const ChargedBrawl: Power = {
   "name": "Charged Brawl",
   "internalName": "Charged_Brawl",
   "available": 0,
-  "description": "Your fists become electrically charged and deliver a powerful punch. Charged Brawl can drain some Endurance from the target and may overload their synapses, leaving them writhing for a moment. A portion of drained Endurance may be returned to you. Disturbing an overloaded target will disperse the electrical charge and release them.Damage: Light.Recharge: Very Fast.",
+  "description": "Your fists become electrically charged and deliver a powerful punch. Charged Brawl can drain some Endurance from the target and may overload their synapses, leaving them writhing for a moment. A portion of drained Endurance may be returned to you. Disturbing an overloaded target will disperse the electrical charge and release them.",
   "shortHelp": "Melee, DMG(Smash/Energy), Target Sleep, -End",
   "icon": "electricmelee_targetedminordmg.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -52,28 +53,38 @@ export const ChargedBrawl: Power = {
       "type": "Smashing",
       "scale": 0.34,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6606,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.4404,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.07,
+      "scale": 1.25,
+      "table": "Melee_EndDrain"
+    },
+    "enduranceGain": {
+      "scale": 4.368,
       "table": "Melee_Ones"
     },
-    "sleep": {
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Sleep"
-    },
     "recoveryDebuff": {
-      "scale": 1,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "durations": {
       "recoveryDebuff": 2
     },
-    "enduranceGain": {
-      "scale": 2.184,
-      "table": "Melee_Ones"
+    "sleep": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Sleep"
     },
     "buffDuration": 2
   }

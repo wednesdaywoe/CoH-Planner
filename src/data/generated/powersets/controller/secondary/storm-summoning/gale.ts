@@ -16,12 +16,13 @@ export const Gale: Power = {
   "shortHelp": "Ranged (Cone), Minor DMG(Smash), Foe Knockback",
   "icon": "stormsummoning_gale.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 0.9,
     "range": 50,
     "radius": 50,
-    "arc": 1.3963,
+    "arc": 1.3962634801864624,
     "recharge": 8,
     "endurance": 7.8,
     "castTime": 2.17,
@@ -41,14 +42,21 @@ export const Gale: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.1,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "knockback": {
-      "scale": 10,
+      "scale": 20,
       "table": "Ranged_Knockback"
     }
   }

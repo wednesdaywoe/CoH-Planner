@@ -14,7 +14,7 @@ export const DisruptionAura: Power = {
   "available": 23,
   "description": "You emit a constant wave of sonic energy around yourself, weakening the Damage Resistance of all nearby foes.",
   "shortHelp": "Toggle: PBAoE, Foe -Res(All)",
-  "icon": "sonicmanipulation_disruptionaura.png",
+  "icon": "sonicmanipulation_disruptionaura",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",

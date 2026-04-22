@@ -16,6 +16,7 @@ export const Pulverize: Power = {
   "shortHelp": "Melee, DMG(Smash), Minor Disorient",
   "icon": "mace_pulverize.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,
@@ -43,6 +44,16 @@ export const Pulverize: Power = {
       "type": "Smashing",
       "scale": 1.64,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.6019,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.6019,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Smashing",

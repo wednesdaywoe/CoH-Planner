@@ -16,6 +16,7 @@ export const IceArrow: Power = {
   "shortHelp": "Ranged, DoT(Cold), Foe Hold, -SPD, -Recharge",
   "icon": "tacticalarrow_hold.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -50,9 +51,9 @@ export const IceArrow: Power = {
   },
   "effects": {
     "hold": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
+      "mag": 3,
+      "scale": 1,
+      "table": "Ranged_PvPMez"
     },
     "mezResistance": {
       "knockup": {
@@ -75,10 +76,6 @@ export const IceArrow: Power = {
     },
     "knockback": {
       "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 0,
       "table": "Ranged_Ones"
     },
     "buffDuration": 10

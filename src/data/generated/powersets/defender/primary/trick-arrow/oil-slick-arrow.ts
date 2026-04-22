@@ -34,6 +34,7 @@ export const OilSlickArrow: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Accurate Defense Debuff",
     "Defender Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
@@ -44,9 +45,8 @@ export const OilSlickArrow: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_OilSlickOil",
-      "duration": 30,
-      "copyBoosts": true
+      "entity": "P4100491214",
+      "duration": 30
     }
   }
 };

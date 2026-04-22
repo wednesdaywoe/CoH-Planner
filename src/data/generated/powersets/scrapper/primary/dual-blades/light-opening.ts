@@ -16,6 +16,7 @@ export const NimbleSlash: Power = {
   "shortHelp": "Melee, DMG(Lethal)",
   "icon": "dualblades_lightopening.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -42,7 +43,19 @@ export const NimbleSlash: Power = {
       "scale": 0.42,
       "table": "Melee_Damage",
       "duration": 0.5,
-      "tickRate": 0.33
+      "tickRate": 0.33000001311302185
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.6205,
+      "table": "Melee_PvPDamage",
+      "duration": 0.5,
+      "tickRate": 0.33000001311302185
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.6205,
+      "table": "Melee_PvPDamage"
     },
     {
       "type": "Lethal",
@@ -55,5 +68,5 @@ export const NimbleSlash: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "requires": "!Scrapper_Defense.Shield_Defense"
+  "requires": "Scrapper_Defense.Shield_Defense !"
 };

@@ -51,6 +51,16 @@ export const Blackstar: Power = {
       "type": "Negative",
       "scale": 3,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.4641,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.9424,
+      "table": "Ranged_PvPDamage"
     }
   ]
 };

@@ -12,7 +12,7 @@ export const HealOther: Power = {
   "name": "Heal Other",
   "internalName": "Heal_Other",
   "available": 0,
-  "description": "Heals a single targeted ally. You cannot use this power to heal yourself.Recharge: Fast.",
+  "description": "Heals a single targeted ally. You cannot use this power to heal yourself.",
   "shortHelp": "Ally Heal",
   "icon": "empathy_healother.png",
   "powerType": "Click",
@@ -22,7 +22,7 @@ export const HealOther: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 4,
-    "endurance": 16.25,
+    "endurance": 13,
     "castTime": 2.27
   },
   "allowedEnhancements": [

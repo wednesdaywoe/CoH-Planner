@@ -14,8 +14,9 @@ export const SonicThrust: Power = {
   "available": 0,
   "description": "A focused attack of intense sonic power with high chance to violently knock a nearby foe off their feet. Deals minimal damage, but can be very effective. This power will inflict a strong additional damage over time effect against Attuned targets.",
   "shortHelp": "Melee, DMG(Energy/Smash), Foe Knockback, -Res(Debuffs)",
-  "icon": "sonicmanipulation_sonicthrust.png",
+  "icon": "sonicmanipulation_sonicthrust",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -53,6 +54,31 @@ export const SonicThrust: Power = {
       "type": "Energy",
       "scale": 0.76,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.76,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.6,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -90,7 +116,7 @@ export const SonicThrust: Power = {
       "debuffResistance": 15
     },
     "knockback": {
-      "scale": 0.67,
+      "scale": 1.34,
       "table": "Melee_Ones"
     },
     "buffDuration": 15

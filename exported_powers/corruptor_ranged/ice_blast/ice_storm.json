@@ -85,7 +85,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Corruptor_IceStorm",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

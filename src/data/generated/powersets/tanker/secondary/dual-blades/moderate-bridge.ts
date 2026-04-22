@@ -16,6 +16,7 @@ export const AblatingStrike: Power = {
   "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
   "icon": "dualblades_moderatebridge.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -41,13 +42,22 @@ export const AblatingStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.66,
-    "table": "Melee_Damage",
-    "duration": 0.6,
-    "tickRate": 0.4
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.66,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.6805,
+      "table": "Melee_PvPDamage",
+      "duration": 0.6,
+      "tickRate": 0.4000000059604645
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,

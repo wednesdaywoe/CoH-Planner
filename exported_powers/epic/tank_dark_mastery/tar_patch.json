@@ -87,7 +87,8 @@
             "redirects": [
               "Redirects.Dark_Miasma.Tar_Epic"
             ]
-          }
+          },
+          "flags_raw": 320
         }
       ]
     }

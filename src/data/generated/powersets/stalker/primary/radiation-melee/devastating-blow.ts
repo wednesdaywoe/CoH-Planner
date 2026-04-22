@@ -16,6 +16,7 @@ export const DevastatingBlow: Power = {
   "shortHelp": "Melee, DMG(Energy/Smash), Foe -Def, Disorient, Special",
   "icon": "radiationmelee_devastatingblow.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
@@ -39,6 +40,7 @@ export const DevastatingBlow: Power = {
     "Melee Damage",
     "Stalker Archetype Sets",
     "Stuns",
+    "Threat Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -59,8 +61,38 @@ export const DevastatingBlow: Power = {
       "table": "Melee_InherentDamage"
     },
     {
+      "type": "Energy",
+      "scale": 3.08,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.7372,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.2117,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.949,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.949,
+      "table": "Melee_PvPDamage"
+    },
+    {
       "type": "Toxic",
       "scale": 0.296,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1724,
       "table": "Melee_Damage"
     }
   ],

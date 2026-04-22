@@ -16,6 +16,7 @@ export const Overcharge: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe Minor DoT (Energy), -Def(All), Disorient, Special",
   "icon": "beamrifle_overcharge.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1.4,
@@ -52,10 +53,25 @@ export const Overcharge: Power = {
     },
     {
       "type": "Energy",
+      "scale": 1.2378,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 4.1,
       "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 1.5,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6188,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

@@ -35,8 +35,12 @@ export const SmokeFlash: Power = {
   "maxSlots": 6,
   "effects": {
     "stealth": {
-      "translucency": {
-        "scale": 0.2,
+      "stealthPvE": {
+        "scale": 54,
+        "table": "Ranged_Ones"
+      },
+      "stealthPvP": {
+        "scale": 500,
         "table": "Ranged_Ones"
       }
     },
