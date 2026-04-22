@@ -28,7 +28,9 @@ export const Hide: Power = {
     "Recharge",
     "Defense"
   ],
-  "allowedSetCategories": [],
+  "allowedSetCategories": [
+    "Defense Sets"
+  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {

@@ -277,22 +277,28 @@ const BOOST_TO_CATEGORY = {
   Endurance_Drain: 'Endurance Modification',
 };
 
-// ATO category goes on attack powers in the AT's "attack" powerset roles.
-// Blasters get them in BOTH primary (Ranged) and secondary (Manipulation
-// melee attacks) per the data — so this map carries the role list.
-const ATO_BY_AT = {
-  blaster:    { category: 'Blaster Archetype Sets',    roles: ['primary', 'secondary'] },
-  brute:      { category: 'Brute Archetype Sets',      roles: ['primary'] },
-  controller: { category: 'Controller Archetype Sets', roles: ['primary', 'secondary'] },
-  corruptor:  { category: 'Corruptor Archetype Sets',  roles: ['primary', 'secondary'] },
-  defender:   { category: 'Defender Archetype Sets',   roles: ['primary', 'secondary'] },
-  dominator:  { category: 'Dominator Archetype Sets',  roles: ['primary', 'secondary'] },
-  mastermind: { category: 'Mastermind Archetype Sets', roles: ['primary', 'secondary'] },
-  scrapper:   { category: 'Scrapper Archetype Sets',   roles: ['primary'] },
-  sentinel:   { category: 'Sentinel Archetype Sets',   roles: ['primary'] },
-  stalker:    { category: 'Stalker Archetype Sets',    roles: ['primary'] },
-  tanker:     { category: 'Tanker Archetype Sets',     roles: ['secondary'] },
+// "Damage ATO" — these archetypes' ATO sets attach to any damaging power.
+const DAMAGE_ATO_BY_AT = {
+  blaster:    'Blaster Archetype Sets',
+  brute:      'Brute Archetype Sets',
+  corruptor:  'Corruptor Archetype Sets',
+  defender:   'Defender Archetype Sets',
+  scrapper:   'Scrapper Archetype Sets',
+  sentinel:   'Sentinel Archetype Sets',
+  stalker:    'Stalker Archetype Sets',
+  tanker:     'Tanker Archetype Sets',
+  'arachnos-soldier': 'Soldiers of Arachnos Archetype Sets',
+  'arachnos-widow':   'Soldiers of Arachnos Archetype Sets',
+  peacebringer: 'Kheldian Archetype Sets',
+  warshade:     'Kheldian Archetype Sets',
 };
+
+// "Control ATO" — Controller/Dominator ATOs attach to mez/control powers.
+const CONTROL_ATO_BY_AT = {
+  controller: 'Controller Archetype Sets',
+  dominator:  'Dominator Archetype Sets',
+};
+const MEZ_BOOSTS = new Set(['Hold', 'Stun', 'Confuse', 'Sleep', 'Fear', 'Immobilize']);
 
 function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, range) {
   const cats = new Set();
@@ -303,6 +309,18 @@ function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, r
     if (BOOST_TO_CATEGORY[b]) cats.add(BOOST_TO_CATEGORY[b]);
   }
 
+  // "Accurate" debuff/heal categories: a power that also carries Accuracy
+  // alongside a Debuff/Heal boost typically accepts the "Accurate X" set
+  // in addition to the plain X set (e.g. Touch of Fear → ToHit Debuff +
+  // Accurate ToHit Debuff). Damage boost isn't required — many control
+  // powers with secondary -ToHit (foe-target attacks) get this.
+  const hasAccuracy = boostSet.has('Accuracy');
+  if (hasAccuracy || boostSet.has('Damage')) {
+    if (boostSet.has('Debuff_Defense') || boostSet.has('Defense Debuff')) cats.add('Accurate Defense Debuff');
+    if (boostSet.has('Debuff_ToHit') || boostSet.has('ToHit Debuff')) cats.add('Accurate To-Hit Debuff');
+    if (boostSet.has('Heal') || boostSet.has('Healing')) cats.add('Accurate Healing');
+  }
+
   // Damage is context-sensitive
   if (boostSet.has('Damage')) {
     const hasRange = boostSet.has('Range');
@@ -311,24 +329,31 @@ function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, r
     if (area === 'SingleTarget') {
       if (hasRange) {
         cats.add('Ranged Damage');
-        // Sniper attacks: long-range single-target with Range boost. Snipes
-        // typically have range >= 100 (most are 150). Plain ranged attacks
-        // top out around 80 ft.
-        if (range && range >= 100) cats.add('Sniper Attacks');
+        // Sniper attacks: range typically >= 150. Plain ranged caps around 80.
+        if (range && range >= 150) cats.add('Sniper Attacks');
       } else {
         cats.add('Melee Damage');
       }
     } else if (area === 'Cone' || area === 'AoE') {
       cats.add(hasRange ? 'Ranged AoE Damage' : 'Melee AoE Damage');
     }
-    // Location-based pet/ground attacks fall through with just Universal
-    // Damage Sets — Pet Damage attaches to summon powers handled separately.
-
-    // ATO category on attack powers in the AT's attack role(s)
-    const ato = ATO_BY_AT[archetypeId];
-    if (ato && ato.roles.includes(powerType)) {
-      cats.add(ato.category);
+    // Location-targeted attacks (Trip Mine, Caltrops, etc.) typically get
+    // Targeted/Ranged AoE Damage. Pet Damage applies to summon powers handled below.
+    else if (area === 'Location') {
+      cats.add('Ranged AoE Damage');
     }
+
+    // ATO category on any damaging power of the AT
+    const ato = DAMAGE_ATO_BY_AT[archetypeId];
+    if (ato) cats.add(ato);
+  }
+
+  // Control ATO (Controller/Dominator) goes on any power with a mez boost —
+  // including hybrid attack/control powers like Cryo Freeze Ray (Damage + Hold).
+  const controlAto = CONTROL_ATO_BY_AT[archetypeId];
+  if (controlAto) {
+    const hasMez = [...boostSet].some(b => MEZ_BOOSTS.has(b));
+    if (hasMez) cats.add(controlAto);
   }
 
   return [...cats].sort();
@@ -2080,6 +2105,7 @@ export default powerset;
 module.exports = {
   extractEffects,
   extractDamage,
+  inferAllowedSetCategories,
   loadDefSuppressionMap,
   toKebabCase,
   CATEGORY_MAP,
