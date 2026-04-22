@@ -10,7 +10,7 @@ import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import { useHistoryStore } from '@/stores/historyStore';
 import { useOnboardingStore, useOnboardingCurrentStep } from '@/stores/onboardingStore';
 import { supabase } from '@/lib/supabase';
-import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel } from '@/data';
+import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel } from '@/data';
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, OPPORTUNITY_CRIT_MULTIPLIER } from '@/utils/calculations';
@@ -262,12 +262,21 @@ function LevelUpModeButton() {
   const setLevel = useBuildStore((s) => s.setLevel);
 
   const level = build.level;
-  const picksAvailable = getPowerPicksAtLevel(level);
-  const slotsAvailable = getTotalSlotsAtLevel(level);
   const picksUsed = countManualPowerPicks(build);
   const slotsUsed = countManualPlacedSlots(build);
-  const picksPending = Math.max(0, picksAvailable - picksUsed);
-  const slotsPending = Math.max(0, slotsAvailable - slotsUsed);
+
+  // Per-level grant model: at each level the user must consume EXACTLY the
+  // grants for that level before advancing. We compute "remaining at this
+  // level" by subtracting cumulative grants up through the previous level
+  // from the user's total usage.
+  const picksGrantedThisLevel = getPicksGrantedAtLevel(level);
+  const slotsGrantedThisLevel = getSlotsGrantedAtLevel(level);
+  const cumulativePicksBefore = getPowerPicksAtLevel(level - 1);
+  const cumulativeSlotsBefore = getTotalSlotsAtLevel(level - 1);
+  const picksUsedThisLevel = Math.max(0, picksUsed - cumulativePicksBefore);
+  const slotsUsedThisLevel = Math.max(0, slotsUsed - cumulativeSlotsBefore);
+  const picksPending = Math.max(0, picksGrantedThisLevel - picksUsedThisLevel);
+  const slotsPending = Math.max(0, slotsGrantedThisLevel - slotsUsedThisLevel);
   const ready = picksPending === 0 && slotsPending === 0;
   const nextLevel = getNextGrantLevel(level);
   const atMax = level >= MAX_LEVEL;
@@ -277,10 +286,21 @@ function LevelUpModeButton() {
     setLevel(nextLevel);
   };
 
+  // When enabling Level Up mode, clamp `build.level` down to the user's actual
+  // progression level so they can't pre-pay picks/slots from a higher level
+  // they reached before enabling the mode. Disabling the mode leaves level alone.
+  const handleToggle = () => {
+    if (!levelUpMode) {
+      const progression = getProgressionLevel(picksUsed, slotsUsed);
+      if (progression < level) setLevel(progression);
+    }
+    toggleLevelUpMode();
+  };
+
   if (!levelUpMode) {
     return (
       <button
-        onClick={toggleLevelUpMode}
+        onClick={handleToggle}
         title="Turn on Level Up Mode — gates enhancements and powers by your current level"
         className="flex items-center gap-1 px-2 py-1 rounded border border-slate-600 bg-slate-700/50 text-xs font-medium text-slate-400 hover:text-slate-200 transition-colors"
       >
@@ -295,7 +315,7 @@ function LevelUpModeButton() {
   return (
     <div className="flex items-center gap-1 px-2 py-1 rounded border border-emerald-500 bg-emerald-600/10 text-xs">
       <button
-        onClick={toggleLevelUpMode}
+        onClick={handleToggle}
         title="Turn off Level Up Mode"
         className="text-emerald-300 hover:text-emerald-200 flex items-center gap-1"
       >
@@ -321,17 +341,23 @@ function LevelUpModeButton() {
         )
       ) : (
         <div className="flex items-center gap-2 px-1">
+          <span className="text-slate-400 font-medium">Lvl {level}:</span>
           {picksPending > 0 && (
-            <span className="text-amber-300 tabular-nums" title={`${picksUsed}/${picksAvailable} powers picked at level ${level}`}>
-              {picksPending} pwr
+            <span
+              className="text-amber-300 tabular-nums"
+              title={`Pick ${picksPending} more power${picksPending > 1 ? 's' : ''} (${picksUsedThisLevel}/${picksGrantedThisLevel} used at this level)`}
+            >
+              pick {picksPending} pwr
             </span>
           )}
           {slotsPending > 0 && (
-            <span className="text-amber-300 tabular-nums" title={`${slotsUsed}/${slotsAvailable} slots placed at level ${level}`}>
-              {slotsPending} slot{slotsPending > 1 ? 's' : ''}
+            <span
+              className="text-amber-300 tabular-nums"
+              title={`Place ${slotsPending} more slot${slotsPending > 1 ? 's' : ''} (${slotsUsedThisLevel}/${slotsGrantedThisLevel} placed at this level)`}
+            >
+              place {slotsPending} slot{slotsPending > 1 ? 's' : ''}
             </span>
           )}
-          <span className="text-slate-500 hidden md:inline">to use</span>
         </div>
       )}
     </div>

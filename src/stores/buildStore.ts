@@ -27,6 +27,7 @@ import {
   getPowerPool,
   getEpicPool,
   getTotalSlotsAtLevel,
+  getPowerPicksAtLevel,
   MAX_POWER_POOLS,
   MAX_POWER_PICKS,
   EPIC_POOL_LEVEL,
@@ -1064,6 +1065,16 @@ export const useBuildStore = create<BuildStore>()(
             return state;
           }
 
+          // Level Up mode: enforce per-level pick quota so the user can't
+          // pre-pay picks from future levels. If the cumulative cap at the
+          // current character level is already reached, reject the add.
+          if (category !== 'inherent' && useUIStore.getState().levelUpMode) {
+            const cap = getPowerPicksAtLevel(state.build.level);
+            if (countSelectedPowers(state.build) >= cap) {
+              return state;
+            }
+          }
+
           // Assign a valid pick level for this power.
           // The level must be:
           //   1. A valid POWER_PICK_LEVEL (1, 2, 4, 6, 8, ...)
@@ -1168,7 +1179,11 @@ export const useBuildStore = create<BuildStore>()(
           // Auto-advance level if all power picks for current level have been used.
           // Only auto-advance for primary/secondary/pool powers (not inherents).
           // Never decrease — respect user's manually-set level.
-          if (category !== 'inherent') {
+          // In Level Up mode, suppress auto-advance entirely: the user must
+          // walk through each grant level (including slot-only levels like
+          // L3, L5) manually via the Level Up button, so slot-placement phases
+          // aren't skipped.
+          if (category !== 'inherent' && !useUIStore.getState().levelUpMode) {
             newBuild.level = Math.max(state.build.level, calculateCorrectLevel(newBuild));
           }
 

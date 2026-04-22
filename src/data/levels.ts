@@ -148,6 +148,37 @@ export function getNextGrantLevel(currentLevel: number): number {
   return sorted.find((l) => l > currentLevel) ?? MAX_LEVEL;
 }
 
+/**
+ * Number of *new* power picks granted at this specific level (not cumulative).
+ * Level 1 grants 2 (primary + secondary); every other POWER_PICK_LEVELS entry grants 1.
+ */
+export function getPicksGrantedAtLevel(level: number): number {
+  if (!POWER_PICK_LEVELS.includes(level)) return 0;
+  return level === 1 ? 2 : 1;
+}
+
+/**
+ * Compute the "progression level" for a build given how many picks/slots have
+ * been used. Returns the lowest level where the cumulative grants exceed what
+ * the user has already consumed — i.e. the level the user is currently working on.
+ *
+ * Used by Level Up mode to clamp `build.level` so a user can't pre-pay picks
+ * from future levels. If the build has fully consumed everything at level 50,
+ * returns MAX_LEVEL.
+ */
+export function getProgressionLevel(usedPicks: number, usedSlots: number): number {
+  let accumPicks = 0;
+  let accumSlots = 0;
+  for (let L = 1; L <= MAX_LEVEL; L++) {
+    accumPicks += getPicksGrantedAtLevel(L);
+    accumSlots += getSlotsGrantedAtLevel(L);
+    if (usedPicks < accumPicks || usedSlots < accumSlots) {
+      return L;
+    }
+  }
+  return MAX_LEVEL;
+}
+
 // ============================================
 // ENHANCEMENT AVAILABILITY
 // ============================================

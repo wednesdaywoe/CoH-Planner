@@ -18,6 +18,7 @@ import {
   isEpicPowerAvailable,
   MAX_POWER_PICKS,
   getExcludedPools,
+  getPowerPicksAtLevel,
 } from '@/data';
 import { Select } from '@/components/ui';
 import { PowerItem } from './AvailablePowers';
@@ -49,11 +50,18 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
   // Check if 24-power limit has been reached (exclude auto-granted form sub-powers)
   const countNonGranted = (powers: { isAutoGranted?: boolean }[]) =>
     powers.filter(p => !p.isAutoGranted).length;
-  const powerLimitReached =
+  const totalPicksUsed =
     countNonGranted(build.primary.powers) +
     countNonGranted(build.secondary.powers) +
     build.pools.reduce((sum: number, pool: { powers: { isAutoGranted?: boolean }[] }) => sum + countNonGranted(pool.powers), 0) +
-    (build.epicPool ? countNonGranted(build.epicPool.powers) : 0) >= MAX_POWER_PICKS;
+    (build.epicPool ? countNonGranted(build.epicPool.powers) : 0);
+  const powerLimitReached = totalPicksUsed >= MAX_POWER_PICKS;
+
+  // Level Up mode: if the per-level pick quota is full, collapse into the
+  // same "limit reached" gate so pool/epic power selection is blocked too
+  const levelUpMode = useUIStore((s) => s.levelUpMode);
+  const levelUpPickQuotaReached = levelUpMode && totalPicksUsed >= getPowerPicksAtLevel(build.level);
+  const pickGateClosed = powerLimitReached || levelUpPickQuotaReached;
 
   // Available pools for dropdown
   const allPools = getAllPowerPools();
@@ -185,7 +193,7 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
         checkAvailability={(power) =>
           isPowerAvailableInPool(poolSelection.id, power, build.level, selectedInternalNames)
         }
-        powerLimitReached={powerLimitReached}
+        powerLimitReached={pickGateClosed}
         compact={compact}
       />
     );
@@ -224,7 +232,7 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
         onPowerLeave={handlePowerLeave}
         onLockToggle={(power) => handleLockToggle(power, build.epicPool!.id)}
         onShowInfo={(power, e) => handleShowInfo(power, build.epicPool!.id, e)}
-        powerLimitReached={powerLimitReached}
+        powerLimitReached={pickGateClosed}
         compact={compact}
       />
     )

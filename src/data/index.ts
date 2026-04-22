@@ -147,6 +147,8 @@ export {
   getSlotsGrantedAtLevel,
   getTotalSlotsAtLevel,
   getNextGrantLevel,
+  getPicksGrantedAtLevel,
+  getProgressionLevel,
   // Enhancement availability
   ENHANCEMENT_AVAILABILITY,
   isEnhancementAvailable,

@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { useIsTouchDevice } from '@/hooks';
 
-import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getArchetypeInherentPowers } from '@/data';
+import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getArchetypeInherentPowers, getPowerPicksAtLevel } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 
@@ -272,7 +272,7 @@ export function PowerItem({
             ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
             : isSelected
               ? 'bg-blue-900/30 border border-blue-600/50 hover:border-red-500/70 cursor-pointer'
-              : !isAvailable
+              : isDisabled
                 ? 'bg-slate-800/50 border border-slate-700/50 opacity-40 cursor-not-allowed'
                 : `bg-slate-800 border border-slate-700 ${hoverBorderClass} cursor-pointer`
         }
@@ -345,6 +345,7 @@ export function AvailablePowers({
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
+  const levelUpMode = useUIStore((s) => s.levelUpMode);
 
   const archetypeId = build.archetype.id;
   const categoryLabel = category === 'primary' ? 'Primary' : 'Secondary';
@@ -355,11 +356,16 @@ export function AvailablePowers({
   // Check if 24-power limit has been reached (exclude auto-granted form sub-powers)
   const countNonGranted = (powers: { isAutoGranted?: boolean }[]) =>
     powers.filter(p => !p.isAutoGranted).length;
-  const powerLimitReached =
+  const totalPicksUsed =
     countNonGranted(build.primary.powers) +
     countNonGranted(build.secondary.powers) +
     build.pools.reduce((sum: number, pool: { powers: { isAutoGranted?: boolean }[] }) => sum + countNonGranted(pool.powers), 0) +
-    (build.epicPool ? countNonGranted(build.epicPool.powers) : 0) >= MAX_POWER_PICKS;
+    (build.epicPool ? countNonGranted(build.epicPool.powers) : 0);
+  const powerLimitReached = totalPicksUsed >= MAX_POWER_PICKS;
+
+  // Level Up mode: also gate by per-level pick quota. The user cannot pick more
+  // powers than their current level grants cumulatively — they must advance first.
+  const levelUpPickQuotaReached = levelUpMode && totalPicksUsed >= getPowerPicksAtLevel(build.level);
 
   const powerset = powersetId ? getPowerset(powersetId) : null;
 
@@ -602,9 +608,10 @@ export function AvailablePowers({
                   allPowers.find(p => p.internalName === ex)?.name ?? ''
                 )) ?? false;
 
-                // Block selection until both powersets are chosen, or if 24 powers taken
+                // Block selection until both powersets are chosen, or if 24 powers taken,
+                // or (in Level Up mode) if the current-level pick quota is full
                 // Selected powers are NOT disabled — clicking them will remove them
-                const isDisabled = (!isSelected && (isExcluded || !isAvailable || !bothPowersetsSelected || powerLimitReached));
+                const isDisabled = (!isSelected && (isExcluded || !isAvailable || !bothPowersetsSelected || powerLimitReached || levelUpPickQuotaReached));
                 const isLocked = isPowerLocked(power.internalName);
 
                 return (
