@@ -20,9 +20,12 @@ const {
   SET_CATEGORY_MAP,
   extractEffects,
   extractDamage,
+  inferAllowedSetCategories,
   loadDefSuppressionMap,
   collectAllTemplates,
   RAW_DATA_PATH,
+  BIN_BOOST_MAP,
+  EFFECT_AREA_MAP,
 } = require('./convert-powerset.cjs');
 
 // HC bin export writes pool powers under `<RAW_DATA_PATH>/pool/`. The legacy
@@ -139,15 +142,25 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   power.maxSlots = rawJson.max_boosts !== undefined && rawJson.max_boosts !== null
     ? rawJson.max_boosts : 6;
 
-  // Allowed enhancements (using BOOST_TYPE_MAP)
+  // Allowed enhancements: bin export uses short names (e.g. "Buff_Defense")
+  // that match BIN_BOOST_MAP; the legacy CoD2 archive used long names that
+  // matched BOOST_TYPE_MAP. Try both so either source works.
   const enhancements = (rawJson.boosts_allowed || [])
-    .map(b => BOOST_TYPE_MAP[b])
+    .map(b => BOOST_TYPE_MAP[b] || BIN_BOOST_MAP[b])
     .filter(Boolean);
   power.allowedEnhancements = [...new Set(enhancements)].sort();
 
-  // Allowed set categories (using SET_CATEGORY_MAP)
-  power.allowedSetCategories = (rawJson.allowed_boostset_cats || [])
-    .map(c => SET_CATEGORY_MAP[c] || c);
+  // Allowed IO set categories — inferred from boost types (the bin parser's
+  // allowed_boostset_cats field is broken; see PARSER_TODO.md). Pool powers
+  // pass 'pool' as both archetype and role since ATO categories don't apply.
+  const inferredCats = inferAllowedSetCategories(
+    rawJson.boosts_allowed || [],
+    'pool',
+    'pool',
+    rawJson.effect_area,
+    rawJson.range,
+  );
+  power.allowedSetCategories = inferredCats;
 
   // Effects object (legacy format: stats mixed in with effects)
   const effects = {};
@@ -158,8 +171,15 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   if (rawJson.recharge_time) effects.recharge = rawJson.recharge_time;
   if (rawJson.endurance_cost) effects.endurance = rawJson.endurance_cost;
   if (rawJson.activation_time) effects.activationTime = rawJson.activation_time;
+  // Toggle tick period — endurance/sec = endurance / activatePeriod. Missing this
+  // field made every pool toggle's endurance display fall back to 0.5s and
+  // overcount cost by 4× (Leadership Maneuvers/Tactics/Assault showed 1.56/s
+  // instead of 0.39/s, etc).
+  if (rawJson.activate_period) effects.activatePeriod = rawJson.activate_period;
   if (rawJson.effect_area && rawJson.effect_area !== 'None') {
-    effects.effectArea = rawJson.effect_area;
+    // Bin format uses "Sphere" for what the planner calls "AoE", etc.
+    // Normalize through the same map convert-powerset.cjs uses.
+    effects.effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
   }
   if (rawJson.radius && rawJson.radius > 0) effects.radius = rawJson.radius;
   if (rawJson.arc && rawJson.arc > 0) effects.arc = rawJson.arc;

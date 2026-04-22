@@ -68,19 +68,82 @@ function evaluateAtom(atom: string, ctx: RequiresContext): boolean {
 }
 
 /**
+ * Evaluate a Reverse Polish Notation requires expression. Raw .def files use
+ * RPN (operators come after operands), and the converter doesn't translate
+ * to infix, so we evaluate RPN directly.
+ *
+ * Examples:
+ *   "X !"                   → !X
+ *   "A B && C !"            → A && B && !C
+ *   "A B || C || D || !"    → !(A || B || C || D)
+ */
+function evaluateRpnRequires(expr: string, ctx: RequiresContext): boolean | null {
+  // Tokenize on whitespace; trailing comma is a terminator some powers carry.
+  const tokens = expr.replace(/,$/, '').trim().split(/\s+/);
+  const stack: boolean[] = [];
+  for (const tok of tokens) {
+    if (tok === '!') {
+      if (stack.length < 1) return null;
+      stack.push(!stack.pop()!);
+    } else if (tok === '&&') {
+      if (stack.length < 2) return null;
+      const b = stack.pop()!;
+      const a = stack.pop()!;
+      stack.push(a && b);
+    } else if (tok === '||') {
+      if (stack.length < 2) return null;
+      const b = stack.pop()!;
+      const a = stack.pop()!;
+      stack.push(a || b);
+    } else {
+      stack.push(evaluateAtom(tok, ctx));
+    }
+  }
+  if (stack.length !== 1) return null; // not a clean RPN expression
+  return stack[0];
+}
+
+/**
+ * Detect RPN form. The last whitespace-separated token is one of the operator
+ * symbols `!`, `&&`, `||` (the operator follows its operands in RPN).
+ */
+function looksLikeRpn(expr: string): boolean {
+  const trimmed = expr.replace(/,$/, '').trim();
+  const lastSpace = trimmed.lastIndexOf(' ');
+  if (lastSpace < 0) return false;
+  const lastTok = trimmed.slice(lastSpace + 1);
+  return lastTok === '!' || lastTok === '&&' || lastTok === '||';
+}
+
+/**
  * Evaluate a power requires expression against the current build.
  *
- * Patterns found in data:
- * - "Power Name" → requires power by display name
- * - "AT.Set.Power" → requires power by internal name (3 segments)
- * - "AT.Set" → requires powerset to be selected (2 segments)
- * - "!expr" → negation (must NOT have)
- * - "!(a || b || c)" → none of the listed items can be present
- * - "a && b" → both conditions must be true
- * - "char>accesslevel >= 0" → always true
+ * Two forms appear in data:
+ * - **RPN** (from raw .def files):
+ *     "X !"                  → !X
+ *     "A B && C !"           → A && B && !C
+ *     "A B || C || D || !"   → !(A || B || C || D)
+ * - **Infix** (translated by an earlier converter pass):
+ *     "Power Name"           → requires power by display name
+ *     "AT.Set.Power"         → requires power by internal name
+ *     "AT.Set"               → requires powerset to be selected
+ *     "!expr"                → prefix negation
+ *     "!(a || b || c)"       → none of the listed items can be present
+ *     "a && b"               → both conditions must be true
+ *     "char>accesslevel >= 0" → always true
+ *
+ * Detection: if the trailing token is an operator (`!`, `&&`, `||`), parse as
+ * RPN; otherwise fall through to the infix logic.
  */
 function evaluateRequires(requires: string, ctx: RequiresContext): boolean {
   const expr = requires.trim();
+
+  // RPN form (raw .def expressions)
+  if (looksLikeRpn(expr)) {
+    const result = evaluateRpnRequires(expr, ctx);
+    if (result !== null) return result;
+    // Fall through to infix on RPN parse failure (defensive)
+  }
 
   // Handle AND: "expr1 && expr2 && ..."
   if (expr.includes('&&')) {

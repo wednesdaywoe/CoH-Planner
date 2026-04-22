@@ -61,3 +61,15 @@ The combat-suppression event names to detect: `Attacked`, `Damaged`, `MissionObj
 3. **#1 last** (Suppress extraction) — biggest scope (full tail layout RE), but the .def-file workaround keeps it functional indefinitely.
 
 When #2 is fixed, the `inferAllowedSetCategories` helper in [convert-powerset.cjs](scripts/convert-powerset.cjs) can be retired (or kept as a sanity-check fallback). When #1 is fixed, the `loadDefSuppressionMap` / `_combatGated` machinery in the same file can be deleted.
+
+---
+
+## Resolved
+
+### Pool toggles showed 4× endurance cost (fixed 2026-04-21)
+
+**Symptom:** Leadership Maneuvers/Tactics/Assault (and every other pool toggle) showed 1.56/s endurance instead of 0.39/s — exactly 4× too high.
+
+**Root cause:** Not a parser bug — a converter omission. [convert-pool-powers.cjs](scripts/convert-pool-powers.cjs) only captured `activation_time` (cast time) from the JSON, never `activate_period` (toggle tick period). The planner computes per-second cost as `endurance / (activatePeriod ?? 0.5)`, so missing `activatePeriod` made every pool toggle fall back to the 0.5s default instead of using the real 2s period (0.78 / 0.5 = 1.56 vs 0.78 / 2 = 0.39).
+
+**Fix:** Added `activatePeriod` capture, `BIN_BOOST_MAP` fallback for enhancement names, `inferAllowedSetCategories` for set categories, and `EFFECT_AREA_MAP` for the Sphere→AoE normalization — all ported from `convert-powerset.cjs`. The pool converter was missing all four.

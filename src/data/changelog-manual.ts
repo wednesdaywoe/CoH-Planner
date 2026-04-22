@@ -24,6 +24,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-04-21',
     items: [
       { message: 'Huge milestone for Sidekick: migration to new self-sourced dataset is complete. I expect some growing pains, but it will be worth it for keeping SK current with CoH development.', type: 'update' },
+      { message: 'Fixes for Leadership end costs and VEAT branch logic', type: 'fix' },
       { message: 'Audit of tooltip hints across the app to ensure everthing has a helpful explaination of what it does', type: 'update' },
       { message: 'New tooltip comparision mode: hover over a power or enhancment and hold shift to keep its info displayed', type: 'feat' },
       { message: 'Audit of Help System to bring it up to date. Did you know there was a searchable Help system??? There is a searchable Help System! Look for the widget at the bottom', type: 'feat' },

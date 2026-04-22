@@ -9,10 +9,396 @@
  *
  * Total pools: 13
  * Total powers: 71
- * Pool IDs: ["experimentation","fighting","fitness","flight","force_of_will","invisibility","leadership","leaping","presence","medicine","sorcery","speed","teleportation"]
+ * Pool IDs: ["leadership","experimentation","fighting","fitness","flight","force_of_will","invisibility","leaping","presence","medicine","sorcery","speed","teleportation"]
  */
 
 export const POWER_POOLS_RAW = {
+  "leadership": {
+    "id": "leadership",
+    "name": "Leadership",
+    "displayName": "Leadership",
+    "description": "",
+    "icon": "leadership_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Assault",
+        "fullName": "Pool.Leadership.Assault",
+        "rank": 1,
+        "available": 0,
+        "description": "While this power is active, you and your nearby teammates deal more damage and are resistant to Taunt and Placate.<br><br><color #fcfc95>Recharge: Slow.</color>",
+        "shortHelp": "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
+        "icon": "leadership_assault.png",
+        "powerType": "Toggle",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 15,
+          "endurance": 0.78,
+          "activationTime": 1.5,
+          "activatePeriod": 2,
+          "effectArea": "AoE",
+          "radius": 60,
+          "maxTargets": 255,
+          "damageBuff": {
+            "scale": 1.5,
+            "table": "Ranged_Buff_Dmg"
+          },
+          "durations": {
+            "damageBuff": 2.25,
+            "mezResistance": 2.25
+          },
+          "mezResistance": {
+            "taunt": {
+              "scale": 1.75,
+              "table": "Ranged_Res_Boolean"
+            },
+            "placate": {
+              "scale": 1.75,
+              "table": "Ranged_Res_Boolean"
+            }
+          },
+          "buffDuration": 2.25
+        }
+      },
+      {
+        "name": "Maneuvers",
+        "fullName": "Pool.Leadership.Defense",
+        "rank": 2,
+        "available": 0,
+        "description": "A good leader knows how to protect his team. While active, this power increases the Defense of yourself and all nearby teammates to all attacks.<br><br><color #fcfc95>Recharge: Slow.</color>",
+        "shortHelp": "Toggle: PBAoE, Team +DEF(All)",
+        "icon": "leadership_defense.png",
+        "powerType": "Toggle",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 15,
+          "endurance": 0.78,
+          "activationTime": 1.5,
+          "activatePeriod": 2,
+          "effectArea": "AoE",
+          "radius": 60,
+          "maxTargets": 255,
+          "defenseBuff": {
+            "ranged": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "aoe": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "toxic": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 2.25
+          },
+          "buffDuration": 2.25
+        }
+      },
+      {
+        "name": "Tactics",
+        "fullName": "Pool.Leadership.Tactics",
+        "rank": 3,
+        "available": 13,
+        "description": "While this power is active, your chance to hit and that of all your nearby teammates is increased. Your advanced Tactics also protect you and your team from Confuse and Fear effects, as well as your Perception so you can detect Stealthy foes.<br><br>You must be at least level 14 and have one other Leadership powers before selecting Tactics.<br><br><color #fcfc95>Recharge: Slow.</color>",
+        "shortHelp": "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
+        "icon": "leadership_tactics.png",
+        "powerType": "Toggle",
+        "requires": "Pool.Leadership.Defense Pool.Leadership.Assault ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "ToHit"
+        ],
+        "allowedSetCategories": [
+          "To Hit Buff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 15,
+          "endurance": 0.78,
+          "activationTime": 1.5,
+          "activatePeriod": 2,
+          "effectArea": "AoE",
+          "radius": 60,
+          "maxTargets": 255,
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Ranged_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 2.25,
+            "debuffResistance": 2.25,
+            "perceptionBuff": 2.25,
+            "mezResistance": 2.25,
+            "confuse": 2.25
+          },
+          "debuffResistance": {
+            "perception": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Boolean"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 2,
+            "table": "Ranged_Res_Boolean"
+          },
+          "mezResistance": {
+            "fear": {
+              "scale": 1.75,
+              "table": "Ranged_Res_Boolean"
+            },
+            "confuse": {
+              "scale": 1.75,
+              "table": "Ranged_Res_Boolean"
+            }
+          },
+          "confuse": {
+            "mag": 1,
+            "scale": 15,
+            "table": "Ranged_Res_Boolean"
+          },
+          "effectDuration": 2.25,
+          "buffDuration": 2.25
+        }
+      },
+      {
+        "name": "Vengeance",
+        "fullName": "Pool.Leadership.Vengeance",
+        "rank": 4,
+        "available": 13,
+        "description": "The loss of a comrade enrages the team. When a teammate is defeated in combat, activate this power to grant you and your teammates a bonus to chance to hit, Damage and Defense to all attacks. A Vengeful team has no fear, and Vengeance protects you and your Teammates from Fear effects. It also gives you and your team great resistance to Sleep, Hold, Disorient, Immobilize, Confuse, Taunt, Placate and Knockback.<br><br>This power does not stack with multiple castings.<br><br>You must be at least level 14 and have two other Leadership powers before selecting Victory Rush.<br><br><color #fcfc95>Recharge: Very Long.</color>",
+        "shortHelp": "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)",
+        "icon": "leadership_vengence.png",
+        "powerType": "Click",
+        "requires": "Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Tactics && ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "Healing",
+          "Range",
+          "ToHit"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets",
+          "Healing",
+          "To Hit Buff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 300,
+          "activationTime": 1.17,
+          "effectArea": "AoE",
+          "radius": 100,
+          "maxTargets": 255,
+          "damage": {
+            "type": "Heal",
+            "scale": 1,
+            "table": "Melee_Heal"
+          },
+          "defenseBuff": {
+            "ranged": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "toxic": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 120,
+            "tohitBuff": 120,
+            "fear": 120,
+            "mezResistance": 120,
+            "knockup": 120,
+            "knockback": 120,
+            "repel": 120,
+            "damageBuff": 120
+          },
+          "tohitBuff": {
+            "scale": 3.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "fear": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 120,
+          "mezResistance": {
+            "taunt": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "placate": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "confuse": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "fear": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "hold": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "immobilize": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "stun": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "sleep": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "repel": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "damageBuff": {
+            "scale": 3.5,
+            "table": "Melee_Buff_Dmg"
+          },
+          "buffDuration": 120
+        }
+      },
+      {
+        "name": "Victory Rush",
+        "fullName": "Pool.Leadership.Victory_Rush",
+        "rank": 5,
+        "available": 13,
+        "description": "The defeat of an opponent gives your team a rush of adrenaline. The excitement of your victory increases the recovery and reduces the endurance cost of your powers. This effect extends to your teammates as well. The total strength of this bonus is dependent upon the rank of the enemy on which this is cast, with Archvillains and Giant Monsters providing the greatest benefit. This power does not stack with multiple castings.<br><br>You must be at least level 14 and have two other Leadership powers before selecting Victory Rush.<br><br><color #fcfc95>Notes: Victory Rush is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
+        "shortHelp": "Ranged (Targeted AoE), Team +Recovery, -End Cost",
+        "icon": "leadership_victoryrush.png",
+        "powerType": "Click",
+        "requires": "Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Defense Pool.Leadership.Vengeance && || Pool.Leadership.Assault Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Vengeance && || Pool.Leadership.Tactics Pool.Leadership.Vengeance && ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Range"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 300,
+          "endurance": 9.75,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget"
+        }
+      }
+    ]
+  },
   "experimentation": {
     "id": "experimentation",
     "name": "Experimentation",
@@ -1934,389 +2320,6 @@ export const POWER_POOLS_RAW = {
             "resistanceDebuff": 15
           },
           "buffDuration": 15
-        }
-      }
-    ]
-  },
-  "leadership": {
-    "id": "leadership",
-    "name": "Leadership",
-    "displayName": "Leadership",
-    "description": "Good leaders are rare. These powers can grant bonuses to your and your teammates.",
-    "icon": "leadership_set.png",
-    "requires": "",
-    "powers": [
-      {
-        "name": "Maneuvers",
-        "fullName": "Pool.Leadership.Defense",
-        "rank": 1,
-        "available": 0,
-        "description": "A good leader knows how to protect his team. While active, this power increases the Defense of yourself and all nearby teammates to all attacks.<br><br><color #fcfc95>Recharge: Slow.</color>",
-        "shortHelp": "Toggle: PBAoE, Team +DEF(All)",
-        "icon": "leadership_defense.png",
-        "powerType": "Toggle",
-        "requires": "",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 15,
-          "endurance": 0.78,
-          "activationTime": 1.5,
-          "effectArea": "AoE",
-          "radius": 60,
-          "maxTargets": 255,
-          "defenseBuff": {
-            "ranged": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "aoe": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "fire": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "cold": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "energy": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "negative": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "psionic": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "toxic": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 2.25
-          },
-          "buffDuration": 2.25
-        }
-      },
-      {
-        "name": "Assault",
-        "fullName": "Pool.Leadership.Assault",
-        "rank": 2,
-        "available": 0,
-        "description": "While this power is active, you and your nearby teammates deal more damage and are resistant to Taunt and Placate.<br><br><color #fcfc95>Recharge: Slow.</color>",
-        "shortHelp": "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
-        "icon": "leadership_assault.png",
-        "powerType": "Toggle",
-        "requires": "",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 15,
-          "endurance": 0.78,
-          "activationTime": 1.5,
-          "effectArea": "AoE",
-          "radius": 60,
-          "maxTargets": 255,
-          "damageBuff": {
-            "scale": 1.5,
-            "table": "Ranged_Buff_Dmg"
-          },
-          "durations": {
-            "damageBuff": 2.25,
-            "mezResistance": 2.25
-          },
-          "mezResistance": {
-            "taunt": {
-              "scale": 1.75,
-              "table": "Ranged_Res_Boolean"
-            },
-            "placate": {
-              "scale": 1.75,
-              "table": "Ranged_Res_Boolean"
-            }
-          },
-          "buffDuration": 2.25
-        }
-      },
-      {
-        "name": "Tactics",
-        "fullName": "Pool.Leadership.Tactics",
-        "rank": 3,
-        "available": 13,
-        "description": "While this power is active, your chance to hit and that of all your nearby teammates is increased. Your advanced Tactics also protect you and your team from Confuse and Fear effects, as well as your Perception so you can detect Stealthy foes.<br><br>You must be at least level 14 and have one other Leadership powers before selecting Tactics.<br><br><color #fcfc95>Recharge: Slow.</color>",
-        "shortHelp": "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
-        "icon": "leadership_tactics.png",
-        "powerType": "Toggle",
-        "requires": "Pool.Leadership.Assault || Pool.Leadership.Defense",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "ToHit"
-        ],
-        "allowedSetCategories": [
-          "To Hit Buff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 15,
-          "endurance": 0.78,
-          "activationTime": 1.5,
-          "effectArea": "AoE",
-          "radius": 60,
-          "maxTargets": 255,
-          "tohitBuff": {
-            "scale": 1,
-            "table": "Ranged_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 2.25,
-            "debuffResistance": 2.25,
-            "perceptionBuff": 2.25,
-            "mezResistance": 2.25,
-            "confuse": 2.25
-          },
-          "debuffResistance": {
-            "perception": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Boolean"
-            }
-          },
-          "perceptionBuff": {
-            "scale": 2,
-            "table": "Ranged_Res_Boolean"
-          },
-          "mezResistance": {
-            "fear": {
-              "scale": 1.75,
-              "table": "Ranged_Res_Boolean"
-            },
-            "confuse": {
-              "scale": 1.75,
-              "table": "Ranged_Res_Boolean"
-            }
-          },
-          "confuse": {
-            "mag": 1,
-            "scale": 15,
-            "table": "Ranged_Res_Boolean"
-          },
-          "effectDuration": 2.25,
-          "buffDuration": 2.25
-        }
-      },
-      {
-        "name": "Vengeance",
-        "fullName": "Pool.Leadership.Vengeance",
-        "rank": 4,
-        "available": 13,
-        "description": "The loss of a comrade enrages the team. When a teammate is defeated in combat, activate this power to grant you and your teammates a bonus to chance to hit, Damage and Defense to all attacks. A Vengeful team has no fear, and Vengeance protects you and your Teammates from Fear effects. It also gives you and your team great resistance to Sleep, Hold, Disorient, Immobilize, Confuse, Taunt, Placate and Knockback.<br><br>This power does not stack with multiple castings.<br><br>You must be at least level 14 and have two other Leadership powers before selecting Victory Rush.<br><br><color #fcfc95>Recharge: Very Long.</color>",
-        "shortHelp": "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)",
-        "icon": "leadership_vengence.png",
-        "powerType": "Click",
-        "requires": "Pool.Leadership.Assault && Pool.Leadership.Defense || Pool.Leadership.Assault && Pool.Leadership.Tactics || Pool.Leadership.Defense && Pool.Leadership.Tactics",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "Healing",
-          "Range",
-          "ToHit"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets",
-          "Healing",
-          "To Hit Buff"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 300,
-          "activationTime": 1.17,
-          "effectArea": "AoE",
-          "radius": 100,
-          "maxTargets": 255,
-          "damage": {
-            "type": "Heal",
-            "scale": 1,
-            "table": "Melee_Heal"
-          },
-          "defenseBuff": {
-            "ranged": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "aoe": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "toxic": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 120,
-            "tohitBuff": 120,
-            "fear": 120,
-            "mezResistance": 120,
-            "knockup": 120,
-            "knockback": 120,
-            "repel": 120,
-            "damageBuff": 120
-          },
-          "tohitBuff": {
-            "scale": 3.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "fear": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "effectDuration": 120,
-          "mezResistance": {
-            "taunt": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "placate": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "confuse": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "fear": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "hold": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "immobilize": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "stun": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "sleep": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "knockup": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "knockback": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "repel": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "damageBuff": {
-            "scale": 3.5,
-            "table": "Melee_Buff_Dmg"
-          },
-          "buffDuration": 120
-        }
-      },
-      {
-        "name": "Victory Rush",
-        "fullName": "Pool.Leadership.Victory_Rush",
-        "rank": 5,
-        "available": 13,
-        "description": "The defeat of an opponent gives your team a rush of adrenaline. The excitement of your victory increases the recovery and reduces the endurance cost of your powers. This effect extends to your teammates as well. The total strength of this bonus is dependent upon the rank of the enemy on which this is cast, with Archvillains and Giant Monsters providing the greatest benefit. This power does not stack with multiple castings.<br><br>You must be at least level 14 and have two other Leadership powers before selecting Victory Rush.<br><br><color #fcfc95>Notes: Victory Rush is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
-        "shortHelp": "Ranged (Targeted AoE), Team +Recovery, -End Cost",
-        "icon": "leadership_victoryrush.png",
-        "powerType": "Click",
-        "requires": "Pool.Leadership.Assault && Pool.Leadership.Defense || Pool.Leadership.Assault && Pool.Leadership.Tactics || Pool.Leadership.Assault && Pool.Leadership.Vengeance || Pool.Leadership.Defense && Pool.Leadership.Tactics || Pool.Leadership.Defense && Pool.Leadership.Vengeance || Pool.Leadership.Tactics && Pool.Leadership.Vengeance",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Range"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 300,
-          "endurance": 9.75,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget"
         }
       }
     ]

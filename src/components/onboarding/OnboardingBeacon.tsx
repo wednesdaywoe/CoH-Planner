@@ -62,6 +62,7 @@ export function OnboardingBeacon() {
   const primaryId = useBuildStore((s) => s.build.primary.id);
   const secondaryId = useBuildStore((s) => s.build.secondary.id);
   const exportModalOpen = useUIStore((s) => s.exportImportModalOpen);
+  const helpModalOpen = useUIStore((s) => s.helpModalOpen);
 
   const [position, setPosition] = useState<BeaconPosition | null>(null);
   const [visible, setVisible] = useState(false);
@@ -76,7 +77,8 @@ export function OnboardingBeacon() {
     else if (currentStep.id === 'select-primary' && primaryId) completeStep('select-primary');
     else if (currentStep.id === 'select-secondary' && secondaryId) completeStep('select-secondary');
     else if (currentStep.id === 'export-import' && exportModalOpen) completeStep('export-import');
-  }, [enabled, isComplete, currentStep, archetypeId, primaryId, secondaryId, exportModalOpen, completeStep]);
+    else if (currentStep.id === 'help' && helpModalOpen) completeStep('help');
+  }, [enabled, isComplete, currentStep, archetypeId, primaryId, secondaryId, exportModalOpen, helpModalOpen, completeStep]);
 
   // Find and track the target element's position
   const updatePosition = useCallback(() => {
@@ -200,7 +202,7 @@ export function OnboardingBeacon() {
   useEffect(() => {
     if (!enabled || isComplete || !currentStep) return;
     // These steps are handled by store-based completion above
-    const storeCompletedSteps = ['select-archetype', 'select-primary', 'select-secondary', 'export-import'];
+    const storeCompletedSteps = ['select-archetype', 'select-primary', 'select-secondary', 'export-import', 'help'];
     if (storeCompletedSteps.includes(currentStep.id)) return;
 
     const handler = (e: MouseEvent) => {
