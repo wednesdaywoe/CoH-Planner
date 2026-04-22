@@ -232,6 +232,108 @@ const KNOWN_IO_SET_CATEGORIES = new Set([
   'Tanker Archetype Sets', 'Sentinel Archetype Sets',
 ]);
 
+// ============================================================================
+// inferAllowedSetCategories — derive IO set categories from boost types
+// ----------------------------------------------------------------------------
+// The bin parser's `allowed_boostset_cats` field is broken (always empty or
+// corrupted FX-path fragments — see the binparser-bug audit). Until that's
+// fixed at the parser level, we infer the categories from boosts_allowed plus
+// the power's targeting/effect-area context. The patterns were derived
+// empirically from the previously-correct generated data and verified across
+// every archetype.
+//
+// Inputs:
+//   boosts          — bin BOOST_TYPE names from boosts_allowed (e.g. ['Damage', 'Accuracy'])
+//   archetypeId     — kebab-case AT id from CATEGORY_MAP (e.g. 'tanker', 'stalker')
+//   powerType       — 'primary' | 'secondary' | 'epic' | 'pool' | …
+//   effectArea      — 'SingleTarget' | 'AoE' | 'Cone' | 'Location' | 'Character'
+//   range           — power range in feet (0 for melee/self)
+// Output: list of IOSetCategory values, deduped + alphabetized for stable diffs.
+// ============================================================================
+
+// Boost types that map 1:1 to a single IOSetCategory (no context needed).
+const BOOST_TO_CATEGORY = {
+  Buff_Defense: 'Defense Sets',
+  Defense: 'Defense Sets',
+  Res_Damage: 'Resist Damage',
+  Resistance: 'Resist Damage',
+  Heal: 'Healing',
+  Healing: 'Healing',
+  Buff_ToHit: 'To Hit Buff',
+  ToHit: 'To Hit Buff',
+  Debuff_ToHit: 'To Hit Debuff',
+  Debuff_Defense: 'Defense Debuff',
+  Hold: 'Holds',
+  Stun: 'Stuns',
+  Confuse: 'Confuse',
+  Sleep: 'Sleep',
+  Fear: 'Fear',
+  Immobilize: 'Immobilize',
+  Knockback: 'Knockback',
+  Slow: 'Slow Movement',
+  Taunt: 'Threat Duration',
+  EnduranceModification: 'Endurance Modification',
+  Recovery: 'Endurance Modification',
+  Endurance_Drain: 'Endurance Modification',
+};
+
+// ATO category goes on attack powers in the AT's "attack" powerset roles.
+// Blasters get them in BOTH primary (Ranged) and secondary (Manipulation
+// melee attacks) per the data — so this map carries the role list.
+const ATO_BY_AT = {
+  blaster:    { category: 'Blaster Archetype Sets',    roles: ['primary', 'secondary'] },
+  brute:      { category: 'Brute Archetype Sets',      roles: ['primary'] },
+  controller: { category: 'Controller Archetype Sets', roles: ['primary', 'secondary'] },
+  corruptor:  { category: 'Corruptor Archetype Sets',  roles: ['primary', 'secondary'] },
+  defender:   { category: 'Defender Archetype Sets',   roles: ['primary', 'secondary'] },
+  dominator:  { category: 'Dominator Archetype Sets',  roles: ['primary', 'secondary'] },
+  mastermind: { category: 'Mastermind Archetype Sets', roles: ['primary', 'secondary'] },
+  scrapper:   { category: 'Scrapper Archetype Sets',   roles: ['primary'] },
+  sentinel:   { category: 'Sentinel Archetype Sets',   roles: ['primary'] },
+  stalker:    { category: 'Stalker Archetype Sets',    roles: ['primary'] },
+  tanker:     { category: 'Tanker Archetype Sets',     roles: ['secondary'] },
+};
+
+function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, range) {
+  const cats = new Set();
+  const boostSet = new Set(boosts || []);
+
+  // Simple 1:1 mappings
+  for (const b of boostSet) {
+    if (BOOST_TO_CATEGORY[b]) cats.add(BOOST_TO_CATEGORY[b]);
+  }
+
+  // Damage is context-sensitive
+  if (boostSet.has('Damage')) {
+    const hasRange = boostSet.has('Range');
+    cats.add('Universal Damage Sets');
+    const area = effectArea || 'SingleTarget';
+    if (area === 'SingleTarget') {
+      if (hasRange) {
+        cats.add('Ranged Damage');
+        // Sniper attacks: long-range single-target with Range boost. Snipes
+        // typically have range >= 100 (most are 150). Plain ranged attacks
+        // top out around 80 ft.
+        if (range && range >= 100) cats.add('Sniper Attacks');
+      } else {
+        cats.add('Melee Damage');
+      }
+    } else if (area === 'Cone' || area === 'AoE') {
+      cats.add(hasRange ? 'Ranged AoE Damage' : 'Melee AoE Damage');
+    }
+    // Location-based pet/ground attacks fall through with just Universal
+    // Damage Sets — Pet Damage attaches to summon powers handled separately.
+
+    // ATO category on attack powers in the AT's attack role(s)
+    const ato = ATO_BY_AT[archetypeId];
+    if (ato && ato.roles.includes(powerType)) {
+      cats.add(ato.category);
+    }
+  }
+
+  return [...cats].sort();
+}
+
 
 /**
  * Resolve a redirect/power reference name to a file path.
@@ -1606,7 +1708,7 @@ const ALLOWED_ENHANCEMENT_OVERRIDES = {
 /**
  * Convert a single power file
  */
-function convertPower(powerJson, availableLevel) {
+function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // Map target type to valid TypeScript type (or undefined if unknown)
   const rawTargetType = powerJson.target_type;
   const mappedTargetType = rawTargetType ? TARGET_TYPE_MAP[rawTargetType] : undefined;
@@ -1650,14 +1752,20 @@ function convertPower(powerJson, availableLevel) {
     .map(b => BOOST_TYPE_MAP[b] || BIN_BOOST_MAP[b])
     .filter(Boolean);
 
-  // Allowed IO set categories. Pass through values mapped by SET_CATEGORY_MAP,
-  // or values already in the known IOSetCategory set. Drop everything else —
-  // the bin parser occasionally yields off-by-N corrupted strings (e.g.
-  // "olumnEndgame.NictusFX") that would fail TypeScript's IOSetCategory union.
-  if (powerJson.allowed_boostset_cats?.length) {
-    power.allowedSetCategories = powerJson.allowed_boostset_cats
-      .map(c => SET_CATEGORY_MAP[c] || (KNOWN_IO_SET_CATEGORIES.has(c) ? c : null))
-      .filter(Boolean);
+  // Allowed IO set categories — inferred from boost types because the bin
+  // parser's allowed_boostset_cats field is broken (always empty for most
+  // powers, garbage FX-path fragments otherwise — see binparser-bug audit).
+  // Mapping rules derived empirically from the previously-correct generated
+  // data; see inferAllowedSetCategories for the table.
+  const inferred = inferAllowedSetCategories(
+    powerJson.boosts_allowed || [],
+    archetypeId,
+    powerType,
+    powerJson.effect_area,
+    powerJson.range,
+  );
+  if (inferred.length > 0) {
+    power.allowedSetCategories = inferred;
   }
 
   // NOTE: Do NOT infer allowedEnhancements from set categories.
@@ -1830,7 +1938,7 @@ function convertPowerset(category, powersetName) {
     );
     const availableLevel = powerIndex >= 0 ? indexJson.available_level[powerIndex] : 0;
 
-    const power = convertPower(powerJson, availableLevel);
+    const power = convertPower(powerJson, availableLevel, categoryInfo.archetype, categoryInfo.type);
     powers.push({ power, powerIndex: powerIndex >= 0 ? powerIndex : 999, file });
   }
 
