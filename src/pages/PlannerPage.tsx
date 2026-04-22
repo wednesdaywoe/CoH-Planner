@@ -113,7 +113,7 @@ export function PlannerPage() {
 
   /** Info Panel column header with tooltip toggle and undock button */
   const infoPanelHeader = (
-    <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
+    <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center justify-between">
       <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
         Power Info
       </h2>
@@ -144,7 +144,7 @@ export function PlannerPage() {
         >
           {/* Column 1: Available Powers (Primary + Secondary + Pool/Epic) */}
           <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
-            <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
+            <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center justify-between">
               <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
                 Available Powers
                 {powerLimitReached && (
@@ -205,7 +205,7 @@ export function PlannerPage() {
 
           {/* Column 2: Chronological Power View (3-column grid) */}
           <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
-            <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
+            <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
               <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
                 Powers by Level
               </h2>
@@ -245,7 +245,7 @@ export function PlannerPage() {
       >
         {/* Column 1: Available Powers — combined (xs and lg+, hidden at md) */}
         <div className="bg-slate-900 flex md:hidden lg:flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
-          <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
+          <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center justify-between">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
               Available Powers
               {powerLimitReached && (
@@ -308,7 +308,7 @@ export function PlannerPage() {
 
         {/* md-only: Available Primary (col 1 of row 1) */}
         <div className="bg-slate-900 hidden md:flex lg:hidden flex-col overflow-hidden min-h-[300px]">
-          <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
+          <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center justify-between">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
               Available Primary
             </h2>
@@ -340,7 +340,7 @@ export function PlannerPage() {
 
         {/* md-only: Available Secondary (col 2 of row 1) */}
         <div className="bg-slate-900 hidden md:flex lg:hidden flex-col overflow-hidden min-h-[300px]">
-          <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
+          <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
               Available Secondary
             </h2>
@@ -370,7 +370,7 @@ export function PlannerPage() {
 
         {/* Column 2: Selected Primary Powers */}
         <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
-          <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
+          <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
               Primary Powers
             </h2>
@@ -382,7 +382,7 @@ export function PlannerPage() {
 
         {/* Column 3: Selected Secondary Powers */}
         <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
-          <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
+          <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
               Secondary Powers
             </h2>
@@ -394,7 +394,7 @@ export function PlannerPage() {
 
         {/* Column 4: Pool/Epic/Inherent Powers (selected, with slots) */}
         <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
-          <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
+          <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
               Pool Powers
             </h2>

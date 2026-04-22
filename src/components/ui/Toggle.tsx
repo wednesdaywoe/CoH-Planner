@@ -10,9 +10,10 @@ interface ToggleProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'
 }
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
-  ({ label, description, className = '', checked, disabled, ...props }, ref) => {
+  ({ label, description, className = '', checked, disabled, title, ...props }, ref) => {
     return (
       <label
+        title={title}
         className={`
           inline-flex items-center gap-3 cursor-pointer
           ${disabled ? 'opacity-50 cursor-not-allowed' : ''}

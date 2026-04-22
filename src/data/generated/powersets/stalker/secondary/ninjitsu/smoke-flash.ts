@@ -31,13 +31,10 @@ export const SmokeFlash: Power = {
     "Recharge",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Threat Duration"
-  ],
   "maxSlots": 6,
   "effects": {
     "placate": {
-      "scale": 8,
+      "scale": 6,
       "table": "Melee_Taunt"
     }
   }

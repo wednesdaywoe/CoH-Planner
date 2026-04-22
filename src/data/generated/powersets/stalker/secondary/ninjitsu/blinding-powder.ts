@@ -16,12 +16,13 @@ export const BlindingPowder: Power = {
   "shortHelp": "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
   "icon": "ninjitsu_blindingpowder.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
     "range": 25,
     "radius": 25,
-    "arc": 0.7854,
+    "arc": 0.7853981852531433,
     "recharge": 120,
     "endurance": 7.8,
     "castTime": 1.07,
@@ -33,11 +34,6 @@ export const BlindingPowder: Power = {
     "ToHit Debuff",
     "Confuse",
     "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Confuse",
-    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

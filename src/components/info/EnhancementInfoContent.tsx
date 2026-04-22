@@ -506,12 +506,12 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
         ) : (
           /* Enhances section with calculated values - for non-proc enhancements */
           <div className="bg-slate-800/50 rounded p-1.5">
-            <div className="text-[9px] text-slate-500 uppercase mb-1">Enhances:</div>
+            <div className="text-[10px] text-slate-400 uppercase mb-1 font-medium">Enhances:</div>
             {ioEnh.aspects.map((aspect, i) => {
               const value = calculateAspectValue(aspect);
               return (
-                <div key={i} className="flex justify-between items-baseline text-[10px]">
-                  <span className="text-slate-300">{aspect}</span>
+                <div key={i} className="flex justify-between items-baseline text-xs">
+                  <span className="text-slate-200">{aspect}</span>
                   {value !== null && (
                     <span className="text-green-400 font-mono">
                       +{(value * 100).toFixed(2)}%
@@ -521,7 +521,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
               );
             })}
             {effectiveAspectCount > 1 && (
-              <div className="text-[8px] text-slate-500 mt-1 italic">
+              <div className="text-[10px] text-slate-400 mt-1 italic">
                 {(aspectModifier * 100).toFixed(1)}% per aspect ({rawAspectCount} aspect{rawAspectCount !== 1 ? 's' : ''}{ioEnh.isProc ? ' + proc' : ''})
               </div>
             )}
@@ -550,7 +550,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
           const hasPvPEffects = ioSet.category === 'pvp' && ioSet.bonuses.some(b => b.effects.some(e => e.pvp));
           return (
             <div className="border-t border-slate-700 pt-2">
-              <div className="text-[9px] text-slate-500 uppercase mb-1">
+              <div className="text-[10px] text-slate-400 uppercase mb-1 font-medium">
                 Set Bonuses ({piecesSlotted}/{ioSet.pieces.length} slotted)
               </div>
               <div className="space-y-0.5">
@@ -561,9 +561,9 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                   return (
                     <div
                       key={idx}
-                      className={`text-[10px] ${isActive ? 'text-green-400' : 'text-slate-500'}`}
+                      className={`text-xs ${isActive ? 'text-green-400' : 'text-slate-400'}`}
                     >
-                      <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-600'}`}>
+                      <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-500'}`}>
                         {bonus.pieces}pc:
                       </span>{' '}
                       {pveEffects.map((eff, i) => {
@@ -577,7 +577,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                             {i > 0 && ', '}
                             {formatted}
                             {isActive && totalCount > 0 && (
-                              <span className={`ml-0.5 text-[9px] ${capped ? 'text-orange-400 font-semibold' : 'text-slate-500'}`}>
+                              <span className={`ml-0.5 text-[10px] ${capped ? 'text-orange-400 font-semibold' : 'text-slate-400'}`}>
                                 ({totalCount}/5)
                               </span>
                             )}
@@ -590,7 +590,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
               </div>
               {hasPvPEffects && (
                 <>
-                  <div className="text-[9px] text-red-400/70 uppercase mt-2 mb-0.5">PvP Only</div>
+                  <div className="text-[10px] text-red-400 uppercase mt-2 mb-0.5 font-medium">PvP Only</div>
                   <div className="space-y-0.5">
                     {ioSet.bonuses.map((bonus, idx) => {
                       const pvpEffects = bonus.effects.filter(e => e.pvp);
@@ -599,9 +599,9 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                       return (
                         <div
                           key={idx}
-                          className={`text-[10px] ${isActive ? 'text-red-400/60' : 'text-slate-600'}`}
+                          className={`text-xs ${isActive ? 'text-red-300' : 'text-slate-500'}`}
                         >
-                          <span className={`font-medium ${isActive ? 'text-red-400/70' : 'text-slate-700'}`}>
+                          <span className={`font-medium ${isActive ? 'text-red-400' : 'text-slate-600'}`}>
                             {bonus.pieces}pc:
                           </span>{' '}
                           {pvpEffects.map((eff, i) => (

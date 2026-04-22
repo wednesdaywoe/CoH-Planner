@@ -15,6 +15,10 @@ const path = require('path');
 // retired now that the encoded-string resolver lands the missing
 // display_help / display_short_help strings.
 const RAW_DATA_PATH = path.join(__dirname, '../exported_powers');
+// Raw .powers def files — authoritative source for AttribMod tail metadata
+// (Suppress events, flags) that the binary parser doesn't yet reverse-engineer.
+// Used for in-combat suppression of stealth defense buffs (Hide, Stealth, etc.).
+const RAW_DEFS_PATH = path.join(__dirname, '../raw defs');
 // The convert writes into three parallel trees (see src/data/README.md):
 //   generated/  — full auto-extraction, overwritten on every run
 //   overrides/  — hand-written deltas, scaffolded as empty stubs, never overwritten
@@ -209,6 +213,25 @@ const SET_CATEGORY_MAP = {
   'Universal Travel': 'Universal Travel',
 };
 
+// Allow-list for raw allowed_boostset_cats values that already match the
+// IOSetCategory union directly (i.e. don't need translation through
+// SET_CATEGORY_MAP). New categories added by HC patches can be added here
+// without touching the type union immediately.
+const KNOWN_IO_SET_CATEGORIES = new Set([
+  ...Object.values(SET_CATEGORY_MAP),
+  'Defense Sets', 'Resist Damage',
+  'Holds', 'Confuse', 'Fear', 'Sleep', 'Knockback', 'Immobilize',
+  'Healing', 'Endurance Modification',
+  'Pet Damage', 'Recharge Intensive Pets',
+  'Sniper Attacks', 'PBAoE Damage',
+  'Threat Duration',
+  'Leaping', 'Leaping & Sprints', 'Flight', 'Teleport',
+  'Blaster Archetype Sets', 'Brute Archetype Sets', 'Controller Archetype Sets',
+  'Corruptor Archetype Sets', 'Defender Archetype Sets', 'Dominator Archetype Sets',
+  'Mastermind Archetype Sets', 'Scrapper Archetype Sets', 'Stalker Archetype Sets',
+  'Tanker Archetype Sets', 'Sentinel Archetype Sets',
+]);
+
 
 /**
  * Resolve a redirect/power reference name to a file path.
@@ -227,6 +250,121 @@ function resolveRedirectPath(powerName) {
   return path.join(RAW_DATA_PATH, filePath);
 }
 
+// ============================================================================
+// .def file metadata (Suppress events for in-combat-suppressed defense buffs)
+// ----------------------------------------------------------------------------
+// The binary parser doesn't yet extract `Suppress` events from the AttribMod
+// tail (audit notes call this out as TODO). Until it does, we parse the
+// raw .powers def files directly to surface combat-suppression metadata for
+// stealth powers (Hide, Stealth, Invisibility, Shadow Fall, …).
+//
+// `loadDefSuppressionMap(fullName)` returns a list of entries each describing
+// one AttribMod block from the .def file with its attribs, scale, table, and
+// whether it's suppressed by combat events. Templates from the JSON export
+// are matched against these entries in `extractEffects` so we can route
+// suppressible portions into `effects.defenseBuffSuppressible`.
+// ============================================================================
+
+const COMBAT_SUPPRESS_EVENTS = new Set(['Attacked', 'Damaged', 'MissionObjectClick', 'PseudoPetAttacked']);
+const _defSuppressionCache = new Map();
+
+/**
+ * Map a power's full_name (e.g. "Stalker_Defense.Ninjitsu.Hide") to its
+ * .powers def file path under raw defs/. Returns null if the file is absent.
+ */
+function _defPathForFullName(fullName) {
+  if (!fullName) return null;
+  const parts = fullName.split('.');
+  const candidate = path.join(RAW_DEFS_PATH, ...parts) + '.powers';
+  return fs.existsSync(candidate) ? candidate : null;
+}
+
+function _normalizeDefAttrib(token) {
+  // .def uses k-prefixed enum names like kSmashing_Attack, kRanged_Attack.
+  // Strip the k prefix and the _Attack suffix so it matches JSON template attribs
+  // (Smashing, Ranged, Area, Melee, …). Some attribs (kAOE_Attack) need a remap.
+  let s = token.startsWith('k') ? token.slice(1) : token;
+  s = s.replace(/_Attack$/i, '');
+  // .def uses AOE / .def uses Negative_Energy; JSON uses Area / Negative_Energy
+  if (s === 'AOE') s = 'Area';
+  return s;
+}
+
+/**
+ * Parse the raw .powers def file and extract one entry per AttribMod block
+ * describing its Attrib(s), Scale, Table, and combat-suppression status.
+ */
+function loadDefSuppressionMap(fullName) {
+  if (_defSuppressionCache.has(fullName)) return _defSuppressionCache.get(fullName);
+  const defPath = _defPathForFullName(fullName);
+  if (!defPath) {
+    _defSuppressionCache.set(fullName, null);
+    return null;
+  }
+  const text = fs.readFileSync(defPath, 'utf-8');
+  const entries = [];
+  // Walk AttribMod { ... } blocks via a brace-aware scan.
+  let i = 0;
+  while (true) {
+    const idx = text.indexOf('AttribMod', i);
+    if (idx < 0) break;
+    const open = text.indexOf('{', idx);
+    if (open < 0) break;
+    // Find matching close brace
+    let depth = 1;
+    let j = open + 1;
+    while (j < text.length && depth > 0) {
+      const ch = text[j];
+      if (ch === '{') depth++;
+      else if (ch === '}') depth--;
+      j++;
+    }
+    const block = text.slice(open + 1, j - 1);
+    i = j;
+
+    // Extract Attrib line: "    Attrib kFoo kBar ..."
+    const attribMatch = block.match(/^\s*Attrib\s+(.+)$/m);
+    if (!attribMatch) continue;
+    const attribs = new Set(attribMatch[1].trim().split(/\s+/).map(_normalizeDefAttrib));
+    const scaleMatch = block.match(/^\s*Scale\s+([\d.\-]+)/m);
+    const tableMatch = block.match(/^\s*Table\s+"([^"]+)"/m);
+    const scale = scaleMatch ? parseFloat(scaleMatch[1]) : 0;
+    const table = tableMatch ? tableMatch[1] : '';
+    // Suppress lines: "    Suppress <Event> <count> <flag>" — combat-related
+    // events (Attacked, Damaged, etc.) suppress the buff in combat.
+    const suppressLines = block.match(/^\s*Suppress\s+(\w+)/gm) || [];
+    const suppressedInCombat = suppressLines.some(line => {
+      const m = line.match(/^\s*Suppress\s+(\w+)/);
+      return m && COMBAT_SUPPRESS_EVENTS.has(m[1]);
+    });
+    entries.push({ attribs, scale, table, suppressedInCombat });
+  }
+  _defSuppressionCache.set(fullName, entries);
+  return entries;
+}
+
+/**
+ * Decide whether a JSON template represents a combat-suppressed AttribMod
+ * by matching it against entries from the .def file. Match key is
+ * (attribs set, scale rounded, table). Returns false when no .def is found
+ * (preserving legacy behavior — no fields treated as suppressible).
+ */
+function templateIsCombatSuppressed(template, defEntries) {
+  if (!defEntries || defEntries.length === 0) return false;
+  const tplAttribs = new Set((template.attribs || []).map(a => a.replace(/^k/, '').replace(/_Attack$/i, '')));
+  const tplScale = Math.round((template.scale || 0) * 10000) / 10000;
+  const tplTable = template.table || '';
+  for (const entry of defEntries) {
+    if (entry.table !== tplTable) continue;
+    if (Math.round(entry.scale * 10000) / 10000 !== tplScale) continue;
+    if (entry.attribs.size !== tplAttribs.size) continue;
+    let ok = true;
+    for (const a of entry.attribs) { if (!tplAttribs.has(a)) { ok = false; break; } }
+    if (ok) return entry.suppressedInCombat;
+  }
+  return false;
+}
+
 /**
  * Recursively collect templates from effects, following Execute_Power references
  * to redirect files and filtering out dead-state conditionals.
@@ -236,7 +374,7 @@ function resolveRedirectPath(powerName) {
  * @param {number} depth - Current recursion depth
  * @returns {Array} - Flat array of all template objects
  */
-function collectTemplatesDeep(effects, visited = new Set(), depth = 0) {
+function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCombatGated = false) {
   const templates = [];
   const MAX_DEPTH = 3;
 
@@ -246,6 +384,7 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0) {
     if (effect.tags && effect.tags.includes('Containment')) continue;
     // Skip conditional effects that represent archetype inherent mechanics
     // (these are handled separately by the planner's toggle system)
+    let combatGated = parentCombatGated;
     if (effect.requires_expression) {
       const req = effect.requires_expression;
       // Dead-state conditionals (rez effects when HP == 0)
@@ -254,6 +393,8 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0) {
       if (req.includes('kMeter > 0') || req.includes('kMeter >=')) continue;
       // Scourge/proc-based bonus damage (random chance expressions)
       if (req.includes('rand()')) continue;
+      // Out-of-combat gating (pool Stealth, Invisibility) — propagate downward
+      if (_isOutOfCombatGate(req)) combatGated = true;
     }
 
     // Collect templates from this level
@@ -275,12 +416,13 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0) {
               const redirectJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8'));
               if (redirectJson.effects && redirectJson.effects.length > 0) {
                 templates.push(...collectTemplatesDeep(
-                  redirectJson.effects, visited, depth + 1
+                  redirectJson.effects, visited, depth + 1, combatGated
                 ));
               }
             }
           }
         } else {
+          if (combatGated) _tagCombatGated(template);
           templates.push(template);
         }
       }
@@ -288,7 +430,7 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0) {
 
     // Recurse into child_effects
     if (effect.child_effects && effect.child_effects.length > 0) {
-      templates.push(...collectTemplatesDeep(effect.child_effects, visited, depth));
+      templates.push(...collectTemplatesDeep(effect.child_effects, visited, depth, combatGated));
     }
   }
 
@@ -496,13 +638,37 @@ function isDefensePosition(attrib) {
 }
 
 /**
+ * Detect "out-of-combat-for-N-seconds" gating on an Effect's requires_expression.
+ * Pool Stealth, Invisibility, and similar powers wrap their suppressible defense
+ * buff inside an outer Effect with a requires clause like
+ *   `Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && ...`
+ * The buff only applies when no combat-related event has fired in the last N seconds,
+ * which is functionally identical to template-level Suppress events for our purposes.
+ */
+function _isOutOfCombatGate(req) {
+  if (!req) return false;
+  if (!req.includes('EventTimeSince')) return false;
+  return /\b(Attacked|Damaged|HitByFoe|MissionObjectClick|PseudoPetAttacked|Helped)\b/.test(req);
+}
+
+/** Tag templates with the synthetic property `_combatGated` when their parent
+ *  Effect (or any ancestor) is gated out-of-combat. The conversion's
+ *  extractEffects function reads this to route the buff into
+ *  `defenseBuffSuppressible`.
+ */
+function _tagCombatGated(template) {
+  template._combatGated = true;
+}
+
+/**
  * Recursively collect all templates from an effects array, including child_effects.
  * Filters out PVP_ONLY effects and effects with chance=0 (conditional procs).
  *
  * @param {Array} effects - Array of effect objects
+ * @param {boolean} parentCombatGated - True when ancestor Effect's requires gates out-of-combat
  * @returns {Array} - Flat array of all template objects
  */
-function collectAllTemplates(effects) {
+function collectAllTemplates(effects, parentCombatGated = false) {
   const templates = [];
 
   for (const effect of effects) {
@@ -518,6 +684,7 @@ function collectAllTemplates(effects) {
 
     // Skip conditional inherent bonuses (crit damage from hide/placate, Scourge procs).
     // These are handled by the UI's inherent toggle system.
+    let combatGated = parentCombatGated;
     if (effect.requires_expression) {
       const req = effect.requires_expression;
       // Dead-state effects (self-rez conditions)
@@ -530,16 +697,21 @@ function collectAllTemplates(effects) {
       // These are mutually exclusive modes — the base unconditional effects provide
       // the default values; mode-specific bonuses would overwrite them incorrectly
       if (req.includes('Source.Mode?') || req.includes('kMode')) continue;
+      // Out-of-combat gating (pool Stealth, Invisibility) — propagate downward
+      if (_isOutOfCombatGate(req)) combatGated = true;
     }
 
     // Collect templates from this level
     if (effect.templates && effect.templates.length > 0) {
-      templates.push(...effect.templates);
+      for (const t of effect.templates) {
+        if (combatGated) _tagCombatGated(t);
+        templates.push(t);
+      }
     }
 
     // Recurse into child_effects
     if (effect.child_effects && effect.child_effects.length > 0) {
-      templates.push(...collectAllTemplates(effect.child_effects));
+      templates.push(...collectAllTemplates(effect.child_effects, combatGated));
     }
   }
 
@@ -616,7 +788,7 @@ function extractDamage(templates) {
  * - "Magnitude" = magnitude-based effect
  * - "Duration" = duration-based effect (used for mez)
  */
-function extractEffects(templates, powerName) {
+function extractEffects(templates, powerName, defEntries = null) {
   const effects = {};
   const unmappedAttribs = new Set();
 
@@ -626,14 +798,21 @@ function extractEffects(templates, powerName) {
     // Skip deactivation-only effects (temporary bursts on toggle off, e.g., Reaction Time speed burst)
     if (template.application_type === 'OnDeactivate') continue;
 
-    // Skip combat-suppressed templates (suppressed by attacking, healing, or moving).
-    // These represent "while fully unsuppressed" bonuses (e.g., Hide's massive AoE defense
-    // while not in combat). In a build planner showing combat stats, these don't apply.
-    // Note: the non-suppressed templates on the same power provide the base combat values.
-    const hasCombatSuppress = template.suppress_events?.some(
+    // Combat-suppressed defense: route to defenseBuffSuppressible so the In-Combat
+    // toggle can suppress it (matches stealth powers like Hide, Stealth, Invisibility,
+    // Shadow Fall — their out-of-combat-only defense bonuses).
+    // The binary parser doesn't extract Suppress events yet; metadata comes from the
+    // .def file via loadDefSuppressionMap (see top of file). Fallback: legacy
+    // suppress_events check on the template itself, in case future parser changes
+    // populate them directly.
+    const isSuppressedByDef = templateIsCombatSuppressed(template, defEntries);
+    const isSuppressedByJson = template.suppress_events?.some(
       se => se.event === 'AttackedOther' || se.event === 'Healed' || se.event === 'Moved'
     );
-    if (hasCombatSuppress) continue;
+    // _combatGated is set by collectAllTemplates when an ancestor Effect's
+    // requires_expression gates the buff to "out of combat for N seconds"
+    // (pool Stealth, Invisibility, etc).
+    const isCombatSuppressed = isSuppressedByDef || isSuppressedByJson || template._combatGated;
 
     const aspect = template.aspect?.toLowerCase();
     const scale = template.scale || 0;
@@ -748,6 +927,10 @@ function extractEffects(templates, powerName) {
             if (!effects.defenseDebuff) effects.defenseDebuff = {};
             effects.defenseDebuff[dmgType.toLowerCase()] = makeEffect();
             recordDuration('defenseDebuff');
+          } else if (isCombatSuppressed) {
+            if (!effects.defenseBuffSuppressible) effects.defenseBuffSuppressible = {};
+            effects.defenseBuffSuppressible[dmgType.toLowerCase()] = makeEffect();
+            recordDuration('defenseBuffSuppressible');
           } else {
             if (!effects.defenseBuff) effects.defenseBuff = {};
             effects.defenseBuff[dmgType.toLowerCase()] = makeEffect();
@@ -771,16 +954,18 @@ function extractEffects(templates, powerName) {
             effects.resistance[posType.toLowerCase()] = makeEffect();
             recordDuration('resistance');
           }
+        } else if (isDebuff) {
+          if (!effects.defenseDebuff) effects.defenseDebuff = {};
+          effects.defenseDebuff[posType.toLowerCase()] = makeEffect();
+          recordDuration('defenseDebuff');
+        } else if (isCombatSuppressed) {
+          if (!effects.defenseBuffSuppressible) effects.defenseBuffSuppressible = {};
+          effects.defenseBuffSuppressible[posType.toLowerCase()] = makeEffect();
+          recordDuration('defenseBuffSuppressible');
         } else {
-          if (isDebuff) {
-            if (!effects.defenseDebuff) effects.defenseDebuff = {};
-            effects.defenseDebuff[posType.toLowerCase()] = makeEffect();
-            recordDuration('defenseDebuff');
-          } else {
-            if (!effects.defenseBuff) effects.defenseBuff = {};
-            effects.defenseBuff[posType.toLowerCase()] = makeEffect();
-            recordDuration('defenseBuff');
-          }
+          if (!effects.defenseBuff) effects.defenseBuff = {};
+          effects.defenseBuff[posType.toLowerCase()] = makeEffect();
+          recordDuration('defenseBuff');
         }
         continue;
       }
@@ -792,14 +977,15 @@ function extractEffects(templates, powerName) {
           if (!effects.debuffResistance) effects.debuffResistance = {};
           effects.debuffResistance.defense = makeEffect();
           recordDuration('debuffResistance');
+        } else if (isDebuff) {
+          effects.defenseDebuff = makeEffect();
+          recordDuration('defenseDebuff');
+        } else if (isCombatSuppressed) {
+          effects.defenseBuffSuppressible = makeEffect();
+          recordDuration('defenseBuffSuppressible');
         } else {
-          if (isDebuff) {
-            effects.defenseDebuff = makeEffect();
-            recordDuration('defenseDebuff');
-          } else {
-            effects.defenseBuff = makeEffect();
-            recordDuration('defenseBuff');
-          }
+          effects.defenseBuff = makeEffect();
+          recordDuration('defenseBuff');
         }
         continue;
       }
@@ -1464,10 +1650,13 @@ function convertPower(powerJson, availableLevel) {
     .map(b => BOOST_TYPE_MAP[b] || BIN_BOOST_MAP[b])
     .filter(Boolean);
 
-  // Allowed IO set categories
+  // Allowed IO set categories. Pass through values mapped by SET_CATEGORY_MAP,
+  // or values already in the known IOSetCategory set. Drop everything else —
+  // the bin parser occasionally yields off-by-N corrupted strings (e.g.
+  // "olumnEndgame.NictusFX") that would fail TypeScript's IOSetCategory union.
   if (powerJson.allowed_boostset_cats?.length) {
     power.allowedSetCategories = powerJson.allowed_boostset_cats
-      .map(c => SET_CATEGORY_MAP[c] || c)
+      .map(c => SET_CATEGORY_MAP[c] || (KNOWN_IO_SET_CATEGORIES.has(c) ? c : null))
       .filter(Boolean);
   }
 
@@ -1537,11 +1726,15 @@ function convertPower(powerJson, availableLevel) {
     }
   }
 
+  // Load .def-file metadata once for this power so extractEffects can split
+  // combat-suppressible defense buffs into effects.defenseBuffSuppressible.
+  const defEntries = loadDefSuppressionMap(powerJson.full_name);
+
   if (allTemplates.length > 0) {
     const damage = extractDamage(allTemplates);
     if (damage) power.damage = damage;
 
-    const effects = extractEffects(allTemplates, powerJson.name);
+    const effects = extractEffects(allTemplates, powerJson.name, defEntries);
 
     // Detect per-target stacking (Stack/Continuous templates, Execute_Power redirects)
     const stackingResult = detectStackingEffects(powerJson);
@@ -1779,6 +1972,7 @@ export default powerset;
 module.exports = {
   extractEffects,
   extractDamage,
+  loadDefSuppressionMap,
   toKebabCase,
   CATEGORY_MAP,
   BOOST_TYPE_MAP,

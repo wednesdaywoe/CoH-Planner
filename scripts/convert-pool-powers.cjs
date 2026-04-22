@@ -20,11 +20,20 @@ const {
   SET_CATEGORY_MAP,
   extractEffects,
   extractDamage,
+  loadDefSuppressionMap,
   collectAllTemplates,
   RAW_DATA_PATH,
 } = require('./convert-powerset.cjs');
 
-const RAW_POWERS_PATH = path.join(RAW_DATA_PATH, 'powers', 'pool');
+// HC bin export writes pool powers under `<RAW_DATA_PATH>/pool/`. The legacy
+// CoD2 layout had an extra `powers/` segment in the path; the bin layout
+// dropped it. Probe both so the converter works during transitions.
+const RAW_POWERS_PATH = (() => {
+  const newLayout = path.join(RAW_DATA_PATH, 'pool');
+  const oldLayout = path.join(RAW_DATA_PATH, 'powers', 'pool');
+  if (fs.existsSync(newLayout)) return newLayout;
+  return oldLayout;
+})();
 // Layered output (see src/data/README.md):
 //   - OUTPUT_PATH: the auto-extracted data lives here, overwritten on --apply
 //   - COMPOSED_PATH: hand-edit-safe facade that merges in overrides
@@ -166,8 +175,12 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     const damage = extractDamage(allTemplates);
     if (damage) effects.damage = damage;
 
+    // Combat-suppression metadata from .def files (used to split stealth defense
+    // into defenseBuff / defenseBuffSuppressible).
+    const defEntries = loadDefSuppressionMap(rawJson.full_name);
+
     // All other effects
-    const extractedEffects = extractEffects(allTemplates);
+    const extractedEffects = extractEffects(allTemplates, rawJson.name, defEntries);
     if (Object.keys(extractedEffects).length > 0) {
       // Merge extracted effects into the effects object
       // Map certain effect keys to legacy naming for the transformation layer
@@ -219,8 +232,9 @@ function convertPool(poolId) {
     powers: [],
   };
 
-  // Get power order from index (power_names is array of full names like "Pool.Fighting.Boxing")
-  const powerNames = poolIndex.power_names || [];
+  // Get power order from index. Old (CoD2) layout used `power_names`; the new
+  // bin-export layout uses `powers`. Probe both.
+  const powerNames = poolIndex.power_names || poolIndex.powers || [];
   const availableLevels = poolIndex.available_level || [];
 
   for (let i = 0; i < powerNames.length; i++) {

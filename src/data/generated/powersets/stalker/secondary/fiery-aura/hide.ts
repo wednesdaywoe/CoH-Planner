@@ -14,7 +14,7 @@ export const Hide: Power = {
   "available": 0,
   "description": "Hide makes you almost impossible to detect. When properly 'Hidden\", a Stalker can pull off Critical hits with his attacks, and even land a massive 'Assassin's Strike' with an Assassin's power. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. Unlike most stealth powers, Hide can be used at the same time as other Concealment powers, giving you even greater stealth capability. No Endurance cost.Recharge: Very Fast.",
   "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
-  "icon": "flamingshield_hide.png",
+  "icon": "flamingshield_hide",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -28,11 +28,24 @@ export const Hide: Power = {
     "Recharge",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
+  "allowedSetCategories": [],
   "maxSlots": 6,
   "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 150,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 500,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 0.75,
+      "defenseBuff": 0.75,
+      "defenseBuffSuppressible": 0.75
+    },
     "defenseBuff": {
       "ranged": {
         "scale": 0.25,
@@ -79,8 +92,51 @@ export const Hide: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75
+    "defenseBuffSuppressible": {
+      "ranged": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 5,
+        "table": "Melee_Buff_Def"
+      }
     },
     "buffDuration": 0.75
   }

@@ -125,6 +125,7 @@ export function PowerCard({
     <div
       className="bg-gray-800 rounded-lg px-3 py-2 border border-gray-700 hover:border-gray-600 transition-colors"
       onMouseEnter={handlePowerHover}
+      data-info-hover="power"
     >
       {/* Row 1: Level · Icon · Name | X button */}
       <div className="flex items-center gap-2 mb-1.5">

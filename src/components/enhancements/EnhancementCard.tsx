@@ -15,6 +15,7 @@ import {
   BOOST_MULTIPLIER_PER_LEVEL,
 } from '@/utils/calculations';
 import { getEnhancementOutline } from '@/utils/enhancement-outline';
+import { findProcData, parseProcEffect } from '@/data/proc-data';
 
 interface EnhancementCardProps {
   piece: IOSetPiece;
@@ -29,6 +30,15 @@ interface EnhancementCardProps {
   enhancementId?: string;  // Added for info panel display
   boost?: number;
 }
+
+const RARITY_LABEL: Record<IOSetRarity, string> = {
+  uncommon: 'Uncommon',
+  rare: 'Rare',
+  purple: 'Very Rare (Purple)',
+  ato: 'Archetype Origin (ATO)',
+  pvp: 'PvP',
+  event: 'Event',
+};
 
 export function EnhancementCard({
   piece,
@@ -79,12 +89,13 @@ export function EnhancementCard({
 
   return (
     <Tooltip
-      content={<EnhancementTooltip piece={piece} setName={setName} level={level} isAttuned={isAttuned} boost={boost} />}
+      content={<EnhancementTooltip piece={piece} setName={setName} level={level} isAttuned={isAttuned} boost={boost} category={category} />}
       position="right"
     >
       <button
         onClick={onClick}
         onMouseEnter={handleMouseEnter}
+        data-info-hover="enhancement"
         {...longPressHandlers}
         className={`
           w-full flex items-center gap-3 p-2 rounded
@@ -147,6 +158,7 @@ interface EnhancementTooltipProps {
   level: number;
   isAttuned: boolean;
   boost?: number;
+  category?: IOSetRarity;
 }
 
 /**
@@ -181,20 +193,23 @@ function formatEnhValue(value: number): string {
   return `${(value * 100).toFixed(2)}%`;
 }
 
-function EnhancementTooltip({ piece, setName, level, isAttuned, boost = 0 }: EnhancementTooltipProps) {
+function EnhancementTooltip({ piece, setName, level, isAttuned, boost = 0, category }: EnhancementTooltipProps) {
   // Attuned enhancements scale to character level; non-attuned use their fixed level
   const effectiveLevel = level;
   // Use explicit totalAspects when the piece has internal attributes beyond
   // the listed aspects (e.g. +Critical Hit% counts as 3 extra attributes)
   const aspectCount = piece.totalAspects ?? (piece.proc ? piece.aspects.length + 1 : piece.aspects.length);
   const boostMultiplier = 1 + boost * BOOST_MULTIPLIER_PER_LEVEL;
+  const rarityLabel = category ? RARITY_LABEL[category] : null;
+  const procEffect = piece.proc ? parseProcEffect((findProcData(piece.name, setName)?.mechanics) || '') : null;
 
   return (
     <div className="min-w-[220px]">
       <div className="font-medium text-white">{piece.name}</div>
       <div className="text-sm text-yellow-400">{setName}</div>
-      <div className="text-xs text-gray-400 mb-2 flex items-center gap-2">
+      <div className="text-xs text-gray-400 mb-2 flex items-center gap-2 flex-wrap">
         <span>{isAttuned ? 'Attuned (scales to level)' : `Level ${level}`}</span>
+        {rarityLabel && <span className="text-blue-300">• {rarityLabel}</span>}
         {boost > 0 && <span className="text-green-400">+{boost} Boosted</span>}
       </div>
 
@@ -218,20 +233,26 @@ function EnhancementTooltip({ piece, setName, level, isAttuned, boost = 0 }: Enh
 
       {/* Multi-aspect note */}
       {aspectCount > 1 && (
-        <div className="text-[10px] text-gray-500 mt-1 italic">
+        <div className="text-xs text-gray-400 mt-1 italic">
           {aspectCount === 2 ? '62.5%' : aspectCount === 3 ? '50%' : '43.75%'} per aspect ({aspectCount} aspects)
         </div>
       )}
 
       {/* Special flags */}
       {(piece.proc || piece.unique) && (
-        <div className="mt-2 pt-2 border-t border-gray-700 flex gap-2">
-          {piece.proc && (
-            <Badge variant="purple" size="sm">Proc</Badge>
-          )}
-          {piece.unique && (
-            <Badge variant="warning" size="sm">Unique</Badge>
-          )}
+        <div className="mt-2 pt-2 border-t border-gray-700">
+          <div className="flex gap-2">
+            {piece.proc && (
+              <Badge variant="purple" size="sm">Proc</Badge>
+            )}
+            {piece.unique && (
+              <Badge variant="warning" size="sm">Unique</Badge>
+            )}
+          </div>
+          <div className="text-xs text-gray-400 mt-1 leading-snug">
+            {piece.proc && <div>Proc: chance to trigger an extra effect on activation{procEffect ? ` (${procEffect.category})` : ''}.</div>}
+            {piece.unique && <div>Unique: only one of this piece can be slotted across your entire build.</div>}
+          </div>
         </div>
       )}
     </div>

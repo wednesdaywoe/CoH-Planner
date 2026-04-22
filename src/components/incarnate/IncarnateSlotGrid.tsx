@@ -9,6 +9,15 @@ import { Tooltip } from '@/components/ui';
 import { useLongPress } from '@/hooks';
 import { IncarnateEffectsTooltip } from './IncarnateEffectsTooltip';
 
+const SLOT_DESCRIPTION: Record<IncarnateSlotId, string> = {
+  alpha: 'Passive global buff that ignores the ED enhancement cap. Unlocks at level 50.',
+  judgement: 'Massive AoE nuke on a long recharge. Unlocks after running an iTrial.',
+  interface: 'Adds a chance for an extra effect on every attack you land.',
+  destiny: 'Powerful targeted-ally buff or area control on a long recharge.',
+  lore: 'Summons a pair of pets for 5 minutes on a long recharge.',
+  hybrid: 'Toggleable AT-flavored boost (Assault, Support, Control, or Melee).',
+};
+
 interface IncarnateSlotGridProps {
   incarnates: Record<IncarnateSlotId, SelectedIncarnatePower | null>;
   disabled: boolean;
@@ -88,22 +97,35 @@ function IncarnateSlotMini({
     onTap: onClick,
   });
 
+  const tierLabel = selectedPower
+    ? selectedPower.tier.charAt(0).toUpperCase() + selectedPower.tier.slice(1).replace('rare', ' Rare')
+    : '';
+
   const tooltipContent = selectedPower ? (
     <div className="max-w-[300px]">
       <div className="font-semibold text-white">{selectedPower.displayName}</div>
       <div className="text-xs text-gray-400">{selectedPower.treeName}</div>
-      <div className="text-xs mt-1" style={{ color: tierColor }}>
-        {selectedPower.tier.charAt(0).toUpperCase() + selectedPower.tier.slice(1)}
+      <div className="text-xs mt-1 flex items-center gap-1.5" style={{ color: tierColor }}>
+        <span
+          className="inline-block w-2 h-2 rounded-full"
+          style={{ backgroundColor: tierColor }}
+        />
+        Tier: {tierLabel}
       </div>
       {canToggle && (
-        <div className="text-[10px] text-gray-500 mt-1">Right-click or long-press to toggle</div>
+        <div className="text-[10px] text-gray-500 mt-1">
+          {isActive ? 'Active — right-click or long-press to disable' : 'Disabled — right-click or long-press to enable'}
+        </div>
       )}
       <IncarnateEffectsTooltip slotId={slotId} powerId={selectedPower.powerId} />
     </div>
   ) : (
-    <div>
+    <div className="max-w-[280px]">
       <div className="font-semibold" style={{ color: slotColor }}>{slotName}</div>
-      <div className="text-xs text-gray-400">{disabled ? 'Requires Level 50' : 'Click to select'}</div>
+      <div className="text-xs text-gray-400 mt-0.5">{SLOT_DESCRIPTION[slotId]}</div>
+      <div className="text-[10px] text-gray-500 mt-1">
+        {disabled ? 'Requires Level 50' : `Click to select a ${slotName} power`}
+      </div>
     </div>
   );
 

@@ -88,9 +88,17 @@ function formatBonusValue(value: number): string {
   return rounded.toString();
 }
 
+const ENHANCEMENT_TYPE_LABEL: Record<Enhancement['type'], { label: string; color: string }> = {
+  'io-set': { label: 'IO Set (yellow border)', color: 'text-yellow-400' },
+  'io-generic': { label: 'Generic IO (gray border)', color: 'text-gray-300' },
+  'special': { label: 'Special (purple border)', color: 'text-purple-400' },
+  'origin': { label: 'Origin (green border)', color: 'text-green-400' },
+};
+
 function EnhancementTooltip({ enhancement, slots }: EnhancementTooltipProps) {
   const ioSet = enhancement.type === 'io-set' ? getIOSet(enhancement.setId) : undefined;
   const bonusTracking = useBonusTracking();
+  const typeInfo = ENHANCEMENT_TYPE_LABEL[enhancement.type];
 
   // Count how many pieces of this set are slotted in the same power
   let slottedCount = 0;
@@ -109,15 +117,16 @@ function EnhancementTooltip({ enhancement, slots }: EnhancementTooltipProps) {
           {ioSet && <span className="text-yellow-600 ml-1.5 text-xs">({enhancement.pieceNum}/{ioSet.pieces.length})</span>}
         </div>
       )}
-      <div className="text-xs text-gray-400 flex items-center gap-2">
+      <div className="text-xs text-gray-400 flex items-center gap-2 flex-wrap">
+        {typeInfo && <span className={typeInfo.color}>{typeInfo.label}</span>}
         {enhancement.level && (
           <span>
-            Level {enhancement.level}
+            • Level {enhancement.level}
             {enhancement.attuned && ' (Attuned)'}
           </span>
         )}
         {enhancement.attuned && !enhancement.level && (
-          <span>Attuned</span>
+          <span>• Attuned</span>
         )}
         {enhancement.boost && enhancement.boost > 0 && (
           <span className="text-green-400">+{enhancement.boost} Boosted</span>

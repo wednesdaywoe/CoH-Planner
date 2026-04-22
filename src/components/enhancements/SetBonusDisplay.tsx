@@ -86,7 +86,7 @@ function BonusRow({ bonus, isActive, bonusTracking }: BonusRowProps) {
     <Tooltip
       content={
         <div>
-          <div className="font-medium">Requires {bonus.pieces} pieces</div>
+          <div className="font-medium text-gray-100">Requires {bonus.pieces} pieces</div>
           {pveEffects.length > 0 && (
             <div className="mt-1 space-y-0.5">
               {pveEffects.map((effect, i) => {
@@ -94,10 +94,10 @@ function BonusRow({ bonus, isActive, bonusTracking }: BonusRowProps) {
                 const totalCount = normalized ? getTotalBonusCount(bonusTracking, normalized, effect.value) : 0;
                 const capped = normalized ? isBonusCapped(bonusTracking, normalized, effect.value) : false;
                 return (
-                  <div key={i} className={`text-sm ${capped ? 'text-orange-400' : ''}`}>
+                  <div key={i} className={`text-[13px] ${capped ? 'text-orange-400' : 'text-gray-100'}`}>
                     {effect.stat}: +{formatBonusValue(effect.value)}%
                     {isActive && totalCount > 0 && (
-                      <span className={`ml-1 text-xs ${capped ? 'text-orange-400 font-semibold' : 'text-slate-500'}`}>
+                      <span className={`ml-1 text-xs ${capped ? 'text-orange-400 font-semibold' : 'text-slate-300'}`}>
                         ({totalCount}/5)
                       </span>
                     )}
@@ -108,10 +108,10 @@ function BonusRow({ bonus, isActive, bonusTracking }: BonusRowProps) {
           )}
           {pvpEffects.length > 0 && (
             <>
-              <div className="text-[10px] text-red-400/70 uppercase mt-1.5 mb-0.5">PvP Only</div>
+              <div className="text-xs text-red-400 uppercase mt-1.5 mb-0.5 font-medium">PvP Only</div>
               <div className="space-y-0.5">
                 {pvpEffects.map((effect, i) => (
-                  <div key={i} className="text-sm text-red-400/60">
+                  <div key={i} className="text-[13px] text-red-300">
                     {effect.stat}: +{formatBonusValue(effect.value)}%
                   </div>
                 ))}

@@ -280,6 +280,9 @@ function CollapsibleEffectGroup({
     <>
       {/* Clickable summary row */}
       <div
+        role="button"
+        aria-expanded={!collapsed}
+        title={collapsed ? `Show all ${items.length} ${label} entries` : `Collapse ${label} list`}
         className={`grid ${gridCols} gap-1 items-baseline ${fontSize} cursor-pointer select-none hover:bg-slate-700/30 -mx-0.5 px-0.5 rounded`}
         onClick={() => setCollapsed(!collapsed)}
       >

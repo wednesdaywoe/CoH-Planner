@@ -199,6 +199,7 @@ export function PowerItem({
       onMouseLeave={isTouch ? undefined : onLeave}
       onContextMenu={handleRightClick}
       onClick={handleClick}
+      data-info-hover="power"
       title={isLocked ? 'Right-click to unlock' : 'Right-click for info'}
       className={`
         w-full flex items-center gap-1.5 px-1.5 py-1 rounded-sm

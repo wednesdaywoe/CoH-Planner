@@ -83,6 +83,10 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const stalkerHidden = useStalkerHidden();
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
+  // Alpha-strike scenario only applies if the build has the Hide power. Without Hide there's no way
+  // to actually be in stealth, so stalkerHidden=true would model an impossible scenario.
+  const hasHide = build.secondary.powers.some((p) => p.internalName === 'Hide');
+  const effectiveHidden = stalkerHidden && hasHide;
   const containmentActive = useContainmentActive();
   const sentinelCritActive = useSentinelCritActive();
 
@@ -269,7 +273,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
     const isStalker = archetypeId === 'stalker';
     const isStalkerPower = isStalkerAttackPower(powerSet);
-    const assassinationBonus = calculateAssassinationDamageBonus(stalkerHidden, stalkerTeamSize);
+    const assassinationBonus = calculateAssassinationDamageBonus(effectiveHidden, stalkerTeamSize);
     const showAssassination = isStalker && isStalkerPower && stalkerCritActive;
 
     const isController = archetypeId === 'controller';
@@ -285,7 +289,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       : showFury ? 'w/ Fury'
       : showVigilance ? 'w/ Vigilance'
       : showCriticalHits ? 'w/ Crit'
-      : showAssassination ? (stalkerHidden ? 'w/ Crit' : 'w/ Assassin')
+      : showAssassination ? (effectiveHidden ? 'w/ Crit' : 'w/ Assassin')
       : showContainment ? 'w/ Contain'
       : showOpportunityCrit ? 'w/ Crit'
       : 'Final';
@@ -306,7 +310,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       if (showFury) return calculateFuryDamage(damage, furyLevel);
       if (showVigilance) return calculateVigilanceDamage(damage, build.level, vigilanceTeamSize);
       if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
-      if (showAssassination) return calculateAssassinationDamage(damage, stalkerHidden, stalkerTeamSize);
+      if (showAssassination) return calculateAssassinationDamage(damage, effectiveHidden, stalkerTeamSize);
       if (showContainment) return calculateContainmentDamage(damage, true);
       if (showOpportunityCrit) return calculateOpportunityCritDamage(damage);
       return damage;
@@ -329,7 +333,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       opportunityCritBonus: showOpportunityCrit ? getOpportunityCritBonus() : 0,
     };
   }, [calculatedDamage, archetypeId, powerSet, scourgeActive, furyLevel, vigilanceTeamSize,
-      criticalHitsActive, stalkerHidden, stalkerTeamSize, stalkerCritActive, containmentActive,
+      criticalHitsActive, effectiveHidden, stalkerTeamSize, stalkerCritActive, containmentActive,
       sentinelCritActive, build.level]);
 
   // All hooks are above this point — safe to early return
@@ -591,7 +595,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           )}
           {damageDisplayInfo.showAssassination && (
             <div className="text-[8px] text-sk-magenta">
-              +{(damageDisplayInfo.assassinationBonus * 100).toFixed(0)}% avg from Assassination ({stalkerHidden ? 'Hidden' : 'Visible'})
+              +{(damageDisplayInfo.assassinationBonus * 100).toFixed(0)}% avg from Assassination ({effectiveHidden ? 'Alpha Strike' : 'Sustained'})
             </div>
           )}
           {damageDisplayInfo.showOpportunityCrit && (
@@ -902,31 +906,31 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         if (!calculatedDamage) return null;
 
         const assassinationInfo = getAssassinationInfo();
-        const currentBonus = calculateAssassinationDamageBonus(stalkerHidden, stalkerTeamSize);
-        const critChance = stalkerHidden ? 1.0 : assassinationInfo.baseCritChance + (stalkerTeamSize * assassinationInfo.critChancePerTeammate);
+        const currentBonus = calculateAssassinationDamageBonus(effectiveHidden, stalkerTeamSize);
+        const critChance = effectiveHidden ? 1.0 : assassinationInfo.baseCritChance + (stalkerTeamSize * assassinationInfo.critChancePerTeammate);
 
         return (
           <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
-            stalkerHidden
+            effectiveHidden
               ? 'bg-sk-magenta/15 border-sk-magenta/40'
               : currentBonus > 0
                 ? 'bg-sk-magenta/10 border-sk-magenta/30'
                 : 'bg-slate-800/50 border-slate-700/30'
           }`}>
             <div className="flex items-center justify-between">
-              <span className={`font-medium ${stalkerHidden || currentBonus > 0 ? 'text-sk-magenta' : 'text-slate-400'}`}>
+              <span className={`font-medium ${effectiveHidden || currentBonus > 0 ? 'text-sk-magenta' : 'text-slate-400'}`}>
                 Assassination
               </span>
               <span className={`text-[8px] px-1.5 py-0.5 rounded ${
-                stalkerHidden
+                effectiveHidden
                   ? 'bg-sk-magenta/25 text-sk-magenta'
                   : 'bg-sk-magenta/20 text-sk-magenta'
               }`}>
-                {stalkerHidden ? 'FROM HIDE' : `${stalkerTeamSize === 0 ? 'Solo' : `+${stalkerTeamSize}`}`}
+                {effectiveHidden ? 'ALPHA STRIKE' : `${stalkerTeamSize === 0 ? 'Solo' : `+${stalkerTeamSize}`}`}
               </span>
             </div>
             <div className="mt-1 space-y-0.5 text-[9px]">
-              {stalkerHidden ? (
+              {effectiveHidden ? (
                 <>
                   <div className="flex justify-between">
                     <span className="text-slate-400">From Hide:</span>
@@ -1061,11 +1065,41 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 // Enhancement info content for slotted enhancements
 import { EnhancementInfoContent } from './EnhancementInfoContent';
 
+type TooltipContent =
+  | { type: 'power'; powerName: string; powerSet: string }
+  | { type: 'slotted-enhancement'; powerName: string; slotIndex: number };
+
+function TooltipBody({ content }: { content: TooltipContent }) {
+  return (
+    <div className="bg-slate-900/95 border border-slate-600 rounded-lg shadow-xl p-2">
+      {content.type === 'power' && (
+        <PowerInfoContent powerName={content.powerName} powerSet={content.powerSet} />
+      )}
+      {content.type === 'slotted-enhancement' && (
+        <EnhancementInfoContent powerName={content.powerName} slotIndex={content.slotIndex} />
+      )}
+    </div>
+  );
+}
+
+function sameContent(a: TooltipContent, b: TooltipContent): boolean {
+  if (a.type !== b.type) return false;
+  if (a.type === 'power' && b.type === 'power') {
+    return a.powerName === b.powerName && a.powerSet === b.powerSet;
+  }
+  if (a.type === 'slotted-enhancement' && b.type === 'slotted-enhancement') {
+    return a.powerName === b.powerName && a.slotIndex === b.slotIndex;
+  }
+  return false;
+}
+
 export function PowerInfoTooltip() {
   const tooltipEnabled = useUIStore((s) => s.infoPanel.tooltipEnabled);
   const infoPanelContent = useUIStore((s) => s.infoPanel.content);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [visible, setVisible] = useState(false);
+  const [overSource, setOverSource] = useState(false);
+  const [shiftHeld, setShiftHeld] = useState(false);
+  const [pinned, setPinned] = useState<{ content: TooltipContent; position: { x: number; y: number } } | null>(null);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     // Position tooltip to the right and slightly below cursor
@@ -1080,50 +1114,100 @@ export function PowerInfoTooltip() {
       x: Math.min(x, maxX),
       y: Math.min(y, maxY),
     });
+
+    // Track whether the cursor is over a tooltip-source element
+    const target = e.target as Element | null;
+    const onSource = !!target?.closest?.('[data-info-hover]');
+    setOverSource(onSource);
   }, []);
 
-  // Determine if we should show the tooltip
-  const shouldShow = tooltipEnabled && infoPanelContent && (
+  // Track Shift key state
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'Shift') setShiftHeld(true);
+    };
+    const up = (e: KeyboardEvent) => {
+      if (e.key === 'Shift') {
+        setShiftHeld(false);
+        setPinned(null);
+      }
+    };
+    window.addEventListener('keydown', down);
+    window.addEventListener('keyup', up);
+    return () => {
+      window.removeEventListener('keydown', down);
+      window.removeEventListener('keyup', up);
+    };
+  }, []);
+
+  // When Shift is pressed while a tooltip is showing, pin the current content
+  useEffect(() => {
+    if (!shiftHeld) return;
+    if (pinned) return;
+    if (!infoPanelContent) return;
+    if (infoPanelContent.type !== 'power' && infoPanelContent.type !== 'slotted-enhancement') return;
+    if (!overSource) return;
+    setPinned({
+      content: infoPanelContent as TooltipContent,
+      position: { ...position },
+    });
+  }, [shiftHeld, pinned, infoPanelContent, overSource, position]);
+
+  // Determine if we should show the live (hover) tooltip
+  const liveIsValid = !!infoPanelContent && (
     infoPanelContent.type === 'power' || infoPanelContent.type === 'slotted-enhancement'
   );
+  // Hide the live tooltip when it duplicates the pinned one (so you don't see two identical cards)
+  const liveDuplicate = !!pinned && liveIsValid && sameContent(pinned.content, infoPanelContent as TooltipContent);
+  const showLive = tooltipEnabled && liveIsValid && overSource && !liveDuplicate;
 
   useEffect(() => {
-    if (shouldShow) {
-      setVisible(true);
-      window.addEventListener('mousemove', handleMouseMove);
-      return () => window.removeEventListener('mousemove', handleMouseMove);
-    } else {
-      setVisible(false);
-    }
-  }, [shouldShow, handleMouseMove]);
+    if (!tooltipEnabled) return;
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [tooltipEnabled, handleMouseMove]);
 
-  if (!visible || !infoPanelContent) {
-    return null;
+  if (!tooltipEnabled) return null;
+  if (!showLive && !pinned) return null;
+
+  // Position the pinned tooltip; place the live one beside it with a gap when both are shown
+  const PIN_GAP = 12;
+  const PIN_WIDTH_EST = 320;
+  let liveLeft = position.x;
+  let liveTop = position.y;
+  if (pinned && showLive) {
+    // Prefer placing the live tooltip to the right of the pinned; if off-screen, place to the left
+    const preferredLeft = pinned.position.x + PIN_WIDTH_EST + PIN_GAP;
+    if (preferredLeft + PIN_WIDTH_EST > window.innerWidth - 8) {
+      liveLeft = Math.max(8, pinned.position.x - PIN_WIDTH_EST - PIN_GAP);
+    } else {
+      liveLeft = preferredLeft;
+    }
+    liveTop = pinned.position.y;
   }
 
   return createPortal(
-    <div
-      className="fixed z-50 pointer-events-none"
-      style={{
-        left: position.x,
-        top: position.y,
-      }}
-    >
-      <div className="bg-slate-900/95 border border-slate-600 rounded-lg shadow-xl p-2">
-        {infoPanelContent.type === 'power' && (
-          <PowerInfoContent
-            powerName={infoPanelContent.powerName}
-            powerSet={infoPanelContent.powerSet}
-          />
-        )}
-        {infoPanelContent.type === 'slotted-enhancement' && (
-          <EnhancementInfoContent
-            powerName={infoPanelContent.powerName}
-            slotIndex={infoPanelContent.slotIndex}
-          />
-        )}
-      </div>
-    </div>,
+    <>
+      {pinned && (
+        <div
+          className="fixed z-50 pointer-events-none"
+          style={{ left: pinned.position.x, top: pinned.position.y }}
+        >
+          <div className="ring-2 ring-sky-400/70 rounded-lg">
+            <TooltipBody content={pinned.content} />
+          </div>
+          <div className="text-[9px] text-sky-300 text-center mt-0.5">Pinned (Shift)</div>
+        </div>
+      )}
+      {showLive && infoPanelContent && (
+        <div
+          className="fixed z-50 pointer-events-none"
+          style={{ left: liveLeft, top: liveTop }}
+        >
+          <TooltipBody content={infoPanelContent as TooltipContent} />
+        </div>
+      )}
+    </>,
     document.body
   );
 }

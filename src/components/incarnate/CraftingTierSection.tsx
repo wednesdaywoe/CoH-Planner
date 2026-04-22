@@ -68,6 +68,8 @@ export function CraftingTierSection({
       <button
         type="button"
         onClick={() => setCollapsed((c) => !c)}
+        title={collapsed ? `Show salvage required for Tier ${tier}: ${tierName}` : `Hide Tier ${tier} salvage list`}
+        aria-expanded={!collapsed}
         className="w-full px-3 py-1.5 flex items-center justify-between cursor-pointer hover:brightness-125 transition-all"
         style={{ backgroundColor: `${tierColor}15`, borderLeft: `3px solid ${tierColor}` }}
       >

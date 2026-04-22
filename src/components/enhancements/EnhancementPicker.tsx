@@ -169,6 +169,8 @@ export function EnhancementPicker() {
     return 0;
   };
 
+  const levelUpMode = useUIStore((s) => s.levelUpMode);
+
   // Filter sets based on sidebar selection, then sort
   const filteredSets = useMemo(() => {
     let sets: IOSet[];
@@ -197,6 +199,10 @@ export function EnhancementPicker() {
       default:
         sets = availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
     }
+    // Level Up mode: only show sets the character can use at their current level
+    if (levelUpMode) {
+      sets = sets.filter((set) => set.minLevel <= build.level);
+    }
     if (sidebarFilter === 'all') {
       // In 'all' view, group standard sets first, then special sets at bottom
       if (ioSortBy === 'level') {
@@ -210,7 +216,7 @@ export function EnhancementPicker() {
       sets = [...sets].sort((a, b) => a.name.localeCompare(b.name));
     }
     return sets;
-  }, [availableSets, sidebarFilter, ioSortBy]);
+  }, [availableSets, sidebarFilter, ioSortBy, levelUpMode, build.level]);
 
   // Flat list of individual proc pieces for the Procs filter
   const procPieces = useMemo(() => {
@@ -554,10 +560,10 @@ export function EnhancementPicker() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-700 bg-gray-900/50 flex-shrink-0">
           <div className="flex overflow-x-auto">
             {[
-              { id: 'io-sets' as const, label: 'IO Sets' },
-              { id: 'generic' as const, label: 'Generic IO' },
-              { id: 'special' as const, label: 'Special' },
-              { id: 'origin' as const, label: 'Origin' },
+              { id: 'io-sets' as const, label: 'IO Sets', title: 'Set IOs that grant set bonuses when slotted together' },
+              { id: 'generic' as const, label: 'Generic IO', title: 'Single-aspect Invention enhancements (no set bonuses)' },
+              { id: 'special' as const, label: 'Special', title: 'Special enhancements: Hamidon Origin (HO), D-Sync, Titan, etc.' },
+              { id: 'origin' as const, label: 'Origin', title: 'Training, Dual, and Single Origin enhancements' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -565,6 +571,7 @@ export function EnhancementPicker() {
                   setTypeFilter(tab.id);
                   setSidebarFilter('all');
                 }}
+                title={tab.title}
                 className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                   typeFilter === tab.id
                     ? 'text-blue-400 border-b-2 border-blue-400 bg-gray-800/50'
@@ -577,10 +584,14 @@ export function EnhancementPicker() {
           </div>
           {/* IO Level adjuster + Attunement toggle + Boost dial */}
           <div className="px-3 sm:px-4 py-1.5 sm:py-0 border-t sm:border-t-0 border-gray-700 flex items-center gap-4">
-            <div className={`flex items-center gap-1.5 ${attunementEnabled ? 'opacity-40 pointer-events-none' : ''}`}>
+            <div
+              className={`flex items-center gap-1.5 ${attunementEnabled ? 'opacity-40 pointer-events-none' : ''}`}
+              title="Crafting level for IO enhancements (10–53). Higher level = stronger effect, but exemplaring below the level disables it."
+            >
               <span className="text-xs text-gray-400">Lv</span>
               <button
                 onClick={() => setGlobalIOLevel(globalIOLevel - 1)}
+                title="Decrease IO crafting level"
                 className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
                 disabled={attunementEnabled || globalIOLevel <= 10}
               >-</button>
@@ -589,6 +600,7 @@ export function EnhancementPicker() {
               </span>
               <button
                 onClick={() => setGlobalIOLevel(globalIOLevel + 1)}
+                title="Increase IO crafting level"
                 className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
                 disabled={attunementEnabled || globalIOLevel >= 53}
               >+</button>
@@ -599,11 +611,16 @@ export function EnhancementPicker() {
               checked={attunementEnabled}
               onChange={toggleAttunement}
               label="Attuned"
+              title="Attuned IOs scale with your current level — never lose effect when exemplaring."
             />
-            <div className="flex items-center gap-1.5">
+            <div
+              className="flex items-center gap-1.5"
+              title="Catalyst boost level (+0 to +5). Each boost increases enhancement strength."
+            >
               <span className="text-xs text-gray-400">Boost</span>
               <button
                 onClick={() => setGlobalBoostLevel(globalBoostLevel - 1)}
+                title="Decrease catalyst boost level"
                 className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
                 disabled={globalBoostLevel === 0}
               >-</button>
@@ -612,6 +629,7 @@ export function EnhancementPicker() {
               </span>
               <button
                 onClick={() => setGlobalBoostLevel(globalBoostLevel + 1)}
+                title="Increase catalyst boost level"
                 className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
                 disabled={globalBoostLevel === 5}
               >+</button>
@@ -627,6 +645,7 @@ export function EnhancementPicker() {
               count={availableSets.filter((s) => !isSpecialSet(s)).length}
               isActive={sidebarFilter === 'all'}
               onClick={() => setSidebarFilter('all')}
+              title="Show every standard set category for this power"
             />
             {standardCategories.map((cat) => (
               <MobileCategoryButton
@@ -636,6 +655,7 @@ export function EnhancementPicker() {
                 isActive={sidebarFilter === cat}
                 onClick={() => setSidebarFilter(cat)}
                 textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}
+                title={cat === primaryCategory ? `${cat} (this power's primary set category)` : cat}
               />
             ))}
             {hasUniversal && (
@@ -644,6 +664,7 @@ export function EnhancementPicker() {
                 count={availableSets.filter((s) => s.type === 'Universal Damage Sets').length}
                 isActive={sidebarFilter === 'universal'}
                 onClick={() => setSidebarFilter('universal')}
+                title="Universal Damage sets — slot in any damaging power regardless of category"
               />
             )}
             {hasVeryRare && (
@@ -653,6 +674,7 @@ export function EnhancementPicker() {
                 isActive={sidebarFilter === 'very-rare'}
                 onClick={() => setSidebarFilter('very-rare')}
                 textColor="text-purple-400"
+                title="Very Rare (Purple) sets — level 50 only, but always exemplar-safe"
               />
             )}
             {hasEvent && (
@@ -662,6 +684,7 @@ export function EnhancementPicker() {
                 isActive={sidebarFilter === 'event'}
                 onClick={() => setSidebarFilter('event')}
                 textColor="text-cyan-400"
+                title="Event sets (Winter, Summer, Anniversary) — earned from seasonal events; attuned by default"
               />
             )}
             {hasArchetype && (
@@ -671,6 +694,7 @@ export function EnhancementPicker() {
                 isActive={sidebarFilter === 'archetype'}
                 onClick={() => setSidebarFilter('archetype')}
                 textColor="text-orange-400"
+                title="Archetype Origin sets — exclusive to your AT, slottable from level 10"
               />
             )}
             {hasPvP && (
@@ -680,6 +704,7 @@ export function EnhancementPicker() {
                 isActive={sidebarFilter === 'pvp'}
                 onClick={() => setSidebarFilter('pvp')}
                 textColor="text-red-400"
+                title="PvP IO sets — earned through PvP zones/arenas; attuned by default"
               />
             )}
             {hasProcs && (
@@ -689,6 +714,7 @@ export function EnhancementPicker() {
                 isActive={sidebarFilter === 'procs'}
                 onClick={() => setSidebarFilter('procs')}
                 textColor="text-amber-400"
+                title="All proc enhancements (chance-for-X effects) across every set"
               />
             )}
           </div>
@@ -704,6 +730,7 @@ export function EnhancementPicker() {
                 count={availableSets.filter((s) => !isSpecialSet(s)).length}
                 isActive={sidebarFilter === 'all'}
                 onClick={() => setSidebarFilter('all')}
+                title="Show every standard set category for this power"
               />
 
               {/* Standard set categories (data-driven from power's allowed sets) */}
@@ -715,6 +742,7 @@ export function EnhancementPicker() {
                   isActive={sidebarFilter === cat}
                   onClick={() => setSidebarFilter(cat)}
                   textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}
+                  title={cat === primaryCategory ? `${cat} (this power's primary set category)` : cat}
                 />
               ))}
 
@@ -725,6 +753,7 @@ export function EnhancementPicker() {
                   count={availableSets.filter((s) => s.type === 'Universal Damage Sets').length}
                   isActive={sidebarFilter === 'universal'}
                   onClick={() => setSidebarFilter('universal')}
+                  title="Universal Damage sets — slot in any damaging power regardless of category"
                 />
               )}
 
@@ -736,6 +765,7 @@ export function EnhancementPicker() {
                   isActive={sidebarFilter === 'very-rare'}
                   onClick={() => setSidebarFilter('very-rare')}
                   textColor="text-purple-400"
+                  title="Very Rare (Purple) sets — level 50 only, but always exemplar-safe"
                 />
               )}
 
@@ -747,6 +777,7 @@ export function EnhancementPicker() {
                   isActive={sidebarFilter === 'event'}
                   onClick={() => setSidebarFilter('event')}
                   textColor="text-cyan-400"
+                  title="Event sets (Winter, Summer, Anniversary) — earned from seasonal events; attuned by default"
                 />
               )}
 
@@ -758,6 +789,7 @@ export function EnhancementPicker() {
                   isActive={sidebarFilter === 'archetype'}
                   onClick={() => setSidebarFilter('archetype')}
                   textColor="text-orange-400"
+                  title="Archetype Origin sets — exclusive to your AT, slottable from level 10"
                 />
               )}
 
@@ -769,6 +801,7 @@ export function EnhancementPicker() {
                   isActive={sidebarFilter === 'pvp'}
                   onClick={() => setSidebarFilter('pvp')}
                   textColor="text-red-400"
+                  title="PvP IO sets — earned through PvP zones/arenas; attuned by default"
                 />
               )}
 
@@ -780,6 +813,7 @@ export function EnhancementPicker() {
                   isActive={sidebarFilter === 'procs'}
                   onClick={() => setSidebarFilter('procs')}
                   textColor="text-amber-400"
+                  title="All proc enhancements (chance-for-X effects) across every set"
                 />
               )}
             </div>
@@ -889,12 +923,14 @@ interface SidebarButtonProps {
   isActive: boolean;
   onClick: () => void;
   textColor?: string;
+  title?: string;
 }
 
-function SidebarButton({ label, count, isActive, onClick, textColor }: SidebarButtonProps) {
+function SidebarButton({ label, count, isActive, onClick, textColor, title }: SidebarButtonProps) {
   return (
     <button
       onClick={onClick}
+      title={title}
       className={`w-full px-3 py-2 text-left text-sm transition-colors ${
         isActive
           ? 'bg-blue-900/30 text-blue-300 border-l-2 border-blue-400'
@@ -916,12 +952,14 @@ interface MobileCategoryButtonProps {
   isActive: boolean;
   onClick: () => void;
   textColor?: string;
+  title?: string;
 }
 
-function MobileCategoryButton({ label, count, isActive, onClick, textColor }: MobileCategoryButtonProps) {
+function MobileCategoryButton({ label, count, isActive, onClick, textColor, title }: MobileCategoryButtonProps) {
   return (
     <button
       onClick={onClick}
+      title={title}
       className={`px-2.5 py-1 text-xs font-medium rounded-full whitespace-nowrap transition-colors ${
         isActive
           ? 'bg-blue-600 text-white'

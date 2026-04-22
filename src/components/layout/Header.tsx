@@ -120,6 +120,9 @@ export function Header() {
         {/* Inline Level Slider */}
         <HeaderLevelSlider />
 
+        {/* Level Up Mode toggle */}
+        <LevelUpModeButton />
+
         {/* Undo / Redo */}
         <div className="flex items-center gap-0.5" data-onboarding="undo-redo">
           <button
@@ -162,12 +165,28 @@ export function Header() {
         </Button>
 
         <div className="flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
-          <Toggle id="combat-mode-toggle" name="combatMode" checked={combatMode} onChange={toggleCombatMode} label="In-Combat" className="!gap-2" />
+          <Toggle
+            id="combat-mode-toggle"
+            name="combatMode"
+            checked={combatMode}
+            onChange={toggleCombatMode}
+            label="In-Combat"
+            title="Show stats as they would be in active combat — includes always-on toggles and proc averages."
+            className="!gap-2"
+          />
         </div>
 
         <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
-          <Toggle id="procs-toggle" name="procs" checked={includeProcDamageInDPS} onChange={toggleIncludeProcDamageInDPS} label="Procs" className="!gap-2" />
-          <button onClick={openProcSettingsModal} className="ml-1 text-slate-400 hover:text-white transition-colors" title="Proc Settings">
+          <Toggle
+            id="procs-toggle"
+            name="procs"
+            checked={includeProcDamageInDPS}
+            onChange={toggleIncludeProcDamageInDPS}
+            label="Procs"
+            title="Include proc damage in DPS calculations (averaged based on activation rate). Click the gear to configure proc behavior."
+            className="!gap-2"
+          />
+          <button onClick={openProcSettingsModal} className="ml-1 text-slate-400 hover:text-white transition-colors" title="Proc Settings — configure how procs are averaged into DPS">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -176,7 +195,15 @@ export function Header() {
         </div>
 
         <div className="flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
-          <Toggle id="avg-dmg-toggle" name="avgDmg" checked={showDamagePerActivation} onChange={toggleShowDamagePerActivation} label="Avg Dmg" className="!gap-2" />
+          <Toggle
+            id="avg-dmg-toggle"
+            name="avgDmg"
+            checked={showDamagePerActivation}
+            onChange={toggleShowDamagePerActivation}
+            label="Avg Dmg"
+            title="Show average damage per activation instead of DPS (damage per second). Useful when comparing single attacks without recharge."
+            className="!gap-2"
+          />
         </div>
 
         {archetypeId && <ATMechanics archetypeId={archetypeId} />}
@@ -200,6 +227,32 @@ export function Header() {
         onCancel={() => setConfirmAction(null)}
       />
     </header>
+  );
+}
+
+// ---- Level Up Mode Button ----
+
+function LevelUpModeButton() {
+  const levelUpMode = useUIStore((s) => s.levelUpMode);
+  const toggleLevelUpMode = useUIStore((s) => s.toggleLevelUpMode);
+
+  return (
+    <button
+      onClick={toggleLevelUpMode}
+      title={levelUpMode
+        ? 'Level Up Mode: ON — enhancements filtered to your character level'
+        : 'Level Up Mode: OFF — show all enhancements regardless of level'}
+      className={`flex items-center gap-1 px-2 py-1 rounded border text-xs font-medium transition-colors ${
+        levelUpMode
+          ? 'border-emerald-500 bg-emerald-600/20 text-emerald-300 hover:bg-emerald-600/30'
+          : 'border-slate-600 bg-slate-700/50 text-slate-400 hover:text-slate-200'
+      }`}
+    >
+      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+      <span className="hidden lg:inline">Level Up</span>
+    </button>
   );
 }
 
@@ -662,26 +715,30 @@ function SettingsPopover() {
           </div>
 
           {/* UI Scale — hidden on mobile (CSS zoom unreliable on mobile browsers) */}
-          <div className="space-y-1 hidden sm:block">
-            <label className="text-xs text-gray-400">UI Scale</label>
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => setUIScale(uiScale - 0.05)}
-                disabled={uiScale <= 0.85}
-                className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
-              >
-                &minus;
-              </button>
-              <span className="text-sm font-bold text-sky-400 w-10 text-center">{Math.round(uiScale * 100)}%</span>
-              <button
-                onClick={() => setUIScale(uiScale + 0.05)}
-                disabled={uiScale >= 1.3}
-                className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
-              >
-                +
-              </button>
+          <Tooltip content="Zoom the interface from 85% to 130%. Useful for high-DPI displays or smaller screens.">
+            <div className="space-y-1 hidden sm:block">
+              <label className="text-xs text-gray-400">UI Scale</label>
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setUIScale(uiScale - 0.05)}
+                  disabled={uiScale <= 0.85}
+                  aria-label="Decrease UI scale"
+                  className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+                >
+                  &minus;
+                </button>
+                <span className="text-sm font-bold text-sky-400 w-10 text-center">{Math.round(uiScale * 100)}%</span>
+                <button
+                  onClick={() => setUIScale(uiScale + 0.05)}
+                  disabled={uiScale >= 1.3}
+                  aria-label="Increase UI scale"
+                  className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+                >
+                  +
+                </button>
+              </div>
             </div>
-          </div>
+          </Tooltip>
 
           {/* Origin */}
           <div className="space-y-1">
@@ -766,32 +823,36 @@ function SettingsPopover() {
               </Tooltip>
             </div>
             {exemplarMode && (
-              <div className="flex items-center gap-1 pl-1">
-                <button
-                  onClick={() => setExemplarLevel(exemplarLevel - 1)}
-                  disabled={exemplarLevel <= 1}
-                  className="text-slate-400 hover:text-amber-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
-                >
-                  &minus;
-                </button>
-                <span className="text-sm font-bold text-amber-400 w-6 text-center">{exemplarLevel}</span>
-                <button
-                  onClick={() => setExemplarLevel(exemplarLevel + 1)}
-                  disabled={exemplarLevel >= 50}
-                  className="text-slate-400 hover:text-amber-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
-                >
-                  +
-                </button>
-                <Slider
-                  value={exemplarLevel}
-                  min={1}
-                  max={50}
-                  onChange={(e) => setExemplarLevel(Number(e.target.value))}
-                  className="w-28"
-                  showValue={false}
-                  showRange={false}
-                />
-              </div>
+              <Tooltip content="Simulated exemplar level (1–50). Powers and set bonuses above this level are suppressed.">
+                <div className="flex items-center gap-1 pl-1">
+                  <button
+                    onClick={() => setExemplarLevel(exemplarLevel - 1)}
+                    disabled={exemplarLevel <= 1}
+                    aria-label="Decrease exemplar level"
+                    className="text-slate-400 hover:text-amber-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                  >
+                    &minus;
+                  </button>
+                  <span className="text-sm font-bold text-amber-400 w-6 text-center">{exemplarLevel}</span>
+                  <button
+                    onClick={() => setExemplarLevel(exemplarLevel + 1)}
+                    disabled={exemplarLevel >= 50}
+                    aria-label="Increase exemplar level"
+                    className="text-slate-400 hover:text-amber-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                  >
+                    +
+                  </button>
+                  <Slider
+                    value={exemplarLevel}
+                    min={1}
+                    max={50}
+                    onChange={(e) => setExemplarLevel(Number(e.target.value))}
+                    className="w-28"
+                    showValue={false}
+                    showRange={false}
+                  />
+                </div>
+              </Tooltip>
             )}
           </div>
 
@@ -825,6 +886,7 @@ function SettingsPopover() {
             </div>
             <button
               onClick={resetOnboarding}
+              title="Restart all dismissed onboarding hints from the beginning"
               className="text-xs text-sky-400 hover:text-sky-300 transition-colors"
             >
               Reset guided hints
@@ -920,6 +982,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
             <button
               onClick={() => setFuryLevel(Math.max(0, furyLevel - 1))}
               disabled={furyLevel <= 0}
+              aria-label="Decrease Fury level"
               className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
             >
               &minus;
@@ -928,6 +991,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
             <button
               onClick={() => setFuryLevel(Math.min(100, furyLevel + 1))}
               disabled={furyLevel >= 100}
+              aria-label="Increase Fury level"
               className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
             >
               +
@@ -980,6 +1044,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
               <button
                 onClick={() => setVigilanceTeamSize(Math.max(0, vigilanceTeamSize - 1))}
                 disabled={vigilanceTeamSize <= 0}
+                aria-label="Decrease team size"
                 className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
               >
                 &minus;
@@ -988,6 +1053,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
               <button
                 onClick={() => setVigilanceTeamSize(Math.min(7, vigilanceTeamSize + 1))}
                 disabled={vigilanceTeamSize >= 7}
+                aria-label="Increase team size"
                 className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
               >
                 +
@@ -1028,35 +1094,45 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
 
       {/* Stalker controls */}
       {archetypeId === 'stalker' && (() => {
-        const damageBonus = calculateAssassinationDamageBonus(stalkerHidden, stalkerTeamSize);
+        const hasHide = build.secondary.powers.some((p) => p.internalName === 'Hide');
+        // If Hide isn't in the build, force the alpha-strike scenario off so calculations stay honest
+        const alphaStrike = stalkerHidden && hasHide;
+        const damageBonus = calculateAssassinationDamageBonus(alphaStrike, stalkerTeamSize);
         const teamLabel = stalkerTeamSize === 0 ? 'Solo' : `+${stalkerTeamSize}`;
         return (
           <>
-            <Tooltip content={stalkerHidden
-              ? "Attacking from Hide: 100% critical chance (double damage)"
-              : "Not Hidden: 10% base crit + 3% per teammate. Toggle to see damage from Hide."
+            <Tooltip content={
+              !hasHide
+                ? "Take the Hide power in your secondary to simulate an opening strike from stealth (100% crit chance)."
+                : alphaStrike
+                  ? "Alpha Strike: opening attack from Hide gets 100% crit chance. Sustained DPS still uses out-of-Hide crit (toggle off after the first attack)."
+                  : "Sustained DPS scenario: 10% base crit + 3% per nearby teammate. Toggle on to model the opening strike from Hide instead."
             }>
               <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
-                stalkerHidden
-                  ? 'bg-sky-900/30 border-sky-700/40'
-                  : 'bg-slate-700/50 border-slate-600'
+                !hasHide
+                  ? 'bg-slate-800/30 border-slate-700/40 opacity-50'
+                  : alphaStrike
+                    ? 'bg-sky-900/30 border-sky-700/40'
+                    : 'bg-slate-700/50 border-slate-600'
               }`}>
                 <Toggle
                   id="stalker-hidden-toggle"
                   name="stalkerHidden"
-                  checked={stalkerHidden}
+                  checked={alphaStrike}
                   onChange={toggleStalkerHidden}
-                  label="Hidden"
+                  disabled={!hasHide}
+                  label="Alpha Strike"
                 />
               </div>
             </Tooltip>
-            {!stalkerHidden && (
-              <Tooltip content={`Assassination grants +${(damageBonus * 100).toFixed(0)}% avg damage. 10% base crit + 3% per teammate outside of hide.`}>
+            {!alphaStrike && (
+              <Tooltip content={`Assassination grants +${(damageBonus * 100).toFixed(0)}% avg damage. 10% base crit + 3% per teammate outside of Hide.`}>
                 <div className="flex items-center gap-1 px-2 py-1 rounded border bg-sky-900/30 border-sky-700/40">
                   <span className="text-xs text-sky-400 font-semibold uppercase">Team</span>
                   <button
                     onClick={() => setStalkerTeamSize(Math.max(0, stalkerTeamSize - 1))}
                     disabled={stalkerTeamSize <= 0}
+                    aria-label="Decrease team size"
                     className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
                   >
                     &minus;
@@ -1065,6 +1141,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
                   <button
                     onClick={() => setStalkerTeamSize(Math.min(7, stalkerTeamSize + 1))}
                     disabled={stalkerTeamSize >= 7}
+                    aria-label="Increase team size"
                     className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
                   >
                     +

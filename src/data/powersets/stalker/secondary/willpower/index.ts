@@ -9,13 +9,13 @@
 
 import type { Powerset } from '@/types';
 
+import { FastHealing as FastHealing } from './fast-healing';
+import { HeightenedSenses as HeightenedSenses } from './heightened-senses';
 import { Hide as Hide } from './hide';
 import { HighPainTolerance as HighPainTolerance } from './high-pain-tolerance';
-import { Reconstruction as Reconstruction } from './reconstruction';
-import { MindOverBody as MindOverBody } from './mind-over-body';
 import { IndomitableWill as IndomitableWill } from './indomitable-will';
-import { HeightenedSenses as HeightenedSenses } from './heightened-senses';
-import { FastHealing as FastHealing } from './fast-healing';
+import { MindOverBody as MindOverBody } from './mind-over-body';
+import { Reconstruction as Reconstruction } from './reconstruction';
 import { Resurgence as Resurgence } from './resurgence';
 import { StrengthofWill as StrengthofWill } from './strength-of-will';
 
@@ -23,17 +23,17 @@ export const powerset: Powerset = {
   id: 'stalker/willpower',
   name: 'Willpower',
   description: 'You aren\'t Invulnerable. Bullets don\'t bounce off of you, and if you are cut, you bleed. You are, however, tough, grizzled and strong willed. It takes more than a little cut to keep you down! Willpower offers a strong balance of healing, damage resistance and defense. While you have no real vulnerabilities, you can\'t quite deal with \'alpha strikes\' as well as some other protective powers.',
-  icon: 'willpower_set.png',
+  icon: 'willpower_set.ico',
   archetype: 'stalker',
   category: 'secondary',
   powers: [
+    FastHealing,
+    HeightenedSenses,
     Hide,
     HighPainTolerance,
-    Reconstruction,
-    MindOverBody,
     IndomitableWill,
-    HeightenedSenses,
-    FastHealing,
+    MindOverBody,
+    Reconstruction,
     Resurgence,
     StrengthofWill,
   ],

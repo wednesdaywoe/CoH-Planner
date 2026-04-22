@@ -74,17 +74,28 @@ export function InfoPanel() {
 
   return (
     <div className="relative">
-      {/* Lock indicator */}
-      {infoPanel.locked && (
+      {/* Lock indicator — locked: amber filled lock; unlocked: dim open lock as a discoverable affordance */}
+      {infoPanel.locked ? (
         <button
           onClick={unlockInfoPanel}
           className="absolute top-0 right-0 text-amber-400 hover:text-amber-300 p-1 z-10"
-          title="Click to unlock (allow hover updates)"
+          title="Locked — this panel won't change as you hover. Click to unlock and resume hover-to-preview."
+          aria-label="Unlock info panel"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
           </svg>
         </button>
+      ) : (
+        <div
+          className="absolute top-0 right-0 text-slate-600 p-1 z-10 pointer-events-auto cursor-help"
+          title="Hover-preview mode — the panel updates as you hover. Click any power, enhancement, or incarnate slot to lock its details here."
+          aria-label="Info panel: hover-preview mode"
+        >
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 2a5 5 0 00-5 5v2H4a2 2 0 00-2 2v5a2 2 0 002 2h12a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" clipRule="evenodd" />
+          </svg>
+        </div>
       )}
 
       {content.type === 'power' && (
@@ -237,6 +248,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
   const sentinelCritActive = useSentinelCritActive();
+  // Alpha-strike scenario only applies if the build has the Hide power
+  const hasHide = build.secondary.powers.some((p) => p.internalName === 'Hide');
+  const effectiveHidden = stalkerHidden && hasHide;
   const procSettings = useUIStore((s) => s.procSettings);
   const includeProcDamageToggle = useUIStore((s) => s.includeProcDamageInDPS) && procSettings.damage;
   const useArcanaTimeToggle = useUIStore((s) => s.useArcanaTime);
@@ -392,7 +406,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     const header = showScourge ? 'w/ Scourge'
       : showFury ? 'w/ Fury'
       : showCriticalHits ? 'w/ Crit'
-      : showAssassination ? (stalkerHidden ? 'w/ Crit' : 'w/ Assassin')
+      : showAssassination ? (effectiveHidden ? 'w/ Crit' : 'w/ Assassin')
       : showContainment ? 'w/ Contain'
       : showOpportunityCrit ? 'w/ Crit'
       : 'Final';
@@ -409,7 +423,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       if (showScourge) return calculateScourgeDamage(damage);
       if (showFury) return calculateFuryDamage(damage, furyLevel);
       if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
-      if (showAssassination) return calculateAssassinationDamage(damage, stalkerHidden, stalkerTeamSize);
+      if (showAssassination) return calculateAssassinationDamage(damage, effectiveHidden, stalkerTeamSize);
       if (showContainment) return calculateContainmentDamage(damage, true);
       if (showOpportunityCrit) return calculateOpportunityCritDamage(damage);
       return damage;
@@ -417,7 +431,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
     return { header, color, applyBonus, showContainment };
   }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive, furyLevel,
-      criticalHitsActive, stalkerHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive]);
+      criticalHitsActive, effectiveHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive]);
 
   // Per-target buff scaling (stored in UI store so it persists across power switches)
   const stackingInfo = useMemo(() => power ? getStackingInfo(power) : null, [power]);
@@ -978,28 +992,28 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
           {/* Assassination (Stalker) */}
           {archetypeId === 'stalker' && isStalkerAttackPower(powerSet) && (() => {
-            const currentBonus = calculateAssassinationDamageBonus(stalkerHidden, stalkerTeamSize);
+            const currentBonus = calculateAssassinationDamageBonus(effectiveHidden, stalkerTeamSize);
             return (
               <div className={`text-[10px] rounded px-2 py-1.5 border ${
-                stalkerHidden
+                effectiveHidden
                   ? 'bg-sk-magenta/15 border-sk-magenta/40'
                   : currentBonus > 0
                     ? 'bg-sk-magenta/10 border-sk-magenta/30'
                     : 'bg-slate-800/50 border-slate-700/30'
               }`}>
                 <div className="flex items-center justify-between">
-                  <span className={`font-medium ${stalkerHidden || currentBonus > 0 ? 'text-sk-magenta' : 'text-slate-400'}`}>
+                  <span className={`font-medium ${effectiveHidden || currentBonus > 0 ? 'text-sk-magenta' : 'text-slate-400'}`}>
                     Assassination
                   </span>
                   <span className={`text-[8px] px-1.5 py-0.5 rounded ${
-                    stalkerHidden ? 'bg-sk-magenta/25 text-sk-magenta' : 'bg-sk-magenta/20 text-sk-magenta'
+                    effectiveHidden ? 'bg-sk-magenta/25 text-sk-magenta' : 'bg-sk-magenta/20 text-sk-magenta'
                   }`}>
-                    {stalkerHidden ? 'FROM HIDE' : `${stalkerTeamSize === 0 ? 'Solo' : `+${stalkerTeamSize}`}`}
+                    {effectiveHidden ? 'ALPHA STRIKE' : `${stalkerTeamSize === 0 ? 'Solo' : `+${stalkerTeamSize}`}`}
                   </span>
                 </div>
                 <div className="mt-1 text-[9px]">
-                  {stalkerHidden ? (
-                    <span className="text-sk-magenta/70 font-medium">100% critical — +100% avg damage</span>
+                  {effectiveHidden ? (
+                    <span className="text-sk-magenta/70 font-medium">100% critical from Hide — +100% avg damage on opening attack</span>
                   ) : (
                     <span className="text-sk-magenta/70">+{(currentBonus * 100).toFixed(0)}% avg from Assassination</span>
                   )}
@@ -1717,6 +1731,9 @@ function PetAbilityRow({ ad }: { ad: PetAbilityDamage }) {
   return (
     <div>
       <div
+        role="button"
+        aria-expanded={open}
+        title={open ? `Hide details for ${ability.displayName}` : `Show damage breakdown by type for ${ability.displayName}`}
         className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[9px] items-baseline cursor-pointer select-none hover:bg-slate-800/40 rounded px-0.5"
         onClick={() => setOpen(!open)}
       >
@@ -1746,6 +1763,9 @@ function PetEffectAbilityRow({ ability }: { ability: PetAbility }) {
   return (
     <div>
       <div
+        role="button"
+        aria-expanded={open}
+        title={open ? `Hide effects for ${ability.displayName}` : `Show effect details for ${ability.displayName}`}
         className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[9px] items-baseline cursor-pointer select-none hover:bg-slate-800/40 rounded px-0.5"
         onClick={() => setOpen(!open)}
       >
@@ -1883,6 +1903,9 @@ function SingleEntityDisplay({
           {hasDamage && (
             <>
               <div
+                role="button"
+                aria-expanded={expanded}
+                title={expanded ? 'Hide per-ability damage breakdown' : 'Show per-ability damage breakdown'}
                 className="flex items-center gap-1 cursor-pointer select-none"
                 onClick={() => setExpanded(!expanded)}
               >
@@ -1938,6 +1961,9 @@ function SingleEntityDisplay({
           {hasEffects && (
             <div className="mt-1">
               <div
+                role="button"
+                aria-expanded={effectsExpanded}
+                title={effectsExpanded ? 'Hide pet effect list' : 'Show full list of effects this pet applies'}
                 className="flex items-center gap-1 cursor-pointer select-none"
                 onClick={() => setEffectsExpanded(!effectsExpanded)}
               >

@@ -32,18 +32,12 @@ export const Caltrops: Power = {
     "Recharge",
     "Damage"
   ],
-  "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Caltrops",
-      "duration": 45,
-      "copyBoosts": true
+      "duration": 45
     }
   }
 };

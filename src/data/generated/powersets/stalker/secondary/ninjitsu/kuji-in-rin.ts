@@ -31,14 +31,6 @@ export const KujiInRin: Power = {
     "Recharge",
     "Jump"
   ],
-  "allowedSetCategories": [
-    "Leaping",
-    "Leaping & Sprints",
-    "Resist Damage",
-    "Running",
-    "Running & Sprints",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "confuse": {

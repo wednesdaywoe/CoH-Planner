@@ -249,6 +249,9 @@ interface UIState {
 
   /** Power names being tracked for "perma" (recharge <= duration) */
   permaTrackedPowers: string[];
+
+  /** Level Up mode: gate powers/slots/enhancements by the character's current level */
+  levelUpMode: boolean;
 }
 
 interface UIActions {
@@ -447,6 +450,10 @@ interface UIActions {
   // Perma tracker
   togglePermaTracked: (powerName: string) => void;
 
+  // Level Up mode
+  toggleLevelUpMode: () => void;
+  setLevelUpMode: (enabled: boolean) => void;
+
   // Hard reset of build-specific UI state (for New Build)
   resetForNewBuild: () => void;
 }
@@ -582,6 +589,7 @@ export const useUIStore = create<UIStore>()(
       targetsHitValues: {}, // No per-target overrides by default
       showSlotLevels: true, // Show slot level labels by default
       permaTrackedPowers: [], // No perma-tracked powers by default
+      levelUpMode: false, // Off by default — classic "respec" flow
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex, overrideSelect, virtualSlots, powerCategory) =>
@@ -1230,6 +1238,12 @@ export const useUIStore = create<UIStore>()(
             : [...state.permaTrackedPowers, powerName],
         })),
 
+      toggleLevelUpMode: () =>
+        set((state) => ({ levelUpMode: !state.levelUpMode })),
+
+      setLevelUpMode: (enabled) =>
+        set({ levelUpMode: enabled }),
+
       resetForNewBuild: () =>
         set({
           enhancementPicker: defaultEnhancementPicker,
@@ -1306,6 +1320,7 @@ export const useUIStore = create<UIStore>()(
         trackedStats: state.trackedStats,
         showSlotLevels: state.showSlotLevels,
         permaTrackedPowers: state.permaTrackedPowers,
+        levelUpMode: state.levelUpMode,
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };
