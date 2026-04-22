@@ -4,7 +4,7 @@
  * Remains responsive to hover changes even when info panel is locked
  */
 
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useSentinelCritActive } from '@/stores';
 import { getBaseToHit } from '@/data/purple-patch';
@@ -1100,6 +1100,9 @@ export function PowerInfoTooltip() {
   const [overSource, setOverSource] = useState(false);
   const [shiftHeld, setShiftHeld] = useState(false);
   const [pinned, setPinned] = useState<{ content: TooltipContent; position: { x: number; y: number } } | null>(null);
+  const pinnedRef = useRef<HTMLDivElement>(null);
+  // Measured width of the pinned tooltip so the live tooltip sits flush against it regardless of content size
+  const [pinnedWidth, setPinnedWidth] = useState<number | null>(null);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     // Position tooltip to the right and slightly below cursor
@@ -1151,7 +1154,15 @@ export function PowerInfoTooltip() {
       content: infoPanelContent as TooltipContent,
       position: { ...position },
     });
+    setPinnedWidth(null);
   }, [shiftHeld, pinned, infoPanelContent, overSource, position]);
+
+  // Measure the pinned tooltip's rendered width so the live tooltip sits flush against it
+  useLayoutEffect(() => {
+    if (!pinned || !pinnedRef.current) return;
+    const width = pinnedRef.current.getBoundingClientRect().width;
+    if (width > 0 && width !== pinnedWidth) setPinnedWidth(width);
+  }, [pinned, pinnedWidth]);
 
   // Determine if we should show the live (hover) tooltip
   const liveIsValid = !!infoPanelContent && (
@@ -1171,15 +1182,17 @@ export function PowerInfoTooltip() {
   if (!showLive && !pinned) return null;
 
   // Position the pinned tooltip; place the live one beside it with a gap when both are shown
-  const PIN_GAP = 12;
-  const PIN_WIDTH_EST = 320;
+  const PIN_GAP = 8;
+  const LIVE_WIDTH_EST = 320;
+  // Use the measured pinned width so the live tooltip sits flush; fall back to the estimate until the first measurement lands
+  const pinnedW = pinnedWidth ?? LIVE_WIDTH_EST;
   let liveLeft = position.x;
   let liveTop = position.y;
   if (pinned && showLive) {
     // Prefer placing the live tooltip to the right of the pinned; if off-screen, place to the left
-    const preferredLeft = pinned.position.x + PIN_WIDTH_EST + PIN_GAP;
-    if (preferredLeft + PIN_WIDTH_EST > window.innerWidth - 8) {
-      liveLeft = Math.max(8, pinned.position.x - PIN_WIDTH_EST - PIN_GAP);
+    const preferredLeft = pinned.position.x + pinnedW + PIN_GAP;
+    if (preferredLeft + LIVE_WIDTH_EST > window.innerWidth - 8) {
+      liveLeft = Math.max(8, pinned.position.x - LIVE_WIDTH_EST - PIN_GAP);
     } else {
       liveLeft = preferredLeft;
     }
@@ -1193,7 +1206,7 @@ export function PowerInfoTooltip() {
           className="fixed z-50 pointer-events-none"
           style={{ left: pinned.position.x, top: pinned.position.y }}
         >
-          <div className="ring-2 ring-sky-400/70 rounded-lg">
+          <div ref={pinnedRef} className="ring-2 ring-sky-400/70 rounded-lg inline-block">
             <TooltipBody content={pinned.content} />
           </div>
           <div className="text-[9px] text-sky-300 text-center mt-0.5">Pinned (Shift)</div>
