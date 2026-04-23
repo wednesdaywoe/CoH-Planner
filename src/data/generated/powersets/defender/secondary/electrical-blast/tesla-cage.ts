@@ -40,6 +40,8 @@ export const TeslaCage: Power = {
     "Defender Archetype Sets",
     "Endurance Modification",
     "Holds",
+    "Ranged AoE Damage",
+    "Ranged Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

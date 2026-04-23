@@ -39,6 +39,8 @@ export const FocusedBurst: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Knockback",
+    "Ranged AoE Damage",
+    "Ranged Damage",
     "Threat Duration",
     "Universal Damage Sets"
   ],

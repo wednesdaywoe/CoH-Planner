@@ -38,6 +38,8 @@ export const FocusedBurst: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Ranged AoE Damage",
+    "Ranged Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

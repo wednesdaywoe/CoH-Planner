@@ -19,9 +19,18 @@ export interface ManualEntry {
 }
 
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
+  // ─── 2026-04-23 ────────────────────────────────────────────────────────────
+  {
+    date: '2026-04-23',
+    items: [
+      { message: 'Fix for Chain-area attacks (Focused Burst, Chain Lightning, Tesla Cage, Chain Induction, etc.) only accepting Knockback/Universal Damage sets — they now also accept Ranged/Melee Damage and Targeted AoE sets as appropriate', type: 'fix' },
+      { message: 'Fix for pool power prerequisites not counting other pool picks — e.g. Tough now correctly unlocks after taking just Kick or Boxing', type: 'fix' },
+    ]
+  },
+
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-22',
+    date: '2026-04-23',
     items: [
       { message: 'Putting out more fires... 🤕', type: 'fix' },
       { message: 'Fix for some powers appearing in the wrong order, also fix for a number of travel powers and their allowedSetCategories', type: 'fix' },

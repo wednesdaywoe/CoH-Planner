@@ -37,6 +37,8 @@ export const ChainLightning: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Ranged AoE Damage",
+    "Ranged Damage",
     "Sentinel Archetype Sets",
     "Universal Damage Sets"
   ],

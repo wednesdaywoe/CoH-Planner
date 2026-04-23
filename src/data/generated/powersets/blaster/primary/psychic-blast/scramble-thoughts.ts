@@ -37,6 +37,8 @@ export const ScrambleMinds: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Ranged AoE Damage",
+    "Ranged Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

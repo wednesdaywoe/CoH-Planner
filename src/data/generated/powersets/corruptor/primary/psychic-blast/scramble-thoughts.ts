@@ -37,6 +37,8 @@ export const ScrambleMinds: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Ranged AoE Damage",
+    "Ranged Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

@@ -363,6 +363,18 @@ function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, r
     else if (area === 'Location') {
       cats.add('Ranged AoE Damage');
     }
+    // Chain attacks bounce between targets. Ranged chains (Focused Burst,
+    // Chain Lightning) accept both Ranged Damage and Targeted AoE (Ranged
+    // AoE Damage) sets. Melee chains (Chain Induction) just accept Melee
+    // Damage — the chain jump doesn't count as an AoE in slotting rules.
+    else if (area === 'Chain') {
+      if (hasRange) {
+        cats.add('Ranged Damage');
+        cats.add('Ranged AoE Damage');
+      } else {
+        cats.add('Melee Damage');
+      }
+    }
 
     // ATO category on any damaging power of the AT
     const ato = DAMAGE_ATO_BY_AT[archetypeId];

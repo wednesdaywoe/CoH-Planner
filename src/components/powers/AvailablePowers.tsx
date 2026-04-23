@@ -369,22 +369,39 @@ export function AvailablePowers({
 
   const powerset = powersetId ? getPowerset(powersetId) : null;
 
-  // Build context for requires expression evaluation
-  const allSelectedPowerNames = new Set([
+  // Build context for requires expression evaluation. Include pool + epic
+  // display names so prerequisites that reference them (e.g. "Hover" for
+  // Afterburner) resolve regardless of whether the referencing power is
+  // itself a pool pick.
+  const allSelectedPowerNames = new Set<string>([
     ...build.primary.powers.map(p => p.name),
     ...build.secondary.powers.map(p => p.name),
+    ...build.pools.flatMap(pool => pool.powers.map(p => p.name)),
+    ...(build.epicPool ? build.epicPool.powers.map(p => p.name) : []),
   ]);
 
   const requiresContext: RequiresContext = (() => {
     const selectedPowerInternalNames = new Set<string>();
     const selectedPowersetSlugs = new Set<string>();
 
-    // Collect internal names from selected powers
+    // Collect internal names from selected powers. Include pool + epic
+    // picks so intra-pool prerequisites (e.g. Tough requiring Kick or
+    // Boxing from the Fighting pool) can resolve.
     for (const p of build.primary.powers) {
       if (p.internalName) selectedPowerInternalNames.add(p.internalName);
     }
     for (const p of build.secondary.powers) {
       if (p.internalName) selectedPowerInternalNames.add(p.internalName);
+    }
+    for (const pool of build.pools) {
+      for (const p of pool.powers) {
+        if (p.internalName) selectedPowerInternalNames.add(p.internalName);
+      }
+    }
+    if (build.epicPool) {
+      for (const p of build.epicPool.powers) {
+        if (p.internalName) selectedPowerInternalNames.add(p.internalName);
+      }
     }
 
     // Collect powerset slugs (e.g., "shield-defense" from "tanker/shield-defense")
