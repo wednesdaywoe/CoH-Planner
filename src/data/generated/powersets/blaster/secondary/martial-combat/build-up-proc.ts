@@ -25,11 +25,6 @@ export const ReachfortheLimit: Power = {
   "allowedEnhancements": [
     "Damage"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "requires": "Blaster_Support.Martial_Manipulation.Reach_for_the_Limit"
 };

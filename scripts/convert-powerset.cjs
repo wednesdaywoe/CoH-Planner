@@ -1822,11 +1822,22 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
 
   // Allowed IO set categories. Preferred source: `allowed_set_categories`
   // from the exporter, which reverses boostsets.bin's per-set power lists
-  // into the authoritative per-power answer the game itself uses. We only
-  // fall back to inference for powers not present in that index (older
-  // exports without boostset parsing, or tweaked/custom powers).
-  if (Array.isArray(powerJson.allowed_set_categories) && powerJson.allowed_set_categories.length > 0) {
-    power.allowedSetCategories = [...powerJson.allowed_set_categories].sort();
+  // into the authoritative per-power answer the game itself uses.
+  //
+  // Strict mode: if the field is present in the JSON (even as an empty
+  // array) we trust it — the game's engine says "no IO sets slot here" for
+  // powers like SR Quickness, Lightning Reflexes, and Mental Training that
+  // only carry SpeedRunning/SpeedFlying. Those still accept single Run
+  // Speed / Fly IOs via `allowedEnhancements`; they just don't accept any
+  // IO set pieces. Verified against in-game slotting.
+  //
+  // Inference fallback only fires when the field is absent (old exports
+  // predating the boostsets parser).
+  if (Array.isArray(powerJson.allowed_set_categories)) {
+    if (powerJson.allowed_set_categories.length > 0) {
+      power.allowedSetCategories = [...powerJson.allowed_set_categories].sort();
+    }
+    // else: leave allowedSetCategories unset — no IO sets slot here.
   } else {
     // Legacy inference path. See inferAllowedSetCategories for the table.
     // Special case 1: leap/charge attacks (Savage Leap, Feral Charge,

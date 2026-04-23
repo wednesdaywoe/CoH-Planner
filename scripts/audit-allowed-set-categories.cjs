@@ -59,10 +59,11 @@ function readJsonSafe(p) {
 }
 
 /**
- * Extract the `allowedSetCategories` array literal from a generated or override
- * .ts file. Both files are machine-formatted with a stable shape
- * (`"allowedSetCategories": [ ... ]`), so a simple regex suffices. Returns
- * null when the field isn't present.
+ * Extract the `allowedSetCategories` array literal from a generated or
+ * override .ts file. Returns the array if the field is present, null
+ * otherwise. Callers interpret null differently for generated (strict-mode
+ * convert omits the field when no sets are allowed → "no sets") vs override
+ * ("override doesn't touch this field" → fall through to generated).
  */
 function extractAllowedCategories(tsPath) {
   if (!fs.existsSync(tsPath)) return null;
@@ -308,22 +309,29 @@ for (const category of fs.readdirSync(RAW_DATA).sort()) {
 
       const genPath = composedPath(catInfo.archetype, catInfo.type, psSlug, powerSlug);
       const ovrPath = overridePath(catInfo.archetype, catInfo.type, psSlug, powerSlug);
-      const generated = extractAllowedCategories(genPath);
-      if (generated === null) { stats.skippedNoTs++; continue; }
+      if (!fs.existsSync(genPath)) { stats.skippedNoTs++; continue; }
+      // Strict-mode convert omits `allowedSetCategories` entirely when no
+      // sets slot in the power — treat null (field absent) as []. An
+      // override that doesn't touch the field leaves null, which falls
+      // through to generated (not a mask).
+      const generated = extractAllowedCategories(genPath) ?? [];
       const override = extractAllowedCategories(ovrPath);
-      const composed = override ?? generated;
+      const composed = override !== null ? override : generated;
       const hasOverride = override !== null;
       if (hasOverride) stats.overriddenCats++;
       stats.powersScanned++;
 
       // Authoritative check — compare composed to `allowed_set_categories`
-      // from the export (reversed from boostsets.bin). When the export has
-      // a non-empty list, that's the game's answer; any diff is drift.
-      const authoritative = Array.isArray(pJson.allowed_set_categories)
+      // from the export (reversed from boostsets.bin). Field PRESENT (even
+      // if empty) is authoritative: empty means "game says no sets here",
+      // non-empty means "exactly these sets". Field ABSENT means an old
+      // export predating boostsets parsing — fall-back to inference.
+      const hasAuthField = Array.isArray(pJson.allowed_set_categories);
+      const authoritative = hasAuthField
         ? [...pJson.allowed_set_categories].sort()
-        : [];
+        : null;
 
-      if (authoritative.length > 0) {
+      if (hasAuthField) {
         stats.hadAuthoritative++;
         if (!arraysEqual(authoritative, composed)) {
           const { missing, extra } = diff(composed, authoritative);
@@ -338,11 +346,9 @@ for (const category of fs.readdirSync(RAW_DATA).sort()) {
       }
 
       // INVARIANTS — on the composed (final) value. Skip when the power has
-      // authoritative data (any mismatch there is a real-game rule the
-      // heuristics don't capture: pet summons don't accept mez sets even
-      // when the pet mezzes, cones on scrappers are melee despite `Range`
-      // boost, etc. — the game is the ground truth).
-      if (authoritative.length === 0) {
+      // authoritative data (even empty — game says no sets). Invariants are
+      // only for the inference-fallback case where we can't trust composed.
+      if (!hasAuthField) {
         const issues = checkInvariants(pJson, catInfo.archetype, composed);
         if (issues.length > 0) {
           invariantRows.push({ category, powerset: psSlug, power: powerSlug, issues });

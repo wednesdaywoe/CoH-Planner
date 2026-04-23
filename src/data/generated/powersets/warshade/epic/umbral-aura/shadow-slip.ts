@@ -32,10 +32,6 @@ export const ShadowSlip: Power = {
     "Recharge",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Teleport",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "teleport": {
