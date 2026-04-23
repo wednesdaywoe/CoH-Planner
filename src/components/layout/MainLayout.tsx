@@ -2,7 +2,7 @@
  * MainLayout component - overall app layout wrapper
  */
 
-import { useEffect, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { Header } from './Header';
 import { StatsDashboard } from './StatsDashboard';
 import { UpdateBanner } from './UpdateBanner';
@@ -14,6 +14,14 @@ import { useUIStore, useAuthStore } from '@/stores';
 import { useUpdateChecker } from '@/hooks/useUpdateChecker';
 import { useUndoRedoKeyboard } from '@/hooks/useUndoRedoKeyboard';
 import { useTooltipHotkey } from '@/hooks/useTooltipHotkey';
+
+// CSS `zoom` on the root div creates a coordinate-system mismatch with
+// portals that render to document.body (notably the OnboardingBeacon). The
+// UI-scale control is desktop-only now, but a value saved from a prior desktop
+// session can still be read from localStorage on mobile — forcing zoom on a
+// viewport that never exposes the control to change it. Gate the zoom by
+// viewport width so mobile always renders unscaled regardless of stored value.
+const MOBILE_MAX_WIDTH = 1024;
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -29,16 +37,31 @@ export function MainLayout({ children }: MainLayoutProps) {
   useTooltipHotkey();
   const initializeAuth = useAuthStore((s) => s.initialize);
 
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && window.innerWidth <= MOBILE_MAX_WIDTH
+  );
+  useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth <= MOBILE_MAX_WIDTH);
+    window.addEventListener('resize', update);
+    window.addEventListener('orientationchange', update);
+    return () => {
+      window.removeEventListener('resize', update);
+      window.removeEventListener('orientationchange', update);
+    };
+  }, []);
+
   // Initialize auth on mount (checks existing session, listens for changes)
   useEffect(() => {
     const unsubscribe = initializeAuth();
     return unsubscribe;
   }, [initializeAuth]);
 
+  const applyZoom = !isMobile && uiScale !== 1;
+
   return (
     <div
       className="min-h-screen bg-gray-950 text-gray-100 flex flex-col"
-      style={uiScale !== 1 ? { zoom: uiScale, overflowX: 'clip' as const } : undefined}
+      style={applyZoom ? { zoom: uiScale, overflowX: 'clip' as const } : undefined}
     >
       <UpdateBanner visible={updateAvailable} />
       <Header />

@@ -59,14 +59,19 @@ export function EnhancementPicker() {
   const [typeFilter, setTypeFilter] = useState<EnhancementTypeFilter>('io-sets');
   const [sidebarFilter, setSidebarFilter] = useState<SidebarFilter>('all');
 
-  // Drag selection state
+  // Drag selection state (mouse/desktop only)
   const [isDragging, setIsDragging] = useState(false);
   const [dragStartIndex, setDragStartIndex] = useState<number | null>(null);
   const [dragEndIndex, setDragEndIndex] = useState<number | null>(null);
   const [dragSet, setDragSet] = useState<IOSet | null>(null);
 
-  // Shift+Click multi-select state: setId → Set of piece indices
+  // Multi-select state: setId → Set of piece indices. Populated by shift+click (desktop)
+  // or tap in selectMode. Shared UI model: sticky bottom bar commits, "Cancel" clears.
   const [shiftSelected, setShiftSelected] = useState<Map<string, Set<number>>>(new Map());
+
+  // Explicit select-mode toggle (visible on both desktop and mobile) — makes every
+  // click/tap toggle selection instead of slotting immediately.
+  const [selectMode, setSelectMode] = useState(false);
 
   // Get the current power definition (unified lookup across all categories)
   const currentPower = useMemo(() => {
@@ -332,6 +337,13 @@ export function EnhancementPicker() {
   // Check if any pieces are shift-selected
   const hasShiftSelection = shiftSelected.size > 0;
 
+  // Total count of pieces queued across all sets (used by the sticky action bar)
+  const totalSelectedPieces = useMemo(() => {
+    let n = 0;
+    for (const indices of shiftSelected.values()) n += indices.size;
+    return n;
+  }, [shiftSelected]);
+
   // Check if a piece is shift-selected
   const isShiftSelected = (set: IOSet, pieceIndex: number) => {
     const setId = set.id || set.name;
@@ -365,10 +377,11 @@ export function EnhancementPicker() {
     closeEnhancementPicker();
   };
 
-  // Drag handlers
+  // Mouse handlers — desktop supports drag-to-select-range, shift+click toggle,
+  // and (when selectMode is on or pieces are already selected) click-to-toggle.
   const handlePieceMouseDown = (set: IOSet, pieceIndex: number, e: React.MouseEvent) => {
-    // Don't start drag on shift+click (that's multi-select)
-    if (e.shiftKey) return;
+    // No drag in selectMode or when using shift+click toggle
+    if (e.shiftKey || selectMode) return;
     setIsDragging(true);
     setDragStartIndex(pieceIndex);
     setDragEndIndex(pieceIndex);
@@ -382,24 +395,17 @@ export function EnhancementPicker() {
   };
 
   const handlePieceMouseUp = (set: IOSet, pieceIndex: number, e: React.MouseEvent) => {
-    // Shift+Click: toggle in multi-select
-    if (e.shiftKey) {
-      toggleShiftSelect(set, pieceIndex);
-      // Reset drag state in case
+    const resetDrag = () => {
       setIsDragging(false);
       setDragStartIndex(null);
       setDragEndIndex(null);
       setDragSet(null);
-      return;
-    }
+    };
 
-    // Regular click on a shift-selected piece: slot all selected
-    if (hasShiftSelection && isShiftSelected(set, pieceIndex)) {
-      handleSlotMultiSelect();
-      setIsDragging(false);
-      setDragStartIndex(null);
-      setDragEndIndex(null);
-      setDragSet(null);
+    // Select mode or shift+click: toggle selection
+    if (selectMode || e.shiftKey) {
+      toggleShiftSelect(set, pieceIndex);
+      resetDrag();
       return;
     }
 
@@ -416,84 +422,35 @@ export function EnhancementPicker() {
       }
     }
 
-    // Reset drag state
-    setIsDragging(false);
-    setDragStartIndex(null);
-    setDragEndIndex(null);
-    setDragSet(null);
+    resetDrag();
   };
 
-  // Touch handlers — tap to select, drag across pieces to select range, long-press for multi-select
-  const touchStartPos = useRef<{ x: number; y: number } | null>(null);
-  const touchStartTime = useRef(0);
-  const touchDragging = useRef(false);
-  const LONG_PRESS_DURATION = 400; // ms — hold longer than this for multi-select
-
-  const handlePieceTouchStart = (set: IOSet, pieceIndex: number, e: React.TouchEvent) => {
-    const touch = e.touches[0];
-    touchStartPos.current = { x: touch.clientX, y: touch.clientY };
-    touchStartTime.current = Date.now();
-    touchDragging.current = false;
-    // Start drag tracking (reuse mouse drag state)
-    setIsDragging(true);
-    setDragStartIndex(pieceIndex);
-    setDragEndIndex(pieceIndex);
-    setDragSet(set);
+  // Touch handlers — tap toggles in selectMode, otherwise tap slots immediately.
+  // No drag: React touch listeners are passive so preventDefault in onTouchMove
+  // silently fails and the page scrolls instead of tracking the drag. The sticky
+  // action bar provides an explicit commit path that works reliably on touch.
+  const handlePieceTouchStart = (_set: IOSet, _pieceIndex: number, _e: React.TouchEvent) => {
+    // Intentionally empty — tap handled on touchEnd to avoid double-firing with click
   };
 
-  const handlePieceTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || dragStartIndex === null || !dragSet) return;
-    const touch = e.touches[0];
-    // Use elementFromPoint to find which piece is under the finger
-    const el = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (el) {
-      const pieceButton = (el as HTMLElement).closest('[data-piece-index]') as HTMLElement | null;
-      if (pieceButton) {
-        const idx = parseInt(pieceButton.dataset.pieceIndex || '', 10);
-        if (!isNaN(idx) && idx !== dragEndIndex) {
-          touchDragging.current = true;
-          setDragEndIndex(idx);
-          e.preventDefault(); // Prevent scrolling during active drag selection
-        }
-      }
+  const handlePieceTouchMove = (_e: React.TouchEvent) => {
+    // No-op — touch-drag removed (see comment above)
+  };
+
+  const handlePieceTouchEnd = (set: IOSet, pieceIndex: number, e: React.TouchEvent) => {
+    e.preventDefault(); // Prevent the synthetic click from double-firing
+
+    if (selectMode) {
+      toggleShiftSelect(set, pieceIndex);
+    } else if (set.pieces[pieceIndex]) {
+      handleSelectSetPiece(set, set.pieces[pieceIndex], pieceIndex);
     }
   };
 
-  const handlePieceTouchEnd = (set: IOSet, e: React.TouchEvent) => {
-    if (!isDragging || dragStartIndex === null) {
-      touchStartPos.current = null;
-      return;
-    }
-
-    e.preventDefault(); // Prevent ghost click
-
-    const startIdx = dragStartIndex;
-    const endIdx = dragEndIndex ?? startIdx;
-
-    // Reset drag state
-    touchStartPos.current = null;
-    setIsDragging(false);
-    setDragStartIndex(null);
-    setDragEndIndex(null);
-    setDragSet(null);
-
-    if (touchDragging.current && startIdx !== endIdx) {
-      // Drag selection — select range of pieces
-      handleDragSelect(set, startIdx, endIdx);
-    } else {
-      // Stationary tap — check for long-press or single select
-      const elapsed = Date.now() - touchStartTime.current;
-      if (elapsed >= LONG_PRESS_DURATION) {
-        // Long press → toggle multi-select (mobile equivalent of shift+click)
-        toggleShiftSelect(set, startIdx);
-      } else if (hasShiftSelection && isShiftSelected(set, startIdx)) {
-        // Tap on a selected piece → slot all multi-selected pieces
-        handleSlotMultiSelect();
-      } else if (set.pieces[startIdx]) {
-        // Short tap → slot single piece immediately
-        handleSelectSetPiece(set, set.pieces[startIdx], startIdx);
-      }
-    }
+  // Cancel multi-select — clear selected pieces and exit selectMode
+  const handleCancelSelection = () => {
+    setShiftSelected(new Map());
+    setSelectMode(false);
   };
 
   // Global mouse/touch up to cancel drag if released outside
@@ -824,6 +781,38 @@ export function EnhancementPicker() {
             className="flex-1 overflow-y-auto p-2 pr-4 sm:p-3"
             onContextMenu={(e) => { if (e.shiftKey) e.preventDefault(); }}
           >
+            {typeFilter === 'io-sets' && (
+              <div className="flex items-center justify-end gap-1 mb-2">
+                <button
+                  onClick={() => setSelectMode((m) => !m)}
+                  title="When on, taps/clicks toggle piece selection instead of slotting immediately. Use the action bar at the bottom to slot the selected pieces."
+                  className={`text-xs px-2 py-0.5 rounded mr-1 transition-colors ${
+                    selectMode
+                      ? 'bg-green-600 text-white hover:bg-green-500'
+                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
+                  }`}
+                >
+                  {selectMode ? 'Select: On' : 'Select multiple'}
+                </button>
+                {sidebarFilter !== 'procs' && (
+                  <>
+                    <span className="text-xs text-gray-500 mr-1">Sort:</span>
+                    <button
+                      onClick={() => setIOSortBy('name')}
+                      className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'name' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-gray-200'}`}
+                    >
+                      A-Z
+                    </button>
+                    <button
+                      onClick={() => setIOSortBy('level')}
+                      className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'level' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-gray-200'}`}
+                    >
+                      Level
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
             {typeFilter === 'io-sets' && sidebarFilter === 'procs' && (
               <ProcsContent
                 pieces={procPieces}
@@ -836,25 +825,7 @@ export function EnhancementPicker() {
                 onPieceTouchMove={handlePieceTouchMove}
                 onPieceTouchEnd={handlePieceTouchEnd}
                 isShiftSelected={isShiftSelected}
-                hasShiftSelection={hasShiftSelection}
               />
-            )}
-            {typeFilter === 'io-sets' && sidebarFilter !== 'procs' && (
-              <div className="flex items-center justify-end gap-1 mb-2">
-                <span className="text-xs text-gray-500 mr-1">Sort:</span>
-                <button
-                  onClick={() => setIOSortBy('name')}
-                  className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'name' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-gray-200'}`}
-                >
-                  A-Z
-                </button>
-                <button
-                  onClick={() => setIOSortBy('level')}
-                  className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'level' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-gray-200'}`}
-                >
-                  Level
-                </button>
-              </div>
             )}
             {typeFilter === 'io-sets' && sidebarFilter !== 'procs' && (
               <IOSetsContent
@@ -873,7 +844,6 @@ export function EnhancementPicker() {
                 dragEndIndex={dragEndIndex}
                 isPieceInCurrentPower={isPieceInCurrentPower}
                 isShiftSelected={isShiftSelected}
-                hasShiftSelection={hasShiftSelection}
               />
             )}
 
@@ -907,6 +877,33 @@ export function EnhancementPicker() {
 
           </div>
         </div>
+
+        {/* Sticky commit bar — visible when any pieces are selected for multi-slot */}
+        {hasShiftSelection && (
+          <div className="flex-shrink-0 border-t border-gray-700 bg-gray-900/95 backdrop-blur px-3 py-2 flex items-center gap-2">
+            <span className="text-xs sm:text-sm text-gray-300 flex-1 min-w-0 truncate">
+              {totalSelectedPieces} piece{totalSelectedPieces === 1 ? '' : 's'} selected
+              {emptySlotIndices.length < totalSelectedPieces && (
+                <span className="text-amber-400 ml-2">
+                  (only {emptySlotIndices.length} empty slot{emptySlotIndices.length === 1 ? '' : 's'} — extras ignored)
+                </span>
+              )}
+            </span>
+            <button
+              onClick={handleCancelSelection}
+              className="text-xs sm:text-sm px-3 py-1.5 rounded bg-gray-700 hover:bg-gray-600 text-gray-200 transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleSlotMultiSelect}
+              disabled={emptySlotIndices.length === 0}
+              className="text-xs sm:text-sm px-3 py-1.5 rounded bg-green-600 hover:bg-green-500 text-white font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              Slot {Math.min(totalSelectedPieces, emptySlotIndices.length)}
+            </button>
+          </div>
+        )}
         </div>
       </ModalBody>
     </Modal>
@@ -984,14 +981,13 @@ interface IOSetsContentProps {
   onPieceMouseUp: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
   onPieceTouchStart: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
   onPieceTouchMove: (e: React.TouchEvent) => void;
-  onPieceTouchEnd: (set: IOSet, e: React.TouchEvent) => void;
+  onPieceTouchEnd: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
   isDragging: boolean;
   dragSet: IOSet | null;
   dragStartIndex: number | null;
   dragEndIndex: number | null;
   isPieceInCurrentPower: (setId: string, pieceNum: number) => boolean;
   isShiftSelected: (set: IOSet, pieceIndex: number) => boolean;
-  hasShiftSelection: boolean;
 }
 
 function IOSetsContent({
@@ -1008,7 +1004,6 @@ function IOSetsContent({
   dragEndIndex,
   isPieceInCurrentPower,
   isShiftSelected,
-  hasShiftSelection,
 }: IOSetsContentProps) {
   if (sets.length === 0) {
     return <div className="text-center text-gray-500 py-8">No IO sets available for this power</div>;
@@ -1031,7 +1026,6 @@ function IOSetsContent({
           dragEndIndex={dragSet?.id === set.id ? dragEndIndex : null}
           isPieceInCurrentPower={isPieceInCurrentPower}
           isShiftSelected={isShiftSelected}
-          hasShiftSelection={hasShiftSelection}
         />
       ))}
     </div>
@@ -1051,9 +1045,8 @@ interface ProcsContentProps {
   onPieceMouseUp: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
   onPieceTouchStart: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
   onPieceTouchMove: (e: React.TouchEvent) => void;
-  onPieceTouchEnd: (set: IOSet, e: React.TouchEvent) => void;
+  onPieceTouchEnd: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
   isShiftSelected: (set: IOSet, pieceIndex: number) => boolean;
-  hasShiftSelection: boolean;
 }
 
 function ProcsContent({
@@ -1067,7 +1060,6 @@ function ProcsContent({
   onPieceTouchMove,
   onPieceTouchEnd,
   isShiftSelected,
-  hasShiftSelection,
 }: ProcsContentProps) {
   const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
   const isCompareMode = useUIStore((s) => s.enhancementPicker.virtualSlots) !== null;
@@ -1078,14 +1070,6 @@ function ProcsContent({
 
   return (
     <div className="space-y-1">
-      <div className="text-right px-1 mb-1">
-        <span className="hidden sm:inline text-xs text-gray-600">
-          {hasShiftSelection ? 'Click selected to slot all' : 'Shift+click to multi-select'}
-        </span>
-        <span className="sm:hidden text-[10px] text-gray-600">
-          {hasShiftSelection ? 'Tap selected to slot all' : 'Hold to multi-select'}
-        </span>
-      </div>
       {pieces.map(({ set, piece, pieceIndex }) => {
         const setId = set.id || set.name;
         const outline = getEnhancementOutline(
@@ -1169,7 +1153,7 @@ function ProcsContent({
             onMouseUp={(e) => !isDisabled && onPieceMouseUp(set, pieceIndex, e)}
             onTouchStart={(e) => !isDisabled && onPieceTouchStart(set, pieceIndex, e)}
             onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
-            onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}
+            onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, pieceIndex, e)}
             disabled={isDisabled}
             className={`w-full flex items-center gap-2 p-2 rounded border transition-all ${
               isDisabled
@@ -1237,13 +1221,12 @@ interface IOSetRowProps {
   onPieceMouseUp: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
   onPieceTouchStart: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
   onPieceTouchMove: (e: React.TouchEvent) => void;
-  onPieceTouchEnd: (set: IOSet, e: React.TouchEvent) => void;
+  onPieceTouchEnd: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
   isDragging: boolean;
   dragStartIndex: number | null;
   dragEndIndex: number | null;
   isPieceInCurrentPower: (setId: string, pieceNum: number) => boolean;
   isShiftSelected: (set: IOSet, pieceIndex: number) => boolean;
-  hasShiftSelection: boolean;
 }
 
 function IOSetRow({
@@ -1259,7 +1242,6 @@ function IOSetRow({
   dragEndIndex,
   isPieceInCurrentPower,
   isShiftSelected,
-  hasShiftSelection,
 }: IOSetRowProps) {
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
@@ -1331,12 +1313,6 @@ function IOSetRow({
             (will slot at Lv {globalIOLevel < set.minLevel ? set.minLevel : set.maxLevel})
           </span>
         )}
-        <span className="hidden sm:inline text-xs text-gray-600 ml-auto">
-          {hasShiftSelection ? 'Tap selected to slot all' : 'Shift+click or long-press to multi-select'}
-        </span>
-        <span className="sm:hidden text-[10px] text-gray-600 ml-auto">
-          {hasShiftSelection ? 'Tap selected to slot all' : 'Hold to multi-select'}
-        </span>
       </div>
 
       {/* Pieces as icons — hidden on mobile, shown on sm+ */}
@@ -1363,7 +1339,7 @@ function IOSetRow({
                 onMouseUp={(e) => !isDisabled && onPieceMouseUp(set, pieceIndex, e)}
                 onTouchStart={(e) => !isDisabled && onPieceTouchStart(set, pieceIndex, e)}
                 onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
-                onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}
+                onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, pieceIndex, e)}
                 disabled={isDisabled}
                 className={`relative w-10 h-10 sm:w-[30px] sm:h-[30px] rounded border transition-all bg-gray-900/50 ${
                   isDisabled
@@ -1416,7 +1392,7 @@ function IOSetRow({
               onMouseUp={(e) => !isDisabled && onPieceMouseUp(set, pieceIndex, e)}
               onTouchStart={(e) => !isDisabled && onPieceTouchStart(set, pieceIndex, e)}
               onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
-              onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}
+              onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, pieceIndex, e)}
               disabled={isDisabled}
               className={`w-full flex items-center gap-2 p-2 rounded border transition-all ${
                 isDisabled

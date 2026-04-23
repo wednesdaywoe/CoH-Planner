@@ -249,6 +249,11 @@ export function OnboardingBeacon() {
     return null;
   }
 
+  // Diagnostic mode: append ?beacon-debug=1 to the URL to overlay coordinate values.
+  // Helps chase down mobile alignment offsets without needing remote devtools.
+  const debug = typeof window !== 'undefined' && window.location.search.includes('beacon-debug=1');
+  const vv = typeof window !== 'undefined' ? window.visualViewport : null;
+
   const beacon = (
     <div
       className="onboarding-beacon-container"
@@ -291,5 +296,35 @@ export function OnboardingBeacon() {
     </div>
   );
 
-  return createPortal(beacon, document.body);
+  const debugOverlay = debug ? (
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        zIndex: 9999,
+        background: 'rgba(0,0,0,0.85)',
+        color: '#0f0',
+        fontFamily: 'monospace',
+        fontSize: 10,
+        padding: 6,
+        pointerEvents: 'none',
+        lineHeight: 1.3,
+      }}
+    >
+      <div>step: {currentStep.id}</div>
+      <div>pos: {position.top.toFixed(1)},{position.left.toFixed(1)} {position.width.toFixed(1)}x{position.height.toFixed(1)}</div>
+      <div>win: {window.innerWidth}x{window.innerHeight} dpr:{window.devicePixelRatio}</div>
+      <div>vv: {vv ? `${vv.width.toFixed(0)}x${vv.height.toFixed(0)} off:${vv.offsetLeft.toFixed(1)},${vv.offsetTop.toFixed(1)} scale:${vv.scale.toFixed(2)}` : 'none'}</div>
+      <div>scroll: {window.scrollX.toFixed(1)},{window.scrollY.toFixed(1)}</div>
+    </div>
+  ) : null;
+
+  return createPortal(
+    <>
+      {beacon}
+      {debugOverlay}
+    </>,
+    document.body
+  );
 }
