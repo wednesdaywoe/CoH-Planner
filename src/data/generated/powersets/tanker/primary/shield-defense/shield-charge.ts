@@ -36,7 +36,7 @@ export const ShieldCharge: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

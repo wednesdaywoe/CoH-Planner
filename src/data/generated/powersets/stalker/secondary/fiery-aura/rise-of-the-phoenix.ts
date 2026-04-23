@@ -34,7 +34,7 @@ export const PhoenixRising: Power = {
     "Accurate Healing",
     "Endurance Modification",
     "Healing",
-    "Melee Damage",
+    "Melee AoE Damage",
     "Stalker Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

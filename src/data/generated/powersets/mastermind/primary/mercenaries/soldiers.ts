@@ -39,7 +39,7 @@ export const Soldiers: Power = {
     "Defense Debuff",
     "Healing",
     "Knockback",
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

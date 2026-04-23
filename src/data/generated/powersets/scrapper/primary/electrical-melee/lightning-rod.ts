@@ -35,7 +35,7 @@ export const LightningRod: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

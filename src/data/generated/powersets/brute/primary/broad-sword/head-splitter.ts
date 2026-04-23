@@ -39,7 +39,7 @@ export const HeadSplitter: Power = {
     "Brute Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Melee Damage",
+    "Melee AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"
   ],

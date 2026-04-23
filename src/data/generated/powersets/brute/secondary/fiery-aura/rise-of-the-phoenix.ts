@@ -35,7 +35,7 @@ export const PhoenixRising: Power = {
     "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
-    "Melee Damage",
+    "Melee AoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

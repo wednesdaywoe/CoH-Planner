@@ -32,7 +32,7 @@ export const SummonDemonlings: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],

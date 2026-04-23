@@ -35,7 +35,7 @@ export const FeralCharge: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged Damage",
+    "Melee AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

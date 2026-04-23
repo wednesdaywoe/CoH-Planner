@@ -373,6 +373,90 @@ function resolveRedirectPath(powerName) {
   return path.join(RAW_DATA_PATH, filePath);
 }
 
+/**
+ * Some powers redirect to `<AT>_Aux.<Set>.<Power>_AoE`-style refs (Savage
+ * Leap, Feral Charge, etc.) — those auxiliary categories aren't in the bin
+ * export, but the bin parser rewrites them to `Redirects.<AT>.<Power>` and
+ * stores them under `redirects/<at>/<power>.json`. Try the rewrite when a
+ * non-Redirects path doesn't exist.
+ */
+function resolveAuxRedirectPath(powerName) {
+  const parts = powerName.split('.');
+  if (parts.length !== 3) return null;
+  const [category, powerset, powerLeaf] = parts;
+  if (!/_Aux$/i.test(category)) return null;
+
+  // Preferred path: the bin exporter writes Aux categories to
+  // <category_lower>/<powerset_lower>/<leaf_lower>.json (e.g.
+  // dominator_assault_aux/savage_assault/feral_charge_hit.json).
+  const auxPath = path.join(
+    RAW_DATA_PATH,
+    category.toLowerCase(),
+    powerset.toLowerCase(),
+    powerLeaf.toLowerCase() + '.json',
+  );
+  if (fs.existsSync(auxPath)) return auxPath;
+
+  // Legacy fallback: some Aux redirects also get rewritten under
+  // redirects/<category_minus_aux>/<leaf>.json. Try with and without
+  // the _AoE/_Hit suffix.
+  const cleanCategory = category.replace(/_Aux$/i, '').toLowerCase();
+  const candidates = [
+    powerLeaf.toLowerCase(),
+    powerLeaf.replace(/_(AoE|Hit|Cone|Patch|Pet)$/i, '').toLowerCase(),
+  ];
+  for (const leaf of candidates) {
+    const filePath = path.join(RAW_DATA_PATH, 'redirects', cleanCategory, leaf + '.json');
+    if (fs.existsSync(filePath)) return filePath;
+  }
+  return null;
+}
+
+/**
+ * For powers whose main file says effect_area=SingleTarget but actually
+ * deliver damage via an Execute_Power redirect (e.g. Savage Leap → leaps
+ * to a target then explodes in an AoE), peek at the redirected file's
+ * effect_area to decide the *effective* damage delivery.
+ *
+ * Returns the normalized effective area (e.g. "AoE", "Cone") if the power
+ * has a redirect with broader area than its main file, or null when the
+ * main file's area should be used as-is.
+ */
+function inferEffectiveArea(powerJson) {
+  // Only relevant when the main power claims SingleTarget but has an
+  // Execute_Power redirect. For powers whose own effect_area is already
+  // AoE/Cone/Location, no probe needed.
+  const mainArea = EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area;
+  if (mainArea !== 'SingleTarget') return null;
+
+  const queue = [...(powerJson.effects || [])];
+  while (queue.length > 0) {
+    const eff = queue.shift();
+    for (const t of (eff.templates || [])) {
+      const attrib = (t.attribs?.[0] || '').toLowerCase();
+      if (attrib !== 'execute_power') continue;
+      const powerNames = t.params?.power_names || [];
+      for (const pName of powerNames) {
+        const isStandardRedirect = pName.toLowerCase().startsWith('redirects.');
+        const auxPath = isStandardRedirect ? null : resolveAuxRedirectPath(pName);
+        if (!isStandardRedirect && !auxPath) continue;
+        const redirectPath = isStandardRedirect ? resolveRedirectPath(pName) : auxPath;
+        if (!fs.existsSync(redirectPath)) continue;
+        try {
+          const redirectJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8'));
+          const redirectArea = EFFECT_AREA_MAP[redirectJson.effect_area] ?? redirectJson.effect_area;
+          // Only override when the redirect actually broadens the area.
+          if (redirectArea && redirectArea !== 'SingleTarget') {
+            return redirectArea;
+          }
+        } catch (_) { /* ignore */ }
+      }
+    }
+    if (eff.child_effects) queue.push(...eff.child_effects);
+  }
+  return null;
+}
+
 // Combat-suppressing events from EVENT_NAME (parser/_enums.py). When an
 // AttribMod's Suppress array lists any of these, the buff is suppressed
 // during combat (the In-Combat toggle in the planner removes it from totals).
@@ -418,16 +502,19 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
       for (const template of effect.templates) {
         const attrib = template.attribs && template.attribs[0] ? template.attribs[0].toLowerCase() : null;
 
-        // Follow Execute_Power references to redirect files (up to MAX_DEPTH)
+        // Follow Execute_Power references to redirect files (up to MAX_DEPTH).
+        // Two redirect shapes are followed: explicit `Redirects.*` paths and
+        // `*_Aux.*` paths that the bin parser rewrites under `redirects/`.
         if (attrib === 'execute_power' && depth < MAX_DEPTH) {
           const powerNames = (template.params && template.params.power_names) || [];
           for (const pName of powerNames) {
-            // Only follow references to Redirects.* powers
-            if (!pName.toLowerCase().startsWith('redirects.')) continue;
+            const isStandardRedirect = pName.toLowerCase().startsWith('redirects.');
+            const auxPath = isStandardRedirect ? null : resolveAuxRedirectPath(pName);
+            if (!isStandardRedirect && !auxPath) continue;
             if (visited.has(pName)) continue;
             visited.add(pName);
 
-            const redirectPath = resolveRedirectPath(pName);
+            const redirectPath = isStandardRedirect ? resolveRedirectPath(pName) : auxPath;
             if (fs.existsSync(redirectPath)) {
               const redirectJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8'));
               if (redirectJson.effects && redirectJson.effects.length > 0) {
@@ -1697,11 +1784,39 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // powers, garbage FX-path fragments otherwise — see binparser-bug audit).
   // Mapping rules derived empirically from the previously-correct generated
   // data; see inferAllowedSetCategories for the table.
+  //
+  // Special case 1: leap/charge attacks (Savage Leap, Feral Charge, Lightning
+  // Rod, etc.) have main effect_area=SingleTarget but deliver damage via
+  // an Execute_Power redirect that's actually AoE. Probe the redirect — if
+  // the AoE came via redirect, treat as MELEE AoE (the leap range is just
+  // travel; damage is melee around the landing point).
+  //
+  // Special case 2: location-targeted teleport AoEs (Shield Charge) have
+  // effect_area=Location but the player teleports TO the spot and damages
+  // foes around the landing point — that's melee delivery, not ranged.
+  // target_type "Location (Teleport)" disambiguates from true ranged
+  // location AoEs like Rain of Fire.
+  const redirectArea = inferEffectiveArea(powerJson);
+  // Detect location-teleport AoE by presence of a Teleport AttribMod alongside
+  // effect_area=Location. The bin's target_type is unreliable here (Shield
+  // Charge reports DeadMyPet instead of CoD2's "Location (Teleport)").
+  const hasTeleportAttrib = (powerJson.effects || []).some(eff =>
+    (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
+  );
+  const isLocationTeleport = (powerJson.effect_area === 'Location' && hasTeleportAttrib);
+  const effectiveArea = redirectArea
+    ?? (isLocationTeleport ? 'AoE' : (EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area));
+  // For redirect-AoE / location-teleport attacks: drop the `Range` boost
+  // from the inference input so the power gets `Melee AoE Damage`, not
+  // `Ranged AoE Damage`.
+  const boostsForCategory = (redirectArea || isLocationTeleport)
+    ? (powerJson.boosts_allowed || []).filter(b => b !== 'Range')
+    : (powerJson.boosts_allowed || []);
   const inferred = inferAllowedSetCategories(
-    powerJson.boosts_allowed || [],
+    boostsForCategory,
     archetypeId,
     powerType,
-    EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area,
+    effectiveArea,
     powerJson.range,
   );
   if (inferred.length > 0) {

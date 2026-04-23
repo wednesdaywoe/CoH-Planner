@@ -35,7 +35,7 @@ export const CallGenin: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

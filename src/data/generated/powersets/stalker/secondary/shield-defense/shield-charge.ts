@@ -35,7 +35,7 @@ export const ShieldCharge: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

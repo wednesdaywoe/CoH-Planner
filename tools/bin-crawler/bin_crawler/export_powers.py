@@ -55,6 +55,10 @@ PLAYER_CATEGORIES = {
     'Incarnate',
     # Redirects (pseudo-pet damage sources)
     'Redirects',
+    # Aux categories: hold the actual AoE/hit data for leap/charge attacks
+    # (Savage Leap, Feral Charge, etc.) referenced via Execute_Power.
+    'Brute_Melee_Aux', 'Dominator_Assault_Aux', 'Scrapper_Melee_Aux',
+    'Stalker_Melee_Aux', 'Tanker_Melee_Aux',
 }
 
 

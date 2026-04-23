@@ -34,7 +34,7 @@ export const SavageLeap: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged Damage",
+    "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

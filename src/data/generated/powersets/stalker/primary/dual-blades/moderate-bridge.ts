@@ -35,7 +35,7 @@ export const AblatingStrike: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee Damage",
+    "Melee AoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

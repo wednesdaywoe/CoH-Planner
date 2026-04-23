@@ -37,7 +37,7 @@ export const Blind: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Holds",
-    "Ranged Damage",
+    "Melee AoE Damage",
     "Sleep",
     "Universal Damage Sets"
   ],

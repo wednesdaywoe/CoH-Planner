@@ -1,0 +1,27 @@
+{
+  "key": "Dominator_Assault_Aux.Savage_Assault",
+  "display_name": "Savage Assault",
+  "help": "Savage Melee",
+  "short_help": "Savage Melee",
+  "icon": "savage_assault_set.ico",
+  "powers": [
+    "Dominator_Assault_Aux.Savage_Assault.Feral_Charge_Hit",
+    "Dominator_Assault_Aux.Savage_Assault.Rending_Flurry_Large",
+    "Dominator_Assault_Aux.Savage_Assault.Rending_Flurry_Normal"
+  ],
+  "available_level": [
+    0,
+    19,
+    19
+  ],
+  "power_display_names": [
+    "Feral Charge",
+    "Rending Flurry Large",
+    "Rending Flurry Normal"
+  ],
+  "power_short_helps": [
+    "PBAoE, DMG(Lethal), Foe DoT (Lethal), +3 Blood Frenzy, Self Teleport",
+    "PBAoE, DMG(Lethal), Foe DoT (Lethal), -Blood Frenzy",
+    "PBAoE, DMG(Lethal), Foe DoT (Lethal), -Blood Frenzy"
+  ]
+}

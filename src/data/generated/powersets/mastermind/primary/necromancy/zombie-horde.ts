@@ -33,7 +33,7 @@ export const ZombieHorde: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
