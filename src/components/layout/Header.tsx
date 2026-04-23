@@ -105,16 +105,22 @@ export function Header() {
 
   return (
     <header className="bg-slate-800 border-b border-slate-700 px-4 py-2 space-y-2">
-      {/* Row 1: three fixed items — never wraps */}
-      <div className="flex items-center gap-2">
-        <ActionMenu
-          onOpenModal={openExportImportModal}
-          onNew={() => setConfirmAction('new')}
-          onClear={() => setConfirmAction('clear')}
-          onAbout={openAboutModal}
-        />
+      {/* Row 1: primary controls. Wraps on small screens so nothing overflows. */}
+      <div className="flex items-center gap-2 flex-wrap">
+        {/* Action menu + Settings live in the mobile bottom nav's Menu/Settings tabs,
+            so hide the header triggers below lg to keep the level slider + undo/redo in view */}
+        <div className="hidden lg:block">
+          <ActionMenu
+            onOpenModal={openExportImportModal}
+            onNew={() => setConfirmAction('new')}
+            onClear={() => setConfirmAction('clear')}
+            onAbout={openAboutModal}
+          />
+        </div>
 
-        <SettingsPopover />
+        <div className="hidden lg:block">
+          <SettingsPopover />
+        </div>
         <BuildIdentityPopover />
 
         {/* Inline Level Slider */}

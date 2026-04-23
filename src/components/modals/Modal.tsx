@@ -73,7 +73,7 @@ export function Modal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 max-lg:bottom-[calc(56px+env(safe-area-inset-bottom))] z-40 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
       onMouseDown={handleMouseDown}
       onClick={handleBackdropClick}
       role="dialog"

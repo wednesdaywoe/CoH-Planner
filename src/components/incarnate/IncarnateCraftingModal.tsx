@@ -80,7 +80,7 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 max-lg:bottom-[calc(56px+env(safe-area-inset-bottom))] z-40 flex items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-sm"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"

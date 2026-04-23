@@ -252,6 +252,9 @@ interface UIState {
 
   /** Level Up mode: gate powers/slots/enhancements by the character's current level */
   levelUpMode: boolean;
+
+  /** Which mobile nav sheet is open (dashboard/menu/settings). Incarnate uses its own modal. */
+  mobileSheet: 'dashboard' | 'menu' | 'settings' | null;
 }
 
 interface UIActions {
@@ -454,6 +457,10 @@ interface UIActions {
   toggleLevelUpMode: () => void;
   setLevelUpMode: (enabled: boolean) => void;
 
+  // Mobile bottom-nav sheets
+  openMobileSheet: (sheet: 'dashboard' | 'menu' | 'settings') => void;
+  closeMobileSheet: () => void;
+
   // Hard reset of build-specific UI state (for New Build)
   resetForNewBuild: () => void;
 }
@@ -590,6 +597,7 @@ export const useUIStore = create<UIStore>()(
       showSlotLevels: true, // Show slot level labels by default
       permaTrackedPowers: [], // No perma-tracked powers by default
       levelUpMode: false, // Off by default — classic "respec" flow
+      mobileSheet: null,
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex, overrideSelect, virtualSlots, powerCategory) =>
@@ -1243,6 +1251,9 @@ export const useUIStore = create<UIStore>()(
 
       setLevelUpMode: (enabled) =>
         set({ levelUpMode: enabled }),
+
+      openMobileSheet: (sheet) => set({ mobileSheet: sheet }),
+      closeMobileSheet: () => set({ mobileSheet: null }),
 
       resetForNewBuild: () =>
         set({

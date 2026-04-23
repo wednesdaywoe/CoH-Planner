@@ -40,7 +40,13 @@ const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
 export { STAT_DEFINITIONS };
 export type { StatDefinition, StatValue, CompoundStatValue, MezStatValue };
 
-export function StatsDashboard() {
+interface StatsDashboardProps {
+  /** Skip rendering the co-located modals. Use when the dashboard is mounted
+   *  alongside another instance that already renders them (e.g. mobile sheet). */
+  excludeModals?: boolean;
+}
+
+export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = {}) {
   const stats = useCalculatedStats();
   const calcResult = useCharacterCalculation();
   const build = useBuildStore((s) => s.build);
@@ -390,6 +396,7 @@ export function StatsDashboard() {
         </div>
       </div>
 
+      {!excludeModals && <>
       {/* Stats Config Modal */}
       <StatsConfigModal
         isOpen={statsConfigModalOpen}
@@ -485,6 +492,7 @@ export function StatsDashboard() {
         isOpen={procSettingsModalOpen}
         onClose={closeProcSettingsModal}
       />
+      </>}
     </>
   );
 }

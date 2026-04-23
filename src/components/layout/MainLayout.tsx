@@ -6,6 +6,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Header } from './Header';
 import { StatsDashboard } from './StatsDashboard';
 import { UpdateBanner } from './UpdateBanner';
+import { MobileBottomNav } from './MobileBottomNav';
 import { EnhancementPicker } from '@/components/enhancements/EnhancementPicker';
 import { PowerInfoTooltip } from '@/components/info';
 import { PowerInfoModal } from '@/components/modals';
@@ -65,10 +66,15 @@ export function MainLayout({ children }: MainLayoutProps) {
     >
       <UpdateBanner visible={updateAvailable} />
       <Header />
-      <StatsDashboard />
+      {/* StatsDashboard is accessible on mobile via the bottom nav's Dashboard tab */}
+      <div className="hidden lg:block">
+        <StatsDashboard />
+      </div>
       <main className="flex-1 overflow-hidden relative">
         {children}
       </main>
+
+      <MobileBottomNav />
 
       {/* Global modals */}
       <EnhancementPicker />
@@ -80,8 +86,8 @@ export function MainLayout({ children }: MainLayoutProps) {
       {/* Onboarding beacon - progressive feature discovery */}
       <OnboardingBeacon />
 
-      {/* Floating buttons */}
-      <div className="fixed bottom-4 right-4 z-40 flex items-center gap-2">
+      {/* Floating buttons — hidden on mobile (those actions live in the bottom nav's Menu sheet) */}
+      <div className="hidden lg:flex fixed bottom-4 right-4 z-40 items-center gap-2">
         <button
           onClick={openHelpModal}
           className="flex items-center justify-center w-9 h-9 bg-blue-600 hover:bg-blue-500 text-white rounded-full shadow-lg transition-colors border border-blue-400"

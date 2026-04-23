@@ -54,7 +54,8 @@ export function OnboardingBeacon() {
     s.setBonusLookupModalOpen ||
     s.powerInfoModalOpen ||
     s.procSettingsModalOpen ||
-    s.compareSlottingOpen
+    s.compareSlottingOpen ||
+    s.mobileSheet !== null
   );
 
   // Store values for auto-completing steps that live inside dropdowns/popovers
