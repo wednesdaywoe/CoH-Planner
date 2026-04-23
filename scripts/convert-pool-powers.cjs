@@ -276,13 +276,24 @@ function convertPool(poolId) {
     }
 
     const rawJson = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    const availableLevel = availableLevels[i] || 0;
+    // Bin reads available_level as u4. UINT_MAX (4294967295) is the unsigned
+    // form of -1, used to mark auto-granted powers (Afterburner from Fly,
+    // Translocation from Mystic Flight, Arcane Power from Arcane Bolt).
+    // Normalize to -1 so the planner's `available < 0` filter catches them.
+    let availableLevel = availableLevels[i];
+    if (availableLevel === 4294967295 || availableLevel === undefined) {
+      availableLevel = availableLevel === 4294967295 ? -1 : 0;
+    }
     collected.push({ rawJson, availableLevel, originalIndex: i });
   }
 
-  // Sort by available_level (game pick order); ties keep original listing order
+  // Sort by available_level (game pick order); ties keep original listing
+  // order. Auto-granted powers (available=-1) sort to the END so they don't
+  // steal ranks 1/2 from real selectable powers.
   collected.sort((a, b) => {
-    if (a.availableLevel !== b.availableLevel) return a.availableLevel - b.availableLevel;
+    const aKey = a.availableLevel < 0 ? Number.MAX_SAFE_INTEGER : a.availableLevel;
+    const bKey = b.availableLevel < 0 ? Number.MAX_SAFE_INTEGER : b.availableLevel;
+    if (aKey !== bKey) return aKey - bKey;
     return a.originalIndex - b.originalIndex;
   });
 

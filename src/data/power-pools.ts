@@ -250,29 +250,20 @@ export function arePoolPrerequisitesMet(
     return parts[parts.length - 1];
   };
 
-  // Handle count expression: "A + B + C > N"
-  if (requiresExpr.includes('>') && requiresExpr.includes('+')) {
-    const [sumPart, thresholdPart] = requiresExpr.split('>').map((s) => s.trim());
-    const threshold = parseInt(thresholdPart, 10);
-    if (!isNaN(threshold)) {
-      const atoms = sumPart.split('+').map((s) => s.trim());
-      const count = atoms.filter((a) => selectedPowers.includes(resolveAtom(a))).length;
-      return count > threshold;
-    }
-  }
-
   // Raw .def `requires` strings are Reverse Polish Notation: operators come
-  // after their operands (e.g. tier-4/5 pool prereqs like Group Fly's
-  // "A B && C D && || E F && ||"). Detect RPN by the last whitespace-separated
-  // token being an operator and evaluate properly — splitting on `||`/`&&` as
-  // infix would mangle compound atoms like "Pool.X.A Pool.X.B" into a single
-  // token whose last segment is just B.
+  // after their operands. Two RPN flavors appear in pool data:
+  //   • Boolean: `A B && C D && || E F && ||` — Group Fly tier-4 prereqs.
+  //   • Count:   `A B + C + N >`              — Sorcery Enflame requires
+  //                                            (count of selected from set) > N.
+  // Splitting on `||`/`&&`/`+` as infix mangles compound atoms like
+  // "Pool.X.A Pool.X.B" into one token whose last segment is just B.
   const trimmed = requiresExpr.trim();
   const tokens = trimmed.split(/\s+/);
   const lastTok = tokens[tokens.length - 1];
-  const isRpn = lastTok === '!' || lastTok === '&&' || lastTok === '||';
+  const isBoolRpn = lastTok === '!' || lastTok === '&&' || lastTok === '||';
+  const isCountRpn = lastTok === '>' || lastTok === '>=' || lastTok === '<' || lastTok === '<=';
 
-  if (isRpn) {
+  if (isBoolRpn) {
     const stack: boolean[] = [];
     for (const tok of tokens) {
       if (tok === '!') {
@@ -293,6 +284,45 @@ export function arePoolPrerequisitesMet(
       }
     }
     return stack.length === 1 ? stack[0] : false;
+  }
+
+  if (isCountRpn) {
+    const stack: number[] = [];
+    for (const tok of tokens) {
+      if (tok === '+') {
+        if (stack.length < 2) return false;
+        const b = stack.pop()!;
+        const a = stack.pop()!;
+        stack.push(a + b);
+      } else if (tok === '>' || tok === '>=' || tok === '<' || tok === '<=') {
+        if (stack.length < 2) return false;
+        const threshold = stack.pop()!;
+        const count = stack.pop()!;
+        return tok === '>'  ? count > threshold
+             : tok === '>=' ? count >= threshold
+             : tok === '<'  ? count < threshold
+             :                count <= threshold;
+      } else {
+        const n = Number(tok);
+        if (!isNaN(n) && /^\d+$/.test(tok)) {
+          stack.push(n);
+        } else {
+          stack.push(selectedPowers.includes(resolveAtom(tok)) ? 1 : 0);
+        }
+      }
+    }
+    return false;
+  }
+
+  // Infix count expression fallback: "A + B + C > N"
+  if (requiresExpr.includes('>') && requiresExpr.includes('+')) {
+    const [sumPart, thresholdPart] = requiresExpr.split('>').map((s) => s.trim());
+    const threshold = parseInt(thresholdPart, 10);
+    if (!isNaN(threshold)) {
+      const atoms = sumPart.split('+').map((s) => s.trim());
+      const count = atoms.filter((a) => selectedPowers.includes(resolveAtom(a))).length;
+      return count > threshold;
+    }
   }
 
   // Infix fallback (legacy / hand-edited overrides).
