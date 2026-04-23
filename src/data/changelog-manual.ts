@@ -24,7 +24,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-04-23',
     items: [
       { message: '⚠️🚨⚠️ Please be patient for the next day or so while I fix the thousands of things that are currently on fire ⚠️🚨⚠️', type: 'known-issue' },
-      { message: 'What happened: SK migrated over to a fully self-source set of data, but the new data is structured differently than the old data that SK was originally buiit around. The migration was important in order to allow SK to remain current and up-to-date with CoH development, so in the long run it will be worth the momentary pain', type: 'update' },
+      { message: 'What happened: SK migrated over to a fully self-sourced set of data, but the new data is structured differently than the old data that SK was originally buiit around. The migration was important in order to allow SK to remain current and up-to-date with CoH development, so in the long run it will be worth the momentary pain', type: 'update' },
     ]
   },
 
