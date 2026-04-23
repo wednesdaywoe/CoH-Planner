@@ -23,18 +23,6 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-23',
     items: [
-      { message: 'Fix for Chain-area attacks (Focused Burst, Chain Lightning, Tesla Cage, Chain Induction, etc.) only accepting Knockback/Universal Damage sets — they now also accept Ranged/Melee Damage and Targeted AoE sets as appropriate', type: 'fix' },
-      { message: 'Fix for pool power prerequisites not counting other pool picks — e.g. Tough now correctly unlocks after taking just Kick or Boxing', type: 'fix' },
-      { message: 'New audit tool (scripts/audit-allowed-set-categories.cjs) — flags powers whose allowedSetCategories drift from inference or fail sanity invariants; used to catch bugs like the Chain-area one above', type: 'update' },
-      { message: 'Fix for Mastermind primary/secondary attack powers (Pistols, Dual Wield, Snap Shot, Pulse Rifle Blast, etc.) missing the Mastermind Archetype Sets category — Command of the Mastermind now slots correctly', type: 'fix' },
-      { message: 'Fix for Street Justice Low Kick missing the Accurate Defense Debuff set category, and Chain Induction being incorrectly flagged as Melee AoE instead of Melee Damage, and Omega Maneuver (Crab Spider) missing Threat Duration, and Havoc Punch (Electric Assault) missing Dominator Archetype Sets', type: 'fix' },
-    ]
-  },
-
-  // ─── 2026-03-24 ────────────────────────────────────────────────────────────
-  {
-    date: '2026-04-23',
-    items: [
       { message: 'Putting out more fires... 🤕', type: 'fix' },
       { message: 'Fix for some powers appearing in the wrong order, also fix for a number of travel powers and their allowedSetCategories', type: 'fix' },
       { message: 'Fix for power pool prerequisites. More collateral damage from migration', type: 'fix' },
