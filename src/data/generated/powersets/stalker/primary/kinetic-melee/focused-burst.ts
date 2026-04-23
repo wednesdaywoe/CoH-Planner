@@ -37,7 +37,6 @@ export const FocusedBurst: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
     "Ranged Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

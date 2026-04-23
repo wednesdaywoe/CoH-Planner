@@ -34,7 +34,7 @@
     "EnduranceDiscount",
     "Recharge"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && ||",

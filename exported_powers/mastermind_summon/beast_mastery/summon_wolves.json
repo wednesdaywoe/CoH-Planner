@@ -39,7 +39,20 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Accurate Defense Debuff",
+    "Accurate To-Hit Debuff",
+    "Defense Debuff",
+    "Healing",
+    "Knockback",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Running",
+    "To Hit Buff",
+    "To Hit Debuff",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

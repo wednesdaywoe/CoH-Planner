@@ -38,7 +38,12 @@
     "Debuff_ToHit",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Accurate To-Hit Debuff",
+    "Dominator Archetype Sets",
+    "Holds",
+    "To Hit Debuff"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

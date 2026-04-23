@@ -33,8 +33,7 @@ export const Brine: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
-    "Healing"
+    "Accurate Healing"
   ],
   "maxSlots": 6,
   "effects": {

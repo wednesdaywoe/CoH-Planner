@@ -36,7 +36,11 @@
     "Heal",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Accurate Healing",
+    "Endurance Modification",
+    "Healing"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

@@ -35,7 +35,9 @@
     "Recharge",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",

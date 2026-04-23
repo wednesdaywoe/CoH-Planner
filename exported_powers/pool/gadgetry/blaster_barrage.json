@@ -37,7 +37,10 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Gadgetry.Nano_Net Pool.Gadgetry.Wrist_Blaster && Pool.Gadgetry.Nano_Net Pool.Gadgetry.Jetpack && || Pool.Gadgetry.Wrist_Blaster Pool.Gadgetry.Jetpack && || accesslevel char> 0 >= &&",

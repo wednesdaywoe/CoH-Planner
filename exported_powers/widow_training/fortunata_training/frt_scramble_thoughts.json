@@ -37,7 +37,12 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

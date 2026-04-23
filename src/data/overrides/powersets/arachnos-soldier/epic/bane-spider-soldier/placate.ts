@@ -20,10 +20,6 @@ export const overrides: Partial<Power> = {
     "Recharge",
     "Taunt"
   ],
-  "allowedSetCategories": [
-    "Soldiers of Arachnos Archetype Sets",
-    "Threat Duration"
-  ],
   "stats": {
     "range": 7,
     "recharge": 60,

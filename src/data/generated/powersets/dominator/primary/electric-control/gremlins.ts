@@ -35,9 +35,8 @@ export const Gremlins: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Endurance Modification",
-    "Knockback",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

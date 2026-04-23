@@ -35,11 +35,10 @@ export const Phantasm: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Flight",
     "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

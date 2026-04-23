@@ -37,7 +37,11 @@
     "Heal",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Endurance Modification",
+    "Healing"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Force_of_Will.Weaken_Resolve Pool.Force_of_Will.Project_Will + Pool.Force_of_Will.Mighty_Leap + Pool.Force_of_Will.Wall_of_Force + Pool.Force_of_Will.Unleash_Potential + 1 >",

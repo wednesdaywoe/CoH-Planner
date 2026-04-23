@@ -37,7 +37,7 @@ export const GravityDistortionField: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Holds",
-    "Ranged Damage",
+    "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],

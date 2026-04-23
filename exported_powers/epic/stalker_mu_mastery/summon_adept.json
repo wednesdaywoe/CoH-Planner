@@ -40,7 +40,15 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Endurance Modification",
+    "Holds",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Sleep",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Epic ownPowerNum? 1 >",

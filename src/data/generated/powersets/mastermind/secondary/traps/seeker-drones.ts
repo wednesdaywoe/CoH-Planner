@@ -37,6 +37,7 @@ export const SeekerDrones: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Mastermind Archetype Sets",
+    "Pet Damage",
     "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",

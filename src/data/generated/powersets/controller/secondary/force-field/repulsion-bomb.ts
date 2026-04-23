@@ -37,7 +37,6 @@ export const ForceBomb: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Controller Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Stuns",

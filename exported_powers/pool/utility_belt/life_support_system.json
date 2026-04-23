@@ -35,7 +35,9 @@
     "Recharge",
     "Heal"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Healing"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Utility_Belt.Bolas Pool.Utility_Belt.Poisoned_Dagger && Pool.Utility_Belt.Bolas Pool.Utility_Belt.Freerunning && || Pool.Utility_Belt.Poisoned_Dagger Pool.Utility_Belt.Freerunning && || accesslevel char> 0 >= &&",

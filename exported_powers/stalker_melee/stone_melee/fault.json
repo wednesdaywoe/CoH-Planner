@@ -39,7 +39,13 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Knockback",
+    "Ranged AoE Damage",
+    "Stalker Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

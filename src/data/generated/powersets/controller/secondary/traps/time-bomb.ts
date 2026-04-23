@@ -32,7 +32,7 @@ export const TemporalBomb: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Knockback",
-    "Melee Damage",
+    "Melee AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],

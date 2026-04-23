@@ -38,9 +38,7 @@ export const Whitecap: Power = {
     "Corruptor Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
-    "Teleport",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

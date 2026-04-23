@@ -35,10 +35,9 @@ export const AnimateStone: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Controller Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage",
-    "Stuns",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

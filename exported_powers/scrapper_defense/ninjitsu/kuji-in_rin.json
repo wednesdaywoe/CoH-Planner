@@ -38,7 +38,12 @@
     "Jump",
     "Science"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Leaping",
+    "Resist Damage",
+    "Running",
+    "Universal Travel"
+  ],
   "cast_through": [
     "hold",
     "sleep",

@@ -38,9 +38,8 @@ export const RadioactiveSmash: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Stalker Archetype Sets",
-    "Threat Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

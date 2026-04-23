@@ -41,7 +41,17 @@
     "Confuse",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Confuse",
+    "Fear",
+    "Holds",
+    "Melee AoE Damage",
+    "Sleep",
+    "Stuns",
+    "Tanker Archetype Sets",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

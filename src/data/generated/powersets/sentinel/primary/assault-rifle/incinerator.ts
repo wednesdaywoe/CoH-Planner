@@ -33,7 +33,7 @@ export const Ignite: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged Damage",
+    "Ranged AoE Damage",
     "Sentinel Archetype Sets",
     "Universal Damage Sets"
   ],

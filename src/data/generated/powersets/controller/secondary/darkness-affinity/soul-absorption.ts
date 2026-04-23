@@ -34,7 +34,6 @@ export const SoulAbsorption: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Accurate To-Hit Debuff",
     "Endurance Modification",
     "Healing",

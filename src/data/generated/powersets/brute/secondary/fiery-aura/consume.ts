@@ -36,7 +36,6 @@ export const Consume: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",

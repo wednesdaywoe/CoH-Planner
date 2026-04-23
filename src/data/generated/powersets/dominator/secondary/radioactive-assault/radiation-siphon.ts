@@ -38,6 +38,7 @@ export const RadiationSiphon: Power = {
     "Accurate Healing",
     "Defense Debuff",
     "Healing",
+    "Knockback",
     "Melee Damage",
     "Universal Damage Sets"
   ],

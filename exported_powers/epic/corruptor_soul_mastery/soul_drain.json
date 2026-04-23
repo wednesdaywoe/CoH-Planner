@@ -37,7 +37,11 @@
     "Buff_ToHit",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Melee AoE Damage",
+    "To Hit Buff",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Epic ownPowerNum? 0 >",

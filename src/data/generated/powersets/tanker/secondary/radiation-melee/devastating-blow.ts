@@ -37,7 +37,7 @@ export const DevastatingBlow: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Stuns",
     "Tanker Archetype Sets",
     "Threat Duration",

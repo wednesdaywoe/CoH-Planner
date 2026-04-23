@@ -35,7 +35,9 @@
     "EnduranceDiscount",
     "Recharge"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Threat Duration"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

@@ -38,7 +38,7 @@ export const Fault: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Knockback",
-    "Melee AoE Damage",
+    "Ranged AoE Damage",
     "Stuns",
     "Threat Duration",
     "Universal Damage Sets"

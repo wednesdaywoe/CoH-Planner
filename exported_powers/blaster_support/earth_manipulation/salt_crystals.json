@@ -37,7 +37,11 @@
     "Debuff_Defense",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Sleep"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

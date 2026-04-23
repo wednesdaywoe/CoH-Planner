@@ -39,7 +39,12 @@
     "Heal",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Endurance Modification",
+    "Healing",
+    "Holds",
+    "Resist Damage"
+  ],
   "cast_through": [
     "hold",
     "sleep",

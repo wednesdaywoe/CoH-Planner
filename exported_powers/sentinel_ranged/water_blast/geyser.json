@@ -40,7 +40,14 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Knockback",
+    "Ranged AoE Damage",
+    "Sentinel Archetype Sets",
+    "Slow Movement",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

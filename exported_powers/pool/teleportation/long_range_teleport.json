@@ -35,7 +35,7 @@
     "Recharge",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && ||",

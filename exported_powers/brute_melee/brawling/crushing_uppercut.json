@@ -40,7 +40,15 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Brute Archetype Sets",
+    "Holds",
+    "Knockback",
+    "Melee Damage",
+    "Stuns",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

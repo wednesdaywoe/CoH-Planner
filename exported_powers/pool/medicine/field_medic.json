@@ -34,7 +34,7 @@
     "EnduranceDiscount",
     "Recharge"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Aid_Other Pool.Medicine.Resuscitate && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Resuscitate && || Pool.Medicine.Aid_Self Pool.Medicine.Resuscitate && ||",

@@ -37,7 +37,7 @@ export const SpinningStrike: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "Ranged AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

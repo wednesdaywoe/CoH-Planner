@@ -37,7 +37,11 @@
     "Recharge",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Endurance Modification",
+    "Resist Damage"
+  ],
   "cast_through": [
     "hold",
     "sleep",

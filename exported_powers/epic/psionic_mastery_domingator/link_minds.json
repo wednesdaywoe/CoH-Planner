@@ -36,7 +36,10 @@
     "Buff_ToHit",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "To Hit Buff"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "$archetype @Class_Dominator ==",

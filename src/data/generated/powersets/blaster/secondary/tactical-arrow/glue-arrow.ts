@@ -35,7 +35,7 @@ export const GlueArrow: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Ranged Damage",
+    "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],

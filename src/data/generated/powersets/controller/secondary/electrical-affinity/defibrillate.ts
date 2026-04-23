@@ -33,7 +33,6 @@ export const Defibrillate: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Controller Archetype Sets",
     "Endurance Modification",
     "Sleep"
   ],

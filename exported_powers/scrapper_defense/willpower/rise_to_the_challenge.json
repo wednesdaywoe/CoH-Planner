@@ -37,7 +37,11 @@
     "Heal",
     "Debuff_ToHit"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Healing",
+    "Threat Duration",
+    "To Hit Debuff"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

@@ -2,29 +2,32 @@
  * audit-allowed-set-categories.cjs
  *
  * Validates the `allowedSetCategories` field on every archetype power by:
- *   1. Re-running `inferAllowedSetCategories` from convert-powerset.cjs against
- *      the source JSON and comparing to the composed (generated ⊕ override)
- *      value the planner actually uses. Any disagreement is "drift": either
- *      the generated layer needs regen or an override is silently masking an
- *      inference bug.
- *   2. Applying independent invariants to the composed value:
+ *   1. Comparing the composed (generated ⊕ override) value against
+ *      `allowed_set_categories` from the bin export — the authoritative
+ *      per-power list the game itself uses, reversed out of boostsets.bin's
+ *      per-set power lists. Any diff means an override is masking the
+ *      authoritative answer.
+ *   2. Flagging powers where the exporter did NOT produce authoritative data
+ *      (the generated layer fell back to inference). Usually indicates a
+ *      power not present in any IO set's allowed-powers list, or a stale
+ *      export predating the boostsets parser.
+ *   3. Applying independent invariants to the composed value:
  *        - Damage boost → power has at least one damage-flavor category
- *        - Range ≥ 150 + Damage → has Sniper Attacks
- *        - Range 0 + Damage (no Range boost) → no Ranged/Sniper damage flavor
- *        - Ranged (Range boost + Damage) → no Melee/Melee AoE flavor
+ *        - Range ≥ 150 + Damage + Range boost → has Sniper Attacks
+ *        - Melee-only → no Ranged/Sniper damage flavor
+ *        - Ranged (Range boost) → no Melee/Melee AoE flavor
  *        - Heal boost → Healing (or Accurate Healing if Accuracy is also present)
- *        - Hold boost → Holds; Immobilize → Immobilize; etc.
+ *        - Hold/Immobilize/etc. boosts → corresponding category
  *        - Damaging AT power → carries that AT's archetype sets category
  *
  * Scope: the 26 archetype categories in CATEGORY_MAP (not pool/epic/incarnate).
- * Pool and epic powers have their own generators that the same logic mostly
- * applies to — can be added later.
  *
  * Usage:
- *   node scripts/audit-allowed-set-categories.cjs              # summary + first N of each
+ *   node scripts/audit-allowed-set-categories.cjs              # summary + first N
  *   node scripts/audit-allowed-set-categories.cjs --all        # full listings
  *   node scripts/audit-allowed-set-categories.cjs --drift      # drift only
  *   node scripts/audit-allowed-set-categories.cjs --invariants # invariants only
+ *   node scripts/audit-allowed-set-categories.cjs --fallback   # inference-fallback only
  */
 
 const fs = require('fs');
@@ -46,6 +49,7 @@ const args = process.argv.slice(2);
 const SHOW_ALL = args.includes('--all');
 const ONLY_DRIFT = args.includes('--drift');
 const ONLY_INVARIANTS = args.includes('--invariants');
+const ONLY_FALLBACK = args.includes('--fallback');
 const LIMIT = SHOW_ALL ? Infinity : 30;
 
 // ─── helpers ────────────────────────────────────────────────────────────────
@@ -274,10 +278,13 @@ function checkInvariants(powerJson, archetypeId, composed) {
 
 const driftRows = []; // { category, powerset, power, missing, extra, hasOverride }
 const invariantRows = []; // { category, powerset, power, issues }
+const fallbackRows = []; // { category, powerset, power } — no authoritative data
 const stats = {
   powersScanned: 0,
   skippedNoTs: 0,
   overriddenCats: 0,
+  hadAuthoritative: 0,
+  fellBackToInference: 0,
 };
 
 for (const category of fs.readdirSync(RAW_DATA).sort()) {
@@ -309,20 +316,37 @@ for (const category of fs.readdirSync(RAW_DATA).sort()) {
       if (hasOverride) stats.overriddenCats++;
       stats.powersScanned++;
 
-      // DRIFT — inference vs composed
-      const inferred = inferForPower(pJson, catInfo.archetype, catInfo.type);
-      if (!arraysEqual(inferred, composed)) {
-        const { missing, extra } = diff(composed, inferred);
-        driftRows.push({
-          category, powerset: psSlug, power: powerSlug,
-          missing, extra, hasOverride,
-        });
+      // Authoritative check — compare composed to `allowed_set_categories`
+      // from the export (reversed from boostsets.bin). When the export has
+      // a non-empty list, that's the game's answer; any diff is drift.
+      const authoritative = Array.isArray(pJson.allowed_set_categories)
+        ? [...pJson.allowed_set_categories].sort()
+        : [];
+
+      if (authoritative.length > 0) {
+        stats.hadAuthoritative++;
+        if (!arraysEqual(authoritative, composed)) {
+          const { missing, extra } = diff(composed, authoritative);
+          driftRows.push({
+            category, powerset: psSlug, power: powerSlug,
+            missing, extra, hasOverride,
+          });
+        }
+      } else {
+        stats.fellBackToInference++;
+        fallbackRows.push({ category, powerset: psSlug, power: powerSlug });
       }
 
-      // INVARIANTS — on the composed (final) value
-      const issues = checkInvariants(pJson, catInfo.archetype, composed);
-      if (issues.length > 0) {
-        invariantRows.push({ category, powerset: psSlug, power: powerSlug, issues });
+      // INVARIANTS — on the composed (final) value. Skip when the power has
+      // authoritative data (any mismatch there is a real-game rule the
+      // heuristics don't capture: pet summons don't accept mez sets even
+      // when the pet mezzes, cones on scrappers are melee despite `Range`
+      // boost, etc. — the game is the ground truth).
+      if (authoritative.length === 0) {
+        const issues = checkInvariants(pJson, catInfo.archetype, composed);
+        if (issues.length > 0) {
+          invariantRows.push({ category, powerset: psSlug, power: powerSlug, issues });
+        }
       }
     }
   }
@@ -340,28 +364,36 @@ function printRows(title, rows, formatRow) {
 }
 
 console.log(`Scanned ${stats.powersScanned} archetype powers ` +
-            `(${stats.overriddenCats} with allowedSetCategories override, ` +
+            `(${stats.hadAuthoritative} with authoritative data, ` +
+            `${stats.fellBackToInference} fell back to inference, ` +
+            `${stats.overriddenCats} with allowedSetCategories override, ` +
             `${stats.skippedNoTs} skipped — no generated .ts).`);
 
-if (!ONLY_INVARIANTS) {
-  // Split drift: overrides are expected drift between inference and composed;
-  // lift them into their own section so they don't drown the real bugs.
+if (!ONLY_INVARIANTS && !ONLY_FALLBACK) {
+  // Drift = composed differs from authoritative. Split by whether an override
+  // is masking it (likely stale) vs. the generated layer just needs regen.
   const bugs = driftRows.filter(r => !r.hasOverride);
   const overridden = driftRows.filter(r => r.hasOverride);
 
-  printRows('DRIFT — inference disagrees with generated (regen candidates)', bugs, r =>
+  printRows('DRIFT — generated disagrees with authoritative (regen candidates)', bugs, r =>
     `  ${r.category}/${r.powerset}/${r.power}` +
     (r.missing.length ? `\n    + add:    ${r.missing.join(', ')}` : '') +
     (r.extra.length   ? `\n    - remove: ${r.extra.join(', ')}` : '')
   );
-  printRows('DRIFT — masked by an override (review if override is still needed)', overridden, r =>
+  printRows('DRIFT — override masks authoritative value (likely stale)', overridden, r =>
     `  ${r.category}/${r.powerset}/${r.power}` +
     (r.missing.length ? `\n    + add:    ${r.missing.join(', ')}` : '') +
     (r.extra.length   ? `\n    - remove: ${r.extra.join(', ')}` : '')
   );
 }
 
-if (!ONLY_DRIFT) {
+if (!ONLY_DRIFT && !ONLY_INVARIANTS) {
+  printRows('INFERENCE FALLBACK — power not present in any IO set', fallbackRows, r =>
+    `  ${r.category}/${r.powerset}/${r.power}`
+  );
+}
+
+if (!ONLY_DRIFT && !ONLY_FALLBACK) {
   printRows('INVARIANT VIOLATIONS — composed value fails a sanity check', invariantRows, r =>
     `  ${r.category}/${r.powerset}/${r.power}\n    - ${r.issues.join('\n    - ')}`
   );

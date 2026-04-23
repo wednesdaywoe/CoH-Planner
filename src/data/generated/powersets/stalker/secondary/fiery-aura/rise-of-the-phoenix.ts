@@ -31,7 +31,6 @@ export const PhoenixRising: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",

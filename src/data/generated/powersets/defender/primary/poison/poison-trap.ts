@@ -36,7 +36,7 @@ export const PoisonTrap: Power = {
     "Defender Archetype Sets",
     "Endurance Modification",
     "Holds",
-    "Melee Damage",
+    "Melee AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

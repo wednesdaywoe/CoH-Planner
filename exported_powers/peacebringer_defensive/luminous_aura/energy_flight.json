@@ -34,7 +34,10 @@
     "EnduranceDiscount",
     "SpeedFlying"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Flight",
+    "Universal Travel"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Inherent.Inherent.Energy_Flight !",

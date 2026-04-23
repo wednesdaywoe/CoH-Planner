@@ -34,7 +34,6 @@ export const Dynamo: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Blaster Archetype Sets",
     "Endurance Modification",
     "Healing",

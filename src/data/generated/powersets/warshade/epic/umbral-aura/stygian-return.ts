@@ -31,7 +31,6 @@ export const StygianReturn: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Healing",
     "Kheldian Archetype Sets",
     "Melee AoE Damage",

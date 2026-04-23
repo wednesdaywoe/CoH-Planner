@@ -37,7 +37,7 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

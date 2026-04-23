@@ -38,7 +38,10 @@
     "Knockback",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Knockback",
+    "Stuns"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

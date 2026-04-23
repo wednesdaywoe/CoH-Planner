@@ -38,7 +38,11 @@
     "Buff_ToHit",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Healing",
+    "To Hit Buff"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Tactics && ||",

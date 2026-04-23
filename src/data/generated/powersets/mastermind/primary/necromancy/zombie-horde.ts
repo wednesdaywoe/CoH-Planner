@@ -34,11 +34,10 @@ export const ZombieHorde: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Mastermind Archetype Sets",
-    "Melee AoE Damage",
-    "Teleport",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "To Hit Debuff",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

@@ -35,7 +35,6 @@ export const TrickShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

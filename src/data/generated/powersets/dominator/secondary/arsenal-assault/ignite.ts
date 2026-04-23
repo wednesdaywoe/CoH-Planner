@@ -33,7 +33,7 @@ export const Ignite: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged Damage",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

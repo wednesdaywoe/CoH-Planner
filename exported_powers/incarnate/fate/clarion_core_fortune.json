@@ -33,7 +33,7 @@
     "Self"
   ],
   "boosts_allowed": [],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [],
   "cast_through": [
     "hold",
     "sleep",

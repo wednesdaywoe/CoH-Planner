@@ -34,7 +34,6 @@ export const Attune: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

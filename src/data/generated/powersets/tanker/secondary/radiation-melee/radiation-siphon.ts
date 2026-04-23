@@ -39,7 +39,7 @@ export const RadiationSiphon: Power = {
     "Accurate Healing",
     "Defense Debuff",
     "Healing",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

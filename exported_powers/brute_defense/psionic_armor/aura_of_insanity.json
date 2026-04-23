@@ -41,7 +41,17 @@
     "Confuse",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Brute Archetype Sets",
+    "Confuse",
+    "Fear",
+    "Holds",
+    "Melee AoE Damage",
+    "Sleep",
+    "Stuns",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

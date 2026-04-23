@@ -37,8 +37,7 @@ export const SynapticOverload: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
-    "Controller Archetype Sets",
-    "Endurance Modification"
+    "Controller Archetype Sets"
   ],
   "maxSlots": 6,
   "effects": {

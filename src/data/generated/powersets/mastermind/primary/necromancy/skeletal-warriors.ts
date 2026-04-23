@@ -35,11 +35,11 @@ export const GraveKnight: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Accurate To-Hit Debuff",
     "Defense Debuff",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

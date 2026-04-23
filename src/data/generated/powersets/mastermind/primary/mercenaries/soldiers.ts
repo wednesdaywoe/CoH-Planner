@@ -35,15 +35,13 @@ export const Soldiers: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Accurate Healing",
     "Defense Debuff",
     "Healing",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Melee AoE Damage",
-    "Teleport",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

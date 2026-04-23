@@ -39,7 +39,8 @@ export const Tornado: Power = {
     "Corruptor Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Stuns",
     "Universal Damage Sets"
   ],

@@ -39,7 +39,6 @@ export const Quills: Power = {
     "Brute Archetype Sets",
     "Melee AoE Damage",
     "Slow Movement",
-    "Threat Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

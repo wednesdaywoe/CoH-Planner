@@ -34,7 +34,7 @@ export const Taser: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Melee Damage",
+    "Ranged Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

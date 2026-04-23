@@ -36,7 +36,8 @@ export const VoltaicSentinel: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Sentinel Archetype Sets",
     "Universal Damage Sets"
   ],

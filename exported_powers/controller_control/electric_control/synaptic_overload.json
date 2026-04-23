@@ -38,7 +38,10 @@
     "Confuse",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Confuse",
+    "Controller Archetype Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

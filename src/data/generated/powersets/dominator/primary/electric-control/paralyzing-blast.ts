@@ -36,9 +36,8 @@ export const TeslaCoil: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
-    "Endurance Modification",
     "Holds",
-    "Ranged Damage",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

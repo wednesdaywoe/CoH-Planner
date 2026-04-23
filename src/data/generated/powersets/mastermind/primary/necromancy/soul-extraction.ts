@@ -42,7 +42,8 @@ export const SoulExtraction: Power = {
     "Healing",
     "Holds",
     "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

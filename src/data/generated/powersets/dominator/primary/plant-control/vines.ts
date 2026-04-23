@@ -36,7 +36,7 @@ export const Vines: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Holds",
-    "Ranged Damage",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

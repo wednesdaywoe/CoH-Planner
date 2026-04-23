@@ -38,7 +38,13 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Endurance Modification",
+    "Melee Damage",
+    "Scrapper Archetype Sets",
+    "Sleep",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

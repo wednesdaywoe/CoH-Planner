@@ -39,7 +39,8 @@ export const ProtectorBots: Power = {
     "Defense Sets",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Stuns",
     "To Hit Debuff",
     "Universal Damage Sets"

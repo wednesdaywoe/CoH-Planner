@@ -35,7 +35,10 @@
     "Recharge",
     "Heal"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Endurance Modification",
+    "Healing"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke && Pool.Manipulation.Challenge Pool.Manipulation.Intimidate && || Pool.Manipulation.Challenge Pool.Manipulation.Invoke_Panic && || Pool.Manipulation.Provoke Pool.Manipulation.Intimidate && || Pool.Manipulation.Provoke Pool.Manipulation.Invoke_Panic && || Pool.Manipulation.Intimidate Pool.Manipulation.Invoke_Panic && ||",

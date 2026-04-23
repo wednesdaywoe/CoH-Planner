@@ -38,7 +38,7 @@ export const BreathofFire: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
-    "Ranged AoE Damage",
+    "Melee AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"
   ],

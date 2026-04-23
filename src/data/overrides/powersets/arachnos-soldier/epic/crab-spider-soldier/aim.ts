@@ -12,9 +12,5 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "description": "Greatly increases the chance to hit and damage of your attacks for a few seconds. Recharge: Long",
-  "shortHelp": "Self +ToHit, +DMG",
-  "allowedSetCategories": [
-    "Soldiers of Arachnos Archetype Sets",
-    "To Hit Buff"
-  ]
+  "shortHelp": "Self +ToHit, +DMG"
 };

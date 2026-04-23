@@ -38,7 +38,12 @@
     "SpeedFlying",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Leaping",
+    "Running",
+    "Universal Travel"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

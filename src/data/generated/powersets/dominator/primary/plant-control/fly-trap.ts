@@ -37,9 +37,8 @@ export const FlyTrap: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Dominator Archetype Sets",
-    "Immobilize",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

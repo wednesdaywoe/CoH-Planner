@@ -36,7 +36,10 @@
     "Recharge",
     "Immobilize"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Dominator Archetype Sets",
+    "Immobilize"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

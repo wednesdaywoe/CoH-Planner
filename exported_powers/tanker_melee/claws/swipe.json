@@ -37,7 +37,12 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Melee Damage",
+    "Tanker Archetype Sets",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Tanker_Defense.Shield_Defense ! Tanker_Defense.Stone_Armor ! &&",

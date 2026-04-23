@@ -30,6 +30,7 @@ export const BuildUp: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Scrapper Archetype Sets",
     "To Hit Buff"
   ],
   "maxSlots": 6,

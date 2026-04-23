@@ -33,7 +33,8 @@ export const PhantomArmy: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

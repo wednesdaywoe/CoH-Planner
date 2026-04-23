@@ -37,7 +37,10 @@
     "Heal",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Healing"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

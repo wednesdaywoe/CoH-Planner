@@ -39,7 +39,6 @@ export const ProtonSweep: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Knockback",
     "Melee AoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

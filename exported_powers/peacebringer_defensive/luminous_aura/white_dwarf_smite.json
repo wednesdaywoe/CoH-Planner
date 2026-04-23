@@ -39,7 +39,15 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Kheldian Archetype Sets",
+    "Knockback",
+    "Melee Damage",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Smite ! &&",

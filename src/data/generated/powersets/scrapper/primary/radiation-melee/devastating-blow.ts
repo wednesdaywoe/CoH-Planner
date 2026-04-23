@@ -36,7 +36,7 @@ export const DevastatingBlow: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Scrapper Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

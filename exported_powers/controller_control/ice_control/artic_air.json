@@ -36,7 +36,11 @@
     "Recharge",
     "Confuse"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Confuse",
+    "Controller Archetype Sets",
+    "Slow Movement"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

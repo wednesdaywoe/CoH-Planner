@@ -37,7 +37,6 @@ export const GroundZero: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Accurate Healing",
     "Brute Archetype Sets",
     "Defense Debuff",
     "Healing",

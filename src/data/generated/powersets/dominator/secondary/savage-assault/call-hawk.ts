@@ -38,7 +38,6 @@ export const CallHawk: Power = {
     "Accurate To-Hit Debuff",
     "Knockback",
     "Ranged Damage",
-    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

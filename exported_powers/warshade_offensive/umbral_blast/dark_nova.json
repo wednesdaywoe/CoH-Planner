@@ -37,7 +37,12 @@
     "SpeedFlying",
     "Buff_ToHit"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Endurance Modification",
+    "Flight",
+    "To Hit Buff",
+    "Universal Travel"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

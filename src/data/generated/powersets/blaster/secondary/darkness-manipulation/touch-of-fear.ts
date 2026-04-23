@@ -34,7 +34,6 @@ export const TouchoftheBeyond: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Accurate To-Hit Debuff",
     "Endurance Modification",
     "Fear",

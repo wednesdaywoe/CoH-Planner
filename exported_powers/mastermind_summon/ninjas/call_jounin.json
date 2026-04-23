@@ -44,7 +44,21 @@
     "Confuse",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Accurate Defense Debuff",
+    "Accurate To-Hit Debuff",
+    "Confuse",
+    "Defense Debuff",
+    "Knockback",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Sleep",
+    "Stuns",
+    "Threat Duration",
+    "To Hit Debuff",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

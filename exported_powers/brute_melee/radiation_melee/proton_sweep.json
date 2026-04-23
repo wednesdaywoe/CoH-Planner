@@ -39,7 +39,14 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Accurate Defense Debuff",
+    "Brute Archetype Sets",
+    "Defense Debuff",
+    "Melee AoE Damage",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

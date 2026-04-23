@@ -37,7 +37,12 @@
     "Recharge",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Endurance Modification",
+    "Running",
+    "Universal Travel"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

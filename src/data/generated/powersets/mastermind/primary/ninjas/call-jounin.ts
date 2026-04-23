@@ -46,15 +46,13 @@ export const CallJounin: Power = {
     "Defense Debuff",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
-    "Running",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Sleep",
-    "Slow Movement",
     "Stuns",
     "Threat Duration",
     "To Hit Debuff",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

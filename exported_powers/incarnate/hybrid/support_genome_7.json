@@ -44,7 +44,7 @@
     "Buff_Defense",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [],
   "cast_through": [
     "hold",
     "sleep",

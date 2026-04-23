@@ -37,7 +37,11 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Melee Damage",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",

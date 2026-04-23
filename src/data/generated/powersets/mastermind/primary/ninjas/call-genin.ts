@@ -36,12 +36,10 @@ export const CallGenin: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Mastermind Archetype Sets",
-    "Melee AoE Damage",
-    "Running",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Stuns",
-    "Teleport",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

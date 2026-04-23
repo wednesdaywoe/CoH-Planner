@@ -35,7 +35,9 @@
     "Recharge",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Scrapper_Melee.Claws Scrapper_Melee.Katana || Scrapper_Melee.Dual_Blades || Scrapper_Melee.Quills || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Titan_Weapons || !",

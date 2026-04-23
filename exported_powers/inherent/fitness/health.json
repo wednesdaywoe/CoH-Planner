@@ -33,7 +33,9 @@
   "boosts_allowed": [
     "Heal"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Healing"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Fitness.Quick Pool.Fitness.Hurdle || Pool.Fitness.Health || Pool.Fitness.Stamina || !",

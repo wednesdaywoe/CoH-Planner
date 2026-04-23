@@ -35,7 +35,6 @@ export const Consume: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",

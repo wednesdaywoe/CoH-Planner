@@ -19,6 +19,14 @@ export interface ManualEntry {
 }
 
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
+  // ─── 2026-04-23 (evening) ─────────────────────────────────────────────────
+  {
+    date: '2026-04-23',
+    items: [
+      { message: "Big under-the-hood: set-slotting rules now come straight from the game's IO set data (boostsets.bin) instead of being inferred. 99.3% of powers get game-exact set categories — fixes a long tail of edge cases (pet summons, leap/teleport AoEs, cones, passive buffs) that inference had been getting subtly wrong", type: 'update' },
+    ]
+  },
+
   // ─── 2026-04-23 ────────────────────────────────────────────────────────────
   {
     date: '2026-04-23',

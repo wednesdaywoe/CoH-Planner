@@ -10,9 +10,4 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Holds"
-  ]
-};
+export const overrides: Partial<Power> = {};

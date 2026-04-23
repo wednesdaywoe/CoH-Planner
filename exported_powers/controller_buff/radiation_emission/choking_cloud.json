@@ -35,7 +35,10 @@
     "EnduranceDiscount",
     "Recharge"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Controller Archetype Sets",
+    "Holds"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

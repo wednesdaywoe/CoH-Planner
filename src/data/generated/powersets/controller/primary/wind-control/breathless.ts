@@ -39,6 +39,7 @@ export const Breathless: Power = {
     "Controller Archetype Sets",
     "Immobilize",
     "Ranged AoE Damage",
+    "Slow Movement",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

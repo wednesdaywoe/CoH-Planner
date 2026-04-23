@@ -34,7 +34,9 @@ export const SummonDemons: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Resist Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

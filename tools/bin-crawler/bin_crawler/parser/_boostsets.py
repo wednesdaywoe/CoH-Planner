@@ -74,7 +74,7 @@ EC_CATEGORY_TO_PLANNER = {
     "ECToHitDeBuff":           "To Hit Debuff",
     "ECEnduranceModification": "Endurance Modification",
     "ECFlight":                "Flight",
-    "ECLeaping":               "Jumping",
+    "ECLeaping":               "Leaping",
     "ECRunning":               "Running",
     "ECTeleport":              "Teleport",
     "ECUniversalTravel":       "Universal Travel",

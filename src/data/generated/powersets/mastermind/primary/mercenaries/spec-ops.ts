@@ -42,7 +42,8 @@ export const SpecOps: Power = {
     "Holds",
     "Immobilize",
     "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Stuns",
     "To Hit Debuff",
     "Universal Damage Sets"

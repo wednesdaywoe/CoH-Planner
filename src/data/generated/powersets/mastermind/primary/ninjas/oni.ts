@@ -38,7 +38,8 @@ export const Oni: Power = {
     "Immobilize",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

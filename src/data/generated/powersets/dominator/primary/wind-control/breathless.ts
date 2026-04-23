@@ -39,6 +39,7 @@ export const Breathless: Power = {
     "Dominator Archetype Sets",
     "Immobilize",
     "Ranged AoE Damage",
+    "Slow Movement",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

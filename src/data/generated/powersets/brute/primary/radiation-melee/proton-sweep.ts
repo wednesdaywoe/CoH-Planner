@@ -41,7 +41,6 @@ export const ProtonSweep: Power = {
     "Accurate Defense Debuff",
     "Brute Archetype Sets",
     "Defense Debuff",
-    "Knockback",
     "Melee AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"

@@ -34,7 +34,9 @@
     "Res_Damage",
     "EnduranceDiscount"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Resist Damage"
+  ],
   "cast_through": [
     "hold",
     "sleep",

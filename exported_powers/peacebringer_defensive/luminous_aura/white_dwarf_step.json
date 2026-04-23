@@ -34,7 +34,10 @@
     "EnduranceDiscount",
     "Range"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Teleport",
+    "Universal Travel"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Step ! &&",

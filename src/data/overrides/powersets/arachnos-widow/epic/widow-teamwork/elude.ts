@@ -11,13 +11,6 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Endurance Modification",
-    "Running",
-    "Running & Sprints",
-    "Universal Travel"
-  ],
   "stats": {},
   "effects": {
     "elusivity": {

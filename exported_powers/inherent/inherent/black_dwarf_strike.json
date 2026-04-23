@@ -38,7 +38,13 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Kheldian Archetype Sets",
+    "Knockback",
+    "Melee Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "0",

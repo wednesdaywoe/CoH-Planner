@@ -40,11 +40,11 @@ export const Reverberant: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
-    "Dominator Archetype Sets",
     "Fear",
     "Holds",
     "Immobilize",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Sleep",
     "Stuns",
     "Universal Damage Sets"

@@ -37,9 +37,7 @@ export const Whitecap: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
-    "Teleport",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

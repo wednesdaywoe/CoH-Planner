@@ -38,7 +38,7 @@ export const Fallout: Power = {
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
     "Defense Debuff",
-    "Ranged Damage",
+    "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

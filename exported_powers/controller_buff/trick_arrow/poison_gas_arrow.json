@@ -37,7 +37,10 @@
     "Recharge",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Controller Archetype Sets",
+    "Sleep"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

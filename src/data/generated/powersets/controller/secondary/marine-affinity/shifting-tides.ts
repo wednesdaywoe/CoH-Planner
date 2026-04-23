@@ -35,7 +35,7 @@ export const ShiftingTides: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
+    "Ranged AoE Damage",
     "To Hit Buff",
     "Universal Damage Sets"
   ],

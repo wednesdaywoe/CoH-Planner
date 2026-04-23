@@ -36,7 +36,10 @@
     "Recharge",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Resist Damage"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Brute_Melee.Dual_Blades Brute_Melee.Claws || Brute_Melee.Staff_Fighting || Brute_Melee.Katana || Brute_Melee.Titan_Weapons || Brute_Melee.Spines || !",

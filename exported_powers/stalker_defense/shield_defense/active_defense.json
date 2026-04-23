@@ -36,7 +36,10 @@
     "Recharge",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Resist Damage"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Stalker_Melee.Claws Stalker_Melee.Ninja_Sword || Stalker_Melee.Dual_Blades || Stalker_Melee.Spines || Stalker_Melee.Staff_Fighting || !",

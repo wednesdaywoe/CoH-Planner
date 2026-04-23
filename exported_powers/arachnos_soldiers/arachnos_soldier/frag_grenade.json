@@ -38,7 +38,12 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Knockback",
+    "Ranged AoE Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Frag_Grenade !",

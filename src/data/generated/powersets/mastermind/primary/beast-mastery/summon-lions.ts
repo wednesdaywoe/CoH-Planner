@@ -34,11 +34,11 @@ export const SummonLions: Power = {
   ],
   "allowedSetCategories": [
     "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Running",
     "Stuns",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

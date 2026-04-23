@@ -39,7 +39,7 @@ export const Vacuum: Power = {
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
     "Holds",
-    "Ranged Damage",
+    "Ranged AoE Damage",
     "Slow Movement",
     "To Hit Debuff",
     "Universal Damage Sets"

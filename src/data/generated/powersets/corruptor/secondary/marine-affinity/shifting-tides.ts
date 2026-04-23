@@ -36,7 +36,7 @@ export const ShiftingTides: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
-    "Melee AoE Damage",
+    "Ranged AoE Damage",
     "To Hit Buff",
     "Universal Damage Sets"
   ],

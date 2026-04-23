@@ -31,9 +31,7 @@ export const PersonalForceField: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets",
-    "Teleport",
-    "Universal Travel"
+    "Defense Sets"
   ],
   "maxSlots": 6,
   "effects": {

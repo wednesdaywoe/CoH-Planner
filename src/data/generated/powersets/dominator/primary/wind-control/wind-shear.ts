@@ -34,6 +34,7 @@ export const WindShear: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Slow Movement",
     "To Hit Debuff"
   ],

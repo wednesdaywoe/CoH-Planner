@@ -37,7 +37,11 @@
     "Debuff_Defense",
     "Damage"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Debuff",
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Experimentation.Experimental_Injection Pool.Experimentation.Toxic_Dart && Pool.Experimentation.Experimental_Injection Pool.Experimentation.Speed_of_Sound && || Pool.Experimentation.Toxic_Dart Pool.Experimentation.Speed_of_Sound && ||",

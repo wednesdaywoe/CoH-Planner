@@ -35,10 +35,8 @@ export const JackFrost: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Holds",
-    "Ranged AoE Damage",
-    "Slow Movement",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

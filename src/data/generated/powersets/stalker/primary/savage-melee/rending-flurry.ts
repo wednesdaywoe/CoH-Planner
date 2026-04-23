@@ -36,7 +36,6 @@ export const RendingFlurry: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Stalker Archetype Sets",
-    "Threat Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

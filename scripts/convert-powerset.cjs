@@ -1820,50 +1820,43 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     .map(b => BOOST_TYPE_MAP[b] || BIN_BOOST_MAP[b])
     .filter(Boolean);
 
-  // Allowed IO set categories — inferred from boost types because the bin
-  // parser's allowed_boostset_cats field is broken (always empty for most
-  // powers, garbage FX-path fragments otherwise — see binparser-bug audit).
-  // Mapping rules derived empirically from the previously-correct generated
-  // data; see inferAllowedSetCategories for the table.
-  //
-  // Special case 1: leap/charge attacks (Savage Leap, Feral Charge, Lightning
-  // Rod, etc.) have main effect_area=SingleTarget but deliver damage via
-  // an Execute_Power redirect that's actually AoE. Probe the redirect — if
-  // the AoE came via redirect, treat as MELEE AoE (the leap range is just
-  // travel; damage is melee around the landing point).
-  //
-  // Special case 2: location-targeted teleport AoEs (Shield Charge) have
-  // effect_area=Location but the player teleports TO the spot and damages
-  // foes around the landing point — that's melee delivery, not ranged.
-  // target_type "Location (Teleport)" disambiguates from true ranged
-  // location AoEs like Rain of Fire.
-  const redirectArea = inferEffectiveArea(powerJson);
-  // Detect location-teleport AoE by presence of a Teleport AttribMod alongside
-  // effect_area=Location. The bin's target_type is unreliable here (Shield
-  // Charge reports DeadMyPet instead of CoD2's "Location (Teleport)").
-  const hasTeleportAttrib = (powerJson.effects || []).some(eff =>
-    (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
-  );
-  const isLocationTeleport = (powerJson.effect_area === 'Location' && hasTeleportAttrib);
-  const effectiveArea = redirectArea
-    ?? (isLocationTeleport ? 'AoE' : (EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area));
-  // For redirect-AoE / location-teleport attacks: drop the `Range` boost
-  // from the inference input so the power gets `Melee AoE Damage`, not
-  // `Ranged AoE Damage`.
-  const boostsForCategory = (redirectArea || isLocationTeleport)
-    ? (powerJson.boosts_allowed || []).filter(b => b !== 'Range')
-    : (powerJson.boosts_allowed || []);
-  const inferred = inferAllowedSetCategories(
-    boostsForCategory,
-    archetypeId,
-    powerType,
-    effectiveArea,
-    powerJson.range,
-    powerJson.powerset || powerJson.full_name,
-    hasTeleportAttrib,
-  );
-  if (inferred.length > 0) {
-    power.allowedSetCategories = inferred;
+  // Allowed IO set categories. Preferred source: `allowed_set_categories`
+  // from the exporter, which reverses boostsets.bin's per-set power lists
+  // into the authoritative per-power answer the game itself uses. We only
+  // fall back to inference for powers not present in that index (older
+  // exports without boostset parsing, or tweaked/custom powers).
+  if (Array.isArray(powerJson.allowed_set_categories) && powerJson.allowed_set_categories.length > 0) {
+    power.allowedSetCategories = [...powerJson.allowed_set_categories].sort();
+  } else {
+    // Legacy inference path. See inferAllowedSetCategories for the table.
+    // Special case 1: leap/charge attacks (Savage Leap, Feral Charge,
+    // Lightning Rod, etc.) have main effect_area=SingleTarget but deliver
+    // damage via an Execute_Power redirect that's actually AoE.
+    // Special case 2: location-targeted teleport AoEs (Shield Charge) have
+    // effect_area=Location but the player teleports TO the spot and damages
+    // foes around the landing point — that's melee delivery, not ranged.
+    const redirectArea = inferEffectiveArea(powerJson);
+    const hasTeleportAttrib = (powerJson.effects || []).some(eff =>
+      (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
+    );
+    const isLocationTeleport = (powerJson.effect_area === 'Location' && hasTeleportAttrib);
+    const effectiveArea = redirectArea
+      ?? (isLocationTeleport ? 'AoE' : (EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area));
+    const boostsForCategory = (redirectArea || isLocationTeleport)
+      ? (powerJson.boosts_allowed || []).filter(b => b !== 'Range')
+      : (powerJson.boosts_allowed || []);
+    const inferred = inferAllowedSetCategories(
+      boostsForCategory,
+      archetypeId,
+      powerType,
+      effectiveArea,
+      powerJson.range,
+      powerJson.powerset || powerJson.full_name,
+      hasTeleportAttrib,
+    );
+    if (inferred.length > 0) {
+      power.allowedSetCategories = inferred;
+    }
   }
 
   // NOTE: Do NOT infer allowedEnhancements from set categories.

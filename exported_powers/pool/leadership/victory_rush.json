@@ -35,7 +35,9 @@
     "EnduranceDiscount",
     "Range"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Endurance Modification"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Defense Pool.Leadership.Vengeance && || Pool.Leadership.Assault Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Vengeance && || Pool.Leadership.Tactics Pool.Leadership.Vengeance && ||",

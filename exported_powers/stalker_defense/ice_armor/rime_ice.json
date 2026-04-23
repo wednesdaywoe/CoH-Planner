@@ -36,7 +36,10 @@
     "Recharge",
     "Heal"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Healing",
+    "Resist Damage"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Stalker_Defense.Ice_Armor.Hoarfrost !",

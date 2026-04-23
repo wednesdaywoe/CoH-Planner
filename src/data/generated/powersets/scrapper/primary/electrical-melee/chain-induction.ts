@@ -36,7 +36,7 @@ export const ChainInduction: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Melee Damage",
+    "Melee AoE Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

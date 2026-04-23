@@ -43,7 +43,17 @@
     "Confuse",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Confuse",
+    "Fear",
+    "Holds",
+    "Immobilize",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Sleep",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

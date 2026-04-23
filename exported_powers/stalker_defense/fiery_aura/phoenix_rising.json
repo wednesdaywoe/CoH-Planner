@@ -33,7 +33,7 @@
   "boosts_allowed": [
     "Res_Damage"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Stalker_Defense.Fiery_Aura.Rise_of_the_Phoenix",

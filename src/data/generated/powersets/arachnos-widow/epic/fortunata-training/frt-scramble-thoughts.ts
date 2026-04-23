@@ -33,7 +33,7 @@ export const ScrambleThoughts: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage",
+    "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

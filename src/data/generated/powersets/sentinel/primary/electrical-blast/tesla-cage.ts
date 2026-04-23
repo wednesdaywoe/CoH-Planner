@@ -39,7 +39,6 @@ export const TeslaCage: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Holds",
-    "Ranged AoE Damage",
     "Ranged Damage",
     "Sentinel Archetype Sets",
     "Universal Damage Sets"

@@ -36,7 +36,6 @@ export const SoulTransfer: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
-    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",

@@ -34,11 +34,10 @@ export const PowerofthePhoenix: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Corruptor Archetype Sets",
     "Endurance Modification",
     "Healing",
-    "Melee Damage",
+    "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],

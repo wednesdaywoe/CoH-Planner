@@ -36,7 +36,11 @@
     "EnduranceDiscount",
     "Heal"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Endurance Modification",
+    "Healing",
+    "Resist Damage"
+  ],
   "cast_through": [
     "hold",
     "sleep",

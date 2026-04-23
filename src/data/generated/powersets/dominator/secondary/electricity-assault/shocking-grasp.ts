@@ -36,7 +36,8 @@ export const VoltaicSentinel: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

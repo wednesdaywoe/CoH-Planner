@@ -35,7 +35,9 @@
     "Recharge",
     "Buff_ToHit"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "To Hit Buff"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Epic ownPowerNum? 0 >",

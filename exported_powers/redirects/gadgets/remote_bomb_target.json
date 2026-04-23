@@ -41,7 +41,17 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Blaster Archetype Sets",
+    "Controller Archetype Sets",
+    "Corruptor Archetype Sets",
+    "Defender Archetype Sets",
+    "Endurance Modification",
+    "Knockback",
+    "Melee AoE Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

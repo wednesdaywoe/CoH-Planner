@@ -28,6 +28,10 @@ export const ShadowStep: Power = {
     "EnduranceReduction",
     "Range"
   ],
+  "allowedSetCategories": [
+    "Teleport",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "teleport": {

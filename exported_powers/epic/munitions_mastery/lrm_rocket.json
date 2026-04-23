@@ -39,7 +39,11 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Knockback",
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Epic ownPowerNum? 1 >",

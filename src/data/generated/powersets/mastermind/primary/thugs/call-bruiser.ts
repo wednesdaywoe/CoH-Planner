@@ -34,11 +34,10 @@ export const CallBruiser: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
-    "Stuns",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

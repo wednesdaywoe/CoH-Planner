@@ -34,7 +34,6 @@ export const Gymnastics: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Flight",
     "Leaping",
     "Running",
     "Universal Travel"

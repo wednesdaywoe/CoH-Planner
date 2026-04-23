@@ -36,7 +36,9 @@
     "Recharge",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Threat Duration"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility && Pool.Invisibility.Stealth Pool.Invisibility.Invisibility && || Pool.Invisibility.Stealth Pool.Invisibility.Phase_Shift && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Invisibility && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Phase_Shift && || Pool.Invisibility.Invisibility Pool.Invisibility.Phase_Shift && ||",

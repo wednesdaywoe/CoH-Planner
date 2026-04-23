@@ -40,7 +40,15 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Accurate Defense Debuff",
+    "Defender Archetype Sets",
+    "Defense Debuff",
+    "Knockback",
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

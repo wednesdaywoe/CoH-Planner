@@ -36,7 +36,7 @@ export const SpinningStrike: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "Ranged AoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

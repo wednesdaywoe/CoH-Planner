@@ -33,7 +33,8 @@ export const GunDrone: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Ranged AoE Damage",
+    "Ranged Damage",
+    "Recharge Intensive Pets",
     "Threat Duration",
     "Universal Damage Sets"
   ],

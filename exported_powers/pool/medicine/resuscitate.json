@@ -36,7 +36,9 @@
     "Recharge",
     "Heal"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Healing"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && ||",

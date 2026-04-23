@@ -40,7 +40,17 @@
     "Debuff_Defense",
     "Damage"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Accurate Defense Debuff",
+    "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
+    "Defense Debuff",
+    "Holds",
+    "Knockback",
+    "Ranged AoE Damage",
+    "To Hit Debuff",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

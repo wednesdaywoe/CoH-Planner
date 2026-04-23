@@ -40,7 +40,16 @@
     "Confuse",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Confuse",
+    "Fear",
+    "Holds",
+    "Melee AoE Damage",
+    "Scrapper Archetype Sets",
+    "Sleep",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

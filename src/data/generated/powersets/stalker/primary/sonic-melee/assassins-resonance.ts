@@ -35,7 +35,6 @@ export const AssassinsWhisper: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
-    "Sleep",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

@@ -37,7 +37,7 @@ export const LightningClap: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Scrapper Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

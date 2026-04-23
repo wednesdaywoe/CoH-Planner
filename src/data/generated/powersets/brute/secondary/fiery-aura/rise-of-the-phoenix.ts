@@ -31,7 +31,6 @@ export const PhoenixRising: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",

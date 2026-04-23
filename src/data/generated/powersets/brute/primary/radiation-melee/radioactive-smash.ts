@@ -39,7 +39,7 @@ export const RadioactiveSmash: Power = {
     "Brute Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Threat Duration",
     "Universal Damage Sets"
   ],

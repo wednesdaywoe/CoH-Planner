@@ -33,6 +33,7 @@ export const FrigidProtection: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Endurance Modification",
     "Healing",
     "Slow Movement"

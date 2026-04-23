@@ -39,7 +39,18 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Accurate Healing",
+    "Brute Archetype Sets",
+    "Endurance Modification",
+    "Healing",
+    "Melee AoE Damage",
+    "Scrapper Archetype Sets",
+    "Stalker Archetype Sets",
+    "Tanker Archetype Sets",
+    "Threat Duration",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

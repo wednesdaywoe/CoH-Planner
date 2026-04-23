@@ -38,7 +38,13 @@
     "Knockback",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Controller Archetype Sets",
+    "Knockback",
+    "Stuns",
+    "Teleport",
+    "Universal Travel"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

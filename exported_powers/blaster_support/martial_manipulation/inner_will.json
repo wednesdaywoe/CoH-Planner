@@ -34,7 +34,9 @@
     "Recharge",
     "Heal"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Healing"
+  ],
   "cast_through": [
     "hold",
     "sleep",

@@ -34,7 +34,7 @@ export const TripMine: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Knockback",
-    "Melee Damage",
+    "Melee AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

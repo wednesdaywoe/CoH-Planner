@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from bin_crawler.parser._powers import parse_powers
 from bin_crawler.parser._powersets import parse_powersets
 from bin_crawler.parser._powercats import parse_powercats
+from bin_crawler.parser._boostsets import parse_boostsets, build_power_category_index
 from bin_crawler.parser._messages import load_messages
 from bin_crawler.parser._pigg import BinResolver
 from bin_crawler.parser._enums import POWER_TYPE, EFFECT_AREA, TARGET_TYPE, PVP_FLAG
@@ -71,8 +72,14 @@ def format_duration(seconds: float) -> str:
     return f"{seconds:.2f} seconds"
 
 
-def power_to_dict(pw, msgs=None) -> dict:
-    """Convert a PowerRecord to CoD2-compatible JSON dict."""
+def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
+    """Convert a PowerRecord to CoD2-compatible JSON dict.
+
+    set_cats_index maps `full_name` → list of planner set-category strings
+    derived from boostsets.bin's authoritative per-set power lists. When
+    present, `allowed_set_categories` is populated from it; otherwise the
+    field is omitted so downstream code can fall back to inference.
+    """
     d = {
         'name': pw.power_name,
         'full_name': pw.full_name,
@@ -102,7 +109,9 @@ def power_to_dict(pw, msgs=None) -> dict:
         'targets_autohit': [TARGET_TYPE.get(v, f'Unknown({v})') for v in pw.targets_autohit],
         'targets_affected': [TARGET_TYPE.get(v, f'Unknown({v})') for v in pw.targets_affected],
         'boosts_allowed': pw.boosts_allowed,
-        'allowed_boostset_cats': pw.allowed_boostset_cats,
+        'allowed_set_categories': (
+            set_cats_index.get(pw.full_name, []) if set_cats_index is not None else []
+        ),
         'cast_through': pw.cast_through,
         'num_allowed': pw.num_allowed,
         'requires': pw.requires,
@@ -233,6 +242,18 @@ def main():
                 ps_available[pw_name] = avail
         print(f'  {len(ps_records)} powersets loaded.', flush=True)
 
+    # Parse boostsets.bin — the authoritative per-IO-set list of powers each
+    # set can slot into. Reversed into a power→categories index so every
+    # exported power gets its `allowed_set_categories` directly from the
+    # game's data rather than inference.
+    set_cats_index: dict[str, list[str]] = {}
+    if resolver.has('boostsets.bin'):
+        print('Parsing boostsets.bin...', flush=True)
+        boost_sets = parse_boostsets(resolver.read('boostsets.bin'))
+        set_cats_index = build_power_category_index(boost_sets)
+        print(f'  {len(boost_sets)} IO sets loaded, '
+              f'{len(set_cats_index)} powers indexed.', flush=True)
+
     # Filter to player categories
     player_powers = [pw for pw in all_powers if pw.category in categories]
     print(f'\nFiltered to {len(player_powers)} player powers from {len(categories)} categories.')
@@ -292,7 +313,7 @@ def main():
 
             # Write individual power files
             for pw in powers_in_set:
-                pw_dict = power_to_dict(pw, msgs)
+                pw_dict = power_to_dict(pw, msgs, set_cats_index=set_cats_index)
                 pw_dict['available_level'] = ps_available.get(pw.full_name, 0)
                 pw_dict['powerset'] = ps_key
 

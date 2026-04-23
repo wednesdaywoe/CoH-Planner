@@ -33,11 +33,10 @@ export const SummonDemonlings: Power = {
   ],
   "allowedSetCategories": [
     "Mastermind Archetype Sets",
-    "Melee AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Slow Movement",
-    "Teleport",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

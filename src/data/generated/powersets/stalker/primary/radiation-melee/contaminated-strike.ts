@@ -36,9 +36,8 @@ export const ContaminatedStrike: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Stalker Archetype Sets",
-    "Threat Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

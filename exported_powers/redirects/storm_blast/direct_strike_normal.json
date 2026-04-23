@@ -39,7 +39,15 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Blaster Archetype Sets",
+    "Corruptor Archetype Sets",
+    "Defender Archetype Sets",
+    "Endurance Modification",
+    "Ranged Damage",
+    "Sniper Attacks",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

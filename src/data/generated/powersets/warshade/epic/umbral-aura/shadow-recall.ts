@@ -32,6 +32,10 @@ export const ShadowRecall: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Teleport",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "requires": "Inherent.Inherent.Shadow_Recall !"
 };

@@ -39,7 +39,14 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Blaster Archetype Sets",
+    "Endurance Modification",
+    "Knockback",
+    "Melee Damage",
+    "Sleep",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

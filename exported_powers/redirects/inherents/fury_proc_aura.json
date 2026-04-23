@@ -38,7 +38,9 @@
     "Mutation",
     "Science"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Threat Duration"
+  ],
   "cast_through": [
     "hold",
     "sleep",

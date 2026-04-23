@@ -36,7 +36,10 @@
     "Recharge",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Controller Archetype Sets",
+    "Stuns"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

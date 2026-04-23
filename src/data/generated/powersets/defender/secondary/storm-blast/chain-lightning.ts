@@ -39,7 +39,6 @@ export const ChainLightning: Power = {
     "Defender Archetype Sets",
     "Endurance Modification",
     "Ranged AoE Damage",
-    "Ranged Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

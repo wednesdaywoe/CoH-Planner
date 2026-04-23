@@ -36,7 +36,11 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Endurance Modification",
+    "Melee AoE Damage",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",

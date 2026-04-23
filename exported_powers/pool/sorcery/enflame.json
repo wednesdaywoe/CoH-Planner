@@ -36,7 +36,10 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt + Pool.Sorcery.Mystic_Flight + 1 >",

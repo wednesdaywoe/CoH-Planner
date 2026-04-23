@@ -37,7 +37,12 @@
     "Recharge",
     "Jump"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Endurance Modification",
+    "Leaping",
+    "Resist Damage",
+    "Universal Travel"
+  ],
   "cast_through": [
     "hold",
     "sleep",

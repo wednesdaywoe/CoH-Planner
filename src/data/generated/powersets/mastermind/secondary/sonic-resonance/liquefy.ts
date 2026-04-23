@@ -41,7 +41,6 @@ export const Liquefy: Power = {
     "Defense Debuff",
     "Holds",
     "Knockback",
-    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"

@@ -39,7 +39,6 @@ export const JoltingChain: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Knockback",
-    "Ranged AoE Damage",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

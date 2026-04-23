@@ -37,10 +37,9 @@ export const Singularity: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Holds",
-    "Immobilize",
     "Knockback",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

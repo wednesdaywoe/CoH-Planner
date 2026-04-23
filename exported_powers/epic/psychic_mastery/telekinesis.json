@@ -35,7 +35,9 @@
     "Immobilize",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Immobilize"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Epic ownPowerNum? 1 >",

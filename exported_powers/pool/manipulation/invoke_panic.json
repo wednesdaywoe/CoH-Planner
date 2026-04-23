@@ -36,7 +36,9 @@
     "Fear",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Fear"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke && Pool.Manipulation.Challenge Pool.Manipulation.Intimidate && || Pool.Manipulation.Provoke Pool.Manipulation.Intimidate && ||",

@@ -33,7 +33,8 @@ export const TriCannon: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Threat Duration",
     "Universal Damage Sets"
   ],

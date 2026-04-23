@@ -37,8 +37,8 @@ export const Vortex: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Controller Archetype Sets",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Slow Movement",
     "Stuns",
     "To Hit Debuff",

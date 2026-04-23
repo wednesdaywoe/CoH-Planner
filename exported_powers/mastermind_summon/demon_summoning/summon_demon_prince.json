@@ -38,7 +38,15 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Holds",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Sleep",
+    "Slow Movement",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

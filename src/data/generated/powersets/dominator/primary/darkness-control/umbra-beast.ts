@@ -37,10 +37,10 @@ export const UmbraBeast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Dominator Archetype Sets",
     "Fear",
     "Immobilize",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],

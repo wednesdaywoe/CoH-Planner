@@ -37,7 +37,7 @@ export const RadioactiveSmash: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

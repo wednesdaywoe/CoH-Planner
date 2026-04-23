@@ -34,7 +34,6 @@ export const DarkRegeneration: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Healing",
     "Melee AoE Damage",
     "Sentinel Archetype Sets",

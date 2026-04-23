@@ -38,7 +38,10 @@
     "Immobilize",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Immobilize",
+    "Slow Movement"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

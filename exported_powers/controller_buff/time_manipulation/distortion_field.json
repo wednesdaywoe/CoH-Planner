@@ -37,7 +37,11 @@
     "Range",
     "Recharge"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Controller Archetype Sets",
+    "Holds",
+    "Slow Movement"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

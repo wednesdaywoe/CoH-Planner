@@ -33,7 +33,7 @@ export const TemporalBomb: Power = {
     "Defender Archetype Sets",
     "Endurance Modification",
     "Knockback",
-    "Melee Damage",
+    "Melee AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],

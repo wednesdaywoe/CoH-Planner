@@ -35,8 +35,8 @@ export const HellonEarth: Power = {
   ],
   "allowedSetCategories": [
     "Mastermind Archetype Sets",
-    "Ranged Damage",
-    "To Hit Buff",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

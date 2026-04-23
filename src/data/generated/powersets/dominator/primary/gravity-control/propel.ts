@@ -37,7 +37,7 @@ export const Propel: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage",
+    "Ranged Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -38,7 +38,11 @@
     "Recharge",
     "Accuracy"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Controller Archetype Sets",
+    "Endurance Modification",
+    "Holds"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

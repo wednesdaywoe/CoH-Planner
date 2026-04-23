@@ -37,7 +37,10 @@
     "Range",
     "Recharge"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Endurance Modification",
+    "Resist Damage"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

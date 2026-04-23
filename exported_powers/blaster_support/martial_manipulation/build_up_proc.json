@@ -38,7 +38,7 @@
     "Mutation",
     "Science"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "Blaster_Support.Martial_Manipulation.Reach_for_the_Limit",

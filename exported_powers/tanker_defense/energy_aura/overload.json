@@ -37,7 +37,11 @@
     "Heal",
     "Buff_Defense"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Endurance Modification",
+    "Healing"
+  ],
   "cast_through": [
     "hold",
     "sleep",

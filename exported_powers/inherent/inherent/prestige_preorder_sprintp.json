@@ -31,7 +31,10 @@
     "Self"
   ],
   "boosts_allowed": [],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Leaping",
+    "Running"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "0",

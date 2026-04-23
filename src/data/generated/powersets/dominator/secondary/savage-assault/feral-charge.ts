@@ -35,7 +35,7 @@ export const FeralCharge: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Teleport",
     "Universal Damage Sets",
     "Universal Travel"

@@ -36,7 +36,12 @@
     "Damage",
     "Buff_ToHit"
   ],
-  "allowed_boostset_cats": [],
+  "allowed_set_categories": [
+    "Mastermind Archetype Sets",
+    "Ranged AoE Damage",
+    "To Hit Buff",
+    "Universal Damage Sets"
+  ],
   "cast_through": [],
   "num_allowed": 1,
   "requires": "",

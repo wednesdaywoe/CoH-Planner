@@ -38,14 +38,15 @@ export const SummonWolves: Power = {
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
     "Defense Debuff",
+    "Healing",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Melee AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
     "Running",
-    "Teleport",
+    "To Hit Buff",
     "To Hit Debuff",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

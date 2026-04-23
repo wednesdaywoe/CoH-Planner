@@ -33,7 +33,6 @@ export const ConductiveAura: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
     "Endurance Modification",
     "Healing"
   ],

@@ -34,8 +34,11 @@ export const CallEnforcer: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Holds",
     "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Stuns",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
