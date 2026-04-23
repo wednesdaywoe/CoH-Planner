@@ -44,6 +44,7 @@ export const SummonWolves: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "Running",
+    "Running & Sprints",
     "To Hit Buff",
     "To Hit Debuff",
     "Universal Damage Sets"

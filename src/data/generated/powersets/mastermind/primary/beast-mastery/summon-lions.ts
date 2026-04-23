@@ -37,6 +37,7 @@ export const SummonLions: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "Running",
+    "Running & Sprints",
     "Stuns",
     "Universal Damage Sets"
   ],

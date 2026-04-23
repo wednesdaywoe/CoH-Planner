@@ -33,8 +33,10 @@ export const KujiInRin: Power = {
   ],
   "allowedSetCategories": [
     "Leaping",
+    "Leaping & Sprints",
     "Resist Damage",
     "Running",
+    "Running & Sprints",
     "Universal Travel"
   ],
   "maxSlots": 6,

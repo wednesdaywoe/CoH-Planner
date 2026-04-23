@@ -33,6 +33,7 @@ export const InertialReduction: Power = {
   ],
   "allowedSetCategories": [
     "Leaping",
+    "Leaping & Sprints",
     "Universal Travel"
   ],
   "maxSlots": 6

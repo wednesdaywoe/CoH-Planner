@@ -39,8 +39,10 @@
   ],
   "allowed_set_categories": [
     "Leaping",
+    "Leaping & Sprints",
     "Resist Damage",
     "Running",
+    "Running & Sprints",
     "Universal Travel"
   ],
   "cast_through": [

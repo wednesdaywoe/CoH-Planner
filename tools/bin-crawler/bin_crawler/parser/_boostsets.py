@@ -221,6 +221,22 @@ def parse_boostsets(bin_path_or_data) -> list[BoostSetRecord]:
     ]
 
 
+_SPRINT_MARKER = "Inherent.Inherent.Sprint"
+
+
+def _resolve_category(s: BoostSetRecord) -> str:
+    """Map the set's EC-label to a planner category, accounting for the
+    Running/Leaping split. The planner treats "Running & Sprints" as a
+    distinct category from "Running" (Thrust vs Quickfoot/Celerity): the
+    distinction is data-derived — if the set's allowed-powers list includes
+    Sprint, it's the "& Sprints" variant.
+    """
+    base = EC_CATEGORY_TO_PLANNER.get(s.category, "")
+    if base in ("Running", "Leaping") and _SPRINT_MARKER in s.allowed_powers:
+        return f"{base} & Sprints"
+    return base
+
+
 def build_power_category_index(sets: Iterable[BoostSetRecord]) -> dict[str, list[str]]:
     """Build power full_name → sorted list of planner category names.
 
@@ -229,7 +245,7 @@ def build_power_category_index(sets: Iterable[BoostSetRecord]) -> dict[str, list
     """
     idx: dict[str, set[str]] = {}
     for s in sets:
-        planner_cat = EC_CATEGORY_TO_PLANNER.get(s.category)
+        planner_cat = _resolve_category(s)
         if not planner_cat:
             continue
         for p in s.allowed_powers:

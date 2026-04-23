@@ -41,6 +41,7 @@ export const SummonDireWolf: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "Running",
+    "Running & Sprints",
     "Slow Movement",
     "Universal Damage Sets"
   ],

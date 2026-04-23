@@ -23,22 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-23',
     items: [
-      { message: "Big under-the-hood: set-slotting rules now come straight from the game's IO set data (boostsets.bin) instead of being inferred. 99.3% of powers get game-exact set categories — fixes a long tail of edge cases (pet summons, leap/teleport AoEs, cones, passive buffs) that inference had been getting subtly wrong", type: 'update' },
-    ]
-  },
-
-  // ─── 2026-04-23 ────────────────────────────────────────────────────────────
-  {
-    date: '2026-04-23',
-    items: [
-      { message: 'Putting out more fires... 🤕', type: 'fix' },
-      { message: 'Fix for some powers appearing in the wrong order, also fix for a number of travel powers and their allowedSetCategories', type: 'fix' },
-      { message: 'Fix for power pool prerequisites. More collateral damage from migration', type: 'fix' },
-      { message: 'Fix for power sorting going wonky due to the dataset migration', type: 'fix' },
-      { message: 'Huge milestone for Sidekick: migration to new self-sourced dataset is complete. I expect some growing pains, but it will be worth it for keeping SK current with CoH development.', type: 'update' },
-      { message: 'Audit of tooltip hints across the app to ensure everthing has a helpful explaination of what it does', type: 'update' },
-      { message: 'New tooltip comparision mode: hover over a power or enhancment and hold shift to keep its info displayed', type: 'feat' },
-      { message: 'Audit of Help System to bring it up to date. Did you know there was a searchable Help system??? There is a searchable Help System! Look for the widget at the bottom', type: 'feat' },
+      { message: '⚠️🚨⚠️ Please be patient for the next day or so while I fix the thousands of things that are currently on fire ⚠️🚨⚠️', type: 'known-issue' },
     ]
   },
 
