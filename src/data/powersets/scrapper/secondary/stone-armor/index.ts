@@ -9,6 +9,7 @@
 
 import type { Powerset } from '@/types';
 
+import { RockArmor as RockArmor } from './stone-armor';
 import { StoneSkin as StoneSkin } from './stone-skin';
 import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
 import { MudPots as MudPots } from './mud-pots';
@@ -16,7 +17,6 @@ import { Rooted as Rooted } from './rooted';
 import { CrystalArmor as CrystalArmor } from './crystal-armor';
 import { Minerals as Minerals } from './mineral-armor';
 import { BrimstoneArmor as BrimstoneArmor } from './brimstone-armor';
-import { RockArmor as RockArmor } from './stone-armor';
 import { Geode as Geode } from './geode';
 
 export const powerset: Powerset = {
@@ -27,6 +27,7 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'secondary',
   powers: [
+    RockArmor,
     StoneSkin,
     EarthsEmbrace,
     MudPots,
@@ -34,7 +35,6 @@ export const powerset: Powerset = {
     CrystalArmor,
     Minerals,
     BrimstoneArmor,
-    RockArmor,
     Geode,
   ],
 };

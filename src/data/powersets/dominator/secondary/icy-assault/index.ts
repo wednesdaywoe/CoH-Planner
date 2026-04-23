@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { IceBolt as IceBolt } from './ice-bolt';
+import { IceSword as IceSword } from './ice-sword';
 import { IceSwordCircle as IceSwordCircle } from './ice-sword-circle';
+import { IceBlast as IceBlast } from './ice-blast';
 import { PowerUp as PowerUp } from './power-boost';
 import { FrostBreath as FrostBreath } from './frost-breath';
 import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
 import { IceSlash as IceSlash } from './greater-ice-sword';
-import { IceSword as IceSword } from './ice-sword';
 import { BitterIceBlast as BitterIceBlast } from './bitter-ice-blast';
-import { IceBlast as IceBlast } from './ice-blast';
 
 export const powerset: Powerset = {
   id: 'dominator/icy-assault',
@@ -28,14 +28,14 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     IceBolt,
+    IceSword,
     IceSwordCircle,
+    IceBlast,
     PowerUp,
     FrostBreath,
     ChillingEmbrace,
     IceSlash,
-    IceSword,
     BitterIceBlast,
-    IceBlast,
   ],
 };
 

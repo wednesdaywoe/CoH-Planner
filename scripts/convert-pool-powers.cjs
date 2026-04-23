@@ -153,12 +153,17 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   // Allowed IO set categories — inferred from boost types (the bin parser's
   // allowed_boostset_cats field is broken; see PARSER_TODO.md). Pool powers
   // pass 'pool' as both archetype and role since ATO categories don't apply.
+  const hasTeleportAttrib = (rawJson.effects || []).some(eff =>
+    (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
+  );
   const inferredCats = inferAllowedSetCategories(
     rawJson.boosts_allowed || [],
     'pool',
     'pool',
     EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
     rawJson.range,
+    rawJson.powerset || rawJson.full_name,
+    hasTeleportAttrib,
   );
   power.allowedSetCategories = inferredCats;
 

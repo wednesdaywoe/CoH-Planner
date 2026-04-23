@@ -10,12 +10,12 @@
 import type { Powerset } from '@/types';
 
 import { Hide as Hide } from './hide';
+import { RockArmor as RockArmor } from './stone-armor';
 import { StoneSkin as StoneSkin } from './stone-skin';
 import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
 import { Rooted as Rooted } from './rooted';
 import { CrystalArmor as CrystalArmor } from './crystal-armor';
 import { BrimstoneArmor as BrimstoneArmor } from './brimstone-armor';
-import { RockArmor as RockArmor } from './stone-armor';
 import { Minerals as Minerals } from './mineral-armor';
 import { Geode as Geode } from './geode';
 
@@ -28,12 +28,12 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     Hide,
+    RockArmor,
     StoneSkin,
     EarthsEmbrace,
     Rooted,
     CrystalArmor,
     BrimstoneArmor,
-    RockArmor,
     Minerals,
     Geode,
   ],

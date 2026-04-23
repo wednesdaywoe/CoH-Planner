@@ -219,7 +219,10 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Run Speed"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Running",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.2275,
@@ -394,7 +397,10 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Experimentation.Speed_of_Sound",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "range": 200,
@@ -916,7 +922,10 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [
           "Jump"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Leaping",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "activatePeriod": 10,
@@ -952,7 +961,11 @@ export const POWER_POOLS_RAW = {
           "Fly",
           "Run Speed"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Flight",
+          "Running",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "activatePeriod": 10,
@@ -1165,7 +1178,9 @@ export const POWER_POOLS_RAW = {
           "Fly"
         ],
         "allowedSetCategories": [
-          "Defense Sets"
+          "Defense Sets",
+          "Flight",
+          "Universal Travel"
         ],
         "effects": {
           "accuracy": 1,
@@ -1258,7 +1273,10 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Fly"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Flight",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.2275,
@@ -1305,7 +1323,9 @@ export const POWER_POOLS_RAW = {
           "Fly"
         ],
         "allowedSetCategories": [
-          "Defense Sets"
+          "Defense Sets",
+          "Flight",
+          "Universal Travel"
         ],
         "effects": {
           "accuracy": 1,
@@ -1380,7 +1400,10 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Fly"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Flight",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "endurance": 1.3,
@@ -1633,7 +1656,10 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Jump"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Leaping",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.2275,
@@ -2198,7 +2224,10 @@ export const POWER_POOLS_RAW = {
           "Run Speed"
         ],
         "allowedSetCategories": [
-          "Defense Sets"
+          "Defense Sets",
+          "Leaping",
+          "Running",
+          "Universal Travel"
         ],
         "effects": {
           "accuracy": 1,
@@ -2820,7 +2849,9 @@ export const POWER_POOLS_RAW = {
           "Jump"
         ],
         "allowedSetCategories": [
-          "Defense Sets"
+          "Defense Sets",
+          "Leaping",
+          "Universal Travel"
         ],
         "effects": {
           "accuracy": 1,
@@ -3018,7 +3049,10 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Jump"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Leaping",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.2275,
@@ -3125,7 +3159,9 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Ranged AoE Damage",
-          "Universal Damage Sets"
+          "Teleport",
+          "Universal Damage Sets",
+          "Universal Travel"
         ],
         "effects": {
           "accuracy": 1,
@@ -3767,7 +3803,10 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Fly"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Flight",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.2275,
@@ -3977,7 +4016,10 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Sorcery.Mystic_Flight",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "range": 350,
@@ -4156,7 +4198,10 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Run Speed"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Running",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.2275,
@@ -4348,7 +4393,10 @@ export const POWER_POOLS_RAW = {
           "Range",
           "Recharge"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "range": 10000,
@@ -4376,7 +4424,9 @@ export const POWER_POOLS_RAW = {
           "ToHit"
         ],
         "allowedSetCategories": [
-          "To Hit Buff"
+          "Teleport",
+          "To Hit Buff",
+          "Universal Travel"
         ],
         "effects": {
           "accuracy": 1,
@@ -4414,7 +4464,10 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Range"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "range": 350,
@@ -4439,7 +4492,10 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "recharge": 120,
@@ -4480,7 +4536,10 @@ export const POWER_POOLS_RAW = {
           "Range",
           "Recharge"
         ],
-        "allowedSetCategories": [],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "range": 25,

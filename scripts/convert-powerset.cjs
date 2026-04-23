@@ -296,7 +296,7 @@ const CONTROL_ATO_BY_AT = {
 };
 const MEZ_BOOSTS = new Set(['Hold', 'Stun', 'Confuse', 'Sleep', 'Fear', 'Immobilize']);
 
-function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, range) {
+function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, range, powersetHint, hasTeleportAttrib) {
   const cats = new Set();
   const boostSet = new Set(boosts || []);
 
@@ -304,6 +304,31 @@ function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, r
   for (const b of boostSet) {
     if (BOOST_TO_CATEGORY[b]) cats.add(BOOST_TO_CATEGORY[b]);
   }
+
+  // Travel categories — keyed off the bin's movement-boost types. SpeedFlying
+  // appears on Fly/Hover, Jump on Combat Jumping/Long Jump, SpeedRunning on
+  // Super Speed. Each travel power also accepts Universal Travel sets.
+  // Teleport powers don't expose a boost flag (their Range boost is generic),
+  // so we use the powersetHint to catch Teleport/Translocation/etc.
+  let isTravel = false;
+  if (boostSet.has('SpeedFlying') || boostSet.has('Fly')) {
+    cats.add('Flight'); isTravel = true;
+  }
+  if (boostSet.has('Jump')) {
+    cats.add('Leaping'); isTravel = true;
+  }
+  if (boostSet.has('SpeedRunning') || boostSet.has('Run')) {
+    cats.add('Running'); isTravel = true;
+  }
+  // Teleport powers accept Teleport sets (Warp, Blessing of the Zephyr).
+  // Detect by Teleport AttribMod in templates (catches Recall Friend, Team
+  // Teleport, Translocation, Fold Space, Combat Teleport). For the bare
+  // Teleport power — which exposes no AttribMods because the actual teleport
+  // is engine-handled — fall back to the powerset name.
+  if (hasTeleportAttrib || (powersetHint && /\bteleport(ation)?\b/i.test(powersetHint))) {
+    cats.add('Teleport'); isTravel = true;
+  }
+  if (isTravel) cats.add('Universal Travel');
 
   // "Accurate" debuff/heal categories: a power that also carries Accuracy
   // alongside a Debuff/Heal boost typically accepts the "Accurate X" set
@@ -1818,6 +1843,8 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     powerType,
     effectiveArea,
     powerJson.range,
+    powerJson.powerset || powerJson.full_name,
+    hasTeleportAttrib,
   );
   if (inferred.length > 0) {
     power.allowedSetCategories = inferred;
@@ -1986,9 +2013,13 @@ function convertPowerset(category, powersetName) {
     // Find the available level for this power. The bin-export `powers` array
     // is alphabetical (CoD2's `power_names` was game-pick order), so we use
     // available_level as the canonical sort key — matches in-game pick order.
-    const powerIndex = indexJson.power_names.findIndex(n =>
-      n.toLowerCase().endsWith(powerJson.name.toLowerCase())
-    );
+    // Match on the exact last dotted segment — plain `endsWith` on the
+    // full name would mis-match siblings like Power_Bolt vs Focused_Power_Bolt.
+    const targetName = powerJson.name.toLowerCase();
+    const powerIndex = indexJson.power_names.findIndex(n => {
+      const leaf = n.split('.').pop().toLowerCase();
+      return leaf === targetName;
+    });
     const availableLevel = powerIndex >= 0 ? indexJson.available_level[powerIndex] : 0;
 
     const power = convertPower(powerJson, availableLevel, categoryInfo.archetype, categoryInfo.type);

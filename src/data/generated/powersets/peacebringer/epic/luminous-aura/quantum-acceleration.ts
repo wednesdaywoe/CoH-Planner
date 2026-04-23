@@ -30,7 +30,9 @@ export const QuantumManeuvers: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Flight",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

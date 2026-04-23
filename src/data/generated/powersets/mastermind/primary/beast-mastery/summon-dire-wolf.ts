@@ -36,8 +36,10 @@ export const SummonDireWolf: Power = {
   "allowedSetCategories": [
     "Fear",
     "Ranged AoE Damage",
+    "Running",
     "Slow Movement",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

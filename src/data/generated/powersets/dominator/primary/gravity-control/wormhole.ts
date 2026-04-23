@@ -38,7 +38,9 @@ export const Wormhole: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Knockback",
-    "Stuns"
+    "Stuns",
+    "Teleport",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

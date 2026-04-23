@@ -32,7 +32,10 @@ export const KujiInRin: Power = {
     "Jump"
   ],
   "allowedSetCategories": [
-    "Resist Damage"
+    "Leaping",
+    "Resist Damage",
+    "Running",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

@@ -30,6 +30,10 @@ export const GroupEnergyFlight: Power = {
     "EnduranceReduction",
     "Fly"
   ],
+  "allowedSetCategories": [
+    "Flight",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "movement": {

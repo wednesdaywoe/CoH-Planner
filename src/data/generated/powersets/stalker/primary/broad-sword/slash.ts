@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Slash: Power = {
   "name": "Slash",
   "internalName": "Slash",
-  "available": 5,
+  "available": 0,
   "description": "You perform a quick Slash that can reduce a target's Defense, making him easier to hit. This attack causes moderate damage, but has a quick recharge time.",
   "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
   "icon": "sword_slash.png",

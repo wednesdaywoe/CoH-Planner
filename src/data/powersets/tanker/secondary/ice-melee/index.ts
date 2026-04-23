@@ -10,13 +10,13 @@
 import type { Powerset } from '@/types';
 
 import { FrozenFists as FrozenFists } from './frozen-fists';
+import { IceSword as IceSword } from './ice-sword';
 import { Frost as Frost } from './frost';
 import { Taunt as Taunt } from './taunt';
 import { BuildUp as BuildUp } from './build-up';
 import { IcePatch as IcePatch } from './ice-patch';
 import { FreezingTouch as FreezingTouch } from './freezing-touch';
 import { GreaterIceSword as GreaterIceSword } from './greater-ice-sword';
-import { IceSword as IceSword } from './ice-sword';
 import { FrozenAura as FrozenAura } from './frozen-aura';
 
 export const powerset: Powerset = {
@@ -28,13 +28,13 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     FrozenFists,
+    IceSword,
     Frost,
     Taunt,
     BuildUp,
     IcePatch,
     FreezingTouch,
     GreaterIceSword,
-    IceSword,
     FrozenAura,
   ],
 };

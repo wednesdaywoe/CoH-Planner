@@ -10,13 +10,13 @@
 import type { Powerset } from '@/types';
 
 import { MentalStrike as MentalStrike } from './mental-strike';
+import { PsiBlade as PsiBlade } from './psi-blade';
 import { TelekineticBlow as TelekineticBlow } from './telekinetic-blow';
 import { Concentration as Concentration } from './concentration';
 import { PsiBladeSweep as PsiBladeSweep } from './psi-blade-sweep';
 import { Confront as Confront } from './confront';
 import { Boggle as Boggle } from './boggle';
 import { GreaterPsiBlade as GreaterPsiBlade } from './greater-psi-blade';
-import { PsiBlade as PsiBlade } from './psi-blade';
 import { MassLevitate as MassLevitate } from './mass-levitate';
 
 export const powerset: Powerset = {
@@ -28,13 +28,13 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     MentalStrike,
+    PsiBlade,
     TelekineticBlow,
     Concentration,
     PsiBladeSweep,
     Confront,
     Boggle,
     GreaterPsiBlade,
-    PsiBlade,
     MassLevitate,
   ],
 };

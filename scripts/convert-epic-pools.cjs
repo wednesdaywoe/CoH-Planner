@@ -117,12 +117,17 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   // Allowed IO set categories — inferred from boost types (the bin parser's
   // allowed_boostset_cats field is broken; see PARSER_TODO.md). Epic powers
   // don't grant ATO categories, so pass 'epic' as both archetype and role.
+  const hasTeleportAttrib = (rawJson.effects || []).some(eff =>
+    (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
+  );
   power.allowedSetCategories = inferAllowedSetCategories(
     rawJson.boosts_allowed || [],
     'epic',
     'epic',
     EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
     rawJson.range,
+    rawJson.powerset || rawJson.full_name,
+    hasTeleportAttrib,
   );
 
   // Effects object (legacy format: stats mixed in with effects)

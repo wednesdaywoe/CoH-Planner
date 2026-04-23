@@ -46,12 +46,14 @@ export const CallJounin: Power = {
     "Defense Debuff",
     "Knockback",
     "Ranged AoE Damage",
+    "Running",
     "Sleep",
     "Slow Movement",
     "Stuns",
     "Threat Duration",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

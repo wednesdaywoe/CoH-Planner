@@ -33,7 +33,9 @@ export const DarkNova: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "To Hit Buff"
+    "Flight",
+    "To Hit Buff",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

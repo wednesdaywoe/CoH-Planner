@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerBolt: Power = {
   "name": "Power Bolt",
   "internalName": "Power_Bolt",
-  "available": 21,
+  "available": 0,
   "description": "A quick attack that rapidly hurls small bolts of energy at foes, sometimes knocking them down. Fast, but little damage.",
   "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_powerbolts.png",

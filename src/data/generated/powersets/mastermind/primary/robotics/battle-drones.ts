@@ -34,7 +34,9 @@ export const BattleDrones: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
-    "Universal Damage Sets"
+    "Teleport",
+    "Universal Damage Sets",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

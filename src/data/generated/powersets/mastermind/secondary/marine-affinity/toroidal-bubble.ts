@@ -35,7 +35,9 @@ export const ToroidalBubble: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Resist Damage"
+    "Leaping",
+    "Resist Damage",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

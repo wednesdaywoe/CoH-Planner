@@ -35,9 +35,11 @@ export const Phantasm: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Flight",
     "Knockback",
     "Ranged AoE Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

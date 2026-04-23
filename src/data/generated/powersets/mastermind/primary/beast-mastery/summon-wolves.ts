@@ -40,8 +40,11 @@ export const SummonWolves: Power = {
     "Defense Debuff",
     "Knockback",
     "Melee AoE Damage",
+    "Running",
+    "Teleport",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

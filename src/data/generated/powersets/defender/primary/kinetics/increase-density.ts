@@ -34,7 +34,9 @@ export const IncreaseDensity: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Resist Damage"
+    "Resist Damage",
+    "Teleport",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

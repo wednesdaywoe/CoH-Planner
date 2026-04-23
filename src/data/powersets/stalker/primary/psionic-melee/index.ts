@@ -10,9 +10,9 @@
 import type { Powerset } from '@/types';
 
 import { MentalStrike as MentalStrike } from './mental-strike';
+import { PsiBlade as PsiBlade } from './psi-blade';
 import { TelekineticBlow as TelekineticBlow } from './telekinetic-blow';
 import { AssassinsPsiBlade as AssassinsPsiBlade } from './assassins-psi-blade';
-import { PsiBlade as PsiBlade } from './psi-blade';
 import { Concentration as Concentration } from './concentration';
 import { Placate as Placate } from './placate';
 import { Boggle as Boggle } from './boggle';
@@ -28,9 +28,9 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     MentalStrike,
+    PsiBlade,
     TelekineticBlow,
     AssassinsPsiBlade,
-    PsiBlade,
     Concentration,
     Placate,
     Boggle,

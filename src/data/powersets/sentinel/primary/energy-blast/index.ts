@@ -10,13 +10,13 @@
 import type { Powerset } from '@/types';
 
 import { PowerBlast as PowerBlast } from './power-blast';
+import { PowerBolt as PowerBolt } from './power-bolt';
 import { EnergyTorrent as EnergyTorrent } from './energy-torrent';
 import { PowerBurst as PowerBurst } from './power-burst';
 import { Aim as Aim } from './aim';
 import { PowerPush as PowerPush } from './power-push';
 import { ExplosiveBlast as ExplosiveBlast } from './explosive-blast';
 import { FocusedPowerBolt as FocusedPowerBolt } from './focused-power-bolt';
-import { PowerBolt as PowerBolt } from './power-bolt';
 import { Nova as Nova } from './nova';
 
 export const powerset: Powerset = {
@@ -28,13 +28,13 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     PowerBlast,
+    PowerBolt,
     EnergyTorrent,
     PowerBurst,
     Aim,
     PowerPush,
     ExplosiveBlast,
     FocusedPowerBolt,
-    PowerBolt,
     Nova,
   ],
 };

@@ -33,7 +33,9 @@ export const AccelerateMetabolism: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Endurance Modification"
+    "Endurance Modification",
+    "Running",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

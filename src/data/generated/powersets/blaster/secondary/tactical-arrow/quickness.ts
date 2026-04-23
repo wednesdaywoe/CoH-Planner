@@ -33,7 +33,11 @@ export const Gymnastics: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Flight",
+    "Leaping",
+    "Running",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

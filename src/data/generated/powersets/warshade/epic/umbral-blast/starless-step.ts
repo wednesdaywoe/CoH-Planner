@@ -32,7 +32,9 @@ export const StarlessStep: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "To Hit Buff"
+    "Teleport",
+    "To Hit Buff",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

@@ -10,10 +10,10 @@
 import type { Powerset } from '@/types';
 
 import { Hack as Hack } from './hack';
+import { Slash as Slash } from './slash';
 import { BoomerangSlice as BoomerangSlice } from './boomerang-slice';
 import { Slice as Slice } from './slice';
 import { AssassinsSlash as AssassinsSlash } from './assassins-slash';
-import { Slash as Slash } from './slash';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { Parry as Parry } from './parry';
@@ -29,10 +29,10 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Hack,
+    Slash,
     BoomerangSlice,
     Slice,
     AssassinsSlash,
-    Slash,
     BuildUp,
     Placate,
     Parry,

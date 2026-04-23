@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SuperiorInvisibility: Power = {
   "name": "Superior Invisibility",
   "internalName": "Invisibility",
-  "available": 11,
+  "available": 7,
   "description": "You can bend light around yourself to become completely Invisible. While this power is active, you are all but impossible to detect, and have an extremely high Defense bonus to all attacks. Superior Invisibility is the only toggle invisibility power that allows you to attack while it is active, although you will lose some of your defense bonus if you do so.",
   "shortHelp": "Toggle: Self Stealth, +DEF(All)",
   "icon": "illusions_invisibility.png",

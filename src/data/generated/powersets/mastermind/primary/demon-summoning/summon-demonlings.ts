@@ -34,7 +34,9 @@ export const SummonDemonlings: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Slow Movement",
-    "Universal Damage Sets"
+    "Teleport",
+    "Universal Damage Sets",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

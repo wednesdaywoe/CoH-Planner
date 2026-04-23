@@ -35,7 +35,9 @@ export const SavageLeap: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Stalker Archetype Sets",
-    "Universal Damage Sets"
+    "Teleport",
+    "Universal Damage Sets",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

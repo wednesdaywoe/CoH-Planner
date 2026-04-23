@@ -29,6 +29,10 @@ export const NebulousForm: Power = {
     "Recharge",
     "Jump"
   ],
+  "allowedSetCategories": [
+    "Leaping",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {

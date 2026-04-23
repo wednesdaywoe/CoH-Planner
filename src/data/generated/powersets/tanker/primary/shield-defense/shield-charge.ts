@@ -38,8 +38,10 @@ export const ShieldCharge: Power = {
     "Knockback",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
+    "Teleport",
     "Threat Duration",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

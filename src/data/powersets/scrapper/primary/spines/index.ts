@@ -12,10 +12,10 @@ import type { Powerset } from '@/types';
 import { BarbSwipe as BarbSwipe } from './barb-swipe';
 import { Lunge as Lunge } from './lunge';
 import { SpineBurst as SpineBurst } from './fling-quills';
-import { Quills as Quills } from './quills';
 import { BuildUp as BuildUp } from './build-up';
 import { Impale as Impale } from './impale';
 import { Confront as Confront } from './taunt';
+import { Quills as Quills } from './quills';
 import { Ripper as Ripper } from './ripper';
 import { ThrowSpines as ThrowSpines } from './quill-throwing';
 
@@ -30,10 +30,10 @@ export const powerset: Powerset = {
     BarbSwipe,
     Lunge,
     SpineBurst,
-    Quills,
     BuildUp,
     Impale,
     Confront,
+    Quills,
     Ripper,
     ThrowSpines,
   ],

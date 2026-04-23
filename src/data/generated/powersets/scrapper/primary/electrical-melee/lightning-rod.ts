@@ -37,7 +37,9 @@ export const LightningRod: Power = {
     "Knockback",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
-    "Universal Damage Sets"
+    "Teleport",
+    "Universal Damage Sets",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

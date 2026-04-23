@@ -34,8 +34,10 @@ export const SummonLions: Power = {
   ],
   "allowedSetCategories": [
     "Ranged AoE Damage",
+    "Running",
     "Stuns",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {
