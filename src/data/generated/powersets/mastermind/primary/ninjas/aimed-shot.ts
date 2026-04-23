@@ -33,6 +33,7 @@ export const AimedShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

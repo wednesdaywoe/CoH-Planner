@@ -45,6 +45,7 @@ export const CallJounin: Power = {
     "Confuse",
     "Defense Debuff",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Running",
     "Sleep",

@@ -33,6 +33,7 @@ export const SummonLions: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Running",
     "Stuns",

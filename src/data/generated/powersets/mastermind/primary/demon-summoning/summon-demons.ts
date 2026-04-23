@@ -33,6 +33,7 @@ export const SummonDemons: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

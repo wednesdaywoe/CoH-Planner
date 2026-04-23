@@ -35,6 +35,7 @@ export const CallGenin: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Running",
     "Stuns",

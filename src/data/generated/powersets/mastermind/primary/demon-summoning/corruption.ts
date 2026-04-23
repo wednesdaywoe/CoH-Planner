@@ -33,6 +33,7 @@ export const Corruption: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

@@ -41,6 +41,7 @@ export const SpecOps: Power = {
     "Defense Debuff",
     "Holds",
     "Immobilize",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",

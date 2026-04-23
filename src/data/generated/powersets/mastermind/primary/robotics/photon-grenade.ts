@@ -36,6 +36,7 @@ export const PhotonGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"

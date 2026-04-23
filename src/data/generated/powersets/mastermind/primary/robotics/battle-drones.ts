@@ -33,6 +33,7 @@ export const BattleDrones: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Teleport",
     "Universal Damage Sets",

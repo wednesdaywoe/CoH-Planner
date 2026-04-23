@@ -274,11 +274,15 @@ const BOOST_TO_CATEGORY = {
 };
 
 // "Damage ATO" — these archetypes' ATO sets attach to any damaging power.
+// Mastermind is included because "Command of the Mastermind" slots into MM
+// primary/secondary attacks and "Mark of Supremacy" slots into pet summons;
+// both live in the same "Mastermind Archetype Sets" category.
 const DAMAGE_ATO_BY_AT = {
   blaster:    'Blaster Archetype Sets',
   brute:      'Brute Archetype Sets',
   corruptor:  'Corruptor Archetype Sets',
   defender:   'Defender Archetype Sets',
+  mastermind: 'Mastermind Archetype Sets',
   scrapper:   'Scrapper Archetype Sets',
   sentinel:   'Sentinel Archetype Sets',
   stalker:    'Stalker Archetype Sets',
@@ -2183,6 +2187,7 @@ module.exports = {
   extractEffects,
   extractDamage,
   inferAllowedSetCategories,
+  inferEffectiveArea,
   normalizeIconPath,
   toKebabCase,
   CATEGORY_MAP,

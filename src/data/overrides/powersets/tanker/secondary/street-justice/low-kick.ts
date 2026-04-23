@@ -11,14 +11,6 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "allowedSetCategories": [
-    "Defense Debuff",
-    "Melee Damage",
-    "Slow Movement",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "damage": {
     "type": "Smashing",
     "scale": 1.64,

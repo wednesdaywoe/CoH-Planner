@@ -35,6 +35,7 @@ export const Detonator: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

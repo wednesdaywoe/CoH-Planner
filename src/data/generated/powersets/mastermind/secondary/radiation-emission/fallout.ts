@@ -38,6 +38,7 @@ export const Fallout: Power = {
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
     "Defense Debuff",
+    "Mastermind Archetype Sets",
     "Ranged Damage",
     "To Hit Debuff",
     "Universal Damage Sets"

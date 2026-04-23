@@ -37,6 +37,7 @@ export const M30Grenade: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

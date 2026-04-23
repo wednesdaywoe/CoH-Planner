@@ -33,6 +33,7 @@ export const ZombieHorde: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Teleport",
     "To Hit Debuff",

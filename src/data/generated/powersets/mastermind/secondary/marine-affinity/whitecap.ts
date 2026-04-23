@@ -36,6 +36,7 @@ export const Whitecap: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Teleport",
     "Universal Damage Sets",

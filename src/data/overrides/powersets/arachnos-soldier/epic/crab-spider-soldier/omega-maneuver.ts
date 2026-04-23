@@ -26,6 +26,7 @@ export const overrides: Partial<Power> = {
     "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
+    "Threat Duration",
     "Universal Damage Sets"
   ],
   "stats": {

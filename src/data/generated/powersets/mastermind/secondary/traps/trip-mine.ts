@@ -33,6 +33,7 @@ export const TripMine: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee Damage",
     "Universal Damage Sets"
   ],

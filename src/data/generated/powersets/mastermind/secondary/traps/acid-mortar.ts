@@ -34,6 +34,7 @@ export const AcidMortar: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Mastermind Archetype Sets",
     "Melee Damage",
     "Universal Damage Sets"
   ],

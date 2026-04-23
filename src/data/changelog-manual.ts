@@ -25,6 +25,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { message: 'Fix for Chain-area attacks (Focused Burst, Chain Lightning, Tesla Cage, Chain Induction, etc.) only accepting Knockback/Universal Damage sets — they now also accept Ranged/Melee Damage and Targeted AoE sets as appropriate', type: 'fix' },
       { message: 'Fix for pool power prerequisites not counting other pool picks — e.g. Tough now correctly unlocks after taking just Kick or Boxing', type: 'fix' },
+      { message: 'New audit tool (scripts/audit-allowed-set-categories.cjs) — flags powers whose allowedSetCategories drift from inference or fail sanity invariants; used to catch bugs like the Chain-area one above', type: 'update' },
+      { message: 'Fix for Mastermind primary/secondary attack powers (Pistols, Dual Wield, Snap Shot, Pulse Rifle Blast, etc.) missing the Mastermind Archetype Sets category — Command of the Mastermind now slots correctly', type: 'fix' },
+      { message: 'Fix for Street Justice Low Kick missing the Accurate Defense Debuff set category, and Chain Induction being incorrectly flagged as Melee AoE instead of Melee Damage, and Omega Maneuver (Crab Spider) missing Threat Duration, and Havoc Punch (Electric Assault) missing Dominator Archetype Sets', type: 'fix' },
     ]
   },
 

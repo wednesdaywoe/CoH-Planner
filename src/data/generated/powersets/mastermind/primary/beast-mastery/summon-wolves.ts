@@ -39,6 +39,7 @@ export const SummonWolves: Power = {
     "Accurate To-Hit Debuff",
     "Defense Debuff",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Running",
     "Teleport",

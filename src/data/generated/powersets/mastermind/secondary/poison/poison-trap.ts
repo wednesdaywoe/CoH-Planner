@@ -35,6 +35,7 @@ export const PoisonTrap: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Holds",
+    "Mastermind Archetype Sets",
     "Melee Damage",
     "Universal Damage Sets"
   ],

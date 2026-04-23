@@ -38,6 +38,7 @@ export const Tornado: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"

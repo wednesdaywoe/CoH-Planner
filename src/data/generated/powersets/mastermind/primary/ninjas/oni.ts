@@ -37,6 +37,7 @@ export const Oni: Power = {
     "Holds",
     "Immobilize",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

@@ -38,6 +38,7 @@ export const LifeDrain: Power = {
     "Accurate Healing",
     "Accurate To-Hit Debuff",
     "Healing",
+    "Mastermind Archetype Sets",
     "Ranged Damage",
     "To Hit Debuff",
     "Universal Damage Sets"

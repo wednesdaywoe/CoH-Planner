@@ -39,6 +39,7 @@ export const Soldiers: Power = {
     "Defense Debuff",
     "Healing",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Teleport",
     "Universal Damage Sets",

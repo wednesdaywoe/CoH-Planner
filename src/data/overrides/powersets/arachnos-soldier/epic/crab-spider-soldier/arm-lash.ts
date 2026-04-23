@@ -13,13 +13,6 @@ import type { Power } from '@/types';
 export const overrides: Partial<Power> = {
   "description": "Your Crab Spider backpack arms lash out in a wide arc, striking all foes in front of you for high Lethal damage. Can also reduce the targets' Defense. Damage: High",
   "shortHelp": "Melee(Cone), High DMG(Lethal), Foe -DEF",
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Soldiers of Arachnos Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "stats": {
     "range": 7,
     "recharge": 12,

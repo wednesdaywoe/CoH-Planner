@@ -34,6 +34,7 @@ export const Lash: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee Damage",
     "Universal Damage Sets"
   ],

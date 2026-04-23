@@ -37,6 +37,7 @@ export const PowerofthePhoenix: Power = {
     "Accurate Healing",
     "Endurance Modification",
     "Healing",
+    "Mastermind Archetype Sets",
     "Melee Damage",
     "Stuns",
     "Universal Damage Sets"

@@ -32,6 +32,7 @@ export const SummonDemonlings: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Slow Movement",
     "Teleport",

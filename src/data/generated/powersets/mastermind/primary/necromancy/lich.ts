@@ -41,6 +41,7 @@ export const Lich: Power = {
     "Holds",
     "Immobilize",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"

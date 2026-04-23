@@ -36,6 +36,7 @@ export const CallBruiser: Power = {
   "allowedSetCategories": [
     "Holds",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"

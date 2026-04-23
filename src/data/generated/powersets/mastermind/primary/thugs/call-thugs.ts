@@ -33,6 +33,7 @@ export const CallThugs: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Teleport",
     "Universal Damage Sets",

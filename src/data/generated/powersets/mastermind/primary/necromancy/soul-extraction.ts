@@ -41,6 +41,7 @@ export const SoulExtraction: Power = {
     "Accurate To-Hit Debuff",
     "Healing",
     "Holds",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"

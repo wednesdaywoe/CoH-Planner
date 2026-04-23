@@ -34,6 +34,7 @@ export const HellonEarth: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged Damage",
     "To Hit Buff",
     "Universal Damage Sets"

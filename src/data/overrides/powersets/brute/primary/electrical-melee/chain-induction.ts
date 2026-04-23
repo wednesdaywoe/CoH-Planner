@@ -10,12 +10,4 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Endurance Modification",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ]
-};
+export const overrides: Partial<Power> = {};

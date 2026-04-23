@@ -11,13 +11,6 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Knockback",
-    "Melee Damage",
-    "Sleep",
-    "Universal Damage Sets"
-  ],
   "damage": [
     {
       "type": "Smashing",

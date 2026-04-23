@@ -37,6 +37,7 @@ export const CrackWhip: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],

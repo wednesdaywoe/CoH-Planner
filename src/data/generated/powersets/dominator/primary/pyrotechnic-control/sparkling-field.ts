@@ -38,6 +38,8 @@ export const SparklingChain: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Immobilize",
+    "Ranged AoE Damage",
+    "Ranged Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

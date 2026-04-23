@@ -35,6 +35,7 @@ export const SummonDemonPrince: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Sleep",
     "Slow Movement",

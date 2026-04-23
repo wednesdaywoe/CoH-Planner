@@ -38,6 +38,7 @@ export const ProtectorBots: Power = {
     "Accurate To-Hit Debuff",
     "Defense Sets",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",

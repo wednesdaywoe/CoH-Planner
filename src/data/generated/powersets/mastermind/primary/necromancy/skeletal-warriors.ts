@@ -38,6 +38,7 @@ export const GraveKnight: Power = {
     "Accurate To-Hit Debuff",
     "Defense Debuff",
     "Knockback",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"

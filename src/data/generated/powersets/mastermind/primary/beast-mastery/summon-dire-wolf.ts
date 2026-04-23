@@ -35,6 +35,7 @@ export const SummonDireWolf: Power = {
   ],
   "allowedSetCategories": [
     "Fear",
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Running",
     "Slow Movement",
