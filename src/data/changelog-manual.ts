@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-22',
     items: [
+      { message: 'Fix for power pool prerequisites. More collateral damage from migration', type: 'fix' },
       { message: 'Fix for power sorting going wonky due to the dataset migration', type: 'fix' },
       { message: 'Huge milestone for Sidekick: migration to new self-sourced dataset is complete. I expect some growing pains, but it will be worth it for keeping SK current with CoH development.', type: 'update' },
       { message: 'Audit of tooltip hints across the app to ensure everthing has a helpful explaination of what it does', type: 'update' },

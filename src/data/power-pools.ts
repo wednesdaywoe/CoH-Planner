@@ -261,6 +261,41 @@ export function arePoolPrerequisitesMet(
     }
   }
 
+  // Raw .def `requires` strings are Reverse Polish Notation: operators come
+  // after their operands (e.g. tier-4/5 pool prereqs like Group Fly's
+  // "A B && C D && || E F && ||"). Detect RPN by the last whitespace-separated
+  // token being an operator and evaluate properly — splitting on `||`/`&&` as
+  // infix would mangle compound atoms like "Pool.X.A Pool.X.B" into a single
+  // token whose last segment is just B.
+  const trimmed = requiresExpr.trim();
+  const tokens = trimmed.split(/\s+/);
+  const lastTok = tokens[tokens.length - 1];
+  const isRpn = lastTok === '!' || lastTok === '&&' || lastTok === '||';
+
+  if (isRpn) {
+    const stack: boolean[] = [];
+    for (const tok of tokens) {
+      if (tok === '!') {
+        if (stack.length < 1) return false;
+        stack.push(!stack.pop()!);
+      } else if (tok === '&&') {
+        if (stack.length < 2) return false;
+        const b = stack.pop()!;
+        const a = stack.pop()!;
+        stack.push(a && b);
+      } else if (tok === '||') {
+        if (stack.length < 2) return false;
+        const b = stack.pop()!;
+        const a = stack.pop()!;
+        stack.push(a || b);
+      } else {
+        stack.push(selectedPowers.includes(resolveAtom(tok)));
+      }
+    }
+    return stack.length === 1 ? stack[0] : false;
+  }
+
+  // Infix fallback (legacy / hand-edited overrides).
   // Split by || (OR conditions)
   const orConditions = requiresExpr.split('||').map((s) => s.trim());
 
