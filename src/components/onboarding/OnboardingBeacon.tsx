@@ -198,20 +198,28 @@ export function OnboardingBeacon() {
     };
   }, [enabled, isComplete, currentStep]);
 
-  // Document-level click listener for step completion
+  // Document-level listener for step completion. Listens for both click and
+  // touchend because some components call preventDefault on touchstart (e.g.
+  // DraggableSlotGhost for add-slot) which suppresses the synthetic click.
   useEffect(() => {
     if (!enabled || isComplete || !currentStep) return;
     // These steps are handled by store-based completion above
     const storeCompletedSteps = ['select-archetype', 'select-primary', 'select-secondary', 'export-import', 'help'];
     if (storeCompletedSteps.includes(currentStep.id)) return;
 
-    const handler = (e: MouseEvent) => {
-      const stepId = currentStep.id;
-      // Walk up from click target to find a matching data-onboarding element
-      let el = e.target as HTMLElement | null;
+    const stepId = currentStep.id;
+
+    // Dedupe: touchend + click can both fire for a single tap. Once we complete,
+    // ignore follow-up events in the same tap.
+    let completed = false;
+
+    const tryComplete = (target: EventTarget | null) => {
+      if (completed) return;
+      let el = target as HTMLElement | null;
       while (el) {
         if (el.dataset?.onboarding === stepId) {
-          // Small delay so the click's primary action fires first
+          completed = true;
+          // Small delay so the primary action fires first
           requestAnimationFrame(() => completeStep(stepId));
           return;
         }
@@ -219,9 +227,22 @@ export function OnboardingBeacon() {
       }
     };
 
-    // Use capture phase so we see the click before it might be stopped
-    document.addEventListener('click', handler, true);
-    return () => document.removeEventListener('click', handler, true);
+    const clickHandler = (e: MouseEvent) => tryComplete(e.target);
+    const touchHandler = (e: TouchEvent) => {
+      // changedTouches reflects the finger that just lifted
+      const touch = e.changedTouches[0];
+      if (!touch) return tryComplete(e.target);
+      // Use elementFromPoint in case the event's target has already unmounted
+      tryComplete(document.elementFromPoint(touch.clientX, touch.clientY));
+    };
+
+    // Capture phase so we see the event before it might be stopped
+    document.addEventListener('click', clickHandler, true);
+    document.addEventListener('touchend', touchHandler, true);
+    return () => {
+      document.removeEventListener('click', clickHandler, true);
+      document.removeEventListener('touchend', touchHandler, true);
+    };
   }, [enabled, isComplete, currentStep, completeStep]);
 
 
