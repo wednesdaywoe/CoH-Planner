@@ -90,6 +90,9 @@ export function ControlsModal({ isOpen, onClose }: ControlsModalProps) {
               <ControlItem action="Right-click a slot" description="Remove enhancement or remove the slot" />
               <ControlItem action="Shift + Right-click a slot" description="Slot Comparison Tool and Bulk actions menu" />
               <ControlItem action="Drag the + button" description="Add multiple slots at once" />
+              <ControlItem action="D" description="Show or hide the dashboard" />
+              <ControlItem action="L" description="Lock the info panel" />
+              <ControlItem action="T" description="Toggle the reactive info panel" />
             </ControlSection>
           )}
 
