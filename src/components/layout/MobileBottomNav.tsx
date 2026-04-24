@@ -1,14 +1,19 @@
 /**
  * MobileBottomNav — mobile-only fixed bottom navigation.
  *
- * Four tabs that open full-screen sheets or existing modals:
- *   - Dashboard: stats dashboard in a sheet (it's hidden from its normal slot on mobile)
+ * Five tabs:
+ *   - Home: dismisses any open sheet/modal, returns to the planner view
+ *   - Dashboard: stats dashboard in a sheet (hidden from its normal slot on mobile)
  *   - Incarnate: opens the existing incarnate modal
  *   - Menu: file actions (new/clear/export/import/about/login)
  *   - Settings: build settings (level, origin, exemplar, toggles)
  *
- * Rendered below `lg` breakpoint (≤1024px). On desktop the equivalent controls
- * already live in the header.
+ * Home is active when no sheet/modal is open, so users always have an
+ * unambiguous "back to the planner" tap target (tab-style toggling isn't
+ * obvious to everyone).
+ *
+ * Rendered below `lg` breakpoint (≤1024px). On desktop the equivalent
+ * controls already live in the header.
  */
 
 import { useEffect, type ReactNode } from 'react';
@@ -39,7 +44,20 @@ export function MobileBottomNav() {
   const openMobileSheet = useUIStore((s) => s.openMobileSheet);
   const closeMobileSheet = useUIStore((s) => s.closeMobileSheet);
   const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
+  const closeIncarnateModal = useUIStore((s) => s.closeIncarnateModal);
   const incarnateModalOpen = useUIStore((s) => s.incarnateModalOpen);
+
+  // Picking any non-Incarnate tab should close the Incarnate modal so tab
+  // selection behaves like a consistent switcher (and not require the user
+  // to manually hit Close/X first).
+  const switchSheet = (sheet: 'dashboard' | 'menu' | 'settings') => {
+    closeIncarnateModal();
+    if (mobileSheet === sheet) {
+      closeMobileSheet();
+    } else {
+      openMobileSheet(sheet);
+    }
+  };
 
   // Close sheet on Escape
   useEffect(() => {
@@ -76,28 +94,37 @@ export function MobileBottomNav() {
         style={{ height: NAV_RESERVE_CSS, paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
         <NavButton
+          label="Home"
+          icon={IconHome}
+          active={mobileSheet === null && !incarnateModalOpen}
+          onClick={() => { closeMobileSheet(); closeIncarnateModal(); }}
+        />
+        <NavButton
           label="Dashboard"
           icon={IconDashboard}
           active={mobileSheet === 'dashboard'}
-          onClick={() => (mobileSheet === 'dashboard' ? closeMobileSheet() : openMobileSheet('dashboard'))}
+          onClick={() => switchSheet('dashboard')}
         />
         <NavButton
           label="Incarnate"
           icon={IconIncarnate}
           active={incarnateModalOpen}
-          onClick={() => { closeMobileSheet(); openIncarnateModal(); }}
+          onClick={() => {
+            closeMobileSheet();
+            if (incarnateModalOpen) closeIncarnateModal(); else openIncarnateModal();
+          }}
         />
         <NavButton
           label="Menu"
           icon={IconMenu}
           active={mobileSheet === 'menu'}
-          onClick={() => (mobileSheet === 'menu' ? closeMobileSheet() : openMobileSheet('menu'))}
+          onClick={() => switchSheet('menu')}
         />
         <NavButton
           label="Settings"
           icon={IconSettings}
           active={mobileSheet === 'settings'}
-          onClick={() => (mobileSheet === 'settings' ? closeMobileSheet() : openMobileSheet('settings'))}
+          onClick={() => switchSheet('settings')}
         />
       </nav>
     </>
@@ -443,6 +470,14 @@ function ToggleRow({ label, checked, onChange }: { label: string; checked: boole
 // ============================================
 // ICONS
 // ============================================
+
+function IconHome({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m4-8v8m5-10l2 2M5 10v10a1 1 0 001 1h3m10-11l-2-2m2 2v10a1 1 0 01-1 1h-3m-6 0h6" />
+    </svg>
+  );
+}
 
 function IconDashboard({ className }: { className?: string }) {
   return (

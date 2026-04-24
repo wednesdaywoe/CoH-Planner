@@ -304,73 +304,64 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         {/* Pinned perma-tracked powers */}
         <PinnedPowersBar />
 
-        {/* Dashboard action bar */}
-        <div className="flex items-center gap-0.5 pt-1 mt-1 border-t border-gray-800 overflow-x-auto">
-          {/* Resources: Powers and Slots remaining */}
-          <Tooltip content={`${24 - currentPowerCount} power picks remaining (${currentPowerCount} used)`}>
-            <span className={`text-xs tabular-nums font-medium px-1 ${
-              currentPowerCount > 24 ? 'text-red-400' : 24 - currentPowerCount <= 3 ? 'text-yellow-400' : 'text-emerald-400'
-            }`}>
-              Pwr {24 - currentPowerCount}/24
-            </span>
-          </Tooltip>
-          <Tooltip content={`${Math.max(0, 67 - currentSlotCount)} enhancement slots remaining (${currentSlotCount} used)`}>
-            <span className={`text-xs tabular-nums font-medium px-1 ${
-              currentSlotCount > 67 ? 'text-red-400' : 67 - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
-            }`}>
-              Slot {Math.max(0, 67 - currentSlotCount)}/67
-            </span>
-          </Tooltip>
-          <div className="w-px h-4 bg-gray-700 mx-0.5 shrink-0" />
-          <button onClick={openAccoladesModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-amber-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="Toggle accolade bonuses" data-onboarding="accolades">
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-            </svg>
-            <span className="hidden lg:inline">Accolades</span>
-          </button>
-          <button onClick={openSetBonusLookupModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-green-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="Look up set bonuses by stat" data-onboarding="set-bonus-finder">
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <span className="hidden lg:inline">Set Bonus Finder</span>
-          </button>
-          <button onClick={openDetailedTotalsModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-blue-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="View detailed character totals" data-onboarding="detailed-totals">
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <span className="hidden lg:inline">Totals</span>
-          </button>
-          <button onClick={openPowersetCompareModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-cyan-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="Compare powersets side-by-side">
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-            <span className="hidden lg:inline">Compare Sets</span>
-          </button>
-          <button onClick={() => openCompareSlotting()} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-purple-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="Compare enhancement slotting configurations" data-onboarding="compare-slotting">
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-            </svg>
-            <span className="hidden lg:inline">Compare Slotting</span>
-          </button>
-          <button onClick={openEnhancementListModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-purple-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="View enhancement shopping list" data-onboarding="enhancement-list">
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-            </svg>
-            <span className="hidden lg:inline">Enhancement List</span>
-          </button>
-          <button onClick={openStatsConfigModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors shrink-0" title="Configure dashboard stats" data-onboarding="stats-config">
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span className="hidden lg:inline">Configure</span>
-          </button>
-          <button onClick={openControlsModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-cyan-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="View control hints" data-onboarding="controls">
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span className="hidden lg:inline">Controls</span>
-          </button>
+        {/* Dashboard action bar.
+         * Desktop (≥lg): single horizontal row, icon + inline label.
+         * Mobile (<lg): counters on top, then a 3-col grid of icon + stacked
+         * label tiles — uses the empty vertical space in the mobile sheet and
+         * makes each button a proper touch target with a visible name.
+         * Button class strings are split into shared/variant pieces so the
+         * two layouts stay in sync.
+         */}
+        <div className="pt-1 mt-1 border-t border-gray-800">
+          {/* Counters row (Lvl / Pwr / Slot) */}
+          <div className="flex items-center gap-1 lg:gap-0.5 overflow-x-auto">
+            <Tooltip content={`Character level ${build.level}`}>
+              <span className="text-xs tabular-nums font-medium px-1 text-sky-400">
+                Lvl {build.level}
+              </span>
+            </Tooltip>
+            <Tooltip content={`${24 - currentPowerCount} power picks remaining (${currentPowerCount} used)`}>
+              <span className={`text-xs tabular-nums font-medium px-1 ${
+                currentPowerCount > 24 ? 'text-red-400' : 24 - currentPowerCount <= 3 ? 'text-yellow-400' : 'text-emerald-400'
+              }`}>
+                Pwr {24 - currentPowerCount}/24
+              </span>
+            </Tooltip>
+            <Tooltip content={`${Math.max(0, 67 - currentSlotCount)} enhancement slots remaining (${currentSlotCount} used)`}>
+              <span className={`text-xs tabular-nums font-medium px-1 ${
+                currentSlotCount > 67 ? 'text-red-400' : 67 - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
+              }`}>
+                Slot {Math.max(0, 67 - currentSlotCount)}/67
+              </span>
+            </Tooltip>
+            <div className="hidden lg:block w-px h-4 bg-gray-700 mx-0.5 shrink-0" />
+            {/* Desktop-only: action buttons inline after the separator. */}
+            <DashboardActionButtons
+              openAccoladesModal={openAccoladesModal}
+              openSetBonusLookupModal={openSetBonusLookupModal}
+              openDetailedTotalsModal={openDetailedTotalsModal}
+              openPowersetCompareModal={openPowersetCompareModal}
+              openCompareSlotting={openCompareSlotting}
+              openEnhancementListModal={openEnhancementListModal}
+              openStatsConfigModal={openStatsConfigModal}
+              openControlsModal={openControlsModal}
+              variant="desktop"
+            />
+          </div>
+          {/* Mobile grid of action tiles */}
+          <div className="lg:hidden grid grid-cols-3 gap-1 mt-2">
+            <DashboardActionButtons
+              openAccoladesModal={openAccoladesModal}
+              openSetBonusLookupModal={openSetBonusLookupModal}
+              openDetailedTotalsModal={openDetailedTotalsModal}
+              openPowersetCompareModal={openPowersetCompareModal}
+              openCompareSlotting={openCompareSlotting}
+              openEnhancementListModal={openEnhancementListModal}
+              openStatsConfigModal={openStatsConfigModal}
+              openControlsModal={openControlsModal}
+              variant="mobile"
+            />
+          </div>
         </div>
 
         {/* Mobile Incarnate grid - visible below md when the full panel is hidden */}
@@ -493,6 +484,144 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         onClose={closeProcSettingsModal}
       />
       </>}
+    </>
+  );
+}
+
+// Action buttons for the Dashboard's bottom quickbar. Rendered twice:
+// once inline on desktop and once as a 3-column grid on mobile. Kept as a
+// single component so the set of actions can't drift between layouts.
+interface DashboardActionButtonsProps {
+  openAccoladesModal: () => void;
+  openSetBonusLookupModal: () => void;
+  openDetailedTotalsModal: () => void;
+  openPowersetCompareModal: () => void;
+  openCompareSlotting: () => void;
+  openEnhancementListModal: () => void;
+  openStatsConfigModal: () => void;
+  openControlsModal: () => void;
+  variant: 'desktop' | 'mobile';
+}
+
+// Tailwind classes must be literal strings so the JIT can detect them. A
+// mapping keeps per-action hover accents while still letting us share one
+// button factory. (Dynamic `hover:${color}` strings don't work — the scanner
+// never sees them and the CSS rule never gets generated.)
+const DESKTOP_BTN_BY_ACCENT: Record<string, string> = {
+  amber:  'flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-amber-300  hover:bg-gray-800 rounded transition-colors shrink-0 hidden lg:flex',
+  green:  'flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-green-300  hover:bg-gray-800 rounded transition-colors shrink-0 hidden lg:flex',
+  blue:   'flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-blue-300   hover:bg-gray-800 rounded transition-colors shrink-0 hidden lg:flex',
+  cyan:   'flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-cyan-300   hover:bg-gray-800 rounded transition-colors shrink-0 hidden lg:flex',
+  purple: 'flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-purple-300 hover:bg-gray-800 rounded transition-colors shrink-0 hidden lg:flex',
+  gray:   'flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-gray-200   hover:bg-gray-800 rounded transition-colors shrink-0 hidden lg:flex',
+};
+const MOBILE_BTN_BY_ACCENT: Record<string, string> = {
+  amber:  'flex flex-col items-center justify-center gap-1 px-1 py-2 text-[11px] text-gray-300 hover:text-amber-300  active:text-amber-300  bg-gray-800/40 hover:bg-gray-800 rounded transition-colors',
+  green:  'flex flex-col items-center justify-center gap-1 px-1 py-2 text-[11px] text-gray-300 hover:text-green-300  active:text-green-300  bg-gray-800/40 hover:bg-gray-800 rounded transition-colors',
+  blue:   'flex flex-col items-center justify-center gap-1 px-1 py-2 text-[11px] text-gray-300 hover:text-blue-300   active:text-blue-300   bg-gray-800/40 hover:bg-gray-800 rounded transition-colors',
+  cyan:   'flex flex-col items-center justify-center gap-1 px-1 py-2 text-[11px] text-gray-300 hover:text-cyan-300   active:text-cyan-300   bg-gray-800/40 hover:bg-gray-800 rounded transition-colors',
+  purple: 'flex flex-col items-center justify-center gap-1 px-1 py-2 text-[11px] text-gray-300 hover:text-purple-300 active:text-purple-300 bg-gray-800/40 hover:bg-gray-800 rounded transition-colors',
+  gray:   'flex flex-col items-center justify-center gap-1 px-1 py-2 text-[11px] text-gray-300 hover:text-gray-200   active:text-gray-200   bg-gray-800/40 hover:bg-gray-800 rounded transition-colors',
+};
+
+type Accent = keyof typeof DESKTOP_BTN_BY_ACCENT;
+
+function DashboardActionButtons(props: DashboardActionButtonsProps) {
+  const isMobile = props.variant === 'mobile';
+
+  const btn = (
+    accent: Accent,
+    onClick: () => void,
+    title: string,
+    iconPath: JSX.Element,
+    label: string,
+    onboarding?: string,
+  ) => {
+    const classes = isMobile ? MOBILE_BTN_BY_ACCENT[accent] : DESKTOP_BTN_BY_ACCENT[accent];
+    const iconClass = isMobile ? 'w-5 h-5' : 'w-3.5 h-3.5';
+    return (
+      <button
+        onClick={onClick}
+        className={classes}
+        title={title}
+        {...(onboarding ? { 'data-onboarding': onboarding } : {})}
+      >
+        <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          {iconPath}
+        </svg>
+        <span className={isMobile ? 'text-center leading-tight' : 'hidden lg:inline'}>{label}</span>
+      </button>
+    );
+  };
+
+  return (
+    <>
+      {btn(
+        'amber',
+        props.openAccoladesModal,
+        'Toggle accolade bonuses',
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />,
+        'Accolades',
+        'accolades',
+      )}
+      {btn(
+        'green',
+        props.openSetBonusLookupModal,
+        'Look up set bonuses by stat',
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />,
+        isMobile ? 'Set Bonuses' : 'Set Bonus Finder',
+        'set-bonus-finder',
+      )}
+      {btn(
+        'blue',
+        props.openDetailedTotalsModal,
+        'View detailed character totals',
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />,
+        'Totals',
+        'detailed-totals',
+      )}
+      {btn(
+        'cyan',
+        props.openPowersetCompareModal,
+        'Compare powersets side-by-side',
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />,
+        'Compare Sets',
+      )}
+      {btn(
+        'purple',
+        props.openCompareSlotting,
+        'Compare enhancement slotting configurations',
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />,
+        isMobile ? 'Compare Slots' : 'Compare Slotting',
+        'compare-slotting',
+      )}
+      {btn(
+        'purple',
+        props.openEnhancementListModal,
+        'View enhancement shopping list',
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />,
+        isMobile ? 'Enh List' : 'Enhancement List',
+        'enhancement-list',
+      )}
+      {btn(
+        'gray',
+        props.openStatsConfigModal,
+        'Configure dashboard stats',
+        <>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </>,
+        'Configure',
+        'stats-config',
+      )}
+      {btn(
+        'cyan',
+        props.openControlsModal,
+        'View control hints',
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />,
+        'Controls',
+        'controls',
+      )}
     </>
   );
 }
