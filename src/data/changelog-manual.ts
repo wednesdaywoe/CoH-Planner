@@ -23,7 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-23',
     items: [
-      { message: 'You can now collapse and expand the dashboard', type: 'feat' },
+      { message: 'You can now collapse and expand the dashboard (press D or use the arrow)', type: 'feat' },
       { message: 'Added a new hint bar above the power column grid to show contextual hints', type: 'feat' },
       { message: 'Fix for Fighting Pool order regression', type: 'fix' },
       { message: 'Made some adjustments to mobile UI including a new tab bar at the bottom', type: 'feat' },
