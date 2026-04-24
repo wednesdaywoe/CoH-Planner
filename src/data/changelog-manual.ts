@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-23',
     items: [
+      { message: 'Fix for Imperivum Armor\'s proc status', type: 'fix' },
       { message: 'You can now collapse and expand the dashboard (press D or use the arrow), and L toggles infopanel lock', type: 'feat' },
       { message: 'Added a new hint bar above the power column grid to show contextual hints', type: 'feat' },
       { message: 'Fix for Fighting Pool order regression', type: 'fix' },

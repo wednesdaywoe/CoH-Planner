@@ -11712,8 +11712,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Res(Psionic)",
         "aspects": [],
-        "proc": false,
-        "unique": false
+        "proc": true,
+        "unique": true
       }
     ],
     "icon": "sImperviumarmor.png"
