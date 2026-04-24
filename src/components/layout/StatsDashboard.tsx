@@ -12,6 +12,7 @@ import { getArchetype } from '@/data';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
+import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { IncarnateSlotId, ToggleableIncarnateSlot } from '@/types';
@@ -176,6 +177,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const ensureTrackedStats = useUIStore((s) => s.ensureTrackedStats);
   const dashboardCollapsed = useUIStore((s) => s.dashboardCollapsed);
   const toggleDashboardCollapsed = useUIStore((s) => s.toggleDashboardCollapsed);
+  const setHoverHint = useUIStore((s) => s.setHoverHint);
   // Welcome modal (auto-shows on first visit)
   const [welcomeModalOpen, closeWelcomeModal] = useWelcomeModal();
 
@@ -323,7 +325,11 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
 
   return (
     <>
-      <div className="bg-gray-900/50 border-b border-gray-800 px-2 sm:px-4 py-2 overflow-hidden">
+      <div
+        className="bg-gray-900/50 border-b border-gray-800 px-2 sm:px-4 py-2 overflow-hidden"
+        onMouseEnter={() => setHoverHint(HINTS.dashboard)}
+        onMouseLeave={() => setHoverHint(null)}
+      >
         {dashboardCollapsed && (
           <CollapsedDashboardRow
             baseHP={baseHP}

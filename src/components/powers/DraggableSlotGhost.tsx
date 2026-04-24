@@ -11,6 +11,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore } from '@/stores';
+import { getGhostHint } from './PlannerHintBar';
 
 type SlotSize = 'xs' | 'sm' | 'md';
 type DragMode = 'add' | 'remove';
@@ -248,12 +249,7 @@ export function DraggableSlotGhost({
         ? `Add slot (${currentSlots}/${maxSlots}) - drag for more`
         : `Right-click to remove slot - drag for more`;
 
-  const ghostHint =
-    maxCanAdd > 0 && canRemove
-      ? 'Click to add a slot · Right-click to remove · Click & drag right for multiple'
-      : maxCanAdd > 0
-        ? 'Click to add a slot · Click & drag right for multiple'
-        : 'Right-click to remove a slot · Right-click & drag for multiple';
+  const ghostHint = getGhostHint(maxCanAdd > 0, canRemove);
 
   return (
     <>

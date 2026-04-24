@@ -16,6 +16,7 @@ import { useUpdateChecker } from '@/hooks/useUpdateChecker';
 import { useUndoRedoKeyboard } from '@/hooks/useUndoRedoKeyboard';
 import { useTooltipHotkey } from '@/hooks/useTooltipHotkey';
 import { useDashboardCollapseHotkey } from '@/hooks/useDashboardCollapseHotkey';
+import { useInfoPanelLockHotkey } from '@/hooks/useInfoPanelLockHotkey';
 
 // CSS `zoom` on the root div creates a coordinate-system mismatch with
 // portals that render to document.body (notably the OnboardingBeacon). The
@@ -38,6 +39,7 @@ export function MainLayout({ children }: MainLayoutProps) {
   useUndoRedoKeyboard();
   useTooltipHotkey();
   useDashboardCollapseHotkey();
+  useInfoPanelLockHotkey();
   const initializeAuth = useAuthStore((s) => s.initialize);
 
   const [isMobile, setIsMobile] = useState(() =>
