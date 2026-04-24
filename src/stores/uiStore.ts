@@ -183,6 +183,9 @@ interface UIState {
   /** Compact mode (for future use) */
   compactMode: boolean;
 
+  /** Collapse the stats dashboard to a slim summary row (toggled by `D` hotkey) */
+  dashboardCollapsed: boolean;
+
   /** App-wide UI zoom scale (0.85 to 1.3, default 1.0) */
   uiScale: number;
 
@@ -237,6 +240,9 @@ interface UIState {
 
   /** Power view mode: 'category' (default) or 'chronological' (Mids-style) */
   powerViewMode: 'category' | 'chronological';
+
+  /** Contextual hint text shown at the bottom of the planner (driven by mouseenter on slots/ghosts/etc). Null hides the bar. */
+  hoverHint: string | null;
 
   /** Tracked stats — breakdownKey values for stats the user wants to chase via set bonuses */
   trackedStats: string[];
@@ -293,6 +299,7 @@ interface UIActions {
   toggleHints: () => void;
   toggleDarkMode: () => void;
   toggleCompactMode: () => void;
+  toggleDashboardCollapsed: () => void;
   setUIScale: (scale: number) => void;
 
   // Info Panel
@@ -439,6 +446,9 @@ interface UIActions {
   setPowerViewMode: (mode: 'category' | 'chronological') => void;
   togglePowerViewMode: () => void;
 
+  // Hover hint (contextual help text at bottom of planner)
+  setHoverHint: (hint: string | null) => void;
+
   // Tracked Stats
   toggleTrackedStat: (breakdownKey: string) => void;
   ensureTrackedStats: (keys: string[]) => void;
@@ -573,6 +583,7 @@ export const useUIStore = create<UIStore>()(
       tooltip: defaultTooltip,
       darkMode: true,
       compactMode: false,
+      dashboardCollapsed: false,
       uiScale: 1.0,
       incarnateActive: createDefaultIncarnateActiveState(),
       incarnateLevelShiftActive: true,
@@ -592,6 +603,7 @@ export const useUIStore = create<UIStore>()(
       compareSlottingOpen: false,
       compareSlottingPower: null,
       powerViewMode: 'category', // Default to category-based view
+      hoverHint: null,
       trackedStats: [], // No tracked stats by default
       targetsHitValues: {}, // No per-target overrides by default
       showSlotLevels: true, // Show slot level labels by default
@@ -775,6 +787,11 @@ export const useUIStore = create<UIStore>()(
       toggleCompactMode: () =>
         set((state) => ({
           compactMode: !state.compactMode,
+        })),
+
+      toggleDashboardCollapsed: () =>
+        set((state) => ({
+          dashboardCollapsed: !state.dashboardCollapsed,
         })),
 
       setUIScale: (scale: number) =>
@@ -1212,6 +1229,9 @@ export const useUIStore = create<UIStore>()(
           powerViewMode: state.powerViewMode === 'category' ? 'chronological' : 'category',
         })),
 
+      // Hover hint — ephemeral; never persisted
+      setHoverHint: (hint) => set({ hoverHint: hint }),
+
       // Tracked Stats
       toggleTrackedStat: (breakdownKey) =>
         set((state) => ({
@@ -1314,6 +1334,7 @@ export const useUIStore = create<UIStore>()(
         statsConfig: state.statsConfig,
         darkMode: state.darkMode,
         compactMode: state.compactMode,
+        dashboardCollapsed: state.dashboardCollapsed,
         uiScale: state.uiScale,
         incarnateActive: state.incarnateActive,
         incarnateLevelShiftActive: state.incarnateLevelShiftActive,

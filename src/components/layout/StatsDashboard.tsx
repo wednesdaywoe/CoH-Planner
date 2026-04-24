@@ -14,6 +14,7 @@ import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, Feedba
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { PinnedPowersBar } from './PinnedPowersBar';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
+import type { IncarnateSlotId, ToggleableIncarnateSlot } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue } from '@/data/stat-definitions';
@@ -44,6 +45,85 @@ interface StatsDashboardProps {
   /** Skip rendering the co-located modals. Use when the dashboard is mounted
    *  alongside another instance that already renders them (e.g. mobile sheet). */
   excludeModals?: boolean;
+}
+
+// ============================================
+// Collapsed summary row
+// ============================================
+// Slim single-line view of the five stats that most builds care about.
+// Triggered by the `D` hotkey; the full grid is hidden while this is shown.
+
+interface CollapsedDashboardRowProps {
+  baseHP: number;
+  maxHPCap: number;
+  stats: ReturnType<typeof useCalculatedStats>;
+  globalBonuses: GlobalBonuses;
+  onExpand: () => void;
+  incarnates: ReturnType<typeof createEmptyIncarnateBuildState>;
+  isLevel50: boolean;
+  incarnateActive: ReturnType<typeof useUIStore.getState>['incarnateActive'];
+  openIncarnateModal: (slotId: IncarnateSlotId) => void;
+  toggleIncarnateActive: (slotId: ToggleableIncarnateSlot) => void;
+}
+
+function formatPerSec(n: number): string {
+  return n.toFixed(2);
+}
+
+function CollapsedDashboardRow({
+  baseHP,
+  maxHPCap,
+  stats,
+  globalBonuses,
+  onExpand,
+  incarnates,
+  isLevel50,
+  incarnateActive,
+  openIncarnateModal,
+  toggleIncarnateActive,
+}: CollapsedDashboardRowProps) {
+  const buffedHP = baseHP * (1 + stats.hpBuff / 100);
+  const actualHP = maxHPCap > 0 ? Math.min(buffedHP, maxHPCap) : buffedHP;
+  const regenPerSec = (actualHP / 240) * (1 + stats.regenBuff / 100);
+  const recoveryPerSec = (stats.maxEndurance / 60) * (1 + stats.recoveryBuff / 100);
+  const netEndPerSec = globalBonuses.netEndPerSec ?? 0;
+  const levelShift = globalBonuses.levelShift ?? 0;
+
+  const stat = (label: string, value: string, color = 'text-white') => (
+    <span className="flex items-baseline gap-1">
+      <span className="text-[10px] uppercase tracking-wide text-gray-500">{label}</span>
+      <span className={`text-xs font-semibold tabular-nums ${color}`}>{value}</span>
+    </span>
+  );
+
+  return (
+    <div className="flex items-center gap-4 flex-wrap">
+      <button
+        onClick={onExpand}
+        className="flex items-center gap-1 text-gray-400 hover:text-gray-200 text-xs transition-colors"
+        title="Expand dashboard (D)"
+      >
+        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {stat('HP', Math.round(actualHP).toString(), actualHP >= maxHPCap && maxHPCap > 0 ? 'text-amber-400' : 'text-white')}
+      {stat('Regen', `${formatPerSec(regenPerSec)}/s`, 'text-emerald-300')}
+      {stat('Rec', `${formatPerSec(recoveryPerSec)}/s`, 'text-sky-300')}
+      {stat('Net', `${netEndPerSec >= 0 ? '+' : ''}${formatPerSec(netEndPerSec)}/s`, netEndPerSec < 0 ? 'text-red-400' : 'text-emerald-300')}
+      {stat('Shift', `${levelShift >= 0 ? '+' : ''}${levelShift}`, levelShift > 0 ? 'text-purple-300' : 'text-gray-400')}
+      <div className="hidden md:block ml-auto">
+        <IncarnateSlotGrid
+          incarnates={incarnates}
+          disabled={!isLevel50}
+          onSlotClick={openIncarnateModal}
+          incarnateActive={incarnateActive}
+          onToggleActive={toggleIncarnateActive}
+          horizontal
+        />
+      </div>
+    </div>
+  );
 }
 
 export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = {}) {
@@ -94,6 +174,8 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const trackedStats = useUIStore((s) => s.trackedStats);
   const toggleTrackedStat = useUIStore((s) => s.toggleTrackedStat);
   const ensureTrackedStats = useUIStore((s) => s.ensureTrackedStats);
+  const dashboardCollapsed = useUIStore((s) => s.dashboardCollapsed);
+  const toggleDashboardCollapsed = useUIStore((s) => s.toggleDashboardCollapsed);
   // Welcome modal (auto-shows on first visit)
   const [welcomeModalOpen, closeWelcomeModal] = useWelcomeModal();
 
@@ -242,8 +324,22 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   return (
     <>
       <div className="bg-gray-900/50 border-b border-gray-800 px-2 sm:px-4 py-2 overflow-hidden">
+        {dashboardCollapsed && (
+          <CollapsedDashboardRow
+            baseHP={baseHP}
+            maxHPCap={maxHPCap}
+            stats={stats}
+            globalBonuses={globalBonuses}
+            onExpand={toggleDashboardCollapsed}
+            incarnates={incarnates}
+            isLevel50={isLevel50}
+            incarnateActive={incarnateActive}
+            openIncarnateModal={openIncarnateModal}
+            toggleIncarnateActive={toggleIncarnateActive}
+          />
+        )}
         {/* Grouped stats + Incarnate panel in a single flex row */}
-        <div className="flex items-stretch gap-2">
+        <div className={`flex items-stretch gap-2 ${dashboardCollapsed ? 'hidden' : ''}`}>
           {/* Stats grid - fills remaining space */}
           <div className="flex-1 grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-2 items-stretch min-w-0">
             {groupedStats.map((group, groupIndex) => (
@@ -301,8 +397,8 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
           </div>
         </div>
 
-        {/* Pinned perma-tracked powers */}
-        <PinnedPowersBar />
+        {/* Pinned perma-tracked powers (hidden when dashboard is collapsed) */}
+        {!dashboardCollapsed && <PinnedPowersBar />}
 
         {/* Dashboard action bar.
          * Desktop (≥lg): single horizontal row, icon + inline label.

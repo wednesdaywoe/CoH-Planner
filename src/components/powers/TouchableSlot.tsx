@@ -11,6 +11,7 @@ import { useState, useRef, useEffect } from 'react';
 import type { Enhancement } from '@/types';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
 import { SlotContextMenu } from './SlotContextMenu';
+import { useUIStore } from '@/stores';
 
 export type SlotSize = 'xs' | 'sm' | 'md';
 
@@ -76,6 +77,25 @@ export function TouchableSlot({
   const [dragMode, setDragMode] = useState<'slots' | 'enhancements' | null>(null);
   const longPressTriggeredRef = useRef(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const setHoverHint = useUIStore((s) => s.setHoverHint);
+
+  // Pick the hint based on slot state (filled vs empty, removable or not)
+  const buildHint = (): string => {
+    if (slot) {
+      return canRemoveSlot
+        ? 'Click to change enhancement · Right-click to remove · Right-click & drag to remove multiple'
+        : 'Click to change enhancement · Right-click to remove';
+    }
+    return canRemoveSlot
+      ? 'Click to add an enhancement · Right-click to remove slot · Right-click & drag to remove multiple'
+      : 'Click to add an enhancement';
+  };
+
+  const handleMouseEnter = () => {
+    setHoverHint(buildHint());
+    onMouseEnter?.();
+  };
+  const handleMouseLeave = () => setHoverHint(null);
 
   // Right-click drag tracking via ref (avoids re-renders during mousemove)
   const rightDragRef = useRef({
@@ -240,7 +260,8 @@ export function TouchableSlot({
         <div
           onClick={handleClick}
           onMouseDown={handleMouseDown}
-          onMouseEnter={onMouseEnter}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           onContextMenu={handleContextMenu}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}

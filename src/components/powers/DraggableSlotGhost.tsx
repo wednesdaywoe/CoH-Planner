@@ -10,6 +10,7 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useUIStore } from '@/stores';
 
 type SlotSize = 'xs' | 'sm' | 'md';
 type DragMode = 'add' | 'remove';
@@ -49,6 +50,7 @@ export function DraggableSlotGhost({
   const startPosRef = useRef({ x: 0, y: 0 });
   const buttonRef = useRef<HTMLDivElement>(null);
   const hasMoved = useRef(false);
+  const setHoverHint = useUIStore((s) => s.setHoverHint);
   const maxCanAdd = maxSlots - currentSlots;
   const maxCanRemove = currentSlots - 1; // Can't remove slot 0
   const canRemove = maxCanRemove > 0 && !!onRemoveSlots;
@@ -246,6 +248,13 @@ export function DraggableSlotGhost({
         ? `Add slot (${currentSlots}/${maxSlots}) - drag for more`
         : `Right-click to remove slot - drag for more`;
 
+  const ghostHint =
+    maxCanAdd > 0 && canRemove
+      ? 'Click to add a slot · Right-click to remove · Click & drag right for multiple'
+      : maxCanAdd > 0
+        ? 'Click to add a slot · Click & drag right for multiple'
+        : 'Right-click to remove a slot · Right-click & drag for multiple';
+
   return (
     <>
       <div
@@ -253,6 +262,8 @@ export function DraggableSlotGhost({
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
         onContextMenu={handleContextMenu}
+        onMouseEnter={() => setHoverHint(ghostHint)}
+        onMouseLeave={() => setHoverHint(null)}
         data-onboarding="add-slot"
         className={`
           ${sizeClass} rounded-full border flex items-center justify-center

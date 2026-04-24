@@ -89,7 +89,7 @@ export function InfoPanel() {
       ) : (
         <div
           className="absolute top-0 right-0 text-slate-600 p-1 z-10 pointer-events-auto cursor-help"
-          title="Hover-preview mode — the panel updates as you hover. Click any power, enhancement, or incarnate slot to lock its details here."
+          title="Hover-preview mode — the panel updates as you hover. Right click any power to lock its details here."
           aria-label="Info panel: hover-preview mode"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">

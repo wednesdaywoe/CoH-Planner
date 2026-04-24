@@ -20,6 +20,7 @@ import { AvailablePowers } from '@/components/powers/AvailablePowers';
 import { AvailablePoolPowers } from '@/components/powers/AvailablePoolPowers';
 import { SelectedPowers } from '@/components/powers/SelectedPowers';
 import { PoolPowers } from '@/components/powers/PoolPowers';
+import { PlannerHintBar } from '@/components/powers/PlannerHintBar';
 import { ChronologicalPowerView } from '@/components/powers/ChronologicalPowerView';
 import { InfoPanel } from '@/components/info/InfoPanel';
 import { PopOutInfoPanel } from '@/components/info/PopOutInfoPanel';
@@ -134,6 +135,7 @@ export function PlannerPage() {
   if (powerViewMode === 'chronological') {
     return (
       <>
+        <PlannerHintBar />
         <div
           className={`
             grid gap-px bg-slate-700 flex-1 overflow-auto pb-16 lg:pb-0
@@ -235,6 +237,7 @@ export function PlannerPage() {
   // Category view layout (default)
   return (
     <>
+      <PlannerHintBar />
       <div
         className={`
           grid gap-px bg-slate-700 flex-1 overflow-auto pb-16 lg:pb-0

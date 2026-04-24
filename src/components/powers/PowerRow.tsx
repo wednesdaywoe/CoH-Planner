@@ -210,6 +210,51 @@ export function PowerRow({
     return 'w-5';
   };
 
+  // Upper-right action buttons (info / compare slotting / remove).
+  // Shared between the stacked and inline layouts so both Category and
+  // Chronological views render identical controls.
+  const ACTION_BTN =
+    'w-6 h-6 flex items-center justify-center rounded text-slate-400 ' +
+    'opacity-100 md:opacity-60 md:group-hover:opacity-100 ' +
+    'hover:bg-slate-700/60 transition-colors flex-shrink-0';
+  const renderActions = () => (
+    <div className="flex items-center gap-0.5 ml-1 flex-shrink-0">
+      {onInfoClick && (
+        <button
+          onClick={onInfoClick}
+          className={`${ACTION_BTN} hover:text-blue-400`}
+          title="Power info"
+        >
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+      )}
+      {onCompareSlotting && (
+        <button
+          onClick={onCompareSlotting}
+          className={`${ACTION_BTN} hover:text-sk-magenta`}
+          title="Compare slotting"
+        >
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+          </svg>
+        </button>
+      )}
+      {showRemove && onRemove && (
+        <button
+          onClick={onRemove}
+          className={`${ACTION_BTN} hover:text-red-400`}
+          title="Remove power"
+        >
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      )}
+    </div>
+  );
+
   const renderNameRow = () => (
     <div className="flex items-center min-w-0">
       <span
@@ -223,35 +268,7 @@ export function PowerRow({
       {showAutoLabel && (
         <span className="text-[9px] text-slate-500 ml-1 flex-shrink-0">(Auto)</span>
       )}
-      {onInfoClick && (
-        <button
-          onClick={onInfoClick}
-          className="text-slate-500 hover:text-blue-400 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
-          title="Power info"
-        >
-          <svg className="w-5 h-5 md:w-3.5 md:h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </button>
-      )}
-      {onCompareSlotting && (
-        <button
-          onClick={onCompareSlotting}
-          className="text-sk-magenta/60 hover:text-sk-magenta text-base md:text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
-          title="Compare Slotting"
-        >
-          ⚖
-        </button>
-      )}
-      {showRemove && onRemove && (
-        <button
-          onClick={onRemove}
-          className="text-slate-500 md:text-slate-600 hover:text-red-400 text-base md:text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
-          title="Remove power"
-        >
-          ✕
-        </button>
-      )}
+      {renderActions()}
     </div>
   );
 
@@ -286,6 +303,7 @@ export function PowerRow({
           currentSlots={slots.length}
           maxSlots={maxSlots}
           onAddSlots={onAddSlots}
+          onRemoveSlots={onRemoveSlot ? handleRemoveMultipleSlots : undefined}
           size={ghostSize}
         />
       )}
@@ -382,33 +400,7 @@ export function PowerRow({
         {showAutoLabel && (
           <span className="text-[9px] text-slate-500 ml-1 flex-shrink-0">(Auto)</span>
         )}
-        {onInfoClick && (
-          <button
-            onClick={onInfoClick}
-            className="text-slate-500 hover:text-blue-400 text-base md:text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
-            title="Power info"
-          >
-            ℹ
-          </button>
-        )}
-        {onCompareSlotting && (
-          <button
-            onClick={onCompareSlotting}
-            className="text-sk-magenta/60 hover:text-sk-magenta text-base md:text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
-            title="Compare Slotting"
-          >
-            ⚖
-          </button>
-        )}
-        {showRemove && onRemove && (
-          <button
-            onClick={onRemove}
-            className="text-slate-500 md:text-slate-600 hover:text-red-400 text-base md:text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
-            title="Remove power"
-          >
-            ✕
-          </button>
-        )}
+        {renderActions()}
       </div>
 
       {/* Row 2: Indent + Slots + Toggle */}
