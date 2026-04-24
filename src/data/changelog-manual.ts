@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-23',
     items: [
+      { message: 'Fix for Fighting Pool order regression', type: 'fix' },
       { message: 'Made some adjustments to mobile UI including a new tab bar at the bottom', type: 'feat' },
 
     ]

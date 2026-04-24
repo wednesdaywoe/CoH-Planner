@@ -284,16 +284,34 @@ function convertPool(poolId) {
     if (availableLevel === 4294967295 || availableLevel === undefined) {
       availableLevel = availableLevel === 4294967295 ? -1 : 0;
     }
-    collected.push({ rawJson, availableLevel, originalIndex: i });
+    // Minimum number of other pool picks required to satisfy this power's
+    // requires expression. Heuristic on the RPN form (see below), sufficient
+    // for every pool currently in the game:
+    //   no requires          → 0 prereqs (T1)
+    //   only ORs, no ANDs    → 1 prereq  (e.g. Tough: "Boxing Kick ||")
+    //   has at least one AND → 2 prereqs (e.g. Weave / Cross Punch:
+    //                          "(A&B) || (C&D) || ..." — each OR branch
+    //                          needs two concurrent picks)
+    // This is what separates Tough (T3) from Cross Punch / Weave (T4):
+    // both are available at level 14, but Tough only needs one prior
+    // Fighting pick while Cross Punch needs two.
+    const requires = (rawJson.requires || '').trim();
+    const minPrereqs = requires === '' ? 0 : (requires.includes('&&') ? 2 : 1);
+    collected.push({ rawJson, availableLevel, minPrereqs, originalIndex: i });
   }
 
-  // Sort by available_level (game pick order); ties keep original listing
-  // order. Auto-granted powers (available=-1) sort to the END so they don't
-  // steal ranks 1/2 from real selectable powers.
+  // Sort by (available_level, minPrereqs, originalIndex) so the pool's
+  // visible tier order reflects the actual selection dependency chain:
+  //   T1 picks that can be taken at level 1 with no prereqs
+  //   T2 picks gated by 1 prior pool pick
+  //   T3/T4 picks gated by 2+ prior pool picks
+  // Auto-granted powers (available=-1) sort to the END so they don't steal
+  // early ranks from real selectable powers.
   collected.sort((a, b) => {
     const aKey = a.availableLevel < 0 ? Number.MAX_SAFE_INTEGER : a.availableLevel;
     const bKey = b.availableLevel < 0 ? Number.MAX_SAFE_INTEGER : b.availableLevel;
     if (aKey !== bKey) return aKey - bKey;
+    if (a.minPrereqs !== b.minPrereqs) return a.minPrereqs - b.minPrereqs;
     return a.originalIndex - b.originalIndex;
   });
 

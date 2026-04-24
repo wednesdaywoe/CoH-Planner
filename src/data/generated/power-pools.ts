@@ -646,9 +646,51 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
+        "name": "Tough",
+        "fullName": "Pool.Fighting.Tough",
+        "rank": 3,
+        "available": 13,
+        "description": "While active, you are tough and slightly resistant to Smashing and Lethal damage.<br><br>You must be at least level 14 and have one other Fighting Powers before selecting Tough.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+        "shortHelp": "Toggle: Self +Res(Smash/Lethal)",
+        "icon": "fighting_tough.png",
+        "powerType": "Toggle",
+        "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 0.1625,
+          "activationTime": 3.1,
+          "activatePeriod": 0.5,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Cross Punch",
         "fullName": "Pool.Fighting.Cross_Punch",
-        "rank": 3,
+        "rank": 4,
         "available": 13,
         "description": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. This attack causes moderate smashing damage and has a chance to both knock down and stun foes.<br><br>If you have also trained Boxing, this power's damage is increased by 15% and will improve your recharge and accuracy briefly.<br><br>If you have also trained Kick, this power's damage is increased by 15% and will improve your recharge and accuracy briefly.<br><br>The synergy with Boxing and Kick stacks.<br><br>You must be at least level 14 and have two other Fighting Powers before selecting Cross Punch.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
         "shortHelp": "Melee (Cone), DMG(Smash), Fighting Synergy, Foe Knockdown, Stun",
@@ -769,48 +811,6 @@ export const POWER_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "buffDuration": 6
-        }
-      },
-      {
-        "name": "Tough",
-        "fullName": "Pool.Fighting.Tough",
-        "rank": 4,
-        "available": 13,
-        "description": "While active, you are tough and slightly resistant to Smashing and Lethal damage.<br><br>You must be at least level 14 and have one other Fighting Powers before selecting Tough.<br><br><color #fcfc95>Recharge: Moderate.</color>",
-        "shortHelp": "Toggle: Self +Res(Smash/Lethal)",
-        "icon": "fighting_tough.png",
-        "powerType": "Toggle",
-        "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.1625,
-          "activationTime": 3.1,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
         }
       },
       {
