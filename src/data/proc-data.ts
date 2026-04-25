@@ -1182,7 +1182,7 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     type: "Global",
     levelRange: "15--40",
     pool: "A-rare",
-    unique: "Unique"
+    unique: ""
   },
   "Resist Speed and Recharge Debuffs": {
     setCategory: "Universal Travel",
