@@ -150,22 +150,30 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     .filter(Boolean);
   power.allowedEnhancements = [...new Set(enhancements)].sort();
 
-  // Allowed IO set categories — inferred from boost types (the bin parser's
-  // allowed_boostset_cats field is broken; see PARSER_TODO.md). Pool powers
-  // pass 'pool' as both archetype and role since ATO categories don't apply.
-  const hasTeleportAttrib = (rawJson.effects || []).some(eff =>
-    (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
-  );
-  const inferredCats = inferAllowedSetCategories(
-    rawJson.boosts_allowed || [],
-    'pool',
-    'pool',
-    EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
-    rawJson.range,
-    rawJson.powerset || rawJson.full_name,
-    hasTeleportAttrib,
-  );
-  power.allowedSetCategories = inferredCats;
+  // Allowed IO set categories. Prefer the exporter's authoritative
+  // `allowed_set_categories` (reversed from boostsets.bin). Fall back to
+  // inference only when the field is absent (old export). Strict mode: an
+  // empty array means "game says no IO sets slot here" — the field stays
+  // unset and only single IOs (allowedEnhancements) work.
+  if (Array.isArray(rawJson.allowed_set_categories)) {
+    if (rawJson.allowed_set_categories.length > 0) {
+      power.allowedSetCategories = [...rawJson.allowed_set_categories].sort();
+    }
+    // else: leave unset.
+  } else {
+    const hasTeleportAttrib = (rawJson.effects || []).some(eff =>
+      (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
+    );
+    power.allowedSetCategories = inferAllowedSetCategories(
+      rawJson.boosts_allowed || [],
+      'pool',
+      'pool',
+      EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
+      rawJson.range,
+      rawJson.powerset || rawJson.full_name,
+      hasTeleportAttrib,
+    );
+  }
 
   // Effects object (legacy format: stats mixed in with effects)
   const effects = {};

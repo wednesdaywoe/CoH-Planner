@@ -221,6 +221,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Running",
+          "Running & Sprints",
           "Universal Travel"
         ],
         "effects": {
@@ -259,9 +260,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged Damage",
+          "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -397,10 +397,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Experimentation.Speed_of_Sound",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [
-          "Teleport",
-          "Universal Travel"
-        ],
         "effects": {
           "accuracy": 1,
           "range": 200,
@@ -922,10 +918,6 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [
           "Jump"
         ],
-        "allowedSetCategories": [
-          "Leaping",
-          "Universal Travel"
-        ],
         "effects": {
           "accuracy": 1,
           "activatePeriod": 10,
@@ -960,11 +952,6 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [
           "Fly",
           "Run Speed"
-        ],
-        "allowedSetCategories": [
-          "Flight",
-          "Running",
-          "Universal Travel"
         ],
         "effects": {
           "accuracy": 1,
@@ -1436,7 +1423,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Flight.Fly",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 60,
@@ -1658,6 +1644,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Leaping",
+          "Leaping & Sprints",
           "Universal Travel"
         ],
         "effects": {
@@ -1904,7 +1891,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Force_of_Will.Mighty_Leap",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 120,
@@ -2226,7 +2212,9 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets",
           "Leaping",
+          "Leaping & Sprints",
           "Running",
+          "Running & Sprints",
           "Universal Travel"
         ],
         "effects": {
@@ -2407,7 +2395,6 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 180,
@@ -2461,7 +2448,6 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 15,
@@ -2851,6 +2837,7 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Sets",
           "Leaping",
+          "Leaping & Sprints",
           "Universal Travel"
         ],
         "effects": {
@@ -3051,6 +3038,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Leaping",
+          "Leaping & Sprints",
           "Universal Travel"
         ],
         "effects": {
@@ -3097,9 +3085,6 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Knockback",
           "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback"
         ],
         "effects": {
           "accuracy": 1,
@@ -3158,10 +3143,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Ranged AoE Damage",
-          "Teleport",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Melee AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3188,7 +3171,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Leaping.Long_Jump",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 30,
@@ -3580,7 +3562,6 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 300,
@@ -3854,7 +3835,7 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
+          "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -3996,7 +3977,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Sorcery.Arcane_Bolt",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "range": 80,
@@ -4016,10 +3996,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Sorcery.Mystic_Flight",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [
-          "Teleport",
-          "Universal Travel"
-        ],
         "effects": {
           "accuracy": 1,
           "range": 350,
@@ -4163,7 +4139,6 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 450,
@@ -4200,6 +4175,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Running",
+          "Running & Sprints",
           "Universal Travel"
         ],
         "effects": {
@@ -4266,7 +4242,6 @@ export const POWER_POOLS_RAW = {
           "EnduranceReduction",
           "Recharge"
         ],
-        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 1800,
@@ -4348,7 +4323,6 @@ export const POWER_POOLS_RAW = {
         "requires": "Pool.Speed.Super_Speed",
         "maxSlots": 6,
         "allowedEnhancements": [],
-        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "endurance": 0.3333,
@@ -4491,10 +4465,6 @@ export const POWER_POOLS_RAW = {
           "Accuracy",
           "EnduranceReduction",
           "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Teleport",
-          "Universal Travel"
         ],
         "effects": {
           "accuracy": 1,

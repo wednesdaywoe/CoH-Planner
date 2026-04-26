@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-04-23 (evening) ─────────────────────────────────────────────────
   {
-    date: '2026-04-23',
+    date: '2026-04-24',
     items: [
+      { message: 'Fixed inference for pool powers allowedSetCategories', type: 'fix' },
       { message: 'Fix for Imperivum Armor\'s proc status', type: 'fix' },
       { message: 'You can now collapse and expand the dashboard (press D or use the arrow), and L toggles infopanel lock', type: 'feat' },
       { message: 'Added a new hint bar above the power column grid to show contextual hints', type: 'feat' },
