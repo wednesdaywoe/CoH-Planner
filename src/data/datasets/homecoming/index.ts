@@ -24,6 +24,8 @@ import {
   getPetTableValue,
 } from './at-tables';
 import { getBaseToHit, getCombatModifier } from './purple-patch';
+import { GRANTED_POWER_GROUPS } from './granted-powers';
+import { PET_ENTITIES } from './pet-entities';
 
 const dataset: Dataset = {
   id: 'homecoming',
@@ -44,6 +46,10 @@ const dataset: Dataset = {
     getBaseToHit,
     getCombatModifier,
   },
+
+  grantedPowerGroups: GRANTED_POWER_GROUPS,
+
+  petEntities: PET_ENTITIES,
 
   getTableValue,
   calculateEffectValue,

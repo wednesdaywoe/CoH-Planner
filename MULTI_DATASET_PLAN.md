@@ -20,7 +20,8 @@ What's in:
   assembles HC's `Dataset` from the migrated files; this is the `default`
   export the lazy loader pulls.
 - Migrated into `datasets/homecoming/` (via `git mv` to preserve history):
-  `archetypes.ts`, `at-tables.ts`, `purple-patch.ts`, `levels.ts`.
+  `archetypes.ts`, `at-tables.ts`, `purple-patch.ts`, `levels.ts`,
+  `granted-powers.ts`, `pet-entities.ts`, `power-lookup.ts`.
 - Migrated into `src/data/core/` (engine-level, server-agnostic):
   `stat-definitions.ts`, `stat-colors.ts`, `effect-registry.ts`,
   `incarnate-registry.ts`, `help-topics.ts`.
@@ -372,9 +373,23 @@ size and risk.
    - **✅ `levels.ts` + `purple-patch.ts`** — siloed (purple-patch via Proxy
      facade, levels via `export *` re-export per the primitive-binding
      limitation). — **Done.**
-   - Powersets — `powersets/`, `overrides/`, `generated/`, `powersets.ts`,
-     `power-pools(-raw).ts`, `epic-pools(-raw).ts`, `granted-powers.ts`,
-     `pet-entities.ts`, `power-lookup.ts`. Largest group; biggest review.
+   - **✅ Self-contained powerset-adjacent files** — `granted-powers.ts`
+     (Proxy facade + types in `dataset.ts`), `pet-entities.ts` (Proxy
+     facade for the 24K-line PET_ENTITIES + types in `dataset.ts`), and
+     `power-lookup.ts` (`export *` re-export — pure composition over
+     already-faceted accessors). — **Done.**
+   - **⏸ Powersets directory tree** — `powersets/`, `overrides/`,
+     `generated/`, `powersets.ts`, `power-pools(-raw).ts`,
+     `epic-pools(-raw).ts`. **Deferred** until a second dataset's data
+     actually exists. The composed `powersets/X/Y/Z.ts` files import
+     from `@/data/generated/...` and `@/data/overrides/...` via absolute
+     paths — moving the directories into `datasets/homecoming/` would
+     require updating ~600 import sites inside the tree. The pragmatic
+     trade-off: do this when there's a Rebirth dataset to actually
+     receive the parallel `datasets/rebirth/{powersets,generated,
+     overrides}/` trees. The convert-script `--dataset` flag is
+     already in place ([scripts/_dataset-paths.cjs](scripts/_dataset-paths.cjs)),
+     so that's one fewer thing to change at fork time.
    - Enhancements — `io-sets(-raw).ts`, `enhancements.ts`,
      `enhancement-registry.ts`, `set-bonus-index.ts`, `proc-data.ts`.
    - Incarnates — `incarnates.ts`, `incarnate-effects.ts`,

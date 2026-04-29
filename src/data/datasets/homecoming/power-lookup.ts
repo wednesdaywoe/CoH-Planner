@@ -4,10 +4,13 @@
  */
 
 import type { Power } from '@/types';
-import { getPower, getPowerset } from './powersets';
-import { getPowerPool } from './power-pools';
-import { getEpicPool } from './epic-pools';
-import { getInherentPowerDef } from './levels';
+// These dependencies haven't all migrated into `datasets/homecoming/`
+// yet, so we go through the existing `src/data/` facades. When they
+// migrate, switch back to relative `./powersets` / `./levels` etc.
+import { getPower, getPowerset } from '@/data/powersets';
+import { getPowerPool } from '@/data/power-pools';
+import { getEpicPool } from '@/data/epic-pools';
+import { getInherentPowerDef } from '@/data/levels';
 
 export interface PowerLookupResult {
   power: Power;

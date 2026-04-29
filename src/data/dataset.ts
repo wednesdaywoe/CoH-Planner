@@ -32,6 +32,63 @@ export interface PetTableData {
   tables: Record<string, number[]>;
 }
 
+/** Shape for granted-power groups (parent → auto-granted children). */
+export interface GrantedPowerGroup {
+  parentPower: string;
+  grantedPowers: string[];
+  mutuallyExclusive: boolean;
+  description?: string;
+  slottable?: boolean;
+  damageConversion?: Record<string, { from: string; to: string }>;
+}
+
+/** Pet damage / effect data for damage calculation. */
+export interface PetDamageEntry {
+  damageType: string;
+  scale: number;
+  table: string;
+}
+
+export interface PetEffect {
+  type: string;
+  magnitude?: number;
+  chance?: number;
+  scale?: number;
+  table?: string;
+}
+
+export interface PetAbility {
+  name: string;
+  displayName: string;
+  type: 'Click' | 'Auto' | 'Toggle';
+  damage: PetDamageEntry[];
+  effects?: PetEffect[];
+  recharge: number;
+  castTime: number;
+  activatePeriod?: number;
+  effectArea: string;
+  range?: number;
+  radius?: number;
+  maxTargets?: number;
+  attackTypes?: string[];
+  rechargeUnaffected?: boolean;
+}
+
+export interface PetUpgradeTier {
+  tier: number;
+  abilities: PetAbility[];
+}
+
+export interface PetEntity {
+  name: string;
+  displayName: string;
+  characterClass: string;
+  commandable: boolean;
+  copyCreatorMods: boolean;
+  abilities: PetAbility[];
+  upgradeTiers?: PetUpgradeTier[];
+}
+
 // ============================================
 // DATASET INTERFACE
 // ============================================
@@ -60,6 +117,15 @@ export interface Dataset {
     getBaseToHit: (levelDiff: number) => number;
     getCombatModifier: (levelDiff: number) => number;
   };
+
+  // Granted powers — parent → auto-granted children mappings (e.g.
+  // Adaptation stances, Fly → Afterburner, Dual Pistols ammo swap).
+  // Curated per server; sub-power names are server-specific data.
+  grantedPowerGroups: Record<string, GrantedPowerGroup>;
+
+  // Pet entities — pet abilities + upgrade tiers used for pet damage
+  // calculation (Mastermind summons, Voltaic Sentinel, Lore pets, etc.).
+  petEntities: Record<string, PetEntity>;
 
   // Helpers closed over this dataset's own data records.
   getTableValue: (archetype: string, tableName: string, level: number) => number | undefined;
