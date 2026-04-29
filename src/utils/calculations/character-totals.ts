@@ -999,15 +999,25 @@ function applyActivePowerBonuses(
     }
 
     // Max HP buff
-    // Enhanced by Healing enhancements
-    // MaxHP buffs use a flat 5% per scale point (the game's base fMag = 0.05).
-    // The heal table reference in power data is NOT used for MaxHP percentage calculation.
+    // Enhanced by Healing enhancements.
+    //
+    // MaxHP buffs use a flat 10% per scale point. The bin's
+    // `Melee_HealSelf` reference is used by the engine for absolute-HP
+    // bookkeeping (it's literally `baseMaxHP/10` for each AT) but the
+    // displayed/applied buff is a percentage. Verified across the
+    // canonical +HP powers:
+    //   • Tanker  HPT: scale=2 → +20% (matches in-game)
+    //   • Brute   Dull Pain (Second Wind): scale=2 → +20%
+    //   • Brute   Earth's Embrace: scale=4 → +40%
+    // The previous 5%/scale formula produced exactly half of each of
+    // those numbers, which is what users were comparing against Mids
+    // and seeing too low.
     if (effects.maxHPBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.heal || 0);
       const scale = typeof effects.maxHPBuff === 'number'
         ? effects.maxHPBuff
         : effects.maxHPBuff.scale;
-      const value = scale * 5 * enhMultiplier;
+      const value = scale * 10 * enhMultiplier;
       global.maxHP += value;
       addToBreakdown(breakdown, 'maxHP', {
         name: power.name,

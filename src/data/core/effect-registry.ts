@@ -419,7 +419,12 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'percent',
     calculation: 'buff',
     enhancementAspect: 'heal',
-    flatPercentPerScale: 5,
+    // 10% per scale point. Verified against in-game canonical +HP powers
+    // (Tanker HPT scale=2 → +20%, Brute Dull Pain scale=2 → +20%,
+    // Earth's Embrace scale=4 → +40%). The bin reference table
+    // `Melee_HealSelf` is engine-internal bookkeeping (literally
+    // baseMaxHP/10) and isn't used for the percentage display.
+    flatPercentPerScale: 10,
     priority: 8,
   },
   maxEndBuff: {

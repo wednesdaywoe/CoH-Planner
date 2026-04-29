@@ -506,7 +506,7 @@ function getEffectBaseValue(
       : (scaled && typeof scaled === 'object' && 'scale' in scaled
           ? (scaled as { scale: number }).scale
           : undefined);
-    // Effects flagged as flat-percent-per-scale (e.g. maxHPBuff at 5%/scale)
+    // Effects flagged as flat-percent-per-scale (e.g. maxHPBuff at 10%/scale)
     // intentionally ignore the AT-table reference: the game stores a heal-table
     // ref for bookkeeping but applies a fixed multiplier. See effect-registry.ts.
     if (config.flatPercentPerScale !== undefined && scaleNum !== undefined) {
