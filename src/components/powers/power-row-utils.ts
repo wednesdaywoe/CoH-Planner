@@ -16,28 +16,54 @@ export function hasHealingDamage(power: { damage?: unknown }): boolean {
   return (power.damage as { type?: string }).type === 'Heal';
 }
 
-/** Known buff effect keys that indicate persistent toggleable effects */
-const BUFF_EFFECT_KEYS = [
-  'rechargeBuff', 'recoveryBuff', 'damageBuff', 'defenseBuff',
-  'resistanceBuff', 'tohitBuff', 'enduranceGain', 'speedBuff',
+/**
+ * Effect keys whose presence implies a persistent buff/effect applied to the caster.
+ * Used to gate the toggle UI for click powers — only powers with at least one of these
+ * keys (or selfPenalty-flagged debuffs) get a toggle.
+ *
+ * Includes the *Buff-suffixed fields plus unsuffixed top-level fields some powers use
+ * (Healing Flames stores `resistance.toxic`, not `resistanceBuff`).
+ */
+const CASTER_BUFF_KEYS = [
+  // Standard *Buff fields
+  'tohitBuff', 'damageBuff', 'defenseBuff', 'defenseBuffSuppressible',
+  'rechargeBuff', 'recoveryBuff', 'regenBuff', 'regenBuffUnenhanced',
+  'speedBuff', 'enduranceBuff', 'enduranceGain', 'maxHPBuff', 'maxEndBuff',
+  'rangeBuff', 'enduranceDiscount', 'threatBuff', 'perceptionBuff', 'absorb',
+  // Unsuffixed top-level fields (used by some powers in place of *Buff)
+  'defense', 'resistance',
+  // Movement buffs
+  'runSpeed', 'flySpeed', 'jumpHeight', 'jumpSpeed', 'fly',
+  'movementControl', 'movementFriction',
+  // Stealth
+  'stealthPvE', 'stealthPvP', 'translucency',
+  // Mez/debuff resistance (mezResistance, debuffResistance)
+  'mezResistance', 'debuffResistance',
 ];
 
-/**
- * Check if a power has persistent buff effects (e.g. Chrono Shift's +Recharge, +Recovery).
- * Powers with these should still get a toggle even if they also have healing damage.
- */
+/** targetType values where the power cannot be cast on self — buffs go to allies only. */
+const ALLY_ONLY_TARGETS = new Set(['ally', 'ally (alive)']);
+
 function hasPersistentBuffEffects(power: { effects?: object }): boolean {
   if (!power.effects) return false;
-  return BUFF_EFFECT_KEYS.some(key => key in power.effects!);
+  const effects = power.effects as Record<string, unknown>;
+  // selfPenalty flag means debuff fields (e.g., Granite Armor's -damage) are real self-effects
+  if (effects.selfPenalty) return true;
+  return CASTER_BUFF_KEYS.some(key => key in effects);
+}
+
+function affectsCaster(power: { targetType?: string }): boolean {
+  if (!power.targetType) return true;
+  return !ALLY_ONLY_TARGETS.has(power.targetType.toLowerCase());
 }
 
 /**
  * Determine if a power should show a toggle switch for stat calculations.
- * - Toggle powers (always toggleable)
- * - Click powers that target self (Build Up, Aim, Hasten, Shadow Meld, Rune of Protection, etc.)
- * - Click team buffs that also buff the caster (Vengeance, Tactical Training: Vengeance, etc.)
- * - Excludes one-shot heals/drains (Dark Regeneration, Dull Pain, etc.)
- *   unless the power also has persistent buff effects (Chrono Shift)
+ * - Toggle powers (always)
+ * - Click powers with persistent buff effects that apply to the caster
+ *   (Build Up, Aim, Hasten, Healing Flames, Vengeance, Granite Armor's selfPenalty, etc.)
+ * - Excluded: ally-only buffs (Speed Boost, Fortitude), one-shot damage/heal-only
+ *   clicks (Inferno, Dark Regeneration), interruptible snipes (no persistent caster buff)
  */
 export function shouldShowToggle(power: {
   powerType?: string;
@@ -47,27 +73,8 @@ export function shouldShowToggle(power: {
   effects?: object;
 }): boolean {
   const powerType = power.powerType?.toLowerCase();
-  const targetType = power.targetType?.toLowerCase();
-  const shortHelp = power.shortHelp?.toLowerCase() || '';
-
   if (powerType === 'toggle') return true;
-
-  if (powerType === 'click') {
-    if (hasHealingDamage(power) && !hasPersistentBuffEffects(power)) return false;
-    if (targetType === 'self') return true;
-    // shortHelp starting with "self" followed by any separator (space, colon, comma, etc.)
-    // covers "Self +DMG", "Self: +Def(All)", "Self, +Res(All Dmg)", etc.
-    if (/^self\b/.test(shortHelp)) return true;
-    if (shortHelp.includes('self +')) return true;
-    // Team buffs that also apply to the caster (Vengeance, Tactical Training: Vengeance).
-    // Excluded when the power is flagged as ally-only (defenseBuffExcludesSelf).
-    if (
-      hasPersistentBuffEffects(power) &&
-      !(power.effects as { defenseBuffExcludesSelf?: boolean })?.defenseBuffExcludesSelf
-    ) {
-      return true;
-    }
-  }
-
-  return false;
+  if (powerType !== 'click') return false;
+  if (!affectsCaster(power)) return false;
+  return hasPersistentBuffEffects(power);
 }

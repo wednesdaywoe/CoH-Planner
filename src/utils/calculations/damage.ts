@@ -404,9 +404,17 @@ export function calculatePowerDamage(
     //     attacks read ~10× the real number (Boxing has 5 such entries).
     const isPvP = (t?: string) => t?.toLowerCase().includes('pvp') ?? false;
     const isInherent = (t?: string) => t?.toLowerCase().includes('inherentdamage') ?? false;
-    const damageEntries = (damageEffect as ArrayEntry[]).filter(
+    let damageEntries = (damageEffect as ArrayEntry[]).filter(
       e => e.type !== 'Heal' && !isPvP(e.table) && !isInherent(e.table)
     );
+    // Form-required powers (Peacebringer Bright Nova Bolt, etc.) only have InherentDamage
+    // entries — these are the actual damage, not conditional bonuses. Fall back to including
+    // them when filtering would remove all damage.
+    if (damageEntries.length === 0) {
+      damageEntries = (damageEffect as ArrayEntry[]).filter(
+        e => e.type !== 'Heal' && !isPvP(e.table)
+      );
+    }
     if (damageEntries.length === 0) return null;
 
     const directEntries = damageEntries.filter(e => !e.duration || e.duration <= 0);

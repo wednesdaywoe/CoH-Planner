@@ -548,12 +548,17 @@ interface PowerWithToggle {
   name: string;
   internalName: string;
   powerType?: string;
+  targetType?: string;
   effectArea?: string;
   isActive?: boolean;
   effects?: ActivePowerEffect;
   slots?: (Enhancement | null)[];
   stats?: { endurance?: number; activatePeriod?: number; [key: string]: unknown };
 }
+
+/** targetType values where the power cannot be cast on self — the buff goes to allies only
+ *  (e.g. Speed Boost, Fortitude). Skipped when applying buffs to caster totals. */
+const ALLY_ONLY_TARGET_TYPES = new Set(['ally', 'ally (alive)']);
 
 /**
  * Apply bonuses from active toggle powers
@@ -575,6 +580,10 @@ function applyActivePowerBonuses(
     // Auto powers are always active; others require explicit isActive toggle
     const isAuto = power.powerType?.toLowerCase() === 'auto';
     if (!(isAuto || power.isActive) || !power.effects) continue;
+
+    // Skip ally-only buffs — the caster does not benefit from these
+    // (e.g. Speed Boost, Fortitude — "you cannot use this power on yourself")
+    if (power.targetType && ALLY_ONLY_TARGET_TYPES.has(power.targetType.toLowerCase())) continue;
 
     const effects = power.effects;
     const _debugEnabled = isCalcDebugEnabled();

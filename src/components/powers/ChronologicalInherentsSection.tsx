@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { useShowSlotLevels } from '@/stores/uiStore';
 import { PowerRow } from './PowerRow';
+import { shouldShowToggle } from './power-row-utils';
 import { getPowerIconPath } from '@/data';
 import { useSlotLevels } from '@/hooks';
 import { powerKey } from '@/utils/power-key';
@@ -22,6 +23,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
   const addSlot = useBuildStore((s) => s.addSlot);
   const removeSlot = useBuildStore((s) => s.removeSlot);
   const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
+  const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
@@ -113,6 +115,10 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
     }
   };
 
+  const handleToggle = (powerName: string) => {
+    togglePowerActive(powerName, 'inherent');
+  };
+
   const isPowerLocked = (powerName: string) => {
     return (
       infoPanelLocked &&
@@ -176,6 +182,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
               onInfoClick={handleInfoClick}
+              onToggle={handleToggle}
               slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
             />
           )}
@@ -196,6 +203,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
               onInfoClick={handleInfoClick}
+              onToggle={handleToggle}
               slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
             />
           )}
@@ -216,6 +224,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
               onInfoClick={handleInfoClick}
+              onToggle={handleToggle}
               slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
             />
           )}
@@ -239,6 +248,7 @@ interface InherentGroupProps {
   onRemoveAllSlots: (powerName: string, totalSlots: number) => void;
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
   onInfoClick: (power: SelectedPower) => void;
+  onToggle: (powerName: string) => void;
   slotLevelsMap?: Map<string, number[]>;
 }
 
@@ -256,6 +266,7 @@ function InherentGroup({
   onRemoveAllSlots,
   onClearAllEnhancements,
   onInfoClick,
+  onToggle,
   slotLevelsMap,
 }: InherentGroupProps) {
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
@@ -283,6 +294,9 @@ function InherentGroup({
               isLocked={isLocked}
               slots={power.slots}
               maxSlots={power.maxSlots}
+              toggleSize={shouldShowToggle(power) ? 'sm' : undefined}
+              isActive={power.isActive ?? false}
+              onToggle={() => onToggle(power.internalName)}
               onAddSlots={(count) => onAddSlots(power.internalName, count)}
               onRemoveSlot={(index) => onRemoveSlot(power.internalName, index)}
               onRemoveAllSlots={() => onRemoveAllSlots(power.internalName, power.slots.length)}
