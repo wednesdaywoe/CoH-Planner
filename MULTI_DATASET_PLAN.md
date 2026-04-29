@@ -7,8 +7,8 @@ drop a second dataset in alongside when its data is available.
 
 ## Status
 
-**Plumbing + first migrated members landed (2026-04-29).** All work was done
-in-place on `main`; nothing has been committed or pushed yet.
+**Plumbing + first wave of migrations landed (2026-04-29).** All work was
+done in-place on `main`; nothing has been committed or pushed yet.
 
 What's in:
 
@@ -19,14 +19,21 @@ What's in:
 - [src/data/datasets/homecoming/index.ts](src/data/datasets/homecoming/index.ts) —
   assembles HC's `Dataset` from the migrated files; this is the `default`
   export the lazy loader pulls.
-- [src/data/datasets/homecoming/archetypes.ts](src/data/datasets/homecoming/archetypes.ts)
-  and [src/data/datasets/homecoming/at-tables.ts](src/data/datasets/homecoming/at-tables.ts) —
-  the moved data + helpers (`git mv` preserves history).
-- [src/data/archetypes.ts](src/data/archetypes.ts) and
-  [src/data/at-tables.ts](src/data/at-tables.ts) — replaced with **Proxy-based
-  delegating facades** at the original file paths. Existing imports from
-  `@/data/archetypes` / `@/data/at-tables` continue to work without any
-  consumer changes.
+- Migrated into `datasets/homecoming/` (via `git mv` to preserve history):
+  `archetypes.ts`, `at-tables.ts`, `purple-patch.ts`, `levels.ts`.
+- Migrated into `src/data/core/` (engine-level, server-agnostic):
+  `stat-definitions.ts`, `stat-colors.ts`, `effect-registry.ts`,
+  `incarnate-registry.ts`, `help-topics.ts`.
+- Original paths replaced with facades:
+  - `archetypes.ts`, `at-tables.ts`, `purple-patch.ts` use **Proxy-based
+    runtime delegation** (`getActiveDataset()` resolves at every read).
+  - `levels.ts` and the five core/ modules use **`export *` re-export**.
+    For levels.ts that's because most of its exports are primitive
+    constants JS can't live-bind across module boundaries; for the
+    core/ modules that's because they're server-agnostic so no runtime
+    swap is needed. See the file headers for the trade-off. If a
+    primitive ever needs to actually differ at runtime, that single
+    export converts to a getter function (none currently diverge).
 - [src/main.tsx](src/main.tsx) — `await loadDataset('homecoming')` before
   `createRoot().render()`.
 
@@ -362,8 +369,9 @@ size and risk.
 3. **Boot wired**: `main.tsx` calls `loadDataset('homecoming')` before render. —
    **Done (hardcoded id; will read from `Build.serverId` once that exists).**
 4. **Migrate remaining HC files** in groups, by interface section:
-   - `levels.ts` + `purple-patch.ts` (small; validates the interface for
-     non-table data).
+   - **✅ `levels.ts` + `purple-patch.ts`** — siloed (purple-patch via Proxy
+     facade, levels via `export *` re-export per the primitive-binding
+     limitation). — **Done.**
    - Powersets — `powersets/`, `overrides/`, `generated/`, `powersets.ts`,
      `power-pools(-raw).ts`, `epic-pools(-raw).ts`, `granted-powers.ts`,
      `pet-entities.ts`, `power-lookup.ts`. Largest group; biggest review.
@@ -373,13 +381,52 @@ size and risk.
      `incarnate-recipes.ts`, `incarnate-components.ts`,
      `incarnate-salvage.ts`.
    - Misc — `accolades.ts`, `changelog*.ts`.
-5. **Create `src/data/core/`** and move engine-only files there. Update
-   direct imports for those (a small number, mostly inside `src/data/` itself).
-6. **Update conversion scripts** to take `--dataset` (default `homecoming`).
-7. **Add `serverId` to `Build`**, hydration migration, slim/hydrate plumbing,
-   share-URL plumbing.
-8. **Wire boot to `Build.serverId`** instead of the hardcoded
-   `'homecoming'`.
+5. **✅ Create `src/data/core/`** and move engine-only files there. — **Done.**
+   Moved `stat-definitions.ts`, `stat-colors.ts`, `effect-registry.ts`,
+   `incarnate-registry.ts`, `help-topics.ts`. Used `export *` re-export
+   facades at the original paths so the 8 external consumers + 3 internal
+   `src/data/` references didn't need to change. Internal `core/` cross-
+   reference (`effect-registry → stat-colors`) and `stat-definitions →
+   stat-colors` switched to relative imports.
+6. **✅ Update conversion scripts** to take `--dataset` (default `homecoming`). — **Done.**
+   - New shared helper [scripts/_dataset-paths.cjs](scripts/_dataset-paths.cjs)
+     parses the flag and exposes `datasetPath(id, ...sub)` (for migrated
+     files, routes to `src/data/datasets/<id>/...`) and `dataPath(...sub)`
+     (for not-yet-migrated files, routes to `src/data/...`). Validates
+     against a `KNOWN_DATASETS` set.
+   - `extract-at-tables.cjs` switched to `datasetPath` because at-tables
+     is migrated — running it now writes into the dataset folder, NOT
+     clobbering the runtime facade at `src/data/at-tables.ts`.
+   - All other generators (`convert-powerset.cjs`, `convert-epic-pools`,
+     `convert-pool-powers`, `convert-incarnate-effects`, `convert-io-sets`,
+     `convert-pet-entities`) now accept `--dataset` and use `dataPath`
+     until their data files migrate. Inline parsing in `convert-io-sets.js`
+     since it's ESM and can't `require` the cjs helper.
+   - Orchestrators (`convert-all-powersets.cjs`,
+     `reconvert-redirect-powersets.cjs`) parse and forward `--dataset`
+     to their `convert-powerset.cjs` child invocations.
+   - Both flag syntaxes work: `--dataset rebirth` and `--dataset=rebirth`.
+     Unknown ids throw with the list of known ones.
+7. **✅ Add `serverId` to `Build`**, hydration migration, slim/hydrate plumbing,
+   share-URL plumbing. — **Done.**
+   - `Build` interface: new `serverId: 'homecoming' | 'rebirth'` field;
+     `createEmptyBuild()` defaults to `'homecoming'`.
+   - `slimBuild()` / `hydrateBuild()` round-trip the field, defaulting
+     legacy v2/v3 exports to `'homecoming'`.
+   - `SlimBuildData` shape gains an optional `serverId` for backward compat.
+   - Export envelope bumped to **v4**; `importBuild()` accepts v2/v3/v4.
+     v2/v3 imports default to Homecoming via the hydrate fallback above.
+   - Zustand `onRehydrateStorage` migration fills in `serverId` on
+     persisted builds that predate the field.
+   - Game-import (`utils/game-import/importer.ts`) and Mids-import
+     (`utils/mids-import/importer.ts`) constructors set
+     `serverId: 'homecoming'` since neither source currently carries
+     a detectable server identifier.
+8. **✅ Wire boot to `Build.serverId`** instead of the hardcoded
+   `'homecoming'`. — **Done.** `main.tsx` now pre-peeks at
+   `localStorage['coh-planner-build']` to read the persisted build's
+   `serverId` BEFORE Zustand rehydrates and React mounts. Falls back to
+   `'homecoming'` for fresh visitors and any parse / shape failure.
 9. **(Later, when Rebirth data is available)** Add `datasets/rebirth/`,
    server picker on new-build flow, dataset-switch confirmation UI.
 

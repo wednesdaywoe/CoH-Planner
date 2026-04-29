@@ -5,7 +5,11 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const { parseDatasetArg } = require('./_dataset-paths.cjs');
 const { CATEGORY_MAP, RAW_DATA_PATH } = require('./convert-powerset.cjs');
+
+const datasetId = parseDatasetArg();
+const datasetFlag = `--dataset ${datasetId}`;
 
 // Find all unique category/powerset pairs that have redirect powers
 const affectedPowersets = new Set();
@@ -41,7 +45,7 @@ for (const pair of affectedPowersets) {
   const [category, powerset] = pair.split(' ');
   try {
     const output = execSync(
-      `node scripts/convert-powerset.cjs ${category} ${powerset}`,
+      `node scripts/convert-powerset.cjs ${category} ${powerset} ${datasetFlag}`,
       { cwd: path.join(__dirname, '..'), encoding: 'utf-8', timeout: 30000 }
     );
     const lines = output.split('\n');

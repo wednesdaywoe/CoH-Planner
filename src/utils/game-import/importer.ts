@@ -536,6 +536,10 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
   // 9. Construct Build
   const build: Build = {
     name: parsed.header.characterName || `${archetype.name} Import`,
+    // Game-import results target the currently-active dataset.
+    // Imports from another server would need a dataset switch +
+    // inference mapping, which is out of scope for now.
+    serverId: 'homecoming',
     archetype: {
       id: archetypeId,
       name: archetype.name,

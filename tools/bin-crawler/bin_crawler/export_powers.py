@@ -60,6 +60,13 @@ PLAYER_CATEGORIES = {
     # (Savage Leap, Feral Charge, etc.) referenced via Execute_Power.
     'Brute_Melee_Aux', 'Dominator_Assault_Aux', 'Scrapper_Melee_Aux',
     'Stalker_Melee_Aux', 'Tanker_Melee_Aux',
+    # Pets categories — host the actual damage data for player powers that
+    # delegate via top-level `redirect`. Snipes are the canonical case:
+    # `Sniper_Blast` has zero effects and points at `Pets.Blaster_Energy_Snipe.
+    # Sniper_Blast_Normal` / `_Quick` for its Normal vs fast-snipe variants.
+    # The convert script's collectRedirectTemplates resolves these via
+    # `pets/<set>/<power>.json`, so they need to be on disk.
+    'Pets', 'Villain_Pets',
 }
 
 

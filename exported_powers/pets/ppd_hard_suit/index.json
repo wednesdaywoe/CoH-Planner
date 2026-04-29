@@ -1,0 +1,35 @@
+{
+  "key": "Pets.PPD_Hard_Suit",
+  "display_name": "PPD Hard Suit",
+  "help": "Paragon Police",
+  "short_help": "Paragon Police",
+  "icon": "ppd_hard_suit_set.ico",
+  "powers": [
+    "Pets.PPD_Hard_Suit.Bone_Smasher",
+    "Pets.PPD_Hard_Suit.Energy_Punch",
+    "Pets.PPD_Hard_Suit.Laser_Burst",
+    "Pets.PPD_Hard_Suit.Laser_Spray",
+    "Pets.PPD_Hard_Suit.Resistances"
+  ],
+  "available_level": [
+    24,
+    9,
+    9,
+    14,
+    0
+  ],
+  "power_display_names": [
+    "Bone Smasher",
+    "Energy Punch",
+    "Laser Burst",
+    "Laser Spray",
+    "Resistances"
+  ],
+  "power_short_helps": [
+    "Disorient",
+    "Disorient",
+    "High DoT (Energy), -DEF",
+    "Heavy DoT(Lethal)",
+    "Resistance"
+  ]
+}

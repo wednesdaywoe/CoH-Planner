@@ -1,0 +1,27 @@
+{
+  "key": "Pets.Terror",
+  "display_name": "Terror",
+  "help": "Illusion Control",
+  "short_help": "Illusion Control",
+  "icon": "terror_set.ico",
+  "powers": [
+    "Pets.Terror.Cloak_of_Fear",
+    "Pets.Terror.Terrify",
+    "Pets.Terror.Translucency"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Cloak of Fear",
+    "Terrify",
+    "Translucency"
+  ],
+  "power_short_helps": [
+    "Fear",
+    "Fear",
+    "Intangible"
+  ]
+}

@@ -36,5 +36,53 @@ export const AssassinsBlaze: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 2.5,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 6,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 2.5,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 4.4361,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 2.76,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 2.169,
+      "table": "Melee_PvPDamage"
+    }
+  ],
+  "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 8
+    },
+    "buffDuration": 8
+  }
 };

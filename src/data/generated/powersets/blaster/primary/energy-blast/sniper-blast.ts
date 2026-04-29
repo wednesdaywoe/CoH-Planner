@@ -41,5 +41,69 @@ export const SniperBlast: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.9633,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.2477,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.4,
+      "table": "Ranged_Knockback"
+    },
+    "rangeBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "rangeBuff": 10
+    },
+    "buffDuration": 10
+  },
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.33,
+      "range": 80
+    },
+    "damage": [
+      {
+        "type": "Smashing",
+        "scale": 2.28,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Energy",
+        "scale": 2.28,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Smashing",
+        "scale": 0.5433,
+        "table": "Ranged_PvPDamage"
+      },
+      {
+        "type": "Energy",
+        "scale": 1.2677,
+        "table": "Ranged_PvPDamage"
+      }
+    ]
+  }
 };

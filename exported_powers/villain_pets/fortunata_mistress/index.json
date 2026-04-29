@@ -1,0 +1,47 @@
+{
+  "key": "Villain_Pets.Fortunata_Mistress",
+  "display_name": "Fortunata Mistress",
+  "help": "Soul Mastery",
+  "short_help": "Soul Mastery",
+  "icon": "fortunata_mistress_set.ico",
+  "powers": [
+    "Villain_Pets.Fortunata_Mistress.Combat_Training",
+    "Villain_Pets.Fortunata_Mistress.Dominate",
+    "Villain_Pets.Fortunata_Mistress.Foresight",
+    "Villain_Pets.Fortunata_Mistress.Psychic_Wail",
+    "Villain_Pets.Fortunata_Mistress.Scramble_Thoughts",
+    "Villain_Pets.Fortunata_Mistress.Self_Destruct",
+    "Villain_Pets.Fortunata_Mistress.Subdue",
+    "Villain_Pets.Fortunata_Mistress.Telekinetic_Blast"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Combat Training",
+    "Dominate",
+    "Foresight",
+    "Psychic Wail",
+    "Scramble Thoughts",
+    "Self Destruct",
+    "Subdue",
+    "Telekinetic Blast"
+  ],
+  "power_short_helps": [
+    "Auto: Self +DEF(Melee), +ACC, +Res(ToHit Debuff), Scaling DMG Resistance",
+    "Ranged, High DMG(Psionic), Foe Hold",
+    "Auto: Self +Res(Confuse, Fear, Hold, Immobilize, Disorient, Sleep, Psionic), +DEF(Melee, Ranged, AoE), Scaling DMG Resistance",
+    "-Recharge",
+    "Disorient",
+    "Self Destruct",
+    "Immobilize",
+    "Ranged, Moderate DMG(Smash/Psionic), Foe Knockback"
+  ]
+}

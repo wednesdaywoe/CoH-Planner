@@ -1,0 +1,19 @@
+{
+  "key": "Pets.KineticTransferBuffSelf",
+  "display_name": "Kinetic Transfer",
+  "help": "Kinetics",
+  "short_help": "Kinetics",
+  "icon": "kinetictransferbuffself_set.ico",
+  "powers": [
+    "Pets.KineticTransferBuffSelf.KineticTransfer"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "KineticTransfer"
+  ],
+  "power_short_helps": [
+    "+DMG"
+  ]
+}

@@ -41,5 +41,93 @@ export const Zapp: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 4.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 4.5,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.211,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.6422,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.211,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
+  "effects": {
+    "enduranceDrain": {
+      "scale": 3.3,
+      "table": "Ranged_EndDrain"
+    },
+    "enduranceGain": {
+      "scale": 14.4,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 0.8,
+      "table": "Ranged_EndDrain"
+    },
+    "durations": {
+      "recoveryDebuff": 5
+    },
+    "buffDuration": 5
+  },
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.33,
+      "range": 80
+    },
+    "damage": [
+      {
+        "type": "Energy",
+        "scale": 2.28,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Energy",
+        "scale": 0.456,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Energy",
+        "scale": 2.28,
+        "table": "Ranged_InherentDamage"
+      },
+      {
+        "type": "Energy",
+        "scale": 1.811,
+        "table": "Ranged_PvPDamage"
+      },
+      {
+        "type": "Energy",
+        "scale": 0.3622,
+        "table": "Ranged_PvPDamage"
+      },
+      {
+        "type": "Energy",
+        "scale": 1.811,
+        "table": "Ranged_PvPDamage"
+      }
+    ]
+  }
 };

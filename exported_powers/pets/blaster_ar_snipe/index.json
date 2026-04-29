@@ -1,0 +1,23 @@
+{
+  "key": "Pets.Blaster_AR_Snipe",
+  "display_name": "Assault Rifle",
+  "help": "Assault Rifle",
+  "short_help": "Assault Rifle",
+  "icon": "blaster_ar_snipe_set.ico",
+  "powers": [
+    "Pets.Blaster_AR_Snipe.Sniper_Rifle_Normal",
+    "Pets.Blaster_AR_Snipe.Sniper_Rifle_Quick"
+  ],
+  "available_level": [
+    11,
+    11
+  ],
+  "power_display_names": [
+    "Sniper Rifle",
+    "Sniper Rifle"
+  ],
+  "power_short_helps": [
+    "Sniper, Extreme DMG(Lethal), Foe Knockback",
+    "Sniper, High DMG(Lethal), Foe Knockback"
+  ]
+}

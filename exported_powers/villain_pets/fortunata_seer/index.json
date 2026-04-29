@@ -1,0 +1,51 @@
+{
+  "key": "Villain_Pets.Fortunata_Seer",
+  "display_name": "Fortunata Seer",
+  "help": "Soul Mastery",
+  "short_help": "Soul Mastery",
+  "icon": "fortunata_seer_set.ico",
+  "powers": [
+    "Villain_Pets.Fortunata_Seer.Combat_Training",
+    "Villain_Pets.Fortunata_Seer.Foresight",
+    "Villain_Pets.Fortunata_Seer.Mental_Blast",
+    "Villain_Pets.Fortunata_Seer.Psionic_Lance",
+    "Villain_Pets.Fortunata_Seer.Psychic_Scream",
+    "Villain_Pets.Fortunata_Seer.Self_Destruct",
+    "Villain_Pets.Fortunata_Seer.Subdue",
+    "Villain_Pets.Fortunata_Seer.Tactical_Training_Leadership",
+    "Villain_Pets.Fortunata_Seer.Telekinetic_Blast"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "power_display_names": [
+    "Combat Training",
+    "Foresight",
+    "Mental Blast",
+    "Psionic Lance",
+    "Psychic Scream",
+    "Self Destruct",
+    "Subdue",
+    "Tactical Training: Leadership",
+    "Telekinetic Blast"
+  ],
+  "power_short_helps": [
+    "Auto: Self +DEF(Melee), +ACC, +Res(ToHit Debuff), Scaling DMG Resistance",
+    "Auto: Self +Res(Confuse, Fear, Hold, Immobilize, Disorient, Sleep, Psionic), +DEF(Melee, Ranged, AoE), Scaling DMG Resistance",
+    "-Recharge",
+    "-Recharge",
+    "Ranged (Cone), Light DMG(Psionic), Foe -Recharge",
+    "Self Destruct",
+    "Immobilize",
+    "Toggle: PBAoE, Team +ToHit, +Res(Confuse, Fear), +Perception",
+    "Ranged, Heavy DMG(Psionic/Smash), Foe Knockback"
+  ]
+}

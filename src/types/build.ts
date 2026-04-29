@@ -103,6 +103,14 @@ export interface Build {
   /** Build name */
   name: string;
 
+  /**
+   * Identifier of the dataset (CoH server) this build targets.
+   * Determines which powerset/AT/IO-set definitions are loaded for the
+   * build. Older builds without this field migrate to `'homecoming'`.
+   * See `src/data/dataset.ts` and `MULTI_DATASET_PLAN.md`.
+   */
+  serverId: 'homecoming' | 'rebirth';
+
   /** Selected archetype */
   archetype: ArchetypeSelection;
 
@@ -163,6 +171,7 @@ export interface Build {
 export function createEmptyBuild(): Build {
   return {
     name: 'Untitled Build',
+    serverId: 'homecoming',
     archetype: {
       id: null,
       name: '',
@@ -226,6 +235,9 @@ export interface BuildExportV2 {
 /** Shape of the slim build data in v2 exports */
 export interface SlimBuildData {
   name: string;
+  /** Dataset / server identifier. Optional for backward compat — older
+   * exports predate multi-dataset support and default to `'homecoming'`. */
+  serverId?: 'homecoming' | 'rebirth';
   archetype: { id: string | null; name: string };
   level: number;
   primary: { id: string | null; name: string; powers: { name: string; level: number; slots: unknown[] }[] };

@@ -1,0 +1,51 @@
+{
+  "key": "Villain_Pets.Dominator_RadioactiveAssault_Snipe",
+  "display_name": "Dominator_RadioactiveAssault_Snipe",
+  "help": "Radioactive Assault",
+  "short_help": "Radioactive Assault",
+  "icon": "dominator_radioactiveassault_snipe_set.ico",
+  "powers": [
+    "Villain_Pets.Dominator_RadioactiveAssault_Snipe.Contaminated_Strike_Contamination",
+    "Villain_Pets.Dominator_RadioactiveAssault_Snipe.Devastating_Blow_Contamination",
+    "Villain_Pets.Dominator_RadioactiveAssault_Snipe.Neutrino_Bolt_Contamination",
+    "Villain_Pets.Dominator_RadioactiveAssault_Snipe.Proton_Volley_Normal",
+    "Villain_Pets.Dominator_RadioactiveAssault_Snipe.Proton_Volley_Normal_Contamination",
+    "Villain_Pets.Dominator_RadioactiveAssault_Snipe.Proton_Volley_Quick",
+    "Villain_Pets.Dominator_RadioactiveAssault_Snipe.Proton_Volley_Quick_Contamination",
+    "Villain_Pets.Dominator_RadioactiveAssault_Snipe.Radiation_Siphon_Contamination",
+    "Villain_Pets.Dominator_RadioactiveAssault_Snipe.X-Ray_Beam_Contamination"
+  ],
+  "available_level": [
+    1,
+    37,
+    0,
+    27,
+    34,
+    27,
+    34,
+    19,
+    3
+  ],
+  "power_display_names": [
+    "Contaminated Strike",
+    "Devastating Blow",
+    "Neutrino Bolt",
+    "Proton Volley",
+    "Proton Volley",
+    "Proton Volley",
+    "Proton Volley",
+    "Radiation Siphon",
+    "X-Ray Beam"
+  ],
+  "power_short_helps": [
+    "Melee, Minor DMG(Energy/Smash), Foe -Def, Special",
+    "Melee, Minor DMG(Energy/Smash), Foe -Def, Disorient, Special",
+    "Ranged, Minor DMG(Energy), Foe -DEF",
+    "Sniper, Extreme DMG(Energy), Foe -DEF",
+    "Sniper, Light DMG(Energy), Foe -DEF",
+    "Sniper, Extreme DMG(Energy), Foe -DEF",
+    "Sniper, Minor DMG(Energy), Foe -DEF",
+    "Melee, Minor DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
+    "Ranged, Minor DMG(Energy), Foe -DEF"
+  ]
+}

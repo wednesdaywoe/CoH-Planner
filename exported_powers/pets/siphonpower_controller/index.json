@@ -1,0 +1,19 @@
+{
+  "key": "Pets.SiphonPower_Controller",
+  "display_name": "Siphon Power",
+  "help": "Kinetics",
+  "short_help": "Kinetics",
+  "icon": "siphonpower_controller_set.ico",
+  "powers": [
+    "Pets.SiphonPower_Controller.SiphonPower"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Siphon Power"
+  ],
+  "power_short_helps": [
+    "SiphonPower"
+  ]
+}

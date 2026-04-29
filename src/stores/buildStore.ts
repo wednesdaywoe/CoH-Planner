@@ -1715,7 +1715,7 @@ export const useBuildStore = create<BuildStore>()(
       exportBuild: () => {
         const { build } = get();
         const exportData = {
-          version: 3,
+          version: 4,
           build: slimBuild(build),
           meta: {
             exportedAt: new Date().toISOString(),
@@ -1730,9 +1730,10 @@ export const useBuildStore = create<BuildStore>()(
           const data = JSON.parse(json);
           let build: Build;
 
-          if (data.version === 2 || data.version === 3) {
-            // v2/v3 slim format — reconstruct full Build from identity + build-specific fields
-            // v3 adds internalName to SlimPower; v2 uses display name fallback
+          if (data.version === 2 || data.version === 3 || data.version === 4) {
+            // v2/v3/v4 slim format — reconstruct full Build from identity + build-specific fields
+            //   v3 adds internalName to SlimPower; v2 uses display name fallback
+            //   v4 adds `serverId` for multi-dataset support; v2/v3 default to 'homecoming'
             build = hydrateBuild(data.build);
           } else {
             // v1 (legacy) — full Build object, just convert Set serialization
@@ -1900,6 +1901,13 @@ export const useBuildStore = create<BuildStore>()(
               }
               return power;
             });
+          }
+
+          // Migration: Initialize serverId if missing (builds before
+          // multi-dataset support default to Homecoming, the only
+          // dataset shipped at the time of pre-migration builds).
+          if (!state.build.serverId) {
+            state.build.serverId = 'homecoming';
           }
 
           // Migration: Initialize incarnates if missing (for builds created before incarnate system)

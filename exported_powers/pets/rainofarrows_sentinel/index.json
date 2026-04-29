@@ -1,0 +1,23 @@
+{
+  "key": "Pets.RainofArrows_Sentinel",
+  "display_name": "Rain of Arrows",
+  "help": "Archery",
+  "short_help": "Archery",
+  "icon": "rainofarrows_sentinel_set.ico",
+  "powers": [
+    "Pets.RainofArrows_Sentinel.Avoid",
+    "Pets.RainofArrows_Sentinel.RainofArrows"
+  ],
+  "available_level": [
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Avoid",
+    "RainofArrows"
+  ],
+  "power_short_helps": [
+    "Avoid",
+    "DoT(Lethal)"
+  ]
+}

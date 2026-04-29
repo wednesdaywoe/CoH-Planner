@@ -1,0 +1,27 @@
+{
+  "key": "Pets.Overpowering_Presence",
+  "display_name": "Overpowering Presence",
+  "help": "Overpowering Presence",
+  "short_help": "Overpowering Presence",
+  "icon": "overpowering_presence_set.ico",
+  "powers": [
+    "Pets.Overpowering_Presence.Resistance",
+    "Pets.Overpowering_Presence.Self_Destruct",
+    "Pets.Overpowering_Presence.Shocking_Aura"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Resistance",
+    "Self Destruct",
+    "Shocking Aura"
+  ],
+  "power_short_helps": [
+    "Auto: Self -Max HP",
+    "Self Destruct",
+    "Energy DoT, Foe Disorient"
+  ]
+}

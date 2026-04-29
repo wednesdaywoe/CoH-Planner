@@ -1,0 +1,43 @@
+{
+  "key": "Villain_Pets.Corolax_Red_Hybrid",
+  "display_name": "Coralax Red Hybrid",
+  "help": "Leviathan Mastery",
+  "short_help": "Leviathan Mastery",
+  "icon": "corolax_red_hybrid_set.ico",
+  "powers": [
+    "Villain_Pets.Corolax_Red_Hybrid.Haymaker",
+    "Villain_Pets.Corolax_Red_Hybrid.Psychic_Coral_Blast",
+    "Villain_Pets.Corolax_Red_Hybrid.Punch",
+    "Villain_Pets.Corolax_Red_Hybrid.Resistance",
+    "Villain_Pets.Corolax_Red_Hybrid.Scramble_Thoughts",
+    "Villain_Pets.Corolax_Red_Hybrid.Self_Destruct",
+    "Villain_Pets.Corolax_Red_Hybrid.Subdue"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    34,
+    0,
+    1
+  ],
+  "power_display_names": [
+    "Haymaker",
+    "Psychic Coral Blast",
+    "Punch",
+    "Resistance",
+    "Scramble Thoughts",
+    "Self Destruct",
+    "Subdue"
+  ],
+  "power_short_helps": [
+    "Melee Smash, Knockback",
+    "-Recharge",
+    "Melee Smash, Knockback",
+    "Auto: +Res(Cold/Psionic)",
+    "Disorient",
+    "Self Destruct",
+    "Immobilize"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "key": "Villain_Pets.Fiery_Melee_Assassins_Blaze",
+  "display_name": "",
+  "help": "Fiery Melee allows you to attack with fire, and even conjure up flaming melee weapons. Fiery Melee powers tend to set foes ablaze for added Damage Over Time.",
+  "short_help": "Fiery Melee",
+  "icon": "fiery_melee_assassins_blaze_set.ico",
+  "powers": [
+    "Villain_Pets.Fiery_Melee_Assassins_Blaze.Assassins_Blaze_Quick",
+    "Villain_Pets.Fiery_Melee_Assassins_Blaze.Assassins_Blaze_Stealth"
+  ],
+  "available_level": [
+    5,
+    5
+  ],
+  "power_display_names": [
+    "Assassin's Blaze (Quick)",
+    "Assassin's Blaze"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Fire)",
+    "Melee, DMG(Fire)"
+  ]
+}

@@ -17,6 +17,12 @@ damage.ts — InherentDamage filter fallback
 When the existing PvP/InherentDamage filter would strip all damage entries (Peacebringer Bright Nova Bolt etc., where every entry uses Ranged_InherentDamage), fall back to using the InherentDamage entries — they're the actual damage of form-required powers, not conditional bonuses.
 
 Not yet fixed (deferred)
-Sniper Blast (Energy Assault, Energy Blast, Assault Rifle, etc.) has no damage field at all in the generated data — this is an upstream extraction issue, not a planner-logic one. The bin-crawler export needs to capture snipe damage entries. Worth investigating whether they live behind a different table prefix or need a special requires-aware extraction path.
-Damage section for non-damaging powers with damage procs slotted (Infrigidate, Siphon Speed) — this is more of a feature than a bug fix and needs a UI change in PowerInfoTooltip.tsx to inspect slotted enhancements for damage procs and synthesize a Damage row. Happy to tackle separately.
-Per-snipe fast-snipe behavior — combatMode is the right global mechanism; making it actually move the needle on totals requires populating quickSnipe data on snipe powers (and probably a generic "+27% damage in fast-snipe state" effect since it's the same for all snipes). Also a separate task.
+
+~~Sniper Blast (Energy Assault, Energy Blast, Assault Rifle, etc.) has no damage field at all in the generated data~~ **— FIXED 2026-04-29.**
+Root cause was the bin exporter's PLAYER_CATEGORIES set excluding `Pets` and `Villain_Pets`. Snipe powers carry empty `effects` and a top-level `redirect` array pointing at e.g. `Pets.Blaster_Energy_Snipe.Sniper_Blast_Normal` (and `_Quick` for the fast-snipe variant). Without those pet files on disk, `collectRedirectTemplates` couldn't load the actual damage. Added both pet categories to PLAYER_CATEGORIES and re-exported. Snipe powers (Sniper Blast, Sniper Rifle, Moonbeam, Zapp, Blazing Bolt, etc.) now have correct damage scales — Sniper Blast = Smashing 1.5 + Energy 3.0 from `Ranged_Damage` table. The Quick variant data is also on disk for when fast-snipe support lands.
+
+~~Damage section for non-damaging powers with damage procs slotted (Infrigidate, Siphon Speed)~~ **— FIXED 2026-04-29.**
+InfoPanel now synthesizes a "Damage from Procs" section when a power has no base damage but carries one or more slotted damage procs. Computes per-proc chance (PPM × cycle-time × area-factor), interpolated avg damage, per-cast contribution, and DPS, plus a total row.
+
+~~Per-snipe fast-snipe behavior~~ **— FIXED 2026-04-29.**
+The InfoPanel was already wired to swap in `power.quickSnipe.{stats,damage}` when In-Combat is on; the data side just wasn't populated. Added `extractQuickSnipeData` to `convert-powerset.cjs`: when a power's redirect array carries a `kEngaged` / `Experienced_Marksman`-conditioned variant alongside the `Always` (Normal) variant, the Quick variant's damage and cast time are extracted into `power.quickSnipe`. 41 snipe powers now ship with quickSnipe data, so the In-Combat toggle correctly shows the fast-snipe scale (typically ~50% of charged with no interrupt window).

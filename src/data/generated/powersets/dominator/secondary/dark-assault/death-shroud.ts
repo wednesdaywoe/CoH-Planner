@@ -41,5 +41,35 @@ export const MoonBeam: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 4.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 4.231,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.33,
+      "range": 80
+    },
+    "damage": [
+      {
+        "type": "Negative",
+        "scale": 3.56,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Negative",
+        "scale": 2.131,
+        "table": "Ranged_PvPDamage"
+      }
+    ]
+  }
 };

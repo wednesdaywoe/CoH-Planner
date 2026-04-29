@@ -84,6 +84,7 @@ export interface SlimPoolSelection {
 export function slimBuild(build: Build): SlimBuildData {
   return {
     name: build.name,
+    serverId: build.serverId,
     archetype: { id: build.archetype.id, name: build.archetype.name },
     level: build.level,
     exemplarLevel: build.exemplarLevel,
@@ -301,6 +302,11 @@ export function hydrateBuild(slim: Record<string, any>): Build {
 
   return {
     name: slim.name ?? 'Imported Build',
+    // Dataset identifier — older exports predate the multi-dataset
+    // migration and don't carry this field; default to Homecoming so
+    // legacy builds keep loading the same data they were authored
+    // against.
+    serverId: (slim.serverId === 'rebirth' ? 'rebirth' : 'homecoming') as Build['serverId'],
     archetype: archetypeSelection,
     level: slim.level ?? 50,
     exemplarLevel: slim.exemplarLevel ?? null,

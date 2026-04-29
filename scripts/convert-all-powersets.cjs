@@ -9,8 +9,14 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { parseDatasetArg } = require('./_dataset-paths.cjs');
 
 const { RAW_DATA_PATH } = require('./convert-powerset.cjs');
+
+const datasetId = parseDatasetArg();
+// Forward `--dataset <id>` to each child convert-powerset.cjs invocation
+// so the per-powerset converter writes into the same dataset folder.
+const datasetFlag = `--dataset ${datasetId}`;
 
 const force = process.argv.includes('--force');
 
@@ -112,7 +118,7 @@ for (const [category, info] of Object.entries(ALL_CATEGORIES)) {
 
     try {
       console.log(`  [CONVERT] ${category}/${powerset} -> ${info.archetype}/${info.type}/${powerset}`);
-      execSync(`node scripts/convert-powerset.cjs ${category} ${powerset}`, {
+      execSync(`node scripts/convert-powerset.cjs ${category} ${powerset} ${datasetFlag}`, {
         stdio: 'pipe',
         timeout: 30000
       });

@@ -1,0 +1,48 @@
+{
+  "name": "Touch_of_the_Storm",
+  "full_name": "Villain_Pets.Mu_Guardian.Touch_of_the_Storm",
+  "short_name": "Touch_of_the_Storm",
+  "type": "Click",
+  "display_name": "Touch of the Storm",
+  "display_fullname": "Villain Pets Mu Guardian Touch of the Storm",
+  "display_help": "Heal.<br><br><color #fcfc95>Notes: Touch of the Storm is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "Ally Heal",
+  "icon": "empathy_healother.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.27,
+  "recharge_time": 20.0,
+  "activate_period": 0.0,
+  "endurance_cost": 7.8,
+  "interrupt_time": 0.0,
+  "target_type": "Friend",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend"
+  ],
+  "targets_affected": [
+    "Friend"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Heal",
+    "Accuracy"
+  ],
+  "allowed_set_categories": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Villain_Pets.Mu_Guardian"
+}

@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.Trick_Shot_Jump3",
+  "display_name": "Trick Shot Jump 3",
+  "help": "Trick Shot Jump 3",
+  "short_help": "Trick Shot Jump 3",
+  "icon": "trick_shot_jump3_set.ico",
+  "powers": [
+    "Villain_Pets.Trick_Shot_Jump3.Bounce"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Bounce"
+  ],
+  "power_short_helps": [
+    "Bounced"
+  ]
+}

@@ -20,13 +20,19 @@ const fs = require('fs');
 const path = require('path');
 
 const RAW_BASE = path.join(__dirname, '..', 'raw_data_homecoming-20251209_7415', 'powers', 'incarnate');
+// `--dataset <id>` (default `homecoming`) — accepted for forward compat.
+// Incarnate data hasn't migrated into `src/data/datasets/<id>/` yet, so
+// we still write to legacy `src/data/`. When it migrates, swap
+// `dataPath(...)` for `datasetPath(datasetId, ...)`.
+const { parseDatasetArg, dataPath } = require('./_dataset-paths.cjs');
+const datasetId = parseDatasetArg(); // eslint-disable-line @typescript-eslint/no-unused-vars
 // Relocated into the layered tree under src/data/generated/ for consistency
 // with the per-power / epic-pool / power-pool layering. Incarnate's seven
 // generated exports (Alpha/Destiny/Hybrid/Interface/Judgement/Lore/etc.)
 // are heterogeneous, so there's no per-power override layer here — the
 // planner imports directly from this generated file via
 // src/data/incarnate-effects.ts.
-const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'generated', 'incarnate-effects.ts');
+const OUTPUT_FILE = dataPath('generated', 'incarnate-effects.ts');
 const DRY_RUN = process.argv.includes('--dry-run');
 
 // ============================================

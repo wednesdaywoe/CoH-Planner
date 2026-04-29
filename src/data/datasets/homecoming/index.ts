@@ -23,6 +23,7 @@ import {
   calculateIncarnateDamage,
   getPetTableValue,
 } from './at-tables';
+import { getBaseToHit, getCombatModifier } from './purple-patch';
 
 const dataset: Dataset = {
   id: 'homecoming',
@@ -37,6 +38,11 @@ const dataset: Dataset = {
   atTables: {
     archetypes: AT_TABLES,
     pets: PET_TABLES,
+  },
+
+  purplePatch: {
+    getBaseToHit,
+    getCombatModifier,
   },
 
   getTableValue,

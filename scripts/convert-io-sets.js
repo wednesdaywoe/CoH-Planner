@@ -1,7 +1,11 @@
 /**
  * Script to convert legacy io-sets.js to TypeScript-compatible format
  *
- * Run with: node scripts/convert-io-sets.js
+ * Run with: node scripts/convert-io-sets.js [--dataset <id>]
+ *
+ * Note: this reads from `legacy/js/data/io-sets.js` which is no longer
+ * shipped in this repo — the live IO set data now comes from boostsets.bin
+ * via the bin-crawler pipeline. Kept here for historical re-runs.
  */
 
 import fs from 'fs';
@@ -10,6 +14,19 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// `--dataset <id>` flag — accepted for forward compat with the multi-
+// dataset migration. IO sets haven't migrated into `src/data/datasets/`
+// yet so we still write to the legacy `src/data/` path.
+function parseDatasetArg(argv) {
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--dataset' && i + 1 < argv.length) return argv[i + 1];
+    if (argv[i].startsWith('--dataset=')) return argv[i].slice('--dataset='.length);
+  }
+  return 'homecoming';
+}
+// eslint-disable-next-line no-unused-vars
+const datasetId = parseDatasetArg(process.argv);
 
 // Read the legacy file
 const legacyPath = path.join(__dirname, '../legacy/js/data/io-sets.js');

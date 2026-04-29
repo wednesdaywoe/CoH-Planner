@@ -7,11 +7,18 @@
 
 const fs = require('fs');
 const path = require('path');
+const { parseDatasetArg, dataPath } = require('./_dataset-paths.cjs');
+
+// `--dataset <id>` (default `homecoming`) — accepted for forward compat.
+// Pet-entities haven't migrated into `src/data/datasets/<id>/` yet, so we
+// still write to legacy `src/data/`. When migrated, swap `dataPath(...)`
+// for `datasetPath(datasetId, ...)`.
+const datasetId = parseDatasetArg(); // eslint-disable-line @typescript-eslint/no-unused-vars
 
 const RAW_DATA_PATH = path.join(__dirname, '../raw_data_homecoming-20251209_7415');
 const ENTITIES_PATH = path.join(RAW_DATA_PATH, 'entities');
 const POWERS_PATH = path.join(RAW_DATA_PATH, 'powers');
-const OUTPUT_PATH = path.join(__dirname, '../src/data/pet-entities.ts');
+const OUTPUT_PATH = dataPath('pet-entities.ts');
 
 // Damage type attributes we care about
 const DAMAGE_ATTRIBS = new Set([

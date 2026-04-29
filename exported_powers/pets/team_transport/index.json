@@ -1,0 +1,23 @@
+{
+  "key": "Pets.Team_Transport",
+  "display_name": "Team Transport",
+  "help": "Inherent",
+  "short_help": "Inherent",
+  "icon": "team_transport_set.ico",
+  "powers": [
+    "Pets.Team_Transport.Self_Destruct",
+    "Pets.Team_Transport.Team_Transport_Powers"
+  ],
+  "available_level": [
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Self Destruct",
+    "Mission Transporter"
+  ],
+  "power_short_helps": [
+    "Self Destruct",
+    "Teleport to Mission"
+  ]
+}

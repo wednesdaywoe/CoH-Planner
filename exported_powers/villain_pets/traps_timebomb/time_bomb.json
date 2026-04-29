@@ -1,0 +1,51 @@
+{
+  "name": "Time_Bomb",
+  "full_name": "Villain_Pets.Traps_TimeBomb.Time_Bomb",
+  "short_name": "Time_Bomb",
+  "type": "Click",
+  "display_name": "Time Bomb",
+  "display_fullname": "Villain Pets Traps TimeBomb Time Bomb",
+  "display_help": "All foes that pass near this Trip Mine will get blown to smithereens.<br><br><color #fcfc95>Notes: Time Bomb is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Extremely Long.</color>",
+  "display_short_help": "AoE Lethal/Fire, Knockback",
+  "icon": "gadgets_timebomb.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.2,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 25.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 1000.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_set_categories": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    124
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Villain_Pets.Traps_TimeBomb"
+}

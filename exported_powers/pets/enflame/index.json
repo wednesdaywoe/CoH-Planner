@@ -1,0 +1,27 @@
+{
+  "key": "Pets.Enflame",
+  "display_name": "Enflame",
+  "help": "Sorcery",
+  "short_help": "Sorcery",
+  "icon": "enflame_set.ico",
+  "powers": [
+    "Pets.Enflame.Enflame",
+    "Pets.Enflame.Fly",
+    "Pets.Enflame.Self_Destruct"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Enflame",
+    "Fly",
+    "Self Destruct"
+  ],
+  "power_short_helps": [
+    "Fire DoT",
+    "Fly",
+    "Self Destruct"
+  ]
+}

@@ -37,5 +37,73 @@ export const AssassinsEclipse: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.932,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.828,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 6,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.19,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.51,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 4.4361,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.76,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.76,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Melee_PvPDamage"
+    }
+  ],
+  "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 8
+    },
+    "buffDuration": 8
+  }
 };

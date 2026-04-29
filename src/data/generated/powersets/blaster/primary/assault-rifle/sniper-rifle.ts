@@ -41,5 +41,49 @@ export const SniperRifle: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 4.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.749,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.4,
+      "table": "Ranged_Knockback"
+    },
+    "rangeBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "rangeBuff": 10
+    },
+    "buffDuration": 10
+  },
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.17,
+      "range": 80
+    },
+    "damage": [
+      {
+        "type": "Lethal",
+        "scale": 2.28,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Lethal",
+        "scale": 1.699,
+        "table": "Ranged_PvPDamage"
+      }
+    ]
+  }
 };

@@ -77,5 +77,28 @@ export const DirectStrike: Power = {
       "rangeBuff": 10
     },
     "buffDuration": 10
+  },
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.33,
+      "range": 80
+    },
+    "damage": [
+      {
+        "type": "Energy",
+        "scale": 2.28,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Energy",
+        "scale": 2.28,
+        "table": "Ranged_InherentDamage"
+      },
+      {
+        "type": "Energy",
+        "scale": 2.28,
+        "table": "Ranged_InherentDamage"
+      }
+    ]
   }
 };

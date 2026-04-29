@@ -1,0 +1,31 @@
+{
+  "key": "Pets.Ice_Elemental",
+  "display_name": "Ice Elemental",
+  "help": "Ice Elemental",
+  "short_help": "Ice Elemental",
+  "icon": "jack_set.ico",
+  "powers": [
+    "Pets.Ice_Elemental.Freezing_Touch",
+    "Pets.Ice_Elemental.Ice_Bolt",
+    "Pets.Ice_Elemental.Ice_Swing",
+    "Pets.Ice_Elemental.Resistance"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Freezing Touch",
+    "Ice Bolt",
+    "Ice Swing",
+    "Resistance"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Cold), Foe Hold",
+    "Ranged, DMG(Cold), Foe -Recharge, -SPD",
+    "Melee Cold, -Recharge",
+    "Resistance"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Trip_Mine",
+  "full_name": "Pets.Mine_BWI.Trip_Mine",
+  "short_name": "Trip_Mine",
+  "type": "Click",
+  "display_name": "Nitrogen Trip Mine",
+  "display_fullname": "Pets Mine BWI Trip Mine",
+  "display_help": "All foes that pass near this Nitrogen Trip Mine will get blown to smithereens.",
+  "display_short_help": "PBAoE: Cold/Fire, Foe Knockback, Immobilize, Slow, -Rech",
+  "icon": "icemanipulation_chillblains.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.3,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 12.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 1000.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    128
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Pets.Mine_BWI"
+}

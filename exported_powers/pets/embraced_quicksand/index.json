@@ -1,0 +1,19 @@
+{
+  "key": "Pets.Embraced_Quicksand",
+  "display_name": "Quicksand",
+  "help": "Quicksand",
+  "short_help": "Quicksand",
+  "icon": "embraced_quicksand_set.ico",
+  "powers": [
+    "Pets.Embraced_Quicksand.Quicksand"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Quicksand"
+  ],
+  "power_short_helps": [
+    "PBAoE, Minor DMG( Energy), Foe Knockback"
+  ]
+}

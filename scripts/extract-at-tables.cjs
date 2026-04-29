@@ -7,9 +7,14 @@
 
 const fs = require('fs');
 const path = require('path');
+const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
+
+const datasetId = parseDatasetArg();
 
 const RAW_DATA_PATH = path.join(__dirname, '../raw_data_homecoming-raw_data_homecoming-20251209_7415/tables');
-const OUTPUT_PATH = path.join(__dirname, '../src/data/at-tables.ts');
+// at-tables.ts has migrated into `src/data/datasets/<id>/` — write there
+// directly so we don't clobber the runtime facade at `src/data/at-tables.ts`.
+const OUTPUT_PATH = datasetPath(datasetId, 'at-tables.ts');
 
 // Archetypes we care about for player characters
 const PLAYER_ARCHETYPES = [

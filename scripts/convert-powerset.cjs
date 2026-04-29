@@ -8,6 +8,15 @@
 
 const fs = require('fs');
 const path = require('path');
+const { parseDatasetArg, dataPath } = require('./_dataset-paths.cjs');
+
+// `--dataset <id>` (default `homecoming`) — accepted for forward
+// compatibility with the multi-dataset migration. Powerset trees haven't
+// migrated into `src/data/datasets/<id>/` yet, so for now we write to the
+// legacy `src/data/{generated,overrides,powersets}/` regardless of the
+// flag value. When the powerset tree migrates, swap `dataPath` for
+// `datasetPath(datasetId, ...)` below.
+const datasetId = parseDatasetArg(); // eslint-disable-line @typescript-eslint/no-unused-vars
 
 // Source: bin-crawler JSON export (tools/bin-crawler/bin_crawler/export_powers.py)
 // reading live HC .pigg archives. This is current HC data on every re-run;
@@ -21,9 +30,9 @@ const RAW_DATA_PATH = path.join(__dirname, '../exported_powers');
 //   powersets/  — composed exports + index.ts, composed stub scaffolded, never
 //                 overwritten for individual powers (index.ts IS overwritten
 //                 since it just lists the powers and doesn't carry manual data)
-const OUTPUT_GENERATED_PATH = './src/data/generated/powersets';
-const OUTPUT_OVERRIDES_PATH = './src/data/overrides/powersets';
-const OUTPUT_PATH = './src/data/powersets';
+const OUTPUT_GENERATED_PATH = dataPath('generated', 'powersets');
+const OUTPUT_OVERRIDES_PATH = dataPath('overrides', 'powersets');
+const OUTPUT_PATH = dataPath('powersets');
 
 // Map raw category names to our folder structure
 const CATEGORY_MAP = {
@@ -579,6 +588,54 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
   }
 
   return templates;
+}
+
+/**
+ * Detect a snipe power's fast-snipe (Quick) variant in its redirect array and
+ * extract its damage + cast stats. Returns null if this isn't a snipe-style
+ * pattern.
+ *
+ * Snipes carry two top-level redirects:
+ *   1. `Pets.<...>_Quick` with condition `kEngaged Source.Mode? ... Experienced_Marksman ... ||`
+ *      — fires while in combat OR while the global Marksman buff is active
+ *      (faster cast, lower damage).
+ *   2. `Pets.<...>_Normal` with condition `Always` — the charged variant
+ *      (slower cast with interrupt window, higher damage).
+ *
+ * `collectRedirectTemplates` already pulls the Normal variant for the main
+ * `damage` field. The Quick variant is exposed via `power.quickSnipe`, which
+ * the InfoPanel swaps in when the user has the In-Combat toggle on.
+ */
+function extractQuickSnipeData(powerJson) {
+  if (!powerJson.redirect || powerJson.redirect.length < 2) return null;
+
+  const quickRedirect = powerJson.redirect.find(r => {
+    const cond = r.condition_expression || '';
+    return cond.includes('kEngaged') || cond.includes('Experienced_Marksman');
+  });
+  if (!quickRedirect) return null;
+
+  const redirectPath = resolveRedirectPath(quickRedirect.name);
+  if (!fs.existsSync(redirectPath)) return null;
+
+  const quickJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8'));
+  if (!quickJson.effects || quickJson.effects.length === 0) return null;
+
+  const templates = collectTemplatesDeep(quickJson.effects, new Set([quickRedirect.name]));
+  const damage = extractDamage(templates);
+  if (!damage) return null;
+
+  // Only the fields that change between Normal and Quick. Recharge is
+  // identical; range and accuracy generally are too. Cast time and the
+  // (now-zero) interrupt are the differentiators.
+  const stats = {};
+  if (quickJson.activation_time != null) stats.castTime = quickJson.activation_time;
+  if (quickJson.range != null && quickJson.range !== 0) stats.range = quickJson.range;
+
+  return {
+    stats,
+    damage: Array.isArray(damage) ? damage : [damage],
+  };
 }
 
 /**
@@ -1951,6 +2008,14 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     if (Object.keys(effects).length) power.effects = effects;
 
   }
+
+  // Snipe powers ship two redirect targets — Normal (charged, slower cast,
+  // higher damage; the one collectRedirectTemplates already extracted) and
+  // Quick (instant-cast variant fired in combat or with the Marksman buff).
+  // Pull the Quick variant's damage and cast stats into power.quickSnipe so
+  // the In-Combat toggle can swap in the fast-snipe values at display time.
+  const quickSnipe = extractQuickSnipeData(powerJson);
+  if (quickSnipe) power.quickSnipe = quickSnipe;
 
   // Requirements
   if (powerJson.requires) {

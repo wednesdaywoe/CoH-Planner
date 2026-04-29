@@ -25,6 +25,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { message: 'Began work on the plumbing to support multiple datasets. Stuff might break',type: "feat"},
       { message: 'Filtered out Heal, PvP, and InherentDamage entries from damage calculations', type: 'fix' },
+      { message: 'Snipes (Sniper Blast, Sniper Rifle, Moonbeam, Zapp, etc.) now show their actual damage — extraction was missing the pseudo-pet redirect target. Both charged (Normal) and fast-snipe (Quick) variants are now populated, and the In-Combat toggle swaps in fast-snipe stats', type: 'fix' },
+      { message: 'Power info panel now synthesizes a "Damage from Procs" section for non-damaging powers (Infrigidate, Siphon Speed, etc.) that carry damage procs — shows chance, per-cast avg, and DPS for each slotted proc', type: 'feat' },
       { message: 'You can now collapse and expand the dashboard (press D or use the arrow), and L toggles infopanel lock', type: 'feat' },
     ] 
   },

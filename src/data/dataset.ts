@@ -53,6 +53,14 @@ export interface Dataset {
     pets: Record<string, PetTableData>;
   };
 
+  // Purple patch — combat scaling tables for level differences (damage,
+  // base ToHit). Scoped to the dataset because values are tunable per
+  // server even though HC's are the de-facto standard.
+  purplePatch: {
+    getBaseToHit: (levelDiff: number) => number;
+    getCombatModifier: (levelDiff: number) => number;
+  };
+
   // Helpers closed over this dataset's own data records.
   getTableValue: (archetype: string, tableName: string, level: number) => number | undefined;
   calculateEffectValue: (archetype: string, tableName: string, scale: number, level?: number) => number | undefined;

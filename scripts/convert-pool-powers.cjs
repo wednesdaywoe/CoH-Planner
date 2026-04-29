@@ -37,13 +37,20 @@ const RAW_POWERS_PATH = (() => {
   if (fs.existsSync(newLayout)) return newLayout;
   return oldLayout;
 })();
+// `--dataset <id>` (default `homecoming`) — accepted for forward
+// compatibility. Pool data hasn't migrated into `src/data/datasets/` yet,
+// so we still write to the legacy `src/data/` paths. When it migrates,
+// swap `dataPath(...)` here for `datasetPath(datasetId, ...)`.
+const { parseDatasetArg, dataPath } = require('./_dataset-paths.cjs');
+const datasetId = parseDatasetArg(); // eslint-disable-line @typescript-eslint/no-unused-vars
+
 // Layered output (see src/data/README.md):
 //   - OUTPUT_PATH: the auto-extracted data lives here, overwritten on --apply
 //   - COMPOSED_PATH: hand-edit-safe facade that merges in overrides
 //   - OVERRIDES_PATH: scaffolded once, holds any per-power deltas
-const OUTPUT_PATH = path.resolve('./src/data/generated/power-pools.ts');
-const COMPOSED_PATH = path.resolve('./src/data/power-pools-raw.ts');
-const OVERRIDES_PATH = path.resolve('./src/data/overrides/power-pools.ts');
+const OUTPUT_PATH = dataPath('generated', 'power-pools.ts');
+const COMPOSED_PATH = dataPath('power-pools-raw.ts');
+const OVERRIDES_PATH = dataPath('overrides', 'power-pools.ts');
 
 // Parse CLI args
 const args = process.argv.slice(2);

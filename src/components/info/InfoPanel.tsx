@@ -433,6 +433,48 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive, furyLevel,
       criticalHitsActive, effectiveHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive]);
 
+  // Proc-only damage contributions for non-damaging powers. Powers like
+  // Infrigidate, Siphon Speed, etc. carry no base damage but commonly host
+  // damage procs (Annihilation, Achilles, Bombardment, etc.). When that's
+  // the case we synthesize a Damage section so users can see what their
+  // procs are actually doing on the cycle.
+  const procDamageEntries = useMemo(() => {
+    if (calculatedDamage) return null; // base damage already shown
+    if (!selectedPower?.slots) return null;
+    const baseRecharge = effectivePower?.stats?.recharge ?? effectivePower?.effects?.recharge ?? 0;
+    const castTime = effectivePower?.stats?.castTime ?? effectivePower?.effects?.castTime ?? 0;
+    const radius = effectivePower?.stats?.radius ?? effectivePower?.effects?.radius ?? 0;
+    if (!baseRecharge && !castTime) return null;
+
+    const entries: { name: string; setName: string; type: string; chance: number; avgDamage: number; perActivation: number; dps: number }[] = [];
+    for (const slot of selectedPower.slots) {
+      if (!slot || slot.type !== 'io-set') continue;
+      const ioSlot = slot as IOSetEnhancement;
+      if (!ioSlot.isProc) continue;
+      const procData = findProcData(ioSlot.name, ioSlot.setName);
+      if (!procData || procData.ppm === null) continue;
+      const effect = parseProcEffect(procData.mechanics);
+      if (effect.category !== 'Damage' || effect.value == null || effect.valueMax == null) continue;
+
+      const slotLevel = ioSlot.level ?? build.level;
+      const avgDamage = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, slotLevel);
+      const chance = calculateProcChance(procData.ppm, baseRecharge, castTime, radius);
+      const perActivation = chance * avgDamage;
+      const cycleTime = (baseRecharge + castTime) || 1;
+      const dps = perActivation / cycleTime;
+      entries.push({
+        name: ioSlot.name,
+        setName: ioSlot.setName,
+        type: effect.effectType ?? 'Damage',
+        chance,
+        avgDamage,
+        perActivation,
+        dps,
+      });
+    }
+    return entries.length > 0 ? entries : null;
+  }, [calculatedDamage, selectedPower, effectivePower, build.level]);
+
   // Per-target buff scaling (stored in UI store so it persists across power switches)
   const stackingInfo = useMemo(() => power ? getStackingInfo(power) : null, [power]);
   const targetsHit = useUIStore((s) => s.targetsHitValues[powerName] ?? 0);
@@ -605,6 +647,43 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       />
 
       {/* Damage with three-tier display - using actual damage calculation */}
+      {/* Damage from slotted procs (only shown for non-damaging powers — base
+       * damage already has its own section below). Useful for utility powers
+       * like Infrigidate / Siphon Speed that get most/all of their damage
+       * from procs the player slots. */}
+      {procDamageEntries && procDamageEntries.length > 0 && (
+        <div>
+          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+            Damage from Procs <span className="text-slate-600 font-normal">(Lvl {build.level})</span>
+          </h4>
+          <div className="bg-slate-800/50 rounded p-2 space-y-1">
+            <div className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-2 text-[9px] text-slate-500 uppercase border-b border-slate-700 pb-0.5">
+              <span>Proc</span>
+              <span className="text-right">Type</span>
+              <span className="text-right">Chance</span>
+              <span className="text-right">Avg/Cast</span>
+              <span className="text-right">DPS</span>
+            </div>
+            {procDamageEntries.map((p, i) => (
+              <div key={i} className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-2 text-[10px]">
+                <span className="text-slate-300 truncate" title={`${p.setName}: ${p.name}`}>{p.name}</span>
+                <span className="text-right text-orange-400">{p.type}</span>
+                <span className="text-right text-slate-400 tabular-nums">{(p.chance * 100).toFixed(0)}%</span>
+                <span className="text-right text-amber-300 tabular-nums">{p.perActivation.toFixed(1)}</span>
+                <span className="text-right text-amber-400 tabular-nums">{p.dps.toFixed(2)}</span>
+              </div>
+            ))}
+            <div className="border-t border-slate-700 pt-0.5 flex justify-between text-[9px]">
+              <span className="text-slate-500 uppercase">Total</span>
+              <span className="text-amber-400 tabular-nums">
+                {procDamageEntries.reduce((s, p) => s + p.perActivation, 0).toFixed(1)} avg / {' '}
+                {procDamageEntries.reduce((s, p) => s + p.dps, 0).toFixed(2)} DPS
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {calculatedDamage && (
         <div>
           <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">

@@ -1,0 +1,27 @@
+{
+  "key": "Pets.Corruptor_Blizzard",
+  "display_name": "Blizzard",
+  "help": "Ice Blast",
+  "short_help": "Ice Blast",
+  "icon": "corruptor_blizzard_set.ico",
+  "powers": [
+    "Pets.Corruptor_Blizzard.Avoid",
+    "Pets.Corruptor_Blizzard.Blizzard",
+    "Pets.Corruptor_Blizzard.Snow"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Avoid",
+    "Blizzard",
+    "Snow"
+  ],
+  "power_short_helps": [
+    "Avoid",
+    "Cold/Lethal, -Speed, -Recharge, Knockdown",
+    "Cold/Lethal, -Speed, -Recharge"
+  ]
+}

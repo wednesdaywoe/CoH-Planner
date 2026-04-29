@@ -6,7 +6,7 @@
  * (which needs stat definitions).
  */
 
-import { STAT_COLORS } from '@/data/stat-colors';
+import { STAT_COLORS } from './stat-colors';
 import type { CalculatedStats } from '@/hooks/useCalculatedStats';
 
 // ============================================

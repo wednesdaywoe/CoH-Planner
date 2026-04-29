@@ -409,6 +409,10 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   // 12. Construct the Build object
   const build: Build = {
     name: mbd.Name || `${archetype.name} Import`,
+    // Mids `.mbd` files don't currently carry a server identifier we can
+    // detect, so imports default to the active dataset (Homecoming until
+    // detection logic lands).
+    serverId: 'homecoming',
     archetype: {
       id: archetypeId,
       name: archetype.name,

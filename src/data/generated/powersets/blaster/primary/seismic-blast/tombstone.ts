@@ -61,5 +61,23 @@ export const Tombstone: Power = {
       "rangeBuff": 10
     },
     "buffDuration": 10
+  },
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.67,
+      "range": 80
+    },
+    "damage": [
+      {
+        "type": "Smashing",
+        "scale": 2.28,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Smashing",
+        "scale": 2.049,
+        "table": "Ranged_PvPDamage"
+      }
+    ]
   }
 };

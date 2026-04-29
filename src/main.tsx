@@ -26,9 +26,25 @@ if ('launchQueue' in window) {
 
 // Load the active dataset before mounting React. The data-layer facades
 // (e.g. @/data/at-tables, @/data/archetypes) read from the active dataset
-// synchronously, so they must not be touched until this resolves. Default
-// is Homecoming until per-build serverId is wired through the build store.
-loadDataset('homecoming').then(() => {
+// synchronously, so they must not be touched until this resolves.
+//
+// We pre-peek at the persisted Zustand store to figure out which dataset
+// the saved build needs — this avoids a flash where the wrong dataset is
+// loaded then swapped after Zustand rehydrates. Falls back to Homecoming
+// for fresh visitors and for any parse / shape failure.
+function persistedServerId(): 'homecoming' | 'rebirth' {
+  try {
+    const raw = localStorage.getItem('coh-planner-build');
+    if (!raw) return 'homecoming';
+    const parsed = JSON.parse(raw);
+    const id = parsed?.state?.build?.serverId;
+    return id === 'rebirth' ? 'rebirth' : 'homecoming';
+  } catch {
+    return 'homecoming';
+  }
+}
+
+loadDataset(persistedServerId()).then(() => {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <App />

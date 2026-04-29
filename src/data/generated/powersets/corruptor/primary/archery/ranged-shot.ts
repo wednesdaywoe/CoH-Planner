@@ -39,5 +39,55 @@ export const RangedShot: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 4.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 3.449,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 4.5,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 3.449,
+      "table": "Ranged_PvPDamage"
+    }
+  ],
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.67,
+      "range": 80
+    },
+    "damage": [
+      {
+        "type": "Lethal",
+        "scale": 2.28,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Lethal",
+        "scale": 2.049,
+        "table": "Ranged_PvPDamage"
+      },
+      {
+        "type": "Lethal",
+        "scale": 2.28,
+        "table": "Ranged_InherentDamage"
+      },
+      {
+        "type": "Lethal",
+        "scale": 2.049,
+        "table": "Ranged_PvPDamage"
+      }
+    ]
+  }
 };
