@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-04-23 (evening) ─────────────────────────────────────────────────
   {
-    date: '2026-04-28',
+    date: '2026-04-29',
     items: [
+      { message: 'Began work on the plumbing to support multiple datasets. Stuff might break',type: "feat"},
       { message: 'Filtered out Heal, PvP, and InherentDamage entries from damage calculations', type: 'fix' },
       { message: 'You can now collapse and expand the dashboard (press D or use the arrow), and L toggles infopanel lock', type: 'feat' },
     ] 
