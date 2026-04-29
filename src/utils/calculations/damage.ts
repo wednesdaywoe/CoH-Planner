@@ -389,7 +389,24 @@ export function calculatePowerDamage(
 
   if (Array.isArray(damageEffect)) {
     type ArrayEntry = { type: string; scale: number; table?: string; duration?: number; tickRate?: number };
-    const damageEntries = (damageEffect as ArrayEntry[]).filter(e => e.type !== 'Heal');
+    // Filter:
+    //   • Heal entries (handled separately)
+    //   • PvP-table entries — PvP variants of the same damage. The
+    //     base PvE entry already covers the unconditional damage; including
+    //     these inflates the displayed damage by 2-12× (Boxing has 5+ PvP
+    //     variants in its damage array).
+    //   • InherentDamage entries — class-conditional bonuses (Scrapper
+    //     crits, Stalker assassinations, "vs held target" execute bonuses,
+    //     Fighting-pool synergy stacks). These fire only when the runtime
+    //     `requires` expression matches; the planner adds them separately
+    //     via archetype-specific calculations (see at-effects.ts). Including
+    //     them in the base sum double-counts them and makes pool melee
+    //     attacks read ~10× the real number (Boxing has 5 such entries).
+    const isPvP = (t?: string) => t?.toLowerCase().includes('pvp') ?? false;
+    const isInherent = (t?: string) => t?.toLowerCase().includes('inherentdamage') ?? false;
+    const damageEntries = (damageEffect as ArrayEntry[]).filter(
+      e => e.type !== 'Heal' && !isPvP(e.table) && !isInherent(e.table)
+    );
     if (damageEntries.length === 0) return null;
 
     const directEntries = damageEntries.filter(e => !e.duration || e.duration <= 0);

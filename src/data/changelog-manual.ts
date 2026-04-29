@@ -21,16 +21,11 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-04-23 (evening) ─────────────────────────────────────────────────
   {
-    date: '2026-04-24',
+    date: '2026-04-28',
     items: [
-      { message: 'Fixed inference for pool powers allowedSetCategories', type: 'fix' },
-      { message: 'Fix for Imperivum Armor\'s proc status', type: 'fix' },
+      { message: 'Filtered out Heal, PvP, and InherentDamage entries from damage calculations', type: 'fix' },
       { message: 'You can now collapse and expand the dashboard (press D or use the arrow), and L toggles infopanel lock', type: 'feat' },
-      { message: 'Added a new hint bar above the power column grid to show contextual hints', type: 'feat' },
-      { message: 'Fix for Fighting Pool order regression', type: 'fix' },
-      { message: 'Made some adjustments to mobile UI including a new tab bar at the bottom', type: 'feat' },
-
-    ]
+    ] 
   },
 
 ];
