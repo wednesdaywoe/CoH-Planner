@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Caltrops as Caltrops } from './caltrops';
 import { WebGrenade as WebGrenade } from './web-grenade';
+import { Caltrops as Caltrops } from './caltrops';
 import { TriageBeacon as TriageBeacon } from './triage-beacon';
 import { AcidMortar as AcidMortar } from './acid-mortar';
 import { ForceFieldGenerator as ForceFieldGenerator } from './force-field-generator';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    Caltrops,
     WebGrenade,
+    Caltrops,
     TriageBeacon,
     AcidMortar,
     ForceFieldGenerator,

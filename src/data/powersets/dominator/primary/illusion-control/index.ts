@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Blind as Blind } from './blind';
 import { SpectralWall as SpectralWall } from './spectral-wall';
+import { Blind as Blind } from './blind';
 import { Deceive as Deceive } from './deceive';
 import { SpectralTerror as SpectralTerror } from './spectral-terror';
 import { SuperiorInvisibility as SuperiorInvisibility } from './invisibility';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    Blind,
     SpectralWall,
+    Blind,
     Deceive,
     SpectralTerror,
     SuperiorInvisibility,

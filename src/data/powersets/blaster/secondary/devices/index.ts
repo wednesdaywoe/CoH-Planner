@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Caltrops as Caltrops } from './caltrops';
 import { ToxicWebGrenade as ToxicWebGrenade } from './web-grenade';
+import { Caltrops as Caltrops } from './caltrops';
 import { Taser as Taser } from './taser';
 import { TargetingDrone as TargetingDrone } from './targeting-drone';
 import { SmokeGrenade as SmokeGrenade } from './smoke-grenade';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    Caltrops,
     ToxicWebGrenade,
+    Caltrops,
     Taser,
     TargetingDrone,
     SmokeGrenade,

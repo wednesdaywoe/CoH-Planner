@@ -1,0 +1,16 @@
+/**
+ * Tesla Cage — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control electric_control
+ */
+import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TeslaCage as base } from '@/data/generated/powersets/dominator/primary/electric-control/tesla-cage';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/electric-control/tesla-cage';
+
+export const TeslaCage: Power = withOverrides(base, overrides);

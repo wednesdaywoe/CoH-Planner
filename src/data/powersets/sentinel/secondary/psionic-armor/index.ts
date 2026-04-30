@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { PsionicShield as PsionicShield } from './psionic-shield';
 import { PsychicWall as PsychicWall } from './psychic-wall';
+import { PsionicShield as PsionicShield } from './psionic-shield';
 import { MaskPresence as MaskPresence } from './mask-presence';
 import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
 import { DevourPsyche as DevourPsyche } from './devour-psyche';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    PsionicShield,
     PsychicWall,
+    PsionicShield,
     MaskPresence,
     ImpenetrableMind,
     DevourPsyche,

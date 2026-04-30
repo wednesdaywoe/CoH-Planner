@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { RejuvenatingCircuit as RejuvenatingCircuit } from './rejuvenating-circuit';
 import { Shock as Shock } from './shock';
+import { RejuvenatingCircuit as RejuvenatingCircuit } from './rejuvenating-circuit';
 import { Discharge as Discharge } from './discharge';
 import { EnergizingCircuit as EnergizingCircuit } from './energizing-circuit';
 import { FaradayCage as FaradayCage } from './faraday-cage';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    RejuvenatingCircuit,
     Shock,
+    RejuvenatingCircuit,
     Discharge,
     EnergizingCircuit,
     FaradayCage,

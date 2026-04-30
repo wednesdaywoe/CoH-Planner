@@ -286,10 +286,15 @@ def main():
             ps_key = f"{cat}.{ps}"
             ps_rec = next((r for r in ps_records if r.key == ps_key), None)
 
-            # Sort powers by their position in the powerset's power list (game order)
+            # Sort powers by their position in the powerset's power list (game order).
+            # ps_rec.powers items are full dotted names (Cat.Powerset.Power), so key
+            # the order map and the sort lookup on pw.full_name — earlier code keyed
+            # on pw.power_name (leaf), which never matched, leaving powers_in_set in
+            # powers.bin natural (alphabetical) order and breaking same-level ties
+            # like Single_Shot/Charged_Shot in HC blast sets.
             if ps_rec and ps_rec.powers:
                 ps_order = {name: i for i, name in enumerate(ps_rec.powers)}
-                powers_in_set.sort(key=lambda pw: ps_order.get(pw.power_name, 999))
+                powers_in_set.sort(key=lambda pw: ps_order.get(pw.full_name, 999))
 
             index_data = {
                 'key': ps_key,

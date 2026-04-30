@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { Hide as Hide } from './hide';
+import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { BoundlessEnergy as BoundlessEnergy } from './boundless-energy';
 import { EnvironmentalModification as EnvironmentalModification } from './environmental-adaptation';
 import { Adaptation as Adaptation } from './adaptation';
@@ -18,8 +18,8 @@ import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
 import { DNASiphon as DNASiphon } from './dna-siphon';
 import { GeneticCorruption as GeneticCorruption } from './genetic-corruption';
 import { ParasiticAura as ParasiticAura } from './parasitic-aura';
-import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
 import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
+import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
 import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 
 export const powerset: Powerset = {
@@ -30,8 +30,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    HardenedCarapace,
     Hide,
+    HardenedCarapace,
     BoundlessEnergy,
     EnvironmentalModification,
     Adaptation,
@@ -39,8 +39,8 @@ export const powerset: Powerset = {
     DNASiphon,
     GeneticCorruption,
     ParasiticAura,
-    DefensiveAdaptation,
     EfficientAdaptation,
+    DefensiveAdaptation,
     OffensiveAdaptation,
   ],
 };

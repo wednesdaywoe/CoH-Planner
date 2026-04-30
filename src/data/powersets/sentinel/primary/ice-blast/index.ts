@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { IceBlast as IceBlast } from './ice-blast';
 import { IceBolt as IceBolt } from './ice-bolt';
+import { IceBlast as IceBlast } from './ice-blast';
 import { FrostBreath as FrostBreath } from './frost-breath';
 import { ChillingRay as ChillingRay } from './chilling-ray';
 import { Aim as Aim } from './aim';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    IceBlast,
     IceBolt,
+    IceBlast,
     FrostBreath,
     ChillingRay,
     Aim,

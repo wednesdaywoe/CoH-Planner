@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { ContaminatedStrike as ContaminatedStrike } from './contaminated-strike';
 import { NeutrinoBolt as NeutrinoBolt } from './neutrino-bolt';
+import { ContaminatedStrike as ContaminatedStrike } from './contaminated-strike';
 import { XRayBeam as XRayBeam } from './x-ray-beam';
 import { ElectronHaze as ElectronHaze } from './electron-haze';
 import { Fusion as Fusion } from './fusion';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    ContaminatedStrike,
     NeutrinoBolt,
+    ContaminatedStrike,
     XRayBeam,
     ElectronHaze,
     Fusion,

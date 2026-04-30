@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { FireBlast as FireBlast } from './fire-blast';
 import { Flares as Flares } from './flares';
+import { FireBlast as FireBlast } from './fire-blast';
 import { FireBall as FireBall } from './fire-ball';
 import { Blaze as Blaze } from './blaze';
 import { Aim as Aim } from './aim';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    FireBlast,
     Flares,
+    FireBlast,
     FireBall,
     Blaze,
     Aim,

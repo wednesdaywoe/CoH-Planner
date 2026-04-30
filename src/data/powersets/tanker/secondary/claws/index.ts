@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Strike as Strike } from './strike';
 import { Swipe as Swipe } from './swipe';
+import { Strike as Strike } from './strike';
 import { Slash as Slash } from './slash';
 import { Taunt as Taunt } from './taunt';
 import { Spin as Spin } from './spin';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    Strike,
     Swipe,
+    Strike,
     Slash,
     Taunt,
     Spin,

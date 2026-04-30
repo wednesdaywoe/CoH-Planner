@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { FireShield as FireShield } from './fire-shield';
 import { Hide as Hide } from './hide';
+import { FireShield as FireShield } from './fire-shield';
 import { PhoenixRising as PhoenixRising } from './phoenix-rising';
 import { HealingFlames as HealingFlames } from './healing-flames';
 import { TemperatureProtection as TemperatureProtection } from './temperature-protection';
@@ -28,8 +28,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    FireShield,
     Hide,
+    FireShield,
     PhoenixRising,
     HealingFlames,
     TemperatureProtection,

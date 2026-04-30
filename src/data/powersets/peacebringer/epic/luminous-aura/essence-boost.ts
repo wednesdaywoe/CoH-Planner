@@ -1,0 +1,16 @@
+/**
+ * Essence Boost — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_defensive luminous_aura
+ */
+import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EssenceBoost as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/essence-boost';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/essence-boost';
+
+export const EssenceBoost: Power = withOverrides(base, overrides);

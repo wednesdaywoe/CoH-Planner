@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { HeavyMallet as HeavyMallet } from './heavy-mallet';
 import { StonePrison as StonePrison } from './stone-prison';
+import { HeavyMallet as HeavyMallet } from './heavy-mallet';
 import { SaltCrystals as SaltCrystals } from './salt-crystals';
 import { BuildUp as BuildUp } from './build-up';
 import { Tremor as Tremor } from './tremor';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    HeavyMallet,
     StonePrison,
+    HeavyMallet,
     SaltCrystals,
     BuildUp,
     Tremor,
