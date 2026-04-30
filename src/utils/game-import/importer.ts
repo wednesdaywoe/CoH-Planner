@@ -81,6 +81,13 @@ const ORIGIN_MAP: Record<string, Origin> = {
   'Technology': 'Technology',
 };
 
+// Game-side pool names that don't match our pool IDs after lowercasing.
+// Presence is the only known case — internally still called "Manipulation"
+// in the game data but exposed in the planner as "presence".
+const POOL_NAME_OVERRIDES: Record<string, string> = {
+  manipulation: 'presence',
+};
+
 /**
  * Maps game export category prefixes to primary/secondary.
  * The game export uses "{Archetype}_{Role}" format for categories.
@@ -383,7 +390,8 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
 
     // Pool powers
     if (entry.category === 'Pool') {
-      const poolId = entry.powerset.toLowerCase();
+      const rawPoolId = entry.powerset.toLowerCase();
+      const poolId = POOL_NAME_OVERRIDES[rawPoolId] ?? rawPoolId;
       const pool = getPowerPool(poolId);
       if (!pool) {
         warnings.push({ type: 'pool', name: `${entry.powerset}/${entry.powerName}`, message: `Pool not found: ${poolId}` });
