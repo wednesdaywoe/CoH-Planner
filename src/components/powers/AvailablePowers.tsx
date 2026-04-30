@@ -11,15 +11,19 @@ import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, g
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 
-/**
- * Set of all power names that are slottable form sub-powers (auto-granted, not manually selectable).
- * Built once from GRANTED_POWER_GROUPS entries with slottable: true.
- */
-const FORM_SUB_POWER_NAMES = new Set(
-  Object.values(GRANTED_POWER_GROUPS)
-    .filter(g => g.slottable)
-    .flatMap(g => g.grantedPowers)
-);
+// Lazy because GRANTED_POWER_GROUPS is a runtime-loaded dataset proxy —
+// reading it at module load runs before loadDataset() resolves and throws.
+let formSubPowerNames: Set<string> | null = null;
+function getFormSubPowerNames(): Set<string> {
+  if (!formSubPowerNames) {
+    formSubPowerNames = new Set(
+      Object.values(GRANTED_POWER_GROUPS)
+        .filter(g => g.slottable)
+        .flatMap(g => g.grantedPowers)
+    );
+  }
+  return formSubPowerNames;
+}
 
 // ============================================
 // REQUIRES EXPRESSION EVALUATOR
@@ -449,7 +453,7 @@ export function AvailablePowers({
         // Filter out set mechanics/inherents (hiddenPassive, hiddenAuto, etc.)
         if (p.mechanicType === 'hiddenPassive' || p.mechanicType === 'hiddenAuto') return false;
         // Filter out form sub-powers (auto-granted when parent form is selected)
-        if (FORM_SUB_POWER_NAMES.has(p.name)) return false;
+        if (getFormSubPowerNames().has(p.name)) return false;
         // Filter out powers already granted as archetype inherents
         if (archetypeInherentNames.has(p.name)) return false;
         // Evaluate requires expression (handles negation, internal names, powersets)
