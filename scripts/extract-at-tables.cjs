@@ -11,7 +11,15 @@ const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
 
 const datasetId = parseDatasetArg();
 
-const RAW_DATA_PATH = path.join(__dirname, '../raw_data_homecoming-raw_data_homecoming-20251209_7415/tables');
+// Source: per-AT JSON files produced by `tools/bin-crawler/bin_crawler/
+// export_classes.py`. HC ships at the legacy flat layout
+// (`exported_powers/tables/`); other datasets are namespaced
+// (`exported_powers/<id>/tables/`).
+const RAW_DATA_BASE = path.join(__dirname, '..', 'exported_powers');
+const RAW_DATA_PATH = (datasetId === 'homecoming' && !fs.existsSync(path.join(RAW_DATA_BASE, datasetId, 'tables')))
+  ? path.join(RAW_DATA_BASE, 'tables')
+  : path.join(RAW_DATA_BASE, datasetId, 'tables');
+
 // at-tables.ts has migrated into `src/data/datasets/<id>/` — write there
 // directly so we don't clobber the runtime facade at `src/data/at-tables.ts`.
 const OUTPUT_PATH = datasetPath(datasetId, 'at-tables.ts');
@@ -267,8 +275,9 @@ function generateTypeScript(tables, petTables) {
   lines.push(`  `);
   lines.push(`  if (!table) return undefined;`);
   lines.push(`  `);
-  lines.push(`  // Level 1 = index 0`);
-  lines.push(`  const index = Math.max(0, Math.min(53, level - 1));`);
+  lines.push(`  // Level 1 = index 0; clamp to table length (HC has 105 values,`);
+  lines.push(`  // Rebirth has 50 — different versions cap at different levels).`);
+  lines.push(`  const index = Math.max(0, Math.min(table.length - 1, level - 1));`);
   lines.push(`  return table[index];`);
   lines.push(`}`);
   lines.push(``);

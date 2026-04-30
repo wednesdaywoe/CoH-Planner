@@ -31,7 +31,7 @@ import struct
 from dataclasses import dataclass, field
 from typing import Iterable
 
-from ._reader import open_parse7
+from ._reader import open_parse7, Parse6BinReader
 
 
 @dataclass
@@ -132,10 +132,166 @@ def _parse_power_list(buf: bytes, start: int, expected_count: int) -> tuple[list
     return powers, pos
 
 
+def _next_is_ec_string(sub: Parse6BinReader) -> bool:
+    """Peek the next 4 bytes: do they look like an inline pascal string
+    starting with "EC"? Used to distinguish the regular layout
+    (next field is a category string like "ECMelee") from the purple layout
+    (next field is the u4 power_count)."""
+    if sub._pos + 4 > sub._end:
+        return False
+    slen = struct.unpack_from("<H", sub._data, sub._pos)[0]
+    if not (0 < slen < 64):
+        return False
+    if sub._pos + 2 + 2 > sub._end:
+        return False
+    return bytes(sub._data[sub._pos + 2:sub._pos + 4]) == b"EC"
+
+
+def _parse_boostsets_parse6(r: Parse6BinReader) -> list[BoostSetRecord]:
+    """Parse6 (Rebirth/retail) layout. Same record schema as Parse7 but with
+    inline pascal strings in place of string-table offsets.
+
+    Layout detection: regular sets have a category string (e.g. "ECMelee")
+    after rarity; purple/superior sets jump straight to power_count. We pick
+    by peeking the next 4 bytes for a pascal-string starting with "EC".
+    Rebirth has many rarity tags beyond HC's purple set
+    (ECSATO/ECSWinter/ECSHalloween/LibertysBelt/...), so a rarity allowlist
+    isn't enough."""
+    r.read_u4()  # block_size — unused
+    count = r.read_u4()
+
+    raw: list[dict] = []
+    for _ in range(count):
+        rec_len = r.read_u4()
+        sub = r.sub_reader(rec_len)
+
+        name         = sub.read_string()
+        display_name = sub.read_string()
+        description  = sub.read_string()
+        sub.read_u4()  # opaque flag
+        rarity       = sub.read_string()
+
+        if _next_is_ec_string(sub):
+            category    = sub.read_string()
+            power_count = sub.read_u4()
+        else:
+            category    = ""  # filled in by pool-matching below
+            power_count = sub.read_u4()
+
+        # Implausible power_count means this record uses a layout we don't
+        # understand (Rebirth has one such oddball: an empty-rarity
+        # "Inexhaustibility" record that is structured differently). Skip
+        # the power list rather than crashing — the set still exports with
+        # its header fields but no allowed-powers, which is graceful enough.
+        if power_count > rec_len:
+            powers: list[str] = []
+        else:
+            powers = [sub.read_string() for _ in range(power_count)]
+
+        raw.append({
+            "name": name,
+            "display_name": display_name,
+            "description": description,
+            "rarity": rarity,
+            "category": category,
+            "powers": powers,
+        })
+        r.skip(rec_len)
+
+    # Pool-match purple sets to a regular set's category by (count, first_power).
+    pool_to_cat: dict[tuple[int, str], str] = {}
+    for rec in raw:
+        if rec["category"] and rec["powers"]:
+            key = (len(rec["powers"]), rec["powers"][0])
+            pool_to_cat.setdefault(key, rec["category"])
+
+    for rec in raw:
+        if not rec["category"] and rec["powers"]:
+            key = (len(rec["powers"]), rec["powers"][0])
+            rec["category"] = pool_to_cat.get(key, "")
+        if not rec["category"] and rec["rarity"] == "ECUniversalDamage":
+            rec["category"] = "ECUniversalDamage"
+        # Rebirth's Parse6 ATOs lack a category string AND have AT-specific
+        # pools that no common-rarity set shares — so pool-matching fails.
+        # Infer the AT from the first power's category prefix.
+        if not rec["category"] and rec["powers"]:
+            rec["category"] = _infer_ato_category(rec["rarity"], rec["powers"])
+        # Rebirth-only oddballs: Overwhelming Force (rarity=ECSummer) and
+        # similar wide-pool sets that allow slotting into nearly every power
+        # in the game. Treat as universal-damage by category.
+        if not rec["category"] and len(rec["powers"]) > 1000:
+            rec["category"] = "ECUniversalDamage"
+
+    return [
+        BoostSetRecord(
+            name=rec["name"],
+            display_name=rec["display_name"],
+            description=rec["description"],
+            rarity=rec["rarity"],
+            category=rec["category"],
+            allowed_powers=rec["powers"],
+        )
+        for rec in raw
+    ]
+
+
+# Maps a power's category prefix (first segment of "Cat.Set.Power") to the
+# planner-recognized EC* AT category. Used only as a fallback for Rebirth
+# ATOs whose binary record omits the category string.
+_AT_PREFIX_TO_EC = {
+    "Blaster_Ranged":      "ECBlaster",
+    "Blaster_Support":     "ECBlaster",
+    "Brute_Melee":         "ECBrute",
+    "Brute_Defense":       "ECBrute",
+    "Controller_Buff":     "ECController",
+    "Controller_Control":  "ECController",
+    "Corruptor_Buff":      "ECCorruptor",
+    "Corruptor_Ranged":    "ECCorruptor",
+    "Defender_Buff":       "ECDefender",
+    "Defender_Ranged":     "ECDefender",
+    "Dominator_Assault":   "ECDominator",
+    "Dominator_Control":   "ECDominator",
+    "Mastermind_Buff":     "ECMastermind",
+    "Mastermind_Summon":   "ECMastermind",
+    "Scrapper_Defense":    "ECScrapper",
+    "Scrapper_Melee":      "ECScrapper",
+    "Sentinel_Defense":    "ECSentinel",
+    "Sentinel_Ranged":     "ECSentinel",
+    "Stalker_Defense":     "ECStalker",
+    "Stalker_Melee":       "ECStalker",
+    "Tanker_Defense":      "ECTanker",
+    "Tanker_Melee":        "ECTanker",
+    "Arachnos_Soldiers":   "ECArachnos",
+    "Widow_Training":      "ECArachnos",
+    "Peacebringer_Defensive": "ECKheldian",
+    "Peacebringer_Offensive": "ECKheldian",
+    "Warshade_Defensive":     "ECKheldian",
+    "Warshade_Offensive":     "ECKheldian",
+}
+
+
+def _infer_ato_category(rarity: str, powers: list[str]) -> str:
+    """Infer the EC AT category for a Rebirth ATO whose record omitted it.
+
+    Scans the first ~30 powers for any AT-prefix match, since some ATO
+    pools (Kheldian especially) start with shared "Inherent" entries
+    before reaching AT-specific powers."""
+    if not rarity.startswith(("ECATO", "ECSATO", "ECHalloween", "ECSHalloween")):
+        return ""
+    for p in powers[:30]:
+        prefix = p.split(".", 1)[0] if "." in p else ""
+        ec = _AT_PREFIX_TO_EC.get(prefix)
+        if ec:
+            return ec
+    return ""
+
+
 def parse_boostsets(bin_path_or_data) -> list[BoostSetRecord]:
     """Parse boostsets.bin into a list of BoostSetRecord."""
 
     r = open_parse7(bin_path_or_data)
+    if isinstance(r, Parse6BinReader):
+        return _parse_boostsets_parse6(r)
 
     def strtab_resolve(offset: int) -> str:
         if offset == 0:

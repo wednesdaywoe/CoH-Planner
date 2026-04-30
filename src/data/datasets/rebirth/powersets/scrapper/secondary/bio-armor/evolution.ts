@@ -1,0 +1,16 @@
+/**
+ * Evolving Armor — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense bio_organic_armor
+ */
+import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EvolvingArmor as base } from '@/data/generated/powersets/scrapper/secondary/bio-armor/evolution';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/bio-armor/evolution';
+
+export const EvolvingArmor: Power = withOverrides(base, overrides);

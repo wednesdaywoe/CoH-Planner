@@ -33,11 +33,16 @@ class BinResolver:
         self._piggs: list[PiggArchive] = []
         self._bin_dir: Path | None = None
 
-        for pigg_path in sorted(self.assets_dir.glob("bin*.pigg")):
-            try:
-                self._piggs.append(PiggArchive(pigg_path))
-            except (ValueError, OSError):
-                pass
+        seen: set[Path] = set()
+        for pattern in ("bin*.pigg", "*_bin.pigg", "*_bin_*.pigg"):
+            for pigg_path in sorted(self.assets_dir.glob(pattern)):
+                if pigg_path in seen:
+                    continue
+                seen.add(pigg_path)
+                try:
+                    self._piggs.append(PiggArchive(pigg_path))
+                except (ValueError, OSError):
+                    pass
 
         bin_subdir = self.assets_dir / "bin"
         if bin_subdir.is_dir():

@@ -8,31 +8,36 @@
 
 const fs = require('fs');
 const path = require('path');
-const { parseDatasetArg, dataPath } = require('./_dataset-paths.cjs');
+const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
 
-// `--dataset <id>` (default `homecoming`) — accepted for forward
-// compatibility with the multi-dataset migration. Powerset trees haven't
-// migrated into `src/data/datasets/<id>/` yet, so for now we write to the
-// legacy `src/data/{generated,overrides,powersets}/` regardless of the
-// flag value. When the powerset tree migrates, swap `dataPath` for
-// `datasetPath(datasetId, ...)` below.
-const datasetId = parseDatasetArg(); // eslint-disable-line @typescript-eslint/no-unused-vars
+const datasetId = parseDatasetArg();
 
 // Source: bin-crawler JSON export (tools/bin-crawler/bin_crawler/export_powers.py)
-// reading live HC .pigg archives. This is current HC data on every re-run;
-// the old CoD2 snapshot at raw_data_homecoming-20251209_7415/ has been
-// retired now that the encoded-string resolver lands the missing
-// display_help / display_short_help strings.
-const RAW_DATA_PATH = path.join(__dirname, '../exported_powers');
-// The convert writes into three parallel trees (see src/data/README.md):
-//   generated/  — full auto-extraction, overwritten on every run
-//   overrides/  — hand-written deltas, scaffolded as empty stubs, never overwritten
-//   powersets/  — composed exports + index.ts, composed stub scaffolded, never
-//                 overwritten for individual powers (index.ts IS overwritten
-//                 since it just lists the powers and doesn't carry manual data)
-const OUTPUT_GENERATED_PATH = dataPath('generated', 'powersets');
-const OUTPUT_OVERRIDES_PATH = dataPath('overrides', 'powersets');
-const OUTPUT_PATH = dataPath('powersets');
+// reading live .pigg archives. The flat `exported_powers/<category>/...`
+// layout is HC-only legacy. New datasets land at
+// `exported_powers/<datasetId>/<category>/...` so they don't collide with
+// HC's checked-in tree.
+const RAW_DATA_BASE = path.join(__dirname, '../exported_powers');
+const RAW_DATA_PATH = (datasetId === 'homecoming' && !fs.existsSync(path.join(RAW_DATA_BASE, datasetId)))
+  ? RAW_DATA_BASE
+  : path.join(RAW_DATA_BASE, datasetId);
+
+// HC's powerset tree migration into `src/data/datasets/homecoming/` is
+// deferred (see MULTI_DATASET_PLAN.md). Until that lands, HC keeps writing
+// to the legacy `src/data/{generated,overrides,powersets}/` paths so the
+// runtime ~600 import sites under those trees keep resolving. Other
+// datasets (Rebirth, ...) write directly into their dataset folder so
+// they don't clobber HC.
+const useLegacyOutput = datasetId === 'homecoming';
+const OUTPUT_GENERATED_PATH = useLegacyOutput
+  ? dataPath('generated', 'powersets')
+  : datasetPath(datasetId, 'generated', 'powersets');
+const OUTPUT_OVERRIDES_PATH = useLegacyOutput
+  ? dataPath('overrides', 'powersets')
+  : datasetPath(datasetId, 'overrides', 'powersets');
+const OUTPUT_PATH = useLegacyOutput
+  ? dataPath('powersets')
+  : datasetPath(datasetId, 'powersets');
 
 // Map raw category names to our folder structure
 const CATEGORY_MAP = {

@@ -7,8 +7,98 @@ drop a second dataset in alongside when its data is available.
 
 ## Status
 
-**Plumbing + first wave of migrations landed (2026-04-29).** All work was
+**Plumbing + first wave of migrations landed (2026-04-29).**
+**Rebirth dataset materialization landed (2026-04-29 cont.).** All work was
 done in-place on `main`; nothing has been committed or pushed yet.
+
+### Rebirth materialization summary
+
+Strategy chosen was **C → A → B**: convert Rebirth raw data into TS files
+first (catches data bugs cheaply), then wire a minimum-viable dataset, then
+do the deferred powersets-tree migration. **Stage C is mostly complete;
+A and B not yet started.**
+
+What's in [src/data/datasets/rebirth/](src/data/datasets/rebirth/):
+
+- **271 powersets** (zero conversion failures) under
+  `generated/powersets/`, `overrides/powersets/`, `powersets/`
+- **13 power pools** in `power-pools-raw.ts` + `generated/power-pools.ts`
+- **75 epic pools** in `epic-pools-raw.ts` + `generated/epic-pools.ts`
+- **`generated/incarnate-effects.ts`** — 1284 lines, all six incarnate
+  slots (Alpha, Destiny, Hybrid, Interface, Judgement, Lore)
+- **`at-tables.ts`** — 14 player ATs (no Sentinel; Rebirth's i25 snapshot
+  predates HC's Sentinel addition) + 5 pet classes, 38 tables each (HC has
+  42 — Rebirth lacks PvP-specific table variants)
+
+Bin-crawler parser changes shipped in this pass:
+
+- [_pigg.py](tools/bin-crawler/bin_crawler/parser/_pigg.py) BinResolver
+  globs both `bin*.pigg` (HC) and `*_bin.pigg` (Rebirth's `z_rebirth_bin.pigg`).
+- [_boostsets.py](tools/bin-crawler/bin_crawler/parser/_boostsets.py) gained
+  a Parse6 path. Detects regular vs purple layout by byte-peek for `EC*`
+  inline strings (Rebirth has many more rarity tags than HC —
+  ECSATO/ECSWinter/ECSHalloween/ImperialMight/LibertysBelt/...). ATO
+  category inference from first power's category prefix (ATOs in Rebirth
+  Parse6 omit the category string entirely, unlike HC). Universal-pool
+  fallback (>1000 powers) tags as ECUniversalDamage. Result: **3,374
+  powers indexed for Rebirth** (was 0 before this pass).
+- [_classes.py](tools/bin-crawler/bin_crawler/parser/_classes.py) gained a
+  Parse6 path. Inline-string anchor on `.tga` for icon, then 3 sequential
+  inline strings for primary/secondary/pool categories. Named-tables finder
+  widened: HC uses 105 values per table (sub_len ~428), Rebirth uses 50
+  values (sub_len ~220).
+- New [export_classes.py](tools/bin-crawler/bin_crawler/export_classes.py)
+  produces per-AT/per-pet-class JSON files matching the legacy CoD2
+  schema, so [extract-at-tables.cjs](scripts/extract-at-tables.cjs) keeps
+  working without an old-archive dependency.
+
+Conversion scripts updated to be dataset-aware on **both** input and output:
+
+- [convert-powerset.cjs](scripts/convert-powerset.cjs)
+- [convert-pool-powers.cjs](scripts/convert-pool-powers.cjs)
+- [convert-epic-pools.cjs](scripts/convert-epic-pools.cjs)
+- [convert-incarnate-effects.cjs](scripts/convert-incarnate-effects.cjs)
+- [extract-at-tables.cjs](scripts/extract-at-tables.cjs)
+
+Pattern: HC keeps writing to legacy `src/data/` paths (so the runtime
+~600 import sites under `powersets/`, `generated/`, `overrides/` keep
+resolving until the deferred tree migration); other datasets write
+directly into `src/data/datasets/<id>/` so they don't clobber HC.
+
+`extract-at-tables.cjs` now reads `exported_powers/<datasetId>/tables/`
+which `export_classes.py` writes; HC's old CoD2 archive
+(`raw_data_homecoming-...20251209_7415/`) is no longer referenced by any
+script and can be removed.
+
+### Stage C blockers (Rebirth data not yet converted)
+
+- **Pet entities** — `PC_Def_Entities.bin` and
+  `PC_Def_NonSelectable_Entities.bin` (Rebirth ships both as Parse6) are
+  not parsed by bin-crawler. Affects damage calculation for summoned pets
+  (Mastermind henchmen, Controller pets, Lore incarnates). Needs a new
+  `_entities.py` parser plus an `export_entities.py` exporter that
+  produces JSON matching CoD2's `entities/<entity>.json` shape, then
+  [convert-pet-entities.cjs](scripts/convert-pet-entities.cjs) made
+  dataset-aware. Recommend tackling as its own session.
+- **IO sets data file** — `boostsets.bin` parsing works (3,374 powers
+  indexed), but the per-set TS data file (`io-sets-raw.ts`) for Rebirth
+  isn't generated yet. The convert pipeline goes through
+  [scripts/convert-io-sets.js](scripts/convert-io-sets.js), which reads
+  `legacy/js/data/io-sets.js` (no longer shipped). Need a new exporter
+  off the boostsets parser that writes Rebirth's set definitions
+  directly.
+
+### Stage A blockers (minimum viable Rebirth dataset)
+
+- **`archetypes.ts` for Rebirth** — handwritten per-AT metadata for the
+  planner UI (display names, primary/secondary slot labels, inherent
+  powers, etc.). HC's lives at
+  [datasets/homecoming/archetypes.ts](src/data/datasets/homecoming/archetypes.ts).
+- **`datasets/rebirth/index.ts`** — assembles the `Dataset` object from
+  the per-file Rebirth data. Mirrors
+  [datasets/homecoming/index.ts](src/data/datasets/homecoming/index.ts).
+- **`loadDataset()` switch** — currently throws for `'rebirth'`. Drop the
+  throw once the index above exists.
 
 What's in:
 
@@ -442,8 +532,25 @@ size and risk.
    `localStorage['coh-planner-build']` to read the persisted build's
    `serverId` BEFORE Zustand rehydrates and React mounts. Falls back to
    `'homecoming'` for fresh visitors and any parse / shape failure.
-9. **(Later, when Rebirth data is available)** Add `datasets/rebirth/`,
-   server picker on new-build flow, dataset-switch confirmation UI.
+9. **🚧 Rebirth dataset materialization** — see Status section above.
+   - **Stage C (mostly done):** raw Rebirth data converted into TS files
+     under [src/data/datasets/rebirth/](src/data/datasets/rebirth/).
+     Powersets, pools, epic pools, incarnate effects, AT tables all
+     landed. Pet entities + IO sets data still pending (need new
+     bin-crawler exporters).
+   - **Stage A (not started):** wire the minimum-viable Dataset.
+     Needs handwritten `datasets/rebirth/archetypes.ts`,
+     `datasets/rebirth/index.ts`, and the `loadDataset()` switch update.
+     With the data already on disk from Stage C, this is a small
+     plumbing job — main risk is the `Dataset` interface needing
+     additional fields exposed (powersets, pools, incarnates, IO sets).
+   - **Stage B (not started):** the deferred powersets-tree migration.
+     Move HC's `powersets/`, `overrides/`, `generated/` into
+     `datasets/homecoming/`. ~600 import sites to update inside the
+     tree. Now actually unblocked since Rebirth has its own parallel
+     tree, but still a lot of mechanical churn.
+   - Server picker on new-build flow, dataset-switch confirmation UI
+     come after Stage A.
 
 ## Open questions / decisions deferred
 
@@ -489,8 +596,14 @@ For the first slice (already done):
 
 ## Out of scope for this work
 
-- Adding the actual Rebirth dataset (no data yet).
+- ~~Adding the actual Rebirth dataset (no data yet).~~ **In progress** —
+  see Stage C in the status section. Bulk of TS data files exist; pet
+  entities and Dataset wiring still pending.
 - Server picker UI on new-build flow.
 - Cross-server build inference mapping.
-- Bin-crawler parser changes for Rebirth's binary format divergences.
+- ~~Bin-crawler parser changes for Rebirth's binary format divergences.~~
+  **Done in this pass:** Parse6 paths added to `_boostsets.py` and
+  `_classes.py`; new `export_classes.py` exporter; BinResolver pigg
+  globbing extended to match Rebirth's `z_*_bin.pigg` naming. Pet-entities
+  parsing (`PC_Def_Entities.bin`) is the remaining bin-crawler work.
 - Mids `.mxd` server detection.

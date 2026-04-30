@@ -38,20 +38,21 @@ const RAW_POWERS_PATH = (() => {
   if (fs.existsSync(newLayout)) return newLayout;
   return oldLayout;
 })();
-// `--dataset <id>` (default `homecoming`) — accepted for forward
-// compatibility. Epic-pool data hasn't migrated into `src/data/datasets/`
-// yet, so we still write to the legacy `src/data/` paths. When it
-// migrates, swap `dataPath(...)` here for `datasetPath(datasetId, ...)`.
-const { parseDatasetArg, dataPath } = require('./_dataset-paths.cjs');
-const datasetId = parseDatasetArg(); // eslint-disable-line @typescript-eslint/no-unused-vars
+const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
+const datasetId = parseDatasetArg();
 
-// Layered output (see src/data/README.md):
-//   - OUTPUT_PATH: the auto-extracted data lives here, overwritten on --apply
-//   - COMPOSED_PATH: hand-edit-safe facade that merges in overrides
-//   - OVERRIDES_PATH: scaffolded once, holds any per-power deltas
-const OUTPUT_PATH = dataPath('generated', 'epic-pools.ts');
-const COMPOSED_PATH = dataPath('epic-pools-raw.ts');
-const OVERRIDES_PATH = dataPath('overrides', 'epic-pools.ts');
+// HC keeps writing to legacy `src/data/` paths until the deferred powerset-
+// tree migration. Other datasets write into their dataset folder.
+const useLegacyOutput = datasetId === 'homecoming';
+const OUTPUT_PATH = useLegacyOutput
+  ? dataPath('generated', 'epic-pools.ts')
+  : datasetPath(datasetId, 'generated', 'epic-pools.ts');
+const COMPOSED_PATH = useLegacyOutput
+  ? dataPath('epic-pools-raw.ts')
+  : datasetPath(datasetId, 'epic-pools-raw.ts');
+const OVERRIDES_PATH = useLegacyOutput
+  ? dataPath('overrides', 'epic-pools.ts')
+  : datasetPath(datasetId, 'overrides', 'epic-pools.ts');
 
 // Parse CLI args
 const args = process.argv.slice(2);
