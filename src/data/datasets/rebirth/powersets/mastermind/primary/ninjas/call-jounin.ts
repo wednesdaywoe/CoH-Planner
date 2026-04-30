@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CallJounin as base } from '@/data/generated/powersets/mastermind/primary/ninjas/call-jounin';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/ninjas/call-jounin';
+import { CallJounin as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/ninjas/call-jounin';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/ninjas/call-jounin';
 
 export const CallJounin: Power = withOverrides(base, overrides);

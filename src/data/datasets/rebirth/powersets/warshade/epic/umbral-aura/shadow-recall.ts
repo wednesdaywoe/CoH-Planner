@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StarlessRecall as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/shadow-recall';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/shadow-recall';
+import { StarlessRecall as base } from '@/data/datasets/rebirth/generated/powersets/warshade/epic/umbral-aura/shadow-recall';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/warshade/epic/umbral-aura/shadow-recall';
 
 export const StarlessRecall: Power = withOverrides(base, overrides);

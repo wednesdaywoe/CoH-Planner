@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkRegeneration as base } from '@/data/generated/powersets/tanker/primary/dark-armor/dark-regeneration';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/dark-armor/dark-regeneration';
+import { DarkRegeneration as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/dark-armor/dark-regeneration';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/dark-armor/dark-regeneration';
 
 export const DarkRegeneration: Power = withOverrides(base, overrides);

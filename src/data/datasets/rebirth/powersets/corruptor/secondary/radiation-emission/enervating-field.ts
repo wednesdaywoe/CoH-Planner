@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnervatingField as base } from '@/data/generated/powersets/corruptor/secondary/radiation-emission/enervating-field';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/radiation-emission/enervating-field';
+import { EnervatingField as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/radiation-emission/enervating-field';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/radiation-emission/enervating-field';
 
 export const EnervatingField: Power = withOverrides(base, overrides);

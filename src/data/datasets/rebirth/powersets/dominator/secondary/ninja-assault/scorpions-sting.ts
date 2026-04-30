@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ScorpionsSting as base } from '@/data/generated/powersets/dominator/secondary/ninja-assault/scorpions-sting';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/ninja-assault/scorpions-sting';
+import { ScorpionsSting as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/ninja-assault/scorpions-sting';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/ninja-assault/scorpions-sting';
 
 export const ScorpionsSting: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Hemorrhage as base } from '@/data/generated/powersets/stalker/primary/savage-melee/hemorrhage';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/savage-melee/hemorrhage';
+import { Hemorrhage as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/savage-melee/hemorrhage';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/savage-melee/hemorrhage';
 
 export const Hemorrhage: Power = withOverrides(base, overrides);

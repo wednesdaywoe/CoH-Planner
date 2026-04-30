@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TemperatureProtection as base } from '@/data/generated/powersets/tanker/primary/fiery-aura/temperature-protection';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/fiery-aura/temperature-protection';
+import { TemperatureProtection as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/fiery-aura/temperature-protection';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/fiery-aura/temperature-protection';
 
 export const TemperatureProtection: Power = withOverrides(base, overrides);

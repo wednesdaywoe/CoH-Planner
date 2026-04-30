@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ParalyticPoison as base } from '@/data/generated/powersets/corruptor/secondary/poison/paralytic-poison';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/poison/paralytic-poison';
+import { ParalyticPoison as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/poison/paralytic-poison';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/poison/paralytic-poison';
 
 export const ParalyticPoison: Power = withOverrides(base, overrides);

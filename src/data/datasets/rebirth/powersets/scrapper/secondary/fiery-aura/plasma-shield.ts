@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PlasmaShield as base } from '@/data/generated/powersets/scrapper/secondary/fiery-aura/plasma-shield';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/fiery-aura/plasma-shield';
+import { PlasmaShield as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/fiery-aura/plasma-shield';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/fiery-aura/plasma-shield';
 
 export const PlasmaShield: Power = withOverrides(base, overrides);

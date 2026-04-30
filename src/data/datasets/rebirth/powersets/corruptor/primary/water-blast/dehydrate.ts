@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Dehydrate as base } from '@/data/generated/powersets/corruptor/primary/water-blast/dehydrate';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/water-blast/dehydrate';
+import { Dehydrate as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/water-blast/dehydrate';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/water-blast/dehydrate';
 
 export const Dehydrate: Power = withOverrides(base, overrides);

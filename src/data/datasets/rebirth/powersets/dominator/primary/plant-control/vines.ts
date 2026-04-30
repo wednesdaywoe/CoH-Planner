@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Vines as base } from '@/data/generated/powersets/dominator/primary/plant-control/vines';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/plant-control/vines';
+import { Vines as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/plant-control/vines';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/plant-control/vines';
 
 export const Vines: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Permafrost as base } from '@/data/generated/powersets/scrapper/secondary/ice-armor/permafrost';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ice-armor/permafrost';
+import { Permafrost as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/ice-armor/permafrost';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/ice-armor/permafrost';
 
 export const Permafrost: Power = withOverrides(base, overrides);

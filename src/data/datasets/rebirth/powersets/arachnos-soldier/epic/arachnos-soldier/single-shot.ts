@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SingleShot as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/single-shot';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/single-shot';
+import { SingleShot as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/arachnos-soldier/single-shot';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/single-shot';
 
 export const SingleShot: Power = withOverrides(base, overrides);

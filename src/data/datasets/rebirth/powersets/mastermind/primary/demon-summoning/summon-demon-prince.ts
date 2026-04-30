@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SummonDemonPrince as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/summon-demon-prince';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/summon-demon-prince';
+import { SummonDemonPrince as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/demon-summoning/summon-demon-prince';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/demon-summoning/summon-demon-prince';
 
 export const SummonDemonPrince: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergyAbsorption as base } from '@/data/generated/powersets/scrapper/secondary/ice-armor/energy-absorption';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ice-armor/energy-absorption';
+import { EnergyAbsorption as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/ice-armor/energy-absorption';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/ice-armor/energy-absorption';
 
 export const EnergyAbsorption: Power = withOverrides(base, overrides);

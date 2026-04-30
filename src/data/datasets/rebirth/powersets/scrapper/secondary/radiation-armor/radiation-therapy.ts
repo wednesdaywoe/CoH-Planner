@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RadiationTherapy as base } from '@/data/generated/powersets/scrapper/secondary/radiation-armor/radiation-therapy';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/radiation-armor/radiation-therapy';
+import { RadiationTherapy as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/radiation-armor/radiation-therapy';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/radiation-armor/radiation-therapy';
 
 export const RadiationTherapy: Power = withOverrides(base, overrides);

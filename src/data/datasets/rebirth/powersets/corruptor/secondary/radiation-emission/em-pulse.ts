@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EMPulse as base } from '@/data/generated/powersets/corruptor/secondary/radiation-emission/em-pulse';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/radiation-emission/em-pulse';
+import { EMPulse as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/radiation-emission/em-pulse';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/radiation-emission/em-pulse';
 
 export const EMPulse: Power = withOverrides(base, overrides);

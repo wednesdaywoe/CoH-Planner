@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Hurricane as base } from '@/data/generated/powersets/mastermind/secondary/storm-summoning/hurricane';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/storm-summoning/hurricane';
+import { Hurricane as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/storm-summoning/hurricane';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/storm-summoning/hurricane';
 
 export const Hurricane: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WindShear as base } from '@/data/generated/powersets/controller/primary/wind-control/wind-shear';
-import { overrides } from '@/data/overrides/powersets/controller/primary/wind-control/wind-shear';
+import { WindShear as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/wind-control/wind-shear';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/wind-control/wind-shear';
 
 export const WindShear: Power = withOverrides(base, overrides);

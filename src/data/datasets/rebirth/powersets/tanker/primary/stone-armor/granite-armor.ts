@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GraniteArmor as base } from '@/data/generated/powersets/tanker/primary/stone-armor/granite-armor';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/stone-armor/granite-armor';
+import { GraniteArmor as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/stone-armor/granite-armor';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/stone-armor/granite-armor';
 
 export const GraniteArmor: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MentalStrike as base } from '@/data/generated/powersets/stalker/primary/psionic-melee/mental-strike';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/psionic-melee/mental-strike';
+import { MentalStrike as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/psionic-melee/mental-strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/psionic-melee/mental-strike';
 
 export const MentalStrike: Power = withOverrides(base, overrides);

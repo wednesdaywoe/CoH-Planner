@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Hypothermia as base } from '@/data/generated/powersets/dominator/primary/water-control/hypothermia';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/water-control/hypothermia';
+import { Hypothermia as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/water-control/hypothermia';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/water-control/hypothermia';
 
 export const Hypothermia: Power = withOverrides(base, overrides);

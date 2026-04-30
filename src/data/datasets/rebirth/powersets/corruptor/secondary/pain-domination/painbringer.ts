@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Painbringer as base } from '@/data/generated/powersets/corruptor/secondary/pain-domination/painbringer';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/pain-domination/painbringer';
+import { Painbringer as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/pain-domination/painbringer';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/pain-domination/painbringer';
 
 export const Painbringer: Power = withOverrides(base, overrides);

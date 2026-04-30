@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Concentration as base } from '@/data/generated/powersets/tanker/secondary/psionic-melee/concentration';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/psionic-melee/concentration';
+import { Concentration as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/psionic-melee/concentration';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/psionic-melee/concentration';
 
 export const Concentration: Power = withOverrides(base, overrides);

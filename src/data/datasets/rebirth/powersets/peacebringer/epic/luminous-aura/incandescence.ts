@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Incandescence as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/incandescence';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/incandescence';
+import { Incandescence as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-aura/incandescence';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-aura/incandescence';
 
 export const Incandescence: Power = withOverrides(base, overrides);

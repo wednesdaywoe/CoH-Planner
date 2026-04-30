@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ForceofThunder as base } from '@/data/generated/powersets/blaster/secondary/electricity-manipulation/lightning-clap';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/electricity-manipulation/lightning-clap';
+import { ForceofThunder as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/electricity-manipulation/lightning-clap';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/electricity-manipulation/lightning-clap';
 
 export const ForceofThunder: Power = withOverrides(base, overrides);

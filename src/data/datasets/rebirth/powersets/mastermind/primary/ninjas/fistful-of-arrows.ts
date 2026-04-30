@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FistfulofArrows as base } from '@/data/generated/powersets/mastermind/primary/ninjas/fistful-of-arrows';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/ninjas/fistful-of-arrows';
+import { FistfulofArrows as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/ninjas/fistful-of-arrows';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/ninjas/fistful-of-arrows';
 
 export const FistfulofArrows: Power = withOverrides(base, overrides);

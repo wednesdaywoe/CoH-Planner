@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Pulverize as base } from '@/data/generated/powersets/scrapper/primary/war-mace/pulverize';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/war-mace/pulverize';
+import { Pulverize as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/war-mace/pulverize';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/war-mace/pulverize';
 
 export const Pulverize: Power = withOverrides(base, overrides);

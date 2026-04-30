@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FlashingBlade as base } from '@/data/generated/powersets/dominator/secondary/ninja-assault/flashing-blade';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/ninja-assault/flashing-blade';
+import { FlashingBlade as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/ninja-assault/flashing-blade';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/ninja-assault/flashing-blade';
 
 export const FlashingBlade: Power = withOverrides(base, overrides);

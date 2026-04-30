@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LivingShadows as base } from '@/data/generated/powersets/controller/primary/darkness-control/living-shadows';
-import { overrides } from '@/data/overrides/powersets/controller/primary/darkness-control/living-shadows';
+import { LivingShadows as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/darkness-control/living-shadows';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/darkness-control/living-shadows';
 
 export const LivingShadows: Power = withOverrides(base, overrides);

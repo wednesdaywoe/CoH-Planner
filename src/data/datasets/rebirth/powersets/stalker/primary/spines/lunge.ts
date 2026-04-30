@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Lunge as base } from '@/data/generated/powersets/stalker/primary/spines/lunge';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/spines/lunge';
+import { Lunge as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/spines/lunge';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/spines/lunge';
 
 export const Lunge: Power = withOverrides(base, overrides);

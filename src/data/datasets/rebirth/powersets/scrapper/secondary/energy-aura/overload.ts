@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Overload as base } from '@/data/generated/powersets/scrapper/secondary/energy-aura/overload';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/energy-aura/overload';
+import { Overload as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/energy-aura/overload';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/energy-aura/overload';
 
 export const Overload: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LifeDrain as base } from '@/data/generated/powersets/mastermind/primary/necromancy/life-drain';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/necromancy/life-drain';
+import { LifeDrain as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/necromancy/life-drain';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/necromancy/life-drain';
 
 export const LifeDrain: Power = withOverrides(base, overrides);

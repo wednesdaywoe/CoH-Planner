@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IceSword as base } from '@/data/generated/powersets/dominator/secondary/icy-assault/ice-sword';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/icy-assault/ice-sword';
+import { IceSword as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/icy-assault/ice-sword';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/icy-assault/ice-sword';
 
 export const IceSword: Power = withOverrides(base, overrides);

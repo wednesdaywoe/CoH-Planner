@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { InnocuousStrikes as base } from '@/data/generated/powersets/tanker/secondary/staff-fighting/innocuous-strikes';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/staff-fighting/innocuous-strikes';
+import { InnocuousStrikes as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/staff-fighting/innocuous-strikes';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/staff-fighting/innocuous-strikes';
 
 export const InnocuousStrikes: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StoneSkin as base } from '@/data/generated/powersets/tanker/primary/stone-armor/stone-skin';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/stone-armor/stone-skin';
+import { StoneSkin as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/stone-armor/stone-skin';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/stone-armor/stone-skin';
 
 export const StoneSkin: Power = withOverrides(base, overrides);

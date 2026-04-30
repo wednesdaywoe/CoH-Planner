@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FocusedSenses as base } from '@/data/generated/powersets/tanker/primary/super-reflexes/focused-senses';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/super-reflexes/focused-senses';
+import { FocusedSenses as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/super-reflexes/focused-senses';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/super-reflexes/focused-senses';
 
 export const FocusedSenses: Power = withOverrides(base, overrides);

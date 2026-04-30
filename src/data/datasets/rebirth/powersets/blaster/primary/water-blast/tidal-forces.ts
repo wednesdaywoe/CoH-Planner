@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TidalForces as base } from '@/data/generated/powersets/blaster/primary/water-blast/tidal-forces';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/water-blast/tidal-forces';
+import { TidalForces as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/water-blast/tidal-forces';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/water-blast/tidal-forces';
 
 export const TidalForces: Power = withOverrides(base, overrides);

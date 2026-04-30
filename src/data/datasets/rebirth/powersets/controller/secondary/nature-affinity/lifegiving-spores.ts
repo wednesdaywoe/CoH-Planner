@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LifegivingSpores as base } from '@/data/generated/powersets/controller/secondary/nature-affinity/lifegiving-spores';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/nature-affinity/lifegiving-spores';
+import { LifegivingSpores as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/nature-affinity/lifegiving-spores';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/secondary/nature-affinity/lifegiving-spores';
 
 export const LifegivingSpores: Power = withOverrides(base, overrides);

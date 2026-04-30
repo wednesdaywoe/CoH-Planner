@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TheLotusDrops as base } from '@/data/generated/powersets/dominator/secondary/ninja-assault/the-lotus-drops';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/ninja-assault/the-lotus-drops';
+import { TheLotusDrops as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/ninja-assault/the-lotus-drops';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/ninja-assault/the-lotus-drops';
 
 export const TheLotusDrops: Power = withOverrides(base, overrides);

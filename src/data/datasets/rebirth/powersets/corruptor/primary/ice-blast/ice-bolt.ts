@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IceBolt as base } from '@/data/generated/powersets/corruptor/primary/ice-blast/ice-bolt';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/ice-blast/ice-bolt';
+import { IceBolt as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/ice-blast/ice-bolt';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/ice-blast/ice-bolt';
 
 export const IceBolt: Power = withOverrides(base, overrides);

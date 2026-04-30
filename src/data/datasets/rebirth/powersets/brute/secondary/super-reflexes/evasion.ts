@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Evasion as base } from '@/data/generated/powersets/brute/secondary/super-reflexes/evasion';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/super-reflexes/evasion';
+import { Evasion as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/super-reflexes/evasion';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/super-reflexes/evasion';
 
 export const Evasion: Power = withOverrides(base, overrides);

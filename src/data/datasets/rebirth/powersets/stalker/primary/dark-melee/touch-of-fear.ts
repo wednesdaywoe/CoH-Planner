@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TouchofFear as base } from '@/data/generated/powersets/stalker/primary/dark-melee/touch-of-fear';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/dark-melee/touch-of-fear';
+import { TouchofFear as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/dark-melee/touch-of-fear';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/dark-melee/touch-of-fear';
 
 export const TouchofFear: Power = withOverrides(base, overrides);

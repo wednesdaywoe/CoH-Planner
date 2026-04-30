@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Focus as base } from '@/data/generated/powersets/stalker/primary/claws/focus';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/claws/focus';
+import { Focus as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/claws/focus';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/claws/focus';
 
 export const Focus: Power = withOverrides(base, overrides);

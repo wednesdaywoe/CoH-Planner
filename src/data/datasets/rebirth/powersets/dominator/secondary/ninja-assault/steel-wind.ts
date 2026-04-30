@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SteelWind as base } from '@/data/generated/powersets/dominator/secondary/ninja-assault/steel-wind';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/ninja-assault/steel-wind';
+import { SteelWind as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/ninja-assault/steel-wind';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/ninja-assault/steel-wind';
 
 export const SteelWind: Power = withOverrides(base, overrides);

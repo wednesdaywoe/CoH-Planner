@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Disrupt as base } from '@/data/generated/powersets/stalker/secondary/energy-aura/repulse';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/energy-aura/repulse';
+import { Disrupt as base } from '@/data/datasets/rebirth/generated/powersets/stalker/secondary/energy-aura/repulse';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/secondary/energy-aura/repulse';
 
 export const Disrupt: Power = withOverrides(base, overrides);

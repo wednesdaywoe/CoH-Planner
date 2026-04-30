@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RingofFire as base } from '@/data/generated/powersets/blaster/secondary/fire-manipulation/ring-of-fire';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/fire-manipulation/ring-of-fire';
+import { RingofFire as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/fire-manipulation/ring-of-fire';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/fire-manipulation/ring-of-fire';
 
 export const RingofFire: Power = withOverrides(base, overrides);

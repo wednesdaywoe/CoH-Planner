@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Forge as base } from '@/data/generated/powersets/controller/secondary/thermal-radiation/forge';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/thermal-radiation/forge';
+import { Forge as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/thermal-radiation/forge';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/secondary/thermal-radiation/forge';
 
 export const Forge: Power = withOverrides(base, overrides);

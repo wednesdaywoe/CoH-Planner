@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SiphonSpeed as base } from '@/data/generated/powersets/defender/primary/kinetics/siphon-speed';
-import { overrides } from '@/data/overrides/powersets/defender/primary/kinetics/siphon-speed';
+import { SiphonSpeed as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/kinetics/siphon-speed';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/kinetics/siphon-speed';
 
 export const SiphonSpeed: Power = withOverrides(base, overrides);

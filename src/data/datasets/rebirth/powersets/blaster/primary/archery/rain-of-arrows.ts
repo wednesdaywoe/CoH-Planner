@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RainofArrows as base } from '@/data/generated/powersets/blaster/primary/archery/rain-of-arrows';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/archery/rain-of-arrows';
+import { RainofArrows as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/archery/rain-of-arrows';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/archery/rain-of-arrows';
 
 export const RainofArrows: Power = withOverrides(base, overrides);

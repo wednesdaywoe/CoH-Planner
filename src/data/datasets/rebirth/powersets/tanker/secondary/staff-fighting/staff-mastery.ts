@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StaffMastery as base } from '@/data/generated/powersets/tanker/secondary/staff-fighting/staff-mastery';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/staff-fighting/staff-mastery';
+import { StaffMastery as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/staff-fighting/staff-mastery';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/staff-fighting/staff-mastery';
 
 export const StaffMastery: Power = withOverrides(base, overrides);

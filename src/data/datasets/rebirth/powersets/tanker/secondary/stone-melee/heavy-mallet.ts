@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeavyMallet as base } from '@/data/generated/powersets/tanker/secondary/stone-melee/heavy-mallet';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/stone-melee/heavy-mallet';
+import { HeavyMallet as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/stone-melee/heavy-mallet';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/stone-melee/heavy-mallet';
 
 export const HeavyMallet: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TelekineticBlow as base } from '@/data/generated/powersets/stalker/primary/psionic-melee/telekinetic-blow';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/psionic-melee/telekinetic-blow';
+import { TelekineticBlow as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/psionic-melee/telekinetic-blow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/psionic-melee/telekinetic-blow';
 
 export const TelekineticBlow: Power = withOverrides(base, overrides);

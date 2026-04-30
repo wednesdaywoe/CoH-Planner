@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SiphonLife as base } from '@/data/generated/powersets/stalker/primary/dark-melee/siphon-life';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/dark-melee/siphon-life';
+import { SiphonLife as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/dark-melee/siphon-life';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/dark-melee/siphon-life';
 
 export const SiphonLife: Power = withOverrides(base, overrides);

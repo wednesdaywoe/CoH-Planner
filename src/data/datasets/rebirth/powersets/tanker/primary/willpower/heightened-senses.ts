@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeightenedSenses as base } from '@/data/generated/powersets/tanker/primary/willpower/heightened-senses';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/willpower/heightened-senses';
+import { HeightenedSenses as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/willpower/heightened-senses';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/willpower/heightened-senses';
 
 export const HeightenedSenses: Power = withOverrides(base, overrides);

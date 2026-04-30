@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SingleShot as base } from '@/data/generated/powersets/defender/secondary/beam-rifle/single-shot';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/beam-rifle/single-shot';
+import { SingleShot as base } from '@/data/datasets/rebirth/generated/powersets/defender/secondary/beam-rifle/single-shot';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/secondary/beam-rifle/single-shot';
 
 export const SingleShot: Power = withOverrides(base, overrides);

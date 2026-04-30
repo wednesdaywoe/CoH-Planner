@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TotalFocus as base } from '@/data/generated/powersets/brute/primary/energy-melee/total-focus';
-import { overrides } from '@/data/overrides/powersets/brute/primary/energy-melee/total-focus';
+import { TotalFocus as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/energy-melee/total-focus';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/energy-melee/total-focus';
 
 export const TotalFocus: Power = withOverrides(base, overrides);

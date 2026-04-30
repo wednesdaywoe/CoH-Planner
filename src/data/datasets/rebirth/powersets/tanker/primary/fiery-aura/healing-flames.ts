@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HealingFlames as base } from '@/data/generated/powersets/tanker/primary/fiery-aura/healing-flames';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/fiery-aura/healing-flames';
+import { HealingFlames as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/fiery-aura/healing-flames';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/fiery-aura/healing-flames';
 
 export const HealingFlames: Power = withOverrides(base, overrides);

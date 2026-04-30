@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GammaBoost as base } from '@/data/generated/powersets/brute/secondary/radiation-armor/gamma-boost';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/radiation-armor/gamma-boost';
+import { GammaBoost as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/radiation-armor/gamma-boost';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/radiation-armor/gamma-boost';
 
 export const GammaBoost: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FlashArrow as base } from '@/data/generated/powersets/defender/primary/trick-arrow/flash-arrow';
-import { overrides } from '@/data/overrides/powersets/defender/primary/trick-arrow/flash-arrow';
+import { FlashArrow as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/trick-arrow/flash-arrow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/trick-arrow/flash-arrow';
 
 export const FlashArrow: Power = withOverrides(base, overrides);

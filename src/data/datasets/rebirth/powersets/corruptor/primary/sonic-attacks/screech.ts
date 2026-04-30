@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Screech as base } from '@/data/generated/powersets/corruptor/primary/sonic-attacks/screech';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/sonic-attacks/screech';
+import { Screech as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/sonic-attacks/screech';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/sonic-attacks/screech';
 
 export const Screech: Power = withOverrides(base, overrides);

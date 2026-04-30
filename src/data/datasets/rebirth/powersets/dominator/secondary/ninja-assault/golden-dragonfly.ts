@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GoldenDragonfly as base } from '@/data/generated/powersets/dominator/secondary/ninja-assault/golden-dragonfly';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/ninja-assault/golden-dragonfly';
+import { GoldenDragonfly as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/ninja-assault/golden-dragonfly';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/ninja-assault/golden-dragonfly';
 
 export const GoldenDragonfly: Power = withOverrides(base, overrides);

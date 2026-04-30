@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AblatingStrike as base } from '@/data/generated/powersets/tanker/secondary/dual-blades/moderate-bridge';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/dual-blades/moderate-bridge';
+import { AblatingStrike as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/dual-blades/moderate-bridge';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/dual-blades/moderate-bridge';
 
 export const AblatingStrike: Power = withOverrides(base, overrides);

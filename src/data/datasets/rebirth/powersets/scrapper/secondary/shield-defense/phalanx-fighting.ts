@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PhalanxFighting as base } from '@/data/generated/powersets/scrapper/secondary/shield-defense/phalanx-fighting';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/shield-defense/phalanx-fighting';
+import { PhalanxFighting as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/shield-defense/phalanx-fighting';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/shield-defense/phalanx-fighting';
 
 export const PhalanxFighting: Power = withOverrides(base, overrides);

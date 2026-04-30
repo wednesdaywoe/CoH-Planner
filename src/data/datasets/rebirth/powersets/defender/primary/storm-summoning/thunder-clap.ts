@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThunderClap as base } from '@/data/generated/powersets/defender/primary/storm-summoning/thunder-clap';
-import { overrides } from '@/data/overrides/powersets/defender/primary/storm-summoning/thunder-clap';
+import { ThunderClap as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/storm-summoning/thunder-clap';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/storm-summoning/thunder-clap';
 
 export const ThunderClap: Power = withOverrides(base, overrides);

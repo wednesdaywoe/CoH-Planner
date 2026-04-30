@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { UmbraBeast as base } from '@/data/generated/powersets/controller/primary/darkness-control/umbra-beast';
-import { overrides } from '@/data/overrides/powersets/controller/primary/darkness-control/umbra-beast';
+import { UmbraBeast as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/darkness-control/umbra-beast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/darkness-control/umbra-beast';
 
 export const UmbraBeast: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TurbulentAura as base } from '@/data/generated/powersets/controller/primary/water-control/turbulent-aura';
-import { overrides } from '@/data/overrides/powersets/controller/primary/water-control/turbulent-aura';
+import { TurbulentAura as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/water-control/turbulent-aura';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/water-control/turbulent-aura';
 
 export const TurbulentAura: Power = withOverrides(base, overrides);

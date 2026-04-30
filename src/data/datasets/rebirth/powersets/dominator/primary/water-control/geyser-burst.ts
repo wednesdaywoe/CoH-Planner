@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GeyserBurst as base } from '@/data/generated/powersets/dominator/primary/water-control/geyser-burst';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/water-control/geyser-burst';
+import { GeyserBurst as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/water-control/geyser-burst';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/water-control/geyser-burst';
 
 export const GeyserBurst: Power = withOverrides(base, overrides);

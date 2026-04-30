@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Disembowel as base } from '@/data/generated/powersets/brute/primary/broad-sword/disembowel';
-import { overrides } from '@/data/overrides/powersets/brute/primary/broad-sword/disembowel';
+import { Disembowel as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/broad-sword/disembowel';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/broad-sword/disembowel';
 
 export const Disembowel: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Bash as base } from '@/data/generated/powersets/tanker/secondary/war-mace/bash';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/war-mace/bash';
+import { Bash as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/war-mace/bash';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/war-mace/bash';
 
 export const Bash: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MassLevitate as base } from '@/data/generated/powersets/stalker/primary/psionic-melee/mass-levitate';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/psionic-melee/mass-levitate';
+import { MassLevitate as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/psionic-melee/mass-levitate';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/psionic-melee/mass-levitate';
 
 export const MassLevitate: Power = withOverrides(base, overrides);

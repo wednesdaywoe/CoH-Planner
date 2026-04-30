@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TheLotusDrops as base } from '@/data/generated/powersets/brute/primary/katana/whirling-sword';
-import { overrides } from '@/data/overrides/powersets/brute/primary/katana/whirling-sword';
+import { TheLotusDrops as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/katana/whirling-sword';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/katana/whirling-sword';
 
 export const TheLotusDrops: Power = withOverrides(base, overrides);

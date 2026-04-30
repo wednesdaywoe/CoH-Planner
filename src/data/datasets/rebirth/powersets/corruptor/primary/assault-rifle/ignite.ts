@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Ignite as base } from '@/data/generated/powersets/corruptor/primary/assault-rifle/ignite';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/assault-rifle/ignite';
+import { Ignite as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/assault-rifle/ignite';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/assault-rifle/ignite';
 
 export const Ignite: Power = withOverrides(base, overrides);

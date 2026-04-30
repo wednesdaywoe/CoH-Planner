@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkServant as base } from '@/data/generated/powersets/mastermind/secondary/dark-miasma/dark-servant';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/dark-miasma/dark-servant';
+import { DarkServant as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/dark-miasma/dark-servant';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/dark-miasma/dark-servant';
 
 export const DarkServant: Power = withOverrides(base, overrides);

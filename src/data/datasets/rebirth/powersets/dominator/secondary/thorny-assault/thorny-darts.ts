@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThornyDarts as base } from '@/data/generated/powersets/dominator/secondary/thorny-assault/thorny-darts';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/thorny-assault/thorny-darts';
+import { ThornyDarts as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/thorny-assault/thorny-darts';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/thorny-assault/thorny-darts';
 
 export const ThornyDarts: Power = withOverrides(base, overrides);

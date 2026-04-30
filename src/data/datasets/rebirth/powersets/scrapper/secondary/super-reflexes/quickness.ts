@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Quickness as base } from '@/data/generated/powersets/scrapper/secondary/super-reflexes/quickness';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/super-reflexes/quickness';
+import { Quickness as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/super-reflexes/quickness';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/super-reflexes/quickness';
 
 export const Quickness: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShurikenThrow as base } from '@/data/generated/powersets/dominator/secondary/martial-assault/shuriken-throw';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/martial-assault/shuriken-throw';
+import { ShurikenThrow as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/martial-assault/shuriken-throw';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/martial-assault/shuriken-throw';
 
 export const ShurikenThrow: Power = withOverrides(base, overrides);

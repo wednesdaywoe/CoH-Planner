@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Inexhaustible as base } from '@/data/generated/powersets/tanker/primary/bio-armor/inexhaustible';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/bio-armor/inexhaustible';
+import { Inexhaustible as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/bio-armor/inexhaustible';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/bio-armor/inexhaustible';
 
 export const Inexhaustible: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Smite as base } from '@/data/generated/powersets/tanker/secondary/dark-melee/smite';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/dark-melee/smite';
+import { Smite as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/dark-melee/smite';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/dark-melee/smite';
 
 export const Smite: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FrozenFists as base } from '@/data/generated/powersets/tanker/secondary/ice-melee/frozen-fists';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/ice-melee/frozen-fists';
+import { FrozenFists as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/ice-melee/frozen-fists';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/ice-melee/frozen-fists';
 
 export const FrozenFists: Power = withOverrides(base, overrides);

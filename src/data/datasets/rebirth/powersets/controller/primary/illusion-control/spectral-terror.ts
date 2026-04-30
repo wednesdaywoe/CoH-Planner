@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SpectralTerror as base } from '@/data/generated/powersets/controller/primary/illusion-control/spectral-terror';
-import { overrides } from '@/data/overrides/powersets/controller/primary/illusion-control/spectral-terror';
+import { SpectralTerror as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/illusion-control/spectral-terror';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/illusion-control/spectral-terror';
 
 export const SpectralTerror: Power = withOverrides(base, overrides);

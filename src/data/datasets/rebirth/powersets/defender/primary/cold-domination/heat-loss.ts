@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeatLoss as base } from '@/data/generated/powersets/defender/primary/cold-domination/heat-loss';
-import { overrides } from '@/data/overrides/powersets/defender/primary/cold-domination/heat-loss';
+import { HeatLoss as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/cold-domination/heat-loss';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/cold-domination/heat-loss';
 
 export const HeatLoss: Power = withOverrides(base, overrides);

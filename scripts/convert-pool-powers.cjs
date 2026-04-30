@@ -452,6 +452,11 @@ import type { Power } from '@/types';
 
 export const POWER_POOL_OVERRIDES: Record<string, Partial<Power>> = {};
 `);
+      // `_layer` is server-agnostic and lives at `src/data/_layer.ts`.
+      // For HC the composed file is in `src/data/` so a relative import
+      // works. For other datasets the composed file is at
+      // `src/data/datasets/<id>/` — use the absolute alias instead.
+      const layerImport = useLegacyOutput ? './_layer' : '@/data/_layer';
       fs.writeFileSync(COMPOSED_PATH, `/**
  * Power Pool data — COMPOSED FACADE
  *
@@ -461,7 +466,7 @@ export const POWER_POOL_OVERRIDES: Record<string, Partial<Power>> = {};
  * To re-generate the base data:
  *   node scripts/convert-pool-powers.cjs --apply
  */
-import { applyAggregateOverrides } from './_layer';
+import { applyAggregateOverrides } from '${layerImport}';
 import { POWER_POOLS_RAW as base } from './generated/power-pools';
 import { POWER_POOL_OVERRIDES } from './overrides/power-pools';
 

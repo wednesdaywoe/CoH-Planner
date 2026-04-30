@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SmashingBlow as base } from '@/data/generated/powersets/tanker/secondary/kinetic-melee/smashing-blow';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/kinetic-melee/smashing-blow';
+import { SmashingBlow as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/kinetic-melee/smashing-blow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/kinetic-melee/smashing-blow';
 
 export const SmashingBlow: Power = withOverrides(base, overrides);

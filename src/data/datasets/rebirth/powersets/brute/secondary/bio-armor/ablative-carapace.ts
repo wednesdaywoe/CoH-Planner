@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AblativeCarapace as base } from '@/data/generated/powersets/brute/secondary/bio-armor/ablative-carapace';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/bio-armor/ablative-carapace';
+import { AblativeCarapace as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/bio-armor/ablative-carapace';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/bio-armor/ablative-carapace';
 
 export const AblativeCarapace: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GroupInvisibility as base } from '@/data/generated/powersets/controller/primary/illusion-control/group-invisibility';
-import { overrides } from '@/data/overrides/powersets/controller/primary/illusion-control/group-invisibility';
+import { GroupInvisibility as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/illusion-control/group-invisibility';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/illusion-control/group-invisibility';
 
 export const GroupInvisibility: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WarriorsChallenge as base } from '@/data/generated/powersets/scrapper/primary/martial-arts/warriors-challenge';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/martial-arts/warriors-challenge';
+import { WarriorsChallenge as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/martial-arts/warriors-challenge';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/martial-arts/warriors-challenge';
 
 export const WarriorsChallenge: Power = withOverrides(base, overrides);

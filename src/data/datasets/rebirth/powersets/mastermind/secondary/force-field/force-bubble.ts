@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ForceBubble as base } from '@/data/generated/powersets/mastermind/secondary/force-field/force-bubble';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/force-field/force-bubble';
+import { ForceBubble as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/force-field/force-bubble';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/force-field/force-bubble';
 
 export const ForceBubble: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MassLevitate as base } from '@/data/generated/powersets/brute/primary/psionic-melee/mass-levitate';
-import { overrides } from '@/data/overrides/powersets/brute/primary/psionic-melee/mass-levitate';
+import { MassLevitate as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/psionic-melee/mass-levitate';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/psionic-melee/mass-levitate';
 
 export const MassLevitate: Power = withOverrides(base, overrides);

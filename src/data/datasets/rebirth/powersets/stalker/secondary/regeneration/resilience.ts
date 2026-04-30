@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Resilience as base } from '@/data/generated/powersets/stalker/secondary/regeneration/resilience';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/regeneration/resilience';
+import { Resilience as base } from '@/data/datasets/rebirth/generated/powersets/stalker/secondary/regeneration/resilience';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/secondary/regeneration/resilience';
 
 export const Resilience: Power = withOverrides(base, overrides);

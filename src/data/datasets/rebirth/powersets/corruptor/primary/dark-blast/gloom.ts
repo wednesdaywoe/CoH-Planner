@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Gloom as base } from '@/data/generated/powersets/corruptor/primary/dark-blast/gloom';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/dark-blast/gloom';
+import { Gloom as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/dark-blast/gloom';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/dark-blast/gloom';
 
 export const Gloom: Power = withOverrides(base, overrides);

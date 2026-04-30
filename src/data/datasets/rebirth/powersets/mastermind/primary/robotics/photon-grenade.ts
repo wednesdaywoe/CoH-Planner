@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PhotonGrenade as base } from '@/data/generated/powersets/mastermind/primary/robotics/photon-grenade';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/robotics/photon-grenade';
+import { PhotonGrenade as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/robotics/photon-grenade';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/robotics/photon-grenade';
 
 export const PhotonGrenade: Power = withOverrides(base, overrides);

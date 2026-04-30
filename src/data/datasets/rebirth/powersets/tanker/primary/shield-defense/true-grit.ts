@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TrueGrit as base } from '@/data/generated/powersets/tanker/primary/shield-defense/true-grit';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/shield-defense/true-grit';
+import { TrueGrit as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/shield-defense/true-grit';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/shield-defense/true-grit';
 
 export const TrueGrit: Power = withOverrides(base, overrides);

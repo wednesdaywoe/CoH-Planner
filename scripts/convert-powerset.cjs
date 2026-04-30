@@ -2132,13 +2132,17 @@ function convertPowerset(category, powersetName) {
   for (const { power, file } of powers) {
     const powerFileName = toKebabCase(power.internalName) + '.ts';
     const exportName = power.name.replace(/[^a-zA-Z0-9]/g, '');
+    // For non-HC datasets, the composed file's absolute imports must
+    // point at the dataset's own `generated/` and `overrides/` trees,
+    // not HC's at `@/data/generated/...`.
+    const importRoot = useLegacyOutput ? '@/data' : `@/data/datasets/${datasetId}`;
     const genRel = path.posix.join(
-      '@/data/generated/powersets',
+      `${importRoot}/generated/powersets`,
       categoryInfo.archetype, categoryInfo.type,
       toKebabCase(indexJson.display_name), toKebabCase(power.internalName),
     );
     const ovrRel = path.posix.join(
-      '@/data/overrides/powersets',
+      `${importRoot}/overrides/powersets`,
       categoryInfo.archetype, categoryInfo.type,
       toKebabCase(indexJson.display_name), toKebabCase(power.internalName),
     );

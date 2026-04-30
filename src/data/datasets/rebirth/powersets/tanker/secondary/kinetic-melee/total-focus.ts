@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ConcentratedStrike as base } from '@/data/generated/powersets/tanker/secondary/kinetic-melee/total-focus';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/kinetic-melee/total-focus';
+import { ConcentratedStrike as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/kinetic-melee/total-focus';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/kinetic-melee/total-focus';
 
 export const ConcentratedStrike: Power = withOverrides(base, overrides);

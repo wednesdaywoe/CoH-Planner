@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Mesmerize as base } from '@/data/generated/powersets/controller/primary/mind-control/mesmerize';
-import { overrides } from '@/data/overrides/powersets/controller/primary/mind-control/mesmerize';
+import { Mesmerize as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/mind-control/mesmerize';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/mind-control/mesmerize';
 
 export const Mesmerize: Power = withOverrides(base, overrides);

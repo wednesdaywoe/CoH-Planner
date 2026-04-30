@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThunderKick as base } from '@/data/generated/powersets/stalker/primary/martial-arts/thunder-kick';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/martial-arts/thunder-kick';
+import { ThunderKick as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/martial-arts/thunder-kick';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/martial-arts/thunder-kick';
 
 export const ThunderKick: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HydroBlast as base } from '@/data/generated/powersets/corruptor/primary/water-blast/hydro-blast';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/water-blast/hydro-blast';
+import { HydroBlast as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/water-blast/hydro-blast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/water-blast/hydro-blast';
 
 export const HydroBlast: Power = withOverrides(base, overrides);

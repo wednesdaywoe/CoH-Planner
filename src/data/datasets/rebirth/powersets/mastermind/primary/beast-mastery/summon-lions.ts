@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SummonLions as base } from '@/data/generated/powersets/mastermind/primary/beast-mastery/summon-lions';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/beast-mastery/summon-lions';
+import { SummonLions as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/beast-mastery/summon-lions';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/beast-mastery/summon-lions';
 
 export const SummonLions: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SoaringDragon as base } from '@/data/generated/powersets/dominator/secondary/ninja-assault/soaring-dragon';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/ninja-assault/soaring-dragon';
+import { SoaringDragon as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/ninja-assault/soaring-dragon';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/ninja-assault/soaring-dragon';
 
 export const SoaringDragon: Power = withOverrides(base, overrides);

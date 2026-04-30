@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StaggeringBurst as base } from '@/data/generated/powersets/blaster/secondary/energy-manipulation/stun';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/energy-manipulation/stun';
+import { StaggeringBurst as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/energy-manipulation/stun';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/energy-manipulation/stun';
 
 export const StaggeringBurst: Power = withOverrides(base, overrides);

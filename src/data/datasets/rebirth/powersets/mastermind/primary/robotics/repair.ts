@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Repair as base } from '@/data/generated/powersets/mastermind/primary/robotics/repair';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/robotics/repair';
+import { Repair as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/robotics/repair';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/robotics/repair';
 
 export const Repair: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Scare as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/scare';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/scare';
+import { Scare as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/mental-manipulation/scare';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/mental-manipulation/scare';
 
 export const Scare: Power = withOverrides(base, overrides);

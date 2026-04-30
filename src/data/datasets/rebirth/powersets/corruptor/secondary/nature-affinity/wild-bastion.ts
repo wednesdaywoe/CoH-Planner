@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WildBastion as base } from '@/data/generated/powersets/corruptor/secondary/nature-affinity/wild-bastion';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/nature-affinity/wild-bastion';
+import { WildBastion as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/nature-affinity/wild-bastion';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/nature-affinity/wild-bastion';
 
 export const WildBastion: Power = withOverrides(base, overrides);

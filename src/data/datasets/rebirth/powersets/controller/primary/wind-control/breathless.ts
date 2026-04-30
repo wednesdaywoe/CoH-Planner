@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Breathless as base } from '@/data/generated/powersets/controller/primary/wind-control/breathless';
-import { overrides } from '@/data/overrides/powersets/controller/primary/wind-control/breathless';
+import { Breathless as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/wind-control/breathless';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/wind-control/breathless';
 
 export const Breathless: Power = withOverrides(base, overrides);

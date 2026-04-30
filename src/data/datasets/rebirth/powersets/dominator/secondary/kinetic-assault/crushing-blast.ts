@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrushingBlast as base } from '@/data/generated/powersets/dominator/secondary/kinetic-assault/crushing-blast';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/kinetic-assault/crushing-blast';
+import { CrushingBlast as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/kinetic-assault/crushing-blast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/kinetic-assault/crushing-blast';
 
 export const CrushingBlast: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerSink as base } from '@/data/generated/powersets/brute/secondary/electric-armor/power-sink';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/electric-armor/power-sink';
+import { PowerSink as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/electric-armor/power-sink';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/electric-armor/power-sink';
 
 export const PowerSink: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ExplosiveShuriken as base } from '@/data/generated/powersets/dominator/secondary/martial-assault/explosive-shuriken';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/martial-assault/explosive-shuriken';
+import { ExplosiveShuriken as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/martial-assault/explosive-shuriken';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/martial-assault/explosive-shuriken';
 
 export const ExplosiveShuriken: Power = withOverrides(base, overrides);

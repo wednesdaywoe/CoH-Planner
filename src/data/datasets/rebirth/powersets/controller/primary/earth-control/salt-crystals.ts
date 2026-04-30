@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SaltCrystals as base } from '@/data/generated/powersets/controller/primary/earth-control/salt-crystals';
-import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/salt-crystals';
+import { SaltCrystals as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/earth-control/salt-crystals';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/earth-control/salt-crystals';
 
 export const SaltCrystals: Power = withOverrides(base, overrides);

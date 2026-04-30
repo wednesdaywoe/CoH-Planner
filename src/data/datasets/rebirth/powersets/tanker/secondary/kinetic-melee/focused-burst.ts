@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FocusedBurst as base } from '@/data/generated/powersets/tanker/secondary/kinetic-melee/focused-burst';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/kinetic-melee/focused-burst';
+import { FocusedBurst as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/kinetic-melee/focused-burst';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/kinetic-melee/focused-burst';
 
 export const FocusedBurst: Power = withOverrides(base, overrides);

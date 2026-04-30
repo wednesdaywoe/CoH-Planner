@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeatExhaustion as base } from '@/data/generated/powersets/mastermind/secondary/thermal-radiation/heat-exhaustion';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/thermal-radiation/heat-exhaustion';
+import { HeatExhaustion as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/thermal-radiation/heat-exhaustion';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/thermal-radiation/heat-exhaustion';
 
 export const HeatExhaustion: Power = withOverrides(base, overrides);

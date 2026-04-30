@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Aim as base } from '@/data/generated/powersets/blaster/primary/dark-blast/aim';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/dark-blast/aim';
+import { Aim as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/dark-blast/aim';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/dark-blast/aim';
 
 export const Aim: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RadiantAura as base } from '@/data/generated/powersets/corruptor/secondary/radiation-emission/radiant-aura';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/radiation-emission/radiant-aura';
+import { RadiantAura as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/radiation-emission/radiant-aura';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/radiation-emission/radiant-aura';
 
 export const RadiantAura: Power = withOverrides(base, overrides);

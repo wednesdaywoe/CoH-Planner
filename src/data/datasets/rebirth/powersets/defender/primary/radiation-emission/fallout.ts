@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Fallout as base } from '@/data/generated/powersets/defender/primary/radiation-emission/fallout';
-import { overrides } from '@/data/overrides/powersets/defender/primary/radiation-emission/fallout';
+import { Fallout as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/radiation-emission/fallout';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/radiation-emission/fallout';
 
 export const Fallout: Power = withOverrides(base, overrides);

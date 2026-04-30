@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PreciseStrike as base } from '@/data/generated/powersets/scrapper/primary/staff-fighting/precise-strike';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/staff-fighting/precise-strike';
+import { PreciseStrike as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/staff-fighting/precise-strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/staff-fighting/precise-strike';
 
 export const PreciseStrike: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Gale as base } from '@/data/generated/powersets/corruptor/secondary/storm-summoning/gale';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/storm-summoning/gale';
+import { Gale as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/storm-summoning/gale';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/storm-summoning/gale';
 
 export const Gale: Power = withOverrides(base, overrides);

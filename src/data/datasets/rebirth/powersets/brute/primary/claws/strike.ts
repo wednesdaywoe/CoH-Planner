@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Strike as base } from '@/data/generated/powersets/brute/primary/claws/strike';
-import { overrides } from '@/data/overrides/powersets/brute/primary/claws/strike';
+import { Strike as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/claws/strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/claws/strike';
 
 export const Strike: Power = withOverrides(base, overrides);

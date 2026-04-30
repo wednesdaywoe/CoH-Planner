@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FrozenFists as base } from '@/data/generated/powersets/scrapper/primary/ice-melee/frozen-fists';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/ice-melee/frozen-fists';
+import { FrozenFists as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/ice-melee/frozen-fists';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/ice-melee/frozen-fists';
 
 export const FrozenFists: Power = withOverrides(base, overrides);

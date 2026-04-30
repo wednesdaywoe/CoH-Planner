@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnvenomedBlades as base } from '@/data/generated/powersets/dominator/secondary/martial-assault/envenomed-blades';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/martial-assault/envenomed-blades';
+import { EnvenomedBlades as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/martial-assault/envenomed-blades';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/martial-assault/envenomed-blades';
 
 export const EnvenomedBlades: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CripplingAxeKick as base } from '@/data/generated/powersets/tanker/secondary/martial-arts/crippling-axe-kick';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/martial-arts/crippling-axe-kick';
+import { CripplingAxeKick as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/martial-arts/crippling-axe-kick';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/martial-arts/crippling-axe-kick';
 
 export const CripplingAxeKick: Power = withOverrides(base, overrides);

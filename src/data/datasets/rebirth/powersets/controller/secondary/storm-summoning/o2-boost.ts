@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { O2Boost as base } from '@/data/generated/powersets/controller/secondary/storm-summoning/o2-boost';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/storm-summoning/o2-boost';
+import { O2Boost as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/storm-summoning/o2-boost';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/secondary/storm-summoning/o2-boost';
 
 export const O2Boost: Power = withOverrides(base, overrides);

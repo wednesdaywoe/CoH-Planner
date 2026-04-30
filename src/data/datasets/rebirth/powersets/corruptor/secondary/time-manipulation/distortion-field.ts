@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DistortionField as base } from '@/data/generated/powersets/corruptor/secondary/time-manipulation/distortion-field';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/time-manipulation/distortion-field';
+import { DistortionField as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/time-manipulation/distortion-field';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/time-manipulation/distortion-field';
 
 export const DistortionField: Power = withOverrides(base, overrides);

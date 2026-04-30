@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Coalescence as base } from '@/data/generated/powersets/dominator/secondary/kinetic-assault/coalescence';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/kinetic-assault/coalescence';
+import { Coalescence as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/kinetic-assault/coalescence';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/kinetic-assault/coalescence';
 
 export const Coalescence: Power = withOverrides(base, overrides);

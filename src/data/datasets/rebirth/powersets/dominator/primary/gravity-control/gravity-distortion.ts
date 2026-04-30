@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GravityDistortion as base } from '@/data/generated/powersets/dominator/primary/gravity-control/gravity-distortion';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/gravity-control/gravity-distortion';
+import { GravityDistortion as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/gravity-control/gravity-distortion';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/gravity-control/gravity-distortion';
 
 export const GravityDistortion: Power = withOverrides(base, overrides);

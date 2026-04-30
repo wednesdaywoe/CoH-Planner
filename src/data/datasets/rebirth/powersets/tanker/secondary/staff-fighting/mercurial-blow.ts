@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MercurialBlow as base } from '@/data/generated/powersets/tanker/secondary/staff-fighting/mercurial-blow';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/staff-fighting/mercurial-blow';
+import { MercurialBlow as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/staff-fighting/mercurial-blow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/staff-fighting/mercurial-blow';
 
 export const MercurialBlow: Power = withOverrides(base, overrides);

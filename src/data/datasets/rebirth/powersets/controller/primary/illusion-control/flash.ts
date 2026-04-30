@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Flash as base } from '@/data/generated/powersets/controller/primary/illusion-control/flash';
-import { overrides } from '@/data/overrides/powersets/controller/primary/illusion-control/flash';
+import { Flash as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/illusion-control/flash';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/illusion-control/flash';
 
 export const Flash: Power = withOverrides(base, overrides);

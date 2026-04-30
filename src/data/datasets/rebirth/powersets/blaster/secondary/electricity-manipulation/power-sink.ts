@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerSink as base } from '@/data/generated/powersets/blaster/secondary/electricity-manipulation/power-sink';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/electricity-manipulation/power-sink';
+import { PowerSink as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/electricity-manipulation/power-sink';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/electricity-manipulation/power-sink';
 
 export const PowerSink: Power = withOverrides(base, overrides);

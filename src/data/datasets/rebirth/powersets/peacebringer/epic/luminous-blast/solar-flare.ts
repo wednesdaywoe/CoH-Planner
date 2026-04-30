@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SolarFlare as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/solar-flare';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/solar-flare';
+import { SolarFlare as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-blast/solar-flare';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-blast/solar-flare';
 
 export const SolarFlare: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StoneMallet as base } from '@/data/generated/powersets/dominator/secondary/earth-assault/stone-mallet';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/earth-assault/stone-mallet';
+import { StoneMallet as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/earth-assault/stone-mallet';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/earth-assault/stone-mallet';
 
 export const StoneMallet: Power = withOverrides(base, overrides);

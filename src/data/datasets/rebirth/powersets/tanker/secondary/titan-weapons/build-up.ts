@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BuildMomentum as base } from '@/data/generated/powersets/tanker/secondary/titan-weapons/build-up';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/titan-weapons/build-up';
+import { BuildMomentum as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/titan-weapons/build-up';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/titan-weapons/build-up';
 
 export const BuildMomentum: Power = withOverrides(base, overrides);

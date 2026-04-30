@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Cremate as base } from '@/data/generated/powersets/brute/primary/fiery-melee/combustion';
-import { overrides } from '@/data/overrides/powersets/brute/primary/fiery-melee/combustion';
+import { Cremate as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/fiery-melee/combustion';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/fiery-melee/combustion';
 
 export const Cremate: Power = withOverrides(base, overrides);

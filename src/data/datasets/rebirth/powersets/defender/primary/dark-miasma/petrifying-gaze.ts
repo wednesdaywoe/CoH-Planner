@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PetrifyingGaze as base } from '@/data/generated/powersets/defender/primary/dark-miasma/petrifying-gaze';
-import { overrides } from '@/data/overrides/powersets/defender/primary/dark-miasma/petrifying-gaze';
+import { PetrifyingGaze as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/dark-miasma/petrifying-gaze';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/dark-miasma/petrifying-gaze';
 
 export const PetrifyingGaze: Power = withOverrides(base, overrides);

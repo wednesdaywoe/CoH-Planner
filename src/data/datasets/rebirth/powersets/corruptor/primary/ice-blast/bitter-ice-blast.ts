@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BitterIceBlast as base } from '@/data/generated/powersets/corruptor/primary/ice-blast/bitter-ice-blast';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/ice-blast/bitter-ice-blast';
+import { BitterIceBlast as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/ice-blast/bitter-ice-blast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/ice-blast/bitter-ice-blast';
 
 export const BitterIceBlast: Power = withOverrides(base, overrides);

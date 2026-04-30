@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Beheader as base } from '@/data/generated/powersets/brute/primary/battle-axe/gash';
-import { overrides } from '@/data/overrides/powersets/brute/primary/battle-axe/gash';
+import { Beheader as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/battle-axe/gash';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/battle-axe/gash';
 
 export const Beheader: Power = withOverrides(base, overrides);

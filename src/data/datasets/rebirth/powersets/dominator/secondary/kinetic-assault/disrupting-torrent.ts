@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DisruptingTorrent as base } from '@/data/generated/powersets/dominator/secondary/kinetic-assault/disrupting-torrent';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/kinetic-assault/disrupting-torrent';
+import { DisruptingTorrent as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/kinetic-assault/disrupting-torrent';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/kinetic-assault/disrupting-torrent';
 
 export const DisruptingTorrent: Power = withOverrides(base, overrides);

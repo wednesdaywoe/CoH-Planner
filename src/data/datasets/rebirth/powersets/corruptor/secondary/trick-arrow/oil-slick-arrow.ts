@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { OilSlickArrow as base } from '@/data/generated/powersets/corruptor/secondary/trick-arrow/oil-slick-arrow';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/trick-arrow/oil-slick-arrow';
+import { OilSlickArrow as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/trick-arrow/oil-slick-arrow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/trick-arrow/oil-slick-arrow';
 
 export const OilSlickArrow: Power = withOverrides(base, overrides);

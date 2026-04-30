@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Aim as base } from '@/data/generated/powersets/corruptor/primary/beam-rifle/aim';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/beam-rifle/aim';
+import { Aim as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/beam-rifle/aim';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/beam-rifle/aim';
 
 export const Aim: Power = withOverrides(base, overrides);

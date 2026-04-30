@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowyBinds as base } from '@/data/generated/powersets/dominator/primary/darkness-control/shadowy-binds';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/darkness-control/shadowy-binds';
+import { ShadowyBinds as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/darkness-control/shadowy-binds';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/darkness-control/shadowy-binds';
 
 export const ShadowyBinds: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Meltdown as base } from '@/data/generated/powersets/scrapper/secondary/radiation-armor/meltdown';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/radiation-armor/meltdown';
+import { Meltdown as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/radiation-armor/meltdown';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/radiation-armor/meltdown';
 
 export const Meltdown: Power = withOverrides(base, overrides);

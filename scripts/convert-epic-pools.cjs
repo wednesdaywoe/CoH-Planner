@@ -423,6 +423,10 @@ import type { Power } from '@/types';
 
 export const EPIC_POOL_OVERRIDES: Record<string, Partial<Power>> = {};
 `);
+      // `_layer` lives at `src/data/_layer.ts`. HC's composed file is a
+      // sibling so `./_layer` works; other datasets sit at
+      // `src/data/datasets/<id>/` and need the absolute alias.
+      const layerImport = useLegacyOutput ? './_layer' : '@/data/_layer';
       fs.writeFileSync(COMPOSED_PATH, `/**
  * Epic/Patron Pool data — COMPOSED FACADE
  *
@@ -432,7 +436,7 @@ export const EPIC_POOL_OVERRIDES: Record<string, Partial<Power>> = {};
  * To re-generate the base data:
  *   node scripts/convert-epic-pools.cjs --apply
  */
-import { applyAggregateOverrides } from './_layer';
+import { applyAggregateOverrides } from '${layerImport}';
 import { EPIC_POOLS_RAW as base } from './generated/epic-pools';
 import { EPIC_POOL_OVERRIDES } from './overrides/epic-pools';
 

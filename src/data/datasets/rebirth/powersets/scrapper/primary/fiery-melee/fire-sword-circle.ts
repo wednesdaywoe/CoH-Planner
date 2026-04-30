@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FireSwordCircle as base } from '@/data/generated/powersets/scrapper/primary/fiery-melee/fire-sword-circle';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/fiery-melee/fire-sword-circle';
+import { FireSwordCircle as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/fiery-melee/fire-sword-circle';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/fiery-melee/fire-sword-circle';
 
 export const FireSwordCircle: Power = withOverrides(base, overrides);

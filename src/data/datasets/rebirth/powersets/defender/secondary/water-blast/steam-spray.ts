@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SteamSpray as base } from '@/data/generated/powersets/defender/secondary/water-blast/steam-spray';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/water-blast/steam-spray';
+import { SteamSpray as base } from '@/data/datasets/rebirth/generated/powersets/defender/secondary/water-blast/steam-spray';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/secondary/water-blast/steam-spray';
 
 export const SteamSpray: Power = withOverrides(base, overrides);

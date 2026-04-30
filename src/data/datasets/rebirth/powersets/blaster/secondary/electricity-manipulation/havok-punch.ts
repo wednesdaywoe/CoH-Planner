@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HavocPunch as base } from '@/data/generated/powersets/blaster/secondary/electricity-manipulation/havok-punch';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/electricity-manipulation/havok-punch';
+import { HavocPunch as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/electricity-manipulation/havok-punch';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/electricity-manipulation/havok-punch';
 
 export const HavocPunch: Power = withOverrides(base, overrides);

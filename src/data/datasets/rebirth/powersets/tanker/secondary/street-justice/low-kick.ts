@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShinBreaker as base } from '@/data/generated/powersets/tanker/secondary/street-justice/low-kick';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/street-justice/low-kick';
+import { ShinBreaker as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/street-justice/low-kick';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/street-justice/low-kick';
 
 export const ShinBreaker: Power = withOverrides(base, overrides);

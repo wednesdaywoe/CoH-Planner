@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowPunch as base } from '@/data/generated/powersets/scrapper/primary/dark-melee/shadow-punch';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/dark-melee/shadow-punch';
+import { ShadowPunch as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/dark-melee/shadow-punch';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/dark-melee/shadow-punch';
 
 export const ShadowPunch: Power = withOverrides(base, overrides);

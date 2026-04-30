@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { KeeningWinds as base } from '@/data/generated/powersets/controller/primary/wind-control/keening-winds';
-import { overrides } from '@/data/overrides/powersets/controller/primary/wind-control/keening-winds';
+import { KeeningWinds as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/wind-control/keening-winds';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/wind-control/keening-winds';
 
 export const KeeningWinds: Power = withOverrides(base, overrides);

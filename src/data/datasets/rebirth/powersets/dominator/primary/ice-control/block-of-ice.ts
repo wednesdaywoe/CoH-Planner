@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BlockofIce as base } from '@/data/generated/powersets/dominator/primary/ice-control/block-of-ice';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/ice-control/block-of-ice';
+import { BlockofIce as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/ice-control/block-of-ice';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/ice-control/block-of-ice';
 
 export const BlockofIce: Power = withOverrides(base, overrides);

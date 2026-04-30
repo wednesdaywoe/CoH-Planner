@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StaggeringBurst as base } from '@/data/generated/powersets/tanker/secondary/energy-melee/stun';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/energy-melee/stun';
+import { StaggeringBurst as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/energy-melee/stun';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/energy-melee/stun';
 
 export const StaggeringBurst: Power = withOverrides(base, overrides);

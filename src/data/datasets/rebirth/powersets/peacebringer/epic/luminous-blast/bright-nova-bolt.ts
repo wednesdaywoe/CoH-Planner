@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BrightNovaBolt as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/bright-nova-bolt';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/bright-nova-bolt';
+import { BrightNovaBolt as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-blast/bright-nova-bolt';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-blast/bright-nova-bolt';
 
 export const BrightNovaBolt: Power = withOverrides(base, overrides);

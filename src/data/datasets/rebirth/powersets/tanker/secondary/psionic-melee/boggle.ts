@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Boggle as base } from '@/data/generated/powersets/tanker/secondary/psionic-melee/boggle';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/psionic-melee/boggle';
+import { Boggle as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/psionic-melee/boggle';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/psionic-melee/boggle';
 
 export const Boggle: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ScrambleThoughts as base } from '@/data/generated/powersets/defender/secondary/psychic-blast/scramble-thoughts';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/psychic-blast/scramble-thoughts';
+import { ScrambleThoughts as base } from '@/data/datasets/rebirth/generated/powersets/defender/secondary/psychic-blast/scramble-thoughts';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/secondary/psychic-blast/scramble-thoughts';
 
 export const ScrambleThoughts: Power = withOverrides(base, overrides);

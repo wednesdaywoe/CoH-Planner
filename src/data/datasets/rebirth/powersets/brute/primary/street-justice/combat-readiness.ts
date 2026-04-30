@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CombatReadiness as base } from '@/data/generated/powersets/brute/primary/street-justice/combat-readiness';
-import { overrides } from '@/data/overrides/powersets/brute/primary/street-justice/combat-readiness';
+import { CombatReadiness as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/street-justice/combat-readiness';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/street-justice/combat-readiness';
 
 export const CombatReadiness: Power = withOverrides(base, overrides);

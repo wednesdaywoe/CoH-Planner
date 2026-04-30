@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EmptyClips as base } from '@/data/generated/powersets/defender/secondary/dual-pistols/empty-clips';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/dual-pistols/empty-clips';
+import { EmptyClips as base } from '@/data/datasets/rebirth/generated/powersets/defender/secondary/dual-pistols/empty-clips';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/secondary/dual-pistols/empty-clips';
 
 export const EmptyClips: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrushingField as base } from '@/data/generated/powersets/dominator/primary/gravity-control/crushing-field';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/gravity-control/crushing-field';
+import { CrushingField as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/gravity-control/crushing-field';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/gravity-control/crushing-field';
 
 export const CrushingField: Power = withOverrides(base, overrides);

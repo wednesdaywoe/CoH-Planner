@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Impale as base } from '@/data/generated/powersets/dominator/secondary/thorny-assault/impale';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/thorny-assault/impale';
+import { Impale as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/thorny-assault/impale';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/thorny-assault/impale';
 
 export const Impale: Power = withOverrides(base, overrides);

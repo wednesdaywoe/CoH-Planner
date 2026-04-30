@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Smite as base } from '@/data/generated/powersets/scrapper/primary/dark-melee/smite';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/dark-melee/smite';
+import { Smite as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/dark-melee/smite';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/dark-melee/smite';
 
 export const Smite: Power = withOverrides(base, overrides);

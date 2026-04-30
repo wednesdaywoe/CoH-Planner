@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Pummel as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/pummel';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/pummel';
+import { Pummel as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/arachnos-soldier/pummel';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/pummel';
 
 export const Pummel: Power = withOverrides(base, overrides);

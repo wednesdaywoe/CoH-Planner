@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MindProbe as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/mind-probe';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/mind-probe';
+import { MindProbe as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/mental-manipulation/mind-probe';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/mental-manipulation/mind-probe';
 
 export const MindProbe: Power = withOverrides(base, overrides);

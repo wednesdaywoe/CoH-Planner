@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Placate as base } from '@/data/generated/powersets/stalker/primary/spines/placate';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/spines/placate';
+import { Placate as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/spines/placate';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/spines/placate';
 
 export const Placate: Power = withOverrides(base, overrides);

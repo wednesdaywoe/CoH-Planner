@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Consume as base } from '@/data/generated/powersets/dominator/secondary/fiery-assault/consume';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/fiery-assault/consume';
+import { Consume as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/fiery-assault/consume';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/fiery-assault/consume';
 
 export const Consume: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SeekerDrones as base } from '@/data/generated/powersets/corruptor/secondary/traps/seeker-drones';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/traps/seeker-drones';
+import { SeekerDrones as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/traps/seeker-drones';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/traps/seeker-drones';
 
 export const SeekerDrones: Power = withOverrides(base, overrides);

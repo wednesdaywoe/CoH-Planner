@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GrantCover as base } from '@/data/generated/powersets/tanker/primary/shield-defense/grant-cover';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/shield-defense/grant-cover';
+import { GrantCover as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/shield-defense/grant-cover';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/shield-defense/grant-cover';
 
 export const GrantCover: Power = withOverrides(base, overrides);

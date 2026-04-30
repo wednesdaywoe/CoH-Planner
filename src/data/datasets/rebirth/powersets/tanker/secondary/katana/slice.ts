@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FlashingSteel as base } from '@/data/generated/powersets/tanker/secondary/katana/slice';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/katana/slice';
+import { FlashingSteel as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/katana/slice';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/katana/slice';
 
 export const FlashingSteel: Power = withOverrides(base, overrides);

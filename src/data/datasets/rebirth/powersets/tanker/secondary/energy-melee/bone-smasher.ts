@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BoneSmasher as base } from '@/data/generated/powersets/tanker/secondary/energy-melee/bone-smasher';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/energy-melee/bone-smasher';
+import { BoneSmasher as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/energy-melee/bone-smasher';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/energy-melee/bone-smasher';
 
 export const BoneSmasher: Power = withOverrides(base, overrides);

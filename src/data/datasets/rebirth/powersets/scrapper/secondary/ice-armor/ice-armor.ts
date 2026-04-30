@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FrozenArmor as base } from '@/data/generated/powersets/scrapper/secondary/ice-armor/ice-armor';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ice-armor/ice-armor';
+import { FrozenArmor as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/ice-armor/ice-armor';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/ice-armor/ice-armor';
 
 export const FrozenArmor: Power = withOverrides(base, overrides);

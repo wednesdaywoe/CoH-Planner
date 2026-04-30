@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FrozenAura as base } from '@/data/generated/powersets/scrapper/primary/ice-melee/frozen-aura';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/ice-melee/frozen-aura';
+import { FrozenAura as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/ice-melee/frozen-aura';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/ice-melee/frozen-aura';
 
 export const FrozenAura: Power = withOverrides(base, overrides);

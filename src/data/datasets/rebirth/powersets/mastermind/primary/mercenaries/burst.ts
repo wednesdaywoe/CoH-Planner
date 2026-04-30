@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Burst as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/burst';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/burst';
+import { Burst as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/mercenaries/burst';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/mercenaries/burst';
 
 export const Burst: Power = withOverrides(base, overrides);

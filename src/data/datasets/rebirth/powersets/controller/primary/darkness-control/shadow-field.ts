@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowField as base } from '@/data/generated/powersets/controller/primary/darkness-control/shadow-field';
-import { overrides } from '@/data/overrides/powersets/controller/primary/darkness-control/shadow-field';
+import { ShadowField as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/darkness-control/shadow-field';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/darkness-control/shadow-field';
 
 export const ShadowField: Power = withOverrides(base, overrides);

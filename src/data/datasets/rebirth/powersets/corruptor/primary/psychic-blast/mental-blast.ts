@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MentalBlast as base } from '@/data/generated/powersets/corruptor/primary/psychic-blast/mental-blast';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/psychic-blast/mental-blast';
+import { MentalBlast as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/psychic-blast/mental-blast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/psychic-blast/mental-blast';
 
 export const MentalBlast: Power = withOverrides(base, overrides);

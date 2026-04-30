@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergyTorrent as base } from '@/data/generated/powersets/corruptor/primary/energy-blast/energy-torrent';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/energy-blast/energy-torrent';
+import { EnergyTorrent as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/energy-blast/energy-torrent';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/energy-blast/energy-torrent';
 
 export const EnergyTorrent: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SpecOps as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/spec-ops';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/spec-ops';
+import { SpecOps as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/mercenaries/spec-ops';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/mercenaries/spec-ops';
 
 export const SpecOps: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Rebirth as base } from '@/data/generated/powersets/corruptor/secondary/nature-affinity/rebirth';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/nature-affinity/rebirth';
+import { Rebirth as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/nature-affinity/rebirth';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/nature-affinity/rebirth';
 
 export const Rebirth: Power = withOverrides(base, overrides);

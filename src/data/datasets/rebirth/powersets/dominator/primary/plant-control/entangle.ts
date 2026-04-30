@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Entangle as base } from '@/data/generated/powersets/dominator/primary/plant-control/entangle';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/plant-control/entangle';
+import { Entangle as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/plant-control/entangle';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/plant-control/entangle';
 
 export const Entangle: Power = withOverrides(base, overrides);

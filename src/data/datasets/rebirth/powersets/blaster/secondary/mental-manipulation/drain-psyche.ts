@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DrainPsyche as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/drain-psyche';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/drain-psyche';
+import { DrainPsyche as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/mental-manipulation/drain-psyche';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/mental-manipulation/drain-psyche';
 
 export const DrainPsyche: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LightningReflexes as base } from '@/data/generated/powersets/scrapper/secondary/electric-armor/lightning-reflexes';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/electric-armor/lightning-reflexes';
+import { LightningReflexes as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/electric-armor/lightning-reflexes';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/electric-armor/lightning-reflexes';
 
 export const LightningReflexes: Power = withOverrides(base, overrides);

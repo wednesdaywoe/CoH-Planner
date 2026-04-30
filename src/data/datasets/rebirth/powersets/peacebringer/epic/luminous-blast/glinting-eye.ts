@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GlintingEye as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/glinting-eye';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/glinting-eye';
+import { GlintingEye as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-blast/glinting-eye';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-blast/glinting-eye';
 
 export const GlintingEye: Power = withOverrides(base, overrides);

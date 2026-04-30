@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThrowSpines as base } from '@/data/generated/powersets/scrapper/primary/spines/quill-throwing';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/spines/quill-throwing';
+import { ThrowSpines as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/spines/quill-throwing';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/spines/quill-throwing';
 
 export const ThrowSpines: Power = withOverrides(base, overrides);

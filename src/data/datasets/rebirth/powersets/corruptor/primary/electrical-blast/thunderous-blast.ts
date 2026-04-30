@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThunderousBlast as base } from '@/data/generated/powersets/corruptor/primary/electrical-blast/thunderous-blast';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/electrical-blast/thunderous-blast';
+import { ThunderousBlast as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/electrical-blast/thunderous-blast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/electrical-blast/thunderous-blast';
 
 export const ThunderousBlast: Power = withOverrides(base, overrides);

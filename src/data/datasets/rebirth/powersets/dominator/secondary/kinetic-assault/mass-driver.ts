@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MassDriver as base } from '@/data/generated/powersets/dominator/secondary/kinetic-assault/mass-driver';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/kinetic-assault/mass-driver';
+import { MassDriver as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/kinetic-assault/mass-driver';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/kinetic-assault/mass-driver';
 
 export const MassDriver: Power = withOverrides(base, overrides);

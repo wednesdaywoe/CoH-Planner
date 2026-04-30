@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ReachfortheLimit as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/reach-for-the-limit';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/reach-for-the-limit';
+import { ReachfortheLimit as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/martial-combat/reach-for-the-limit';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/martial-combat/reach-for-the-limit';
 
 export const ReachfortheLimit: Power = withOverrides(base, overrides);

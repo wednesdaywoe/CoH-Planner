@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Minerals as base } from '@/data/generated/powersets/brute/secondary/stone-armor/minerals';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/stone-armor/minerals';
+import { Minerals as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/stone-armor/minerals';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/stone-armor/minerals';
 
 export const Minerals: Power = withOverrides(base, overrides);

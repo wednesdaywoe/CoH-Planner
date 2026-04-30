@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FrostBreath as base } from '@/data/generated/powersets/corruptor/primary/ice-blast/frost-breath';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/ice-blast/frost-breath';
+import { FrostBreath as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/ice-blast/frost-breath';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/ice-blast/frost-breath';
 
 export const FrostBreath: Power = withOverrides(base, overrides);

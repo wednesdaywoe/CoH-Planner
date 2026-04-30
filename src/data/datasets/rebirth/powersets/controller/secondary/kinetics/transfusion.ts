@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Transfusion as base } from '@/data/generated/powersets/controller/secondary/kinetics/transfusion';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/kinetics/transfusion';
+import { Transfusion as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/kinetics/transfusion';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/secondary/kinetics/transfusion';
 
 export const Transfusion: Power = withOverrides(base, overrides);

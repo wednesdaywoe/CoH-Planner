@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Antidote as base } from '@/data/generated/powersets/corruptor/secondary/poison/antidote';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/poison/antidote';
+import { Antidote as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/poison/antidote';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/poison/antidote';
 
 export const Antidote: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrushingBlow as base } from '@/data/generated/powersets/brute/primary/titan-weapons/crushing-blow';
-import { overrides } from '@/data/overrides/powersets/brute/primary/titan-weapons/crushing-blow';
+import { CrushingBlow as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/titan-weapons/crushing-blow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/titan-weapons/crushing-blow';
 
 export const CrushingBlow: Power = withOverrides(base, overrides);

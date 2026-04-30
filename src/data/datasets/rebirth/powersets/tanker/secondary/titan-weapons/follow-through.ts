@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FollowThrough as base } from '@/data/generated/powersets/tanker/secondary/titan-weapons/follow-through';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/titan-weapons/follow-through';
+import { FollowThrough as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/titan-weapons/follow-through';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/titan-weapons/follow-through';
 
 export const FollowThrough: Power = withOverrides(base, overrides);

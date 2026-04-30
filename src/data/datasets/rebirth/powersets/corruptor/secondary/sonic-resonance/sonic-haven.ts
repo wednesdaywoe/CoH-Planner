@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SonicHaven as base } from '@/data/generated/powersets/corruptor/secondary/sonic-resonance/sonic-haven';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/sonic-resonance/sonic-haven';
+import { SonicHaven as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/sonic-resonance/sonic-haven';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/sonic-resonance/sonic-haven';
 
 export const SonicHaven: Power = withOverrides(base, overrides);

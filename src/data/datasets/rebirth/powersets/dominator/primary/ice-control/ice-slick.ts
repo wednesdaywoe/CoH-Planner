@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IceSlick as base } from '@/data/generated/powersets/dominator/primary/ice-control/ice-slick';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/ice-control/ice-slick';
+import { IceSlick as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/ice-control/ice-slick';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/ice-control/ice-slick';
 
 export const IceSlick: Power = withOverrides(base, overrides);

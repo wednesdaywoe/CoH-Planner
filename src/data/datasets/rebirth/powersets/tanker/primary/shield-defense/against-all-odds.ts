@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AgainstAllOdds as base } from '@/data/generated/powersets/tanker/primary/shield-defense/against-all-odds';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/shield-defense/against-all-odds';
+import { AgainstAllOdds as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/shield-defense/against-all-odds';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/shield-defense/against-all-odds';
 
 export const AgainstAllOdds: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ArcticAir as base } from '@/data/generated/powersets/dominator/primary/ice-control/arctic-air';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/ice-control/arctic-air';
+import { ArcticAir as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/ice-control/arctic-air';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/ice-control/arctic-air';
 
 export const ArcticAir: Power = withOverrides(base, overrides);

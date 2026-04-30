@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { InnerWill as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/inner-will';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/inner-will';
+import { InnerWill as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/martial-combat/inner-will';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/martial-combat/inner-will';
 
 export const InnerWill: Power = withOverrides(base, overrides);

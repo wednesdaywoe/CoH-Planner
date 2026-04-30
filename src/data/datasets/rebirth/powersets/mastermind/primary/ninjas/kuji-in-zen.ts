@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { KujiInZen as base } from '@/data/generated/powersets/mastermind/primary/ninjas/kuji-in-zen';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/ninjas/kuji-in-zen';
+import { KujiInZen as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/ninjas/kuji-in-zen';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/ninjas/kuji-in-zen';
 
 export const KujiInZen: Power = withOverrides(base, overrides);

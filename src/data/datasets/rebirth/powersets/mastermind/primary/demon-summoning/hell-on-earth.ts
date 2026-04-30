@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HellonEarth as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/hell-on-earth';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/hell-on-earth';
+import { HellonEarth as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/demon-summoning/hell-on-earth';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/demon-summoning/hell-on-earth';
 
 export const HellonEarth: Power = withOverrides(base, overrides);

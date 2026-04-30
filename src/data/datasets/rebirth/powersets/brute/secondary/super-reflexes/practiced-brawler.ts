@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PracticedBrawler as base } from '@/data/generated/powersets/brute/secondary/super-reflexes/practiced-brawler';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/super-reflexes/practiced-brawler';
+import { PracticedBrawler as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/super-reflexes/practiced-brawler';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/super-reflexes/practiced-brawler';
 
 export const PracticedBrawler: Power = withOverrides(base, overrides);

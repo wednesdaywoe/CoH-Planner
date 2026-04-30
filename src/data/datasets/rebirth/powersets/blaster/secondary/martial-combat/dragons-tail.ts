@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DragonsTail as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/dragons-tail';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/dragons-tail';
+import { DragonsTail as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/martial-combat/dragons-tail';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/martial-combat/dragons-tail';
 
 export const DragonsTail: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Frostbite as base } from '@/data/generated/powersets/controller/primary/ice-control/frostbite';
-import { overrides } from '@/data/overrides/powersets/controller/primary/ice-control/frostbite';
+import { Frostbite as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/ice-control/frostbite';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/ice-control/frostbite';
 
 export const Frostbite: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Ripper as base } from '@/data/generated/powersets/stalker/primary/spines/ripper';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/spines/ripper';
+import { Ripper as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/spines/ripper';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/spines/ripper';
 
 export const Ripper: Power = withOverrides(base, overrides);

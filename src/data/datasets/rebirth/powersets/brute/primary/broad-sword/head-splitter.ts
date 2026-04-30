@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeadSplitter as base } from '@/data/generated/powersets/brute/primary/broad-sword/head-splitter';
-import { overrides } from '@/data/overrides/powersets/brute/primary/broad-sword/head-splitter';
+import { HeadSplitter as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/broad-sword/head-splitter';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/broad-sword/head-splitter';
 
 export const HeadSplitter: Power = withOverrides(base, overrides);

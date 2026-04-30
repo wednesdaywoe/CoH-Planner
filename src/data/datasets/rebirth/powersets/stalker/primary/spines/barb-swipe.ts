@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BarbSwipe as base } from '@/data/generated/powersets/stalker/primary/spines/barb-swipe';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/spines/barb-swipe';
+import { BarbSwipe as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/spines/barb-swipe';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/spines/barb-swipe';
 
 export const BarbSwipe: Power = withOverrides(base, overrides);

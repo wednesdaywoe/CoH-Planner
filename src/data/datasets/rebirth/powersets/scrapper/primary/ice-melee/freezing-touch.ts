@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FreezingTouch as base } from '@/data/generated/powersets/scrapper/primary/ice-melee/freezing-touch';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/ice-melee/freezing-touch';
+import { FreezingTouch as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/ice-melee/freezing-touch';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/ice-melee/freezing-touch';
 
 export const FreezingTouch: Power = withOverrides(base, overrides);

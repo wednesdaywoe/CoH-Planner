@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FlashFreeze as base } from '@/data/generated/powersets/dominator/primary/ice-control/flash-freeze';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/ice-control/flash-freeze';
+import { FlashFreeze as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/ice-control/flash-freeze';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/ice-control/flash-freeze';
 
 export const FlashFreeze: Power = withOverrides(base, overrides);

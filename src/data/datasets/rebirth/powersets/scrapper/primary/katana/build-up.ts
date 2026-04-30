@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BuildUp as base } from '@/data/generated/powersets/scrapper/primary/katana/build-up';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/katana/build-up';
+import { BuildUp as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/katana/build-up';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/katana/build-up';
 
 export const BuildUp: Power = withOverrides(base, overrides);

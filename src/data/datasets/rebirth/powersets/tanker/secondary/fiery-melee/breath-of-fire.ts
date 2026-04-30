@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BreathofFire as base } from '@/data/generated/powersets/tanker/secondary/fiery-melee/breath-of-fire';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/fiery-melee/breath-of-fire';
+import { BreathofFire as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/fiery-melee/breath-of-fire';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/fiery-melee/breath-of-fire';
 
 export const BreathofFire: Power = withOverrides(base, overrides);

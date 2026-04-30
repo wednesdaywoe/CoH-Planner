@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Zapp as base } from '@/data/generated/powersets/corruptor/primary/electrical-blast/zapp';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/electrical-blast/zapp';
+import { Zapp as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/electrical-blast/zapp';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/electrical-blast/zapp';
 
 export const Zapp: Power = withOverrides(base, overrides);

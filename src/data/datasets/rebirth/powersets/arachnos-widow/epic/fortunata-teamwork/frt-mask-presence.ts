@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MaskPresence as base } from '@/data/generated/powersets/arachnos-widow/epic/fortunata-teamwork/frt-mask-presence';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/fortunata-teamwork/frt-mask-presence';
+import { MaskPresence as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/fortunata-teamwork/frt-mask-presence';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-widow/epic/fortunata-teamwork/frt-mask-presence';
 
 export const MaskPresence: Power = withOverrides(base, overrides);

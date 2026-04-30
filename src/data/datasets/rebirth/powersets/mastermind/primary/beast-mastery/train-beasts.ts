@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TrainBeasts as base } from '@/data/generated/powersets/mastermind/primary/beast-mastery/train-beasts';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/beast-mastery/train-beasts';
+import { TrainBeasts as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/beast-mastery/train-beasts';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/beast-mastery/train-beasts';
 
 export const TrainBeasts: Power = withOverrides(base, overrides);

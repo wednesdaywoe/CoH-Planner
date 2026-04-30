@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SmokeFlash as base } from '@/data/generated/powersets/mastermind/primary/ninjas/smoke-flash';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/ninjas/smoke-flash';
+import { SmokeFlash as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/ninjas/smoke-flash';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/ninjas/smoke-flash';
 
 export const SmokeFlash: Power = withOverrides(base, overrides);

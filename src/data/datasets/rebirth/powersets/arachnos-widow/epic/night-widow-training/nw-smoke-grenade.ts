@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SmokeGrenade as base } from '@/data/generated/powersets/arachnos-widow/epic/night-widow-training/nw-smoke-grenade';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/night-widow-training/nw-smoke-grenade';
+import { SmokeGrenade as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/night-widow-training/nw-smoke-grenade';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-widow/epic/night-widow-training/nw-smoke-grenade';
 
 export const SmokeGrenade: Power = withOverrides(base, overrides);

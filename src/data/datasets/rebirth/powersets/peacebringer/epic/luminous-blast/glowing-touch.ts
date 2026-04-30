@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GlowingTouch as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/glowing-touch';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/glowing-touch';
+import { GlowingTouch as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-blast/glowing-touch';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-blast/glowing-touch';
 
 export const GlowingTouch: Power = withOverrides(base, overrides);

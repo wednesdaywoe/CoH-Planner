@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Shatter as base } from '@/data/generated/powersets/tanker/secondary/war-mace/shatter';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/war-mace/shatter';
+import { Shatter as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/war-mace/shatter';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/war-mace/shatter';
 
 export const Shatter: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FireCages as base } from '@/data/generated/powersets/dominator/primary/fire-control/fire-cages';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/fire-control/fire-cages';
+import { FireCages as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/fire-control/fire-cages';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/fire-control/fire-cages';
 
 export const FireCages: Power = withOverrides(base, overrides);

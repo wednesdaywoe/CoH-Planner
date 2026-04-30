@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Icicles as base } from '@/data/generated/powersets/tanker/primary/ice-armor/icicles';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/ice-armor/icicles';
+import { Icicles as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/ice-armor/icicles';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/ice-armor/icicles';
 
 export const Icicles: Power = withOverrides(base, overrides);

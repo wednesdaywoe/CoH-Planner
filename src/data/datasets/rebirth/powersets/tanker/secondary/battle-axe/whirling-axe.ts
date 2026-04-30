@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WhirlingAxe as base } from '@/data/generated/powersets/tanker/secondary/battle-axe/whirling-axe';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/battle-axe/whirling-axe';
+import { WhirlingAxe as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/battle-axe/whirling-axe';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/battle-axe/whirling-axe';
 
 export const WhirlingAxe: Power = withOverrides(base, overrides);

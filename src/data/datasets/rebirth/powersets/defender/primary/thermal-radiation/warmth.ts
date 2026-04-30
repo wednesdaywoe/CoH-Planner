@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Warmth as base } from '@/data/generated/powersets/defender/primary/thermal-radiation/warmth';
-import { overrides } from '@/data/overrides/powersets/defender/primary/thermal-radiation/warmth';
+import { Warmth as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/thermal-radiation/warmth';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/thermal-radiation/warmth';
 
 export const Warmth: Power = withOverrides(base, overrides);

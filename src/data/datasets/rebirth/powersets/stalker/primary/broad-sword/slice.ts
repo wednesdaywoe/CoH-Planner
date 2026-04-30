@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Slice as base } from '@/data/generated/powersets/stalker/primary/broad-sword/slice';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/broad-sword/slice';
+import { Slice as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/broad-sword/slice';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/broad-sword/slice';
 
 export const Slice: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FormoftheBody as base } from '@/data/generated/powersets/brute/primary/staff-fighting/form-of-the-body';
-import { overrides } from '@/data/overrides/powersets/brute/primary/staff-fighting/form-of-the-body';
+import { FormoftheBody as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/staff-fighting/form-of-the-body';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/staff-fighting/form-of-the-body';
 
 export const FormoftheBody: Power = withOverrides(base, overrides);

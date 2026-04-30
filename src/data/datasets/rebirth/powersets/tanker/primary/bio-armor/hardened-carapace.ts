@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HardenedCarapace as base } from '@/data/generated/powersets/tanker/primary/bio-armor/hardened-carapace';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/bio-armor/hardened-carapace';
+import { HardenedCarapace as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/bio-armor/hardened-carapace';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/bio-armor/hardened-carapace';
 
 export const HardenedCarapace: Power = withOverrides(base, overrides);

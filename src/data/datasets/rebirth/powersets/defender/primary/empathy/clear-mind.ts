@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ClearMind as base } from '@/data/generated/powersets/defender/primary/empathy/clear-mind';
-import { overrides } from '@/data/overrides/powersets/defender/primary/empathy/clear-mind';
+import { ClearMind as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/empathy/clear-mind';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/empathy/clear-mind';
 
 export const ClearMind: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Sleet as base } from '@/data/generated/powersets/corruptor/secondary/cold-domination/sleet';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/cold-domination/sleet';
+import { Sleet as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/cold-domination/sleet';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/cold-domination/sleet';
 
 export const Sleet: Power = withOverrides(base, overrides);

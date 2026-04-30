@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Channelgun as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/channelgun';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/channelgun';
+import { Channelgun as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/channelgun';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/channelgun';
 
 export const Channelgun: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StrengthofWill as base } from '@/data/generated/powersets/tanker/primary/willpower/strength-of-will';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/willpower/strength-of-will';
+import { StrengthofWill as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/willpower/strength-of-will';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/willpower/strength-of-will';
 
 export const StrengthofWill: Power = withOverrides(base, overrides);

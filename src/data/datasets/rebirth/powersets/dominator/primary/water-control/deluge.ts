@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Deluge as base } from '@/data/generated/powersets/dominator/primary/water-control/deluge';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/water-control/deluge';
+import { Deluge as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/water-control/deluge';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/water-control/deluge';
 
 export const Deluge: Power = withOverrides(base, overrides);

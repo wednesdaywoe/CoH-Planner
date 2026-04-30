@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BetaDecay as base } from '@/data/generated/powersets/scrapper/secondary/radiation-armor/beta-decay';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/radiation-armor/beta-decay';
+import { BetaDecay as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/radiation-armor/beta-decay';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/radiation-armor/beta-decay';
 
 export const BetaDecay: Power = withOverrides(base, overrides);

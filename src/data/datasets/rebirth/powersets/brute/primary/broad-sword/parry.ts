@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Parry as base } from '@/data/generated/powersets/brute/primary/broad-sword/parry';
-import { overrides } from '@/data/overrides/powersets/brute/primary/broad-sword/parry';
+import { Parry as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/broad-sword/parry';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/broad-sword/parry';
 
 export const Parry: Power = withOverrides(base, overrides);

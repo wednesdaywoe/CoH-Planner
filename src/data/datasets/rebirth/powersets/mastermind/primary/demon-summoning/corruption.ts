@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Corruption as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/corruption';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/corruption';
+import { Corruption as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/demon-summoning/corruption';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/demon-summoning/corruption';
 
 export const Corruption: Power = withOverrides(base, overrides);

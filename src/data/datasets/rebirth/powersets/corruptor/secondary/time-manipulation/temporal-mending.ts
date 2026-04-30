@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TemporalMending as base } from '@/data/generated/powersets/corruptor/secondary/time-manipulation/temporal-mending';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/time-manipulation/temporal-mending';
+import { TemporalMending as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/time-manipulation/temporal-mending';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/time-manipulation/temporal-mending';
 
 export const TemporalMending: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Flashfire as base } from '@/data/generated/powersets/dominator/primary/fire-control/flashfire';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/fire-control/flashfire';
+import { Flashfire as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/fire-control/flashfire';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/fire-control/flashfire';
 
 export const Flashfire: Power = withOverrides(base, overrides);

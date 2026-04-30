@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BarrierField as base } from '@/data/generated/powersets/mastermind/secondary/force-field/detention-field';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/force-field/detention-field';
+import { BarrierField as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/force-field/detention-field';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/force-field/detention-field';
 
 export const BarrierField: Power = withOverrides(base, overrides);

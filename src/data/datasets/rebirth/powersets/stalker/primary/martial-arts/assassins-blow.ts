@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AssassinsBlow as base } from '@/data/generated/powersets/stalker/primary/martial-arts/assassins-blow';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/martial-arts/assassins-blow';
+import { AssassinsBlow as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/martial-arts/assassins-blow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/martial-arts/assassins-blow';
 
 export const AssassinsBlow: Power = withOverrides(base, overrides);

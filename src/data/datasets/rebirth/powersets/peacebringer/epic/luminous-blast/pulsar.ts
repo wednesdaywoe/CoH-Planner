@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Pulsar as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/pulsar';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/pulsar';
+import { Pulsar as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-blast/pulsar';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-blast/pulsar';
 
 export const Pulsar: Power = withOverrides(base, overrides);

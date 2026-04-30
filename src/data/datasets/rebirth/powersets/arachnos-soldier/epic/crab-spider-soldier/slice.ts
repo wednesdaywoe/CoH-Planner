@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Slice as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/slice';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/slice';
+import { Slice as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/slice';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/slice';
 
 export const Slice: Power = withOverrides(base, overrides);

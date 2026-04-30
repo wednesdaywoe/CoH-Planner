@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowFall as base } from '@/data/generated/powersets/defender/primary/dark-miasma/shadow-fall';
-import { overrides } from '@/data/overrides/powersets/defender/primary/dark-miasma/shadow-fall';
+import { ShadowFall as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/dark-miasma/shadow-fall';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/dark-miasma/shadow-fall';
 
 export const ShadowFall: Power = withOverrides(base, overrides);

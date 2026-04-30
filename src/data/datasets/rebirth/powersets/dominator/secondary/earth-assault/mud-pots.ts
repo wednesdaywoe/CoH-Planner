@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MudPots as base } from '@/data/generated/powersets/dominator/secondary/earth-assault/mud-pots';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/earth-assault/mud-pots';
+import { MudPots as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/earth-assault/mud-pots';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/earth-assault/mud-pots';
 
 export const MudPots: Power = withOverrides(base, overrides);

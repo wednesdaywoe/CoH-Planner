@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChargedBolts as base } from '@/data/generated/powersets/corruptor/primary/electrical-blast/charged-bolts';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/electrical-blast/charged-bolts';
+import { ChargedBolts as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/electrical-blast/charged-bolts';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/electrical-blast/charged-bolts';
 
 export const ChargedBolts: Power = withOverrides(base, overrides);

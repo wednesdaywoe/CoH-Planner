@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Jab as base } from '@/data/generated/powersets/tanker/secondary/super-strength/jab';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/super-strength/jab';
+import { Jab as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/super-strength/jab';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/super-strength/jab';
 
 export const Jab: Power = withOverrides(base, overrides);

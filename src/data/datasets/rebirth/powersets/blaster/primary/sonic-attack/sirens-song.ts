@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SirensSong as base } from '@/data/generated/powersets/blaster/primary/sonic-attack/sirens-song';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/sonic-attack/sirens-song';
+import { SirensSong as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/sonic-attack/sirens-song';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/sonic-attack/sirens-song';
 
 export const SirensSong: Power = withOverrides(base, overrides);

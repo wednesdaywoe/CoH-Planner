@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Fusion as base } from '@/data/generated/powersets/tanker/secondary/radiation-melee/fusion';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/radiation-melee/fusion';
+import { Fusion as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/radiation-melee/fusion';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/radiation-melee/fusion';
 
 export const Fusion: Power = withOverrides(base, overrides);

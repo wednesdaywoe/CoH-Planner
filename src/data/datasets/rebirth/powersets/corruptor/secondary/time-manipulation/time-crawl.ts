@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TimeCrawl as base } from '@/data/generated/powersets/corruptor/secondary/time-manipulation/time-crawl';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/time-manipulation/time-crawl';
+import { TimeCrawl as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/time-manipulation/time-crawl';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/time-manipulation/time-crawl';
 
 export const TimeCrawl: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IncendiaryAmmunition as base } from '@/data/generated/powersets/blaster/primary/dual-pistols/incendiary-ammunition';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/dual-pistols/incendiary-ammunition';
+import { IncendiaryAmmunition as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/dual-pistols/incendiary-ammunition';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/dual-pistols/incendiary-ammunition';
 
 export const IncendiaryAmmunition: Power = withOverrides(base, overrides);

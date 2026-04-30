@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TeslaCage as base } from '@/data/generated/powersets/blaster/primary/electrical-blast/tesla-cage';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/electrical-blast/tesla-cage';
+import { TeslaCage as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/electrical-blast/tesla-cage';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/electrical-blast/tesla-cage';
 
 export const TeslaCage: Power = withOverrides(base, overrides);

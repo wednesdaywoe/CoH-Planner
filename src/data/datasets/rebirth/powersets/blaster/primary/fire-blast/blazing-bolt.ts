@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BlazingBolt as base } from '@/data/generated/powersets/blaster/primary/fire-blast/blazing-bolt';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/fire-blast/blazing-bolt';
+import { BlazingBolt as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/fire-blast/blazing-bolt';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/fire-blast/blazing-bolt';
 
 export const BlazingBolt: Power = withOverrides(base, overrides);

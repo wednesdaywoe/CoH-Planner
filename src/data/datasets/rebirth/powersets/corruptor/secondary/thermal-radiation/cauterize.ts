@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Cauterize as base } from '@/data/generated/powersets/corruptor/secondary/thermal-radiation/cauterize';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/thermal-radiation/cauterize';
+import { Cauterize as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/thermal-radiation/cauterize';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/thermal-radiation/cauterize';
 
 export const Cauterize: Power = withOverrides(base, overrides);

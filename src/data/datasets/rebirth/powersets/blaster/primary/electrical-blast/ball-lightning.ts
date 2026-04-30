@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BallLightning as base } from '@/data/generated/powersets/blaster/primary/electrical-blast/ball-lightning';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/electrical-blast/ball-lightning';
+import { BallLightning as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/electrical-blast/ball-lightning';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/electrical-blast/ball-lightning';
 
 export const BallLightning: Power = withOverrides(base, overrides);

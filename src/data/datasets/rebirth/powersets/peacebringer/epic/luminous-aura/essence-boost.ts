@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EssenceBoost as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/essence-boost';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/essence-boost';
+import { EssenceBoost as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-aura/essence-boost';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-aura/essence-boost';
 
 export const EssenceBoost: Power = withOverrides(base, overrides);

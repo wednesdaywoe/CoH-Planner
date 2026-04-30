@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowSlip as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/shadow-slipping';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/shadow-slipping';
+import { ShadowSlip as base } from '@/data/datasets/rebirth/generated/powersets/warshade/epic/umbral-aura/shadow-slipping';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/warshade/epic/umbral-aura/shadow-slipping';
 
 export const ShadowSlip: Power = withOverrides(base, overrides);

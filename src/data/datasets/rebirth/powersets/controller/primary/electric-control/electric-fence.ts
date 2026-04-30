@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ElectricFence as base } from '@/data/generated/powersets/controller/primary/electric-control/electric-fence';
-import { overrides } from '@/data/overrides/powersets/controller/primary/electric-control/electric-fence';
+import { ElectricFence as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/electric-control/electric-fence';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/electric-control/electric-fence';
 
 export const ElectricFence: Power = withOverrides(base, overrides);

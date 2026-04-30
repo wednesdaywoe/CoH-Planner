@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ForceFieldGenerator as base } from '@/data/generated/powersets/corruptor/secondary/traps/force-field-generator';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/traps/force-field-generator';
+import { ForceFieldGenerator as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/traps/force-field-generator';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/traps/force-field-generator';
 
 export const ForceFieldGenerator: Power = withOverrides(base, overrides);

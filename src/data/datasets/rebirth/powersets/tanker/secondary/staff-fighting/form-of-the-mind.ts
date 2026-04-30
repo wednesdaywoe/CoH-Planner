@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FormoftheMind as base } from '@/data/generated/powersets/tanker/secondary/staff-fighting/form-of-the-mind';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/staff-fighting/form-of-the-mind';
+import { FormoftheMind as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/staff-fighting/form-of-the-mind';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/staff-fighting/form-of-the-mind';
 
 export const FormoftheMind: Power = withOverrides(base, overrides);

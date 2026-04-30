@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EntanglingArrow as base } from '@/data/generated/powersets/corruptor/secondary/trick-arrow/entangling-arrow';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/trick-arrow/entangling-arrow';
+import { EntanglingArrow as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/trick-arrow/entangling-arrow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/trick-arrow/entangling-arrow';
 
 export const EntanglingArrow: Power = withOverrides(base, overrides);

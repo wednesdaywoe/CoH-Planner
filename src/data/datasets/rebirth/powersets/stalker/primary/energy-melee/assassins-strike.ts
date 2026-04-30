@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AssassinsStrike as base } from '@/data/generated/powersets/stalker/primary/energy-melee/assassins-strike';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/energy-melee/assassins-strike';
+import { AssassinsStrike as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/energy-melee/assassins-strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/energy-melee/assassins-strike';
 
 export const AssassinsStrike: Power = withOverrides(base, overrides);

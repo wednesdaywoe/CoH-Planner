@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TotalDomination as base } from '@/data/generated/powersets/arachnos-widow/epic/fortunata-training/frt-total-domination';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/fortunata-training/frt-total-domination';
+import { TotalDomination as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/fortunata-training/frt-total-domination';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-widow/epic/fortunata-training/frt-total-domination';
 
 export const TotalDomination: Power = withOverrides(base, overrides);

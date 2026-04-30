@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BarrierField as base } from '@/data/generated/powersets/controller/secondary/force-field/refraction-shield';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/force-field/refraction-shield';
+import { BarrierField as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/force-field/refraction-shield';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/secondary/force-field/refraction-shield';
 
 export const BarrierField: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SpeedBoost as base } from '@/data/generated/powersets/defender/primary/kinetics/speed-boost';
-import { overrides } from '@/data/overrides/powersets/defender/primary/kinetics/speed-boost';
+import { SpeedBoost as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/kinetics/speed-boost';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/kinetics/speed-boost';
 
 export const SpeedBoost: Power = withOverrides(base, overrides);

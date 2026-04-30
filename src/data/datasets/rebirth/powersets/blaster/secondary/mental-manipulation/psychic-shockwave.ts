@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PsychicShockwave as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/psychic-shockwave';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/psychic-shockwave';
+import { PsychicShockwave as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/mental-manipulation/psychic-shockwave';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/mental-manipulation/psychic-shockwave';
 
 export const PsychicShockwave: Power = withOverrides(base, overrides);

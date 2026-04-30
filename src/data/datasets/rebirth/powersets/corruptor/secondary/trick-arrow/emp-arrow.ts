@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EMPArrow as base } from '@/data/generated/powersets/corruptor/secondary/trick-arrow/emp-arrow';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/trick-arrow/emp-arrow';
+import { EMPArrow as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/trick-arrow/emp-arrow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/trick-arrow/emp-arrow';
 
 export const EMPArrow: Power = withOverrides(base, overrides);

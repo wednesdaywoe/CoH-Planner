@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Howl as base } from '@/data/generated/powersets/corruptor/primary/sonic-attacks/howl';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/sonic-attacks/howl';
+import { Howl as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/sonic-attacks/howl';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/sonic-attacks/howl';
 
 export const Howl: Power = withOverrides(base, overrides);

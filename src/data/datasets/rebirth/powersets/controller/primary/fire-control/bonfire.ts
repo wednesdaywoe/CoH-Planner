@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Bonfire as base } from '@/data/generated/powersets/controller/primary/fire-control/bonfire';
-import { overrides } from '@/data/overrides/powersets/controller/primary/fire-control/bonfire';
+import { Bonfire as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/fire-control/bonfire';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/fire-control/bonfire';
 
 export const Bonfire: Power = withOverrides(base, overrides);

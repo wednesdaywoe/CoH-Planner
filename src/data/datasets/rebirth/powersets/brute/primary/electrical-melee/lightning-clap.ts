@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LightningClap as base } from '@/data/generated/powersets/brute/primary/electrical-melee/lightning-clap';
-import { overrides } from '@/data/overrides/powersets/brute/primary/electrical-melee/lightning-clap';
+import { LightningClap as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/electrical-melee/lightning-clap';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/electrical-melee/lightning-clap';
 
 export const LightningClap: Power = withOverrides(base, overrides);

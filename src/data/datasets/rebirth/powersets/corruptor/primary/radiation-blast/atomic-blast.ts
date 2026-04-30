@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AtomicBlast as base } from '@/data/generated/powersets/corruptor/primary/radiation-blast/atomic-blast';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/radiation-blast/atomic-blast';
+import { AtomicBlast as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/radiation-blast/atomic-blast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/radiation-blast/atomic-blast';
 
 export const AtomicBlast: Power = withOverrides(base, overrides);

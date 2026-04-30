@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GangWar as base } from '@/data/generated/powersets/mastermind/primary/thugs/gang-war';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/thugs/gang-war';
+import { GangWar as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/thugs/gang-war';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/thugs/gang-war';
 
 export const GangWar: Power = withOverrides(base, overrides);

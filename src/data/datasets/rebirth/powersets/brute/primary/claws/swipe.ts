@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Swipe as base } from '@/data/generated/powersets/brute/primary/claws/swipe';
-import { overrides } from '@/data/overrides/powersets/brute/primary/claws/swipe';
+import { Swipe as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/claws/swipe';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/claws/swipe';
 
 export const Swipe: Power = withOverrides(base, overrides);

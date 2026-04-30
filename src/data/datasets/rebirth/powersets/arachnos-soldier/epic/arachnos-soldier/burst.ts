@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Burst as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/burst';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/burst';
+import { Burst as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/arachnos-soldier/burst';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/burst';
 
 export const Burst: Power = withOverrides(base, overrides);

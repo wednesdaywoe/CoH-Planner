@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Fortitude as base } from '@/data/generated/powersets/controller/secondary/empathy/fortitude';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/empathy/fortitude';
+import { Fortitude as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/empathy/fortitude';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/secondary/empathy/fortitude';
 
 export const Fortitude: Power = withOverrides(base, overrides);

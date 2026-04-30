@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SpinningStrike as base } from '@/data/generated/powersets/tanker/secondary/street-justice/spinning-strike';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/street-justice/spinning-strike';
+import { SpinningStrike as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/street-justice/spinning-strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/street-justice/spinning-strike';
 
 export const SpinningStrike: Power = withOverrides(base, overrides);

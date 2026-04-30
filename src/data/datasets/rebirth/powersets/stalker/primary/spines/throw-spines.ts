@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThrowSpines as base } from '@/data/generated/powersets/stalker/primary/spines/throw-spines';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/spines/throw-spines';
+import { ThrowSpines as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/spines/throw-spines';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/spines/throw-spines';
 
 export const ThrowSpines: Power = withOverrides(base, overrides);

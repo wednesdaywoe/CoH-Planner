@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EquipMercenary as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/equip-mercenary';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/equip-mercenary';
+import { EquipMercenary as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/mercenaries/equip-mercenary';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/mercenaries/equip-mercenary';
 
 export const EquipMercenary: Power = withOverrides(base, overrides);

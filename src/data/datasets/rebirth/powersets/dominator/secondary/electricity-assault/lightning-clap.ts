@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Zapp as base } from '@/data/generated/powersets/dominator/secondary/electricity-assault/lightning-clap';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/electricity-assault/lightning-clap';
+import { Zapp as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/electricity-assault/lightning-clap';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/electricity-assault/lightning-clap';
 
 export const Zapp: Power = withOverrides(base, overrides);

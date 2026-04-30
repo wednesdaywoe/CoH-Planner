@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PracticedBrawler as base } from '@/data/generated/powersets/stalker/secondary/super-reflexes/practiced-brawler';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/super-reflexes/practiced-brawler';
+import { PracticedBrawler as base } from '@/data/datasets/rebirth/generated/powersets/stalker/secondary/super-reflexes/practiced-brawler';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/secondary/super-reflexes/practiced-brawler';
 
 export const PracticedBrawler: Power = withOverrides(base, overrides);

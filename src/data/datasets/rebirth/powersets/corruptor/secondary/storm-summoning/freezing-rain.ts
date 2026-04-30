@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FreezingRain as base } from '@/data/generated/powersets/corruptor/secondary/storm-summoning/freezing-rain';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/storm-summoning/freezing-rain';
+import { FreezingRain as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/storm-summoning/freezing-rain';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/storm-summoning/freezing-rain';
 
 export const FreezingRain: Power = withOverrides(base, overrides);

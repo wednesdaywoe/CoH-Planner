@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkBlast as base } from '@/data/generated/powersets/dominator/secondary/dark-assault/dark-blast';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/dark-assault/dark-blast';
+import { DarkBlast as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/dark-assault/dark-blast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/dark-assault/dark-blast';
 
 export const DarkBlast: Power = withOverrides(base, overrides);

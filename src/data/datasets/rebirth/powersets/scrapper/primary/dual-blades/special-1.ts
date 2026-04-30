@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { VengefulSlice as base } from '@/data/generated/powersets/scrapper/primary/dual-blades/special-1';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/dual-blades/special-1';
+import { VengefulSlice as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/dual-blades/special-1';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/dual-blades/special-1';
 
 export const VengefulSlice: Power = withOverrides(base, overrides);

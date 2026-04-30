@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GeneticContamination as base } from '@/data/generated/powersets/brute/secondary/bio-armor/genetic-contamination';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/bio-armor/genetic-contamination';
+import { GeneticContamination as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/bio-armor/genetic-contamination';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/bio-armor/genetic-contamination';
 
 export const GeneticContamination: Power = withOverrides(base, overrides);

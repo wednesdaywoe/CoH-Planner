@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Dodge as base } from '@/data/generated/powersets/tanker/primary/super-reflexes/dodge';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/super-reflexes/dodge';
+import { Dodge as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/super-reflexes/dodge';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/super-reflexes/dodge';
 
 export const Dodge: Power = withOverrides(base, overrides);

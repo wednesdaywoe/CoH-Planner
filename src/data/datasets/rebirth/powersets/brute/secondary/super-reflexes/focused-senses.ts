@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FocusedSenses as base } from '@/data/generated/powersets/brute/secondary/super-reflexes/focused-senses';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/super-reflexes/focused-senses';
+import { FocusedSenses as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/super-reflexes/focused-senses';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/super-reflexes/focused-senses';
 
 export const FocusedSenses: Power = withOverrides(base, overrides);

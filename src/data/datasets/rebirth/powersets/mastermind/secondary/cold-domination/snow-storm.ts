@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SnowStorm as base } from '@/data/generated/powersets/mastermind/secondary/cold-domination/snow-storm';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/cold-domination/snow-storm';
+import { SnowStorm as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/cold-domination/snow-storm';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/cold-domination/snow-storm';
 
 export const SnowStorm: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TimeStop as base } from '@/data/generated/powersets/defender/primary/time-manipulation/time-stop';
-import { overrides } from '@/data/overrides/powersets/defender/primary/time-manipulation/time-stop';
+import { TimeStop as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/time-manipulation/time-stop';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/time-manipulation/time-stop';
 
 export const TimeStop: Power = withOverrides(base, overrides);

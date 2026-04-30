@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ProtonScatter as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/proton-scatter';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/proton-scatter';
+import { ProtonScatter as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-blast/proton-scatter';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-blast/proton-scatter';
 
 export const ProtonScatter: Power = withOverrides(base, overrides);

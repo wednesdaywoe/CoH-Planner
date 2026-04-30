@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PiercingBeam as base } from '@/data/generated/powersets/defender/secondary/beam-rifle/piercing-beam';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/beam-rifle/piercing-beam';
+import { PiercingBeam as base } from '@/data/datasets/rebirth/generated/powersets/defender/secondary/beam-rifle/piercing-beam';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/secondary/beam-rifle/piercing-beam';
 
 export const PiercingBeam: Power = withOverrides(base, overrides);

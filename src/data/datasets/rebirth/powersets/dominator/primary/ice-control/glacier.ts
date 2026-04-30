@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Glacier as base } from '@/data/generated/powersets/dominator/primary/ice-control/glacier';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/ice-control/glacier';
+import { Glacier as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/ice-control/glacier';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/ice-control/glacier';
 
 export const Glacier: Power = withOverrides(base, overrides);

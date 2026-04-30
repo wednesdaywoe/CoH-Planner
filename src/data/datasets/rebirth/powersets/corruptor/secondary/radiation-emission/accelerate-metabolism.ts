@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AccelerateMetabolism as base } from '@/data/generated/powersets/corruptor/secondary/radiation-emission/accelerate-metabolism';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/radiation-emission/accelerate-metabolism';
+import { AccelerateMetabolism as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/radiation-emission/accelerate-metabolism';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/radiation-emission/accelerate-metabolism';
 
 export const AccelerateMetabolism: Power = withOverrides(base, overrides);

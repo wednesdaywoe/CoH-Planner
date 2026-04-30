@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SynapticOverload as base } from '@/data/generated/powersets/controller/primary/electric-control/synaptic-overload';
-import { overrides } from '@/data/overrides/powersets/controller/primary/electric-control/synaptic-overload';
+import { SynapticOverload as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/electric-control/synaptic-overload';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/electric-control/synaptic-overload';
 
 export const SynapticOverload: Power = withOverrides(base, overrides);

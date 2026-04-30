@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { OnewiththeShield as base } from '@/data/generated/powersets/scrapper/secondary/shield-defense/one-with-the-shield';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/shield-defense/one-with-the-shield';
+import { OnewiththeShield as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/shield-defense/one-with-the-shield';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/shield-defense/one-with-the-shield';
 
 export const OnewiththeShield: Power = withOverrides(base, overrides);

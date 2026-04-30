@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeavyBurst as base } from '@/data/generated/powersets/dominator/secondary/military-assault/heavy-burst';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/military-assault/heavy-burst';
+import { HeavyBurst as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/military-assault/heavy-burst';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/military-assault/heavy-burst';
 
 export const HeavyBurst: Power = withOverrides(base, overrides);

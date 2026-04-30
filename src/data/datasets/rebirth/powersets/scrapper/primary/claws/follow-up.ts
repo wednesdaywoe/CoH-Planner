@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FollowUp as base } from '@/data/generated/powersets/scrapper/primary/claws/follow-up';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/claws/follow-up';
+import { FollowUp as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/claws/follow-up';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/claws/follow-up';
 
 export const FollowUp: Power = withOverrides(base, overrides);

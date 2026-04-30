@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MeltArmor as base } from '@/data/generated/powersets/defender/primary/thermal-radiation/melt-armor';
-import { overrides } from '@/data/overrides/powersets/defender/primary/thermal-radiation/melt-armor';
+import { MeltArmor as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/thermal-radiation/melt-armor';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/thermal-radiation/melt-armor';
 
 export const MeltArmor: Power = withOverrides(base, overrides);

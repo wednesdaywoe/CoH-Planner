@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Dodge as base } from '@/data/generated/powersets/brute/secondary/super-reflexes/dodge';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/super-reflexes/dodge';
+import { Dodge as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/super-reflexes/dodge';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/super-reflexes/dodge';
 
 export const Dodge: Power = withOverrides(base, overrides);

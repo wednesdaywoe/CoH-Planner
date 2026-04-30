@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { OmegaManeuver as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/omega-maneuver';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/omega-maneuver';
+import { OmegaManeuver as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/omega-maneuver';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/omega-maneuver';
 
 export const OmegaManeuver: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Taunt as base } from '@/data/generated/powersets/brute/primary/super-strength/taunt';
-import { overrides } from '@/data/overrides/powersets/brute/primary/super-strength/taunt';
+import { Taunt as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/super-strength/taunt';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/super-strength/taunt';
 
 export const Taunt: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PenetratingRay as base } from '@/data/generated/powersets/blaster/primary/beam-rifle/penetrating-ray';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/beam-rifle/penetrating-ray';
+import { PenetratingRay as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/beam-rifle/penetrating-ray';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/beam-rifle/penetrating-ray';
 
 export const PenetratingRay: Power = withOverrides(base, overrides);

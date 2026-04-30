@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WhirlingSword as base } from '@/data/generated/powersets/brute/primary/broad-sword/whirling-sword';
-import { overrides } from '@/data/overrides/powersets/brute/primary/broad-sword/whirling-sword';
+import { WhirlingSword as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/broad-sword/whirling-sword';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/broad-sword/whirling-sword';
 
 export const WhirlingSword: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Spin as base } from '@/data/generated/powersets/arachnos-widow/epic/widow-training/spin';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/widow-training/spin';
+import { Spin as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/widow-training/spin';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-widow/epic/widow-training/spin';
 
 export const Spin: Power = withOverrides(base, overrides);

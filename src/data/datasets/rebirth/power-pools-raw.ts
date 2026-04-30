@@ -7,7 +7,7 @@
  * To re-generate the base data:
  *   node scripts/convert-pool-powers.cjs --apply
  */
-import { applyAggregateOverrides } from './_layer';
+import { applyAggregateOverrides } from '@/data/_layer';
 import { POWER_POOLS_RAW as base } from './generated/power-pools';
 import { POWER_POOL_OVERRIDES } from './overrides/power-pools';
 

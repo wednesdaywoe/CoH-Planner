@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowMaul as base } from '@/data/generated/powersets/blaster/secondary/darkness-manipulation/shadow-maul';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/darkness-manipulation/shadow-maul';
+import { ShadowMaul as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/darkness-manipulation/shadow-maul';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/darkness-manipulation/shadow-maul';
 
 export const ShadowMaul: Power = withOverrides(base, overrides);

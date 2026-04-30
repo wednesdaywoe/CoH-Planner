@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Subdual as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/subdual';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/subdual';
+import { Subdual as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/mental-manipulation/subdual';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/mental-manipulation/subdual';
 
 export const Subdual: Power = withOverrides(base, overrides);

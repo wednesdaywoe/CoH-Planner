@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Levitate as base } from '@/data/generated/powersets/dominator/primary/mind-control/levitate';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/mind-control/levitate';
+import { Levitate as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/mind-control/levitate';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/mind-control/levitate';
 
 export const Levitate: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StrengthofWill as base } from '@/data/generated/powersets/scrapper/secondary/willpower/strength-of-will';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/willpower/strength-of-will';
+import { StrengthofWill as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/willpower/strength-of-will';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/willpower/strength-of-will';
 
 export const StrengthofWill: Power = withOverrides(base, overrides);

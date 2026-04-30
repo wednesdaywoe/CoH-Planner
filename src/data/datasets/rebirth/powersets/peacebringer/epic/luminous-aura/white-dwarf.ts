@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WhiteDwarf as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/white-dwarf';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/white-dwarf';
+import { WhiteDwarf as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-aura/white-dwarf';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-aura/white-dwarf';
 
 export const WhiteDwarf: Power = withOverrides(base, overrides);

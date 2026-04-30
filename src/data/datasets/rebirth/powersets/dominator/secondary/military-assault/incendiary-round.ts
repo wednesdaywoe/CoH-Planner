@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IncendiaryRound as base } from '@/data/generated/powersets/dominator/secondary/military-assault/incendiary-round';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/military-assault/incendiary-round';
+import { IncendiaryRound as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/military-assault/incendiary-round';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/military-assault/incendiary-round';
 
 export const IncendiaryRound: Power = withOverrides(base, overrides);

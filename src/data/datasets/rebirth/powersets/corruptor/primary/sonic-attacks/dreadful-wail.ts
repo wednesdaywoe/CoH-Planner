@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DreadfulWail as base } from '@/data/generated/powersets/corruptor/primary/sonic-attacks/dreadful-wail';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/sonic-attacks/dreadful-wail';
+import { DreadfulWail as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/sonic-attacks/dreadful-wail';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/sonic-attacks/dreadful-wail';
 
 export const DreadfulWail: Power = withOverrides(base, overrides);

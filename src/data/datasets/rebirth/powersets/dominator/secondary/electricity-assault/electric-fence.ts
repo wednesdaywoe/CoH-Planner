@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChargedBolts as base } from '@/data/generated/powersets/dominator/secondary/electricity-assault/electric-fence';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/electricity-assault/electric-fence';
+import { ChargedBolts as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/electricity-assault/electric-fence';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/electricity-assault/electric-fence';
 
 export const ChargedBolts: Power = withOverrides(base, overrides);

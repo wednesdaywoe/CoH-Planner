@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { KineticLance as base } from '@/data/generated/powersets/dominator/secondary/kinetic-assault/kinetic-lance';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/kinetic-assault/kinetic-lance';
+import { KineticLance as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/kinetic-assault/kinetic-lance';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/kinetic-assault/kinetic-lance';
 
 export const KineticLance: Power = withOverrides(base, overrides);

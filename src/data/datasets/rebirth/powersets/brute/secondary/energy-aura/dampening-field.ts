@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DampeningField as base } from '@/data/generated/powersets/brute/secondary/energy-aura/dampening-field';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/energy-aura/dampening-field';
+import { DampeningField as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/energy-aura/dampening-field';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/energy-aura/dampening-field';
 
 export const DampeningField: Power = withOverrides(base, overrides);

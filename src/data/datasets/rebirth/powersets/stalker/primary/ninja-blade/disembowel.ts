@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SoaringDragon as base } from '@/data/generated/powersets/stalker/primary/ninja-blade/disembowel';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/ninja-blade/disembowel';
+import { SoaringDragon as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/ninja-blade/disembowel';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/ninja-blade/disembowel';
 
 export const SoaringDragon: Power = withOverrides(base, overrides);

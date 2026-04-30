@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { OffensiveAdaptation as base } from '@/data/generated/powersets/scrapper/secondary/bio-armor/offensive-adaptation';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/bio-armor/offensive-adaptation';
+import { OffensiveAdaptation as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/bio-armor/offensive-adaptation';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/bio-armor/offensive-adaptation';
 
 export const OffensiveAdaptation: Power = withOverrides(base, overrides);

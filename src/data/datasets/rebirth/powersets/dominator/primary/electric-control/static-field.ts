@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StaticField as base } from '@/data/generated/powersets/dominator/primary/electric-control/static-field';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/electric-control/static-field';
+import { StaticField as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/electric-control/static-field';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/electric-control/static-field';
 
 export const StaticField: Power = withOverrides(base, overrides);

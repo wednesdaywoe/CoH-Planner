@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrushingUppercut as base } from '@/data/generated/powersets/brute/primary/street-justice/crushing-uppercut';
-import { overrides } from '@/data/overrides/powersets/brute/primary/street-justice/crushing-uppercut';
+import { CrushingUppercut as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/street-justice/crushing-uppercut';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/street-justice/crushing-uppercut';
 
 export const CrushingUppercut: Power = withOverrides(base, overrides);

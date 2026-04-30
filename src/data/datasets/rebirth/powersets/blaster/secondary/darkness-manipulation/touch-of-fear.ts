@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TouchoftheBeyond as base } from '@/data/generated/powersets/blaster/secondary/darkness-manipulation/touch-of-fear';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/darkness-manipulation/touch-of-fear';
+import { TouchoftheBeyond as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/darkness-manipulation/touch-of-fear';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/darkness-manipulation/touch-of-fear';
 
 export const TouchoftheBeyond: Power = withOverrides(base, overrides);

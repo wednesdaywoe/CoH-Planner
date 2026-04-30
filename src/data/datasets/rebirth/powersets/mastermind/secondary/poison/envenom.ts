@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Envenom as base } from '@/data/generated/powersets/mastermind/secondary/poison/envenom';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/poison/envenom';
+import { Envenom as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/poison/envenom';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/poison/envenom';
 
 export const Envenom: Power = withOverrides(base, overrides);

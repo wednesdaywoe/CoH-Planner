@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FlingThorns as base } from '@/data/generated/powersets/dominator/secondary/thorny-assault/fling-thorns';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/thorny-assault/fling-thorns';
+import { FlingThorns as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/thorny-assault/fling-thorns';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/thorny-assault/fling-thorns';
 
 export const FlingThorns: Power = withOverrides(base, overrides);

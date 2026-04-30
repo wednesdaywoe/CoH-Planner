@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GleamingBolt as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/gleaming-bolt';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/gleaming-bolt';
+import { GleamingBolt as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-blast/gleaming-bolt';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-blast/gleaming-bolt';
 
 export const GleamingBolt: Power = withOverrides(base, overrides);

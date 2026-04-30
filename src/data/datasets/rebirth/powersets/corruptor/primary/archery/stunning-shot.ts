@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StunningShot as base } from '@/data/generated/powersets/corruptor/primary/archery/stunning-shot';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/archery/stunning-shot';
+import { StunningShot as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/archery/stunning-shot';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/archery/stunning-shot';
 
 export const StunningShot: Power = withOverrides(base, overrides);

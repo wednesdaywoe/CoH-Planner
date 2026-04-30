@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WaterGolem as base } from '@/data/generated/powersets/controller/primary/water-control/water-golem';
-import { overrides } from '@/data/overrides/powersets/controller/primary/water-control/water-golem';
+import { WaterGolem as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/water-control/water-golem';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/water-control/water-golem';
 
 export const WaterGolem: Power = withOverrides(base, overrides);

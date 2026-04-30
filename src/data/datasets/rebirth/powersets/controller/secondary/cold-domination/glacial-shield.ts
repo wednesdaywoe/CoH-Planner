@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GlacialShield as base } from '@/data/generated/powersets/controller/secondary/cold-domination/glacial-shield';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/cold-domination/glacial-shield';
+import { GlacialShield as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/cold-domination/glacial-shield';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/secondary/cold-domination/glacial-shield';
 
 export const GlacialShield: Power = withOverrides(base, overrides);

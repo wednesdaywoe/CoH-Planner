@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { NeutronBomb as base } from '@/data/generated/powersets/corruptor/primary/radiation-blast/neutron-bomb';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/radiation-blast/neutron-bomb';
+import { NeutronBomb as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/radiation-blast/neutron-bomb';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/radiation-blast/neutron-bomb';
 
 export const NeutronBomb: Power = withOverrides(base, overrides);

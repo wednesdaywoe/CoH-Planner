@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SweepingStrike as base } from '@/data/generated/powersets/tanker/secondary/dual-blades/special-2';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/dual-blades/special-2';
+import { SweepingStrike as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/dual-blades/special-2';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/dual-blades/special-2';
 
 export const SweepingStrike: Power = withOverrides(base, overrides);

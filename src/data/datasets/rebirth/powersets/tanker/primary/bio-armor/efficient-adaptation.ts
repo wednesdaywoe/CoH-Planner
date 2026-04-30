@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EfficientAdaptation as base } from '@/data/generated/powersets/tanker/primary/bio-armor/efficient-adaptation';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/bio-armor/efficient-adaptation';
+import { EfficientAdaptation as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/bio-armor/efficient-adaptation';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/bio-armor/efficient-adaptation';
 
 export const EfficientAdaptation: Power = withOverrides(base, overrides);

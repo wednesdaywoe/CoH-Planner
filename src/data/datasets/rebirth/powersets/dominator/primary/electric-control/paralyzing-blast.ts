@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ParalyzingBlast as base } from '@/data/generated/powersets/dominator/primary/electric-control/paralyzing-blast';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/electric-control/paralyzing-blast';
+import { ParalyzingBlast as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/electric-control/paralyzing-blast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/electric-control/paralyzing-blast';
 
 export const ParalyzingBlast: Power = withOverrides(base, overrides);

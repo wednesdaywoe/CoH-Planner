@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Terrify as base } from '@/data/generated/powersets/dominator/primary/mind-control/terrify';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/mind-control/terrify';
+import { Terrify as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/mind-control/terrify';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/mind-control/terrify';
 
 export const Terrify: Power = withOverrides(base, overrides);

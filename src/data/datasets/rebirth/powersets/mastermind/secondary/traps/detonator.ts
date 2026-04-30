@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Detonator as base } from '@/data/generated/powersets/mastermind/secondary/traps/detonator';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/traps/detonator';
+import { Detonator as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/traps/detonator';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/traps/detonator';
 
 export const Detonator: Power = withOverrides(base, overrides);

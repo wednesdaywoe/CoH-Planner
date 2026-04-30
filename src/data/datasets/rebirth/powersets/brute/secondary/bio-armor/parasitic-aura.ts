@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ParasiticAura as base } from '@/data/generated/powersets/brute/secondary/bio-armor/parasitic-aura';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/bio-armor/parasitic-aura';
+import { ParasiticAura as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/bio-armor/parasitic-aura';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/bio-armor/parasitic-aura';
 
 export const ParasiticAura: Power = withOverrides(base, overrides);

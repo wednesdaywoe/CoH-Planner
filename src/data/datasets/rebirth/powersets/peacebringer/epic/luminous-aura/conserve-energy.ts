@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RenewEnergy as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/conserve-energy';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/conserve-energy';
+import { RenewEnergy as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-aura/conserve-energy';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-aura/conserve-energy';
 
 export const RenewEnergy: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShieldCharge as base } from '@/data/generated/powersets/brute/secondary/shield-defense/shield-charge';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/shield-defense/shield-charge';
+import { ShieldCharge as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/shield-defense/shield-charge';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/shield-defense/shield-charge';
 
 export const ShieldCharge: Power = withOverrides(base, overrides);

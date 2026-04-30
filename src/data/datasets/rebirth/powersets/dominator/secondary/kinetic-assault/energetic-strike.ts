@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergeticStrike as base } from '@/data/generated/powersets/dominator/secondary/kinetic-assault/energetic-strike';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/kinetic-assault/energetic-strike';
+import { EnergeticStrike as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/kinetic-assault/energetic-strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/kinetic-assault/energetic-strike';
 
 export const EnergeticStrike: Power = withOverrides(base, overrides);

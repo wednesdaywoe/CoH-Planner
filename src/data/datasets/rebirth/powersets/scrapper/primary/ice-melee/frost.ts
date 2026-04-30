@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Frost as base } from '@/data/generated/powersets/scrapper/primary/ice-melee/frost';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/ice-melee/frost';
+import { Frost as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/ice-melee/frost';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/ice-melee/frost';
 
 export const Frost: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThunderStrike as base } from '@/data/generated/powersets/scrapper/primary/electrical-melee/thunder-strike';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/electrical-melee/thunder-strike';
+import { ThunderStrike as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/electrical-melee/thunder-strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/electrical-melee/thunder-strike';
 
 export const ThunderStrike: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FireShield as base } from '@/data/generated/powersets/scrapper/secondary/fiery-aura/fire-shield';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/fiery-aura/fire-shield';
+import { FireShield as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/fiery-aura/fire-shield';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/fiery-aura/fire-shield';
 
 export const FireShield: Power = withOverrides(base, overrides);

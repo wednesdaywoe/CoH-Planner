@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PoisonousRay as base } from '@/data/generated/powersets/arachnos-soldier/epic/bane-spider-soldier/poisonous-ray';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/bane-spider-soldier/poisonous-ray';
+import { PoisonousRay as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/bane-spider-soldier/poisonous-ray';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-soldier/epic/bane-spider-soldier/poisonous-ray';
 
 export const PoisonousRay: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LightningField as base } from '@/data/generated/powersets/brute/secondary/electric-armor/lightning-field';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/electric-armor/lightning-field';
+import { LightningField as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/electric-armor/lightning-field';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/electric-armor/lightning-field';
 
 export const LightningField: Power = withOverrides(base, overrides);

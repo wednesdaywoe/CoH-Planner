@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DimensionShift as base } from '@/data/generated/powersets/controller/primary/gravity-control/dimension-shift';
-import { overrides } from '@/data/overrides/powersets/controller/primary/gravity-control/dimension-shift';
+import { DimensionShift as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/gravity-control/dimension-shift';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/gravity-control/dimension-shift';
 
 export const DimensionShift: Power = withOverrides(base, overrides);

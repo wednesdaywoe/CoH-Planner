@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Starfall as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/quantum-acceleration';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/quantum-acceleration';
+import { Starfall as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-aura/quantum-acceleration';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-aura/quantum-acceleration';
 
 export const Starfall: Power = withOverrides(base, overrides);

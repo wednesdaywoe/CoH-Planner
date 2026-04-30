@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChronoShift as base } from '@/data/generated/powersets/controller/secondary/time-manipulation/chrono-shift';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/time-manipulation/chrono-shift';
+import { ChronoShift as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/time-manipulation/chrono-shift';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/secondary/time-manipulation/chrono-shift';
 
 export const ChronoShift: Power = withOverrides(base, overrides);

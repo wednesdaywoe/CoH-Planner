@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DevastatingBlow as base } from '@/data/generated/powersets/scrapper/primary/radiation-melee/devastating-blow';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/radiation-melee/devastating-blow';
+import { DevastatingBlow as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/radiation-melee/devastating-blow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/radiation-melee/devastating-blow';
 
 export const DevastatingBlow: Power = withOverrides(base, overrides);

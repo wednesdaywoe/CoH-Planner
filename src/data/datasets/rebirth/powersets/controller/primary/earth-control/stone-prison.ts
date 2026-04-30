@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StonePrison as base } from '@/data/generated/powersets/controller/primary/earth-control/stone-prison';
-import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/stone-prison';
+import { StonePrison as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/earth-control/stone-prison';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/earth-control/stone-prison';
 
 export const StonePrison: Power = withOverrides(base, overrides);

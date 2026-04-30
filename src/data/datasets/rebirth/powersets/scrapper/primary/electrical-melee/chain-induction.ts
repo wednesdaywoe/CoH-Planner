@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChainInduction as base } from '@/data/generated/powersets/scrapper/primary/electrical-melee/chain-induction';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/electrical-melee/chain-induction';
+import { ChainInduction as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/electrical-melee/chain-induction';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/electrical-melee/chain-induction';
 
 export const ChainInduction: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TarPatch as base } from '@/data/generated/powersets/corruptor/secondary/dark-miasma/tar-patch';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/dark-miasma/tar-patch';
+import { TarPatch as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/dark-miasma/tar-patch';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/dark-miasma/tar-patch';
 
 export const TarPatch: Power = withOverrides(base, overrides);

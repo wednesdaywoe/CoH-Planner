@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Singularity as base } from '@/data/generated/powersets/dominator/primary/gravity-control/singularity';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/gravity-control/singularity';
+import { Singularity as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/gravity-control/singularity';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/gravity-control/singularity';
 
 export const Singularity: Power = withOverrides(base, overrides);

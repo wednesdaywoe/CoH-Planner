@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EquipThugs as base } from '@/data/generated/powersets/mastermind/primary/thugs/equip-thugs';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/thugs/equip-thugs';
+import { EquipThugs as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/thugs/equip-thugs';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/thugs/equip-thugs';
 
 export const EquipThugs: Power = withOverrides(base, overrides);

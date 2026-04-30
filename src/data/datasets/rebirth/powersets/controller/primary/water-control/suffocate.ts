@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Suffocate as base } from '@/data/generated/powersets/controller/primary/water-control/suffocate';
-import { overrides } from '@/data/overrides/powersets/controller/primary/water-control/suffocate';
+import { Suffocate as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/water-control/suffocate';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/water-control/suffocate';
 
 export const Suffocate: Power = withOverrides(base, overrides);

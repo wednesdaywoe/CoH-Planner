@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WhirlingHands as base } from '@/data/generated/powersets/dominator/secondary/energy-assault/whirling-hands';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/energy-assault/whirling-hands';
+import { WhirlingHands as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/energy-assault/whirling-hands';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/energy-assault/whirling-hands';
 
 export const WhirlingHands: Power = withOverrides(base, overrides);

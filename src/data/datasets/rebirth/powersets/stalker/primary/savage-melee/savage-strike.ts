@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SavageStrike as base } from '@/data/generated/powersets/stalker/primary/savage-melee/savage-strike';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/savage-melee/savage-strike';
+import { SavageStrike as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/savage-melee/savage-strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/savage-melee/savage-strike';
 
 export const SavageStrike: Power = withOverrides(base, overrides);

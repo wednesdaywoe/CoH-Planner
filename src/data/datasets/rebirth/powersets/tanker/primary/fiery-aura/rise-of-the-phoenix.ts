@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RiseofthePhoenix as base } from '@/data/generated/powersets/tanker/primary/fiery-aura/rise-of-the-phoenix';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/fiery-aura/rise-of-the-phoenix';
+import { RiseofthePhoenix as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/fiery-aura/rise-of-the-phoenix';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/fiery-aura/rise-of-the-phoenix';
 
 export const RiseofthePhoenix: Power = withOverrides(base, overrides);

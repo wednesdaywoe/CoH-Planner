@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ParticleShielding as base } from '@/data/generated/powersets/tanker/primary/radiation-armor/particle-shielding';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/radiation-armor/particle-shielding';
+import { ParticleShielding as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/radiation-armor/particle-shielding';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/radiation-armor/particle-shielding';
 
 export const ParticleShielding: Power = withOverrides(base, overrides);

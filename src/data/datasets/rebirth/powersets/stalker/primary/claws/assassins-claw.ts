@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AssassinsClaw as base } from '@/data/generated/powersets/stalker/primary/claws/assassins-claw';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/claws/assassins-claw';
+import { AssassinsClaw as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/claws/assassins-claw';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/claws/assassins-claw';
 
 export const AssassinsClaw: Power = withOverrides(base, overrides);

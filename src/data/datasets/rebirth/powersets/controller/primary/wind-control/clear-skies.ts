@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ClearSkies as base } from '@/data/generated/powersets/controller/primary/wind-control/clear-skies';
-import { overrides } from '@/data/overrides/powersets/controller/primary/wind-control/clear-skies';
+import { ClearSkies as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/wind-control/clear-skies';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/wind-control/clear-skies';
 
 export const ClearSkies: Power = withOverrides(base, overrides);

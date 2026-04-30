@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Char as base } from '@/data/generated/powersets/dominator/primary/fire-control/char';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/fire-control/char';
+import { Char as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/fire-control/char';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/fire-control/char';
 
 export const Char: Power = withOverrides(base, overrides);

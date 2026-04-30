@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TwilightGrasp as base } from '@/data/generated/powersets/defender/primary/dark-miasma/twilight-grasp';
-import { overrides } from '@/data/overrides/powersets/defender/primary/dark-miasma/twilight-grasp';
+import { TwilightGrasp as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/dark-miasma/twilight-grasp';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/dark-miasma/twilight-grasp';
 
 export const TwilightGrasp: Power = withOverrides(base, overrides);

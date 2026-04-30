@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MaceBeamBlast as base } from '@/data/generated/powersets/arachnos-soldier/epic/bane-spider-soldier/mace-beam-blast';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/bane-spider-soldier/mace-beam-blast';
+import { MaceBeamBlast as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/bane-spider-soldier/mace-beam-blast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-soldier/epic/bane-spider-soldier/mace-beam-blast';
 
 export const MaceBeamBlast: Power = withOverrides(base, overrides);

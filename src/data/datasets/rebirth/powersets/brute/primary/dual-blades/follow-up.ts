@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BlindingFeint as base } from '@/data/generated/powersets/brute/primary/dual-blades/follow-up';
-import { overrides } from '@/data/overrides/powersets/brute/primary/dual-blades/follow-up';
+import { BlindingFeint as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/dual-blades/follow-up';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/dual-blades/follow-up';
 
 export const BlindingFeint: Power = withOverrides(base, overrides);

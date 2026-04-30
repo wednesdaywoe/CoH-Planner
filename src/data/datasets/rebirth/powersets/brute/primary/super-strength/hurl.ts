@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Hurl as base } from '@/data/generated/powersets/brute/primary/super-strength/hurl';
-import { overrides } from '@/data/overrides/powersets/brute/primary/super-strength/hurl';
+import { Hurl as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/super-strength/hurl';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/super-strength/hurl';
 
 export const Hurl: Power = withOverrides(base, overrides);

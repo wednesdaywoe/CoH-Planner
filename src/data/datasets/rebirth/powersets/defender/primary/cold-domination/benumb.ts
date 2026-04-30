@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Benumb as base } from '@/data/generated/powersets/defender/primary/cold-domination/benumb';
-import { overrides } from '@/data/overrides/powersets/defender/primary/cold-domination/benumb';
+import { Benumb as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/cold-domination/benumb';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/cold-domination/benumb';
 
 export const Benumb: Power = withOverrides(base, overrides);

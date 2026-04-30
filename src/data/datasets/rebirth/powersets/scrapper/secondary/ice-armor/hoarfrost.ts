@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Hoarfrost as base } from '@/data/generated/powersets/scrapper/secondary/ice-armor/hoarfrost';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ice-armor/hoarfrost';
+import { Hoarfrost as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/ice-armor/hoarfrost';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/ice-armor/hoarfrost';
 
 export const Hoarfrost: Power = withOverrides(base, overrides);

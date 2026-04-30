@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StaticShield as base } from '@/data/generated/powersets/brute/secondary/electric-armor/static-shield';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/electric-armor/static-shield';
+import { StaticShield as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/electric-armor/static-shield';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/electric-armor/static-shield';
 
 export const StaticShield: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Reconstruction as base } from '@/data/generated/powersets/stalker/secondary/willpower/reconstruction';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/willpower/reconstruction';
+import { Reconstruction as base } from '@/data/datasets/rebirth/generated/powersets/stalker/secondary/willpower/reconstruction';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/secondary/willpower/reconstruction';
 
 export const Reconstruction: Power = withOverrides(base, overrides);

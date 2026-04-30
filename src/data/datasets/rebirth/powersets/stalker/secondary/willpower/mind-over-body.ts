@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MindOverBody as base } from '@/data/generated/powersets/stalker/secondary/willpower/mind-over-body';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/willpower/mind-over-body';
+import { MindOverBody as base } from '@/data/datasets/rebirth/generated/powersets/stalker/secondary/willpower/mind-over-body';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/secondary/willpower/mind-over-body';
 
 export const MindOverBody: Power = withOverrides(base, overrides);

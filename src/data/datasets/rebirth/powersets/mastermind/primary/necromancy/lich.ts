@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Lich as base } from '@/data/generated/powersets/mastermind/primary/necromancy/lich';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/necromancy/lich';
+import { Lich as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/necromancy/lich';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/necromancy/lich';
 
 export const Lich: Power = withOverrides(base, overrides);

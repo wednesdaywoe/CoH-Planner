@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FastHealing as base } from '@/data/generated/powersets/brute/secondary/regeneration/fast-healing';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/regeneration/fast-healing';
+import { FastHealing as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/regeneration/fast-healing';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/regeneration/fast-healing';
 
 export const FastHealing: Power = withOverrides(base, overrides);

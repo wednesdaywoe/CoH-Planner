@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HurlBoulder as base } from '@/data/generated/powersets/brute/primary/stone-melee/hurl-boulder';
-import { overrides } from '@/data/overrides/powersets/brute/primary/stone-melee/hurl-boulder';
+import { HurlBoulder as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/stone-melee/hurl-boulder';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/stone-melee/hurl-boulder';
 
 export const HurlBoulder: Power = withOverrides(base, overrides);

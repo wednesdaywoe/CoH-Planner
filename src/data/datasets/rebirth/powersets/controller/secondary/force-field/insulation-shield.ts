@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { InsulationShield as base } from '@/data/generated/powersets/controller/secondary/force-field/insulation-shield';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/force-field/insulation-shield';
+import { InsulationShield as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/force-field/insulation-shield';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/secondary/force-field/insulation-shield';
 
 export const InsulationShield: Power = withOverrides(base, overrides);

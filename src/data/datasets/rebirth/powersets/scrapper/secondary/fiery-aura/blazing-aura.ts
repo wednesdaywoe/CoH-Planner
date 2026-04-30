@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BlazingAura as base } from '@/data/generated/powersets/scrapper/secondary/fiery-aura/blazing-aura';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/fiery-aura/blazing-aura';
+import { BlazingAura as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/fiery-aura/blazing-aura';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/fiery-aura/blazing-aura';
 
 export const BlazingAura: Power = withOverrides(base, overrides);

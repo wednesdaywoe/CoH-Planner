@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TelekineticBlast as base } from '@/data/generated/powersets/blaster/primary/psychic-blast/telekinetic-blast';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/psychic-blast/telekinetic-blast';
+import { TelekineticBlast as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/psychic-blast/telekinetic-blast';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/psychic-blast/telekinetic-blast';
 
 export const TelekineticBlast: Power = withOverrides(base, overrides);

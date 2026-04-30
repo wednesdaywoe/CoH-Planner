@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Suppression as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/suppression';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/suppression';
+import { Suppression as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/suppression';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/suppression';
 
 export const Suppression: Power = withOverrides(base, overrides);

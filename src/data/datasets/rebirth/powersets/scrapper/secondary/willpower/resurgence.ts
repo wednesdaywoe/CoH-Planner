@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Resurgence as base } from '@/data/generated/powersets/scrapper/secondary/willpower/resurgence';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/willpower/resurgence';
+import { Resurgence as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/willpower/resurgence';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/willpower/resurgence';
 
 export const Resurgence: Power = withOverrides(base, overrides);

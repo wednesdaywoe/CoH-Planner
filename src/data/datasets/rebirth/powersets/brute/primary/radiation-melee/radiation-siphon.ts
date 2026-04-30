@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RadiationSiphon as base } from '@/data/generated/powersets/brute/primary/radiation-melee/radiation-siphon';
-import { overrides } from '@/data/overrides/powersets/brute/primary/radiation-melee/radiation-siphon';
+import { RadiationSiphon as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/radiation-melee/radiation-siphon';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/radiation-melee/radiation-siphon';
 
 export const RadiationSiphon: Power = withOverrides(base, overrides);

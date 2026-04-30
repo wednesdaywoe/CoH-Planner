@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeavyBlow as base } from '@/data/generated/powersets/tanker/secondary/street-justice/heavy-blow';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/street-justice/heavy-blow';
+import { HeavyBlow as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/street-justice/heavy-blow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/street-justice/heavy-blow';
 
 export const HeavyBlow: Power = withOverrides(base, overrides);

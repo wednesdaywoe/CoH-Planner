@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HotFeet as base } from '@/data/generated/powersets/dominator/primary/fire-control/hot-feet';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/fire-control/hot-feet';
+import { HotFeet as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/fire-control/hot-feet';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/fire-control/hot-feet';
 
 export const HotFeet: Power = withOverrides(base, overrides);

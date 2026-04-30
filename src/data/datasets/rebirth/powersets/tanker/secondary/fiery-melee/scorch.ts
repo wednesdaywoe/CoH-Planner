@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Scorch as base } from '@/data/generated/powersets/tanker/secondary/fiery-melee/scorch';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/fiery-melee/scorch';
+import { Scorch as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/fiery-melee/scorch';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/fiery-melee/scorch';
 
 export const Scorch: Power = withOverrides(base, overrides);

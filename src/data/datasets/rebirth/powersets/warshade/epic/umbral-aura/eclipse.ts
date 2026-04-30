@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Eclipse as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/eclipse';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/eclipse';
+import { Eclipse as base } from '@/data/datasets/rebirth/generated/powersets/warshade/epic/umbral-aura/eclipse';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/warshade/epic/umbral-aura/eclipse';
 
 export const Eclipse: Power = withOverrides(base, overrides);

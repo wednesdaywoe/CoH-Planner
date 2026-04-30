@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SerpentsReach as base } from '@/data/generated/powersets/stalker/primary/staff-fighting/serpents-reach';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/staff-fighting/serpents-reach';
+import { SerpentsReach as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/staff-fighting/serpents-reach';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/staff-fighting/serpents-reach';
 
 export const SerpentsReach: Power = withOverrides(base, overrides);

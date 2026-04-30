@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LightForm as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/light-form';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/light-form';
+import { LightForm as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-aura/light-form';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-aura/light-form';
 
 export const LightForm: Power = withOverrides(base, overrides);

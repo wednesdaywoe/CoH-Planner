@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MurkyCloud as base } from '@/data/generated/powersets/tanker/primary/dark-armor/murky-cloud';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/dark-armor/murky-cloud';
+import { MurkyCloud as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/dark-armor/murky-cloud';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/dark-armor/murky-cloud';
 
 export const MurkyCloud: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrystalArmor as base } from '@/data/generated/powersets/tanker/primary/stone-armor/crystal-armor';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/stone-armor/crystal-armor';
+import { CrystalArmor as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/stone-armor/crystal-armor';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/stone-armor/crystal-armor';
 
 export const CrystalArmor: Power = withOverrides(base, overrides);

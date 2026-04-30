@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Slug as base } from '@/data/generated/powersets/blaster/primary/assault-rifle/tranquilizer-dart';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/assault-rifle/tranquilizer-dart';
+import { Slug as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/assault-rifle/tranquilizer-dart';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/assault-rifle/tranquilizer-dart';
 
 export const Slug: Power = withOverrides(base, overrides);

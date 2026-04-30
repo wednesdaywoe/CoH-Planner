@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThermalShield as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/thermal-shield';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/thermal-shield';
+import { ThermalShield as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-aura/thermal-shield';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-aura/thermal-shield';
 
 export const ThermalShield: Power = withOverrides(base, overrides);

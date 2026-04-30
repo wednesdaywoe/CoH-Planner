@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Lunge as base } from '@/data/generated/powersets/arachnos-widow/epic/widow-training/strike';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/widow-training/strike';
+import { Lunge as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/widow-training/strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-widow/epic/widow-training/strike';
 
 export const Lunge: Power = withOverrides(base, overrides);

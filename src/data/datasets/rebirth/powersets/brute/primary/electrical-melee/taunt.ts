@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Taunt as base } from '@/data/generated/powersets/brute/primary/electrical-melee/taunt';
-import { overrides } from '@/data/overrides/powersets/brute/primary/electrical-melee/taunt';
+import { Taunt as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/electrical-melee/taunt';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/electrical-melee/taunt';
 
 export const Taunt: Power = withOverrides(base, overrides);

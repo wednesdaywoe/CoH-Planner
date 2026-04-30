@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GravimetricSnare as base } from '@/data/generated/powersets/warshade/epic/umbral-blast/gravimetric-snare';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-blast/gravimetric-snare';
+import { GravimetricSnare as base } from '@/data/datasets/rebirth/generated/powersets/warshade/epic/umbral-blast/gravimetric-snare';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/warshade/epic/umbral-blast/gravimetric-snare';
 
 export const GravimetricSnare: Power = withOverrides(base, overrides);

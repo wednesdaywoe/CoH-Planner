@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WhirlingMace as base } from '@/data/generated/powersets/brute/primary/war-mace/whirling-mace';
-import { overrides } from '@/data/overrides/powersets/brute/primary/war-mace/whirling-mace';
+import { WhirlingMace as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/war-mace/whirling-mace';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/war-mace/whirling-mace';
 
 export const WhirlingMace: Power = withOverrides(base, overrides);

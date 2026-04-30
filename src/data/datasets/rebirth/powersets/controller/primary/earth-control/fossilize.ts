@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Fossilize as base } from '@/data/generated/powersets/controller/primary/earth-control/fossilize';
-import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/fossilize';
+import { Fossilize as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/earth-control/fossilize';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/earth-control/fossilize';
 
 export const Fossilize: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MidnightGrasp as base } from '@/data/generated/powersets/blaster/secondary/darkness-manipulation/midnight-grasp';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/darkness-manipulation/midnight-grasp';
+import { MidnightGrasp as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/darkness-manipulation/midnight-grasp';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/darkness-manipulation/midnight-grasp';
 
 export const MidnightGrasp: Power = withOverrides(base, overrides);

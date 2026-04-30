@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FearsomeStare as base } from '@/data/generated/powersets/mastermind/secondary/dark-miasma/fearsome-stare';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/dark-miasma/fearsome-stare';
+import { FearsomeStare as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/dark-miasma/fearsome-stare';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/dark-miasma/fearsome-stare';
 
 export const FearsomeStare: Power = withOverrides(base, overrides);

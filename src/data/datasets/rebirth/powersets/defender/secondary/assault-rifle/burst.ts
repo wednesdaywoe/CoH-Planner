@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Burst as base } from '@/data/generated/powersets/defender/secondary/assault-rifle/burst';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/assault-rifle/burst';
+import { Burst as base } from '@/data/datasets/rebirth/generated/powersets/defender/secondary/assault-rifle/burst';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/secondary/assault-rifle/burst';
 
 export const Burst: Power = withOverrides(base, overrides);

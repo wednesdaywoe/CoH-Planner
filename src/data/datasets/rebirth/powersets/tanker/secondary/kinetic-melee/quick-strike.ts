@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { QuickStrike as base } from '@/data/generated/powersets/tanker/secondary/kinetic-melee/quick-strike';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/kinetic-melee/quick-strike';
+import { QuickStrike as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/kinetic-melee/quick-strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/kinetic-melee/quick-strike';
 
 export const QuickStrike: Power = withOverrides(base, overrides);

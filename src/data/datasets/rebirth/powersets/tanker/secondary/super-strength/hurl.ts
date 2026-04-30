@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Hurl as base } from '@/data/generated/powersets/tanker/secondary/super-strength/hurl';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/super-strength/hurl';
+import { Hurl as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/super-strength/hurl';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/super-strength/hurl';
 
 export const Hurl: Power = withOverrides(base, overrides);

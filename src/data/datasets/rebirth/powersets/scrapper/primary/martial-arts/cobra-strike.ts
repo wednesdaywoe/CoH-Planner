@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CobraStrike as base } from '@/data/generated/powersets/scrapper/primary/martial-arts/cobra-strike';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/martial-arts/cobra-strike';
+import { CobraStrike as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/martial-arts/cobra-strike';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/martial-arts/cobra-strike';
 
 export const CobraStrike: Power = withOverrides(base, overrides);

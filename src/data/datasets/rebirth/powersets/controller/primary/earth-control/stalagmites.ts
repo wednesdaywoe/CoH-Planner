@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Stalagmites as base } from '@/data/generated/powersets/controller/primary/earth-control/stalagmites';
-import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/stalagmites';
+import { Stalagmites as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/earth-control/stalagmites';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/earth-control/stalagmites';
 
 export const Stalagmites: Power = withOverrides(base, overrides);

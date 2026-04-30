@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Fault as base } from '@/data/generated/powersets/brute/primary/stone-melee/fault';
-import { overrides } from '@/data/overrides/powersets/brute/primary/stone-melee/fault';
+import { Fault as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/stone-melee/fault';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/stone-melee/fault';
 
 export const Fault: Power = withOverrides(base, overrides);

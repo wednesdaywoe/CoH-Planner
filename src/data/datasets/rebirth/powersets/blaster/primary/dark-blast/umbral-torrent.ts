@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { UmbralTorrent as base } from '@/data/generated/powersets/blaster/primary/dark-blast/umbral-torrent';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/dark-blast/umbral-torrent';
+import { UmbralTorrent as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/dark-blast/umbral-torrent';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/dark-blast/umbral-torrent';
 
 export const UmbralTorrent: Power = withOverrides(base, overrides);

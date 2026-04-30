@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SeismicSmash as base } from '@/data/generated/powersets/tanker/secondary/stone-melee/seismic-smash';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/stone-melee/seismic-smash';
+import { SeismicSmash as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/stone-melee/seismic-smash';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/stone-melee/seismic-smash';
 
 export const SeismicSmash: Power = withOverrides(base, overrides);

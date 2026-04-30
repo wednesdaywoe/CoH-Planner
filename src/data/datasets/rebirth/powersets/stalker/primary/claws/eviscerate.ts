@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Eviscerate as base } from '@/data/generated/powersets/stalker/primary/claws/eviscerate';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/claws/eviscerate';
+import { Eviscerate as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/claws/eviscerate';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/claws/eviscerate';
 
 export const Eviscerate: Power = withOverrides(base, overrides);

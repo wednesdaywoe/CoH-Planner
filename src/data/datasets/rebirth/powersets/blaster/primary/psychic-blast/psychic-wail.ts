@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PsychicWail as base } from '@/data/generated/powersets/blaster/primary/psychic-blast/psychic-wail';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/psychic-blast/psychic-wail';
+import { PsychicWail as base } from '@/data/datasets/rebirth/generated/powersets/blaster/primary/psychic-blast/psychic-wail';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/primary/psychic-blast/psychic-wail';
 
 export const PsychicWail: Power = withOverrides(base, overrides);

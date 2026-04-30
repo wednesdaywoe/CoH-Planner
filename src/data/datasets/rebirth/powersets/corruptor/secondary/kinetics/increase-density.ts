@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IncreaseDensity as base } from '@/data/generated/powersets/corruptor/secondary/kinetics/increase-density';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/kinetics/increase-density';
+import { IncreaseDensity as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/secondary/kinetics/increase-density';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/secondary/kinetics/increase-density';
 
 export const IncreaseDensity: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HowlingTwilight as base } from '@/data/generated/powersets/defender/primary/dark-miasma/howling-twilight';
-import { overrides } from '@/data/overrides/powersets/defender/primary/dark-miasma/howling-twilight';
+import { HowlingTwilight as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/dark-miasma/howling-twilight';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/dark-miasma/howling-twilight';
 
 export const HowlingTwilight: Power = withOverrides(base, overrides);

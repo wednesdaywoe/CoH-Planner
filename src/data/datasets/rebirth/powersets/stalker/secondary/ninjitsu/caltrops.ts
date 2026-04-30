@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Caltrops as base } from '@/data/generated/powersets/stalker/secondary/ninjitsu/caltrops';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/ninjitsu/caltrops';
+import { Caltrops as base } from '@/data/datasets/rebirth/generated/powersets/stalker/secondary/ninjitsu/caltrops';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/secondary/ninjitsu/caltrops';
 
 export const Caltrops: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Reconstruction as base } from '@/data/generated/powersets/brute/secondary/regeneration/reconstruction';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/regeneration/reconstruction';
+import { Reconstruction as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/regeneration/reconstruction';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/regeneration/reconstruction';
 
 export const Reconstruction: Power = withOverrides(base, overrides);

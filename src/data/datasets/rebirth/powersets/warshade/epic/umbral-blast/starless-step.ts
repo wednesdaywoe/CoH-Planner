@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ExtinguishLight as base } from '@/data/generated/powersets/warshade/epic/umbral-blast/starless-step';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-blast/starless-step';
+import { ExtinguishLight as base } from '@/data/datasets/rebirth/generated/powersets/warshade/epic/umbral-blast/starless-step';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/warshade/epic/umbral-blast/starless-step';
 
 export const ExtinguishLight: Power = withOverrides(base, overrides);

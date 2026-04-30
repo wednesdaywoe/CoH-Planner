@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Slash as base } from '@/data/generated/powersets/brute/primary/broad-sword/slash';
-import { overrides } from '@/data/overrides/powersets/brute/primary/broad-sword/slash';
+import { Slash as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/broad-sword/slash';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/broad-sword/slash';
 
 export const Slash: Power = withOverrides(base, overrides);

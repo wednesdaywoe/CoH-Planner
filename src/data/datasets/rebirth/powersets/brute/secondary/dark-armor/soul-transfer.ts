@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SoulTransfer as base } from '@/data/generated/powersets/brute/secondary/dark-armor/soul-transfer';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/dark-armor/soul-transfer';
+import { SoulTransfer as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/dark-armor/soul-transfer';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/dark-armor/soul-transfer';
 
 export const SoulTransfer: Power = withOverrides(base, overrides);

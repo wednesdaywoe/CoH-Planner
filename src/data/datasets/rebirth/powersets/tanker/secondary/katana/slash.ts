@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GamblersCut as base } from '@/data/generated/powersets/tanker/secondary/katana/slash';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/katana/slash';
+import { GamblersCut as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/katana/slash';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/katana/slash';
 
 export const GamblersCut: Power = withOverrides(base, overrides);

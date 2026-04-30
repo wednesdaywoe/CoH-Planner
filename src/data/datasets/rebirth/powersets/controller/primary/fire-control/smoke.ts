@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Smoke as base } from '@/data/generated/powersets/controller/primary/fire-control/smoke';
-import { overrides } from '@/data/overrides/powersets/controller/primary/fire-control/smoke';
+import { Smoke as base } from '@/data/datasets/rebirth/generated/powersets/controller/primary/fire-control/smoke';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/primary/fire-control/smoke';
 
 export const Smoke: Power = withOverrides(base, overrides);

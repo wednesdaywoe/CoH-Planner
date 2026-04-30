@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChemicalAmmunition as base } from '@/data/generated/powersets/corruptor/primary/dual-pistols/chemical-ammunition';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/dual-pistols/chemical-ammunition';
+import { ChemicalAmmunition as base } from '@/data/datasets/rebirth/generated/powersets/corruptor/primary/dual-pistols/chemical-ammunition';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/corruptor/primary/dual-pistols/chemical-ammunition';
 
 export const ChemicalAmmunition: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StoneFist as base } from '@/data/generated/powersets/brute/primary/stone-melee/stone-fist';
-import { overrides } from '@/data/overrides/powersets/brute/primary/stone-melee/stone-fist';
+import { StoneFist as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/stone-melee/stone-fist';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/stone-melee/stone-fist';
 
 export const StoneFist: Power = withOverrides(base, overrides);

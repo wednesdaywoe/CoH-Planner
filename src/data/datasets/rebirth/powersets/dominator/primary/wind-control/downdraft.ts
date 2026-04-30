@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Downdraft as base } from '@/data/generated/powersets/dominator/primary/wind-control/downdraft';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/wind-control/downdraft';
+import { Downdraft as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/wind-control/downdraft';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/wind-control/downdraft';
 
 export const Downdraft: Power = withOverrides(base, overrides);

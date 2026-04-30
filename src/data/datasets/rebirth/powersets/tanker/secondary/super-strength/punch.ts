@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Punch as base } from '@/data/generated/powersets/tanker/secondary/super-strength/punch';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/super-strength/punch';
+import { Punch as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/super-strength/punch';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/super-strength/punch';
 
 export const Punch: Power = withOverrides(base, overrides);

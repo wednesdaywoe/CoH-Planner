@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Dominate as base } from '@/data/generated/powersets/dominator/primary/mind-control/dominate';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/mind-control/dominate';
+import { Dominate as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/mind-control/dominate';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/mind-control/dominate';
 
 export const Dominate: Power = withOverrides(base, overrides);

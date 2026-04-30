@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ArcticFog as base } from '@/data/generated/powersets/mastermind/secondary/cold-domination/arctic-fog';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/cold-domination/arctic-fog';
+import { ArcticFog as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/cold-domination/arctic-fog';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/cold-domination/arctic-fog';
 
 export const ArcticFog: Power = withOverrides(base, overrides);

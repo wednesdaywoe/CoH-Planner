@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BodyBlow as base } from '@/data/generated/powersets/tanker/secondary/kinetic-melee/body-blow';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/kinetic-melee/body-blow';
+import { BodyBlow as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/kinetic-melee/body-blow';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/kinetic-melee/body-blow';
 
 export const BodyBlow: Power = withOverrides(base, overrides);

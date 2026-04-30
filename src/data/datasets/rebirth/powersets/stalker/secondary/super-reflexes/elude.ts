@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Elude as base } from '@/data/generated/powersets/stalker/secondary/super-reflexes/elude';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/super-reflexes/elude';
+import { Elude as base } from '@/data/datasets/rebirth/generated/powersets/stalker/secondary/super-reflexes/elude';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/secondary/super-reflexes/elude';
 
 export const Elude: Power = withOverrides(base, overrides);

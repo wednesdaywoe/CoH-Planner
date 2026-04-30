@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LightningStorm as base } from '@/data/generated/powersets/mastermind/secondary/storm-summoning/lightning-storm';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/storm-summoning/lightning-storm';
+import { LightningStorm as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/secondary/storm-summoning/lightning-storm';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/secondary/storm-summoning/lightning-storm';
 
 export const LightningStorm: Power = withOverrides(base, overrides);

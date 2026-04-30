@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChargedShot as base } from '@/data/generated/powersets/defender/secondary/beam-rifle/charged-shot';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/beam-rifle/charged-shot';
+import { ChargedShot as base } from '@/data/datasets/rebirth/generated/powersets/defender/secondary/beam-rifle/charged-shot';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/secondary/beam-rifle/charged-shot';
 
 export const ChargedShot: Power = withOverrides(base, overrides);

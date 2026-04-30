@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Shred as base } from '@/data/generated/powersets/scrapper/primary/savage-melee/shred';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/savage-melee/shred';
+import { Shred as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/savage-melee/shred';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/savage-melee/shred';
 
 export const Shred: Power = withOverrides(base, overrides);

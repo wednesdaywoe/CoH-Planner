@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EyeoftheStorm as base } from '@/data/generated/powersets/brute/primary/staff-fighting/eye-of-the-storm';
-import { overrides } from '@/data/overrides/powersets/brute/primary/staff-fighting/eye-of-the-storm';
+import { EyeoftheStorm as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/staff-fighting/eye-of-the-storm';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/staff-fighting/eye-of-the-storm';
 
 export const EyeoftheStorm: Power = withOverrides(base, overrides);

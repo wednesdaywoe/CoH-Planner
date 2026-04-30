@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CallSwarm as base } from '@/data/generated/powersets/mastermind/primary/beast-mastery/call-swarm';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/beast-mastery/call-swarm';
+import { CallSwarm as base } from '@/data/datasets/rebirth/generated/powersets/mastermind/primary/beast-mastery/call-swarm';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/mastermind/primary/beast-mastery/call-swarm';
 
 export const CallSwarm: Power = withOverrides(base, overrides);

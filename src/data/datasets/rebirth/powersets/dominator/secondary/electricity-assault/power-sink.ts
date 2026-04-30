@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThunderStrike as base } from '@/data/generated/powersets/dominator/secondary/electricity-assault/power-sink';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/electricity-assault/power-sink';
+import { ThunderStrike as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/electricity-assault/power-sink';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/electricity-assault/power-sink';
 
 export const ThunderStrike: Power = withOverrides(base, overrides);

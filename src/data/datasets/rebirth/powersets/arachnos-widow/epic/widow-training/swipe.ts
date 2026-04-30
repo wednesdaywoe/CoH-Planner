@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Swipe as base } from '@/data/generated/powersets/arachnos-widow/epic/widow-training/swipe';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/widow-training/swipe';
+import { Swipe as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/widow-training/swipe';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-widow/epic/widow-training/swipe';
 
 export const Swipe: Power = withOverrides(base, overrides);

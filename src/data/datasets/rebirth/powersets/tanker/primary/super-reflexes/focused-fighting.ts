@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FocusedFighting as base } from '@/data/generated/powersets/tanker/primary/super-reflexes/focused-fighting';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/super-reflexes/focused-fighting';
+import { FocusedFighting as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/super-reflexes/focused-fighting';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/super-reflexes/focused-fighting';
 
 export const FocusedFighting: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AblatingStrike as base } from '@/data/generated/powersets/stalker/primary/dual-blades/moderate-bridge';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/dual-blades/moderate-bridge';
+import { AblatingStrike as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/dual-blades/moderate-bridge';
+import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/dual-blades/moderate-bridge';
 
 export const AblatingStrike: Power = withOverrides(base, overrides);
