@@ -8,8 +8,9 @@ drop a second dataset in alongside when its data is available.
 ## Status
 
 **Plumbing + first wave of migrations landed (2026-04-29).**
-**Rebirth dataset materialization landed (2026-04-29 cont.).** All work was
-done in-place on `main`; nothing has been committed or pushed yet.
+**Rebirth dataset materialization landed (2026-04-29 cont.).**
+**Stage A wired and smoke-tested (2026-04-30).** All work was done in-place
+on `main`; subsequent commits are being moved to feature branches.
 
 ### Rebirth materialization summary
 
@@ -88,17 +89,89 @@ script and can be removed.
   off the boostsets parser that writes Rebirth's set definitions
   directly.
 
-### Stage A blockers (minimum viable Rebirth dataset)
+### Stage A — landed 2026-04-30
 
-- **`archetypes.ts` for Rebirth** — handwritten per-AT metadata for the
-  planner UI (display names, primary/secondary slot labels, inherent
-  powers, etc.). HC's lives at
-  [datasets/homecoming/archetypes.ts](src/data/datasets/homecoming/archetypes.ts).
-- **`datasets/rebirth/index.ts`** — assembles the `Dataset` object from
-  the per-file Rebirth data. Mirrors
-  [datasets/homecoming/index.ts](src/data/datasets/homecoming/index.ts).
-- **`loadDataset()` switch** — currently throws for `'rebirth'`. Drop the
-  throw once the index above exists.
+Rebirth is now a loadable, switchable dataset. Smoke-tested in the dev
+server: archetype + powerset dropdowns populate from Rebirth data,
+Rebirth-only sets (Wind Control, Water Control, Military Assault, etc.)
+show up; switching back to HC round-trips cleanly.
+
+What's in:
+
+- [datasets/rebirth/archetypes.ts](src/data/datasets/rebirth/archetypes.ts) —
+  14 ATs (no Sentinel; Rebirth's snapshot predates HC's i25 addition).
+  Powerset lists filtered to only the IDs that actually exist under
+  `datasets/rebirth/powersets/`. HP tables and damage modifiers are
+  HC-cloned for now — the level-1 anchor in `classes.bin` agrees with HC
+  values; deeper validation is a follow-up.
+- [datasets/rebirth/purple-patch.ts](src/data/datasets/rebirth/purple-patch.ts),
+  [granted-powers.ts](src/data/datasets/rebirth/granted-powers.ts) —
+  re-export HC's tables. First-pass approximation; both create a static
+  import chain from Rebirth → HC, which means Vite won't chunk-split the
+  two datasets cleanly. Move them under `src/data/core/` or duplicate the
+  data when chunk-splitting becomes important.
+- [datasets/rebirth/pet-entities.ts](src/data/datasets/rebirth/pet-entities.ts) —
+  empty `{}` placeholder until the `PC_Def_Entities.bin` Parse6 parser
+  ships. Effect: Mastermind henchmen / Lore pet damage tables missing.
+- [datasets/rebirth/index.ts](src/data/datasets/rebirth/index.ts) —
+  assembles the `Dataset` object, mirrors HC's pattern.
+- [src/data/dataset.ts](src/data/dataset.ts) —
+  `loadDataset('rebirth')` now imports `./datasets/rebirth` instead of
+  throwing; `getAllDatasetMetadata()` lists Rebirth.
+- [src/types/archetype.ts](src/types/archetype.ts) — `ArchetypeRegistry`
+  is now `Partial<Record<ArchetypeId, Archetype>>` because Rebirth ships
+  fewer ATs than HC. Two helper functions in
+  [src/data/archetypes.ts](src/data/archetypes.ts) and
+  [datasets/homecoming/archetypes.ts](src/data/datasets/homecoming/archetypes.ts)
+  filter out undefined entries from registry lookups.
+- [src/main.tsx](src/main.tsx) — added a `?serverId=<id>` URL-param
+  override on top of the existing localStorage pre-peek, useful for
+  dev/QA dataset switching.
+
+UI integration:
+
+- [src/components/layout/Header.tsx](src/components/layout/Header.tsx)
+  — Build Identity popover's Server `<Select>` is now controlled
+  (bound to `build.serverId`) with an `onChange` that confirms before
+  switching, persists the new `serverId` to localStorage, and reloads
+  with `?serverId=<new>` so the loader boots the right dataset cleanly.
+  No in-place dataset swap (Proxy facades + cached React state would be
+  fragile across an async load mid-render). Rebirth is no longer
+  disabled in `SERVER_OPTIONS`.
+
+Bug fixed during smoke testing:
+
+- [AvailablePowers.tsx](src/components/powers/AvailablePowers.tsx)
+  was calling `Object.values(GRANTED_POWER_GROUPS)` at module-load
+  time. `GRANTED_POWER_GROUPS` is a dataset-backed Proxy, so this ran
+  before `loadDataset()` had resolved and threw "No dataset loaded".
+  Converted to a `useMemo` keyed on `build.serverId`. **Pattern note:**
+  module-level `Object.{values,keys,entries}` on any data-layer facade
+  will fail. Grepped the rest of `src/`; no other module-level offenders
+  at the time of writing.
+
+Powerset lookup made dataset-aware (mini-Stage-B):
+
+- [scripts/generate-powerset-index.cjs](scripts/generate-powerset-index.cjs)
+  accepts `--dataset <id>`. HC writes to the legacy
+  `src/data/powersets/index.ts`; other datasets write to
+  `src/data/datasets/<id>/powersets/index.ts`.
+- [datasets/rebirth/powersets/index.ts](src/data/datasets/rebirth/powersets/index.ts)
+  generated — 271 powersets registered.
+- [src/data/powersets.ts](src/data/powersets.ts) routes `getPowerset()`,
+  `getAllPowersets()`, `getPowersetsForArchetype()` through
+  `getActiveDataset().id`. Both HC and Rebirth registries are imported
+  statically (still bundled together; chunk-splitting is a follow-up).
+
+### Smoke-test backlog (not yet exercised)
+
+- Pick a Rebirth-only powerset (e.g. Controller / Wind Control) and add
+  several powers — verify tooltips, effects, accuracy/recharge/damage.
+- Open Detailed Totals on a Rebirth build — heaviest calc path; touches
+  AT tables, purple patch, set bonuses, granted powers.
+- Slot enhancements / IO sets — `io-sets-raw.ts` is still HC-shaped;
+  expect numerically-wrong set bonuses on Rebirth builds but no crashes.
+- Round-trip server-switch HC → Rebirth → HC.
 
 What's in:
 
@@ -533,24 +606,27 @@ size and risk.
    `serverId` BEFORE Zustand rehydrates and React mounts. Falls back to
    `'homecoming'` for fresh visitors and any parse / shape failure.
 9. **🚧 Rebirth dataset materialization** — see Status section above.
-   - **Stage C (mostly done):** raw Rebirth data converted into TS files
-     under [src/data/datasets/rebirth/](src/data/datasets/rebirth/).
+   - **✅ Stage C (mostly done):** raw Rebirth data converted into TS
+     files under [src/data/datasets/rebirth/](src/data/datasets/rebirth/).
      Powersets, pools, epic pools, incarnate effects, AT tables all
      landed. Pet entities + IO sets data still pending (need new
      bin-crawler exporters).
-   - **Stage A (not started):** wire the minimum-viable Dataset.
-     Needs handwritten `datasets/rebirth/archetypes.ts`,
-     `datasets/rebirth/index.ts`, and the `loadDataset()` switch update.
-     With the data already on disk from Stage C, this is a small
-     plumbing job — main risk is the `Dataset` interface needing
-     additional fields exposed (powersets, pools, incarnates, IO sets).
+   - **✅ Stage A (landed 2026-04-30):** Rebirth is a loadable
+     dataset. `loadDataset('rebirth')` works; UI server picker switches
+     between HC and Rebirth with reload-based reset; powerset lookup
+     routes through the active dataset's registry. Smoke-tested in the
+     dev server.
    - **Stage B (not started):** the deferred powersets-tree migration.
      Move HC's `powersets/`, `overrides/`, `generated/` into
      `datasets/homecoming/`. ~600 import sites to update inside the
-     tree. Now actually unblocked since Rebirth has its own parallel
-     tree, but still a lot of mechanical churn.
-   - Server picker on new-build flow, dataset-switch confirmation UI
-     come after Stage A.
+     tree. With Rebirth's parallel tree already at
+     `datasets/rebirth/{powersets,overrides,generated}/`, this is now
+     pure mechanical churn for HC. **Recommended order:** finish
+     deeper Rebirth smoke-testing (powers/IO/calculations) first so
+     any latent architectural issues surface before the large-scale
+     rename.
+   - Cross-server build inference mapping and full dataset-switch UX
+     polish (preserve build name across switches, etc.) come after.
 
 ## Open questions / decisions deferred
 

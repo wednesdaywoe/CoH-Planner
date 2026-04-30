@@ -28,12 +28,15 @@ if ('launchQueue' in window) {
 // (e.g. @/data/at-tables, @/data/archetypes) read from the active dataset
 // synchronously, so they must not be touched until this resolves.
 //
-// We pre-peek at the persisted Zustand store to figure out which dataset
-// the saved build needs — this avoids a flash where the wrong dataset is
-// loaded then swapped after Zustand rehydrates. Falls back to Homecoming
-// for fresh visitors and for any parse / shape failure.
-function persistedServerId(): 'homecoming' | 'rebirth' {
+// Resolution order:
+//   1. `?serverId=<id>` URL query param (dev/QA override).
+//   2. Pre-peek at the persisted Zustand store so the saved build's
+//      dataset loads first and we don't flash the wrong one.
+//   3. Default to Homecoming.
+function bootServerId(): 'homecoming' | 'rebirth' {
   try {
+    const param = new URLSearchParams(window.location.search).get('serverId');
+    if (param === 'rebirth' || param === 'homecoming') return param;
     const raw = localStorage.getItem('coh-planner-build');
     if (!raw) return 'homecoming';
     const parsed = JSON.parse(raw);
@@ -44,7 +47,7 @@ function persistedServerId(): 'homecoming' | 'rebirth' {
   }
 }
 
-loadDataset(persistedServerId()).then(() => {
+loadDataset(bootServerId()).then(() => {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <App />

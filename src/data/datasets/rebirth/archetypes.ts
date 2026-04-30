@@ -1,6 +1,19 @@
 /**
- * Archetype definitions
- * Migrated from legacy/js/data/archetypes.js
+ * Rebirth archetype definitions.
+ *
+ * Modeled after [datasets/homecoming/archetypes.ts](../homecoming/archetypes.ts).
+ * Differences vs HC at the time of writing:
+ *   - No Sentinel (Rebirth's snapshot predates HC's i25 Sentinel addition).
+ *   - Several primary/secondary sets that HC has don't exist on Rebirth
+ *     (Seismic Blast, Storm Blast, Arsenal Control, Symphony Control,
+ *     Pyrotechnic Control, Earth Manipulation, Plant Manipulation, etc.).
+ *     Conversely Rebirth has its own additions: Water Control, Wind Control,
+ *     Kinetic/Military/Ninja Assault for Dominator, Cold Domination on
+ *     Mastermind, etc.
+ *   - HP tables / damage modifiers are inherited from HC for now. They
+ *     should be cross-checked against Rebirth's `classes.bin` named_tables
+ *     (Melee_Damage[0]/Ranged_Damage[0]/etc.) — minor numerical divergence
+ *     wouldn't be surprising. Tracked as follow-up work.
  */
 
 import type { Archetype, ArchetypeId, ArchetypeRegistry } from '@/types';
@@ -8,6 +21,8 @@ import type { Archetype, ArchetypeId, ArchetypeRegistry } from '@/types';
 // ============================================
 // PER-LEVEL HP TABLES (from attrib_max.hit_points)
 // Index 0 = level 1, index 49 = level 50
+// HC values used as the baseline; Rebirth's hp tables likely match
+// since both trace back to live retail i24/i25.
 // ============================================
 
 /** Controller, Defender, Dominator */
@@ -38,7 +53,7 @@ const HP_TABLE_LOW_MID: number[] = [
   1052.5854, 1059.644, 1064.7286, 1067.8127, 1070.8967,
 ];
 
-/** Blaster, Sentinel, Stalker */
+/** Blaster, Stalker (no Sentinel on Rebirth) */
 const HP_TABLE_MID: number[] = [
   102.5, 113.4006, 125.3015, 138.1128, 151.8673,
   166.7964, 183.2016, 200.7492, 219.4689, 239.3856,
@@ -109,7 +124,7 @@ const HP_TABLE_MASTERMIND: number[] = [
 ];
 
 // ============================================
-// PER-LEVEL HP CAP TABLES (from attrib_max_max.hit_points)
+// PER-LEVEL HP CAP TABLES
 // ============================================
 
 /** Controller, Corruptor, Defender, Dominator, Mastermind */
@@ -140,8 +155,8 @@ const HP_CAP_BLASTER: number[] = [
   1815.71, 1827.8859, 1836.6569, 1841.9769, 1847.2968,
 ];
 
-/** Sentinel, Stalker */
-const HP_CAP_SENTINEL: number[] = [
+/** Stalker (Rebirth has no Sentinel) */
+const HP_CAP_STALKER: number[] = [
   159.0, 176.1923, 195.3059, 215.9581, 238.2132,
   262.855, 290.9285, 321.1988, 353.7475, 388.6496,
   425.9718, 465.7715, 508.0959, 552.9801, 600.4461,
@@ -197,10 +212,6 @@ const HP_CAP_TANKER: number[] = [
 ];
 
 export const ARCHETYPES: ArchetypeRegistry = {
-  // ============================================
-  // HERO ARCHETYPES
-  // ============================================
-
   blaster: {
     name: 'Blaster',
     side: 'hero',
@@ -217,15 +228,11 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 1.0,
-      damageModifier: {
-        melee: 0.5,
-        ranged: 1.125,
-        aoe: 1.0,
-      },
+      damageModifier: { melee: 0.5, ranged: 1.125, aoe: 1.0 },
       buffDebuffModifier: 0.625,
-      damageCap: 5.0,       // 500%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.75,  // 75%
+      damageCap: 5.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.75,
     },
     primarySets: [
       'blaster/archery',
@@ -239,27 +246,18 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'blaster/ice-blast',
       'blaster/psychic-blast',
       'blaster/radiation-blast',
-      'blaster/seismic-blast',
       'blaster/sonic-attack',
-      'blaster/storm-blast',
       'blaster/water-blast',
     ],
     secondarySets: [
       'blaster/darkness-manipulation',
-      'blaster/earth-manipulation',
+      'blaster/devices',
       'blaster/electricity-manipulation',
       'blaster/energy-manipulation',
       'blaster/fire-manipulation',
-      'blaster/devices',
       'blaster/ice-manipulation',
       'blaster/martial-combat',
       'blaster/mental-manipulation',
-      'blaster/ninja-training',
-      'blaster/plant-manipulation',
-      'blaster/atomic-manipulation',
-      'blaster/sonic-manipulation',
-      'blaster/tactical-arrow',
-      'blaster/temporal-manipulation',
     ],
   },
 
@@ -279,18 +277,13 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 1.0,
-      damageModifier: {
-        melee: 0.55,
-        ranged: 0.55,
-        aoe: 0.5,
-      },
+      damageModifier: { melee: 0.55, ranged: 0.55, aoe: 0.5 },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.75,  // 75%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.75,
     },
     primarySets: [
-      'controller/arsenal-control',
       'controller/darkness-control',
       'controller/earth-control',
       'controller/electric-control',
@@ -300,8 +293,8 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'controller/illusion-control',
       'controller/mind-control',
       'controller/plant-control',
-      'controller/pyrotechnic-control',
-      'controller/symphony-control',
+      'controller/water-control',
+      'controller/wind-control',
     ],
     secondarySets: [
       'controller/cold-domination',
@@ -309,17 +302,13 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'controller/empathy',
       'controller/force-field',
       'controller/kinetics',
-      'controller/marine-affinity',
       'controller/nature-affinity',
-      'controller/pain-domination',
       'controller/poison',
       'controller/radiation-emission',
-      'controller/electrical-affinity',
       'controller/sonic-resonance',
       'controller/storm-summoning',
       'controller/thermal-radiation',
       'controller/time-manipulation',
-      'controller/traps',
       'controller/trick-arrow',
     ],
   },
@@ -340,15 +329,11 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 1.0,
-      damageModifier: {
-        melee: 0.55,
-        ranged: 0.65,
-        aoe: 0.5,
-      },
+      damageModifier: { melee: 0.55, ranged: 0.65, aoe: 0.5 },
       buffDebuffModifier: 1.25,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.75,  // 75%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.75,
     },
     primarySets: [
       'defender/cold-domination',
@@ -356,12 +341,8 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'defender/empathy',
       'defender/force-field',
       'defender/kinetics',
-      'defender/marine-affinity',
       'defender/nature-affinity',
-      'defender/pain-domination',
-      'defender/poison',
       'defender/radiation-emission',
-      'defender/electrical-affinity',
       'defender/sonic-resonance',
       'defender/storm-summoning',
       'defender/thermal-radiation',
@@ -381,9 +362,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'defender/ice-blast',
       'defender/psychic-blast',
       'defender/radiation-blast',
-      'defender/seismic-blast',
       'defender/sonic-attack',
-      'defender/storm-blast',
       'defender/water-blast',
     ],
   },
@@ -404,36 +383,30 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 3.0,
-      damageModifier: {
-        melee: 1.125,
-        ranged: 0.5,
-        aoe: 0.8,
-      },
+      damageModifier: { melee: 1.125, ranged: 0.5, aoe: 0.8 },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.75,  // 75%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.75,
     },
     primarySets: [
       'scrapper/battle-axe',
-      'scrapper/street-justice',
       'scrapper/broad-sword',
       'scrapper/claws',
       'scrapper/dark-melee',
       'scrapper/dual-blades',
       'scrapper/electrical-melee',
-      'scrapper/energy-melee',
       'scrapper/fiery-melee',
       'scrapper/ice-melee',
       'scrapper/katana',
       'scrapper/kinetic-melee',
       'scrapper/martial-arts',
       'scrapper/psionic-melee',
-      'scrapper/spines',
       'scrapper/radiation-melee',
       'scrapper/savage-melee',
+      'scrapper/spines',
       'scrapper/staff-fighting',
-      'scrapper/stone-melee',
+      'scrapper/street-justice',
       'scrapper/titan-weapons',
       'scrapper/war-mace',
     ],
@@ -445,12 +418,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'scrapper/fiery-aura',
       'scrapper/ice-armor',
       'scrapper/invulnerability',
-      'scrapper/ninjitsu',
-      'scrapper/psionic-armor',
       'scrapper/radiation-armor',
       'scrapper/regeneration',
       'scrapper/shield-defense',
-      'scrapper/stone-armor',
       'scrapper/super-reflexes',
       'scrapper/willpower',
     ],
@@ -472,27 +442,20 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 4.0,
-      damageModifier: {
-        melee: 0.8,
-        ranged: 0.5,
-        aoe: 0.7,
-      },
+      damageModifier: { melee: 0.8, ranged: 0.5, aoe: 0.7 },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.90,  // 90%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.90,
     },
     primarySets: [
       'tanker/bio-armor',
       'tanker/dark-armor',
       'tanker/electric-armor',
-      'tanker/energy-aura',
       'tanker/fiery-aura',
       'tanker/ice-armor',
       'tanker/invulnerability',
-      'tanker/psionic-armor',
       'tanker/radiation-armor',
-      'tanker/regeneration',
       'tanker/shield-defense',
       'tanker/stone-armor',
       'tanker/super-reflexes',
@@ -500,9 +463,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     ],
     secondarySets: [
       'tanker/battle-axe',
-      'tanker/street-justice',
       'tanker/broad-sword',
-      'tanker/claws',
       'tanker/dark-melee',
       'tanker/dual-blades',
       'tanker/electrical-melee',
@@ -515,79 +476,14 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'tanker/psionic-melee',
       'tanker/radiation-melee',
       'tanker/savage-melee',
-      'tanker/spines',
       'tanker/staff-fighting',
       'tanker/stone-melee',
+      'tanker/street-justice',
       'tanker/super-strength',
       'tanker/titan-weapons',
       'tanker/war-mace',
     ],
   },
-
-  sentinel: {
-    name: 'Sentinel',
-    side: 'hero',
-    description: 'Homecoming exclusive: Ranged damage with built-in armor for survivability',
-    inherent: {
-      name: 'Opportunity',
-      description: 'Build meter by attacking in combat. Grants scaling critical hit chance on primary attacks (5% at empty, 40% at full meter). Crits deal 40% bonus damage. Vulnerability applies -15% Res, -11.25% Def, -150ft Stealth to targets.',
-    },
-    stats: {
-      baseHP: 1204.7588,
-      maxHP: 2088.2485,
-      hpTable: HP_TABLE_MID,
-      hpCapTable: HP_CAP_SENTINEL,
-      baseEndurance: 100,
-      baseRecovery: 1.67,
-      baseThreat: 2.5,
-      damageModifier: {
-        melee: 0.65,
-        ranged: 0.95,
-        aoe: 0.8,
-      },
-      buffDebuffModifier: 1.4,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.75,  // 75%
-    },
-    primarySets: [
-      'sentinel/archery',
-      'sentinel/assault-rifle',
-      'sentinel/beam-rifle',
-      'sentinel/dark-blast',
-      'sentinel/dual-pistols',
-      'sentinel/electrical-blast',
-      'sentinel/energy-blast',
-      'sentinel/fire-blast',
-      'sentinel/ice-blast',
-      'sentinel/psychic-blast',
-      'sentinel/radiation-blast',
-      'sentinel/seismic-blast',
-      'sentinel/sonic-attack',
-      'sentinel/storm-blast',
-      'sentinel/water-blast',
-    ],
-    secondarySets: [
-      'sentinel/bio-armor',
-      'sentinel/dark-armor',
-      'sentinel/electric-armor',
-      'sentinel/energy-aura',
-      'sentinel/fiery-aura',
-      'sentinel/ice-armor',
-      'sentinel/invulnerability',
-      'sentinel/ninjitsu',
-      'sentinel/psionic-armor',
-      'sentinel/radiation-armor',
-      'sentinel/regeneration',
-      'sentinel/stone-armor',
-      'sentinel/super-reflexes',
-      'sentinel/willpower',
-    ],
-  },
-
-  // ============================================
-  // VILLAIN ARCHETYPES
-  // ============================================
 
   brute: {
     name: 'Brute',
@@ -605,19 +501,14 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 4.0,
-      damageModifier: {
-        melee: 0.75,
-        ranged: 0.75,
-        aoe: 0.65,
-      },
+      damageModifier: { melee: 0.75, ranged: 0.75, aoe: 0.65 },
       buffDebuffModifier: 1.0,
-      damageCap: 7.0,       // 700% (Homecoming)
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.90,  // 90%
+      damageCap: 7.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.90,
     },
     primarySets: [
       'brute/battle-axe',
-      'brute/street-justice',
       'brute/broad-sword',
       'brute/claws',
       'brute/dark-melee',
@@ -625,16 +516,14 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'brute/electrical-melee',
       'brute/energy-melee',
       'brute/fiery-melee',
-      'brute/ice-melee',
       'brute/katana',
       'brute/kinetic-melee',
-      'brute/martial-arts',
       'brute/psionic-melee',
       'brute/radiation-melee',
       'brute/savage-melee',
-      'brute/spines',
       'brute/staff-fighting',
       'brute/stone-melee',
+      'brute/street-justice',
       'brute/super-strength',
       'brute/titan-weapons',
       'brute/war-mace',
@@ -645,9 +534,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'brute/electric-armor',
       'brute/energy-aura',
       'brute/fiery-aura',
-      'brute/ice-armor',
       'brute/invulnerability',
-      'brute/psionic-armor',
       'brute/radiation-armor',
       'brute/regeneration',
       'brute/shield-defense',
@@ -673,15 +560,11 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 1.0,
-      damageModifier: {
-        melee: 0.55,
-        ranged: 0.75,
-        aoe: 0.6,
-      },
+      damageModifier: { melee: 0.55, ranged: 0.75, aoe: 0.6 },
       buffDebuffModifier: 0.75,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.75,  // 75%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.75,
     },
     primarySets: [
       'corruptor/archery',
@@ -695,23 +578,18 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'corruptor/ice-blast',
       'corruptor/psychic-blast',
       'corruptor/radiation-blast',
-      'corruptor/seismic-blast',
-      'corruptor/sonic-attack',
-      'corruptor/storm-blast',
+      'corruptor/sonic-attacks',
       'corruptor/water-blast',
     ],
     secondarySets: [
       'corruptor/cold-domination',
       'corruptor/dark-miasma',
-      'corruptor/empathy',
       'corruptor/force-field',
       'corruptor/kinetics',
-      'corruptor/marine-affinity',
       'corruptor/nature-affinity',
       'corruptor/pain-domination',
       'corruptor/poison',
       'corruptor/radiation-emission',
-      'corruptor/electrical-affinity',
       'corruptor/sonic-resonance',
       'corruptor/storm-summoning',
       'corruptor/thermal-radiation',
@@ -728,10 +606,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     inherent: {
       name: 'Domination',
       description: 'Build meter by attacking, activate at 90%+ for 2× mez magnitude, 1.5× mez duration, mez protection, and full endurance. Lasts 90s.',
-      effects: {
-        recharge: 200,
-        buffDuration: 90,
-      },
+      effects: { recharge: 200, buffDuration: 90 },
     },
     stats: {
       baseHP: 1017.3519,
@@ -741,43 +616,36 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 1.0,
-      damageModifier: {
-        melee: 0.75,
-        ranged: 0.75,
-        aoe: 0.65,
-      },
+      damageModifier: { melee: 0.75, ranged: 0.75, aoe: 0.65 },
       buffDebuffModifier: 0.9,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.75,  // 75%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.75,
     },
     primarySets: [
-      'dominator/arsenal-control',
       'dominator/darkness-control',
       'dominator/earth-control',
       'dominator/electric-control',
       'dominator/fire-control',
       'dominator/gravity-control',
       'dominator/ice-control',
-      'dominator/illusion-control',
       'dominator/mind-control',
       'dominator/plant-control',
-      'dominator/pyrotechnic-control',
-      'dominator/symphony-control',
+      'dominator/water-control',
+      'dominator/wind-control',
     ],
     secondarySets: [
-      'dominator/arsenal-assault',
       'dominator/dark-assault',
       'dominator/earth-assault',
       'dominator/electricity-assault',
       'dominator/energy-assault',
       'dominator/fiery-assault',
       'dominator/icy-assault',
+      'dominator/kinetic-assault',
       'dominator/martial-assault',
+      'dominator/military-assault',
+      'dominator/ninja-assault',
       'dominator/psionic-assault',
-      'dominator/radioactive-assault',
-      'dominator/savage-assault',
-      'dominator/sonic-assault',
       'dominator/thorny-assault',
     ],
   },
@@ -798,15 +666,11 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 2.0,
-      damageModifier: {
-        melee: 0.55,
-        ranged: 0.55,
-        aoe: 0.5,
-      },
+      damageModifier: { melee: 0.55, ranged: 0.55, aoe: 0.5 },
       buffDebuffModifier: 0.75,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.75,  // 75%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.75,
     },
     primarySets: [
       'mastermind/beast-mastery',
@@ -820,15 +684,10 @@ export const ARCHETYPES: ArchetypeRegistry = {
     secondarySets: [
       'mastermind/cold-domination',
       'mastermind/dark-miasma',
-      'mastermind/empathy',
       'mastermind/force-field',
-      'mastermind/kinetics',
-      'mastermind/marine-affinity',
       'mastermind/nature-affinity',
       'mastermind/pain-domination',
       'mastermind/poison',
-      'mastermind/radiation-emission',
-      'mastermind/electrical-affinity',
       'mastermind/sonic-resonance',
       'mastermind/storm-summoning',
       'mastermind/thermal-radiation',
@@ -850,29 +709,23 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseHP: 1204.7588,
       maxHP: 2088.2485,
       hpTable: HP_TABLE_MID,
-      hpCapTable: HP_CAP_SENTINEL,
+      hpCapTable: HP_CAP_STALKER,
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 2.0,
-      damageModifier: {
-        melee: 1.0,
-        ranged: 0.6,
-        aoe: 0.7,
-      },
+      damageModifier: { melee: 1.0, ranged: 0.6, aoe: 0.7 },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.75,  // 75%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.75,
     },
     primarySets: [
-      'stalker/street-justice',
       'stalker/broad-sword',
       'stalker/claws',
       'stalker/dark-melee',
       'stalker/dual-blades',
       'stalker/electrical-melee',
       'stalker/energy-melee',
-      'stalker/fiery-melee',
       'stalker/ice-melee',
       'stalker/kinetic-melee',
       'stalker/martial-arts',
@@ -882,39 +735,30 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'stalker/savage-melee',
       'stalker/spines',
       'stalker/staff-fighting',
-      'stalker/stone-melee',
+      'stalker/street-justice',
     ],
     secondarySets: [
       'stalker/bio-armor',
       'stalker/dark-armor',
       'stalker/electric-armor',
       'stalker/energy-aura',
-      'stalker/fiery-aura',
       'stalker/ice-armor',
-      'stalker/invulnerability',
       'stalker/ninjitsu',
-      'stalker/psionic-armor',
       'stalker/radiation-armor',
       'stalker/regeneration',
-      'stalker/shield-defense',
       'stalker/super-reflexes',
       'stalker/willpower',
     ],
   },
 
-  // ============================================
-  // EPIC ARCHETYPES - KHELDIANS (Hero)
-  // ============================================
-
   peacebringer: {
     name: 'Peacebringer',
     side: 'hero',
-    description:
-      'Kheldian shapeshifter with access to multiple forms. Can transform between human, nova (ranged), and dwarf (melee/tank) forms.',
+    description: 'Kheldian shapeshifter with access to multiple forms. Can transform between human, nova (ranged), and dwarf (melee/tank) forms.',
     inherent: {
       name: 'Cosmic Balance',
       description:
-        'Peacebringers bring balance to their team. Damage increases per nearby Tanker/Mastermind/Corruptor/Defender. Damage Resistance increases per nearby Scrapper/Sentinel/Brute/Stalker/Blaster. Control protection per nearby Controller/Dominator. Slow resistance per nearby Kheldian/Arachnos teammate.',
+        'Peacebringers bring balance to their team. Damage increases per nearby Tanker/Mastermind/Corruptor/Defender. Damage Resistance increases per nearby Scrapper/Brute/Stalker/Blaster. Control protection per nearby Controller/Dominator. Slow resistance per nearby Kheldian/Arachnos teammate.',
     },
     stats: {
       baseHP: 1070.8967,
@@ -924,15 +768,11 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 2.0,
-      damageModifier: {
-        melee: 0.85,
-        ranged: 0.8,
-        aoe: 0.7,
-      },
+      damageModifier: { melee: 0.85, ranged: 0.8, aoe: 0.7 },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.85,  // 85%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.85,
     },
     primarySets: ['peacebringer/luminous-blast'],
     secondarySets: ['peacebringer/luminous-aura'],
@@ -941,12 +781,11 @@ export const ARCHETYPES: ArchetypeRegistry = {
   warshade: {
     name: 'Warshade',
     side: 'hero',
-    description:
-      'Kheldian shapeshifter that feeds on defeated enemies. Can summon pets from fallen foes and transform between forms.',
+    description: 'Kheldian shapeshifter that feeds on defeated enemies. Can summon pets from fallen foes and transform between forms.',
     inherent: {
       name: 'Dark Sustenance',
       description:
-        'Warshades draw on the power of their teammates. Damage Resistance increases per nearby Tanker/Mastermind/Corruptor/Defender. Damage increases per nearby Scrapper/Sentinel/Stalker/Brute/Blaster. Control protection per nearby Controller/Dominator. Slow resistance per nearby Kheldian/Arachnos teammate.',
+        'Warshades draw on the power of their teammates. Damage Resistance increases per nearby Tanker/Mastermind/Corruptor/Defender. Damage increases per nearby Scrapper/Stalker/Brute/Blaster. Control protection per nearby Controller/Dominator. Slow resistance per nearby Kheldian/Arachnos teammate.',
       icon: 'inherent_peacebringer_interspaciallink.png',
     },
     stats: {
@@ -957,23 +796,15 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 2.0,
-      damageModifier: {
-        melee: 0.85,
-        ranged: 0.8,
-        aoe: 0.7,
-      },
+      damageModifier: { melee: 0.85, ranged: 0.8, aoe: 0.7 },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.85,  // 85%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.85,
     },
     primarySets: ['warshade/umbral-blast'],
     secondarySets: ['warshade/umbral-aura'],
   },
-
-  // ============================================
-  // EPIC ARCHETYPES - ARACHNOS (Villain)
-  // ============================================
 
   'arachnos-soldier': {
     name: 'Arachnos Soldier',
@@ -992,30 +823,26 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 2.0,
-      damageModifier: {
-        melee: 0.75,
-        ranged: 0.75,
-        aoe: 0.65,
-      },
+      damageModifier: { melee: 0.75, ranged: 0.75, aoe: 0.65 },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.85,  // 85%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.85,
     },
     primarySets: ['arachnos-soldier/arachnos-soldier'],
-    secondarySets: ['arachnos-soldier/training-and-gadgets'],
+    secondarySets: [],
     branches: {
       'bane-spider': {
         name: 'Bane Spider',
         level: 24,
         primarySet: 'arachnos-soldier/bane-spider-soldier',
-        secondarySet: 'arachnos-soldier/bane-spider-training',
+        secondarySet: 'arachnos-soldier/bane-spider-soldier',
       },
       'crab-spider': {
         name: 'Crab Spider',
         level: 24,
         primarySet: 'arachnos-soldier/crab-spider-soldier',
-        secondarySet: 'arachnos-soldier/crab-spider-training',
+        secondarySet: 'arachnos-soldier/crab-spider-soldier',
       },
     },
   },
@@ -1037,15 +864,11 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseEndurance: 100,
       baseRecovery: 1.67,
       baseThreat: 2.0,
-      damageModifier: {
-        melee: 0.85,
-        ranged: 0.65,
-        aoe: 0.7,
-      },
+      damageModifier: { melee: 0.85, ranged: 0.65, aoe: 0.7 },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
-      defenseCap: 0.45,     // 45%
-      resistanceCap: 0.85,  // 85%
+      damageCap: 4.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.85,
     },
     primarySets: ['arachnos-widow/widow-training'],
     secondarySets: ['arachnos-widow/teamwork'],
@@ -1066,34 +889,10 @@ export const ARCHETYPES: ArchetypeRegistry = {
   },
 };
 
-// ============================================
-// HELPER FUNCTIONS
-// ============================================
-
-/**
- * Get an archetype by ID
- */
 export function getArchetype(id: ArchetypeId): Archetype | undefined {
   return ARCHETYPES[id];
 }
 
-/**
- * Get all archetype IDs
- */
-export function getArchetypeIds(): ArchetypeId[] {
-  return Object.keys(ARCHETYPES) as ArchetypeId[];
-}
-
-/**
- * Get archetypes filtered by faction
- */
-export function getArchetypesByFaction(faction: 'hero' | 'villain'): Archetype[] {
-  return Object.values(ARCHETYPES).filter((at) => at.side === faction);
-}
-
-/**
- * Epic archetype IDs (Kheldians and Arachnos)
- */
 export const EPIC_ARCHETYPE_IDS: ArchetypeId[] = [
   'peacebringer',
   'warshade',
@@ -1101,44 +900,15 @@ export const EPIC_ARCHETYPE_IDS: ArchetypeId[] = [
   'arachnos-widow',
 ];
 
-/**
- * Standard archetype IDs (non-epic)
- */
 export const STANDARD_ARCHETYPE_IDS: ArchetypeId[] = [
   'blaster',
   'controller',
   'defender',
   'scrapper',
   'tanker',
-  'sentinel',
   'brute',
   'corruptor',
   'dominator',
   'mastermind',
   'stalker',
 ];
-
-/**
- * Check if an archetype is an epic archetype
- */
-export function isEpicArchetype(id: ArchetypeId): boolean {
-  return EPIC_ARCHETYPE_IDS.includes(id);
-}
-
-/**
- * Get all epic archetypes
- */
-export function getEpicArchetypes(): Archetype[] {
-  return EPIC_ARCHETYPE_IDS.map((id) => ARCHETYPES[id]).filter(
-    (at): at is Archetype => at !== undefined,
-  );
-}
-
-/**
- * Get all standard (non-epic) archetypes
- */
-export function getStandardArchetypes(): Archetype[] {
-  return STANDARD_ARCHETYPE_IDS.map((id) => ARCHETYPES[id]).filter(
-    (at): at is Archetype => at !== undefined,
-  );
-}

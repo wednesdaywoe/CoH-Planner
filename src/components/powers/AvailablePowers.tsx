@@ -3,7 +3,7 @@
  * Renders as a section within the Available Powers column (not a full column itself)
  */
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { useIsTouchDevice } from '@/hooks';
 
@@ -11,18 +11,21 @@ import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, g
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 
-// Lazy because GRANTED_POWER_GROUPS is a runtime-loaded dataset proxy —
-// reading it at module load runs before loadDataset() resolves and throws.
-let formSubPowerNames: Set<string> | null = null;
-function getFormSubPowerNames(): Set<string> {
-  if (!formSubPowerNames) {
-    formSubPowerNames = new Set(
-      Object.values(GRANTED_POWER_GROUPS)
-        .filter(g => g.slottable)
-        .flatMap(g => g.grantedPowers)
-    );
-  }
-  return formSubPowerNames;
+/**
+ * Set of slottable form sub-power names (auto-granted, not manually selectable).
+ *
+ * Computed lazily inside the component because GRANTED_POWER_GROUPS is a
+ * dataset-backed Proxy: reading it at module-load time runs before the
+ * active dataset has been resolved and throws. Re-evaluated when
+ * `build.serverId` changes so a dataset switch picks up the new dataset's
+ * granted-power groups.
+ */
+function buildFormSubPowerNames(): Set<string> {
+  return new Set(
+    Object.values(GRANTED_POWER_GROUPS)
+      .filter(g => g.slottable)
+      .flatMap(g => g.grantedPowers),
+  );
 }
 
 // ============================================
@@ -354,6 +357,10 @@ export function AvailablePowers({
   const archetypeId = build.archetype.id;
   const categoryLabel = category === 'primary' ? 'Primary' : 'Secondary';
 
+  // Lazy because GRANTED_POWER_GROUPS is dataset-backed; recomputed when
+  // the active server changes (via build.serverId in the dependency).
+  const formSubPowerNames = useMemo(buildFormSubPowerNames, [build.serverId]);
+
   // Both powersets must be selected before powers can be chosen
   const bothPowersetsSelected = build.primary.id && build.secondary.id;
 
@@ -453,7 +460,7 @@ export function AvailablePowers({
         // Filter out set mechanics/inherents (hiddenPassive, hiddenAuto, etc.)
         if (p.mechanicType === 'hiddenPassive' || p.mechanicType === 'hiddenAuto') return false;
         // Filter out form sub-powers (auto-granted when parent form is selected)
-        if (getFormSubPowerNames().has(p.name)) return false;
+        if (formSubPowerNames.has(p.name)) return false;
         // Filter out powers already granted as archetype inherents
         if (archetypeInherentNames.has(p.name)) return false;
         // Evaluate requires expression (handles negation, internal names, powersets)

@@ -1,11 +1,17 @@
 /**
  * Powerset data and accessor functions
  *
- * All powersets (362 total: 348 standard + 14 Epic AT) are loaded from the modular format.
+ * Routes lookups through the active dataset's powerset registry. Each
+ * dataset folder under `src/data/datasets/<id>/powersets/` ships its own
+ * generated `index.ts` with a `MODULAR_POWERSETS` map. HC's tree still
+ * lives at the legacy `src/data/powersets/` path until the deferred
+ * Stage B migration moves it under `datasets/homecoming/`.
  */
 
 import type { Powerset, Power } from '@/types';
-import { MODULAR_POWERSETS } from './powersets/index';
+import { MODULAR_POWERSETS as HC_POWERSETS } from './powersets/index';
+import { MODULAR_POWERSETS as REBIRTH_POWERSETS } from './datasets/rebirth/powersets/index';
+import { getActiveDataset } from './dataset';
 
 // ============================================
 // POWERSET REGISTRY TYPE
@@ -17,14 +23,21 @@ export type PowersetRegistry = Record<string, Powerset>;
 // POWERSET REGISTRY
 // ============================================
 
-// All powersets are now in modular format
-const _powersets: PowersetRegistry = MODULAR_POWERSETS;
+function getRegistry(): PowersetRegistry {
+  switch (getActiveDataset().id) {
+    case 'rebirth':
+      return REBIRTH_POWERSETS;
+    case 'homecoming':
+    default:
+      return HC_POWERSETS;
+  }
+}
 
 /**
  * Get all powersets
  */
 export function getAllPowersets(): PowersetRegistry {
-  return _powersets;
+  return getRegistry();
 }
 
 // ============================================
@@ -35,7 +48,7 @@ export function getAllPowersets(): PowersetRegistry {
  * Get a powerset by ID (e.g., "blaster/fire-blast")
  */
 export function getPowerset(id: string): Powerset | undefined {
-  return _powersets[id];
+  return getRegistry()[id];
 }
 
 /**
@@ -43,7 +56,7 @@ export function getPowerset(id: string): Powerset | undefined {
  */
 export function getPowersetsForArchetype(archetypeId: string): Powerset[] {
   const prefix = `${archetypeId}/`;
-  return Object.entries(_powersets)
+  return Object.entries(getRegistry())
     .filter(([id]) => id.startsWith(prefix))
     .map(([, powerset]) => powerset);
 }
