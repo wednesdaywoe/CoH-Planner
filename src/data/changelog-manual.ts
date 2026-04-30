@@ -23,7 +23,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-30',
     items: [
-      { message: 'Stuff broke 😞 Fixed a dataset proxy preventing the site from loading', type: 'fix' },
+      { message: 'Fix for some toggle powers that were not picked up by endurance accounting, resulting in no end costs', type: 'fix' },
+      { message: 'Rebirth dataset is in the works!', type: 'update' },
       { message: 'Began work on the plumbing to support multiple datasets. Stuff might break',type: "feat"},
       { message: 'You can now collapse and expand the dashboard (press D or use the arrow), and L toggles infopanel lock', type: 'feat' },
     ] 

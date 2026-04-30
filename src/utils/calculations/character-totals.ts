@@ -579,16 +579,11 @@ function applyActivePowerBonuses(
   for (const power of powers) {
     // Auto powers are always active; others require explicit isActive toggle
     const isAuto = power.powerType?.toLowerCase() === 'auto';
-    if (!(isAuto || power.isActive) || !power.effects) continue;
+    if (!(isAuto || power.isActive)) continue;
 
     // Skip ally-only buffs — the caster does not benefit from these
     // (e.g. Speed Boost, Fortitude — "you cannot use this power on yourself")
     if (power.targetType && ALLY_ONLY_TARGET_TYPES.has(power.targetType.toLowerCase())) continue;
-
-    const effects = power.effects;
-    const _debugEnabled = isCalcDebugEnabled();
-    // Snapshot global bonuses before this power for diff logging
-    const _debugBefore = _debugEnabled ? { ...global } : null;
 
     // Calculate enhancement bonuses for this power from slotted enhancements
     let enhBonuses: EnhancementBonuses = {};
@@ -609,13 +604,15 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Track toggle endurance cost for active toggle powers
+    // Track toggle endurance cost for active toggle powers.
+    // Runs before the `!power.effects` bail-out below: most primary/secondary toggles
+    // have no `effects` block (only `stats`), but still draw endurance per second.
     if (power.powerType?.toLowerCase() === 'toggle' && power.isActive) {
       // Pool/epic powers: effects.enduranceCost is already per-second (converted at transform)
       // Primary/secondary powers: stats.endurance is per-tick, divide by activatePeriod
       let baseEndPerSec = 0;
-      if (effects.enduranceCost) {
-        baseEndPerSec = effects.enduranceCost;
+      if (power.effects?.enduranceCost) {
+        baseEndPerSec = power.effects.enduranceCost;
       } else if (power.stats?.endurance) {
         const activatePeriod = power.stats.activatePeriod ?? 0.5;
         baseEndPerSec = activatePeriod > 0 ? power.stats.endurance / activatePeriod : 0;
@@ -632,6 +629,13 @@ function applyActivePowerBonuses(
         });
       }
     }
+
+    if (!power.effects) continue;
+
+    const effects = power.effects;
+    const _debugEnabled = isCalcDebugEnabled();
+    // Snapshot global bonuses before this power for diff logging
+    const _debugBefore = _debugEnabled ? { ...global } : null;
 
     // ToHit buff (stored as decimal, convert to percentage)
     // Enhanced by ToHit enhancements
