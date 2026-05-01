@@ -6,7 +6,15 @@
 
 import { createRouter, createRootRoute, createRoute, Outlet } from '@tanstack/react-router';
 import { MainLayout } from '@/components/layout/MainLayout';
-import { PlannerPage, BuildsPage, BuildDetailPage, SettingsPage, ImportPage } from '@/pages';
+import { SettingsLayout } from '@/components/layout/SettingsLayout';
+import {
+  PlannerPage,
+  BuildsPage,
+  BuildDetailPage,
+  GeneralSettings,
+  ProfileSettingsPage,
+  ImportPage,
+} from '@/pages';
 
 
 // Create root route
@@ -39,11 +47,25 @@ const buildDetailRoute = createRoute({
   component: BuildDetailPage,
 });
 
-// Settings route
+// Settings layout (shared chrome for /settings/*)
 const settingsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/settings',
-  component: SettingsPage,
+  component: SettingsLayout,
+});
+
+// /settings index → general settings (account, claim builds, debug toggles)
+const settingsIndexRoute = createRoute({
+  getParentRoute: () => settingsRoute,
+  path: '/',
+  component: GeneralSettings,
+});
+
+// /settings/profile → public profile editor (handle, display name, bio)
+const profileSettingsRoute = createRoute({
+  getParentRoute: () => settingsRoute,
+  path: 'profile',
+  component: ProfileSettingsPage,
 });
 
 // Import route (receives builds from Homecoming game client via URL fragment)
@@ -60,7 +82,7 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   buildsRoute,
   buildDetailRoute,
-  settingsRoute,
+  settingsRoute.addChildren([settingsIndexRoute, profileSettingsRoute]),
   importRoute,
 ]);
 

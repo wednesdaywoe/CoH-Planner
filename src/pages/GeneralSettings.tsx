@@ -1,5 +1,8 @@
 /**
- * SettingsPage — Account management and app settings
+ * GeneralSettings — index sub-page of /settings.
+ *
+ * Account sign-in/out, build claiming, and developer toggles. The shared
+ * heading and tab navigation are owned by SettingsLayout.
  */
 
 import { useState, useCallback } from 'react';
@@ -9,7 +12,7 @@ import { Button } from '@/components/ui/Button';
 import { getOwnedBuildIds, claimBuilds } from '@/services/sharedBuilds';
 import { isCalcDebugEnabled, enableCalcDebug, disableCalcDebug } from '@/utils/calc-debug';
 
-export function SettingsPage() {
+export function GeneralSettings() {
   const user = useAuthStore((s) => s.user);
   const loading = useAuthStore((s) => s.loading);
   const login = useAuthStore((s) => s.login);
@@ -48,16 +51,14 @@ export function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="max-w-2xl mx-auto p-6 text-center py-12">
+      <div className="text-center py-12">
         <p className="text-gray-400">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold text-white mb-6">Settings</h1>
-
+    <>
       {/* Account section */}
       <div className="bg-gray-800 border border-gray-700 rounded-lg p-5 mb-6">
         <h2 className="text-sm font-semibold text-gray-300 mb-4">Account</h2>
@@ -170,6 +171,6 @@ export function SettingsPage() {
           Also available via console: <code className="text-gray-500">window.cohDebug.enable()</code>
         </p>
       </div>
-    </div>
+    </>
   );
 }
