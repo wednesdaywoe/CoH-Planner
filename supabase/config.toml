@@ -16,3 +16,6 @@ verify_jwt = false
 
 [functions.auction-prices]
 verify_jwt = false
+
+[functions.update-profile]
+verify_jwt = false
