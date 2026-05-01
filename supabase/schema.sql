@@ -144,6 +144,170 @@ $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 -- -- No INSERT/UPDATE policies: only service role (edge function) writes.
 
 -- ============================================
+-- Migration: Profiles + author handles (Phase 1 — DRAFT, not yet applied)
+-- ============================================
+-- Adds a profiles table so users can pick a public handle (URL slug) and a
+-- display name independent of their Discord identity. Per-build author_name
+-- on shared_builds is preserved as-is (option 2: per-build name overrides).
+--
+-- BEFORE APPLYING: verify the Discord OAuth metadata field names by inspecting
+-- a real row, e.g.:
+--   SELECT id, raw_user_meta_data FROM auth.users LIMIT 1;
+-- The COALESCE chain in seed_profile_on_signup() guesses common keys
+-- (full_name, name, global_name, user_name, provider_id, avatar_url) but
+-- Supabase + Discord may store them under different keys.
+--
+-- CREATE EXTENSION IF NOT EXISTS citext;
+-- CREATE EXTENSION IF NOT EXISTS pg_trgm;
+--
+-- -- Reserved handle list. Stub seeded with system-level terms; CoH-specific
+-- -- reserved words can be added later via plain INSERTs without schema changes.
+-- -- Enforcement happens in the update-profile edge function (CHECK constraints
+-- -- can't reference other tables).
+-- CREATE TABLE reserved_handles (
+--   handle CITEXT PRIMARY KEY,
+--   reason TEXT DEFAULT ''     -- optional note for future maintainers
+-- );
+--
+-- INSERT INTO reserved_handles (handle, reason) VALUES
+--   ('admin','system'), ('api','system'), ('auth','system'),
+--   ('author','route'), ('builds','route'), ('build','route'),
+--   ('login','route'), ('logout','route'), ('me','route'),
+--   ('settings','route'), ('profile','route'), ('public','route'),
+--   ('signup','route'), ('signin','route'), ('support','system'),
+--   ('help','system'), ('new','route'), ('edit','route'),
+--   ('delete','route'), ('undefined','sentinel'), ('null','sentinel'),
+--   ('anonymous','sentinel'), ('system','system');
+-- -- TODO: add CoH-specific reserved handles here as we identify them.
+--
+-- CREATE TABLE profiles (
+--   user_id           UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+--   handle            CITEXT UNIQUE,                -- public URL slug, nullable until claimed
+--   display_name      TEXT NOT NULL DEFAULT '',     -- shown on cards by default
+--   discord_id        TEXT,                         -- immutable Discord snowflake
+--   discord_username  TEXT,                         -- cached @handle, for "verified" badge
+--   avatar_url        TEXT,
+--   bio               TEXT NOT NULL DEFAULT '',
+--   handle_changed_at TIMESTAMPTZ,                  -- gates 30-day cooldown
+--   created_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+--   updated_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+--
+--   CONSTRAINT handle_format CHECK (
+--     handle IS NULL OR handle::text ~ '^[a-z0-9][a-z0-9_-]{2,29}$'
+--   ),
+--   CONSTRAINT display_name_length CHECK (char_length(display_name) <= 30),
+--   CONSTRAINT bio_length CHECK (char_length(bio) <= 280)
+-- );
+--
+-- CREATE INDEX idx_profiles_display_name_trgm ON profiles USING GIN (display_name gin_trgm_ops);
+-- CREATE INDEX idx_profiles_handle_trgm       ON profiles USING GIN ((handle::text) gin_trgm_ops);
+--
+-- ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+-- ALTER TABLE reserved_handles ENABLE ROW LEVEL SECURITY;
+--
+-- CREATE POLICY "Public read profiles" ON profiles FOR SELECT USING (TRUE);
+-- -- reserved_handles has RLS enabled with no policies: only service role reads/writes.
+-- -- Writes to profiles go through the update-profile edge function (service role).
+--
+-- -- Auto-touch updated_at
+-- CREATE OR REPLACE FUNCTION touch_profile_updated_at()
+-- RETURNS trigger AS $$
+-- BEGIN NEW.updated_at = now(); RETURN NEW; END;
+-- $$ LANGUAGE plpgsql;
+--
+-- CREATE TRIGGER profiles_touch_updated
+--   BEFORE UPDATE ON profiles
+--   FOR EACH ROW EXECUTE FUNCTION touch_profile_updated_at();
+--
+-- -- Seed a profile on first sign-up. Handle stays NULL until the user picks one.
+-- CREATE OR REPLACE FUNCTION seed_profile_on_signup()
+-- RETURNS trigger AS $$
+-- BEGIN
+--   INSERT INTO profiles (user_id, display_name, discord_id, discord_username, avatar_url)
+--   VALUES (
+--     NEW.id,
+--     COALESCE(NEW.raw_user_meta_data->>'full_name',
+--              NEW.raw_user_meta_data->>'name',
+--              NEW.raw_user_meta_data->>'global_name', ''),
+--     NEW.raw_user_meta_data->>'provider_id',
+--     NEW.raw_user_meta_data->>'user_name',
+--     NEW.raw_user_meta_data->>'avatar_url'
+--   )
+--   ON CONFLICT (user_id) DO NOTHING;
+--   RETURN NEW;
+-- END;
+-- $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+--
+-- CREATE TRIGGER on_auth_user_created
+--   AFTER INSERT ON auth.users
+--   FOR EACH ROW EXECUTE FUNCTION seed_profile_on_signup();
+--
+-- -- Backfill profiles for users who already exist
+-- INSERT INTO profiles (user_id, display_name, discord_id, discord_username, avatar_url)
+-- SELECT
+--   id,
+--   COALESCE(raw_user_meta_data->>'full_name',
+--            raw_user_meta_data->>'name',
+--            raw_user_meta_data->>'global_name', ''),
+--   raw_user_meta_data->>'provider_id',
+--   raw_user_meta_data->>'user_name',
+--   raw_user_meta_data->>'avatar_url'
+-- FROM auth.users
+-- ON CONFLICT (user_id) DO NOTHING;
+--
+-- -- Joined view for build queries — replaces direct selects from shared_builds
+-- -- in the search/list paths so cards can render handle + verified avatar.
+-- CREATE VIEW shared_builds_with_author AS
+-- SELECT b.*,
+--        p.handle       AS author_handle,
+--        p.display_name AS author_display_name,
+--        p.avatar_url   AS author_avatar_url
+-- FROM shared_builds b
+-- LEFT JOIN profiles p ON p.user_id = b.user_id;
+--
+-- -- Author-search RPC for the autocomplete dropdown.
+-- -- Returns one row per profile, ranked by trigram similarity over both
+-- -- display_name and handle, with a build_count tiebreaker.
+-- CREATE OR REPLACE FUNCTION search_authors(q TEXT, lim INT DEFAULT 10)
+-- RETURNS TABLE (
+--   user_id      UUID,
+--   handle       CITEXT,
+--   display_name TEXT,
+--   avatar_url   TEXT,
+--   build_count  BIGINT,
+--   sim          REAL
+-- )
+-- LANGUAGE sql STABLE AS $$
+--   SELECT p.user_id, p.handle, p.display_name, p.avatar_url,
+--          COUNT(b.id) FILTER (WHERE b.is_public) AS build_count,
+--          GREATEST(
+--            similarity(p.display_name, q),
+--            COALESCE(similarity(p.handle::text, q), 0)
+--          ) AS sim
+--   FROM profiles p
+--   LEFT JOIN shared_builds b ON b.user_id = p.user_id
+--   WHERE p.display_name % q OR p.handle::text % q
+--   GROUP BY p.user_id, p.handle, p.display_name, p.avatar_url
+--   ORDER BY sim DESC, build_count DESC
+--   LIMIT lim;
+-- $$;
+--
+-- -- Resolver for /author/@handle URLs
+-- CREATE OR REPLACE FUNCTION resolve_author(h TEXT)
+-- RETURNS TABLE (
+--   user_id      UUID,
+--   handle       CITEXT,
+--   display_name TEXT,
+--   avatar_url   TEXT,
+--   bio          TEXT
+-- )
+-- LANGUAGE sql STABLE AS $$
+--   SELECT user_id, handle, display_name, avatar_url, bio
+--   FROM profiles
+--   WHERE handle = h::citext
+-- $$;
+
+-- ============================================
 -- Admin: Assign an owner token to a legacy build
 -- ============================================
 -- 1. Pick a token (any string, e.g. a UUID):
