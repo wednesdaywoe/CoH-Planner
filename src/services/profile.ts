@@ -92,3 +92,26 @@ export function handleCooldownDaysLeft(handleChangedAt: string | null | undefine
   if (msLeft <= 0) return 0;
   return Math.ceil(msLeft / (24 * 60 * 60 * 1000));
 }
+
+export interface PublicAuthor {
+  user_id: string;
+  handle: string;
+  display_name: string;
+  avatar_url: string | null;
+  bio: string;
+}
+
+/** Resolve an /author/{handle} URL slug to a public profile. Null if not found. */
+export async function resolveAuthor(handle: string | undefined | null): Promise<PublicAuthor | null> {
+  if (!supabase || !handle) return null;
+
+  // Tolerate a leading '@' in case a caller passes the display form.
+  const normalized = handle.trim().replace(/^@/, '').toLowerCase();
+  if (!normalized) return null;
+
+  const { data, error } = await supabase.rpc('resolve_author', { h: normalized });
+  if (error) throw new Error(error.message);
+
+  const row = Array.isArray(data) ? data[0] : data;
+  return (row as PublicAuthor | undefined) ?? null;
+}

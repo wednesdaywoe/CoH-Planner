@@ -52,6 +52,12 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
 
   const handleAuthorClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    // Verified author with a handle → public author page
+    if (build.author_handle) {
+      navigate({ to: '/author/$handle', params: { handle: build.author_handle } });
+      return;
+    }
+    // Otherwise fall back to filtering the build list by author
     if (onAuthorClick && build.author_name) {
       onAuthorClick(build.user_id ?? null, build.author_name);
     }
@@ -172,7 +178,11 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
               <span
                 role="button"
                 onClick={handleAuthorClick}
-                className={onAuthorClick ? 'hover:text-blue-400 transition-colors' : ''}
+                className={
+                  build.author_handle || onAuthorClick
+                    ? 'hover:text-blue-400 transition-colors'
+                    : ''
+                }
               >
                 {build.author_name}
               </span>

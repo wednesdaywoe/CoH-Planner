@@ -27,6 +27,11 @@ export interface SharedBuild {
   user_id?: string | null;
   /** Whether the build is visible in public search (false = private vault only) */
   is_public: boolean;
+  /** Author profile fields (joined from `profiles` via shared_builds_with_author view).
+   *  Null when user_id is null OR when the user hasn't claimed a handle/profile yet. */
+  author_handle?: string | null;
+  author_display_name?: string | null;
+  author_avatar_url?: string | null;
 }
 
 /** Input for sharing a build */

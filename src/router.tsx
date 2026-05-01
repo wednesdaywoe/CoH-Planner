@@ -11,6 +11,7 @@ import {
   PlannerPage,
   BuildsPage,
   BuildDetailPage,
+  AuthorPage,
   GeneralSettings,
   ProfileSettingsPage,
   ImportPage,
@@ -45,6 +46,16 @@ const buildDetailRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/builds/$id',
   component: BuildDetailPage,
+});
+
+// Author public profile route. The handle is the URL slug; we display it as
+// "@handle" in the UI but keep the URL clean (`/author/wednesdaywoe`) because
+// TanStack Router doesn't bind `$param` cleanly when prefixed with non-alnum
+// literals like '@' inside a segment.
+const authorRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/author/$handle',
+  component: AuthorPage,
 });
 
 // Settings layout (shared chrome for /settings/*)
@@ -82,6 +93,7 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   buildsRoute,
   buildDetailRoute,
+  authorRoute,
   settingsRoute.addChildren([settingsIndexRoute, profileSettingsRoute]),
   importRoute,
 ]);

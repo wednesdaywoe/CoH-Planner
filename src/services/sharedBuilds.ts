@@ -49,7 +49,7 @@ export async function getFavoriteBuilds(): Promise<SharedBuild[]> {
   if (ids.length === 0) return [];
 
   const { data, error } = await supabase
-    .from('shared_builds')
+    .from('shared_builds_with_author')
     .select('*')
     .in('id', ids)
     .order('updated_at', { ascending: false });
@@ -225,12 +225,12 @@ export async function deleteBuild(id: string): Promise<void> {
   removeOwnerToken(id);
 }
 
-/** Fetch a single shared build by ID */
+/** Fetch a single shared build by ID (joined with author profile if any) */
 export async function getSharedBuild(id: string): Promise<SharedBuild | null> {
   if (!supabase) return null;
 
   const { data, error } = await supabase
-    .from('shared_builds')
+    .from('shared_builds_with_author')
     .select('*')
     .eq('id', id)
     .single();
@@ -257,7 +257,7 @@ export async function searchSharedBuilds(filters: SearchFilters = {}): Promise<S
   const to = from + pageSize - 1;
 
   let query = supabase
-    .from('shared_builds')
+    .from('shared_builds_with_author')
     .select('*', { count: 'exact' })
     .eq('is_public', true);
 
@@ -314,7 +314,7 @@ export async function getMyBuilds(): Promise<SharedBuild[]> {
   if (!user) return [];
 
   const { data, error } = await supabase
-    .from('shared_builds')
+    .from('shared_builds_with_author')
     .select('*')
     .eq('user_id', user.id)
     .order('updated_at', { ascending: false });

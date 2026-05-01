@@ -275,7 +275,11 @@ ON CONFLICT (user_id) DO NOTHING;
 
 -- Joined view for build queries — replaces direct selects from shared_builds
 -- in the search/list paths so cards can render handle + verified avatar.
-CREATE VIEW shared_builds_with_author AS
+-- security_invoker = on is REQUIRED so the view respects the caller's RLS
+-- context instead of running with the view-creator's privileges. Without it,
+-- anon role would see private builds through this view.
+CREATE VIEW shared_builds_with_author
+WITH (security_invoker = on) AS
 SELECT b.*,
        p.handle       AS author_handle,
        p.display_name AS author_display_name,

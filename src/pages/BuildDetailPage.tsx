@@ -3,7 +3,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from '@tanstack/react-router';
+import { useParams, useNavigate, Link } from '@tanstack/react-router';
 import { Button } from '@/components/ui/Button';
 import { getSharedBuild, incrementViews, isOwnedBuild, deleteBuild, reclaimBuild, updateBuildVisibility } from '@/services/sharedBuilds';
 import { useBuildStore } from '@/stores/buildStore';
@@ -205,7 +205,22 @@ export function BuildDetailPage() {
 
         {/* Meta */}
         <div className="flex flex-wrap gap-4 text-xs text-gray-500">
-          {build.author_name && <span>By {build.author_name}</span>}
+          {build.author_name && (
+            <span>
+              By{' '}
+              {build.author_handle ? (
+                <Link
+                  to="/author/$handle"
+                  params={{ handle: build.author_handle }}
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
+                >
+                  {build.author_name}
+                </Link>
+              ) : (
+                <span className="text-gray-400">{build.author_name}</span>
+              )}
+            </span>
+          )}
           {build.server && <span>{build.server}</span>}
           <span>{new Date(build.created_at).toLocaleDateString()}</span>
           <span>{build.views} views</span>
