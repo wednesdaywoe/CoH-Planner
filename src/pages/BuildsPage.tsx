@@ -128,7 +128,9 @@ export function BuildsPage() {
       sortBy: 'newest',
       page: 1,
       pageSize: 20,
-      ...(authorId ? { authorId } : { authorName }),
+      // Always carry authorName so the active-filter banner can display it.
+      // searchSharedBuilds only filters by authorName when authorId is absent.
+      ...(authorId ? { authorId, authorName } : { authorName }),
     });
   };
 

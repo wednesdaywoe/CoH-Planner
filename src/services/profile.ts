@@ -101,6 +101,32 @@ export interface PublicAuthor {
   bio: string;
 }
 
+export interface AuthorSearchResult {
+  user_id: string;
+  handle: string | null;
+  display_name: string;
+  avatar_url: string | null;
+  build_count: number;
+  sim: number;
+}
+
+/**
+ * Fuzzy author search for autocomplete (trigram similarity over display_name + handle).
+ * Returns up to `limit` results ordered by similarity, then by build_count.
+ * Returns empty when query is shorter than 2 chars (no point hitting the RPC).
+ */
+export async function searchAuthors(query: string, limit = 8): Promise<AuthorSearchResult[]> {
+  if (!supabase) return [];
+
+  const q = query.trim();
+  if (q.length < 2) return [];
+
+  const { data, error } = await supabase.rpc('search_authors', { q, lim: limit });
+  if (error) throw new Error(error.message);
+
+  return (data ?? []) as AuthorSearchResult[];
+}
+
 /** Resolve an /author/{handle} URL slug to a public profile. Null if not found. */
 export async function resolveAuthor(handle: string | undefined | null): Promise<PublicAuthor | null> {
   if (!supabase || !handle) return null;

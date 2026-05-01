@@ -2,7 +2,7 @@
 export const BUILD_TIME = __BUILD_TIME__;
 
 // App version - increment to trigger welcome modal on major updates
-export const APP_VERSION = '0.1.6.0-beta';
+export const APP_VERSION = '0.1.6.2-beta';
 
 // TypeScript declaration for the global constant
 declare const __BUILD_TIME__: number;

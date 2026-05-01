@@ -2,9 +2,10 @@
  * BuildFilters — search bar and filter dropdowns for the shared builds browser
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getArchetypeIds, getArchetype } from '@/data';
 import { getPowersetsForArchetype } from '@/data/powersets';
+import { searchAuthors, type AuthorSearchResult } from '@/services/profile';
 import type { SearchFilters } from '@/types/shared';
 
 interface BuildFiltersProps {
@@ -144,7 +145,127 @@ export function BuildFilters({ filters, onFiltersChange }: BuildFiltersProps) {
           <option value="newest">Newest</option>
           <option value="views">Most Viewed</option>
         </select>
+
+        {/* Author autocomplete */}
+        <AuthorAutocomplete
+          onSelect={(result) =>
+            onFiltersChange({
+              ...filters,
+              authorId: result.user_id,
+              authorName: result.display_name,
+              page: 1,
+            })
+          }
+        />
       </div>
+    </div>
+  );
+}
+
+// ---- AuthorAutocomplete ----
+
+interface AuthorAutocompleteProps {
+  onSelect: (result: AuthorSearchResult) => void;
+}
+
+function AuthorAutocomplete({ onSelect }: AuthorAutocompleteProps) {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState<AuthorSearchResult[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Debounced fuzzy search
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2) {
+      setResults([]);
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+    const timer = setTimeout(async () => {
+      try {
+        const r = await searchAuthors(q, 8);
+        setResults(r);
+      } catch {
+        setResults([]);
+      } finally {
+        setLoading(false);
+      }
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', onClick);
+    return () => document.removeEventListener('mousedown', onClick);
+  }, [open]);
+
+  const handleSelect = (result: AuthorSearchResult) => {
+    onSelect(result);
+    setQuery('');
+    setResults([]);
+    setOpen(false);
+  };
+
+  const showDropdown = open && (loading || results.length > 0 || query.trim().length >= 2);
+
+  return (
+    <div ref={containerRef} className="relative">
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          setOpen(true);
+        }}
+        onFocus={() => setOpen(true)}
+        placeholder="Search by author..."
+        className="bg-gray-800 border border-gray-600 rounded px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 w-48"
+      />
+
+      {showDropdown && (
+        <div className="absolute top-full left-0 mt-1 w-72 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-50 max-h-80 overflow-auto">
+          {loading && (
+            <div className="px-3 py-2 text-xs text-gray-500">Searching…</div>
+          )}
+          {!loading && results.length === 0 && (
+            <div className="px-3 py-2 text-xs text-gray-500">No authors found.</div>
+          )}
+          {!loading &&
+            results.map((r) => (
+              <button
+                key={r.user_id}
+                type="button"
+                onClick={() => handleSelect(r)}
+                className="w-full text-left px-3 py-2 hover:bg-gray-700 transition-colors flex items-center gap-2"
+              >
+                {r.avatar_url ? (
+                  <img src={r.avatar_url} alt="" className="w-6 h-6 rounded-full shrink-0" />
+                ) : (
+                  <div className="w-6 h-6 rounded-full bg-gray-700 shrink-0" />
+                )}
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm text-white truncate">{r.display_name}</div>
+                  {r.handle && (
+                    <div className="text-xs text-gray-400 truncate">@{r.handle}</div>
+                  )}
+                </div>
+                <span className="text-xs text-gray-500 shrink-0">
+                  {r.build_count} build{r.build_count === 1 ? '' : 's'}
+                </span>
+              </button>
+            ))}
+        </div>
+      )}
     </div>
   );
 }

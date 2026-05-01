@@ -288,8 +288,10 @@ FROM shared_builds b
 LEFT JOIN profiles p ON p.user_id = b.user_id;
 
 -- Author-search RPC for the autocomplete dropdown.
--- Returns one row per profile, ranked by trigram similarity over both
--- display_name and handle, with a build_count tiebreaker.
+-- Combines ILIKE substring/prefix matching (autocomplete-friendly for short
+-- queries) with trigram similarity (catches typos). Pure trigram matching
+-- alone failed for short queries like "wed" vs "wednesdaywoe" because the
+-- similarity score (~0.23) fell below pg_trgm's default 0.3 threshold.
 CREATE OR REPLACE FUNCTION search_authors(q TEXT, lim INT DEFAULT 10)
 RETURNS TABLE (
   user_id      UUID,
@@ -303,12 +305,22 @@ LANGUAGE sql STABLE AS $$
   SELECT p.user_id, p.handle, p.display_name, p.avatar_url,
          COUNT(b.id) FILTER (WHERE b.is_public) AS build_count,
          GREATEST(
+           -- Prefix match: highest priority
+           CASE WHEN p.display_name ILIKE q || '%'        THEN 1.0 ELSE 0 END,
+           CASE WHEN p.handle::text ILIKE q || '%'        THEN 1.0 ELSE 0 END,
+           -- Substring match
+           CASE WHEN p.display_name ILIKE '%' || q || '%' THEN 0.8 ELSE 0 END,
+           CASE WHEN p.handle::text ILIKE '%' || q || '%' THEN 0.8 ELSE 0 END,
+           -- Trigram fuzzy (catches typos)
            similarity(p.display_name, q),
            COALESCE(similarity(p.handle::text, q), 0)
          ) AS sim
   FROM profiles p
   LEFT JOIN shared_builds b ON b.user_id = p.user_id
-  WHERE p.display_name % q OR p.handle::text % q
+  WHERE p.display_name ILIKE '%' || q || '%'
+     OR p.handle::text   ILIKE '%' || q || '%'
+     OR p.display_name % q
+     OR p.handle::text % q
   GROUP BY p.user_id, p.handle, p.display_name, p.avatar_url
   ORDER BY sim DESC, build_count DESC
   LIMIT lim;

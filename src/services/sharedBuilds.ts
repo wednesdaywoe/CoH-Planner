@@ -271,10 +271,13 @@ export async function searchSharedBuilds(filters: SearchFilters = {}): Promise<S
   if (filters.secondarySet) {
     query = query.eq('secondary_set', filters.secondarySet);
   }
+  // authorId is the canonical filter (matches a specific user account).
+  // authorName is only used as a filter when there's no authorId — primarily
+  // for clicks on anonymous (no user_id) build cards. When both are present,
+  // authorName is treated as a display label for the active-filter banner only.
   if (filters.authorId) {
     query = query.eq('user_id', filters.authorId);
-  }
-  if (filters.authorName) {
+  } else if (filters.authorName) {
     query = query.eq('author_name', filters.authorName);
   }
   if (filters.query?.trim()) {

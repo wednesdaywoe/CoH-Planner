@@ -29,6 +29,17 @@ export function AuthorPage() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [sortBy, setSortBy] = useState<'newest' | 'views'>('newest');
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    } catch {
+      // Clipboard API unavailable (e.g. insecure context) — silently no-op
+    }
+  };
 
   // Resolve handle → profile
   useEffect(() => {
@@ -150,9 +161,55 @@ export function AuthorPage() {
           {author.bio && (
             <p className="text-sm text-gray-300 mt-2 whitespace-pre-wrap">{author.bio}</p>
           )}
-          <p className="text-xs text-gray-500 mt-3">
-            {total} public build{total === 1 ? '' : 's'}
-          </p>
+          <div className="text-xs text-gray-500 mt-3 flex items-center gap-2 flex-wrap">
+            <span>
+              {total} public build{total === 1 ? '' : 's'}
+            </span>
+            <span>·</span>
+            <button
+              type="button"
+              onClick={handleCopyLink}
+              className="inline-flex items-center gap-1 text-gray-400 hover:text-blue-400 transition-colors"
+            >
+              {linkCopied ? (
+                <>
+                  <svg
+                    className="w-3.5 h-3.5 text-green-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span className="text-green-400">Link copied</span>
+                </>
+              ) : (
+                <>
+                  <svg
+                    className="w-3.5 h-3.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13.828 10.172a4 4 0 015.656 0l1.414 1.414a4 4 0 010 5.656l-3 3a4 4 0 01-5.656 0L11 19.5m1.828-9.328L11 12M10.172 13.828a4 4 0 01-5.656 0L3.1 12.414a4 4 0 010-5.656l3-3a4 4 0 015.656 0L13 4.5m-1.828 9.328L13 12"
+                    />
+                  </svg>
+                  Copy profile link
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 

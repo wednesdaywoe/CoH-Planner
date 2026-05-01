@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-04-23 (evening) ─────────────────────────────────────────────────
   {
-    date: '2026-04-30',
+    date: '2026-05-31',
     items: [
+      { message: 'New feature for build sharing: you can now search by author, and logged in users have a profile page for sharing your public builds. File > Profile Settings', type: 'feat' },
       { message: 'Fix for some toggle powers that were not picked up by endurance accounting, resulting in no end costs', type: 'fix' },
       { message: 'Rebirth dataset is in the works!', type: 'update' },
       { message: 'Began work on the plumbing to support multiple datasets. Stuff might break',type: "feat"},
