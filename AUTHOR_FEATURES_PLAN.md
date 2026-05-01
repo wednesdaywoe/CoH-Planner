@@ -27,7 +27,7 @@ Both depend on a shared foundation: a `profiles` table that gives each Discord-a
 Each step is independently deployable and reversible.
 
 - [x] **Step 0 — Plan & migration draft.** Migration SQL appended to [supabase/schema.sql](supabase/schema.sql) as a commented-out block. Not yet applied.
-- [ ] **Step 1 — Apply migration.** Verify Discord OAuth metadata field names against a live `auth.users.raw_user_meta_data` row, uncomment the block, run it in the Supabase SQL editor. Invisible to users.
+- [x] **Step 1 — Apply migration (2026-05-01).** Verified Discord OAuth metadata against live `auth.users` rows, corrected COALESCE chain, applied migration in Supabase SQL editor, backfilled all existing profiles. `schema.sql` now uncommented and matches live DB. See **Step 1 lessons** below.
 - [ ] **Step 2 — `update-profile` edge function.** Handle/display_name/bio writes; reserved-handle check via `reserved_handles` table; 30-day handle cooldown; refresh `discord_username` / `avatar_url` from JWT each call.
 - [ ] **Step 3 — Profile settings page.** New route `/settings/profile` (auth-required), accessible from user menu. Shows avatar (read-only), display_name, handle (with availability check + cooldown notice), bio, verified Discord username. First-publish prompt to claim a handle.
 - [ ] **Step 4 — Switch reads to the joined view.** `searchSharedBuilds` selects from `shared_builds_with_author` instead of `shared_builds`. Linkify author names on `BuildCard` + `BuildDetailPage` when `user_id` + `handle` exist; render plain text + "unverified" label otherwise.
@@ -36,7 +36,7 @@ Each step is independently deployable and reversible.
 
 ---
 
-## Schema additions (pending — see commented block in schema.sql)
+## Schema additions (live in [supabase/schema.sql](supabase/schema.sql))
 
 ```
 profiles
@@ -67,21 +67,35 @@ Plus a one-time backfill INSERT for existing users.
 
 ---
 
-## Open verification before applying step 1
+## Step 1 lessons (kept for future migrations touching `auth.users`)
 
-Run in Supabase SQL editor and inspect the JSON:
+The original plan's COALESCE chain was wrong in two places, only caught by inspecting real rows:
+
+1. **`global_name` is nested under `custom_claims`**, not top-level. The original chain (`full_name → name → global_name`) would never have found it, defaulting all users to their cryptic Discord username instead of their display name.
+2. **There is no top-level `user_name` key** in Supabase's Discord OAuth metadata. The closest equivalents are `full_name` (clean username) and `name` (with legacy `#0` discriminator suffix).
+
+After fixing those, two more edge cases surfaced from the backfill:
+
+3. **Discord stores empty `""` for `global_name`** when a user hasn't set a display name (4 of our users). `COALESCE` only skips NULLs, not empty strings — so the chain stopped on `""` and produced empty display_names. Fix: wrap each candidate in `NULLIF(value, '')`.
+4. **Non-Discord providers** (we have one SimpleLogin user) have *none* of the Discord fields. Final fallback added: `NULLIF(split_part(email, '@', 1), '')` so they at least get an email-prefix display name.
+
+Final COALESCE chain (in [supabase/schema.sql](supabase/schema.sql)):
 
 ```sql
-SELECT id, raw_user_meta_data FROM auth.users LIMIT 3;
+COALESCE(
+  NULLIF(raw_user_meta_data->'custom_claims'->>'global_name', ''),
+  NULLIF(raw_user_meta_data->>'full_name', ''),
+  NULLIF(raw_user_meta_data->>'name', ''),
+  NULLIF(split_part(email, '@', 1), ''),
+  ''
+)
 ```
 
-Confirm the keys used in `seed_profile_on_signup()` match what Discord/Supabase actually populated (`full_name`, `name`, `global_name`, `user_name`, `provider_id`, `avatar_url`). Adjust the COALESCE chain if needed.
+`discord_username` is sourced from `full_name` (clean, no `#0` suffix) and is NULL for non-Discord providers — correctly suppresses the "verified" badge for them.
 
 ---
 
 ## Files touched so far
 
-- [supabase/schema.sql](supabase/schema.sql) — migration block appended (commented out, no runtime effect).
+- [supabase/schema.sql](supabase/schema.sql) — migration block appended, applied, and uncommented.
 - This file.
-
-Nothing else has been modified. Safe to commit and resume later.
