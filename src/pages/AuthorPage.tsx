@@ -9,6 +9,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from '@tanstack/react-router';
+import { useAuthStore } from '@/stores';
 import { resolveAuthor, type PublicAuthor } from '@/services/profile';
 import { searchSharedBuilds } from '@/services/sharedBuilds';
 import { BuildCard } from '@/components/shared/BuildCard';
@@ -19,6 +20,7 @@ const PAGE_SIZE = 20;
 export function AuthorPage() {
   const { handle } = useParams({ from: '/author/$handle' });
   const navigate = useNavigate();
+  const currentUser = useAuthStore((s) => s.user);
 
   const [author, setAuthor] = useState<PublicAuthor | null>(null);
   const [authorLoading, setAuthorLoading] = useState(true);
@@ -131,6 +133,7 @@ export function AuthorPage() {
   const total = result?.total ?? 0;
   const totalPages = result?.totalPages ?? 0;
   const builds = result?.builds ?? [];
+  const isOwnProfile = currentUser?.id === author.user_id;
 
   const selectClass =
     'bg-gray-800 border border-gray-600 rounded px-2 py-1 text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500';
@@ -219,7 +222,11 @@ export function AuthorPage() {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search this author's builds..."
+          placeholder={
+            isOwnProfile
+              ? 'Search your builds...'
+              : `Search ${author.display_name}'s builds...`
+          }
           className="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
         />
         <select
@@ -242,7 +249,9 @@ export function AuthorPage() {
           <p>
             {search.trim()
               ? 'No builds match your search.'
-              : `${author.display_name} hasn't shared any public builds yet.`}
+              : isOwnProfile
+                ? "You haven't shared any public builds yet."
+                : `${author.display_name} hasn't shared any public builds yet.`}
           </p>
         </div>
       ) : (
