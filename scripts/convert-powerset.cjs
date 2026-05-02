@@ -966,8 +966,21 @@ function _isUntoggleableGate(req) {
   // To-hit-roll conditionals (`@ToHitRoll @ToHit < / >=`) — internal hit
   // chance branches, not a user knob.
   if (/@ToHitRoll/.test(req)) return true;
-  // FX-only conditionals (CustomFX swaps for visual variants).
-  if (/@CustomFX/.test(req)) return true;
+  // FX-only conditionals — `@CustomFX X eq` clauses gate which visual variant
+  // applies. They're stripped from the gate at classification time (like the
+  // PvE/PvP enttype filter) rather than rejected outright, since they can
+  // appear chained alongside a real toggleable gate (`kStealth source>`,
+  // power-presence, etc.). See `_stripIgnoredClauses`.
+  // Grounded / NearGround state — Electric Armor's KB protection only fires
+  // when grounded, Ignite's burning patch only persists when the target is
+  // grounded. Not a user-meaningful toggle (default-on for non-flying chars,
+  // auto-resets when flying). Skip both source and target sides.
+  if (/\bNearGround\s+(source|target)\.EventTimeSince>/.test(req)) return true;
+  // "Mez-free for N seconds" gates (Energy Aura's Entropy Shield recharge
+  // bonus, etc.) — `Held source.EventTimeSince> N >` chained with Stunned/
+  // Sleep variants. Equivalent to "the player isn't currently being mez'd";
+  // tracked by combat state, not a user toggle.
+  if (/\b(Held|Stunned|Sleep|Confused|Terrorized|Immobilized)\s+source\.EventTimeSince>/.test(req)) return true;
   // Token-time / token-owned mechanics (Gravity Distortion's "lift/propel
   // bonus on a recently-distorted target") — these layer on top of a
   // separate power's effect, not toggleable independently.
@@ -1051,6 +1064,14 @@ function _isUntoggleableGate(req) {
   // bonus when the *owner* is stealthed). Skip — same family as the
   // existing kStealth source> handler but routed through source.owner.
   if (/\bkStealth\s+source\.owner>/.test(req)) return true;
+  // Caster-mez magnitude gates (`mod.k<Mez> source> 0 >`) — used by break-free
+  // powers (Martial Manipulation's Inner Will) that fire only when the player
+  // is currently mez'd. Auto-state, not user-toggleable.
+  if (/\bmod\.k(Stun|Sleep|Immobilize|Held|Confused|Terrorized)\s+source>\s+0\s+>/.test(req)) return true;
+  // Target-low-HP threshold (Scourge-style procs: extra damage when target HP
+  // is below N%). Already a built-in inherent for Corruptors; surfacing as a
+  // per-power toggle would duplicate the Header's Scourge state.
+  if (/\bkHitPoints%\s+target>\s+\d+\s+</.test(req)) return true;
   return false;
 }
 
@@ -1158,15 +1179,37 @@ function _prettifyLeaf(leaf) {
   return leaf.replace(/_/g, ' ');
 }
 
+// Strip clauses we want to ignore for classification — entity-type filters
+// (PvE/PvP enttype) and visual-only customFX checks (Char's BrightFieryBinds,
+// etc.). These can appear chained alongside a real toggleable gate; rejecting
+// the whole expression because of them would lose Domination Active and other
+// real classifications. By stripping them first, the remaining expression
+// either matches a known gate pattern or reduces to the base case.
+function _stripIgnoredClauses(req) {
+  return req
+    // `enttype target> critter eq` / `enttype target> player eq` — the binary
+    // occasionally emits `Enttype` with a capital E.
+    .replace(/enttype target> (critter|player) eq/gi, '')
+    // `@customFX <name> eq` and `@customFX <name> eq !` — visual-state gates.
+    // Match both casings (Parse6 lowercase, Parse7 capital). Consume an
+    // immediately-following `!` so the strip leaves a clean RPN.
+    .replace(/@customFX\s+\S+\s+eq(\s+!)?/gi, '')
+    // Collapse runs of whitespace introduced by the strips.
+    .replace(/\s+/g, ' ')
+    // Strip dangling boolean operators left behind. Repeat to handle
+    // chains like ` && && && `.
+    .replace(/(?:\s*(?:&&|\|\|)\s*){2,}/g, ' ')
+    .replace(/^\s*(?:&&|\|\|)\s*/, '')
+    .replace(/\s*(?:&&|\|\|)\s*$/, '')
+    .trim();
+}
+
 function _isConditionalGate(req) {
   if (!req || !req.trim()) return false;
   // Bare RPN `1` is an always-true sentinel some powers carry as a no-op
   // gate. Treat as the base case.
   if (req.trim() === '1') return false;
-  const stripped = req
-    // Case-insensitive strip for `enttype target> {critter|player} eq` —
-    // the binary occasionally emits `Enttype` with a capital E.
-    .replace(/enttype target> (critter|player) eq/gi, '')
+  const stripped = _stripIgnoredClauses(req)
     .replace(/\s+(&&|\|\|)\s+/g, ' ')
     .replace(/^\s*(&&|\|\|)\s*/, '')
     .replace(/\s*(&&|\|\|)\s*$/, '')

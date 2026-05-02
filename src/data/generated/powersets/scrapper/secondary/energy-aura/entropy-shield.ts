@@ -111,23 +111,5 @@ export const EntropicAura: Power = {
       "table": "Melee_Ones",
       "perTarget": 0.035
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "effects": {
-        "rechargeBuff": {
-          "scale": 0.05,
-          "table": "Melee_Ones"
-        },
-        "durations": {
-          "rechargeBuff": 2.25
-        },
-        "buffDuration": 2.25
-      }
-    }
-  ]
+  }
 };

@@ -74,28 +74,5 @@ export const Grounded: Power = {
     "effectDuration": 1,
     "buffDuration": 1
   },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "effects": {
-        "knockup": {
-          "scale": 6,
-          "table": "Melee_Knockback"
-        },
-        "durations": {
-          "knockup": 5,
-          "knockback": 5
-        },
-        "knockback": {
-          "scale": 6,
-          "table": "Melee_Knockback"
-        },
-        "buffDuration": 5
-      }
-    }
-  ],
   "mechanicType": "parentMechanic"
 };

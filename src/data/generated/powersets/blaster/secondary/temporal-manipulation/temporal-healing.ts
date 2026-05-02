@@ -59,7 +59,7 @@ export const TemporalHealing: Power = {
       }
     },
     "absorb": {
-      "scale": 0.15,
+      "scale": 0.3,
       "table": "Melee_HealSelf"
     },
     "buffDuration": 2.25

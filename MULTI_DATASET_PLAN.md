@@ -14,8 +14,8 @@ Each entry below has a detail section further down. Status snapshot as of
 | # | Workstream | Status | Anchor |
 |---|---|---|---|
 | 1 | **Multi-dataset infrastructure** (Rebirth data layer) | Stages A + C mostly done; Stage B (HC powersets-tree migration) not started | [#multi-dataset-infrastructure](#multi-dataset-infrastructure) |
-| 2 | **Conditional Effects + Mechanic Adjusters** | Data-layer capture, scope/group/mode classification, base merger, AT-inherent routing all landed (uncommitted) | [#conditional-effects--mechanic-adjusters](#conditional-effects--mechanic-adjusters) |
-| 3 | **InfoPanel visual redesign** | Proposal reviewed; `MechanicAdjusters` slice mounted (uncommitted). Section ordering, table redesign, damage block, tags row all pending. | [#infopanel-visual-redesign](#infopanel-visual-redesign) |
+| 2 | **Conditional Effects + Mechanic Adjusters** | Data-layer capture, scope/group/mode classification, base merger, AT-inherent routing all landed on main (commit 7716ffe67) | [#conditional-effects--mechanic-adjusters](#conditional-effects--mechanic-adjusters) |
+| 3 | **InfoPanel visual redesign** | Proposal reviewed; `MechanicAdjusters` slice mounted. Section ordering, table redesign, damage block, tags row all pending. | [#infopanel-visual-redesign](#infopanel-visual-redesign) |
 | 4 | **AT-mechanic alignment** (Header vs InfoPanel) | First overlap (Domination via `kStealth source>` on Dominator powers) routed through Header state; expand mapping as more overlaps surface | [#at-mechanic-alignment](#at-mechanic-alignment) |
 | 5 | **Calc accuracy fixes** | Conditional-aggregation fix shipped to main; pure-DoT 5×tick bug, tooltip-level convention, level-differential accuracy display still open | [#calc-accuracy](#calc-accuracy) |
 | 6 | **Original Domination mechanic** (Rebirth) | Not started. Inherent description and toggle wiring need rewrite for i23-era Domination semantics | [#original-domination](#original-domination) |
@@ -25,13 +25,13 @@ Each entry below has a detail section further down. Status snapshot as of
 
 - [ ] Multi-instance mez display (Suffocate's Mag-3 base + Mag-3 Domination = two stacking instances; current Power type shape stores `effects.hold` as a single object)
 - [ ] Rendering "additive" Mechanic Adjuster contributions in the InfoPanel (currently the merger silently leaves base unchanged for additive collisions; needs UI surface so users can see the bonus exists)
-- [ ] Curated label overrides for the 19 remaining "Conditional"-fallback powers
+- [x] Curated label overrides for the 19 remaining "Conditional"-fallback powers — fixed 2026-05-03 by extending `_isUntoggleableGate` (Grounded/NearGround, recent-mez EventTimeSince, target-low-HP, caster-mez-state break-free) and converting `@CustomFX` from a reject rule into a strip via `_stripIgnoredClauses`. Down from 19 generic "Conditional" entries to 0 across both datasets.
 - [ ] Verify ~217 HC Beam Rifle / Disintegration powers in browser after the conditional-aggregation fix shipped
 - [ ] Decide on tooltip-level convention (game uses power's design level; Sidekick uses character level)
 - [ ] Stage B: migrate HC `powersets/` `overrides/` `generated/` trees into `datasets/homecoming/` (~600 import sites)
 - [ ] Audit other Rebirth-vs-HC scalar tables (only ranged/melee damage compared so far; control/heal/etc. tables differ for Tanker/Brute, possibly others)
 - [ ] Investigate the 80+ "Conditional"-labeled Rebirth Vacuum-style pet conditional gates
-- [ ] AT-inherent ID map expansion: Domination is wired; check if Hide/Containment/Fury/Scourge/Crit show up as conditional-template gates and need similar routing
+- [x] AT-inherent ID map expansion — audited 2026-05-03; only `domination` exists as a binary-level gate among AT-inherent mechanics. See AT-mechanic alignment section for details.
 
 ## Multi-dataset infrastructure
 
@@ -850,7 +850,7 @@ inflate base numbers). This workstream surfaces them as user-facing toggles
 ("Mechanic Adjusters") so the player can see what their build does *with*
 Domination active, *with* drowning, etc.
 
-### Data layer (uncommitted on main)
+### Data layer (landed on main, commit 7716ffe67)
 
 - [scripts/convert-powerset.cjs](scripts/convert-powerset.cjs) gained
   `_classifyConditionalGate`, `_isUntoggleableGate`, `collectConditionalsGrouped`,
@@ -897,7 +897,7 @@ Domination active, *with* drowning, etc.
   interface; `Power` gained `conditionalEffects?: ConditionalEffect[]`
 - [src/types/index.ts](src/types/index.ts) re-exports `ConditionalEffect`
 
-### State + selectors (uncommitted)
+### State + selectors (landed)
 
 - [src/stores/uiStore.ts](src/stores/uiStore.ts) gained
   `mechanicAdjusters: Record<string, boolean>` (per-power state, keyed
@@ -909,7 +909,7 @@ Domination active, *with* drowning, etc.
 - New selector hooks: `useMechanicAdjuster(powerName, id, defaultActive)`
   and `useGlobalAdjuster(id, defaultActive)`.
 
-### Merger (uncommitted)
+### Merger (landed)
 
 - [src/components/info/powerDisplayUtils.ts](src/components/info/powerDisplayUtils.ts)
   — `selectActiveConditionals(power, mechanicAdjusters, globalAdjusters,
@@ -922,7 +922,7 @@ Domination active, *with* drowning, etc.
   just `domination`) through their established state hooks instead of
   the new adjuster maps.
 
-### UI (uncommitted)
+### UI (landed)
 
 - [src/components/info/MechanicAdjusters.tsx](src/components/info/MechanicAdjusters.tsx)
   — renders below the per-target stacking slider, above the Power Effects
@@ -1015,11 +1015,31 @@ these same mechanics (especially `kStealth source>` on Dominator powers
 MechanicAdjusters. Resolved via `AT_INHERENT_CONDITIONAL_IDS` (see
 Conditional Effects section).
 
+### Audit (2026-05-03)
+
+Surveyed every conditional `id` emitted across HC + Rebirth generated
+powersets. The only ID that overlaps with an existing Header AT-inherent
+toggle is `domination` — which is already routed. Fury, Scourge, Critical
+Hit, Containment, Sentinel Crit, Opportunity, Vigilance, and Supremacy
+have **no** corresponding binary-level conditional gates; their math is
+implemented in the hardcoded `calculate*Damage` helpers and surfaced via
+Header state directly. So `AT_INHERENT_CONDITIONAL_IDS = { 'domination' }`
+is currently complete for the data we have.
+
+Two adjacent ID classes worth noting (not AT-inherent, no action required):
+- **Kheldian form gates** (`peacebringer_blaster_mode`,
+  `peacebringer_tanker_mode`, `warshade_blaster_mode`) — the binary
+  encodes "this power only fires in form X." They're scope='global'
+  conditionals today, which is semantically correct (one global "I'm in
+  Bright Form" toggle). If the planner later grows a first-class form-
+  switching surface, these should route through that.
+- **Power-presence cross-deps** (`master_brawler`) — "if you have Master
+  Brawler slotted, this power gets extra effects." Currently a global
+  conditional. Could later be auto-derived from build slotting rather
+  than requiring a manual toggle.
+
 ### Pending
 
-- [ ] Audit which other AT-inherent mechanics have binary-level gate
-  representations that need the same treatment. Likely candidates:
-  Fury (any `kFury source>` gates?), Scourge, Crit, Containment.
 - [ ] Bigger refactor candidate: replace the existing hardcoded
   AT-mechanic damage calcs (`calculateScourgeDamage`,
   `calculateContainmentDamage`, `calculateFuryDamage`,
@@ -1045,11 +1065,14 @@ Conditional Effects section).
 
 ### Pending
 
-- [ ] **DoT 5×tick bug**: pure-DoT powers display as "1 direct hit + 4
-  DoT ticks" instead of "4 ticks total". Visible on Suffocate
-  (DMG=13.61 vs DoT=10.89; should both be 10.89). Fix is in
-  [src/utils/calculations/damage.ts](src/utils/calculations/damage.ts)
-  around the `pureDot` path.
+- [x] **DoT 5×tick bug**: pure-DoT powers showed
+  `calculatedDamage.base + dotTotal` in the DPS rollup, double-counting one
+  tick (per-tick value lives in both `result.base` and `result.dotDamage.base`
+  for pure-DoT, so adding both gave 5× per-tick). Fixed in
+  [src/components/info/InfoPanel.tsx](src/components/info/InfoPanel.tsx)
+  by detecting pure-DoT (`abs(base - dot.base) <= 0.001`) and using only
+  `dotTotal` in that case. The per-row InfoPanel rendering and damage bar
+  were already correct.
 - [ ] **Tooltip-level convention** (see InfoPanel redesign section).
 - [ ] **Accuracy "Final" debuff** — Suffocate at L1 shows base 90%
   → final 57.6% with no obvious source. Trace what's debuffing

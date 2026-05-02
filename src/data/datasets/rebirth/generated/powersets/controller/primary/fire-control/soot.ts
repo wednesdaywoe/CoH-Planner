@@ -52,20 +52,5 @@ export const Char: Power = {
       "scale": 12,
       "table": "Ranged_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "effects": {
-        "hold": {
-          "mag": 3,
-          "scale": 12,
-          "table": "Ranged_Immobilize"
-        }
-      }
-    }
-  ]
+  }
 };

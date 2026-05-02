@@ -45,19 +45,6 @@ export const Cinders: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "effects": {
-        "hold": {
-          "mag": 3,
-          "scale": 8,
-          "table": "Ranged_Immobilize"
-        }
-      }
-    },
-    {
       "id": "domination",
       "label": "Domination Active",
       "scope": "global",

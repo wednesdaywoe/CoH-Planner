@@ -900,9 +900,14 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 const baseCycleTime = effectiveCastTime + effects.recharge;
                 const finalCycleTime = effectiveCastTime + rechargeStats.final;
 
-                // DPS = total damage (direct + DoT total + proc damage) / cycle time
-                const dotTotalBase = calculatedDamage.dotDamage ? calculatedDamage.dotDamage.base * calculatedDamage.dotDamage.ticks : 0;
-                const dotTotalFinal = calculatedDamage.dotDamage ? calculatedDamage.dotDamage.final * calculatedDamage.dotDamage.ticks : 0;
+                // DPS = total damage (direct + DoT total + proc damage) / cycle time.
+                // For pure-DoT powers, `calculatedDamage.base` IS the per-tick value
+                // (calc copies it into `dotDamage.base`), so adding both double-counts
+                // one tick. Detect that case and use only the DoT total.
+                const dot = calculatedDamage.dotDamage;
+                const isPureDotForDps = dot ? Math.abs(calculatedDamage.base - dot.base) <= 0.001 : false;
+                const dotTotalBase = dot ? dot.base * dot.ticks : 0;
+                const dotTotalFinal = dot ? dot.final * dot.ticks : 0;
 
                 // Calculate proc damage per activation if toggle is enabled
                 let procDamagePerActivation = 0;
@@ -925,8 +930,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                   }
                 }
 
-                const totalDmgBase = calculatedDamage.base + dotTotalBase;
-                const totalDmgFinal = calculatedDamage.final + dotTotalFinal + procDamagePerActivation;
+                const totalDmgBase = isPureDotForDps
+                  ? dotTotalBase
+                  : calculatedDamage.base + dotTotalBase;
+                const totalDmgFinal = isPureDotForDps
+                  ? dotTotalFinal + procDamagePerActivation
+                  : calculatedDamage.final + dotTotalFinal + procDamagePerActivation;
 
                 const baseDPS = totalDmgBase / baseCycleTime;
                 const finalDPS = totalDmgFinal / finalCycleTime;
