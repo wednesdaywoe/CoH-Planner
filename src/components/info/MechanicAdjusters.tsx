@@ -24,7 +24,11 @@ import {
   useMechanicAdjuster,
   useGlobalAdjuster,
 } from '@/stores';
-import { AT_INHERENT_CONDITIONAL_IDS } from './powerDisplayUtils';
+import {
+  AT_INHERENT_CONDITIONAL_IDS,
+  describeAdjusterContribution,
+  prettifyEffectKey,
+} from './powerDisplayUtils';
 
 interface MechanicAdjustersProps {
   power: Power;
@@ -65,7 +69,7 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
         {Array.from(groups.entries()).map(([groupId, members]) => (
           <RadioGroup
             key={groupId}
-            powerName={power.internalName}
+            power={power}
             groupId={groupId}
             members={members}
           />
@@ -73,7 +77,7 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
         {singletons.map((c) => (
           <SingleToggle
             key={c.id}
-            powerName={power.internalName}
+            power={power}
             entry={c}
           />
         ))}
@@ -87,11 +91,12 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
 // ----------------------------------------------------------------------
 
 interface SingleToggleProps {
-  powerName: string;
+  power: Power;
   entry: ConditionalEffect;
 }
 
-function SingleToggle({ powerName, entry }: SingleToggleProps) {
+function SingleToggle({ power, entry }: SingleToggleProps) {
+  const powerName = power.internalName;
   const isGlobal = entry.scope === 'global';
   const perPowerActive = useMechanicAdjuster(powerName, entry.id, entry.defaultActive ?? false);
   const globalActive = useGlobalAdjuster(entry.id, entry.defaultActive ?? false);
@@ -106,22 +111,25 @@ function SingleToggle({ powerName, entry }: SingleToggleProps) {
   };
 
   return (
-    <div className="flex items-center justify-between gap-2 text-[11px]">
-      <Toggle
-        id={`adjuster-${powerName}-${entry.id}`}
-        checked={active}
-        onChange={(e) => handleChange(e.target.checked)}
-        label={entry.label}
-        title={describeContribution(entry)}
-      />
-      {isGlobal && (
-        <span
-          className="text-slate-500 italic text-[9px] uppercase tracking-wide"
-          title="Affects all powers that share this state"
-        >
-          global
-        </span>
-      )}
+    <div className="flex flex-col gap-0">
+      <div className="flex items-center justify-between gap-2 text-[11px]">
+        <Toggle
+          id={`adjuster-${powerName}-${entry.id}`}
+          checked={active}
+          onChange={(e) => handleChange(e.target.checked)}
+          label={entry.label}
+          title={describeContribution(entry)}
+        />
+        {isGlobal && (
+          <span
+            className="text-slate-500 italic text-[9px] uppercase tracking-wide"
+            title="Affects all powers that share this state"
+          >
+            global
+          </span>
+        )}
+      </div>
+      <ContributionHint power={power} entry={entry} />
     </div>
   );
 }
@@ -131,23 +139,23 @@ function SingleToggle({ powerName, entry }: SingleToggleProps) {
 // ----------------------------------------------------------------------
 
 interface RadioGroupProps {
-  powerName: string;
+  power: Power;
   groupId: string;
   members: ConditionalEffect[];
 }
 
-function RadioGroup({ powerName, groupId, members }: RadioGroupProps) {
+function RadioGroup({ power, groupId, members }: RadioGroupProps) {
   // Group scope is determined by the members. Mixed-scope groups
   // shouldn't happen by construction (a group either represents a global
   // mechanic or a per-target tier), but if they do we treat the whole
   // group as global so toggle behavior is consistent.
   const anyGlobal = members.some((m) => m.scope === 'global');
   return anyGlobal
-    ? <GlobalRadioGroup groupId={groupId} members={members} />
-    : <PerPowerRadioGroup powerName={powerName} groupId={groupId} members={members} />;
+    ? <GlobalRadioGroup power={power} groupId={groupId} members={members} />
+    : <PerPowerRadioGroup power={power} groupId={groupId} members={members} />;
 }
 
-function GlobalRadioGroup({ groupId, members }: { groupId: string; members: ConditionalEffect[] }) {
+function GlobalRadioGroup({ power, groupId, members }: { power: Power; groupId: string; members: ConditionalEffect[] }) {
   const globalAdjusters = useUIStore((s) => s.globalAdjusters);
   const setGlobalAdjusterGroup = useUIStore((s) => s.setGlobalAdjusterGroup);
   const activeId = members.find((m) => globalAdjusters[m.id])?.id ?? null;
@@ -163,13 +171,13 @@ function GlobalRadioGroup({ groupId, members }: { groupId: string; members: Cond
       {members.map((m) => (
         <RadioRow
           key={m.id}
+          power={power}
+          entry={m}
           name={`group-${groupId}`}
           checked={activeId === m.id}
           onSelect={() =>
             setGlobalAdjusterGroup(m.id, members.map((mm) => mm.id))
           }
-          label={m.label}
-          title={describeContribution(m)}
         />
       ))}
       {activeId !== null && (
@@ -186,14 +194,15 @@ function GlobalRadioGroup({ groupId, members }: { groupId: string; members: Cond
 }
 
 function PerPowerRadioGroup({
-  powerName,
+  power,
   groupId,
   members,
 }: {
-  powerName: string;
+  power: Power;
   groupId: string;
   members: ConditionalEffect[];
 }) {
+  const powerName = power.internalName;
   const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
   const setMechanicAdjuster = useUIStore((s) => s.setMechanicAdjuster);
   const activeId = members.find(
@@ -214,11 +223,11 @@ function PerPowerRadioGroup({
       {members.map((m) => (
         <RadioRow
           key={m.id}
+          power={power}
+          entry={m}
           name={`group-${powerName}-${groupId}`}
           checked={activeId === m.id}
           onSelect={() => select(m.id)}
-          label={m.label}
-          title={describeContribution(m)}
         />
       ))}
       {activeId !== null && (
@@ -235,28 +244,56 @@ function PerPowerRadioGroup({
 }
 
 interface RadioRowProps {
+  power: Power;
+  entry: ConditionalEffect;
   name: string;
   checked: boolean;
   onSelect: () => void;
-  label: string;
-  title?: string;
 }
 
-function RadioRow({ name, checked, onSelect, label, title }: RadioRowProps) {
+function RadioRow({ power, entry, name, checked, onSelect }: RadioRowProps) {
   return (
-    <label
-      title={title}
-      className="flex items-center gap-2 text-[11px] cursor-pointer hover:bg-slate-800/40 rounded px-1 py-0.5"
+    <div className="flex flex-col gap-0">
+      <label
+        title={describeContribution(entry)}
+        className="flex items-center gap-2 text-[11px] cursor-pointer hover:bg-slate-800/40 rounded px-1 py-0.5"
+      >
+        <input
+          type="radio"
+          name={name}
+          checked={checked}
+          onChange={onSelect}
+          className="accent-blue-500 w-3 h-3"
+        />
+        <span className={checked ? 'text-slate-200' : 'text-slate-400'}>{entry.label}</span>
+      </label>
+      <ContributionHint power={power} entry={entry} indent="ml-7" />
+    </div>
+  );
+}
+
+// ----------------------------------------------------------------------
+// Contribution hint — surfaces "+ second hold instance" style annotations
+// for additive conditionals whose effects collide with base, since the
+// merger silently leaves base untouched in that case (multi-instance
+// display is a separate workstream).
+// ----------------------------------------------------------------------
+
+function ContributionHint({
+  power,
+  entry,
+  indent = 'ml-5',
+}: { power: Power; entry: ConditionalEffect; indent?: string }) {
+  const { collisionKeys } = describeAdjusterContribution(power, entry);
+  if (collisionKeys.length === 0) return null;
+  const phrase = collisionKeys.map(prettifyEffectKey).join(', ');
+  return (
+    <div
+      className={`text-[9px] text-slate-500 italic ${indent} mt-0.5`}
+      title={`When active, casts a second simultaneous instance of: ${phrase}. The displayed numbers don't yet show the duplicate; the game treats them as stacked.`}
     >
-      <input
-        type="radio"
-        name={name}
-        checked={checked}
-        onChange={onSelect}
-        className="accent-blue-500 w-3 h-3"
-      />
-      <span className={checked ? 'text-slate-200' : 'text-slate-400'}>{label}</span>
-    </label>
+      + extra {phrase} instance
+    </div>
   );
 }
 

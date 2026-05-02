@@ -587,3 +587,64 @@ export function applyActiveConditionals(
 
   return { ...power, damage: nextDamage, effects: nextEffects };
 }
+
+/**
+ * Describe what an active *additive* conditional would contribute on top of
+ * the base power. Used by `MechanicAdjusters` to surface the existence of
+ * collisions the merger silently drops (multi-instance mez display is a
+ * separate workstream — until then, this annotation is the only hint the
+ * user has that toggling a conditional with a collision actually does
+ * something at the game level).
+ *
+ * `replace`-mode conditionals already overwrite base in the displayed
+ * power, so they're excluded from the collision set.
+ */
+export interface AdjusterContribution {
+  /** Effect keys present on the conditional but absent from base — these
+   *  appear in the merged power after toggle-on. Surfacing them is mainly
+   *  documentation; the main display already shows them. */
+  newKeys: string[];
+  /** Effect keys present on BOTH conditional and base — the additive merger
+   *  leaves the base value untouched, so toggling on adds a second simul-
+   *  taneous instance the planner doesn't render yet. The toggle row needs
+   *  a "+" annotation so the user knows the conditional isn't a no-op. */
+  collisionKeys: string[];
+  /** Whether the conditional adds damage on top of base. Always tracked
+   *  separately from effects since damage is always concatenated. */
+  addsDamage: boolean;
+}
+
+export function describeAdjusterContribution(
+  power: Power,
+  c: ConditionalEffect,
+): AdjusterContribution {
+  const newKeys: string[] = [];
+  const collisionKeys: string[] = [];
+  if (c.mode !== 'replace' && c.effects) {
+    const baseEffects = (power.effects ?? {}) as Record<string, unknown>;
+    for (const k of Object.keys(c.effects)) {
+      // `durations` is a metadata bag (per-effect duration overrides), not
+      // a primary effect — skip so we don't surface it as a collision.
+      if (k === 'durations') continue;
+      if (k in baseEffects) collisionKeys.push(k);
+      else newKeys.push(k);
+    }
+  }
+  const addsDamage = !!c.damage && (Array.isArray(c.damage) ? c.damage.length > 0 : true);
+  return { newKeys, collisionKeys, addsDamage };
+}
+
+/**
+ * Title-case a camelCase or underscore-separated effect key. Used by the
+ * MechanicAdjusters annotation rows.
+ *
+ *   `hold` → "Hold"
+ *   `defenseDebuff` → "Defense Debuff"
+ *   `damage_buff` → "Damage Buff"
+ */
+export function prettifyEffectKey(key: string): string {
+  return key
+    .replace(/_/g, ' ')
+    .replace(/([a-z\d])([A-Z])/g, '$1 $2')
+    .replace(/^./, (c) => c.toUpperCase());
+}

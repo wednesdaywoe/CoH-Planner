@@ -1118,8 +1118,22 @@ export function RegistryEffectsDisplay({
               const adjustedFinal = isAccuracy ? Math.min(95, rawFinal) : rawFinal;
               const isCapped = isAccuracy && rawFinal > 95;
               const isAdjusted = hasToHitMod;
+              // Tooltip explaining the level-differential adjustment so the user
+              // can tell why "Final" differs from "Enhanced" — the arrow alone
+              // doesn't communicate that purple-patch ToHit is doing the math.
+              let accTitle: string | undefined;
+              if (hasToHitMod) {
+                const off = purplePatchInfo!.offset;
+                const offText = off > 0 ? `+${off}` : `${off}`;
+                const effectiveToHitPct = (purplePatchInfo!.factor * 75).toFixed(1);
+                const tohitBonus = purplePatchInfo!.toHitBonus ?? 0;
+                const bonusPart = tohitBonus !== 0
+                  ? ` (includes your ${tohitBonus > 0 ? '+' : ''}${tohitBonus.toFixed(1)}% ToHit bonus)`
+                  : '';
+                accTitle = `Adjusted for level differential vs ${offText} target — effective base ToHit ${effectiveToHitPct}%${bonusPart}.${isCapped ? ' Hit chance capped at 95%.' : ''}`;
+              }
               return (
-                <span className={isCapped ? 'text-orange-400' : hasFinal || isAdjusted ? finalColumnColor : 'text-slate-400'}>
+                <span className={isCapped ? 'text-orange-400' : hasFinal || isAdjusted ? finalColumnColor : 'text-slate-400'} title={accTitle}>
                   {formatValue(adjustedFinal)}
                   {isCapped && (
                     <span className="text-slate-500 text-[9px] ml-0.5">({formatValue(rawFinal)})</span>

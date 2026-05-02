@@ -24,7 +24,7 @@ Each entry below has a detail section further down. Status snapshot as of
 ## Open Tasks (not-yet-grouped backlog)
 
 - [ ] Multi-instance mez display (Suffocate's Mag-3 base + Mag-3 Domination = two stacking instances; current Power type shape stores `effects.hold` as a single object)
-- [ ] Rendering "additive" Mechanic Adjuster contributions in the InfoPanel (currently the merger silently leaves base unchanged for additive collisions; needs UI surface so users can see the bonus exists)
+- [x] Rendering "additive" Mechanic Adjuster contributions in the InfoPanel — shipped 2026-05-03. `describeAdjusterContribution` returns the conditional's effect keys partitioned into "new" (filled in by merger) vs "collision" (silently dropped). `MechanicAdjusters` shows a "+ extra <effect> instance" hint under each colliding toggle. Multi-instance display still pending; this is the documentation hint that bridges the gap.
 - [x] Curated label overrides for the 19 remaining "Conditional"-fallback powers — fixed 2026-05-03 by extending `_isUntoggleableGate` (Grounded/NearGround, recent-mez EventTimeSince, target-low-HP, caster-mez-state break-free) and converting `@CustomFX` from a reject rule into a strip via `_stripIgnoredClauses`. Down from 19 generic "Conditional" entries to 0 across both datasets.
 - [ ] Verify ~217 HC Beam Rifle / Disintegration powers in browser after the conditional-aggregation fix shipped
 - [ ] Decide on tooltip-level convention (game uses power's design level; Sidekick uses character level)
@@ -1074,10 +1074,14 @@ Two adjacent ID classes worth noting (not AT-inherent, no action required):
   `dotTotal` in that case. The per-row InfoPanel rendering and damage bar
   were already correct.
 - [ ] **Tooltip-level convention** (see InfoPanel redesign section).
-- [ ] **Accuracy "Final" debuff** — Suffocate at L1 shows base 90%
-  → final 57.6% with no obvious source. Trace what's debuffing
-  accuracy in the calc; likely level-differential / purple-patch
-  display rather than a real debuff.
+- [x] **Accuracy "Final" debuff** — confirmed it was the
+  level-differential / purple-patch math (factor = baseToHit/0.75 ≈ 0.64
+  vs +3 con drops 90% → 57.6%); not a real debuff. The con-arrow next
+  to the value already encoded the offset, but the connection wasn't
+  obvious. Fixed 2026-05-03 in [SharedPowerComponents.tsx](src/components/info/SharedPowerComponents.tsx)
+  by adding a `title` tooltip on the accuracy "Final" cell explaining
+  the level-differential adjustment, the effective base ToHit %, and
+  the ToHit bonus contribution if any.
 - [ ] Verify `damageModifier` archetype field is dead code for
   AT-tabled powers (Dominator's 0.75 isn't applied since AT
   modifiers are baked into the table values). Either remove or
