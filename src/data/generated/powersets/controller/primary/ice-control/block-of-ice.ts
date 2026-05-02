@@ -50,17 +50,7 @@ export const BlockofIce: Power = {
     },
     {
       "type": "Cold",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Cold",
       "scale": 2.0291,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.0145,
       "table": "Ranged_PvPDamage"
     }
   ],

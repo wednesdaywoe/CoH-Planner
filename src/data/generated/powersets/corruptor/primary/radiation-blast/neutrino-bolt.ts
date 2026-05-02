@@ -49,16 +49,6 @@ export const NeutrinoBolt: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.6,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.1599,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 1.1599,
       "table": "Ranged_PvPDamage"
     }

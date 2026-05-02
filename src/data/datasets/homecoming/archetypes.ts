@@ -1129,12 +1129,16 @@ export function isEpicArchetype(id: ArchetypeId): boolean {
  * Get all epic archetypes
  */
 export function getEpicArchetypes(): Archetype[] {
-  return EPIC_ARCHETYPE_IDS.map((id) => ARCHETYPES[id]);
+  return EPIC_ARCHETYPE_IDS.map((id) => ARCHETYPES[id]).filter(
+    (at): at is Archetype => at !== undefined,
+  );
 }
 
 /**
  * Get all standard (non-epic) archetypes
  */
 export function getStandardArchetypes(): Archetype[] {
-  return STANDARD_ARCHETYPE_IDS.map((id) => ARCHETYPES[id]);
+  return STANDARD_ARCHETYPE_IDS.map((id) => ARCHETYPES[id]).filter(
+    (at): at is Archetype => at !== undefined,
+  );
 }

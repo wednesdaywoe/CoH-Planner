@@ -37,5 +37,19 @@ export const ExplosiveShuriken: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.05,
+      "table": "Ranged_Damage",
+      "duration": 5.5,
+      "tickRate": 1
+    }
+  ]
 };

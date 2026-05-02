@@ -54,16 +54,6 @@ export const FocusedBurst: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.636,
       "table": "Melee_PvPDamage"
@@ -71,16 +61,6 @@ export const FocusedBurst: Power = {
     {
       "type": "Energy",
       "scale": 1.484,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.12,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.12,
       "table": "Melee_PvPDamage"
     }
   ],

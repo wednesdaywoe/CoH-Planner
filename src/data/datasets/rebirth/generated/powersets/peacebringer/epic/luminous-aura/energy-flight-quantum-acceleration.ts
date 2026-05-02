@@ -26,5 +26,29 @@ export const QuantumAcceleration: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "effects": {
+    "movement": {
+      "flySpeed": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      },
+      "fly": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "movement": 0.75,
+      "slow": 0.75
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "selfPenalty": true,
+    "buffDuration": 0.75
+  },
   "requires": "Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration"
 };

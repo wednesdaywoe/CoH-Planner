@@ -35,5 +35,50 @@ export const ChronoShift: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 1.2,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 1.8,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.2,
+      "table": "Ranged_Heal",
+      "duration": 30,
+      "tickRate": 3
+    },
+    {
+      "type": "Heal",
+      "scale": 0.3,
+      "table": "Ranged_Heal",
+      "duration": 30,
+      "tickRate": 3
+    }
+  ],
+  "effects": {
+    "enduranceGain": {
+      "scale": 0.15,
+      "table": "Ranged_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 30,
+      "rechargeBuff": 90
+    },
+    "rechargeBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 90
+  }
 };

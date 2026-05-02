@@ -53,30 +53,10 @@ export const Frost: Power = {
     },
     {
       "type": "Cold",
-      "scale": 1.404,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.404,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Cold",
       "scale": 0.2875,
       "table": "Melee_PvPDamage",
       "duration": 1.1,
       "tickRate": 0.20000000298023224
-    },
-    {
-      "type": "Cold",
-      "scale": 1.7251,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.7251,
-      "table": "Melee_PvPDamage"
     },
     {
       "type": "Cold",

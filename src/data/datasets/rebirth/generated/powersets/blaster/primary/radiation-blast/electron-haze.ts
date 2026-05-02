@@ -44,5 +44,29 @@ export const ElectronHaze: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 1.35,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 8,
+      "damageBuff": 9.87
+    },
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.072,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 9.87
+  }
 };

@@ -45,17 +45,7 @@ export const Lunge: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.216,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.461,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.9745,
       "table": "Melee_PvPDamage"
     },
     {

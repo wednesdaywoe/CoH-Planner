@@ -69,10 +69,14 @@ export function isEpicArchetype(id: ArchetypeId): boolean {
 
 export function getEpicArchetypes(): Archetype[] {
   const ds = getActiveDataset();
-  return ds.archetypes.epicIds.map((id) => ds.archetypes.registry[id]);
+  return ds.archetypes.epicIds
+    .map((id) => ds.archetypes.registry[id])
+    .filter((at): at is Archetype => at !== undefined);
 }
 
 export function getStandardArchetypes(): Archetype[] {
   const ds = getActiveDataset();
-  return ds.archetypes.standardIds.map((id) => ds.archetypes.registry[id]);
+  return ds.archetypes.standardIds
+    .map((id) => ds.archetypes.registry[id])
+    .filter((at): at is Archetype => at !== undefined);
 }

@@ -60,11 +60,6 @@ export const FrozenFists: Power = {
       "table": "Melee_InherentDamage"
     },
     {
-      "type": "Cold",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.3154,
       "table": "Melee_PvPDamage"

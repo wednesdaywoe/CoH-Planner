@@ -37,5 +37,21 @@ export const StarlessGateway: Power = {
     "Teleport",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "teleport": {
+      "scale": 2.1,
+      "table": "Ranged_Ones"
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 15
+    },
+    "buffDuration": 15
+  }
 };

@@ -38,5 +38,10 @@ export const SweepingStrike: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.7,
+    "table": "Melee_Damage"
+  }
 };

@@ -32,50 +32,40 @@ export const GenomicEvolution: Power = {
   "effects": {
     "resistance": {
       "smashing": {
-        "scale": 0.225,
+        "scale": 0.75,
         "table": "Melee_Res_Dmg"
       },
       "lethal": {
-        "scale": 0.225,
+        "scale": 0.75,
         "table": "Melee_Res_Dmg"
       },
       "fire": {
-        "scale": 0.15,
+        "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
       "cold": {
-        "scale": 0.15,
+        "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
       "energy": {
-        "scale": 0.15,
+        "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
       "negative": {
-        "scale": 0.15,
+        "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
       "psionic": {
-        "scale": 0.18,
+        "scale": 0.6,
         "table": "Melee_Res_Dmg"
       },
       "toxic": {
-        "scale": 0.3,
+        "scale": 1,
         "table": "Melee_Res_Dmg"
       }
     },
     "durations": {
-      "resistance": 5.25,
-      "rangeBuff": 5.25,
-      "maxEndBuff": 5.25
-    },
-    "rangeBuff": {
-      "scale": 0.15,
-      "table": "Melee_Ones"
-    },
-    "maxEndBuff": {
-      "scale": 5,
-      "table": "Melee_Ones"
+      "resistance": 5.25
     },
     "buffDuration": 5.25
   },

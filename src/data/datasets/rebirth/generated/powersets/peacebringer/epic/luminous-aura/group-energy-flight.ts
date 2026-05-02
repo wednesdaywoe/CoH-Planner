@@ -34,5 +34,92 @@ export const SolarGlide: Power = {
     "Flight",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 2,
+      "movement": 0.75,
+      "slow": 0.75,
+      "defenseBuff": 0.75,
+      "debuffResistance": 0.75
+    },
+    "movement": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "movementControl": {
+        "scale": 15,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 15,
+        "table": "Melee_Friction"
+      }
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "selfPenalty": true,
+    "defenseBuff": {
+      "melee": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 0.75
+  }
 };

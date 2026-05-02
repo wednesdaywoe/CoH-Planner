@@ -59,11 +59,6 @@ export const RockShards: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.7593,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.6801,
       "table": "Ranged_PvPDamage"
     },
@@ -73,11 +68,6 @@ export const RockShards: Power = {
       "table": "Melee_PvPDamage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6801,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

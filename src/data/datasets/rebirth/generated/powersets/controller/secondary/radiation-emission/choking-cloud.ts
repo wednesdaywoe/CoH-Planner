@@ -35,5 +35,12 @@ export const ChokingCloud: Power = {
     "Controller Archetype Sets",
     "Holds"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "hold": {
+      "mag": 2,
+      "scale": 4,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

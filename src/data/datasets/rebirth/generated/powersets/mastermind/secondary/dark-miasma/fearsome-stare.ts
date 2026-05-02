@@ -41,5 +41,12 @@ export const FearsomeStare: Power = {
     "Fear",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "fear": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Fear"
+    }
+  }
 };

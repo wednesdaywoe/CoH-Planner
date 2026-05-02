@@ -49,26 +49,6 @@ export const SeismicMallet: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 2.92,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.92,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.181,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.181,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 2.181,
       "table": "Melee_PvPDamage"
     }

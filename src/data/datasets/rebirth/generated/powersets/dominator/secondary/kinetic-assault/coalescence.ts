@@ -31,5 +31,20 @@ export const Coalescence: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 4,
+      "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 15,
+      "tohitBuff": 15
+    },
+    "tohitBuff": {
+      "scale": 4,
+      "table": "Melee_Buff_ToHit"
+    },
+    "buffDuration": 15
+  }
 };

@@ -80,7 +80,7 @@ export const ReactionTime: Power = {
       "table": "Melee_Ones"
     },
     "absorb": {
-      "scale": 0.15,
+      "scale": 0.075,
       "table": "Melee_HealSelf"
     },
     "buffDuration": 10

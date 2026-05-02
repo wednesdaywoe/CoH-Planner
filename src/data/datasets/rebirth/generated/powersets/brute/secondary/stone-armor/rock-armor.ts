@@ -33,5 +33,33 @@ export const RockArmor: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 2,
+      "defenseBuff": 0.75,
+      "debuffResistance": 0.75
+    },
+    "defenseBuff": {
+      "smashing": {
+        "scale": 1.6,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.6,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "buffDuration": 0.75
+  },
   "requires": "Brute_Melee.Claws !"
 };

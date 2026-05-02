@@ -47,18 +47,6 @@ export const TemporalMending: Power = {
       "table": "Ranged_Heal",
       "duration": 6,
       "tickRate": 1.5
-    },
-    {
-      "type": "Heal",
-      "scale": 1.125,
-      "table": "Ranged_Heal"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.3,
-      "table": "Ranged_Heal",
-      "duration": 6,
-      "tickRate": 1.5
     }
   ],
   "effects": {

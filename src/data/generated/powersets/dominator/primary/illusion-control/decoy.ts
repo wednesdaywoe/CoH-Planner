@@ -45,11 +45,11 @@ export const PhantomArmy: Power = {
       "entities": [
         {
           "entity": "P998401764",
-          "count": 2
+          "count": 1
         },
         {
           "entity": "Pets_Decoy_Dominator",
-          "count": 4
+          "count": 2
         }
       ]
     }

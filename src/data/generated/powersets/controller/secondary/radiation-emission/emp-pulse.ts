@@ -39,11 +39,6 @@ export const EMPulse: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
   "effects": {
     "hold": {
       "mag": 3,

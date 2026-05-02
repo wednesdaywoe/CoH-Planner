@@ -49,12 +49,5 @@ export const Pistols: Power = {
       "scale": 1.4,
       "table": "Ranged_PvPDamage"
     }
-  ],
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Thug_Pose_06",
-      "duration": 35
-    }
-  }
+  ]
 };

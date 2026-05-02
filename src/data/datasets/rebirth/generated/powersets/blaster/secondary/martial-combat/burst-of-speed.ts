@@ -38,5 +38,23 @@ export const BurstofSpeed: Power = {
     "Universal Damage Sets",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.026,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 7.5
+    },
+    "buffDuration": 7.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

@@ -55,27 +55,7 @@ export const ThunderousBlast: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.8,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 1.9476,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3895,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.9738,
       "table": "Ranged_PvPDamage"
     }
   ],
@@ -84,22 +64,22 @@ export const ThunderousBlast: Power = {
       "scale": 26.35,
       "table": "Ranged_EndDrain"
     },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_EndDrain"
+    },
+    "durations": {
+      "recoveryDebuff": 20
+    },
+    "buffDuration": 20,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ],
     "enduranceGain": {
       "scale": 13.86,
       "table": "Ranged_EndDrain",
       "perTarget": 13.86
-    },
-    "recoveryDebuff": {
-      "scale": 1.7999999999999998,
-      "table": "Ranged_EndDrain"
-    },
-    "durations": {
-      "recoveryDebuff": 5
-    },
-    "buffDuration": 5,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
+    }
   }
 };

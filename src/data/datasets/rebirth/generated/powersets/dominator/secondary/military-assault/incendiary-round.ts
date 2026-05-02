@@ -37,5 +37,24 @@ export const IncendiaryRound: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.32,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 4.12,
+      "tickRate": 1
+    }
+  ]
 };

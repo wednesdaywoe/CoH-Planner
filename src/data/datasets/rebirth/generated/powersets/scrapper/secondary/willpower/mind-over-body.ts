@@ -31,5 +31,25 @@ export const MindOverBody: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 2.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistance": 0.75
+    },
+    "buffDuration": 0.75
+  }
 };

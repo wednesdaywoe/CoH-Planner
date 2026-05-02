@@ -30,12 +30,12 @@ export const AthleticRegulation: Power = {
   "effects": {
     "movement": {
       "runSpeed": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
+        "scale": 0.075,
+        "table": "Melee_SpeedRunning"
       },
       "flySpeed": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
+        "scale": 0.075,
+        "table": "Melee_SpeedFlying"
       }
     },
     "durations": {
@@ -46,10 +46,6 @@ export const AthleticRegulation: Power = {
       "defense": {
         "scale": 0.75,
         "table": "Melee_Res_Boolean"
-      },
-      "movement": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
       }
     },
     "buffDuration": 2.25

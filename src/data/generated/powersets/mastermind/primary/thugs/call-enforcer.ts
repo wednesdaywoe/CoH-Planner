@@ -46,8 +46,7 @@ export const CallEnforcer: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Thug_Lt",
-      "duration": 99999,
-      "entityCount": 2
+      "duration": 99999
     }
   }
 };

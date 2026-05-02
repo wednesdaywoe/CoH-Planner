@@ -48,16 +48,6 @@ export const WillDomination: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1.96,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.57,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 1.57,
       "table": "Ranged_PvPDamage"
     }

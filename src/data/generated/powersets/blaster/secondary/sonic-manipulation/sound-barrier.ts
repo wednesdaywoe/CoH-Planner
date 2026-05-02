@@ -54,11 +54,11 @@ export const SoundBarrier: Power = {
       "sleep": 2.25
     },
     "absorb": {
-      "scale": 0.3,
+      "scale": 0.15,
       "table": "Melee_HealSelf"
     },
     "recoveryBuff": {
-      "scale": 1,
+      "scale": 0.5,
       "table": "Melee_Ones"
     },
     "sleep": {

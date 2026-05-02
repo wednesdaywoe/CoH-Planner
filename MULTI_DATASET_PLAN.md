@@ -8,8 +8,9 @@ drop a second dataset in alongside when its data is available.
 ## Status
 
 **Plumbing + first wave of migrations landed (2026-04-29).**
-**Rebirth dataset materialization landed (2026-04-29 cont.).** All work was
-done in-place on `main`; nothing has been committed or pushed yet.
+**Rebirth dataset materialization landed (2026-04-29 cont.).**
+**Stage A wired and smoke-tested (2026-04-30).** All work was done in-place
+on `main`; subsequent commits are being moved to feature branches.
 
 ### Rebirth materialization summary
 
@@ -72,14 +73,134 @@ script and can be removed.
 
 ### Stage C blockers (Rebirth data not yet converted)
 
-- **Pet entities** — `PC_Def_Entities.bin` and
-  `PC_Def_NonSelectable_Entities.bin` (Rebirth ships both as Parse6) are
-  not parsed by bin-crawler. Affects damage calculation for summoned pets
-  (Mastermind henchmen, Controller pets, Lore incarnates). Needs a new
-  `_entities.py` parser plus an `export_entities.py` exporter that
-  produces JSON matching CoD2's `entities/<entity>.json` shape, then
-  [convert-pet-entities.cjs](scripts/convert-pet-entities.cjs) made
-  dataset-aware. Recommend tackling as its own session.
+- **Pet entities (HC: shipped 2026-05-01; Rebirth: blocked)** —
+  pet definitions actually live in `villaindef.bin`, not in the
+  `PC_Def_Entities.bin` files this section originally pointed at.
+  Both servers ship `villaindef.bin` (HC Parse7, Rebirth Parse6 as
+  `VillainDef.bin`). New parser at
+  [tools/bin-crawler/bin_crawler/parser/_entities.py](tools/bin-crawler/bin_crawler/parser/_entities.py)
+  + exporter at [export_entities.py](tools/bin-crawler/bin_crawler/export_entities.py)
+  produce CoD2-shape JSON; [convert-pet-entities.cjs](scripts/convert-pet-entities.cjs)
+  is dataset-aware and reads from `tools/bin-crawler/exported_powers/<source>/entities/`
+  for HC and `exported_powers/rebirth/entities/` for Rebirth.
+  HC `pet-entities.ts` is fully regenerated off the new pipeline (no
+  more dependency on the 2019 CoD2 archive). Caveats:
+  - **Parse6 levels/tail-flags partially decoded.** Between powers
+    and levels in Parse6 there's a 4 × u4 block (`54, 52, 1, 1` —
+    same in every record I sampled) and the level sub-record itself
+    appears to be inline rather than length-prefixed. The current
+    Parse6 path stops after powers and falls back to name-derived
+    display + class-name heuristic for `commandable_pet`. Effect:
+    Rebirth pets that genuinely set `copy_creator_mods=true` (the
+    Storm-style scaling pets) will be miscategorised as not copying.
+    Most pets default to `false`, so the dominant case is right.
+  - **Rebirth pet data was empty** because the Parse6 effect parser
+    only recovered ~0.8% of records. **Resolved 2026-05-02:** Parse6
+    effect coverage now sits at **88.0%** (18,976 / 21,559 records,
+    107,487 templates extracted). Spot-checked against Power_Bolt,
+    Resist_Physical_Damage, Hack, and Granite_Armor — attribs/tables/
+    scales all match expected values. The remaining 12% are mostly
+    NPC/Mission_Maker stub powers that legitimately have no effects.
+    Pet-entities should now convert correctly; re-export of Rebirth
+    pet data still needs to be triggered.
+
+    **Root cause:** Parse6 stores effects as a flat struct_array of
+    AttribMod records directly under each Power, with no EffectGroup
+    wrapper. HC's newer schema added EffectGroup (Tag/DisplayInfo/
+    Chance/PPM/Delay/RadiusInner/RadiusOuter/Requires/Flags/EvalFlags)
+    as a layer above AttribMod to support procs, AoE chance, and
+    requires-gated sub-effects. AIGroups, Redirect, ActivationEffect,
+    DurationExpr, and MagnitudeExpr were also HC additions; Parse6
+    omits them entirely. The previous parser was reading HC-shaped
+    EffectGroups out of Parse6 bytes, which misaligned by 8+ bytes
+    on every record.
+
+    **Implementation:** [_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py)
+    adds `_parse_effect_template_parse6` (uses the Ghidra depth=1
+    AttribMod descriptor at `0x1408e8a10`: Name / DisplayAttackerHit /
+    DisplayVictimHit / DisplayFloat / DisplayAttribDefenseFloat /
+    ShowFloaters / Attrib / Aspect / BoostIgnoreDiminishing / Target /
+    Table / Scale / ApplicationType / Type / Delay / Period / Chance /
+    CancelOnMiss / CancelEvents / 9 bool flags / Requires /
+    PrimaryStringList / SecondaryStringList / CasterStackType /
+    StackType / StackLimit / StackKey / Duration / Magnitude) and
+    `_parse_effects_parse6` (flat struct_array, wraps each AttribMod
+    in a synthetic single-template EffectGroup so the downstream
+    EffectTemplate-shaped pipeline is unchanged). Also dropped the
+    AIGroups/Redirect/ActivationEffect/ModesSuppressed reads in
+    `_parse_power_parse6` since none of those fields exist in Parse6.
+
+    Quirk: the descriptor labels Name as a string_array (type
+    `0x500009`) but in Parse6 it's stored as a single inline pstring
+    with no count prefix. Verified by hand-decoding multiple records.
+    **Ghidra audit (2026-05-01)** in [tools/ghidra-audit/](tools/ghidra-audit/)
+    extracted the powers.bin descriptor table at `0x1408f04f0` /
+    `0x1408f0610` (see `power_effects_parser_report.txt` next to
+    `cityofheroes.exe`). The table revealed two definite missing
+    fields between `BoostsAllowed` and `Effect` in Parse6:
+    `ModesSuppressed` (u4_array) and `AIGroups` (string_array).
+    Adding them to the Parse6 tail (`_parse_power_parse6`) lifts
+    effect-bearing records from 0 → 173 / 21 559, so the structural
+    fix is in the right area — but ~99% of records still misalign.
+    A third pass with [FindBinSerializer.java](tools/ghidra-audit/FindBinSerializer.java)
+    confirmed `+0x20` of every descriptor row is a **sub-descriptor
+    pointer** (recursive into nested struct types), and dumped:
+      - **EffectGroup** layout (sub-desc `0x1408ea180`): Tag
+        (string_array), DisplayInfo (string), Chance/PPM/Delay/
+        RadiusInner/RadiusOuter (5×f4), Requires (string_array),
+        Flags (bitfield 0x12), EvalFlags (u4), AttribMod
+        (struct_array → recurses into AttribMod descriptor),
+        Effect (struct_array → recursive self).
+      - **Level** layout (sub-desc `0x1408fb530`): Level (key u4),
+        MinLevel, MaxLevel, DisplayNames (string_array), Costumes
+        (string_array), XP. Confirms HC's 28-byte sub-record
+        omits the Level key field at offset 0.
+      - **Power** sub-record (`0x1408f9810`): cat/set/power
+        strings + Level + Remove + DontSetStance — matches the
+        24-byte sub-record the parser already reads.
+      - **VillainDef** top-level (`0x1408fa9f0`): full field-
+        serialization order. The parser's `_parse_entity_parse7`
+        was using wrong labels (`gender_raw` was `rank_raw`,
+        `group_description` was `display_name`, the "mystery"
+        u4 between ai_config and powers is `villain_group_raw`).
+        Fixed in this pass; semantic only — the HC byte stream
+        was already aligning correctly under the wrong names.
+    **What's still blocked:** the descriptor SAYS Rank should
+    follow Level immediately, but the bytes at that position
+    start with a constant `10` that doesn't match Rank's enum.
+    HC inserts at least one undocumented field there. Same
+    pattern in powers.bin: `TimeToRoot` and `MaxToggleTime`
+    are in the descriptor but adding them shifts records into
+    garbage.
+    **Fourth Ghidra pass (2026-05-01 cont.)** added recursive
+    sub-descriptor walks via [FindBinSerializer.java](tools/ghidra-audit/FindBinSerializer.java)
+    and revealed that `+0x20` of every descriptor row is a
+    **sub-descriptor pointer** (recursive — chase to get any
+    nested struct's layout). Extracted full layouts for
+    EffectGroup (0x1408ea180), AttribMod (0x1408e8a10), Power
+    (0x1408f9810), Level (0x1408fb530), VillainDef (0x1408fa9f0),
+    PetCommandStrings, Condition, etc. Discovered EffectGroup's
+    second leading slot is actually `DisplayInfo` (string), not
+    a u4 — fixed `_parse_effect_group` accordingly. HC unchanged
+    at 22 459 / 26 297 = 85.4 % effect coverage.
+    Hand-decoding (2026-05-02) revealed the real reason the
+    sweep failed: the Parse6 effect schema is fundamentally
+    different from HC's. There's no EffectGroup wrapper, no
+    AIGroups, no Redirect, no ActivationEffect, and AttribMod
+    uses a different field order (depth=1 descriptor at
+    `0x1408e8a10` rather than depth=2 at `0x1408ed570`). See
+    the resolution write-up at the top of this Stage-C section.
+    Reports archived at `G:\Homecoming\bin\win64\live\bin_serializer_report.txt`.
+  - **Lore "Support" variants drop out** of the HC export — they
+    only carry buff/heal powers (e.g. Cauterize) that the bin
+    parser currently exports with empty effects; on HC this is
+    a separate parser issue, not the Parse6 one above. Net
+    entity count: 533 vs ~612 in the previous CoD2-based file.
+  - `export_powers.py` `PLAYER_CATEGORIES` was extended with
+    `Mastermind_Pets`, `Kheldian_Pets`, `NPC_Pets`, plus the NPC
+    villain-group cats Lore pets borrow from (`Rularuu`, `Objects`,
+    `Cabal`, `Council`, `V_Arachnos`, `DevouringEarth`, `Crey`,
+    `Rikti`, `Vanguard`, etc. — 19 in total).
 - **IO sets data file** — `boostsets.bin` parsing works (3,374 powers
   indexed), but the per-set TS data file (`io-sets-raw.ts`) for Rebirth
   isn't generated yet. The convert pipeline goes through
@@ -88,17 +209,89 @@ script and can be removed.
   off the boostsets parser that writes Rebirth's set definitions
   directly.
 
-### Stage A blockers (minimum viable Rebirth dataset)
+### Stage A — landed 2026-04-30
 
-- **`archetypes.ts` for Rebirth** — handwritten per-AT metadata for the
-  planner UI (display names, primary/secondary slot labels, inherent
-  powers, etc.). HC's lives at
-  [datasets/homecoming/archetypes.ts](src/data/datasets/homecoming/archetypes.ts).
-- **`datasets/rebirth/index.ts`** — assembles the `Dataset` object from
-  the per-file Rebirth data. Mirrors
-  [datasets/homecoming/index.ts](src/data/datasets/homecoming/index.ts).
-- **`loadDataset()` switch** — currently throws for `'rebirth'`. Drop the
-  throw once the index above exists.
+Rebirth is now a loadable, switchable dataset. Smoke-tested in the dev
+server: archetype + powerset dropdowns populate from Rebirth data,
+Rebirth-only sets (Wind Control, Water Control, Military Assault, etc.)
+show up; switching back to HC round-trips cleanly.
+
+What's in:
+
+- [datasets/rebirth/archetypes.ts](src/data/datasets/rebirth/archetypes.ts) —
+  14 ATs (no Sentinel; Rebirth's snapshot predates HC's i25 addition).
+  Powerset lists filtered to only the IDs that actually exist under
+  `datasets/rebirth/powersets/`. HP tables and damage modifiers are
+  HC-cloned for now — the level-1 anchor in `classes.bin` agrees with HC
+  values; deeper validation is a follow-up.
+- [datasets/rebirth/purple-patch.ts](src/data/datasets/rebirth/purple-patch.ts),
+  [granted-powers.ts](src/data/datasets/rebirth/granted-powers.ts) —
+  re-export HC's tables. First-pass approximation; both create a static
+  import chain from Rebirth → HC, which means Vite won't chunk-split the
+  two datasets cleanly. Move them under `src/data/core/` or duplicate the
+  data when chunk-splitting becomes important.
+- [datasets/rebirth/pet-entities.ts](src/data/datasets/rebirth/pet-entities.ts) —
+  empty `{}` placeholder until the `PC_Def_Entities.bin` Parse6 parser
+  ships. Effect: Mastermind henchmen / Lore pet damage tables missing.
+- [datasets/rebirth/index.ts](src/data/datasets/rebirth/index.ts) —
+  assembles the `Dataset` object, mirrors HC's pattern.
+- [src/data/dataset.ts](src/data/dataset.ts) —
+  `loadDataset('rebirth')` now imports `./datasets/rebirth` instead of
+  throwing; `getAllDatasetMetadata()` lists Rebirth.
+- [src/types/archetype.ts](src/types/archetype.ts) — `ArchetypeRegistry`
+  is now `Partial<Record<ArchetypeId, Archetype>>` because Rebirth ships
+  fewer ATs than HC. Two helper functions in
+  [src/data/archetypes.ts](src/data/archetypes.ts) and
+  [datasets/homecoming/archetypes.ts](src/data/datasets/homecoming/archetypes.ts)
+  filter out undefined entries from registry lookups.
+- [src/main.tsx](src/main.tsx) — added a `?serverId=<id>` URL-param
+  override on top of the existing localStorage pre-peek, useful for
+  dev/QA dataset switching.
+
+UI integration:
+
+- [src/components/layout/Header.tsx](src/components/layout/Header.tsx)
+  — Build Identity popover's Server `<Select>` is now controlled
+  (bound to `build.serverId`) with an `onChange` that confirms before
+  switching, persists the new `serverId` to localStorage, and reloads
+  with `?serverId=<new>` so the loader boots the right dataset cleanly.
+  No in-place dataset swap (Proxy facades + cached React state would be
+  fragile across an async load mid-render). Rebirth is no longer
+  disabled in `SERVER_OPTIONS`.
+
+Bug fixed during smoke testing:
+
+- [AvailablePowers.tsx](src/components/powers/AvailablePowers.tsx)
+  was calling `Object.values(GRANTED_POWER_GROUPS)` at module-load
+  time. `GRANTED_POWER_GROUPS` is a dataset-backed Proxy, so this ran
+  before `loadDataset()` had resolved and threw "No dataset loaded".
+  Converted to a `useMemo` keyed on `build.serverId`. **Pattern note:**
+  module-level `Object.{values,keys,entries}` on any data-layer facade
+  will fail. Grepped the rest of `src/`; no other module-level offenders
+  at the time of writing.
+
+Powerset lookup made dataset-aware (mini-Stage-B):
+
+- [scripts/generate-powerset-index.cjs](scripts/generate-powerset-index.cjs)
+  accepts `--dataset <id>`. HC writes to the legacy
+  `src/data/powersets/index.ts`; other datasets write to
+  `src/data/datasets/<id>/powersets/index.ts`.
+- [datasets/rebirth/powersets/index.ts](src/data/datasets/rebirth/powersets/index.ts)
+  generated — 271 powersets registered.
+- [src/data/powersets.ts](src/data/powersets.ts) routes `getPowerset()`,
+  `getAllPowersets()`, `getPowersetsForArchetype()` through
+  `getActiveDataset().id`. Both HC and Rebirth registries are imported
+  statically (still bundled together; chunk-splitting is a follow-up).
+
+### Smoke-test backlog (not yet exercised)
+
+- Pick a Rebirth-only powerset (e.g. Controller / Wind Control) and add
+  several powers — verify tooltips, effects, accuracy/recharge/damage.
+- Open Detailed Totals on a Rebirth build — heaviest calc path; touches
+  AT tables, purple patch, set bonuses, granted powers.
+- Slot enhancements / IO sets — `io-sets-raw.ts` is still HC-shaped;
+  expect numerically-wrong set bonuses on Rebirth builds but no crashes.
+- Round-trip server-switch HC → Rebirth → HC.
 
 What's in:
 
@@ -533,24 +726,27 @@ size and risk.
    `serverId` BEFORE Zustand rehydrates and React mounts. Falls back to
    `'homecoming'` for fresh visitors and any parse / shape failure.
 9. **🚧 Rebirth dataset materialization** — see Status section above.
-   - **Stage C (mostly done):** raw Rebirth data converted into TS files
-     under [src/data/datasets/rebirth/](src/data/datasets/rebirth/).
+   - **✅ Stage C (mostly done):** raw Rebirth data converted into TS
+     files under [src/data/datasets/rebirth/](src/data/datasets/rebirth/).
      Powersets, pools, epic pools, incarnate effects, AT tables all
      landed. Pet entities + IO sets data still pending (need new
      bin-crawler exporters).
-   - **Stage A (not started):** wire the minimum-viable Dataset.
-     Needs handwritten `datasets/rebirth/archetypes.ts`,
-     `datasets/rebirth/index.ts`, and the `loadDataset()` switch update.
-     With the data already on disk from Stage C, this is a small
-     plumbing job — main risk is the `Dataset` interface needing
-     additional fields exposed (powersets, pools, incarnates, IO sets).
+   - **✅ Stage A (landed 2026-04-30):** Rebirth is a loadable
+     dataset. `loadDataset('rebirth')` works; UI server picker switches
+     between HC and Rebirth with reload-based reset; powerset lookup
+     routes through the active dataset's registry. Smoke-tested in the
+     dev server.
    - **Stage B (not started):** the deferred powersets-tree migration.
      Move HC's `powersets/`, `overrides/`, `generated/` into
      `datasets/homecoming/`. ~600 import sites to update inside the
-     tree. Now actually unblocked since Rebirth has its own parallel
-     tree, but still a lot of mechanical churn.
-   - Server picker on new-build flow, dataset-switch confirmation UI
-     come after Stage A.
+     tree. With Rebirth's parallel tree already at
+     `datasets/rebirth/{powersets,overrides,generated}/`, this is now
+     pure mechanical churn for HC. **Recommended order:** finish
+     deeper Rebirth smoke-testing (powers/IO/calculations) first so
+     any latent architectural issues surface before the large-scale
+     rename.
+   - Cross-server build inference mapping and full dataset-switch UX
+     polish (preserve build name across switches, etc.) come after.
 
 ## Open questions / decisions deferred
 

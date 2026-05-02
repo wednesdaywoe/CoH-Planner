@@ -34,5 +34,40 @@ export const Revive: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 7.5,
+    "table": "Melee_HealSelf",
+    "duration": 0.5,
+    "tickRate": 1
+  },
+  "effects": {
+    "enduranceGain": {
+      "scale": 50,
+      "table": "Melee_Ones"
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "untouchable": 15,
+      "regenBuff": 90
+    },
+    "immobilize": {
+      "mag": 50,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "regenBuff": {
+      "scale": 2.5,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
+  }
 };

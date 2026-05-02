@@ -42,11 +42,6 @@ export const ESDArrow: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
   "effects": {
     "stun": {
       "mag": 3,
@@ -56,11 +51,6 @@ export const ESDArrow: Power = {
     "enduranceDrain": {
       "scale": 16.67,
       "table": "Ranged_EndDrain"
-    },
-    "hold": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
     }
   }
 };

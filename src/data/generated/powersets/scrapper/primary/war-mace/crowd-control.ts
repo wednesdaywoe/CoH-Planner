@@ -67,11 +67,6 @@ export const CrowdControl: Power = {
       "type": "Smashing",
       "scale": 1.61,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.61,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

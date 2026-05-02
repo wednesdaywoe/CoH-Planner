@@ -49,16 +49,6 @@ export const MentalStrike: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Psionic",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.305,
       "table": "Melee_PvPDamage"
@@ -67,23 +57,6 @@ export const MentalStrike: Power = {
       "type": "Psionic",
       "scale": 0.915,
       "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.22,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.22,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.0661,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 1
     }
   ]
 };

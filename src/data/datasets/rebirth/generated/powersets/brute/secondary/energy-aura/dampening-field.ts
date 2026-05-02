@@ -28,5 +28,36 @@ export const DampeningField: Power = {
     "Resist Damage"
   ],
   "maxSlots": 0,
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      }
+    },
+    "durations": {
+      "resistance": 10.25,
+      "debuffResistance": 10.25
+    },
+    "debuffResistance": {
+      "recovery": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "endurance": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 10.25
+  },
   "mechanicType": "parentMechanic"
 };

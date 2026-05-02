@@ -51,20 +51,6 @@ export const Burst: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.27,
-      "table": "Ranged_InherentDamage",
-      "duration": 0.91,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.315,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.91,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Lethal",
       "scale": 0.315,
       "table": "Ranged_PvPDamage",
       "duration": 0.91,

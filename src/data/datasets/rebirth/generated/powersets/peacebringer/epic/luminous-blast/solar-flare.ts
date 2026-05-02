@@ -43,5 +43,24 @@ export const SolarFlare: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 1.42,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Melee_Knockback"
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Flare ! && Inherent.Inherent.White_Dwarf_Flare ! &&"
 };

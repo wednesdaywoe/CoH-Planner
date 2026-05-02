@@ -36,5 +36,20 @@ export const SmokeGrenade: Power = {
     "Blaster Archetype Sets",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "perceptionDebuff": 60,
+      "damageBuff": 8.87
+    },
+    "damageBuff": {
+      "scale": 0.014,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 60
+  }
 };

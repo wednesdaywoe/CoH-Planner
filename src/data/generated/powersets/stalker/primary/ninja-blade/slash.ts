@@ -50,30 +50,10 @@ export const GamblersCut: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.4945,
       "table": "Melee_PvPDamage",
       "duration": 0.3,
       "tickRate": 0.25
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.989,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.989,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

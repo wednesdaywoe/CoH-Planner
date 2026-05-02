@@ -37,5 +37,17 @@ export const IceSlash: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Melee_Damage"
+    }
+  ]
 };

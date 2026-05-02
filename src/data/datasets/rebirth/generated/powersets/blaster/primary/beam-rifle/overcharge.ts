@@ -43,5 +43,39 @@ export const Overcharge: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.04,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.4,
+      "defenseDebuff": 15
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 4,
+      "table": "Ranged_Stun"
+    },
+    "defenseDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 15
+  }
 };

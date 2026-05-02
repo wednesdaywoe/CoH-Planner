@@ -40,5 +40,20 @@ export const LightningField: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 0.2,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.03,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

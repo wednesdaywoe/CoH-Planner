@@ -33,5 +33,10 @@ export const Cauterize: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1.72,
+    "table": "Ranged_Heal"
+  }
 };

@@ -58,8 +58,6 @@ export const Grounded: Power = {
     "durations": {
       "resistance": 1,
       "debuffResistance": 1,
-      "knockup": 5,
-      "knockback": 5,
       "immobilize": 1
     },
     "debuffResistance": {
@@ -67,14 +65,6 @@ export const Grounded: Power = {
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }
-    },
-    "knockup": {
-      "scale": 6,
-      "table": "Melee_Knockback"
-    },
-    "knockback": {
-      "scale": 6,
-      "table": "Melee_Knockback"
     },
     "immobilize": {
       "mag": 1,

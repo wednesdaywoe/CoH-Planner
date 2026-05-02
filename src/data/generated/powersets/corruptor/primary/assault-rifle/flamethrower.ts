@@ -51,20 +51,6 @@ export const Flamethrower: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.3872,
-      "table": "Ranged_InherentDamage",
-      "duration": 4.7,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2379,
-      "table": "Ranged_PvPDamage",
-      "duration": 4.7,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
       "scale": 0.2379,
       "table": "Ranged_PvPDamage",
       "duration": 4.7,

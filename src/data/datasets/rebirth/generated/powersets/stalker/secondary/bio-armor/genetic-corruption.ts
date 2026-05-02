@@ -35,5 +35,12 @@ export const GeneticCorruption: Power = {
   "allowedSetCategories": [
     "Sleep"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "sleep": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Stun"
+    }
+  }
 };

@@ -31,5 +31,25 @@ export const Energize: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1,
+    "table": "Melee_HealSelf"
+  },
+  "effects": {
+    "enduranceDiscount": {
+      "scale": 1,
+      "table": "Melee_Stun"
+    },
+    "durations": {
+      "enduranceDiscount": 60,
+      "regenBuff": 60
+    },
+    "regenBuff": {
+      "scale": 2.25,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 60
+  }
 };

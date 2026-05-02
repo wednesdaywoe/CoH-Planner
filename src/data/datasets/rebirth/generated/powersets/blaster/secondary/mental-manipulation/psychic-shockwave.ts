@@ -38,5 +38,25 @@ export const PsychicShockwave: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.1,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 5,
+      "table": "Ranged_Stun"
+    },
+    "damageBuff": {
+      "scale": 0.04,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.47
+    },
+    "buffDuration": 9.47
+  }
 };

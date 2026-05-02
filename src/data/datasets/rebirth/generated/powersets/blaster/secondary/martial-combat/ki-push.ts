@@ -37,5 +37,40 @@ export const KiPush: Power = {
     "Melee Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.8,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "repel": {
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "repel": 2,
+      "hold": 2,
+      "damageBuff": 8.33
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "effectDuration": 2,
+    "knockback": {
+      "scale": 4,
+      "table": "Melee_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.055,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 2,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

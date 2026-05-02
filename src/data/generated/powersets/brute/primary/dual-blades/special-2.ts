@@ -50,13 +50,6 @@ export const SweepingStrike: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.2,
-      "table": "Melee_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Lethal",
       "scale": 1.3554,
       "table": "Melee_PvPDamage"
     },

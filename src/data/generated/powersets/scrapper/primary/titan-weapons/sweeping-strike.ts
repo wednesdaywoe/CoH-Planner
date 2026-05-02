@@ -65,11 +65,6 @@ export const TitanSweep: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.3102,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.6718,
       "table": "Melee_PvPDamage"
     }

@@ -34,5 +34,72 @@ export const DispersionBubble: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "smashing": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 2.25,
+      "hold": 2.25,
+      "stun": 2.25,
+      "immobilize": 2.25
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "effectDuration": 2.25,
+    "stun": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "buffDuration": 2.25
+  }
 };

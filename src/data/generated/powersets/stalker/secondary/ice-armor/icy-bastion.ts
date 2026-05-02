@@ -39,7 +39,7 @@ export const IcyBastion: Power = {
   "maxSlots": 6,
   "effects": {
     "regenBuff": {
-      "scale": 14,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "durations": {
@@ -57,7 +57,7 @@ export const IcyBastion: Power = {
       "slow": 0.75
     },
     "recoveryBuff": {
-      "scale": 6,
+      "scale": 4,
       "table": "Melee_Ones"
     },
     "resistance": {
@@ -91,15 +91,15 @@ export const IcyBastion: Power = {
       }
     },
     "knockup": {
-      "scale": 200,
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 200,
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 200,
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "mezResistance": {

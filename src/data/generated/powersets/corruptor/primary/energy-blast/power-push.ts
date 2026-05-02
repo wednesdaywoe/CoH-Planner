@@ -52,11 +52,6 @@ export const PowerPush: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 0.4,
-      "table": "Ranged_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.2326,
       "table": "Ranged_PvPDamage"
@@ -64,11 +59,6 @@ export const PowerPush: Power = {
     {
       "type": "Energy",
       "scale": 0.4722,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.2957,
       "table": "Ranged_PvPDamage"
     }
   ],

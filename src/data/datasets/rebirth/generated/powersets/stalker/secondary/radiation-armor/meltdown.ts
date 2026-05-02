@@ -32,5 +32,71 @@ export const Meltdown: Power = {
     "Endurance Modification",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistance": 60,
+      "recoveryBuff": 60,
+      "damageBuff": 60,
+      "recoveryDebuff": 10,
+      "debuffResistance": 10
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 3.3,
+      "table": "Melee_Buff_Dmg"
+    },
+    "enduranceDrain": {
+      "scale": 0.1,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "recovery": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 60
+  }
 };

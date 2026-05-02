@@ -57,20 +57,6 @@ export const ProtonVolley: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 1.6,
       "tickRate": 0.5
-    },
-    {
-      "type": "Energy",
-      "scale": 1.125,
-      "table": "Ranged_InherentDamage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8027,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.6,
-      "tickRate": 0.5
     }
   ],
   "effects": {
@@ -89,20 +75,6 @@ export const ProtonVolley: Power = {
       "range": 100
     },
     "damage": [
-      {
-        "type": "Energy",
-        "scale": 2.28,
-        "table": "Ranged_Damage",
-        "duration": 1.6,
-        "tickRate": 0.5
-      },
-      {
-        "type": "Energy",
-        "scale": 0.4527,
-        "table": "Ranged_PvPDamage",
-        "duration": 1.6,
-        "tickRate": 0.5
-      },
       {
         "type": "Energy",
         "scale": 2.28,

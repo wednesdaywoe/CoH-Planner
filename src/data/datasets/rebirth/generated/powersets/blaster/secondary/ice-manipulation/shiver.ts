@@ -38,5 +38,15 @@ export const Shiver: Power = {
     "Blaster Archetype Sets",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 0.028,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.67
+    },
+    "buffDuration": 9.67
+  }
 };

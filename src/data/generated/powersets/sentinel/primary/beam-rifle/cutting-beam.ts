@@ -64,34 +64,6 @@ export const CuttingBeam: Power = {
       "type": "Energy",
       "scale": 0.895,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.101,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 0.101,
-      "table": "Ranged_InherentDamage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 0.0958,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 0.0958,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
     }
   ],
   "effects": {

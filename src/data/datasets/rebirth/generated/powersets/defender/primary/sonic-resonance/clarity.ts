@@ -29,5 +29,66 @@ export const Clarity: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "effectDuration": 90,
+    "durations": {
+      "stun": 90,
+      "mezResistance": 90,
+      "sleep": 90,
+      "immobilize": 90,
+      "hold": 90,
+      "confuse": 90,
+      "fear": 90,
+      "debuffResistance": 90,
+      "perceptionBuff": 90
+    },
+    "mezResistance": {
+      "sleep": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "debuffResistance": {
+      "perception": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "perceptionBuff": {
+      "scale": 2.5,
+      "table": "Ranged_Res_Boolean"
+    },
+    "buffDuration": 90
+  }
 };

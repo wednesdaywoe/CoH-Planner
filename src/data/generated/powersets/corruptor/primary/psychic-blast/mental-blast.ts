@@ -48,16 +48,6 @@ export const MentalBlast: Power = {
       "type": "Psionic",
       "scale": 1.8089,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.32,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.8089,
-      "table": "Ranged_PvPDamage"
     }
   ]
 };

@@ -50,17 +50,7 @@ export const Zapp: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.9,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
       "scale": 3.211,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6422,
       "table": "Ranged_PvPDamage"
     }
   ],
@@ -68,19 +58,7 @@ export const Zapp: Power = {
     "enduranceDrain": {
       "scale": 3.3,
       "table": "Ranged_EndDrain"
-    },
-    "enduranceGain": {
-      "scale": 14.4,
-      "table": "Ranged_EndDrain"
-    },
-    "recoveryDebuff": {
-      "scale": 0.8,
-      "table": "Ranged_EndDrain"
-    },
-    "durations": {
-      "recoveryDebuff": 5
-    },
-    "buffDuration": 5
+    }
   },
   "quickSnipe": {
     "stats": {
@@ -95,17 +73,7 @@ export const Zapp: Power = {
       },
       {
         "type": "Energy",
-        "scale": 0.456,
-        "table": "Ranged_Damage"
-      },
-      {
-        "type": "Energy",
         "scale": 1.811,
-        "table": "Ranged_PvPDamage"
-      },
-      {
-        "type": "Energy",
-        "scale": 0.3622,
         "table": "Ranged_PvPDamage"
       }
     ]

@@ -37,5 +37,19 @@ export const BlazingBolt: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 3.56,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.225,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ]
 };

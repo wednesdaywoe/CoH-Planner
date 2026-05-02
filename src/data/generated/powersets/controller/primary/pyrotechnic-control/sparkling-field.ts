@@ -70,20 +70,6 @@ export const SparklingChain: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 5.2,
       "tickRate": 2
-    },
-    {
-      "type": "Fire",
-      "scale": 0.055,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.055,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
     }
   ],
   "effects": {

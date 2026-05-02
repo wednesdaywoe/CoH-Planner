@@ -60,11 +60,6 @@ export const SonicClap: Power = {
       "table": "Melee_InherentDamage"
     },
     {
-      "type": "Energy",
-      "scale": 0.784,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.3779,
       "table": "Melee_PvPDamage"

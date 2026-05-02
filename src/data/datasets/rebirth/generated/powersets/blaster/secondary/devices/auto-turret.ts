@@ -35,5 +35,19 @@ export const GunDrone: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 7.5
+    },
+    "buffDuration": 7.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

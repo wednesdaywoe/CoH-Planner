@@ -31,5 +31,29 @@ export const AgainstAllOdds: Power = {
     "Slow",
     "Run Speed"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 0.045,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "taunt": {
+      "scale": 1.25,
+      "table": "Melee_InherentTaunt"
+    },
+    "damageBuff": {
+      "scale": 12.399999999999999,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 4.3999999999999995
+    },
+    "durations": {
+      "damageBuff": 1
+    },
+    "buffDuration": 1,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

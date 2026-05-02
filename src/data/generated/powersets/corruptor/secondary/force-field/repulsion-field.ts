@@ -42,16 +42,16 @@ export const RepulsionField: Power = {
       "table": "Ranged_Knockback"
     },
     "repel": {
-      "scale": 20,
+      "scale": 10,
       "table": "Ranged_Ones"
     },
     "durations": {
-      "repel": 0.5
+      "repel": 0.25
     },
     "enduranceDrain": {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 0.5
+    "buffDuration": 0.25
   }
 };

@@ -57,20 +57,6 @@ export const HeartofDarkness: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.07,
-      "table": "Ranged_InherentDamage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.094,
-      "table": "Ranged_PvPDamage",
-      "duration": 4.1,
-      "tickRate": 1
     }
   ],
   "effects": {

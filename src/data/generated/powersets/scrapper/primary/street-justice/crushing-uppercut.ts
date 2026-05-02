@@ -51,47 +51,12 @@ export const CrushingUppercut: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 3.339,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.5616,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.975,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.18,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 3.18,
       "table": "Melee_InherentDamage"
     },
     {
       "type": "Smashing",
       "scale": 2.6417,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.7738,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.9587,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.3021,
       "table": "Melee_PvPDamage"
     },
     {
@@ -108,11 +73,6 @@ export const CrushingUppercut: Power = {
     "stun": {
       "mag": 3,
       "scale": 7.5,
-      "table": "Melee_Stun"
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 9.75,
       "table": "Melee_Stun"
     }
   }

@@ -60,16 +60,6 @@ export const ExplosiveBlast: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.9,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6797,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 2.209,
       "table": "Ranged_PvPDamage"
     }

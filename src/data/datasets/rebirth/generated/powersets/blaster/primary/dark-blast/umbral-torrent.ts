@@ -44,5 +44,24 @@ export const UmbralTorrent: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Negative",
+    "scale": 0.96,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 5,
+      "table": "Ranged_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.02,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.53
+    },
+    "buffDuration": 8.53
+  }
 };

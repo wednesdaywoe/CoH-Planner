@@ -55,11 +55,6 @@ export const Chop: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.56,
       "table": "Melee_PvPDamage"
     },

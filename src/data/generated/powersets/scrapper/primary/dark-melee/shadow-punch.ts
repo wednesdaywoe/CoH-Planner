@@ -70,11 +70,6 @@ export const ShadowPunch: Power = {
       "type": "Negative",
       "scale": 0.84,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
     }
   ]
 };

@@ -44,5 +44,34 @@ export const ShadowMaul: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.2695,
+      "table": "Melee_Damage",
+      "duration": 2,
+      "tickRate": 0.625
+    },
+    {
+      "type": "Negative",
+      "scale": 0.2695,
+      "table": "Melee_Damage",
+      "duration": 2,
+      "tickRate": 0.625
+    },
+    {
+      "type": "Fire",
+      "scale": 0.24255,
+      "table": "Melee_Damage",
+      "duration": 2,
+      "tickRate": 0.625
+    }
+  ],
+  "effects": {
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

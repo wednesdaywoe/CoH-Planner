@@ -47,17 +47,8 @@ export const Soldiers: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "duration": 99999,
-      "entities": [
-        {
-          "entity": "MastermindPets_Soldier",
-          "count": 2
-        },
-        {
-          "entity": "MastermindPets_Medic",
-          "count": 1
-        }
-      ]
+      "entity": "MastermindPets_Soldier",
+      "duration": 99999
     },
     "teleport": {
       "scale": 1,

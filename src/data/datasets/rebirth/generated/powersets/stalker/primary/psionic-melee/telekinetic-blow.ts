@@ -37,5 +37,23 @@ export const TelekineticBlow: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.45,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.35,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockup": {
+      "scale": 1,
+      "table": "Melee_Knockback"
+    }
+  }
 };

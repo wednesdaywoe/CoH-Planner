@@ -63,11 +63,6 @@ export const EmptyClips: Power = {
     "knockback": {
       "scale": 1.28,
       "table": "Ranged_Knockback"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Thug_Pose_06",
-      "duration": 35
     }
   }
 };

@@ -37,5 +37,72 @@ export const EnergyAbsorption: Power = {
     "Endurance Modification",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.35,
+      "table": "Melee_Ones"
+    },
+    "enduranceGain": {
+      "scale": 15,
+      "table": "Melee_Ones",
+      "perTarget": 15
+    },
+    "defenseBuff": {
+      "smashing": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      },
+      "lethal": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      },
+      "fire": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      },
+      "cold": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      },
+      "energy": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      },
+      "negative": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      }
+    },
+    "durations": {
+      "defenseBuff": 45,
+      "debuffResistance": 45
+    },
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 45,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "defenseBuff",
+      "enduranceGain"
+    ]
+  }
 };

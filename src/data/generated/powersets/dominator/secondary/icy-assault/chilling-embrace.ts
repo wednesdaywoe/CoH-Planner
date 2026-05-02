@@ -39,10 +39,5 @@ export const ChillingEmbrace: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.14,
-    "table": "Melee_Damage"
-  }
+  "maxSlots": 6
 };

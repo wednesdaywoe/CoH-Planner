@@ -54,16 +54,6 @@ export const ElectronHaze: Power = {
     },
     {
       "type": "Energy",
-      "scale": 1.35,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2495,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 1.2495,
       "table": "Ranged_PvPDamage"
     },

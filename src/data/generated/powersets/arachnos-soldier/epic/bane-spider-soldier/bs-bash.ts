@@ -54,11 +54,6 @@ export const Bash: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.491,
       "table": "Melee_PvPDamage"
     },
@@ -68,11 +63,6 @@ export const Bash: Power = {
       "table": "Melee_PvPDamage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.491,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

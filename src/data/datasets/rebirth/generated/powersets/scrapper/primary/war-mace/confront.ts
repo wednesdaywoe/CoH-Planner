@@ -34,5 +34,11 @@ export const Confront: Power = {
     "Scrapper Archetype Sets",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "taunt": {
+      "scale": 15,
+      "table": "Melee_Taunt"
+    }
+  }
 };

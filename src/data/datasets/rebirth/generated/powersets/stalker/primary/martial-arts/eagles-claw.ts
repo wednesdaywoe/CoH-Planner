@@ -37,5 +37,17 @@ export const EaglesClaw: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 2.92,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Melee_Stun"
+    }
+  }
 };

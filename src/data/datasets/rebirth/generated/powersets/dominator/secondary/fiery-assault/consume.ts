@@ -37,5 +37,32 @@ export const Consume: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "debuffResistance": {
+      "endurance": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "debuffResistance": 120
+    },
+    "buffDuration": 120,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain",
+      "recoveryBuff"
+    ],
+    "enduranceGain": {
+      "scale": 20,
+      "table": "Melee_Ones",
+      "perTarget": 20
+    },
+    "recoveryBuff": {
+      "scale": 0.05,
+      "table": "Melee_Ones",
+      "perTarget": 0.05
+    }
+  }
 };

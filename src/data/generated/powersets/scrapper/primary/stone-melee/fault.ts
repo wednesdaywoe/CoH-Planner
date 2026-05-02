@@ -67,11 +67,6 @@ export const Fault: Power = {
       "type": "Smashing",
       "scale": 0.7824,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.7824,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

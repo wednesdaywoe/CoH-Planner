@@ -51,18 +51,8 @@ export const EndofTime: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 0.308,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Cold",
       "scale": 0.7502,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.2501,
       "table": "Melee_PvPDamage"
     },
     {

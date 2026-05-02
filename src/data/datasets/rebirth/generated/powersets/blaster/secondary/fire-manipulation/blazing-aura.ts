@@ -40,5 +40,10 @@ export const CauterizingAura: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 0.2,
+    "table": "Melee_Damage"
+  }
 };

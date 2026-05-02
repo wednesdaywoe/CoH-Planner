@@ -61,11 +61,6 @@ export const FollowThrough: Power = {
       "type": "Smashing",
       "scale": 1.96,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

@@ -32,6 +32,11 @@ const ORIGIN_OPTIONS = [
   { value: 'Technology', label: 'Technology' },
 ];
 
+// Rebirth is loadable end-to-end (data parsed from Rebirth's pigg, datasets/
+// rebirth/ wired, picker switch reloads the bundle), but kept disabled in
+// production until Original-Domination behavior + tooltip-level convention +
+// new InfoPanel layout land. Devs can still bypass via the `?serverId=rebirth`
+// URL-param override that main.tsx reads pre-rehydration.
 const SERVER_OPTIONS = [
   { value: 'homecoming', label: 'Homecoming' },
   { value: 'rebirth', label: 'Rebirth (Coming Soon)', disabled: true },
@@ -500,6 +505,41 @@ function BuildIdentityPopover() {
     ...secondaryPowersets.filter((ps) => ps.id).map((ps) => ({ value: ps.id as string, label: ps.name })),
   ];
 
+  const handleServerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newId = e.target.value as 'homecoming' | 'rebirth';
+    if (newId === build.serverId) return;
+
+    // Switching datasets invalidates every powerset/power reference in the
+    // current build. The minimum-viable UX (per MULTI_DATASET_PLAN.md) is
+    // warn-and-clear; cross-server inference mapping is future work.
+    const hasPicks = !!build.archetype.id || !!build.primary.id || !!build.secondary.id;
+    if (hasPicks && !window.confirm(
+      `Switching to ${newId === 'rebirth' ? 'Rebirth' : 'Homecoming'} will reset your current build. Continue?`,
+    )) {
+      return;
+    }
+
+    // Persist the new serverId on the saved build BEFORE reload so that
+    // main.tsx's pre-mount loader picks the right dataset on next boot.
+    try {
+      const raw = localStorage.getItem('coh-planner-build');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed?.state?.build) {
+          parsed.state.build.serverId = newId;
+          // Clear archetype/powerset picks — they're invalid on the new server.
+          parsed.state.build.archetype = { id: null };
+          parsed.state.build.primary = { id: null, powers: [] };
+          parsed.state.build.secondary = { id: null, powers: [] };
+          localStorage.setItem('coh-planner-build', JSON.stringify(parsed));
+        }
+      }
+    } catch {
+      // If persistence fails, fall back to URL-param override on reload.
+    }
+    window.location.assign(`?serverId=${newId}`);
+  };
+
   const handleArchetypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     if (value) {
@@ -563,12 +603,13 @@ function BuildIdentityPopover() {
           {/* Server */}
           <div className="space-y-1">
             <label className="text-xs text-gray-400">Server</label>
-            <Tooltip content="Select your server dataset. Rebirth and Thunderspy support is planned for a future update.">
+            <Tooltip content="Select your server dataset. Switching servers will reset your current build.">
               <Select
                 id="server-select"
                 name="server"
                 options={SERVER_OPTIONS}
-                value="homecoming"
+                value={build.serverId}
+                onChange={handleServerChange}
                 className="w-full"
               />
             </Tooltip>

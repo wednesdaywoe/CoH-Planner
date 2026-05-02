@@ -7,18 +7,30 @@
 
 const fs = require('fs');
 const path = require('path');
-const { parseDatasetArg, dataPath } = require('./_dataset-paths.cjs');
+const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
 
-// `--dataset <id>` (default `homecoming`) — accepted for forward compat.
-// Pet-entities haven't migrated into `src/data/datasets/<id>/` yet, so we
-// still write to legacy `src/data/`. When migrated, swap `dataPath(...)`
-// for `datasetPath(datasetId, ...)`.
-const datasetId = parseDatasetArg(); // eslint-disable-line @typescript-eslint/no-unused-vars
+const datasetId = parseDatasetArg();
 
-const RAW_DATA_PATH = path.join(__dirname, '../raw_data_homecoming-20251209_7415');
-const ENTITIES_PATH = path.join(RAW_DATA_PATH, 'entities');
-const POWERS_PATH = path.join(RAW_DATA_PATH, 'powers');
-const OUTPUT_PATH = dataPath('pet-entities.ts');
+// Read from the per-dataset bin-crawler export. HC's export lives under
+// `tools/bin-crawler/exported_powers/live/`, Rebirth's under
+// `exported_powers/rebirth/`. Both are organized as
+//   <root>/entities/*.json
+//   <root>/<powerset_category>/<powerset>/<power>.json
+// so we share the same `<root>` for both lookups.
+const EXPORT_ROOTS = {
+  homecoming: path.join(__dirname, '../tools/bin-crawler/exported_powers/live'),
+  rebirth: path.join(__dirname, '../exported_powers/rebirth'),
+};
+const ROOT = EXPORT_ROOTS[datasetId];
+if (!ROOT || !fs.existsSync(ROOT)) {
+  throw new Error(`No bin-crawler export root for dataset '${datasetId}'. Looked at ${ROOT}`);
+}
+const ENTITIES_PATH = path.join(ROOT, 'entities');
+const POWERS_PATH = ROOT;
+
+// pet-entities was migrated into datasets/<id>/pet-entities.ts during the
+// first wave of Stage A. Both HC and Rebirth write through datasetPath().
+const OUTPUT_PATH = datasetPath(datasetId, 'pet-entities.ts');
 
 // Damage type attributes we care about
 const DAMAGE_ATTRIBS = new Set([
@@ -306,7 +318,15 @@ function processPetPower(powerFilePath, powerData) {
     range: powerData.range > 0 ? powerData.range : undefined,
     radius: powerData.radius > 0 ? powerData.radius : undefined,
     maxTargets: powerData.max_targets_hit > 0 ? powerData.max_targets_hit : undefined,
-    attackTypes: powerData.attack_types?.length > 0 ? powerData.attack_types : undefined,
+    // bin-crawler currently exports attack_types as raw enum integers; the
+    // PetAbility type expects string tags ("Lethal", "Area", "Incarnate", …).
+    // Drop numeric entries until the enum mapping is added to export_powers.
+    attackTypes: (() => {
+      const at = powerData.attack_types;
+      if (!at || at.length === 0) return undefined;
+      const strings = at.filter(v => typeof v === 'string');
+      return strings.length > 0 ? strings : undefined;
+    })(),
     rechargeUnaffected: rechargeUnaffected || undefined,
   };
 }

@@ -41,5 +41,61 @@ export const FreezingTouch: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 1.46,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.243,
+      "table": "Melee_Damage",
+      "duration": 2.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.126,
+      "table": "Melee_Damage",
+      "duration": 2.6,
+      "tickRate": 0.5
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 6,
+      "knockback": 6,
+      "knockup": 6
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 6
+  }
 };

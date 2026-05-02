@@ -55,16 +55,6 @@ export const Blaze: Power = {
       "type": "Fire",
       "scale": 1.4999,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 2.12,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.4999,
-      "table": "Ranged_PvPDamage"
     }
   ]
 };

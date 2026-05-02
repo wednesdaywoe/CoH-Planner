@@ -45,26 +45,6 @@ export const Scorch: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.22,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.22,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Fire",
       "scale": 1.22,
       "table": "Melee_PvPDamage"
     },

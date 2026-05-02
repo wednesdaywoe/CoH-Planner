@@ -49,11 +49,6 @@ export const Lift: Power = {
       "type": "Smashing",
       "scale": 1.361,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.33,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {

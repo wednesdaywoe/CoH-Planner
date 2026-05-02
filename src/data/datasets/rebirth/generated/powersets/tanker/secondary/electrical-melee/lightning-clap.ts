@@ -38,5 +38,25 @@ export const LightningClap: Power = {
     "Stuns",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 0.738,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Melee_Stun"
+    },
+    "knockback": {
+      "scale": 2,
+      "table": "Melee_Knockback"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

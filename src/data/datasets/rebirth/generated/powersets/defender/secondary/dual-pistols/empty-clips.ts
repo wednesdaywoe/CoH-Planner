@@ -47,5 +47,63 @@ export const EmptyClips: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.182,
+      "table": "Ranged_Damage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.078,
+      "table": "Ranged_Damage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.078,
+      "table": "Ranged_Damage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.113,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 0.078,
+      "table": "Ranged_Damage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.078,
+      "table": "Ranged_Damage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 8
+    },
+    "knockback": {
+      "scale": 0.4,
+      "table": "Ranged_Knockback"
+    },
+    "buffDuration": 8
+  }
 };

@@ -38,5 +38,31 @@ export const DarkConsumption: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Negative",
+    "scale": 0.8,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "enduranceGain": {
+      "scale": 25,
+      "table": "Melee_Ones",
+      "perTarget": 25
+    },
+    "damageBuff": {
+      "scale": 0.248,
+      "table": "Melee_Ones",
+      "perTarget": 0.248
+    },
+    "durations": {
+      "damageBuff": 7.5
+    },
+    "buffDuration": 7.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "enduranceGain"
+    ]
+  }
 };

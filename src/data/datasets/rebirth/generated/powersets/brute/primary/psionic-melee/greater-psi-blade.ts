@@ -39,5 +39,33 @@ export const GreaterPsiBlade: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.69,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.0025,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.211625,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Melee_Stun"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

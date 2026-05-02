@@ -56,11 +56,6 @@ export const Quills: Power = {
       "type": "Lethal",
       "scale": 0.15,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

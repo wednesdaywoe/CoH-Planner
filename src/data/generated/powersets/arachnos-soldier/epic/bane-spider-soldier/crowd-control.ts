@@ -57,11 +57,6 @@ export const CrowdControl: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.61,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.7183,
       "table": "Melee_PvPDamage"
     },
@@ -71,11 +66,6 @@ export const CrowdControl: Power = {
       "table": "Melee_PvPDamage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.7183,
-      "table": "Melee_PvPDamage"
     },
     {
       "type": "Smashing",

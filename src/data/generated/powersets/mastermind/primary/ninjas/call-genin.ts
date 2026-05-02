@@ -46,8 +46,7 @@ export const CallGenin: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Genin",
-      "duration": 99999,
-      "entityCount": 3
+      "duration": 99999
     },
     "teleport": {
       "scale": 1,

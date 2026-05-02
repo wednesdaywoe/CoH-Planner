@@ -35,5 +35,19 @@ export const Bayonet: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.44,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.12,
+      "table": "Melee_Damage",
+      "duration": 5.1,
+      "tickRate": 1
+    }
+  ]
 };

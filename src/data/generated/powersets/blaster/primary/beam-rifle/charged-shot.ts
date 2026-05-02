@@ -50,16 +50,6 @@ export const ChargedShot: Power = {
       "type": "Energy",
       "scale": 1.8892,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.246,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.2834,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

@@ -56,20 +56,6 @@ export const GravityDistortion: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 4.2,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.22,
-      "table": "Ranged_InherentDamage",
-      "duration": 4.2,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2001,
-      "table": "Ranged_PvPDamage",
-      "duration": 4.2,
-      "tickRate": 1
     }
   ],
   "effects": {

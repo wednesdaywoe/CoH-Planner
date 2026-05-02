@@ -34,5 +34,12 @@ export const Confuse: Power = {
   "allowedSetCategories": [
     "Confuse"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "confuse": {
+      "mag": 3,
+      "scale": 20,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

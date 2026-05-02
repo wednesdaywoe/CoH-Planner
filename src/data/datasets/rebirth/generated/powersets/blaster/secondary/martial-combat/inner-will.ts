@@ -30,5 +30,86 @@ export const InnerWill: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 0.075,
+      "table": "Melee_Ones"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.075,
+      "table": "Melee_Ones"
+    }
+  ],
+  "effects": {
+    "mezResistance": {
+      "stun": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "confuse": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 30,
+      "stun": 30,
+      "sleep": 30,
+      "immobilize": 30,
+      "hold": 30,
+      "confuse": 30,
+      "fear": 30
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "effectDuration": 30,
+    "sleep": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 30
+  }
 };

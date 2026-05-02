@@ -39,5 +39,40 @@ export const RiseofthePhoenix: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 5,
+    "table": "Melee_HealSelf",
+    "duration": 0.5,
+    "tickRate": 1
+  },
+  "effects": {
+    "untouchable": {
+      "scale": 15,
+      "table": "Melee_Ones"
+    },
+    "enduranceGain": {
+      "scale": 50,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 90
+    },
+    "immobilize": {
+      "mag": 50,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "enduranceGain"
+    ]
+  }
 };

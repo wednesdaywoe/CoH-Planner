@@ -37,5 +37,36 @@ export const ThornBarrage: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.53,
+      "table": "Ranged_Damage",
+      "duration": 1.75,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    },
+    "durations": {
+      "knockback": 1.75,
+      "defenseDebuff": 12
+    },
+    "defenseDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 12
+  }
 };

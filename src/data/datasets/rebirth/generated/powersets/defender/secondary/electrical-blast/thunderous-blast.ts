@@ -39,5 +39,31 @@ export const ThunderousBlast: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "enduranceDrain": {
+      "scale": 1.05,
+      "table": "Ranged_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 20
+    },
+    "buffDuration": 20
+  }
 };

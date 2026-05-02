@@ -40,5 +40,25 @@ export const BlindingPowder: Power = {
     "Confuse",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "sleep": {
+      "mag": 2,
+      "scale": 10,
+      "table": "Melee_Sleep"
+    },
+    "confuse": {
+      "mag": 2,
+      "scale": 20,
+      "table": "Melee_Immobilize"
+    },
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "perceptionDebuff": 20
+    },
+    "buffDuration": 20
+  }
 };

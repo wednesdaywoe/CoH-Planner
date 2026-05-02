@@ -32,5 +32,44 @@ export const GlacialArmor: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "energy": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "resistance": 0.75,
+      "debuffResistance": 0.75,
+      "perceptionBuff": 0.75
+    },
+    "resistance": {
+      "cold": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      },
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "perceptionBuff": {
+      "scale": 0.6,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 0.75
+  }
 };

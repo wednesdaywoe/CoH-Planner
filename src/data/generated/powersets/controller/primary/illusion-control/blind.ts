@@ -52,16 +52,6 @@ export const Blind: Power = {
       "type": "Psionic",
       "scale": 1.9291,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.9645,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

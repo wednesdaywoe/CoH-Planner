@@ -36,5 +36,24 @@ export const Inferno: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.3,
+      "table": "Ranged_Damage",
+      "duration": 8.1,
+      "tickRate": 1
+    }
+  ]
 };

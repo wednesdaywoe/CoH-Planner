@@ -38,5 +38,18 @@ export const EyeoftheStorm: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.205,
+    "table": "Melee_Damage",
+    "duration": 2.3,
+    "tickRate": 0.4000000059604645
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
+  }
 };

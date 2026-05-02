@@ -39,5 +39,15 @@ export const RadiationInfection: Power = {
     "Defense Debuff",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 0.75
+    },
+    "buffDuration": 0.75
+  }
 };

@@ -81,11 +81,6 @@ export const OneThousandCuts: Power = {
       "type": "Lethal",
       "scale": 2.21,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.21,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

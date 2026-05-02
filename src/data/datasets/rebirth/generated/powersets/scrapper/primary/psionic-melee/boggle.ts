@@ -34,5 +34,12 @@ export const Boggle: Power = {
   "allowedSetCategories": [
     "Confuse"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "confuse": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Melee_Ones"
+    }
+  }
 };

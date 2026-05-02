@@ -27,5 +27,105 @@ export const PowerBoost: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "effectDuration": 15,
+    "durations": {
+      "stun": 15,
+      "sleep": 15,
+      "confuse": 15,
+      "fear": 15,
+      "immobilize": 15,
+      "hold": 15,
+      "movement": 15,
+      "defenseBuff": 15,
+      "damageBuff": 15,
+      "absorb": 15,
+      "tohitBuff": 15,
+      "enduranceGain": 15
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "movement": {
+      "runSpeed": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "flySpeed": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      }
+    },
+    "defenseBuff": {
+      "scale": 0.66,
+      "table": "Melee_Stun",
+      "melee": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "ranged": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "aoe": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      }
+    },
+    "damageBuff": {
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "absorb": {
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "tohitBuff": {
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "enduranceGain": {
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "absorb",
+      "damageBuff",
+      "defenseBuff",
+      "enduranceGain",
+      "flySpeed",
+      "runSpeed",
+      "tohitBuff"
+    ]
+  }
 };

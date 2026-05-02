@@ -54,20 +54,6 @@ export const BulletRain: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.3323,
-      "table": "Ranged_InherentDamage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2348,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
       "scale": 0.2348,
       "table": "Ranged_PvPDamage",
       "duration": 1.1,

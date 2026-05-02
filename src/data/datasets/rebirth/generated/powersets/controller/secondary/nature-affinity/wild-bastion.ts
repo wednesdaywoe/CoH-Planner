@@ -33,5 +33,22 @@ export const WildBastion: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 0.272727,
+    "table": "Ranged_Heal",
+    "duration": 10.1,
+    "tickRate": 1
+  },
+  "effects": {
+    "absorb": {
+      "scale": 1.25,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "absorb": 60
+    },
+    "buffDuration": 60
+  }
 };

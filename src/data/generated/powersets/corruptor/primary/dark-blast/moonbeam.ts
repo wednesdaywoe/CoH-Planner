@@ -51,16 +51,6 @@ export const Moonbeam: Power = {
     },
     {
       "type": "Negative",
-      "scale": 4.5,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 3.211,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Negative",
       "scale": 3.211,
       "table": "Ranged_PvPDamage"
     }
@@ -75,16 +65,6 @@ export const Moonbeam: Power = {
         "type": "Negative",
         "scale": 2.28,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Negative",
-        "scale": 2.28,
-        "table": "Ranged_InherentDamage"
-      },
-      {
-        "type": "Negative",
-        "scale": 1.811,
-        "table": "Ranged_PvPDamage"
       },
       {
         "type": "Negative",

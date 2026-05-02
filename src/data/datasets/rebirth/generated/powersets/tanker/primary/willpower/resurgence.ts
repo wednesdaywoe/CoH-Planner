@@ -36,5 +36,45 @@ export const Resurgence: Power = {
     "Healing",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 0.8,
+    "table": "Ranged_Ones",
+    "duration": 0.5,
+    "tickRate": 1
+  },
+  "effects": {
+    "enduranceGain": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "untouchable": {
+      "scale": 15,
+      "table": "Ranged_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 90,
+      "rechargeBuff": 90,
+      "damageBuff": 90,
+      "tohitBuff": 90
+    },
+    "rechargeBuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 4,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "tohitBuff": {
+      "scale": 3,
+      "table": "Ranged_Buff_ToHit"
+    },
+    "buffDuration": 90
+  }
 };

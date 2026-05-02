@@ -39,5 +39,34 @@ export const RadiationTherapy: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.05,
+      "table": "Melee_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Heal",
+      "scale": 1.25,
+      "table": "Melee_HealSelf"
+    }
+  ],
+  "effects": {
+    "regenDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenDebuff": 30
+    },
+    "buffDuration": 30
+  }
 };

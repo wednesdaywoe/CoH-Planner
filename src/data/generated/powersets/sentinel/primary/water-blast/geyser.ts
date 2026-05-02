@@ -53,34 +53,6 @@ export const Geyser: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.102,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.108,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.115,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.128,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
       "type": "Smashing",
       "scale": 0.928,
       "table": "Ranged_Damage"
@@ -99,32 +71,12 @@ export const Geyser: Power = {
       "type": "Fire",
       "scale": 1.0589,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0756,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1815,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.3782,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockup": {
       "scale": 3,
       "table": "Ranged_Ones"
-    },
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Ranged_Stun"
     }
   }
 };

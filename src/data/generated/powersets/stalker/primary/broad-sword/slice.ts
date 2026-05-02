@@ -51,36 +51,6 @@ export const Slice: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.8654,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.2346,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.2346,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.5064,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.8431,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.5064,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.5064,
       "table": "Melee_PvPDamage"
     }

@@ -50,55 +50,17 @@ export const FreezeRay: Power = {
     },
     {
       "type": "Cold",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage",
-      "duration": 2,
-      "tickRate": 0.20000000298023224
-    },
-    {
-      "type": "Cold",
       "scale": 0.1531,
-      "table": "Ranged_PvPDamage",
-      "duration": 2,
-      "tickRate": 0.20000000298023224
-    },
-    {
-      "type": "Cold",
-      "scale": 0.1479,
       "table": "Ranged_PvPDamage",
       "duration": 2,
       "tickRate": 0.20000000298023224
     }
   ],
   "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 10,
-      "knockup": 10,
-      "knockback": 10
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
     "hold": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Sleep"
-    },
-    "buffDuration": 10
+    }
   }
 };

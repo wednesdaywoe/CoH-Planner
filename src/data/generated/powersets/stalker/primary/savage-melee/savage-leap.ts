@@ -39,11 +39,5 @@ export const SavageLeap: Power = {
     "Universal Damage Sets",
     "Universal Travel"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  }
+  "maxSlots": 6
 };

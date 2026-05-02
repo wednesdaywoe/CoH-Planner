@@ -36,5 +36,19 @@ export const TripMine: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 0.264,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 11.5
+    },
+    "buffDuration": 11.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

@@ -32,5 +32,122 @@ export const LightForm: Power = {
     "Endurance Modification",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": -0.5,
+      "table": "Melee_Ones"
+    },
+    {
+      "type": "Special",
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
+  ],
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistance": 90,
+      "recoveryBuff": 90,
+      "mezResistance": 90,
+      "knockback": 90,
+      "knockup": 90,
+      "repel": 90,
+      "stun": 90,
+      "hold": 90,
+      "sleep": 90,
+      "immobilize": 90
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 90,
+    "hold": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "enduranceDrain": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "recoveryBuff",
+      "resistance"
+    ]
+  }
 };

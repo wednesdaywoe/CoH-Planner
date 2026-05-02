@@ -33,5 +33,11 @@ export const Confront: Power = {
   "allowedSetCategories": [
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "taunt": {
+      "scale": 20,
+      "table": "Melee_Taunt"
+    }
+  }
 };

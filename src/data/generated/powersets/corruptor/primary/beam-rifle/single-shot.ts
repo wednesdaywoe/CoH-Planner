@@ -50,30 +50,12 @@ export const SingleShot: Power = {
       "type": "Energy",
       "scale": 1.2599,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2599,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
       "scale": 1.34,
       "table": "Ranged_Ones"
-    },
-    "regenDebuff": {
-      "scale": 3,
-      "table": "Ranged_Res_Boolean"
-    },
-    "durations": {
-      "regenDebuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

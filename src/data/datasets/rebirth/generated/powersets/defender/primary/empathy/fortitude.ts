@@ -35,5 +35,63 @@ export const Fortitude: Power = {
     "Defense Sets",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitBuff": {
+      "scale": 1.5,
+      "table": "Ranged_Buff_ToHit"
+    },
+    "durations": {
+      "tohitBuff": 120,
+      "damageBuff": 120,
+      "defenseBuff": 120
+    },
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "cold": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "buffDuration": 120
+  }
 };

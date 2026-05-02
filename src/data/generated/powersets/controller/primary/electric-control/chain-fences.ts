@@ -61,23 +61,6 @@ export const ChainFences: Power = {
       "type": "Energy",
       "scale": 0.2798,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1399,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

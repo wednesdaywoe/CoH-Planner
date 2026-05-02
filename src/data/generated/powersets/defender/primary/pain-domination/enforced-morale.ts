@@ -31,11 +31,6 @@ export const EnforcedMorale: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 1,
-    "table": "Ranged_Ones"
-  },
   "effects": {
     "confuse": {
       "mag": 1,
@@ -51,7 +46,6 @@ export const EnforcedMorale: Power = {
       "stun": 90,
       "sleep": 90,
       "mezResistance": 90,
-      "rechargeBuff": 90,
       "debuffResistance": 90,
       "perceptionBuff": 90
     },
@@ -82,33 +76,9 @@ export const EnforcedMorale: Power = {
     },
     "mezResistance": {
       "sleep": {
-        "scale": 13,
-        "table": "Ranged_Res_Boolean"
-      },
-      "confuse": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "fear": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "scale": 3,
+        "scale": 5,
         "table": "Ranged_Res_Boolean"
       }
-    },
-    "rechargeBuff": {
-      "scale": 0.05,
-      "table": "Ranged_Ones"
     },
     "debuffResistance": {
       "perception": {

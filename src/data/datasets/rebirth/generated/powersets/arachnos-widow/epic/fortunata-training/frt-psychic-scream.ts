@@ -39,5 +39,10 @@ export const PsychicScream: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.950991,
+    "table": "Ranged_Damage"
+  }
 };

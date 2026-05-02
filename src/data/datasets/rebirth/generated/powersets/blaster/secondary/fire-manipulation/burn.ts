@@ -36,5 +36,36 @@ export const Burn: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 1.6,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "immobilize": {
+      "mag": -15,
+      "scale": 100,
+      "table": "Melee_Res_Boolean"
+    },
+    "damageBuff": {
+      "scale": 0.488,
+      "table": "Melee_Ones",
+      "perTarget": 0.488
+    },
+    "durations": {
+      "damageBuff": 9.53
+    },
+    "mezResistance": {
+      "immobilize": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "buffDuration": 9.53,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

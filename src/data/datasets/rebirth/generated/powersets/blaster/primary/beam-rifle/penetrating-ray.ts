@@ -40,5 +40,28 @@ export const PenetratingRay: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 2.76,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.7,
+      "table": "Ranged_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.044,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.9
+    },
+    "buffDuration": 8.9,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

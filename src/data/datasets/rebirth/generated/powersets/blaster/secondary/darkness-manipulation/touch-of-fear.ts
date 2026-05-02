@@ -40,5 +40,34 @@ export const TouchoftheBeyond: Power = {
     "Fear",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "fear": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Fear"
+    },
+    "regenBuff": {
+      "scale": 2.25,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 60,
+      "recoveryBuff": 60,
+      "damageBuff": 8.67
+    },
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.077,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 60,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

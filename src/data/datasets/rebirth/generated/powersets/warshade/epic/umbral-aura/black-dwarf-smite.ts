@@ -43,5 +43,32 @@ export const BlackDwarfSmite: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.32,
+      "table": "Melee_SSDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Melee_SSDamage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Immobilize"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  },
   "requires": "0"
 };

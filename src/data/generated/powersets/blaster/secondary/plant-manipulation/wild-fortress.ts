@@ -38,7 +38,7 @@ export const WildFortress: Power = {
   "maxSlots": 6,
   "effects": {
     "absorb": {
-      "scale": 0.3,
+      "scale": 0.15,
       "table": "Melee_HealSelf"
     },
     "durations": {

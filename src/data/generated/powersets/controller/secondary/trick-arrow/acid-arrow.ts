@@ -42,22 +42,13 @@ export const AcidArrow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Toxic",
-      "scale": 0.01,
-      "table": "Ranged_Damage",
-      "duration": 20,
-      "tickRate": 1
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.01,
-      "table": "Ranged_InherentDamage",
-      "duration": 20,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Toxic",
+    "scale": 0.01,
+    "table": "Ranged_Damage",
+    "duration": 20,
+    "tickRate": 1
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 2,

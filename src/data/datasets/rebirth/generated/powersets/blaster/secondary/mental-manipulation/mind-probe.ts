@@ -35,5 +35,24 @@ export const MindProbe: Power = {
     "Melee Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.64,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "damageBuff": {
+      "scale": 0.077,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.67
+    },
+    "buffDuration": 8.67,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

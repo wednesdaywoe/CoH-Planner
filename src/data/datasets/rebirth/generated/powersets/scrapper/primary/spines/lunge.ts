@@ -39,5 +39,31 @@ export const Lunge: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.32,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.594,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 0.33000001311302185,
+      "scale": 8,
+      "table": "Melee_Immobilize"
+    }
+  },
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

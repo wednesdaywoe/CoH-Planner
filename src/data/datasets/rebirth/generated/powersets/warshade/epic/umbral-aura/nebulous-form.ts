@@ -32,5 +32,45 @@ export const NebulousForm: Power = {
     "Leaping & Sprints",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 20,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 222,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 0.75,
+      "movement": 0.75,
+      "threatDebuff": 0.75
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Melee_Leap"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedJumping"
+      },
+      "movementControl": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "movementFriction": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      }
+    },
+    "threatDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 0.75
+  }
 };

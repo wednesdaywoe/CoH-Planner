@@ -36,5 +36,19 @@ export const TimeBomb: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 0.528,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 15.5
+    },
+    "buffDuration": 15.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

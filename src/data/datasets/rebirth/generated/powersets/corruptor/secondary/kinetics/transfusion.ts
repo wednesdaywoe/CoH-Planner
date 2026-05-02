@@ -37,5 +37,19 @@ export const Transfusion: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.13,
+      "table": "Ranged_Ones"
+    },
+    "regenDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 20
+    },
+    "buffDuration": 20
+  }
 };

@@ -51,17 +51,7 @@ export const Terrify: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 0.7437,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.3719,
       "table": "Ranged_PvPDamage"
     }
   ],

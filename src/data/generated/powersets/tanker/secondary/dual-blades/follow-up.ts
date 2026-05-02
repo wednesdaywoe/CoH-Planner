@@ -55,7 +55,7 @@ export const BlindingFeint: Power = {
   ],
   "effects": {
     "tohitBuff": {
-      "scale": 0.33,
+      "scale": 1,
       "table": "Melee_Buff_ToHit"
     },
     "durations": {
@@ -63,7 +63,7 @@ export const BlindingFeint: Power = {
       "damageBuff": 10
     },
     "damageBuff": {
-      "scale": 1,
+      "scale": 3,
       "table": "Melee_Buff_Dmg"
     },
     "buffDuration": 10,

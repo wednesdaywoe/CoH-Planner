@@ -55,17 +55,7 @@ export const Microburst: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.1193,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.0596,
       "table": "Ranged_PvPDamage"
     }
   ],
@@ -74,15 +64,7 @@ export const Microburst: Power = {
       "mag": 4,
       "scale": 1,
       "table": "Ranged_PvPMez"
-    },
-    "defenseDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12
-    },
-    "buffDuration": 12
+    }
   },
   "requires": "accesslevel char> 0 >="
 };

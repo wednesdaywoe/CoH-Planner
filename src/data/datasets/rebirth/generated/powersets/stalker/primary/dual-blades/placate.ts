@@ -28,5 +28,30 @@ export const Placate: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "placate": {
+      "scale": 10,
+      "table": "Melee_Taunt"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 150,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 380,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 10
+    },
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
+  }
 };

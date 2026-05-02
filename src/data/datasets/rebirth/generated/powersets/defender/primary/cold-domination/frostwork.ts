@@ -33,5 +33,22 @@ export const Frostwork: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "maxHPBuff": {
+      "scale": 4,
+      "table": "Ranged_Heal"
+    },
+    "durations": {
+      "maxHPBuff": 120,
+      "resistance": 120
+    },
+    "resistance": {
+      "toxic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "buffDuration": 120
+  }
 };

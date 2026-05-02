@@ -31,5 +31,35 @@ export const GammaBoost: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 1.25,
+      "debuffResistance": 1.25,
+      "recoveryBuff": 1.25
+    },
+    "debuffResistance": {
+      "regeneration": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 1.25
+  },
   "mechanicType": "parentMechanic"
 };

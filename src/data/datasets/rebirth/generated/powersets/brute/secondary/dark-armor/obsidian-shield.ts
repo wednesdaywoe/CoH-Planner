@@ -31,5 +31,42 @@ export const ObsidianShield: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "psionic": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      }
+    },
+    "durations": {
+      "resistance": 0.75,
+      "stun": 0.75,
+      "hold": 0.75,
+      "sleep": 0.75,
+      "fear": 0.75
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 0.75,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "buffDuration": 0.75
+  }
 };

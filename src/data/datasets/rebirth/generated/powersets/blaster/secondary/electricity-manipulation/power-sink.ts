@@ -33,5 +33,33 @@ export const PowerSink: Power = {
   "allowedSetCategories": [
     "Endurance Modification"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.35,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4,
+      "damageBuff": 9.53
+    },
+    "enduranceGain": {
+      "scale": 25,
+      "table": "Melee_Ones",
+      "perTarget": 25
+    },
+    "damageBuff": {
+      "scale": 0.048,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 9.53,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
+  }
 };

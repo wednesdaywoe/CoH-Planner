@@ -52,16 +52,6 @@ export const Downdraft: Power = {
       "type": "Smashing",
       "scale": 2.0291,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.0145,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

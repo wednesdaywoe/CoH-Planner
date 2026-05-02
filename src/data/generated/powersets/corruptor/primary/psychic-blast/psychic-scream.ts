@@ -51,16 +51,6 @@ export const PsychicScream: Power = {
       "type": "Psionic",
       "scale": 0.7988,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.04,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.7988,
-      "table": "Ranged_PvPDamage"
     }
   ]
 };

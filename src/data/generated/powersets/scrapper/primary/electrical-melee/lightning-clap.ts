@@ -56,11 +56,6 @@ export const LightningClap: Power = {
     },
     {
       "type": "Energy",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 1.861,
       "table": "Melee_PvPDamage"
     },

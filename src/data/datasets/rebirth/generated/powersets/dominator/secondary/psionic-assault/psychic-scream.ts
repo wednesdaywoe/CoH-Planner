@@ -38,5 +38,10 @@ export const PsychicScream: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.3,
+    "table": "Melee_Damage"
+  }
 };

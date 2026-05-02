@@ -33,5 +33,22 @@ export const Alkaloid: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1.73,
+    "table": "Ranged_Heal"
+  },
+  "effects": {
+    "resistance": {
+      "toxic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistance": 60
+    },
+    "buffDuration": 60
+  }
 };

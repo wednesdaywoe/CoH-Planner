@@ -41,5 +41,30 @@ export const Wormhole: Power = {
     "Teleport",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "teleport": {
+      "scale": 4.1,
+      "table": "Ranged_Ones"
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 15
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "knockback": {
+      "scale": 7,
+      "table": "Ranged_Knockback"
+    },
+    "buffDuration": 15
+  }
 };

@@ -43,27 +43,7 @@ export const HeavyBlow: Power = {
     {
       "type": "Smashing",
       "scale": 1.16,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.16,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.16,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.349,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.349,
-      "table": "Melee_PvPDamage"
     },
     {
       "type": "Smashing",

@@ -36,5 +36,11 @@ export const BlackDwarfAntagonize: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "effects": {
+    "taunt": {
+      "scale": 8,
+      "table": "Melee_Taunt"
+    }
+  },
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Antagonize ! &&"
 };

@@ -53,16 +53,6 @@ export const Upthrust: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 0.8985,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.5785,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.5785,
       "table": "Ranged_PvPDamage"
     },

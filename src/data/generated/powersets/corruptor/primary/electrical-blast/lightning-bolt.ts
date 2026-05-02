@@ -48,26 +48,6 @@ export const LightningBolt: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.328,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.8889,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3778,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 1.8889,
       "table": "Ranged_PvPDamage"
     }
@@ -77,18 +57,6 @@ export const LightningBolt: Power = {
       "scale": 2.1,
       "table": "Ranged_EndDrain"
     },
-    "enduranceGain": {
-      "scale": 8.53,
-      "table": "Ranged_EndDrain"
-    },
-    "recoveryDebuff": {
-      "scale": 0.8,
-      "table": "Ranged_EndDrain"
-    },
-    "durations": {
-      "recoveryDebuff": 5
-    },
-    "buffDuration": 5,
     "maxStacks": 2,
     "stacksLinear": [
       "enduranceGain"

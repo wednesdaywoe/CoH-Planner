@@ -38,5 +38,15 @@ export const Infrigidate: Power = {
     "Defense Debuff",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 20
+    },
+    "buffDuration": 20
+  }
 };

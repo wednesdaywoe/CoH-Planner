@@ -38,5 +38,29 @@ export const ScrambleThoughts: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.25,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "damageBuff": {
+      "scale": 0.198,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.5
+    },
+    "buffDuration": 10.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

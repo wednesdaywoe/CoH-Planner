@@ -41,5 +41,38 @@ export const MidnightGrasp: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 2.21,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.11,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    },
+    {
+      "type": "Fire",
+      "scale": 0.9945,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.045,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Melee_Immobilize"
+    }
+  }
 };

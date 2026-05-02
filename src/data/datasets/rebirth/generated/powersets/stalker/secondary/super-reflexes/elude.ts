@@ -39,5 +39,58 @@ export const Elude: Power = {
     "Running & Sprints",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 3,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 3,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 3,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 90,
+      "recoveryBuff": 90,
+      "movement": 90,
+      "debuffResistance": 90,
+      "absorb": 90
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedRunning"
+      }
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "absorb": {
+      "scale": 4,
+      "table": "Melee_HealSelf"
+    },
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "jumpHeight",
+      "runSpeed"
+    ]
+  }
 };

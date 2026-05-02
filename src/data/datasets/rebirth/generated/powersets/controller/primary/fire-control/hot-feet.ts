@@ -39,5 +39,12 @@ export const HotFeet: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "fear": {
+      "mag": 3,
+      "scale": 4,
+      "table": "Ranged_Ones"
+    }
+  }
 };

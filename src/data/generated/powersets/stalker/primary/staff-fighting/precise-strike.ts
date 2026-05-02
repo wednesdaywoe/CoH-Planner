@@ -47,26 +47,6 @@ export const PreciseStrike: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.431,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.431,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.431,
       "table": "Melee_PvPDamage"
     }

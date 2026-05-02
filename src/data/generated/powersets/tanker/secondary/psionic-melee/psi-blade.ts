@@ -59,13 +59,6 @@ export const PsiBlade: Power = {
       "type": "Psionic",
       "scale": 1.1482,
       "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.1799,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 1
     }
   ]
 };

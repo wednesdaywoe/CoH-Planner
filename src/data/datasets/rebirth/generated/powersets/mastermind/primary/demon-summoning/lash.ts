@@ -36,5 +36,63 @@ export const Lash: Power = {
     "Melee Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 1.064,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.21,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 6
+    },
+    "knockback": {
+      "scale": 0.64,
+      "table": "Ranged_Knockback"
+    },
+    "buffDuration": 6
+  }
 };

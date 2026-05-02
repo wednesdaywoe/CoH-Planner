@@ -52,11 +52,6 @@ export const Incinerate: Power = {
     },
     {
       "type": "Fire",
-      "scale": 2.5,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.1969,
       "table": "Melee_PvPDamage",
       "duration": 4.6,

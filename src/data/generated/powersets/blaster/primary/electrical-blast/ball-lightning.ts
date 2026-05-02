@@ -57,11 +57,6 @@ export const BallLightning: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.18,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
       "scale": 0.1431,
       "table": "Ranged_PvPDamage"
     },
@@ -71,29 +66,12 @@ export const BallLightning: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 2.2,
       "tickRate": 0.6000000238418579
-    },
-    {
-      "type": "Energy",
-      "scale": 0.0957,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
       "scale": 1.32,
       "table": "Ranged_EndDrain"
-    },
-    "enduranceGain": {
-      "scale": 7.58,
-      "table": "Ranged_EndDrain"
-    },
-    "recoveryDebuff": {
-      "scale": 0.8,
-      "table": "Ranged_EndDrain"
-    },
-    "durations": {
-      "recoveryDebuff": 5
-    },
-    "buffDuration": 5
+    }
   }
 };

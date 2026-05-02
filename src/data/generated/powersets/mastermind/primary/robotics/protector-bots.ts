@@ -50,8 +50,7 @@ export const ProtectorBots: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Protector_Bot",
-      "duration": 99999,
-      "entityCount": 2
+      "duration": 99999
     }
   }
 };

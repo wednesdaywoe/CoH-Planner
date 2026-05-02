@@ -36,5 +36,50 @@ export const AnguishingCry: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 30,
+      "resistanceDebuff": 30
+    },
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "buffDuration": 30
+  }
 };

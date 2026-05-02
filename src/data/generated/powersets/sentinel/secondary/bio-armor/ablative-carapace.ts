@@ -35,7 +35,7 @@ export const AblativeCarapace: Power = {
   "maxSlots": 6,
   "effects": {
     "absorb": {
-      "scale": 0.39,
+      "scale": 0.3,
       "table": "Melee_Ones"
     },
     "durations": {
@@ -43,7 +43,7 @@ export const AblativeCarapace: Power = {
       "regenBuff": 30
     },
     "regenBuff": {
-      "scale": 1.3,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "buffDuration": 30

@@ -32,5 +32,20 @@ export const Telekinesis: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 0.75,
+      "table": "Melee_Immobilize"
+    },
+    "repel": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "repel": 0.75
+    },
+    "buffDuration": 0.75
+  }
 };

@@ -36,5 +36,19 @@ export const Regrowth: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 0.75,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.15,
+      "table": "Ranged_Heal",
+      "duration": 4.1,
+      "tickRate": 1
+    }
+  ]
 };

@@ -47,26 +47,6 @@ export const CobraStrike: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.969,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.969,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.969,
       "table": "Melee_PvPDamage"
     }

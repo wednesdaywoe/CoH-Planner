@@ -31,5 +31,26 @@ export const QuantumShield: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 2,
+      "resistance": 0.75
+    },
+    "resistance": {
+      "energy": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "buffDuration": 2
+  }
 };

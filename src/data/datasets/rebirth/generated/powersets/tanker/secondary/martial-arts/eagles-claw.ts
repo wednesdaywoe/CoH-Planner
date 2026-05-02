@@ -41,5 +41,36 @@ export const EaglesClaw: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.28,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.026,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 4,
+      "table": "Melee_Stun"
+    },
+    "damageBuff": {
+      "scale": 3.3,
+      "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 3
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 3
+  }
 };

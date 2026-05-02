@@ -40,5 +40,36 @@ export const BlackDwarfMire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Negative",
+    "scale": 1,
+    "table": "Melee_SSDamage"
+  },
+  "effects": {
+    "tohitBuff": {
+      "scale": 0.5,
+      "table": "Melee_Buff_ToHit",
+      "perTarget": 0.5
+    },
+    "durations": {
+      "tohitBuff": 10,
+      "damageBuff": 10
+    },
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 2.5
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
+  },
   "requires": "0"
 };

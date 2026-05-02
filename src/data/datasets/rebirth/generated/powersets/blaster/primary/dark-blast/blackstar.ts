@@ -39,5 +39,27 @@ export const Blackstar: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 3,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.042,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.5
+    },
+    "buffDuration": 10.5
+  }
 };

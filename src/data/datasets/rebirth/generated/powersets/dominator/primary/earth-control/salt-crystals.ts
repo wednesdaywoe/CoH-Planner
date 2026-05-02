@@ -35,5 +35,20 @@ export const SaltCrystals: Power = {
     "Dominator Archetype Sets",
     "Sleep"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "sleep": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Sleep"
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 15
+    },
+    "buffDuration": 15
+  }
 };

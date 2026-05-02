@@ -52,16 +52,6 @@ export const LifeDrain: Power = {
     },
     {
       "type": "Negative",
-      "scale": 1.64,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.0709,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Negative",
       "scale": 2.0709,
       "table": "Ranged_PvPDamage"
     },

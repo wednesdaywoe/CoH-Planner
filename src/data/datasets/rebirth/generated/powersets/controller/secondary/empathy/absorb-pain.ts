@@ -33,5 +33,38 @@ export const AbsorbPain: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 5,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Special",
+      "scale": 3,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "regenDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 20,
+      "resistance": 20
+    },
+    "resistance": {
+      "heal": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
+    },
+    "buffDuration": 20,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "resistance"
+    ]
+  }
 };

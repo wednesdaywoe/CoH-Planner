@@ -56,11 +56,6 @@ export const Earsplitter: Power = {
       "table": "Melee_InherentDamage"
     },
     {
-      "type": "Energy",
-      "scale": 2.6,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 1.1695,
       "table": "Melee_PvPDamage"

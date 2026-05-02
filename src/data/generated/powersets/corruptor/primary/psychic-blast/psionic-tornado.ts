@@ -50,16 +50,6 @@ export const PsionicTornado: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1.1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.7634,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 0.7634,
       "table": "Ranged_PvPDamage"
     }

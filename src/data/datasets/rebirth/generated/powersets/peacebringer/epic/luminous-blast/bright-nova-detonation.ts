@@ -45,5 +45,31 @@ export const BrightNovaDetonation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.6,
+      "table": "Ranged_SSDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.3,
+      "table": "Ranged_SSDamage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    },
+    "buffDuration": 10
+  },
   "requires": "0"
 };

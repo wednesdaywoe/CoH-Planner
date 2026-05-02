@@ -38,5 +38,17 @@ export const FreezeRay: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Cold",
+    "scale": 0.1,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Sleep"
+    }
+  }
 };

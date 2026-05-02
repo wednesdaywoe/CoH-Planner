@@ -57,11 +57,6 @@ export const Swipe: Power = {
       "type": "Lethal",
       "scale": 0.76,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.76,
-      "table": "Melee_InherentDamage"
     }
   ],
   "requires": "Scrapper_Defense.Shield_Defense !"

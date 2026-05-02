@@ -53,11 +53,6 @@ export const DragonsTail: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.1818,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.9136,
       "table": "Melee_PvPDamage"
     },

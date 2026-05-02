@@ -55,16 +55,6 @@ export const FrozenFists: Power = {
       "tickRate": 0.25
     },
     {
-      "type": "Cold",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.1745,
       "table": "Melee_PvPDamage",
@@ -77,16 +67,6 @@ export const FrozenFists: Power = {
       "table": "Melee_PvPDamage",
       "duration": 0.3,
       "tickRate": 0.25
-    },
-    {
-      "type": "Cold",
-      "scale": 1.4511,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.451,
-      "table": "Melee_PvPDamage"
     }
   ]
 };

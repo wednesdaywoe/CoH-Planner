@@ -45,16 +45,6 @@ export const Bayonet: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.44,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.8889,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.8889,
       "table": "Melee_PvPDamage"
     },

@@ -58,20 +58,6 @@ export const EmptyClips: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.26,
-      "table": "Ranged_InherentDamage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2612,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
       "scale": 0.2612,
       "table": "Ranged_PvPDamage",
       "duration": 1.6,

@@ -34,5 +34,11 @@ export const Transference: Power = {
   "allowedSetCategories": [
     "Endurance Modification"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.55,
+      "table": "Ranged_Ones"
+    }
+  }
 };

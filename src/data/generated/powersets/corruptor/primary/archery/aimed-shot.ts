@@ -48,16 +48,6 @@ export const AimedShot: Power = {
       "type": "Lethal",
       "scale": 1.2599,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.2599,
-      "table": "Ranged_PvPDamage"
     }
   ]
 };

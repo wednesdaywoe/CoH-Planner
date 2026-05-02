@@ -46,17 +46,7 @@ export const Thundergust: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 0.24,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.4867,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2433,
       "table": "Ranged_PvPDamage"
     },
     {

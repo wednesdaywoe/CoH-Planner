@@ -37,5 +37,27 @@ export const Rebirth: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 5,
+      "table": "Ranged_Ones",
+      "duration": 0.5,
+      "tickRate": 1
+    },
+    {
+      "type": "Heal",
+      "scale": 0.454545,
+      "table": "Ranged_Heal",
+      "duration": 10.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "enduranceGain": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    }
+  }
 };

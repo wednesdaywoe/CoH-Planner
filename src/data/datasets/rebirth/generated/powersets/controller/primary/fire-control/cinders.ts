@@ -35,5 +35,12 @@ export const Cinders: Power = {
     "Controller Archetype Sets",
     "Holds"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

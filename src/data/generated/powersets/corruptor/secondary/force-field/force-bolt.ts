@@ -40,18 +40,11 @@ export const RepulsionBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.2,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 18,

@@ -37,5 +37,12 @@ export const OrbitingDeath: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Negative",
+    "scale": 0.17,
+    "table": "Melee_Damage",
+    "duration": 2.5,
+    "tickRate": 3
+  }
 };

@@ -31,5 +31,20 @@ export const AblativeCarapace: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "absorb": {
+      "scale": 1.3,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "absorb": 30,
+      "regenBuff": 30
+    },
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 30
+  }
 };

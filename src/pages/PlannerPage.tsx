@@ -142,6 +142,7 @@ export function PlannerPage() {
             grid-cols-1
             md:grid-cols-2
             ${undocked ? 'lg:grid-cols-[1fr_2fr]' : 'lg:grid-cols-[1fr_2fr_1fr]'}
+            lg:grid-rows-[minmax(0,1fr)]
           `}
         >
           {/* Column 1: Available Powers (Primary + Secondary + Pool/Epic) */}
@@ -246,6 +247,7 @@ export function PlannerPage() {
           grid-cols-1
           md:grid-cols-2
           ${undocked ? 'lg:grid-cols-[1fr_1fr_1fr_1fr]' : 'lg:grid-cols-[1fr_1fr_1fr_1fr_1fr]'}
+          lg:grid-rows-[minmax(0,1fr)]
         `}
       >
         {/* Column 1: Available Powers — combined (xs and lg+, hidden at md) */}

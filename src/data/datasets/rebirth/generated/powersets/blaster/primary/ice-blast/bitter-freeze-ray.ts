@@ -40,5 +40,29 @@ export const BitterFreezeRay: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Cold",
+    "scale": 1.32,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    },
+    "damageBuff": {
+      "scale": 0.165,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10
+    },
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

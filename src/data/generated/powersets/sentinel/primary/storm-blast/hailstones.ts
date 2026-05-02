@@ -68,7 +68,7 @@ export const Hailstones: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Ranged_Ones"
     }
   }

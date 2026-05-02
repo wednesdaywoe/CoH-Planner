@@ -38,5 +38,62 @@ export const Envenom: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 30,
+      "resistanceDebuff": 30,
+      "resistance": 30,
+      "regenDebuff": 30
+    },
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "resistance": {
+      "heal": {
+        "scale": 1,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "regenDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 30
+  }
 };

@@ -37,32 +37,22 @@ export const HardenedCarapace: Power = {
   "effects": {
     "resistance": {
       "smashing": {
-        "scale": 0.75,
+        "scale": 2.5,
         "table": "Melee_Res_Dmg"
       },
       "lethal": {
-        "scale": 0.75,
+        "scale": 2.5,
         "table": "Melee_Res_Dmg"
       },
       "toxic": {
-        "scale": 0.75,
+        "scale": 2.5,
         "table": "Melee_Res_Dmg"
       }
     },
     "durations": {
       "resistance": 0.75,
-      "damageBuff": 0.75,
-      "enduranceDiscount": 0.75,
       "stun": 0.75,
       "sleep": 0.75
-    },
-    "damageBuff": {
-      "scale": 2.5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "enduranceDiscount": {
-      "scale": 0.25,
-      "table": "Melee_Stun"
     },
     "stun": {
       "mag": 1,

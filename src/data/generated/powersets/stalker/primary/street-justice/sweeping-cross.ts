@@ -50,56 +50,6 @@ export const SweepingCross: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.5162,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.6173,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.805,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.444,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.444,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.5389,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.6158,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.7235,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.9236,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.5389,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.5389,
       "table": "Melee_PvPDamage"
     },
@@ -114,10 +64,6 @@ export const SweepingCross: Power = {
       "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
-    },
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
     }
   }
 };

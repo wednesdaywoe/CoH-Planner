@@ -39,5 +39,10 @@ export const FullAuto: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Lethal",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  }
 };

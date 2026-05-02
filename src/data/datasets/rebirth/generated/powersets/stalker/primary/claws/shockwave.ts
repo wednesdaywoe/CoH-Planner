@@ -41,5 +41,16 @@ export const Shockwave: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.04,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.7,
+      "table": "Melee_Knockback"
+    }
+  }
 };

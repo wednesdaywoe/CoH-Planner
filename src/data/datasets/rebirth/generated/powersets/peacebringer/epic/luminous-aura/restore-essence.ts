@@ -36,5 +36,50 @@ export const RestoreEssence: Power = {
     "Healing",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 7.5,
+    "table": "Melee_HealSelf",
+    "duration": 0.5,
+    "tickRate": 1
+  },
+  "effects": {
+    "enduranceGain": {
+      "scale": 50,
+      "table": "Melee_Ones"
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "untouchable": 15,
+      "damageBuff": 90,
+      "tohitBuff": 90,
+      "recoveryBuff": 90
+    },
+    "immobilize": {
+      "mag": 50,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 4,
+      "table": "Ranged_Buff_DMG"
+    },
+    "tohitBuff": {
+      "scale": 3,
+      "table": "Ranged_Buff_ToHit"
+    },
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
+  }
 };

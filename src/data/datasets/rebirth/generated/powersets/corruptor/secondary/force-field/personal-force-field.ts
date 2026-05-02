@@ -31,5 +31,58 @@ export const PersonalForceField: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "onlyAffectsSelf": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "onlyAffectsSelf": 99999,
+      "defenseBuff": 0.75,
+      "resistance": 0.75,
+      "mezResistance": 0.75
+    },
+    "defenseBuff": {
+      "scale": 7.5,
+      "table": "Melee_Buff_Def"
+    },
+    "resistance": {
+      "smashing": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 0.75
+  }
 };

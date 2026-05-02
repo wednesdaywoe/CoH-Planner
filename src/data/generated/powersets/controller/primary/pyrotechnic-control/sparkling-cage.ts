@@ -68,34 +68,6 @@ export const SparklingCage: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 9.2,
       "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.11,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Fire",
-      "scale": 0.11,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.069,
-      "table": "Ranged_PvPDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Fire",
-      "scale": 0.069,
-      "table": "Ranged_PvPDamage",
-      "duration": 9.2,
-      "tickRate": 2
     }
   ],
   "effects": {

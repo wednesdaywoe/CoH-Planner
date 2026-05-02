@@ -32,5 +32,26 @@ export const HealingFlames: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 2.5,
+    "table": "Melee_HealSelf"
+  },
+  "effects": {
+    "resistance": {
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      }
+    },
+    "durations": {
+      "resistance": 60
+    },
+    "buffDuration": 60,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "resistance"
+    ]
+  }
 };

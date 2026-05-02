@@ -51,26 +51,6 @@ export const Shockwave: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.04,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.04,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6261,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6261,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.6261,
       "table": "Ranged_PvPDamage"
     },

@@ -36,5 +36,36 @@ export const GlacialShield: Power = {
     "Defense Sets",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "energy": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 240,
+      "resistance": 240
+    },
+    "resistance": {
+      "cold": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "buffDuration": 240
+  }
 };

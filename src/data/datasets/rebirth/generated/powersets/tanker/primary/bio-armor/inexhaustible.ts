@@ -31,5 +31,40 @@ export const Inexhaustible: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "maxHPBuff": {
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
+    "durations": {
+      "maxHPBuff": 5.25,
+      "regenBuff": 5.25,
+      "recoveryBuff": 5.25,
+      "debuffResistance": 5.25
+    },
+    "regenBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "movement": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 5.25
+  },
   "mechanicType": "parentMechanic"
 };

@@ -51,16 +51,6 @@ export const SonicThrust: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 0.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.6,
       "table": "Melee_PvPDamage"
@@ -68,16 +58,6 @@ export const SonicThrust: Power = {
     {
       "type": "Energy",
       "scale": 0.6,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2,
       "table": "Melee_PvPDamage"
     }
   ],

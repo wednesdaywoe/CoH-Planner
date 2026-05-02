@@ -48,26 +48,6 @@ export const StingoftheWasp: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.16,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.16,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.419,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.419,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.419,
       "table": "Melee_PvPDamage"
     }

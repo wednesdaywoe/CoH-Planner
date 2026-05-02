@@ -37,27 +37,6 @@ export const EntropicAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.085,
-      "table": "Melee_Ones",
-      "perTarget": 0.035
-    },
-    "durations": {
-      "rechargeBuff": 2.25,
-      "mezResistance": 2.25,
-      "debuffResistance": 2.25,
-      "knockup": 2.25,
-      "knockback": 2.25,
-      "repel": 2.25,
-      "hold": 2.25,
-      "stun": 2.25,
-      "sleep": 2.25,
-      "immobilize": 2.25
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    },
     "mezResistance": {
       "teleport": {
         "scale": 1,
@@ -75,6 +54,17 @@ export const EntropicAura: Power = {
         "scale": 100,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "mezResistance": 2.25,
+      "debuffResistance": 2.25,
+      "knockup": 2.25,
+      "knockback": 2.25,
+      "repel": 2.25,
+      "hold": 2.25,
+      "stun": 2.25,
+      "sleep": 2.25,
+      "immobilize": 2.25
     },
     "debuffResistance": {
       "defense": {
@@ -115,6 +105,11 @@ export const EntropicAura: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 2.25
+    "buffDuration": 2.25,
+    "rechargeBuff": {
+      "scale": 0.085,
+      "table": "Melee_Ones",
+      "perTarget": 0.035
+    }
   }
 };

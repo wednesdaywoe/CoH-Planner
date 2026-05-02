@@ -171,7 +171,7 @@ export async function loadDataset(id: DatasetId): Promise<Dataset> {
         case 'homecoming':
           return (await import('./datasets/homecoming')).default;
         case 'rebirth':
-          throw new Error('Rebirth dataset not implemented yet');
+          return (await import('./datasets/rebirth')).default;
         default: {
           const _exhaustive: never = id;
           throw new Error(`Unknown dataset: ${_exhaustive}`);
@@ -193,6 +193,6 @@ export async function loadDataset(id: DatasetId): Promise<Dataset> {
 export function getAllDatasetMetadata(): Array<{ id: DatasetId; displayName: string }> {
   return [
     { id: 'homecoming', displayName: 'Homecoming' },
-    // { id: 'rebirth', displayName: 'Rebirth' },  // enable when implemented
+    { id: 'rebirth', displayName: 'Rebirth' },
   ];
 }

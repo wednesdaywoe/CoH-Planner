@@ -52,18 +52,6 @@ export const Enduring: Power = {
       "defense": {
         "scale": 0.2,
         "table": "Melee_Res_Boolean"
-      },
-      "tohit": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
       }
     },
     "resistance": {

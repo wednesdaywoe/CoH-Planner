@@ -53,17 +53,7 @@ export const TelekineticBlast: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1.64,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 1.42,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.4199,
       "table": "Ranged_PvPDamage"
     }
   ],

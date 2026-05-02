@@ -51,21 +51,6 @@ export const GreaterPsiBlade: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Psionic",
-      "scale": 2.6925,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.6925,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.656,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Lethal",
       "scale": 0.6875,
       "table": "Melee_PvPDamage"
@@ -73,21 +58,6 @@ export const GreaterPsiBlade: Power = {
     {
       "type": "Psionic",
       "scale": 2.0625,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.75,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.75,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.65,
       "table": "Melee_PvPDamage"
     }
   ],

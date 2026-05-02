@@ -53,16 +53,6 @@ export const ExecutionersShot: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 2.12,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.969,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.969,
       "table": "Ranged_PvPDamage"
     }

@@ -64,15 +64,7 @@ export const Microburst: Power = {
       "mag": 4,
       "scale": 1,
       "table": "Ranged_PvPMez"
-    },
-    "defenseDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12
-    },
-    "buffDuration": 12
+    }
   },
   "requires": "accesslevel char> 0 >="
 };

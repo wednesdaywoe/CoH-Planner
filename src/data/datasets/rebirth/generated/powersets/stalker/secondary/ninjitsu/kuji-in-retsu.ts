@@ -37,5 +37,62 @@ export const KujiInRetsu: Power = {
     "Running & Sprints",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 180,
+      "recoveryBuff": 180,
+      "movement": 180,
+      "debuffResistance": 180,
+      "recoveryDebuff": 20
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedRunning"
+      }
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "recoveryDebuff": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "enduranceDrain": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 180,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "jumpHeight",
+      "runSpeed"
+    ]
+  }
 };

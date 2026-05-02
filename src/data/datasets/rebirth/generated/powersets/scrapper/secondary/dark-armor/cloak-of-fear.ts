@@ -39,5 +39,12 @@ export const CloakofFear: Power = {
     "Fear",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "fear": {
+      "mag": 2,
+      "scale": 5,
+      "table": "Melee_Fear"
+    }
+  }
 };

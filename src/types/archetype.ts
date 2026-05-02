@@ -133,4 +133,8 @@ export type ArchetypeId =
 // ARCHETYPE REGISTRY
 // ============================================
 
-export type ArchetypeRegistry = Record<ArchetypeId, Archetype>;
+// Partial because not every dataset ships every archetype — Rebirth's i25
+// snapshot predates HC's Sentinel addition, for example. Consumers already
+// route most reads through `getArchetype(id)` which returns
+// `Archetype | undefined`.
+export type ArchetypeRegistry = Partial<Record<ArchetypeId, Archetype>>;

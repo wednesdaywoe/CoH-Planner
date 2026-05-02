@@ -34,5 +34,10 @@ export const SoothingAura: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 0.375,
+    "table": "Ranged_Heal"
+  }
 };

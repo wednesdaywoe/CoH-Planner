@@ -66,14 +66,6 @@ export const SingleShot: Power = {
     "knockback": {
       "scale": 1.34,
       "table": "Ranged_Ones"
-    },
-    "regenDebuff": {
-      "scale": 3,
-      "table": "Ranged_Res_Boolean"
-    },
-    "durations": {
-      "regenDebuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

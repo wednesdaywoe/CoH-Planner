@@ -42,5 +42,27 @@ export const WaterBurst: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.225,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.675,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.035,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.23
+    },
+    "buffDuration": 9.23
+  }
 };

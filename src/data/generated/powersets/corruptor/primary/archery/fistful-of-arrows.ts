@@ -51,16 +51,6 @@ export const FistfulofArrows: Power = {
       "type": "Lethal",
       "scale": 0.7125,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.91,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.7125,
-      "table": "Ranged_PvPDamage"
     }
   ]
 };

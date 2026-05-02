@@ -50,36 +50,6 @@ export const HeadSplitter: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 2.6,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.6,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.6,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.5909,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.5909,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.5909,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 2.5909,
       "table": "Melee_PvPDamage"
     },

@@ -32,5 +32,36 @@ export const PowerShield: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "fire": {
+        "scale": 2.2,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 2.2,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 2.2,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 1.7,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "debuffResistance": 0.75
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "buffDuration": 0.75
+  }
 };

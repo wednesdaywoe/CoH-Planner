@@ -51,18 +51,8 @@ export const DreadfulDiscord: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 0.3719,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 0.5,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.5,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

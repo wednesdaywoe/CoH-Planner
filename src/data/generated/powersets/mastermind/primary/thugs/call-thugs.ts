@@ -42,17 +42,8 @@ export const CallThugs: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "duration": 99999,
-      "entities": [
-        {
-          "entity": "MastermindPets_Thug",
-          "count": 2
-        },
-        {
-          "entity": "MastermindPets_Thug_Arsonist",
-          "count": 1
-        }
-      ]
+      "entity": "MastermindPets_Thug",
+      "duration": 99999
     },
     "teleport": {
       "scale": 1,

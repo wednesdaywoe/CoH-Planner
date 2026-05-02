@@ -38,5 +38,50 @@ export const VenomousGas: Power = {
     "Defense Debuff",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 0.75,
+      "defenseDebuff": 0.75
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 0.75
+  }
 };

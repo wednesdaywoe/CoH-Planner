@@ -52,21 +52,7 @@ export const ElectricFence: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
       "scale": 0.3458,
-      "table": "Ranged_PvPDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1729,
       "table": "Ranged_PvPDamage",
       "duration": 9.2,
       "tickRate": 2

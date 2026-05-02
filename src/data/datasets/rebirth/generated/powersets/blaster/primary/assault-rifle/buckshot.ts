@@ -41,5 +41,24 @@ export const Buckshot: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.91,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.75,
+      "table": "Ranged_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.028,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.4
+    },
+    "buffDuration": 8.4
+  }
 };

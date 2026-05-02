@@ -50,21 +50,7 @@ export const StonePrison: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
       "scale": 0.2842,
-      "table": "Ranged_PvPDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.1421,
       "table": "Ranged_PvPDamage",
       "duration": 9.2,
       "tickRate": 2

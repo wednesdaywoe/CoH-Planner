@@ -41,5 +41,36 @@ export const ScorpionsSting: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 4.6,
+      "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.55,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

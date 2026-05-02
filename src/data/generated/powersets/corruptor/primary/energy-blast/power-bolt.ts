@@ -52,11 +52,6 @@ export const PowerBolt: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.252,
       "table": "Ranged_PvPDamage"
@@ -64,11 +59,6 @@ export const PowerBolt: Power = {
     {
       "type": "Energy",
       "scale": 1.008,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2599,
       "table": "Ranged_PvPDamage"
     }
   ],

@@ -41,5 +41,36 @@ export const SkySplitter: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.38,
+      "table": "Melee_Damage",
+      "duration": 1.9,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.621,
+      "table": "Melee_Damage",
+      "duration": 1.9,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Stun"
+    },
+    "knockup": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

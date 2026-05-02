@@ -52,11 +52,6 @@ export const HeavyMallet: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 2.28,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 2.021,
       "table": "Melee_PvPDamage"
     },

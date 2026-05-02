@@ -39,5 +39,22 @@ export const Flamethrower: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 0.242,
+    "table": "Ranged_Damage",
+    "duration": 7.1,
+    "tickRate": 1
+  },
+  "effects": {
+    "damageBuff": {
+      "scale": 0.065,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.83
+    },
+    "buffDuration": 9.83
+  }
 };

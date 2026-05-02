@@ -31,5 +31,25 @@ export const InnerLight: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitBuff": {
+      "scale": 0.77,
+      "table": "Melee_Buff_ToHit"
+    },
+    "durations": {
+      "tohitBuff": 30,
+      "damageBuff": 30
+    },
+    "damageBuff": {
+      "scale": 3.2,
+      "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 30,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
+  }
 };

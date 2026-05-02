@@ -62,30 +62,6 @@ export const TyphoonsEdge: Power = {
       "type": "Lethal",
       "scale": 1.14,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.14,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.57,
-      "table": "Melee_Damage"
     }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 20
-    },
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 20
-  }
+  ]
 };

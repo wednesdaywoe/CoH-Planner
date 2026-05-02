@@ -40,5 +40,22 @@ export const Irradiate: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 0.1,
+    "table": "Ranged_Damage",
+    "duration": 4.6,
+    "tickRate": 0.5
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

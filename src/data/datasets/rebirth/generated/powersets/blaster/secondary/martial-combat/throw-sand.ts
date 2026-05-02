@@ -41,5 +41,25 @@ export const ThrowSand: Power = {
     "Stuns",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 10,
+      "table": "Ranged_Sleep"
+    },
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "perceptionDebuff": 20,
+      "damageBuff": 8.57
+    },
+    "damageBuff": {
+      "scale": 0.029,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 20
+  }
 };

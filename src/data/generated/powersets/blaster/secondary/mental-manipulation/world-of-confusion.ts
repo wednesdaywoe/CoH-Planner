@@ -46,12 +46,5 @@ export const WorldofConfusion: Power = {
     "scale": 0.0943,
     "table": "Ranged_Damage",
     "tickRate": 2
-  },
-  "effects": {
-    "confuse": {
-      "mag": 2,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
-    }
   }
 };

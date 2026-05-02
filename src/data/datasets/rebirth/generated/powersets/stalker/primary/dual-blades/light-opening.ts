@@ -35,5 +35,12 @@ export const NimbleSlash: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.42,
+    "table": "Melee_Damage",
+    "duration": 0.5,
+    "tickRate": 0.33000001311302185
+  }
 };

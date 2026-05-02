@@ -30,5 +30,45 @@ export const CorrosiveEnzymes: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 30
+    },
+    "buffDuration": 30
+  }
 };

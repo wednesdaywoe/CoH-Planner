@@ -37,5 +37,15 @@ export const SporeCloud: Power = {
     "Blaster Archetype Sets",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 0.75
+    },
+    "buffDuration": 0.75
+  }
 };

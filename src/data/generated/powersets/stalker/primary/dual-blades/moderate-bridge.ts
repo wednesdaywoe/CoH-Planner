@@ -50,40 +50,10 @@ export const AblatingStrike: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.6805,
       "table": "Melee_PvPDamage",
       "duration": 0.6,
       "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.361,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.361,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.57,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.5877,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -93,10 +63,6 @@ export const AblatingStrike: Power = {
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
     },
     "buffDuration": 10
   }

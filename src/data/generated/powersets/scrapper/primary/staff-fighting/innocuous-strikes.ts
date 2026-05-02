@@ -59,11 +59,6 @@ export const InnocuousStrikes: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.66,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.3418,
       "table": "Melee_PvPDamage",
       "duration": 1.7,

@@ -44,11 +44,7 @@ export const FocusedSenses: Power = {
     "durations": {
       "defenseBuff": 0.75,
       "debuffResistance": 0.75,
-      "perceptionBuff": 0.75,
-      "hold": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
-      "mezResistance": 0.75
+      "perceptionBuff": 0.75
     },
     "debuffResistance": {
       "perception": {
@@ -63,36 +59,6 @@ export const FocusedSenses: Power = {
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "mezResistance": {
-      "hold": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "stun": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      }
     },
     "buffDuration": 0.75
   }

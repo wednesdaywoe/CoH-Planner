@@ -35,5 +35,12 @@ export const ThunderClap: Power = {
     "Controller Archetype Sets",
     "Stuns"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    }
+  }
 };

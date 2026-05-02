@@ -41,5 +41,27 @@ export const BlackDwarfStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.34,
+      "table": "Melee_SSDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.5,
+      "table": "Melee_SSDamage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  },
   "requires": "0"
 };

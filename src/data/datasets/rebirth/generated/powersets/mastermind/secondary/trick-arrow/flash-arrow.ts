@@ -38,5 +38,15 @@ export const FlashArrow: Power = {
     "Blaster Archetype Sets",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "perceptionDebuff": 60
+    },
+    "buffDuration": 60
+  }
 };

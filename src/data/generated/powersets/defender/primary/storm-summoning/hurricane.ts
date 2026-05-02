@@ -45,14 +45,14 @@ export const Hurricane: Power = {
     },
     "durations": {
       "rangeBuff": 10,
-      "repel": 0.75
+      "repel": 1.05
     },
     "repel": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Ones"
     },
     "knockback": {
-      "scale": 8,
+      "scale": 4,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

@@ -30,5 +30,45 @@ export const SonicSiphon: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 30
+    },
+    "buffDuration": 30
+  }
 };

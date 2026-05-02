@@ -38,5 +38,17 @@ export const FrozenAura: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Cold",
+    "scale": 1.42,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "sleep": {
+      "mag": 2,
+      "scale": 10,
+      "table": "Melee_Sleep"
+    }
+  }
 };

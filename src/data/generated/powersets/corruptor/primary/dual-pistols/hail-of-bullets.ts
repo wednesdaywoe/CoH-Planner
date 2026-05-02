@@ -52,11 +52,6 @@ export const HailofBullets: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.1362,
       "table": "Ranged_Damage",
       "duration": 2.3,
@@ -82,11 +77,6 @@ export const HailofBullets: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 2.3,
       "tickRate": 0.20000000298023224
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6223,
-      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Lethal",

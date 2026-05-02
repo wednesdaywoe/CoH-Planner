@@ -53,8 +53,7 @@ export const SpecOps: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Spec_Ops",
-      "duration": 99999,
-      "entityCount": 2
+      "duration": 99999
     }
   }
 };

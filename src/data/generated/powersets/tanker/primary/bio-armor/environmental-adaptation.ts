@@ -37,51 +37,33 @@ export const EnvironmentalModification: Power = {
   "effects": {
     "defenseBuff": {
       "fire": {
-        "scale": 0.45,
+        "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
       "cold": {
-        "scale": 0.45,
+        "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
       "energy": {
-        "scale": 0.45,
+        "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
       "negative": {
-        "scale": 0.45,
+        "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
       "psionic": {
-        "scale": 0.225,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.45,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.45,
+        "scale": 0.75,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 0.75,
-      "maxHPBuff": 0.75,
-      "tohitBuff": 0.75,
       "hold": 0.75,
       "mezResistance": 0.75,
       "knockup": 0.75,
       "knockback": 0.75,
       "immobilize": 0.75
-    },
-    "maxHPBuff": {
-      "scale": 0.45,
-      "table": "Melee_HealSelf"
-    },
-    "tohitBuff": {
-      "scale": 0.75,
-      "table": "Melee_Buff_ToHit"
     },
     "hold": {
       "mag": 1,

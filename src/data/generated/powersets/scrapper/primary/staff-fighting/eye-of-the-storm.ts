@@ -50,26 +50,6 @@ export const EyeoftheStorm: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 0.492,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.492,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.492,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.23,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.23,
       "table": "Melee_InherentDamage"
     },
@@ -82,72 +62,14 @@ export const EyeoftheStorm: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 0.0335,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.0335,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.0335,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.1843,
       "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 6,
-      "defenseDebuff": 8
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
     "knockback": {
       "scale": 1.34,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 8
+    }
   }
 };

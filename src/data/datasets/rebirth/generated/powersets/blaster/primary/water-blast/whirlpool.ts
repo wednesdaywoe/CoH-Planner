@@ -41,5 +41,15 @@ export const Whirlpool: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 0.033,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.53
+    },
+    "buffDuration": 9.53
+  }
 };

@@ -42,5 +42,25 @@ export const CuttingBeam: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 0.919,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "damageBuff": {
+      "scale": 0.051,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.4,
+      "defenseDebuff": 10
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 10
+  }
 };

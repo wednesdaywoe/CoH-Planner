@@ -40,5 +40,31 @@ export const SpeedBoost: Power = {
     "Running & Sprints",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "rechargeBuff": 120,
+      "recoveryBuff": 120,
+      "debuffResistance": 120
+    },
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "movement": {
+        "scale": 0.5,
+        "table": "Melee_SpeedFlying"
+      }
+    },
+    "buffDuration": 120
+  }
 };

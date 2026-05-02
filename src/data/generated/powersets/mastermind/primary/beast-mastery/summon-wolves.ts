@@ -53,17 +53,8 @@ export const SummonWolves: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "duration": 99999,
-      "entities": [
-        {
-          "entity": "MastermindPets_Howler_Wolf",
-          "count": 2
-        },
-        {
-          "entity": "MastermindPets_Howler_Wolf_Alpha",
-          "count": 1
-        }
-      ]
+      "entity": "MastermindPets_Howler_Wolf",
+      "duration": 99999
     },
     "teleport": {
       "scale": 1,

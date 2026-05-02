@@ -57,11 +57,6 @@ export const CripplingAxeKick: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 2.12,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.9599,
       "table": "Melee_PvPDamage"
     },

@@ -52,26 +52,6 @@ export const Ripper: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.9689,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.9689,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.9689,
       "table": "Melee_PvPDamage"
     },

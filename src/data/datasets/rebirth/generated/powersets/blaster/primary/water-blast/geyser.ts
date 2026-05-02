@@ -44,5 +44,31 @@ export const Geyser: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.5,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockup": {
+      "scale": 1.5,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.041,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.43
+    },
+    "buffDuration": 10.43
+  }
 };

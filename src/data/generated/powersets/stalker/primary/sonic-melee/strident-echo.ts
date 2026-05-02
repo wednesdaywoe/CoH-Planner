@@ -55,16 +55,6 @@ export const StridentEcho: Power = {
       "tickRate": 0.4000000059604645
     },
     {
-      "type": "Energy",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.1507,
       "table": "Melee_PvPDamage",
@@ -77,16 +67,6 @@ export const StridentEcho: Power = {
       "table": "Melee_PvPDamage",
       "duration": 2.1,
       "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Energy",
-      "scale": 1.809,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.809,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

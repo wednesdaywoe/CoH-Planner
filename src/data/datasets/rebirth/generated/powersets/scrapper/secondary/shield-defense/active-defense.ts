@@ -34,5 +34,28 @@ export const Deflection: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "resistance": 0.75
+    },
+    "resistance": {
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "buffDuration": 0.75
+  },
   "requires": "Scrapper_Melee.Claws Scrapper_Melee.Katana || Scrapper_Melee.Dual_Blades || Scrapper_Melee.Quills || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Titan_Weapons || !"
 };

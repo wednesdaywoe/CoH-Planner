@@ -38,5 +38,24 @@ export const DragonsTail: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.18,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.045,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 9
+    },
+    "buffDuration": 9
+  }
 };

@@ -34,5 +34,133 @@ export const WhiteDwarf: Power = {
     "Resist Damage",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistance": 2,
+      "maxHPBuff": 2,
+      "threatBuff": 2,
+      "recoveryBuff": 2,
+      "movement": 2,
+      "mezResistance": 2,
+      "knockback": 2.03,
+      "knockup": 2.03,
+      "stun": 2.03,
+      "hold": 2.03,
+      "sleep": 2.03,
+      "immobilize": 2.03,
+      "confuse": 2.03,
+      "fear": 2.03
+    },
+    "maxHPBuff": {
+      "scale": 7.5,
+      "table": "Melee_HealSelf"
+    },
+    "threatBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      },
+      "jumpSpeed": {
+        "scale": 0.01,
+        "table": "Melee_Ones"
+      },
+      "movementControl": {
+        "scale": 10,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
+    },
+    "knockback": {
+      "scale": 200,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 200,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 2.03,
+    "hold": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 60,
+      "table": "Melee_Res_Boolean"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "buffDuration": 2.03
+  }
 };

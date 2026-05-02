@@ -54,11 +54,6 @@ export const M30Grenade: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.9,
-      "table": "Ranged_InherentDamage"
-    },
-    {
       "type": "Lethal",
       "scale": 0.2243,
       "table": "Ranged_PvPDamage"
@@ -66,11 +61,6 @@ export const M30Grenade: Power = {
     {
       "type": "Fire",
       "scale": 0.4486,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.6797,
       "table": "Ranged_PvPDamage"
     },
     {

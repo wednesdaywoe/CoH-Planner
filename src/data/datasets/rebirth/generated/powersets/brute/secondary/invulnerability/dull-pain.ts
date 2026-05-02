@@ -31,5 +31,24 @@ export const DullPain: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 4,
+    "table": "Melee_HealSelf"
+  },
+  "effects": {
+    "maxHPBuff": {
+      "scale": 4,
+      "table": "Melee_HealSelf"
+    },
+    "durations": {
+      "maxHPBuff": 120
+    },
+    "buffDuration": 120,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "maxHPBuff"
+    ]
+  }
 };

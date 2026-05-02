@@ -53,11 +53,6 @@ export const HurlBoulder: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.9759,
       "table": "Melee_PvPDamage"
     },

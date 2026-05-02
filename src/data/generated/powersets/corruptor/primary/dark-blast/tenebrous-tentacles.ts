@@ -61,30 +61,6 @@ export const TenebrousTentacles: Power = {
     },
     {
       "type": "Negative",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 7.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.135,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.0447,
-      "table": "Ranged_PvPDamage",
-      "duration": 7.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.0618,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Negative",
       "scale": 0.0447,
       "table": "Ranged_PvPDamage",
       "duration": 7.1,
@@ -105,18 +81,6 @@ export const TenebrousTentacles: Power = {
     {
       "type": "Negative",
       "scale": 0.969,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.0447,
-      "table": "Ranged_PvPDamage",
-      "duration": 7.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.0618,
       "table": "Ranged_PvPDamage"
     }
   ],

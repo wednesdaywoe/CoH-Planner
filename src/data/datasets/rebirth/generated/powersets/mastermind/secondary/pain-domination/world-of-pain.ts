@@ -34,5 +34,60 @@ export const WorldofPain: Power = {
     "Resist Damage",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
+    },
+    "durations": {
+      "tohitBuff": 90,
+      "placate": 90,
+      "resistance": 90,
+      "damageBuff": 90
+    },
+    "placate": {
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "resistance": {
+      "psionic": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "damageBuff": {
+      "scale": 1.6,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "buffDuration": 90
+  }
 };

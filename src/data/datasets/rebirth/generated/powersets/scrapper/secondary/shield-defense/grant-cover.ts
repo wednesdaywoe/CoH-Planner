@@ -34,5 +34,60 @@ export const GrantCover: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 2.25,
+      "debuffResistance": 2.25
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      },
+      "recharge": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 2.25
+  }
 };

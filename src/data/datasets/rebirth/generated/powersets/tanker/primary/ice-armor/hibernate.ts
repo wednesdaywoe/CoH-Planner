@@ -34,5 +34,54 @@ export const Hibernate: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "mezResistance": {
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "regenBuff": 0.75,
+      "recoveryBuff": 0.75
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "untouchable": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 100,
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    },
+    "onlyAffectsSelf": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    },
+    "regenBuff": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 0.75
+  }
 };
