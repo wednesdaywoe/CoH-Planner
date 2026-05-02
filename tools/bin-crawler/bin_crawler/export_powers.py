@@ -67,6 +67,23 @@ PLAYER_CATEGORIES = {
     # The convert script's collectRedirectTemplates resolves these via
     # `pets/<set>/<power>.json`, so they need to be on disk.
     'Pets', 'Villain_Pets',
+    # Mastermind henchman powers (Plasma_Blast, Smash, etc.) and the upgrade
+    # tiers (`*_2`, `*_3` powersets). Without these, convert-pet-entities can't
+    # resolve any MM henchman ability.
+    'Mastermind_Pets',
+    # Kheldian pets (Decoy, Dwarf, etc.) and NPC/Lore pets that incarnate
+    # entities can grant.
+    'Kheldian_Pets', 'NPC_Pets',
+    # NPC/villain-group categories that Lore incarnate pets pull abilities
+    # from (the pet "mimics" enemies of that group). The dominant ones by
+    # entity reference count are Rularuu (146), Objects (22), and several
+    # villain-group cats. Without these the pet-entity converter drops
+    # Lore Support / Cimeroran / Banished / etc. variants.
+    'Rularuu', 'Objects', 'Primalist_Misc', 'Signature_Summon',
+    'Cabal', 'Council', 'V_Arachnos', 'DevouringEarth',
+    'Mission_Maker_Attacks', 'Crey', 'RoguesGallery', 'GenericVillains',
+    'Rikti', 'V_Wailers', 'CircleOfThorns', 'Clockwork', 'Vanguard',
+    'V_Miscellaneous', 'PaladinEvent',
 }
 
 

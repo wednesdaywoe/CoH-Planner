@@ -73,14 +73,113 @@ script and can be removed.
 
 ### Stage C blockers (Rebirth data not yet converted)
 
-- **Pet entities** — `PC_Def_Entities.bin` and
-  `PC_Def_NonSelectable_Entities.bin` (Rebirth ships both as Parse6) are
-  not parsed by bin-crawler. Affects damage calculation for summoned pets
-  (Mastermind henchmen, Controller pets, Lore incarnates). Needs a new
-  `_entities.py` parser plus an `export_entities.py` exporter that
-  produces JSON matching CoD2's `entities/<entity>.json` shape, then
-  [convert-pet-entities.cjs](scripts/convert-pet-entities.cjs) made
-  dataset-aware. Recommend tackling as its own session.
+- **Pet entities (HC: shipped 2026-05-01; Rebirth: blocked)** —
+  pet definitions actually live in `villaindef.bin`, not in the
+  `PC_Def_Entities.bin` files this section originally pointed at.
+  Both servers ship `villaindef.bin` (HC Parse7, Rebirth Parse6 as
+  `VillainDef.bin`). New parser at
+  [tools/bin-crawler/bin_crawler/parser/_entities.py](tools/bin-crawler/bin_crawler/parser/_entities.py)
+  + exporter at [export_entities.py](tools/bin-crawler/bin_crawler/export_entities.py)
+  produce CoD2-shape JSON; [convert-pet-entities.cjs](scripts/convert-pet-entities.cjs)
+  is dataset-aware and reads from `tools/bin-crawler/exported_powers/<source>/entities/`
+  for HC and `exported_powers/rebirth/entities/` for Rebirth.
+  HC `pet-entities.ts` is fully regenerated off the new pipeline (no
+  more dependency on the 2019 CoD2 archive). Caveats:
+  - **Parse6 levels/tail-flags partially decoded.** Between powers
+    and levels in Parse6 there's a 4 × u4 block (`54, 52, 1, 1` —
+    same in every record I sampled) and the level sub-record itself
+    appears to be inline rather than length-prefixed. The current
+    Parse6 path stops after powers and falls back to name-derived
+    display + class-name heuristic for `commandable_pet`. Effect:
+    Rebirth pets that genuinely set `copy_creator_mods=true` (the
+    Storm-style scaling pets) will be miscategorised as not copying.
+    Most pets default to `false`, so the dominant case is right.
+  - **Rebirth pet data is currently empty** because
+    `bin-crawler`'s Parse6 powers parser produces empty `effects`
+    arrays for almost everything. The pet-entity JSONs are generated
+    correctly, but `convert-pet-entities` filters out abilities with
+    no damage/effects, so every Rebirth entity ends up empty. The
+    Rebirth `pet-entities.ts` placeholder is intentionally left
+    untouched until the Parse6 effect-group parsing lands.
+    **Ghidra audit (2026-05-01)** in [tools/ghidra-audit/](tools/ghidra-audit/)
+    extracted the powers.bin descriptor table at `0x1408f04f0` /
+    `0x1408f0610` (see `power_effects_parser_report.txt` next to
+    `cityofheroes.exe`). The table revealed two definite missing
+    fields between `BoostsAllowed` and `Effect` in Parse6:
+    `ModesSuppressed` (u4_array) and `AIGroups` (string_array).
+    Adding them to the Parse6 tail (`_parse_power_parse6`) lifts
+    effect-bearing records from 0 → 173 / 21 559, so the structural
+    fix is in the right area — but ~99% of records still misalign.
+    A third pass with [FindBinSerializer.java](tools/ghidra-audit/FindBinSerializer.java)
+    confirmed `+0x20` of every descriptor row is a **sub-descriptor
+    pointer** (recursive into nested struct types), and dumped:
+      - **EffectGroup** layout (sub-desc `0x1408ea180`): Tag
+        (string_array), DisplayInfo (string), Chance/PPM/Delay/
+        RadiusInner/RadiusOuter (5×f4), Requires (string_array),
+        Flags (bitfield 0x12), EvalFlags (u4), AttribMod
+        (struct_array → recurses into AttribMod descriptor),
+        Effect (struct_array → recursive self).
+      - **Level** layout (sub-desc `0x1408fb530`): Level (key u4),
+        MinLevel, MaxLevel, DisplayNames (string_array), Costumes
+        (string_array), XP. Confirms HC's 28-byte sub-record
+        omits the Level key field at offset 0.
+      - **Power** sub-record (`0x1408f9810`): cat/set/power
+        strings + Level + Remove + DontSetStance — matches the
+        24-byte sub-record the parser already reads.
+      - **VillainDef** top-level (`0x1408fa9f0`): full field-
+        serialization order. The parser's `_parse_entity_parse7`
+        was using wrong labels (`gender_raw` was `rank_raw`,
+        `group_description` was `display_name`, the "mystery"
+        u4 between ai_config and powers is `villain_group_raw`).
+        Fixed in this pass; semantic only — the HC byte stream
+        was already aligning correctly under the wrong names.
+    **What's still blocked:** the descriptor SAYS Rank should
+    follow Level immediately, but the bytes at that position
+    start with a constant `10` that doesn't match Rank's enum.
+    HC inserts at least one undocumented field there. Same
+    pattern in powers.bin: `TimeToRoot` and `MaxToggleTime`
+    are in the descriptor but adding them shifts records into
+    garbage.
+    **Fourth Ghidra pass (2026-05-01 cont.)** added recursive
+    sub-descriptor walks via [FindBinSerializer.java](tools/ghidra-audit/FindBinSerializer.java)
+    and revealed that `+0x20` of every descriptor row is a
+    **sub-descriptor pointer** (recursive — chase to get any
+    nested struct's layout). Extracted full layouts for
+    EffectGroup (0x1408ea180), AttribMod (0x1408e8a10), Power
+    (0x1408f9810), Level (0x1408fb530), VillainDef (0x1408fa9f0),
+    PetCommandStrings, Condition, etc. Discovered EffectGroup's
+    second leading slot is actually `DisplayInfo` (string), not
+    a u4 — fixed `_parse_effect_group` accordingly. HC unchanged
+    at 22 459 / 26 297 = 85.4 % effect coverage.
+    A 16-layout sweep over Parse6 tail field counts (0–10
+    u4_arrays × with/without AIGroups string_array × with/without
+    redirect pre-field) showed **no combination** lifts effect
+    coverage above 7 / 1000 records on a sample. So the
+    misalignment is upstream of the tail block — likely in
+    the `_parse_power_parse6` field-49 / field-72 area where
+    HC and Parse6 either differ in field count or in default-
+    suppression flags. Confirmed the leading scalars (full_name,
+    name, recharge_time, accuracy, target_type) all parse to
+    plausible values for known Rebirth powers; the bug is
+    specifically in (a) the 6-array mode/group block between
+    BoostsAllowed and Effect, OR (b) the EffectGroup leading
+    fields (Tag/DisplayInfo) when the byte stream is misaligned
+    for an empty EffectGroup-array case.
+    Resolution path for next session: hand-decode the tail of
+    a single Parse6 power record against the descriptor row
+    list, byte by byte, until alignment matches. Reports archived
+    at `G:\Homecoming\bin\win64\live\bin_serializer_report.txt`.
+  - **Lore "Support" variants drop out** of the HC export — they
+    only carry buff/heal powers (e.g. Cauterize) that the bin
+    parser currently exports with empty effects; this is the same
+    underlying parser bug as the Rebirth case, just affecting a
+    smaller subset on HC. Net entity count: 533 vs ~612 in the
+    previous CoD2-based file.
+  - `export_powers.py` `PLAYER_CATEGORIES` was extended with
+    `Mastermind_Pets`, `Kheldian_Pets`, `NPC_Pets`, plus the NPC
+    villain-group cats Lore pets borrow from (`Rularuu`, `Objects`,
+    `Cabal`, `Council`, `V_Arachnos`, `DevouringEarth`, `Crey`,
+    `Rikti`, `Vanguard`, etc. — 19 in total).
 - **IO sets data file** — `boostsets.bin` parsing works (3,374 powers
   indexed), but the per-set TS data file (`io-sets-raw.ts`) for Rebirth
   isn't generated yet. The convert pipeline goes through

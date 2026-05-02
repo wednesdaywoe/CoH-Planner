@@ -429,17 +429,23 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
 
 
 def _parse_effect_group(r: BinReader) -> EffectGroup:
-    """Parse an effect group containing templates."""
-    # Leading fields: a `Tags` string_array (def keyword: `Tag "foo"`), then a
-    # one-u4 slot whose meaning we haven't nailed down (always 0 in samples
-    # we've walked). Old parser assumed the first 8 bytes were two u4 "pre"
-    # fields — which happens to be correct when Tags is empty (count=0), but
-    # shifts every downstream field by 4 bytes per populated tag. Surfaces
-    # e.g. in Crowd_Control's `PVP_MainTargetOnly`-tagged nested effect,
-    # where the shift drops the whole nested-group parse and loses its
-    # AttribMod.
+    """Parse an effect group containing templates.
+
+    Per the EffectGroup sub-descriptor at 0x1408ea180 (Ghidra dump in
+    `bin_serializer_report.txt`), the leading fields are:
+      Tag (string_array), DisplayInfo (string), Chance, PPM, Delay,
+      RadiusInner, RadiusOuter, Requires, Flags, EvalFlags, AttribMod,
+      Effect (recursive children).
+
+    The previous version read DisplayInfo as a u4. For HC Parse7 a
+    string IS a 4-byte offset, so this happened to consume the right
+    number of bytes (just lost the semantic value). For Parse6 strings
+    are inline pstrings of variable length — reading as u4 there
+    cascades into a 99% misalignment that empties effects across the
+    whole binary. Reading as string fixes it for both formats.
+    """
     tags = r.read_string_array()
-    _post_tags = r.read_u4()
+    _display_info = r.read_string()
 
     # Effect header
     chance = r.read_f4()
@@ -948,12 +954,15 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
     range_val = r.read_f4()  # 46
     range_secondary = r.read_f4()  # 47
     time_to_activate = r.read_f4()  # 48
-    # (NO 48b in Parse6)
+    # (NO 48b in Parse6 — Ghidra descriptor shows TimeToRoot here, but
+    # adding it shifts every following record into garbage and reduces
+    # parsed-record count, so Parse6 is genuinely omitting it. Likely a
+    # default-suppression flag on the field. Tracked in MULTI_DATASET_PLAN.)
     recharge_time = r.read_f4()  # 49
     activate_period = r.read_f4()  # 50
     endurance_cost = r.read_f4()  # 51
     r.read_f4()  # 52 idea_cost
-    # (NO 52b in Parse6)
+    # (NO 52b in Parse6 — same caveat as 48b)
     r.read_u4()  # 53
     r.read_u4()  # 54
     r.read_string_array()  # 55
@@ -974,6 +983,49 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
     # allowed_boostset_cats — that field doesn't exist in the binary.
     r.read_u4_array()
     allowed_boostset_cats: list[str] = []
+
+    # Parse6 tail per the powers.bin descriptor table at 0x1408f04f0
+    # (Ghidra dump in tools/ghidra-audit/, see power_effects_parser_report.txt).
+    # The serialization order between BoostsAllowed and Effect is:
+    #   GroupMembership, RechargeGroup,
+    #   ModesRequired, ModesDisallowed, ModesSuspended,
+    #   AIGroups, Redirect, Effect, ActivationEffect
+    #
+    # Initially we also read ModesSuppressed here, but the descriptor
+    # type code is 0x100105 (vs ModesSuspended's 0x100005) at the SAME
+    # field offset (0x3b8) — the 0x100 bit means "alternate name for
+    # the previous field, shares storage", so it's NOT separately
+    # serialized. Adding it as a separate read shifts everything by
+    # 4 bytes (an empty u4_array count) and breaks alignment.
+    effects: list[EffectGroup] = []
+    activation_effects: list[EffectGroup] = []
+    redirects: list[dict] = []
+    try:
+        # Field 74 (GroupMembership) was already consumed in the loop
+        # above; resume from RechargeGroup.
+        r.read_u4_array()  # RechargeGroup
+        r.read_u4_array()  # ModesRequired
+        r.read_u4_array()  # ModesDisallowed
+        r.read_u4_array()  # ModesSuspended
+        r.read_u4_array()  # ModesSuppressed — empirically required even
+                           # though the descriptor's 0x100 bit suggested
+                           # it might be an alias of ModesSuspended.
+        r.read_string_array()  # AIGroups
+        # Redirect pre-field + Redirect struct_array.
+        r.read_u4()
+        try:
+            redirects = _parse_redirects(r)
+        except Exception:
+            redirects = []
+            r.skip_to_end()
+        # Effects + activation_effects.
+        try:
+            effects, activation_effects = _parse_effects(r)
+        except Exception:
+            effects = []
+            activation_effects = []
+    except Exception:
+        pass
 
     r.skip_to_end()
 
@@ -1013,4 +1065,7 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
         boosts_allowed=boosts_allowed,
         allowed_boostset_cats=allowed_boostset_cats,
         cast_through=cast_through,
+        effects=effects,
+        activation_effects=activation_effects,
+        redirects=redirects,
     )

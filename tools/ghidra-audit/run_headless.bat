@@ -1,17 +1,24 @@
 @echo off
-REM Headless Ghidra analysis of cityofheroes.exe + string-xref dump.
-REM Usage: run_headless.bat
+REM Headless Ghidra analysis of cityofheroes.exe + string-xref dumps.
 REM
-REM Expects these env vars (or edit the paths below):
+REM Usage:
+REM   run_headless.bat                       -> runs all post-scripts
+REM   run_headless.bat AttribMod             -> only FindAttribModParser
+REM   run_headless.bat VillainDef            -> only FindVillainDefParser
+REM   run_headless.bat PowerEffects          -> only FindPowerEffectsParser
+REM
+REM Expects (or edit below):
 REM   GHIDRA_HOME = path to your Ghidra install (contains support\analyzeHeadless.bat)
+REM   JAVA_HOME   = path to JDK 21
 REM
-REM Output: attribmod_parser_report.txt next to cityofheroes.exe
+REM Outputs (next to cityofheroes.exe):
+REM   attribmod_parser_report.txt
+REM   villaindef_parser_report.txt
+REM   power_effects_parser_report.txt
 
 set EXE=G:\Homecoming\bin\win64\live\cityofheroes.exe
 set PROJ_DIR=%~dp0project
 set PROJ_NAME=coh_audit
-REM Strip trailing backslash — otherwise "%SCRIPT_DIR%" ends in \" which cmd
-REM interprets as an escaped quote, merging the following flag into the arg.
 set SCRIPT_DIR=%~dp0
 if "%SCRIPT_DIR:~-1%"=="\" set SCRIPT_DIR=%SCRIPT_DIR:~0,-1%
 
@@ -30,23 +37,30 @@ if not exist "%JAVA_HOME%\bin\java.exe" (
 
 if not exist "%PROJ_DIR%" mkdir "%PROJ_DIR%"
 
-REM -import: load the binary, run default analyzers, then run our post-script.
-REM -overwrite: re-import if project already has the file.
-REM -scriptPath: where Ghidra looks for our .java script.
-REM If the binary was already imported+analyzed, use -process to skip re-analysis
-REM and just re-run the post-script. Pass FORCE_REIMPORT=1 to re-analyze.
+REM Build the -postScript args based on the optional first argument.
+REM Special case: BinSerializer maps to FindBinSerializer.java (no "Parser" suffix).
+set POSTARGS=
+if "%~1"=="" (
+    set POSTARGS=-postScript FindAttribModParser.java -postScript FindVillainDefParser.java -postScript FindPowerEffectsParser.java -postScript FindBinSerializer.java
+) else if /I "%~1"=="BinSerializer" (
+    set POSTARGS=-postScript FindBinSerializer.java
+) else (
+    set POSTARGS=-postScript Find%~1Parser.java
+)
+
+REM If the binary was already imported+analyzed, skip to -process so we
+REM only re-run the post-scripts. Pass FORCE_REIMPORT=1 to re-analyze.
 if "%FORCE_REIMPORT%"=="1" goto :import
-if exist "%PROJ_DIR%\%PROJ_NAME%.rep\cityofheroes.exe.prp" goto :reprocess
 if exist "%PROJ_DIR%\%PROJ_NAME%.rep" goto :reprocess
 goto :import
 
 :reprocess
-echo Project already imported — running post-script only.
+echo Project already imported â€” running post-scripts only.
 "%GHIDRA_HOME%\support\analyzeHeadless.bat" "%PROJ_DIR%" %PROJ_NAME% ^
     -process cityofheroes.exe ^
     -noanalysis ^
     -scriptPath "%SCRIPT_DIR%" ^
-    -postScript FindAttribModParser.java
+    %POSTARGS%
 goto :done
 
 :import
@@ -54,10 +68,12 @@ goto :done
     -import "%EXE%" ^
     -overwrite ^
     -scriptPath "%SCRIPT_DIR%" ^
-    -postScript FindAttribModParser.java
+    %POSTARGS%
 
 :done
 
 echo.
-echo Report written next to cityofheroes.exe:
+echo Reports written next to cityofheroes.exe:
 echo   G:\Homecoming\bin\win64\live\attribmod_parser_report.txt
+echo   G:\Homecoming\bin\win64\live\villaindef_parser_report.txt
+echo   G:\Homecoming\bin\win64\live\power_effects_parser_report.txt
