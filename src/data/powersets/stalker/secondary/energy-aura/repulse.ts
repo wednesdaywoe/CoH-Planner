@@ -1,0 +1,16 @@
+/**
+ * Disrupt — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense energy_aura
+ */
+import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Disrupt as base } from '@/data/generated/powersets/stalker/secondary/energy-aura/repulse';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/energy-aura/repulse';
+
+export const Disrupt: Power = withOverrides(base, overrides);

@@ -1,0 +1,16 @@
+/**
+ * Fire Ball — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged fire_blast
+ */
+import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FireBall as base } from '@/data/generated/powersets/blaster/primary/fire-blast/fire-ball';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/fire-blast/fire-ball';
+
+export const FireBall: Power = withOverrides(base, overrides);
