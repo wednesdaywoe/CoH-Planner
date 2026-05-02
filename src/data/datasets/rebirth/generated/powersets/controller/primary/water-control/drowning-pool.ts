@@ -61,7 +61,9 @@ export const DrowningPool: Power = {
     {
       "id": "water_control_drowning",
       "label": "Drowning",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "effects": {
         "defenseDebuff": {
           "scale": 2.5,

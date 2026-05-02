@@ -82,6 +82,7 @@ export const SkySplitter: Power = {
     {
       "id": "perfection_of_body_level_3",
       "label": "Perfection of Body Level 3",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {
@@ -139,6 +140,7 @@ export const SkySplitter: Power = {
     {
       "id": "perfection_of_mind_level_3",
       "label": "Perfection of Mind Level 3",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {
@@ -166,6 +168,7 @@ export const SkySplitter: Power = {
     {
       "id": "perfection_of_soul_level_3",
       "label": "Perfection of Soul Level 3",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

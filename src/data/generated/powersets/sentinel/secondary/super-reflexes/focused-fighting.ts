@@ -64,6 +64,7 @@ export const FocusedFighting: Power = {
     {
       "id": "master_brawler",
       "label": "Master Brawler",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "mezResistance": {

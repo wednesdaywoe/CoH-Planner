@@ -72,6 +72,7 @@ export const ParasiticAura: Power = {
     {
       "id": "restedadaptation",
       "label": "Rested Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "recoveryBuff": {
@@ -87,11 +88,14 @@ export const ParasiticAura: Power = {
           "table": "Melee_Ones"
         },
         "buffDuration": 45
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "defensiveadaptation",
       "label": "Defensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "absorb": {
@@ -102,7 +106,9 @@ export const ParasiticAura: Power = {
           "absorb": 45
         },
         "buffDuration": 45
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     }
   ]
 };

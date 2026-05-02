@@ -89,6 +89,7 @@ export const Dehydrate: Power = {
     {
       "id": "tidal_power",
       "label": "Tidal Power",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Heal",
@@ -101,6 +102,7 @@ export const Dehydrate: Power = {
     {
       "id": "tidal_power-3",
       "label": "Tidal Power (3 stacks)",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Heal",

@@ -67,8 +67,9 @@ export const Suffocate: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "stealthed",
-      "label": "Stealthed",
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "hold": {
@@ -81,7 +82,9 @@ export const Suffocate: Power = {
     {
       "id": "water_control_drowning",
       "label": "Drowning",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "damage": [
         {
           "type": "Cold",

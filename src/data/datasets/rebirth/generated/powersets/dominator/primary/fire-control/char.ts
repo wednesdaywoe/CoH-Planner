@@ -57,6 +57,7 @@ export const Char: Power = {
     {
       "id": "conditional",
       "label": "Conditional",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "hold": {
@@ -67,8 +68,9 @@ export const Char: Power = {
       }
     },
     {
-      "id": "stealthed",
-      "label": "Stealthed",
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "hold": {

@@ -45,6 +45,8 @@ export {
   useSentinelCritActive,
   usePowerViewMode,
   useTargetsHit,
+  useMechanicAdjuster,
+  useGlobalAdjuster,
 } from './uiStore';
 
 // Auth store

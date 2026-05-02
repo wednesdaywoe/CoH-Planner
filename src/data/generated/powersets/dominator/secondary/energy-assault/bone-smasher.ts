@@ -72,7 +72,9 @@ export const BoneSmasher: Power = {
     {
       "id": "energy_store_assault",
       "label": "Energy Store Assault",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "effects": {
         "regenDebuff": {
           "scale": 0.5,

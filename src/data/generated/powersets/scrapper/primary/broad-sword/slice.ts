@@ -119,6 +119,7 @@ export const Slice: Power = {
     {
       "id": "rendingslicecooldown",
       "label": "Rending Slice Cooldown",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

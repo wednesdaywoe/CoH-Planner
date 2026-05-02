@@ -60,6 +60,7 @@ export const SweepingStrike: Power = {
     {
       "id": "dd_bonusdotmode_2",
       "label": "DD Bonus Do T Mode 2",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

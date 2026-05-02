@@ -65,6 +65,7 @@ export const OneThousandCuts: Power = {
     {
       "id": "dd_debuffmode_2",
       "label": "DD Debuff Mode 2",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "defenseDebuff": {

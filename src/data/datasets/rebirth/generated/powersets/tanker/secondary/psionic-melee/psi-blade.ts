@@ -67,7 +67,9 @@ export const PsiBlade: Power = {
     {
       "id": "psionic_melee_insight",
       "label": "Insight",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Psionic",
         "scale": 0.2285,

@@ -63,6 +63,7 @@ export const Microburst: Power = {
     {
       "id": "wind_control_pressure-5",
       "label": "Pressure (5 stacks)",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "defenseDebuff": {
@@ -73,11 +74,14 @@ export const Microburst: Power = {
           "defenseDebuff": 12
         },
         "buffDuration": 12
-      }
+      },
+      "group": "wind_control_pressure-stacks",
+      "mode": "replace"
     },
     {
       "id": "wind_control_pressure-6",
       "label": "Pressure (6 stacks)",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "defenseDebuff": {
@@ -88,7 +92,9 @@ export const Microburst: Power = {
           "defenseDebuff": 12
         },
         "buffDuration": 12
-      }
+      },
+      "group": "wind_control_pressure-stacks",
+      "mode": "replace"
     }
   ]
 };

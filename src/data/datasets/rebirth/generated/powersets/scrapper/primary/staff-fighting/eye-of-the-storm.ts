@@ -65,7 +65,9 @@ export const EyeoftheStorm: Power = {
     {
       "id": "perfection_of_body_level_3",
       "label": "Perfection of Body Level 3",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Smashing",
         "scale": 0.246,
@@ -115,7 +117,9 @@ export const EyeoftheStorm: Power = {
     {
       "id": "perfection_of_mind_level_3",
       "label": "Perfection of Mind Level 3",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Psionic",
         "scale": 0.246,
@@ -125,7 +129,9 @@ export const EyeoftheStorm: Power = {
     {
       "id": "perfection_of_soul_level_3",
       "label": "Perfection of Soul Level 3",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Energy",
         "scale": 0.246,

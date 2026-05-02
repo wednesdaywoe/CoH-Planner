@@ -47,6 +47,7 @@ export const Gust: Power = {
     {
       "id": "stormblast_instormcell",
       "label": "StormBlast InStormCell",
+      "scope": "per-power",
       "defaultActive": false,
       "damage": {
         "type": "Smashing",

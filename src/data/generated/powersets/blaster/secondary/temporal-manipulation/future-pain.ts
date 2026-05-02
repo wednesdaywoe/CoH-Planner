@@ -74,6 +74,7 @@ export const FuturePain: Power = {
     {
       "id": "time_crawl_debuff",
       "label": "Time Crawl Debuff",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "fear": {

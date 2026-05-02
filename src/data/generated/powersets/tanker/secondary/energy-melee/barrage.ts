@@ -82,7 +82,9 @@ export const Barrage: Power = {
     {
       "id": "energy_store",
       "label": "Energy Store",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "effects": {
         "regenDebuff": {
           "scale": 1,

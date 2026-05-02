@@ -100,6 +100,7 @@ export const Screech: Power = {
     {
       "id": "conditional",
       "label": "Conditional",
+      "scope": "per-power",
       "defaultActive": false,
       "damage": {
         "type": "Energy",

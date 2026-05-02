@@ -68,6 +68,7 @@ export const TemporalHealing: Power = {
     {
       "id": "temporal_selection_buff",
       "label": "Temporal Selection Buff",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "absorb": {

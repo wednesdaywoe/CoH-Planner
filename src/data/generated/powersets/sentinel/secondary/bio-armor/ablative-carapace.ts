@@ -52,6 +52,7 @@ export const AblativeCarapace: Power = {
     {
       "id": "defensiveadaptation",
       "label": "Defensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "absorb": {
@@ -62,11 +63,14 @@ export const AblativeCarapace: Power = {
           "absorb": 30
         },
         "buffDuration": 30
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "restedadaptation",
       "label": "Rested Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "regenBuff": {
@@ -77,7 +81,9 @@ export const AblativeCarapace: Power = {
           "regenBuff": 30
         },
         "buffDuration": 30
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     }
   ]
 };

@@ -71,6 +71,7 @@ export const HardenedCarapace: Power = {
     {
       "id": "defensiveadaptation",
       "label": "Defensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "resistance": {
@@ -91,11 +92,14 @@ export const HardenedCarapace: Power = {
           "resistance": 0.75
         },
         "buffDuration": 0.75
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "offensiveadaptation",
       "label": "Offensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "damageBuff": {
@@ -106,11 +110,14 @@ export const HardenedCarapace: Power = {
           "damageBuff": 0.75
         },
         "buffDuration": 0.75
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "restedadaptation",
       "label": "Rested Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "enduranceDiscount": {
@@ -121,7 +128,9 @@ export const HardenedCarapace: Power = {
           "enduranceDiscount": 0.75
         },
         "buffDuration": 0.75
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     }
   ]
 };

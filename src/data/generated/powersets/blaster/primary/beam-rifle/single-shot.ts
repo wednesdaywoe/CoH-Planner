@@ -62,6 +62,7 @@ export const SingleShot: Power = {
     {
       "id": "beam_rifle_debuff",
       "label": "Disintegrating",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "regenDebuff": {

@@ -269,6 +269,24 @@ interface UIState {
   /** Per-target slider values keyed by power name (0 = buff inactive, 1+ = targets hit) */
   targetsHitValues: Record<string, number>;
 
+  /**
+   * Mechanic Adjuster toggle state for `power.conditionalEffects` with
+   * `scope: 'per-power'`. Keyed by `<powerInternalName>:<adjusterId>`.
+   * Used for target-state mechanics like drowning or Disintegrating that
+   * apply to one cast/target at a time.
+   */
+  mechanicAdjusters: Record<string, boolean>;
+
+  /**
+   * Mechanic Adjuster toggle state for `power.conditionalEffects` with
+   * `scope: 'global'`. Keyed by just the `<adjusterId>` — flipping a
+   * global toggle on one power flips it on every power that references
+   * the same id. Used for caster-state mechanics like Bio Armor's
+   * Defensive/Offensive/Rested Adaptation, Hide, Domination, and snipe
+   * Quick mode (In Combat).
+   */
+  globalAdjusters: Record<string, boolean>;
+
   /** Show slot level labels on enhancement slots */
   showSlotLevels: boolean;
 
@@ -476,6 +494,26 @@ interface UIActions {
   // Per-target slider
   setTargetsHit: (powerName: string, value: number) => void;
 
+  // Mechanic Adjuster toggle (per-power conditional effect)
+  setMechanicAdjuster: (powerName: string, adjusterId: string, active: boolean) => void;
+  toggleMechanicAdjuster: (powerName: string, adjusterId: string) => void;
+  /** Clear all toggles for a single power (e.g. on power deselection). */
+  clearMechanicAdjusters: (powerName: string) => void;
+
+  // Global Mechanic Adjusters (caster-state — apply across all powers)
+  setGlobalAdjuster: (adjusterId: string, active: boolean) => void;
+  toggleGlobalAdjuster: (adjusterId: string) => void;
+  /**
+   * Activate a single member of a mutually-exclusive group (Bio Armor
+   * adaptations, Tidal Power stacks, Combo Levels). Sets the named id to
+   * true; sets every other id in `siblingIds` to false in one update.
+   * Pass `null` for `activeId` to clear the whole group.
+   */
+  setGlobalAdjusterGroup: (
+    activeId: string | null,
+    siblingIds: readonly string[],
+  ) => void;
+
   // Slot level labels
   toggleShowSlotLevels: () => void;
 
@@ -625,6 +663,8 @@ export const useUIStore = create<UIStore>()(
       hoverHint: null,
       trackedStats: [], // No tracked stats by default
       targetsHitValues: {}, // No per-target overrides by default
+      mechanicAdjusters: {}, // No per-power conditional toggles overridden by default
+      globalAdjusters: {}, // No global conditional toggles overridden by default
       showSlotLevels: true, // Show slot level labels by default
       permaTrackedPowers: [], // No perma-tracked powers by default
       levelUpMode: false, // Off by default — classic "respec" flow
@@ -1269,6 +1309,54 @@ export const useUIStore = create<UIStore>()(
           targetsHitValues: { ...state.targetsHitValues, [powerName]: value },
         })),
 
+      // Mechanic Adjuster toggles
+      setMechanicAdjuster: (powerName, adjusterId, active) =>
+        set((state) => ({
+          mechanicAdjusters: {
+            ...state.mechanicAdjusters,
+            [`${powerName}:${adjusterId}`]: active,
+          },
+        })),
+      toggleMechanicAdjuster: (powerName, adjusterId) =>
+        set((state) => {
+          const key = `${powerName}:${adjusterId}`;
+          return {
+            mechanicAdjusters: {
+              ...state.mechanicAdjusters,
+              [key]: !state.mechanicAdjusters[key],
+            },
+          };
+        }),
+      clearMechanicAdjusters: (powerName) =>
+        set((state) => {
+          const prefix = `${powerName}:`;
+          const next: Record<string, boolean> = {};
+          for (const k of Object.keys(state.mechanicAdjusters)) {
+            if (!k.startsWith(prefix)) next[k] = state.mechanicAdjusters[k];
+          }
+          return { mechanicAdjusters: next };
+        }),
+
+      // Global Mechanic Adjusters
+      setGlobalAdjuster: (adjusterId, active) =>
+        set((state) => ({
+          globalAdjusters: { ...state.globalAdjusters, [adjusterId]: active },
+        })),
+      toggleGlobalAdjuster: (adjusterId) =>
+        set((state) => ({
+          globalAdjusters: {
+            ...state.globalAdjusters,
+            [adjusterId]: !state.globalAdjusters[adjusterId],
+          },
+        })),
+      setGlobalAdjusterGroup: (activeId, siblingIds) =>
+        set((state) => {
+          const next = { ...state.globalAdjusters };
+          for (const id of siblingIds) next[id] = false;
+          if (activeId !== null) next[activeId] = true;
+          return { globalAdjusters: next };
+        }),
+
       // Slot level labels
       toggleShowSlotLevels: () =>
         set((state) => ({
@@ -1302,6 +1390,8 @@ export const useUIStore = create<UIStore>()(
           compareSlottingPower: null,
           selectedBranch: null,
           targetsHitValues: {},
+          mechanicAdjusters: {},
+          globalAdjusters: {},
           incarnateActive: createDefaultIncarnateActiveState(),
           incarnateLevelShiftActive: true,
           dominationActive: false,
@@ -1369,6 +1459,8 @@ export const useUIStore = create<UIStore>()(
         showSlotLevels: state.showSlotLevels,
         permaTrackedPowers: state.permaTrackedPowers,
         levelUpMode: state.levelUpMode,
+        mechanicAdjusters: state.mechanicAdjusters,
+        globalAdjusters: state.globalAdjusters,
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };
@@ -1492,6 +1584,33 @@ export const useCriticalHitsActive = () => useUIStore((state) => state.criticalH
 
 /** Select stalker hidden state */
 export const useStalkerHidden = () => useUIStore((state) => state.stalkerHidden);
+
+/**
+ * Select the active state of one Mechanic Adjuster toggle. Falls back to
+ * the conditional effect's `defaultActive` flag when the user hasn't
+ * touched the toggle. Use for `scope: 'per-power'` conditionals.
+ */
+export const useMechanicAdjuster = (
+  powerName: string,
+  adjusterId: string,
+  defaultActive: boolean = false,
+): boolean => useUIStore((state) => {
+  const v = state.mechanicAdjusters[`${powerName}:${adjusterId}`];
+  return v === undefined ? defaultActive : v;
+});
+
+/**
+ * Select the active state of one global Mechanic Adjuster (caster-state
+ * mechanic — Bio Armor adaptation, Hide, Domination, etc.). Use for
+ * `scope: 'global'` conditionals.
+ */
+export const useGlobalAdjuster = (
+  adjusterId: string,
+  defaultActive: boolean = false,
+): boolean => useUIStore((state) => {
+  const v = state.globalAdjusters[adjusterId];
+  return v === undefined ? defaultActive : v;
+});
 
 /** Select stalker team size */
 export const useStalkerTeamSize = () => useUIStore((state) => state.stalkerTeamSize);

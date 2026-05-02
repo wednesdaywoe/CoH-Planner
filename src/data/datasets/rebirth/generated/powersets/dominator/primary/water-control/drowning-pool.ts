@@ -59,8 +59,9 @@ export const DrowningPool: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "stealthed",
-      "label": "Stealthed",
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "hold": {
@@ -73,7 +74,9 @@ export const DrowningPool: Power = {
     {
       "id": "water_control_drowning",
       "label": "Drowning",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "effects": {
         "defenseDebuff": {
           "scale": 2.5,

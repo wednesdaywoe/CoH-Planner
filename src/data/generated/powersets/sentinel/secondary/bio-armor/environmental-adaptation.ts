@@ -100,6 +100,7 @@ export const EnvironmentalAdaptation: Power = {
     {
       "id": "defensiveadaptation",
       "label": "Defensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "defenseBuff": {
@@ -141,11 +142,14 @@ export const EnvironmentalAdaptation: Power = {
           "table": "Melee_HealSelf"
         },
         "buffDuration": 0.75
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "offensiveadaptation",
       "label": "Offensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "tohitBuff": {
@@ -156,7 +160,9 @@ export const EnvironmentalAdaptation: Power = {
           "tohitBuff": 0.75
         },
         "buffDuration": 0.75
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     }
   ]
 };

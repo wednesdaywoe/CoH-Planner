@@ -57,7 +57,9 @@ export const Hypothermia: Power = {
     {
       "id": "water_control_drowning",
       "label": "Drowning",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "effects": {
         "sleep": {
           "mag": 3,

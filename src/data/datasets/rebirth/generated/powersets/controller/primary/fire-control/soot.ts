@@ -57,6 +57,7 @@ export const Char: Power = {
     {
       "id": "conditional",
       "label": "Conditional",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "hold": {

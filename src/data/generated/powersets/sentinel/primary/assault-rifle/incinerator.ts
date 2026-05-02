@@ -92,6 +92,7 @@ export const Ignite: Power = {
     {
       "id": "conditional",
       "label": "Conditional",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "summon": {

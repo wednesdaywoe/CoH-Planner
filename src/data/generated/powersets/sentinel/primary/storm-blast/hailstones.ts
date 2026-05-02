@@ -76,7 +76,9 @@ export const Hailstones: Power = {
     {
       "id": "stormblast_instormcell",
       "label": "StormBlast InStormCell",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "effects": {
         "knockback": {
           "scale": 0.67,

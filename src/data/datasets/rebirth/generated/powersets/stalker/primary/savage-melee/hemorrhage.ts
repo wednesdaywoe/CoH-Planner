@@ -45,6 +45,7 @@ export const Hemorrhage: Power = {
     {
       "id": "savage_melee_blood_frenzy_stalker",
       "label": "Blood Frenzy Stalker",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

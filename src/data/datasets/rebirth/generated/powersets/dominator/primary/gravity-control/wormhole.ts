@@ -59,8 +59,9 @@ export const Wormhole: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "stealthed",
-      "label": "Stealthed",
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "stun": {

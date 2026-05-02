@@ -78,6 +78,7 @@ export const ParasiticLeech: Power = {
     {
       "id": "offensiveadaptation",
       "label": "Offensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "regenDebuff": {
@@ -88,11 +89,14 @@ export const ParasiticLeech: Power = {
           "regenDebuff": 30
         },
         "buffDuration": 30
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "restedadaptation",
       "label": "Rested Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "recoveryBuff": {
@@ -108,11 +112,14 @@ export const ParasiticLeech: Power = {
           "table": "Melee_Ones"
         },
         "buffDuration": 45
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "defensiveadaptation",
       "label": "Defensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "absorb": {
@@ -123,7 +130,9 @@ export const ParasiticLeech: Power = {
           "absorb": 45
         },
         "buffDuration": 45
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     }
   ]
 };

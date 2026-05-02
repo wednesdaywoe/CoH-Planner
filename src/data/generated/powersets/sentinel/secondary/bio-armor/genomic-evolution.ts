@@ -73,6 +73,7 @@ export const GenomicEvolution: Power = {
     {
       "id": "offensiveadaptation",
       "label": "Offensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "rangeBuff": {
@@ -83,11 +84,14 @@ export const GenomicEvolution: Power = {
           "rangeBuff": 5.25
         },
         "buffDuration": 5.25
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "restedadaptation",
       "label": "Rested Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "maxEndBuff": {
@@ -98,11 +102,14 @@ export const GenomicEvolution: Power = {
           "maxEndBuff": 5.25
         },
         "buffDuration": 5.25
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "defensiveadaptation",
       "label": "Defensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "resistance": {
@@ -143,7 +150,9 @@ export const GenomicEvolution: Power = {
           "resistance": 5.25
         },
         "buffDuration": 5.25
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     }
   ],
   "mechanicType": "parentMechanic"

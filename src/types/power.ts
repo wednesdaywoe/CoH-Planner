@@ -572,6 +572,46 @@ export interface ConditionalEffect {
   id: string;
   /** Human-readable label shown next to the toggle. */
   label: string;
+  /**
+   * Where the toggle state lives:
+   * - `'global'`: caster-state mechanics (Bio Armor adaptations, Hide,
+   *   Domination, In Combat) — flipping the toggle on one power flips it
+   *   on every power that shares the same `id`.
+   * - `'per-power'`: target-state mechanics (drowning, Disintegrating) —
+   *   independent state per power.
+   *
+   * Derived from the underlying gate's `side`: `source` → global,
+   * `target` → per-power. Defaults to per-power when unspecified.
+   */
+  scope?: 'global' | 'per-power';
+  /**
+   * Mutually-exclusive group key. When present, only one member of the
+   * group can be active at a time (Bio Armor's Defensive / Offensive /
+   * Rested adaptations, Tidal Power's stack tiers, Dual Blades combo
+   * levels). Members without a `group` render as independent checkboxes.
+   */
+  group?: string;
+  /**
+   * How this conditional combines with the base power's effects when active:
+   * - `'replace'`: the conditional and a base entry are mutually-exclusive
+   *   variants of the same mechanic gated on opposite predicates
+   *   (Suffocate's -Def: base "if NOT drowning -11%", conditional "if
+   *   drowning -14%"). Active conditional's `effects` shallow-merge over
+   *   base, and `damage` entries replace the base entries' equivalents.
+   * - `'additive'` (default when omitted): the conditional adds its
+   *   contribution alongside the base — same effect-key in both means
+   *   "two simultaneous instances" (Suffocate's hold: a base mag-3 cast
+   *   plus a conditional mag-3 cast when Domination/Stealthed is on).
+   *   Currently surfaces only as appended damage entries; effect-key
+   *   collisions are left as base-only since multi-instance display
+   *   isn't modeled in the InfoPanel yet.
+   *
+   * Detection happens at convert time: the converter looks for a base
+   * template whose `requires_expression` carries the negated form of the
+   * conditional's predicate (`! ownPower?`). When found, the conditional
+   * is tagged `mode: 'replace'`.
+   */
+  mode?: 'additive' | 'replace';
   /** Whether the toggle starts on. Defaults to false; mechanics that fire
    *  automatically (e.g. snipe Quick variant when in combat) may default true. */
   defaultActive?: boolean;

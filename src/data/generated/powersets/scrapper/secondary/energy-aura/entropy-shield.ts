@@ -116,6 +116,7 @@ export const EntropicAura: Power = {
     {
       "id": "conditional",
       "label": "Conditional",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "rechargeBuff": {

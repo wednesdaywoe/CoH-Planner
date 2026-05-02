@@ -78,6 +78,7 @@ export const Geyser: Power = {
     {
       "id": "tidal_power-1",
       "label": "Tidal Power (1 stacks)",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {
@@ -104,11 +105,14 @@ export const Geyser: Power = {
           "scale": 1,
           "table": "Ranged_PvPMez"
         }
-      }
+      },
+      "group": "tidal_power-stacks",
+      "mode": "replace"
     },
     {
       "id": "tidal_power-2",
       "label": "Tidal Power (2 stacks)",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {
@@ -135,11 +139,14 @@ export const Geyser: Power = {
           "scale": 5,
           "table": "Ranged_Stun"
         }
-      }
+      },
+      "group": "tidal_power-stacks",
+      "mode": "replace"
     },
     {
       "id": "tidal_power-3",
       "label": "Tidal Power (3 stacks)",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {
@@ -166,11 +173,14 @@ export const Geyser: Power = {
           "scale": 5,
           "table": "Ranged_Stun"
         }
-      }
+      },
+      "group": "tidal_power-stacks",
+      "mode": "replace"
     },
     {
       "id": "tidal_power-0",
       "label": "Tidal Power (0 stacks)",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Fire",
@@ -178,7 +188,9 @@ export const Geyser: Power = {
         "table": "Ranged_Damage",
         "duration": 5.1,
         "tickRate": 0.5
-      }
+      },
+      "group": "tidal_power-stacks",
+      "mode": "replace"
     }
   ]
 };

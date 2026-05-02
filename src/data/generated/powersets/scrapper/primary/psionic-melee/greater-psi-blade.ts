@@ -82,6 +82,7 @@ export const GreaterPsiBlade: Power = {
     {
       "id": "psionic_melee_insight",
       "label": "Insight",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

@@ -69,6 +69,7 @@ export const TargetingDrone: Power = {
     {
       "id": "outofcombat",
       "label": "Out Of Combat",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "damageBuff": {

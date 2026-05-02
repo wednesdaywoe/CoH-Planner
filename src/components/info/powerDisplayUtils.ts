@@ -5,10 +5,14 @@
 
 import type {
   ArchetypeId,
+  ConditionalEffect,
   DefenseByType,
   ResistanceByType,
   MovementByType,
   NumberOrScaled,
+  Power,
+  PowerEffects,
+  ScaledDamageEntry,
   SelectedPower,
 } from '@/types';
 import { getScaleValue } from '@/types';
@@ -415,4 +419,171 @@ export function expandProtectionEntries(
     typeLabel: `${labelPrefix}: ${MEZ_LABELS[typeKey] || typeKey}`,
     magnitude: value,
   }));
+}
+
+// ============================================
+// CONDITIONAL EFFECT MERGING
+// ============================================
+
+/**
+ * Conditional `id`s that correspond to AT-inherent mechanics already
+ * driven by the Header's mechanic bar (Domination, Hide, Fury, etc.).
+ * For these ids:
+ *   - The MechanicAdjusters InfoPanel section hides its toggle (the
+ *     Header already owns the user-facing control).
+ *   - `selectActiveConditionals` reads the corresponding existing state
+ *     via the `atInherentState` argument instead of `mechanicAdjusters` /
+ *     `globalAdjusters`. The merger still layers the binary's actual
+ *     conditional templates on top of the base when the AT toggle is on.
+ *
+ * Add new mappings here when a freshly-recognized gate id collides with
+ * something the dashboard already controls. Keep curated rather than
+ * auto-detected — the binary uses opaque attribute names like
+ * `kStealth` that map to different mechanics per AT.
+ */
+export const AT_INHERENT_CONDITIONAL_IDS: ReadonlySet<string> = new Set([
+  'domination',  // kStealth source> on Dominator powers
+]);
+
+/** State passed into `selectActiveConditionals` for AT-inherent lookup. */
+export interface ATInherentState {
+  dominationActive?: boolean;
+  // Future entries when more AT inherents map to bin-level conditional gates:
+  // stalkerHidden?: boolean;
+  // furyLevel?: number;       // truthy iff > 0
+  // scourgeActive?: boolean;
+  // criticalHitsActive?: boolean;
+  // containmentActive?: boolean;
+  // sentinelCritActive?: boolean;
+  // supremacyActive?: boolean;
+}
+
+/**
+ * Pick the active subset of `power.conditionalEffects` based on the current
+ * Mechanic Adjuster toggle state.
+ *
+ * Each entry's `scope` decides which map is consulted:
+ * - `scope: 'global'` → caster-state mechanics share state across powers
+ *   (Bio Armor adaptations, Hide, Domination, In Combat) and look up by
+ *   bare `id` in `globalAdjusters`.
+ * - `scope: 'per-power'` (or unspecified) → target-state mechanics keyed
+ *   by `<powerName>:<id>` in `mechanicAdjusters`.
+ *
+ * Exception: ids in `AT_INHERENT_CONDITIONAL_IDS` are looked up via
+ * `atInherentState` so the existing Header toggles drive them. Avoids
+ * duplicating the user-facing control in two places.
+ *
+ * Falls back to the entry's `defaultActive` when the user hasn't touched
+ * the toggle. The empty-array fast path is the common case.
+ */
+export function selectActiveConditionals(
+  power: Power,
+  mechanicAdjusters: Record<string, boolean>,
+  globalAdjusters: Record<string, boolean>,
+  atInherentState: ATInherentState = {},
+): ConditionalEffect[] {
+  const list = power.conditionalEffects;
+  if (!list || list.length === 0) return [];
+  const active: ConditionalEffect[] = [];
+  for (const c of list) {
+    const def = !!c.defaultActive;
+    let on: boolean;
+    if (AT_INHERENT_CONDITIONAL_IDS.has(c.id)) {
+      // Read from the existing AT-inherent state instead of the new
+      // mechanic-adjuster maps so the Header's toggle is the single
+      // source of truth.
+      switch (c.id) {
+        case 'domination':
+          on = atInherentState.dominationActive ?? def;
+          break;
+        default:
+          on = def;
+          break;
+      }
+    } else if (c.scope === 'global') {
+      const v = globalAdjusters[c.id];
+      on = v === undefined ? def : v;
+    } else {
+      const v = mechanicAdjusters[`${power.internalName}:${c.id}`];
+      on = v === undefined ? def : v;
+    }
+    if (on) active.push(c);
+  }
+  return active;
+}
+
+/**
+ * Layer active conditional contributions on top of the base power's damage
+ * and effects. Returns a new Power object suitable for downstream damage
+ * calculation / effect rendering.
+ *
+ * Merging rules respect each conditional's `mode`:
+ *
+ * - **Damage** is always concatenated. Each active conditional's `damage`
+ *   entries append to the base array. Calc downstream sums them up just
+ *   like multi-component base damage (Charged Shot's Disintegration bonus
+ *   stacks on top of base when toggled on).
+ *
+ * - **Effects** depend on `mode`:
+ *   - `mode: 'replace'` (mutex with a base sibling): shallow-merge — the
+ *     conditional's fields override base on shared keys. Suffocate's
+ *     drowning -Def replaces base "if NOT drowning" -Def. Bio Armor's
+ *     selected adaptation replaces baseline self-buffs.
+ *   - `mode: 'additive'` (default — independent stacking): merge fields
+ *     the base doesn't have, but **leave shared keys untouched**. Two
+ *     simultaneous mez instances aren't displayed as one combined row
+ *     yet, so we avoid replacing the base mez with a misleading single-
+ *     instance "stronger" version. Suffocate's Stealthed hold doesn't
+ *     bump the displayed hold duration; the additional hold cast is the
+ *     intended game behavior, awaiting multi-instance display.
+ */
+export function applyActiveConditionals(
+  power: Power,
+  active: ConditionalEffect[],
+): Power {
+  if (active.length === 0) return power;
+
+  // --- damage ---
+  const baseDamageArr: ScaledDamageEntry[] = power.damage
+    ? Array.isArray(power.damage)
+      ? [...power.damage]
+      : [power.damage]
+    : [];
+  const merged: ScaledDamageEntry[] = baseDamageArr;
+  for (const c of active) {
+    if (!c.damage) continue;
+    if (Array.isArray(c.damage)) merged.push(...c.damage);
+    else merged.push(c.damage);
+  }
+  const nextDamage: Power['damage'] =
+    merged.length === 0 ? undefined
+      : merged.length === 1 ? merged[0]
+        : merged;
+
+  // --- effects ---
+  let nextEffects: PowerEffects | undefined = power.effects ? { ...power.effects } : undefined;
+  for (const c of active) {
+    if (!c.effects) continue;
+    if (c.mode === 'replace') {
+      // Mutex with a base sibling — shallow-merge with conditional winning.
+      nextEffects = nextEffects ? { ...nextEffects, ...c.effects } : { ...c.effects };
+    } else {
+      // Additive (default) — only fill keys the base doesn't have, so a
+      // duplicate mez/buff entry from the conditional doesn't masquerade
+      // as a stronger version of the base. Same-keyed entries represent
+      // a second simultaneous instance which the calc/display layer
+      // doesn't yet model as a stacked pair.
+      if (!nextEffects) {
+        nextEffects = { ...c.effects };
+      } else {
+        for (const [k, v] of Object.entries(c.effects)) {
+          if (!(k in nextEffects)) {
+            (nextEffects as Record<string, unknown>)[k] = v;
+          }
+        }
+      }
+    }
+  }
+
+  return { ...power, damage: nextDamage, effects: nextEffects };
 }

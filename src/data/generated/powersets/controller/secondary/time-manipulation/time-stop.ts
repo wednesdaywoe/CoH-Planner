@@ -56,6 +56,7 @@ export const TimeStop: Power = {
     {
       "id": "time_crawl_debuff",
       "label": "Time Crawl Debuff",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "hold": {

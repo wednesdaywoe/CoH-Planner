@@ -78,6 +78,7 @@ export const DNASiphon: Power = {
     {
       "id": "offensiveadaptation",
       "label": "Offensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "regenDebuff": {

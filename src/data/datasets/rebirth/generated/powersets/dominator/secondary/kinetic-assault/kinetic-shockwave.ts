@@ -63,6 +63,7 @@ export const KineticShockwave: Power = {
     {
       "id": "kinetic_assault_impulse",
       "label": "Impulse",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Energy",

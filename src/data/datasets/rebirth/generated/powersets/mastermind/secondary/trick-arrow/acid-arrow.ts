@@ -98,6 +98,7 @@ export const AcidArrow: Power = {
     {
       "id": "flasharrow_dazzled",
       "label": "FlashArrow Dazzled",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "resistanceDebuff": {

@@ -57,6 +57,7 @@ export type {
   ScaledDamageEntry,
   PowerEffects,
   Power,
+  ConditionalEffect,
   Powerset,
   PowerPool,
   SelectedPower,

@@ -79,7 +79,9 @@ export const TemporalMending: Power = {
     {
       "id": "temporal_selection_buff",
       "label": "Temporal Selection Buff",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Heal",
         "scale": 1,

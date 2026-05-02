@@ -41,6 +41,7 @@ export const ReformEssence: Power = {
     {
       "id": "peacebringer_tanker_mode",
       "label": "Peacebringer Tanker Mode",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Heal",

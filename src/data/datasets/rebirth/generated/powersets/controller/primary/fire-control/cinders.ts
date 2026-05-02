@@ -47,6 +47,7 @@ export const Cinders: Power = {
     {
       "id": "conditional",
       "label": "Conditional",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "hold": {

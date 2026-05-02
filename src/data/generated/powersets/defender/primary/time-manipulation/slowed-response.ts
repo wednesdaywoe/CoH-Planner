@@ -88,7 +88,9 @@ export const SlowedResponse: Power = {
     {
       "id": "time_crawl_debuff",
       "label": "Time Crawl Debuff",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "effects": {
         "resistanceDebuff": {
           "smashing": {

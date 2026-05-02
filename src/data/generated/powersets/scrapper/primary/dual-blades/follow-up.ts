@@ -85,6 +85,7 @@ export const BlindingFeint: Power = {
     {
       "id": "dd_statusmode_2",
       "label": "DD Status Mode 2",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "tohitBuff": {

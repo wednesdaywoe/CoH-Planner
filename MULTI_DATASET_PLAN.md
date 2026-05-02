@@ -1,9 +1,42 @@
-# Multi-Dataset Support Plan
+# CoH Sidekick — Multi-Dataset & Foundation Plan
 
-Plan for restructuring the data layer to support multiple CoH server datasets
-(Homecoming, Rebirth, future others). The goal is **infrastructure only** —
-silo all current data as the `homecoming` dataset, with the plumbing ready to
-drop a second dataset in alongside when its data is available.
+Originally scoped as multi-dataset infrastructure. The umbrella project now
+includes the broader changes the Rebirth integration surfaced: data-model
+extensions for conditional power mechanics, the InfoPanel visual redesign,
+calc accuracy fixes, and the AT-mechanic alignment work the per-power
+adjuster surface implies.
+
+## Active Workstreams
+
+Each entry below has a detail section further down. Status snapshot as of
+2026-05-03:
+
+| # | Workstream | Status | Anchor |
+|---|---|---|---|
+| 1 | **Multi-dataset infrastructure** (Rebirth data layer) | Stages A + C mostly done; Stage B (HC powersets-tree migration) not started | [#multi-dataset-infrastructure](#multi-dataset-infrastructure) |
+| 2 | **Conditional Effects + Mechanic Adjusters** | Data-layer capture, scope/group/mode classification, base merger, AT-inherent routing all landed (uncommitted) | [#conditional-effects--mechanic-adjusters](#conditional-effects--mechanic-adjusters) |
+| 3 | **InfoPanel visual redesign** | Proposal reviewed; `MechanicAdjusters` slice mounted (uncommitted). Section ordering, table redesign, damage block, tags row all pending. | [#infopanel-visual-redesign](#infopanel-visual-redesign) |
+| 4 | **AT-mechanic alignment** (Header vs InfoPanel) | First overlap (Domination via `kStealth source>` on Dominator powers) routed through Header state; expand mapping as more overlaps surface | [#at-mechanic-alignment](#at-mechanic-alignment) |
+| 5 | **Calc accuracy fixes** | Conditional-aggregation fix shipped to main; pure-DoT 5×tick bug, tooltip-level convention, level-differential accuracy display still open | [#calc-accuracy](#calc-accuracy) |
+| 6 | **Original Domination mechanic** (Rebirth) | Not started. Inherent description and toggle wiring need rewrite for i23-era Domination semantics | [#original-domination](#original-domination) |
+| 7 | **IO sets exporter for Rebirth** | Not started. Last Stage C blocker. | [#io-sets-exporter-for-rebirth](#io-sets-exporter-for-rebirth) |
+
+## Open Tasks (not-yet-grouped backlog)
+
+- [ ] Multi-instance mez display (Suffocate's Mag-3 base + Mag-3 Domination = two stacking instances; current Power type shape stores `effects.hold` as a single object)
+- [ ] Rendering "additive" Mechanic Adjuster contributions in the InfoPanel (currently the merger silently leaves base unchanged for additive collisions; needs UI surface so users can see the bonus exists)
+- [ ] Curated label overrides for the 19 remaining "Conditional"-fallback powers
+- [ ] Verify ~217 HC Beam Rifle / Disintegration powers in browser after the conditional-aggregation fix shipped
+- [ ] Decide on tooltip-level convention (game uses power's design level; Sidekick uses character level)
+- [ ] Stage B: migrate HC `powersets/` `overrides/` `generated/` trees into `datasets/homecoming/` (~600 import sites)
+- [ ] Audit other Rebirth-vs-HC scalar tables (only ranged/melee damage compared so far; control/heal/etc. tables differ for Tanker/Brute, possibly others)
+- [ ] Investigate the 80+ "Conditional"-labeled Rebirth Vacuum-style pet conditional gates
+- [ ] AT-inherent ID map expansion: Domination is wired; check if Hide/Containment/Fury/Scourge/Crit show up as conditional-template gates and need similar routing
+
+## Multi-dataset infrastructure
+
+Originally the entire scope of this document. Status, stage breakdown,
+open Stage B / Stage C blockers, and historical detail follow.
 
 ## Status
 
@@ -803,3 +836,262 @@ For the first slice (already done):
   globbing extended to match Rebirth's `z_*_bin.pigg` naming. Pet-entities
   parsing (`PC_Def_Entities.bin`) is the remaining bin-crawler work.
 - Mids `.mxd` server detection.
+
+---
+
+## Conditional Effects + Mechanic Adjusters
+
+The CoH bin format encodes per-template state gates (RPN expressions like
+`Drowning target.ownPower? &&`, `kStealth source> 0.5 > &&`,
+`kDefensiveAdaptation Source.Mode?`). These describe conditional bonuses
+that apply only when the gate evaluates true. Pre-existing converter logic
+silently filtered them out of base damage/effects (correct — they shouldn't
+inflate base numbers). This workstream surfaces them as user-facing toggles
+("Mechanic Adjusters") so the player can see what their build does *with*
+Domination active, *with* drowning, etc.
+
+### Data layer (uncommitted on main)
+
+- [scripts/convert-powerset.cjs](scripts/convert-powerset.cjs) gained
+  `_classifyConditionalGate`, `_isUntoggleableGate`, `collectConditionalsGrouped`,
+  `extractConditionalEffects`, `_annotateConditionalGroups`,
+  `_collectBaseNegatedPredicates`. Recognized gate patterns:
+  - `<dotted.power.name> {target|source}.ownPower(Num)?` — power-presence
+    check (with stack-count form for `ownPowerNum? N ==`)
+  - `kStealth source>` — Dominator powers in Rebirth → "Domination Active";
+    everywhere else → "Stealthed"
+  - `kEngaged` — "In Combat"
+  - `k<Name> {Source|source|Target|target}.[Mm]ode?` — generic mode toggle
+    (Bio Armor adaptations, Dual Blades combo levels, Wind Control's
+    Clear Skies, DE Avatar Infection target states, etc.)
+- ~80 untoggleable game-state patterns are filtered (target archetype
+  scaling, NPC type/rank checks, costume/alignment scripts, internal
+  ToHit roll branches, FX-only conditionals, account/auth gates, etc.)
+- Each emitted entry has:
+  - `id` — stable identifier
+  - `label` — human-readable; auto-prettified from camelCase + a small
+    curated override map (`beam_rifle_debuff` → "Disintegrating",
+    `tidal_power` → "Tidal Power")
+  - `scope: 'global' | 'per-power'` — derived from gate side. `source` =
+    global (caster state shared across all powers); `target` = per-power
+  - `group?: string` — set when entries are mutually exclusive (Bio Armor
+    adaptations, Tidal Power stack tiers, Combo Level N). Render as
+    radios.
+  - `mode?: 'additive' | 'replace'` — set to `replace` when the base has
+    a sibling template carrying the negated form of the conditional's
+    predicate (Suffocate's "if NOT drowning" -Def vs "if drowning" -Def
+    are mutex variants); `additive` (default) means the conditional adds
+    a separate cast/instance on top of base
+  - `damage?` and `effects?` — same shape as the power's base fields
+- Coverage: 225 Rebirth + 194 HC powers carry `conditionalEffects`. Top
+  labels: Stealthed/Domination Active, Defensive/Offensive/Rested
+  Adaptation, Insight, Disintegrating, Combo Level 1/2/3, Drowning,
+  Tidal Power (N stacks), Perfection of Body/Mind/Soul, Time Crawl Debuff,
+  StormBlast InStormCell, Energy Store, Contaminated, etc. 19 remaining
+  generic "Conditional" labels are real edge-case mechanics (mostly NPC
+  mission scripts) that can be curated case-by-case if needed.
+
+### Type extension
+
+- [src/types/power.ts](src/types/power.ts) — new `ConditionalEffect`
+  interface; `Power` gained `conditionalEffects?: ConditionalEffect[]`
+- [src/types/index.ts](src/types/index.ts) re-exports `ConditionalEffect`
+
+### State + selectors (uncommitted)
+
+- [src/stores/uiStore.ts](src/stores/uiStore.ts) gained
+  `mechanicAdjusters: Record<string, boolean>` (per-power state, keyed
+  `<powerName>:<id>`) and `globalAdjusters: Record<string, boolean>`
+  (caster-state, keyed `<id>`). Both persisted via Zustand persist.
+- New actions: `setMechanicAdjuster`, `toggleMechanicAdjuster`,
+  `clearMechanicAdjusters`, `setGlobalAdjuster`, `toggleGlobalAdjuster`,
+  `setGlobalAdjusterGroup` (atomic mutex update for radio groups).
+- New selector hooks: `useMechanicAdjuster(powerName, id, defaultActive)`
+  and `useGlobalAdjuster(id, defaultActive)`.
+
+### Merger (uncommitted)
+
+- [src/components/info/powerDisplayUtils.ts](src/components/info/powerDisplayUtils.ts)
+  — `selectActiveConditionals(power, mechanicAdjusters, globalAdjusters,
+  atInherentState)` filters the conditional list by current toggle state;
+  `applyActiveConditionals(power, active)` returns a new Power object
+  with damage entries concatenated and effects shallow-merged according
+  to each entry's `mode`.
+- `AT_INHERENT_CONDITIONAL_IDS` set + `ATInherentState` type route ids
+  that overlap with the Header's existing dashboard toggles (currently
+  just `domination`) through their established state hooks instead of
+  the new adjuster maps.
+
+### UI (uncommitted)
+
+- [src/components/info/MechanicAdjusters.tsx](src/components/info/MechanicAdjusters.tsx)
+  — renders below the per-target stacking slider, above the Power Effects
+  display. Partitions entries into mutex groups (radio + clear button)
+  vs singletons (checkbox). Routes state by scope. Filters out
+  `AT_INHERENT_CONDITIONAL_IDS` so AT-level mechanics live only in the
+  Header. Style is bare; visual treatment will land with the larger
+  InfoPanel redesign.
+- [src/components/info/InfoPanel.tsx](src/components/info/InfoPanel.tsx)
+  — `effectivePower` is now a stack of transformations: snipe-quick swap
+  → conditional merge. Damage calc + effects rendering downstream both
+  consume the merged power object so toggles reflect in displayed numbers.
+
+### Pending under this workstream
+
+- [ ] Multi-instance mez display (Power type allows single `effects.hold`;
+  needs to support arrays for "two simultaneous mag-3 holds" tooltip
+  display per game's two-line representation)
+- [ ] Surface "additive" conditional contributions in the InfoPanel.
+  Today the merger silently leaves base unchanged when the conditional
+  collides with a base effect key; user can't see that toggling Stealthed
+  on Suffocate adds another hold instance
+- [ ] AT-inherent ID map: only `domination` routes through Header state.
+  Add Hide/Stalker (`stealthed` from non-Dominator powers? unclear if
+  any exist), Containment, Fury, Scourge as we encounter them
+- [ ] Curate the 19 remaining "Conditional" generic labels
+- [ ] Verify the `mode` heuristic catches all mutex cases. Detection
+  currently only fires on `<X> ownPower? !` form; other negated
+  predicates (e.g. `kStealth source> .9 <` for "not hidden") might
+  represent mutex base sides we don't auto-detect
+
+---
+
+## InfoPanel visual redesign
+
+Driven by the proposal in chat; see the comparison-with-game screenshots
+that triggered this work.
+
+### Section structure (from proposal, adapted to actual data shape)
+
+1. Header (icon, name, subtitle, lock)
+2. Tags (effect-type chips)
+3. Allowed Enhancements + Allowed Set Categories
+4. **Mechanic Adjusters** (toggles + radios from `power.conditionalEffects`)
+5. Damage Block (DMG/DPA/DPS/DPE mode tabs + 3-stage Base/Enhanced/Final
+   pipeline + segmented bar)
+6. Power Effects Table (Stat / Base / Enhanced / Final, four row types:
+   enhanceable, fixed, mez group, debuff group)
+7. (Optional) Perma tracker — small inline badge inside the Damage Block
+   for click buffs near perma
+8. Description
+
+### Concerns flagged during proposal review (need decisions)
+
+- **"Power Duration as inherited container":** the proposal claims
+  debuffs inherit a single power-level duration; actual data stores
+  duration per template. Either treat the proposal's claim as a UX
+  simplification we surface as the longest-debuff or render per-debuff.
+- **Tooltip-level convention:** game uses power's design level (Suffocate
+  shows L26 values), Sidekick uses character level. Pick one or
+  surface both.
+- **Damage type duplication** between Tags row and Damage Block —
+  intentional (glance vs detail) but worth confirming.
+- **Range row** for self-targeted powers (range=0) should be omitted.
+- **Multi-tier mez** with secondary magnitude tiers needs an array shape
+  (currently single object).
+
+### Pending UI slices
+
+- [ ] Damage Block: mode tabs + 3-column pipeline + segmented bar
+- [ ] Power Effects Table redesign with explicit Type A/B/C/D row types
+- [ ] Tags row
+- [ ] Section ordering refresh + dividers per proposal
+- [ ] Description as final paragraph
+- [ ] Mechanic Adjuster styling pass (after the rest of the panel lands so
+  it visually fits)
+- [ ] Pet/redirect-power info: keep existing format (per user direction)
+
+---
+
+## AT-mechanic alignment
+
+The Header's mechanic bar already owns AT-inherent toggles
+(`dominationActive`, `stalkerHidden`, `furyLevel`, `scourgeActive`,
+`criticalHitsActive`, `containmentActive`, `sentinelCritActive`,
+`opportunityLevel`, `vigilanceTeamSize`, `supremacyActive`). With the
+conditional-effects work, the binary-level gates that describe some of
+these same mechanics (especially `kStealth source>` on Dominator powers
+= Domination) would otherwise show up as redundant per-power toggles in
+MechanicAdjusters. Resolved via `AT_INHERENT_CONDITIONAL_IDS` (see
+Conditional Effects section).
+
+### Pending
+
+- [ ] Audit which other AT-inherent mechanics have binary-level gate
+  representations that need the same treatment. Likely candidates:
+  Fury (any `kFury source>` gates?), Scourge, Crit, Containment.
+- [ ] Bigger refactor candidate: replace the existing hardcoded
+  AT-mechanic damage calcs (`calculateScourgeDamage`,
+  `calculateContainmentDamage`, `calculateFuryDamage`,
+  `calculateCriticalHitDamage`, `calculateAssassinationDamage`,
+  `calculateOpportunityCritDamage`) with reads from the binary's
+  conditional templates. Same data source for both Header toggles and
+  per-power displays — eliminates the chance of math drift between the
+  two surfaces. Low priority; the existing math is well-tested.
+
+---
+
+## Calc accuracy
+
+### Shipped to main (commit 7c17fe809)
+
+- Conditional-aggregation fix in convert-powerset.cjs (corrects ~217 HC
+  Beam Rifle / Disintegration powers + the entire Suffocate / Water
+  Control family on Rebirth)
+- Parse6 mez mag/duration: DurationExpr/MagnitudeExpr empty-array
+  placeholders now read correctly (was off-by-8-bytes zeroing both fields)
+- Soul Drain slider check: per-target `maxTargets` now wins over
+  `maxStacks` self-cap when both are present
+
+### Pending
+
+- [ ] **DoT 5×tick bug**: pure-DoT powers display as "1 direct hit + 4
+  DoT ticks" instead of "4 ticks total". Visible on Suffocate
+  (DMG=13.61 vs DoT=10.89; should both be 10.89). Fix is in
+  [src/utils/calculations/damage.ts](src/utils/calculations/damage.ts)
+  around the `pureDot` path.
+- [ ] **Tooltip-level convention** (see InfoPanel redesign section).
+- [ ] **Accuracy "Final" debuff** — Suffocate at L1 shows base 90%
+  → final 57.6% with no obvious source. Trace what's debuffing
+  accuracy in the calc; likely level-differential / purple-patch
+  display rather than a real debuff.
+- [ ] Verify `damageModifier` archetype field is dead code for
+  AT-tabled powers (Dominator's 0.75 isn't applied since AT
+  modifiers are baked into the table values). Either remove or
+  document as fallback metadata.
+
+---
+
+## Original Domination
+
+Rebirth uses i23-era Domination semantics (drains from a meter, not the
+HC i25+ "+mez/+rech aura"). The binary tags Domination with
+`kStealth source>` predicates. Numbers flow through correctly via the
+Mechanic Adjusters work, but UX-level concerns remain.
+
+### Pending
+
+- [ ] Rewrite `archetypes.ts → dominator.inherent.description` for
+  Rebirth (currently HC-cloned, describes the wrong mechanic)
+- [ ] Decide how the Dominator inherent toggle in the Header should
+  behave — meter slider vs binary on/off
+- [ ] Verify the recharge / buffDuration values in Rebirth's
+  `dominator.inherent.effects` match the i23 mechanic
+
+---
+
+## IO sets exporter for Rebirth
+
+`boostsets.bin` parsing already works (3,374 powers indexed for
+Rebirth), but the per-set TS data file
+(`src/data/datasets/rebirth/io-sets-raw.ts`) isn't generated.
+[scripts/convert-io-sets.js](scripts/convert-io-sets.js) reads
+`legacy/js/data/io-sets.js` (no longer shipped) — needs a new exporter
+off the boostsets parser that writes Rebirth's set definitions
+directly.
+
+### Pending
+
+- [ ] Build the exporter
+- [ ] Generate `datasets/rebirth/io-sets-raw.ts`
+- [ ] Verify a few Rebirth IO sets in-game

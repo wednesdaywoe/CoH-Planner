@@ -66,6 +66,7 @@ export const DawnStrike: Power = {
     {
       "id": "peacebringer_blaster_mode",
       "label": "Peacebringer Blaster Mode",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Energy",

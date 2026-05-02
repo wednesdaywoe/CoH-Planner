@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:rebirth": "vite --open /?serverId=rebirth",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "tsc --noEmit",

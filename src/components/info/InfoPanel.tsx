@@ -36,6 +36,7 @@ import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import { resolvePath } from '@/utils/paths';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
+import { MechanicAdjusters } from './MechanicAdjusters';
 import type {
   ArchetypeId,
   Power,
@@ -51,6 +52,8 @@ import {
   convertGlobalBonusesToAspects,
   findSelectedPowerInBuild,
   getDamageCap,
+  selectActiveConditionals,
+  applyActiveConditionals,
 } from './powerDisplayUtils';
 import {
   RegistryEffectsDisplay,
@@ -138,20 +141,26 @@ function hasPerTargetField(value: unknown): boolean {
 function getStackingInfo(power: Power): { maxStacks: number; label: string } | null {
   if (!power.effects) return null;
 
-  // Linear self-stacking — power declares maxStacks directly. Doesn't
-  // require perTarget metadata; the slider just multiplies scale of any
-  // effect listed in `effects.stacksLinear`.
-  if (power.effects.maxStacks) {
-    return { maxStacks: power.effects.maxStacks, label: 'Stacks' };
+  // AoE per-target powers (Soul Drain, Eclipse, Power Sink, etc.) — when
+  // any effect carries a `perTarget` field, the slider's natural axis is
+  // "targets hit" with max from stats.maxTargets. Soul Drain in particular
+  // also has effects.maxStacks (self-stack on double-cast), but the
+  // per-target story is the dominant one for tooltip math, so check it
+  // first to prevent the smaller stack-2 cap from winning.
+  const hasPerTarget = Object.values(power.effects).some(v => hasPerTargetField(v));
+  if (hasPerTarget) {
+    const maxTargets = power.stats?.maxTargets;
+    if (maxTargets && maxTargets > 1 && maxTargets !== 255) {
+      return { maxStacks: maxTargets, label: 'Targets Hit' };
+    }
   }
 
-  // AoE per-target powers (e.g., Soul Drain, Eclipse) — perTarget on the
-  // effect drives the math, slider max comes from stats.maxTargets.
-  const hasPerTarget = Object.values(power.effects).some(v => hasPerTargetField(v));
-  if (!hasPerTarget) return null;
-  const maxTargets = power.stats?.maxTargets;
-  if (maxTargets && maxTargets > 1 && maxTargets !== 255) {
-    return { maxStacks: maxTargets, label: 'Targets Hit' };
+  // Linear self-stacking — power declares maxStacks directly. Doesn't
+  // require perTarget metadata; the slider just multiplies scale of any
+  // effect listed in `effects.stacksLinear`. Falls through here when there
+  // is no per-target scaling (e.g. Siphon Speed's caster recharge buff).
+  if (power.effects.maxStacks) {
+    return { maxStacks: power.effects.maxStacks, label: 'Stacks' };
   }
 
   return null;
@@ -328,7 +337,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
   // When combatMode is active and power has quickSnipe, use Quick-cast stats/damage
   const isQuickSnipe = combatMode && !!power?.quickSnipe;
-  const effectivePower = useMemo(() => {
+  const snipeAdjustedPower = useMemo(() => {
     if (!power) return power;
     if (!isQuickSnipe || !power.quickSnipe) return power;
     return {
@@ -344,6 +353,25 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       } : power.effects,
     } as Power;
   }, [power, isQuickSnipe]);
+
+  // Layer active Mechanic Adjuster contributions on top of the snipe-
+  // adjusted power so damage / effects display reflect toggle state
+  // (drowning bonus, Disintegrating, Bio Armor adaptation, etc.).
+  // AT-inherent ids (Domination etc.) read the existing Header state
+  // instead of the per-power adjuster maps so the dashboard toggle is
+  // the single source of truth.
+  const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
+  const globalAdjusters = useUIStore((s) => s.globalAdjusters);
+  const effectivePower = useMemo(() => {
+    if (!snipeAdjustedPower) return snipeAdjustedPower;
+    const active = selectActiveConditionals(
+      snipeAdjustedPower,
+      mechanicAdjusters,
+      globalAdjusters,
+      { dominationActive },
+    );
+    return active.length === 0 ? snipeAdjustedPower : applyActiveConditionals(snipeAdjustedPower, active);
+  }, [snipeAdjustedPower, mechanicAdjusters, globalAdjusters, dominationActive]);
 
   // Calculate actual damage using archetype modifiers and level
   const calculatedDamage = useMemo(() => {
@@ -624,6 +652,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           </div>
         );
       })()}
+
+      {/* Mechanic Adjusters — toggles for power.conditionalEffects (drowning,
+        * Disintegrating, Bio Armor adaptation, etc.). Toggle state is
+        * persisted in uiStore; calc-pipeline integration is a follow-up. */}
+      <MechanicAdjusters power={power} />
 
       {/* Registry-driven Power Effects display */}
       <RegistryEffectsDisplay

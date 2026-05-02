@@ -73,7 +73,9 @@ export const TidalWave: Power = {
     {
       "id": "water_control_drowning",
       "label": "Drowning",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "damage": [
         {
           "type": "Cold",
@@ -99,8 +101,9 @@ export const TidalWave: Power = {
       }
     },
     {
-      "id": "stealthed",
-      "label": "Stealthed",
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "stun": {

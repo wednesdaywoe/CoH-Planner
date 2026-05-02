@@ -68,6 +68,7 @@ export const TyphoonsEdge: Power = {
     {
       "id": "dd_debuffmode_2",
       "label": "DD Debuff Mode 2",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "defenseDebuff": {
@@ -83,6 +84,7 @@ export const TyphoonsEdge: Power = {
     {
       "id": "dd_bonusaoemode_2",
       "label": "DD Bonus Ao E Mode 2",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Lethal",

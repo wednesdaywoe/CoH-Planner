@@ -71,6 +71,7 @@ export const PowerBurst: Power = {
     {
       "id": "energy_store_assault",
       "label": "Energy Store Assault",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

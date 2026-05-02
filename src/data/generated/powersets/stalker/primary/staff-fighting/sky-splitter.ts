@@ -72,6 +72,7 @@ export const SkySplitter: Power = {
     {
       "id": "perfection_of_body_level_3",
       "label": "Perfection of Body Level 3",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

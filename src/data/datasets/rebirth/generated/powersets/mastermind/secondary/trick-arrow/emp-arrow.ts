@@ -67,6 +67,7 @@ export const EMPArrow: Power = {
     {
       "id": "acidarrow_acidburn",
       "label": "AcidArrow AcidBurn",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "enduranceDrain": {

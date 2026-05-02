@@ -73,7 +73,9 @@ export const SpinningStrike: Power = {
     {
       "id": "combo_level_1",
       "label": "Combo Level 1",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": [
         {
           "type": "Smashing",
@@ -91,12 +93,15 @@ export const SpinningStrike: Power = {
           "scale": 0.67,
           "table": "Melee_Ones"
         }
-      }
+      },
+      "group": "combo-levels"
     },
     {
       "id": "combo_level_2",
       "label": "Combo Level 2",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": [
         {
           "type": "Smashing",
@@ -114,12 +119,15 @@ export const SpinningStrike: Power = {
           "scale": 0.67,
           "table": "Melee_Ones"
         }
-      }
+      },
+      "group": "combo-levels"
     },
     {
       "id": "combo_level_3",
       "label": "Combo Level 3",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": [
         {
           "type": "Smashing",
@@ -142,7 +150,8 @@ export const SpinningStrike: Power = {
           "scale": 6,
           "table": "Melee_Fear"
         }
-      }
+      },
+      "group": "combo-levels"
     }
   ]
 };

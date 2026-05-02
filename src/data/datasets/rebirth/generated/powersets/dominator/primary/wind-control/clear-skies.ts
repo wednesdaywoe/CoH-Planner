@@ -28,6 +28,7 @@ export const ClearSkies: Power = {
     {
       "id": "clearskies",
       "label": "Clear Skies",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "tohitBuff": {

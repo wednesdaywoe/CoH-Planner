@@ -62,7 +62,9 @@ export const CrushingUppercut: Power = {
     {
       "id": "combo_level_1",
       "label": "Combo Level 1",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Smashing",
         "scale": 3.339,
@@ -74,12 +76,15 @@ export const CrushingUppercut: Power = {
           "scale": 8.625,
           "table": "Melee_Stun"
         }
-      }
+      },
+      "group": "combo-levels"
     },
     {
       "id": "combo_level_2",
       "label": "Combo Level 2",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Smashing",
         "scale": 3.5616,
@@ -91,12 +96,15 @@ export const CrushingUppercut: Power = {
           "scale": 9.375,
           "table": "Melee_Stun"
         }
-      }
+      },
+      "group": "combo-levels"
     },
     {
       "id": "combo_level_3",
       "label": "Combo Level 3",
+      "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Smashing",
         "scale": 3.975,
@@ -108,7 +116,8 @@ export const CrushingUppercut: Power = {
           "scale": 10.5,
           "table": "Melee_Stun"
         }
-      }
+      },
+      "group": "combo-levels"
     }
   ]
 };

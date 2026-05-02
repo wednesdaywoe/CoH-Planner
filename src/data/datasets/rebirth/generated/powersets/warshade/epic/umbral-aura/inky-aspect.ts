@@ -53,6 +53,7 @@ export const InkyAspect: Power = {
     {
       "id": "warshade_blaster_mode",
       "label": "Warshade Blaster Mode",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "recoveryBuff": {

@@ -54,6 +54,7 @@ export const EnergeticStrike: Power = {
     {
       "id": "kinetic_assault_impulse",
       "label": "Impulse",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Energy",
@@ -69,8 +70,9 @@ export const EnergeticStrike: Power = {
       }
     },
     {
-      "id": "stealthed",
-      "label": "Stealthed",
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "stun": {

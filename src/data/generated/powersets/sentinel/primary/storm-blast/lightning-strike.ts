@@ -62,6 +62,7 @@ export const LightningStrike: Power = {
     {
       "id": "stormblast_instormcell",
       "label": "StormBlast InStormCell",
+      "scope": "per-power",
       "defaultActive": false,
       "effects": {
         "stun": {

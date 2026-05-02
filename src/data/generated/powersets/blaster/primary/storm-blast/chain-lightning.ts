@@ -71,6 +71,7 @@ export const ChainLightning: Power = {
     {
       "id": "stormblast_instormcell",
       "label": "StormBlast InStormCell",
+      "scope": "per-power",
       "defaultActive": false,
       "damage": {
         "type": "Energy",

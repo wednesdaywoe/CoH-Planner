@@ -79,7 +79,9 @@ export const RadiationSiphon: Power = {
     {
       "id": "radiation_melee_contaminated",
       "label": "Radiation Melee Contaminated",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Heal",
         "scale": 0.67,

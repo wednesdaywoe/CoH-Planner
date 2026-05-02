@@ -1054,7 +1054,7 @@ function _isUntoggleableGate(req) {
   return false;
 }
 
-function _classifyConditionalGate(req) {
+function _classifyConditionalGate(req, powersetKey) {
   if (!_isConditionalGate(req)) return null;
   if (_isUntoggleableGate(req)) return null;
 
@@ -1083,9 +1083,16 @@ function _classifyConditionalGate(req) {
       _powerName: dotted,
     };
   }
-  // Stealth/hide attribute on caster
+  // `kStealth source>` — caster's kStealth attribute. CoH overloads this
+  // attribute slot per-AT: Dominators (especially in Rebirth's i23-era
+  // Domination revival) use it as the Domination meter; for everyone else
+  // it represents actual stealth/hide. Disambiguate via the powerset key
+  // so a Dominator's "Stealthed" label correctly reads "Domination Active."
   if (/kStealth\s+source>/.test(req)) {
-    return { id: 'stealthed', label: 'Stealthed', side: 'source' };
+    const isDominator = powersetKey?.toLowerCase().startsWith('dominator_');
+    return isDominator
+      ? { id: 'domination', label: 'Domination Active', side: 'source' }
+      : { id: 'stealthed', label: 'Stealthed', side: 'source' };
   }
   // Snipe-style "kEngaged" combat-mode test
   if (/kEngaged/.test(req)) {
@@ -1186,7 +1193,7 @@ function _isConditionalGate(req) {
  * mechanics handled by the existing toggle system, not surfaced as
  * Mechanic Adjusters).
  */
-function collectConditionalsGrouped(effects) {
+function collectConditionalsGrouped(effects, powersetKey) {
   const groups = new Map();
 
   function pushTemplates(gate, templates) {
@@ -1227,7 +1234,7 @@ function collectConditionalsGrouped(effects) {
       if (_isOutOfCombatGate(req)) return;
     }
 
-    const gate = req ? _classifyConditionalGate(req) : null;
+    const gate = req ? _classifyConditionalGate(req, powersetKey) : null;
     if (gate) {
       pushTemplates(gate, effect.templates || []);
       // Gated children inherit the same gate.
@@ -1235,7 +1242,7 @@ function collectConditionalsGrouped(effects) {
         for (const child of effect.child_effects) {
           // Recurse but reattribute to the parent gate by collecting normally
           // and then folding into the same bucket.
-          const sub = collectConditionalsGrouped([child]);
+          const sub = collectConditionalsGrouped([child], powersetKey);
           for (const [, subg] of sub) {
             groups.get(gate.id).templates.push(...subg.templates);
           }
@@ -1243,7 +1250,7 @@ function collectConditionalsGrouped(effects) {
       }
     } else if (effect.child_effects?.length) {
       // Non-conditional branch with possibly-conditional descendants.
-      mergeSubGroups(collectConditionalsGrouped(effect.child_effects));
+      mergeSubGroups(collectConditionalsGrouped(effect.child_effects, powersetKey));
     }
   }
 
@@ -1277,10 +1284,55 @@ function _refineConditionalLabel(rawLabel, powerName, powersetKey) {
  * Adjuster candidate that the InfoPanel renders as a toggle, adding its
  * damage/effects on top of the base when the user enables it.
  */
+/**
+ * Scan a power's effects for base templates that use a *negated* state gate
+ * (RPN `... ownPower? !` form, etc.). Each one represents a base case that's
+ * mutually exclusive with a positively-gated conditional sibling — i.e. the
+ * conditional should be tagged `mode: 'replace'` so the merger swaps values
+ * rather than treating it as additive stacking.
+ *
+ * Returns a Set of canonicalized predicate strings (e.g. `Drowning target`)
+ * that the conditional emitter cross-references.
+ */
+function _collectBaseNegatedPredicates(effects) {
+  const negated = new Set();
+  function visit(eff) {
+    if (eff.is_pvp === 'PVP_ONLY') return;
+    const req = eff.requires_expression || '';
+    if (req) {
+      // Match `<dotted.power.name> <side>.ownPower? ... !` — the predicate
+      // followed (eventually) by a top-level `!`. Tokenize rather than
+      // regex-greedy so we catch chained gates like
+      // `enttype target> critter eq Drowning target.ownPower? ! &&`.
+      const tokens = req.trim().split(/\s+/);
+      // Find the last token that's `!` and walk back to find the predicate
+      // it negates (the nearest preceding `<X>.ownPower?` token).
+      for (let i = tokens.length - 1; i > 0; i--) {
+        if (tokens[i] !== '!') continue;
+        // Walk back to find the matching ownPower? token.
+        for (let j = i - 1; j >= 0; j--) {
+          const m = tokens[j].match(/^(target|source)\.ownPower\?$/);
+          if (m && j > 0) {
+            const predicate = `${tokens[j - 1]} ${m[1]}`;
+            negated.add(predicate.toLowerCase());
+            break;
+          }
+        }
+      }
+    }
+    for (const child of eff.child_effects || []) visit(child);
+  }
+  for (const eff of effects) visit(eff);
+  return negated;
+}
+
 function extractConditionalEffects(rawEffects, powerJson) {
   if (!rawEffects?.length) return undefined;
-  const groups = collectConditionalsGrouped(rawEffects);
+  const powersetKey = powerJson.powerset || powerJson.full_name;
+  const groups = collectConditionalsGrouped(rawEffects, powersetKey);
   if (groups.size === 0) return undefined;
+
+  const baseNegated = _collectBaseNegatedPredicates(rawEffects);
 
   const out = [];
   for (const [id, group] of groups) {
@@ -1294,16 +1346,100 @@ function extractConditionalEffects(rawEffects, powerJson) {
     if (!hasDamage && !hasEffects) continue;
 
     const refined = _refineConditionalLabel(group.label, group._powerName, powerJson.powerset || powerJson.full_name);
+
+    // Mode detection: if any base template in this power negates the same
+    // predicate this conditional checks (`<power> <side>.ownPower? !`),
+    // the two are mutex variants → 'replace'. Default 'additive' (omitted).
+    let mode;
+    if (group._powerName && group.side) {
+      const predicate = `${group._powerName} ${group.side}`.toLowerCase();
+      if (baseNegated.has(predicate)) mode = 'replace';
+    }
+
     const entry = {
       id,
       label: _applyLabelOverride(id, refined),
+      // Caster-state gates (`source.ownPower?`, `kStealth source>`,
+      // `Source.Mode?`, `kEngaged`) describe the player's own state and
+      // should toggle uniformly across every power that references them.
+      // Target-state gates (`target.ownPower?`) are per-cast/per-target.
+      scope: group.side === 'source' ? 'global' : 'per-power',
       defaultActive: false,
     };
+    if (mode) entry.mode = mode;
     if (hasDamage) entry.damage = damage;
     if (hasEffects) entry.effects = effects;
     out.push(entry);
   }
-  return out.length > 0 ? out : undefined;
+  if (out.length === 0) return undefined;
+
+  // Detect mutually-exclusive groups across the per-power conditional set.
+  // Heuristic: ids that share a recognizable suffix word (e.g. "adaptation"
+  // for Bio Armor's Defensive/Offensive/Rested, mode-tier suffix for combo
+  // levels, stack-count suffix for Tidal Power N stacks). Members of a
+  // group render as a radio in the UI.
+  _annotateConditionalGroups(out);
+  return out;
+}
+
+// Suffix tokens that, when shared by 2+ conditionals on the same power,
+// indicate a mutually-exclusive group. Keep this list curated rather than
+// auto-detected to avoid spurious groupings (e.g. two unrelated mechanics
+// happening to share the trailing word "Active").
+const GROUP_SUFFIXES = ['adaptation', 'combo'];
+
+function _annotateConditionalGroups(entries) {
+  // 1. Stack-count form: ids like `tidal_power-3` share stem `tidal_power`.
+  const stackStems = new Map(); // stem → [entry, ...]
+  for (const e of entries) {
+    const m = e.id.match(/^(.+?)-(\d+)$/);
+    if (m) {
+      const stem = m[1];
+      if (!stackStems.has(stem)) stackStems.set(stem, []);
+      stackStems.get(stem).push(e);
+    }
+  }
+  for (const [stem, members] of stackStems) {
+    if (members.length >= 2) {
+      for (const e of members) e.group = `${stem}-stacks`;
+    }
+  }
+
+  // 2. Suffix-word groups (e.g. Bio Armor adaptations).
+  for (const suffix of GROUP_SUFFIXES) {
+    const matches = entries.filter(e => !e.group && e.id.endsWith(suffix));
+    if (matches.length >= 2) {
+      for (const e of matches) e.group = suffix;
+    }
+  }
+
+  // 3. Combo Level N — ids like `combo_level_1`, `combo_level_2`, etc.
+  //    Detect via shared `_level_N` suffix on otherwise identical stems.
+  const levelStems = new Map();
+  for (const e of entries) {
+    if (e.group) continue;
+    const m = e.id.match(/^(.+?)_level_(\d+)$/);
+    if (m) {
+      const stem = m[1];
+      if (!levelStems.has(stem)) levelStems.set(stem, []);
+      levelStems.get(stem).push(e);
+    }
+  }
+  for (const [stem, members] of levelStems) {
+    if (members.length >= 2) {
+      for (const e of members) e.group = `${stem}-levels`;
+    }
+  }
+
+  // Grouped conditionals are inherently mutex (the radio enforces a
+  // single active member). When the active member's effects collide
+  // with base effect keys, replacement is the correct semantics — the
+  // selected mode swaps in for whatever default the base carried. Mark
+  // any grouped entry without an explicit mode as 'replace' unless an
+  // earlier pass already classified it.
+  for (const e of entries) {
+    if (e.group && !e.mode) e.mode = 'replace';
+  }
 }
 
 /**

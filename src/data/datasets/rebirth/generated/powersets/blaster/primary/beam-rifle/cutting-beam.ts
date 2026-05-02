@@ -67,6 +67,7 @@ export const CuttingBeam: Power = {
     {
       "id": "beam_rifle_debuff",
       "label": "Disintegrating",
+      "scope": "per-power",
       "defaultActive": false,
       "damage": {
         "type": "Energy",

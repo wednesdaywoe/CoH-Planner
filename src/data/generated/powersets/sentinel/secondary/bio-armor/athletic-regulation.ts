@@ -54,6 +54,7 @@ export const AthleticRegulation: Power = {
     {
       "id": "defensiveadaptation",
       "label": "Defensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "debuffResistance": {
@@ -66,11 +67,14 @@ export const AthleticRegulation: Power = {
           "debuffResistance": 2.25
         },
         "buffDuration": 2.25
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "offensiveadaptation",
       "label": "Offensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "movement": {
@@ -87,11 +91,14 @@ export const AthleticRegulation: Power = {
           "movement": 2.25
         },
         "buffDuration": 2.25
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "restedadaptation",
       "label": "Rested Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "movement": {
@@ -108,7 +115,9 @@ export const AthleticRegulation: Power = {
           "movement": 2.25
         },
         "buffDuration": 2.25
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     }
   ],
   "mechanicType": "parentMechanic"

@@ -41,6 +41,7 @@ export const BloodThirst: Power = {
     {
       "id": "savage_melee_blood_frenzy",
       "label": "Blood Frenzy",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

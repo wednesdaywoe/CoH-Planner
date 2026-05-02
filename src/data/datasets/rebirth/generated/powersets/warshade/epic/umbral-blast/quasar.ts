@@ -57,6 +57,7 @@ export const Quasar: Power = {
     {
       "id": "warshade_blaster_mode",
       "label": "Warshade Blaster Mode",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Negative",

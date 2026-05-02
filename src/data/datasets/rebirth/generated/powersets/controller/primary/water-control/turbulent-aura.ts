@@ -56,7 +56,9 @@ export const TurbulentAura: Power = {
     {
       "id": "water_control_drowning",
       "label": "Drowning",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Heal",
         "scale": 0.15,

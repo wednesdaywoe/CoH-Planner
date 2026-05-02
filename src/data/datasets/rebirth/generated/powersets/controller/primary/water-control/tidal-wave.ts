@@ -73,7 +73,9 @@ export const TidalWave: Power = {
     {
       "id": "water_control_drowning",
       "label": "Drowning",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Cold",
         "scale": 0.066667,

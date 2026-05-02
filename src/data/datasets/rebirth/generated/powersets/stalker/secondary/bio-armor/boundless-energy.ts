@@ -70,6 +70,7 @@ export const BoundlessEnergy: Power = {
     {
       "id": "defensiveadaptation",
       "label": "Defensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "maxHPBuff": {
@@ -80,11 +81,14 @@ export const BoundlessEnergy: Power = {
           "maxHPBuff": 5.25
         },
         "buffDuration": 5.25
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "restedadaptation",
       "label": "Rested Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "regenBuff": {
@@ -100,7 +104,9 @@ export const BoundlessEnergy: Power = {
           "table": "Melee_Ones"
         },
         "buffDuration": 5.25
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     }
   ],
   "mechanicType": "parentMechanic"

@@ -68,7 +68,9 @@ export const TimeLord: Power = {
     {
       "id": "temporal_selection_buff",
       "label": "Temporal Selection Buff",
+      "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "effects": {
         "rechargeBuff": {
           "scale": 0.1,

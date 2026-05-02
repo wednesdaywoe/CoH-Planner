@@ -180,6 +180,7 @@ export const Adaptation: Power = {
     {
       "id": "restedadaptation",
       "label": "Rested Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "regenBuff": {
@@ -195,11 +196,14 @@ export const Adaptation: Power = {
           "table": "Melee_Ones"
         },
         "buffDuration": 0.75
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "offensiveadaptation",
       "label": "Offensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "resistanceDebuff": {
@@ -240,11 +244,14 @@ export const Adaptation: Power = {
           "resistanceDebuff": 0.75
         },
         "buffDuration": 0.75
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     },
     {
       "id": "defensiveadaptation",
       "label": "Defensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "resistance": {
@@ -316,7 +323,9 @@ export const Adaptation: Power = {
           }
         },
         "buffDuration": 0.75
-      }
+      },
+      "group": "adaptation",
+      "mode": "replace"
     }
   ]
 };
