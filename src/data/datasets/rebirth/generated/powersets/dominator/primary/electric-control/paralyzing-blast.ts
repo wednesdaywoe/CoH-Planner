@@ -57,5 +57,19 @@ export const ParalyzingBlast: Power = {
       "recoveryDebuff": 8
     },
     "buffDuration": 8
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 12,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

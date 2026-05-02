@@ -68,5 +68,81 @@ export const SpinningStrike: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "combo_level_1",
+      "label": "Combo Level 1",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.8085,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Smashing",
+          "scale": 0.8085,
+          "table": "Melee_Damage"
+        }
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      }
+    },
+    {
+      "id": "combo_level_2",
+      "label": "Combo Level 2",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.8624,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Smashing",
+          "scale": 0.8624,
+          "table": "Melee_Damage"
+        }
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      }
+    },
+    {
+      "id": "combo_level_3",
+      "label": "Combo Level 3",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.9625,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Smashing",
+          "scale": 0.9625,
+          "table": "Melee_Damage"
+        }
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        },
+        "fear": {
+          "mag": 3,
+          "scale": 6,
+          "table": "Melee_Fear"
+        }
+      }
+    }
+  ]
 };

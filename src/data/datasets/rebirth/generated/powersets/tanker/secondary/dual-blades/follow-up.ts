@@ -79,5 +79,27 @@ export const BlindingFeint: Power = {
       "damageBuff",
       "tohitBuff"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "dd_statusmode_2",
+      "label": "DD Status Mode 2",
+      "defaultActive": false,
+      "effects": {
+        "tohitBuff": {
+          "scale": 0.33,
+          "table": "Melee_Buff_ToHit"
+        },
+        "durations": {
+          "tohitBuff": 10,
+          "damageBuff": 10
+        },
+        "damageBuff": {
+          "scale": 1,
+          "table": "Melee_Buff_Dmg"
+        },
+        "buffDuration": 10
+      }
+    }
+  ]
 };

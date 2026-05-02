@@ -69,5 +69,26 @@ export const ChronoShift: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 90
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "temporal_selection_buff",
+      "label": "Temporal Selection Buff",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Heal",
+          "scale": 1.8,
+          "table": "Ranged_Heal"
+        },
+        {
+          "type": "Heal",
+          "scale": 0.3,
+          "table": "Ranged_Heal",
+          "duration": 30,
+          "tickRate": 3
+        }
+      ]
+    }
+  ]
 };

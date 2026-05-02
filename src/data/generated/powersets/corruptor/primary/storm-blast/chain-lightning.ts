@@ -66,5 +66,27 @@ export const ChainLightning: Power = {
       "scale": 1.32,
       "table": "Ranged_EndDrain"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stormblast_instormcell",
+      "label": "StormBlast InStormCell",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 1.3527,
+        "table": "Ranged_PvPDamage"
+      },
+      "effects": {
+        "enduranceDrain": {
+          "scale": 0.66,
+          "table": "Ranged_EndDrain"
+        },
+        "durations": {
+          "enduranceDrain": 4.4
+        },
+        "buffDuration": 4.4
+      }
+    }
+  ]
 };

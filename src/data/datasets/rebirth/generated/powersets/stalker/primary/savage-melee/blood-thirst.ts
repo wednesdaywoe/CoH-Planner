@@ -36,5 +36,28 @@ export const BloodThirst: Power = {
     "type": "Heal",
     "scale": 1,
     "table": "Melee_HealSelf"
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "savage_melee_blood_frenzy_stalker",
+      "label": "Blood Frenzy Stalker",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Heal",
+          "scale": 1,
+          "table": "Melee_HealSelf",
+          "duration": 9.1,
+          "tickRate": 3
+        },
+        {
+          "type": "Heal",
+          "scale": 1,
+          "table": "Melee_HealSelf",
+          "duration": 12.1,
+          "tickRate": 3
+        }
+      ]
+    }
+  ]
 };

@@ -66,5 +66,102 @@ export const SkySplitter: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "perfection_of_body_level_3",
+      "label": "Perfection of Body Level 3",
+      "defaultActive": false,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.828,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "resistance": {
+          "smashing": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "fire": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "cold": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "energy": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "negative": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "psionic": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "toxic": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          }
+        },
+        "durations": {
+          "resistance": 15
+        },
+        "buffDuration": 15
+      }
+    },
+    {
+      "id": "perfection_of_mind_level_3",
+      "label": "Perfection of Mind Level 3",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.828,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "tohitBuff": {
+          "scale": 2,
+          "table": "Melee_Buff_ToHit"
+        },
+        "durations": {
+          "tohitBuff": 15
+        },
+        "buffDuration": 15
+      }
+    },
+    {
+      "id": "perfection_of_soul_level_3",
+      "label": "Perfection of Soul Level 3",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.828,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "regenBuff": {
+          "scale": 1.25,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "regenBuff": 15,
+          "recoveryBuff": 15
+        },
+        "recoveryBuff": {
+          "scale": 0.83,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 15
+      }
+    }
+  ]
 };

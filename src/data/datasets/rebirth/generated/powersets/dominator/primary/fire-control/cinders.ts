@@ -42,5 +42,31 @@ export const Cinders: Power = {
       "scale": 8,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 8,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    },
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 12,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

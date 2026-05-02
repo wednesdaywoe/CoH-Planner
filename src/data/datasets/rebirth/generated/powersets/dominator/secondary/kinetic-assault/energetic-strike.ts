@@ -49,5 +49,36 @@ export const EnergeticStrike: Power = {
       "scale": 1.246,
       "table": "Melee_Damage"
     }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "kinetic_assault_impulse",
+      "label": "Impulse",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 1,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 10,
+          "table": "Melee_Immobilize"
+        }
+      }
+    },
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Melee_Immobilize"
+        }
+      }
+    }
   ]
 };

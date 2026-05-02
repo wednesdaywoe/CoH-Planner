@@ -61,5 +61,17 @@ export const ChargedShot: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.246,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

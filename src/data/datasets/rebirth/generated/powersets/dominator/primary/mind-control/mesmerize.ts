@@ -50,5 +50,19 @@ export const Mesmerize: Power = {
       "scale": 30,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3.5,
+          "scale": 45,
+          "table": "Ranged_Sleep"
+        }
+      }
+    }
+  ]
 };

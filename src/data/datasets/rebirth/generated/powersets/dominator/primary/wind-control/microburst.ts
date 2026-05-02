@@ -58,5 +58,49 @@ export const Microburst: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 12,
+          "table": "Ranged_Stun"
+        }
+      }
+    },
+    {
+      "id": "wind_control_pressure-5",
+      "label": "Pressure (5 stacks)",
+      "defaultActive": false,
+      "effects": {
+        "defenseDebuff": {
+          "scale": 2,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 12
+        },
+        "buffDuration": 12
+      }
+    },
+    {
+      "id": "wind_control_pressure-6",
+      "label": "Pressure (6 stacks)",
+      "defaultActive": false,
+      "effects": {
+        "defenseDebuff": {
+          "scale": 2.5,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 12
+        },
+        "buffDuration": 12
+      }
+    }
+  ]
 };

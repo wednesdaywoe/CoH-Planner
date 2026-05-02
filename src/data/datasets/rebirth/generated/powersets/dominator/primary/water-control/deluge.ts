@@ -58,5 +58,19 @@ export const Deluge: Power = {
       "scale": 0.67,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "water_control_drowning",
+      "label": "Drowning",
+      "defaultActive": false,
+      "damage": {
+        "type": "Cold",
+        "scale": 0.11,
+        "table": "Ranged_Damage",
+        "duration": 1.1,
+        "tickRate": 0.5
+      }
+    }
+  ]
 };

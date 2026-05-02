@@ -58,5 +58,23 @@ export const AblatingStrike: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "dd_bonusaoemode_2",
+      "label": "DD Bonus Ao E Mode 2",
+      "defaultActive": false,
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.57,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      }
+    }
+  ]
 };

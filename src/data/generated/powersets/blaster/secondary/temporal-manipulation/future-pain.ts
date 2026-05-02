@@ -69,5 +69,19 @@ export const FuturePain: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "time_crawl_debuff",
+      "label": "Time Crawl Debuff",
+      "defaultActive": false,
+      "effects": {
+        "fear": {
+          "mag": 3,
+          "scale": 5,
+          "table": "Melee_Fear"
+        }
+      }
+    }
+  ]
 };

@@ -40,9 +40,18 @@ export const FullAuto: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.162,
+      "table": "Ranged_Damage",
+      "duration": 3.3,
+      "tickRate": 0.20000000298023224
+    }
+  ]
 };

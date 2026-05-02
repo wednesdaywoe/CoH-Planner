@@ -73,5 +73,112 @@ export const Geyser: Power = {
       "scale": 3,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "tidal_power-1",
+      "label": "Tidal Power (1 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Fire",
+          "scale": 0.1,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Fire",
+          "scale": 0.0784,
+          "table": "Ranged_PvPDamage"
+        },
+        {
+          "type": "Fire",
+          "scale": 0.1432,
+          "table": "Ranged_Damage",
+          "duration": 5.1,
+          "tickRate": 0.5
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 1,
+          "table": "Ranged_PvPMez"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-2",
+      "label": "Tidal Power (2 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Fire",
+          "scale": 0.24,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Fire",
+          "scale": 0.1882,
+          "table": "Ranged_PvPDamage"
+        },
+        {
+          "type": "Fire",
+          "scale": 0.1527,
+          "table": "Ranged_Damage",
+          "duration": 5.1,
+          "tickRate": 0.5
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 5,
+          "table": "Ranged_Stun"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-3",
+      "label": "Tidal Power (3 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Fire",
+          "scale": 0.5,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Fire",
+          "scale": 0.3921,
+          "table": "Ranged_PvPDamage"
+        },
+        {
+          "type": "Fire",
+          "scale": 0.1705,
+          "table": "Ranged_Damage",
+          "duration": 5.1,
+          "tickRate": 0.5
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 5,
+          "table": "Ranged_Stun"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-0",
+      "label": "Tidal Power (0 stacks)",
+      "defaultActive": false,
+      "damage": {
+        "type": "Fire",
+        "scale": 0.1364,
+        "table": "Ranged_Damage",
+        "duration": 5.1,
+        "tickRate": 0.5
+      }
+    }
+  ]
 };

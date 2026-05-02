@@ -69,5 +69,82 @@ export const GenomicEvolution: Power = {
     },
     "buffDuration": 5.25
   },
+  "conditionalEffects": [
+    {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "rangeBuff": {
+          "scale": 0.15,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "rangeBuff": 5.25
+        },
+        "buffDuration": 5.25
+      }
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "maxEndBuff": {
+          "scale": 5,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "maxEndBuff": 5.25
+        },
+        "buffDuration": 5.25
+      }
+    },
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "resistance": {
+          "smashing": {
+            "scale": 0.225,
+            "table": "Melee_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 0.225,
+            "table": "Melee_Res_Dmg"
+          },
+          "fire": {
+            "scale": 0.15,
+            "table": "Melee_Res_Dmg"
+          },
+          "cold": {
+            "scale": 0.15,
+            "table": "Melee_Res_Dmg"
+          },
+          "energy": {
+            "scale": 0.15,
+            "table": "Melee_Res_Dmg"
+          },
+          "negative": {
+            "scale": 0.15,
+            "table": "Melee_Res_Dmg"
+          },
+          "psionic": {
+            "scale": 0.18,
+            "table": "Melee_Res_Dmg"
+          },
+          "toxic": {
+            "scale": 0.3,
+            "table": "Melee_Res_Dmg"
+          }
+        },
+        "durations": {
+          "resistance": 5.25
+        },
+        "buffDuration": 5.25
+      }
+    }
+  ],
   "mechanicType": "parentMechanic"
 };

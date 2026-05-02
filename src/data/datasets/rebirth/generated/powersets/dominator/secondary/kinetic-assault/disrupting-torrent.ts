@@ -66,5 +66,17 @@ export const DisruptingTorrent: Power = {
       "regenBuff": 15
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "kinetic_assault_impulse",
+      "label": "Impulse",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 1,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

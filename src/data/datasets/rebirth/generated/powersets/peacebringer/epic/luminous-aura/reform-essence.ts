@@ -37,5 +37,17 @@ export const ReformEssence: Power = {
     "scale": 2.5,
     "table": "Melee_HealSelf"
   },
+  "conditionalEffects": [
+    {
+      "id": "peacebringer_tanker_mode",
+      "label": "Peacebringer Tanker Mode",
+      "defaultActive": false,
+      "damage": {
+        "type": "Heal",
+        "scale": 2.5,
+        "table": "Melee_SSHealSelf"
+      }
+    }
+  ],
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Sublimation ! && Inherent.Inherent.White_Dwarf_Sublimation ! &&"
 };

@@ -63,5 +63,19 @@ export const KeeningWinds: Power = {
     "stacksLinear": [
       "enduranceGain"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "confuse": {
+          "mag": 3,
+          "scale": 22.5,
+          "table": "Ranged_Fear"
+        }
+      }
+    }
+  ]
 };

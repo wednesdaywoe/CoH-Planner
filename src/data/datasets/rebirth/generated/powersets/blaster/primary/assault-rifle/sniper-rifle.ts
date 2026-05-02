@@ -63,5 +63,17 @@ export const SniperRifle: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "range_finder_mode",
+      "label": "Range Finder Mode",
+      "defaultActive": false,
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.313,
+        "table": "Ranged_TempDamage"
+      }
+    }
+  ]
 };

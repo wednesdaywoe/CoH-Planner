@@ -67,5 +67,22 @@ export const BoneSmasher: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "energy_store_assault",
+      "label": "Energy Store Assault",
+      "defaultActive": false,
+      "effects": {
+        "regenDebuff": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "regenDebuff": 15
+        },
+        "buffDuration": 15
+      }
+    }
+  ]
 };

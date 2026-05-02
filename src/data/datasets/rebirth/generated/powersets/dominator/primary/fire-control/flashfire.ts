@@ -54,5 +54,19 @@ export const Flashfire: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 12,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

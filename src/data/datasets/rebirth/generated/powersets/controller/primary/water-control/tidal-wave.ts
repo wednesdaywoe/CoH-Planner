@@ -68,5 +68,26 @@ export const TidalWave: Power = {
       "scale": 3,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "water_control_drowning",
+      "label": "Drowning",
+      "defaultActive": false,
+      "damage": {
+        "type": "Cold",
+        "scale": 0.066667,
+        "table": "Ranged_Damage",
+        "duration": 1.1,
+        "tickRate": 0.5
+      },
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 10,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

@@ -54,5 +54,28 @@ export const Hemorrhage: Power = {
       "duration": 4.1,
       "tickRate": 1
     }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "savage_melee_blood_frenzy",
+      "label": "Blood Frenzy",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Lethal",
+          "scale": 1,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Lethal",
+          "scale": 1,
+          "table": "Melee_Damage",
+          "duration": 5.1,
+          "tickRate": 1
+        }
+      ]
+    }
   ]
 };

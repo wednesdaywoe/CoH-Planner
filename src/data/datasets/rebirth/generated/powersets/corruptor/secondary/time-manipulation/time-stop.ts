@@ -49,5 +49,19 @@ export const TimeStop: Power = {
       "regenDebuff": 20
     },
     "buffDuration": 20
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "time_crawl_debuff",
+      "label": "Time Crawl Debuff",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 1,
+          "scale": 4,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

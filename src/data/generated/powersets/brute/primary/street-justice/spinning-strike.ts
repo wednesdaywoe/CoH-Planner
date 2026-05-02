@@ -71,5 +71,70 @@ export const SpinningStrike: Power = {
       "scale": 1.34,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "combo_level_1",
+      "label": "Combo Level 1",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.8085,
+          "table": "Melee_Damage",
+          "duration": 0.45,
+          "tickRate": 0.4000000059604645
+        },
+        {
+          "type": "Smashing",
+          "scale": 0.6355,
+          "table": "Melee_PvPDamage",
+          "duration": 0.45,
+          "tickRate": 0.4000000059604645
+        }
+      ]
+    },
+    {
+      "id": "combo_level_2",
+      "label": "Combo Level 2",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.8624,
+          "table": "Melee_Damage",
+          "duration": 0.45,
+          "tickRate": 0.4000000059604645
+        },
+        {
+          "type": "Smashing",
+          "scale": 0.6779,
+          "table": "Melee_PvPDamage",
+          "duration": 0.45,
+          "tickRate": 0.4000000059604645
+        }
+      ]
+    },
+    {
+      "id": "combo_level_3",
+      "label": "Combo Level 3",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.9625,
+          "table": "Melee_Damage",
+          "duration": 0.45,
+          "tickRate": 0.4000000059604645
+        },
+        {
+          "type": "Smashing",
+          "scale": 0.7566,
+          "table": "Melee_PvPDamage",
+          "duration": 0.45,
+          "tickRate": 0.4000000059604645
+        }
+      ]
+    }
+  ]
 };

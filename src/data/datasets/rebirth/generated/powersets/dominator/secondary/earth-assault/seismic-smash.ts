@@ -49,5 +49,19 @@ export const SeismicSmash: Power = {
       "scale": 8,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 1,
+          "scale": 12,
+          "table": "Melee_Immobilize"
+        }
+      }
+    }
+  ]
 };

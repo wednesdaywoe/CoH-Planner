@@ -63,5 +63,26 @@ export const EMPArrow: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "acidarrow_acidburn",
+      "label": "AcidArrow AcidBurn",
+      "defaultActive": false,
+      "effects": {
+        "enduranceDrain": {
+          "scale": 0.08,
+          "table": "Ranged_Ones"
+        },
+        "regenDebuff": {
+          "scale": 2,
+          "table": "Ranged_Ones"
+        },
+        "durations": {
+          "regenDebuff": 15
+        },
+        "buffDuration": 15
+      }
+    }
+  ]
 };

@@ -79,5 +79,19 @@ export const GravityDistortion: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 18,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

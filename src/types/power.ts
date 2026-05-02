@@ -548,8 +548,37 @@ export interface Power {
     stats: Partial<PowerStats>;
     damage: ScaledDamageEntry | ScaledDamageEntry[];
   };
+  /**
+   * State-gated bonus effects. Each entry corresponds to a Mechanic Adjuster
+   * toggle in the InfoPanel — when active, its `damage` and `effects` add on
+   * top of the power's base. Surfaces what the converter's
+   * `_isConditionalGate` filter strips from base damage / effects so the
+   * underlying mechanic (drowning bonus, Disintegration bonus, Domination
+   * boost, etc.) is still reachable.
+   *
+   * Source: per-template `requires_expression` gates classified by
+   * `_classifyConditionalGate` in convert-powerset.cjs.
+   */
+  conditionalEffects?: ConditionalEffect[];
   /** Mutually exclusive power(s) — picking this power prevents picking the listed internalNames */
   excludes?: string[];
+}
+
+/** A single state-gated bonus that the InfoPanel renders as a toggle. */
+export interface ConditionalEffect {
+  /** Stable identifier — derived from the gate (e.g. 'drowning',
+   *  'stealthed', 'disintegration'). Used for state persistence and
+   *  curated label overrides. */
+  id: string;
+  /** Human-readable label shown next to the toggle. */
+  label: string;
+  /** Whether the toggle starts on. Defaults to false; mechanics that fire
+   *  automatically (e.g. snipe Quick variant when in combat) may default true. */
+  defaultActive?: boolean;
+  /** Damage entries that apply on top of base damage when active. */
+  damage?: ScaledDamageEntry[] | ScaledDamageEntry;
+  /** Effect deltas that apply on top of base effects when active. */
+  effects?: PowerEffects;
 }
 
 // ============================================

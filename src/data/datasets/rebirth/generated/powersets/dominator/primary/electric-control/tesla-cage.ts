@@ -72,5 +72,19 @@ export const TeslaCage: Power = {
     "stacksLinear": [
       "enduranceGain"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 18,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

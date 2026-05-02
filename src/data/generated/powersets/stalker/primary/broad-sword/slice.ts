@@ -100,5 +100,24 @@ export const Slice: Power = {
     },
     "buffDuration": 15
   },
+  "conditionalEffects": [
+    {
+      "id": "rendingslicecooldown",
+      "label": "Rending Slice Cooldown",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Lethal",
+          "scale": 0.8654,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.8431,
+          "table": "Melee_PvPDamage"
+        }
+      ]
+    }
+  ],
   "requires": "Stalker_Melee.Broad_Sword.Boomerang_Slice !"
 };

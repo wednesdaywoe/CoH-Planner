@@ -911,10 +911,255 @@ function _tagCombatGated(template) {
  * conditional alternatives into the base damage (Suffocate showed
  * 0.275 + 0.069 + 0.178 = 0.521 per cast where it should show 0.275).
  */
+// Classify a positive state gate into a human-friendly { id, label } pair so
+// the conditional bonus can be surfaced as a Mechanic Adjuster toggle in the
+// InfoPanel. Returns null when no recognized gate is present.
+//
+// Patterns we recognize:
+//   - `<...> <PowerCategory.PowerSet.PowerName> target.ownPower? <...>`
+//     Power-presence check on target. The leaf segment of the dotted name is
+//     used as the id (snake_cased lowercase) and the prettified leaf as the
+//     label. We try to upgrade the label to the power's actual display_name
+//     when the registry is available — see _resolveConditionalLabel.
+//   - `<...> <X> source.ownPower? <...>` — same shape, caster-side.
+//   - `kStealth source>` — caster's stealth/hide attribute. Mapped to the
+//     'stealthed' id with label 'Stealthed'.
+//   - `kEngaged source.Mode?` / `Source.Mode?` — combat / mode toggles.
+//
+// Returns { id, label, side?: 'target' | 'source' } | null.
+// Gates we recognize but explicitly DON'T surface as Mechanic Adjusters
+// because they encode game-state constraints rather than toggleable
+// mechanics. Returns true when the gate should be skipped from the
+// `conditionalEffects` array entirely.
+function _isUntoggleableGate(req) {
+  if (!req) return false;
+  // RPN form of "kMeter > 0" — Stalker / Widow hide bonus damage.
+  // Already handled by the inherent toggle system, not surfaced here.
+  if (/\bkMeter\s+source>\s+0\s+>/.test(req)) return true;
+  // HP-percentage scaled proc: `kHitPoints% ... rand 100 * <`. The `rand`
+  // token is a proc dice roll; our base collectors filter literal `rand()`
+  // already but the actual binary syntax is `rand 100 *`.
+  if (/\brand\s+100\s+\*/.test(req)) return true;
+  // Target archetype / class checks (extra dmg vs minions, etc.) —
+  // not a player-toggleable state.
+  if (/\barch\s+target>\s+Class_/.test(req)) return true;
+  // Caster combat-level cutoff (some powers gate scaling on level).
+  if (/\bcombatlevel\s+source>/.test(req)) return true;
+  // Distance-based conditional (snipe range, etc.) — handled elsewhere.
+  if (/\bdistance\s+\d+\s+[<>]/.test(req)) return true;
+  // Target tag check (niche, e.g. "Electronic" enemy type).
+  if (/\.HasTag\?/.test(req)) return true;
+  // Held-target conditional (proc damage vs held foes). Could be an
+  // adjuster eventually but the existing planner doesn't expose this state
+  // and the values are typically tiny scourge-style procs.
+  if (/\bkHeld\s+target>\s+0\s+>/.test(req)) return true;
+  // Cur.kHitPoints conditionals (low-HP self-buffs etc.) — game-state.
+  if (/\bCur\.kHitPoints\s+target>\s+0\s+/.test(req)) return true;
+  if (/\bkHitPoints%\s+target>\s+0\s+>/.test(req)) return true;
+  // Mez-status checks on the target (kSleep, kStunned, etc.) — game-state.
+  if (/\bk(Sleep|Stunned|Confused|Held|Immobilized|Terrorized)\s+target>/.test(req)) return true;
+  // Caster mez-resistance threshold — used by buffs that fall off when the
+  // target is already heavily slowed/etc. Not user-toggleable.
+  if (/\bkMeter\s+target>\s+0?\.\d+\s+</.test(req)) return true;
+  // PvP-map conditional (already covered by Ranged_PvPDamage table filter).
+  if (/\bisPVPMap\?/.test(req)) return true;
+  // To-hit-roll conditionals (`@ToHitRoll @ToHit < / >=`) — internal hit
+  // chance branches, not a user knob.
+  if (/@ToHitRoll/.test(req)) return true;
+  // FX-only conditionals (CustomFX swaps for visual variants).
+  if (/@CustomFX/.test(req)) return true;
+  // Token-time / token-owned mechanics (Gravity Distortion's "lift/propel
+  // bonus on a recently-distorted target") — these layer on top of a
+  // separate power's effect, not toggleable independently.
+  if (/\.TokenTime>|\.TokenOwned\?/.test(req)) return true;
+  // Caster archetype / class scaling. Pool powers (Boxing, Cross Punch,
+  // Toxic Dart, etc.) carry per-AT damage variants gated on `arch source>
+  // Class_<AT>` — these aren't a user toggle, they're which-character-
+  // picked-the-power. The base collector picks the variant for the build's
+  // archetype via the AT_TABLES path; we don't surface alternates as
+  // adjusters.
+  if (/\barch\s+source>\s+[Cc]lass_/.test(req)) return true;
+  // NPC-specific gates: target villain name, target faction/friend checks,
+  // and self-target discriminators. None are player-toggleable.
+  if (/\.VillainName>/.test(req)) return true;
+  if (/\btarget\.isFriend\?/.test(req)) return true;
+  if (/\bentref\s+target>\s+entref\s+source>\s+eq/.test(req)) return true;
+  // Caster-side internal thresholds (ToHit roll, low-HP self-buff, hide
+  // base case where kMeter is below the hide threshold).
+  if (/\bcur\.kToHit\s+source>/i.test(req)) return true;
+  if (/\bkHitPoints%\s+source>/.test(req)) return true;
+  // RPN base-case form `kMeter source> .9 <` ("kMeter < 0.9" = NOT in hide).
+  // Semantically a negation but doesn't carry the literal `!` token, so the
+  // generic stripped-ends-with-! check misses it.
+  if (/\bkMeter\s+source>\s+\.\d+\s+</.test(req)) return true;
+  // Caster's pet-owner archetype scaling. Mastermind/Controller pets (Fallout,
+  // Enflame, etc.) carry per-owner-class damage variants. Same rationale as
+  // `arch source>`: not a player toggle, just which AT summoned the pet.
+  if (/\barch\s+source\.owner>\s+[Cc]lass_/.test(req)) return true;
+  // Caster endurance threshold (e.g. CoT critter "high-endurance" buff).
+  if (/\bkEndurance%\s+source>/.test(req)) return true;
+  // Costume / appearance gates (NPC disguise scripts).
+  if (/\bcostume\s+target>/.test(req)) return true;
+  // Target group membership (e.g. `group target> MastermindPets eq`) —
+  // categorizes targets, not a toggle.
+  if (/\bgroup\s+target>\s+\w+\s+eq/.test(req)) return true;
+  // Target untouchable / phased-out checks. Used by buffs that skip phased
+  // targets; not a player adjuster.
+  if (/\bcur\.kUntouchable\s+target>/i.test(req)) return true;
+  // Activate-attack event-count gates (Defiance / Battle Euphoria internals).
+  if (/\bActivateAttackClick\s+target\.EventCount>/.test(req)) return true;
+  // Reversed entref self-check (source vs target either order).
+  if (/\bentref\s+source>\s+entref\s+target>\s+eq/.test(req)) return true;
+  if (/\bentref\s+target\.owner>\s+entref\s+source>\s+eq/.test(req)) return true;
+  // Caster mez-state self-checks (caster is currently held / etc.).
+  if (/\bcur\.k(Held|Sleep|Stunned|Confused|Immobilized)\s+source>/i.test(req)) return true;
+  // Target-attacked event counts (Rage / Battle Euphoria internals).
+  if (/\bAttackedByOtherClick\s+target\.EventCount>/.test(req)) return true;
+  // Target rank gates (extra damage vs minion / lt / boss). Same family as
+  // `arch target> Class_*` — just a different categorization axis.
+  if (/\brank\s+target>\s+[Cc]lass_/.test(req)) return true;
+  // Defender Vigilance team-size scaling. Real adjuster candidate but the
+  // RPN form `0.0 source.TeamSize> N >` doesn't carry a per-step label,
+  // and Vigilance scales smoothly across the range. Treat as inherent for
+  // now; can promote to a slider later.
+  if (/\bsource\.TeamSize>/i.test(req)) return true;
+  // Rage / kRage source threshold (Original Domination mechanic, etc.) —
+  // these are caster-meter thresholds tracked by inherents. Skip until
+  // Original-Domination wiring is built explicitly.
+  if (/\bkRage\s+source>\s+\d+/.test(req)) return true;
+  // Composite caster mez-state checks (e.g. Mud Pots' "I'm not held AND
+  // not stunned AND not slept"). Internal failsafe for self-buffs.
+  if (/\bkHeld\s+source>\s+0\s+<=.*kStunned\s+source>/.test(req)) return true;
+  // Faction alignment gates (hero/vigilante/villain/rogue) — tutorial &
+  // debug objects. Not a player toggle.
+  if (/\balignment\s+target>\s+(hero|villain|vigilante|rogue)\s+eq/.test(req)) return true;
+  // NPC type / villain-class identity (`type target> X eq`). Same family
+  // as the existing `arch target>` skip.
+  if (/\btype\s+target>\s+\w+\s+eq/.test(req)) return true;
+  // Map / arena / zone gates — InsideArena, praetorianprogress, etc.
+  if (/\bInsideArena\b|\bpraetorianprogress\b|\.MapTeamArea>/.test(req)) return true;
+  // Account / authorization gates (vet rewards, store products, server
+  // availability) — not gameplay state.
+  if (/\bauth>|\.ProductOwned\?|\.isAccountServerAvailable\?/.test(req)) return true;
+  // Mission-script flags (DE Avatar's corruption-collapse beats).
+  if (/\bScriptMessage>/.test(req)) return true;
+  // HP-percentage threshold target gates (`kHitPoints% target> N >` with N>0).
+  // The N==0 form is already covered above; this catches `> 16 >`,
+  // `> 10 >`, etc. used by death-trigger procs.
+  if (/\bkHitPoints%\s+target>\s+\d+\s+>/.test(req)) return true;
+  // Pet caster-owner stealth check (Mastermind/Dominator pets that gain a
+  // bonus when the *owner* is stealthed). Skip — same family as the
+  // existing kStealth source> handler but routed through source.owner.
+  if (/\bkStealth\s+source\.owner>/.test(req)) return true;
+  return false;
+}
+
+function _classifyConditionalGate(req) {
+  if (!_isConditionalGate(req)) return null;
+  if (_isUntoggleableGate(req)) return null;
+
+  // Power-presence check: `<dotted.power.name> <side>.ownPower?` or
+  // `<dotted.power.name> <side>.ownPowerNum? N ==` (stack-count form).
+  // Note we use case-insensitive for the dotted name because
+  // `target.ownPower?` references can be lowercased like
+  // `temporary_powers.temporary_powers.tidal_power`.
+  const ownPowerMatch = req.match(
+    /([A-Za-z][A-Za-z0-9_]*(?:\.[A-Za-z0-9_]+){1,3})\s+(target|source)\.ownPower(?:Num)?\?/i
+  );
+  if (ownPowerMatch) {
+    const dotted = ownPowerMatch[1];
+    const side = ownPowerMatch[2];
+    const leaf = dotted.split('.').pop();
+    // ownPowerNum? + `N ==` form means "exactly N stacks" — append the
+    // stack count to the id so different stack-tier bonuses don't collapse.
+    const numMatch = req.match(
+      new RegExp(dotted.replace(/[.\\]/g, '\\$&') + '\\s+(?:target|source)\\.ownPowerNum\\?\\s+(\\d+)\\s+==', 'i')
+    );
+    const stackSuffix = numMatch ? `-${numMatch[1]}` : '';
+    return {
+      id: (leaf.toLowerCase() + stackSuffix),
+      label: _prettifyLeaf(leaf) + (numMatch ? ` (${numMatch[1]} stacks)` : ''),
+      side,
+      _powerName: dotted,
+    };
+  }
+  // Stealth/hide attribute on caster
+  if (/kStealth\s+source>/.test(req)) {
+    return { id: 'stealthed', label: 'Stealthed', side: 'source' };
+  }
+  // Snipe-style "kEngaged" combat-mode test
+  if (/kEngaged/.test(req)) {
+    return { id: 'in-combat', label: 'In Combat', side: 'source' };
+  }
+  // Generic mode toggle on either side: `k<Name> {Source|source|Target|target}.Mode?`
+  // HC uses `Source.Mode?` (capital-S); Rebirth uses `source.mode?`. Same
+  // semantics, so match case-insensitively. Covers Bio Armor adaptations,
+  // Dual Blades combo, Wind Control's Clear Skies, DE Avatar Infection
+  // target states, etc.
+  const modeMatch = req.match(/\bk([A-Za-z][A-Za-z0-9_]*?)\s+(Source|source|Target|target)\.[Mm]ode\?/);
+  if (modeMatch) {
+    const raw = modeMatch[1];
+    return {
+      id: raw.toLowerCase(),
+      label: _splitCamelOrUnderscore(raw),
+      side: modeMatch[2].toLowerCase(),
+    };
+  }
+  // Generic catch-all for any remaining positive gate so we don't drop data —
+  // label it 'Conditional' and let downstream curation rename if needed.
+  return { id: 'conditional', label: 'Conditional', side: null };
+}
+
+function _splitCamelOrUnderscore(s) {
+  // `OffensiveAdaptation` → `Offensive Adaptation`
+  // `DD_StatusMode_2` → `DD Status Mode 2`
+  // `BonusAoEMode_2` → `Bonus AoE Mode 2` (preserves embedded all-caps tokens
+  // like AoE / DoT — naive (lower)(upper) split would yield "Ao E Mode")
+  return s
+    .replace(/_/g, ' ')
+    .replace(/([a-z\d])([A-Z])/g, '$1 $2')        // bonusAoE → bonus AoE? wait — see next
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')    // splits the END of an acronym from the next CamelWord
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Curated label overrides for gates where the auto-derived label reads
+// poorly. Keyed by `id` so they survive across regenerations. The id is
+// derived from the gate's leaf name (lowercased) — see _classifyConditionalGate.
+const CONDITIONAL_LABEL_OVERRIDES = {
+  // Beam Rifle's Disintegration debuff — the gate references the internal
+  // `Beam_Rifle_Debuff` power name. Strip-prefix yields just "Debuff" which
+  // doesn't communicate the mechanic.
+  beam_rifle_debuff: 'Disintegrating',
+  // Title-case for power-name leaves that ended up lowercase (rare —
+  // happens when the gate uses a lowercased dotted name like
+  // `temporary_powers.temporary_powers.tidal_power`).
+  tidal_power: 'Tidal Power',
+};
+
+function _applyLabelOverride(id, label) {
+  // Stack-count form appends `-<N>` to the id (e.g. `tidal_power-3`); look
+  // up the base id and append the suffix back to the override label.
+  const stackMatch = id.match(/^(.+?)-(\d+)$/);
+  const base = stackMatch ? stackMatch[1] : id;
+  const override = CONDITIONAL_LABEL_OVERRIDES[base];
+  if (!override) return label;
+  return stackMatch ? `${override} (${stackMatch[2]} stacks)` : override;
+}
+
+function _prettifyLeaf(leaf) {
+  return leaf.replace(/_/g, ' ');
+}
+
 function _isConditionalGate(req) {
   if (!req || !req.trim()) return false;
+  // Bare RPN `1` is an always-true sentinel some powers carry as a no-op
+  // gate. Treat as the base case.
+  if (req.trim() === '1') return false;
   const stripped = req
-    .replace(/enttype target> (critter|player) eq/g, '')
+    // Case-insensitive strip for `enttype target> {critter|player} eq` —
+    // the binary occasionally emits `Enttype` with a capital E.
+    .replace(/enttype target> (critter|player) eq/gi, '')
     .replace(/\s+(&&|\|\|)\s+/g, ' ')
     .replace(/^\s*(&&|\|\|)\s*/, '')
     .replace(/\s*(&&|\|\|)\s*$/, '')
@@ -926,6 +1171,139 @@ function _isConditionalGate(req) {
   // a bonus when target IS drowning).
   if (stripped.endsWith('!')) return false;
   return true;
+}
+
+/**
+ * Walk the effect tree and collect templates from positively-gated branches,
+ * grouped by gate id. Mirrors the existing collectAllTemplates / collectTemplatesDeep
+ * logic but inverts the filter: where those skip conditional gates, this one
+ * captures them.
+ *
+ * Returns Map<gateId, { label, side, _powerName?, templates }>.
+ *
+ * Skips the same un-shippable cases the base collectors skip (PvP-only,
+ * chance=0, kHitPoints==0 / kMeter / rand() — those represent inherent
+ * mechanics handled by the existing toggle system, not surfaced as
+ * Mechanic Adjusters).
+ */
+function collectConditionalsGrouped(effects) {
+  const groups = new Map();
+
+  function pushTemplates(gate, templates) {
+    if (!groups.has(gate.id)) {
+      groups.set(gate.id, {
+        label: gate.label,
+        side: gate.side,
+        _powerName: gate._powerName,
+        templates: [],
+      });
+    }
+    groups.get(gate.id).templates.push(...templates);
+  }
+
+  function mergeSubGroups(sub) {
+    for (const [id, subg] of sub) {
+      if (!groups.has(id)) groups.set(id, subg);
+      else groups.get(id).templates.push(...subg.templates);
+    }
+  }
+
+  function visit(effect) {
+    if (effect.is_pvp === 'PVP_ONLY') return;
+    if (effect.chance === 0 || effect.chance === 0.0) return;
+    if (effect.tags && effect.tags.includes('Containment')) return;
+
+    const req = effect.requires_expression;
+    if (req) {
+      // Existing inherent-mechanic gates aren't conditionals to surface.
+      if (req.includes('kHitPoints == 0')) return;
+      if (req.includes('kMeter > 0') || req.includes('kMeter >=')) return;
+      if (req.includes('rand()')) return;
+      // Note: Mode-based gates (Source.Mode? / kMode) intentionally pass
+      // through here. They're real Mechanic Adjuster candidates (Bio Armor
+      // adaptations, Dual Blades combo, etc.) and `_classifyConditionalGate`
+      // turns them into useful labels. The base collectors continue to skip
+      // them so the bonus doesn't fold into base damage.
+      if (_isOutOfCombatGate(req)) return;
+    }
+
+    const gate = req ? _classifyConditionalGate(req) : null;
+    if (gate) {
+      pushTemplates(gate, effect.templates || []);
+      // Gated children inherit the same gate.
+      if (effect.child_effects?.length) {
+        for (const child of effect.child_effects) {
+          // Recurse but reattribute to the parent gate by collecting normally
+          // and then folding into the same bucket.
+          const sub = collectConditionalsGrouped([child]);
+          for (const [, subg] of sub) {
+            groups.get(gate.id).templates.push(...subg.templates);
+          }
+        }
+      }
+    } else if (effect.child_effects?.length) {
+      // Non-conditional branch with possibly-conditional descendants.
+      mergeSubGroups(collectConditionalsGrouped(effect.child_effects));
+    }
+  }
+
+  for (const effect of effects) visit(effect);
+  return groups;
+}
+
+/**
+ * Refine a gate's auto-derived label using context. Strips a matching
+ * powerset-name prefix from the leaf (e.g. `Water_Control_Drowning` becomes
+ * `Drowning` when emitted on a Water Control power).
+ */
+function _refineConditionalLabel(rawLabel, powerName, powersetKey) {
+  if (!rawLabel) return rawLabel;
+  if (powersetKey) {
+    // powersetKey is like "Dominator_Control.Water_Control" — last segment is
+    // the powerset name with the same word style as the gate's leaf.
+    const psLeaf = powersetKey.split('.').pop().toLowerCase();
+    const labelLower = rawLabel.toLowerCase().replace(/\s+/g, '_');
+    if (labelLower.startsWith(psLeaf + '_')) {
+      const stripped = rawLabel.slice(psLeaf.length + 1);
+      // Title-case lightly: keep first letter capitalized, rest unchanged.
+      return stripped.charAt(0).toUpperCase() + stripped.slice(1);
+    }
+  }
+  return rawLabel;
+}
+
+/**
+ * Build the per-power `conditionalEffects` array. Each entry is a Mechanic
+ * Adjuster candidate that the InfoPanel renders as a toggle, adding its
+ * damage/effects on top of the base when the user enables it.
+ */
+function extractConditionalEffects(rawEffects, powerJson) {
+  if (!rawEffects?.length) return undefined;
+  const groups = collectConditionalsGrouped(rawEffects);
+  if (groups.size === 0) return undefined;
+
+  const out = [];
+  for (const [id, group] of groups) {
+    const damage = extractDamage(group.templates);
+    const effects = extractEffects(group.templates, powerJson.name);
+
+    // Skip empty groups — a gated effect we couldn't classify into either
+    // damage or recognized effects shouldn't pollute the array.
+    const hasDamage = damage !== undefined;
+    const hasEffects = effects && Object.keys(effects).length > 0;
+    if (!hasDamage && !hasEffects) continue;
+
+    const refined = _refineConditionalLabel(group.label, group._powerName, powerJson.powerset || powerJson.full_name);
+    const entry = {
+      id,
+      label: _applyLabelOverride(id, refined),
+      defaultActive: false,
+    };
+    if (hasDamage) entry.damage = damage;
+    if (hasEffects) entry.effects = effects;
+    out.push(entry);
+  }
+  return out.length > 0 ? out : undefined;
 }
 
 /**
@@ -2189,6 +2567,15 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
 
     if (Object.keys(effects).length) power.effects = effects;
 
+  }
+
+  // Conditional bonus effects (Mechanic Adjusters). These are positive state
+  // gates the base collectors silently filtered out (drowning bonus, Domination
+  // boost, Disintegration bonus damage, etc.). Each emits a toggle in the
+  // InfoPanel that adds its damage/effects on top of the base when active.
+  if (powerJson.effects?.length) {
+    const conditional = extractConditionalEffects(powerJson.effects, powerJson);
+    if (conditional) power.conditionalEffects = conditional;
   }
 
   // Snipe powers ship two redirect targets — Normal (charged, slower cast,

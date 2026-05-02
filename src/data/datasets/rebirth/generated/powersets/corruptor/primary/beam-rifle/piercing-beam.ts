@@ -84,5 +84,17 @@ export const PiercingBeam: Power = {
       "resistanceDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.7161,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

@@ -67,5 +67,31 @@ export const GreaterPsiBlade: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "psionic_melee_insight",
+      "label": "Insight",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Psionic",
+          "scale": 1.656,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Psionic",
+          "scale": 1.65,
+          "table": "Melee_PvPDamage"
+        }
+      ],
+      "effects": {
+        "hold": {
+          "mag": 1,
+          "scale": 8,
+          "table": "Melee_Stun"
+        }
+      }
+    }
+  ]
 };

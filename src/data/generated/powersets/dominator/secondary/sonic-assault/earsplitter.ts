@@ -67,5 +67,19 @@ export const Earsplitter: Power = {
       "scale": 5,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 1,
+          "scale": 7.5,
+          "table": "Melee_Immobilize"
+        }
+      }
+    }
+  ]
 };

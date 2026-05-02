@@ -93,5 +93,57 @@ export const AcidArrow: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "buffDuration": 20
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "flasharrow_dazzled",
+      "label": "FlashArrow Dazzled",
+      "defaultActive": false,
+      "effects": {
+        "resistanceDebuff": {
+          "smashing": {
+            "scale": 0.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 0.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "fire": {
+            "scale": 0.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "cold": {
+            "scale": 0.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "energy": {
+            "scale": 0.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "negative": {
+            "scale": 0.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "psionic": {
+            "scale": 0.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "toxic": {
+            "scale": 0.6,
+            "table": "Ranged_Res_Dmg"
+          }
+        },
+        "durations": {
+          "resistanceDebuff": 20,
+          "defenseDebuff": 20
+        },
+        "defenseDebuff": {
+          "scale": 0.4,
+          "table": "Ranged_Debuff_Def"
+        },
+        "buffDuration": 20
+      }
+    }
+  ]
 };

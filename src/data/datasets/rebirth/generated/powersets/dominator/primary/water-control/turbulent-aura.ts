@@ -51,5 +51,27 @@ export const TurbulentAura: Power = {
       "knockback": 1
     },
     "buffDuration": 1
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "water_control_drowning",
+      "label": "Drowning",
+      "defaultActive": false,
+      "damage": {
+        "type": "Heal",
+        "scale": 0.15,
+        "table": "Ranged_HealSelf"
+      },
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Ranged_Ones"
+        },
+        "durations": {
+          "knockback": 1
+        },
+        "buffDuration": 1
+      }
+    }
+  ]
 };

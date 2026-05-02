@@ -49,5 +49,19 @@ export const PsychicShockwave: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 2,
+          "scale": 9,
+          "table": "Melee_Stun"
+        }
+      }
+    }
+  ]
 };

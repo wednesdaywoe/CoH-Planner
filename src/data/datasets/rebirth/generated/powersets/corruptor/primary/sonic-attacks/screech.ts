@@ -95,5 +95,17 @@ export const Screech: Power = {
       "resistanceDebuff": 12
     },
     "buffDuration": 12
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.2,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

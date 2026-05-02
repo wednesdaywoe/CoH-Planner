@@ -56,5 +56,19 @@ export const BoneSmasher: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 12,
+          "table": "Melee_Stun"
+        }
+      }
+    }
+  ]
 };

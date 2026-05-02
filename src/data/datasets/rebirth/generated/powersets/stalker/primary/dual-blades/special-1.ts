@@ -65,5 +65,19 @@ export const VengefulSlice: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "dd_bonusdotmode_2",
+      "label": "DD Bonus Do T Mode 2",
+      "defaultActive": false,
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.2,
+        "table": "Melee_Damage",
+        "duration": 4.1,
+        "tickRate": 1
+      }
+    }
+  ]
 };

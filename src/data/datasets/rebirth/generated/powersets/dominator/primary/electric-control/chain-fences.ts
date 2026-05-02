@@ -66,5 +66,19 @@ export const ChainFences: Power = {
       "recoveryDebuff": 6
     },
     "buffDuration": 6
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "immobilize": {
+          "mag": 3,
+          "scale": 22.5,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

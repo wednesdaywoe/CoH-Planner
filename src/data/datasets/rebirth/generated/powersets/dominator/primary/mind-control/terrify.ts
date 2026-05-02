@@ -57,5 +57,19 @@ export const Terrify: Power = {
       "scale": 15,
       "table": "Ranged_Fear"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "fear": {
+          "mag": 3,
+          "scale": 22.5,
+          "table": "Ranged_Fear"
+        }
+      }
+    }
+  ]
 };

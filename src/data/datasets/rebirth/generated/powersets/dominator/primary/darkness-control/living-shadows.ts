@@ -83,5 +83,19 @@ export const LivingShadows: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "immobilize": {
+          "mag": 3,
+          "scale": 22.5,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

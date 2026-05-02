@@ -65,5 +65,87 @@ export const WaterBurst: Power = {
       "scale": 0.5195,
       "table": "Ranged_PvPDamage"
     }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "tidal_power-1",
+      "label": "Tidal Power (1 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Cold",
+          "scale": 0.045,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Cold",
+          "scale": 0.0346,
+          "table": "Ranged_PvPDamage"
+        }
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 1.34,
+          "table": "Ranged_Ones"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-2",
+      "label": "Tidal Power (2 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Cold",
+          "scale": 0.108,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Cold",
+          "scale": 0.0831,
+          "table": "Ranged_PvPDamage"
+        }
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 1.34,
+          "table": "Ranged_Ones"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-3",
+      "label": "Tidal Power (3 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Cold",
+          "scale": 0.225,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Cold",
+          "scale": 0.1732,
+          "table": "Ranged_PvPDamage"
+        }
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 1.34,
+          "table": "Ranged_Ones"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-0",
+      "label": "Tidal Power (0 stacks)",
+      "defaultActive": false,
+      "effects": {
+        "knockback": {
+          "scale": 1.34,
+          "table": "Ranged_Ones"
+        }
+      }
+    }
   ]
 };

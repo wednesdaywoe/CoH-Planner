@@ -58,5 +58,27 @@ export const EssenceBoost: Power = {
     "stacksLinear": [
       "maxHPBuff"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "peacebringer_tanker_mode",
+      "label": "Peacebringer Tanker Mode",
+      "defaultActive": false,
+      "damage": {
+        "type": "Heal",
+        "scale": 4,
+        "table": "Melee_SSHealSelf"
+      },
+      "effects": {
+        "maxHPBuff": {
+          "scale": 4,
+          "table": "Melee_SSHealSelf"
+        },
+        "durations": {
+          "maxHPBuff": 120
+        },
+        "buffDuration": 120
+      }
+    }
+  ]
 };

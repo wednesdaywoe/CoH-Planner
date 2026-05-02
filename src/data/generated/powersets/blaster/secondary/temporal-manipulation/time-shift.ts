@@ -57,5 +57,19 @@ export const TimeShift: Power = {
       "damageBuff": 9.53
     },
     "buffDuration": 9.53
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "time_crawl_debuff",
+      "label": "Time Crawl Debuff",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 1,
+          "scale": 4,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

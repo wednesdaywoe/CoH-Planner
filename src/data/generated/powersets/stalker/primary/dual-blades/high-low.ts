@@ -78,5 +78,22 @@ export const OneThousandCuts: Power = {
       "scale": 1.34,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "dd_debuffmode_2",
+      "label": "DD Debuff Mode 2",
+      "defaultActive": false,
+      "effects": {
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 20
+        },
+        "buffDuration": 20
+      }
+    }
+  ]
 };

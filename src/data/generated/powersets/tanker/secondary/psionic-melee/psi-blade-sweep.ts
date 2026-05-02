@@ -77,5 +77,26 @@ export const PsiBladeSweep: Power = {
       "scale": 5,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "psionic_melee_insight",
+      "label": "Insight",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.1858,
+        "table": "Melee_Damage",
+        "duration": 2.1,
+        "tickRate": 1
+      },
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 5,
+          "table": "Melee_Stun"
+        }
+      }
+    }
+  ]
 };

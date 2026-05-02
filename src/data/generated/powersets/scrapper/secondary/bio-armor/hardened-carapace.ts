@@ -66,5 +66,62 @@ export const HardenedCarapace: Power = {
       "table": "Melee_Res_Boolean"
     },
     "buffDuration": 0.75
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "resistance": {
+          "smashing": {
+            "scale": 0.75,
+            "table": "Melee_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 0.75,
+            "table": "Melee_Res_Dmg"
+          },
+          "toxic": {
+            "scale": 0.75,
+            "table": "Melee_Res_Dmg"
+          }
+        },
+        "durations": {
+          "resistance": 0.75
+        },
+        "buffDuration": 0.75
+      }
+    },
+    {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "damageBuff": {
+          "scale": 2.5,
+          "table": "Melee_Buff_Dmg"
+        },
+        "durations": {
+          "damageBuff": 0.75
+        },
+        "buffDuration": 0.75
+      }
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "enduranceDiscount": {
+          "scale": 0.25,
+          "table": "Melee_Stun"
+        },
+        "durations": {
+          "enduranceDiscount": 0.75
+        },
+        "buffDuration": 0.75
+      }
+    }
+  ]
 };

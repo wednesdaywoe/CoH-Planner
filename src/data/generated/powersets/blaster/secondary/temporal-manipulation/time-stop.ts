@@ -59,5 +59,19 @@ export const TimeStop: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "time_crawl_debuff",
+      "label": "Time Crawl Debuff",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 1,
+          "scale": 3,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

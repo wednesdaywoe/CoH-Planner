@@ -54,5 +54,19 @@ export const DarkGrasp: Power = {
       "scale": 12,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 18,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

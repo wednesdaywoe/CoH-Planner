@@ -57,5 +57,24 @@ export const ChargedShot: Power = {
       "scale": 1.34,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Energy",
+          "scale": 0.246,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Energy",
+          "scale": 0.2833,
+          "table": "Ranged_PvPDamage"
+        }
+      ]
+    }
+  ]
 };

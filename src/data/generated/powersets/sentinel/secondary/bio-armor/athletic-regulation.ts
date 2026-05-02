@@ -50,5 +50,66 @@ export const AthleticRegulation: Power = {
     },
     "buffDuration": 2.25
   },
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "debuffResistance": {
+          "movement": {
+            "scale": 0.4,
+            "table": "Melee_Ones"
+          }
+        },
+        "durations": {
+          "debuffResistance": 2.25
+        },
+        "buffDuration": 2.25
+      }
+    },
+    {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "movement": {
+          "runSpeed": {
+            "scale": 0.14,
+            "table": "Melee_Ones"
+          },
+          "flySpeed": {
+            "scale": 0.14,
+            "table": "Melee_Ones"
+          }
+        },
+        "durations": {
+          "movement": 2.25
+        },
+        "buffDuration": 2.25
+      }
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "movement": {
+          "runSpeed": {
+            "scale": 0.33,
+            "table": "Melee_Ones"
+          },
+          "flySpeed": {
+            "scale": 0.33,
+            "table": "Melee_Ones"
+          }
+        },
+        "durations": {
+          "movement": 2.25
+        },
+        "buffDuration": 2.25
+      }
+    }
+  ],
   "mechanicType": "parentMechanic"
 };

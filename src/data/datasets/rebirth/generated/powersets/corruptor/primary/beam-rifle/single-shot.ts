@@ -49,5 +49,22 @@ export const SingleShot: Power = {
       "scale": 0.67,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "defaultActive": false,
+      "effects": {
+        "regenDebuff": {
+          "scale": 0.75,
+          "table": "Ranged_Ones"
+        },
+        "durations": {
+          "regenDebuff": 10
+        },
+        "buffDuration": 10
+      }
+    }
+  ]
 };

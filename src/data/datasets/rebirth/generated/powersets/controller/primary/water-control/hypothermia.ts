@@ -52,5 +52,24 @@ export const Hypothermia: Power = {
       "sleep": 15.1
     },
     "buffDuration": 15.1
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "water_control_drowning",
+      "label": "Drowning",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3,
+          "scale": 4,
+          "table": "Ranged_Sleep"
+        },
+        "effectDuration": 15.1,
+        "durations": {
+          "sleep": 15.1
+        },
+        "buffDuration": 15.1
+      }
+    }
+  ]
 };

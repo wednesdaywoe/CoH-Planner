@@ -81,5 +81,19 @@ export const StonePrison: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "immobilize": {
+          "mag": 4,
+          "scale": 22.5,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

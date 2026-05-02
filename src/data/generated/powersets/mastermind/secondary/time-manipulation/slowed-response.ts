@@ -83,5 +83,57 @@ export const SlowedResponse: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "buffDuration": 30
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "time_crawl_debuff",
+      "label": "Time Crawl Debuff",
+      "defaultActive": false,
+      "effects": {
+        "resistanceDebuff": {
+          "smashing": {
+            "scale": 3.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 3.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "fire": {
+            "scale": 3.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "cold": {
+            "scale": 3.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "energy": {
+            "scale": 3.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "negative": {
+            "scale": 3.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "psionic": {
+            "scale": 3.6,
+            "table": "Ranged_Res_Dmg"
+          },
+          "toxic": {
+            "scale": 3.6,
+            "table": "Ranged_Res_Dmg"
+          }
+        },
+        "durations": {
+          "resistanceDebuff": 30,
+          "defenseDebuff": 30
+        },
+        "defenseDebuff": {
+          "scale": 2.5,
+          "table": "Ranged_Debuff_Def"
+        },
+        "buffDuration": 30
+      }
+    }
+  ]
 };

@@ -47,5 +47,37 @@ export const AblativeCarapace: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 30
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "absorb": {
+          "scale": 1,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "absorb": 30
+        },
+        "buffDuration": 30
+      }
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "regenBuff": {
+          "scale": 0.3,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "regenBuff": 30
+        },
+        "buffDuration": 30
+      }
+    }
+  ]
 };

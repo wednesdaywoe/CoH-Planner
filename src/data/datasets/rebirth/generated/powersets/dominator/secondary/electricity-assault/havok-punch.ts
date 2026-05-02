@@ -75,5 +75,19 @@ export const HavocPunch: Power = {
       "recoveryDebuff": 4
     },
     "buffDuration": 4
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3,
+          "scale": 22.5,
+          "table": "Melee_Sleep"
+        }
+      }
+    }
+  ]
 };

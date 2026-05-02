@@ -73,5 +73,57 @@ export const ParasiticLeech: Power = {
       "recoveryBuff",
       "regenBuff"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "regenDebuff": {
+          "scale": 2.6,
+          "table": "Melee_Res_Boolean"
+        },
+        "durations": {
+          "regenDebuff": 30
+        },
+        "buffDuration": 30
+      }
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "recoveryBuff": {
+          "scale": 0.129,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "recoveryBuff": 45,
+          "regenBuff": 45
+        },
+        "regenBuff": {
+          "scale": 0.214,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 45
+      }
+    },
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "absorb": {
+          "scale": 0.043,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "absorb": 45
+        },
+        "buffDuration": 45
+      }
+    }
+  ]
 };

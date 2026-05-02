@@ -64,5 +64,38 @@ export const Suffocate: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "water_control_drowning",
+      "label": "Drowning",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Cold",
+          "scale": 0.06875,
+          "table": "Ranged_Damage",
+          "duration": 3.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Cold",
+          "scale": 0.212624,
+          "table": "Ranged_Damage",
+          "duration": 3.1,
+          "tickRate": 1
+        }
+      ],
+      "effects": {
+        "defenseDebuff": {
+          "scale": 1.875,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 10
+        },
+        "buffDuration": 10
+      }
+    }
+  ]
 };

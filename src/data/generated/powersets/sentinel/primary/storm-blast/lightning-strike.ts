@@ -57,5 +57,19 @@ export const LightningStrike: Power = {
       "scale": 0.1,
       "table": "Ranged_EndDrain"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stormblast_instormcell",
+      "label": "StormBlast InStormCell",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 2,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

@@ -50,5 +50,19 @@ export const Subdue: Power = {
       "scale": 6,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "immobilize": {
+          "mag": 3,
+          "scale": 9,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

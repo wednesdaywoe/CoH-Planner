@@ -66,5 +66,42 @@ export const ParasiticAura: Power = {
       "recoveryBuff",
       "regenBuff"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "recoveryBuff": {
+          "scale": 0.125,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "recoveryBuff": 45,
+          "regenBuff": 45
+        },
+        "regenBuff": {
+          "scale": 0.15,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 45
+      }
+    },
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "absorb": {
+          "scale": 1.033,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "absorb": 45
+        },
+        "buffDuration": 45
+      }
+    }
+  ]
 };

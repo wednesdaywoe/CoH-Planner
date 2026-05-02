@@ -74,5 +74,17 @@ export const TemporalMending: Power = {
       "debuffResistance": 30
     },
     "buffDuration": 30
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "temporal_selection_buff",
+      "label": "Temporal Selection Buff",
+      "defaultActive": false,
+      "damage": {
+        "type": "Heal",
+        "scale": 1.125,
+        "table": "Ranged_Heal"
+      }
+    }
+  ]
 };

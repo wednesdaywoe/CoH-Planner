@@ -50,5 +50,17 @@ export const LancerShot: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.424,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

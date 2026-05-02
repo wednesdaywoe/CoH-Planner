@@ -58,5 +58,24 @@ export const KineticShockwave: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "kinetic_assault_impulse",
+      "label": "Impulse",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 1,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 9,
+          "table": "Melee_Immobilize"
+        }
+      }
+    }
+  ]
 };

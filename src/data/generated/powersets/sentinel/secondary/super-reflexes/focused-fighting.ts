@@ -59,5 +59,38 @@ export const FocusedFighting: Power = {
       }
     },
     "buffDuration": 0.75
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "master_brawler",
+      "label": "Master Brawler",
+      "defaultActive": false,
+      "effects": {
+        "mezResistance": {
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          }
+        },
+        "durations": {
+          "mezResistance": 0.75,
+          "knockup": 0.75,
+          "knockback": 0.75
+        },
+        "knockup": {
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "knockback": {
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 0.75
+      }
+    }
+  ]
 };

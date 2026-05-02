@@ -66,5 +66,42 @@ export const Inexhaustible: Power = {
     },
     "buffDuration": 5.25
   },
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "maxHPBuff": {
+          "scale": 0.45,
+          "table": "Melee_HealSelf"
+        },
+        "durations": {
+          "maxHPBuff": 5.25
+        },
+        "buffDuration": 5.25
+      }
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "regenBuff": {
+          "scale": 0.15,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "regenBuff": 5.25,
+          "recoveryBuff": 5.25
+        },
+        "recoveryBuff": {
+          "scale": 0.1,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 5.25
+      }
+    }
+  ],
   "mechanicType": "parentMechanic"
 };

@@ -52,5 +52,38 @@ export const TyphoonsEdge: Power = {
       "duration": 0.6,
       "tickRate": 0.4000000059604645
     }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "dd_debuffmode_2",
+      "label": "DD Debuff Mode 2",
+      "defaultActive": false,
+      "effects": {
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 20
+        },
+        "buffDuration": 20
+      }
+    },
+    {
+      "id": "dd_bonusaoemode_2",
+      "label": "DD Bonus Ao E Mode 2",
+      "defaultActive": false,
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.57,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      }
+    }
   ]
 };

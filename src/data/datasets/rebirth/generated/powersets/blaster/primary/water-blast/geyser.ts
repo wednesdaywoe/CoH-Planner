@@ -70,5 +70,97 @@ export const Geyser: Power = {
       "damageBuff": 10.43
     },
     "buffDuration": 10.43
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "tidal_power-1",
+      "label": "Tidal Power (1 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Fire",
+          "scale": 0.1,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Fire",
+          "scale": 0.143182,
+          "table": "Ranged_Damage",
+          "duration": 5.1,
+          "tickRate": 0.5
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 5,
+          "table": "Ranged_Stun"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-2",
+      "label": "Tidal Power (2 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Fire",
+          "scale": 0.24,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Fire",
+          "scale": 0.152727,
+          "table": "Ranged_Damage",
+          "duration": 5.1,
+          "tickRate": 0.5
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 5,
+          "table": "Ranged_Stun"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-3",
+      "label": "Tidal Power (3 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Fire",
+          "scale": 0.5,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Fire",
+          "scale": 0.170455,
+          "table": "Ranged_Damage",
+          "duration": 5.1,
+          "tickRate": 0.5
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 5,
+          "table": "Ranged_Stun"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-0",
+      "label": "Tidal Power (0 stacks)",
+      "defaultActive": false,
+      "damage": {
+        "type": "Fire",
+        "scale": 0.136364,
+        "table": "Ranged_Damage",
+        "duration": 5.1,
+        "tickRate": 0.5
+      }
+    }
+  ]
 };

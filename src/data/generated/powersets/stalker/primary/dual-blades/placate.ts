@@ -54,5 +54,27 @@ export const Placate: Power = {
       "stealth": 10
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "dd_statusmode_2",
+      "label": "DD Status Mode 2",
+      "defaultActive": false,
+      "effects": {
+        "tohitBuff": {
+          "scale": 1,
+          "table": "Melee_Buff_ToHit"
+        },
+        "durations": {
+          "tohitBuff": 20,
+          "damageBuff": 20
+        },
+        "damageBuff": {
+          "scale": 2,
+          "table": "Melee_Buff_Dmg"
+        },
+        "buffDuration": 20
+      }
+    }
+  ]
 };

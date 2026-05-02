@@ -74,5 +74,19 @@ export const RadiationSiphon: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "radiation_melee_contaminated",
+      "label": "Radiation Melee Contaminated",
+      "defaultActive": false,
+      "damage": {
+        "type": "Heal",
+        "scale": 0.67,
+        "table": "Melee_HealSelf",
+        "duration": 2.1,
+        "tickRate": 1
+      }
+    }
+  ]
 };

@@ -56,5 +56,19 @@ export const HeartofDarkness: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

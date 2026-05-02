@@ -59,5 +59,18 @@ export const Hailstones: Power = {
       "scale": 0.67,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stormblast_instormcell",
+      "label": "StormBlast InStormCell",
+      "defaultActive": false,
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Ranged_Ones"
+        }
+      }
+    }
+  ]
 };

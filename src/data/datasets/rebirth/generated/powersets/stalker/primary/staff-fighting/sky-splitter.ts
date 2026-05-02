@@ -57,5 +57,57 @@ export const SkySplitter: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "perfection_of_body_level_3",
+      "label": "Perfection of Body Level 3",
+      "defaultActive": false,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.828,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "resistance": {
+          "smashing": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "fire": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "cold": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "energy": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "negative": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "psionic": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
+          "toxic": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          }
+        },
+        "durations": {
+          "resistance": 15
+        },
+        "buffDuration": 15
+      }
+    }
+  ]
 };

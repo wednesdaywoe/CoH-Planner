@@ -64,5 +64,22 @@ export const TargetingDrone: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 0.75
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "outofcombat",
+      "label": "Out Of Combat",
+      "defaultActive": false,
+      "effects": {
+        "damageBuff": {
+          "scale": 4.8,
+          "table": "Melee_Buff_Dmg"
+        },
+        "durations": {
+          "damageBuff": 0.75
+        },
+        "buffDuration": 0.75
+      }
+    }
+  ]
 };

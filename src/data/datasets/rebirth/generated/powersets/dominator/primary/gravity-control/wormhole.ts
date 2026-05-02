@@ -56,5 +56,19 @@ export const Wormhole: Power = {
       "scale": 7,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

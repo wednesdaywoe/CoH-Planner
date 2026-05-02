@@ -59,5 +59,19 @@ export const MassLevitate: Power = {
       "scale": 4,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "psionic_melee_insight",
+      "label": "Insight",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.1118,
+        "table": "Melee_Damage",
+        "duration": 2.1,
+        "tickRate": 1
+      }
+    }
+  ]
 };

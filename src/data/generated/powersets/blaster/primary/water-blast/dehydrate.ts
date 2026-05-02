@@ -84,5 +84,31 @@ export const Dehydrate: Power = {
       "defenseDebuff": 8
     },
     "buffDuration": 8
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "tidal_power",
+      "label": "Tidal Power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Heal",
+        "scale": 0.275,
+        "table": "Ranged_HealSelf",
+        "duration": 3.1,
+        "tickRate": 1
+      }
+    },
+    {
+      "id": "tidal_power-3",
+      "label": "Tidal Power (3 stacks)",
+      "defaultActive": false,
+      "damage": {
+        "type": "Heal",
+        "scale": 0.4125,
+        "table": "Ranged_HealSelf",
+        "duration": 3.1,
+        "tickRate": 1
+      }
+    }
+  ]
 };

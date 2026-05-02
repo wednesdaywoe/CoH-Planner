@@ -66,5 +66,42 @@ export const BoundlessEnergy: Power = {
     },
     "buffDuration": 5.25
   },
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "maxHPBuff": {
+          "scale": 0.5625,
+          "table": "Melee_HealSelf"
+        },
+        "durations": {
+          "maxHPBuff": 5.25
+        },
+        "buffDuration": 5.25
+      }
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "regenBuff": {
+          "scale": 0.195,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "regenBuff": 5.25,
+          "recoveryBuff": 5.25
+        },
+        "recoveryBuff": {
+          "scale": 0.13,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 5.25
+      }
+    }
+  ],
   "mechanicType": "parentMechanic"
 };

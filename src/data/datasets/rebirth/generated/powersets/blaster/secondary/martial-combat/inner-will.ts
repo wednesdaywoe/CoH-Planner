@@ -111,5 +111,54 @@ export const InnerWill: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 30
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 1,
+          "scale": 1,
+          "table": "Melee_Ones"
+        },
+        "effectDuration": 30,
+        "durations": {
+          "stun": 30,
+          "sleep": 30,
+          "immobilize": 30,
+          "hold": 30,
+          "confuse": 30,
+          "fear": 30
+        },
+        "sleep": {
+          "mag": 1,
+          "scale": 1,
+          "table": "Melee_Ones"
+        },
+        "immobilize": {
+          "mag": 1,
+          "scale": 1,
+          "table": "Melee_Ones"
+        },
+        "hold": {
+          "mag": 1,
+          "scale": 1,
+          "table": "Melee_Ones"
+        },
+        "confuse": {
+          "mag": 1,
+          "scale": 1,
+          "table": "Melee_Ones"
+        },
+        "fear": {
+          "mag": 1,
+          "scale": 1,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 30
+      }
+    }
+  ]
 };

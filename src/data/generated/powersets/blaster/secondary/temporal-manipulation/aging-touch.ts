@@ -74,5 +74,19 @@ export const AgingTouch: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "time_crawl_debuff",
+      "label": "Time Crawl Debuff",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.1,
+        "table": "Melee_Damage",
+        "duration": 2.1,
+        "tickRate": 1
+      }
+    }
+  ]
 };

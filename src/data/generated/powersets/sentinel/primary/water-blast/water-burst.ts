@@ -85,5 +85,51 @@ export const WaterBurst: Power = {
       "scale": 0.4502,
       "table": "Ranged_PvPDamage"
     }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "tidal_power-1",
+      "label": "Tidal Power (1 stacks)",
+      "defaultActive": false,
+      "effects": {
+        "knockback": {
+          "scale": 1.34,
+          "table": "Ranged_Ones"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-2",
+      "label": "Tidal Power (2 stacks)",
+      "defaultActive": false,
+      "effects": {
+        "knockback": {
+          "scale": 1.34,
+          "table": "Ranged_Ones"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-3",
+      "label": "Tidal Power (3 stacks)",
+      "defaultActive": false,
+      "effects": {
+        "knockback": {
+          "scale": 1.34,
+          "table": "Ranged_Ones"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-0",
+      "label": "Tidal Power (0 stacks)",
+      "defaultActive": false,
+      "effects": {
+        "knockback": {
+          "scale": 1.34,
+          "table": "Ranged_Ones"
+        }
+      }
+    }
   ]
 };

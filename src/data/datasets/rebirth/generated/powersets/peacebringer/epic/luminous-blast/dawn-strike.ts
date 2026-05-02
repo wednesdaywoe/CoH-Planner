@@ -61,5 +61,17 @@ export const DawnStrike: Power = {
       "defenseDebuff": 20
     },
     "buffDuration": 20
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "peacebringer_blaster_mode",
+      "label": "Peacebringer Blaster Mode",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 4,
+        "table": "Ranged_SSDamage"
+      }
+    }
+  ]
 };

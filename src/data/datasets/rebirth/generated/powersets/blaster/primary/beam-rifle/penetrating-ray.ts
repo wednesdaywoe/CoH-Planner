@@ -63,5 +63,19 @@ export const PenetratingRay: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.304,
+        "table": "Ranged_Damage",
+        "duration": 3.1,
+        "tickRate": 1.5
+      }
+    }
+  ]
 };

@@ -77,5 +77,19 @@ export const ChargedBrawl: Power = {
     "stacksLinear": [
       "enduranceGain"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Melee_Sleep"
+        }
+      }
+    }
+  ]
 };

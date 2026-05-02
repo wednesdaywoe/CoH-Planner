@@ -44,5 +44,19 @@ export const SporeBurst: Power = {
       "scale": 12,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3,
+          "scale": 18,
+          "table": "Ranged_Sleep"
+        }
+      }
+    }
+  ]
 };

@@ -60,5 +60,19 @@ export const Stalagmites: Power = {
       "defenseDebuff": 12
     },
     "buffDuration": 12
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 12,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

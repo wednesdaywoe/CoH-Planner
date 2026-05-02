@@ -60,5 +60,19 @@ export const MentalStrike: Power = {
       "scale": 0.915,
       "table": "Melee_PvPDamage"
     }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "psionic_melee_insight",
+      "label": "Insight",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.0661,
+        "table": "Melee_Damage",
+        "duration": 2.1,
+        "tickRate": 1
+      }
+    }
   ]
 };

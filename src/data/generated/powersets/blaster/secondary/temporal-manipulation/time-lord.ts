@@ -64,5 +64,40 @@ export const TimeLord: Power = {
     "effectDuration": 0.5,
     "buffDuration": 0.75
   },
+  "conditionalEffects": [
+    {
+      "id": "temporal_selection_buff",
+      "label": "Temporal Selection Buff",
+      "defaultActive": false,
+      "effects": {
+        "rechargeBuff": {
+          "scale": 0.1,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "rechargeBuff": 0.5,
+          "debuffResistance": 0.5,
+          "resistance": 0.5
+        },
+        "debuffResistance": {
+          "movement": {
+            "scale": 0.3,
+            "table": "Melee_Ones"
+          },
+          "recharge": {
+            "scale": 0.3,
+            "table": "Melee_Ones"
+          }
+        },
+        "resistance": {
+          "energy": {
+            "scale": 0.5,
+            "table": "Melee_Res_Dmg"
+          }
+        },
+        "buffDuration": 0.5
+      }
+    }
+  ],
   "mechanicType": "parentMechanic"
 };

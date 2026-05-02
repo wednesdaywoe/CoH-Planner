@@ -57,5 +57,18 @@ export const JetStream: Power = {
       "repel": 2
     },
     "buffDuration": 2
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stormblast_instormcell",
+      "label": "StormBlast InStormCell",
+      "defaultActive": false,
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Ranged_Ones"
+        }
+      }
+    }
+  ]
 };

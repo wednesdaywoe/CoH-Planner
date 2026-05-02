@@ -60,5 +60,87 @@ export const EyeoftheStorm: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "perfection_of_body_level_3",
+      "label": "Perfection of Body Level 3",
+      "defaultActive": false,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.246,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "resistanceDebuff": {
+          "smashing": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "fire": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "cold": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "energy": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "negative": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "psionic": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "toxic": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          }
+        },
+        "durations": {
+          "resistanceDebuff": 6
+        },
+        "buffDuration": 6
+      }
+    },
+    {
+      "id": "perfection_of_mind_level_3",
+      "label": "Perfection of Mind Level 3",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.246,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "perfection_of_soul_level_3",
+      "label": "Perfection of Soul Level 3",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.246,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 8
+        },
+        "buffDuration": 8
+      }
+    }
+  ]
 };

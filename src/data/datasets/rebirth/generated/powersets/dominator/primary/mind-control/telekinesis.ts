@@ -47,5 +47,19 @@ export const Telekinesis: Power = {
       "repel": 0.75
     },
     "buffDuration": 0.75
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 0.75,
+          "table": "Melee_Immobilize"
+        }
+      }
+    }
+  ]
 };

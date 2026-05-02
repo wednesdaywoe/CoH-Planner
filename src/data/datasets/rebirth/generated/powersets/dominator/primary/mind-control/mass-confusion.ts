@@ -44,5 +44,19 @@ export const MassConfusion: Power = {
       "scale": 20,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "confuse": {
+          "mag": 3,
+          "scale": 30,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

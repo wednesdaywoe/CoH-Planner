@@ -47,5 +47,19 @@ export const PsiBlade: Power = {
       "scale": 0.855,
       "table": "Melee_Damage"
     }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "psionic_melee_insight",
+      "label": "Insight",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.2285,
+        "table": "Melee_Damage",
+        "duration": 3.1,
+        "tickRate": 1
+      }
+    }
   ]
 };

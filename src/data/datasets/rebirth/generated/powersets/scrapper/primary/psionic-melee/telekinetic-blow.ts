@@ -60,5 +60,19 @@ export const TelekineticBlow: Power = {
       "scale": 1,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "psionic_melee_insight",
+      "label": "Insight",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.18,
+        "table": "Melee_Damage",
+        "duration": 3.1,
+        "tickRate": 1
+      }
+    }
+  ]
 };

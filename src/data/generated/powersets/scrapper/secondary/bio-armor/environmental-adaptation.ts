@@ -95,5 +95,68 @@ export const EnvironmentalModification: Power = {
       "table": "Melee_Res_Boolean"
     },
     "buffDuration": 0.75
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "defenseBuff": {
+          "smashing": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "lethal": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "fire": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "cold": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "energy": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "negative": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "psionic": {
+            "scale": 0.225,
+            "table": "Melee_Buff_Def"
+          }
+        },
+        "durations": {
+          "defenseBuff": 0.75,
+          "maxHPBuff": 0.75
+        },
+        "maxHPBuff": {
+          "scale": 0.45,
+          "table": "Melee_HealSelf"
+        },
+        "buffDuration": 0.75
+      }
+    },
+    {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "tohitBuff": {
+          "scale": 0.75,
+          "table": "Melee_Buff_ToHit"
+        },
+        "durations": {
+          "tohitBuff": 0.75
+        },
+        "buffDuration": 0.75
+      }
+    }
+  ]
 };

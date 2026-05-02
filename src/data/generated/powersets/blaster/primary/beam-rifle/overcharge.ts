@@ -78,5 +78,19 @@ export const Overcharge: Power = {
       "table": "Ranged_Stun"
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 8,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

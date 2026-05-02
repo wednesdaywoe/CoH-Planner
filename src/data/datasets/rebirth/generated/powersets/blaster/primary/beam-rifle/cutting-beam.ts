@@ -62,5 +62,19 @@ export const CuttingBeam: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.101,
+        "table": "Ranged_Damage",
+        "duration": 2.1,
+        "tickRate": 1
+      }
+    }
+  ]
 };

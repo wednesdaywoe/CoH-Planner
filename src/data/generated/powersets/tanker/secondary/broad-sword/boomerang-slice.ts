@@ -121,5 +121,24 @@ export const BoomerangSlice: Power = {
     },
     "buffDuration": 15
   },
+  "conditionalEffects": [
+    {
+      "id": "rendingslicecooldown",
+      "label": "Rending Slice Cooldown",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Lethal",
+          "scale": 0.6148,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.4509,
+          "table": "Melee_PvPDamage"
+        }
+      ]
+    }
+  ],
   "requires": "Tanker_Melee.Broad_Sword.Slice !"
 };

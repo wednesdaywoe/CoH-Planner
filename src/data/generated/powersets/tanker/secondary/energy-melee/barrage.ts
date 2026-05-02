@@ -77,5 +77,22 @@ export const Barrage: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "energy_store",
+      "label": "Energy Store",
+      "defaultActive": false,
+      "effects": {
+        "regenDebuff": {
+          "scale": 1,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "regenDebuff": 15
+        },
+        "buffDuration": 15
+      }
+    }
+  ]
 };

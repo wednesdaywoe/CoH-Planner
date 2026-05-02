@@ -50,5 +50,19 @@ export const SaltCrystals: Power = {
       "defenseDebuff": 15
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Ranged_Sleep"
+        }
+      }
+    }
+  ]
 };

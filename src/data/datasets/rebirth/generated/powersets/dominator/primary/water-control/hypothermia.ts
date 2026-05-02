@@ -52,5 +52,41 @@ export const Hypothermia: Power = {
       "sleep": 15.1
     },
     "buffDuration": 15.1
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3,
+          "scale": 6,
+          "table": "Ranged_Sleep"
+        },
+        "effectDuration": 15.1,
+        "durations": {
+          "sleep": 15.1
+        },
+        "buffDuration": 15.1
+      }
+    },
+    {
+      "id": "water_control_drowning",
+      "label": "Drowning",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3,
+          "scale": 4,
+          "table": "Ranged_Sleep"
+        },
+        "effectDuration": 15.1,
+        "durations": {
+          "sleep": 15.1
+        },
+        "buffDuration": 15.1
+      }
+    }
+  ]
 };

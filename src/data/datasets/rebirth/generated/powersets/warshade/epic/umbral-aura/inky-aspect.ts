@@ -48,5 +48,22 @@ export const InkyAspect: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "warshade_blaster_mode",
+      "label": "Warshade Blaster Mode",
+      "defaultActive": false,
+      "effects": {
+        "recoveryBuff": {
+          "scale": 1,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "recoveryBuff": 2
+        },
+        "buffDuration": 2
+      }
+    }
+  ]
 };

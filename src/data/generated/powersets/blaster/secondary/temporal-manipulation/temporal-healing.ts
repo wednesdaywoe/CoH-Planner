@@ -63,5 +63,22 @@ export const TemporalHealing: Power = {
       "table": "Melee_HealSelf"
     },
     "buffDuration": 2.25
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "temporal_selection_buff",
+      "label": "Temporal Selection Buff",
+      "defaultActive": false,
+      "effects": {
+        "absorb": {
+          "scale": 0.09,
+          "table": "Melee_HealSelf"
+        },
+        "durations": {
+          "absorb": 12
+        },
+        "buffDuration": 12
+      }
+    }
+  ]
 };

@@ -56,5 +56,22 @@ export const DrowningPool: Power = {
       "defenseDebuff": 15
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "water_control_drowning",
+      "label": "Drowning",
+      "defaultActive": false,
+      "effects": {
+        "defenseDebuff": {
+          "scale": 2.5,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 15
+        },
+        "buffDuration": 15
+      }
+    }
+  ]
 };

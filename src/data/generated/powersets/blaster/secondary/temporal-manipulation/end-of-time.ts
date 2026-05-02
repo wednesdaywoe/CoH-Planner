@@ -75,5 +75,24 @@ export const EndofTime: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 20
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "time_crawl_debuff",
+      "label": "Time Crawl Debuff",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Energy",
+          "scale": 0.308,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Energy",
+          "scale": 0.2501,
+          "table": "Melee_PvPDamage"
+        }
+      ]
+    }
+  ]
 };

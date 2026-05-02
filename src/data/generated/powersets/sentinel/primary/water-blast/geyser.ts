@@ -78,5 +78,97 @@ export const Geyser: Power = {
       "scale": 3,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "tidal_power-0",
+      "label": "Tidal Power (0 stacks)",
+      "defaultActive": false,
+      "damage": {
+        "type": "Fire",
+        "scale": 0.102,
+        "table": "Ranged_Damage",
+        "duration": 5.1,
+        "tickRate": 0.5
+      }
+    },
+    {
+      "id": "tidal_power-1",
+      "label": "Tidal Power (1 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Fire",
+          "scale": 0.108,
+          "table": "Ranged_Damage",
+          "duration": 5.1,
+          "tickRate": 0.5
+        },
+        {
+          "type": "Fire",
+          "scale": 0.0756,
+          "table": "Ranged_PvPDamage"
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 5,
+          "table": "Ranged_Stun"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-2",
+      "label": "Tidal Power (2 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Fire",
+          "scale": 0.115,
+          "table": "Ranged_Damage",
+          "duration": 5.1,
+          "tickRate": 0.5
+        },
+        {
+          "type": "Fire",
+          "scale": 0.1815,
+          "table": "Ranged_PvPDamage"
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 5,
+          "table": "Ranged_Stun"
+        }
+      }
+    },
+    {
+      "id": "tidal_power-3",
+      "label": "Tidal Power (3 stacks)",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Fire",
+          "scale": 0.128,
+          "table": "Ranged_Damage",
+          "duration": 5.1,
+          "tickRate": 0.5
+        },
+        {
+          "type": "Fire",
+          "scale": 0.3782,
+          "table": "Ranged_PvPDamage"
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 5,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

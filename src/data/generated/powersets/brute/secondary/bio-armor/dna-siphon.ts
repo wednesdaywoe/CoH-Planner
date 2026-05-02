@@ -75,5 +75,22 @@ export const DNASiphon: Power = {
       "table": "Melee_Ones",
       "perTarget": 0.2188
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "defaultActive": false,
+      "effects": {
+        "regenDebuff": {
+          "scale": 2.66,
+          "table": "Melee_Res_Boolean"
+        },
+        "durations": {
+          "regenDebuff": 30
+        },
+        "buffDuration": 30
+      }
+    }
+  ]
 };

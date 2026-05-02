@@ -58,5 +58,19 @@ export const Fissure: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stealthed",
+      "label": "Stealthed",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 1,
+          "scale": 12,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

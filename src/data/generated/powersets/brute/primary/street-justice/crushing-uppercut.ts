@@ -67,5 +67,84 @@ export const CrushingUppercut: Power = {
       "scale": 7.5,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "combo_level_1",
+      "label": "Combo Level 1",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 3.339,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Smashing",
+          "scale": 3.0649,
+          "table": "Melee_PvPDamage"
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 8.25,
+          "table": "Melee_Stun"
+        }
+      }
+    },
+    {
+      "id": "combo_level_2",
+      "label": "Combo Level 2",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 3.5616,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Smashing",
+          "scale": 3.2692,
+          "table": "Melee_PvPDamage"
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 9.375,
+          "table": "Melee_Stun"
+        }
+      }
+    },
+    {
+      "id": "combo_level_3",
+      "label": "Combo Level 3",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 3.975,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Smashing",
+          "scale": 3.6486,
+          "table": "Melee_PvPDamage"
+        }
+      ],
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 10.5,
+          "table": "Melee_Stun"
+        },
+        "hold": {
+          "mag": 3,
+          "scale": 10.5,
+          "table": "Melee_Stun"
+        }
+      }
+    }
+  ]
 };
