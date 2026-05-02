@@ -51,6 +51,11 @@ export const SpotPrey: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   }
 };

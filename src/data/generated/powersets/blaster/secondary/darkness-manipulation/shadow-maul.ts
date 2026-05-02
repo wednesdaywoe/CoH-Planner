@@ -82,6 +82,10 @@ export const ShadowMaul: Power = {
     "durations": {
       "damageBuff": 10.57
     },
-    "buffDuration": 10.57
+    "buffDuration": 10.57,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -66,6 +66,10 @@ export const RebuildDNA: Power = {
       "scale": 0.6,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30
+    "buffDuration": 30,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

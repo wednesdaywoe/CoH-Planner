@@ -49,6 +49,10 @@ export const StarlessStep: Power = {
     "durations": {
       "tohitBuff": 5
     },
-    "buffDuration": 5
+    "buffDuration": 5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "tohitBuff"
+    ]
   }
 };

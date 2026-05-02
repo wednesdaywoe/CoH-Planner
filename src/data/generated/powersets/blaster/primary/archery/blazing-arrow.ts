@@ -65,6 +65,10 @@ export const BlazingArrow: Power = {
     "durations": {
       "damageBuff": 9.33
     },
-    "buffDuration": 9.33
+    "buffDuration": 9.33,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

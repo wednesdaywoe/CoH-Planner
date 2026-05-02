@@ -84,6 +84,11 @@ export const ShockingGrasp: Power = {
       "scale": 0.066,
       "table": "Melee_Ones"
     },
-    "buffDuration": 8.5
+    "buffDuration": 8.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "enduranceGain"
+    ]
   }
 };

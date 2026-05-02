@@ -104,6 +104,10 @@ export const HavocPunch: Power = {
       "scale": 8,
       "table": "Melee_Sleep"
     },
-    "buffDuration": 4
+    "buffDuration": 4,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

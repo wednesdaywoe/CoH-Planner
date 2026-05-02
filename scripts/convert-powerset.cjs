@@ -1533,9 +1533,13 @@ function collectTemplatesWithMeta(effects) {
  * Classify a raw template into our effect key system for stacking detection.
  * Returns array of { effectKey, subKey? } or empty if not a self-buff.
  */
-function classifyTemplateForStacking(template) {
+function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
   if (!template.attribs || template.attribs.length === 0) return [];
-  if (template.target !== 'Self') return [];
+  // Most call sites only want Self-targeted templates. The redirect-chain
+  // walker passes treatAsCaster=true to also accept AnyAffected templates,
+  // because pseudo-pet Sphere AoEs centered on the caster are functionally
+  // caster self-buffs (Fulcrum Shift's KineticTransferBuffSelf, etc.).
+  if (template.target !== 'Self' && !(treatAsCaster && template.target === 'AnyAffected')) return [];
 
   const aspect = template.aspect?.toLowerCase();
   const scale = template.scale || 0;
@@ -1606,9 +1610,109 @@ function classifyTemplateForStacking(template) {
       if (modType === 'enduranceDiscount') return [{ effectKey: 'enduranceDiscount' }];
       continue;
     }
+
+    // Movement attributes — self-buff stacking (e.g. Siphon Speed caster runspeed)
+    // The dashboard surfaces these as top-level keys via the `movement` block; for
+    // stacksLinear purposes we list the bare key.
+    if (MOVEMENT_TYPES[attrib]) {
+      results.push({ effectKey: MOVEMENT_TYPES[attrib] });
+      continue;
+    }
   }
 
   return results;
+}
+
+/**
+ * Recursively walk an Execute_Power redirect chain (e.g. Fulcrum Shift →
+ * Redirects.Kinetics.KineticTransfer → KineticTransferBuffSelf) and collect
+ * Stack templates that contribute to caster-side per-target buffs.
+ *
+ * Returns { templates, maxStacks }. Templates may target Self (direct caster
+ * buff) or AnyAffected when the leaf is a Sphere/AoE pseudo-pet centered on
+ * the caster — both behave as caster self-buffs in-game.
+ */
+function collectRedirectStackingTemplates(redirectName, visited = new Set(), depth = 0) {
+  if (depth > 5) return { templates: [], maxStacks: null };
+  const key = redirectName.toLowerCase();
+  if (visited.has(key)) return { templates: [], maxStacks: null };
+  visited.add(key);
+
+  const redirectPath = resolveRedirectPath(redirectName);
+  if (!fs.existsSync(redirectPath)) return { templates: [], maxStacks: null };
+
+  let redirectJson;
+  try { redirectJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8')); } catch { return { templates: [], maxStacks: null }; }
+  if (!redirectJson.effects || redirectJson.effects.length === 0) return { templates: [], maxStacks: null };
+
+  const collected = [];
+  let maxStacks = (redirectJson.number_allowed && redirectJson.number_allowed > 1) ? redirectJson.number_allowed : null;
+
+  // Pseudo-pet Sphere AoEs centered on caster show up as AnyAffected templates;
+  // accept them as caster-side at and below this depth.
+  const isPseudoPetAoE = (redirectJson.effect_area === 'Sphere' || redirectJson.effect_area === 'AoE')
+    && (redirectJson.max_targets_hit === 255 || (redirectJson.max_targets_hit ?? 0) >= 1);
+
+  const templates = collectTemplatesWithMeta(redirectJson.effects);
+  for (const { template: rt } of templates) {
+    if (rt.stack !== 'Stack') continue;
+
+    const attrib = rt.attribs?.[0]?.toLowerCase();
+    if (attrib === 'execute_power') {
+      const childNames = (rt.params && rt.params.power_names) || [];
+      for (const cn of childNames) {
+        if (!cn.toLowerCase().startsWith('redirects.')) continue;
+        const child = collectRedirectStackingTemplates(cn, visited, depth + 1);
+        collected.push(...child.templates);
+        if (child.maxStacks && (!maxStacks || child.maxStacks > maxStacks)) maxStacks = child.maxStacks;
+      }
+      continue;
+    }
+
+    if (rt.target === 'Self') {
+      collected.push({ template: rt, treatAsCaster: false });
+    } else if (rt.target === 'AnyAffected' && isPseudoPetAoE) {
+      collected.push({ template: rt, treatAsCaster: true });
+    }
+  }
+
+  return { templates: collected, maxStacks };
+}
+
+/**
+ * Detect self-stacking from `stack_limit` on caster-targeted templates.
+ * Used when a power applies a buff to itself with `StackType kStack` and
+ * a stack_limit > 1 (e.g. Siphon Speed caster recharge/movement buffs,
+ * Healing Flames toxic resist). Returns:
+ *   - maxStacks: the largest stack_limit across qualifying Self templates
+ *   - stacksLinear: distinct top-level effect keys whose magnitude grows
+ *     linearly with stack count
+ * or null if no qualifying templates.
+ */
+function detectSelfStacking(allTemplatesWithMeta) {
+  let maxStacks = 0;
+  const stacksLinearSet = new Set();
+
+  for (const { template } of allTemplatesWithMeta) {
+    if (template.target !== 'Self') continue;
+    if (template.stack !== 'Stack') continue;
+    const limit = template.stack_limit;
+    if (!limit || limit <= 1) continue;
+
+    const classifications = classifyTemplateForStacking(template);
+    if (classifications.length === 0) continue;
+
+    if (limit > maxStacks) maxStacks = limit;
+    for (const c of classifications) {
+      stacksLinearSet.add(c.effectKey);
+    }
+  }
+
+  if (maxStacks === 0) return null;
+  return {
+    maxStacks,
+    stacksLinear: [...stacksLinearSet].sort(),
+  };
 }
 
 /**
@@ -1689,7 +1793,17 @@ function detectStackingEffects(rawJson) {
     }
   }
 
-  // === Execute_Power redirect stacking (non-AoE, e.g., Reactive Regeneration) ===
+  // === Execute_Power redirect stacking (multi-level) ===
+  // Handles two patterns under one rule:
+  //   (1) Reactive-Regeneration: outer Self → redirect with number_allowed > 1
+  //       (multi-stack pseudo-pet) → contributions are perTarget.
+  //   (2) Fulcrum-Shift: outer AnyAffected → redirect chain executed once per
+  //       enemy hit → contributions are perTarget. Plus an outer Self →
+  //       one-shot caster buff (KineticTransferBuffSelf) → contributions are
+  //       BASE (scale).
+  //
+  // Rule: kind is 'perTarget' when the outer Execute_Power targets AnyAffected
+  // OR the redirect declares number_allowed > 1; otherwise 'base'.
   for (const { template } of allTemplatesWithMeta) {
     const attrib = template.attribs && template.attribs[0] ? template.attribs[0].toLowerCase() : null;
     if (attrib !== 'execute_power') continue;
@@ -1699,53 +1813,57 @@ function detectStackingEffects(rawJson) {
     for (const pName of powerNames) {
       if (!pName.toLowerCase().startsWith('redirects.')) continue;
 
-      const redirectPath = resolveRedirectPath(pName);
-      if (!fs.existsSync(redirectPath)) continue;
+      const { templates: chainTemplates, maxStacks: chainMax } = collectRedirectStackingTemplates(pName);
+      const isPerTarget = template.target === 'AnyAffected' || (chainMax !== null && chainMax > 1);
+      if (chainMax && (maxStacks === null || chainMax > maxStacks)) maxStacks = chainMax;
 
-      let redirectJson;
-      try { redirectJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8')); } catch { continue; }
+      for (const { template: rt, treatAsCaster } of chainTemplates) {
+        const classifications = classifyTemplateForStacking(rt, { treatAsCaster });
+        for (const cls of classifications) {
+          const scale = Math.abs(rt.scale || 0);
 
-      // number_allowed on the redirect power = max stacks
-      if (redirectJson.number_allowed && redirectJson.number_allowed > 1) {
-        maxStacks = redirectJson.number_allowed;
-      }
-
-      // Extract stacking effects from the redirect power's templates
-      if (redirectJson.effects && redirectJson.effects.length > 0) {
-        const redirectTemplates = collectTemplatesWithMeta(redirectJson.effects);
-        for (const { template: rt } of redirectTemplates) {
-          if (rt.target !== 'Self') continue;
-          if (rt.stack !== 'Stack') continue;
-
-          const classifications = classifyTemplateForStacking(rt);
-          for (const cls of classifications) {
-            const scale = Math.abs(rt.scale || 0);
-            if (cls.subKey) {
-              if (!patches[cls.effectKey]) patches[cls.effectKey] = {};
-              const prev = patches[cls.effectKey][cls.subKey];
-              patches[cls.effectKey][cls.subKey] = {
-                scale: prev?.scale || 0,
-                table: rt.table,
-                perTarget: (prev?.perTarget || 0) + scale,
-              };
-            } else {
-              // Accumulate perTarget for same effectKey (multiple Stack templates)
-              const existing = patches[cls.effectKey];
-              const prevPerTarget = (existing && typeof existing === 'object' && 'perTarget' in existing) ? existing.perTarget : 0;
-              patches[cls.effectKey] = {
-                scale: (existing && typeof existing === 'object' && 'scale' in existing) ? existing.scale : 0,
-                table: rt.table,
-                perTarget: prevPerTarget + scale,
-              };
+          // Locate (or create) the patch entry for this effect.
+          let entry;
+          if (cls.subKey) {
+            if (!patches[cls.effectKey]) patches[cls.effectKey] = {};
+            if (!patches[cls.effectKey][cls.subKey]) {
+              patches[cls.effectKey][cls.subKey] = { scale: 0, table: rt.table, perTarget: 0 };
             }
+            entry = patches[cls.effectKey][cls.subKey];
+          } else {
+            const existing = patches[cls.effectKey];
+            if (!existing || typeof existing !== 'object' || !('scale' in existing)) {
+              patches[cls.effectKey] = { scale: 0, table: rt.table, perTarget: 0 };
+            }
+            entry = patches[cls.effectKey];
           }
+
+          if (isPerTarget) {
+            entry.perTarget = (entry.perTarget || 0) + scale;
+          } else {
+            entry.scale = (entry.scale || 0) + scale;
+          }
+          if (!entry.table) entry.table = rt.table;
         }
       }
     }
   }
 
-  if (Object.keys(patches).length === 0 && maxStacks === null) return null;
-  return { patches, maxStacks };
+  // === Self-stacking via stack_limit (e.g., Siphon Speed, Healing Flames) ===
+  // Independent of AoE per-target detection: applies whenever the power has
+  // Self-targeted Stack templates with stack_limit > 1. Composes with the
+  // Execute_Power redirect path by taking max(maxStacks, ...).
+  const selfStacking = detectSelfStacking(allTemplatesWithMeta);
+  let stacksLinear = null;
+  if (selfStacking) {
+    if (maxStacks === null || selfStacking.maxStacks > maxStacks) {
+      maxStacks = selfStacking.maxStacks;
+    }
+    stacksLinear = selfStacking.stacksLinear;
+  }
+
+  if (Object.keys(patches).length === 0 && maxStacks === null && !stacksLinear) return null;
+  return { patches, maxStacks, stacksLinear };
 }
 
 /**
@@ -1755,10 +1873,14 @@ function detectStackingEffects(rawJson) {
 function mergeStackingPatches(effects, stackingResult) {
   if (!stackingResult) return;
 
-  const { patches, maxStacks } = stackingResult;
+  const { patches, maxStacks, stacksLinear } = stackingResult;
 
   if (maxStacks) {
     effects.maxStacks = maxStacks;
+  }
+
+  if (stacksLinear && stacksLinear.length > 0) {
+    effects.stacksLinear = stacksLinear;
   }
 
   for (const [key, patchValue] of Object.entries(patches)) {

@@ -92,6 +92,12 @@ export const DNASiphon: Power = {
       "scale": 2.66,
       "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 30
+    "buffDuration": 30,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain",
+      "recoveryBuff",
+      "regenBuff"
+    ]
   }
 };

@@ -55,6 +55,12 @@ export const SiphonSpeed: Power = {
       "scale": 0.2,
       "table": "Melee_Ones"
     },
-    "buffDuration": 60
+    "buffDuration": 60,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "flySpeed",
+      "rechargeBuff",
+      "runSpeed"
+    ]
   }
 };

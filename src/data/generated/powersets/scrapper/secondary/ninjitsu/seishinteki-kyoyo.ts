@@ -35,6 +35,10 @@ export const SeishintekiKyoyo: Power = {
     "enduranceGain": {
       "scale": 0.3,
       "table": "Melee_Ones"
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

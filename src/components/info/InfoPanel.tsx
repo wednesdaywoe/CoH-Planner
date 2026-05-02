@@ -254,7 +254,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const procSettings = useUIStore((s) => s.procSettings);
   const includeProcDamageToggle = useUIStore((s) => s.includeProcDamageInDPS) && procSettings.damage;
   const useArcanaTimeToggle = useUIStore((s) => s.useArcanaTime);
-  const showDamagePerActivation = useUIStore((s) => s.showDamagePerActivation);
+  const damageDisplayMode = useUIStore((s) => s.damageDisplayMode);
   const combatMode = useUIStore((s) => s.combatMode);
 
   // Unified power lookup across all categories
@@ -898,9 +898,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 const baseDPS = totalDmgBase / baseCycleTime;
                 const finalDPS = totalDmgFinal / finalCycleTime;
 
-                const dpsImproved = finalDPS > baseDPS * 1.01; // More than 1% improvement
-                const dmgImproved = totalDmgFinal > totalDmgBase * 1.01;
-
                 return (
                   <div className="mt-2 pt-2 border-t border-slate-700">
                     <div className="grid grid-cols-2 gap-2 text-xs">
@@ -917,41 +914,92 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                           )}
                         </div>
                       </div>
-                      {showDamagePerActivation ? (
-                        <div>
-                          <span className="text-slate-500">Avg Dmg</span>
-                          <div className={dmgImproved ? 'text-amber-400' : 'text-slate-300'}>
-                            {totalDmgFinal.toFixed(2)}
-                            {dmgImproved && (
-                              <span className="text-green-400 text-[10px] ml-1">
-                                (+{((totalDmgFinal / totalDmgBase - 1) * 100).toFixed(0)}%)
-                              </span>
-                            )}
-                            {procDamagePerActivation > 0 && (
-                              <span className="text-cyan-400 text-[10px] ml-1" title="Includes proc damage">
-                                +{procDamagePerActivation.toFixed(1)} proc
-                              </span>
+                      {(() => {
+                        // Resolve the displayed figure based on the current mode.
+                        // - 'damage'        → totalDmg
+                        // - 'damagePerAnim' → totalDmg / cast time (honors ArcanaTime via effectiveCastTime)
+                        // - 'damagePerSec'  → totalDmg / full cycle time
+                        // - 'damagePerEnd'  → totalDmg / endurance cost
+                        const endCost = effects?.enduranceCost ?? 0;
+                        let label: string;
+                        let title: string;
+                        let valueBase: number;
+                        let valueFinal: number;
+                        let unavailableReason: string | null = null;
+
+                        switch (damageDisplayMode) {
+                          case 'damage':
+                            label = 'Damage';
+                            title = 'Total damage of one activation';
+                            valueBase = totalDmgBase;
+                            valueFinal = totalDmgFinal;
+                            break;
+                          case 'damagePerAnim':
+                            label = 'DPA';
+                            title = `Damage per Animation — damage / ${arcanaTimeEnabled ? 'ArcanaTime' : 'cast time'}`;
+                            if (effectiveCastTime <= 0) {
+                              unavailableReason = 'No cast time';
+                              valueBase = 0;
+                              valueFinal = 0;
+                            } else {
+                              valueBase = totalDmgBase / effectiveCastTime;
+                              valueFinal = totalDmgFinal / effectiveCastTime;
+                            }
+                            break;
+                          case 'damagePerEnd':
+                            label = 'DPE';
+                            title = 'Damage per Endurance — damage / endurance cost';
+                            if (endCost <= 0) {
+                              unavailableReason = 'No endurance cost';
+                              valueBase = 0;
+                              valueFinal = 0;
+                            } else {
+                              valueBase = totalDmgBase / endCost;
+                              valueFinal = totalDmgFinal / endCost;
+                            }
+                            break;
+                          case 'damagePerSec':
+                          default:
+                            label = 'DPS';
+                            title = 'Damage per Second — damage / full cycle time (cast + recharge)';
+                            valueBase = baseDPS;
+                            valueFinal = finalDPS;
+                            break;
+                        }
+
+                        const improved = valueFinal > valueBase * 1.01;
+                        const procContribution =
+                          damageDisplayMode === 'damagePerSec' && finalCycleTime > 0
+                            ? procDamagePerActivation / finalCycleTime
+                            : damageDisplayMode === 'damagePerAnim' && effectiveCastTime > 0
+                            ? procDamagePerActivation / effectiveCastTime
+                            : damageDisplayMode === 'damagePerEnd' && endCost > 0
+                            ? procDamagePerActivation / endCost
+                            : procDamagePerActivation;
+
+                        return (
+                          <div>
+                            <span className="text-slate-500" title={title}>{label}</span>
+                            {unavailableReason ? (
+                              <div className="text-slate-500" title={unavailableReason}>—</div>
+                            ) : (
+                              <div className={improved ? 'text-amber-400' : 'text-slate-300'}>
+                                {valueFinal.toFixed(2)}
+                                {improved && valueBase > 0 && (
+                                  <span className="text-green-400 text-[10px] ml-1">
+                                    (+{((valueFinal / valueBase - 1) * 100).toFixed(0)}%)
+                                  </span>
+                                )}
+                                {procDamagePerActivation > 0 && (
+                                  <span className="text-cyan-400 text-[10px] ml-1" title="Includes proc damage">
+                                    +{procContribution.toFixed(1)} proc
+                                  </span>
+                                )}
+                              </div>
                             )}
                           </div>
-                        </div>
-                      ) : (
-                        <div>
-                          <span className="text-slate-500">DPS</span>
-                          <div className={dpsImproved ? 'text-amber-400' : 'text-slate-300'}>
-                            {finalDPS.toFixed(2)}
-                            {dpsImproved && (
-                              <span className="text-green-400 text-[10px] ml-1">
-                                (+{((finalDPS / baseDPS - 1) * 100).toFixed(0)}%)
-                              </span>
-                            )}
-                            {procDamagePerActivation > 0 && (
-                              <span className="text-cyan-400 text-[10px] ml-1" title="Includes proc damage">
-                                +{(procDamagePerActivation / finalCycleTime).toFixed(1)} proc
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      )}
+                        );
+                      })()}
                     </div>
                   </div>
                 );

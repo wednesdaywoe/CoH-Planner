@@ -66,6 +66,12 @@ export const ParasiticLeech: Power = {
       "scale": 2.6,
       "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 45
+    "buffDuration": 45,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "absorb",
+      "recoveryBuff",
+      "regenBuff"
+    ]
   }
 };

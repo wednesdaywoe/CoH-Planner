@@ -67,6 +67,11 @@ export const SharePain: Power = {
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "resistance"
+    ]
   }
 };

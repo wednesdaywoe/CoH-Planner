@@ -72,6 +72,10 @@ export const PenumbralGrasp: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17
+    "buffDuration": 9.17,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

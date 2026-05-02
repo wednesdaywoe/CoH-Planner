@@ -41,6 +41,10 @@ export const Toxins: Power = {
     "durations": {
       "tohitBuff": 10
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "tohitBuff"
+    ]
   }
 };

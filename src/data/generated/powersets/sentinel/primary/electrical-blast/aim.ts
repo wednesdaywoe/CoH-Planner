@@ -56,6 +56,12 @@ export const ChargeUp: Power = {
       "scale": 0.25,
       "table": "Ranged_EndDrain"
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "enduranceGain",
+      "tohitBuff"
+    ]
   }
 };

@@ -71,6 +71,11 @@ export const Consume: Power = {
       "scale": 0.033,
       "table": "Melee_Ones"
     },
-    "buffDuration": 120
+    "buffDuration": 120,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain",
+      "recoveryBuff"
+    ]
   }
 };

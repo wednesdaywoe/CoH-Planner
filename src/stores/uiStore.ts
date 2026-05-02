@@ -60,6 +60,19 @@ const DEFAULT_PROC_SETTINGS: ProcSettings = {
 };
 
 // ============================================
+// DAMAGE DISPLAY MODE
+// ============================================
+
+/**
+ * Which damage figure the InfoPanel shows for an attack.
+ *   damage         — total damage of one activation (single hit / DoT total)
+ *   damagePerAnim  — DPA, damage / cast (animation) time; honors ArcanaTime
+ *   damagePerSec   — DPS, damage / full cycle time (cast + recharge)
+ *   damagePerEnd   — DPE, damage / endurance cost
+ */
+export type DamageDisplayMode = 'damage' | 'damagePerAnim' | 'damagePerSec' | 'damagePerEnd';
+
+// ============================================
 // UI STORE INTERFACE
 // ============================================
 
@@ -159,8 +172,14 @@ interface UIState {
   /** Use ArcanaTime (server-tick-adjusted cast time) for DPS calculations */
   useArcanaTime: boolean;
 
-  /** Show damage per activation instead of DPS */
-  showDamagePerActivation: boolean;
+  /**
+   * How the damage figure is displayed in the InfoPanel:
+   *   'damage'         — total damage of one activation
+   *   'damagePerAnim'  — damage / cast (animation) time, honoring ArcanaTime
+   *   'damagePerSec'   — damage / full cycle time (cast + recharge)
+   *   'damagePerEnd'   — damage / endurance cost
+   */
+  damageDisplayMode: DamageDisplayMode;
 
   /** Combat mode: suppress defense buffs from stealth/travel powers */
   combatMode: boolean;
@@ -294,7 +313,7 @@ interface UIActions {
   closeProcSettingsModal: () => void;
   toggleIncludeProcDamageInDPS: () => void;
   toggleUseArcanaTime: () => void;
-  toggleShowDamagePerActivation: () => void;
+  setDamageDisplayMode: (mode: DamageDisplayMode) => void;
   toggleCombatMode: () => void;
   toggleHints: () => void;
   toggleDarkMode: () => void;
@@ -575,7 +594,7 @@ export const useUIStore = create<UIStore>()(
       procSettingsModalOpen: false,
       includeProcDamageInDPS: true,
       useArcanaTime: true,
-      showDamagePerActivation: true,
+      damageDisplayMode: 'damage' as DamageDisplayMode,
       combatMode: false,
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,
@@ -769,10 +788,7 @@ export const useUIStore = create<UIStore>()(
           useArcanaTime: !state.useArcanaTime,
         })),
 
-      toggleShowDamagePerActivation: () =>
-        set((state) => ({
-          showDamagePerActivation: !state.showDamagePerActivation,
-        })),
+      setDamageDisplayMode: (mode) => set({ damageDisplayMode: mode }),
 
       toggleHints: () =>
         set((state) => ({
@@ -1509,4 +1525,4 @@ export const useIncludeProcDamageInDPS = () => useUIStore((state) => state.inclu
 export const useArcanaTime = () => useUIStore((state) => state.useArcanaTime);
 
 /** Select damage per activation toggle */
-export const useShowDamagePerActivation = () => useUIStore((state) => state.showDamagePerActivation);
+export const useDamageDisplayMode = () => useUIStore((state) => state.damageDisplayMode);

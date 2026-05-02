@@ -74,7 +74,12 @@ export const FollowUp: Power = {
       "scale": 3,
       "table": "Melee_Buff_Dmg"
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   },
   "requires": "Widow_Training.Night_Widow_Training.Build_Up !"
 };

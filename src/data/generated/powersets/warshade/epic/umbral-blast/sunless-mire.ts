@@ -69,6 +69,11 @@ export const SunlessMire: Power = {
       "table": "Melee_Buff_Dmg",
       "perTarget": 1.25
     },
-    "buffDuration": 30
+    "buffDuration": 30,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   }
 };

@@ -21,13 +21,13 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-04-23 (evening) ─────────────────────────────────────────────────
   {
-    date: '2026-05-31',
+    date: '2026-05-2',
     items: [
+      { message: 'Continued backend work for supporting a Rebirth dataset', type: 'update' },
+      { message: 'Expanded damage calculations to 4 modes', type: 'feat' },
+      { message: 'Movement displays with MPH and caps', type: 'feat' },
+      { message: 'Re-wired buff/target stacking slider to include more powers', type: 'feat' },
       { message: 'New feature for build sharing: you can now search by author, and logged in users have a profile page for sharing your public builds. File > Profile Settings', type: 'feat' },
-      { message: 'Fix for some toggle powers that were not picked up by endurance accounting, resulting in no end costs', type: 'fix' },
-      { message: 'Rebirth dataset is in the works!', type: 'update' },
-      { message: 'Began work on the plumbing to support multiple datasets. Stuff might break',type: "feat"},
-      { message: 'You can now collapse and expand the dashboard (press D or use the arrow), and L toggles infopanel lock', type: 'feat' },
     ] 
   },
 

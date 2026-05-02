@@ -58,6 +58,10 @@ export const StunningShot: Power = {
       "scale": 1,
       "table": "Ranged_PvPMez"
     },
-    "buffDuration": 8.5
+    "buffDuration": 8.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

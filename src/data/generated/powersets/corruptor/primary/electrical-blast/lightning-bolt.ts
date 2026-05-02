@@ -88,6 +88,10 @@ export const LightningBolt: Power = {
     "durations": {
       "recoveryDebuff": 5
     },
-    "buffDuration": 5
+    "buffDuration": 5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

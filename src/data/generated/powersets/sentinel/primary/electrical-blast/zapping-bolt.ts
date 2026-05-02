@@ -98,6 +98,10 @@ export const ZappingBolt: Power = {
     "durations": {
       "recoveryDebuff": 4
     },
-    "buffDuration": 4
+    "buffDuration": 4,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

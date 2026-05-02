@@ -57,6 +57,10 @@ export const PowerSink: Power = {
       "scale": 0.048,
       "table": "Melee_Ones"
     },
-    "buffDuration": 9.53
+    "buffDuration": 9.53,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

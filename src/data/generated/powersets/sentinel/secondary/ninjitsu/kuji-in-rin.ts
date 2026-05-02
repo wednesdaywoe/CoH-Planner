@@ -102,6 +102,10 @@ export const KujiInRin: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
-    "buffDuration": 120
+    "buffDuration": 120,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "resistance"
+    ]
   }
 };

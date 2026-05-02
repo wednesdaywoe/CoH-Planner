@@ -60,7 +60,12 @@ export const BlackDwarfMire: Power = {
       "table": "Melee_Buff_Dmg",
       "perTarget": 1.25
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   },
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Mire ! &&"
 };

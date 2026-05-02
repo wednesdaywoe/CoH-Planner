@@ -83,6 +83,10 @@ export const ChargedBrawl: Power = {
       "scale": 5.095,
       "table": "Melee_Ones"
     },
-    "buffDuration": 2
+    "buffDuration": 2,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

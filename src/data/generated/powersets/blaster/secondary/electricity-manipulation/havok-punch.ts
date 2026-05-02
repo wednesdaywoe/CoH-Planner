@@ -90,6 +90,11 @@ export const HavocPunch: Power = {
       "scale": 0.099,
       "table": "Melee_Ones"
     },
-    "buffDuration": 9
+    "buffDuration": 9,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "enduranceGain"
+    ]
   }
 };

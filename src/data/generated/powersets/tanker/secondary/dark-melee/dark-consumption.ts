@@ -52,6 +52,10 @@ export const DarkConsumption: Power = {
       "scale": 25,
       "table": "Melee_Ones",
       "perTarget": 25
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

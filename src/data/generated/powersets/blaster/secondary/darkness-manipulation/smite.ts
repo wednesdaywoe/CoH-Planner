@@ -70,6 +70,10 @@ export const Smite: Power = {
     "durations": {
       "damageBuff": 8.47
     },
-    "buffDuration": 8.47
+    "buffDuration": 8.47,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

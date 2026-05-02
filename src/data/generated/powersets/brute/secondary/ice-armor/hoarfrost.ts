@@ -55,7 +55,11 @@ export const Hoarfrost: Power = {
       "scale": 4,
       "table": "Melee_HealSelf"
     },
-    "buffDuration": 120
+    "buffDuration": 120,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "maxHPBuff"
+    ]
   },
   "requires": "Brute_Defense.Ice_Armor.Rime_Ice !"
 };

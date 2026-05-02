@@ -221,7 +221,9 @@ export function PlannerPage() {
           {!undocked && (
             <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[250px] lg:min-h-0 hidden md:flex" data-onboarding="info-panel">
               {infoPanelHeader}
-              <div className="flex-1 overflow-y-auto p-2">
+              {/* pb-24 keeps the scrolled bottom of long power info clear of the
+                  fixed floating help/coffee cluster (lg+) and MobileBottomNav (md). */}
+              <div className="flex-1 overflow-y-auto p-2 pb-24">
                 <InfoPanel />
               </div>
             </div>
@@ -411,7 +413,9 @@ export function PlannerPage() {
         {!undocked && (
           <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[250px] lg:min-h-0 hidden md:flex" data-onboarding="info-panel">
             {infoPanelHeader}
-            <div className="flex-1 overflow-y-auto p-2">
+            {/* pb-24 keeps the scrolled bottom of long power info clear of the
+                fixed floating help/coffee cluster (lg+) and MobileBottomNav (md). */}
+            <div className="flex-1 overflow-y-auto p-2 pb-24">
               <InfoPanel />
             </div>
           </div>

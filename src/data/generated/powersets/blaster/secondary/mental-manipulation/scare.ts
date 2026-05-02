@@ -49,6 +49,10 @@ export const Scare: Power = {
     "durations": {
       "damageBuff": 10.17
     },
-    "buffDuration": 10.17
+    "buffDuration": 10.17,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

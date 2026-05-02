@@ -75,6 +75,10 @@ export const KiPush: Power = {
       "scale": 0.055,
       "table": "Melee_Ones"
     },
-    "buffDuration": 2
+    "buffDuration": 2,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

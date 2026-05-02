@@ -145,6 +145,11 @@ export const LightForm: Power = {
       "scale": 10,
       "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 90
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "recoveryBuff",
+      "resistance"
+    ]
   }
 };

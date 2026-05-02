@@ -92,6 +92,10 @@ export const ElectricFence: Power = {
       "scale": 0.077,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

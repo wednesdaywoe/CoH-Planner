@@ -83,6 +83,11 @@ export const SoundBooster: Power = {
       "scale": 0.25,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   }
 };

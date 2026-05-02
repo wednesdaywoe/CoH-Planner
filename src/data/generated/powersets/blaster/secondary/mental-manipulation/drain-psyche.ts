@@ -69,6 +69,11 @@ export const DrainPsyche: Power = {
       "scale": 0.035,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30
+    "buffDuration": 30,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "recoveryBuff",
+      "regenBuff"
+    ]
   }
 };

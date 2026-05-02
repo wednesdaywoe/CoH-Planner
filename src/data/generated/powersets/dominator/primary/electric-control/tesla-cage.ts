@@ -75,6 +75,10 @@ export const TeslaCage: Power = {
       "scale": 3.43,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 4
+    "buffDuration": 4,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

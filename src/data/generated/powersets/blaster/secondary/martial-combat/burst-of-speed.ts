@@ -57,6 +57,10 @@ export const BurstofSpeed: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5
+    "buffDuration": 8.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

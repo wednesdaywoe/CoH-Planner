@@ -55,6 +55,10 @@ export const RestoreEssence: Power = {
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

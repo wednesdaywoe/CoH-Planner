@@ -68,6 +68,10 @@ export const TelekineticThrust: Power = {
     "durations": {
       "damageBuff": 9.57
     },
-    "buffDuration": 9.57
+    "buffDuration": 9.57,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -67,6 +67,10 @@ export const ChargedBolts: Power = {
       "scale": 2.6,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 2
+    "buffDuration": 2,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

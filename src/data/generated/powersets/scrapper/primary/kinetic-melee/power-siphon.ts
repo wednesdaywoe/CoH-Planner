@@ -41,6 +41,10 @@ export const PowerSiphon: Power = {
     "durations": {
       "tohitBuff": 15
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "tohitBuff"
+    ]
   }
 };

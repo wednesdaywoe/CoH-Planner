@@ -50,6 +50,10 @@ export const Reconstruction: Power = {
     "durations": {
       "resistance": 60
     },
-    "buffDuration": 60
+    "buffDuration": 60,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "resistance"
+    ]
   }
 };

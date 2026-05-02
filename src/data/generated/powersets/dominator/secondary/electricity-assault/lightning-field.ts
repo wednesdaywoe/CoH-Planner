@@ -67,6 +67,10 @@ export const LightningBolt: Power = {
       "scale": 4.265,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 4
+    "buffDuration": 4,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

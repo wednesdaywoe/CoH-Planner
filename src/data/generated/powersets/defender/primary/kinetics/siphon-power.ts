@@ -35,7 +35,8 @@ export const SiphonPower: Power = {
   "effects": {
     "damageBuff": {
       "scale": 2,
-      "table": "Ranged_Buff_Dmg"
+      "table": "Ranged_Buff_Dmg",
+      "perTarget": 0
     },
     "durations": {
       "damageBuff": 30

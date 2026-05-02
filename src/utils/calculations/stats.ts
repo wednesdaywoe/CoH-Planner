@@ -6,6 +6,7 @@
 
 import type { ArchetypeId } from '@/types';
 import { getArchetype } from '@/data';
+import { applyMovementBuff } from '@/data/core/movement-constants';
 
 // ============================================
 // STAT CATEGORIES
@@ -96,8 +97,18 @@ export const STAT_CATEGORIES: Record<string, StatCategory> = {
         dualDisplay: true,
       },
       flyspeed: { name: 'Fly Speed', format: '+{value}%', color: 'stat-fly' },
-      jumpspeed: { name: 'Jump Speed', format: '+{value}%', color: 'stat-jump' },
-      jumpheight: { name: 'Jump Height', format: '+{value}%', color: 'stat-jump' },
+      jumpspeed: {
+        name: 'Jump Speed',
+        format: '{absValue} mph (+{value}%)',
+        color: 'stat-jump',
+        dualDisplay: true,
+      },
+      jumpheight: {
+        name: 'Jump Height',
+        format: '{absValue} ft (+{value}%)',
+        color: 'stat-jump',
+        dualDisplay: true,
+      },
     },
   },
 };
@@ -552,8 +563,14 @@ export function formatStatValue(
       const totalMaxEnd = baselineMaxEnd * (1 + (stats.maxend || 0) / 100);
       absValue = (totalMaxEnd / 60) * (1 + value / 100);
     } else if (statId === 'runspeed') {
-      const baseRunSpeed = 12.5; // mph
-      absValue = baseRunSpeed * (1 + value / 100);
+      const { value: mph } = applyMovementBuff('runSpeed', value);
+      absValue = mph;
+    } else if (statId === 'jumpspeed') {
+      const { value: mph } = applyMovementBuff('jumpSpeed', value);
+      absValue = mph;
+    } else if (statId === 'jumpheight') {
+      const { value: ft } = applyMovementBuff('jumpHeight', value);
+      absValue = ft;
     }
 
     formattedValue = statDef.format

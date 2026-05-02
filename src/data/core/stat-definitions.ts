@@ -7,6 +7,7 @@
  */
 
 import { STAT_COLORS } from './stat-colors';
+import { applyMovementBuff } from './movement-constants';
 import type { CalculatedStats } from '@/hooks/useCalculatedStats';
 
 // ============================================
@@ -448,41 +449,57 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     breakdownKey: 'regeneration',
   },
 
-  // Movement
+  // Movement — values display in mph (or feet for jump height); raw % shown in tooltip via dashboard override.
+  // showWhenZero is true so the baseline values are always visible, even on builds with no movement buffs.
   runspeed: {
     id: 'runspeed',
     label: 'Run',
     getValue: (stats) => stats.runSpeed,
-    format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
+    format: (v) => {
+      const { value, capped } = applyMovementBuff('runSpeed', Number(v));
+      return `${value.toFixed(2)} mph${capped ? ' *' : ''}`;
+    },
     color: STAT_COLORS.runSpeed,
-    tooltip: 'Run speed buff/debuff',
+    tooltip: 'Run speed (base 14.32 mph, cap 92.50 mph)',
+    showWhenZero: true,
     breakdownKey: 'runSpeed',
   },
   flyspeed: {
     id: 'flyspeed',
     label: 'Fly',
     getValue: (stats) => stats.flySpeed,
+    // Fly base is 0 (no flight without a power), so the % buff doesn't translate
+    // to mph in isolation. Display the raw % until per-power fly speed is wired in.
     format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
     color: STAT_COLORS.flySpeed,
-    tooltip: 'Fly speed buff/debuff',
+    tooltip: 'Fly speed buff (cap 58.63 mph; +50% with Fly/Mystic Flight, +25% Afterburner)',
+    showWhenZero: true,
     breakdownKey: 'flySpeed',
   },
   jumpspeed: {
     id: 'jumpspeed',
     label: 'Jump Spd',
-    getValue: (stats) => stats.jumpHeight, // Using jumpHeight for now
-    format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
+    getValue: (stats) => stats.jumpSpeed,
+    format: (v) => {
+      const { value, capped } = applyMovementBuff('jumpSpeed', Number(v));
+      return `${value.toFixed(2)} mph${capped ? ' *' : ''}`;
+    },
     color: STAT_COLORS.jumpSpeed,
-    tooltip: 'Jump speed buff/debuff',
-    breakdownKey: 'jumpHeight',
+    tooltip: 'Jump speed (base 21.00 mph, cap 78.18 mph)',
+    showWhenZero: true,
+    breakdownKey: 'jumpSpeed',
   },
   jumpheight: {
     id: 'jumpheight',
     label: 'Jump Ht',
     getValue: (stats) => stats.jumpHeight,
-    format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
+    format: (v) => {
+      const { value } = applyMovementBuff('jumpHeight', Number(v));
+      return `${value.toFixed(2)} ft`;
+    },
     color: STAT_COLORS.jumpHeight,
-    tooltip: 'Jump height buff/debuff',
+    tooltip: 'Jump height (base 4.00 ft)',
+    showWhenZero: true,
     breakdownKey: 'jumpHeight',
   },
 

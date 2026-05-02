@@ -67,6 +67,10 @@ export const Parry: Power = {
     "durations": {
       "defenseBuff": 10
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "defenseBuff"
+    ]
   }
 };

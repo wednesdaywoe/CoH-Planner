@@ -70,6 +70,10 @@ export const PsychokineticBarrier: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 45
+    "buffDuration": 45,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "absorb"
+    ]
   }
 };

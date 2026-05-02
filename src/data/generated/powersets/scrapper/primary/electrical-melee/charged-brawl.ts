@@ -99,6 +99,10 @@ export const ChargedBrawl: Power = {
       "scale": 6,
       "table": "Melee_Sleep"
     },
-    "buffDuration": 2
+    "buffDuration": 2,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

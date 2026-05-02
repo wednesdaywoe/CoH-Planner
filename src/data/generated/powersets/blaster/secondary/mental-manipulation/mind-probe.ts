@@ -57,6 +57,10 @@ export const MindProbe: Power = {
     "durations": {
       "damageBuff": 8.67
     },
-    "buffDuration": 8.67
+    "buffDuration": 8.67,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

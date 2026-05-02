@@ -101,6 +101,7 @@ export interface GlobalBonuses {
   // Movement
   runSpeed: number;
   jumpHeight: number;
+  jumpSpeed: number;
   flySpeed: number;
   // Mez Resistance (generic, from IO set bonuses — applies to all types)
   mezResist: number;
@@ -227,6 +228,7 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     recovery: 0,
     runSpeed: 0,
     jumpHeight: 0,
+    jumpSpeed: 0,
     flySpeed: 0,
     mezResist: 0,
     mezResistHold: 0,
@@ -495,6 +497,7 @@ interface ActivePowerEffect {
   runSpeed?: number;
   flySpeed?: number;
   jumpHeight?: number;
+  jumpSpeed?: number;
   regeneration?: ScalarOrScaled;
   recovery?: ScalarOrScaled;
   maxEndurance?: ScalarOrScaled;
@@ -641,7 +644,7 @@ function applyActivePowerBonuses(
     // Enhanced by ToHit enhancements
     if (effects.tohitBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.tohit || 0);
-      const adjustedBuff = adjustForPerTarget(effects.tohitBuff as ScalarOrScaled, targetsHitValues[power.internalName]);
+      const adjustedBuff = adjustForStacking(effects.tohitBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'tohitBuff');
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
@@ -655,7 +658,7 @@ function applyActivePowerBonuses(
     // Enhanced by Damage enhancements
     if (effects.damageBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.damage || 0);
-      const adjustedBuff = adjustForPerTarget(effects.damageBuff as ScalarOrScaled, targetsHitValues[power.internalName]);
+      const adjustedBuff = adjustForStacking(effects.damageBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'damageBuff');
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
@@ -688,7 +691,7 @@ function applyActivePowerBonuses(
     if (defenseEffects && typeof defenseEffects === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
       for (const [type, value] of Object.entries(defenseEffects)) {
-        const adjustedDef = adjustForPerTarget(value, targetsHitValues[power.internalName]);
+        const adjustedDef = adjustForStacking(value, targetsHitValues[power.internalName], effects.stacksLinear, 'defenseBuff');
         const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
@@ -706,7 +709,7 @@ function applyActivePowerBonuses(
     if (!combatMode && effects.defenseBuffSuppressible && typeof effects.defenseBuffSuppressible === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
       for (const [type, value] of Object.entries(effects.defenseBuffSuppressible)) {
-        const adjustedDef = adjustForPerTarget(value, targetsHitValues[power.internalName]);
+        const adjustedDef = adjustForStacking(value, targetsHitValues[power.internalName], effects.stacksLinear, 'defenseBuff');
         const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
@@ -726,7 +729,7 @@ function applyActivePowerBonuses(
       const res = effects.resistance;
       const enhMultiplier = 1 + (enhBonuses.resistance || 0);
       for (const [type, value] of Object.entries(res)) {
-        const adjustedRes = adjustForPerTarget(value, targetsHitValues[power.internalName]);
+        const adjustedRes = adjustForStacking(value, targetsHitValues[power.internalName], effects.stacksLinear, 'resistance');
         const percentage = resolveScaledEffect(adjustedRes, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
@@ -833,9 +836,10 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Movement
+    // Movement (top-level scalar form). Stack-aware.
     if (effects.runSpeed !== undefined) {
-      const value = extractScaleValue(effects.runSpeed) * 100;
+      const adjusted = adjustForStacking(effects.runSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'runSpeed');
+      const value = extractScaleValue(adjusted) * 100;
       global.runSpeed += value;
       addToBreakdown(breakdown, 'runSpeed', {
         name: power.name,
@@ -845,7 +849,8 @@ function applyActivePowerBonuses(
     }
 
     if (effects.flySpeed !== undefined) {
-      const value = extractScaleValue(effects.flySpeed) * 100;
+      const adjusted = adjustForStacking(effects.flySpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'flySpeed');
+      const value = extractScaleValue(adjusted) * 100;
       global.flySpeed += value;
       addToBreakdown(breakdown, 'flySpeed', {
         name: power.name,
@@ -855,9 +860,21 @@ function applyActivePowerBonuses(
     }
 
     if (effects.jumpHeight !== undefined) {
-      const value = extractScaleValue(effects.jumpHeight) * 100;
+      const adjusted = adjustForStacking(effects.jumpHeight as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'jumpHeight');
+      const value = extractScaleValue(adjusted) * 100;
       global.jumpHeight += value;
       addToBreakdown(breakdown, 'jumpHeight', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    if (effects.jumpSpeed !== undefined) {
+      const adjusted = adjustForStacking(effects.jumpSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'jumpSpeed');
+      const value = extractScaleValue(adjusted) * 100;
+      global.jumpSpeed += value;
+      addToBreakdown(breakdown, 'jumpSpeed', {
         name: power.name,
         value,
         type: 'active-power',
@@ -875,12 +892,15 @@ function applyActivePowerBonuses(
         flySpeed: 'flySpeed',
         fly: 'flySpeed',
         jumpHeight: 'jumpHeight',
-        jumpSpeed: 'jumpHeight',
+        jumpSpeed: 'jumpSpeed',
       };
       for (const [type, val] of Object.entries(effects.movement)) {
         const key = movementKeyMap[type];
         if (key && key in global) {
-          const value = resolveScaledEffect(val as ScalarOrScaled, archetypeId, buildLevel) * 100;
+          // Stack-aware: stacksLinear uses the bare effect key (e.g. 'runSpeed'),
+          // matching what classifyTemplateForStacking produces.
+          const adjusted = adjustForStacking(val as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, type);
+          const value = resolveScaledEffect(adjusted, archetypeId, buildLevel) * 100;
           global[key] += value;
           addToBreakdown(breakdown, key, {
             name: power.name,
@@ -900,7 +920,7 @@ function applyActivePowerBonuses(
         flySpeed: 'flySpeed',
         fly: 'flySpeed',
         jumpHeight: 'jumpHeight',
-        jumpSpeed: 'jumpHeight',
+        jumpSpeed: 'jumpSpeed',
       };
       for (const [type, val] of Object.entries(effects.slow)) {
         const key = slowKeyMap[type];
@@ -920,7 +940,8 @@ function applyActivePowerBonuses(
     // NOT enhanced by Recharge enhancements — recharge enhancements reduce the
     // power's own recharge time, they don't boost the recharge speed buff value
     if (effects.rechargeBuff !== undefined) {
-      const value = extractScaleValue(effects.rechargeBuff) * 100;
+      const adjusted = adjustForStacking(effects.rechargeBuff, targetsHitValues[power.internalName], effects.stacksLinear, 'rechargeBuff');
+      const value = extractScaleValue(adjusted) * 100;
       global.recharge += value;
       addToBreakdown(breakdown, 'recharge', {
         name: power.name,
@@ -952,11 +973,11 @@ function applyActivePowerBonuses(
         : '';
       if (!regenTable.toLowerCase().includes('res_boolean')) {
         const enhMultiplier = 1 + (enhBonuses.heal || 0);
-        const adjustedRegen = adjustForPerTarget(regenVal, targetsHitValues[power.internalName]);
+        const adjustedRegen = adjustForStacking(regenVal, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuff');
         const value = resolveScaledEffect(adjustedRegen, archetypeId, buildLevel) * 100 * enhMultiplier;
         // If the power also has an unenhanced portion, combine into one breakdown entry
         const adjustedRegenUnenh = effects.regenBuffUnenhanced !== undefined
-          ? adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName])
+          ? adjustForStacking(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuffUnenhanced')
           : undefined;
         const unenhValue = adjustedRegenUnenh !== undefined
           ? resolveScaledEffect(adjustedRegenUnenh, archetypeId, buildLevel) * 100
@@ -971,7 +992,7 @@ function applyActivePowerBonuses(
       }
     } else if (effects.regenBuffUnenhanced !== undefined) {
       // Power only has unenhanceable regen (no enhanceable portion)
-      const adjustedUnenhOnly = adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName]);
+      const adjustedUnenhOnly = adjustForStacking(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuffUnenhanced');
       const value = resolveScaledEffect(adjustedUnenhOnly, archetypeId, buildLevel) * 100;
       global.regeneration += value;
       addToBreakdown(breakdown, 'regeneration', {
@@ -991,7 +1012,7 @@ function applyActivePowerBonuses(
         : '';
       if (!table.toLowerCase().includes('res_boolean')) {
         const enhMultiplier = 1 + (enhBonuses.enduranceMod || 0);
-        const adjustedRecovery = adjustForPerTarget(recBuff, targetsHitValues[power.internalName]);
+        const adjustedRecovery = adjustForStacking(recBuff, targetsHitValues[power.internalName], effects.stacksLinear, 'recoveryBuff');
         const value = resolveScaledEffect(adjustedRecovery, archetypeId, buildLevel) * 100 * enhMultiplier;
         global.recovery += value;
         addToBreakdown(breakdown, 'recovery', {
@@ -2505,6 +2526,7 @@ function convertToCharacterStats(global: GlobalBonuses): CharacterStats {
   stats.runspeed = global.runSpeed;
   stats.flyspeed = global.flySpeed;
   stats.jumpheight = global.jumpHeight;
+  stats.jumpspeed = global.jumpSpeed;
 
   // Debuff Resistance
   stats.debuffResistSlow = global.debuffResistSlow;

@@ -54,6 +54,10 @@ export const TimeStop: Power = {
       "scale": 0.143,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 20
+    "buffDuration": 20,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

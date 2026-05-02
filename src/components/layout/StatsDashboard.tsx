@@ -19,6 +19,7 @@ import type { IncarnateSlotId, ToggleableIncarnateSlot } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue } from '@/data/stat-definitions';
+import { applyMovementBuff } from '@/data/core/movement-constants';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 
 // Stats that need globalBonuses values instead of CalculatedStats
@@ -232,7 +233,25 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         if (config.stat.startsWith('def') || config.stat.startsWith('defense_')) cap = defenseCap;
         else if (config.stat.startsWith('res_')) cap = resistanceCap;
 
-        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap };
+        // Movement stats display in mph/ft on the face; surface the underlying
+        // % buff (and capped state) on hover so the user can see the input.
+        let tooltip = def.tooltip;
+        if (config.stat === 'runspeed' || config.stat === 'jumpspeed' || config.stat === 'jumpheight') {
+          const pct = Number(value);
+          const sign = pct >= 0 ? '+' : '';
+          const movementStat = config.stat === 'runspeed' ? 'runSpeed'
+            : config.stat === 'jumpspeed' ? 'jumpSpeed'
+            : 'jumpHeight';
+          const { value: abs, capped } = applyMovementBuff(movementStat, pct);
+          const unit = config.stat === 'jumpheight' ? 'ft' : 'mph';
+          tooltip = `${sign}${pct.toFixed(2)}% buff → ${abs.toFixed(2)} ${unit}${capped ? ' (capped)' : ''}`;
+        } else if (config.stat === 'flyspeed') {
+          const pct = Number(value);
+          const sign = pct >= 0 ? '+' : '';
+          tooltip = `${sign}${pct.toFixed(2)}% fly speed buff. Cap 58.63 mph (87.90 with Fly/Mystic Flight, 102.27 with Afterburner). Base mph requires an active fly power.`;
+        }
+
+        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip };
       })
       .filter((stat) => {
         if (stat.showWhenZero) return true;

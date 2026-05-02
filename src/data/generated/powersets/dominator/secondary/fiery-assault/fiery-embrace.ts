@@ -37,6 +37,10 @@ export const EmbraceofFire: Power = {
     "durations": {
       "damageBuff": 10
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

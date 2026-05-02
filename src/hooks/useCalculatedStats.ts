@@ -90,6 +90,7 @@ export interface CalculatedStats {
   // Movement
   runSpeed: number;
   jumpHeight: number;
+  jumpSpeed: number;
   flySpeed: number;
 
   // Mez Resistance
@@ -190,6 +191,7 @@ export function convertToLegacyStats(
     // Movement
     runSpeed: charStats.runspeed,
     jumpHeight: charStats.jumpheight,
+    jumpSpeed: charStats.jumpspeed,
     flySpeed: charStats.flyspeed,
 
     // Mez Resistance: generic (from IO sets) + per-type (from active power effects)

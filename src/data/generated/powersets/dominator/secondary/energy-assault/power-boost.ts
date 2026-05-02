@@ -105,6 +105,10 @@ export const PowerUp: Power = {
       "scale": 0.5,
       "table": "Melee_Stun"
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

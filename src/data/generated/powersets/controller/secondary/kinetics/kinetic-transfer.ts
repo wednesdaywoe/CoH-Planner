@@ -35,7 +35,8 @@ export const FulcrumShift: Power = {
   "effects": {
     "damageBuff": {
       "scale": 4,
-      "table": "Ranged_Buff_Dmg"
+      "table": "Ranged_Buff_Dmg",
+      "perTarget": 2
     },
     "durations": {
       "damageBuff": 45

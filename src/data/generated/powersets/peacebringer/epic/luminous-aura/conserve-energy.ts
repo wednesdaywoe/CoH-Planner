@@ -37,6 +37,10 @@ export const ConserveEnergy: Power = {
     "durations": {
       "enduranceDiscount": 90
     },
-    "buffDuration": 90
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceDiscount"
+    ]
   }
 };

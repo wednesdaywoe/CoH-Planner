@@ -69,8 +69,8 @@ export function Header() {
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
   const includeProcDamageInDPS = useUIStore((s) => s.includeProcDamageInDPS);
   const toggleIncludeProcDamageInDPS = useUIStore((s) => s.toggleIncludeProcDamageInDPS);
-  const showDamagePerActivation = useUIStore((s) => s.showDamagePerActivation);
-  const toggleShowDamagePerActivation = useUIStore((s) => s.toggleShowDamagePerActivation);
+  const damageDisplayMode = useUIStore((s) => s.damageDisplayMode);
+  const setDamageDisplayMode = useUIStore((s) => s.setDamageDisplayMode);
   const combatMode = useUIStore((s) => s.combatMode);
   const toggleCombatMode = useUIStore((s) => s.toggleCombatMode);
   const openProcSettingsModal = useUIStore((s) => s.openProcSettingsModal);
@@ -201,16 +201,36 @@ export function Header() {
           </button>
         </div>
 
-        <div className="flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
-          <Toggle
-            id="avg-dmg-toggle"
-            name="avgDmg"
-            checked={showDamagePerActivation}
-            onChange={toggleShowDamagePerActivation}
-            label="Avg Dmg"
-            title="Show average damage per activation instead of DPS (damage per second). Useful when comparing single attacks without recharge."
-            className="!gap-2"
-          />
+        <div
+          className="inline-flex items-center bg-slate-700/50 rounded border border-slate-600 overflow-hidden"
+          role="radiogroup"
+          aria-label="Damage display mode"
+        >
+          {(
+            [
+              { mode: 'damage',        label: 'Dmg', title: 'Damage — total damage of one activation' },
+              { mode: 'damagePerAnim', label: 'DPA', title: 'Damage per Animation — damage divided by cast time (honors ArcanaTime)' },
+              { mode: 'damagePerSec',  label: 'DPS', title: 'Damage per Second — damage divided by full cycle time (cast + recharge)' },
+              { mode: 'damagePerEnd',  label: 'DPE', title: 'Damage per Endurance — damage divided by endurance cost' },
+            ] as const
+          ).map(({ mode, label, title }) => {
+            const active = damageDisplayMode === mode;
+            return (
+              <button
+                key={mode}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                onClick={() => setDamageDisplayMode(mode)}
+                title={title}
+                className={`px-2 py-1 text-xs font-medium transition-colors ${
+                  active ? 'bg-cyan-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-700'
+                }`}
+              >
+                {label}
+              </button>
+            );
+          })}
         </div>
 
         {archetypeId && <ATMechanics archetypeId={archetypeId} />}

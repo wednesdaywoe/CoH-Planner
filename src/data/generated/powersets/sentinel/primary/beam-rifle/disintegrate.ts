@@ -81,6 +81,10 @@ export const Disintegrate: Power = {
       "scale": 0.125,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -52,6 +52,10 @@ export const PowerDrain: Power = {
       "table": "Melee_Ones",
       "perTarget": 25
     },
-    "buffDuration": 4
+    "buffDuration": 4,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };
