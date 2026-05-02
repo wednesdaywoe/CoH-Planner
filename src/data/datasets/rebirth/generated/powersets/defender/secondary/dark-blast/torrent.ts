@@ -46,21 +46,14 @@ export const Torrent: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.808974,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.4,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 10,
+      "scale": 5,
       "table": "Ranged_Knockback"
     }
   }

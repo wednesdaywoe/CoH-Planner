@@ -43,18 +43,11 @@ export const ExtinguishLight: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.512,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 1,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "teleport": {
       "scale": 1,

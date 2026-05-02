@@ -49,21 +49,11 @@ export const DreadfulWail: Power = {
       "type": "Energy",
       "scale": 2,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.570621,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.158534,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     },

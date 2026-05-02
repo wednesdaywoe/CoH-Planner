@@ -42,54 +42,41 @@ export const Adaptation: Power = {
     },
     "resistanceDebuff": {
       "smashing": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "lethal": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "fire": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "cold": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "energy": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "negative": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "psionic": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "toxic": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Res_Dmg"
       }
     },
     "durations": {
       "resistanceDebuff": 0.75,
-      "regenBuff": 0.75,
-      "recoveryBuff": 0.75,
-      "resistance": 0.75,
-      "defenseBuff": 0.75
-    },
-    "regenBuff": {
-      "scale": 0.36,
-      "table": "Melee_Ones",
-      "perTarget": 0.06
-    },
-    "recoveryBuff": {
-      "scale": 0.18,
-      "table": "Melee_Ones",
-      "perTarget": 0.03
+      "resistance": 0.75
     },
     "resistance": {
       "fire": {
@@ -133,6 +120,24 @@ export const Adaptation: Power = {
         "perTarget": 0.065
       }
     },
+    "buffDuration": 0.75,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "defenseBuff",
+      "recoveryBuff",
+      "regenBuff",
+      "resistance"
+    ],
+    "regenBuff": {
+      "scale": 0.36,
+      "table": "Melee_Ones",
+      "perTarget": 0.06
+    },
+    "recoveryBuff": {
+      "scale": 0.18,
+      "table": "Melee_Ones",
+      "perTarget": 0.03
+    },
     "defenseBuff": {
       "smashing": {
         "scale": 0.42,
@@ -169,7 +174,6 @@ export const Adaptation: Power = {
         "table": "Melee_Buff_Def",
         "perTarget": 0.024
       }
-    },
-    "buffDuration": 0.75
+    }
   }
 };

@@ -45,31 +45,9 @@ export const Vacuum: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.27,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.03,
-      "table": "Ranged_Damage"
-    }
-  ],
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     }

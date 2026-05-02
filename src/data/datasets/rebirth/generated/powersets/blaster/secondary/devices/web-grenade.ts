@@ -40,7 +40,7 @@ export const WebGrenade: Power = {
   "maxSlots": 6,
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
@@ -72,6 +72,10 @@ export const WebGrenade: Power = {
       "scale": 0.09,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

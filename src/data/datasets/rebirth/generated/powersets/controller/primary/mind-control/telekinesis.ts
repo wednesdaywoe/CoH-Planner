@@ -35,7 +35,7 @@ export const Telekinesis: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 0.75,
       "table": "Melee_Immobilize"
     },

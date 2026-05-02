@@ -49,18 +49,7 @@ export const ShinobiIri: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
-      "stealth": 0.75
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      }
+      "defenseBuff": 0.75
     },
     "buffDuration": 0.75
   }

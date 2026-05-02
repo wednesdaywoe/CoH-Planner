@@ -51,16 +51,11 @@ export const SniperBlast: Power = {
       "type": "Energy",
       "scale": 2,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 4.254292,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.4,
+      "scale": 0.7,
       "table": "Ranged_Knockback"
     },
     "damageBuff": {
@@ -70,6 +65,10 @@ export const SniperBlast: Power = {
     "durations": {
       "damageBuff": 8.83
     },
-    "buffDuration": 8.83
+    "buffDuration": 8.83,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -38,31 +38,14 @@ export const Levitate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.267846,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.633923,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.32,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockup": {
-      "scale": 12,
+      "scale": 6,
       "table": "Ranged_Knockback"
     }
   }

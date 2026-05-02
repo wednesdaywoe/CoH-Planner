@@ -45,6 +45,10 @@ export const TimeBomb: Power = {
     "durations": {
       "damageBuff": 15.5
     },
-    "buffDuration": 15.5
+    "buffDuration": 15.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -49,21 +49,6 @@ export const FireBlast: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 1.893529,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.893529,
-      "table": "Ranged_Damage"
     }
   ]
 };

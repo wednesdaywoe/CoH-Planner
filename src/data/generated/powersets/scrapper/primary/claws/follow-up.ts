@@ -59,11 +59,6 @@ export const FollowUp: Power = {
       "type": "Lethal",
       "scale": 0.8,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.8,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

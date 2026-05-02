@@ -60,33 +60,6 @@ export const RadiationSiphon: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 0.681861,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.045582,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.392,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.430372,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.666667,
-      "table": "Melee_HealSelf",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
       "type": "Fire",
       "scale": 0.882,
       "table": "Melee_Damage"
@@ -101,8 +74,8 @@ export const RadiationSiphon: Power = {
       "defenseDebuff": 10
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
   }

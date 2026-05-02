@@ -52,11 +52,6 @@ export const Swoop: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 2.28,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.839,
       "table": "Melee_PvPDamage"
     },

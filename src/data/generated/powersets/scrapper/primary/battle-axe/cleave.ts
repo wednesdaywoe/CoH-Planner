@@ -54,11 +54,6 @@ export const Cleave: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.8145,
       "table": "Melee_PvPDamage"
     },

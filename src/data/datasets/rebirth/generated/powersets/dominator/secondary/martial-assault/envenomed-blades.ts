@@ -36,6 +36,10 @@ export const EnvenomedBlades: Power = {
     "durations": {
       "tohitBuff": 40
     },
-    "buffDuration": 40
+    "buffDuration": 40,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "tohitBuff"
+    ]
   }
 };

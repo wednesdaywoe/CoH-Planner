@@ -47,11 +47,6 @@ export const RibCracker: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.992009,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.594,
       "table": "Melee_Damage"
@@ -96,8 +91,8 @@ export const RibCracker: Power = {
       "resistanceDebuff": 5
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 5
   }

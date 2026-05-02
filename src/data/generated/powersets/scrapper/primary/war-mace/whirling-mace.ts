@@ -60,11 +60,6 @@ export const WhirlingMace: Power = {
       "type": "Smashing",
       "scale": 1.12,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.12,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

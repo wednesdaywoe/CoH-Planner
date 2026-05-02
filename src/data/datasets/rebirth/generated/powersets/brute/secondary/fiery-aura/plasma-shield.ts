@@ -45,18 +45,12 @@ export const PlasmaShield: Power = {
       "fire": {
         "scale": 3,
         "table": "Melee_Res_DMG"
-      },
-      "psionic": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
       }
     },
     "durations": {
       "resistance": 0.75,
       "hold": 0.75,
-      "sleep": 0.75,
-      "mezResistance": 0.75,
-      "debuffResistance": 0.75
+      "sleep": 0.75
     },
     "hold": {
       "mag": 1,
@@ -68,34 +62,6 @@ export const PlasmaShield: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
-    },
-    "mezResistance": {
-      "hold": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
     },
     "buffDuration": 0.75
   }

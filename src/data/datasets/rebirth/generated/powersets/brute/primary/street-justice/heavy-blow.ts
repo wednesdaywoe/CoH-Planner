@@ -47,11 +47,6 @@ export const HeavyBlow: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.82455,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.522,
       "table": "Melee_Damage"
@@ -59,7 +54,7 @@ export const HeavyBlow: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {

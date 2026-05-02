@@ -45,20 +45,8 @@ export const StormKick: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.408988,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Lethal",
       "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 1.5,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.117416,
       "table": "Melee_Damage",
       "duration": 1.5,
       "tickRate": 0.5
@@ -66,7 +54,7 @@ export const StormKick: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "damageBuff": {
@@ -76,6 +64,10 @@ export const StormKick: Power = {
     "durations": {
       "damageBuff": 8.57
     },
-    "buffDuration": 8.57
+    "buffDuration": 8.57,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -52,16 +52,6 @@ export const ConcentratedStrike: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 0.901698,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.097705,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.602,
       "table": "Melee_Damage"
@@ -69,7 +59,7 @@ export const ConcentratedStrike: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     },

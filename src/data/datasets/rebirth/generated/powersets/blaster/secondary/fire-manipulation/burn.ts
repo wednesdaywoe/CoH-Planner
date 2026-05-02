@@ -44,7 +44,7 @@ export const Burn: Power = {
   },
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": -15,
       "scale": 100,
       "table": "Melee_Res_Boolean"
     },
@@ -62,6 +62,10 @@ export const Burn: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 9.53
+    "buffDuration": 9.53,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

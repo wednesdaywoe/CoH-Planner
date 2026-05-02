@@ -50,17 +50,7 @@ export const SpectralWounds: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 1.389,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.6945,
       "table": "Ranged_PvPDamage"
     }
   ]

@@ -42,26 +42,14 @@ export const SirensSong: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 3,
       "scale": 30,
       "table": "Ranged_Sleep"
     }

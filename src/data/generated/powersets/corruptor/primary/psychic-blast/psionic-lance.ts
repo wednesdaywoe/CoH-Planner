@@ -50,16 +50,6 @@ export const PsionicLance: Power = {
       "type": "Psionic",
       "scale": 2.98,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 4.5,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.98,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "quickSnipe": {
@@ -72,16 +62,6 @@ export const PsionicLance: Power = {
         "type": "Psionic",
         "scale": 2.28,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Psionic",
-        "scale": 1.811,
-        "table": "Ranged_PvPDamage"
-      },
-      {
-        "type": "Psionic",
-        "scale": 2.28,
-        "table": "Ranged_InherentDamage"
       },
       {
         "type": "Psionic",

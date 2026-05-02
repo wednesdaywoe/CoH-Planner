@@ -36,19 +36,19 @@ export const ConductiveShield: Power = {
     "resistance": {
       "fire": {
         "scale": 3.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_Dmg"
       },
       "cold": {
         "scale": 3.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_Dmg"
       },
       "energy": {
         "scale": 3.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_Dmg"
       },
       "negative": {
         "scale": 2,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_Dmg"
       }
     },
     "durations": {

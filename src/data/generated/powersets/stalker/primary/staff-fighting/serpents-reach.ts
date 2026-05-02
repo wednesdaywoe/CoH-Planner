@@ -48,26 +48,6 @@ export const SerpentsReach: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.2614,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.2614,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 2.2614,
       "table": "Melee_PvPDamage"
     }

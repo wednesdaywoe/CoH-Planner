@@ -116,6 +116,16 @@ export const PowerBoost: Power = {
       "scale": 0.66,
       "table": "Melee_Stun"
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "absorb",
+      "damageBuff",
+      "defenseBuff",
+      "enduranceGain",
+      "flySpeed",
+      "runSpeed",
+      "tohitBuff"
+    ]
   }
 };

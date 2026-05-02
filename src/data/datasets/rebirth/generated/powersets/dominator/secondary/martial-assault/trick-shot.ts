@@ -36,16 +36,9 @@ export const TrickShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.964114,
-      "table": "Ranged_Damage"
-    }
-  ]
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.4,
+    "table": "Ranged_Damage"
+  }
 };

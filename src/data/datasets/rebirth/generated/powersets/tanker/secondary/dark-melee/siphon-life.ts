@@ -59,11 +59,6 @@ export const SiphonLife: Power = {
       "table": "Melee_HealSelf"
     },
     {
-      "type": "Negative",
-      "scale": 2.727443,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.882,
       "table": "Melee_Damage"
@@ -71,8 +66,8 @@ export const SiphonLife: Power = {
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

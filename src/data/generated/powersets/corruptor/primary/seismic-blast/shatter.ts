@@ -49,16 +49,6 @@ export const Shatter: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.48,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.611,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.611,
       "table": "Ranged_PvPDamage"
     }

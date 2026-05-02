@@ -45,18 +45,11 @@ export const LuminousDetonation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.9,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.815631,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.9,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,
@@ -66,7 +59,7 @@ export const LuminousDetonation: Power = {
       "defenseDebuff": 10
     },
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

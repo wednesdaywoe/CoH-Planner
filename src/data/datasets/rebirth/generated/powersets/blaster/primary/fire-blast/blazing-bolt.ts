@@ -51,11 +51,6 @@ export const BlazingBolt: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 4.254292,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -66,6 +61,10 @@ export const BlazingBolt: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17
+    "buffDuration": 9.17,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -57,27 +57,6 @@ export const EmptyClips: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.196147,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.078,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.084063,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
       "scale": 0.078,
       "table": "Ranged_Damage",
       "duration": 1.6,
@@ -85,7 +64,7 @@ export const EmptyClips: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.084063,
+      "scale": 0.078,
       "table": "Ranged_Damage",
       "duration": 1.6,
       "tickRate": 0.5
@@ -105,22 +84,8 @@ export const EmptyClips: Power = {
       "tickRate": 0.5
     },
     {
-      "type": "Cold",
-      "scale": 0.084063,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
       "type": "Toxic",
       "scale": 0.078,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.084063,
       "table": "Ranged_Damage",
       "duration": 1.6,
       "tickRate": 0.5
@@ -136,7 +101,7 @@ export const EmptyClips: Power = {
       "damageBuff": 9.17
     },
     "knockback": {
-      "scale": 0.8,
+      "scale": 0.4,
       "table": "Ranged_Knockback"
     },
     "damageBuff": {

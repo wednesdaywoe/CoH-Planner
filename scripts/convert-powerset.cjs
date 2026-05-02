@@ -550,6 +550,10 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
       if (req.includes('rand()')) continue;
       // Out-of-combat gating (pool Stealth, Invisibility) — propagate downward
       if (_isOutOfCombatGate(req)) combatGated = true;
+      // Generic positive-state-gate skip — covers Parse6's per-template gates
+      // (drowning, Domination boost, etc.). Negated gates pass through as
+      // the base case.
+      if (_isConditionalGate(req)) continue;
     }
 
     // Collect templates from this level
@@ -879,6 +883,52 @@ function _tagCombatGated(template) {
 }
 
 /**
+ * Detect whether an Effect's `requires_expression` is a *positive state gate*
+ * representing a conditional bonus that should NOT be folded into the power's
+ * base damage / base effects.
+ *
+ * Examples we want to skip:
+ *   - `… Drowning target.ownPower? &&`         (Suffocate drowning bonus damage)
+ *   - `… kStealth source> 0.5 > &&`            (Domination boost on caster)
+ *   - `… target.ownPower?`                     (drowning -Def bonus, no PvE prefix)
+ *
+ * Examples we want to KEEP (the base case):
+ *   - `enttype target> critter eq`             (just the PvE entity-type filter)
+ *   - `Drowning target.ownPower? !`            (target NOT drowning — base case)
+ *   - `…ownPower? ! &&`                        (negated state inside a chain)
+ *
+ * Already handled upstream by explicit `continue`s — kept there for readability:
+ *   `kHitPoints == 0`, `kMeter > …`, `rand()`.
+ *
+ * The heuristic: strip the basic PvE/PvP entity filter and conjunction
+ * operators, then look at the remainder. If something remains and it doesn't
+ * end with `!` (RPN logical-not), the gate is positive → conditional bonus.
+ *
+ * Why this matters: HC stores conditional bonuses inside their own EffectGroup
+ * with a `kMeter` / `Hide` / etc. requires_expression — already filtered.
+ * Parse6 (Rebirth) flattens AttribMods so the requires sits on the synthetic
+ * group instead. Without this filter, the calc at damage.ts:446 sums
+ * conditional alternatives into the base damage (Suffocate showed
+ * 0.275 + 0.069 + 0.178 = 0.521 per cast where it should show 0.275).
+ */
+function _isConditionalGate(req) {
+  if (!req || !req.trim()) return false;
+  const stripped = req
+    .replace(/enttype target> (critter|player) eq/g, '')
+    .replace(/\s+(&&|\|\|)\s+/g, ' ')
+    .replace(/^\s*(&&|\|\|)\s*/, '')
+    .replace(/\s*(&&|\|\|)\s*$/, '')
+    .trim();
+  if (!stripped) return false;
+  // RPN top-level NOT → the requires reduces to "state is absent" which is
+  // the base case for state-gated mechanics (e.g. Suffocate's -11.25% def
+  // when target is NOT drowning is the default; the larger -14% applies as
+  // a bonus when target IS drowning).
+  if (stripped.endsWith('!')) return false;
+  return true;
+}
+
+/**
  * Recursively collect all templates from an effects array, including child_effects.
  * Filters out PVP_ONLY effects and effects with chance=0 (conditional procs).
  *
@@ -917,6 +967,11 @@ function collectAllTemplates(effects, parentCombatGated = false) {
       if (req.includes('Source.Mode?') || req.includes('kMode')) continue;
       // Out-of-combat gating (pool Stealth, Invisibility) — propagate downward
       if (_isOutOfCombatGate(req)) combatGated = true;
+      // Generic positive-state-gate skip — covers Parse6's per-template gates
+      // (drowning, Domination boost, etc.) that HC encodes via the explicit
+      // checks above. Negated gates ("target NOT drowning") describe the
+      // base case and pass through.
+      if (_isConditionalGate(req)) continue;
     }
 
     // Collect templates from this level

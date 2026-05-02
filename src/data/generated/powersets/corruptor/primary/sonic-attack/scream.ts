@@ -54,13 +54,6 @@ export const Scream: Power = {
       "tickRate": 0.25
     },
     {
-      "type": "Energy",
-      "scale": 0.264,
-      "table": "Ranged_InherentDamage",
-      "duration": 1.05,
-      "tickRate": 0.25
-    },
-    {
       "type": "Smashing",
       "scale": 0.1669,
       "table": "Ranged_PvPDamage",
@@ -70,13 +63,6 @@ export const Scream: Power = {
     {
       "type": "Energy",
       "scale": 0.1669,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.05,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3338,
       "table": "Ranged_PvPDamage",
       "duration": 1.05,
       "tickRate": 0.25

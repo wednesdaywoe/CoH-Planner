@@ -55,11 +55,6 @@ export const Shockwave: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 0.8653,
-      "table": "Ranged_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.41,
       "table": "Ranged_PvPDamage"
@@ -67,11 +62,6 @@ export const Shockwave: Power = {
     {
       "type": "Energy",
       "scale": 0.41,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.82,
       "table": "Ranged_PvPDamage"
     }
   ],

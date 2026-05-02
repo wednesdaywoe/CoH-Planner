@@ -50,6 +50,10 @@ export const AgainstAllOdds: Power = {
     "durations": {
       "damageBuff": 1
     },
-    "buffDuration": 1
+    "buffDuration": 1,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

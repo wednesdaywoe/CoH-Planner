@@ -55,16 +55,6 @@ export const ChillingRay: Power = {
     },
     {
       "type": "Cold",
-      "scale": 1.64,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.64,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Cold",
       "scale": 1.889,
       "table": "Ranged_PvPDamage"
     },

@@ -63,18 +63,13 @@ export const SonicDispersion: Power = {
       "toxic": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
       }
     },
     "durations": {
       "resistance": 2.25,
       "hold": 2.25,
       "stun": 2.25,
-      "immobilize": 2.25,
-      "mezResistance": 2.25
+      "immobilize": 2.25
     },
     "hold": {
       "mag": 1,
@@ -91,20 +86,6 @@ export const SonicDispersion: Power = {
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
-    },
-    "mezResistance": {
-      "hold": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      }
     },
     "buffDuration": 2.25
   }

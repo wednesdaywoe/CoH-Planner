@@ -47,31 +47,6 @@ export const SpineBurst: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 0.967573,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.967573,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.967573,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.9,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.9,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
@@ -81,7 +56,7 @@ export const SpineBurst: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 0.33000001311302185,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

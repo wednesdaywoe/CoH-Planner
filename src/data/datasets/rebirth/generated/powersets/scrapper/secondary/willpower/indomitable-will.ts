@@ -46,13 +46,12 @@ export const IndomitableWill: Power = {
       "hold": 0.75,
       "confuse": 0.75,
       "fear": 0.75,
-      "mezResistance": 0.75,
       "defenseBuff": 0.75,
       "immobilize": 0.75,
+      "mezResistance": 0.75,
       "knockback": 0.75,
       "knockup": 0.75,
-      "repel": 0.75,
-      "debuffResistance": 0.75
+      "repel": 0.75
     },
     "sleep": {
       "mag": 1,
@@ -74,31 +73,18 @@ export const IndomitableWill: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
+    "defenseBuff": {
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
     "mezResistance": {
-      "stun": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "confuse": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "fear": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
       "knockback": {
         "scale": 100,
         "table": "Melee_Ones"
@@ -112,46 +98,17 @@ export const IndomitableWill: Power = {
         "table": "Melee_Ones"
       }
     },
-    "defenseBuff": {
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
     "knockback": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
     },
     "buffDuration": 0.75
   }

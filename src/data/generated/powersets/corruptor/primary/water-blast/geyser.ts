@@ -66,82 +66,9 @@ export const Geyser: Power = {
       "type": "Fire",
       "scale": 1.1764,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.5,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.8933,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.24,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0784,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1882,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.3921,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1364,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1432,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1527,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1705,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Ranged_Stun"
-    },
     "knockup": {
       "scale": 3,
       "table": "Ranged_Ones"

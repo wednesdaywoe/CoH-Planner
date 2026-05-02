@@ -73,64 +73,9 @@ export const Barrage: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 3,
-      "scale": 8,
+      "mag": 2,
+      "scale": 6,
       "table": "Melee_Stun"
-    },
-    "regenDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenDebuff": 15,
-      "absorb": 15,
-      "enduranceDrain": 15,
-      "confuse": 15,
-      "fear": 15,
-      "hold": 15,
-      "immobilize": 15,
-      "stun": 15,
-      "sleep": 15,
-      "defenseDebuff": 15
-    },
-    "absorb": {
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "enduranceDrain": {
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "effectDuration": 15,
-    "fear": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "defenseDebuff": {
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "buffDuration": 15
+    }
   }
 };

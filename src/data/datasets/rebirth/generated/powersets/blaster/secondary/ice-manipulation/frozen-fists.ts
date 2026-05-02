@@ -48,11 +48,6 @@ export const FrozenFists: Power = {
       "type": "Cold",
       "scale": 0.64,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.030011,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -63,6 +58,10 @@ export const FrozenFists: Power = {
     "durations": {
       "damageBuff": 8.83
     },
-    "buffDuration": 8.83
+    "buffDuration": 8.83,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

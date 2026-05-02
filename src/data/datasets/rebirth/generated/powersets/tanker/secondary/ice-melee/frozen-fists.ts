@@ -55,16 +55,6 @@ export const FrozenFists: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 0.441564,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.398287,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.45,
       "table": "Melee_Damage"
@@ -72,8 +62,8 @@ export const FrozenFists: Power = {
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

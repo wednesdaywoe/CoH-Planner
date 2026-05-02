@@ -43,47 +43,20 @@ export const JacobsLadder: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.916184,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.916184,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.916184,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.5,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Sleep"
     },
     "enduranceDrain": {
-      "scale": 1.25,
-      "table": "Melee_EndDrain"
+      "scale": 0.07,
+      "table": "Melee_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,

@@ -45,31 +45,16 @@ export const Bash: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.512456,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.008808,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.666667,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 5,
       "table": "Melee_Stun"
     }

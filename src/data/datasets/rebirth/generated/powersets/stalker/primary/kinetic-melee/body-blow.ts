@@ -48,41 +48,11 @@ export const BodyBlow: Power = {
       "type": "Energy",
       "scale": 0.29,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.874151,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.291384,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.165535,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.165535,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.16,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.16,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
     }

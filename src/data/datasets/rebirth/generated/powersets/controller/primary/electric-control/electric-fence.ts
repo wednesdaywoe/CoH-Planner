@@ -41,45 +41,22 @@ export const ElectricFence: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.2,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.2,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.579795,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.289898,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.2,
+    "table": "Ranged_Damage",
+    "duration": 9.2,
+    "tickRate": 2
+  },
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
     "enduranceDrain": {
-      "scale": 1,
-      "table": "Ranged_EndDrain"
+      "scale": 0.028,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "enduranceDrain": 6.2,
@@ -114,6 +91,10 @@ export const ElectricFence: Power = {
       "scale": 2.6,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

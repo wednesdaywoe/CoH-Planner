@@ -49,21 +49,11 @@ export const SpinningStrike: Power = {
       "type": "Smashing",
       "scale": 0.77,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.7112,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.7112,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   }

@@ -56,11 +56,6 @@ export const SonicThrust: Power = {
       "table": "Melee_InherentDamage"
     },
     {
-      "type": "Energy",
-      "scale": 0.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.6,
       "table": "Melee_PvPDamage"

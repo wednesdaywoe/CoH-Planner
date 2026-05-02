@@ -51,26 +51,6 @@ export const SirensSong: Power = {
     },
     {
       "type": "Energy",
-      "scale": 1.1902,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.1902,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.1902,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.9546,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 0.9546,
       "table": "Ranged_PvPDamage"
     }

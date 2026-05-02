@@ -104,22 +104,6 @@ export const LightForm: Power = {
       "repel": {
         "scale": 10,
         "table": "Melee_Ones"
-      },
-      "stun": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 6,
-        "table": "Melee_Res_Boolean"
       }
     },
     "knockback": {
@@ -159,6 +143,11 @@ export const LightForm: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "buffDuration": 90
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "recoveryBuff",
+      "resistance"
+    ]
   }
 };

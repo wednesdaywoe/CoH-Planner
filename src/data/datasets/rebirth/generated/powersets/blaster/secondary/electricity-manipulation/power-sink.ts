@@ -36,8 +36,8 @@ export const PowerSink: Power = {
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {
-      "scale": 10,
-      "table": "Melee_EndDrain"
+      "scale": 0.35,
+      "table": "Melee_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -56,6 +56,10 @@ export const PowerSink: Power = {
       "scale": 0.048,
       "table": "Melee_Ones"
     },
-    "buffDuration": 9.53
+    "buffDuration": 9.53,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

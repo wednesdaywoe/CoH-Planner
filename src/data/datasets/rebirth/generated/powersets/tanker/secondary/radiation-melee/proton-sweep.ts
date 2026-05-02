@@ -62,20 +62,6 @@ export const ProtonSweep: Power = {
       "tickRate": 1
     },
     {
-      "type": "Energy",
-      "scale": 0.130516,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.391548,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
       "type": "Fire",
       "scale": 0.160875,
       "table": "Melee_Damage",
@@ -92,8 +78,8 @@ export const ProtonSweep: Power = {
       "defenseDebuff": 10
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
   }

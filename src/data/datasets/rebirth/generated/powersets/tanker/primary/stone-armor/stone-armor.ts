@@ -53,16 +53,6 @@ export const RockArmor: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "elusivity": {
-      "smashing": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
     "debuffResistance": {
       "defense": {
         "scale": 0.4,

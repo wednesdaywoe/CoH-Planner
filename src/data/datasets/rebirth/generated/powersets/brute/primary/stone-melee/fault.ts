@@ -52,7 +52,7 @@ export const Fault: Power = {
       "table": "Melee_Ones"
     },
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"
     },

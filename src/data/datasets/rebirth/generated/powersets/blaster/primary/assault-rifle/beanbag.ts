@@ -46,7 +46,7 @@ export const Beanbag: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     },
@@ -57,6 +57,10 @@ export const Beanbag: Power = {
     "durations": {
       "damageBuff": 8.4
     },
-    "buffDuration": 8.4
+    "buffDuration": 8.4,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

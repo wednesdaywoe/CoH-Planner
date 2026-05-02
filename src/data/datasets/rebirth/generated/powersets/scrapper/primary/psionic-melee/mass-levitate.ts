@@ -46,33 +46,6 @@ export const MassLevitate: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.394787,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.142,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.394787,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.42,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.42,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.639,
       "table": "Melee_Damage"
@@ -80,7 +53,7 @@ export const MassLevitate: Power = {
   ],
   "effects": {
     "knockup": {
-      "scale": 4,
+      "scale": 2,
       "table": "Melee_Knockback"
     }
   }

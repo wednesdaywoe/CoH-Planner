@@ -40,11 +40,5 @@ export const FeralCharge: Power = {
     "Universal Damage Sets",
     "Universal Travel"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
-  }
+  "maxSlots": 6
 };

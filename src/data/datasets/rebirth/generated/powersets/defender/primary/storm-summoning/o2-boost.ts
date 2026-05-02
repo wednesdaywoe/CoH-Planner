@@ -49,24 +49,14 @@ export const O2Boost: Power = {
     "durations": {
       "stun": 60,
       "sleep": 60,
-      "mezResistance": 60,
       "debuffResistance": 60,
+      "mezResistance": 60,
       "perceptionBuff": 60
     },
     "sleep": {
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
-    },
-    "mezResistance": {
-      "stun": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 6,
-        "table": "Ranged_Res_Boolean"
-      }
     },
     "debuffResistance": {
       "recovery": {
@@ -79,6 +69,12 @@ export const O2Boost: Power = {
       },
       "perception": {
         "scale": 2.5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "mezResistance": {
+      "sleep": {
+        "scale": 4,
         "table": "Ranged_Res_Boolean"
       }
     },

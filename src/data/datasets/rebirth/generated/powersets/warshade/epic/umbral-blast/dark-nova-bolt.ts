@@ -40,17 +40,10 @@ export const DarkNovaBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.68,
-      "table": "Ranged_SSDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.812,
-      "table": "Ranged_SSDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.68,
+    "table": "Ranged_SSDamage"
+  },
   "requires": "0"
 };

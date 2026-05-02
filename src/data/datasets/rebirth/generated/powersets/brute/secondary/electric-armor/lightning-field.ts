@@ -48,8 +48,8 @@ export const LightningField: Power = {
   },
   "effects": {
     "enduranceDrain": {
-      "scale": 0.5,
-      "table": "Melee_EndDrain"
+      "scale": 0.03,
+      "table": "Melee_Ones"
     },
     "taunt": {
       "scale": 1,

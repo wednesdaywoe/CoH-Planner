@@ -50,11 +50,6 @@ export const DefensiveSweep: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.028781,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.32805,
       "table": "Melee_Damage"
@@ -80,7 +75,11 @@ export const DefensiveSweep: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "defenseBuff"
+    ]
   },
   "requires": "Brute_Defense.Shield_Defense !"
 };

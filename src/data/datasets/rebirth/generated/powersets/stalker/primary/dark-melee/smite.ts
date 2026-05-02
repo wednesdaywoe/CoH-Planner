@@ -50,36 +50,6 @@ export const Smite: Power = {
       "type": "Negative",
       "scale": 1,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.334495,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.003486,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.337981,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.337981,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.32,
-      "table": "Melee_Damage"
     }
   ]
 };

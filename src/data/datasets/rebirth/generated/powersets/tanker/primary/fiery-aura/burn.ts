@@ -57,14 +57,7 @@ export const Burn: Power = {
     },
     "effectDuration": 100,
     "durations": {
-      "immobilize": 100,
-      "mezResistance": 100
-    },
-    "mezResistance": {
-      "immobilize": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      }
+      "immobilize": 100
     },
     "buffDuration": 100
   }

@@ -85,9 +85,7 @@ export const Shinobi: Power = {
     "durations": {
       "defenseBuff": 0.75,
       "tohitBuff": 0.75,
-      "damageBuff": 0.75,
-      "stealth": 0.75,
-      "defenseBuffSuppressible": 0.75
+      "damageBuff": 0.75
     },
     "tohitBuff": {
       "scale": 0.5,
@@ -96,62 +94,6 @@ export const Shinobi: Power = {
     "damageBuff": {
       "scale": 2,
       "table": "Melee_Buff_Dmg"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      }
-    },
-    "defenseBuffSuppressible": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      }
     },
     "buffDuration": 0.75
   }

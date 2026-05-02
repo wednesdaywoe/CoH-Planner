@@ -42,22 +42,13 @@ export const ProtonVolley: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.7,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Energy",
-      "scale": 1.063573,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.7,
+    "table": "Ranged_Damage",
+    "duration": 1.6,
+    "tickRate": 0.5
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 3,
@@ -71,6 +62,10 @@ export const ProtonVolley: Power = {
       "scale": 0.088,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 12
+    "buffDuration": 12,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

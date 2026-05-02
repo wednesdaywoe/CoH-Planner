@@ -62,7 +62,11 @@ export const BlackDwarfStep: Power = {
       }
     },
     "selfPenalty": true,
-    "buffDuration": 14
+    "buffDuration": 14,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "fly"
+    ]
   },
   "requires": "0"
 };

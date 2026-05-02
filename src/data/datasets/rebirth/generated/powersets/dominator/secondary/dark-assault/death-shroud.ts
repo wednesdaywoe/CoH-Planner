@@ -42,16 +42,9 @@ export const MoonBeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 3.56,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 4.62,
-      "table": "Ranged_Damage"
-    }
-  ]
+  "damage": {
+    "type": "Negative",
+    "scale": 3.56,
+    "table": "Ranged_Damage"
+  }
 };

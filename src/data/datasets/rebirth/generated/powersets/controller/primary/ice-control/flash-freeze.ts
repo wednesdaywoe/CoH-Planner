@@ -51,21 +51,11 @@ export const FlashFreeze: Power = {
       "type": "Cold",
       "scale": 0.1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.1,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 3,
       "scale": 12,
       "table": "Ranged_Sleep"
     }

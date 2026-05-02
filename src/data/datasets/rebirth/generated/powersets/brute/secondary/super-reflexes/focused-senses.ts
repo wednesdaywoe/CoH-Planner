@@ -38,10 +38,6 @@ export const FocusedSenses: Power = {
       "ranged": {
         "scale": 1.85,
         "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 1.85,
-        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
@@ -62,16 +58,6 @@ export const FocusedSenses: Power = {
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
-    },
-    "elusivity": {
-      "ranged": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "psionic": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
     },
     "buffDuration": 0.75
   }

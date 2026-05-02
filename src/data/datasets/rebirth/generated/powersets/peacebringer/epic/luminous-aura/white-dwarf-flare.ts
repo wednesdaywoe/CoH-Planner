@@ -43,18 +43,11 @@ export const WhiteDwarfFlare: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.9,
-      "table": "Melee_SSDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.926769,
-      "table": "Melee_SSDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.9,
+    "table": "Melee_SSDamage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.67,

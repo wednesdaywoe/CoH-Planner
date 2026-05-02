@@ -54,10 +54,6 @@ export const Painbringer: Power = {
       "scale": 5,
       "table": "Ranged_Buff_Dmg"
     },
-    "knockback": {
-      "scale": 0.1,
-      "table": "Ranged_Ones"
-    },
     "buffDuration": 90
   }
 };

@@ -52,16 +52,6 @@ export const GuardedSpin: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.2085,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.2085,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.2949,
       "table": "Melee_PvPDamage",
       "duration": 1.5,
@@ -73,16 +63,6 @@ export const GuardedSpin: Power = {
       "table": "Melee_PvPDamage",
       "duration": 1.5,
       "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.4746,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.4746,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

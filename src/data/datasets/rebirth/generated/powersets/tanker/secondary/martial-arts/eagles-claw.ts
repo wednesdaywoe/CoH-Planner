@@ -49,11 +49,6 @@ export const EaglesClaw: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 3.361437,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.026,
       "table": "Melee_Damage"
@@ -61,7 +56,7 @@ export const EaglesClaw: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 4,
       "table": "Melee_Stun"
     },
@@ -73,8 +68,8 @@ export const EaglesClaw: Power = {
       "damageBuff": 3
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 3
   }

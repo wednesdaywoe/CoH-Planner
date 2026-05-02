@@ -47,16 +47,6 @@ export const Pummel: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.379,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.379,
       "table": "Melee_PvPDamage"
     }

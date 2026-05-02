@@ -33,25 +33,5 @@ export const RemoteBomb: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "duration": 360,
-      "entities": [
-        {
-          "entity": "P3912486950",
-          "count": 4
-        },
-        {
-          "entity": "Pets_Bomb_Temporal",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Temporal_Defender",
-          "count": 1
-        }
-      ]
-    }
-  }
+  "maxSlots": 6
 };

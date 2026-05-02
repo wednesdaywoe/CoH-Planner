@@ -51,31 +51,6 @@ export const Ripper: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.914358,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.914358,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.914358,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.2,
       "table": "Melee_Damage",
@@ -89,7 +64,7 @@ export const Ripper: Power = {
       "table": "Melee_Ones"
     },
     "immobilize": {
-      "mag": 1,
+      "mag": 0.6700000166893005,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

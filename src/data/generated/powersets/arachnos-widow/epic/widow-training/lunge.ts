@@ -45,17 +45,7 @@ export const Strike: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.9582,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.539,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.0265,
       "table": "Melee_PvPDamage"
     },
     {

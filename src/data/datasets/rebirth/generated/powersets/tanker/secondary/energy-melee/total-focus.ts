@@ -54,16 +54,6 @@ export const TotalFocus: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.246179,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.20446,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.602,
       "table": "Melee_Damage"
@@ -71,13 +61,13 @@ export const TotalFocus: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

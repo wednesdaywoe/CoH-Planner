@@ -54,41 +54,6 @@ export const BulletRain: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.222271,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.333,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.31753,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.095259,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 1.1,
@@ -96,7 +61,7 @@ export const BulletRain: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.095259,
+      "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 1.1,
       "tickRate": 0.5
@@ -116,22 +81,8 @@ export const BulletRain: Power = {
       "tickRate": 0.5
     },
     {
-      "type": "Cold",
-      "scale": 0.095259,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.095259,
       "table": "Ranged_Damage",
       "duration": 1.1,
       "tickRate": 0.5
@@ -139,7 +90,7 @@ export const BulletRain: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Ranged_Ones"
     }
   }

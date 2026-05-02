@@ -51,21 +51,11 @@ export const SniperBlast: Power = {
       "type": "Energy",
       "scale": 2,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.51191,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.887769,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.4,
+      "scale": 0.7,
       "table": "Ranged_Knockback"
     }
   }

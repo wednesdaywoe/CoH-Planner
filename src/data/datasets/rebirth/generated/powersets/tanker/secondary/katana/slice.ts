@@ -52,11 +52,6 @@ export const FlashingSteel: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.005432,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.4455,
       "table": "Melee_Damage"
@@ -71,8 +66,8 @@ export const FlashingSteel: Power = {
       "defenseDebuff": 10
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
   }

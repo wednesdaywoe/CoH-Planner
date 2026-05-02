@@ -49,16 +49,6 @@ export const Pistols: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.26,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.26,
       "table": "Ranged_PvPDamage"
     }

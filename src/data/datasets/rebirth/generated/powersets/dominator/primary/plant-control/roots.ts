@@ -55,25 +55,11 @@ export const Roots: Power = {
       "table": "Ranged_Damage",
       "duration": 5.2,
       "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.091098,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.091098,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },

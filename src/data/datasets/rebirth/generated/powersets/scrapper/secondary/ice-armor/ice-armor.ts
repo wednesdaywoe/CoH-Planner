@@ -59,16 +59,6 @@ export const FrozenArmor: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "elusivity": {
-      "smashing": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
     "debuffResistance": {
       "defense": {
         "scale": 0.4,

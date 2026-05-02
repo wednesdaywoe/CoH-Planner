@@ -48,11 +48,6 @@ export const EngulfingDarkness: Power = {
     },
     {
       "type": "Negative",
-      "scale": 1.2096,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 3.1,

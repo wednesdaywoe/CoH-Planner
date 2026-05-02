@@ -49,21 +49,11 @@ export const PowerPush: Power = {
       "type": "Energy",
       "scale": 0.2,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 16,
+      "scale": 8,
       "table": "Ranged_Knockback"
     }
   }

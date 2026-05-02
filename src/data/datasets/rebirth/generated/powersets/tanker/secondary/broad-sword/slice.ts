@@ -52,11 +52,6 @@ export const Slice: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.460943,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.5535,
       "table": "Melee_Damage"
@@ -71,8 +66,8 @@ export const Slice: Power = {
       "defenseDebuff": 10
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
   }

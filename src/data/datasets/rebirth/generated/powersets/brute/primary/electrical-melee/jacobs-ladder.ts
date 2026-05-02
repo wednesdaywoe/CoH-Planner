@@ -52,11 +52,6 @@ export const JacobsLadder: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 2.554912,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.675,
       "table": "Melee_Damage"
@@ -64,13 +59,13 @@ export const JacobsLadder: Power = {
   ],
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Sleep"
     },
     "enduranceDrain": {
-      "scale": 1.25,
-      "table": "Melee_EndDrain"
+      "scale": 0.07,
+      "table": "Melee_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,

@@ -51,11 +51,6 @@ export const RendArmor: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 3.360168,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.4454,
       "table": "Melee_Damage"
@@ -105,8 +100,8 @@ export const RendArmor: Power = {
       }
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
   }

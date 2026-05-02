@@ -53,11 +53,6 @@ export const LifeDrain: Power = {
       "type": "Heal",
       "scale": 1,
       "table": "Ranged_HealSelf"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.546427,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -68,6 +63,10 @@ export const LifeDrain: Power = {
     "durations": {
       "damageBuff": 9.43
     },
-    "buffDuration": 9.43
+    "buffDuration": 9.43,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

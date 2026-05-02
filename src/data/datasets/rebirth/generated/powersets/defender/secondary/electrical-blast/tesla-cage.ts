@@ -48,13 +48,13 @@ export const TeslaCage: Power = {
   },
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Ones"
     },
     "enduranceDrain": {
-      "scale": 1.25,
-      "table": "Ranged_EndDrain"
+      "scale": 0.07,
+      "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -67,6 +67,10 @@ export const TeslaCage: Power = {
       "scale": 3.43,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8
+    "buffDuration": 8,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

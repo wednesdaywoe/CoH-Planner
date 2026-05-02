@@ -71,36 +71,6 @@ export const Overload: Power = {
       "debuffResistance": 180,
       "recoveryDebuff": 20
     },
-    "elusivity": {
-      "smashing": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "cold": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "psionic": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"

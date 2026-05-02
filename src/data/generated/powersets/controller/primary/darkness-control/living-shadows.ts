@@ -56,21 +56,7 @@ export const LivingShadows: Power = {
     },
     {
       "type": "Negative",
-      "scale": 0.13,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Negative",
       "scale": 0.2129,
-      "table": "Ranged_PvPDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Negative",
-      "scale": 0.1064,
       "table": "Ranged_PvPDamage",
       "duration": 5.2,
       "tickRate": 2

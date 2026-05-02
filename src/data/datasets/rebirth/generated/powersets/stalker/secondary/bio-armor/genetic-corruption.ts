@@ -38,52 +38,9 @@ export const GeneticCorruption: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
-    },
-    "regenBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 4.25,
-      "resistance": 4.25
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "buffDuration": 4.25
+    }
   }
 };

@@ -74,11 +74,7 @@ export const O2Boost: Power = {
     },
     "mezResistance": {
       "sleep": {
-        "scale": 10,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "scale": 2,
+        "scale": 4,
         "table": "Ranged_Res_Boolean"
       }
     },

@@ -59,6 +59,12 @@ export const ParasiticAura: Power = {
       "table": "Melee_Ones",
       "perTarget": 2.13
     },
-    "buffDuration": 45
+    "buffDuration": 45,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "absorb",
+      "recoveryBuff",
+      "regenBuff"
+    ]
   }
 };

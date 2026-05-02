@@ -49,13 +49,13 @@ export const TouchofFear: Power = {
   },
   "effects": {
     "fear": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Melee_Fear"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

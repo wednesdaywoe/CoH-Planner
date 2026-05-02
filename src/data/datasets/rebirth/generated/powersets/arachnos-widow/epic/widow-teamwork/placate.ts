@@ -32,7 +32,7 @@ export const Placate: Power = {
   "maxSlots": 6,
   "effects": {
     "placate": {
-      "scale": 6,
+      "scale": 10,
       "table": "Melee_Taunt"
     },
     "stealth": {

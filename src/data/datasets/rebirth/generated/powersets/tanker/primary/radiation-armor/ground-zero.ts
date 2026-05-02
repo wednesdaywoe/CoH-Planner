@@ -57,18 +57,6 @@ export const GroundZero: Power = {
       "table": "Melee_Damage",
       "duration": 9.1,
       "tickRate": 1
-    },
-    {
-      "type": "Heal",
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.05,
-      "table": "Melee_HealSelf",
-      "duration": 9.1,
-      "tickRate": 1
     }
   ],
   "effects": {

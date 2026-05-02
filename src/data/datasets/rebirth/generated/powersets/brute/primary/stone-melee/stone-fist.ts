@@ -47,11 +47,6 @@ export const StoneFist: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.543226,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.45,
       "table": "Melee_Damage"
@@ -59,7 +54,7 @@ export const StoneFist: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"
     },

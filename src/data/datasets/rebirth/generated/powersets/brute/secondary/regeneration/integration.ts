@@ -45,22 +45,6 @@ export const Integration: Power = {
       "knockup": {
         "scale": 100,
         "table": "Melee_Ones"
-      },
-      "stun": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
       }
     },
     "durations": {
@@ -71,15 +55,14 @@ export const Integration: Power = {
       "hold": 2.25,
       "sleep": 2.25,
       "immobilize": 2.25,
-      "regenBuff": 2.25,
-      "debuffResistance": 2.25
+      "regenBuff": 2.25
     },
     "knockback": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "stun": {
@@ -104,26 +87,8 @@ export const Integration: Power = {
       "table": "Melee_Res_Boolean"
     },
     "regenBuff": {
-      "scale": 3,
+      "scale": 1.5,
       "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
     },
     "taunt": {
       "scale": 1,

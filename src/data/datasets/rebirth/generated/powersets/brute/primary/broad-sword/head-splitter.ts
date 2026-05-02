@@ -54,11 +54,6 @@ export const HeadSplitter: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 3.504381,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.17,
       "table": "Melee_Damage"
@@ -66,7 +61,7 @@ export const HeadSplitter: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "defenseDebuff": {

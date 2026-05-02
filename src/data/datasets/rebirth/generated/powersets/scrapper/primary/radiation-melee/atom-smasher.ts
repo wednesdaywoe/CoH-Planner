@@ -56,31 +56,6 @@ export const AtomSmasher: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 0.382263,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1.14679,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.529053,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.55,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.55,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.6975,
       "table": "Melee_Damage"
@@ -95,7 +70,7 @@ export const AtomSmasher: Power = {
       "defenseDebuff": 10
     },
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Immobilize"
     },

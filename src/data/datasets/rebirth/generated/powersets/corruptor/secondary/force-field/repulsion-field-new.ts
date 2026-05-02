@@ -30,7 +30,7 @@ export const RepulsionField: Power = {
   "maxSlots": 0,
   "effects": {
     "knockback": {
-      "scale": 6,
+      "scale": 3,
       "table": "Ranged_Knockback"
     },
     "durations": {

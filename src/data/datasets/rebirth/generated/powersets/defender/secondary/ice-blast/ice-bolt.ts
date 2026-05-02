@@ -50,16 +50,6 @@ export const IceBolt: Power = {
       "type": "Cold",
       "scale": 0.8,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.393271,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.573086,
-      "table": "Ranged_Damage"
     }
   ]
 };

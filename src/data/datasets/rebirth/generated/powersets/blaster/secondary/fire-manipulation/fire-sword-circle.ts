@@ -54,11 +54,6 @@ export const FireSwordCircle: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 0.75
-    },
-    {
-      "type": "Fire",
-      "scale": 2.156304,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

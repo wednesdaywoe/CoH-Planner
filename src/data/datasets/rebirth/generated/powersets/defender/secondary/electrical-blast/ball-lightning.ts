@@ -53,24 +53,12 @@ export const BallLightning: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 0.257715,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.150334,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 1.25,
-      "table": "Ranged_EndDrain"
+      "scale": 0.07,
+      "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,

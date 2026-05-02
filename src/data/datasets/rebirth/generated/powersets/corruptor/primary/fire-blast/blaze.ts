@@ -49,21 +49,6 @@ export const Blaze: Power = {
       "table": "Ranged_Damage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 2.028781,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 2.12,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 2.028781,
-      "table": "Ranged_Damage"
     }
   ]
 };

@@ -53,16 +53,6 @@ export const GoldenDragonfly: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 2.740122,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.740122,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
       "scale": 2.28,
       "table": "Melee_Damage"
     },

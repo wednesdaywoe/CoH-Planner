@@ -57,26 +57,6 @@ export const ThrowSpines: Power = {
       "tickRate": 1
     },
     {
-      "type": "Lethal",
-      "scale": 1.260529,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.260529,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.09,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.09,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.4905,
       "table": "Melee_Damage"
@@ -84,7 +64,7 @@ export const ThrowSpines: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 0.6700000166893005,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

@@ -53,26 +53,6 @@ export const Lunge: Power = {
       "tickRate": 1
     },
     {
-      "type": "Lethal",
-      "scale": 1.751092,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.751092,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.594,
       "table": "Melee_Damage"
@@ -80,7 +60,7 @@ export const Lunge: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 0.33000001311302185,
       "scale": 8,
       "table": "Melee_Immobilize"
     }

@@ -53,10 +53,6 @@ export const PenumbralShield: Power = {
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
       }
     },
     "buffDuration": 2

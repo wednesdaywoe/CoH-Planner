@@ -39,13 +39,13 @@ export const SynapticOverload: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
     "enduranceDrain": {
-      "scale": 2,
-      "table": "Ranged_EndDrain"
+      "scale": 0.1,
+      "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,

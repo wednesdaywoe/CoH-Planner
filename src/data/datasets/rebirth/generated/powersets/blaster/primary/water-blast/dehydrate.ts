@@ -57,16 +57,6 @@ export const Dehydrate: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 0.623696,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.871089,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Cold",
       "scale": 0.1488,
       "table": "Ranged_Damage",
@@ -95,17 +85,16 @@ export const Dehydrate: Power = {
     },
     "durations": {
       "defenseDebuff": 8,
-      "regenBuff": 30,
       "damageBuff": 9.37
-    },
-    "regenBuff": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
     },
     "damageBuff": {
       "scale": 0.123,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 30
+    "buffDuration": 9.37,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

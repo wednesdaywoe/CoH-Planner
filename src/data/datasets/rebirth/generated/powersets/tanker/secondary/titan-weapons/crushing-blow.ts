@@ -51,11 +51,6 @@ export const CrushingBlow: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.688135,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.8118,
       "table": "Melee_Damage"
@@ -70,8 +65,8 @@ export const CrushingBlow: Power = {
       "defenseDebuff": 10
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
   },

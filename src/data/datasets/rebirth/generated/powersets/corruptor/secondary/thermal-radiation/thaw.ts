@@ -53,27 +53,7 @@ export const Thaw: Power = {
     },
     "mezResistance": {
       "sleep": {
-        "scale": 13,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "confuse": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "fear": {
-        "scale": 3,
+        "scale": 5,
         "table": "Ranged_Res_Boolean"
       }
     },

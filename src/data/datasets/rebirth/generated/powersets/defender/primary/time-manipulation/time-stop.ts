@@ -37,12 +37,12 @@ export const TimeStop: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
     "regenDebuff": {
-      "scale": 4.5,
+      "scale": 0.5,
       "table": "Ranged_Ones"
     },
     "durations": {

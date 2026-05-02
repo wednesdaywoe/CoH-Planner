@@ -44,8 +44,7 @@ export const Grounded: Power = {
       "debuffResistance": 10.25,
       "knockback": 10.25,
       "knockup": 10.25,
-      "immobilize": 10.25,
-      "mezResistance": 10.25
+      "immobilize": 10.25
     },
     "debuffResistance": {
       "endurance": {
@@ -67,12 +66,6 @@ export const Grounded: Power = {
       "table": "Melee_Ones"
     },
     "effectDuration": 10.25,
-    "mezResistance": {
-      "immobilize": {
-        "scale": 6,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "buffDuration": 10.25
   },
   "mechanicType": "parentMechanic"

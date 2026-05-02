@@ -85,60 +85,24 @@ export const ActiveDefense: Power = {
       "repel": {
         "scale": 100,
         "table": "Melee_Ones"
-      },
-      "stun": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "confuse": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "fear": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
       }
     },
     "knockback": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "debuffResistance": {
       "defense": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "movement": {
         "scale": 0.5,
-        "table": "Melee_Ones"
+        "table": "Melee_Res_Boolean"
       }
     },
     "buffDuration": 120

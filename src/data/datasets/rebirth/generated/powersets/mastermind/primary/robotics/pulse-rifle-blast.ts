@@ -46,16 +46,6 @@ export const PulseRifleBlast: Power = {
       "type": "Energy",
       "scale": 0.8,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.564068,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.256273,
-      "table": "Ranged_Damage"
     }
   ]
 };

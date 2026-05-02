@@ -50,16 +50,6 @@ export const WaterJet: Power = {
       "type": "Cold",
       "scale": 1.47,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.702661,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.107981,
-      "table": "Ranged_Damage"
     }
   ]
 };

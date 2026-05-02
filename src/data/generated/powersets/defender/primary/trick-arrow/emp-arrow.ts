@@ -40,11 +40,6 @@ export const EMPArrow: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
   "effects": {
     "summon": {
       "isPseudoPet": false,
@@ -89,7 +84,7 @@ export const EMPArrow: Power = {
     },
     "hold": {
       "mag": 3,
-      "scale": 15,
+      "scale": 7,
       "table": "Ranged_Immobilize"
     },
     "immobilize": {

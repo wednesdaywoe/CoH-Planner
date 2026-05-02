@@ -52,13 +52,6 @@ export const MassLevitate: Power = {
       "type": "Smashing",
       "scale": 1.18,
       "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.1118,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 1
     }
   ],
   "effects": {

@@ -49,18 +49,6 @@ export const ChronoShift: Power = {
       "table": "Ranged_Heal",
       "duration": 30,
       "tickRate": 3
-    },
-    {
-      "type": "Heal",
-      "scale": 1.8,
-      "table": "Ranged_Heal"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.3,
-      "table": "Ranged_Heal",
-      "duration": 30,
-      "tickRate": 3
     }
   ],
   "effects": {

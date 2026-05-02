@@ -55,27 +55,13 @@ export const ThunderousBlast: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.8,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
       "scale": 1.9476,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3895,
       "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
       "scale": 25.3,
-      "table": "Ranged_EndDrain"
-    },
-    "enduranceGain": {
-      "scale": 13.86,
       "table": "Ranged_EndDrain"
     },
     "recoveryDebuff": {

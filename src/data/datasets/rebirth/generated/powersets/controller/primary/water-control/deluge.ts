@@ -51,45 +51,11 @@ export const Deluge: Power = {
       "type": "Cold",
       "scale": 0.99,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.11,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Cold",
-      "scale": 1.32,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.687857,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.063572,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.183429,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Cold",
-      "scale": 1.375715,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Ranged_Ones"
     }
   }

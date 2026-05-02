@@ -49,16 +49,11 @@ export const Screech: Power = {
       "type": "Energy",
       "scale": 0.1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     },
@@ -104,6 +99,10 @@ export const Screech: Power = {
       "scale": 0.099,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 12
+    "buffDuration": 12,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

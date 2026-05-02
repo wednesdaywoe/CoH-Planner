@@ -38,25 +38,16 @@ export const DualWield: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.66,
-      "table": "Ranged_Damage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.116668,
-      "table": "Ranged_Damage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.66,
+    "table": "Ranged_Damage",
+    "duration": 0.3,
+    "tickRate": 0.25
+  },
   "effects": {
     "knockback": {
-      "scale": 1.28,
+      "scale": 0.64,
       "table": "Ranged_Knockback"
     }
   }

@@ -58,7 +58,7 @@ export const SoulTransfer: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 30,
       "scale": 10,
       "table": "Melee_Stun"
     },
@@ -87,10 +87,16 @@ export const SoulTransfer: Power = {
       "perTarget": 30
     },
     "immobilize": {
-      "mag": 1,
+      "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "buffDuration": 90
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain",
+      "recoveryBuff",
+      "regenBuff"
+    ]
   }
 };

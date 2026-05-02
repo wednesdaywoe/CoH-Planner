@@ -41,18 +41,11 @@ export const BrightNovaBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.68,
-      "table": "Ranged_SSDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.812,
-      "table": "Ranged_SSDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.68,
+    "table": "Ranged_SSDamage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

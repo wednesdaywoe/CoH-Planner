@@ -51,72 +51,10 @@ export const SpinningStrike: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 0.8085,
-      "table": "Melee_Damage",
-      "duration": 0.45,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.8624,
-      "table": "Melee_Damage",
-      "duration": 0.45,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.9625,
-      "table": "Melee_Damage",
-      "duration": 0.45,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.54,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.54,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.6052,
       "table": "Melee_PvPDamage",
       "duration": 0.45,
       "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6355,
-      "table": "Melee_PvPDamage",
-      "duration": 0.45,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6779,
-      "table": "Melee_PvPDamage",
-      "duration": 0.45,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.7566,
-      "table": "Melee_PvPDamage",
-      "duration": 0.45,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.2105,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.2105,
-      "table": "Melee_PvPDamage"
     },
     {
       "type": "Smashing",
@@ -128,13 +66,8 @@ export const SpinningStrike: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 5.36,
+      "scale": 1.34,
       "table": "Melee_Ones"
-    },
-    "fear": {
-      "mag": 3,
-      "scale": 6,
-      "table": "Melee_Fear"
     }
   }
 };

@@ -37,18 +37,11 @@ export const MentalBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.64,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.322647,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "damageBuff": {
       "scale": 0.11,
@@ -57,6 +50,10 @@ export const MentalBlast: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17
+    "buffDuration": 9.17,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

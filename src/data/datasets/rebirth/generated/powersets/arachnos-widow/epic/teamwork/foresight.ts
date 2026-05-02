@@ -113,20 +113,6 @@ export const Foresight: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "elusivity": {
-      "melee": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "ranged": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "aoe": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
     "buffDuration": 0.75
   },
   "mechanicType": "parentMechanic"

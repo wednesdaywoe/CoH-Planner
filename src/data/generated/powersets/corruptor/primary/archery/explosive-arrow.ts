@@ -64,16 +64,6 @@ export const ExplosiveArrow: Power = {
       "table": "Ranged_PvPDamage"
     },
     {
-      "type": "Fire",
-      "scale": 0.9,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.5354,
-      "table": "Ranged_PvPDamage"
-    },
-    {
       "type": "Lethal",
       "scale": 0.58,
       "table": "Ranged_PvPDamage"

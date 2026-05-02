@@ -36,23 +36,11 @@ export const AssassinsClaw: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 2.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 4.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 4.5,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 2.5,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stealth": {
       "stealthPvE": {

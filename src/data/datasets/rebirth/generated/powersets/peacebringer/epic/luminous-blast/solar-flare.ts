@@ -43,21 +43,14 @@ export const SolarFlare: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.42,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.985846,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.42,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Melee_Knockback"
     },
     "defenseDebuff": {

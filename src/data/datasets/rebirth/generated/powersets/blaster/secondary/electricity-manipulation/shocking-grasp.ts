@@ -40,31 +40,22 @@ export const ShockingGrasp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.3,
-      "table": "Melee_Damage",
-      "duration": 5.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 0.348377,
-      "table": "Melee_Damage",
-      "duration": 5.1,
-      "tickRate": 5.099999904632568
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.3,
+    "table": "Melee_Damage",
+    "duration": 5.1,
+    "tickRate": 1
+  },
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Melee_Immobilize"
     },
     "enduranceDrain": {
-      "scale": 2.5,
-      "table": "Melee_EndDrain"
+      "scale": 0.07,
+      "table": "Melee_Ones"
     },
     "durations": {
       "enduranceDrain": 8.1,
@@ -83,6 +74,11 @@ export const ShockingGrasp: Power = {
       "scale": 0.066,
       "table": "Melee_Ones"
     },
-    "buffDuration": 8.5
+    "buffDuration": 8.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "enduranceGain"
+    ]
   }
 };

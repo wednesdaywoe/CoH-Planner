@@ -54,31 +54,6 @@ export const RepulsingTorrent: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 0.948012,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.316004,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.264016,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.495,
       "table": "Melee_Damage"
@@ -86,7 +61,7 @@ export const RepulsingTorrent: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 6,
+      "scale": 3,
       "table": "Melee_Knockback"
     }
   }

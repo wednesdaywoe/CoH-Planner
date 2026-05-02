@@ -43,32 +43,11 @@ export const CuttingBeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.919,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.068968,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.101,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 0.117586,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.919,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "damageBuff": {
       "scale": 0.051,

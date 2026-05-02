@@ -43,7 +43,7 @@ export const TouchoftheBeyond: Power = {
   "maxSlots": 6,
   "effects": {
     "fear": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Fear"
     },
@@ -64,6 +64,10 @@ export const TouchoftheBeyond: Power = {
       "scale": 0.077,
       "table": "Melee_Ones"
     },
-    "buffDuration": 60
+    "buffDuration": 60,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

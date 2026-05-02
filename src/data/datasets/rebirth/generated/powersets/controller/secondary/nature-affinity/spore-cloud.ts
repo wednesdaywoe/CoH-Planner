@@ -40,8 +40,8 @@ export const SporeCloud: Power = {
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
+      "scale": 1.5,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "regenDebuff": 0.75

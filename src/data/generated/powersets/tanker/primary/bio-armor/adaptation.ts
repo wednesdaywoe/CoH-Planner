@@ -41,54 +41,41 @@ export const Adaptation: Power = {
   "effects": {
     "resistanceDebuff": {
       "smashing": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "lethal": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "fire": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "cold": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "energy": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "negative": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "psionic": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "toxic": {
-        "scale": 1.33,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       }
     },
     "durations": {
       "resistanceDebuff": 1.12,
-      "regenBuff": 1,
-      "recoveryBuff": 1,
-      "resistance": 1,
-      "defenseBuff": 1
-    },
-    "regenBuff": {
-      "scale": 0.36,
-      "table": "Melee_Ones",
-      "perTarget": 0.06
-    },
-    "recoveryBuff": {
-      "scale": 0.18,
-      "table": "Melee_Ones",
-      "perTarget": 0.03
+      "resistance": 1
     },
     "resistance": {
       "fire": {
@@ -132,6 +119,21 @@ export const Adaptation: Power = {
         "perTarget": 0.065
       }
     },
+    "taunt": {
+      "scale": 1.1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 1.12,
+    "regenBuff": {
+      "scale": 0.36,
+      "table": "Melee_Ones",
+      "perTarget": 0.06
+    },
+    "recoveryBuff": {
+      "scale": 0.18,
+      "table": "Melee_Ones",
+      "perTarget": 0.03
+    },
     "defenseBuff": {
       "smashing": {
         "scale": 0.42,
@@ -168,11 +170,6 @@ export const Adaptation: Power = {
         "table": "Melee_Buff_Def",
         "perTarget": 0.024
       }
-    },
-    "taunt": {
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 1
+    }
   }
 };

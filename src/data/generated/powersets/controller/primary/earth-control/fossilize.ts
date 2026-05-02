@@ -50,16 +50,6 @@ export const Fossilize: Power = {
       "type": "Smashing",
       "scale": 2.1691,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.0845,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

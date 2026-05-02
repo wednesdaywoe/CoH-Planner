@@ -73,20 +73,6 @@ export const Dehydrate: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Heal",
-      "scale": 0.275,
-      "table": "Ranged_HealSelf",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Heal",
-      "scale": 0.4125,
-      "table": "Ranged_HealSelf",
-      "duration": 3.1,
-      "tickRate": 1
     }
   ],
   "effects": {

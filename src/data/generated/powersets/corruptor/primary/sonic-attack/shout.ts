@@ -50,11 +50,6 @@ export const Shout: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 1.96,
-      "table": "Ranged_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 1.1,
       "table": "Ranged_PvPDamage"
@@ -62,11 +57,6 @@ export const Shout: Power = {
     {
       "type": "Energy",
       "scale": 1.1,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.2,
       "table": "Ranged_PvPDamage"
     }
   ],

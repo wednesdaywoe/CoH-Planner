@@ -56,16 +56,6 @@ export const Smite: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 0.418119,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.254357,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.594,
       "table": "Melee_Damage"
@@ -73,8 +63,8 @@ export const Smite: Power = {
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

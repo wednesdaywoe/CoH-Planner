@@ -36,53 +36,5 @@ export const AssassinsIceSword: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 2.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 6,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.5,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 4.4361,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.76,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.169,
-      "table": "Melee_PvPDamage"
-    }
-  ],
-  "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 8
-    },
-    "buffDuration": 8
-  }
+  "maxSlots": 6
 };

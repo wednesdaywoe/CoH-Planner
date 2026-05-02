@@ -60,26 +60,6 @@ export const Dazzle: Power = {
       "type": "Energy",
       "scale": 0.3134,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.5,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.3134,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3134,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

@@ -44,11 +44,5 @@ export const OrbitingDeath: Power = {
     "table": "Melee_Damage",
     "duration": 2.5,
     "tickRate": 3
-  },
-  "effects": {
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
   }
 };

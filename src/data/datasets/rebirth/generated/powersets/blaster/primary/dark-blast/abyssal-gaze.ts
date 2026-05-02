@@ -42,25 +42,16 @@ export const AbyssalGaze: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.472,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.970946,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.472,
+    "table": "Ranged_Damage",
+    "duration": 2.1,
+    "tickRate": 1
+  },
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
@@ -71,6 +62,10 @@ export const AbyssalGaze: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17
+    "buffDuration": 9.17,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

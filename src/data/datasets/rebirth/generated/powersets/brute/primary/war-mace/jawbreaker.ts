@@ -47,11 +47,6 @@ export const Jawbreaker: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.814595,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.882,
       "table": "Melee_Damage"
@@ -59,7 +54,7 @@ export const Jawbreaker: Power = {
   ],
   "effects": {
     "knockup": {
-      "scale": 4,
+      "scale": 2,
       "table": "Melee_Knockback"
     },
     "taunt": {

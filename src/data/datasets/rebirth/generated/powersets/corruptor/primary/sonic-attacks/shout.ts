@@ -47,26 +47,6 @@ export const Shout: Power = {
       "type": "Energy",
       "scale": 1.06,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.804939,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.804939,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.12,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.609878,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {

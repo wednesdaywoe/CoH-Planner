@@ -53,53 +53,9 @@ export const WaterBurst: Power = {
       "type": "Cold",
       "scale": 0.675,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.212904,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.638711,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.045,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.108,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.225,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.042581,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.102194,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.212904,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 5.36,
-      "table": "Ranged_Ones"
-    },
     "damageBuff": {
       "scale": 0.035,
       "table": "Ranged_Ones"

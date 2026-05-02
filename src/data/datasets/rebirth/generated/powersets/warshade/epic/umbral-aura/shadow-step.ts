@@ -62,7 +62,11 @@ export const ShadowStep: Power = {
       }
     },
     "selfPenalty": true,
-    "buffDuration": 4
+    "buffDuration": 4,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "fly"
+    ]
   },
   "requires": "Inherent.Inherent.Shadow_Step !"
 };

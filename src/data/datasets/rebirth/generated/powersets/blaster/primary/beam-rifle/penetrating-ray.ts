@@ -41,35 +41,14 @@ export const PenetratingRay: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 2.76,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 4.254292,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.304,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1.5
-    },
-    {
-      "type": "Energy",
-      "scale": 0.468,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1.5
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 2.76,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 1.4,
+      "scale": 0.7,
       "table": "Ranged_Knockback"
     },
     "damageBuff": {
@@ -79,6 +58,10 @@ export const PenetratingRay: Power = {
     "durations": {
       "damageBuff": 8.9
     },
-    "buffDuration": 8.9
+    "buffDuration": 8.9,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

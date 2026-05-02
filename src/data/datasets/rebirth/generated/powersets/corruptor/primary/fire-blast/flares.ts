@@ -47,21 +47,6 @@ export const Flares: Power = {
       "type": "Fire",
       "scale": 0.3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.605713,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.71,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.605713,
-      "table": "Ranged_Damage"
     }
   ]
 };

@@ -57,11 +57,6 @@ export const WhirlingSword: Power = {
       "tickRate": 1
     },
     {
-      "type": "Lethal",
-      "scale": 2.186446,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.45,
       "table": "Melee_Damage"

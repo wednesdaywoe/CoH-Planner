@@ -54,31 +54,6 @@ export const ThunderStrike: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.242628,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.242628,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.485257,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.45,
       "table": "Melee_Damage"
@@ -91,13 +66,13 @@ export const ThunderStrike: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"
     },
     "enduranceDrain": {
-      "scale": 2,
-      "table": "Melee_EndDrain"
+      "scale": 0.07,
+      "table": "Melee_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -107,7 +82,7 @@ export const ThunderStrike: Power = {
       "recoveryDebuff": 4
     },
     "knockback": {
-      "scale": 1.28,
+      "scale": 0.64,
       "table": "Melee_Ones"
     },
     "buffDuration": 4

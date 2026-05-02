@@ -42,18 +42,11 @@ export const DarkNovaBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1.64,
-      "table": "Ranged_SSDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.322647,
-      "table": "Ranged_SSDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 1.64,
+    "table": "Ranged_SSDamage"
+  },
   "effects": {
     "knockback": {
       "scale": 1,

@@ -57,11 +57,6 @@ export const TheLotusDrops: Power = {
       "tickRate": 1
     },
     {
-      "type": "Lethal",
-      "scale": 1.644037,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.45,
       "table": "Melee_Damage"
@@ -83,8 +78,8 @@ export const TheLotusDrops: Power = {
       "defenseDebuff": 10
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
   }

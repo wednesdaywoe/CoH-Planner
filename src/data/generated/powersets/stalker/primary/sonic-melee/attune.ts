@@ -38,35 +38,5 @@ export const Attune: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.25,
-      "table": "Melee_Damage",
-      "duration": 1.75,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.25,
-      "table": "Melee_InherentDamage",
-      "duration": 1.75,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.25,
-      "table": "Melee_PvPDamage",
-      "duration": 1.75,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.25,
-      "table": "Melee_PvPDamage",
-      "duration": 1.75,
-      "tickRate": 2
-    }
-  ]
+  "maxSlots": 6
 };

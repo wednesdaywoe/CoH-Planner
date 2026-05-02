@@ -41,7 +41,7 @@ export const NeurotoxicBreath: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 2,
       "scale": 3,
       "table": "Ranged_Immobilize"
     }

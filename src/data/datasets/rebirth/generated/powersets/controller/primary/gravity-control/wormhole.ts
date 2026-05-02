@@ -54,37 +54,17 @@ export const Wormhole: Power = {
       }
     },
     "durations": {
-      "mezResistance": 15,
-      "stealth": 0.75,
-      "threatDebuff": 0.75
+      "mezResistance": 15
     },
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 20,
-        "table": "Ranged_Ones"
-      }
-    },
-    "untouchable": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "threatDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "onlyAffectsSelf": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
     },
     "knockback": {
       "scale": 7,
       "table": "Ranged_Knockback"
     },
-    "buffDuration": 0.75
+    "buffDuration": 15
   }
 };

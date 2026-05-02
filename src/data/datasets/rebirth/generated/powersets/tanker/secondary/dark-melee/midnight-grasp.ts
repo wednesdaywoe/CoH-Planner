@@ -54,11 +54,6 @@ export const MidnightGrasp: Power = {
     },
     {
       "type": "Negative",
-      "scale": 2.605303,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
       "scale": 0.11,
       "table": "Melee_Damage",
       "duration": 3.1,
@@ -79,13 +74,13 @@ export const MidnightGrasp: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Melee_Immobilize"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

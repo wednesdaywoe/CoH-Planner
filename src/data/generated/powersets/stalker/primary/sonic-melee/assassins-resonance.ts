@@ -49,16 +49,6 @@ export const AssassinsWhisper: Power = {
       "type": "Energy",
       "scale": 1.25,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 6,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 4.7667,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -109,11 +99,6 @@ export const AssassinsWhisper: Power = {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       }
-    },
-    "sleep": {
-      "mag": 5,
-      "scale": 15,
-      "table": "Melee_Sleep"
     },
     "buffDuration": 15
   }

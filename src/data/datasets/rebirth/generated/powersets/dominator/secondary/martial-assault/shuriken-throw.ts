@@ -43,18 +43,8 @@ export const ShurikenThrow: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 0.4704,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.3136,
       "table": "Ranged_Damage"
     },
     {

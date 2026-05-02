@@ -47,20 +47,10 @@ export const Slash: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 2.7446,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.9855,
       "table": "Melee_PvPDamage",
       "duration": 0.6,
       "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.6292,
-      "table": "Melee_PvPDamage"
     },
     {
       "type": "Toxic",

@@ -43,26 +43,6 @@ export const ShortCircuit: Power = {
   "damage": [
     {
       "type": "Energy",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.18,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.18,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 0.18,
       "table": "Ranged_Damage",
       "duration": 1.5,
@@ -74,16 +54,6 @@ export const ShortCircuit: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 1.5,
       "tickRate": 0.3499999940395355
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1475,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1475,
-      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Energy",
@@ -105,12 +75,8 @@ export const ShortCircuit: Power = {
       "scale": 10.35,
       "table": "Ranged_EndDrain"
     },
-    "enduranceGain": {
-      "scale": 7.8,
-      "table": "Ranged_EndDrain"
-    },
     "recoveryDebuff": {
-      "scale": 1.8,
+      "scale": 1,
       "table": "Ranged_EndDrain"
     },
     "durations": {

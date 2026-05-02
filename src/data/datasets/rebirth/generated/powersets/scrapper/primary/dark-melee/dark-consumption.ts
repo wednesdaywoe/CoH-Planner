@@ -46,21 +46,6 @@ export const DarkConsumption: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Negative",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.36,
       "table": "Melee_Damage"
@@ -71,6 +56,10 @@ export const DarkConsumption: Power = {
       "scale": 25,
       "table": "Melee_Ones",
       "perTarget": 25
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

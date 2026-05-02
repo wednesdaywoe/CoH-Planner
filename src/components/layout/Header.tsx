@@ -32,9 +32,14 @@ const ORIGIN_OPTIONS = [
   { value: 'Technology', label: 'Technology' },
 ];
 
+// Rebirth is loadable end-to-end (data parsed from Rebirth's pigg, datasets/
+// rebirth/ wired, picker switch reloads the bundle), but kept disabled in
+// production until Original-Domination behavior + tooltip-level convention +
+// new InfoPanel layout land. Devs can still bypass via the `?serverId=rebirth`
+// URL-param override that main.tsx reads pre-rehydration.
 const SERVER_OPTIONS = [
   { value: 'homecoming', label: 'Homecoming' },
-  { value: 'rebirth', label: 'Rebirth' },
+  { value: 'rebirth', label: 'Rebirth (Coming Soon)', disabled: true },
   { value: 'thunderspy', label: 'Thunderspy (Coming Soon)', disabled: true },
 ];
 

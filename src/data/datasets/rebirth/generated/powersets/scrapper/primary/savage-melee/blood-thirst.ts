@@ -32,25 +32,9 @@ export const BloodThirst: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Heal",
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    {
-      "type": "Heal",
-      "scale": 1,
-      "table": "Melee_HealSelf",
-      "duration": 9.1,
-      "tickRate": 3
-    },
-    {
-      "type": "Heal",
-      "scale": 1,
-      "table": "Melee_HealSelf",
-      "duration": 12.1,
-      "tickRate": 3
-    }
-  ]
+  "damage": {
+    "type": "Heal",
+    "scale": 1,
+    "table": "Melee_HealSelf"
+  }
 };

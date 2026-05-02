@@ -49,16 +49,11 @@ export const TelekineticBlast: Power = {
       "type": "Psionic",
       "scale": 0.96,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.844346,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 8,
+      "scale": 4,
       "table": "Ranged_Knockback"
     },
     "damageBuff": {
@@ -68,6 +63,10 @@ export const TelekineticBlast: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5
+    "buffDuration": 8.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

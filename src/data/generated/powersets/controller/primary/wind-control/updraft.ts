@@ -47,17 +47,7 @@ export const Updraft: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.281,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6405,
       "table": "Ranged_PvPDamage"
     }
   ],

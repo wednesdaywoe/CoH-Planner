@@ -46,16 +46,6 @@ export const AssassinsEclipse: Power = {
       "type": "Negative",
       "scale": 0.75,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 4.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 4.5,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

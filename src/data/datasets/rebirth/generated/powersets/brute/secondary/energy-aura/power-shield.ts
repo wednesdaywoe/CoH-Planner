@@ -47,10 +47,6 @@ export const PowerShield: Power = {
         "scale": 2,
         "table": "Melee_Buff_Def"
       },
-      "psionic": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
       "negative": {
         "scale": 1.4,
         "table": "Melee_Buff_Def"
@@ -59,24 +55,6 @@ export const PowerShield: Power = {
     "durations": {
       "defenseBuff": 0.75,
       "debuffResistance": 0.75
-    },
-    "elusivity": {
-      "cold": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "psionic": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
     },
     "debuffResistance": {
       "defense": {

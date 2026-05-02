@@ -112,7 +112,7 @@ export const ShadowFall: Power = {
     },
     "mezResistance": {
       "fear": {
-        "scale": 12,
+        "scale": 5,
         "table": "Ranged_Res_Boolean"
       }
     },

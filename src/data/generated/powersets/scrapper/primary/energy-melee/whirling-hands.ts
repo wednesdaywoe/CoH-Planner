@@ -57,11 +57,6 @@ export const WhirlingHands: Power = {
       "table": "Melee_InherentDamage"
     },
     {
-      "type": "Energy",
-      "scale": 1.1818,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.5174,
       "table": "Melee_PvPDamage"

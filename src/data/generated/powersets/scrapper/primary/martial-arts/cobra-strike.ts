@@ -52,11 +52,6 @@ export const CobraStrike: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.9689,
       "table": "Melee_PvPDamage"
     },

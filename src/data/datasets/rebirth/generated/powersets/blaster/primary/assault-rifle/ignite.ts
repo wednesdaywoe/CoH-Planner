@@ -45,6 +45,10 @@ export const Ignite: Power = {
     "durations": {
       "damageBuff": 11.5
     },
-    "buffDuration": 11.5
+    "buffDuration": 11.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

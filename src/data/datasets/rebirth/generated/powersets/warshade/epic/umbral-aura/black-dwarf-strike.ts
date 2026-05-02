@@ -51,16 +51,6 @@ export const BlackDwarfStrike: Power = {
       "type": "Negative",
       "scale": 0.5,
       "table": "Melee_SSDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.543456,
-      "table": "Melee_SSDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.088544,
-      "table": "Melee_SSDamage"
     }
   ],
   "effects": {

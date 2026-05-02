@@ -40,16 +40,16 @@ export const Hurricane: Power = {
   "maxSlots": 6,
   "effects": {
     "repel": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Ones"
     },
     "durations": {
-      "repel": 0.75
+      "repel": 1.05
     },
     "knockback": {
-      "scale": 8,
+      "scale": 4,
       "table": "Ranged_Knockback"
     },
-    "buffDuration": 0.75
+    "buffDuration": 1.05
   }
 };

@@ -52,16 +52,6 @@ export const SniperRifle: Power = {
       "type": "Lethal",
       "scale": 2.749,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 4.5,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.749,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
@@ -80,16 +70,6 @@ export const SniperRifle: Power = {
         "type": "Lethal",
         "scale": 2.28,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Lethal",
-        "scale": 1.699,
-        "table": "Ranged_PvPDamage"
-      },
-      {
-        "type": "Lethal",
-        "scale": 2.28,
-        "table": "Ranged_InherentDamage"
       },
       {
         "type": "Lethal",

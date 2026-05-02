@@ -53,16 +53,6 @@ export const WhirlingHands: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.178142,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.785428,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.45,
       "table": "Melee_Damage"
@@ -70,13 +60,13 @@ export const WhirlingHands: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 5,
       "table": "Melee_Stun"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

@@ -54,7 +54,7 @@ export const FreezingTouch: Power = {
   ],
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     },
@@ -86,6 +86,10 @@ export const FreezingTouch: Power = {
       "scale": 0.066,
       "table": "Melee_Ones"
     },
-    "buffDuration": 6
+    "buffDuration": 6,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

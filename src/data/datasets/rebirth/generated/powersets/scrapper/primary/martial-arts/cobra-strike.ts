@@ -45,21 +45,6 @@ export const CobraStrike: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.882,
       "table": "Melee_Damage"
@@ -67,7 +52,7 @@ export const CobraStrike: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Stun"
     }

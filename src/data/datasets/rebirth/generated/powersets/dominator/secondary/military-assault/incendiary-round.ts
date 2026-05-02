@@ -55,16 +55,6 @@ export const IncendiaryRound: Power = {
       "table": "Ranged_Damage",
       "duration": 4.12,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.8565,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.9001,
-      "table": "Ranged_Damage"
     }
   ]
 };

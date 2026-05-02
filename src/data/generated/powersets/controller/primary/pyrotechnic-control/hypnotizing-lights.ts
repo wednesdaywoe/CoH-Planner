@@ -55,20 +55,6 @@ export const HypnotizingLights: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 0.1,
-      "table": "Ranged_InherentDamage",
-      "duration": 5,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.0627,
-      "table": "Ranged_PvPDamage",
-      "duration": 5,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Psionic",
       "scale": 0.0627,
       "table": "Ranged_PvPDamage",
       "duration": 5,

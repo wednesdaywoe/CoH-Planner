@@ -33,8 +33,8 @@ export const Benumb: Power = {
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
+      "scale": 5,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "regenDebuff": 30,
@@ -81,15 +81,15 @@ export const Benumb: Power = {
       "table": "Ranged_Stun"
     },
     "knockback": {
-      "scale": 1,
+      "scale": 0.5,
       "table": "Ranged_Stun"
     },
     "knockup": {
-      "scale": 1,
+      "scale": 0.5,
       "table": "Ranged_Stun"
     },
     "repel": {
-      "scale": 1,
+      "scale": 0.5,
       "table": "Ranged_Stun"
     },
     "defenseDebuff": {
@@ -111,10 +111,6 @@ export const Benumb: Power = {
     "enduranceDrain": {
       "scale": 0.05,
       "table": "Ranged_Ones"
-    },
-    "enduranceGain": {
-      "scale": 5.5,
-      "table": "Ranged_EndDrain"
     },
     "buffDuration": 30
   }

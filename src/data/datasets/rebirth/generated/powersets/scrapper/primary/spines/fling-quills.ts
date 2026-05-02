@@ -54,26 +54,6 @@ export const SpineBurst: Power = {
       "tickRate": 1
     },
     {
-      "type": "Lethal",
-      "scale": 1.985307,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.985307,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.9,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.9,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.405,
       "table": "Melee_Damage"
@@ -81,7 +61,7 @@ export const SpineBurst: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 0.33000001311302185,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

@@ -38,7 +38,7 @@ export const Flash: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     }

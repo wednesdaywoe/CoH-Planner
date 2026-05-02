@@ -58,30 +58,14 @@ export const WetIce: Power = {
       "knockup": {
         "scale": 100,
         "table": "Melee_Ones"
-      },
-      "stun": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
       }
     },
     "knockback": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "stun": {
@@ -107,20 +91,16 @@ export const WetIce: Power = {
     },
     "debuffResistance": {
       "movement": {
-        "scale": 0.5,
+        "scale": 0.6,
         "table": "Melee_Ones"
       },
       "recharge": {
-        "scale": 0.5,
+        "scale": 0.6,
         "table": "Melee_Ones"
       },
       "defense": {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
-      },
-      "tohit": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
       }
     },
     "resistance": {

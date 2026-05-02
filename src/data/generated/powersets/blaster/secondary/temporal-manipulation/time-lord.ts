@@ -31,28 +31,28 @@ export const TimeLord: Power = {
   "maxSlots": 6,
   "effects": {
     "rechargeBuff": {
-      "scale": 0.1,
+      "scale": 0.2,
       "table": "Melee_Ones"
     },
     "durations": {
-      "rechargeBuff": 0.5,
-      "debuffResistance": 0.5,
-      "resistance": 0.5,
+      "rechargeBuff": 0.75,
+      "debuffResistance": 0.75,
+      "resistance": 0.75,
       "stun": 0.5
     },
     "debuffResistance": {
       "movement": {
-        "scale": 0.3,
+        "scale": 0.6,
         "table": "Melee_Ones"
       },
       "recharge": {
-        "scale": 0.3,
+        "scale": 0.6,
         "table": "Melee_Ones"
       }
     },
     "resistance": {
       "energy": {
-        "scale": 0.5,
+        "scale": 1,
         "table": "Melee_Res_Dmg"
       }
     },
@@ -62,7 +62,7 @@ export const TimeLord: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.5,
-    "buffDuration": 0.5
+    "buffDuration": 0.75
   },
   "mechanicType": "parentMechanic"
 };

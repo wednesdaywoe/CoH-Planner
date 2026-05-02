@@ -52,26 +52,21 @@ export const HavocPunch: Power = {
       "type": "Energy",
       "scale": 0.6,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.471424,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Melee_Sleep"
     },
     "knockback": {
-      "scale": 1.5,
+      "scale": 0.75,
       "table": "Melee_Knockback"
     },
     "enduranceDrain": {
-      "scale": 4,
-      "table": "Melee_EndDrain"
+      "scale": 0.1,
+      "table": "Melee_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -89,6 +84,11 @@ export const HavocPunch: Power = {
       "scale": 6.76,
       "table": "Melee_Ones"
     },
-    "buffDuration": 9
+    "buffDuration": 9,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "enduranceGain"
+    ]
   }
 };

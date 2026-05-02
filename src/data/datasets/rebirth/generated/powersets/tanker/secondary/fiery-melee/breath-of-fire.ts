@@ -59,13 +59,6 @@ export const BreathofFire: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.966932,
-      "table": "Melee_Damage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
       "scale": 0.306,
       "table": "Melee_Damage",
       "duration": 0.6,
@@ -81,8 +74,8 @@ export const BreathofFire: Power = {
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

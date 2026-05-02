@@ -37,7 +37,7 @@ export const Scare: Power = {
   "maxSlots": 6,
   "effects": {
     "fear": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Fear"
     },
@@ -48,6 +48,10 @@ export const Scare: Power = {
     "durations": {
       "damageBuff": 10.17
     },
-    "buffDuration": 10.17
+    "buffDuration": 10.17,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

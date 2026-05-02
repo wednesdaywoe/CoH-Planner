@@ -50,26 +50,6 @@ export const IceBlast: Power = {
       "type": "Cold",
       "scale": 1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.996415,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.558496,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.64,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.554912,
-      "table": "Ranged_Damage"
     }
   ]
 };

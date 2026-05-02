@@ -57,18 +57,6 @@ export const OneThousandCuts: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 0.288147,
-      "table": "Melee_Damage",
-      "duration": 2.05,
-      "tickRate": 0.20000000298023224
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.7,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.06795,
       "table": "Melee_Damage",
@@ -83,7 +71,7 @@ export const OneThousandCuts: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {

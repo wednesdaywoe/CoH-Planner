@@ -50,27 +50,12 @@ export const ScrambleMinds: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.7262,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 0.7262,
       "table": "Ranged_PvPDamage"
     },
     {
       "type": "Psionic",
       "scale": 2.36,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.7262,
       "table": "Ranged_PvPDamage"
     }
   ],

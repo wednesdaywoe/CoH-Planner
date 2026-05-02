@@ -50,11 +50,6 @@ export const Pendulum: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 2.28595,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.855,
       "table": "Melee_Damage"
@@ -62,7 +57,7 @@ export const Pendulum: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {

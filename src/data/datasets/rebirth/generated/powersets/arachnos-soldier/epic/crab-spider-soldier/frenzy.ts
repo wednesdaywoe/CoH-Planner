@@ -51,16 +51,6 @@ export const Frenzy: Power = {
       "type": "Energy",
       "scale": 0.79,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.854986,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.854986,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

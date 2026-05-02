@@ -43,17 +43,8 @@ export const SummonDemons: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "duration": 99999,
-      "entities": [
-        {
-          "entity": "MastermindPets_Ember_Demon",
-          "count": 1
-        },
-        {
-          "entity": "MastermindPets_Hellfire_Gargoyle",
-          "count": 1
-        }
-      ]
+      "entity": "MastermindPets_Ember_Demon",
+      "duration": 99999
     }
   }
 };

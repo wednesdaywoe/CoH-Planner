@@ -55,16 +55,6 @@ export const FocusedBurst: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.016101,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.570595,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.738,
       "table": "Melee_Damage"
@@ -72,12 +62,12 @@ export const FocusedBurst: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

@@ -42,21 +42,8 @@ export const SummonDemonlings: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "duration": 99999,
-      "entities": [
-        {
-          "entity": "MastermindPets_Fiery_Demonling",
-          "count": 1
-        },
-        {
-          "entity": "MastermindPets_Cold_Demonling",
-          "count": 1
-        },
-        {
-          "entity": "MastermindPets_Hellfire_Demonling",
-          "count": 1
-        }
-      ]
+      "entity": "MastermindPets_Fiery_Demonling",
+      "duration": 99999
     },
     "teleport": {
       "scale": 1,

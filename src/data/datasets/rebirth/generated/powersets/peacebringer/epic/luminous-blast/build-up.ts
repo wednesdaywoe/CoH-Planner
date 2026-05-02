@@ -45,6 +45,11 @@ export const InnerLight: Power = {
       "scale": 3.2,
       "table": "Melee_Buff_Dmg"
     },
-    "buffDuration": 30
+    "buffDuration": 30,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   }
 };

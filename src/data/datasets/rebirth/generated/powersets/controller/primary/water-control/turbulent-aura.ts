@@ -42,36 +42,9 @@ export const TurbulentAura: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.15,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.1875,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.15,
-      "table": "Ranged_HealSelf"
-    }
-  ],
   "effects": {
     "knockback": {
-      "scale": 2.68,
+      "scale": 0.67,
       "table": "Ranged_Ones"
     },
     "durations": {

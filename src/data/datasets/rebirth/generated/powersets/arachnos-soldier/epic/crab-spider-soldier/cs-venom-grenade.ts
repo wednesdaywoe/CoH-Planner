@@ -39,22 +39,13 @@ export const VenomGrenade: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Toxic",
-      "scale": 0.1964,
-      "table": "Ranged_Damage",
-      "duration": 4.12,
-      "tickRate": 1
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.12827,
-      "table": "Ranged_Damage",
-      "duration": 4.12,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Toxic",
+    "scale": 0.1964,
+    "table": "Ranged_Damage",
+    "duration": 4.12,
+    "tickRate": 1
+  },
   "effects": {
     "resistanceDebuff": {
       "smashing": {

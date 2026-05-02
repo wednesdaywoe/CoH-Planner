@@ -48,16 +48,6 @@ export const BattleAgility: Power = {
       "defenseBuff": 0.75,
       "debuffResistance": 0.75
     },
-    "elusivity": {
-      "ranged": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "aoe": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
     "debuffResistance": {
       "defense": {
         "scale": 0.4,

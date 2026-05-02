@@ -49,11 +49,6 @@ export const ScorpionsSting: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.0714,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.22,
       "table": "Ranged_Damage",
@@ -69,21 +64,11 @@ export const ScorpionsSting: Power = {
       "type": "Energy",
       "scale": 0.55,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.392,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4312,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 5,
       "table": "Ranged_Immobilize"
     }

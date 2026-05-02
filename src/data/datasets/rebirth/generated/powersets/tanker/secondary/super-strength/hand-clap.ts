@@ -46,17 +46,17 @@ export const HandClap: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"
     },
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Melee_Knockback"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

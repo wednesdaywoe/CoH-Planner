@@ -46,18 +46,6 @@ export const ExplosiveShuriken: Power = {
     },
     {
       "type": "Fire",
-      "scale": 1.232,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.05,
-      "table": "Ranged_Damage",
-      "duration": 5.5,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
       "scale": 0.05,
       "table": "Ranged_Damage",
       "duration": 5.5,

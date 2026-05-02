@@ -53,30 +53,6 @@ export const Ignite: Power = {
     },
     {
       "type": "Fire",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1022,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.25,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Fire",
-      "scale": 0.9077,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0927,
-      "table": "Ranged_PvPDamage",
-      "duration": 5.25,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Fire",
       "scale": 0.9077,
       "table": "Ranged_PvPDamage"
     },
@@ -87,17 +63,5 @@ export const Ignite: Power = {
       "duration": 5.25,
       "tickRate": 0.25
     }
-  ],
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Flames",
-      "powers": [
-        "Pets.ResistAll_NoFly.ResistAll",
-        "Redirects.Assault_Rifle.Ignite",
-        "Redirects.Assault_Rifle.Avoid"
-      ],
-      "duration": 5.5
-    }
-  }
+  ]
 };

@@ -51,26 +51,11 @@ export const Tranquilizer: Power = {
     {
       "type": "Toxic",
       "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1,
       "table": "Ranged_Damage"
     },
     {
       "type": "Toxic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Toxic",
       "scale": 1.54,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.77,
       "table": "Ranged_PvPDamage"
     }
   ],

@@ -59,35 +59,6 @@ export const ShadowMaul: Power = {
       "tickRate": 0.625
     },
     {
-      "type": "Smashing",
-      "scale": 0.454732,
-      "table": "Melee_Damage",
-      "duration": 2,
-      "tickRate": 0.625
-    },
-    {
-      "type": "Negative",
-      "scale": 0.454732,
-      "table": "Melee_Damage",
-      "duration": 2,
-      "tickRate": 0.625
-    },
-    {
-      "type": "Negative",
-      "scale": 3.637858,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.156,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.156,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.24255,
       "table": "Melee_Damage",

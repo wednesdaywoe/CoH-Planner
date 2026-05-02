@@ -52,11 +52,6 @@ export const LifeDrain: Power = {
       "type": "Heal",
       "scale": 1,
       "table": "Ranged_HealSelf"
-    },
-    {
-      "type": "Negative",
-      "scale": 3.125161,
-      "table": "Ranged_Damage"
     }
   ]
 };

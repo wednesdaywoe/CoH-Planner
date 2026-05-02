@@ -44,11 +44,6 @@ export const BlazingArrow: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 2.558723,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.125,
       "table": "Ranged_Damage",
@@ -64,6 +59,10 @@ export const BlazingArrow: Power = {
     "durations": {
       "damageBuff": 9.33
     },
-    "buffDuration": 9.33
+    "buffDuration": 9.33,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

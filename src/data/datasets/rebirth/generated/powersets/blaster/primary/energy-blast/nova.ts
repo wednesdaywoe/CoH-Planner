@@ -49,21 +49,11 @@ export const Nova: Power = {
       "type": "Energy",
       "scale": 3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.570621,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.158534,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 20,
+      "scale": 10,
       "table": "Ranged_Knockback"
     },
     "damageBuff": {

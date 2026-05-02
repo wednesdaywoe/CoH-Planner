@@ -48,26 +48,6 @@ export const TitanSweep: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.050093,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.050093,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.429,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.429,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.64305,
       "table": "Melee_Damage"
@@ -75,7 +55,7 @@ export const TitanSweep: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   }

@@ -45,35 +45,7 @@ export const PersonalForceField: Power = {
     },
     "defenseBuff": {
       "scale": 7.5,
-      "table": "Melee_Buff_Def",
-      "smashing": {
-        "scale": 7.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 7.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 7.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 7.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 7.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 7.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 7.5,
-        "table": "Melee_Buff_Def"
-      }
+      "table": "Melee_Buff_Def"
     },
     "resistance": {
       "smashing": {
@@ -103,12 +75,6 @@ export const PersonalForceField: Power = {
       "psionic": {
         "scale": 4,
         "table": "Melee_Res_Dmg"
-      }
-    },
-    "elusivity": {
-      "all": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
       }
     },
     "mezResistance": {

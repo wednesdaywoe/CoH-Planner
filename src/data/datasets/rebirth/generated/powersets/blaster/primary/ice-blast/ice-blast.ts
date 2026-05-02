@@ -49,11 +49,6 @@ export const IceBlast: Power = {
       "type": "Cold",
       "scale": 1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.322647,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -64,6 +59,10 @@ export const IceBlast: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17
+    "buffDuration": 9.17,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

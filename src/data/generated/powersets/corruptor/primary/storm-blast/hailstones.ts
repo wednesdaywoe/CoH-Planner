@@ -52,16 +52,11 @@ export const Hailstones: Power = {
       "type": "Cold",
       "scale": 0.64,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.64,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Ranged_Ones"
     }
   }

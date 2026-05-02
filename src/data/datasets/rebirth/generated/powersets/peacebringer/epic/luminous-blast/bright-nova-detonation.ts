@@ -55,16 +55,6 @@ export const BrightNovaDetonation: Power = {
       "type": "Smashing",
       "scale": 0.3,
       "table": "Ranged_SSDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.687113,
-      "table": "Ranged_SSDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.343041,
-      "table": "Ranged_SSDamage"
     }
   ],
   "effects": {
@@ -76,7 +66,7 @@ export const BrightNovaDetonation: Power = {
       "defenseDebuff": 10
     },
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

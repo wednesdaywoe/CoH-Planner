@@ -51,11 +51,6 @@ export const SoaringDragon: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 2.287112,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.81,
       "table": "Melee_Damage"
@@ -63,7 +58,7 @@ export const SoaringDragon: Power = {
   ],
   "effects": {
     "knockup": {
-      "scale": 4,
+      "scale": 2,
       "table": "Melee_Knockback"
     },
     "defenseDebuff": {

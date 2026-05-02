@@ -60,13 +60,6 @@ export const FieryBreath: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.7116,
-      "table": "Melee_Damage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
       "scale": 0.045,
       "table": "Melee_Damage",
       "duration": 3.1,

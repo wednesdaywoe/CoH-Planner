@@ -48,16 +48,6 @@ export const Stalagmite: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 0.75,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6494,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.6494,
       "table": "Ranged_PvPDamage"
     }

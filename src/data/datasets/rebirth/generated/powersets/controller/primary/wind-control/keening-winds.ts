@@ -42,13 +42,13 @@ export const KeeningWinds: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Fear"
     },
     "enduranceDrain": {
-      "scale": 2.5,
-      "table": "Ranged_EndDrain"
+      "scale": 0.04,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "enduranceDrain": 2.1
@@ -58,6 +58,10 @@ export const KeeningWinds: Power = {
       "table": "Ranged_EndDrain",
       "perTarget": 10
     },
-    "buffDuration": 2.1
+    "buffDuration": 2.1,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

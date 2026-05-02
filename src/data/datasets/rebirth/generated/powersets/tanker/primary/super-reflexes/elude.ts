@@ -84,6 +84,11 @@ export const Elude: Power = {
       "scale": 4,
       "table": "Melee_HealSelf"
     },
-    "buffDuration": 90
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "jumpHeight",
+      "runSpeed"
+    ]
   }
 };

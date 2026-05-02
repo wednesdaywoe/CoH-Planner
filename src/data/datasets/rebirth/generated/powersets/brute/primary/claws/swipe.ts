@@ -45,11 +45,6 @@ export const Swipe: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.456665,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.3735,
       "table": "Melee_Damage"

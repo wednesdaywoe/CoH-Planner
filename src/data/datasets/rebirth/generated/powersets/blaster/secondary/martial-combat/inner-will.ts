@@ -44,46 +44,6 @@ export const InnerWill: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 30,
-    "durations": {
-      "stun": 30,
-      "sleep": 30,
-      "immobilize": 30,
-      "hold": 30,
-      "confuse": 30,
-      "fear": 30,
-      "mezResistance": 30
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
     "mezResistance": {
       "stun": {
         "scale": 1,
@@ -109,6 +69,46 @@ export const InnerWill: Power = {
         "scale": 1,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "mezResistance": 30,
+      "stun": 30,
+      "sleep": 30,
+      "immobilize": 30,
+      "hold": 30,
+      "confuse": 30,
+      "fear": 30
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "effectDuration": 30,
+    "sleep": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Ones"
     },
     "buffDuration": 30
   }

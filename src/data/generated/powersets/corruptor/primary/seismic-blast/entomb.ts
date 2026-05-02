@@ -49,16 +49,6 @@ export const Entomb: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 2.12,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.2889,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 2.2889,
       "table": "Ranged_PvPDamage"
     }

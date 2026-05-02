@@ -67,11 +67,6 @@ export const SpineBurst: Power = {
       "type": "Lethal",
       "scale": 0.6,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

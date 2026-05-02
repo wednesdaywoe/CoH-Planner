@@ -55,16 +55,6 @@ export const Burst: Power = {
     },
     {
       "type": "Energy",
-      "scale": 1.2543,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2543,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 0.1512,
       "table": "Melee_PvPDamage",
       "duration": 1.9,
@@ -73,16 +63,6 @@ export const Burst: Power = {
     {
       "type": "Smashing",
       "scale": 0.5038,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2596,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2596,
       "table": "Melee_PvPDamage"
     }
   ],

@@ -54,20 +54,6 @@ export const NightFall: Power = {
     },
     {
       "type": "Negative",
-      "scale": 0.11,
-      "table": "Ranged_InherentDamage",
-      "duration": 2.8,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Negative",
-      "scale": 0.0873,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.8,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Negative",
       "scale": 0.0873,
       "table": "Ranged_PvPDamage",
       "duration": 2.8,

@@ -53,16 +53,6 @@ export const DarkGrasp: Power = {
       "type": "Negative",
       "scale": 1.889,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.9445,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

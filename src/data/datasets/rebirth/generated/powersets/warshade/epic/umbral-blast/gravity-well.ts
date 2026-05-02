@@ -55,23 +55,11 @@ export const GravityWell: Power = {
       "table": "Melee_Damage",
       "duration": 2.75,
       "tickRate": 0.5
-    },
-    {
-      "type": "Negative",
-      "scale": 1.398672,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.295501,
-      "table": "Melee_Damage",
-      "duration": 2.75,
-      "tickRate": 0.5
     }
   ],
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

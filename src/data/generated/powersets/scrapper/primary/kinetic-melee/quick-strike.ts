@@ -56,11 +56,6 @@ export const QuickStrike: Power = {
       "table": "Melee_InherentDamage"
     },
     {
-      "type": "Energy",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.7707,
       "table": "Melee_PvPDamage"

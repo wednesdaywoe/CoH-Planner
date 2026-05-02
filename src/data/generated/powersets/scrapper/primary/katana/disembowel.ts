@@ -62,11 +62,6 @@ export const SoaringDragon: Power = {
       "type": "Lethal",
       "scale": 1.8,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

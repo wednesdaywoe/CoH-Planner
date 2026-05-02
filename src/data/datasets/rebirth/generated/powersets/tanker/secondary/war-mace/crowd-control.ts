@@ -50,11 +50,6 @@ export const CrowdControl: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.571203,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.7245,
       "table": "Melee_Damage"
@@ -62,12 +57,12 @@ export const CrowdControl: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

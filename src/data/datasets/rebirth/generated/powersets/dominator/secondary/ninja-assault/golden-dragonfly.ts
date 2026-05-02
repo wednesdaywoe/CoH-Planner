@@ -51,11 +51,6 @@ export const GoldenDragonfly: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 3.1374,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.06,
       "table": "Melee_Damage",
@@ -71,21 +66,11 @@ export const GoldenDragonfly: Power = {
       "type": "Energy",
       "scale": 1.43,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.5687,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.7256,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "defenseDebuff": {

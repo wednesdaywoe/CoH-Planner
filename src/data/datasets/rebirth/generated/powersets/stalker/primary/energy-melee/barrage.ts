@@ -52,45 +52,11 @@ export const Barrage: Power = {
       "table": "Melee_Damage",
       "duration": 0.3,
       "tickRate": 0.25
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.478082,
-      "table": "Melee_Damage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Energy",
-      "scale": 0.318722,
-      "table": "Melee_Damage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Energy",
-      "scale": 1.593608,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.593608,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.32,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
     }

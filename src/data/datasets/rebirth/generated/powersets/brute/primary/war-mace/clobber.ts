@@ -47,11 +47,6 @@ export const Clobber: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.571142,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.314,
       "table": "Melee_Damage"
@@ -59,7 +54,7 @@ export const Clobber: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"
     },

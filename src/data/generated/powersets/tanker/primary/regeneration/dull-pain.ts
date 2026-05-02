@@ -35,47 +35,19 @@ export const SecondWind: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Heal",
-      "scale": 4,
-      "table": "Melee_HealSelf"
-    },
-    {
-      "type": "Heal",
-      "scale": 7.5,
-      "table": "Melee_HealSelf"
-    }
-  ],
+  "damage": {
+    "type": "Heal",
+    "scale": 4,
+    "table": "Melee_HealSelf"
+  },
   "effects": {
     "maxHPBuff": {
       "scale": 2,
       "table": "Melee_HealSelf"
     },
     "durations": {
-      "maxHPBuff": 120,
-      "untouchable": 15,
-      "stealth": 15
+      "maxHPBuff": 120
     },
-    "enduranceGain": {
-      "scale": 50,
-      "table": "Melee_Ones"
-    },
-    "untouchable": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 300,
-        "table": "Melee_Ones"
-      }
-    },
-    "immobilize": {
-      "mag": 50,
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 15
+    "buffDuration": 120
   }
 };

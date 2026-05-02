@@ -91,8 +91,8 @@ export const Envenom: Power = {
       }
     },
     "regenDebuff": {
-      "scale": 5.75,
-      "table": "Ranged_Res_Boolean"
+      "scale": 0.75,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 30
   }

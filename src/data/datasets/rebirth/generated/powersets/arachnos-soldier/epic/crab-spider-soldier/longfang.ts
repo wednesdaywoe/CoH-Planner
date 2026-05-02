@@ -41,20 +41,13 @@ export const Longfang: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.546667,
-      "table": "Ranged_Damage",
-      "duration": 0.7,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.150508,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.546667,
+    "table": "Ranged_Damage",
+    "duration": 0.7,
+    "tickRate": 0.30000001192092896
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

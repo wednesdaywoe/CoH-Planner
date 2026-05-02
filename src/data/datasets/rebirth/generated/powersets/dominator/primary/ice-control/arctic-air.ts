@@ -56,12 +56,12 @@ export const ArcticAir: Power = {
       "stealth": 2.25
     },
     "fear": {
-      "mag": 1,
+      "mag": 3,
       "scale": 2,
       "table": "Ranged_Fear"
     },
     "confuse": {
-      "mag": 1,
+      "mag": 3,
       "scale": 2,
       "table": "Ranged_Fear"
     },

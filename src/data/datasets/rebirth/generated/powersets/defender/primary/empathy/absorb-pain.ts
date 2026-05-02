@@ -61,6 +61,10 @@ export const AbsorbPain: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 20
+    "buffDuration": 20,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "resistance"
+    ]
   }
 };

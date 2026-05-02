@@ -44,22 +44,13 @@ export const HeavyBurst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.155714,
-      "table": "Ranged_Damage",
-      "duration": 2,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.162598,
-      "table": "Ranged_Damage",
-      "duration": 2,
-      "tickRate": 0.30000001192092896
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.155714,
+    "table": "Ranged_Damage",
+    "duration": 2,
+    "tickRate": 0.30000001192092896
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

@@ -36,6 +36,10 @@ export const IcePatch: Power = {
     "durations": {
       "damageBuff": 10.97
     },
-    "buffDuration": 10.97
+    "buffDuration": 10.97,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

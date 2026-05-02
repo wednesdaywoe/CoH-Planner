@@ -58,11 +58,6 @@ export const Spin: Power = {
       "type": "Lethal",
       "scale": 1.58,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.58,
-      "table": "Melee_InherentDamage"
     }
   ]
 };

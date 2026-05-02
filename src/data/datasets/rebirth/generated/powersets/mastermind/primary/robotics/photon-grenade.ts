@@ -50,21 +50,11 @@ export const PhotonGrenade: Power = {
       "type": "Energy",
       "scale": 0.6,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.35992,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.730747,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 4,
       "table": "Ranged_Stun"
     }

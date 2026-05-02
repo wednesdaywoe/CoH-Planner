@@ -43,31 +43,21 @@ export const ForceofThunder: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"
     },
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Knockback"
-    },
-    "regenBuff": {
-      "scale": 2.25,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 60,
-      "recoveryBuff": 60,
-      "damageBuff": 8.73
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
     },
     "damageBuff": {
       "scale": 0.025,
       "table": "Melee_Ones"
     },
-    "buffDuration": 60
+    "durations": {
+      "damageBuff": 8.73
+    },
+    "buffDuration": 8.73
   }
 };

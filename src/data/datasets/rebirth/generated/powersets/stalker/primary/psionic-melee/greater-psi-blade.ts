@@ -48,51 +48,11 @@ export const GreaterPsiBlade: Power = {
       "type": "Psionic",
       "scale": 2.0025,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.929858,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.789574,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 3.719432,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 3.719432,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.6925,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.6925,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.34625,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.859716,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
     }

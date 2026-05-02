@@ -51,16 +51,11 @@ export const ExplosiveBlast: Power = {
       "type": "Energy",
       "scale": 0.4,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.724295,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Ranged_Knockback"
     },
     "damageBuff": {

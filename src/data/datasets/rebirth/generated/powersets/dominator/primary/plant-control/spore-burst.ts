@@ -40,7 +40,7 @@ export const SporeBurst: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 3,
       "scale": 12,
       "table": "Ranged_Sleep"
     }

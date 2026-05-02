@@ -51,16 +51,6 @@ export const TelekineticBlow: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Psionic",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.4472,
       "table": "Melee_PvPDamage"
@@ -69,23 +59,6 @@ export const TelekineticBlow: Power = {
       "type": "Psionic",
       "scale": 1.3417,
       "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.789,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.789,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.1417,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 1
     }
   ],
   "effects": {

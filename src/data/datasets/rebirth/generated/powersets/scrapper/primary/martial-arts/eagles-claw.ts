@@ -46,16 +46,6 @@ export const EaglesClaw: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 3.361437,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.361437,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
       "scale": 2.28,
       "table": "Melee_Damage"
     },
@@ -67,7 +57,7 @@ export const EaglesClaw: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 4,
       "table": "Melee_Stun"
     }

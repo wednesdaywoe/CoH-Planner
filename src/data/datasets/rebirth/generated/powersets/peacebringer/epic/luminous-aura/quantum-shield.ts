@@ -49,10 +49,6 @@ export const QuantumShield: Power = {
       "negative": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
       }
     },
     "buffDuration": 2

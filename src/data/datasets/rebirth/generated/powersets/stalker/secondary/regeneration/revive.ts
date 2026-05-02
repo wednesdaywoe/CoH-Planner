@@ -56,7 +56,7 @@ export const Revive: Power = {
       "regenBuff": 90
     },
     "immobilize": {
-      "mag": 1,
+      "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
     },
@@ -64,6 +64,10 @@ export const Revive: Power = {
       "scale": 2.5,
       "table": "Melee_Ones"
     },
-    "buffDuration": 90
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

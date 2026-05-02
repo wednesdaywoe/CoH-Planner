@@ -49,11 +49,6 @@ export const Jab: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.558357,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.306,
       "table": "Melee_Damage"
@@ -61,13 +56,13 @@ export const Jab: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

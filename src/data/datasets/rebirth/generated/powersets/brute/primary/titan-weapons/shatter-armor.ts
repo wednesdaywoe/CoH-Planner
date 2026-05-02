@@ -49,11 +49,6 @@ export const RendArmor: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 3.58418,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.4454,
       "table": "Melee_Damage"

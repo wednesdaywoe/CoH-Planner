@@ -44,11 +44,6 @@ export const PoisonDart: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.633169,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Ranged_Damage",

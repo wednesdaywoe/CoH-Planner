@@ -56,18 +56,6 @@ export const FreezingTouch: Power = {
       "tickRate": 0.5
     },
     {
-      "type": "Cold",
-      "scale": 1.10315,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.183858,
-      "table": "Melee_Damage",
-      "duration": 2.6,
-      "tickRate": 0.5
-    },
-    {
       "type": "Fire",
       "scale": 0.126,
       "table": "Melee_Damage",
@@ -77,7 +65,7 @@ export const FreezingTouch: Power = {
   ],
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     },
@@ -105,8 +93,8 @@ export const FreezingTouch: Power = {
       "table": "Melee_Ones"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 6
   }

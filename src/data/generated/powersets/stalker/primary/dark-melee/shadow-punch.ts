@@ -52,16 +52,6 @@ export const ShadowPunch: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Negative",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.4404,
       "table": "Melee_PvPDamage"
@@ -69,16 +59,6 @@ export const ShadowPunch: Power = {
     {
       "type": "Negative",
       "scale": 0.6606,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.101,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.101,
       "table": "Melee_PvPDamage"
     }
   ]

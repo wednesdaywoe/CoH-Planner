@@ -53,25 +53,11 @@ export const Entangle: Power = {
       "table": "Ranged_Damage",
       "duration": 9.2,
       "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.196,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.196,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },

@@ -40,16 +40,9 @@ export const PsychicScream: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 0.950991,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.017722,
-      "table": "Ranged_Damage"
-    }
-  ]
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.950991,
+    "table": "Ranged_Damage"
+  }
 };

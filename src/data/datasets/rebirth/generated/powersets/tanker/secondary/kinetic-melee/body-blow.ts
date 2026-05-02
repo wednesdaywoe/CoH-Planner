@@ -54,16 +54,6 @@ export const BodyBlow: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.282887,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.36423,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.522,
       "table": "Melee_Damage"
@@ -71,13 +61,13 @@ export const BodyBlow: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

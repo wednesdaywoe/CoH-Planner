@@ -43,7 +43,7 @@ export const Hypothermia: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 3,
       "scale": 4,
       "table": "Ranged_Sleep"
     },

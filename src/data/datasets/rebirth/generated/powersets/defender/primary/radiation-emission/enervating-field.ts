@@ -36,35 +36,35 @@ export const EnervatingField: Power = {
   "effects": {
     "resistanceDebuff": {
       "smashing": {
-        "scale": 4,
+        "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
-        "scale": 4,
+        "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
-        "scale": 4,
+        "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "cold": {
-        "scale": 4,
+        "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "energy": {
-        "scale": 4,
+        "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
-        "scale": 4,
+        "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "toxic": {
-        "scale": 4,
+        "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
-        "scale": 4,
+        "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
     },

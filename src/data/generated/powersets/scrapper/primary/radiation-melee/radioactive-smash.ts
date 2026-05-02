@@ -64,16 +64,6 @@ export const RadioactiveSmash: Power = {
       "table": "Melee_PvPDamage"
     },
     {
-      "type": "Toxic",
-      "scale": 0.296,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1724,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.4325,
       "table": "Melee_PvPDamage"
@@ -82,16 +72,6 @@ export const RadioactiveSmash: Power = {
       "type": "Energy",
       "scale": 1.2975,
       "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.37,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.11,
-      "table": "Melee_Damage"
     },
     {
       "type": "Smashing",

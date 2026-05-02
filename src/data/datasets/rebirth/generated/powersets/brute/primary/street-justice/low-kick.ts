@@ -50,11 +50,6 @@ export const ShinBreaker: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.233012,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.738,
       "table": "Melee_Damage"

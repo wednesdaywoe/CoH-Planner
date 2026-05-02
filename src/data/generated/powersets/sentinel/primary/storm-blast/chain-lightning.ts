@@ -55,16 +55,6 @@ export const ChainLightning: Power = {
     },
     {
       "type": "Energy",
-      "scale": 1.3527,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.3527,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 0.324,
       "table": "Ranged_PvPDamage"
     },
@@ -90,12 +80,8 @@ export const ChainLightning: Power = {
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 1.98,
+      "scale": 1.32,
       "table": "Ranged_EndDrain"
-    },
-    "durations": {
-      "enduranceDrain": 4.4
-    },
-    "buffDuration": 4.4
+    }
   }
 };

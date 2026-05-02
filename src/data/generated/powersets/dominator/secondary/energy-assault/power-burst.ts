@@ -51,11 +51,6 @@ export const PowerBurst: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 1.69,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.8516,
       "table": "Ranged_PvPDamage"
@@ -63,11 +58,6 @@ export const PowerBurst: Power = {
     {
       "type": "Energy",
       "scale": 1.2774,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6387,
       "table": "Ranged_PvPDamage"
     }
   ],

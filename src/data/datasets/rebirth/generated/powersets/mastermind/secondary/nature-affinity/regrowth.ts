@@ -50,15 +50,5 @@ export const Regrowth: Power = {
       "duration": 4.1,
       "tickRate": 1
     }
-  ],
-  "effects": {
-    "regenBuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenBuff": 30
-    },
-    "buffDuration": 30
-  }
+  ]
 };

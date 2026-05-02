@@ -53,16 +53,6 @@ export const CrystalArmor: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "elusivity": {
-      "energy": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
     "debuffResistance": {
       "defense": {
         "scale": 0.4,

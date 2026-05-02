@@ -48,11 +48,6 @@ export const FootStomp: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.934588,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.639,
       "table": "Melee_Damage"
@@ -60,12 +55,12 @@ export const FootStomp: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

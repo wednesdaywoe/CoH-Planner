@@ -39,26 +39,9 @@ export const PsionicLance: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 2.76,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 4.679721,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.76,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 4.679721,
-      "table": "Ranged_Damage"
-    }
-  ]
+  "damage": {
+    "type": "Psionic",
+    "scale": 2.76,
+    "table": "Ranged_Damage"
+  }
 };

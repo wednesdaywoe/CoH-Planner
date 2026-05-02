@@ -41,25 +41,16 @@ export const FireCages: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.11,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Fire",
-      "scale": 0.121044,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 0.11,
+    "table": "Ranged_Damage",
+    "duration": 5.2,
+    "tickRate": 2
+  },
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },

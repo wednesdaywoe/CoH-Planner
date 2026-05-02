@@ -53,16 +53,6 @@ export const BlackDwarfSmite: Power = {
       "type": "Negative",
       "scale": 1,
       "table": "Melee_SSDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.507,
-      "table": "Melee_SSDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.521,
-      "table": "Melee_SSDamage"
     }
   ],
   "effects": {
@@ -71,7 +61,7 @@ export const BlackDwarfSmite: Power = {
       "table": "Melee_Ones"
     },
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Immobilize"
     },

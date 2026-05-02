@@ -55,13 +55,6 @@ export const InnocuousStrikes: Power = {
       "tickRate": 0.4000000059604645
     },
     {
-      "type": "Smashing",
-      "scale": 0.498135,
-      "table": "Melee_Damage",
-      "duration": 1.7,
-      "tickRate": 0.4000000059604645
-    },
-    {
       "type": "Fire",
       "scale": 0.1494,
       "table": "Melee_Damage",
@@ -71,11 +64,11 @@ export const InnocuousStrikes: Power = {
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "immobilize": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

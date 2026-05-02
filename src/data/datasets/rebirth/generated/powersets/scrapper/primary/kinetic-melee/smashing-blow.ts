@@ -50,31 +50,6 @@ export const SmashingBlow: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.168709,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.575633,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.744342,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.48,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.48,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.666,
       "table": "Melee_Damage"
@@ -82,7 +57,7 @@ export const SmashingBlow: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
     }

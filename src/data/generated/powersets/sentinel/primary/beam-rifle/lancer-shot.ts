@@ -60,26 +60,6 @@ export const LancerShot: Power = {
       "type": "Energy",
       "scale": 2.17,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.424,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.424,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.434,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.434,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

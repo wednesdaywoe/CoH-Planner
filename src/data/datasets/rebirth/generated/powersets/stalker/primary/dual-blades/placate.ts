@@ -31,7 +31,7 @@ export const Placate: Power = {
   "maxSlots": 6,
   "effects": {
     "placate": {
-      "scale": 6,
+      "scale": 10,
       "table": "Melee_Taunt"
     },
     "stealth": {
@@ -45,18 +45,13 @@ export const Placate: Power = {
       }
     },
     "durations": {
-      "stealth": 10,
-      "tohitBuff": 20,
-      "damageBuff": 20
+      "stealth": 10
     },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    },
-    "damageBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 20
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   }
 };

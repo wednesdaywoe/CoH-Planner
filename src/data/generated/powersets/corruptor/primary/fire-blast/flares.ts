@@ -55,16 +55,6 @@ export const Flares: Power = {
       "type": "Fire",
       "scale": 1.1871,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.71,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.1871,
-      "table": "Ranged_PvPDamage"
     }
   ]
 };

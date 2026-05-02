@@ -53,16 +53,6 @@ export const Burst: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.726239,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.455143,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.5625,
       "table": "Melee_Damage"
@@ -70,12 +60,12 @@ export const Burst: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

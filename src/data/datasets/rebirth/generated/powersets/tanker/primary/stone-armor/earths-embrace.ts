@@ -53,6 +53,10 @@ export const EarthsEmbrace: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 120
+    "buffDuration": 120,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "maxHPBuff"
+    ]
   }
 };

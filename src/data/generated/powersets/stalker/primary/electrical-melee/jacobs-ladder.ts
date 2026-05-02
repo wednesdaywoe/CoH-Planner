@@ -52,32 +52,12 @@ export const JacobsLadder: Power = {
     },
     {
       "type": "Energy",
-      "scale": 1.5233,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5233,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 1.6325,
       "table": "Melee_PvPDamage"
     },
     {
       "type": "Energy",
       "scale": 0.2965,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.6325,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.6325,
       "table": "Melee_PvPDamage"
     }
   ],

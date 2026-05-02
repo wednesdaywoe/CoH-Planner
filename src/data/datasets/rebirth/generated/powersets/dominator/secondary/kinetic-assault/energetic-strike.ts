@@ -48,33 +48,6 @@ export const EnergeticStrike: Power = {
       "type": "Energy",
       "scale": 1.246,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.89471,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.55869,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Melee_Damage"
     }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 1,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  }
+  ]
 };

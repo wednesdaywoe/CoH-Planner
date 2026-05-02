@@ -52,12 +52,6 @@ export const Minerals: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "elusivity": {
-      "psionic": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
     "debuffResistance": {
       "perception": {
         "scale": 0.6,
@@ -76,7 +70,7 @@ export const Minerals: Power = {
     "effectDuration": 0.75,
     "mezResistance": {
       "confuse": {
-        "scale": 7,
+        "scale": 2,
         "table": "Melee_Res_Boolean"
       }
     },

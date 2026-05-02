@@ -47,13 +47,6 @@ export const NimbleSlash: Power = {
       "tickRate": 0.33000001311302185
     },
     {
-      "type": "Lethal",
-      "scale": 0.839239,
-      "table": "Melee_Damage",
-      "duration": 0.5,
-      "tickRate": 0.30000001192092896
-    },
-    {
       "type": "Fire",
       "scale": 0.189,
       "table": "Melee_Damage",

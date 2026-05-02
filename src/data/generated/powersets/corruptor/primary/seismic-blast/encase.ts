@@ -49,16 +49,6 @@ export const Encase: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.26,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.26,
       "table": "Ranged_PvPDamage"
     }

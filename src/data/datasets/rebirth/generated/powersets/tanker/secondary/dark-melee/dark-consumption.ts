@@ -60,8 +60,12 @@ export const DarkConsumption: Power = {
       "perTarget": 25
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
-    }
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

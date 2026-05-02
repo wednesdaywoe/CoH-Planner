@@ -54,20 +54,6 @@ export const Char: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 4.2,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.22,
-      "table": "Ranged_InherentDamage",
-      "duration": 4.2,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1469,
-      "table": "Ranged_PvPDamage",
-      "duration": 4.2,
-      "tickRate": 1
     }
   ],
   "effects": {

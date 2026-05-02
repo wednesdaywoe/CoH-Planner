@@ -42,23 +42,11 @@ export const Consume: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.4,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.4,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.4,
-      "table": "Melee_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 0.4,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "enduranceGain": {
       "scale": 20,

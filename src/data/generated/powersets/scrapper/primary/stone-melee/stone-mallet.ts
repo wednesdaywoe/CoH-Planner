@@ -52,11 +52,6 @@ export const StoneMallet: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.8469,
       "table": "Melee_PvPDamage"
     },

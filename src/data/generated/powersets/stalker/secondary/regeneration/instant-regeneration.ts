@@ -36,29 +36,14 @@ export const ReactiveRegeneration: Power = {
   "maxSlots": 6,
   "effects": {
     "regenBuff": {
-      "scale": 2.25,
+      "scale": 2,
       "table": "Melee_Ones",
       "perTarget": 0.25
     },
     "durations": {
-      "regenBuff": 20,
-      "debuffResistance": 20
+      "regenBuff": 2.25
     },
-    "debuffResistance": {
-      "regeneration": {
-        "scale": 0.055,
-        "table": "Melee_Ones"
-      },
-      "endurance": {
-        "scale": 0.03,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "scale": 0.03,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 20
+    "buffDuration": 2.25
   },
   "requires": "Stalker_Defense.Regeneration.Instant_Healing !"
 };

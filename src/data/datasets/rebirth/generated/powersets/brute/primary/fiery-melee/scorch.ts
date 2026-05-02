@@ -53,11 +53,6 @@ export const Scorch: Power = {
     },
     {
       "type": "Fire",
-      "scale": 1.650075,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.378,
       "table": "Melee_Damage"
     },

@@ -46,16 +46,6 @@ export const AssassinsIcicle: Power = {
       "type": "Cold",
       "scale": 1.5,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 4.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 4.5,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

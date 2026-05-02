@@ -48,11 +48,6 @@ export const Hurl: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.759142,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.738,
       "table": "Melee_Damage"
@@ -60,7 +55,7 @@ export const Hurl: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 6,
+      "scale": 3,
       "table": "Melee_Knockback"
     },
     "taunt": {

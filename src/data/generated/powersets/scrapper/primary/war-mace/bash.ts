@@ -59,11 +59,6 @@ export const Bash: Power = {
       "type": "Smashing",
       "scale": 1,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

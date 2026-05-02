@@ -56,20 +56,6 @@ export const RefractorBeam: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.099,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1.5
-    },
-    {
-      "type": "Energy",
-      "scale": 0.099,
-      "table": "Ranged_InherentDamage",
-      "duration": 3.1,
-      "tickRate": 1.5
-    },
-    {
-      "type": "Energy",
       "scale": 0.68,
       "table": "Ranged_PvPDamage"
     },
@@ -77,20 +63,6 @@ export const RefractorBeam: Power = {
       "type": "Energy",
       "scale": 0.68,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.075,
-      "table": "Ranged_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 1.5
-    },
-    {
-      "type": "Energy",
-      "scale": 0.075,
-      "table": "Ranged_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 1.5
     }
   ],
   "effects": {

@@ -50,11 +50,6 @@ export const RibCracker: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.4218,
       "table": "Melee_PvPDamage"
     },

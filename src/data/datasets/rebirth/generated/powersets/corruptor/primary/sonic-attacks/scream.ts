@@ -51,34 +51,6 @@ export const Scream: Power = {
       "table": "Ranged_Damage",
       "duration": 1.05,
       "tickRate": 0.25
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.244671,
-      "table": "Ranged_Damage",
-      "duration": 1.05,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Energy",
-      "scale": 0.244671,
-      "table": "Ranged_Damage",
-      "duration": 1.05,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Energy",
-      "scale": 0.28,
-      "table": "Ranged_Damage",
-      "duration": 1.05,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Energy",
-      "scale": 0.489342,
-      "table": "Ranged_Damage",
-      "duration": 1.05,
-      "tickRate": 0.25
     }
   ],
   "effects": {

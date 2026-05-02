@@ -58,11 +58,6 @@ export const CrushingBlow: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 2.12,
       "table": "Melee_PvPDamage"
     }

@@ -50,26 +50,6 @@ export const Slice: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.79209,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.79209,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.23,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.23,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.5535,
       "table": "Melee_Damage"

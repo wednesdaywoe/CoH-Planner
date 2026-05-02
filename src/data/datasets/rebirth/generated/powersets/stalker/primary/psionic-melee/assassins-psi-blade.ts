@@ -46,16 +46,6 @@ export const AssassinsPsiBlade: Power = {
       "type": "Smashing",
       "scale": 0.5625,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 4.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 4.5,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

@@ -47,11 +47,6 @@ export const Shriek: Power = {
       "type": "Energy",
       "scale": 0.42,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.500068,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -97,6 +92,10 @@ export const Shriek: Power = {
       "scale": 0.066,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8.5
+    "buffDuration": 8.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

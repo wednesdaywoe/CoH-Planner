@@ -54,11 +54,6 @@ export const Pendulum: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.3463,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.1707,
       "table": "Melee_PvPDamage"
     },

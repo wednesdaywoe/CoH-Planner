@@ -57,20 +57,6 @@ export const ShadowyBinds: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 9.2,
       "tickRate": 2
-    },
-    {
-      "type": "Negative",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Negative",
-      "scale": 0.04,
-      "table": "Ranged_PvPDamage",
-      "duration": 9.2,
-      "tickRate": 2
     }
   ],
   "effects": {

@@ -62,16 +62,6 @@ export const HydroBlast: Power = {
       "type": "Cold",
       "scale": 1.3867,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.48,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.8489,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

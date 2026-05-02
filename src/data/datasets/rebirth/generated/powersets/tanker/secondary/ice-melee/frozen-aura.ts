@@ -48,11 +48,6 @@ export const FrozenAura: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Cold",
-      "scale": 1.934588,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.639,
       "table": "Melee_Damage"
@@ -60,13 +55,13 @@ export const FrozenAura: Power = {
   ],
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 2,
       "scale": 10,
       "table": "Melee_Sleep"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

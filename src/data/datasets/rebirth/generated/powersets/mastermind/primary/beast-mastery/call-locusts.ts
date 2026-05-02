@@ -45,22 +45,13 @@ export const CallRavens: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.3036,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 0.75
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.398131,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 0.75
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.3036,
+    "table": "Ranged_Damage",
+    "duration": 3.1,
+    "tickRate": 0.75
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

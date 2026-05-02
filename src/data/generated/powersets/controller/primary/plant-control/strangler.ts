@@ -54,20 +54,6 @@ export const Strangler: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 4.2,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.22,
-      "table": "Ranged_InherentDamage",
-      "duration": 4.2,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2169,
-      "table": "Ranged_PvPDamage",
-      "duration": 4.2,
-      "tickRate": 1
     }
   ],
   "effects": {

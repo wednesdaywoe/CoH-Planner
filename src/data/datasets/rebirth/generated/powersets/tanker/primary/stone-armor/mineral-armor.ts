@@ -70,14 +70,8 @@ export const Minerals: Power = {
     "effectDuration": 0.75,
     "mezResistance": {
       "confuse": {
-        "scale": 7,
+        "scale": 2,
         "table": "Melee_Res_Boolean"
-      }
-    },
-    "elusivity": {
-      "psionic": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
       }
     },
     "buffDuration": 0.75

@@ -43,12 +43,12 @@ export const BlindingPowder: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 2,
       "scale": 10,
       "table": "Melee_Sleep"
     },
     "confuse": {
-      "mag": 1,
+      "mag": 2,
       "scale": 20,
       "table": "Melee_Immobilize"
     },

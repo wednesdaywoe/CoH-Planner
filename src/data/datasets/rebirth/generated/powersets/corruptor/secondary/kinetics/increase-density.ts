@@ -51,10 +51,10 @@ export const IncreaseDensity: Power = {
       "stun": 60,
       "hold": 60,
       "immobilize": 60,
-      "mezResistance": 60,
       "knockback": 60,
       "knockup": 60,
-      "repel": 60
+      "repel": 60,
+      "mezResistance": 60
     },
     "stun": {
       "mag": 1,
@@ -72,24 +72,6 @@ export const IncreaseDensity: Power = {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
-    "mezResistance": {
-      "stun": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "teleport": {
-        "scale": 1,
-        "table": "Ranged_Ones"
-      }
-    },
     "knockback": {
       "scale": 9,
       "table": "Ranged_Ones"
@@ -101,6 +83,12 @@ export const IncreaseDensity: Power = {
     "repel": {
       "scale": 9,
       "table": "Ranged_Ones"
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
     },
     "buffDuration": 60
   }

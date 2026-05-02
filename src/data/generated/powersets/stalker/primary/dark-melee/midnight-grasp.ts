@@ -50,27 +50,7 @@ export const MidnightGrasp: Power = {
     },
     {
       "type": "Negative",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Negative",
       "scale": 1.9067,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.4489,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.4489,
       "table": "Melee_PvPDamage"
     },
     {

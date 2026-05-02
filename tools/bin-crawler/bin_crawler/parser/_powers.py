@@ -995,17 +995,33 @@ def _parse_effect_template_parse6(r: BinReader) -> EffectTemplate:
     stack_key_raw = r.read_u4()
     stack_key = str(stack_key_raw) if stack_key_raw else None
 
-    # Duration / Magnitude — no Expr fields in Parse6
+    # Duration + DurationExpr + Magnitude + MagnitudeExpr.
+    #
+    # The depth=1 descriptor at `0x1408e8a10` lists *Expr fields between
+    # Duration and Magnitude. Parse6 keeps writing them as empty
+    # string_arrays (count=0, 4 bytes each) even though the older
+    # binary never carries an actual expression payload — the empty
+    # count is part of the layout and must be consumed.
+    #
+    # Hand-decoded against Suffocate (Dominator/Water_Control): mag=3
+    # (Mag-3 hold) lives at the byte that the previous parser was
+    # reading as a different field, off by 8 bytes. Adding the two
+    # empty string_array reads here aligns it correctly.
+    #
+    # For mez attribs (Held, Immobilized, Sleep, Stunned, …), Parse6
+    # uses **Scale as the base duration in seconds** and Magnitude as
+    # the mez magnitude. Damage attribs use Scale as the damage table
+    # multiplier with Magnitude=0 (typical). Downstream converters
+    # already understand both conventions.
     duration = r.read_f4()
+    r.read_string_array()  # DurationExpr (always empty in Parse6)
     magnitude = r.read_f4()
+    r.read_string_array()  # MagnitudeExpr (always empty in Parse6)
 
-    # Tail: remaining fields (RadiusInner/Outer, Suppress, ContinuingFX,
-    # ConditionalFX, Power, Reward, Params, EntityDef, PriorityList[Passive],
-    # display-only flags, BoostModAllowed, ProcsPerMinute) are skipped for
-    # now — the planner doesn't depend on them in the Parse6 path. Parse6's
-    # ~104 trailing bytes per record have a constant zero-padded layout
-    # for player attack templates; populate `flags_raw` and `boost_mod_allowed_id`
-    # if more fields are needed later by hand-decoding the tail.
+    # Tail: RadiusInner/Outer, Suppress, ContinuingFX, ConditionalFX,
+    # Power, Reward, Params, EntityDef, PriorityList[Passive], display-
+    # only flags, BoostModAllowed, ProcsPerMinute are skipped — the
+    # planner doesn't depend on them in the Parse6 path.
     r.skip_to_end()
 
     return EffectTemplate(
@@ -1050,11 +1066,31 @@ def _parse_effects_parse6(r: BinReader) -> tuple[list[EffectGroup], list[EffectG
         elem_reader = r.sub_reader(elem_len)
         try:
             tmpl = _parse_effect_template_parse6(elem_reader)
-            # Synthetic group — chance carried through from the AttribMod's
-            # own Chance field (the per-template chance is what HC's
-            # EffectGroup.chance would have been before EffectGroup existed).
+            # Synthetic group — Parse6 stores conditional gates (PvE vs PvP,
+            # mode-active variants, drowning checks, etc.) on the
+            # per-template `jit_requires` field, since there's no
+            # EffectGroup wrapper to carry them. Lift them onto the
+            # synthetic group's `requires_expression` so the downstream
+            # converter (which only reads the group-level field) honors
+            # the same PvE/PvP filtering it does on HC.
+            #
+            # HC's Parse7 carries an explicit `is_pvp` flag from the
+            # binary; Parse6 doesn't, but encodes the same intent in the
+            # template's RPN requires expression as `enttype target>
+            # player eq` (PvP) or `enttype target> critter eq` (PvE).
+            # Synthesize the equivalent flag so downstream filters
+            # (`if (effect.is_pvp === 'PVP_ONLY') continue;`) work.
+            req = tmpl.jit_requires or ''
+            if 'target> player eq' in req:
+                is_pvp = 'PVP_ONLY'
+            elif 'target> critter eq' in req:
+                is_pvp = 'PVE_ONLY'
+            else:
+                is_pvp = 'EITHER'
             effects.append(EffectGroup(
                 chance=tmpl.tick_chance if tmpl.tick_chance > 0 else 1.0,
+                requires_expression=req,
+                is_pvp=is_pvp,
                 templates=[tmpl],
             ))
         except Exception:

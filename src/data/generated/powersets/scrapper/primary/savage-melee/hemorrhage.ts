@@ -50,11 +50,6 @@ export const Hemorrhage: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 2.6,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.6898,
       "table": "Melee_PvPDamage"
     },

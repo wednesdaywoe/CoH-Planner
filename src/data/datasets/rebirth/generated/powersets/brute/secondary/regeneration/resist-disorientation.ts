@@ -30,7 +30,7 @@ export const Resilience: Power = {
   "effects": {
     "mezResistance": {
       "stun": {
-        "scale": 11.5,
+        "scale": 5,
         "table": "Melee_Res_Boolean"
       }
     },

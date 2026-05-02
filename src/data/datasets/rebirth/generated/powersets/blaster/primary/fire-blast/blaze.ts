@@ -49,11 +49,6 @@ export const Blaze: Power = {
       "table": "Ranged_Damage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 1.844346,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -64,6 +59,10 @@ export const Blaze: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5
+    "buffDuration": 8.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

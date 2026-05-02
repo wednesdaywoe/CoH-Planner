@@ -44,27 +44,13 @@ export const KineticShield: Power = {
         "table": "Melee_Buff_Def"
       },
       "energy": {
-        "scale": 0.25,
+        "scale": 0.35,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 0.75,
       "debuffResistance": 0.75
-    },
-    "elusivity": {
-      "smashing": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
     },
     "debuffResistance": {
       "defense": {

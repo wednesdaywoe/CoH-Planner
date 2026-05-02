@@ -44,36 +44,13 @@ export const Frostbite: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Cold",
-      "scale": 0.1,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Cold",
-      "scale": 0.1301,
-      "table": "Ranged_PvPDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Cold",
-      "scale": 0.0651,
-      "table": "Ranged_PvPDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    }
-  ],
+  "damage": {
+    "type": "Cold",
+    "scale": 0.1,
+    "table": "Ranged_Damage",
+    "duration": 5.2,
+    "tickRate": 2
+  },
   "effects": {
     "immobilize": {
       "mag": 4,

@@ -50,41 +50,6 @@ export const SweepingCross: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.575,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.68,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.875,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.554912,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.682657,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.861501,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.19364,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.675,
       "table": "Melee_Damage"
@@ -92,13 +57,9 @@ export const SweepingCross: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
-    },
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
     },
     "taunt": {
       "scale": 1,

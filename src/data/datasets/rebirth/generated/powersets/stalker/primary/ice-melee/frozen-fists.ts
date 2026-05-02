@@ -49,36 +49,6 @@ export const FrozenFists: Power = {
       "type": "Cold",
       "scale": 0.76,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.441564,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.398287,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.839851,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.839851,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1,
-      "table": "Melee_Damage"
     }
   ]
 };

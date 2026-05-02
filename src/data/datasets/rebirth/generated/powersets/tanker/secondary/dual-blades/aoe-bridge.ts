@@ -48,46 +48,17 @@ export const TyphoonsEdge: Power = {
       "tickRate": 0.4000000059604645
     },
     {
-      "type": "Lethal",
-      "scale": 0.894475,
-      "table": "Melee_Damage",
-      "duration": 0.6,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.57,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.2565,
       "table": "Melee_Damage",
       "duration": 0.6,
       "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2565,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
-    },
-    "defenseDebuff": {
       "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 20
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 20
+      "table": "Melee_InherentTaunt"
+    }
   }
 };

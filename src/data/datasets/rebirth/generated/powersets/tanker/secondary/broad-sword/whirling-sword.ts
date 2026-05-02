@@ -57,11 +57,6 @@ export const WhirlingSword: Power = {
       "tickRate": 1
     },
     {
-      "type": "Lethal",
-      "scale": 2.049793,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.45,
       "table": "Melee_Damage"
@@ -83,8 +78,8 @@ export const WhirlingSword: Power = {
       "defenseDebuff": 10
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
   }

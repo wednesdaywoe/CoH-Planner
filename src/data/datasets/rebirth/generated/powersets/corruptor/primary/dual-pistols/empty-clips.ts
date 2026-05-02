@@ -58,41 +58,6 @@ export const EmptyClips: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.215761,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.26,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.308231,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.078,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.092469,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
       "scale": 0.078,
       "table": "Ranged_Damage",
       "duration": 1.6,
@@ -100,7 +65,7 @@ export const EmptyClips: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.092469,
+      "scale": 0.078,
       "table": "Ranged_Damage",
       "duration": 1.6,
       "tickRate": 0.5
@@ -120,22 +85,8 @@ export const EmptyClips: Power = {
       "tickRate": 0.5
     },
     {
-      "type": "Cold",
-      "scale": 0.092469,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
       "type": "Toxic",
       "scale": 0.078,
-      "table": "Ranged_Damage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.092469,
       "table": "Ranged_Damage",
       "duration": 1.6,
       "tickRate": 0.5
@@ -150,7 +101,7 @@ export const EmptyClips: Power = {
       "defenseDebuff": 8
     },
     "knockback": {
-      "scale": 0.8,
+      "scale": 0.4,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 8

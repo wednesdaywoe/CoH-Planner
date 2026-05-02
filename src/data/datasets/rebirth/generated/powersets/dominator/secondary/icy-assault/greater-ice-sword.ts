@@ -48,16 +48,6 @@ export const IceSlash: Power = {
       "type": "Cold",
       "scale": 1,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.4567,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.4567,
-      "table": "Melee_Damage"
     }
   ]
 };

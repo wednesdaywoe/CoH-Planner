@@ -43,31 +43,14 @@ export const DawnStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 4,
-      "table": "Ranged_SSDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.096842,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.096842,
-      "table": "Ranged_SSDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 4,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 20,
+      "scale": 10,
       "table": "Ranged_Knockback"
     },
     "defenseDebuff": {

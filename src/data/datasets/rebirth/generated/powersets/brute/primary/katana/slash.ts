@@ -51,13 +51,6 @@ export const GamblersCut: Power = {
       "tickRate": 0.25
     },
     {
-      "type": "Lethal",
-      "scale": 0.668821,
-      "table": "Melee_Damage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    },
-    {
       "type": "Fire",
       "scale": 0.189,
       "table": "Melee_Damage",

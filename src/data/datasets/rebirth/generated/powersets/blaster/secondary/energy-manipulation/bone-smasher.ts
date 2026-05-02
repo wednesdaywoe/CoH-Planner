@@ -48,16 +48,11 @@ export const BoneSmasher: Power = {
       "type": "Energy",
       "scale": 0.78,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.471424,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
     },
@@ -68,6 +63,10 @@ export const BoneSmasher: Power = {
     "durations": {
       "damageBuff": 9
     },
-    "buffDuration": 9
+    "buffDuration": 9,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

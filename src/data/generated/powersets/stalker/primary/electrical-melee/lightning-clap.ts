@@ -56,52 +56,12 @@ export const ThunderStrike: Power = {
     },
     {
       "type": "Energy",
-      "scale": 2.6849,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Special",
-      "scale": 0.3784,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.56,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Special",
-      "scale": 0.42,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 2.971,
       "table": "Melee_PvPDamage"
     },
     {
       "type": "Energy",
       "scale": 0.3506,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.3216,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3506,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.1102,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.249,
       "table": "Melee_PvPDamage"
     }
   ],

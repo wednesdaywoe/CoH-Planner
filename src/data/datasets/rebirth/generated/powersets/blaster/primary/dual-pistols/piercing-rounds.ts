@@ -50,27 +50,12 @@ export const PiercingRounds: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.972426,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.69,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.845325,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.69,
       "table": "Ranged_Damage"
     },
     {
       "type": "Fire",
-      "scale": 0.845325,
+      "scale": 0.69,
       "table": "Ranged_Damage"
     },
     {
@@ -86,18 +71,8 @@ export const PiercingRounds: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Cold",
-      "scale": 0.845325,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.615,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.845325,
       "table": "Ranged_Damage"
     }
   ],

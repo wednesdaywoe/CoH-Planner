@@ -53,12 +53,6 @@ export const Evasion: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "elusivity": {
-      "aoe": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"

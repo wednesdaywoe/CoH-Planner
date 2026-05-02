@@ -52,16 +52,6 @@ export const GreaterFireSword: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.305406,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.878512,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.2,
       "table": "Melee_Damage",
@@ -83,8 +73,8 @@ export const GreaterFireSword: Power = {
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

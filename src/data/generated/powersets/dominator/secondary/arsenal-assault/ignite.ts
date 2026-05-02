@@ -52,17 +52,5 @@ export const Ignite: Power = {
       "duration": 5.5,
       "tickRate": 0.25
     }
-  ],
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Flames",
-      "powers": [
-        "Pets.ResistAll_NoFly.ResistAll",
-        "Redirects.Assault_Rifle.Ignite",
-        "Redirects.Assault_Rifle.Avoid"
-      ],
-      "duration": 5.5
-    }
-  }
+  ]
 };

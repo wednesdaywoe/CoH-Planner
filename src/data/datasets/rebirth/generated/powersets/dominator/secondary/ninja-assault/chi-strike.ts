@@ -45,6 +45,11 @@ export const ChiStrike: Power = {
       "scale": 4,
       "table": "Melee_Buff_Dmg"
     },
-    "buffDuration": 20
+    "buffDuration": 20,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   }
 };

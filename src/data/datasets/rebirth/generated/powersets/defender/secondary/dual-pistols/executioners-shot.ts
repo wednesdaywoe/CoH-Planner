@@ -53,27 +53,12 @@ export const ExecutionersShot: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 2.150976,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.636,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.921847,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.636,
       "table": "Ranged_Damage"
     },
     {
       "type": "Fire",
-      "scale": 0.921847,
+      "scale": 0.636,
       "table": "Ranged_Damage"
     },
     {
@@ -89,18 +74,8 @@ export const ExecutionersShot: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Cold",
-      "scale": 0.921847,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.636,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.921847,
       "table": "Ranged_Damage"
     }
   ],
@@ -113,7 +88,7 @@ export const ExecutionersShot: Power = {
       "defenseDebuff": 8
     },
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 8

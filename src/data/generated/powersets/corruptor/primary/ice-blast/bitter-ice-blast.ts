@@ -51,17 +51,7 @@ export const BitterIceBlast: Power = {
     },
     {
       "type": "Cold",
-      "scale": 2.28,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Cold",
       "scale": 1.629,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.6289,
       "table": "Ranged_PvPDamage"
     }
   ]

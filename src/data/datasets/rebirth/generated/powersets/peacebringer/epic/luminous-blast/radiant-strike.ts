@@ -52,16 +52,6 @@ export const RadiantStrike: Power = {
       "type": "Energy",
       "scale": 0.96,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.040928,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.817872,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -73,7 +63,7 @@ export const RadiantStrike: Power = {
       "defenseDebuff": 6
     },
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "buffDuration": 6

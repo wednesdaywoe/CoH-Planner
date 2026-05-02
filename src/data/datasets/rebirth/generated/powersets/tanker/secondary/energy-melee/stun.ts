@@ -54,16 +54,6 @@ export const StaggeringBurst: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.045,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.045,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.48708,
       "table": "Melee_Damage"
@@ -71,13 +61,13 @@ export const StaggeringBurst: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

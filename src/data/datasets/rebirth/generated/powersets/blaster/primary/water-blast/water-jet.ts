@@ -49,16 +49,6 @@ export const WaterJet: Power = {
       "type": "Cold",
       "scale": 1.47,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.553611,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.660834,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -69,6 +59,10 @@ export const WaterJet: Power = {
     "durations": {
       "damageBuff": 8.93
     },
-    "buffDuration": 8.93
+    "buffDuration": 8.93,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -59,11 +59,6 @@ export const Pulverize: Power = {
       "type": "Smashing",
       "scale": 1.64,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

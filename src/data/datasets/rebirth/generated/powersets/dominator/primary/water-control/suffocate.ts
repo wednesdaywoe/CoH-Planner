@@ -43,44 +43,21 @@ export const Suffocate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.275,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.06875,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.71015,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.177538,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Cold",
+    "scale": 0.275,
+    "table": "Ranged_Damage",
+    "duration": 3.1,
+    "tickRate": 1
+  },
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
     },
     "defenseDebuff": {
-      "scale": 1.875,
+      "scale": 1.5,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {

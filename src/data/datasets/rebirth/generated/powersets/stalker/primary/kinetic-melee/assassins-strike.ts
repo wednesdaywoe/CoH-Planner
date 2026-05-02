@@ -46,16 +46,6 @@ export const AssassinsStrike: Power = {
       "type": "Energy",
       "scale": 0.75,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

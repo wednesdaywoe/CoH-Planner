@@ -42,22 +42,6 @@ export const PracticedBrawler: Power = {
       "knockup": {
         "scale": 100,
         "table": "Melee_Ones"
-      },
-      "stun": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
       }
     },
     "durations": {
@@ -68,8 +52,7 @@ export const PracticedBrawler: Power = {
       "hold": 0.75,
       "sleep": 0.75,
       "immobilize": 0.75,
-      "absorb": 10,
-      "debuffResistance": 0.75
+      "absorb": 10
     },
     "knockback": {
       "scale": 10,
@@ -103,24 +86,6 @@ export const PracticedBrawler: Power = {
     "absorb": {
       "scale": 0.8,
       "table": "Melee_HealSelf"
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
     },
     "buffDuration": 0.75
   }

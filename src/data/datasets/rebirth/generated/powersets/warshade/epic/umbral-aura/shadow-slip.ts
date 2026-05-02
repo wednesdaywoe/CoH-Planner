@@ -50,28 +50,8 @@ export const StarlessGateway: Power = {
       }
     },
     "durations": {
-      "mezResistance": 15,
-      "stealth": 0.75,
-      "threatDebuff": 0.75
+      "mezResistance": 15
     },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 20,
-        "table": "Ranged_Ones"
-      }
-    },
-    "untouchable": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "threatDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "onlyAffectsSelf": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 0.75
+    "buffDuration": 15
   }
 };

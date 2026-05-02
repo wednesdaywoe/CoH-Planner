@@ -36,12 +36,12 @@ export const Evasion: Power = {
   "effects": {
     "defenseBuff": {
       "aoe": {
-        "scale": 1.85,
+        "scale": 2.85,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
-      "defenseBuff": 2.25,
+      "defenseBuff": 0.75,
       "debuffResistance": 0.75
     },
     "debuffResistance": {
@@ -50,12 +50,6 @@ export const Evasion: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "elusivity": {
-      "aoe": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 2.25
+    "buffDuration": 0.75
   }
 };

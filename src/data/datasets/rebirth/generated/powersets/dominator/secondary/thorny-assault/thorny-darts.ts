@@ -52,11 +52,6 @@ export const ThornyDarts: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.0314,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {

@@ -49,11 +49,6 @@ export const StingoftheWasp: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.919227,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.522,
       "table": "Melee_Damage"

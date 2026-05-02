@@ -54,16 +54,6 @@ export const Slash: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.073225,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.073225,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.333,
       "table": "Melee_Damage"

@@ -66,13 +66,6 @@ export const ConcentratedStrike: Power = {
     },
     {
       "type": "Energy",
-      "scale": 1.1867,
-      "table": "Melee_InherentDamage",
-      "duration": 3,
-      "tickRate": 1.100000023841858
-    },
-    {
-      "type": "Energy",
       "scale": 0.5171,
       "table": "Melee_PvPDamage",
       "duration": 2,

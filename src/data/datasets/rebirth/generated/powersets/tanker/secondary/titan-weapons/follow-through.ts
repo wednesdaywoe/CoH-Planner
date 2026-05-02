@@ -58,11 +58,6 @@ export const FollowThrough: Power = {
       "tickRate": 0.5
     },
     {
-      "type": "Smashing",
-      "scale": 1.901982,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.9702,
       "table": "Melee_Damage"
@@ -70,17 +65,17 @@ export const FollowThrough: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 4,
       "table": "Melee_Stun"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

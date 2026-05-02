@@ -42,41 +42,16 @@ export const DirectStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "enduranceDrain": {
       "scale": 0.2,
       "table": "Ranged_EndDrain"
-    },
-    "stun": {
-      "mag": 4,
-      "scale": 5,
-      "table": "Ranged_Stun"
-    },
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
-    },
-    "buffDuration": 10
+    }
   },
   "quickSnipe": {
     "stats": {
@@ -88,16 +63,6 @@ export const DirectStrike: Power = {
         "type": "Energy",
         "scale": 2.28,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Energy",
-        "scale": 2.28,
-        "table": "Ranged_InherentDamage"
-      },
-      {
-        "type": "Energy",
-        "scale": 2.28,
-        "table": "Ranged_InherentDamage"
       }
     ]
   }

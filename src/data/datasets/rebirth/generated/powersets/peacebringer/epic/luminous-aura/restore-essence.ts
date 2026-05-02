@@ -60,7 +60,7 @@ export const RestoreEssence: Power = {
       "recoveryBuff": 90
     },
     "immobilize": {
-      "mag": 1,
+      "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
     },
@@ -76,6 +76,10 @@ export const RestoreEssence: Power = {
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 90
+    "buffDuration": 90,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   }
 };

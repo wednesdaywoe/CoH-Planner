@@ -50,18 +50,8 @@ export const MelodicBinding: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 0.805,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

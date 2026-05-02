@@ -52,11 +52,6 @@ export const BitterIceBlast: Power = {
       "type": "Cold",
       "scale": 1.28,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.00296,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -67,6 +62,10 @@ export const BitterIceBlast: Power = {
     "durations": {
       "damageBuff": 8.57
     },
-    "buffDuration": 8.57
+    "buffDuration": 8.57,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

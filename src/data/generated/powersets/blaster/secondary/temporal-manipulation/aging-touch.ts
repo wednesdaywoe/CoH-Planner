@@ -52,13 +52,6 @@ export const AgingTouch: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Psionic",
       "scale": 1.3399,
       "table": "Melee_PvPDamage"
     }

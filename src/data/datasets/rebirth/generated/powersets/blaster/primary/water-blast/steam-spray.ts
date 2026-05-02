@@ -53,13 +53,6 @@ export const SteamSpray: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.855913,
-      "table": "Ranged_Damage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 3.1,

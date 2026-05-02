@@ -42,18 +42,11 @@ export const Moonbeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 2.76,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 4.254292,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 2.76,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "damageBuff": {
       "scale": 0.088,
@@ -62,6 +55,10 @@ export const Moonbeam: Power = {
     "durations": {
       "damageBuff": 8.83
     },
-    "buffDuration": 8.83
+    "buffDuration": 8.83,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

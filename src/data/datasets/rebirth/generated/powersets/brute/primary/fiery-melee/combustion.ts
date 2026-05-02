@@ -50,16 +50,6 @@ export const Cremate: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 0.909705,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.484256,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.1,
       "table": "Melee_Damage",

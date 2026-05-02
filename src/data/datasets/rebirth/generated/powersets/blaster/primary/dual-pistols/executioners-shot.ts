@@ -52,27 +52,12 @@ export const ExecutionersShot: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.694708,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.636,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.726304,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.636,
       "table": "Ranged_Damage"
     },
     {
       "type": "Fire",
-      "scale": 0.726304,
+      "scale": 0.636,
       "table": "Ranged_Damage"
     },
     {
@@ -88,18 +73,8 @@ export const ExecutionersShot: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Cold",
-      "scale": 0.726304,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.636,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.726304,
       "table": "Ranged_Damage"
     }
   ],
@@ -113,13 +88,17 @@ export const ExecutionersShot: Power = {
       "damageBuff": 9.17
     },
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Knockback"
     },
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 9.17
+    "buffDuration": 9.17,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

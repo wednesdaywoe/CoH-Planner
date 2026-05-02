@@ -51,37 +51,12 @@ export const KineticShockwave: Power = {
       "type": "Energy",
       "scale": 0.385,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.85932,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.462711,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Melee_Immobilize"
     }
   }
 };

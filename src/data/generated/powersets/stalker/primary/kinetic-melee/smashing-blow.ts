@@ -51,16 +51,6 @@ export const SmashingBlow: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 1.48,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.48,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.456,
       "table": "Melee_PvPDamage"
@@ -68,16 +58,6 @@ export const SmashingBlow: Power = {
     {
       "type": "Energy",
       "scale": 1.064,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.52,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.52,
       "table": "Melee_PvPDamage"
     }
   ],

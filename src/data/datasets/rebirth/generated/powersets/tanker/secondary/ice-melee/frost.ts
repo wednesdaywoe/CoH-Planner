@@ -54,13 +54,6 @@ export const Frost: Power = {
       "tickRate": 0.5
     },
     {
-      "type": "Cold",
-      "scale": 0.410659,
-      "table": "Melee_Damage",
-      "duration": 5.1,
-      "tickRate": 1
-    },
-    {
       "type": "Fire",
       "scale": 0.1215,
       "table": "Melee_Damage",
@@ -70,8 +63,8 @@ export const Frost: Power = {
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

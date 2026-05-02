@@ -49,16 +49,6 @@ export const PiercingBeam: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.7161,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4753,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 2.591,
       "table": "Ranged_PvPDamage"
     }

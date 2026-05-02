@@ -53,30 +53,15 @@ export const Overcharge: Power = {
     },
     {
       "type": "Energy",
-      "scale": 1.674278,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.837,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 4,
       "table": "Ranged_Stun"
     },

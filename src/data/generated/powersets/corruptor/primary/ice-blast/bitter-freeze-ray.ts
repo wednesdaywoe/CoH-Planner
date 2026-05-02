@@ -50,16 +50,6 @@ export const BitterFreezeRay: Power = {
     },
     {
       "type": "Cold",
-      "scale": 2.76,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.7499,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
       "scale": 2.7499,
       "table": "Ranged_PvPDamage"
     }
@@ -69,30 +59,6 @@ export const BitterFreezeRay: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "knockup": 10,
-      "knockback": 10,
-      "mezResistance": 10
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 10
+    }
   }
 };

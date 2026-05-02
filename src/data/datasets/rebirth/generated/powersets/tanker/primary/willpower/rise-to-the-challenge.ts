@@ -57,6 +57,10 @@ export const RisetotheChallenge: Power = {
     "durations": {
       "regenBuff": 1.12
     },
-    "buffDuration": 1.12
+    "buffDuration": 1.12,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "regenBuff"
+    ]
   }
 };

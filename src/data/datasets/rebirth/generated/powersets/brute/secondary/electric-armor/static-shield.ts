@@ -43,8 +43,8 @@ export const StaticShield: Power = {
       "stun": 0.75,
       "hold": 0.75,
       "sleep": 0.75,
-      "mezResistance": 0.75,
       "resistance": 0.75,
+      "mezResistance": 0.75,
       "debuffResistance": 0.75
     },
     "hold": {
@@ -57,28 +57,16 @@ export const StaticShield: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "mezResistance": {
-      "stun": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "teleport": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
     "resistance": {
       "psionic": {
         "scale": 3.5,
         "table": "Melee_Res_DMG"
+      }
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
       }
     },
     "debuffResistance": {
@@ -89,22 +77,6 @@ export const StaticShield: Power = {
       "endurance": {
         "scale": 3,
         "table": "Melee_Res_Boolean"
-      },
-      "defense": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
       }
     },
     "buffDuration": 0.75

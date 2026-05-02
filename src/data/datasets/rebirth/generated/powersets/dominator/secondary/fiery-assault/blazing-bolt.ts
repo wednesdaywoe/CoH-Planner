@@ -50,11 +50,6 @@ export const BlazingBolt: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 5.292,
-      "table": "Ranged_Damage"
     }
   ]
 };

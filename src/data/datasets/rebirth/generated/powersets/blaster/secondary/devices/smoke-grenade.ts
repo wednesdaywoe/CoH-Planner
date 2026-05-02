@@ -43,13 +43,13 @@ export const SmokeGrenade: Power = {
       "table": "Melee_Ones"
     },
     "durations": {
-      "perceptionDebuff": 20,
+      "perceptionDebuff": 60,
       "damageBuff": 8.87
     },
     "damageBuff": {
       "scale": 0.014,
       "table": "Melee_Ones"
     },
-    "buffDuration": 20
+    "buffDuration": 60
   }
 };

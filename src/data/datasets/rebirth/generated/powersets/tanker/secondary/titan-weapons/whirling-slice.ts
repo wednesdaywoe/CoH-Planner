@@ -55,11 +55,6 @@ export const WhirlingSmash: Power = {
       "tickRate": 1
     },
     {
-      "type": "Smashing",
-      "scale": 0.931354,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.5175,
       "table": "Melee_Damage"
@@ -67,12 +62,12 @@ export const WhirlingSmash: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

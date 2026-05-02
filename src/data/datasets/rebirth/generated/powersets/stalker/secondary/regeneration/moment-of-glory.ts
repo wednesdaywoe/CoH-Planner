@@ -65,22 +65,6 @@ export const MomentofGlory: Power = {
       "repel": {
         "scale": 10,
         "table": "Melee_Ones"
-      },
-      "stun": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 6,
-        "table": "Melee_Res_Boolean"
       }
     },
     "knockup": {

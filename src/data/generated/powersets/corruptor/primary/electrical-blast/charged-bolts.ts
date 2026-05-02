@@ -48,26 +48,6 @@ export const ChargedBolts: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2599,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.252,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 1.2599,
       "table": "Ranged_PvPDamage"
     }
@@ -77,18 +57,6 @@ export const ChargedBolts: Power = {
       "scale": 1.32,
       "table": "Ranged_EndDrain"
     },
-    "enduranceGain": {
-      "scale": 5.2,
-      "table": "Ranged_EndDrain"
-    },
-    "recoveryDebuff": {
-      "scale": 0.8,
-      "table": "Ranged_EndDrain"
-    },
-    "durations": {
-      "recoveryDebuff": 5
-    },
-    "buffDuration": 5,
     "maxStacks": 2,
     "stacksLinear": [
       "enduranceGain"

@@ -59,11 +59,6 @@ export const TouchofFear: Power = {
     },
     {
       "type": "Negative",
-      "scale": 0.8632,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Negative",
       "scale": 0.2209,
       "table": "Melee_PvPDamage",
       "duration": 3.1,

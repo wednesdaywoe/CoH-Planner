@@ -56,21 +56,6 @@ export const ExplosiveArrow: Power = {
       "type": "Fire",
       "scale": 0.3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.217236,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.217236,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.217236,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {

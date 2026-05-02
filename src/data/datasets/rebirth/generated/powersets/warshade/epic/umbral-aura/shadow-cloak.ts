@@ -43,7 +43,6 @@ export const ShadowCloak: Power = {
       "stealth": 0.75,
       "defenseBuff": 0.75,
       "immobilize": 0.75,
-      "mezResistance": 0.75,
       "debuffResistance": 0.75,
       "perceptionBuff": 0.75
     },
@@ -105,12 +104,6 @@ export const ShadowCloak: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.75,
-    "mezResistance": {
-      "immobilize": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "debuffResistance": {
       "perception": {
         "scale": 0.6,

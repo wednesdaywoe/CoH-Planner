@@ -48,21 +48,6 @@ export const Quills: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.0675,
       "table": "Melee_Damage"
@@ -70,7 +55,7 @@ export const Quills: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 0.33000001311302185,
       "scale": 3,
       "table": "Melee_Immobilize"
     }

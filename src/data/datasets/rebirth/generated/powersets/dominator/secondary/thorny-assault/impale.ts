@@ -52,11 +52,6 @@ export const Impale: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 3.3894,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Ranged_Damage",
@@ -66,7 +61,7 @@ export const Impale: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },

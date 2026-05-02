@@ -42,8 +42,8 @@ export const TwilightGrasp: Power = {
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {
-      "scale": 11.5,
-      "table": "Ranged_Res_Boolean"
+      "scale": 0.5,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "regenDebuff": 20

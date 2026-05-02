@@ -46,11 +46,6 @@ export const SteelWind: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.1594,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Ranged_Damage",
@@ -65,16 +60,6 @@ export const SteelWind: Power = {
     {
       "type": "Energy",
       "scale": 0.671,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.5797,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6377,
       "table": "Ranged_Damage"
     }
   ]

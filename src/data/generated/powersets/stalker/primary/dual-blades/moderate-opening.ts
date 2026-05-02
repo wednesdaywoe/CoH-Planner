@@ -47,30 +47,10 @@ export const PowerSlice: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.16,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.5261,
       "table": "Melee_PvPDamage",
       "duration": 1,
       "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.58,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.58,
-      "table": "Melee_PvPDamage"
     }
   ],
   "requires": "Stalker_Defense.Shield_Defense !"

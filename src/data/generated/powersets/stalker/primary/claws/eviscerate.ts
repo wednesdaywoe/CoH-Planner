@@ -45,26 +45,6 @@ export const Eviscerate: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 2.23,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.23,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.3857,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.3857,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 2.3857,
       "table": "Melee_PvPDamage"
     }

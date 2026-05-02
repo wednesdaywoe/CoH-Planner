@@ -52,21 +52,9 @@ export const MassLevitate: Power = {
       "table": "Melee_PvPDamage"
     },
     {
-      "type": "Psionic",
-      "scale": 0.1118,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
       "type": "Smashing",
       "scale": 1.0999,
       "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.42,
-      "table": "Melee_InherentDamage"
     },
     {
       "type": "Smashing",

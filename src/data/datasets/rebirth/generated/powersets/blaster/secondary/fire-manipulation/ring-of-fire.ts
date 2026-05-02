@@ -39,25 +39,16 @@ export const RingofFire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.22,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 1.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.298989,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 1.5
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 0.22,
+    "table": "Ranged_Damage",
+    "duration": 9.2,
+    "tickRate": 1.5
+  },
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
@@ -89,6 +80,10 @@ export const RingofFire: Power = {
       "scale": 0.077,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

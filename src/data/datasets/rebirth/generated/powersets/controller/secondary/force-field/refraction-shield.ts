@@ -38,22 +38,17 @@ export const BarrierField: Power = {
   "maxSlots": 6,
   "effects": {
     "untouchable": {
-      "scale": 4,
-      "table": "Ranged_Ones"
+      "scale": 6,
+      "table": "Ranged_Immobilize"
     },
     "durations": {
-      "untouchable": 8,
-      "onlyAffectsSelf": 8,
-      "absorb": 5
+      "untouchable": 30,
+      "onlyAffectsSelf": 30
     },
     "onlyAffectsSelf": {
-      "scale": 4,
-      "table": "Ranged_Ones"
+      "scale": 6,
+      "table": "Ranged_Immobilize"
     },
-    "absorb": {
-      "scale": 7.200000000000001,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 8
+    "buffDuration": 30
   }
 };

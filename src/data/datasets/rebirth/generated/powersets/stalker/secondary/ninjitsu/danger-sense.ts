@@ -49,16 +49,6 @@ export const DangerSense: Power = {
       "debuffResistance": 0.75,
       "perceptionBuff": 0.75
     },
-    "elusivity": {
-      "ranged": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "aoe": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
     "debuffResistance": {
       "perception": {
         "scale": 0.6,

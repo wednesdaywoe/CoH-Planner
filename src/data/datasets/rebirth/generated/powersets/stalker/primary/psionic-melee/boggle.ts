@@ -37,7 +37,7 @@ export const Boggle: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Melee_Ones"
     }

@@ -72,7 +72,6 @@ export const GraniteArmor: Power = {
       "hold": 0.75,
       "sleep": 0.75,
       "immobilize": 0.75,
-      "mezResistance": 0.75,
       "knockback": 0.75,
       "knockup": 0.75,
       "repel": 0.75,
@@ -129,34 +128,16 @@ export const GraniteArmor: Power = {
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
-    "mezResistance": {
-      "stun": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "knockback": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "knockup": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "slow": {

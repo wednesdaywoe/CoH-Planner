@@ -50,11 +50,6 @@ export const Shatter: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 3.396179,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.026,
       "table": "Melee_Damage"
@@ -62,7 +57,7 @@ export const Shatter: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {

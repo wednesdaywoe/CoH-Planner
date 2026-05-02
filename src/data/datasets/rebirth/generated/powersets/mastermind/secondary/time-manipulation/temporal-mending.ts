@@ -49,11 +49,6 @@ export const TemporalMending: Power = {
     },
     {
       "type": "Heal",
-      "scale": 1,
-      "table": "Ranged_Heal"
-    },
-    {
-      "type": "Heal",
       "scale": 0.264,
       "table": "Ranged_Heal",
       "duration": 6,
@@ -61,14 +56,6 @@ export const TemporalMending: Power = {
     }
   ],
   "effects": {
-    "regenBuff": {
-      "scale": 2.3499999999999996,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenBuff": 10,
-      "debuffResistance": 30
-    },
     "debuffResistance": {
       "movement": {
         "scale": 0.2,
@@ -82,6 +69,9 @@ export const TemporalMending: Power = {
         "scale": 1,
         "table": "Ranged_Res_Boolean"
       }
+    },
+    "durations": {
+      "debuffResistance": 30
     },
     "buffDuration": 30
   }

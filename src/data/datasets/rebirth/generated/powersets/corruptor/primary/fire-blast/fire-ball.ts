@@ -51,31 +51,11 @@ export const FireBall: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 0.160754,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.563364,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.15,
       "table": "Ranged_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.9,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.724119,
-      "table": "Ranged_Damage"
     }
   ]
 };

@@ -47,16 +47,6 @@ export const TeslaCage: Power = {
   "damage": [
     {
       "type": "Energy",
-      "scale": 0.456,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.456,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 2.28,
       "table": "Ranged_Damage"
     },
@@ -64,16 +54,6 @@ export const TeslaCage: Power = {
       "type": "Energy",
       "scale": 2.28,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.35,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.35,
-      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Energy",
@@ -91,8 +71,9 @@ export const TeslaCage: Power = {
       "scale": 2.5,
       "table": "Ranged_EndDrain"
     },
-    "enduranceGain": {
-      "scale": 6.86,
+    "hold": {
+      "mag": 3,
+      "scale": 8,
       "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
@@ -101,11 +82,6 @@ export const TeslaCage: Power = {
     },
     "durations": {
       "recoveryDebuff": 8
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Ones"
     },
     "buffDuration": 8
   }

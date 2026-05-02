@@ -58,26 +58,6 @@ export const Ripper: Power = {
       "tickRate": 1
     },
     {
-      "type": "Lethal",
-      "scale": 1.561053,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.561053,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.765,
       "table": "Melee_Damage"
@@ -85,11 +65,11 @@ export const Ripper: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "immobilize": {
-      "mag": 1,
+      "mag": 0.6700000166893005,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

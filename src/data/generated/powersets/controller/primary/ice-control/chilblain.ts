@@ -52,21 +52,7 @@ export const Chilblain: Power = {
     },
     {
       "type": "Cold",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Cold",
       "scale": 0.2758,
-      "table": "Ranged_PvPDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Cold",
-      "scale": 0.1379,
       "table": "Ranged_PvPDamage",
       "duration": 9.2,
       "tickRate": 2

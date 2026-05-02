@@ -45,26 +45,6 @@ export const BlindingFeint: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 2.18094,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.18094,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.36,
       "table": "Melee_Damage"
@@ -72,7 +52,7 @@ export const BlindingFeint: Power = {
   ],
   "effects": {
     "tohitBuff": {
-      "scale": 0.33,
+      "scale": 1,
       "table": "Melee_Buff_ToHit"
     },
     "durations": {
@@ -80,9 +60,14 @@ export const BlindingFeint: Power = {
       "damageBuff": 10
     },
     "damageBuff": {
-      "scale": 1,
+      "scale": 3,
       "table": "Melee_Buff_Dmg"
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   }
 };

@@ -47,11 +47,6 @@ export const Swoop: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 2.922797,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.026,
       "table": "Melee_Damage"
@@ -59,7 +54,7 @@ export const Swoop: Power = {
   ],
   "effects": {
     "knockup": {
-      "scale": 6,
+      "scale": 3,
       "table": "Melee_Knockback"
     },
     "taunt": {

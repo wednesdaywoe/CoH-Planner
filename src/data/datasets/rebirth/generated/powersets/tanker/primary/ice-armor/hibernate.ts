@@ -66,7 +66,7 @@ export const Hibernate: Power = {
       "table": "Melee_Ones"
     },
     "immobilize": {
-      "mag": 1,
+      "mag": 100,
       "scale": 0.75,
       "table": "Melee_Ones"
     },

@@ -64,10 +64,6 @@ export const WhiteDwarf: Power = {
       "toxic": {
         "scale": 5,
         "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 5,
-        "table": "Melee_Res_Dmg"
       }
     },
     "durations": {
@@ -76,7 +72,7 @@ export const WhiteDwarf: Power = {
       "threatBuff": 2,
       "recoveryBuff": 2,
       "movement": 2,
-      "mezResistance": 2.03,
+      "mezResistance": 2,
       "knockback": 2.03,
       "knockup": 2.03,
       "stun": 2.03,
@@ -84,8 +80,7 @@ export const WhiteDwarf: Power = {
       "sleep": 2.03,
       "immobilize": 2.03,
       "confuse": 2.03,
-      "fear": 2.03,
-      "debuffResistance": 2.03
+      "fear": 2.03
     },
     "maxHPBuff": {
       "scale": 7.5,
@@ -125,30 +120,6 @@ export const WhiteDwarf: Power = {
       "knockup": {
         "scale": 100,
         "table": "Melee_Ones"
-      },
-      "stun": {
-        "scale": 10,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 10,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 10,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 12,
-        "table": "Melee_Res_Boolean"
-      },
-      "confuse": {
-        "scale": 10,
-        "table": "Melee_Res_Boolean"
-      },
-      "fear": {
-        "scale": 10,
-        "table": "Melee_Res_Boolean"
       }
     },
     "knockback": {
@@ -189,24 +160,6 @@ export const WhiteDwarf: Power = {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
     },
     "buffDuration": 2.03
   }

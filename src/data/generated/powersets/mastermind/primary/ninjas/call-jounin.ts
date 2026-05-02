@@ -59,8 +59,7 @@ export const CallJounin: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Jonin",
-      "duration": 99999,
-      "entityCount": 2
+      "duration": 99999
     }
   }
 };

@@ -55,11 +55,6 @@ export const Scorch: Power = {
     },
     {
       "type": "Fire",
-      "scale": 1.546946,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.378,
       "table": "Melee_Damage"
     },
@@ -73,8 +68,8 @@ export const Scorch: Power = {
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

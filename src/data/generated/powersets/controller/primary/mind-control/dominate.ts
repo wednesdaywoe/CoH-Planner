@@ -48,17 +48,7 @@ export const Dominate: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 0.745,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.49,
       "table": "Ranged_PvPDamage"
     }
   ],

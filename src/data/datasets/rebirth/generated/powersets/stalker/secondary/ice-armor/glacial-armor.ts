@@ -42,10 +42,6 @@ export const GlacialArmor: Power = {
       "negative": {
         "scale": 2,
         "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 2.1,
-        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
@@ -58,20 +54,6 @@ export const GlacialArmor: Power = {
       "cold": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
-      }
-    },
-    "elusivity": {
-      "psionic": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
       }
     },
     "debuffResistance": {

@@ -41,16 +41,9 @@ export const DarkBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.966357,
-      "table": "Ranged_Damage"
-    }
-  ]
+  "damage": {
+    "type": "Negative",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  }
 };

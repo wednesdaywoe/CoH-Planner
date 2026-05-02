@@ -52,11 +52,6 @@ export const Gash: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.689,
       "table": "Melee_PvPDamage"
     },

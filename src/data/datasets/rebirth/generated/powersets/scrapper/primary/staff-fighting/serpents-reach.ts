@@ -46,26 +46,6 @@ export const SerpentsReach: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.294039,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.294039,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.8,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.81,
       "table": "Melee_Damage"
@@ -73,7 +53,7 @@ export const SerpentsReach: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   }

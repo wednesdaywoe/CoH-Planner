@@ -52,16 +52,6 @@ export const DeafeningWave: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 0.8492,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8492,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.3724,
       "table": "Melee_PvPDamage"
@@ -69,16 +59,6 @@ export const DeafeningWave: Power = {
     {
       "type": "Energy",
       "scale": 0.3724,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.745,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.745,
       "table": "Melee_PvPDamage"
     }
   ],

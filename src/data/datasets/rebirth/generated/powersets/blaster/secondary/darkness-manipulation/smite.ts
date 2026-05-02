@@ -49,16 +49,6 @@ export const Smite: Power = {
       "type": "Negative",
       "scale": 1.47,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.454631,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.363894,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -69,6 +59,10 @@ export const Smite: Power = {
     "durations": {
       "damageBuff": 8.47
     },
-    "buffDuration": 8.47
+    "buffDuration": 8.47,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

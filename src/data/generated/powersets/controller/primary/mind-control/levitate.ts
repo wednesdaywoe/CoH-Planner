@@ -47,17 +47,7 @@ export const Levitate: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.32,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.9491,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.9745,
       "table": "Ranged_PvPDamage"
     }
   ],

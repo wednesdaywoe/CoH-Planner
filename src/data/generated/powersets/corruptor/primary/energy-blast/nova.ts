@@ -60,16 +60,6 @@ export const Nova: Power = {
       "type": "Energy",
       "scale": 1.1707,
       "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8736,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

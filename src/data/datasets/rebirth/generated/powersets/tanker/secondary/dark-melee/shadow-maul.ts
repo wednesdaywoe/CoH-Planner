@@ -61,20 +61,6 @@ export const ShadowMaul: Power = {
       "tickRate": 0.625
     },
     {
-      "type": "Smashing",
-      "scale": 0.454732,
-      "table": "Melee_Damage",
-      "duration": 2,
-      "tickRate": 0.625
-    },
-    {
-      "type": "Negative",
-      "scale": 0.454732,
-      "table": "Melee_Damage",
-      "duration": 2,
-      "tickRate": 0.625
-    },
-    {
       "type": "Fire",
       "scale": 0.24255,
       "table": "Melee_Damage",
@@ -84,8 +70,8 @@ export const ShadowMaul: Power = {
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

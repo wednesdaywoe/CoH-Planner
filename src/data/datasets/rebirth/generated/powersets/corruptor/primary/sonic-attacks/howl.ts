@@ -50,26 +50,6 @@ export const Howl: Power = {
       "type": "Energy",
       "scale": 0.5,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.342032,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.342032,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.342032,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {

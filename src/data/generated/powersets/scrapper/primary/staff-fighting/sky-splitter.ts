@@ -51,26 +51,6 @@ export const SkySplitter: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.656,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.656,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.656,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 2.76,
       "table": "Melee_InherentDamage"
     },
@@ -80,21 +60,6 @@ export const SkySplitter: Power = {
       "table": "Melee_PvPDamage",
       "duration": 1.9,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.8943,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.8943,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8943,
-      "table": "Melee_PvPDamage"
     },
     {
       "type": "Smashing",
@@ -111,59 +76,6 @@ export const SkySplitter: Power = {
     "knockup": {
       "scale": 1.34,
       "table": "Melee_Ones"
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 15,
-      "tohitBuff": 15,
-      "regenBuff": 15,
-      "recoveryBuff": 15
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "regenBuff": {
-      "scale": 2.5,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 1.66,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 15
+    }
   }
 };

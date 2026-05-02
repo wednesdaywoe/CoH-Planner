@@ -30,11 +30,6 @@ export const EnforcedMorale: Power = {
     "Run Speed"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 1,
-    "table": "Ranged_Ones"
-  },
   "effects": {
     "stun": {
       "mag": 1,
@@ -50,33 +45,12 @@ export const EnforcedMorale: Power = {
       "hold": 90,
       "confuse": 90,
       "fear": 90,
-      "rechargeBuff": 90,
       "debuffResistance": 90,
       "perceptionBuff": 90
     },
     "mezResistance": {
       "sleep": {
-        "scale": 13,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "confuse": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "fear": {
-        "scale": 3,
+        "scale": 5,
         "table": "Ranged_Res_Boolean"
       }
     },
@@ -104,10 +78,6 @@ export const EnforcedMorale: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
-    },
-    "rechargeBuff": {
-      "scale": 0.05,
-      "table": "Ranged_Ones"
     },
     "debuffResistance": {
       "perception": {

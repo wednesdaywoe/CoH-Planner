@@ -40,8 +40,8 @@ export const EnergyAbsorption: Power = {
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {
-      "scale": 16.5,
-      "table": "Melee_EndDrain"
+      "scale": 0.35,
+      "table": "Melee_Ones"
     },
     "enduranceGain": {
       "scale": 15,
@@ -98,6 +98,11 @@ export const EnergyAbsorption: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 45
+    "buffDuration": 45,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "defenseBuff",
+      "enduranceGain"
+    ]
   }
 };

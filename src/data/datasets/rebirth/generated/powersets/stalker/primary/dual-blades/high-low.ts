@@ -53,52 +53,12 @@ export const OneThousandCuts: Power = {
       "type": "Lethal",
       "scale": 0.7,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.198611,
-      "table": "Melee_Damage",
-      "duration": 2.05,
-      "tickRate": 0.20000000298023224
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.7,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 3.357633,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 3.357633,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.21,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.21,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 20
-    },
-    "buffDuration": 20
+    }
   }
 };

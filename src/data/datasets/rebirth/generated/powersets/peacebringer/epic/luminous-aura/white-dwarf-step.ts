@@ -62,7 +62,11 @@ export const WhiteDwarfStep: Power = {
       }
     },
     "selfPenalty": true,
-    "buffDuration": 4
+    "buffDuration": 4,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "fly"
+    ]
   },
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Step ! &&"
 };

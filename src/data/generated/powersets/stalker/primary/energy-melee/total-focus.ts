@@ -51,16 +51,6 @@ export const TotalFocus: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.8319,
       "table": "Melee_PvPDamage"
@@ -68,16 +58,6 @@ export const TotalFocus: Power = {
     {
       "type": "Energy",
       "scale": 2.139,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8344,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8344,
       "table": "Melee_PvPDamage"
     }
   ],

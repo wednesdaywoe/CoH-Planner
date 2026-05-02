@@ -51,24 +51,10 @@ export const Irradiate: Power = {
     },
     {
       "type": "Energy",
-      "scale": 0.1,
-      "table": "Ranged_InherentDamage",
-      "duration": 4.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Energy",
       "scale": 0.0487,
       "table": "Ranged_PvPDamage",
       "duration": 4.6,
       "tickRate": 4.599999904632568
-    },
-    {
-      "type": "Energy",
-      "scale": 0.0487,
-      "table": "Ranged_PvPDamage",
-      "duration": 4.6,
-      "tickRate": 0.5
     }
   ],
   "effects": {

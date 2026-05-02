@@ -50,16 +50,6 @@ export const Fault: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.2507,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.2507,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.8593,
       "table": "Melee_PvPDamage"
     },
@@ -67,16 +57,6 @@ export const Fault: Power = {
       "type": "Smashing",
       "scale": 0.7825,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.7825,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.7825,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

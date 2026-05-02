@@ -34,19 +34,16 @@ export const PhalanxFighting: Power = {
   "effects": {
     "defenseBuff": {
       "melee": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.3
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
       },
       "ranged": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.3
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
       },
       "aoe": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.3
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
       }
     },
     "durations": {

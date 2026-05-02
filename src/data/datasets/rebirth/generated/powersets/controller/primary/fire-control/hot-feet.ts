@@ -40,26 +40,9 @@ export const HotFeet: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.25,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.25,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.125,
-      "table": "Ranged_Damage"
-    }
-  ],
   "effects": {
     "fear": {
-      "mag": 1,
+      "mag": 3,
       "scale": 4,
       "table": "Ranged_Ones"
     }

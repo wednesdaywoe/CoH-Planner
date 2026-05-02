@@ -56,85 +56,12 @@ export const Geyser: Power = {
       "type": "Fire",
       "scale": 1.5,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.612002,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.836006,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.24,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1224,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.293761,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.612002,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.136364,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.143182,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.152727,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.170455,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
     }
   ],
   "effects": {
     "knockup": {
-      "scale": 3,
+      "scale": 1.5,
       "table": "Ranged_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 5,
-      "table": "Ranged_Stun"
     }
   }
 };

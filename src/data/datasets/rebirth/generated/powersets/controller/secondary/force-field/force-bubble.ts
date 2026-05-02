@@ -38,14 +38,14 @@ export const ForceBubble: Power = {
   "maxSlots": 6,
   "effects": {
     "repel": {
-      "scale": 20,
+      "scale": 10,
       "table": "Ranged_Ones"
     },
     "durations": {
       "repel": 0.25
     },
     "knockback": {
-      "scale": 0.2,
+      "scale": 0.1,
       "table": "Ranged_Ones"
     },
     "buffDuration": 0.25

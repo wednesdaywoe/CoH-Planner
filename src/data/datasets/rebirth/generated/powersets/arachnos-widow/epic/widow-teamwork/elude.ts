@@ -85,6 +85,11 @@ export const Elude: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 180
+    "buffDuration": 180,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "jumpHeight",
+      "runSpeed"
+    ]
   }
 };

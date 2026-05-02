@@ -43,18 +43,10 @@ export const InkyAspect: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 2
-    },
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
-    },
-    "buffDuration": 2
+    }
   }
 };

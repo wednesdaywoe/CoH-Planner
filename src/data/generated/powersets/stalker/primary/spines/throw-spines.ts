@@ -51,26 +51,6 @@ export const ThrowSpines: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.09,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.09,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.7988,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.7988,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.7988,
       "table": "Melee_PvPDamage"
     },

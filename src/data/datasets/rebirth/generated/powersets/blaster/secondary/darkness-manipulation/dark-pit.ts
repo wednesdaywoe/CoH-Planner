@@ -39,7 +39,7 @@ export const DarkPit: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"
     },
@@ -51,6 +51,10 @@ export const DarkPit: Power = {
     "durations": {
       "damageBuff": 7.5
     },
-    "buffDuration": 7.5
+    "buffDuration": 7.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -39,21 +39,14 @@ export const Slug: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.64,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.322647,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 1.5,
+      "scale": 0.75,
       "table": "Ranged_Knockback"
     },
     "damageBuff": {
@@ -63,6 +56,10 @@ export const Slug: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17
+    "buffDuration": 9.17,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

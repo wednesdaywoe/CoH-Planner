@@ -51,26 +51,6 @@ export const CripplingAxeKick: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.485257,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.485257,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.12,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.12,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.954,
       "table": "Melee_Damage"
@@ -78,7 +58,7 @@ export const CripplingAxeKick: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 2,
       "scale": 10,
       "table": "Melee_Immobilize"
     },

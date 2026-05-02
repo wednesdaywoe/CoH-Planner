@@ -39,24 +39,19 @@ export const EMPArrow: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
     "enduranceDrain": {
-      "scale": 20,
-      "table": "Ranged_EndDrain"
+      "scale": 0.55,
+      "table": "Ranged_Ones"
     },
     "regenDebuff": {
-      "scale": 36,
-      "table": "Ranged_Res_Boolean"
+      "scale": 10,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "regenDebuff": 15,

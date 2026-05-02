@@ -52,16 +52,6 @@ export const WhiteDwarfStrike: Power = {
       "type": "Energy",
       "scale": 0.5,
       "table": "Melee_SSDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6528,
-      "table": "Melee_SSDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.9792,
-      "table": "Melee_SSDamage"
     }
   ],
   "effects": {

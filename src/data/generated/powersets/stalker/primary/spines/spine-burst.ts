@@ -48,27 +48,7 @@ export const SpineBurst: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.6,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.6058,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.649,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.649,
       "table": "Melee_PvPDamage"
     },
     {

@@ -54,7 +54,7 @@ export const PulseRifleBurst: Power = {
   ],
   "effects": {
     "regenDebuff": {
-      "scale": 6,
+      "scale": 2,
       "table": "Ranged_Ones"
     },
     "durations": {

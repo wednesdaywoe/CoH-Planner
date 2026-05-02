@@ -52,16 +52,6 @@ export const Disintegrate: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 10.5,
       "tickRate": 1.1100000143051147
-    },
-    {
-      "type": "Energy",
-      "scale": 2.156,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.6499,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

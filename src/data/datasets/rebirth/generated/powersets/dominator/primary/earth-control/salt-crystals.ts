@@ -38,7 +38,7 @@ export const SaltCrystals: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Sleep"
     },

@@ -66,6 +66,11 @@ export const SharePain: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "resistance"
+    ]
   }
 };

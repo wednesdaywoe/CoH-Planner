@@ -39,15 +39,5 @@ export const SoothingAura: Power = {
     "type": "Heal",
     "scale": 0.375,
     "table": "Ranged_Heal"
-  },
-  "effects": {
-    "regenBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenBuff": 4.25
-    },
-    "buffDuration": 4.25
   }
 };

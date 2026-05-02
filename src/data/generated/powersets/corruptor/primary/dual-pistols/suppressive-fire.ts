@@ -50,18 +50,8 @@ export const SuppressiveFire: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.0984,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.0666,
-      "table": "Ranged_PvPDamage"
     },
     {
       "type": "Lethal",

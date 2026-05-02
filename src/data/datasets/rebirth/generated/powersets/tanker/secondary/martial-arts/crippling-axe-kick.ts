@@ -55,11 +55,6 @@ export const CripplingAxeKick: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.485257,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.954,
       "table": "Melee_Damage"
@@ -67,7 +62,7 @@ export const CripplingAxeKick: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 2,
       "scale": 10,
       "table": "Melee_Immobilize"
     },
@@ -79,8 +74,8 @@ export const CripplingAxeKick: Power = {
       "defenseDebuff": 10
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
   }

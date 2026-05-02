@@ -56,21 +56,11 @@ export const IncandescentStrike: Power = {
       "type": "Energy",
       "scale": 2,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.85328,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.35872,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "defenseDebuff": {
@@ -81,7 +71,7 @@ export const IncandescentStrike: Power = {
       "defenseDebuff": 10
     },
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     },

@@ -41,19 +41,31 @@ export const Consume: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.4,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.48708,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 0.48708,
+    "table": "Melee_Damage"
+  },
   "effects": {
+    "debuffResistance": {
+      "endurance": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "debuffResistance": 120
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 120,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain",
+      "recoveryBuff"
+    ],
     "enduranceGain": {
       "scale": 20,
       "table": "Melee_Ones",
@@ -63,21 +75,6 @@ export const Consume: Power = {
       "scale": 0.05,
       "table": "Melee_Ones",
       "perTarget": 0.05
-    },
-    "durations": {
-      "recoveryBuff": 30,
-      "debuffResistance": 120
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 120
+    }
   }
 };

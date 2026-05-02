@@ -64,54 +64,9 @@ export const BrilliantBarrage: Power = {
       "type": "Energy",
       "scale": 0.1019,
       "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1625,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1625,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1625,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1625,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1019,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1019,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1019,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1019,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
-    },
     "fear": {
       "mag": 4,
       "scale": 1,

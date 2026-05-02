@@ -39,10 +39,6 @@ export const Deflection: Power = {
       "melee": {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
@@ -57,16 +53,6 @@ export const Deflection: Power = {
       "lethal": {
         "scale": 1.5,
         "table": "Melee_Res_DMG"
-      }
-    },
-    "elusivity": {
-      "melee": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "psionic": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
       }
     },
     "buffDuration": 0.75

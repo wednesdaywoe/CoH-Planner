@@ -51,26 +51,6 @@ export const FlashingSteel: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.99,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.99,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.0984,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.0984,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.0984,
       "table": "Melee_PvPDamage"
     },

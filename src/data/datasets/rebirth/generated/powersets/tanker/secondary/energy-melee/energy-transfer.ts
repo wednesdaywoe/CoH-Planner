@@ -54,16 +54,6 @@ export const EnergyTransfer: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.362009,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.529446,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Special",
       "scale": 3.75,
       "table": "Melee_Damage"
@@ -76,13 +66,13 @@ export const EnergyTransfer: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

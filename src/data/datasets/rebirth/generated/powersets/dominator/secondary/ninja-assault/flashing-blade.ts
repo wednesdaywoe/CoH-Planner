@@ -43,11 +43,6 @@ export const FlashingBlade: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.764,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Ranged_Damage",
@@ -62,16 +57,6 @@ export const FlashingBlade: Power = {
     {
       "type": "Energy",
       "scale": 0.55,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.882,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.9702,
       "table": "Ranged_Damage"
     }
   ]

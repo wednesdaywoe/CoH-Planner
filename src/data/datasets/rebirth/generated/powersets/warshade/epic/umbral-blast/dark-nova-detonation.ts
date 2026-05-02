@@ -44,18 +44,11 @@ export const DarkNovaDetonation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.9,
-      "table": "Ranged_SSDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.030154,
-      "table": "Ranged_SSDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.9,
+    "table": "Ranged_SSDamage"
+  },
   "effects": {
     "knockback": {
       "scale": 2,

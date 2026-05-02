@@ -55,11 +55,6 @@ export const SoulDrain: Power = {
       "type": "Negative",
       "scale": 1,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

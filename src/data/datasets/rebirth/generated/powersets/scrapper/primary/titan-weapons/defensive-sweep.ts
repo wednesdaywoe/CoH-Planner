@@ -48,26 +48,6 @@ export const DefensiveSweep: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.72139,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.72139,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.729,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.729,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.32805,
       "table": "Melee_Damage"
@@ -89,7 +69,11 @@ export const DefensiveSweep: Power = {
     "durations": {
       "defenseBuff": 10
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "defenseBuff"
+    ]
   },
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

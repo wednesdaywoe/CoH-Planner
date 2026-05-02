@@ -46,7 +46,7 @@ export const HeatExhaustion: Power = {
       "table": "Ranged_Res_Boolean"
     },
     "enduranceDrain": {
-      "scale": 3.59,
+      "scale": 3.46,
       "table": "Ranged_EndDrain"
     },
     "buffDuration": 40

@@ -48,27 +48,12 @@ export const Pistols: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.084476,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.3,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.464775,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.3,
       "table": "Ranged_Damage"
     },
     {
       "type": "Fire",
-      "scale": 0.464775,
+      "scale": 0.3,
       "table": "Ranged_Damage"
     },
     {
@@ -84,18 +69,8 @@ export const Pistols: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Cold",
-      "scale": 0.464775,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.3,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.464775,
       "table": "Ranged_Damage"
     }
   ],
@@ -112,6 +87,10 @@ export const Pistols: Power = {
       "scale": 0.066,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8.5
+    "buffDuration": 8.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

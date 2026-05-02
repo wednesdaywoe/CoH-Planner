@@ -57,11 +57,6 @@ export const SiphonLife: Power = {
       "table": "Melee_HealSelf"
     },
     {
-      "type": "Negative",
-      "scale": 2.909272,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.882,
       "table": "Melee_Damage"

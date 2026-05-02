@@ -52,11 +52,6 @@ export const MaimingSlash: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.16,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.209,
       "table": "Melee_Damage",
       "duration": 3.1,

@@ -57,23 +57,11 @@ export const TenebrousTentacles: Power = {
       "type": "Negative",
       "scale": 0.135,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.026201,
-      "table": "Ranged_Damage",
-      "duration": 7.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.209611,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },

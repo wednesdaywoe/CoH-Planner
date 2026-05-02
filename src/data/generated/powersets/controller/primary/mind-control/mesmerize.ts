@@ -49,26 +49,11 @@ export const Mesmerize: Power = {
     {
       "type": "Psionic",
       "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1,
       "table": "Ranged_Damage"
     },
     {
       "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 1.809,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.9045,
       "table": "Ranged_PvPDamage"
     }
   ],

@@ -48,11 +48,6 @@ export const Corruption: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 2.144304,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {

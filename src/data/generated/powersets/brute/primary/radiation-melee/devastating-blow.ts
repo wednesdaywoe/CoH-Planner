@@ -64,16 +64,6 @@ export const DevastatingBlow: Power = {
       "type": "Energy",
       "scale": 2.2117,
       "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.296,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1724,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

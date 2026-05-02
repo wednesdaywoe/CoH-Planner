@@ -49,56 +49,6 @@ export const CrushingUppercut: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 3.339,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.5616,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.975,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.349825,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.517316,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.751804,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 4.187281,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.349825,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.18,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.18,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.431,
       "table": "Melee_Damage"
@@ -106,17 +56,12 @@ export const CrushingUppercut: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 7.5,
       "table": "Melee_Stun"
     },
-    "hold": {
-      "mag": 1,
-      "scale": 9.75,
-      "table": "Melee_Stun"
-    },
     "knockup": {
-      "scale": 6,
+      "scale": 3,
       "table": "Melee_Knockback"
     }
   }

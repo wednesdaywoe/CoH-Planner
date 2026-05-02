@@ -54,16 +54,6 @@ export const WhiteDwarfSmite: Power = {
       "type": "Energy",
       "scale": 1,
       "table": "Melee_SSDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.507,
-      "table": "Melee_SSDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.521,
-      "table": "Melee_SSDamage"
     }
   ],
   "effects": {
@@ -79,7 +69,7 @@ export const WhiteDwarfSmite: Power = {
       "defenseDebuff": 10
     },
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
     },

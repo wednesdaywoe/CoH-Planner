@@ -45,7 +45,7 @@ export const ShadowDweller: Power = {
     },
     "mezResistance": {
       "immobilize": {
-        "scale": 7,
+        "scale": 1.5,
         "table": "Melee_Res_Boolean"
       }
     },

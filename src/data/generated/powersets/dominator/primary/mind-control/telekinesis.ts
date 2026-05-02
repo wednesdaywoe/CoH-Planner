@@ -41,11 +41,6 @@ export const Telekinesis: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "immobilize": {
-      "mag": 4,
-      "scale": 5,
-      "table": "Ranged_Immobilize"
-    },
     "mezResistance": {
       "knockup": {
         "scale": 100,
@@ -57,12 +52,7 @@ export const Telekinesis: Power = {
       }
     },
     "durations": {
-      "mezResistance": 1.5,
-      "repel": 0.5
-    },
-    "repel": {
-      "scale": 3,
-      "table": "Melee_Ones"
+      "mezResistance": 1.5
     },
     "buffDuration": 1.5
   }

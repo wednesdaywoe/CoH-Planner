@@ -45,21 +45,14 @@ export const GraviticEmanation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.462185,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.4,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
     }

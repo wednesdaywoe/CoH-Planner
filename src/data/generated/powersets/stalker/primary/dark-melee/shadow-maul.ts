@@ -59,16 +59,6 @@ export const ShadowMaul: Power = {
       "tickRate": 0.625
     },
     {
-      "type": "Negative",
-      "scale": 1.6183,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.6183,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.2385,
       "table": "Melee_PvPDamage",
@@ -81,16 +71,6 @@ export const ShadowMaul: Power = {
       "table": "Melee_PvPDamage",
       "duration": 2,
       "tickRate": 0.625
-    },
-    {
-      "type": "Negative",
-      "scale": 1.9076,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.9076,
-      "table": "Melee_PvPDamage"
     },
     {
       "type": "Negative",

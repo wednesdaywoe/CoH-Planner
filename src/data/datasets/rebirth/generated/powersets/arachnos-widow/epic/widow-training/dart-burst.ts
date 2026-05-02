@@ -49,11 +49,6 @@ export const DartBurst: Power = {
       "tickRate": 0.33000001311302185
     },
     {
-      "type": "Lethal",
-      "scale": 0.877758,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.11,
       "table": "Ranged_Damage",

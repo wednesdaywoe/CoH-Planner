@@ -50,43 +50,11 @@ export const FreezingTouch: Power = {
       "table": "Melee_Damage",
       "duration": 2.6,
       "tickRate": 0.5
-    },
-    {
-      "type": "Cold",
-      "scale": 1.103,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.18386,
-      "table": "Melee_Damage",
-      "duration": 2.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Cold",
-      "scale": 2.206299,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.206299,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.92,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.92,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     },

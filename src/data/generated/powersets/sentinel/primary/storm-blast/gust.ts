@@ -41,20 +41,6 @@ export const Gust: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 0.05,
-      "table": "Ranged_Damage",
-      "duration": 1.5,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.05,
-      "table": "Ranged_InherentDamage",
-      "duration": 1.5,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
       "scale": 1,
       "table": "Ranged_Damage"
     },

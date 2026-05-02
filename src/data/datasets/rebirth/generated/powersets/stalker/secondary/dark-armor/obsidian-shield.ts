@@ -44,9 +44,7 @@ export const ObsidianShield: Power = {
       "stun": 0.75,
       "hold": 0.75,
       "sleep": 0.75,
-      "fear": 0.75,
-      "mezResistance": 0.75,
-      "debuffResistance": 0.75
+      "fear": 0.75
     },
     "stun": {
       "mag": 1,
@@ -68,42 +66,6 @@ export const ObsidianShield: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
-    },
-    "mezResistance": {
-      "stun": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "hold": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "fear": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
     },
     "buffDuration": 0.75
   }

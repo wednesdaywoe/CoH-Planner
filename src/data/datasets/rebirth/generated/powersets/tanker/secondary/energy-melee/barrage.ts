@@ -58,20 +58,6 @@ export const Barrage: Power = {
       "tickRate": 0.25
     },
     {
-      "type": "Smashing",
-      "scale": 0.747003,
-      "table": "Melee_Damage",
-      "duration": 0.3,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Energy",
-      "scale": 0.249001,
-      "table": "Melee_Damage",
-      "duration": 0.3,
-      "tickRate": 0.30000001192092896
-    },
-    {
       "type": "Fire",
       "scale": 0.297,
       "table": "Melee_Damage",
@@ -81,13 +67,13 @@ export const Barrage: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

@@ -51,16 +51,6 @@ export const BodyBlow: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 1.16,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.16,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.4047,
       "table": "Melee_PvPDamage"
@@ -68,16 +58,6 @@ export const BodyBlow: Power = {
     {
       "type": "Energy",
       "scale": 0.9443,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.349,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.349,
       "table": "Melee_PvPDamage"
     }
   ],

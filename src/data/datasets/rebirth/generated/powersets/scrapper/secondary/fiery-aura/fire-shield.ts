@@ -53,8 +53,7 @@ export const FireShield: Power = {
     },
     "durations": {
       "resistance": 0.75,
-      "stun": 0.75,
-      "mezResistance": 0.75
+      "stun": 0.75
     },
     "stun": {
       "mag": 1,
@@ -62,12 +61,6 @@ export const FireShield: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.75,
-    "mezResistance": {
-      "stun": {
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "buffDuration": 0.75
   }
 };

@@ -47,11 +47,6 @@ export const Shout: Power = {
       "type": "Energy",
       "scale": 1.06,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.330889,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -97,6 +92,10 @@ export const Shout: Power = {
       "scale": 0.176,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10.17
+    "buffDuration": 10.17,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

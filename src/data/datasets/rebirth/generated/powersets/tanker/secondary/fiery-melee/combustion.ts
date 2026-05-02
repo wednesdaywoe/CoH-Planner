@@ -54,11 +54,6 @@ export const Combustion: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.320879,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.225,
       "table": "Melee_Damage"
     },
@@ -72,8 +67,8 @@ export const Combustion: Power = {
   ],
   "effects": {
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

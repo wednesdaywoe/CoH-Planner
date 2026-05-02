@@ -51,40 +51,10 @@ export const SkySplitter: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.656,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.4905,
       "table": "Melee_PvPDamage",
       "duration": 1.9,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.8943,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.981,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.9809,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -96,44 +66,6 @@ export const SkySplitter: Power = {
     "knockup": {
       "scale": 1.34,
       "table": "Melee_Ones"
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.33,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 15
-    },
-    "buffDuration": 15
+    }
   }
 };

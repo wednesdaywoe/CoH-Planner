@@ -38,11 +38,6 @@ export const MudBath: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 0.15,
-    "table": "Melee_HealSelf"
-  },
   "effects": {
     "recoveryBuff": {
       "scale": 0.5,

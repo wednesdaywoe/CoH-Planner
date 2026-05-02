@@ -65,11 +65,6 @@ export const DefensiveSweep: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 0.6684,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.4037,
       "table": "Melee_PvPDamage"
     }

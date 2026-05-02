@@ -48,26 +48,6 @@ export const AssassinsCorruption: Power = {
       "type": "Energy",
       "scale": 1.875,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1.4,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1.4,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

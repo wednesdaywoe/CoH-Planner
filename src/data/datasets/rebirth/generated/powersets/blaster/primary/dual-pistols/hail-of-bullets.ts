@@ -50,27 +50,6 @@ export const HailofBullets: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.195,
-      "table": "Ranged_Damage",
-      "duration": 3.5,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.1362,
-      "table": "Ranged_Damage",
-      "duration": 3.5,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.083,
-      "table": "Ranged_Damage",
-      "duration": 3.5,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Fire",
       "scale": 0.1362,
       "table": "Ranged_Damage",
       "duration": 3.5,
@@ -78,7 +57,7 @@ export const HailofBullets: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.083,
+      "scale": 0.1362,
       "table": "Ranged_Damage",
       "duration": 3.5,
       "tickRate": 0.30000001192092896
@@ -98,22 +77,8 @@ export const HailofBullets: Power = {
       "tickRate": 0.30000001192092896
     },
     {
-      "type": "Cold",
-      "scale": 0.083,
-      "table": "Ranged_Damage",
-      "duration": 3.5,
-      "tickRate": 0.30000001192092896
-    },
-    {
       "type": "Toxic",
       "scale": 0.1362,
-      "table": "Ranged_Damage",
-      "duration": 3.5,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.083,
       "table": "Ranged_Damage",
       "duration": 3.5,
       "tickRate": 0.30000001192092896
@@ -121,7 +86,7 @@ export const HailofBullets: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.6,
+      "scale": 0.8,
       "table": "Ranged_Ones"
     },
     "durations": {

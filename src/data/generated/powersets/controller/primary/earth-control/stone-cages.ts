@@ -42,36 +42,13 @@ export const StoneCages: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.1,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.0923,
-      "table": "Ranged_PvPDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.0462,
-      "table": "Ranged_PvPDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.1,
+    "table": "Ranged_Damage",
+    "duration": 5.2,
+    "tickRate": 2
+  },
   "effects": {
     "immobilize": {
       "mag": 4,

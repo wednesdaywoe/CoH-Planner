@@ -57,26 +57,6 @@ export const BreathofFire: Power = {
     },
     {
       "type": "Fire",
-      "scale": 1.17509,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 2.350181,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.36,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.36,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.306,
       "table": "Melee_Damage",
       "duration": 0.6,

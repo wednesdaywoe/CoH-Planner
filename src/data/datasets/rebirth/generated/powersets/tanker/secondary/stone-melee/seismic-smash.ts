@@ -49,11 +49,6 @@ export const SeismicSmash: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.852973,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 1.602,
       "table": "Melee_Damage"
@@ -61,13 +56,13 @@ export const SeismicSmash: Power = {
   ],
   "effects": {
     "hold": {
-      "mag": 1,
+      "mag": 4,
       "scale": 8,
       "table": "Melee_Immobilize"
     },
     "taunt": {
-      "scale": 6,
-      "table": "Melee_Ones"
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

@@ -46,26 +46,6 @@ export const DragonsTail: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 1.456375,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.456375,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.18,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.18,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.531,
       "table": "Melee_Damage"
@@ -73,7 +53,7 @@ export const DragonsTail: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   }

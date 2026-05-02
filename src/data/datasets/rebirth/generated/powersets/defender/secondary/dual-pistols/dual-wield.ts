@@ -50,27 +50,12 @@ export const DualWield: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.976189,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.396,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.846938,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.396,
       "table": "Ranged_Damage"
     },
     {
       "type": "Fire",
-      "scale": 0.846938,
+      "scale": 0.396,
       "table": "Ranged_Damage"
     },
     {
@@ -86,24 +71,14 @@ export const DualWield: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Cold",
-      "scale": 0.846938,
-      "table": "Ranged_Damage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.396,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.846938,
       "table": "Ranged_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.5,
+      "scale": 0.75,
       "table": "Ranged_Knockback"
     }
   }

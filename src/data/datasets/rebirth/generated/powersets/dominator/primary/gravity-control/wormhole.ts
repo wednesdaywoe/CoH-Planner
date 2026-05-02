@@ -48,7 +48,7 @@ export const Wormhole: Power = {
       "table": "Ranged_Ones"
     },
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     },

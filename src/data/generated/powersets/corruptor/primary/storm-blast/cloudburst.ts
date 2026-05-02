@@ -43,20 +43,11 @@ export const Cloudburst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.2275,
-      "table": "Ranged_Damage",
-      "duration": 2.9,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Cold",
-      "scale": 0.2275,
-      "table": "Ranged_InherentDamage",
-      "duration": 2.9,
-      "tickRate": 0.30000001192092896
-    }
-  ]
+  "damage": {
+    "type": "Cold",
+    "scale": 0.2275,
+    "table": "Ranged_Damage",
+    "duration": 2.9,
+    "tickRate": 0.30000001192092896
+  }
 };

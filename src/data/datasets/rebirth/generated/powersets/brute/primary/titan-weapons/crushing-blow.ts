@@ -49,11 +49,6 @@ export const CrushingBlow: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
-      "scale": 2.867344,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Fire",
       "scale": 0.8118,
       "table": "Melee_Damage"

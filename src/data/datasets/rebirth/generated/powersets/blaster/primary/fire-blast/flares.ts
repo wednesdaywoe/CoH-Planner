@@ -47,11 +47,6 @@ export const Flares: Power = {
       "type": "Fire",
       "scale": 0.3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.459739,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -62,6 +57,10 @@ export const Flares: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5
+    "buffDuration": 8.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

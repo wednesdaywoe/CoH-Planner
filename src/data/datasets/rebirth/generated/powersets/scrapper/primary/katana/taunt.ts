@@ -36,7 +36,7 @@ export const CallingtheWolf: Power = {
   "maxSlots": 6,
   "effects": {
     "taunt": {
-      "scale": 4,
+      "scale": 15,
       "table": "Melee_Taunt"
     }
   }

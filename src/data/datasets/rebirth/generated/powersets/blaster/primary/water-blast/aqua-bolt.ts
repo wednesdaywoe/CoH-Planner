@@ -50,16 +50,6 @@ export const AquaBolt: Power = {
       "type": "Cold",
       "scale": 0.63,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.375017,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.125051,
-      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -75,6 +65,10 @@ export const AquaBolt: Power = {
       "scale": 0.066,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8.5
+    "buffDuration": 8.5,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

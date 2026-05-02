@@ -112,7 +112,7 @@ export const SteamyMist: Power = {
     },
     "mezResistance": {
       "confuse": {
-        "scale": 12,
+        "scale": 5,
         "table": "Ranged_Res_Boolean"
       }
     },

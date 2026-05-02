@@ -40,7 +40,7 @@ export const MassConfusion: Power = {
   "maxSlots": 6,
   "effects": {
     "confuse": {
-      "mag": 1,
+      "mag": 3,
       "scale": 20,
       "table": "Ranged_Immobilize"
     }

@@ -48,17 +48,7 @@ export const IceBolt: Power = {
     },
     {
       "type": "Cold",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Cold",
       "scale": 1.26,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.2599,
       "table": "Ranged_PvPDamage"
     }
   ]

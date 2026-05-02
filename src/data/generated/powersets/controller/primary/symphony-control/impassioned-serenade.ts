@@ -52,18 +52,6 @@ export const ImpassionedSerenade: Power = {
       "table": "Ranged_Damage",
       "duration": 30,
       "tickRate": 1
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.65,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.04,
-      "table": "Ranged_InherentDamage",
-      "duration": 30,
-      "tickRate": 1
     }
   ],
   "effects": {
