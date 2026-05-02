@@ -34,5 +34,15 @@ export const SuppressPain: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenBuff": 4.25
+    },
+    "buffDuration": 4.25
+  }
 };

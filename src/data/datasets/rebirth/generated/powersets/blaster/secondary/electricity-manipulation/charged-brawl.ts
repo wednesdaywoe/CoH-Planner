@@ -39,5 +39,50 @@ export const ChargedBrawl: Power = {
     "Sleep",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.698028,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "sleep": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Sleep"
+    },
+    "enduranceDrain": {
+      "scale": 2.5,
+      "table": "Melee_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 2,
+      "damageBuff": 8.33
+    },
+    "enduranceGain": {
+      "scale": 5.095,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.055,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 8.33
+  }
 };

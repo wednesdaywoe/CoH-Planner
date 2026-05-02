@@ -41,5 +41,43 @@ export const BodyBlow: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.87,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.29,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.282887,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.36423,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.522,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 6,
+      "table": "Melee_Stun"
+    },
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    }
+  }
 };

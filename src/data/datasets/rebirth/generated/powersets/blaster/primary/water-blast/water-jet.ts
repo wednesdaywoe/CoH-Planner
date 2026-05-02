@@ -38,5 +38,37 @@ export const WaterJet: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.49,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.47,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.553611,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.660834,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.094,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.93
+    },
+    "buffDuration": 8.93
+  }
 };

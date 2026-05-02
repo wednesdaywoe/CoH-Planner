@@ -30,5 +30,11 @@ export const SmokeFlash: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "placate": {
+      "scale": 6,
+      "table": "Melee_Taunt"
+    }
+  }
 };

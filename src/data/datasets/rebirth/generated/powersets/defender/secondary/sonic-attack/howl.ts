@@ -39,5 +39,67 @@ export const Howl: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.405,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.405,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.548498,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.548498,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 8
+    },
+    "buffDuration": 8
+  }
 };

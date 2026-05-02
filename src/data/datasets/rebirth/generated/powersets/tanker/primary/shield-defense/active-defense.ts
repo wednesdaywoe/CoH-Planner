@@ -34,5 +34,42 @@ export const Deflection: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "resistance": 0.75
+    },
+    "resistance": {
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "elusivity": {
+      "melee": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
+      "psionic": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 0.75
+  },
   "requires": "Tanker_Melee.Dual_Blades Tanker_Melee.Staff_Fighting || Tanker_Melee.Titan_Weapons || Tanker_Melee.Katana || !"
 };

@@ -26,5 +26,45 @@ export const OffensiveAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "effects": {
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 0.075,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0.075,
+        "table": "Melee_Ones"
+      },
+      "fire": {
+        "scale": 0.075,
+        "table": "Melee_Ones"
+      },
+      "cold": {
+        "scale": 0.075,
+        "table": "Melee_Ones"
+      },
+      "energy": {
+        "scale": 0.075,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0.075,
+        "table": "Melee_Ones"
+      },
+      "psionic": {
+        "scale": 0.075,
+        "table": "Melee_Ones"
+      },
+      "toxic": {
+        "scale": 0.075,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 1.1
+    },
+    "buffDuration": 1.1
+  },
   "requires": "Brute_Defense.Bio_Organic_Armor.Evolution"
 };

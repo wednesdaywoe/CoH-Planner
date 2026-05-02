@@ -42,5 +42,50 @@ export const PsiBladeSweep: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.36,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.08,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.496798,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.490393,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.236,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.648,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 5,
+      "table": "Melee_Stun"
+    },
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    }
+  }
 };

@@ -41,5 +41,37 @@ export const CosmicBurst: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 2.12,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.76529,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    },
+    "defenseDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 12,
+      "damageBuff": 9.57
+    },
+    "damageBuff": {
+      "scale": 0.137,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 12
+  }
 };

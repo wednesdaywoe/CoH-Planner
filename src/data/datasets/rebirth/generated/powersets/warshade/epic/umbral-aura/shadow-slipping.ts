@@ -26,5 +26,11 @@ export const ShadowSlip: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "effects": {
+    "teleport": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
+  },
   "requires": "Warshade_Defensive.Umbral_Aura.Shadow_Slip"
 };

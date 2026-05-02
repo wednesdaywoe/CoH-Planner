@@ -38,5 +38,32 @@ export const FrozenAura: Power = {
     "Sleep",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 1.42,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.934588,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "sleep": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Ranged_Sleep"
+    },
+    "damageBuff": {
+      "scale": 0.055,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.6
+    },
+    "buffDuration": 9.6
+  }
 };

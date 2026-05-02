@@ -40,5 +40,33 @@ export const WhirlingMace: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.12,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.186446,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.504,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 5,
+      "table": "Melee_Stun"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

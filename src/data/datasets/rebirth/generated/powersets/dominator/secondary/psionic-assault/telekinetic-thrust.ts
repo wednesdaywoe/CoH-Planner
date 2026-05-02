@@ -36,5 +36,33 @@ export const TelekineticThrust: Power = {
     "Melee Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.82,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.82,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.5183,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.5183,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 16,
+      "table": "Melee_Knockback"
+    }
+  }
 };

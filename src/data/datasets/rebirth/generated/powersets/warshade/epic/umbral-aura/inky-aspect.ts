@@ -36,5 +36,25 @@ export const InkyAspect: Power = {
   "allowedSetCategories": [
     "Stuns"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.1,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 2
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 6,
+      "table": "Melee_Stun"
+    },
+    "buffDuration": 2
+  }
 };

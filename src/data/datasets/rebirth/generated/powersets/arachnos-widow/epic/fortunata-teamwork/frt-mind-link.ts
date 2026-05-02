@@ -34,5 +34,65 @@ export const MindLink: Power = {
     "Defense Sets",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitBuff": {
+      "scale": 0.5,
+      "table": "Melee_Buff_ToHit"
+    },
+    "durations": {
+      "tohitBuff": 90,
+      "resistance": 90,
+      "defenseBuff": 90
+    },
+    "resistance": {
+      "psionic": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "defenseBuff": {
+      "melee": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "buffDuration": 90
+  }
 };

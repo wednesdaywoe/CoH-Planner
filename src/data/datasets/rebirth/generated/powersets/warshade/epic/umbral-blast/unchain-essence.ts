@@ -45,5 +45,21 @@ export const UnchainEssence: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Negative",
+    "scale": 2.6,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 5,
+      "table": "Ranged_Stun"
+    },
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

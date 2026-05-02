@@ -32,5 +32,45 @@ export const QuantumFlight: Power = {
     "Flight",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "movement": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 1.5,
+        "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 3,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 3,
+        "table": "Melee_Friction"
+      }
+    },
+    "durations": {
+      "movement": 0.75,
+      "stealth": 0.75,
+      "threatDebuff": 0.75
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 20,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 222,
+        "table": "Melee_Ones"
+      }
+    },
+    "threatDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 0.75
+  }
 };

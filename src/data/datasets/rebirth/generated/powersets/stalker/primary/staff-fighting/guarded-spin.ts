@@ -40,5 +40,59 @@ export const GuardedSpin: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.231667,
+      "table": "Melee_Damage",
+      "duration": 1.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.249299,
+      "table": "Melee_Damage",
+      "duration": 1.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.029795,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.029795,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.39,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.39,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def",
+        "perTarget": 1.5
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def",
+        "perTarget": 1.5
+      }
+    },
+    "durations": {
+      "defenseBuff": 10
+    },
+    "buffDuration": 10
+  }
 };

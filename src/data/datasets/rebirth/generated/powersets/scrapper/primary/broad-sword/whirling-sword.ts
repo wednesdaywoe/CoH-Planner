@@ -40,5 +40,61 @@ export const WhirlingSword: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.049793,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.349793,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.45,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.045,
+      "table": "Melee_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

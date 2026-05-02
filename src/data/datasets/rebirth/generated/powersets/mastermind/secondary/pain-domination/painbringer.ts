@@ -35,5 +35,29 @@ export const Painbringer: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 8,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 90,
+      "regenBuff": 90,
+      "damageBuff": 90
+    },
+    "regenBuff": {
+      "scale": 5,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 5,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "knockback": {
+      "scale": 0.1,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 90
+  }
 };

@@ -34,5 +34,144 @@ export const MomentofGlory: Power = {
     "Endurance Modification",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "knockback": 15,
+      "mezResistance": 15,
+      "knockup": 15,
+      "repel": 15,
+      "stun": 15,
+      "hold": 15,
+      "sleep": 15,
+      "immobilize": 15,
+      "recoveryBuff": 15,
+      "defenseBuff": 15,
+      "resistance": 15
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      },
+      "hold": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 15,
+    "hold": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 60,
+      "table": "Melee_Res_Boolean"
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "defenseBuff": {
+      "smashing": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "resistance": {
+      "smashing": {
+        "scale": 9.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 9.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 9.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 9.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 9.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 9.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 9.5,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "buffDuration": 15
+  }
 };

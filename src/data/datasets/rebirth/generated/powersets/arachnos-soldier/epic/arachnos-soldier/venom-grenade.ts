@@ -39,5 +39,61 @@ export const VenomGrenade: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Toxic",
+      "scale": 0.1964,
+      "table": "Ranged_Damage",
+      "duration": 4.12,
+      "tickRate": 1
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.12827,
+      "table": "Ranged_Damage",
+      "duration": 4.12,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_DMG"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Ranged_Res_DMG"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_DMG"
+      },
+      "cold": {
+        "scale": 2,
+        "table": "Ranged_Res_DMG"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_DMG"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Ranged_Res_DMG"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Ranged_Res_DMG"
+      },
+      "toxic": {
+        "scale": 4,
+        "table": "Ranged_Res_DMG"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 16
+    },
+    "buffDuration": 16
+  },
   "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade !"
 };

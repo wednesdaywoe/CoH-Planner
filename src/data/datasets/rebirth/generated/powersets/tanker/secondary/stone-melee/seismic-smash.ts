@@ -41,5 +41,33 @@ export const SeismicSmash: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 3.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.852973,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.602,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Melee_Immobilize"
+    },
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    }
+  }
 };

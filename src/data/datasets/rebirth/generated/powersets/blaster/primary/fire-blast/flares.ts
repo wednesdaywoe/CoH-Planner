@@ -36,5 +36,32 @@ export const Flares: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.71,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.459739,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5
+  }
 };

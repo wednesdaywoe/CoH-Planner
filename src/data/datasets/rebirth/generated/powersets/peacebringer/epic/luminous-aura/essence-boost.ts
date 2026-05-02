@@ -32,5 +32,34 @@ export const EssenceBoost: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 4,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 4,
+      "table": "Melee_SSHealSelf"
+    }
+  ],
+  "effects": {
+    "maxHPBuff": {
+      "scale": 4,
+      "table": "Melee_SSHealSelf"
+    },
+    "durations": {
+      "maxHPBuff": 120,
+      "resistance": 120
+    },
+    "resistance": {
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "buffDuration": 120
+  }
 };

@@ -28,5 +28,21 @@ export const SmokeFlash: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 54,
+        "table": "Ranged_Ones"
+      },
+      "stealthPvP": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 10
+    },
+    "buffDuration": 10
+  }
 };

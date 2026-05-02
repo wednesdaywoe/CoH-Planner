@@ -37,5 +37,12 @@ export const MassHypnosis: Power = {
     "Controller Archetype Sets",
     "Sleep"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "sleep": {
+      "mag": 1,
+      "scale": 12,
+      "table": "Ranged_Sleep"
+    }
+  }
 };

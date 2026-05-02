@@ -36,5 +36,17 @@ export const AimedShot: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.966357,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

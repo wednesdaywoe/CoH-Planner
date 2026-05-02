@@ -34,5 +34,19 @@ export const SonicRepulsion: Power = {
   "allowedSetCategories": [
     "Knockback"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "knockback": {
+      "scale": 6,
+      "table": "Ranged_Knockback"
+    },
+    "durations": {
+      "knockback": 0.5
+    },
+    "enduranceDrain": {
+      "scale": 2.5,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 0.5
+  }
 };

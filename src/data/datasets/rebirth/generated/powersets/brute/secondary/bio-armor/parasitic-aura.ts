@@ -39,5 +39,32 @@ export const ParasiticAura: Power = {
     "Healing",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.425,
+      "table": "Melee_Ones",
+      "perTarget": 0.425
+    },
+    "durations": {
+      "recoveryBuff": 45,
+      "regenBuff": 45,
+      "absorb": 45
+    },
+    "regenBuff": {
+      "scale": 0.65,
+      "table": "Melee_Ones",
+      "perTarget": 0.65
+    },
+    "absorb": {
+      "scale": 2.133,
+      "table": "Melee_Ones",
+      "perTarget": 2.133
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 45
+  }
 };

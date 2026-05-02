@@ -40,5 +40,52 @@ export const FireCages: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.11,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Fire",
+      "scale": 0.121044,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 12,
+      "knockback": 12,
+      "knockup": 12
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 12
+  }
 };

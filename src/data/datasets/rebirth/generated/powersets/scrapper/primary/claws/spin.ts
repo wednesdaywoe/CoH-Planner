@@ -36,5 +36,37 @@ export const Spin: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.58,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.824454,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.824454,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.58,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.58,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.711,
+      "table": "Melee_Damage"
+    }
+  ]
 };

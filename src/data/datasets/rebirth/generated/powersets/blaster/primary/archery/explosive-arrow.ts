@@ -40,5 +40,51 @@ export const ExplosiveArrow: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.217236,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.217236,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.217236,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.02,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5
+  }
 };

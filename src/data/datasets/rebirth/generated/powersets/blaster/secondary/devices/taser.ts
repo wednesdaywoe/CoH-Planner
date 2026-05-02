@@ -37,5 +37,25 @@ export const Taser: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 0.25,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Stun"
+    },
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5
+  }
 };

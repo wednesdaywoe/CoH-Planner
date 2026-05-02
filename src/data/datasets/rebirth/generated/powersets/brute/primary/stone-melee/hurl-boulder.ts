@@ -40,5 +40,32 @@ export const HurlBoulder: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.8,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.759142,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.738,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 6,
+      "table": "Melee_Knockback"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

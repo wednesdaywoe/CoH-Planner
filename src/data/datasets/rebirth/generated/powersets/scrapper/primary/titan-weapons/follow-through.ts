@@ -39,5 +39,55 @@ export const FollowThrough: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.156,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.72139,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.72139,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.156,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.156,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.9702,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Stun"
+    }
+  }
 };

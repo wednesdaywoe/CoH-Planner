@@ -45,5 +45,31 @@ export const LuminousDetonation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.9,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.815631,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "knockback": {
+      "scale": 4,
+      "table": "Ranged_Knockback"
+    },
+    "buffDuration": 10
+  },
   "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Peacebringer_Offensive.Luminous_Blast.Bright_Nova_Detonation ! && Inherent.Inherent.Bright_Nova_Detonation ! &&"
 };

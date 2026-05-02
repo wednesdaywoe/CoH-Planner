@@ -32,5 +32,20 @@ export const BuildUp: Power = {
     "Scrapper Archetype Sets",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
+    },
+    "durations": {
+      "tohitBuff": 10,
+      "damageBuff": 10
+    },
+    "damageBuff": {
+      "scale": 8,
+      "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 10
+  }
 };

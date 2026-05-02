@@ -34,5 +34,20 @@ export const Scare: Power = {
   "allowedSetCategories": [
     "Fear"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "fear": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Fear"
+    },
+    "damageBuff": {
+      "scale": 0.176,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.17
+    },
+    "buffDuration": 10.17
+  }
 };

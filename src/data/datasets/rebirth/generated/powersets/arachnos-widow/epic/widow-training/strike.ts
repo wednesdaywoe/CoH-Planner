@@ -35,5 +35,34 @@ export const Lunge: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.824,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.216,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.482025,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.98851,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ]
 };

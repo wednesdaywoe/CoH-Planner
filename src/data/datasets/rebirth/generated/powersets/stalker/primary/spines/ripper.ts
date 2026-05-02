@@ -43,5 +43,55 @@ export const Ripper: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.7,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.914358,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.914358,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.914358,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.7,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.7,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.2,
+      "table": "Melee_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    }
+  }
 };

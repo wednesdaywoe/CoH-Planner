@@ -35,5 +35,15 @@ export const TimeCrawl: Power = {
     "Blaster Archetype Sets",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenDebuff": {
+      "scale": 4,
+      "table": "Ranged_Res_Boolean"
+    },
+    "durations": {
+      "regenDebuff": 20
+    },
+    "buffDuration": 20
+  }
 };

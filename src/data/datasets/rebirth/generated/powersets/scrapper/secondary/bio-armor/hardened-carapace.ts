@@ -31,5 +31,59 @@ export const HardenedCarapace: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistance": 0.75,
+      "damageBuff": 0.75,
+      "enduranceDiscount": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75,
+      "mezResistance": 0.75
+    },
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Melee_Buff_Dmg"
+    },
+    "enduranceDiscount": {
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 0.75,
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "mezResistance": {
+      "stun": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "buffDuration": 0.75
+  }
 };

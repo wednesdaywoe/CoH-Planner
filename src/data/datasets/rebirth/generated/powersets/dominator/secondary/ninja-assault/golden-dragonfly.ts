@@ -43,5 +43,58 @@ export const GoldenDragonfly: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 2.6,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 3.1374,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.06,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.3,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.43,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.5687,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.7256,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
+    "defenseDebuff": {
+      "scale": 0.6,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

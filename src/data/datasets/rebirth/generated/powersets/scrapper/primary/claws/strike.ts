@@ -36,5 +36,37 @@ export const Strike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.08,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.70798,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.70798,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.08,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.08,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.486,
+      "table": "Melee_Damage"
+    }
+  ],
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

@@ -42,5 +42,42 @@ export const FocusedBurst: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.23,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.41,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.016101,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.570595,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.738,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    }
+  }
 };

@@ -37,5 +37,34 @@ export const TotalFocus: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.0864,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.7936,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.40728,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.61872,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    }
+  }
 };

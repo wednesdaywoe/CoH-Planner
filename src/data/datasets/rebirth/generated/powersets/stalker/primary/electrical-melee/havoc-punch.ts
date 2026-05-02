@@ -39,5 +39,70 @@ export const HavocPunch: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.8,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.52,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.028592,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.685728,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.71432,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.71432,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "sleep": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Melee_Sleep"
+    },
+    "enduranceDrain": {
+      "scale": 2,
+      "table": "Melee_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4
+    },
+    "enduranceGain": {
+      "scale": 3.432,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 4
+  }
 };

@@ -41,5 +41,50 @@ export const Wormhole: Power = {
     "Teleport",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "teleport": {
+      "scale": 4.1,
+      "table": "Ranged_Ones"
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 15,
+      "stealth": 0.75,
+      "threatDebuff": 0.75
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 20,
+        "table": "Ranged_Ones"
+      }
+    },
+    "untouchable": {
+      "scale": 0.75,
+      "table": "Ranged_Ones"
+    },
+    "threatDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "onlyAffectsSelf": {
+      "scale": 0.75,
+      "table": "Ranged_Ones"
+    },
+    "knockback": {
+      "scale": 7,
+      "table": "Ranged_Knockback"
+    },
+    "buffDuration": 0.75
+  }
 };

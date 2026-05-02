@@ -38,5 +38,34 @@ export const Mesmerize: Power = {
     "Sleep",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 3.033112,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.516556,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Sleep"
+    }
+  }
 };

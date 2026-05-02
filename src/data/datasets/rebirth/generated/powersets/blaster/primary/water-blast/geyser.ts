@@ -44,5 +44,104 @@ export const Geyser: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.482183,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.44655,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.24,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.096437,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.231448,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.482183,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.136364,
+      "table": "Ranged_Damage",
+      "duration": 5.1,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.143182,
+      "table": "Ranged_Damage",
+      "duration": 5.1,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.152727,
+      "table": "Ranged_Damage",
+      "duration": 5.1,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.170455,
+      "table": "Ranged_Damage",
+      "duration": 5.1,
+      "tickRate": 0.5
+    }
+  ],
+  "effects": {
+    "knockup": {
+      "scale": 3,
+      "table": "Ranged_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 5,
+      "table": "Ranged_Stun"
+    },
+    "damageBuff": {
+      "scale": 0.041,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.43
+    },
+    "buffDuration": 10.43
+  }
 };

@@ -36,5 +36,11 @@ export const SavageLeap: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "teleport": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
+  }
 };

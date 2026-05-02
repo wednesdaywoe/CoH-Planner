@@ -42,5 +42,36 @@ export const ShinBreaker: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.64,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.233012,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.738,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 10
+  }
 };

@@ -40,5 +40,103 @@ export const SuppressiveFire: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Ranged_Sleep"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Ranged_Sleep"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 10,
+      "knockback": 10,
+      "knockup": 10
+    },
+    "knockback": {
+      "scale": 300,
+      "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 300,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 10
+  }
 };

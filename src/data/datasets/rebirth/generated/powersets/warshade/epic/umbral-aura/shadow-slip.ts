@@ -37,5 +37,41 @@ export const StarlessGateway: Power = {
     "Teleport",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "teleport": {
+      "scale": 2.1,
+      "table": "Ranged_Ones"
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 15,
+      "stealth": 0.75,
+      "threatDebuff": 0.75
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 20,
+        "table": "Ranged_Ones"
+      }
+    },
+    "untouchable": {
+      "scale": 0.75,
+      "table": "Ranged_Ones"
+    },
+    "threatDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "onlyAffectsSelf": {
+      "scale": 0.75,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 0.75
+  }
 };

@@ -30,5 +30,11 @@ export const Confront: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "taunt": {
+      "scale": 4,
+      "table": "Melee_Taunt"
+    }
+  }
 };

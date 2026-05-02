@@ -37,5 +37,61 @@ export const EnergyDrain: Power = {
     "Endurance Modification",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 10,
+      "table": "Melee_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4,
+      "defenseBuff": 45
+    },
+    "defenseBuff": {
+      "smashing": {
+        "scale": 0.15000000000000002,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.05
+      },
+      "lethal": {
+        "scale": 0.15000000000000002,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.05
+      },
+      "fire": {
+        "scale": 0.15000000000000002,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.05
+      },
+      "cold": {
+        "scale": 0.15000000000000002,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.05
+      },
+      "energy": {
+        "scale": 0.15000000000000002,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.05
+      },
+      "negative": {
+        "scale": 0.15000000000000002,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.05
+      }
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "enduranceGain": {
+      "scale": 25,
+      "table": "Melee_Ones",
+      "perTarget": 25
+    },
+    "buffDuration": 45
+  }
 };

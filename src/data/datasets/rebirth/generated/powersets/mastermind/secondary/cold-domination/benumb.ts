@@ -30,5 +30,88 @@ export const Benumb: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenDebuff": {
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "durations": {
+      "regenDebuff": 30,
+      "stun": 30,
+      "sleep": 30,
+      "confuse": 30,
+      "fear": 30,
+      "immobilize": 30,
+      "hold": 30,
+      "knockback": 30,
+      "knockup": 30,
+      "repel": 30,
+      "defenseDebuff": 30
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "effectDuration": 30,
+    "sleep": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "knockback": {
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "knockup": {
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "repel": {
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "defenseDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Stun",
+      "melee": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "aoe": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      }
+    },
+    "enduranceDrain": {
+      "scale": 5.5,
+      "table": "Ranged_EndDrain"
+    },
+    "buffDuration": 30
+  }
 };

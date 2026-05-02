@@ -43,5 +43,65 @@ export const ExtinguishLight: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.512,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "teleport": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "defenseBuff": {
+      "melee": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 10
+    },
+    "buffDuration": 10
+  },
   "requires": "Pool.Speed.Whirlwind ! Pool.Teleportation.Team_Teleport ! && Pool.Leaping.Spring_Attack ! && Pool.Flight.Afterburner ! &&"
 };

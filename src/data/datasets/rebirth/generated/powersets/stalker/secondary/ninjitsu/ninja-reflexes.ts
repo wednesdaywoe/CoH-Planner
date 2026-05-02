@@ -32,5 +32,30 @@ export const NinjaReflexes: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.85,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "debuffResistance": 0.75
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "elusivity": {
+      "melee": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 0.75
+  }
 };

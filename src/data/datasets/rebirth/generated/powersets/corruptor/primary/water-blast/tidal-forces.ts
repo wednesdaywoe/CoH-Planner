@@ -31,5 +31,20 @@ export const TidalForces: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_ToHit"
+    },
+    "durations": {
+      "tohitBuff": 10,
+      "damageBuff": 10
+    },
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 10
+  }
 };

@@ -37,5 +37,34 @@ export const EMPulse: Power = {
     "Endurance Modification",
     "Holds"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "enduranceDrain": {
+      "scale": 16.67,
+      "table": "Ranged_EndDrain"
+    },
+    "regenDebuff": {
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "durations": {
+      "regenDebuff": 15,
+      "recoveryDebuff": 15
+    },
+    "recoveryDebuff": {
+      "scale": 10,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 15
+  }
 };

@@ -38,5 +38,53 @@ export const FocusedBurst: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.23,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.41,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.824673,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.608224,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.432898,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.64,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.64,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.738,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  }
 };

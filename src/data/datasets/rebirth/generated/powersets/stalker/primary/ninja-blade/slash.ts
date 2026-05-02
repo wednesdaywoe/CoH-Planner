@@ -39,5 +39,51 @@ export const GamblersCut: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.42,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.501616,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.003232,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.003232,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.84,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.84,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 6
+    },
+    "buffDuration": 6
+  }
 };

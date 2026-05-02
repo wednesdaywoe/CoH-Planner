@@ -42,5 +42,53 @@ export const OneThousandCuts: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.151,
+      "table": "Melee_Damage",
+      "duration": 2.05,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.7,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.288147,
+      "table": "Melee_Damage",
+      "duration": 2.05,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.7,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.06795,
+      "table": "Melee_Damage",
+      "duration": 2.05,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Fire",
+      "scale": 0.315,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

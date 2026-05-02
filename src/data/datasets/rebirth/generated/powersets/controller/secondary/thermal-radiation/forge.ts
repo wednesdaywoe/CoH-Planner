@@ -33,5 +33,20 @@ export const Forge: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Ranged_Buff_ToHit"
+    },
+    "durations": {
+      "tohitBuff": 120,
+      "damageBuff": 120
+    },
+    "damageBuff": {
+      "scale": 4,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "buffDuration": 120
+  }
 };

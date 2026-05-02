@@ -41,5 +41,32 @@ export const Swoop: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 2.28,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.740122,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.026,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockup": {
+      "scale": 6,
+      "table": "Melee_Knockback"
+    },
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    }
+  }
 };

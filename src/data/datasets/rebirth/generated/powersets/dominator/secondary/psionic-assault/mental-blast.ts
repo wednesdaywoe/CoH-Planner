@@ -35,5 +35,17 @@ export const MentalBlast: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.6446,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

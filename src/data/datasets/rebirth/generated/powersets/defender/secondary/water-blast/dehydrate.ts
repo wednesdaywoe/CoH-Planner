@@ -45,5 +45,63 @@ export const Dehydrate: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.25,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.75,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.791615,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.374844,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.1488,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Heal",
+      "scale": 0.275,
+      "table": "Ranged_HealSelf",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Heal",
+      "scale": 0.4125,
+      "table": "Ranged_HealSelf",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 8,
+      "regenBuff": 30
+    },
+    "regenBuff": {
+      "scale": 1.5,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 30
+  }
 };

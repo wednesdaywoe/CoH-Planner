@@ -43,5 +43,72 @@ export const DevastatingBlow: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.89,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.67,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.186837,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.560511,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.712,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.94947,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 4.747348,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 4.747348,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.56,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
+    "buffDuration": 10
+  }
 };

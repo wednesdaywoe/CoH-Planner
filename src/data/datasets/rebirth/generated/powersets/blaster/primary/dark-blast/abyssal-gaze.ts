@@ -41,5 +41,36 @@ export const AbyssalGaze: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.472,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.970946,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17
+    },
+    "buffDuration": 9.17
+  }
 };

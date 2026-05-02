@@ -38,5 +38,53 @@ export const Fossilize: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 3.0366,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 12,
+      "table": "Ranged_Immobilize"
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 12,
+      "mezResistance": 12,
+      "knockback": 12,
+      "knockup": 12
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 12
+  }
 };

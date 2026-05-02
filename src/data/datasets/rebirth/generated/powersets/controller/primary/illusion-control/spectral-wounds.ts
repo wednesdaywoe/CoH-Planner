@@ -35,5 +35,32 @@ export const SpectralWounds: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": -0.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.328907,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.164453,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

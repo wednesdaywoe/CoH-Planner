@@ -42,5 +42,41 @@ export const Frost: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 0.27,
+      "table": "Melee_Damage",
+      "duration": 2.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Cold",
+      "scale": 0.410659,
+      "table": "Melee_Damage",
+      "duration": 2.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Cold",
+      "scale": 2.463954,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.463954,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.62,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.62,
+      "table": "Melee_Damage"
+    }
+  ]
 };

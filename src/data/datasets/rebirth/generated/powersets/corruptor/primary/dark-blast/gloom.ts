@@ -40,5 +40,35 @@ export const Gloom: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 3.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Negative",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 3.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Negative",
+      "scale": 0.251907,
+      "table": "Ranged_Damage",
+      "duration": 3.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Negative",
+      "scale": 0.251907,
+      "table": "Ranged_Damage",
+      "duration": 3.6,
+      "tickRate": 0.5
+    }
+  ]
 };

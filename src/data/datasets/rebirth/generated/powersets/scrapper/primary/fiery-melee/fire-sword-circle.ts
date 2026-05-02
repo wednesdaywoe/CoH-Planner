@@ -36,5 +36,61 @@ export const FireSwordCircle: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.775,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.775,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.111844,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.111844,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 2.223689,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.55,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.55,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.6975,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.045,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ]
 };

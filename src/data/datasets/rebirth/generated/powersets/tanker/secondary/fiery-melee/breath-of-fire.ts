@@ -41,5 +41,48 @@ export const BreathofFire: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.68,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.966932,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.306,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.045,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    }
+  }
 };

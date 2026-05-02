@@ -39,5 +39,25 @@ export const KeeningWinds: Power = {
     "Controller Archetype Sets",
     "Endurance Modification"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "confuse": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Fear"
+    },
+    "enduranceDrain": {
+      "scale": 2.5,
+      "table": "Ranged_EndDrain"
+    },
+    "durations": {
+      "enduranceDrain": 2.1
+    },
+    "enduranceGain": {
+      "scale": 10,
+      "table": "Ranged_EndDrain",
+      "perTarget": 10
+    },
+    "buffDuration": 2.1
+  }
 };

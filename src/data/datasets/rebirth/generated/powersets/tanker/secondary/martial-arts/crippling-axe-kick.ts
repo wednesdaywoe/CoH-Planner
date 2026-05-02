@@ -47,5 +47,41 @@ export const CripplingAxeKick: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.12,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.485257,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.954,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 10
+  }
 };

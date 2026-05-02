@@ -22,8 +22,8 @@ import { ShadowBlast as ShadowBlast } from './shadow-blast';
 import { GraviticEmanation as GraviticEmanation } from './gravitic-emanation';
 import { ExtinguishLight as ExtinguishLight } from './starless-step';
 import { GravityWell as GravityWell } from './gravity-well';
-import { SunlessMire as SunlessMire } from './sunless-mire';
 import { EssenceDrain as EssenceDrain } from './essence-drain';
+import { SunlessMire as SunlessMire } from './sunless-mire';
 import { UnchainEssence as UnchainEssence } from './unchain-essence';
 import { DarkExtraction as DarkExtraction } from './dark-extraction';
 import { Quasar as Quasar } from './quasar';
@@ -49,8 +49,8 @@ export const powerset: Powerset = {
     GraviticEmanation,
     ExtinguishLight,
     GravityWell,
-    SunlessMire,
     EssenceDrain,
+    SunlessMire,
     UnchainEssence,
     DarkExtraction,
     Quasar,

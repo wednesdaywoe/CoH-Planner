@@ -42,5 +42,42 @@ export const HeartofDarkness: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.07,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.315155,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.07,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.157577,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    }
+  }
 };

@@ -37,5 +37,23 @@ export const StoneSpears: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.842,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockup": {
+      "scale": 1.34,
+      "table": "Ranged_Ones"
+    }
+  }
 };

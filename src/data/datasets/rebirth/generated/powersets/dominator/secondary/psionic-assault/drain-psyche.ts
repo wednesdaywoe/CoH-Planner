@@ -37,5 +37,32 @@ export const DrainPsyche: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones",
+      "perTarget": 1
+    },
+    "durations": {
+      "regenBuff": 30,
+      "regenDebuff": 30,
+      "recoveryBuff": 30,
+      "recoveryDebuff": 30
+    },
+    "regenDebuff": {
+      "scale": 35,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones",
+      "perTarget": 1
+    },
+    "recoveryDebuff": {
+      "scale": 5.8,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 30
+  }
 };

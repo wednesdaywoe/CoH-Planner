@@ -40,5 +40,11 @@ export const Starfall: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "effects": {
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    }
+  },
   "requires": "Pool.Speed.Whirlwind ! Pool.Teleportation.Team_Teleport ! && Pool.Leaping.Spring_Attack ! && Pool.Flight.Afterburner ! &&"
 };

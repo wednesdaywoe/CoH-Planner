@@ -40,5 +40,34 @@ export const FlashFreeze: Power = {
     "Sleep",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.1,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "sleep": {
+      "mag": 1,
+      "scale": 12,
+      "table": "Ranged_Sleep"
+    }
+  }
 };

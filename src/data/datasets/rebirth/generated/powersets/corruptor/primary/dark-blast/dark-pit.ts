@@ -36,5 +36,12 @@ export const DarkPit: Power = {
   "allowedSetCategories": [
     "Stuns"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    }
+  }
 };

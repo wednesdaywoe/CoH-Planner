@@ -39,5 +39,70 @@ export const ChargedBrawl: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.5,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.34,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.670106,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.446738,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.116844,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.116844,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.84,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.84,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "sleep": {
+      "mag": 1,
+      "scale": 6,
+      "table": "Melee_Sleep"
+    },
+    "enduranceDrain": {
+      "scale": 1.25,
+      "table": "Melee_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 2
+    },
+    "enduranceGain": {
+      "scale": 2.184,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 2
+  }
 };

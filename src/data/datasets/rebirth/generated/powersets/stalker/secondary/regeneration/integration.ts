@@ -32,5 +32,96 @@ export const Integration: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "hold": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "mezResistance": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "stun": 0.75,
+      "hold": 0.75,
+      "sleep": 0.75,
+      "immobilize": 0.75,
+      "regenBuff": 0.75,
+      "debuffResistance": 0.75
+    },
+    "knockback": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 0.75,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "regenBuff": {
+      "scale": 3,
+      "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "movement": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 0.75
+  }
 };

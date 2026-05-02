@@ -40,5 +40,41 @@ export const KineticLance: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 2.314,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.246,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.178,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 3.003,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.617,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.462,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    }
+  ]
 };

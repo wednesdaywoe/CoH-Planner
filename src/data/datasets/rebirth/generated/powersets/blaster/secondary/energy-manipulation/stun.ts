@@ -39,5 +39,43 @@ export const StaggeringBurst: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.15,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.81,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.045,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.045,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Melee_Stun"
+    },
+    "damageBuff": {
+      "scale": 0.952,
+      "table": "Melee_Ones",
+      "perTarget": 0.952
+    },
+    "durations": {
+      "damageBuff": 9.3
+    },
+    "buffDuration": 9.3
+  }
 };

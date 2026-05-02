@@ -33,5 +33,39 @@ export const SharePain: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 4,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Special",
+      "scale": 2,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 15,
+      "regenDebuff": 15,
+      "resistance": 15
+    },
+    "regenDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "resistance": {
+      "heal": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
+    },
+    "buffDuration": 15
+  }
 };

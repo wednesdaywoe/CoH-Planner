@@ -33,5 +33,59 @@ export const O2Boost: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1.32,
+    "table": "Ranged_Heal"
+  },
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "effectDuration": 60,
+    "durations": {
+      "stun": 60,
+      "sleep": 60,
+      "mezResistance": 60,
+      "debuffResistance": 60,
+      "perceptionBuff": 60
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "mezResistance": {
+      "stun": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 6,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "debuffResistance": {
+      "recovery": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "endurance": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "perception": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "perceptionBuff": {
+      "scale": 2.5,
+      "table": "Ranged_Res_Boolean"
+    },
+    "buffDuration": 60
+  }
 };

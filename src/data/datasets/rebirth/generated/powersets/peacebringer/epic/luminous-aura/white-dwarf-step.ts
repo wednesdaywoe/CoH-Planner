@@ -32,5 +32,37 @@ export const WhiteDwarfStep: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
+  "effects": {
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "movement": {
+      "fly": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "movement": 4,
+      "slow": 4
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      },
+      "movementControl": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      },
+      "movementFriction": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
+    },
+    "selfPenalty": true,
+    "buffDuration": 4
+  },
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Step ! &&"
 };

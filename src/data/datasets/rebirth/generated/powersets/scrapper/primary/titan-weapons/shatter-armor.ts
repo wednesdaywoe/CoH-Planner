@@ -39,5 +39,82 @@ export const RendArmor: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 3.212,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 3.041122,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 3.041122,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 3.212,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 3.212,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.4454,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10,
+      "resistanceDebuff": 8
+    },
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "buffDuration": 10
+  }
 };

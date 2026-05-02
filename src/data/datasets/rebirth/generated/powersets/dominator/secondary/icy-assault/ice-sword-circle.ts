@@ -38,5 +38,27 @@ export const IceSwordCircle: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.595,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.595,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.2596,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.2596,
+      "table": "Melee_Damage"
+    }
+  ]
 };

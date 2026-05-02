@@ -40,5 +40,17 @@ export const Hypothermia: Power = {
     "Sleep",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "sleep": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Ranged_Sleep"
+    },
+    "effectDuration": 15.1,
+    "durations": {
+      "sleep": 15.1
+    },
+    "buffDuration": 15.1
+  }
 };

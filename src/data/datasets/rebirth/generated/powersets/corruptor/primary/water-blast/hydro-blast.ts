@@ -41,5 +41,43 @@ export const HydroBlast: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.37,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.11,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.625203,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.875608,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.48,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.500811,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Ranged_Ones"
+    }
+  }
 };

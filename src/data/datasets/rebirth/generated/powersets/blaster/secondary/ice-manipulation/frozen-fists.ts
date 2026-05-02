@@ -37,5 +37,32 @@ export const FrozenFists: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.64,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.030011,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.83
+    },
+    "buffDuration": 8.83
+  }
 };

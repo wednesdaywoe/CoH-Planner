@@ -42,5 +42,27 @@ export const NeutronBomb: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.9,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.060728,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 16
+    },
+    "buffDuration": 16
+  }
 };

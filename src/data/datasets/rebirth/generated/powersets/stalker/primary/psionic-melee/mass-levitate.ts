@@ -38,5 +38,50 @@ export const MassLevitate: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.42,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.595974,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.595974,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.595974,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.42,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.42,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.142,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "knockup": {
+      "scale": 4,
+      "table": "Melee_Knockback"
+    }
+  }
 };

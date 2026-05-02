@@ -37,5 +37,32 @@ export const IceSword: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.128376,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.83
+    },
+    "buffDuration": 8.83
+  }
 };

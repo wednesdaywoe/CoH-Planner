@@ -36,5 +36,73 @@ export const Scream: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.132,
+      "table": "Ranged_Damage",
+      "duration": 1.05,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Energy",
+      "scale": 0.132,
+      "table": "Ranged_Damage",
+      "duration": 1.05,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Energy",
+      "scale": 0.444856,
+      "table": "Ranged_Damage",
+      "duration": 1.05,
+      "tickRate": 0.25
+    }
+  ],
+  "effects": {
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 7,
+      "damageBuff": 9.17
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 9.17
+  }
 };

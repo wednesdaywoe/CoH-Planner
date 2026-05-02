@@ -36,5 +36,11 @@ export const ChillingEmbrace: Power = {
     "Blaster Archetype Sets",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

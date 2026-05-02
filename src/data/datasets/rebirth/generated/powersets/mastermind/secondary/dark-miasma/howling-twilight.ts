@@ -43,5 +43,30 @@ export const HowlingTwilight: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Negative",
+    "scale": 0.25,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Ones"
+    },
+    "regenDebuff": {
+      "scale": 35,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 30
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 30
+  }
 };

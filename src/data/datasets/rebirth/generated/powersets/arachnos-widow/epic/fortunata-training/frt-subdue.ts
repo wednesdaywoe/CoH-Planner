@@ -38,5 +38,24 @@ export const Subdue: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.72795,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.916184,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 6,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

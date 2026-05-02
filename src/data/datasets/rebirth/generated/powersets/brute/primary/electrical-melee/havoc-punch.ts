@@ -41,5 +41,59 @@ export const HavocPunch: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.8,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.52,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.371456,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.914304,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.594,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "sleep": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Melee_Sleep"
+    },
+    "enduranceDrain": {
+      "scale": 2,
+      "table": "Melee_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4
+    },
+    "enduranceGain": {
+      "scale": 3.432,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 4
+  }
 };

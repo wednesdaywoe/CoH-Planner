@@ -27,5 +27,120 @@ export const ActiveDefense: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 120,
+    "durations": {
+      "stun": 120,
+      "sleep": 120,
+      "hold": 120,
+      "confuse": 120,
+      "fear": 120,
+      "immobilize": 120,
+      "mezResistance": 120,
+      "knockback": 120,
+      "knockup": 120,
+      "repel": 120,
+      "debuffResistance": 120
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "hold": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "confuse": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "fear": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "knockback": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "movement": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 120
+  }
 };

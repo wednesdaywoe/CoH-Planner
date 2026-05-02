@@ -41,5 +41,26 @@ export const PowerofthePhoenix: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 7,
+    "table": "Ranged_HealSelf",
+    "duration": 0.5,
+    "tickRate": 1
+  },
+  "effects": {
+    "untouchable": {
+      "scale": 10,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "untouchable": 15
+    },
+    "enduranceGain": {
+      "scale": 70,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 15
+  }
 };

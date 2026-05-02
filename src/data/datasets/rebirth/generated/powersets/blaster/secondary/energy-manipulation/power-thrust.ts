@@ -37,5 +37,36 @@ export const PowerThrust: Power = {
     "Melee Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.4,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.4,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.647616,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 16,
+      "table": "Melee_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5
+  }
 };

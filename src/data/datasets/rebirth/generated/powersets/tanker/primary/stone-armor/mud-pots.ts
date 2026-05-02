@@ -41,5 +41,28 @@ export const MudPots: Power = {
     "Tanker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.18,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.081,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 2.25,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

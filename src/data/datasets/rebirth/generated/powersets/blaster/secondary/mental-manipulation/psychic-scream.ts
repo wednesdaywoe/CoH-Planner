@@ -39,5 +39,27 @@ export const PsychicScream: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.04,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.233603,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.064,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.17
+    },
+    "buffDuration": 10.17
+  }
 };

@@ -32,5 +32,17 @@ export const ReformEssence: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 2.5,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 2.5,
+      "table": "Melee_SSHealSelf"
+    }
+  ],
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Sublimation ! && Inherent.Inherent.White_Dwarf_Sublimation ! &&"
 };

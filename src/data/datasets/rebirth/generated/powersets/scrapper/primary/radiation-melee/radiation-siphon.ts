@@ -44,5 +44,74 @@ export const RadiationSiphon: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.49,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.47,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.617118,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.851355,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.468473,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.298,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.417424,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.666667,
+      "table": "Melee_HealSelf",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.882,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

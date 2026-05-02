@@ -30,5 +30,38 @@ export const TrueGrit: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "maxHPBuff": {
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
+    "durations": {
+      "maxHPBuff": 10.25,
+      "resistance": 10.25
+    },
+    "resistance": {
+      "fire": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "cold": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      }
+    },
+    "buffDuration": 10.25
+  },
   "mechanicType": "parentMechanic"
 };

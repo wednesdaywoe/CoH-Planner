@@ -35,5 +35,32 @@ export const DeflectionShield: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 240,
+      "resistance": 240
+    },
+    "resistance": {
+      "toxic": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "buffDuration": 240
+  }
 };

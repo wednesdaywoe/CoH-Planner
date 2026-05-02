@@ -43,5 +43,38 @@ export const Smite: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.32,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.418119,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.254357,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.594,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    }
+  }
 };

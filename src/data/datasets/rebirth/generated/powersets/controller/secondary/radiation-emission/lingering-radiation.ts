@@ -37,5 +37,15 @@ export const LingeringRadiation: Power = {
     "Blaster Archetype Sets",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenDebuff": {
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "durations": {
+      "regenDebuff": 30
+    },
+    "buffDuration": 30
+  }
 };

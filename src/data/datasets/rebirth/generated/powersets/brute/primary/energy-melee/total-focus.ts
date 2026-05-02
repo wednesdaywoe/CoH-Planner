@@ -39,5 +39,43 @@ export const TotalFocus: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.424204,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.323143,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.602,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

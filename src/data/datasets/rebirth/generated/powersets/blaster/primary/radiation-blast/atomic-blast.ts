@@ -39,5 +39,47 @@ export const AtomicBlast: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.570621,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.158534,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "defenseDebuff": {
+      "scale": 4,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 20,
+      "damageBuff": 10.43
+    },
+    "damageBuff": {
+      "scale": 0.041,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 20
+  }
 };

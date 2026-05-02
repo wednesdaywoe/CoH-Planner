@@ -36,5 +36,24 @@ export const SynapticOverload: Power = {
     "Confuse",
     "Controller Archetype Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "confuse": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "enduranceDrain": {
+      "scale": 2,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 8
+    },
+    "buffDuration": 8
+  }
 };

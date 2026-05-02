@@ -38,5 +38,20 @@ export const FrigidProtection: Power = {
     "Healing",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "absorb": {
+      "scale": 0.5,
+      "table": "Melee_HealSelf"
+    },
+    "durations": {
+      "absorb": 3,
+      "recoveryBuff": 3
+    },
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 3
+  }
 };

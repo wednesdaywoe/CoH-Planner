@@ -38,5 +38,25 @@ export const RisetotheChallenge: Power = {
     "Healing",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 0.045,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "taunt": {
+      "scale": 1.25,
+      "table": "Melee_Ones"
+    },
+    "regenBuff": {
+      "scale": 2.5,
+      "table": "Melee_Ones",
+      "perTarget": 0.5
+    },
+    "durations": {
+      "regenBuff": 1.12
+    },
+    "buffDuration": 1.12
+  }
 };

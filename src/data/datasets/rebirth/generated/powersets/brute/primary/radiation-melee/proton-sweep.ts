@@ -45,5 +45,56 @@ export const ProtonSweep: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.089375,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.268125,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 0.139217,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.417651,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.160875,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1.2,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 10
+  }
 };

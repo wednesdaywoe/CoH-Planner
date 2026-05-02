@@ -39,5 +39,16 @@ export const LightningField: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 0.2,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.5,
+      "table": "Melee_EndDrain"
+    }
+  }
 };

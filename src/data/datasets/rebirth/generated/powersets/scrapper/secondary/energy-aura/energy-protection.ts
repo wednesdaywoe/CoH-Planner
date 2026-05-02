@@ -28,5 +28,36 @@ export const EnergyProtection: Power = {
     "Resist Damage"
   ],
   "maxSlots": 0,
+  "effects": {
+    "resistance": {
+      "energy": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      }
+    },
+    "durations": {
+      "resistance": 10.25,
+      "debuffResistance": 10.25
+    },
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 10.25
+  },
   "mechanicType": "parentMechanic"
 };

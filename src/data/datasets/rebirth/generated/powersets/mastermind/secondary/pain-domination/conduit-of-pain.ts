@@ -37,5 +37,52 @@ export const ConduitofPain: Power = {
     "Endurance Modification",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 4,
+    "table": "Ranged_Ones",
+    "duration": 0.5,
+    "tickRate": 1
+  },
+  "effects": {
+    "enduranceGain": {
+      "scale": 4,
+      "table": "Ranged_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 1.75,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 60,
+      "rechargeBuff": 60,
+      "damageBuff": 60,
+      "tohitBuff": 60,
+      "damageDebuff": 30,
+      "tohitDebuff": 30
+    },
+    "rechargeBuff": {
+      "scale": 0.75,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 3,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Ranged_Buff_ToHit"
+    },
+    "damageDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "selfPenalty": true,
+    "tohitDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "buffDuration": 60
+  }
 };

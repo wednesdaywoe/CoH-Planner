@@ -32,5 +32,30 @@ export const Evasion: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "aoe": {
+        "scale": 1.85,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 2.25,
+      "debuffResistance": 0.75
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "elusivity": {
+      "aoe": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 2.25
+  }
 };

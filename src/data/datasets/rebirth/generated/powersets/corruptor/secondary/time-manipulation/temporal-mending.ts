@@ -33,5 +33,56 @@ export const TemporalMending: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 0.75,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.2,
+      "table": "Ranged_Heal",
+      "duration": 6,
+      "tickRate": 1.5
+    },
+    {
+      "type": "Heal",
+      "scale": 1.125,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.3,
+      "table": "Ranged_Heal",
+      "duration": 6,
+      "tickRate": 1.5
+    }
+  ],
+  "effects": {
+    "regenBuff": {
+      "scale": 2.3499999999999996,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenBuff": 10,
+      "debuffResistance": 30
+    },
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Ranged_Ones"
+      },
+      "recharge": {
+        "scale": 0.2,
+        "table": "Ranged_Ones"
+      },
+      "regeneration": {
+        "scale": 1,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "buffDuration": 30
+  }
 };

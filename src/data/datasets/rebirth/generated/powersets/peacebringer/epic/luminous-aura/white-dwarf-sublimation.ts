@@ -33,5 +33,10 @@ export const WhiteDwarfSublimation: Power = {
     "Kheldian Archetype Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 4.375,
+    "table": "Melee_HealSelf"
+  },
   "requires": "0"
 };

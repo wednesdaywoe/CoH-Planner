@@ -36,5 +36,15 @@ export const Smoke: Power = {
     "Blaster Archetype Sets",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "perceptionDebuff": 20
+    },
+    "buffDuration": 20
+  }
 };

@@ -34,5 +34,122 @@ export const IcyBastion: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "knockback": 30,
+      "mezResistance": 30,
+      "knockup": 30,
+      "repel": 30,
+      "stun": 30,
+      "hold": 30,
+      "sleep": 30,
+      "immobilize": 30,
+      "recoveryBuff": 30,
+      "resistance": 30,
+      "regenBuff": 30
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      },
+      "hold": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 6,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 30,
+    "hold": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 60,
+      "table": "Melee_Res_Boolean"
+    },
+    "recoveryBuff": {
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "resistance": {
+      "smashing": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "regenBuff": {
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 30
+  }
 };

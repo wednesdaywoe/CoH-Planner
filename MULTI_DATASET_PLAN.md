@@ -94,13 +94,45 @@ script and can be removed.
     Rebirth pets that genuinely set `copy_creator_mods=true` (the
     Storm-style scaling pets) will be miscategorised as not copying.
     Most pets default to `false`, so the dominant case is right.
-  - **Rebirth pet data is currently empty** because
-    `bin-crawler`'s Parse6 powers parser produces empty `effects`
-    arrays for almost everything. The pet-entity JSONs are generated
-    correctly, but `convert-pet-entities` filters out abilities with
-    no damage/effects, so every Rebirth entity ends up empty. The
-    Rebirth `pet-entities.ts` placeholder is intentionally left
-    untouched until the Parse6 effect-group parsing lands.
+  - **Rebirth pet data was empty** because the Parse6 effect parser
+    only recovered ~0.8% of records. **Resolved 2026-05-02:** Parse6
+    effect coverage now sits at **88.0%** (18,976 / 21,559 records,
+    107,487 templates extracted). Spot-checked against Power_Bolt,
+    Resist_Physical_Damage, Hack, and Granite_Armor — attribs/tables/
+    scales all match expected values. The remaining 12% are mostly
+    NPC/Mission_Maker stub powers that legitimately have no effects.
+    Pet-entities should now convert correctly; re-export of Rebirth
+    pet data still needs to be triggered.
+
+    **Root cause:** Parse6 stores effects as a flat struct_array of
+    AttribMod records directly under each Power, with no EffectGroup
+    wrapper. HC's newer schema added EffectGroup (Tag/DisplayInfo/
+    Chance/PPM/Delay/RadiusInner/RadiusOuter/Requires/Flags/EvalFlags)
+    as a layer above AttribMod to support procs, AoE chance, and
+    requires-gated sub-effects. AIGroups, Redirect, ActivationEffect,
+    DurationExpr, and MagnitudeExpr were also HC additions; Parse6
+    omits them entirely. The previous parser was reading HC-shaped
+    EffectGroups out of Parse6 bytes, which misaligned by 8+ bytes
+    on every record.
+
+    **Implementation:** [_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py)
+    adds `_parse_effect_template_parse6` (uses the Ghidra depth=1
+    AttribMod descriptor at `0x1408e8a10`: Name / DisplayAttackerHit /
+    DisplayVictimHit / DisplayFloat / DisplayAttribDefenseFloat /
+    ShowFloaters / Attrib / Aspect / BoostIgnoreDiminishing / Target /
+    Table / Scale / ApplicationType / Type / Delay / Period / Chance /
+    CancelOnMiss / CancelEvents / 9 bool flags / Requires /
+    PrimaryStringList / SecondaryStringList / CasterStackType /
+    StackType / StackLimit / StackKey / Duration / Magnitude) and
+    `_parse_effects_parse6` (flat struct_array, wraps each AttribMod
+    in a synthetic single-template EffectGroup so the downstream
+    EffectTemplate-shaped pipeline is unchanged). Also dropped the
+    AIGroups/Redirect/ActivationEffect/ModesSuppressed reads in
+    `_parse_power_parse6` since none of those fields exist in Parse6.
+
+    Quirk: the descriptor labels Name as a string_array (type
+    `0x500009`) but in Parse6 it's stored as a single inline pstring
+    with no count prefix. Verified by hand-decoding multiple records.
     **Ghidra audit (2026-05-01)** in [tools/ghidra-audit/](tools/ghidra-audit/)
     extracted the powers.bin descriptor table at `0x1408f04f0` /
     `0x1408f0610` (see `power_effects_parser_report.txt` next to
@@ -151,30 +183,19 @@ script and can be removed.
     second leading slot is actually `DisplayInfo` (string), not
     a u4 — fixed `_parse_effect_group` accordingly. HC unchanged
     at 22 459 / 26 297 = 85.4 % effect coverage.
-    A 16-layout sweep over Parse6 tail field counts (0–10
-    u4_arrays × with/without AIGroups string_array × with/without
-    redirect pre-field) showed **no combination** lifts effect
-    coverage above 7 / 1000 records on a sample. So the
-    misalignment is upstream of the tail block — likely in
-    the `_parse_power_parse6` field-49 / field-72 area where
-    HC and Parse6 either differ in field count or in default-
-    suppression flags. Confirmed the leading scalars (full_name,
-    name, recharge_time, accuracy, target_type) all parse to
-    plausible values for known Rebirth powers; the bug is
-    specifically in (a) the 6-array mode/group block between
-    BoostsAllowed and Effect, OR (b) the EffectGroup leading
-    fields (Tag/DisplayInfo) when the byte stream is misaligned
-    for an empty EffectGroup-array case.
-    Resolution path for next session: hand-decode the tail of
-    a single Parse6 power record against the descriptor row
-    list, byte by byte, until alignment matches. Reports archived
-    at `G:\Homecoming\bin\win64\live\bin_serializer_report.txt`.
+    Hand-decoding (2026-05-02) revealed the real reason the
+    sweep failed: the Parse6 effect schema is fundamentally
+    different from HC's. There's no EffectGroup wrapper, no
+    AIGroups, no Redirect, no ActivationEffect, and AttribMod
+    uses a different field order (depth=1 descriptor at
+    `0x1408e8a10` rather than depth=2 at `0x1408ed570`). See
+    the resolution write-up at the top of this Stage-C section.
+    Reports archived at `G:\Homecoming\bin\win64\live\bin_serializer_report.txt`.
   - **Lore "Support" variants drop out** of the HC export — they
     only carry buff/heal powers (e.g. Cauterize) that the bin
-    parser currently exports with empty effects; this is the same
-    underlying parser bug as the Rebirth case, just affecting a
-    smaller subset on HC. Net entity count: 533 vs ~612 in the
-    previous CoD2-based file.
+    parser currently exports with empty effects; on HC this is
+    a separate parser issue, not the Parse6 one above. Net
+    entity count: 533 vs ~612 in the previous CoD2-based file.
   - `export_powers.py` `PLAYER_CATEGORIES` was extended with
     `Mastermind_Pets`, `Kheldian_Pets`, `NPC_Pets`, plus the NPC
     villain-group cats Lore pets borrow from (`Rularuu`, `Objects`,

@@ -40,5 +40,36 @@ export const SniperBlast: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.76,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 4.254292,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.4,
+      "table": "Ranged_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.83
+    },
+    "buffDuration": 8.83
+  }
 };

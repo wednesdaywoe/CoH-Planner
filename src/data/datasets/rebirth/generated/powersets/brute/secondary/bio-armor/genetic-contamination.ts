@@ -38,5 +38,16 @@ export const GeneticContamination: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Toxic",
+    "scale": 0.15,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

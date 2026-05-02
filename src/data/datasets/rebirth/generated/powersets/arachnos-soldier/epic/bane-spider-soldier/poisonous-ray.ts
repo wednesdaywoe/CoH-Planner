@@ -40,5 +40,22 @@ export const PoisonousRay: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Toxic",
+    "scale": 0.4,
+    "table": "Ranged_Damage",
+    "duration": 2.1,
+    "tickRate": 0.5
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 15
+    },
+    "buffDuration": 15
+  }
 };

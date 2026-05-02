@@ -45,5 +45,52 @@ export const TidalWave: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.2,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.6,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.066667,
+      "table": "Ranged_Damage",
+      "duration": 1.1,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.558044,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.674132,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.148812,
+      "table": "Ranged_Damage",
+      "duration": 1.1,
+      "tickRate": 0.5
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    },
+    "knockback": {
+      "scale": 6,
+      "table": "Ranged_Ones"
+    }
+  }
 };

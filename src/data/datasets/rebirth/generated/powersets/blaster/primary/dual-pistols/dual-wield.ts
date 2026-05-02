@@ -40,5 +40,78 @@ export const DualWield: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.924,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.556997,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.396,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.667285,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.396,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.667285,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.113,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 0.396,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.667285,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.396,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.667285,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.5,
+      "table": "Ranged_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17
+    },
+    "buffDuration": 9.17
+  }
 };

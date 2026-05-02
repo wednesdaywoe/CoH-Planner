@@ -38,5 +38,122 @@ export const EyeoftheStorm: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.205,
+      "table": "Melee_Damage",
+      "duration": 2.3,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.250297,
+      "table": "Melee_Damage",
+      "duration": 2.3,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.246,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.300356,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.246,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.300356,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.246,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.300356,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.501782,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.23,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.23,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.09225,
+      "table": "Melee_Damage",
+      "duration": 2.3,
+      "tickRate": 0.4000000059604645
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 6,
+      "defenseDebuff": 8
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "buffDuration": 8
+  }
 };

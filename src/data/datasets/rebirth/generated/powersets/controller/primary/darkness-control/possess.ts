@@ -35,5 +35,12 @@ export const Possess: Power = {
     "Confuse",
     "Controller Archetype Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "confuse": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

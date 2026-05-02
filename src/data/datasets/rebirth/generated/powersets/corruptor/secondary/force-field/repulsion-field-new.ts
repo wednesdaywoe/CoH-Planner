@@ -28,5 +28,19 @@ export const RepulsionField: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "effects": {
+    "knockback": {
+      "scale": 6,
+      "table": "Ranged_Knockback"
+    },
+    "durations": {
+      "knockback": 0.75
+    },
+    "enduranceDrain": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 0.75
+  },
   "requires": "Corruptor_Buff.Force_Field.Force_Bubble"
 };

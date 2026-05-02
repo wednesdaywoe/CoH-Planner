@@ -35,5 +35,43 @@ export const Incinerate: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.25,
+      "table": "Melee_Damage",
+      "duration": 4.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 2.496669,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.249667,
+      "table": "Melee_Damage",
+      "duration": 4.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 2.5,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 2.5,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1125,
+      "table": "Melee_Damage",
+      "duration": 4.6,
+      "tickRate": 0.5
+    }
+  ]
 };

@@ -35,5 +35,16 @@ export const Disrupt: Power = {
   "allowedSetCategories": [
     "Stuns"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Stun"
+    },
+    "enduranceDrain": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
+  }
 };

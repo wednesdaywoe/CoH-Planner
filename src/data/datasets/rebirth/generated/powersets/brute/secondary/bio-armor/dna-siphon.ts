@@ -43,5 +43,60 @@ export const DNASiphon: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.2,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 2,
+      "tickRate": 1
+    },
+    {
+      "type": "Heal",
+      "scale": 1.25,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.375,
+      "table": "Melee_HealSelf"
+    }
+  ],
+  "effects": {
+    "enduranceGain": {
+      "scale": 5,
+      "table": "Melee_Ones",
+      "perTarget": 5
+    },
+    "regenBuff": {
+      "scale": 0.26,
+      "table": "Melee_Ones",
+      "perTarget": 0.26
+    },
+    "durations": {
+      "regenBuff": 30,
+      "recoveryBuff": 30,
+      "regenDebuff": 30
+    },
+    "recoveryBuff": {
+      "scale": 0.21875,
+      "table": "Melee_Ones",
+      "perTarget": 0.21875
+    },
+    "regenDebuff": {
+      "scale": 2.66,
+      "table": "Melee_Res_Boolean"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 30
+  }
 };

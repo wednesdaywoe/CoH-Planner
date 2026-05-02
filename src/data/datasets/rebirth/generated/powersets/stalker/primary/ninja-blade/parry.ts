@@ -37,5 +37,53 @@ export const DivineAvalanche: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.84,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.471881,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.471881,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.471881,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.84,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.84,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 10
+    },
+    "buffDuration": 10
+  }
 };

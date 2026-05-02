@@ -32,5 +32,103 @@ export const WetIce: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "absorb": {
+      "scale": 0.5,
+      "table": "Melee_HealSelf"
+    },
+    "durations": {
+      "absorb": 10,
+      "mezResistance": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "stun": 0.75,
+      "hold": 0.75,
+      "sleep": 0.75,
+      "immobilize": 0.75,
+      "debuffResistance": 0.75,
+      "resistance": 0.75
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "hold": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "knockback": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 0.75,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      },
+      "tohit": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      }
+    },
+    "resistance": {
+      "cold": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "buffDuration": 0.75
+  }
 };

@@ -44,5 +44,22 @@ export const EssenceDrain: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.5812,
+      "table": "Melee_Damage"
+    }
+  ],
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Warshade_Defensive.Umbral_Aura.Black_Dwarf_Drain ! && Inherent.Inherent.Black_Dwarf_Drain ! &&"
 };

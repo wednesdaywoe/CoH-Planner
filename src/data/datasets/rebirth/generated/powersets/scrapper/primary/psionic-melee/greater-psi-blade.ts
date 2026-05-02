@@ -37,5 +37,64 @@ export const GreaterPsiBlade: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.69,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.07,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.871742,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.615226,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.38,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.743484,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 3.486967,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.76,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.76,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.242,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Melee_Stun"
+    }
+  }
 };

@@ -46,5 +46,61 @@ export const DevastatingBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.89,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.67,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.11266,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.337979,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.712,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.890128,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.602,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 10
+  },
   "requires": "accesslevel char> 0 >="
 };

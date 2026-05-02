@@ -39,5 +39,18 @@ export const WorldofConfusion: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.12,
+    "table": "Ranged_Damage",
+    "tickRate": 2
+  },
+  "effects": {
+    "confuse": {
+      "mag": 1,
+      "scale": 1.5,
+      "table": "Ranged_Ones"
+    }
+  }
 };

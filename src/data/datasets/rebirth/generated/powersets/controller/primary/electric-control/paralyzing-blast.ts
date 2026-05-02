@@ -38,5 +38,24 @@ export const ParalyzingBlast: Power = {
     "Controller Archetype Sets",
     "Holds"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    },
+    "enduranceDrain": {
+      "scale": 1.25,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 8
+    },
+    "buffDuration": 8
+  }
 };

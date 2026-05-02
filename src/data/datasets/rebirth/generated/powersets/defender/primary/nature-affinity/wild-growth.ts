@@ -34,5 +34,50 @@ export const WildGrowth: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistance": 90,
+      "regenBuff": 90
+    },
+    "regenBuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 90
+  }
 };

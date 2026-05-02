@@ -42,5 +42,27 @@ export const BitterIceBlast: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.016887,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.525331,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

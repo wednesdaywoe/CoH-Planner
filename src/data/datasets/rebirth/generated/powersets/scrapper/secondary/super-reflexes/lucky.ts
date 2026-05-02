@@ -30,5 +30,51 @@ export const Lucky: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "aoe": {
+        "scale": 0.75,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 2.5,
+      "debuffResistance": 2.5,
+      "resistance": 2.5
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "resistance": {
+      "smashing": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "fire": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "cold": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "energy": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 2.5
+  },
   "mechanicType": "parentMechanic"
 };

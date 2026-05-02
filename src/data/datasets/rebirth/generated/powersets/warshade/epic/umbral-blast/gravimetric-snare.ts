@@ -42,5 +42,42 @@ export const GravimetricSnare: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Negative",
+      "scale": 0.20748,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.20748,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 2
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

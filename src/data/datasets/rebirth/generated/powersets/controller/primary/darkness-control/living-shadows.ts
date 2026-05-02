@@ -45,5 +45,66 @@ export const LivingShadows: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.13,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Negative",
+      "scale": 0.356913,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Negative",
+      "scale": 0.13,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Negative",
+      "scale": 0.178456,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 15,
+      "knockback": 15,
+      "knockup": 15
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 15
+  }
 };

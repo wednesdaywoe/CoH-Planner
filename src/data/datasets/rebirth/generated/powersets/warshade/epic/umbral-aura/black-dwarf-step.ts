@@ -32,5 +32,37 @@ export const BlackDwarfStep: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
+  "effects": {
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "movement": {
+      "fly": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "movement": 14,
+      "slow": 14
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      },
+      "movementControl": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      },
+      "movementFriction": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
+    },
+    "selfPenalty": true,
+    "buffDuration": 14
+  },
   "requires": "0"
 };

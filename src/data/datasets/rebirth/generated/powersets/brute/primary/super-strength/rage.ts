@@ -32,5 +32,35 @@ export const Rage: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
+    },
+    "durations": {
+      "tohitBuff": 120,
+      "damageBuff": 120,
+      "damageDebuff": 10,
+      "defenseDebuff": 10
+    },
+    "damageBuff": {
+      "scale": 8,
+      "table": "Melee_Buff_Dmg"
+    },
+    "damageDebuff": {
+      "scale": 999,
+      "table": "Melee_Buff_Dmg"
+    },
+    "selfPenalty": true,
+    "defenseDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "enduranceDrain": {
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 120
+  }
 };

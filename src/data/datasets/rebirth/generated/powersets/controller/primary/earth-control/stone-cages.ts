@@ -40,5 +40,71 @@ export const StoneCages: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.154824,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.077412,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 12,
+      "knockback": 12,
+      "knockup": 12,
+      "defenseDebuff": 12
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 12
+  }
 };

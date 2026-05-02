@@ -31,5 +31,20 @@ export const ChiStrike: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    },
+    "durations": {
+      "tohitBuff": 20,
+      "damageBuff": 20
+    },
+    "damageBuff": {
+      "scale": 4,
+      "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 20
+  }
 };

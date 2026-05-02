@@ -27,5 +27,59 @@ export const Resilience: Power = {
     "Resist Damage"
   ],
   "maxSlots": 0,
+  "effects": {
+    "mezResistance": {
+      "stun": {
+        "scale": 11.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "mezResistance": 10.25,
+      "stun": 10.25,
+      "resistance": 10.25
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 10.25,
+    "resistance": {
+      "smashing": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "buffDuration": 10.25
+  },
   "mechanicType": "parentMechanic"
 };

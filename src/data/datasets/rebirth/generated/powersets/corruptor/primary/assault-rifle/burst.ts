@@ -40,5 +40,45 @@ export const Burst: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.27,
+      "table": "Ranged_Damage",
+      "duration": 0.91,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.426044,
+      "table": "Ranged_Damage",
+      "duration": 0.91,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.27,
+      "table": "Ranged_Damage",
+      "duration": 0.91,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.426044,
+      "table": "Ranged_Damage",
+      "duration": 0.91,
+      "tickRate": 0.30000001192092896
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 8
+    },
+    "buffDuration": 8
+  }
 };

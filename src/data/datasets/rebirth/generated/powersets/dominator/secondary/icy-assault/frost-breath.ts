@@ -41,5 +41,21 @@ export const FrostBreath: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 0.7,
+      "table": "Ranged_Damage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Cold",
+      "scale": 0.942731,
+      "table": "Ranged_Damage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    }
+  ]
 };

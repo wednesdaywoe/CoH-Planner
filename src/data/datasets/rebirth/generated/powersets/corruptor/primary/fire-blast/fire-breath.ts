@@ -39,5 +39,35 @@ export const FireBreath: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.585,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.585,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.601102,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 0.601102,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    }
+  ]
 };

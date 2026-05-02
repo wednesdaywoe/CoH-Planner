@@ -43,5 +43,31 @@ export const Suppression: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.185397,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 0.6000000238418579
+    },
+    {
+      "type": "Energy",
+      "scale": 0.176955,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 0.6000000238418579
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 5
+    },
+    "buffDuration": 5
+  }
 };

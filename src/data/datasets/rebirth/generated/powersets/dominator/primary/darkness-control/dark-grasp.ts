@@ -42,5 +42,24 @@ export const DarkGrasp: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.6446,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 12,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

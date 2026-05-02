@@ -42,5 +42,38 @@ export const GravityWell: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.33,
+      "table": "Melee_Damage",
+      "duration": 2.75,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Negative",
+      "scale": 1.398672,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.295501,
+      "table": "Melee_Damage",
+      "duration": 2.75,
+      "tickRate": 0.5
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    }
+  }
 };

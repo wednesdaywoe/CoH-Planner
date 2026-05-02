@@ -41,5 +41,33 @@ export const FragGrenade: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.67,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.376453,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.519863,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 4,
+      "table": "Ranged_Knockback"
+    }
+  },
   "requires": "Arachnos_Soldiers.Arachnos_Soldier.Frag_Grenade !"
 };

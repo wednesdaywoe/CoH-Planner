@@ -37,5 +37,23 @@ export const PulseRifleBurst: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.061783,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

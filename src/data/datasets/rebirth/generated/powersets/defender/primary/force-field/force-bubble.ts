@@ -35,5 +35,19 @@ export const ForceBubble: Power = {
     "Blaster Archetype Sets",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "repel": {
+      "scale": 20,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "repel": 0.25
+    },
+    "knockback": {
+      "scale": 0.2,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 0.25
+  }
 };

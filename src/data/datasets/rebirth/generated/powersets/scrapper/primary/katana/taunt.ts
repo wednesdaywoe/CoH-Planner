@@ -33,5 +33,11 @@ export const CallingtheWolf: Power = {
   "allowedSetCategories": [
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "taunt": {
+      "scale": 4,
+      "table": "Melee_Taunt"
+    }
+  }
 };

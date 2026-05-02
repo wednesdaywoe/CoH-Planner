@@ -44,5 +44,23 @@ export const DarkDetonation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.9,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.815631,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 4,
+      "table": "Ranged_Knockback"
+    }
+  },
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Detonation ! && Inherent.Inherent.Dark_Nova_Detonation ! &&"
 };

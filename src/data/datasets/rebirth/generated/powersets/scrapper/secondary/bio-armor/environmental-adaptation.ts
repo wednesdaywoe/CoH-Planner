@@ -32,5 +32,93 @@ export const EnvironmentalModification: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "fire": {
+        "scale": 0.45,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.45,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.45,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.45,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.225,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.45,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.45,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "maxHPBuff": 0.75,
+      "tohitBuff": 0.75,
+      "hold": 0.75,
+      "mezResistance": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "immobilize": 0.75
+    },
+    "maxHPBuff": {
+      "scale": 0.45,
+      "table": "Melee_HealSelf"
+    },
+    "tohitBuff": {
+      "scale": 0.75,
+      "table": "Melee_Buff_ToHit"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 0.75,
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "knockback": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "buffDuration": 0.75
+  }
 };

@@ -39,5 +39,17 @@ export const EbonEye: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1.32,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.1708,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

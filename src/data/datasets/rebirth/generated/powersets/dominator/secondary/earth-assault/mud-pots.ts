@@ -39,5 +39,17 @@ export const MudPots: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 0.18,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 2.25,
+      "table": "Melee_Ones"
+    }
+  }
 };

@@ -34,5 +34,74 @@ export const IncreaseDensity: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistance": 60,
+      "stun": 60,
+      "hold": 60,
+      "immobilize": 60,
+      "mezResistance": 60,
+      "knockback": 60,
+      "knockup": 60,
+      "repel": 60
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "effectDuration": 60,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "mezResistance": {
+      "stun": {
+        "scale": 3,
+        "table": "Ranged_Res_Boolean"
+      },
+      "hold": {
+        "scale": 3,
+        "table": "Ranged_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 3,
+        "table": "Ranged_Res_Boolean"
+      },
+      "teleport": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
+    },
+    "knockback": {
+      "scale": 8,
+      "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 8,
+      "table": "Ranged_Ones"
+    },
+    "repel": {
+      "scale": 8,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 60
+  }
 };

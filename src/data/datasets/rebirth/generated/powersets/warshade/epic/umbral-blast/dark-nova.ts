@@ -35,5 +35,55 @@ export const DarkNova: Power = {
     "To Hit Buff",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "movement": {
+      "fly": {
+        "scale": 4,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 1.5,
+        "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 2,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 2,
+        "table": "Melee_Friction"
+      }
+    },
+    "durations": {
+      "movement": 2,
+      "recoveryBuff": 2,
+      "tohitBuff": 2,
+      "damageBuff": 2,
+      "resistance": 2
+    },
+    "recoveryBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    },
+    "damageBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_Dmg"
+    },
+    "resistance": {
+      "energy": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 2
+  }
 };

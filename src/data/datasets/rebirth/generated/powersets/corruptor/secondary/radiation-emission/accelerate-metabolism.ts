@@ -36,5 +36,55 @@ export const AccelerateMetabolism: Power = {
     "Running & Sprints",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 2,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 120,
+      "mezResistance": 120,
+      "rechargeBuff": 120,
+      "debuffResistance": 120,
+      "recoveryBuff": 120
+    },
+    "mezResistance": {
+      "hold": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "stun": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "rechargeBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    },
+    "debuffResistance": {
+      "recovery": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "endurance": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 120
+  }
 };

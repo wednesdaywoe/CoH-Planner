@@ -42,5 +42,45 @@ export const WhiteDwarfStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.34,
+      "table": "Melee_SSDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.5,
+      "table": "Melee_SSDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.6528,
+      "table": "Melee_SSDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9792,
+      "table": "Melee_SSDamage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 6
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 6
+  },
   "requires": "0"
 };

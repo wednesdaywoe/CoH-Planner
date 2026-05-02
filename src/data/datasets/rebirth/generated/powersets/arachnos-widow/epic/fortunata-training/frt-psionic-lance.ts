@@ -40,5 +40,27 @@ export const PsionicTornado: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.203429,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.145007,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "knockup": {
+      "scale": 2.8,
+      "table": "Ranged_Ones"
+    }
+  }
 };

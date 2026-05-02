@@ -42,5 +42,21 @@ export const NightFall: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.11,
+      "table": "Ranged_Damage",
+      "duration": 2.8,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Negative",
+      "scale": 0.122222,
+      "table": "Ranged_Damage",
+      "duration": 2.8,
+      "tickRate": 0.30000001192092896
+    }
+  ]
 };

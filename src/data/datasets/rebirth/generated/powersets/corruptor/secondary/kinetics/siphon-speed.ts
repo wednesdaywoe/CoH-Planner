@@ -35,5 +35,26 @@ export const SiphonSpeed: Power = {
     "Blaster Archetype Sets",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "movement": {
+      "runSpeed": {
+        "scale": 0.85,
+        "table": "Melee_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.85,
+        "table": "Melee_SpeedFlying"
+      }
+    },
+    "durations": {
+      "movement": 60,
+      "rechargeBuff": 60
+    },
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 60
+  }
 };

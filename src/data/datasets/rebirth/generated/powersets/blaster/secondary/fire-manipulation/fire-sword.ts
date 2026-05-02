@@ -35,5 +35,39 @@ export const FireSword: Power = {
     "Melee Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 0.75
+    },
+    {
+      "type": "Fire",
+      "scale": 2.128376,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.83
+    },
+    "buffDuration": 8.83
+  }
 };

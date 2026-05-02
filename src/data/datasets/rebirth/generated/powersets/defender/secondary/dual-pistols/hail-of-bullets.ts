@@ -40,5 +40,109 @@ export const HailofBullets: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.3178,
+      "table": "Ranged_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.247,
+      "table": "Ranged_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.1362,
+      "table": "Ranged_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.106,
+      "table": "Ranged_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1362,
+      "table": "Ranged_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Fire",
+      "scale": 0.106,
+      "table": "Ranged_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 0.1362,
+      "table": "Ranged_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Cold",
+      "scale": 0.106,
+      "table": "Ranged_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1362,
+      "table": "Ranged_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.106,
+      "table": "Ranged_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.6,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "knockback": 3.5,
+      "defenseBuff": 5
+    },
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "buffDuration": 5
+  }
 };

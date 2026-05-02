@@ -34,5 +34,79 @@ export const Fade: Power = {
     "Defense Sets",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "cold": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 60,
+      "debuffResistance": 60,
+      "resistance": 60
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 1,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "resistance": {
+      "psionic": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "buffDuration": 60
+  }
 };

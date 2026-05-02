@@ -44,5 +44,27 @@ export const BrightNovaScatter: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.99,
+      "table": "Ranged_SSDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.754397,
+      "table": "Ranged_SSDamage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 8
+    },
+    "buffDuration": 8
+  },
   "requires": "0"
 };

@@ -43,5 +43,31 @@ export const HeavyBurst: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.155714,
+      "table": "Ranged_Damage",
+      "duration": 2,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.162598,
+      "table": "Ranged_Damage",
+      "duration": 2,
+      "tickRate": 0.30000001192092896
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 12
+    },
+    "buffDuration": 12
+  }
 };

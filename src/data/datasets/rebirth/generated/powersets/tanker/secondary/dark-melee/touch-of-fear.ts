@@ -41,5 +41,21 @@ export const TouchofFear: Power = {
     "Threat Duration",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 0.48708,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "fear": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Melee_Fear"
+    },
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    }
+  }
 };

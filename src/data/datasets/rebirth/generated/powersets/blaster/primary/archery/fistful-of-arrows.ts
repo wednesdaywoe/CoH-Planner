@@ -39,5 +39,27 @@ export const FistfulofArrows: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.91,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.772367,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.032,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.67
+    },
+    "buffDuration": 8.67
+  }
 };

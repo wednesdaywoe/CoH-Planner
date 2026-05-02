@@ -38,5 +38,41 @@ export const FreezeRay: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Cold",
+    "scale": 0.1,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Ranged_Sleep"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 10,
+      "knockback": 10,
+      "knockup": 10
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 10
+  }
 };

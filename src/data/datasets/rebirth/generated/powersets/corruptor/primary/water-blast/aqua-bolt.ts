@@ -40,5 +40,47 @@ export const AquaBolt: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.21,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.63,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.412519,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.237556,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.84,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.650075,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 8
+    },
+    "buffDuration": 8
+  }
 };

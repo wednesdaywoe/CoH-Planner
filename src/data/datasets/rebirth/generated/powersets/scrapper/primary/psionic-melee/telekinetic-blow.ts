@@ -37,5 +37,60 @@ export const TelekineticBlow: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.45,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.35,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.567108,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.701323,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.18,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.268431,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.8,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.8,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.81,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockup": {
+      "scale": 2,
+      "table": "Melee_Knockback"
+    }
+  }
 };

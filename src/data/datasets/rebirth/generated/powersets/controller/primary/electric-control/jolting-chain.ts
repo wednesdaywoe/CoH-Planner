@@ -39,5 +39,45 @@ export const JoltingChain: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.661221,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.330611,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.66,
+      "table": "Ranged_Ones"
+    },
+    "enduranceDrain": {
+      "scale": 2,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 8
+    },
+    "buffDuration": 8
+  }
 };

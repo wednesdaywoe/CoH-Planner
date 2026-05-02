@@ -40,5 +40,50 @@ export const BallLightning: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.18,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Energy",
+      "scale": 0.175975,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.103,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "enduranceDrain": {
+      "scale": 1.25,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4,
+      "damageBuff": 8.57
+    },
+    "damageBuff": {
+      "scale": 0.022,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 8.57
+  }
 };

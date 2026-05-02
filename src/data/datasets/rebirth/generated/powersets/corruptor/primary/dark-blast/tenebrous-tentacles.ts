@@ -45,5 +45,62 @@ export const TenebrousTentacles: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 7.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.135,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.060525,
+      "table": "Ranged_Damage",
+      "duration": 7.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.083583,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 7.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.135,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.060525,
+      "table": "Ranged_Damage",
+      "duration": 7.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.083583,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

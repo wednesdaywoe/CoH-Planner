@@ -31,5 +31,43 @@ export const FireShield: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistance": 0.75,
+      "stun": 0.75,
+      "mezResistance": 0.75
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 0.75,
+    "mezResistance": {
+      "stun": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "buffDuration": 0.75
+  }
 };

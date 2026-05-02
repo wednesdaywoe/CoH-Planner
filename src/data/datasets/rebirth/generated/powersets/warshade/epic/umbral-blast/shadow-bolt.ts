@@ -39,5 +39,17 @@ export const ShadowBolt: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.68,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1.416,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

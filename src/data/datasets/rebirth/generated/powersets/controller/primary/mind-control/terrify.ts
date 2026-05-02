@@ -45,5 +45,34 @@ export const Terrify: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.246939,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.623469,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "fear": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Fear"
+    }
+  }
 };

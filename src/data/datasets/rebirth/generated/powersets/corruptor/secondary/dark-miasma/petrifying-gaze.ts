@@ -34,5 +34,12 @@ export const PetrifyingGaze: Power = {
   "allowedSetCategories": [
     "Holds"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

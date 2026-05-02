@@ -36,5 +36,31 @@ export const Disintegrate: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.216,
+      "table": "Ranged_Damage",
+      "duration": 10.5,
+      "tickRate": 1.1100000143051147
+    },
+    {
+      "type": "Energy",
+      "scale": 0.365649,
+      "table": "Ranged_Damage",
+      "duration": 10.5,
+      "tickRate": 1.1100000143051147
+    }
+  ],
+  "effects": {
+    "regenDebuff": {
+      "scale": 6,
+      "table": "Ranged_Res_Boolean"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
+  }
 };

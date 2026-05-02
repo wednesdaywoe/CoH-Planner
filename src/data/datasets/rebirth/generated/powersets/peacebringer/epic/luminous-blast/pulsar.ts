@@ -34,5 +34,12 @@ export const Pulsar: Power = {
   "allowedSetCategories": [
     "Stuns"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    }
+  }
 };

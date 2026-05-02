@@ -37,5 +37,12 @@ export const TotalDomination: Power = {
     "Holds",
     "Soldiers of Arachnos Archetype Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

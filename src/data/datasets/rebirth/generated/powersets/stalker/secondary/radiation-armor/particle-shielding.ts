@@ -31,5 +31,20 @@ export const ParticleShielding: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "absorb": {
+      "scale": 7.525000000000001,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "absorb": 5,
+      "regenBuff": 30
+    },
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 30
+  }
 };

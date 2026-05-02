@@ -38,5 +38,47 @@ export const GreaterIceSword: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.510415,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.572064,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 3.082479,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 3.082479,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.96,
+      "table": "Melee_Damage"
+    }
+  ]
 };

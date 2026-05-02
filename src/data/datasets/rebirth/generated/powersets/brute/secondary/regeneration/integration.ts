@@ -35,5 +35,100 @@ export const Integration: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "hold": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "mezResistance": 2.25,
+      "knockback": 2.25,
+      "knockup": 2.25,
+      "stun": 2.25,
+      "hold": 2.25,
+      "sleep": 2.25,
+      "immobilize": 2.25,
+      "regenBuff": 2.25,
+      "debuffResistance": 2.25
+    },
+    "knockback": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 2.25,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "regenBuff": {
+      "scale": 3,
+      "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "movement": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "buffDuration": 2.25
+  }
 };

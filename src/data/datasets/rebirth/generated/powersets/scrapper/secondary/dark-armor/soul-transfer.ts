@@ -42,5 +42,56 @@ export const SoulTransfer: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
+      "scale": 3,
+      "table": "Melee_Heal",
+      "duration": 0.5,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Stun"
+    },
+    "recoveryBuff": {
+      "scale": 0.05,
+      "table": "Ranged_Ones",
+      "perTarget": 0.05
+    },
+    "durations": {
+      "recoveryBuff": 90,
+      "regenBuff": 90,
+      "untouchable": 15
+    },
+    "regenBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones",
+      "perTarget": 0.15
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "enduranceGain": {
+      "scale": 30,
+      "table": "Melee_Ones",
+      "perTarget": 30
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 90
+  }
 };

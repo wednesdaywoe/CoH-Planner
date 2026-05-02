@@ -31,5 +31,37 @@ export const EnergyFlight: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
+  "effects": {
+    "movement": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.83,
+        "table": "Melee_Ones"
+      },
+      "movementControl": {
+        "scale": 2,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 2,
+        "table": "Melee_Friction"
+      }
+    },
+    "durations": {
+      "movement": 0.75,
+      "slow": 0.75
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 1.01,
+        "table": "Melee_Ones"
+      }
+    },
+    "selfPenalty": true,
+    "buffDuration": 0.75
+  },
   "requires": "Inherent.Inherent.Energy_Flight !"
 };

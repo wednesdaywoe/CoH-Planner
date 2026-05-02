@@ -36,5 +36,15 @@ export const Ignite: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 0.151,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 11.5
+    },
+    "buffDuration": 11.5
+  }
 };

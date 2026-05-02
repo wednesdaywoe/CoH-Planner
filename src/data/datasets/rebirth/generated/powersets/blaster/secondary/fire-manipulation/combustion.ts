@@ -36,5 +36,34 @@ export const Combustion: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.5,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 7.1,
+      "tickRate": 0.75
+    },
+    {
+      "type": "Fire",
+      "scale": 0.217809,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.061,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.5
+    },
+    "buffDuration": 10.5
+  }
 };

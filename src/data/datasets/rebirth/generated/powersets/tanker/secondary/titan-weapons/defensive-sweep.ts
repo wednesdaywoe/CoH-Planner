@@ -43,5 +43,44 @@ export const DefensiveSweep: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.729,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.901982,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.32805,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def",
+        "perTarget": 1.5
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def",
+        "perTarget": 1.5
+      }
+    },
+    "durations": {
+      "defenseBuff": 10
+    },
+    "taunt": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 10
+  },
   "requires": "Tanker_Defense.Shield_Defense !"
 };

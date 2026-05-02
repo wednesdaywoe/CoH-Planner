@@ -35,5 +35,25 @@ export const BarrierField: Power = {
     "Accurate Healing",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "untouchable": {
+      "scale": 4,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "untouchable": 8,
+      "onlyAffectsSelf": 8,
+      "absorb": 5
+    },
+    "onlyAffectsSelf": {
+      "scale": 4,
+      "table": "Ranged_Ones"
+    },
+    "absorb": {
+      "scale": 7.200000000000001,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 8
+  }
 };

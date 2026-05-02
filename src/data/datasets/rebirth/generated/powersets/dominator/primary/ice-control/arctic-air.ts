@@ -40,5 +40,31 @@ export const ArcticAir: Power = {
     "Fear",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35,
+        "table": "Ranged_Ones"
+      },
+      "stealthPvP": {
+        "scale": 389,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 2.25
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Ranged_Fear"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Ranged_Fear"
+    },
+    "buffDuration": 2.25
+  }
 };

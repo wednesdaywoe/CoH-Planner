@@ -39,5 +39,55 @@ export const BreathofFire: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.68,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.17509,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 2.350181,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.36,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.36,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.306,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.045,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ]
 };

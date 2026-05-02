@@ -37,5 +37,37 @@ export const EnergyPunch: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.698028,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 5,
+      "table": "Melee_Stun"
+    },
+    "damageBuff": {
+      "scale": 0.055,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.33
+    },
+    "buffDuration": 8.33
+  }
 };

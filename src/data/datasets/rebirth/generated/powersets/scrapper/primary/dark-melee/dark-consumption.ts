@@ -38,5 +38,39 @@ export const DarkConsumption: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.8,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.8,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.8,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.8,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.36,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "enduranceGain": {
+      "scale": 25,
+      "table": "Melee_Ones",
+      "perTarget": 25
+    }
+  }
 };

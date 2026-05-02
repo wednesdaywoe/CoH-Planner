@@ -41,5 +41,27 @@ export const CallHawk: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.3256,
+      "table": "Ranged_Damage",
+      "duration": 1.3,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.600556,
+      "table": "Ranged_Damage",
+      "duration": 1.3,
+      "tickRate": 0.30000001192092896
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Ranged_Ones"
+    }
+  }
 };

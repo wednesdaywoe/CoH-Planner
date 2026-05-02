@@ -36,5 +36,34 @@ export const PoisonDart: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.633169,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
+  }
 };

@@ -39,5 +39,68 @@ export const CrackWhip: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 1.13,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 2.123105,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.222,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.28,
+      "table": "Ranged_Ones"
+    },
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 6
+    },
+    "buffDuration": 6
+  }
 };

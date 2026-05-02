@@ -35,5 +35,12 @@ export const EntanglingAura: Power = {
     "Controller Archetype Sets",
     "Holds"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Ranged_Ones"
+    }
+  }
 };

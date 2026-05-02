@@ -36,5 +36,24 @@ export const BlazingArrow: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.96,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.125,
+      "table": "Ranged_Damage",
+      "duration": 4.12,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 3.24761,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

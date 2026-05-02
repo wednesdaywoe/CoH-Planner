@@ -37,5 +37,19 @@ export const Hurricane: Power = {
     "Knockback",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "repel": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "repel": 0.75
+    },
+    "knockback": {
+      "scale": 8,
+      "table": "Ranged_Knockback"
+    },
+    "buffDuration": 0.75
+  }
 };

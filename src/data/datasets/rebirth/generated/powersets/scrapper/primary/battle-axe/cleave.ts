@@ -40,5 +40,43 @@ export const Cleave: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 2.76,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.409671,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.242,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.409671,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.76,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.76,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  }
 };

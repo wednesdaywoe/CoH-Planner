@@ -30,5 +30,24 @@ export const HeatExhaustion: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenDebuff": {
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "durations": {
+      "regenDebuff": 40,
+      "recoveryDebuff": 40
+    },
+    "recoveryDebuff": {
+      "scale": 8,
+      "table": "Ranged_Res_Boolean"
+    },
+    "enduranceDrain": {
+      "scale": 3.59,
+      "table": "Ranged_EndDrain"
+    },
+    "buffDuration": 40
+  }
 };

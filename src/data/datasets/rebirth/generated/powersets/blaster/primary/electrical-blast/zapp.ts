@@ -40,5 +40,40 @@ export const Zapp: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 2.76,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 4.254292,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "enduranceDrain": {
+      "scale": 3,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4,
+      "damageBuff": 8.83
+    },
+    "enduranceGain": {
+      "scale": 7.2,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 8.83
+  }
 };

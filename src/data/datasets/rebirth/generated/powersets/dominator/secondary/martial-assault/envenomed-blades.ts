@@ -27,5 +27,15 @@ export const EnvenomedBlades: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "tohitBuff": 40
+    },
+    "buffDuration": 40
+  }
 };

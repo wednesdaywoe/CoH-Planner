@@ -906,6 +906,163 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     )
 
 
+def _parse_effect_template_parse6(r: BinReader) -> EffectTemplate:
+    """Parse a single AttribMod (effect template) — Parse6/Rebirth layout.
+
+    Per the Ghidra-extracted depth=1 AttribMod descriptor at 0x1408e8a10
+    (`bin_serializer_report.txt`). Critical differences from Parse7:
+
+    - **No EffectGroup wrapper.** Parse6 stores effects as a flat
+      struct_array of AttribMods directly under each Power. The
+      Tag/DisplayInfo/Chance/PPM/Delay/RadiusInner/RadiusOuter/Requires/
+      Flags/EvalFlags grouping was added in HC's newer schema.
+    - **Different field order.** Parse6 uses the depth=1 descriptor row
+      order, which puts Name/DisplayAttackerHit/DisplayVictimHit/
+      DisplayFloat/DisplayAttribDefenseFloat first, then ShowFloaters,
+      Attrib, Aspect, etc. This is more verbose than Parse7's depth=2
+      descriptor (used inside EffectGroup).
+    - **Name is a single inline string in Parse6**, not a string_array
+      (despite the descriptor labeling it 0x500009). Empirically verified
+      by hand-decoding multiple records.
+    - **No DurationExpr/MagnitudeExpr**. Those are HC additions for
+      expression-based magnitudes; Parse6 has Duration immediately
+      followed by Magnitude.
+
+    The downstream `EffectTemplate` shape is HC-shaped, so we map Parse6
+    fields into the closest HC equivalents and fill the rest with
+    sensible defaults.
+    """
+    # Header strings (5)
+    _name = r.read_string()
+    _attacker_msg = r.read_string()
+    _victim_msg = r.read_string()
+    _float_msg = r.read_string()
+    _adef_float_msg = r.read_string()
+
+    # Display flags + core attrib/aspect/target enums
+    _show_floaters = r.read_bool()
+    attrib_raw = r.read_u4()
+    # Parse6 stores Attrib as a single u4 = index*4 (same scaling as HC).
+    attribs = [ATTRIB_NAME.get(attrib_raw // 4, f"Unknown({attrib_raw // 4})")]
+    aspect_raw = r.read_u4()
+    # Parse6 uses value*4 encoding (4-byte aspect-table entries) vs HC's
+    # value*8. Distribution across 21,559 Rebirth records: top values
+    # are 0, 8, 16, 12, 4 — all multiples of 4 — confirming the older
+    # 4-byte runtime layout.
+    aspect = ATTRIB_MOD_ASPECT.get(aspect_raw // 4, f"Unknown({aspect_raw})")
+    _boost_ignore_diminishing = r.read_bool()
+    target_raw = r.read_u4()
+    target = ATTRIB_MOD_TARGET.get(target_raw, f"Unknown({target_raw})")
+
+    # Table + scale + application/type
+    table = r.read_string()
+    scale = r.read_f4()
+    app_raw = r.read_u4()
+    app_type = ATTRIB_MOD_APPLICATION.get(app_raw, f"Unknown({app_raw})")
+    typ_raw = r.read_u4()
+    typ = ATTRIB_MOD_TYPE.get(typ_raw, f"Unknown({typ_raw})")
+
+    # Tick fields — note the Parse6 order is Delay/Period/Chance (no
+    # TickChance/TickMultiplier/TickAdditive — those are HC additions).
+    delay = r.read_f4()
+    app_period = r.read_f4()
+    chance = r.read_f4()
+
+    # CancelOnMiss + CancelEvents
+    _cancel_on_miss = r.read_bool()
+    cancel_event_ids = r.read_u4_array()
+    cancel_events = [EVENT_NAME.get(v, f"Event_{v}") for v in cancel_event_ids]
+
+    # Boolean flag block — 9 bools per descriptor:
+    #   NearGround, AllowStrength, AllowResistance,
+    #   UseMagnitudeResistance, UseDurationResistance,
+    #   AllowCombatMods, UseMagnitudeCombatMods, UseDurationCombatMods,
+    #   BoostTemplate
+    _bool_block = [r.read_bool() for _ in range(9)]
+
+    # Requires (RPN tokens) + two unused string_arrays
+    requires_tokens = r.read_string_array()
+    jit_requires = ' '.join(requires_tokens) if requires_tokens else ''
+    _primary_str_list = r.read_string_array()
+    _secondary_str_list = r.read_string_array()
+
+    # Stack info
+    caster_stack_raw = r.read_u4()
+    caster_stack = ATTRIB_MOD_CASTER_STACK.get(caster_stack_raw, f"Unknown({caster_stack_raw})")
+    stack_raw = r.read_u4()
+    stack = ATTRIB_MOD_STACK.get(stack_raw, f"Unknown({stack_raw})")
+    stack_limit = r.read_u4()
+    stack_key_raw = r.read_u4()
+    stack_key = str(stack_key_raw) if stack_key_raw else None
+
+    # Duration / Magnitude — no Expr fields in Parse6
+    duration = r.read_f4()
+    magnitude = r.read_f4()
+
+    # Tail: remaining fields (RadiusInner/Outer, Suppress, ContinuingFX,
+    # ConditionalFX, Power, Reward, Params, EntityDef, PriorityList[Passive],
+    # display-only flags, BoostModAllowed, ProcsPerMinute) are skipped for
+    # now — the planner doesn't depend on them in the Parse6 path. Parse6's
+    # ~104 trailing bytes per record have a constant zero-padded layout
+    # for player attack templates; populate `flags_raw` and `boost_mod_allowed_id`
+    # if more fields are needed later by hand-decoding the tail.
+    r.skip_to_end()
+
+    return EffectTemplate(
+        attribs=attribs,
+        type=typ,
+        application_type=app_type,
+        aspect=aspect,
+        target=target,
+        table=table,
+        scale=scale,
+        duration=duration,
+        magnitude=magnitude,
+        delay=delay,
+        application_period=app_period,
+        tick_chance=chance,
+        jit_requires=jit_requires,
+        caster_stack=caster_stack,
+        stack=stack,
+        stack_limit=stack_limit,
+        stack_key=stack_key,
+        cancel_events=cancel_events,
+    )
+
+
+def _parse_effects_parse6(r: BinReader) -> tuple[list[EffectGroup], list[EffectGroup]]:
+    """Parse Parse6 effects: a flat struct_array of AttribMod records.
+
+    Wraps each AttribMod in a synthetic single-template EffectGroup so
+    downstream consumers (convert-powerset.cjs) see the same shape as
+    HC. ActivationEffect doesn't exist as a separate field in Parse6.
+    """
+    effects: list[EffectGroup] = []
+    eff_count = r.read_u4()
+    if eff_count > 1000:
+        # Sanity: an unreasonable count means we're misaligned, not a
+        # power with thousands of effects. Bail rather than allocate.
+        raise ValueError(f"implausible Parse6 effect count {eff_count}")
+    for _ in range(eff_count):
+        elem_len = r.read_u4()
+        if elem_len > r.remaining():
+            raise ValueError(f"Parse6 effect elem_len {elem_len} > remaining")
+        elem_reader = r.sub_reader(elem_len)
+        try:
+            tmpl = _parse_effect_template_parse6(elem_reader)
+            # Synthetic group — chance carried through from the AttribMod's
+            # own Chance field (the per-template chance is what HC's
+            # EffectGroup.chance would have been before EffectGroup existed).
+            effects.append(EffectGroup(
+                chance=tmpl.tick_chance if tmpl.tick_chance > 0 else 1.0,
+                templates=[tmpl],
+            ))
+        except Exception:
+            pass  # Skip unparseable templates
+        r.skip(elem_len)
+    return effects, []
+
+
 def _parse_power_parse6(r: BinReader) -> PowerRecord:
     """Parse a single power record (Parse6/Rebirth layout)."""
 
@@ -984,19 +1141,16 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
     r.read_u4_array()
     allowed_boostset_cats: list[str] = []
 
-    # Parse6 tail per the powers.bin descriptor table at 0x1408f04f0
-    # (Ghidra dump in tools/ghidra-audit/, see power_effects_parser_report.txt).
-    # The serialization order between BoostsAllowed and Effect is:
-    #   GroupMembership, RechargeGroup,
-    #   ModesRequired, ModesDisallowed, ModesSuspended,
-    #   AIGroups, Redirect, Effect, ActivationEffect
-    #
-    # Initially we also read ModesSuppressed here, but the descriptor
-    # type code is 0x100105 (vs ModesSuspended's 0x100005) at the SAME
-    # field offset (0x3b8) — the 0x100 bit means "alternate name for
-    # the previous field, shares storage", so it's NOT separately
-    # serialized. Adding it as a separate read shifts everything by
-    # 4 bytes (an empty u4_array count) and breaks alignment.
+    # Parse6 tail. Hand-decoded against the binary 2026-05-02:
+    # The HC powers.bin descriptor at 0x1408f04f0 lists fields between
+    # BoostsAllowed and Effect as GroupMembership/RechargeGroup/
+    # ModesRequired/ModesDisallowed/ModesSuspended/AIGroups/Redirect/
+    # Effect/ActivationEffect — but **Parse6 omits AIGroups, Redirect,
+    # and ActivationEffect entirely**. Those wrapping-and-routing fields
+    # were added in the HC schema generation; the older Parse6 binary
+    # goes straight from ModesSuspended to a flat struct_array of
+    # AttribMod records (no EffectGroup wrapper, no ActivationEffect).
+    # See `_parse_effect_template_parse6` for the AttribMod layout.
     effects: list[EffectGroup] = []
     activation_effects: list[EffectGroup] = []
     redirects: list[dict] = []
@@ -1007,20 +1161,8 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
         r.read_u4_array()  # ModesRequired
         r.read_u4_array()  # ModesDisallowed
         r.read_u4_array()  # ModesSuspended
-        r.read_u4_array()  # ModesSuppressed — empirically required even
-                           # though the descriptor's 0x100 bit suggested
-                           # it might be an alias of ModesSuspended.
-        r.read_string_array()  # AIGroups
-        # Redirect pre-field + Redirect struct_array.
-        r.read_u4()
         try:
-            redirects = _parse_redirects(r)
-        except Exception:
-            redirects = []
-            r.skip_to_end()
-        # Effects + activation_effects.
-        try:
-            effects, activation_effects = _parse_effects(r)
+            effects, activation_effects = _parse_effects_parse6(r)
         except Exception:
             effects = []
             activation_effects = []

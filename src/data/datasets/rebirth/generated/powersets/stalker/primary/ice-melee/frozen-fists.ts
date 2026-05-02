@@ -38,5 +38,47 @@ export const FrozenFists: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.24,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.76,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.441564,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.398287,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.839851,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.839851,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Melee_Damage"
+    }
+  ]
 };

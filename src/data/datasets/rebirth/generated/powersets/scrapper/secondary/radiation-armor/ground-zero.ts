@@ -42,5 +42,41 @@ export const GroundZero: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 9.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Heal",
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.05,
+      "table": "Melee_HealSelf",
+      "duration": 9.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

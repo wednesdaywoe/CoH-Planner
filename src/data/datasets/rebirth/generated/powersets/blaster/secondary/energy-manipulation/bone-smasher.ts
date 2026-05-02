@@ -37,5 +37,37 @@ export const BoneSmasher: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.82,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.78,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.471424,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Melee_Stun"
+    },
+    "damageBuff": {
+      "scale": 0.099,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 9
+    },
+    "buffDuration": 9
+  }
 };

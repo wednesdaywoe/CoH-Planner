@@ -38,5 +38,36 @@ export const PowerBlast: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.322647,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17
+    },
+    "buffDuration": 9.17
+  }
 };

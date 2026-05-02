@@ -39,5 +39,53 @@ export const Barrage: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.5,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Energy",
+      "scale": 0.16,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.796804,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Energy",
+      "scale": 0.265601,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Fire",
+      "scale": 0.297,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 6,
+      "table": "Melee_Stun"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

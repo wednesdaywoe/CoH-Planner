@@ -33,5 +33,15 @@ export const RecoveryAura: Power = {
   "allowedSetCategories": [
     "Endurance Modification"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 90
+    },
+    "buffDuration": 90
+  }
 };

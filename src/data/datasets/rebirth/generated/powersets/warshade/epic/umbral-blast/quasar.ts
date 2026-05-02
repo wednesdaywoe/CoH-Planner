@@ -41,5 +41,33 @@ export const Quasar: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 4,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 4,
+      "table": "Ranged_SSDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.096842,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.096842,
+      "table": "Ranged_SSDamage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 20,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

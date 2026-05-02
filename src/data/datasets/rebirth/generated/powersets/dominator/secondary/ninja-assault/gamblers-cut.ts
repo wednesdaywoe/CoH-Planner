@@ -38,5 +38,66 @@ export const GamblersCut: Power = {
     "Melee Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.66,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.7763,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.06,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.33,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Energy",
+      "scale": 0.363,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.3882,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Energy",
+      "scale": 0.427,
+      "table": "Melee_Damage",
+      "duration": 0.3,
+      "tickRate": 0.25
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 0.6,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 6
+    },
+    "buffDuration": 6
+  }
 };

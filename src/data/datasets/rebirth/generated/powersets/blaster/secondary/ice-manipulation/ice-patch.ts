@@ -27,5 +27,15 @@ export const IcePatch: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 0.229,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.97
+    },
+    "buffDuration": 10.97
+  }
 };

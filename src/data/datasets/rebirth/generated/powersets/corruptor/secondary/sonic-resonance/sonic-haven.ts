@@ -34,5 +34,29 @@ export const SonicHaven: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "cold": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistance": 240
+    },
+    "buffDuration": 240
+  }
 };

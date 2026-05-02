@@ -38,5 +38,12 @@ export const NeurotoxicBreath: Power = {
     "Blaster Archetype Sets",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "hold": {
+      "mag": 1,
+      "scale": 3,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

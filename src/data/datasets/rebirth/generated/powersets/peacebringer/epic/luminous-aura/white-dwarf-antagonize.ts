@@ -36,5 +36,11 @@ export const WhiteDwarfAntagonize: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "effects": {
+    "taunt": {
+      "scale": 5,
+      "table": "Melee_Taunt"
+    }
+  },
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Antagonize ! &&"
 };

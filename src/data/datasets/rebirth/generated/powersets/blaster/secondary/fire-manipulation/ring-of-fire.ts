@@ -38,5 +38,57 @@ export const RingofFire: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 1.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.298989,
+      "table": "Ranged_Damage",
+      "duration": 9.2,
+      "tickRate": 1.5
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "mezResistance": 15,
+      "knockback": 15,
+      "knockup": 15,
+      "damageBuff": 8.67
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.077,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 15
+  }
 };

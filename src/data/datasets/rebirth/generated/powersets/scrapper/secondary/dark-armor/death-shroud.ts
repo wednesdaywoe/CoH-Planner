@@ -37,5 +37,10 @@ export const DeathShroud: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Negative",
+    "scale": 0.2,
+    "table": "Melee_Damage"
+  }
 };

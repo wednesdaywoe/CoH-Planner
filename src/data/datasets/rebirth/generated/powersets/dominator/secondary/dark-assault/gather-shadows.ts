@@ -27,5 +27,95 @@ export const GatherShadows: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    },
+    "effectDuration": 10,
+    "durations": {
+      "stun": 10,
+      "sleep": 10,
+      "confuse": 10,
+      "fear": 10,
+      "immobilize": 10,
+      "hold": 10,
+      "movement": 10,
+      "defenseBuff": 10,
+      "damageBuff": 10,
+      "absorb": 10,
+      "tohitBuff": 10,
+      "enduranceGain": 10
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    },
+    "movement": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      }
+    },
+    "defenseBuff": {
+      "scale": 0.5,
+      "table": "Melee_Stun",
+      "melee": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "aoe": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      }
+    },
+    "damageBuff": {
+      "scale": 4,
+      "table": "Melee_Buff_Dmg"
+    },
+    "absorb": {
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    },
+    "tohitBuff": {
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    },
+    "enduranceGain": {
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    },
+    "buffDuration": 10
+  }
 };

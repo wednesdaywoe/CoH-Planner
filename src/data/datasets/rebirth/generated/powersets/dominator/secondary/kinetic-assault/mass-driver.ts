@@ -38,5 +38,81 @@ export const MassDriver: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.69,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.91,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.26,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.1125,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.1375,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.5106,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8134,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.2324,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.88825,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.01675,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "durations": {
+      "resistanceDebuff": 8
+    },
+    "buffDuration": 8
+  }
 };

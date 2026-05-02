@@ -41,5 +41,60 @@ export const AblatingStrike: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.66,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.690293,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.380585,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.380585,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.32,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.32,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.57,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 10
+  }
 };
