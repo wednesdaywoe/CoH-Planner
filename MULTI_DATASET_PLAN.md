@@ -17,7 +17,7 @@ Each entry below has a detail section further down. Status snapshot as of
 | 2 | **Conditional Effects + Mechanic Adjusters** | Data-layer capture, scope/group/mode classification, base merger, AT-inherent routing all landed on main (commit 7716ffe67) | [#conditional-effects--mechanic-adjusters](#conditional-effects--mechanic-adjusters) |
 | 3 | **InfoPanel visual redesign** | **Complete.** All six outline sections landed (Mechanic Adjusters / Tags Block / Damage Block / Effects Block / General Stats Block / Description), language pass to in-game terminology, plus several regressions caught and fixed along the way (DoT 5×tick, FE Fire leak, Melee/Ranged misclassification, false-positive SPECIAL rows). | [#infopanel-visual-redesign](#infopanel-visual-redesign) |
 | 4 | **AT-mechanic alignment** (Header vs InfoPanel) | First overlap (Domination via `kStealth source>` on Dominator powers) routed through Header state; expand mapping as more overlaps surface | [#at-mechanic-alignment](#at-mechanic-alignment) |
-| 5 | **Calc accuracy fixes** | Conditional-aggregation fix shipped to main; pure-DoT 5×tick bug, tooltip-level convention, level-differential accuracy display still open | [#calc-accuracy](#calc-accuracy) |
+| 5 | **Calc accuracy fixes** | **Complete.** Conditional-aggregation, pure-DoT 5×tick, accuracy-final tooltip, damageModifier audit, tooltip-level convention all shipped or documented. | [#calc-accuracy](#calc-accuracy) |
 | 6 | **Rebirth scalar-table verification** | Originally framed as "Original Domination" — audit (2026-05-03) shows AT inherent mechanics are identical between HC and Rebirth. Real gap is numerical (HP tables, damage/buff modifiers) inherited from HC; needs diff against Rebirth's `classes.bin`. | [#rebirth-scalar-table-verification](#rebirth-scalar-table-verification) |
 | 7 | **IO sets exporter for Rebirth** | Not started. Last Stage C blocker. | [#io-sets-exporter-for-rebirth](#io-sets-exporter-for-rebirth) |
 
@@ -1124,7 +1124,14 @@ Two adjacent ID classes worth noting (not AT-inherent, no action required):
   by detecting pure-DoT (`abs(base - dot.base) <= 0.001`) and using only
   `dotTotal` in that case. The per-row InfoPanel rendering and damage bar
   were already correct.
-- [ ] **Tooltip-level convention** (see InfoPanel redesign section).
+- [x] **Tooltip-level convention** — documented 2026-05-03 as intentional.
+  Sidekick uses character level for all displayed stats (matches Mids).
+  CoH's in-game tooltips use the power's design level (e.g. Suffocate at
+  L26 even when your character is L50), which produces different numbers.
+  The character-level convention is correct for build planning — values
+  reflect what the build actually does in combat. If users surface
+  confusion against in-game tooltips, can add a "Show game tooltip" mode
+  later, but no current requests warrant the dual-rendering.
 - [x] **Accuracy "Final" debuff** — confirmed it was the
   level-differential / purple-patch math (factor = baseToHit/0.75 ≈ 0.64
   vs +3 con drops 90% → 57.6%); not a real debuff. The con-arrow next
@@ -1133,10 +1140,14 @@ Two adjacent ID classes worth noting (not AT-inherent, no action required):
   by adding a `title` tooltip on the accuracy "Final" cell explaining
   the level-differential adjustment, the effective base ToHit %, and
   the ToHit bonus contribution if any.
-- [ ] Verify `damageModifier` archetype field is dead code for
-  AT-tabled powers (Dominator's 0.75 isn't applied since AT
-  modifiers are baked into the table values). Either remove or
-  document as fallback metadata.
+- [x] **`damageModifier` field is fallback metadata, not dead code** —
+  audited 2026-05-03. Confirmed: `calculateActualDamage` (the generic
+  path) uses `archetype.stats.damageModifier`; `calculateDamageWithATTable`
+  (the canonical AT-tabled path) does not. Modern converted powers
+  always have a `table` field and route through the AT-tabled path,
+  bypassing damageModifier. The fallback path still fires for legacy /
+  utility powers without table data (some summons, ammo redirects).
+  Documented inline in [damage.ts](src/utils/calculations/damage.ts).
 
 ---
 

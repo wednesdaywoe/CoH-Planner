@@ -243,7 +243,17 @@ export interface DamageCalculationOptions {
 }
 
 /**
- * Calculate actual damage for a power
+ * Generic damage calc — used as a fallback for legacy data that doesn't
+ * specify a per-power damage `table`. Modern converted powers always
+ * carry a `table` field and `calculatePowerDamage` routes through
+ * `calculateDamageWithATTable` instead, where the per-AT scaling is
+ * already baked into the table values.
+ *
+ * `archetype.stats.damageModifier` is consulted only here; the AT-table
+ * path doesn't apply it (the AT-specific scaling is in the table). Keep
+ * this function in place for utility powers without table data (some
+ * summons, ammo redirects, legacy imports), but the AT-tabled path is
+ * the canonical calc for player-facing damage.
  */
 export function calculateActualDamage(options: DamageCalculationOptions): number {
   const {
@@ -257,7 +267,11 @@ export function calculateActualDamage(options: DamageCalculationOptions): number
 
   if (!scale || scale === 0) return 0;
 
-  // Get archetype damage modifier for this damage type
+  // Per-AT damage modifier (Dominator 0.75, Defender 0.65, etc.).
+  // Fallback metadata: only consulted when the power has no `table` field
+  // and we have to fall back to the generic DAMAGE_TABLES base values.
+  // AT-tabled paths bypass this entirely — the per-AT scaling is in the
+  // table value itself.
   let atModifier = 1.0;
   if (archetypeId) {
     const archetype = getArchetype(archetypeId);
