@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Slug as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/slug';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/slug';
+import { Slug as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/mercenaries/slug';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/mercenaries/slug';
 
 export const Slug: Power = withOverrides(base, overrides);

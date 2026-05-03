@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StormCell as base } from '@/data/generated/powersets/defender/secondary/storm-blast/storm-cell';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/storm-blast/storm-cell';
+import { StormCell as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/storm-blast/storm-cell';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/storm-blast/storm-cell';
 
 export const StormCell: Power = withOverrides(base, overrides);

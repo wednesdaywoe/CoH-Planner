@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Encase as base } from '@/data/generated/powersets/corruptor/primary/seismic-blast/encase';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/seismic-blast/encase';
+import { Encase as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/seismic-blast/encase';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/seismic-blast/encase';
 
 export const Encase: Power = withOverrides(base, overrides);

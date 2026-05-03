@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BlindingPowder as base } from '@/data/generated/powersets/sentinel/secondary/ninjitsu/blinding-powder';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ninjitsu/blinding-powder';
+import { BlindingPowder as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/ninjitsu/blinding-powder';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/ninjitsu/blinding-powder';
 
 export const BlindingPowder: Power = withOverrides(base, overrides);

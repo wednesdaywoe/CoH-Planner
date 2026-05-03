@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SecondWind as base } from '@/data/generated/powersets/stalker/secondary/regeneration/dull-pain';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/regeneration/dull-pain';
+import { SecondWind as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/regeneration/dull-pain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/regeneration/dull-pain';
 
 export const SecondWind: Power = withOverrides(base, overrides);

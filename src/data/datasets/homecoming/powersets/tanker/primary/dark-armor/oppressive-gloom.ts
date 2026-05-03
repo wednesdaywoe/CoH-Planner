@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { OppressiveGloom as base } from '@/data/generated/powersets/tanker/primary/dark-armor/oppressive-gloom';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/dark-armor/oppressive-gloom';
+import { OppressiveGloom as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/dark-armor/oppressive-gloom';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/dark-armor/oppressive-gloom';
 
 export const OppressiveGloom: Power = withOverrides(base, overrides);

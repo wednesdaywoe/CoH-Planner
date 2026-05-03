@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RadiationSiphon as base } from '@/data/generated/powersets/dominator/secondary/radioactive-assault/radiation-siphon';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/radioactive-assault/radiation-siphon';
+import { RadiationSiphon as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/radioactive-assault/radiation-siphon';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/radioactive-assault/radiation-siphon';
 
 export const RadiationSiphon: Power = withOverrides(base, overrides);

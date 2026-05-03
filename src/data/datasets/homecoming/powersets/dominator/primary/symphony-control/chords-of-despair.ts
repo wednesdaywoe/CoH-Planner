@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChordsofDespair as base } from '@/data/generated/powersets/dominator/primary/symphony-control/chords-of-despair';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/symphony-control/chords-of-despair';
+import { ChordsofDespair as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/symphony-control/chords-of-despair';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/symphony-control/chords-of-despair';
 
 export const ChordsofDespair: Power = withOverrides(base, overrides);

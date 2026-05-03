@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ScrambleThoughts as base } from '@/data/generated/powersets/arachnos-widow/epic/fortunata-training/frt-scramble-thoughts';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/fortunata-training/frt-scramble-thoughts';
+import { ScrambleThoughts as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/fortunata-training/frt-scramble-thoughts';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/fortunata-training/frt-scramble-thoughts';
 
 export const ScrambleThoughts: Power = withOverrides(base, overrides);

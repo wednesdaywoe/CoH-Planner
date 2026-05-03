@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowRecall as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/shadow-recall';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/shadow-recall';
+import { ShadowRecall as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-aura/shadow-recall';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-aura/shadow-recall';
 
 export const ShadowRecall: Power = withOverrides(base, overrides);

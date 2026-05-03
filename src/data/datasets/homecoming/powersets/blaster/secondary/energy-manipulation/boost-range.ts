@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BoostRange as base } from '@/data/generated/powersets/blaster/secondary/energy-manipulation/boost-range';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/energy-manipulation/boost-range';
+import { BoostRange as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/energy-manipulation/boost-range';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/energy-manipulation/boost-range';
 
 export const BoostRange: Power = withOverrides(base, overrides);

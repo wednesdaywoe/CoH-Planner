@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RadiationSiphon as base } from '@/data/generated/powersets/stalker/primary/radiation-melee/radiation-siphon';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/radiation-melee/radiation-siphon';
+import { RadiationSiphon as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/radiation-melee/radiation-siphon';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/radiation-melee/radiation-siphon';
 
 export const RadiationSiphon: Power = withOverrides(base, overrides);

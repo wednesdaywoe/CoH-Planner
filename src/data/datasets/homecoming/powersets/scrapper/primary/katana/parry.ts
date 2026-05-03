@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DivineAvalanche as base } from '@/data/generated/powersets/scrapper/primary/katana/parry';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/katana/parry';
+import { DivineAvalanche as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/katana/parry';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/katana/parry';
 
 export const DivineAvalanche: Power = withOverrides(base, overrides);

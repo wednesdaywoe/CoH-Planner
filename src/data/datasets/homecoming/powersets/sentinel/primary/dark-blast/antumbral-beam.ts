@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AntumbralBeam as base } from '@/data/generated/powersets/sentinel/primary/dark-blast/antumbral-beam';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/dark-blast/antumbral-beam';
+import { AntumbralBeam as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/dark-blast/antumbral-beam';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/dark-blast/antumbral-beam';
 
 export const AntumbralBeam: Power = withOverrides(base, overrides);

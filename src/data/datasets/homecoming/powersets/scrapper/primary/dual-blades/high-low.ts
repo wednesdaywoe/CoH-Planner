@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { OneThousandCuts as base } from '@/data/generated/powersets/scrapper/primary/dual-blades/high-low';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/dual-blades/high-low';
+import { OneThousandCuts as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/dual-blades/high-low';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/dual-blades/high-low';
 
 export const OneThousandCuts: Power = withOverrides(base, overrides);

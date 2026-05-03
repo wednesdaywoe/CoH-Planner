@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Reverberant as base } from '@/data/generated/powersets/controller/primary/symphony-control/reverberant';
-import { overrides } from '@/data/overrides/powersets/controller/primary/symphony-control/reverberant';
+import { Reverberant as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/symphony-control/reverberant';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/symphony-control/reverberant';
 
 export const Reverberant: Power = withOverrides(base, overrides);

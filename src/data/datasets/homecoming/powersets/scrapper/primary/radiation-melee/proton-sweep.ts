@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ProtonSweep as base } from '@/data/generated/powersets/scrapper/primary/radiation-melee/proton-sweep';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/radiation-melee/proton-sweep';
+import { ProtonSweep as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/radiation-melee/proton-sweep';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/radiation-melee/proton-sweep';
 
 export const ProtonSweep: Power = withOverrides(base, overrides);

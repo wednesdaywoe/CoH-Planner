@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ImmobilizingDart as base } from '@/data/generated/powersets/blaster/secondary/ninja-training/immobilizing-dart';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/ninja-training/immobilizing-dart';
+import { ImmobilizingDart as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/ninja-training/immobilizing-dart';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/ninja-training/immobilizing-dart';
 
 export const ImmobilizingDart: Power = withOverrides(base, overrides);

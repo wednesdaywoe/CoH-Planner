@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RepulsionField as base } from '@/data/generated/powersets/defender/primary/force-field/repulsion-field';
-import { overrides } from '@/data/overrides/powersets/defender/primary/force-field/repulsion-field';
+import { RepulsionField as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/force-field/repulsion-field';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/force-field/repulsion-field';
 
 export const RepulsionField: Power = withOverrides(base, overrides);

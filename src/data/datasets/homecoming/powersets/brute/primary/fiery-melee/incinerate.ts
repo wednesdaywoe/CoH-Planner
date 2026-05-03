@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Incinerate as base } from '@/data/generated/powersets/brute/primary/fiery-melee/incinerate';
-import { overrides } from '@/data/overrides/powersets/brute/primary/fiery-melee/incinerate';
+import { Incinerate as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/fiery-melee/incinerate';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/fiery-melee/incinerate';
 
 export const Incinerate: Power = withOverrides(base, overrides);

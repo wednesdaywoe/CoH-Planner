@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeavyMallet as base } from '@/data/generated/powersets/blaster/secondary/earth-manipulation/heavy-mallet';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/earth-manipulation/heavy-mallet';
+import { HeavyMallet as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/earth-manipulation/heavy-mallet';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/earth-manipulation/heavy-mallet';
 
 export const HeavyMallet: Power = withOverrides(base, overrides);

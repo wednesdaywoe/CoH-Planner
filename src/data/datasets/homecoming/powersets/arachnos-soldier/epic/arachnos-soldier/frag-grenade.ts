@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FragGrenade as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/frag-grenade';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/frag-grenade';
+import { FragGrenade as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/arachnos-soldier/frag-grenade';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/frag-grenade';
 
 export const FragGrenade: Power = withOverrides(base, overrides);

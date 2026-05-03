@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GreaterIceSword as base } from '@/data/generated/powersets/brute/primary/ice-melee/greater-ice-sword';
-import { overrides } from '@/data/overrides/powersets/brute/primary/ice-melee/greater-ice-sword';
+import { GreaterIceSword as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/ice-melee/greater-ice-sword';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/ice-melee/greater-ice-sword';
 
 export const GreaterIceSword: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FearsomeStare as base } from '@/data/generated/powersets/controller/primary/darkness-control/fearsome-stare';
-import { overrides } from '@/data/overrides/powersets/controller/primary/darkness-control/fearsome-stare';
+import { FearsomeStare as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/darkness-control/fearsome-stare';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/darkness-control/fearsome-stare';
 
 export const FearsomeStare: Power = withOverrides(base, overrides);

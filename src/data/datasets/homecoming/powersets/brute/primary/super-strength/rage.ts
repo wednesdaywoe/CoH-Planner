@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Rage as base } from '@/data/generated/powersets/brute/primary/super-strength/rage';
-import { overrides } from '@/data/overrides/powersets/brute/primary/super-strength/rage';
+import { Rage as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/super-strength/rage';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/super-strength/rage';
 
 export const Rage: Power = withOverrides(base, overrides);

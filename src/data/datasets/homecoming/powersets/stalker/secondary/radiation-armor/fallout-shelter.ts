@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FalloutShelter as base } from '@/data/generated/powersets/stalker/secondary/radiation-armor/fallout-shelter';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/radiation-armor/fallout-shelter';
+import { FalloutShelter as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/radiation-armor/fallout-shelter';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/radiation-armor/fallout-shelter';
 
 export const FalloutShelter: Power = withOverrides(base, overrides);

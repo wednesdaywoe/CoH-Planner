@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Regrowth as base } from '@/data/generated/powersets/defender/primary/nature-affinity/regrowth';
-import { overrides } from '@/data/overrides/powersets/defender/primary/nature-affinity/regrowth';
+import { Regrowth as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/nature-affinity/regrowth';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/nature-affinity/regrowth';
 
 export const Regrowth: Power = withOverrides(base, overrides);

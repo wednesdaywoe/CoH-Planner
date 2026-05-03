@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GraveKnight as base } from '@/data/generated/powersets/mastermind/primary/necromancy/skeletal-warriors';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/necromancy/skeletal-warriors';
+import { GraveKnight as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/necromancy/skeletal-warriors';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/necromancy/skeletal-warriors';
 
 export const GraveKnight: Power = withOverrides(base, overrides);

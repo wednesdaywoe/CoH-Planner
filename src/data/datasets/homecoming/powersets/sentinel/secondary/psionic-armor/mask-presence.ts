@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MaskPresence as base } from '@/data/generated/powersets/sentinel/secondary/psionic-armor/mask-presence';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/psionic-armor/mask-presence';
+import { MaskPresence as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/psionic-armor/mask-presence';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/psionic-armor/mask-presence';
 
 export const MaskPresence: Power = withOverrides(base, overrides);

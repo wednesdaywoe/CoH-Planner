@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RepellingForce as base } from '@/data/generated/powersets/sentinel/secondary/energy-aura/repelling-force';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/energy-aura/repelling-force';
+import { RepellingForce as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/energy-aura/repelling-force';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/energy-aura/repelling-force';
 
 export const RepellingForce: Power = withOverrides(base, overrides);

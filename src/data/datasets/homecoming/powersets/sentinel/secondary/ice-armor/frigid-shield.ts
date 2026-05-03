@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FrigidShield as base } from '@/data/generated/powersets/sentinel/secondary/ice-armor/frigid-shield';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ice-armor/frigid-shield';
+import { FrigidShield as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/ice-armor/frigid-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/ice-armor/frigid-shield';
 
 export const FrigidShield: Power = withOverrides(base, overrides);

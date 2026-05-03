@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CombatTrainingDefensive as base } from '@/data/generated/powersets/arachnos-soldier/epic/training-and-gadgets/combat-training-defensive';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/combat-training-defensive';
+import { CombatTrainingDefensive as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/training-and-gadgets/combat-training-defensive';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/combat-training-defensive';
 
 export const CombatTrainingDefensive: Power = withOverrides(base, overrides);

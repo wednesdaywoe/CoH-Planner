@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Hurricane as base } from '@/data/generated/powersets/controller/secondary/storm-summoning/hurricane';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/storm-summoning/hurricane';
+import { Hurricane as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/storm-summoning/hurricane';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/storm-summoning/hurricane';
 
 export const Hurricane: Power = withOverrides(base, overrides);

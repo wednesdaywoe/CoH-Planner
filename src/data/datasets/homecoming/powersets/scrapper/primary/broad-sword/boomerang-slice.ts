@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BoomerangSlice as base } from '@/data/generated/powersets/scrapper/primary/broad-sword/boomerang-slice';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/broad-sword/boomerang-slice';
+import { BoomerangSlice as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/broad-sword/boomerang-slice';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/broad-sword/boomerang-slice';
 
 export const BoomerangSlice: Power = withOverrides(base, overrides);

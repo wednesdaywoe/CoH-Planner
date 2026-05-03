@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AbsorbPain as base } from '@/data/generated/powersets/mastermind/secondary/empathy/absorb-pain';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/empathy/absorb-pain';
+import { AbsorbPain as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/empathy/absorb-pain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/empathy/absorb-pain';
 
 export const AbsorbPain: Power = withOverrides(base, overrides);

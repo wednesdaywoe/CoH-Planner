@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MindLink as base } from '@/data/generated/powersets/arachnos-widow/epic/widow-teamwork/nw-mind-link';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/widow-teamwork/nw-mind-link';
+import { MindLink as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/widow-teamwork/nw-mind-link';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/widow-teamwork/nw-mind-link';
 
 export const MindLink: Power = withOverrides(base, overrides);

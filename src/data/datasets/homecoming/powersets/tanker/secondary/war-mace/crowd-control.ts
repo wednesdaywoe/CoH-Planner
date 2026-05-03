@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrowdControl as base } from '@/data/generated/powersets/tanker/secondary/war-mace/crowd-control';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/war-mace/crowd-control';
+import { CrowdControl as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/war-mace/crowd-control';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/war-mace/crowd-control';
 
 export const CrowdControl: Power = withOverrides(base, overrides);

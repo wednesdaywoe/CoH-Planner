@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SlowedResponse as base } from '@/data/generated/powersets/corruptor/secondary/time-manipulation/slowed-response';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/time-manipulation/slowed-response';
+import { SlowedResponse as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/time-manipulation/slowed-response';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/time-manipulation/slowed-response';
 
 export const SlowedResponse: Power = withOverrides(base, overrides);

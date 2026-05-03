@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Clobber as base } from '@/data/generated/powersets/scrapper/primary/war-mace/clobber';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/war-mace/clobber';
+import { Clobber as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/war-mace/clobber';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/war-mace/clobber';
 
 export const Clobber: Power = withOverrides(base, overrides);

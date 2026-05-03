@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PenumbralShield as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/penumbral-shield';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/penumbral-shield';
+import { PenumbralShield as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-aura/penumbral-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-aura/penumbral-shield';
 
 export const PenumbralShield: Power = withOverrides(base, overrides);

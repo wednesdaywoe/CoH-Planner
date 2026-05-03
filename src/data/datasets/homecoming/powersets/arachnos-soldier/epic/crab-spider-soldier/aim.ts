@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Aim as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
+import { Aim as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
 
 export const Aim: Power = withOverrides(base, overrides);

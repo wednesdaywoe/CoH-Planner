@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Longfang as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/longfang';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/longfang';
+import { Longfang as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/longfang';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/longfang';
 
 export const Longfang: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SonicDispersion as base } from '@/data/generated/powersets/corruptor/secondary/sonic-resonance/sonic-dispersion';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/sonic-resonance/sonic-dispersion';
+import { SonicDispersion as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/sonic-resonance/sonic-dispersion';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/sonic-resonance/sonic-dispersion';
 
 export const SonicDispersion: Power = withOverrides(base, overrides);

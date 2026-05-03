@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TyphoonsEdge as base } from '@/data/generated/powersets/brute/primary/dual-blades/aoe-bridge';
-import { overrides } from '@/data/overrides/powersets/brute/primary/dual-blades/aoe-bridge';
+import { TyphoonsEdge as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/dual-blades/aoe-bridge';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/dual-blades/aoe-bridge';
 
 export const TyphoonsEdge: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThrowSand as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/throw-sand';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/throw-sand';
+import { ThrowSand as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/martial-combat/throw-sand';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/martial-combat/throw-sand';
 
 export const ThrowSand: Power = withOverrides(base, overrides);

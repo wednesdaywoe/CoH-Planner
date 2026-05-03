@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PsychicScream as base } from '@/data/generated/powersets/sentinel/primary/psychic-blast/psychic-scream';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/psychic-blast/psychic-scream';
+import { PsychicScream as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/psychic-blast/psychic-scream';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/psychic-blast/psychic-scream';
 
 export const PsychicScream: Power = withOverrides(base, overrides);

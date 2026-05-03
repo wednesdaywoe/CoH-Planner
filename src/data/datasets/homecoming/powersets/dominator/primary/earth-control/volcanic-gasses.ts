@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { VolcanicGasses as base } from '@/data/generated/powersets/dominator/primary/earth-control/volcanic-gasses';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/earth-control/volcanic-gasses';
+import { VolcanicGasses as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/earth-control/volcanic-gasses';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/earth-control/volcanic-gasses';
 
 export const VolcanicGasses: Power = withOverrides(base, overrides);

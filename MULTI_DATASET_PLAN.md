@@ -13,7 +13,7 @@ Each entry below has a detail section further down. Status snapshot as of
 
 | # | Workstream | Status | Anchor |
 |---|---|---|---|
-| 1 | **Multi-dataset infrastructure** (Rebirth data layer) | Stages A + C mostly done; Stage B (HC powersets-tree migration) not started | [#multi-dataset-infrastructure](#multi-dataset-infrastructure) |
+| 1 | **Multi-dataset infrastructure** (Rebirth data layer) | **Complete.** Stages A + B + C all landed. HC's `powersets/`, `overrides/`, `generated/` trees plus `io-sets-raw.ts`, `epic-pools-raw.ts`, `power-pools-raw.ts` now live under `src/data/datasets/homecoming/`, mirroring Rebirth. Top-level facades (`powersets.ts`, `epic-pools.ts`, `power-pools.ts`, `io-sets.ts`, `incarnate-effects.ts`) all dataset-aware via `getActiveDataset()`. Converters write to per-dataset paths only — no more legacy fork. | [#multi-dataset-infrastructure](#multi-dataset-infrastructure) |
 | 2 | **Conditional Effects + Mechanic Adjusters** | Data-layer capture, scope/group/mode classification, base merger, AT-inherent routing all landed on main (commit 7716ffe67) | [#conditional-effects--mechanic-adjusters](#conditional-effects--mechanic-adjusters) |
 | 3 | **InfoPanel visual redesign** | **Complete.** All six outline sections landed (Mechanic Adjusters / Tags Block / Damage Block / Effects Block / General Stats Block / Description), language pass to in-game terminology, plus several regressions caught and fixed along the way (DoT 5×tick, FE Fire leak, Melee/Ranged misclassification, false-positive SPECIAL rows). | [#infopanel-visual-redesign](#infopanel-visual-redesign) |
 | 4 | **AT-mechanic alignment** (Header vs InfoPanel) | First overlap (Domination via `kStealth source>` on Dominator powers) routed through Header state; expand mapping as more overlaps surface | [#at-mechanic-alignment](#at-mechanic-alignment) |
@@ -28,7 +28,7 @@ Each entry below has a detail section further down. Status snapshot as of
 - [x] Curated label overrides for the 19 remaining "Conditional"-fallback powers — fixed 2026-05-03 by extending `_isUntoggleableGate` (Grounded/NearGround, recent-mez EventTimeSince, target-low-HP, caster-mez-state break-free) and converting `@CustomFX` from a reject rule into a strip via `_stripIgnoredClauses`. Down from 19 generic "Conditional" entries to 0 across both datasets.
 - [ ] Verify ~217 HC Beam Rifle / Disintegration powers in browser after the conditional-aggregation fix shipped
 - [ ] Decide on tooltip-level convention (game uses power's design level; Sidekick uses character level)
-- [ ] Stage B: migrate HC `powersets/` `overrides/` `generated/` trees into `datasets/homecoming/` (~600 import sites)
+- [x] Stage B: migrate HC `powersets/` `overrides/` `generated/` trees into `datasets/homecoming/` — shipped 2026-05-03. ~10,400 files moved (git tracked the renames cleanly), ~3,358 absolute `@/data/...` imports rewritten to `@/data/datasets/homecoming/...`, top-level facades made dataset-aware, converter scripts (`convert-powerset.cjs`, `convert-pool-powers.cjs`, `convert-epic-pools.cjs`, `convert-incarnate-effects.cjs`, `convert-io-sets.js`, `extract-rebirth-io-sets.cjs`, `generate-powerset-index.cjs`) all updated. `npx tsc` + `vite build` clean.
 - [→] ~~Audit other Rebirth-vs-HC scalar tables~~ — folded into the rescoped Workstream 6 ([Rebirth scalar-table verification](#rebirth-scalar-table-verification))
 - [ ] Investigate the 80+ "Conditional"-labeled Rebirth Vacuum-style pet conditional gates
 - [x] AT-inherent ID map expansion — audited 2026-05-03; only `domination` exists as a binary-level gate among AT-inherent mechanics. See AT-mechanic alignment section for details.
@@ -36,7 +36,7 @@ Each entry below has a detail section further down. Status snapshot as of
 ## Multi-dataset infrastructure
 
 Originally the entire scope of this document. Status, stage breakdown,
-open Stage B / Stage C blockers, and historical detail follow.
+and historical detail follow.
 
 ## Status
 
@@ -769,15 +769,18 @@ size and risk.
      between HC and Rebirth with reload-based reset; powerset lookup
      routes through the active dataset's registry. Smoke-tested in the
      dev server.
-   - **Stage B (not started):** the deferred powersets-tree migration.
-     Move HC's `powersets/`, `overrides/`, `generated/` into
-     `datasets/homecoming/`. ~600 import sites to update inside the
-     tree. With Rebirth's parallel tree already at
-     `datasets/rebirth/{powersets,overrides,generated}/`, this is now
-     pure mechanical churn for HC. **Recommended order:** finish
-     deeper Rebirth smoke-testing (powers/IO/calculations) first so
-     any latent architectural issues surface before the large-scale
-     rename.
+   - **✅ Stage B (landed 2026-05-03):** HC's `powersets/`,
+     `overrides/`, `generated/` plus `io-sets-raw.ts`,
+     `epic-pools-raw.ts`, `power-pools-raw.ts` migrated under
+     [src/data/datasets/homecoming/](src/data/datasets/homecoming/).
+     ~10.4k files moved with git rename detection clean; ~3.4k absolute
+     `@/data/X/...` imports rewritten to `@/data/datasets/homecoming/X/...`
+     across the tree. Top-level facades (`powersets.ts`, `epic-pools.ts`,
+     `power-pools.ts`, `incarnate-effects.ts`, `io-sets.ts`) all became
+     dataset-aware (per-dataset registry caches keyed off
+     `getActiveDataset().id`). Converter scripts no longer fork on
+     dataset id — every dataset writes to its own folder.
+     `npx tsc` and `vite build` clean.
    - Cross-server build inference mapping and full dataset-switch UX
      polish (preserve build name across switches, etc.) come after.
 

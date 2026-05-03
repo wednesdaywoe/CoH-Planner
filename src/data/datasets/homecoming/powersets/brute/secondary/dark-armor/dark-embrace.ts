@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkEmbrace as base } from '@/data/generated/powersets/brute/secondary/dark-armor/dark-embrace';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/dark-armor/dark-embrace';
+import { DarkEmbrace as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/dark-armor/dark-embrace';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/dark-armor/dark-embrace';
 
 export const DarkEmbrace: Power = withOverrides(base, overrides);

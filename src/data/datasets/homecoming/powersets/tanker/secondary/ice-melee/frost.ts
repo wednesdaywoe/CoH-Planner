@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Frost as base } from '@/data/generated/powersets/tanker/secondary/ice-melee/frost';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/ice-melee/frost';
+import { Frost as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/ice-melee/frost';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/ice-melee/frost';
 
 export const Frost: Power = withOverrides(base, overrides);

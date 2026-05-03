@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeadSplitter as base } from '@/data/generated/powersets/stalker/primary/broad-sword/head-splitter';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/broad-sword/head-splitter';
+import { HeadSplitter as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/broad-sword/head-splitter';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/broad-sword/head-splitter';
 
 export const HeadSplitter: Power = withOverrides(base, overrides);

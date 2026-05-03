@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ProtonStream as base } from '@/data/generated/powersets/sentinel/primary/radiation-blast/proton-stream';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/radiation-blast/proton-stream';
+import { ProtonStream as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/radiation-blast/proton-stream';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/radiation-blast/proton-stream';
 
 export const ProtonStream: Power = withOverrides(base, overrides);

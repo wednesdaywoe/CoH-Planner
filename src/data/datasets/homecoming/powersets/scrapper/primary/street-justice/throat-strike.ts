@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RibCracker as base } from '@/data/generated/powersets/scrapper/primary/street-justice/throat-strike';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/street-justice/throat-strike';
+import { RibCracker as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/street-justice/throat-strike';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/street-justice/throat-strike';
 
 export const RibCracker: Power = withOverrides(base, overrides);

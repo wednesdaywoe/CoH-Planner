@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FootStomp as base } from '@/data/generated/powersets/tanker/secondary/super-strength/foot-stomp';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/super-strength/foot-stomp';
+import { FootStomp as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/super-strength/foot-stomp';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/super-strength/foot-stomp';
 
 export const FootStomp: Power = withOverrides(base, overrides);

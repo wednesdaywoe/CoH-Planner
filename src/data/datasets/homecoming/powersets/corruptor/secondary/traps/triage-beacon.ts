@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TriageBeacon as base } from '@/data/generated/powersets/corruptor/secondary/traps/triage-beacon';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/traps/triage-beacon';
+import { TriageBeacon as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/traps/triage-beacon';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/traps/triage-beacon';
 
 export const TriageBeacon: Power = withOverrides(base, overrides);

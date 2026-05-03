@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SporeBurst as base } from '@/data/generated/powersets/dominator/primary/plant-control/spore-burst';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/plant-control/spore-burst';
+import { SporeBurst as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/plant-control/spore-burst';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/plant-control/spore-burst';
 
 export const SporeBurst: Power = withOverrides(base, overrides);

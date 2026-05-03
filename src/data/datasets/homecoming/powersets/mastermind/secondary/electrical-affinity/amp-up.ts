@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AmpUp as base } from '@/data/generated/powersets/mastermind/secondary/electrical-affinity/amp-up';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/electrical-affinity/amp-up';
+import { AmpUp as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/electrical-affinity/amp-up';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/electrical-affinity/amp-up';
 
 export const AmpUp: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShiningShield as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/shining-shield';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/shining-shield';
+import { ShiningShield as base } from '@/data/datasets/homecoming/generated/powersets/peacebringer/epic/luminous-aura/shining-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/peacebringer/epic/luminous-aura/shining-shield';
 
 export const ShiningShield: Power = withOverrides(base, overrides);

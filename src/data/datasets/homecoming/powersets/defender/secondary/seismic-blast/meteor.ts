@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Meteor as base } from '@/data/generated/powersets/defender/secondary/seismic-blast/meteor';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/seismic-blast/meteor';
+import { Meteor as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/seismic-blast/meteor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/seismic-blast/meteor';
 
 export const Meteor: Power = withOverrides(base, overrides);

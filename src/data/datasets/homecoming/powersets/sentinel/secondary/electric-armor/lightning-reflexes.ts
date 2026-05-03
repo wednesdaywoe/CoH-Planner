@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LightningReflexes as base } from '@/data/generated/powersets/sentinel/secondary/electric-armor/lightning-reflexes';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/electric-armor/lightning-reflexes';
+import { LightningReflexes as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/electric-armor/lightning-reflexes';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/electric-armor/lightning-reflexes';
 
 export const LightningReflexes: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Combustion as base } from '@/data/generated/powersets/dominator/secondary/fiery-assault/combustion';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/fiery-assault/combustion';
+import { Combustion as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/fiery-assault/combustion';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/fiery-assault/combustion';
 
 export const Combustion: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Pistols as base } from '@/data/generated/powersets/defender/secondary/dual-pistols/pistols';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/dual-pistols/pistols';
+import { Pistols as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/dual-pistols/pistols';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/dual-pistols/pistols';
 
 export const Pistols: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { QuantumManeuvers as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/quantum-acceleration';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/quantum-acceleration';
+import { QuantumManeuvers as base } from '@/data/datasets/homecoming/generated/powersets/peacebringer/epic/luminous-aura/quantum-acceleration';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/peacebringer/epic/luminous-aura/quantum-acceleration';
 
 export const QuantumManeuvers: Power = withOverrides(base, overrides);

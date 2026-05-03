@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FrostProtection as base } from '@/data/generated/powersets/sentinel/secondary/ice-armor/frost-protection';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ice-armor/frost-protection';
+import { FrostProtection as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/ice-armor/frost-protection';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/ice-armor/frost-protection';
 
 export const FrostProtection: Power = withOverrides(base, overrides);

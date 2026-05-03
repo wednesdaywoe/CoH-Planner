@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ElectronHaze as base } from '@/data/generated/powersets/dominator/secondary/radioactive-assault/electron-haze';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/radioactive-assault/electron-haze';
+import { ElectronHaze as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/radioactive-assault/electron-haze';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/radioactive-assault/electron-haze';
 
 export const ElectronHaze: Power = withOverrides(base, overrides);

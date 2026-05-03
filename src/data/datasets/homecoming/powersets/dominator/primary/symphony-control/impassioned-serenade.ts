@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ImpassionedSerenade as base } from '@/data/generated/powersets/dominator/primary/symphony-control/impassioned-serenade';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/symphony-control/impassioned-serenade';
+import { ImpassionedSerenade as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/symphony-control/impassioned-serenade';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/symphony-control/impassioned-serenade';
 
 export const ImpassionedSerenade: Power = withOverrides(base, overrides);

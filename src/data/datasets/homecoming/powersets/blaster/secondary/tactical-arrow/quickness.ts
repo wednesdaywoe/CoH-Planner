@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Gymnastics as base } from '@/data/generated/powersets/blaster/secondary/tactical-arrow/quickness';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/tactical-arrow/quickness';
+import { Gymnastics as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/tactical-arrow/quickness';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/tactical-arrow/quickness';
 
 export const Gymnastics: Power = withOverrides(base, overrides);

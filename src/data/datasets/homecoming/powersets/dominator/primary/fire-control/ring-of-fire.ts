@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RingofFire as base } from '@/data/generated/powersets/dominator/primary/fire-control/ring-of-fire';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/fire-control/ring-of-fire';
+import { RingofFire as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/fire-control/ring-of-fire';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/fire-control/ring-of-fire';
 
 export const RingofFire: Power = withOverrides(base, overrides);

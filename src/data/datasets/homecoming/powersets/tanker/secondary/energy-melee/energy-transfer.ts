@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergyTransfer as base } from '@/data/generated/powersets/tanker/secondary/energy-melee/energy-transfer';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/energy-melee/energy-transfer';
+import { EnergyTransfer as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/energy-melee/energy-transfer';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/energy-melee/energy-transfer';
 
 export const EnergyTransfer: Power = withOverrides(base, overrides);

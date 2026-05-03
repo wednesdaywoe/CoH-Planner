@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RadioactiveCloud as base } from '@/data/generated/powersets/blaster/secondary/atomic-manipulation/radioactive-cloud';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/atomic-manipulation/radioactive-cloud';
+import { RadioactiveCloud as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/atomic-manipulation/radioactive-cloud';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/atomic-manipulation/radioactive-cloud';
 
 export const RadioactiveCloud: Power = withOverrides(base, overrides);

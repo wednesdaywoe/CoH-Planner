@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Beheader as base } from '@/data/generated/powersets/scrapper/primary/battle-axe/beheader';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/battle-axe/beheader';
+import { Beheader as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/battle-axe/beheader';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/battle-axe/beheader';
 
 export const Beheader: Power = withOverrides(base, overrides);

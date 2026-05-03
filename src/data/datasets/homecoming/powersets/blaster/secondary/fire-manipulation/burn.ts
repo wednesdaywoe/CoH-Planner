@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Burn as base } from '@/data/generated/powersets/blaster/secondary/fire-manipulation/burn';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/fire-manipulation/burn';
+import { Burn as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/fire-manipulation/burn';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/fire-manipulation/burn';
 
 export const Burn: Power = withOverrides(base, overrides);

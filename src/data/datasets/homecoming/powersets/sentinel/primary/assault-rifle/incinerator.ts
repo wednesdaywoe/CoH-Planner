@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Ignite as base } from '@/data/generated/powersets/sentinel/primary/assault-rifle/incinerator';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/assault-rifle/incinerator';
+import { Ignite as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/assault-rifle/incinerator';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/assault-rifle/incinerator';
 
 export const Ignite: Power = withOverrides(base, overrides);

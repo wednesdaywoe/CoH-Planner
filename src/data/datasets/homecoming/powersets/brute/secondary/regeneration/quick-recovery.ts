@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { QuickRecovery as base } from '@/data/generated/powersets/brute/secondary/regeneration/quick-recovery';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/regeneration/quick-recovery';
+import { QuickRecovery as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/regeneration/quick-recovery';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/regeneration/quick-recovery';
 
 export const QuickRecovery: Power = withOverrides(base, overrides);

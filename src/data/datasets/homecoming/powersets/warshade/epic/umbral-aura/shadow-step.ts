@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowStep as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/shadow-step';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/shadow-step';
+import { ShadowStep as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-aura/shadow-step';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-aura/shadow-step';
 
 export const ShadowStep: Power = withOverrides(base, overrides);

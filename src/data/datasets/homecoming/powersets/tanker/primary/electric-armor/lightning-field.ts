@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LightningField as base } from '@/data/generated/powersets/tanker/primary/electric-armor/lightning-field';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/electric-armor/lightning-field';
+import { LightningField as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/electric-armor/lightning-field';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/electric-armor/lightning-field';
 
 export const LightningField: Power = withOverrides(base, overrides);

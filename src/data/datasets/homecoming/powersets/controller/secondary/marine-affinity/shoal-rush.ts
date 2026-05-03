@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShoalRush as base } from '@/data/generated/powersets/controller/secondary/marine-affinity/shoal-rush';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/marine-affinity/shoal-rush';
+import { ShoalRush as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/marine-affinity/shoal-rush';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/marine-affinity/shoal-rush';
 
 export const ShoalRush: Power = withOverrides(base, overrides);

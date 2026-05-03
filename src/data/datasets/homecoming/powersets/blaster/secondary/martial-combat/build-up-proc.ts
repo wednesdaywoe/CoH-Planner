@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ReachfortheLimit as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/build-up-proc';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/build-up-proc';
+import { ReachfortheLimit as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/martial-combat/build-up-proc';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/martial-combat/build-up-proc';
 
 export const ReachfortheLimit: Power = withOverrides(base, overrides);

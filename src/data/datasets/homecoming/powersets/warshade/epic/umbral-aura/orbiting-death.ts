@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { OrbitingDeath as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/orbiting-death';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/orbiting-death';
+import { OrbitingDeath as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-aura/orbiting-death';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-aura/orbiting-death';
 
 export const OrbitingDeath: Power = withOverrides(base, overrides);

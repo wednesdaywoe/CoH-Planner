@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Slice as base } from '@/data/generated/powersets/brute/primary/broad-sword/slice';
-import { overrides } from '@/data/overrides/powersets/brute/primary/broad-sword/slice';
+import { Slice as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/broad-sword/slice';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/broad-sword/slice';
 
 export const Slice: Power = withOverrides(base, overrides);

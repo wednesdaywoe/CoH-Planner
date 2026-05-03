@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ExplosiveBouquet as base } from '@/data/generated/powersets/dominator/primary/pyrotechnic-control/explosive-bouquet';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/pyrotechnic-control/explosive-bouquet';
+import { ExplosiveBouquet as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/pyrotechnic-control/explosive-bouquet';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/pyrotechnic-control/explosive-bouquet';
 
 export const ExplosiveBouquet: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WideAreaWebGrenade as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/ws-wide-area-web-grenade';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/ws-wide-area-web-grenade';
+import { WideAreaWebGrenade as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/arachnos-soldier/ws-wide-area-web-grenade';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/ws-wide-area-web-grenade';
 
 export const WideAreaWebGrenade: Power = withOverrides(base, overrides);

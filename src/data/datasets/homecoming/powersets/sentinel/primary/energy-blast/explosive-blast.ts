@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ExplosiveBlast as base } from '@/data/generated/powersets/sentinel/primary/energy-blast/explosive-blast';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/energy-blast/explosive-blast';
+import { ExplosiveBlast as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/energy-blast/explosive-blast';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/energy-blast/explosive-blast';
 
 export const ExplosiveBlast: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SpinningStrike as base } from '@/data/generated/powersets/stalker/primary/street-justice/spinning-strike';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/street-justice/spinning-strike';
+import { SpinningStrike as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/street-justice/spinning-strike';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/street-justice/spinning-strike';
 
 export const SpinningStrike: Power = withOverrides(base, overrides);

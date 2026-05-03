@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IcePatch as base } from '@/data/generated/powersets/scrapper/primary/ice-melee/ice-patch';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/ice-melee/ice-patch';
+import { IcePatch as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/ice-melee/ice-patch';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/ice-melee/ice-patch';
 
 export const IcePatch: Power = withOverrides(base, overrides);

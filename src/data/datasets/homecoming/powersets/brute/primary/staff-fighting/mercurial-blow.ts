@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MercurialBlow as base } from '@/data/generated/powersets/brute/primary/staff-fighting/mercurial-blow';
-import { overrides } from '@/data/overrides/powersets/brute/primary/staff-fighting/mercurial-blow';
+import { MercurialBlow as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/staff-fighting/mercurial-blow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/staff-fighting/mercurial-blow';
 
 export const MercurialBlow: Power = withOverrides(base, overrides);

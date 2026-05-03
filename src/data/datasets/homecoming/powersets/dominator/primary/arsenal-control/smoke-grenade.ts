@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SmokeCanister as base } from '@/data/generated/powersets/dominator/primary/arsenal-control/smoke-grenade';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/arsenal-control/smoke-grenade';
+import { SmokeCanister as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/arsenal-control/smoke-grenade';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/arsenal-control/smoke-grenade';
 
 export const SmokeCanister: Power = withOverrides(base, overrides);

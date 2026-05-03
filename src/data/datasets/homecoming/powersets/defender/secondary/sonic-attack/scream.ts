@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Scream as base } from '@/data/generated/powersets/defender/secondary/sonic-attack/scream';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/sonic-attack/scream';
+import { Scream as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/sonic-attack/scream';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/sonic-attack/scream';
 
 export const Scream: Power = withOverrides(base, overrides);

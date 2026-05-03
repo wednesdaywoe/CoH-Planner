@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GreaterPsiBlade as base } from '@/data/generated/powersets/stalker/primary/psionic-melee/greater-psi-blade';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/psionic-melee/greater-psi-blade';
+import { GreaterPsiBlade as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/psionic-melee/greater-psi-blade';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/psionic-melee/greater-psi-blade';
 
 export const GreaterPsiBlade: Power = withOverrides(base, overrides);

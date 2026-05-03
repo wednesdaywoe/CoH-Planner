@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Quills as base } from '@/data/generated/powersets/tanker/secondary/spines/quills';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/spines/quills';
+import { Quills as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/spines/quills';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/spines/quills';
 
 export const Quills: Power = withOverrides(base, overrides);

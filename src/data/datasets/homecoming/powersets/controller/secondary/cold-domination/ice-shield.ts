@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IceShield as base } from '@/data/generated/powersets/controller/secondary/cold-domination/ice-shield';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/cold-domination/ice-shield';
+import { IceShield as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/cold-domination/ice-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/cold-domination/ice-shield';
 
 export const IceShield: Power = withOverrides(base, overrides);

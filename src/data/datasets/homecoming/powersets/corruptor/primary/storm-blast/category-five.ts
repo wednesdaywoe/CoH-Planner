@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CategoryFive as base } from '@/data/generated/powersets/corruptor/primary/storm-blast/category-five';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/storm-blast/category-five';
+import { CategoryFive as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/storm-blast/category-five';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/storm-blast/category-five';
 
 export const CategoryFive: Power = withOverrides(base, overrides);

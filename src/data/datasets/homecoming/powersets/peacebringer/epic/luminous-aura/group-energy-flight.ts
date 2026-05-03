@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GroupEnergyFlight as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/group-energy-flight';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/group-energy-flight';
+import { GroupEnergyFlight as base } from '@/data/datasets/homecoming/generated/powersets/peacebringer/epic/luminous-aura/group-energy-flight';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/peacebringer/epic/luminous-aura/group-energy-flight';
 
 export const GroupEnergyFlight: Power = withOverrides(base, overrides);

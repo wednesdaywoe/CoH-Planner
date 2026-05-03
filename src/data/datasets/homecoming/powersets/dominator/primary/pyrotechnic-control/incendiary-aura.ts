@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IncendiaryAura as base } from '@/data/generated/powersets/dominator/primary/pyrotechnic-control/incendiary-aura';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/pyrotechnic-control/incendiary-aura';
+import { IncendiaryAura as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/pyrotechnic-control/incendiary-aura';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/pyrotechnic-control/incendiary-aura';
 
 export const IncendiaryAura: Power = withOverrides(base, overrides);

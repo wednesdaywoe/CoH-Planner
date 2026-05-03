@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkConsumption as base } from '@/data/generated/powersets/scrapper/primary/dark-melee/dark-consumption';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/dark-melee/dark-consumption';
+import { DarkConsumption as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/dark-melee/dark-consumption';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/dark-melee/dark-consumption';
 
 export const DarkConsumption: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Ripper as base } from '@/data/generated/powersets/brute/primary/spines/ripper';
-import { overrides } from '@/data/overrides/powersets/brute/primary/spines/ripper';
+import { Ripper as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/spines/ripper';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/spines/ripper';
 
 export const Ripper: Power = withOverrides(base, overrides);

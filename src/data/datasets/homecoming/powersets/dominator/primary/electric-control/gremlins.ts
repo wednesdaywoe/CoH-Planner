@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Gremlins as base } from '@/data/generated/powersets/dominator/primary/electric-control/gremlins';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/electric-control/gremlins';
+import { Gremlins as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/electric-control/gremlins';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/electric-control/gremlins';
 
 export const Gremlins: Power = withOverrides(base, overrides);

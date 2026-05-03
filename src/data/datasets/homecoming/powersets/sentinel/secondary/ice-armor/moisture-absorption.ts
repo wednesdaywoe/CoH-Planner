@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MoistureAbsorption as base } from '@/data/generated/powersets/sentinel/secondary/ice-armor/moisture-absorption';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ice-armor/moisture-absorption';
+import { MoistureAbsorption as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/ice-armor/moisture-absorption';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/ice-armor/moisture-absorption';
 
 export const MoistureAbsorption: Power = withOverrides(base, overrides);

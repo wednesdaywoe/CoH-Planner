@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FocusedPowerBolt as base } from '@/data/generated/powersets/sentinel/primary/energy-blast/focused-power-bolt';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/energy-blast/focused-power-bolt';
+import { FocusedPowerBolt as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/energy-blast/focused-power-bolt';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/energy-blast/focused-power-bolt';
 
 export const FocusedPowerBolt: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Telekinesis as base } from '@/data/generated/powersets/dominator/primary/mind-control/telekinesis';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/mind-control/telekinesis';
+import { Telekinesis as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/mind-control/telekinesis';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/mind-control/telekinesis';
 
 export const Telekinesis: Power = withOverrides(base, overrides);

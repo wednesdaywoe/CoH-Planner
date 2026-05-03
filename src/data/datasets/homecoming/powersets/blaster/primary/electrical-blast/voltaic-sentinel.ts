@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { VoltaicSentinel as base } from '@/data/generated/powersets/blaster/primary/electrical-blast/voltaic-sentinel';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/electrical-blast/voltaic-sentinel';
+import { VoltaicSentinel as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/electrical-blast/voltaic-sentinel';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/electrical-blast/voltaic-sentinel';
 
 export const VoltaicSentinel: Power = withOverrides(base, overrides);

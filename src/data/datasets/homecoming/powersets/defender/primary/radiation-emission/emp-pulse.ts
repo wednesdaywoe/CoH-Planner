@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EMPulse as base } from '@/data/generated/powersets/defender/primary/radiation-emission/emp-pulse';
-import { overrides } from '@/data/overrides/powersets/defender/primary/radiation-emission/emp-pulse';
+import { EMPulse as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/radiation-emission/emp-pulse';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/radiation-emission/emp-pulse';
 
 export const EMPulse: Power = withOverrides(base, overrides);

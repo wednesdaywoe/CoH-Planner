@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ObscureSustenance as base } from '@/data/generated/powersets/tanker/primary/dark-armor/obscure-sustenance';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/dark-armor/obscure-sustenance';
+import { ObscureSustenance as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/dark-armor/obscure-sustenance';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/dark-armor/obscure-sustenance';
 
 export const ObscureSustenance: Power = withOverrides(base, overrides);

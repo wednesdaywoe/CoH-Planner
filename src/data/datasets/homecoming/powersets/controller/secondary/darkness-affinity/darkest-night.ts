@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkestNight as base } from '@/data/generated/powersets/controller/secondary/darkness-affinity/darkest-night';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/darkness-affinity/darkest-night';
+import { DarkestNight as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/darkness-affinity/darkest-night';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/darkness-affinity/darkest-night';
 
 export const DarkestNight: Power = withOverrides(base, overrides);

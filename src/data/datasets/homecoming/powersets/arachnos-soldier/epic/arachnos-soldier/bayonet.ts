@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Bayonet as base } from '@/data/generated/powersets/arachnos-soldier/epic/arachnos-soldier/bayonet';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/bayonet';
+import { Bayonet as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/arachnos-soldier/bayonet';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/arachnos-soldier/bayonet';
 
 export const Bayonet: Power = withOverrides(base, overrides);

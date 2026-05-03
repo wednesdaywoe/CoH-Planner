@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IcyBastion as base } from '@/data/generated/powersets/sentinel/secondary/ice-armor/icy-bastion';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ice-armor/icy-bastion';
+import { IcyBastion as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/ice-armor/icy-bastion';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/ice-armor/icy-bastion';
 
 export const IcyBastion: Power = withOverrides(base, overrides);

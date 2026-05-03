@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SuppressiveFire as base } from '@/data/generated/powersets/blaster/primary/dual-pistols/suppressive-fire';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/dual-pistols/suppressive-fire';
+import { SuppressiveFire as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/dual-pistols/suppressive-fire';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/dual-pistols/suppressive-fire';
 
 export const SuppressiveFire: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { VengefulSlice as base } from '@/data/generated/powersets/tanker/secondary/dual-blades/special-1';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/dual-blades/special-1';
+import { VengefulSlice as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/dual-blades/special-1';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/dual-blades/special-1';
 
 export const VengefulSlice: Power = withOverrides(base, overrides);

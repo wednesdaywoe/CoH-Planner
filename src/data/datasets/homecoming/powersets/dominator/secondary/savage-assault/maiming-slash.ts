@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MaimingSlash as base } from '@/data/generated/powersets/dominator/secondary/savage-assault/maiming-slash';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/savage-assault/maiming-slash';
+import { MaimingSlash as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/savage-assault/maiming-slash';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/savage-assault/maiming-slash';
 
 export const MaimingSlash: Power = withOverrides(base, overrides);

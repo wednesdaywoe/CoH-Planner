@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BuildUp as base } from '@/data/generated/powersets/brute/primary/energy-melee/build-up';
-import { overrides } from '@/data/overrides/powersets/brute/primary/energy-melee/build-up';
+import { BuildUp as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/energy-melee/build-up';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/energy-melee/build-up';
 
 export const BuildUp: Power = withOverrides(base, overrides);

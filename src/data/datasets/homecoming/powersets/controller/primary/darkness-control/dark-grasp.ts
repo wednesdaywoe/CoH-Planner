@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkGrasp as base } from '@/data/generated/powersets/controller/primary/darkness-control/dark-grasp';
-import { overrides } from '@/data/overrides/powersets/controller/primary/darkness-control/dark-grasp';
+import { DarkGrasp as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/darkness-control/dark-grasp';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/darkness-control/dark-grasp';
 
 export const DarkGrasp: Power = withOverrides(base, overrides);

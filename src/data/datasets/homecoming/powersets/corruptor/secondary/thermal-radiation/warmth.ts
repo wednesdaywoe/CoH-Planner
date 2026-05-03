@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Warmth as base } from '@/data/generated/powersets/corruptor/secondary/thermal-radiation/warmth';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/thermal-radiation/warmth';
+import { Warmth as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/thermal-radiation/warmth';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/thermal-radiation/warmth';
 
 export const Warmth: Power = withOverrides(base, overrides);

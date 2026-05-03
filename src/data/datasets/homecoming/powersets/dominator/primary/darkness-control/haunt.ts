@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Haunt as base } from '@/data/generated/powersets/dominator/primary/darkness-control/haunt';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/darkness-control/haunt';
+import { Haunt as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/darkness-control/haunt';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/darkness-control/haunt';
 
 export const Haunt: Power = withOverrides(base, overrides);

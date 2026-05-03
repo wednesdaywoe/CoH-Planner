@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IcePatch as base } from '@/data/generated/powersets/brute/primary/ice-melee/ice-patch';
-import { overrides } from '@/data/overrides/powersets/brute/primary/ice-melee/ice-patch';
+import { IcePatch as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/ice-melee/ice-patch';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/ice-melee/ice-patch';
 
 export const IcePatch: Power = withOverrides(base, overrides);

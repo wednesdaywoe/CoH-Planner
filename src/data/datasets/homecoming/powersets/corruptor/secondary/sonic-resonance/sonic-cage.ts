@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SonicCage as base } from '@/data/generated/powersets/corruptor/secondary/sonic-resonance/sonic-cage';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/sonic-resonance/sonic-cage';
+import { SonicCage as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/sonic-resonance/sonic-cage';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/sonic-resonance/sonic-cage';
 
 export const SonicCage: Power = withOverrides(base, overrides);

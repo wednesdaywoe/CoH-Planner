@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CraneKick as base } from '@/data/generated/powersets/scrapper/primary/martial-arts/crane-kick';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/martial-arts/crane-kick';
+import { CraneKick as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/martial-arts/crane-kick';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/martial-arts/crane-kick';
 
 export const CraneKick: Power = withOverrides(base, overrides);

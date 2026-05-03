@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TidalForces as base } from '@/data/generated/powersets/sentinel/primary/water-blast/tidal-forces';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/water-blast/tidal-forces';
+import { TidalForces as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/water-blast/tidal-forces';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/water-blast/tidal-forces';
 
 export const TidalForces: Power = withOverrides(base, overrides);

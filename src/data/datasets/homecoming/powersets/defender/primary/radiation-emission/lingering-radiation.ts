@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LingeringRadiation as base } from '@/data/generated/powersets/defender/primary/radiation-emission/lingering-radiation';
-import { overrides } from '@/data/overrides/powersets/defender/primary/radiation-emission/lingering-radiation';
+import { LingeringRadiation as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/radiation-emission/lingering-radiation';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/radiation-emission/lingering-radiation';
 
 export const LingeringRadiation: Power = withOverrides(base, overrides);

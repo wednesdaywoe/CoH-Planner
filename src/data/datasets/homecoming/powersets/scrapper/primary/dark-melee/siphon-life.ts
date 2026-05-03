@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SiphonLife as base } from '@/data/generated/powersets/scrapper/primary/dark-melee/siphon-life';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/dark-melee/siphon-life';
+import { SiphonLife as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/dark-melee/siphon-life';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/dark-melee/siphon-life';
 
 export const SiphonLife: Power = withOverrides(base, overrides);

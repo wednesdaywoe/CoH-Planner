@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StaticDischarge as base } from '@/data/generated/powersets/dominator/secondary/electricity-assault/thunder-strike';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/electricity-assault/thunder-strike';
+import { StaticDischarge as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/electricity-assault/thunder-strike';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/electricity-assault/thunder-strike';
 
 export const StaticDischarge: Power = withOverrides(base, overrides);

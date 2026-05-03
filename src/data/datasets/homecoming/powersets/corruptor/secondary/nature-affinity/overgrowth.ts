@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Overgrowth as base } from '@/data/generated/powersets/corruptor/secondary/nature-affinity/overgrowth';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/nature-affinity/overgrowth';
+import { Overgrowth as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/nature-affinity/overgrowth';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/nature-affinity/overgrowth';
 
 export const Overgrowth: Power = withOverrides(base, overrides);

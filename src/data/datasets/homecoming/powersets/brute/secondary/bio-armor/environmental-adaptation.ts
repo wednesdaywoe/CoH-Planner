@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnvironmentalModification as base } from '@/data/generated/powersets/brute/secondary/bio-armor/environmental-adaptation';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/bio-armor/environmental-adaptation';
+import { EnvironmentalModification as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/bio-armor/environmental-adaptation';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/bio-armor/environmental-adaptation';
 
 export const EnvironmentalModification: Power = withOverrides(base, overrides);

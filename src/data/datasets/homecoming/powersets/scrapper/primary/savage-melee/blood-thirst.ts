@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BloodThirst as base } from '@/data/generated/powersets/scrapper/primary/savage-melee/blood-thirst';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/savage-melee/blood-thirst';
+import { BloodThirst as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/savage-melee/blood-thirst';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/savage-melee/blood-thirst';
 
 export const BloodThirst: Power = withOverrides(base, overrides);

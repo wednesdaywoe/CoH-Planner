@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SaltCrystals as base } from '@/data/generated/powersets/dominator/primary/earth-control/salt-crystals';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/earth-control/salt-crystals';
+import { SaltCrystals as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/earth-control/salt-crystals';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/earth-control/salt-crystals';
 
 export const SaltCrystals: Power = withOverrides(base, overrides);

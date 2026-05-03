@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Chop as base } from '@/data/generated/powersets/brute/primary/battle-axe/chop';
-import { overrides } from '@/data/overrides/powersets/brute/primary/battle-axe/chop';
+import { Chop as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/battle-axe/chop';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/battle-axe/chop';
 
 export const Chop: Power = withOverrides(base, overrides);

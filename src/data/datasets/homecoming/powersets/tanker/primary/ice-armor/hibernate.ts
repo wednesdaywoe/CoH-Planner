@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IcyBastion as base } from '@/data/generated/powersets/tanker/primary/ice-armor/hibernate';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/ice-armor/hibernate';
+import { IcyBastion as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/ice-armor/hibernate';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/ice-armor/hibernate';
 
 export const IcyBastion: Power = withOverrides(base, overrides);

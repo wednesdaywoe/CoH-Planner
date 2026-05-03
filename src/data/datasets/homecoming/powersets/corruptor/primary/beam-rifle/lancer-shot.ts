@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LancerShot as base } from '@/data/generated/powersets/corruptor/primary/beam-rifle/lancer-shot';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/beam-rifle/lancer-shot';
+import { LancerShot as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/beam-rifle/lancer-shot';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/beam-rifle/lancer-shot';
 
 export const LancerShot: Power = withOverrides(base, overrides);

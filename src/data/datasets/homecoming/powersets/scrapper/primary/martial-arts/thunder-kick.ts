@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThunderKick as base } from '@/data/generated/powersets/scrapper/primary/martial-arts/thunder-kick';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/martial-arts/thunder-kick';
+import { ThunderKick as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/martial-arts/thunder-kick';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/martial-arts/thunder-kick';
 
 export const ThunderKick: Power = withOverrides(base, overrides);

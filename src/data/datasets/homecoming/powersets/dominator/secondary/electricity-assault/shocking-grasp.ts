@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { VoltaicSentinel as base } from '@/data/generated/powersets/dominator/secondary/electricity-assault/shocking-grasp';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/electricity-assault/shocking-grasp';
+import { VoltaicSentinel as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/electricity-assault/shocking-grasp';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/electricity-assault/shocking-grasp';
 
 export const VoltaicSentinel: Power = withOverrides(base, overrides);

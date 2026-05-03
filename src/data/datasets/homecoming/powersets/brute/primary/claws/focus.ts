@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Focus as base } from '@/data/generated/powersets/brute/primary/claws/focus';
-import { overrides } from '@/data/overrides/powersets/brute/primary/claws/focus';
+import { Focus as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/claws/focus';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/claws/focus';
 
 export const Focus: Power = withOverrides(base, overrides);

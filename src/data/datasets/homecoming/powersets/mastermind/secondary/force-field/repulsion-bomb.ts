@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ForceBomb as base } from '@/data/generated/powersets/mastermind/secondary/force-field/repulsion-bomb';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/force-field/repulsion-bomb';
+import { ForceBomb as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/force-field/repulsion-bomb';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/force-field/repulsion-bomb';
 
 export const ForceBomb: Power = withOverrides(base, overrides);

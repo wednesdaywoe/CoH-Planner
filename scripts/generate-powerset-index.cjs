@@ -4,8 +4,7 @@
  * Scans all modular powerset directories and generates the index.ts file.
  * Usage: node scripts/generate-powerset-index.cjs [--dataset <id>]
  *
- * - HC (default) writes to `src/data/powersets/index.ts` (legacy path).
- * - Other datasets write to `src/data/datasets/<id>/powersets/index.ts`.
+ * Writes to `src/data/datasets/<id>/powersets/index.ts`.
  */
 
 const fs = require('fs');
@@ -13,10 +12,7 @@ const path = require('path');
 const { parseDatasetArg } = require('./_dataset-paths.cjs');
 
 const datasetId = parseDatasetArg();
-const useLegacyOutput = datasetId === 'homecoming';
-const POWERSETS_PATH = useLegacyOutput
-  ? './src/data/powersets'
-  : `./src/data/datasets/${datasetId}/powersets`;
+const POWERSETS_PATH = `./src/data/datasets/${datasetId}/powersets`;
 const OUTPUT_FILE = path.join(POWERSETS_PATH, 'index.ts');
 
 // Convert kebab-case to camelCase

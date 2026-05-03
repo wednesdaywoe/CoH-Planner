@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ActiveDefense as base } from '@/data/generated/powersets/stalker/secondary/shield-defense/battle-agility';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/shield-defense/battle-agility';
+import { ActiveDefense as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/shield-defense/battle-agility';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/shield-defense/battle-agility';
 
 export const ActiveDefense: Power = withOverrides(base, overrides);

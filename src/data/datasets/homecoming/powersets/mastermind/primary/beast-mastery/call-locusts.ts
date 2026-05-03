@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CallRavens as base } from '@/data/generated/powersets/mastermind/primary/beast-mastery/call-locusts';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/beast-mastery/call-locusts';
+import { CallRavens as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/beast-mastery/call-locusts';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/beast-mastery/call-locusts';
 
 export const CallRavens: Power = withOverrides(base, overrides);

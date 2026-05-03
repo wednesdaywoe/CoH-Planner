@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Concentration as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/build-up';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/build-up';
+import { Concentration as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/mental-manipulation/build-up';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/mental-manipulation/build-up';
 
 export const Concentration: Power = withOverrides(base, overrides);

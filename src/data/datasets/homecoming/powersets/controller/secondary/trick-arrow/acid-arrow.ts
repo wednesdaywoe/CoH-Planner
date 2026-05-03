@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AcidArrow as base } from '@/data/generated/powersets/controller/secondary/trick-arrow/acid-arrow';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/trick-arrow/acid-arrow';
+import { AcidArrow as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/trick-arrow/acid-arrow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/trick-arrow/acid-arrow';
 
 export const AcidArrow: Power = withOverrides(base, overrides);

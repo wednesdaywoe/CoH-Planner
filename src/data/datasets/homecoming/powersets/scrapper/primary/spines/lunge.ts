@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Lunge as base } from '@/data/generated/powersets/scrapper/primary/spines/lunge';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/spines/lunge';
+import { Lunge as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/spines/lunge';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/spines/lunge';
 
 export const Lunge: Power = withOverrides(base, overrides);

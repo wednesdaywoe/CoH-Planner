@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThornBurst as base } from '@/data/generated/powersets/blaster/secondary/plant-manipulation/thorn-burst';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/plant-manipulation/thorn-burst';
+import { ThornBurst as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/plant-manipulation/thorn-burst';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/plant-manipulation/thorn-burst';
 
 export const ThornBurst: Power = withOverrides(base, overrides);

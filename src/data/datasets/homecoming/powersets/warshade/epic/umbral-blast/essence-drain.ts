@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EssenceDrain as base } from '@/data/generated/powersets/warshade/epic/umbral-blast/essence-drain';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-blast/essence-drain';
+import { EssenceDrain as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-blast/essence-drain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-blast/essence-drain';
 
 export const EssenceDrain: Power = withOverrides(base, overrides);

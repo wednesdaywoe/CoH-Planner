@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TotalFocus as base } from '@/data/generated/powersets/dominator/secondary/energy-assault/total-focus';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/energy-assault/total-focus';
+import { TotalFocus as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/energy-assault/total-focus';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/energy-assault/total-focus';
 
 export const TotalFocus: Power = withOverrides(base, overrides);

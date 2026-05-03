@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Barrage as base } from '@/data/generated/powersets/scrapper/primary/energy-melee/barrage';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/energy-melee/barrage';
+import { Barrage as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/energy-melee/barrage';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/energy-melee/barrage';
 
 export const Barrage: Power = withOverrides(base, overrides);

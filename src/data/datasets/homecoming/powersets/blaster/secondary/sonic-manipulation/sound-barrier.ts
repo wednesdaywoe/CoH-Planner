@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SoundBarrier as base } from '@/data/generated/powersets/blaster/secondary/sonic-manipulation/sound-barrier';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/sonic-manipulation/sound-barrier';
+import { SoundBarrier as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/sonic-manipulation/sound-barrier';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/sonic-manipulation/sound-barrier';
 
 export const SoundBarrier: Power = withOverrides(base, overrides);

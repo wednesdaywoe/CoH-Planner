@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SoundCannon as base } from '@/data/generated/powersets/blaster/secondary/sonic-manipulation/sound-cannon';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/sonic-manipulation/sound-cannon';
+import { SoundCannon as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/sonic-manipulation/sound-cannon';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/sonic-manipulation/sound-cannon';
 
 export const SoundCannon: Power = withOverrides(base, overrides);

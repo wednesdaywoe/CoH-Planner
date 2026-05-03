@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Elude as base } from '@/data/generated/powersets/scrapper/secondary/super-reflexes/elude';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/super-reflexes/elude';
+import { Elude as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/super-reflexes/elude';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/super-reflexes/elude';
 
 export const Elude: Power = withOverrides(base, overrides);

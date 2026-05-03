@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Shatter as base } from '@/data/generated/powersets/defender/secondary/seismic-blast/shatter';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/seismic-blast/shatter';
+import { Shatter as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/seismic-blast/shatter';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/seismic-blast/shatter';
 
 export const Shatter: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MassConfusion as base } from '@/data/generated/powersets/dominator/primary/mind-control/mass-confusion';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/mind-control/mass-confusion';
+import { MassConfusion as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/mind-control/mass-confusion';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/mind-control/mass-confusion';
 
 export const MassConfusion: Power = withOverrides(base, overrides);

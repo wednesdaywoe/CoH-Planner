@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Cinders as base } from '@/data/generated/powersets/dominator/primary/fire-control/cinders';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/fire-control/cinders';
+import { Cinders as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/fire-control/cinders';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/fire-control/cinders';
 
 export const Cinders: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThunderClap as base } from '@/data/generated/powersets/corruptor/secondary/storm-summoning/thunder-clap';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/storm-summoning/thunder-clap';
+import { ThunderClap as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/storm-summoning/thunder-clap';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/storm-summoning/thunder-clap';
 
 export const ThunderClap: Power = withOverrides(base, overrides);

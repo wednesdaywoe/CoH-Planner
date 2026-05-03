@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MementoMori as base } from '@/data/generated/powersets/sentinel/secondary/psionic-armor/memento-mori';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/psionic-armor/memento-mori';
+import { MementoMori as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/psionic-armor/memento-mori';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/psionic-armor/memento-mori';
 
 export const MementoMori: Power = withOverrides(base, overrides);

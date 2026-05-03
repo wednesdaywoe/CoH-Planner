@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChokingPowder as base } from '@/data/generated/powersets/blaster/secondary/ninja-training/choking-powder';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/ninja-training/choking-powder';
+import { ChokingPowder as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/ninja-training/choking-powder';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/ninja-training/choking-powder';
 
 export const ChokingPowder: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EaglesClaw as base } from '@/data/generated/powersets/tanker/secondary/martial-arts/eagles-claw';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/martial-arts/eagles-claw';
+import { EaglesClaw as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/martial-arts/eagles-claw';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/martial-arts/eagles-claw';
 
 export const EaglesClaw: Power = withOverrides(base, overrides);

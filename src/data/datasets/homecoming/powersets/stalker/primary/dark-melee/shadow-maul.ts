@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowMaul as base } from '@/data/generated/powersets/stalker/primary/dark-melee/shadow-maul';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/dark-melee/shadow-maul';
+import { ShadowMaul as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/dark-melee/shadow-maul';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/dark-melee/shadow-maul';
 
 export const ShadowMaul: Power = withOverrides(base, overrides);

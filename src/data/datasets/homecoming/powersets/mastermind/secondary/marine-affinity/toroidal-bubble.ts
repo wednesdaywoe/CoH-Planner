@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ToroidalBubble as base } from '@/data/generated/powersets/mastermind/secondary/marine-affinity/toroidal-bubble';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/marine-affinity/toroidal-bubble';
+import { ToroidalBubble as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/marine-affinity/toroidal-bubble';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/marine-affinity/toroidal-bubble';
 
 export const ToroidalBubble: Power = withOverrides(base, overrides);

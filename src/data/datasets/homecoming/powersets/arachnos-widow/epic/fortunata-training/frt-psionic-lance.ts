@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PsionicTornado as base } from '@/data/generated/powersets/arachnos-widow/epic/fortunata-training/frt-psionic-lance';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/fortunata-training/frt-psionic-lance';
+import { PsionicTornado as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/fortunata-training/frt-psionic-lance';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/fortunata-training/frt-psionic-lance';
 
 export const PsionicTornado: Power = withOverrides(base, overrides);

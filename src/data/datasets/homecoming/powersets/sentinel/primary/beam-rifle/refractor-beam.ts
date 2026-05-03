@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RefractorBeam as base } from '@/data/generated/powersets/sentinel/primary/beam-rifle/refractor-beam';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/beam-rifle/refractor-beam';
+import { RefractorBeam as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/beam-rifle/refractor-beam';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/beam-rifle/refractor-beam';
 
 export const RefractorBeam: Power = withOverrides(base, overrides);

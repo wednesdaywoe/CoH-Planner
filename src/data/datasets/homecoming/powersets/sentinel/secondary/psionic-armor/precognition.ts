@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Precognition as base } from '@/data/generated/powersets/sentinel/secondary/psionic-armor/precognition';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/psionic-armor/precognition';
+import { Precognition as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/psionic-armor/precognition';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/psionic-armor/precognition';
 
 export const Precognition: Power = withOverrides(base, overrides);

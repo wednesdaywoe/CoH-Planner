@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Integration as base } from '@/data/generated/powersets/tanker/primary/regeneration/integration';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/regeneration/integration';
+import { Integration as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/regeneration/integration';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/regeneration/integration';
 
 export const Integration: Power = withOverrides(base, overrides);

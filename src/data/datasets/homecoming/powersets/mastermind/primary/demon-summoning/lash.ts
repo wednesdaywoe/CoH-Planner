@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Lash as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/lash';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/lash';
+import { Lash as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/demon-summoning/lash';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/demon-summoning/lash';
 
 export const Lash: Power = withOverrides(base, overrides);

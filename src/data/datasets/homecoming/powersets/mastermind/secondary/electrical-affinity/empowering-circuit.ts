@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EmpoweringCircuit as base } from '@/data/generated/powersets/mastermind/secondary/electrical-affinity/empowering-circuit';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/electrical-affinity/empowering-circuit';
+import { EmpoweringCircuit as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/electrical-affinity/empowering-circuit';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/electrical-affinity/empowering-circuit';
 
 export const EmpoweringCircuit: Power = withOverrides(base, overrides);

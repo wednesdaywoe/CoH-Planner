@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ConfoundingChant as base } from '@/data/generated/powersets/dominator/primary/symphony-control/confounding-chant';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/symphony-control/confounding-chant';
+import { ConfoundingChant as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/symphony-control/confounding-chant';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/symphony-control/confounding-chant';
 
 export const ConfoundingChant: Power = withOverrides(base, overrides);

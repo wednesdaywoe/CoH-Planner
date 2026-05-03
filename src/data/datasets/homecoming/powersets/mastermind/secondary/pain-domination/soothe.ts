@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Soothe as base } from '@/data/generated/powersets/mastermind/secondary/pain-domination/soothe';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/pain-domination/soothe';
+import { Soothe as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/pain-domination/soothe';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/pain-domination/soothe';
 
 export const Soothe: Power = withOverrides(base, overrides);

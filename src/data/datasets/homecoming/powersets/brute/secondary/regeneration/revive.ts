@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AilmentResistance as base } from '@/data/generated/powersets/brute/secondary/regeneration/revive';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/regeneration/revive';
+import { AilmentResistance as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/regeneration/revive';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/regeneration/revive';
 
 export const AilmentResistance: Power = withOverrides(base, overrides);

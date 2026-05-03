@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShinobiIri as base } from '@/data/generated/powersets/scrapper/secondary/ninjitsu/shinobi-iri';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ninjitsu/shinobi-iri';
+import { ShinobiIri as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/ninjitsu/shinobi-iri';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/ninjitsu/shinobi-iri';
 
 export const ShinobiIri: Power = withOverrides(base, overrides);

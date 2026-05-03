@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WorldofPain as base } from '@/data/generated/powersets/corruptor/secondary/pain-domination/world-of-pain';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/pain-domination/world-of-pain';
+import { WorldofPain as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/pain-domination/world-of-pain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/pain-domination/world-of-pain';
 
 export const WorldofPain: Power = withOverrides(base, overrides);

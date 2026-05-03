@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Grounded as base } from '@/data/generated/powersets/sentinel/secondary/electric-armor/grounded';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/electric-armor/grounded';
+import { Grounded as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/electric-armor/grounded';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/electric-armor/grounded';
 
 export const Grounded: Power = withOverrides(base, overrides);

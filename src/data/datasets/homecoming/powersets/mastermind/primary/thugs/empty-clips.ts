@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EmptyClips as base } from '@/data/generated/powersets/mastermind/primary/thugs/empty-clips';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/thugs/empty-clips';
+import { EmptyClips as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/thugs/empty-clips';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/thugs/empty-clips';
 
 export const EmptyClips: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerBlast as base } from '@/data/generated/powersets/defender/secondary/energy-blast/power-blast';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/energy-blast/power-blast';
+import { PowerBlast as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/energy-blast/power-blast';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/energy-blast/power-blast';
 
 export const PowerBlast: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Shock as base } from '@/data/generated/powersets/corruptor/secondary/electrical-affinity/shock';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/electrical-affinity/shock';
+import { Shock as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/electrical-affinity/shock';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/electrical-affinity/shock';
 
 export const Shock: Power = withOverrides(base, overrides);

@@ -32,18 +32,20 @@ const ORIGIN_OPTIONS = [
   { value: 'Technology', label: 'Technology' },
 ];
 
-// Rebirth is loadable end-to-end (data parsed from Rebirth's pigg, datasets/
-// rebirth/ wired, picker switch reloads the bundle), but kept disabled in
-// production until Original-Domination behavior + tooltip-level convention +
-// new InfoPanel layout land. Devs can still bypass via the `?serverId=rebirth`
-// URL-param override that main.tsx reads pre-rehydration.
+// Rebirth is enabled — data tree, IO sets, scalar tables, and AT inherents
+// all landed alongside Stage B. Thunderspy stays gated until that dataset
+// has a parsed data tree.
 const SERVER_OPTIONS = [
   { value: 'homecoming', label: 'Homecoming' },
-  { value: 'rebirth', label: 'Rebirth (Coming Soon)', disabled: true },
+  { value: 'rebirth', label: 'Rebirth' },
   { value: 'thunderspy', label: 'Thunderspy (Coming Soon)', disabled: true },
 ];
 
-const ARCHETYPE_OPTIONS = [
+// Archetype dropdown options. Mostly server-agnostic, but the lineup
+// differs per dataset: HC has Sentinel; Rebirth has Guardian (not yet
+// modeled in the planner — listed disabled so the omission is intentional
+// rather than confusing).
+const ARCHETYPE_OPTIONS_HC = [
   { value: '', label: 'Select Archetype...' },
   { value: 'blaster', label: 'Blaster' },
   { value: 'controller', label: 'Controller' },
@@ -51,6 +53,25 @@ const ARCHETYPE_OPTIONS = [
   { value: 'scrapper', label: 'Scrapper' },
   { value: 'tanker', label: 'Tanker' },
   { value: 'sentinel', label: 'Sentinel' },
+  { value: 'brute', label: 'Brute' },
+  { value: 'corruptor', label: 'Corruptor' },
+  { value: 'dominator', label: 'Dominator' },
+  { value: 'mastermind', label: 'Mastermind' },
+  { value: 'stalker', label: 'Stalker' },
+  { value: 'peacebringer', label: 'Peacebringer' },
+  { value: 'warshade', label: 'Warshade' },
+  { value: 'arachnos-soldier', label: 'Arachnos Soldier' },
+  { value: 'arachnos-widow', label: 'Arachnos Widow' },
+];
+
+const ARCHETYPE_OPTIONS_REBIRTH = [
+  { value: '', label: 'Select Archetype...' },
+  { value: 'blaster', label: 'Blaster' },
+  { value: 'controller', label: 'Controller' },
+  { value: 'defender', label: 'Defender' },
+  { value: 'scrapper', label: 'Scrapper' },
+  { value: 'tanker', label: 'Tanker' },
+  { value: 'guardian', label: 'Guardian (Coming Soon)', disabled: true },
   { value: 'brute', label: 'Brute' },
   { value: 'corruptor', label: 'Corruptor' },
   { value: 'dominator', label: 'Dominator' },
@@ -503,6 +524,32 @@ function BuildIdentityPopover() {
     } catch {
       // If persistence fails, fall back to URL-param override on reload.
     }
+
+    // The reload itself is fast, but the post-reload dataset boot pulls in
+    // a fresh chunk graph (powersets + IO sets + AT tables). Drop a
+    // full-screen overlay so the user gets immediate feedback that
+    // something's happening — survives until the new page paints over it.
+    const serverLabel = newId === 'rebirth' ? 'Rebirth' : 'Homecoming';
+    const overlay = document.createElement('div');
+    overlay.setAttribute('role', 'status');
+    overlay.setAttribute('aria-live', 'polite');
+    overlay.style.cssText = [
+      'position:fixed', 'inset:0', 'z-index:99999',
+      'background:rgba(15,23,42,0.92)', 'backdrop-filter:blur(2px)',
+      'display:flex', 'flex-direction:column',
+      'align-items:center', 'justify-content:center',
+      'gap:18px', 'color:#e2e8f0',
+      'font-family:system-ui,-apple-system,sans-serif',
+    ].join(';');
+    overlay.innerHTML = `
+      <div style="width:48px;height:48px;border:3px solid #1e293b;border-top-color:#3b82f6;border-radius:50%;animation:spin 1s linear infinite;"></div>
+      <div style="font-size:18px;font-weight:600;">Switching to ${serverLabel}…</div>
+      <div style="font-size:13px;color:#94a3b8;max-width:320px;text-align:center;line-height:1.45;">
+        Loading the new dataset. This can take a moment on first switch.
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
     window.location.assign(`?serverId=${newId}`);
   };
 
@@ -587,7 +634,7 @@ function BuildIdentityPopover() {
             <Select
               id="archetype-select"
               name="archetype"
-              options={ARCHETYPE_OPTIONS}
+              options={build.serverId === 'rebirth' ? ARCHETYPE_OPTIONS_REBIRTH : ARCHETYPE_OPTIONS_HC}
               value={archetypeId || ''}
               onChange={handleArchetypeChange}
               className="w-full"

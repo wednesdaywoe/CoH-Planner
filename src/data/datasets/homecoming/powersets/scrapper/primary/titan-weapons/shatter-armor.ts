@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RendArmor as base } from '@/data/generated/powersets/scrapper/primary/titan-weapons/shatter-armor';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/titan-weapons/shatter-armor';
+import { RendArmor as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/titan-weapons/shatter-armor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/titan-weapons/shatter-armor';
 
 export const RendArmor: Power = withOverrides(base, overrides);

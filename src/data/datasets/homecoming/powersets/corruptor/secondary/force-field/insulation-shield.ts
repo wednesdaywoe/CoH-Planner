@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { InsulationShield as base } from '@/data/generated/powersets/corruptor/secondary/force-field/insulation-shield';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/force-field/insulation-shield';
+import { InsulationShield as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/force-field/insulation-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/force-field/insulation-shield';
 
 export const InsulationShield: Power = withOverrides(base, overrides);

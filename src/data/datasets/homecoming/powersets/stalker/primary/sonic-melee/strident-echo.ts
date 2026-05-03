@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StridentEcho as base } from '@/data/generated/powersets/stalker/primary/sonic-melee/strident-echo';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/sonic-melee/strident-echo';
+import { StridentEcho as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/sonic-melee/strident-echo';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/sonic-melee/strident-echo';
 
 export const StridentEcho: Power = withOverrides(base, overrides);

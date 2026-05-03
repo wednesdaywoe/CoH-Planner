@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TargetingDrone as base } from '@/data/generated/powersets/blaster/secondary/devices/targeting-drone';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/devices/targeting-drone';
+import { TargetingDrone as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/devices/targeting-drone';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/devices/targeting-drone';
 
 export const TargetingDrone: Power = withOverrides(base, overrides);

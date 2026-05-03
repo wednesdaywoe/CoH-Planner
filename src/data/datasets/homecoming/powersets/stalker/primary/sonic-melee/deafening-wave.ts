@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DeafeningWave as base } from '@/data/generated/powersets/stalker/primary/sonic-melee/deafening-wave';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/sonic-melee/deafening-wave';
+import { DeafeningWave as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/sonic-melee/deafening-wave';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/sonic-melee/deafening-wave';
 
 export const DeafeningWave: Power = withOverrides(base, overrides);

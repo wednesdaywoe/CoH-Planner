@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LightningStorm as base } from '@/data/generated/powersets/defender/primary/storm-summoning/lightning-storm';
-import { overrides } from '@/data/overrides/powersets/defender/primary/storm-summoning/lightning-storm';
+import { LightningStorm as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/storm-summoning/lightning-storm';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/storm-summoning/lightning-storm';
 
 export const LightningStorm: Power = withOverrides(base, overrides);

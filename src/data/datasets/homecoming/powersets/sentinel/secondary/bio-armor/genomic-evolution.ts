@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GenomicEvolution as base } from '@/data/generated/powersets/sentinel/secondary/bio-armor/genomic-evolution';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/bio-armor/genomic-evolution';
+import { GenomicEvolution as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/bio-armor/genomic-evolution';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/bio-armor/genomic-evolution';
 
 export const GenomicEvolution: Power = withOverrides(base, overrides);

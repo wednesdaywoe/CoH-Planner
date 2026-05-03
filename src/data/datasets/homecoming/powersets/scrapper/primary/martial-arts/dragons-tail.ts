@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DragonsTail as base } from '@/data/generated/powersets/scrapper/primary/martial-arts/dragons-tail';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/martial-arts/dragons-tail';
+import { DragonsTail as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/martial-arts/dragons-tail';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/martial-arts/dragons-tail';
 
 export const DragonsTail: Power = withOverrides(base, overrides);

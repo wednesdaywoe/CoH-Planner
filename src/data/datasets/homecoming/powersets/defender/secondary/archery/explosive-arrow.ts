@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ExplosiveArrow as base } from '@/data/generated/powersets/defender/secondary/archery/explosive-arrow';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/archery/explosive-arrow';
+import { ExplosiveArrow as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/archery/explosive-arrow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/archery/explosive-arrow';
 
 export const ExplosiveArrow: Power = withOverrides(base, overrides);

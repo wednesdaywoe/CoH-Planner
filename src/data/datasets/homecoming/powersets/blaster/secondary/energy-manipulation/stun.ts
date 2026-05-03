@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Stun as base } from '@/data/generated/powersets/blaster/secondary/energy-manipulation/stun';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/energy-manipulation/stun';
+import { Stun as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/energy-manipulation/stun';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/energy-manipulation/stun';
 
 export const Stun: Power = withOverrides(base, overrides);

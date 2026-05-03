@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Aim as base } from '@/data/generated/powersets/arachnos-widow/epic/fortunata-training/frt-aim';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/fortunata-training/frt-aim';
+import { Aim as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/fortunata-training/frt-aim';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/fortunata-training/frt-aim';
 
 export const Aim: Power = withOverrides(base, overrides);

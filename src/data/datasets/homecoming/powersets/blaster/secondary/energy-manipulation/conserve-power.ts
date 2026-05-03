@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Energize as base } from '@/data/generated/powersets/blaster/secondary/energy-manipulation/conserve-power';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/energy-manipulation/conserve-power';
+import { Energize as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/energy-manipulation/conserve-power';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/energy-manipulation/conserve-power';
 
 export const Energize: Power = withOverrides(base, overrides);

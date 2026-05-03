@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Swipe as base } from '@/data/generated/powersets/tanker/secondary/claws/swipe';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/claws/swipe';
+import { Swipe as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/claws/swipe';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/claws/swipe';
 
 export const Swipe: Power = withOverrides(base, overrides);

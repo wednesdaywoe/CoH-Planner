@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IndomitableWill as base } from '@/data/generated/powersets/sentinel/secondary/willpower/indomitable-will';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/willpower/indomitable-will';
+import { IndomitableWill as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/willpower/indomitable-will';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/willpower/indomitable-will';
 
 export const IndomitableWill: Power = withOverrides(base, overrides);

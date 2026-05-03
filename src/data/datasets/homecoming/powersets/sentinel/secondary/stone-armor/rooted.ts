@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Rooted as base } from '@/data/generated/powersets/sentinel/secondary/stone-armor/rooted';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/stone-armor/rooted';
+import { Rooted as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/stone-armor/rooted';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/stone-armor/rooted';
 
 export const Rooted: Power = withOverrides(base, overrides);

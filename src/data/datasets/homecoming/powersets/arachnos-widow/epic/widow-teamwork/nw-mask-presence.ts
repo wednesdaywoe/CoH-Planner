@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MaskPresence as base } from '@/data/generated/powersets/arachnos-widow/epic/widow-teamwork/nw-mask-presence';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/widow-teamwork/nw-mask-presence';
+import { MaskPresence as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/widow-teamwork/nw-mask-presence';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/widow-teamwork/nw-mask-presence';
 
 export const MaskPresence: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SoothingAura as base } from '@/data/generated/powersets/corruptor/secondary/pain-domination/soothing-aura';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/pain-domination/soothing-aura';
+import { SoothingAura as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/pain-domination/soothing-aura';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/pain-domination/soothing-aura';
 
 export const SoothingAura: Power = withOverrides(base, overrides);

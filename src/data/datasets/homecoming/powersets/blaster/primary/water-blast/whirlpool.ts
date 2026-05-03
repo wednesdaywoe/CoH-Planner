@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Whirlpool as base } from '@/data/generated/powersets/blaster/primary/water-blast/whirlpool';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/water-blast/whirlpool';
+import { Whirlpool as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/water-blast/whirlpool';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/water-blast/whirlpool';
 
 export const Whirlpool: Power = withOverrides(base, overrides);

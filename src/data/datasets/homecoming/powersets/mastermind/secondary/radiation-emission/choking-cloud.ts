@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChokingCloud as base } from '@/data/generated/powersets/mastermind/secondary/radiation-emission/choking-cloud';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/radiation-emission/choking-cloud';
+import { ChokingCloud as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/radiation-emission/choking-cloud';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/radiation-emission/choking-cloud';
 
 export const ChokingCloud: Power = withOverrides(base, overrides);

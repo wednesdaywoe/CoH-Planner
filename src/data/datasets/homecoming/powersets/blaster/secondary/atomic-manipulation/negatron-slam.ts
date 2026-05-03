@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { NegatronSlam as base } from '@/data/generated/powersets/blaster/secondary/atomic-manipulation/negatron-slam';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/atomic-manipulation/negatron-slam';
+import { NegatronSlam as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/atomic-manipulation/negatron-slam';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/atomic-manipulation/negatron-slam';
 
 export const NegatronSlam: Power = withOverrides(base, overrides);

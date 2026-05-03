@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ConductiveShield as base } from '@/data/generated/powersets/scrapper/secondary/electric-armor/conductive-shield';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/electric-armor/conductive-shield';
+import { ConductiveShield as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/electric-armor/conductive-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/electric-armor/conductive-shield';
 
 export const ConductiveShield: Power = withOverrides(base, overrides);

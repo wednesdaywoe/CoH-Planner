@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { VenomousGas as base } from '@/data/generated/powersets/defender/primary/poison/venomous-gas';
-import { overrides } from '@/data/overrides/powersets/defender/primary/poison/venomous-gas';
+import { VenomousGas as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/poison/venomous-gas';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/poison/venomous-gas';
 
 export const VenomousGas: Power = withOverrides(base, overrides);

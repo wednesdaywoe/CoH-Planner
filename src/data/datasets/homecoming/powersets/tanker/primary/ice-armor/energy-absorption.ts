@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergyAbsorption as base } from '@/data/generated/powersets/tanker/primary/ice-armor/energy-absorption';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/ice-armor/energy-absorption';
+import { EnergyAbsorption as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/ice-armor/energy-absorption';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/ice-armor/energy-absorption';
 
 export const EnergyAbsorption: Power = withOverrides(base, overrides);

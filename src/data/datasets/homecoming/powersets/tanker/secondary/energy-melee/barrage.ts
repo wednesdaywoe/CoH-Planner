@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Barrage as base } from '@/data/generated/powersets/tanker/secondary/energy-melee/barrage';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/energy-melee/barrage';
+import { Barrage as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/energy-melee/barrage';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/energy-melee/barrage';
 
 export const Barrage: Power = withOverrides(base, overrides);

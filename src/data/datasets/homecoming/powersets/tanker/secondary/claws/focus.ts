@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Focus as base } from '@/data/generated/powersets/tanker/secondary/claws/focus';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/claws/focus';
+import { Focus as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/claws/focus';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/claws/focus';
 
 export const Focus: Power = withOverrides(base, overrides);

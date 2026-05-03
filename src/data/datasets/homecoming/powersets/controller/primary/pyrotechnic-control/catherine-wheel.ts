@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CatherineWheel as base } from '@/data/generated/powersets/controller/primary/pyrotechnic-control/catherine-wheel';
-import { overrides } from '@/data/overrides/powersets/controller/primary/pyrotechnic-control/catherine-wheel';
+import { CatherineWheel as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/pyrotechnic-control/catherine-wheel';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/pyrotechnic-control/catherine-wheel';
 
 export const CatherineWheel: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Overcharge as base } from '@/data/generated/powersets/sentinel/primary/beam-rifle/overcharge';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/beam-rifle/overcharge';
+import { Overcharge as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/beam-rifle/overcharge';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/beam-rifle/overcharge';
 
 export const Overcharge: Power = withOverrides(base, overrides);

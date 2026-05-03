@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Shriek as base } from '@/data/generated/powersets/defender/secondary/sonic-attack/shriek';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/sonic-attack/shriek';
+import { Shriek as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/sonic-attack/shriek';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/sonic-attack/shriek';
 
 export const Shriek: Power = withOverrides(base, overrides);

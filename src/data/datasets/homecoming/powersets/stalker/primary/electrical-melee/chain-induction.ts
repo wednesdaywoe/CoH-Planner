@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChainInduction as base } from '@/data/generated/powersets/stalker/primary/electrical-melee/chain-induction';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/electrical-melee/chain-induction';
+import { ChainInduction as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/electrical-melee/chain-induction';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/electrical-melee/chain-induction';
 
 export const ChainInduction: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShiftingTides as base } from '@/data/generated/powersets/mastermind/secondary/marine-affinity/shifting-tides';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/marine-affinity/shifting-tides';
+import { ShiftingTides as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/marine-affinity/shifting-tides';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/marine-affinity/shifting-tides';
 
 export const ShiftingTides: Power = withOverrides(base, overrides);

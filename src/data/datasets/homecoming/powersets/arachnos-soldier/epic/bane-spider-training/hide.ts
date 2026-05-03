@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CloakingDevice as base } from '@/data/generated/powersets/arachnos-soldier/epic/bane-spider-training/hide';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/bane-spider-training/hide';
+import { CloakingDevice as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/bane-spider-training/hide';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/bane-spider-training/hide';
 
 export const CloakingDevice: Power = withOverrides(base, overrides);

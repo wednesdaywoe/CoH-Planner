@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CloakingDevice as base } from '@/data/generated/powersets/dominator/primary/arsenal-control/cloaking-device';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/arsenal-control/cloaking-device';
+import { CloakingDevice as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/arsenal-control/cloaking-device';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/arsenal-control/cloaking-device';
 
 export const CloakingDevice: Power = withOverrides(base, overrides);

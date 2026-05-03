@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ParasiticLeech as base } from '@/data/generated/powersets/sentinel/secondary/bio-armor/parasitic-leech';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/bio-armor/parasitic-leech';
+import { ParasiticLeech as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/bio-armor/parasitic-leech';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/bio-armor/parasitic-leech';
 
 export const ParasiticLeech: Power = withOverrides(base, overrides);

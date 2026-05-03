@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Confront as base } from '@/data/generated/powersets/scrapper/primary/street-justice/confront';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/street-justice/confront';
+import { Confront as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/street-justice/confront';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/street-justice/confront';
 
 export const Confront: Power = withOverrides(base, overrides);

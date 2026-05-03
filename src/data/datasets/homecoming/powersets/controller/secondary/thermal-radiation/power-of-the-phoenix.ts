@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerofthePhoenix as base } from '@/data/generated/powersets/controller/secondary/thermal-radiation/power-of-the-phoenix';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/thermal-radiation/power-of-the-phoenix';
+import { PowerofthePhoenix as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/thermal-radiation/power-of-the-phoenix';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/thermal-radiation/power-of-the-phoenix';
 
 export const PowerofthePhoenix: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GlitteringColumn as base } from '@/data/generated/powersets/dominator/primary/pyrotechnic-control/glittering-column';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/pyrotechnic-control/glittering-column';
+import { GlitteringColumn as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/pyrotechnic-control/glittering-column';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/pyrotechnic-control/glittering-column';
 
 export const GlitteringColumn: Power = withOverrides(base, overrides);

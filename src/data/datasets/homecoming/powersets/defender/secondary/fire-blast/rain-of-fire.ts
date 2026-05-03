@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RainofFire as base } from '@/data/generated/powersets/defender/secondary/fire-blast/rain-of-fire';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/fire-blast/rain-of-fire';
+import { RainofFire as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/fire-blast/rain-of-fire';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/fire-blast/rain-of-fire';
 
 export const RainofFire: Power = withOverrides(base, overrides);

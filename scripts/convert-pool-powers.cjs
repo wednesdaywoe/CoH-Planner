@@ -2,7 +2,8 @@
  * Convert Pool Powers from raw Homecoming JSON data
  *
  * Reads raw JSON from raw_data_homecoming/powers/pool/ and generates
- * the POWER_POOLS_RAW object for src/data/power-pools-raw.ts.
+ * the POWER_POOLS_RAW object for
+ * src/data/datasets/<id>/power-pools-raw.ts.
  *
  * Uses the same extractEffects/extractDamage pipeline as archetype powers
  * to ensure consistent effect extraction (including child_effects recursion).
@@ -40,19 +41,10 @@ const RAW_POWERS_PATH = (() => {
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
 const datasetId = parseDatasetArg();
 
-// HC keeps writing to legacy `src/data/` paths until the deferred powerset-
-// tree migration (see MULTI_DATASET_PLAN.md). Other datasets write directly
-// into their dataset folder so they don't clobber HC.
-const useLegacyOutput = datasetId === 'homecoming';
-const OUTPUT_PATH = useLegacyOutput
-  ? dataPath('generated', 'power-pools.ts')
-  : datasetPath(datasetId, 'generated', 'power-pools.ts');
-const COMPOSED_PATH = useLegacyOutput
-  ? dataPath('power-pools-raw.ts')
-  : datasetPath(datasetId, 'power-pools-raw.ts');
-const OVERRIDES_PATH = useLegacyOutput
-  ? dataPath('overrides', 'power-pools.ts')
-  : datasetPath(datasetId, 'overrides', 'power-pools.ts');
+// All datasets write under `src/data/datasets/<id>/`.
+const OUTPUT_PATH = datasetPath(datasetId, 'generated', 'power-pools.ts');
+const COMPOSED_PATH = datasetPath(datasetId, 'power-pools-raw.ts');
+const OVERRIDES_PATH = datasetPath(datasetId, 'overrides', 'power-pools.ts');
 
 // Parse CLI args
 const args = process.argv.slice(2);
@@ -453,10 +445,9 @@ import type { Power } from '@/types';
 export const POWER_POOL_OVERRIDES: Record<string, Partial<Power>> = {};
 `);
       // `_layer` is server-agnostic and lives at `src/data/_layer.ts`.
-      // For HC the composed file is in `src/data/` so a relative import
-      // works. For other datasets the composed file is at
-      // `src/data/datasets/<id>/` — use the absolute alias instead.
-      const layerImport = useLegacyOutput ? './_layer' : '@/data/_layer';
+      // The composed file is at `src/data/datasets/<id>/` — use the
+      // absolute alias.
+      const layerImport = '@/data/_layer';
       fs.writeFileSync(COMPOSED_PATH, `/**
  * Power Pool data — COMPOSED FACADE
  *

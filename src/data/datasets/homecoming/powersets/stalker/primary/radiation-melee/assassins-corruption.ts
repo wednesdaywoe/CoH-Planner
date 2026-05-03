@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AssassinsCorruption as base } from '@/data/generated/powersets/stalker/primary/radiation-melee/assassins-corruption';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/radiation-melee/assassins-corruption';
+import { AssassinsCorruption as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/radiation-melee/assassins-corruption';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/radiation-melee/assassins-corruption';
 
 export const AssassinsCorruption: Power = withOverrides(base, overrides);

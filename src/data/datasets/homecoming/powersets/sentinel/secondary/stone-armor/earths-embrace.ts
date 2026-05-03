@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EarthsEmbrace as base } from '@/data/generated/powersets/sentinel/secondary/stone-armor/earths-embrace';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/stone-armor/earths-embrace';
+import { EarthsEmbrace as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/stone-armor/earths-embrace';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/stone-armor/earths-embrace';
 
 export const EarthsEmbrace: Power = withOverrides(base, overrides);

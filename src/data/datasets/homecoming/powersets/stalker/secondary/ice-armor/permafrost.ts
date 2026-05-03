@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Permafrost as base } from '@/data/generated/powersets/stalker/secondary/ice-armor/permafrost';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/ice-armor/permafrost';
+import { Permafrost as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/ice-armor/permafrost';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/ice-armor/permafrost';
 
 export const Permafrost: Power = withOverrides(base, overrides);

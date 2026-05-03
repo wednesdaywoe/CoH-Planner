@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WorldofConfusion as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/world-of-confusion';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/world-of-confusion';
+import { WorldofConfusion as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/mental-manipulation/world-of-confusion';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/mental-manipulation/world-of-confusion';
 
 export const WorldofConfusion: Power = withOverrides(base, overrides);

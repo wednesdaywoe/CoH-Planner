@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RejuvenatingCircuit as base } from '@/data/generated/powersets/controller/secondary/electrical-affinity/rejuvenating-circuit';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/electrical-affinity/rejuvenating-circuit';
+import { RejuvenatingCircuit as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/electrical-affinity/rejuvenating-circuit';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/electrical-affinity/rejuvenating-circuit';
 
 export const RejuvenatingCircuit: Power = withOverrides(base, overrides);

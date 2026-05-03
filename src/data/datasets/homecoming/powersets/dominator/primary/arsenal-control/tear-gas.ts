@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TearGas as base } from '@/data/generated/powersets/dominator/primary/arsenal-control/tear-gas';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/arsenal-control/tear-gas';
+import { TearGas as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/arsenal-control/tear-gas';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/arsenal-control/tear-gas';
 
 export const TearGas: Power = withOverrides(base, overrides);

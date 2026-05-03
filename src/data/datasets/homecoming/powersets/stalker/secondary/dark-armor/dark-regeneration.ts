@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkRegeneration as base } from '@/data/generated/powersets/stalker/secondary/dark-armor/dark-regeneration';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/dark-armor/dark-regeneration';
+import { DarkRegeneration as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/dark-armor/dark-regeneration';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/dark-armor/dark-regeneration';
 
 export const DarkRegeneration: Power = withOverrides(base, overrides);

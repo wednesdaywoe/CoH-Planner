@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Gale as base } from '@/data/generated/powersets/controller/secondary/storm-summoning/gale';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/storm-summoning/gale';
+import { Gale as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/storm-summoning/gale';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/storm-summoning/gale';
 
 export const Gale: Power = withOverrides(base, overrides);

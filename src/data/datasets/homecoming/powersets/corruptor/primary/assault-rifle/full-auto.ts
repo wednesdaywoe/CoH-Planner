@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FullAuto as base } from '@/data/generated/powersets/corruptor/primary/assault-rifle/full-auto';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/assault-rifle/full-auto';
+import { FullAuto as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/assault-rifle/full-auto';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/assault-rifle/full-auto';
 
 export const FullAuto: Power = withOverrides(base, overrides);

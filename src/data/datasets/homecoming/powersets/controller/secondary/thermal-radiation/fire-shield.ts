@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThermalShield as base } from '@/data/generated/powersets/controller/secondary/thermal-radiation/fire-shield';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/thermal-radiation/fire-shield';
+import { ThermalShield as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/thermal-radiation/fire-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/thermal-radiation/fire-shield';
 
 export const ThermalShield: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { JoltingChain as base } from '@/data/generated/powersets/controller/primary/electric-control/jolting-chain';
-import { overrides } from '@/data/overrides/powersets/controller/primary/electric-control/jolting-chain';
+import { JoltingChain as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/electric-control/jolting-chain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/electric-control/jolting-chain';
 
 export const JoltingChain: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Energize as base } from '@/data/generated/powersets/sentinel/secondary/energy-aura/energize';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/energy-aura/energize';
+import { Energize as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/energy-aura/energize';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/energy-aura/energize';
 
 export const Energize: Power = withOverrides(base, overrides);

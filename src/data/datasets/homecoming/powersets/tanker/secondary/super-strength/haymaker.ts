@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Haymaker as base } from '@/data/generated/powersets/tanker/secondary/super-strength/haymaker';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/super-strength/haymaker';
+import { Haymaker as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/super-strength/haymaker';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/super-strength/haymaker';
 
 export const Haymaker: Power = withOverrides(base, overrides);

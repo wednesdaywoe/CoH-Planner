@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrushingBlow as base } from '@/data/generated/powersets/tanker/secondary/titan-weapons/crushing-blow';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/titan-weapons/crushing-blow';
+import { CrushingBlow as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/titan-weapons/crushing-blow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/titan-weapons/crushing-blow';
 
 export const CrushingBlow: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BitterFreezeRay as base } from '@/data/generated/powersets/defender/secondary/ice-blast/bitter-freeze-ray';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/ice-blast/bitter-freeze-ray';
+import { BitterFreezeRay as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/ice-blast/bitter-freeze-ray';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/ice-blast/bitter-freeze-ray';
 
 export const BitterFreezeRay: Power = withOverrides(base, overrides);

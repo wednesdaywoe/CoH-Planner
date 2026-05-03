@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Vortex as base } from '@/data/generated/powersets/dominator/primary/wind-control/vortex';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/wind-control/vortex';
+import { Vortex as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/wind-control/vortex';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/wind-control/vortex';
 
 export const Vortex: Power = withOverrides(base, overrides);

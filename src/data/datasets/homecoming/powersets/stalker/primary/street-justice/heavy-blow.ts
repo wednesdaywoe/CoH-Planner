@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeavyBlow as base } from '@/data/generated/powersets/stalker/primary/street-justice/heavy-blow';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/street-justice/heavy-blow';
+import { HeavyBlow as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/street-justice/heavy-blow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/street-justice/heavy-blow';
 
 export const HeavyBlow: Power = withOverrides(base, overrides);

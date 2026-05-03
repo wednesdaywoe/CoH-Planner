@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BrimstoneArmor as base } from '@/data/generated/powersets/stalker/secondary/stone-armor/brimstone-armor';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/stone-armor/brimstone-armor';
+import { BrimstoneArmor as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/stone-armor/brimstone-armor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/stone-armor/brimstone-armor';
 
 export const BrimstoneArmor: Power = withOverrides(base, overrides);

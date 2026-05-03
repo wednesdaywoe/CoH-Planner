@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Rebirth as base } from '@/data/generated/powersets/controller/secondary/nature-affinity/rebirth';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/nature-affinity/rebirth';
+import { Rebirth as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/nature-affinity/rebirth';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/nature-affinity/rebirth';
 
 export const Rebirth: Power = withOverrides(base, overrides);

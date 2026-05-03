@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Confuse as base } from '@/data/generated/powersets/controller/primary/mind-control/confuse';
-import { overrides } from '@/data/overrides/powersets/controller/primary/mind-control/confuse';
+import { Confuse as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/mind-control/confuse';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/mind-control/confuse';
 
 export const Confuse: Power = withOverrides(base, overrides);

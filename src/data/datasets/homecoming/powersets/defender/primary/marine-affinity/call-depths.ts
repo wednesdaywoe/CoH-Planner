@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PoweroftheDepths as base } from '@/data/generated/powersets/defender/primary/marine-affinity/call-depths';
-import { overrides } from '@/data/overrides/powersets/defender/primary/marine-affinity/call-depths';
+import { PoweroftheDepths as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/marine-affinity/call-depths';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/marine-affinity/call-depths';
 
 export const PoweroftheDepths: Power = withOverrides(base, overrides);

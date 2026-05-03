@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Incinerate as base } from '@/data/generated/powersets/dominator/secondary/fiery-assault/incinerate';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/fiery-assault/incinerate';
+import { Incinerate as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/fiery-assault/incinerate';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/fiery-assault/incinerate';
 
 export const Incinerate: Power = withOverrides(base, overrides);

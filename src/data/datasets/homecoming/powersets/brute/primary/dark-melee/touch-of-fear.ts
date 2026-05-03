@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TouchofFear as base } from '@/data/generated/powersets/brute/primary/dark-melee/touch-of-fear';
-import { overrides } from '@/data/overrides/powersets/brute/primary/dark-melee/touch-of-fear';
+import { TouchofFear as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/dark-melee/touch-of-fear';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/dark-melee/touch-of-fear';
 
 export const TouchofFear: Power = withOverrides(base, overrides);

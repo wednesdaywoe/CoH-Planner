@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergyProtection as base } from '@/data/generated/powersets/scrapper/secondary/energy-aura/energy-protection';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/energy-aura/energy-protection';
+import { EnergyProtection as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/energy-aura/energy-protection';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/energy-aura/energy-protection';
 
 export const EnergyProtection: Power = withOverrides(base, overrides);

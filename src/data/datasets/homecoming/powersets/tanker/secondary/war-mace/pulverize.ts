@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Pulverize as base } from '@/data/generated/powersets/tanker/secondary/war-mace/pulverize';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/war-mace/pulverize';
+import { Pulverize as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/war-mace/pulverize';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/war-mace/pulverize';
 
 export const Pulverize: Power = withOverrides(base, overrides);

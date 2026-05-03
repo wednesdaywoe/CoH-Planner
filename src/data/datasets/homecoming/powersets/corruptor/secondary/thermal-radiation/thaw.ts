@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Thaw as base } from '@/data/generated/powersets/corruptor/secondary/thermal-radiation/thaw';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/thermal-radiation/thaw';
+import { Thaw as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/thermal-radiation/thaw';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/thermal-radiation/thaw';
 
 export const Thaw: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Evasion as base } from '@/data/generated/powersets/sentinel/secondary/super-reflexes/evasion';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/super-reflexes/evasion';
+import { Evasion as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/super-reflexes/evasion';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/super-reflexes/evasion';
 
 export const Evasion: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergizingCircuit as base } from '@/data/generated/powersets/defender/primary/electrical-affinity/energizing-circuit';
-import { overrides } from '@/data/overrides/powersets/defender/primary/electrical-affinity/energizing-circuit';
+import { EnergizingCircuit as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/electrical-affinity/energizing-circuit';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/electrical-affinity/energizing-circuit';
 
 export const EnergizingCircuit: Power = withOverrides(base, overrides);

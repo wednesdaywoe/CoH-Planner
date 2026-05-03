@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ProtonArmor as base } from '@/data/generated/powersets/stalker/secondary/radiation-armor/proton-armor';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/radiation-armor/proton-armor';
+import { ProtonArmor as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/radiation-armor/proton-armor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/radiation-armor/proton-armor';
 
 export const ProtonArmor: Power = withOverrides(base, overrides);

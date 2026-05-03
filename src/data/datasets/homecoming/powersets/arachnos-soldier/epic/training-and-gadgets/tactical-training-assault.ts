@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TacticalTrainingAssault as base } from '@/data/generated/powersets/arachnos-soldier/epic/training-and-gadgets/tactical-training-assault';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/tactical-training-assault';
+import { TacticalTrainingAssault as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/training-and-gadgets/tactical-training-assault';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/tactical-training-assault';
 
 export const TacticalTrainingAssault: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Clarity as base } from '@/data/generated/powersets/controller/secondary/sonic-resonance/clarity';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/sonic-resonance/clarity';
+import { Clarity as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/sonic-resonance/clarity';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/sonic-resonance/clarity';
 
 export const Clarity: Power = withOverrides(base, overrides);

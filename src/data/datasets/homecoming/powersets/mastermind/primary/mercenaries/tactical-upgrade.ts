@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TacticalUpgrade as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/tactical-upgrade';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/tactical-upgrade';
+import { TacticalUpgrade as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/mercenaries/tactical-upgrade';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/mercenaries/tactical-upgrade';
 
 export const TacticalUpgrade: Power = withOverrides(base, overrides);

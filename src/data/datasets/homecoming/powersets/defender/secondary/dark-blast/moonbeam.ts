@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Moonbeam as base } from '@/data/generated/powersets/defender/secondary/dark-blast/moonbeam';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/dark-blast/moonbeam';
+import { Moonbeam as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/dark-blast/moonbeam';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/dark-blast/moonbeam';
 
 export const Moonbeam: Power = withOverrides(base, overrides);

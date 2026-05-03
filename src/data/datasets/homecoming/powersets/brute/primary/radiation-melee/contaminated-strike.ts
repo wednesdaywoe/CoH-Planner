@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ContaminatedStrike as base } from '@/data/generated/powersets/brute/primary/radiation-melee/contaminated-strike';
-import { overrides } from '@/data/overrides/powersets/brute/primary/radiation-melee/contaminated-strike';
+import { ContaminatedStrike as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/radiation-melee/contaminated-strike';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/radiation-melee/contaminated-strike';
 
 export const ContaminatedStrike: Power = withOverrides(base, overrides);

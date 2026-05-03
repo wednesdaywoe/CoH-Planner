@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergyPunch as base } from '@/data/generated/powersets/scrapper/primary/energy-melee/energy-punch';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/energy-melee/energy-punch';
+import { EnergyPunch as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/energy-melee/energy-punch';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/energy-melee/energy-punch';
 
 export const EnergyPunch: Power = withOverrides(base, overrides);

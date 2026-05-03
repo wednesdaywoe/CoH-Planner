@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Chronos as base } from '@/data/generated/powersets/blaster/secondary/temporal-manipulation/chronological-selection';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/temporal-manipulation/chronological-selection';
+import { Chronos as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/temporal-manipulation/chronological-selection';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/temporal-manipulation/chronological-selection';
 
 export const Chronos: Power = withOverrides(base, overrides);

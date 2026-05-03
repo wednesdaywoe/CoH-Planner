@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { NightFall as base } from '@/data/generated/powersets/dominator/secondary/dark-assault/night-fall';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/dark-assault/night-fall';
+import { NightFall as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/dark-assault/night-fall';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/dark-assault/night-fall';
 
 export const NightFall: Power = withOverrides(base, overrides);

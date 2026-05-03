@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SavageStrike as base } from '@/data/generated/powersets/scrapper/primary/savage-melee/savage-strike';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/savage-melee/savage-strike';
+import { SavageStrike as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/savage-melee/savage-strike';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/savage-melee/savage-strike';
 
 export const SavageStrike: Power = withOverrides(base, overrides);

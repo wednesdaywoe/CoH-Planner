@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SharePain as base } from '@/data/generated/powersets/controller/secondary/pain-domination/share-pain';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/pain-domination/share-pain';
+import { SharePain as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/pain-domination/share-pain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/pain-domination/share-pain';
 
 export const SharePain: Power = withOverrides(base, overrides);

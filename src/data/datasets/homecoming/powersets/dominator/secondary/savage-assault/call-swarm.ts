@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CallSwarm as base } from '@/data/generated/powersets/dominator/secondary/savage-assault/call-swarm';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/savage-assault/call-swarm';
+import { CallSwarm as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/savage-assault/call-swarm';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/savage-assault/call-swarm';
 
 export const CallSwarm: Power = withOverrides(base, overrides);

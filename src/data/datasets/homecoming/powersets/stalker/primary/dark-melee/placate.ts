@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Placate as base } from '@/data/generated/powersets/stalker/primary/dark-melee/placate';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/dark-melee/placate';
+import { Placate as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/dark-melee/placate';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/dark-melee/placate';
 
 export const Placate: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AimedShot as base } from '@/data/generated/powersets/corruptor/primary/archery/aimed-shot';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/archery/aimed-shot';
+import { AimedShot as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/archery/aimed-shot';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/archery/aimed-shot';
 
 export const AimedShot: Power = withOverrides(base, overrides);

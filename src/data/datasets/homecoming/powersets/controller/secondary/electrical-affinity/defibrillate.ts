@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Defibrillate as base } from '@/data/generated/powersets/controller/secondary/electrical-affinity/defibrillate';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/electrical-affinity/defibrillate';
+import { Defibrillate as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/electrical-affinity/defibrillate';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/electrical-affinity/defibrillate';
 
 export const Defibrillate: Power = withOverrides(base, overrides);

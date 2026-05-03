@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SeedsofConfusion as base } from '@/data/generated/powersets/controller/primary/plant-control/seeds-of-confusion';
-import { overrides } from '@/data/overrides/powersets/controller/primary/plant-control/seeds-of-confusion';
+import { SeedsofConfusion as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/plant-control/seeds-of-confusion';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/plant-control/seeds-of-confusion';
 
 export const SeedsofConfusion: Power = withOverrides(base, overrides);

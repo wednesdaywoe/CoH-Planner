@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ColdSnap as base } from '@/data/generated/powersets/dominator/primary/ice-control/shiver';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/ice-control/shiver';
+import { ColdSnap as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/ice-control/shiver';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/ice-control/shiver';
 
 export const ColdSnap: Power = withOverrides(base, overrides);

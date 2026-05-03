@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DartBurst as base } from '@/data/generated/powersets/arachnos-widow/epic/widow-training/dart-burst';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/widow-training/dart-burst';
+import { DartBurst as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/widow-training/dart-burst';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/widow-training/dart-burst';
 
 export const DartBurst: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Confuse as base } from '@/data/generated/powersets/arachnos-widow/epic/fortunata-teamwork/confuse';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/fortunata-teamwork/confuse';
+import { Confuse as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/fortunata-teamwork/confuse';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/fortunata-teamwork/confuse';
 
 export const Confuse: Power = withOverrides(base, overrides);

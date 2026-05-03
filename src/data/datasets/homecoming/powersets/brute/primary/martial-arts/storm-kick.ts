@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StormKick as base } from '@/data/generated/powersets/brute/primary/martial-arts/storm-kick';
-import { overrides } from '@/data/overrides/powersets/brute/primary/martial-arts/storm-kick';
+import { StormKick as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/martial-arts/storm-kick';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/martial-arts/storm-kick';
 
 export const StormKick: Power = withOverrides(base, overrides);

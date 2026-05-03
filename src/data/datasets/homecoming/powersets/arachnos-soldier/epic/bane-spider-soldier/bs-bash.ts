@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Bash as base } from '@/data/generated/powersets/arachnos-soldier/epic/bane-spider-soldier/bs-bash';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/bane-spider-soldier/bs-bash';
+import { Bash as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/bane-spider-soldier/bs-bash';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/bane-spider-soldier/bs-bash';
 
 export const Bash: Power = withOverrides(base, overrides);

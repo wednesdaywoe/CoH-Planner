@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Beanbag as base } from '@/data/generated/powersets/corruptor/primary/assault-rifle/beanbag';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/assault-rifle/beanbag';
+import { Beanbag as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/assault-rifle/beanbag';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/assault-rifle/beanbag';
 
 export const Beanbag: Power = withOverrides(base, overrides);

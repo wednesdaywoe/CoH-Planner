@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { NeurotoxicBreath as base } from '@/data/generated/powersets/controller/secondary/poison/neurotoxic-breath';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/poison/neurotoxic-breath';
+import { NeurotoxicBreath as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/poison/neurotoxic-breath';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/poison/neurotoxic-breath';
 
 export const NeurotoxicBreath: Power = withOverrides(base, overrides);

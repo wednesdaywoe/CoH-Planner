@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AthleticRegulation as base } from '@/data/generated/powersets/sentinel/secondary/bio-armor/athletic-regulation';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/bio-armor/athletic-regulation';
+import { AthleticRegulation as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/bio-armor/athletic-regulation';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/bio-armor/athletic-regulation';
 
 export const AthleticRegulation: Power = withOverrides(base, overrides);

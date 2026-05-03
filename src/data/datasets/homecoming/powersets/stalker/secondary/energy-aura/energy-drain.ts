@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergyDrain as base } from '@/data/generated/powersets/stalker/secondary/energy-aura/energy-drain';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/energy-aura/energy-drain';
+import { EnergyDrain as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/energy-aura/energy-drain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/energy-aura/energy-drain';
 
 export const EnergyDrain: Power = withOverrides(base, overrides);

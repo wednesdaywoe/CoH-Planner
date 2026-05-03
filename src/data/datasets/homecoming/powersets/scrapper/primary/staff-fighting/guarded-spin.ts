@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GuardedSpin as base } from '@/data/generated/powersets/scrapper/primary/staff-fighting/guarded-spin';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/staff-fighting/guarded-spin';
+import { GuardedSpin as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/staff-fighting/guarded-spin';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/staff-fighting/guarded-spin';
 
 export const GuardedSpin: Power = withOverrides(base, overrides);

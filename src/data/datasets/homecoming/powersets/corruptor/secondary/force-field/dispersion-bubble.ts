@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DispersionBubble as base } from '@/data/generated/powersets/corruptor/secondary/force-field/dispersion-bubble';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/force-field/dispersion-bubble';
+import { DispersionBubble as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/force-field/dispersion-bubble';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/force-field/dispersion-bubble';
 
 export const DispersionBubble: Power = withOverrides(base, overrides);

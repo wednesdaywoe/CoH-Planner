@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FlyTrap as base } from '@/data/generated/powersets/dominator/primary/plant-control/fly-trap';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/plant-control/fly-trap';
+import { FlyTrap as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/plant-control/fly-trap';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/plant-control/fly-trap';
 
 export const FlyTrap: Power = withOverrides(base, overrides);

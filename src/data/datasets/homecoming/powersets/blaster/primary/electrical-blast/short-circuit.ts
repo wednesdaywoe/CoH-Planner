@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShortCircuit as base } from '@/data/generated/powersets/blaster/primary/electrical-blast/short-circuit';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/electrical-blast/short-circuit';
+import { ShortCircuit as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/electrical-blast/short-circuit';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/electrical-blast/short-circuit';
 
 export const ShortCircuit: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GeneticCorruption as base } from '@/data/generated/powersets/stalker/secondary/bio-armor/genetic-corruption';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/bio-armor/genetic-corruption';
+import { GeneticCorruption as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/bio-armor/genetic-corruption';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/bio-armor/genetic-corruption';
 
 export const GeneticCorruption: Power = withOverrides(base, overrides);

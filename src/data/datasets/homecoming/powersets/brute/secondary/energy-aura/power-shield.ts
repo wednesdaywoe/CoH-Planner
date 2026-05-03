@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerShield as base } from '@/data/generated/powersets/brute/secondary/energy-aura/power-shield';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/energy-aura/power-shield';
+import { PowerShield as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/energy-aura/power-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/energy-aura/power-shield';
 
 export const PowerShield: Power = withOverrides(base, overrides);

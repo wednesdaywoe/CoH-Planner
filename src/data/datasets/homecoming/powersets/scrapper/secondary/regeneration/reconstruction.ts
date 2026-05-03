@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Reconstruction as base } from '@/data/generated/powersets/scrapper/secondary/regeneration/reconstruction';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/regeneration/reconstruction';
+import { Reconstruction as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/regeneration/reconstruction';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/regeneration/reconstruction';
 
 export const Reconstruction: Power = withOverrides(base, overrides);

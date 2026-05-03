@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SonicSiphon as base } from '@/data/generated/powersets/controller/secondary/sonic-resonance/sonic-siphon';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/sonic-resonance/sonic-siphon';
+import { SonicSiphon as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/sonic-resonance/sonic-siphon';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/sonic-resonance/sonic-siphon';
 
 export const SonicSiphon: Power = withOverrides(base, overrides);

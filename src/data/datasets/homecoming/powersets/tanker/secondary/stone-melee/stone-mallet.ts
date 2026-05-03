@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StoneMallet as base } from '@/data/generated/powersets/tanker/secondary/stone-melee/stone-mallet';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/stone-melee/stone-mallet';
+import { StoneMallet as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/stone-melee/stone-mallet';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/stone-melee/stone-mallet';
 
 export const StoneMallet: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PsiBladeSweep as base } from '@/data/generated/powersets/brute/primary/psionic-melee/psi-blade-sweep';
-import { overrides } from '@/data/overrides/powersets/brute/primary/psionic-melee/psi-blade-sweep';
+import { PsiBladeSweep as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/psionic-melee/psi-blade-sweep';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/psionic-melee/psi-blade-sweep';
 
 export const PsiBladeSweep: Power = withOverrides(base, overrides);

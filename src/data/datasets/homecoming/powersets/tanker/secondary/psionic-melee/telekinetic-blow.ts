@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TelekineticBlow as base } from '@/data/generated/powersets/tanker/secondary/psionic-melee/telekinetic-blow';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/psionic-melee/telekinetic-blow';
+import { TelekineticBlow as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/psionic-melee/telekinetic-blow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/psionic-melee/telekinetic-blow';
 
 export const TelekineticBlow: Power = withOverrides(base, overrides);

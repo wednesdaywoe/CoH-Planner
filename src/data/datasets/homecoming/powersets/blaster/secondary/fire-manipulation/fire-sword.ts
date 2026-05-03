@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FireSword as base } from '@/data/generated/powersets/blaster/secondary/fire-manipulation/fire-sword';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/fire-manipulation/fire-sword';
+import { FireSword as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/fire-manipulation/fire-sword';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/fire-manipulation/fire-sword';
 
 export const FireSword: Power = withOverrides(base, overrides);

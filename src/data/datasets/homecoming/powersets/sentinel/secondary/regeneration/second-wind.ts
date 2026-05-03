@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SecondWind as base } from '@/data/generated/powersets/sentinel/secondary/regeneration/second-wind';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/regeneration/second-wind';
+import { SecondWind as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/regeneration/second-wind';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/regeneration/second-wind';
 
 export const SecondWind: Power = withOverrides(base, overrides);

@@ -14,13 +14,28 @@
 
 import type { IncarnateSlotId } from '@/types';
 import {
-  GENERATED_ALPHA_EFFECTS,
-  GENERATED_DESTINY_EFFECTS,
-  GENERATED_HYBRID_EFFECTS,
-  GENERATED_INTERFACE_EFFECTS,
-  GENERATED_JUDGEMENT_EFFECTS,
-  GENERATED_LORE_EFFECTS,
-} from './generated/incarnate-effects';
+  GENERATED_ALPHA_EFFECTS as HC_ALPHA,
+  GENERATED_DESTINY_EFFECTS as HC_DESTINY,
+  GENERATED_HYBRID_EFFECTS as HC_HYBRID,
+  GENERATED_INTERFACE_EFFECTS as HC_INTERFACE,
+  GENERATED_JUDGEMENT_EFFECTS as HC_JUDGEMENT,
+  GENERATED_LORE_EFFECTS as HC_LORE,
+} from './datasets/homecoming/generated/incarnate-effects';
+import {
+  GENERATED_ALPHA_EFFECTS as REBIRTH_ALPHA,
+  GENERATED_DESTINY_EFFECTS as REBIRTH_DESTINY,
+  GENERATED_HYBRID_EFFECTS as REBIRTH_HYBRID,
+  GENERATED_INTERFACE_EFFECTS as REBIRTH_INTERFACE,
+  GENERATED_JUDGEMENT_EFFECTS as REBIRTH_JUDGEMENT,
+  GENERATED_LORE_EFFECTS as REBIRTH_LORE,
+} from './datasets/rebirth/generated/incarnate-effects';
+import { getActiveDataset } from './dataset';
+
+// Lazy per-dataset accessors. The active dataset isn't loaded yet at module
+// evaluation time, so we resolve on demand.
+function _isRebirth(): boolean {
+  return getActiveDataset().id === 'rebirth';
+}
 
 // ============================================
 // TYPES
@@ -193,35 +208,80 @@ export interface IncarnatePowerEffects {
 // ============================================
 
 // Alpha data auto-generated — see scripts/convert-incarnate-effects.cjs
-const ALPHA_EFFECTS: Record<string, AlphaEffects> = GENERATED_ALPHA_EFFECTS as Record<string, AlphaEffects>;
+const _alphaCache = new Map<string, Record<string, AlphaEffects>>();
+function alphaEffects(): Record<string, AlphaEffects> {
+  const id = getActiveDataset().id;
+  let r = _alphaCache.get(id);
+  if (!r) {
+    r = (_isRebirth() ? REBIRTH_ALPHA : HC_ALPHA) as Record<string, AlphaEffects>;
+    _alphaCache.set(id, r);
+  }
+  return r;
+}
 
 // ============================================
 // DESTINY EFFECTS DATA
 // ============================================
 
 // Destiny data auto-generated — see scripts/convert-incarnate-effects.cjs
-const DESTINY_EFFECTS: Record<string, DestinyEffects> = GENERATED_DESTINY_EFFECTS as Record<string, DestinyEffects>;
+const _destinyCache = new Map<string, Record<string, DestinyEffects>>();
+function destinyEffects(): Record<string, DestinyEffects> {
+  const id = getActiveDataset().id;
+  let r = _destinyCache.get(id);
+  if (!r) {
+    r = (_isRebirth() ? REBIRTH_DESTINY : HC_DESTINY) as Record<string, DestinyEffects>;
+    _destinyCache.set(id, r);
+  }
+  return r;
+}
 
 // ============================================
 // HYBRID EFFECTS DATA
 // ============================================
 
 // Hybrid data auto-generated — see scripts/convert-incarnate-effects.cjs
-const HYBRID_EFFECTS: Record<string, HybridEffects> = GENERATED_HYBRID_EFFECTS as unknown as Record<string, HybridEffects>;
+const _hybridCache = new Map<string, Record<string, HybridEffects>>();
+function hybridEffects(): Record<string, HybridEffects> {
+  const id = getActiveDataset().id;
+  let r = _hybridCache.get(id);
+  if (!r) {
+    r = (_isRebirth() ? REBIRTH_HYBRID : HC_HYBRID) as unknown as Record<string, HybridEffects>;
+    _hybridCache.set(id, r);
+  }
+  return r;
+}
 
 // ============================================
 // INTERFACE EFFECTS DATA
 // ============================================
 
 // Interface data auto-generated — see scripts/convert-incarnate-effects.cjs
-const INTERFACE_EFFECTS: Record<string, InterfaceEffects> = GENERATED_INTERFACE_EFFECTS as unknown as Record<string, InterfaceEffects>;
+const _interfaceCache = new Map<string, Record<string, InterfaceEffects>>();
+function interfaceEffectsRegistry(): Record<string, InterfaceEffects> {
+  const id = getActiveDataset().id;
+  let r = _interfaceCache.get(id);
+  if (!r) {
+    r = (_isRebirth() ? REBIRTH_INTERFACE : HC_INTERFACE) as unknown as Record<string, InterfaceEffects>;
+    _interfaceCache.set(id, r);
+  }
+  return r;
+}
 
 // ============================================
 // JUDGEMENT EFFECTS DATA
 // ============================================
 
 // Judgement data auto-generated — see scripts/convert-incarnate-effects.cjs
-const JUDGEMENT_EFFECTS: Record<string, JudgementEffects> = GENERATED_JUDGEMENT_EFFECTS as unknown as Record<string, JudgementEffects>;
+const _judgementCache = new Map<string, Record<string, JudgementEffects>>();
+function judgementEffectsRegistry(): Record<string, JudgementEffects> {
+  const id = getActiveDataset().id;
+  let r = _judgementCache.get(id);
+  if (!r) {
+    r = (_isRebirth() ? REBIRTH_JUDGEMENT : HC_JUDGEMENT) as unknown as Record<string, JudgementEffects>;
+    _judgementCache.set(id, r);
+  }
+  return r;
+}
 
 // ============================================
 // LORE EFFECTS DATA
@@ -231,7 +291,16 @@ const JUDGEMENT_EFFECTS: Record<string, JudgementEffects> = GENERATED_JUDGEMENT_
 // Generated programmatically to avoid 189 manual entries.
 
 // Lore data auto-generated — see scripts/convert-incarnate-effects.cjs
-const LORE_EFFECTS: Record<string, LoreEffects> = GENERATED_LORE_EFFECTS as unknown as Record<string, LoreEffects>;
+const _loreCache = new Map<string, Record<string, LoreEffects>>();
+function loreEffectsRegistry(): Record<string, LoreEffects> {
+  const id = getActiveDataset().id;
+  let r = _loreCache.get(id);
+  if (!r) {
+    r = (_isRebirth() ? REBIRTH_LORE : HC_LORE) as unknown as Record<string, LoreEffects>;
+    _loreCache.set(id, r);
+  }
+  return r;
+}
 
 // ============================================
 // LOOKUP FUNCTIONS
@@ -255,7 +324,7 @@ function normalizePowerId(powerId: string): string {
  */
 export function getAlphaEffects(powerId: string): AlphaEffects | null {
   const normalized = normalizePowerId(powerId);
-  return ALPHA_EFFECTS[normalized] || null;
+  return alphaEffects()[normalized] || null;
 }
 
 /**
@@ -263,7 +332,7 @@ export function getAlphaEffects(powerId: string): AlphaEffects | null {
  */
 export function getDestinyEffects(powerId: string): DestinyEffects | null {
   const normalized = normalizePowerId(powerId);
-  return DESTINY_EFFECTS[normalized] || null;
+  return destinyEffects()[normalized] || null;
 }
 
 /**
@@ -304,7 +373,7 @@ const HYBRID_ID_ALIASES: Record<string, string> = {
 export function getHybridEffects(powerId: string): HybridEffects | null {
   const normalized = normalizePowerId(powerId);
   const key = HYBRID_ID_ALIASES[normalized] || normalized;
-  return HYBRID_EFFECTS[key] || null;
+  return hybridEffects()[key] || null;
 }
 
 /**
@@ -312,7 +381,7 @@ export function getHybridEffects(powerId: string): HybridEffects | null {
  */
 export function getInterfaceEffects(powerId: string): InterfaceEffects | null {
   const normalized = normalizePowerId(powerId);
-  return INTERFACE_EFFECTS[normalized] || null;
+  return interfaceEffectsRegistry()[normalized] || null;
 }
 
 /**
@@ -320,7 +389,7 @@ export function getInterfaceEffects(powerId: string): InterfaceEffects | null {
  */
 export function getJudgementEffects(powerId: string): JudgementEffects | null {
   const normalized = normalizePowerId(powerId);
-  return JUDGEMENT_EFFECTS[normalized] || null;
+  return judgementEffectsRegistry()[normalized] || null;
 }
 
 /**
@@ -328,7 +397,7 @@ export function getJudgementEffects(powerId: string): JudgementEffects | null {
  */
 export function getLoreEffects(powerId: string): LoreEffects | null {
   const normalized = normalizePowerId(powerId);
-  return LORE_EFFECTS[normalized] || null;
+  return loreEffectsRegistry()[normalized] || null;
 }
 
 /**

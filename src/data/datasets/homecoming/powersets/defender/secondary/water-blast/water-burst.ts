@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WaterBurst as base } from '@/data/generated/powersets/defender/secondary/water-blast/water-burst';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/water-blast/water-burst';
+import { WaterBurst as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/water-blast/water-burst';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/water-blast/water-burst';
 
 export const WaterBurst: Power = withOverrides(base, overrides);

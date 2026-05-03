@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Brine as base } from '@/data/generated/powersets/corruptor/secondary/marine-affinity/brine';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/marine-affinity/brine';
+import { Brine as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/marine-affinity/brine';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/marine-affinity/brine';
 
 export const Brine: Power = withOverrides(base, overrides);

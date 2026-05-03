@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RadiationInfection as base } from '@/data/generated/powersets/corruptor/secondary/radiation-emission/radiation-infection';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/radiation-emission/radiation-infection';
+import { RadiationInfection as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/radiation-emission/radiation-infection';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/radiation-emission/radiation-infection';
 
 export const RadiationInfection: Power = withOverrides(base, overrides);

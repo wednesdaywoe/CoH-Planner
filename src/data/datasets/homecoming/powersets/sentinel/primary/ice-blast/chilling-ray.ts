@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChillingRay as base } from '@/data/generated/powersets/sentinel/primary/ice-blast/chilling-ray';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/ice-blast/chilling-ray';
+import { ChillingRay as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/ice-blast/chilling-ray';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/ice-blast/chilling-ray';
 
 export const ChillingRay: Power = withOverrides(base, overrides);

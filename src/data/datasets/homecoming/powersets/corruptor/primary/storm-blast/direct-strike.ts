@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DirectStrike as base } from '@/data/generated/powersets/corruptor/primary/storm-blast/direct-strike';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/storm-blast/direct-strike';
+import { DirectStrike as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/storm-blast/direct-strike';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/storm-blast/direct-strike';
 
 export const DirectStrike: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StoneSkin as base } from '@/data/generated/powersets/sentinel/secondary/stone-armor/stone-skin';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/stone-armor/stone-skin';
+import { StoneSkin as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/stone-armor/stone-skin';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/stone-armor/stone-skin';
 
 export const StoneSkin: Power = withOverrides(base, overrides);

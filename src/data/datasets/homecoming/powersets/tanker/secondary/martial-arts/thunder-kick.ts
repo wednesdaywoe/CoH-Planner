@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThunderKick as base } from '@/data/generated/powersets/tanker/secondary/martial-arts/thunder-kick';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/martial-arts/thunder-kick';
+import { ThunderKick as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/martial-arts/thunder-kick';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/martial-arts/thunder-kick';
 
 export const ThunderKick: Power = withOverrides(base, overrides);

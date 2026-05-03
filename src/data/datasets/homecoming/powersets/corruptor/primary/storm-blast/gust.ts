@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Gust as base } from '@/data/generated/powersets/corruptor/primary/storm-blast/gust';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/storm-blast/gust';
+import { Gust as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/storm-blast/gust';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/storm-blast/gust';
 
 export const Gust: Power = withOverrides(base, overrides);

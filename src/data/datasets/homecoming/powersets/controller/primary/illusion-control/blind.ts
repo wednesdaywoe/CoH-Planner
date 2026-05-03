@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Blind as base } from '@/data/generated/powersets/controller/primary/illusion-control/blind';
-import { overrides } from '@/data/overrides/powersets/controller/primary/illusion-control/blind';
+import { Blind as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/illusion-control/blind';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/illusion-control/blind';
 
 export const Blind: Power = withOverrides(base, overrides);

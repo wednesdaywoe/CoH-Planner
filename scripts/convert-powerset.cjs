@@ -22,22 +22,11 @@ const RAW_DATA_PATH = (datasetId === 'homecoming' && !fs.existsSync(path.join(RA
   ? RAW_DATA_BASE
   : path.join(RAW_DATA_BASE, datasetId);
 
-// HC's powerset tree migration into `src/data/datasets/homecoming/` is
-// deferred (see MULTI_DATASET_PLAN.md). Until that lands, HC keeps writing
-// to the legacy `src/data/{generated,overrides,powersets}/` paths so the
-// runtime ~600 import sites under those trees keep resolving. Other
-// datasets (Rebirth, ...) write directly into their dataset folder so
-// they don't clobber HC.
-const useLegacyOutput = datasetId === 'homecoming';
-const OUTPUT_GENERATED_PATH = useLegacyOutput
-  ? dataPath('generated', 'powersets')
-  : datasetPath(datasetId, 'generated', 'powersets');
-const OUTPUT_OVERRIDES_PATH = useLegacyOutput
-  ? dataPath('overrides', 'powersets')
-  : datasetPath(datasetId, 'overrides', 'powersets');
-const OUTPUT_PATH = useLegacyOutput
-  ? dataPath('powersets')
-  : datasetPath(datasetId, 'powersets');
+// All datasets (HC + Rebirth + future) write into their own
+// `src/data/datasets/<id>/{generated,overrides,powersets}/` tree.
+const OUTPUT_GENERATED_PATH = datasetPath(datasetId, 'generated', 'powersets');
+const OUTPUT_OVERRIDES_PATH = datasetPath(datasetId, 'overrides', 'powersets');
+const OUTPUT_PATH = datasetPath(datasetId, 'powersets');
 
 // Map raw category names to our folder structure
 const CATEGORY_MAP = {
@@ -3056,10 +3045,9 @@ function convertPowerset(category, powersetName) {
   for (const { power, file } of powers) {
     const powerFileName = toKebabCase(power.internalName) + '.ts';
     const exportName = power.name.replace(/[^a-zA-Z0-9]/g, '');
-    // For non-HC datasets, the composed file's absolute imports must
-    // point at the dataset's own `generated/` and `overrides/` trees,
-    // not HC's at `@/data/generated/...`.
-    const importRoot = useLegacyOutput ? '@/data' : `@/data/datasets/${datasetId}`;
+    // The composed file's absolute imports point at this dataset's own
+    // `generated/` and `overrides/` trees under `@/data/datasets/<id>/`.
+    const importRoot = `@/data/datasets/${datasetId}`;
     const genRel = path.posix.join(
       `${importRoot}/generated/powersets`,
       categoryInfo.archetype, categoryInfo.type,

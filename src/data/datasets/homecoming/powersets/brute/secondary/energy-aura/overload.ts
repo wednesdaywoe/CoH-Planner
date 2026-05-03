@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Overload as base } from '@/data/generated/powersets/brute/secondary/energy-aura/overload';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/energy-aura/overload';
+import { Overload as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/energy-aura/overload';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/energy-aura/overload';
 
 export const Overload: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AblativeCarapace as base } from '@/data/generated/powersets/scrapper/secondary/bio-armor/ablative-carapace';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/bio-armor/ablative-carapace';
+import { AblativeCarapace as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/bio-armor/ablative-carapace';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/bio-armor/ablative-carapace';
 
 export const AblativeCarapace: Power = withOverrides(base, overrides);

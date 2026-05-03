@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TrickShot as base } from '@/data/generated/powersets/dominator/secondary/martial-assault/trick-shot';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/martial-assault/trick-shot';
+import { TrickShot as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/martial-assault/trick-shot';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/martial-assault/trick-shot';
 
 export const TrickShot: Power = withOverrides(base, overrides);

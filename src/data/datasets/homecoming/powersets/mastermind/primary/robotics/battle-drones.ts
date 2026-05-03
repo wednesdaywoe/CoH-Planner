@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BattleDrones as base } from '@/data/generated/powersets/mastermind/primary/robotics/battle-drones';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/robotics/battle-drones';
+import { BattleDrones as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/robotics/battle-drones';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/robotics/battle-drones';
 
 export const BattleDrones: Power = withOverrides(base, overrides);

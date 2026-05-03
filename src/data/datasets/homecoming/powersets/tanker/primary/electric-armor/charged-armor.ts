@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChargedArmor as base } from '@/data/generated/powersets/tanker/primary/electric-armor/charged-armor';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/electric-armor/charged-armor';
+import { ChargedArmor as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/electric-armor/charged-armor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/electric-armor/charged-armor';
 
 export const ChargedArmor: Power = withOverrides(base, overrides);

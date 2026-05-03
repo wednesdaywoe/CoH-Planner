@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Liquefy as base } from '@/data/generated/powersets/mastermind/secondary/sonic-resonance/liquefy';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/sonic-resonance/liquefy';
+import { Liquefy as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/sonic-resonance/liquefy';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/sonic-resonance/liquefy';
 
 export const Liquefy: Power = withOverrides(base, overrides);

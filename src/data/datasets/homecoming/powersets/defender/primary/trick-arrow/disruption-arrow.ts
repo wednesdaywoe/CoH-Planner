@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DisruptionArrow as base } from '@/data/generated/powersets/defender/primary/trick-arrow/disruption-arrow';
-import { overrides } from '@/data/overrides/powersets/defender/primary/trick-arrow/disruption-arrow';
+import { DisruptionArrow as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/trick-arrow/disruption-arrow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/trick-arrow/disruption-arrow';
 
 export const DisruptionArrow: Power = withOverrides(base, overrides);

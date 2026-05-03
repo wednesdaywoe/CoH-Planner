@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Geode as base } from '@/data/generated/powersets/scrapper/secondary/stone-armor/geode';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/stone-armor/geode';
+import { Geode as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/stone-armor/geode';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/stone-armor/geode';
 
 export const Geode: Power = withOverrides(base, overrides);

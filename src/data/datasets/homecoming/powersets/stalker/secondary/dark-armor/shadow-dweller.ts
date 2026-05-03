@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowDweller as base } from '@/data/generated/powersets/stalker/secondary/dark-armor/shadow-dweller';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/dark-armor/shadow-dweller';
+import { ShadowDweller as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/dark-armor/shadow-dweller';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/dark-armor/shadow-dweller';
 
 export const ShadowDweller: Power = withOverrides(base, overrides);

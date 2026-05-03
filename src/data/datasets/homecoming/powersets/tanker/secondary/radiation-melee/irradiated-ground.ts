@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IrradiatedGround as base } from '@/data/generated/powersets/tanker/secondary/radiation-melee/irradiated-ground';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/radiation-melee/irradiated-ground';
+import { IrradiatedGround as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/radiation-melee/irradiated-ground';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/radiation-melee/irradiated-ground';
 
 export const IrradiatedGround: Power = withOverrides(base, overrides);

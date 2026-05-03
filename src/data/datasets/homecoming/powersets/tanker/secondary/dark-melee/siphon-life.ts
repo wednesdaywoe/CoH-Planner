@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SiphonLife as base } from '@/data/generated/powersets/tanker/secondary/dark-melee/siphon-life';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/dark-melee/siphon-life';
+import { SiphonLife as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/dark-melee/siphon-life';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/dark-melee/siphon-life';
 
 export const SiphonLife: Power = withOverrides(base, overrides);

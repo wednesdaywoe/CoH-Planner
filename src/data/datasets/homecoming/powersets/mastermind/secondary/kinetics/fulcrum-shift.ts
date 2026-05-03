@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FulcrumShift as base } from '@/data/generated/powersets/mastermind/secondary/kinetics/fulcrum-shift';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/kinetics/fulcrum-shift';
+import { FulcrumShift as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/kinetics/fulcrum-shift';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/kinetics/fulcrum-shift';
 
 export const FulcrumShift: Power = withOverrides(base, overrides);

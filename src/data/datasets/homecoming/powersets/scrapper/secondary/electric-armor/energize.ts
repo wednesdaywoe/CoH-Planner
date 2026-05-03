@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Energize as base } from '@/data/generated/powersets/scrapper/secondary/electric-armor/energize';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/electric-armor/energize';
+import { Energize as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/electric-armor/energize';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/electric-armor/energize';
 
 export const Energize: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DivineAvalanche as base } from '@/data/generated/powersets/stalker/primary/ninja-blade/parry';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/ninja-blade/parry';
+import { DivineAvalanche as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/ninja-blade/parry';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/ninja-blade/parry';
 
 export const DivineAvalanche: Power = withOverrides(base, overrides);

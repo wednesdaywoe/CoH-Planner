@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Skewer as base } from '@/data/generated/powersets/blaster/secondary/plant-manipulation/skewer';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/plant-manipulation/skewer';
+import { Skewer as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/plant-manipulation/skewer';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/plant-manipulation/skewer';
 
 export const Skewer: Power = withOverrides(base, overrides);

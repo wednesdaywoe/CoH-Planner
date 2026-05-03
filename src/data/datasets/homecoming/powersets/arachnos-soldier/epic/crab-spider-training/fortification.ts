@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Fortification as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-training/fortification';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-training/fortification';
+import { Fortification as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/crab-spider-training/fortification';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/crab-spider-training/fortification';
 
 export const Fortification: Power = withOverrides(base, overrides);

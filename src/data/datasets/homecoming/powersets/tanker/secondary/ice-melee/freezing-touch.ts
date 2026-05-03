@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FreezingTouch as base } from '@/data/generated/powersets/tanker/secondary/ice-melee/freezing-touch';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/ice-melee/freezing-touch';
+import { FreezingTouch as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/ice-melee/freezing-touch';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/ice-melee/freezing-touch';
 
 export const FreezingTouch: Power = withOverrides(base, overrides);

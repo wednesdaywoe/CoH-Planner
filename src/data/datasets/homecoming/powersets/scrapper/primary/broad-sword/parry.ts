@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Parry as base } from '@/data/generated/powersets/scrapper/primary/broad-sword/parry';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/broad-sword/parry';
+import { Parry as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/broad-sword/parry';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/broad-sword/parry';
 
 export const Parry: Power = withOverrides(base, overrides);

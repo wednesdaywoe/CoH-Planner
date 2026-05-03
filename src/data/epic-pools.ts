@@ -13,7 +13,9 @@ import type {
   EnhancementStatType,
   PowerType,
 } from '@/types';
-import { EPIC_POOLS_RAW } from './epic-pools-raw';
+import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_HC } from './datasets/homecoming/epic-pools-raw';
+import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_REBIRTH } from './datasets/rebirth/epic-pools-raw';
+import { getActiveDataset } from './dataset';
 import { EPIC_POOL_LEVEL, EPIC_TIER_REQUIREMENTS } from './levels';
 
 // ============================================
@@ -174,16 +176,34 @@ function transformRegistry(legacy: LegacyEpicPoolRegistry): EpicPoolRegistry {
 // EPIC POOL REGISTRY
 // ============================================
 
-// Transform and cache the raw data at module load time
-const _epicPools: EpicPoolRegistry = transformRegistry(
-  EPIC_POOLS_RAW as unknown as LegacyEpicPoolRegistry
-);
+// Lazy-cache the transformed registry per dataset.
+const _registryCache = new Map<string, EpicPoolRegistry>();
+
+function _resolveRawForDataset(datasetId: string) {
+  switch (datasetId) {
+    case 'rebirth': return EPIC_POOLS_RAW_REBIRTH;
+    case 'homecoming':
+    default: return EPIC_POOLS_RAW_HC;
+  }
+}
+
+function _activeRegistry(): EpicPoolRegistry {
+  const id = getActiveDataset().id;
+  let r = _registryCache.get(id);
+  if (!r) {
+    r = transformRegistry(
+      _resolveRawForDataset(id) as unknown as LegacyEpicPoolRegistry
+    );
+    _registryCache.set(id, r);
+  }
+  return r;
+}
 
 /**
  * Get all epic pools
  */
 export function getAllEpicPools(): EpicPoolRegistry {
-  return _epicPools;
+  return _activeRegistry();
 }
 
 // ============================================
@@ -194,7 +214,7 @@ export function getAllEpicPools(): EpicPoolRegistry {
  * Get an epic pool by ID (e.g., "sentinel_dark_mastery")
  */
 export function getEpicPool(id: string): EpicPool | undefined {
-  return _epicPools[id];
+  return _activeRegistry()[id];
 }
 
 // Hero ATs that lack patron pool data use their villain counterpart's patron pools.
@@ -234,7 +254,8 @@ export function getEpicPoolsForArchetype(archetypeId: string): EpicPool[] {
     ? ['arachnos_widow', 'arachnos_soldier']
     : [normalizedId];
 
-  const pools = Object.values(_epicPools).filter(
+  const registry = _activeRegistry();
+  const pools = Object.values(registry).filter(
     (pool) => archTypesToMatch.includes(pool.archetype.toLowerCase())
   );
 
@@ -242,7 +263,7 @@ export function getEpicPoolsForArchetype(archetypeId: string): EpicPool[] {
   const patronFallbackAT = PATRON_POOL_FALLBACK[normalizedId];
   if (patronFallbackAT) {
     const existingNames = new Set(pools.map(p => p.displayName || p.name));
-    const fallbackPools = Object.values(_epicPools).filter(
+    const fallbackPools = Object.values(registry).filter(
       (pool) => pool.archetype.toLowerCase() === patronFallbackAT
         && PATRON_POOL_NAMES.has(pool.displayName || pool.name)
         && !existingNames.has(pool.displayName || pool.name)
@@ -254,7 +275,7 @@ export function getEpicPoolsForArchetype(archetypeId: string): EpicPool[] {
   const epicFallbackAT = EPIC_POOL_FALLBACK[normalizedId];
   if (epicFallbackAT) {
     const existingNames = new Set(pools.map(p => p.displayName || p.name));
-    const fallbackPools = Object.values(_epicPools).filter(
+    const fallbackPools = Object.values(registry).filter(
       (pool) => pool.archetype.toLowerCase() === epicFallbackAT
         && !PATRON_POOL_NAMES.has(pool.displayName || pool.name)
         && !existingNames.has(pool.displayName || pool.name)

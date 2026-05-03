@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ProtonVolley as base } from '@/data/generated/powersets/blaster/primary/radiation-blast/proton-volley';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/radiation-blast/proton-volley';
+import { ProtonVolley as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/radiation-blast/proton-volley';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/radiation-blast/proton-volley';
 
 export const ProtonVolley: Power = withOverrides(base, overrides);

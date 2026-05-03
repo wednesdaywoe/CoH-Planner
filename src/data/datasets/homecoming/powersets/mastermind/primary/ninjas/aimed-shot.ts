@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AimedShot as base } from '@/data/generated/powersets/mastermind/primary/ninjas/aimed-shot';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/ninjas/aimed-shot';
+import { AimedShot as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/ninjas/aimed-shot';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/ninjas/aimed-shot';
 
 export const AimedShot: Power = withOverrides(base, overrides);

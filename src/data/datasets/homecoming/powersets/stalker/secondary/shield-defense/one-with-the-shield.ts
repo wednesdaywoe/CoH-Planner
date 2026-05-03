@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { OnewiththeShield as base } from '@/data/generated/powersets/stalker/secondary/shield-defense/one-with-the-shield';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/shield-defense/one-with-the-shield';
+import { OnewiththeShield as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/shield-defense/one-with-the-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/shield-defense/one-with-the-shield';
 
 export const OnewiththeShield: Power = withOverrides(base, overrides);

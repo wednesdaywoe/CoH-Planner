@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HailofBullets as base } from '@/data/generated/powersets/corruptor/primary/dual-pistols/hail-of-bullets';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/dual-pistols/hail-of-bullets';
+import { HailofBullets as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/dual-pistols/hail-of-bullets';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/dual-pistols/hail-of-bullets';
 
 export const HailofBullets: Power = withOverrides(base, overrides);

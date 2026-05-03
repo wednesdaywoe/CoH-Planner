@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Entomb as base } from '@/data/generated/powersets/corruptor/primary/seismic-blast/entomb';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/seismic-blast/entomb';
+import { Entomb as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/seismic-blast/entomb';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/seismic-blast/entomb';
 
 export const Entomb: Power = withOverrides(base, overrides);

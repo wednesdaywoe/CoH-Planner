@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RisetotheChallenge as base } from '@/data/generated/powersets/scrapper/secondary/willpower/rise-to-the-challenge';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/willpower/rise-to-the-challenge';
+import { RisetotheChallenge as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/willpower/rise-to-the-challenge';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/willpower/rise-to-the-challenge';
 
 export const RisetotheChallenge: Power = withOverrides(base, overrides);

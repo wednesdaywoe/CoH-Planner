@@ -14,7 +14,9 @@ import type {
   EnhancementStatType,
   PowerType,
 } from '@/types';
-import { POWER_POOLS_RAW } from './power-pools-raw';
+import { POWER_POOLS_RAW as POWER_POOLS_RAW_HC } from './datasets/homecoming/power-pools-raw';
+import { POWER_POOLS_RAW as POWER_POOLS_RAW_REBIRTH } from './datasets/rebirth/power-pools-raw';
+import { getActiveDataset } from './dataset';
 import { POOL_UNLOCK_LEVEL, EARLY_TRAVEL_POWERS } from './levels';
 
 // ============================================
@@ -165,16 +167,34 @@ function transformRegistry(legacy: LegacyPowerPoolRegistry): PowerPoolRegistry {
 // POWER POOL REGISTRY
 // ============================================
 
-// Transform and cache the raw data at module load time
-const _pools: PowerPoolRegistry = transformRegistry(
-  POWER_POOLS_RAW as unknown as LegacyPowerPoolRegistry
-);
+// Lazy-cache the transformed registry per dataset.
+const _registryCache = new Map<string, PowerPoolRegistry>();
+
+function _resolveRawForDataset(datasetId: string) {
+  switch (datasetId) {
+    case 'rebirth': return POWER_POOLS_RAW_REBIRTH;
+    case 'homecoming':
+    default: return POWER_POOLS_RAW_HC;
+  }
+}
+
+function _activeRegistry(): PowerPoolRegistry {
+  const id = getActiveDataset().id;
+  let r = _registryCache.get(id);
+  if (!r) {
+    r = transformRegistry(
+      _resolveRawForDataset(id) as unknown as LegacyPowerPoolRegistry
+    );
+    _registryCache.set(id, r);
+  }
+  return r;
+}
 
 /**
  * Get all power pools
  */
 export function getAllPowerPools(): PowerPoolRegistry {
-  return _pools;
+  return _activeRegistry();
 }
 
 // ============================================
@@ -185,14 +205,14 @@ export function getAllPowerPools(): PowerPoolRegistry {
  * Get a power pool by ID (e.g., "speed", "fighting")
  */
 export function getPowerPool(id: string): PowerPool | undefined {
-  return _pools[id];
+  return _activeRegistry()[id];
 }
 
 /**
  * Get all pool IDs
  */
 export function getPowerPoolIds(): string[] {
-  return Object.keys(_pools);
+  return Object.keys(_activeRegistry());
 }
 
 /**
@@ -406,7 +426,8 @@ export function getExcludedPools(poolId: string): string[] | null {
 export function getPoolsByCategory(categoryId: string): PowerPool[] {
   const category = POOL_CATEGORIES.find((c) => c.id === categoryId);
   if (!category) return [];
-  return category.pools.map((poolId) => _pools[poolId]).filter(Boolean) as PowerPool[];
+  const registry = _activeRegistry();
+  return category.pools.map((poolId) => registry[poolId]).filter(Boolean) as PowerPool[];
 }
 
 // ============================================

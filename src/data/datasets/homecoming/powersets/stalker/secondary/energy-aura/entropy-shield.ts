@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EntropyShield as base } from '@/data/generated/powersets/stalker/secondary/energy-aura/entropy-shield';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/energy-aura/entropy-shield';
+import { EntropyShield as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/energy-aura/entropy-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/energy-aura/entropy-shield';
 
 export const EntropyShield: Power = withOverrides(base, overrides);

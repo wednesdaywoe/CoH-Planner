@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AnguishingCry as base } from '@/data/generated/powersets/defender/primary/pain-domination/anguishing-cry';
-import { overrides } from '@/data/overrides/powersets/defender/primary/pain-domination/anguishing-cry';
+import { AnguishingCry as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/pain-domination/anguishing-cry';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/pain-domination/anguishing-cry';
 
 export const AnguishingCry: Power = withOverrides(base, overrides);

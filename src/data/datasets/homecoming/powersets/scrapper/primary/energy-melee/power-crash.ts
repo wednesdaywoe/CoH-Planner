@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerCrash as base } from '@/data/generated/powersets/scrapper/primary/energy-melee/power-crash';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/energy-melee/power-crash';
+import { PowerCrash as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/energy-melee/power-crash';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/energy-melee/power-crash';
 
 export const PowerCrash: Power = withOverrides(base, overrides);

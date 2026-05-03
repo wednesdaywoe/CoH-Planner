@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AquaBolt as base } from '@/data/generated/powersets/defender/secondary/water-blast/aqua-bolt';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/water-blast/aqua-bolt';
+import { AquaBolt as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/water-blast/aqua-bolt';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/water-blast/aqua-bolt';
 
 export const AquaBolt: Power = withOverrides(base, overrides);

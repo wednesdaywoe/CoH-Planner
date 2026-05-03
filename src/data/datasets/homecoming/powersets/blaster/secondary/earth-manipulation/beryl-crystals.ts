@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BerylCrystals as base } from '@/data/generated/powersets/blaster/secondary/earth-manipulation/beryl-crystals';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/earth-manipulation/beryl-crystals';
+import { BerylCrystals as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/earth-manipulation/beryl-crystals';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/earth-manipulation/beryl-crystals';
 
 export const BerylCrystals: Power = withOverrides(base, overrides);

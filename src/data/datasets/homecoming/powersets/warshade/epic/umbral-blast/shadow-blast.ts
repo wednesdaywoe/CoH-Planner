@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowBlast as base } from '@/data/generated/powersets/warshade/epic/umbral-blast/shadow-blast';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-blast/shadow-blast';
+import { ShadowBlast as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-blast/shadow-blast';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-blast/shadow-blast';
 
 export const ShadowBlast: Power = withOverrides(base, overrides);

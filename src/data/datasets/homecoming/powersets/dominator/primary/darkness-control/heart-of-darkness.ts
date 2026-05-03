@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeartofDarkness as base } from '@/data/generated/powersets/dominator/primary/darkness-control/heart-of-darkness';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/darkness-control/heart-of-darkness';
+import { HeartofDarkness as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/darkness-control/heart-of-darkness';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/darkness-control/heart-of-darkness';
 
 export const HeartofDarkness: Power = withOverrides(base, overrides);

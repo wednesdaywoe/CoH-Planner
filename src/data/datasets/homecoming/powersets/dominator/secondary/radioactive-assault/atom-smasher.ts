@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AtomSmasher as base } from '@/data/generated/powersets/dominator/secondary/radioactive-assault/atom-smasher';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/radioactive-assault/atom-smasher';
+import { AtomSmasher as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/radioactive-assault/atom-smasher';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/radioactive-assault/atom-smasher';
 
 export const AtomSmasher: Power = withOverrides(base, overrides);

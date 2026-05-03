@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnforcedMorale as base } from '@/data/generated/powersets/defender/primary/pain-domination/enforced-morale';
-import { overrides } from '@/data/overrides/powersets/defender/primary/pain-domination/enforced-morale';
+import { EnforcedMorale as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/pain-domination/enforced-morale';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/pain-domination/enforced-morale';
 
 export const EnforcedMorale: Power = withOverrides(base, overrides);

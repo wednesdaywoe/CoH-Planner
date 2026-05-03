@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AriaofStasis as base } from '@/data/generated/powersets/controller/primary/symphony-control/aria-of-stasis';
-import { overrides } from '@/data/overrides/powersets/controller/primary/symphony-control/aria-of-stasis';
+import { AriaofStasis as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/symphony-control/aria-of-stasis';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/symphony-control/aria-of-stasis';
 
 export const AriaofStasis: Power = withOverrides(base, overrides);

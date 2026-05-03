@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CuttingBeam as base } from '@/data/generated/powersets/defender/secondary/beam-rifle/cutting-beam';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/beam-rifle/cutting-beam';
+import { CuttingBeam as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/beam-rifle/cutting-beam';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/beam-rifle/cutting-beam';
 
 export const CuttingBeam: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HealOther as base } from '@/data/generated/powersets/defender/primary/empathy/heal-other';
-import { overrides } from '@/data/overrides/powersets/defender/primary/empathy/heal-other';
+import { HealOther as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/empathy/heal-other';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/empathy/heal-other';
 
 export const HealOther: Power = withOverrides(base, overrides);

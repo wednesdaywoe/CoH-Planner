@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FollowThrough as base } from '@/data/generated/powersets/brute/primary/titan-weapons/follow-through';
-import { overrides } from '@/data/overrides/powersets/brute/primary/titan-weapons/follow-through';
+import { FollowThrough as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/titan-weapons/follow-through';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/titan-weapons/follow-through';
 
 export const FollowThrough: Power = withOverrides(base, overrides);

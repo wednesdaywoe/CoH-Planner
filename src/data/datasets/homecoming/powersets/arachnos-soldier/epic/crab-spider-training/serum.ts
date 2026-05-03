@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Serum as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-training/serum';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-training/serum';
+import { Serum as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/crab-spider-training/serum';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/crab-spider-training/serum';
 
 export const Serum: Power = withOverrides(base, overrides);

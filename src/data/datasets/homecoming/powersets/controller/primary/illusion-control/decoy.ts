@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PhantomArmy as base } from '@/data/generated/powersets/controller/primary/illusion-control/decoy';
-import { overrides } from '@/data/overrides/powersets/controller/primary/illusion-control/decoy';
+import { PhantomArmy as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/illusion-control/decoy';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/illusion-control/decoy';
 
 export const PhantomArmy: Power = withOverrides(base, overrides);

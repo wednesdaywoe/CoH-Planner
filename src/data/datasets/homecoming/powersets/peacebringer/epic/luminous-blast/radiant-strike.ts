@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RadiantStrike as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/radiant-strike';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/radiant-strike';
+import { RadiantStrike as base } from '@/data/datasets/homecoming/generated/powersets/peacebringer/epic/luminous-blast/radiant-strike';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/peacebringer/epic/luminous-blast/radiant-strike';
 
 export const RadiantStrike: Power = withOverrides(base, overrides);

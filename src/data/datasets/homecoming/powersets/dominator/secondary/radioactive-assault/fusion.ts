@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Fusion as base } from '@/data/generated/powersets/dominator/secondary/radioactive-assault/fusion';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/radioactive-assault/fusion';
+import { Fusion as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/radioactive-assault/fusion';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/radioactive-assault/fusion';
 
 export const Fusion: Power = withOverrides(base, overrides);

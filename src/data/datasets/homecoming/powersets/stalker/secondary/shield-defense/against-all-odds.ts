@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AgainstAllOdds as base } from '@/data/generated/powersets/stalker/secondary/shield-defense/against-all-odds';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/shield-defense/against-all-odds';
+import { AgainstAllOdds as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/shield-defense/against-all-odds';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/shield-defense/against-all-odds';
 
 export const AgainstAllOdds: Power = withOverrides(base, overrides);

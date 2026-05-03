@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FocusedBurst as base } from '@/data/generated/powersets/brute/primary/kinetic-melee/focused-burst';
-import { overrides } from '@/data/overrides/powersets/brute/primary/kinetic-melee/focused-burst';
+import { FocusedBurst as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/kinetic-melee/focused-burst';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/kinetic-melee/focused-burst';
 
 export const FocusedBurst: Power = withOverrides(base, overrides);

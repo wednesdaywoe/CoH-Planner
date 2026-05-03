@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Jawbreaker as base } from '@/data/generated/powersets/brute/primary/war-mace/jawbreaker';
-import { overrides } from '@/data/overrides/powersets/brute/primary/war-mace/jawbreaker';
+import { Jawbreaker as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/war-mace/jawbreaker';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/war-mace/jawbreaker';
 
 export const Jawbreaker: Power = withOverrides(base, overrides);

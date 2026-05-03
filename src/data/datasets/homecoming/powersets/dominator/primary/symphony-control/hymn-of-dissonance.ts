@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HymnofDissonance as base } from '@/data/generated/powersets/dominator/primary/symphony-control/hymn-of-dissonance';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/symphony-control/hymn-of-dissonance';
+import { HymnofDissonance as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/symphony-control/hymn-of-dissonance';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/symphony-control/hymn-of-dissonance';
 
 export const HymnofDissonance: Power = withOverrides(base, overrides);

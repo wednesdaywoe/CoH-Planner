@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DevourPsyche as base } from '@/data/generated/powersets/scrapper/secondary/psionic-armor/devour-psyche';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/psionic-armor/devour-psyche';
+import { DevourPsyche as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/psionic-armor/devour-psyche';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/psionic-armor/devour-psyche';
 
 export const DevourPsyche: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergyCloak as base } from '@/data/generated/powersets/scrapper/secondary/energy-aura/energy-cloak';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/energy-aura/energy-cloak';
+import { EnergyCloak as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/energy-aura/energy-cloak';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/energy-aura/energy-cloak';
 
 export const EnergyCloak: Power = withOverrides(base, overrides);

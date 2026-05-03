@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SparklingCage as base } from '@/data/generated/powersets/controller/primary/pyrotechnic-control/sparkling-cage';
-import { overrides } from '@/data/overrides/powersets/controller/primary/pyrotechnic-control/sparkling-cage';
+import { SparklingCage as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/pyrotechnic-control/sparkling-cage';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/pyrotechnic-control/sparkling-cage';
 
 export const SparklingCage: Power = withOverrides(base, overrides);

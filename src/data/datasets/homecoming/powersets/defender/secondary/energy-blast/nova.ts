@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Nova as base } from '@/data/generated/powersets/defender/secondary/energy-blast/nova';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/energy-blast/nova';
+import { Nova as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/energy-blast/nova';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/energy-blast/nova';
 
 export const Nova: Power = withOverrides(base, overrides);

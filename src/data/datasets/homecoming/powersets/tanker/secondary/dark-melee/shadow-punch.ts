@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowPunch as base } from '@/data/generated/powersets/tanker/secondary/dark-melee/shadow-punch';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/dark-melee/shadow-punch';
+import { ShadowPunch as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/dark-melee/shadow-punch';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/dark-melee/shadow-punch';
 
 export const ShadowPunch: Power = withOverrides(base, overrides);

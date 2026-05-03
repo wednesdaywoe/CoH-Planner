@@ -14,7 +14,7 @@ import type {
   IOSetPiece,
   SetBonus,
 } from '@/types';
-import { IO_SETS_RAW as IO_SETS_RAW_HC } from './io-sets-raw';
+import { IO_SETS_RAW as IO_SETS_RAW_HC } from './datasets/homecoming/io-sets-raw';
 import { IO_SETS_RAW as IO_SETS_RAW_REBIRTH } from './datasets/rebirth/io-sets-raw';
 import { getActiveDataset } from './dataset';
 

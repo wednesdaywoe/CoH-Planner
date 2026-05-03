@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrushingUppercut as base } from '@/data/generated/powersets/tanker/secondary/street-justice/crushing-uppercut';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/street-justice/crushing-uppercut';
+import { CrushingUppercut as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/street-justice/crushing-uppercut';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/street-justice/crushing-uppercut';
 
 export const CrushingUppercut: Power = withOverrides(base, overrides);

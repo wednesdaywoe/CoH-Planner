@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HeightenedSenses as base } from '@/data/generated/powersets/sentinel/secondary/willpower/heightened-senses';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/willpower/heightened-senses';
+import { HeightenedSenses as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/willpower/heightened-senses';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/willpower/heightened-senses';
 
 export const HeightenedSenses: Power = withOverrides(base, overrides);

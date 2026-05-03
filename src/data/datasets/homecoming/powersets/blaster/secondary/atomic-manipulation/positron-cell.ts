@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PositronCell as base } from '@/data/generated/powersets/blaster/secondary/atomic-manipulation/positron-cell';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/atomic-manipulation/positron-cell';
+import { PositronCell as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/atomic-manipulation/positron-cell';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/atomic-manipulation/positron-cell';
 
 export const PositronCell: Power = withOverrides(base, overrides);

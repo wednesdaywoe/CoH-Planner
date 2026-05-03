@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Pendulum as base } from '@/data/generated/powersets/brute/primary/battle-axe/pendulum';
-import { overrides } from '@/data/overrides/powersets/brute/primary/battle-axe/pendulum';
+import { Pendulum as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/battle-axe/pendulum';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/battle-axe/pendulum';
 
 export const Pendulum: Power = withOverrides(base, overrides);

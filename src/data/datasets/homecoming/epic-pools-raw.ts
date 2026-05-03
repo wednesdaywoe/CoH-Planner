@@ -9,7 +9,7 @@
  * To re-generate the base data:
  *   node scripts/convert-epic-pools.cjs --apply
  */
-import { applyAggregateOverrides } from './_layer';
+import { applyAggregateOverrides } from '@/data/_layer';
 import { EPIC_POOLS_RAW as base } from './generated/epic-pools';
 import { EPIC_POOL_OVERRIDES } from './overrides/epic-pools';
 

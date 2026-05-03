@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowCloak as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/shadow-cloak';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/shadow-cloak';
+import { ShadowCloak as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-aura/shadow-cloak';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-aura/shadow-cloak';
 
 export const ShadowCloak: Power = withOverrides(base, overrides);

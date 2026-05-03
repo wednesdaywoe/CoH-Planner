@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerSiphon as base } from '@/data/generated/powersets/brute/primary/kinetic-melee/power-siphon';
-import { overrides } from '@/data/overrides/powersets/brute/primary/kinetic-melee/power-siphon';
+import { PowerSiphon as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/kinetic-melee/power-siphon';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/kinetic-melee/power-siphon';
 
 export const PowerSiphon: Power = withOverrides(base, overrides);

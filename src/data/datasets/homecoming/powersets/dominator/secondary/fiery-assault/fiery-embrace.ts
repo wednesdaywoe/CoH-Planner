@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EmbraceofFire as base } from '@/data/generated/powersets/dominator/secondary/fiery-assault/fiery-embrace';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/fiery-assault/fiery-embrace';
+import { EmbraceofFire as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/fiery-assault/fiery-embrace';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/fiery-assault/fiery-embrace';
 
 export const EmbraceofFire: Power = withOverrides(base, overrides);

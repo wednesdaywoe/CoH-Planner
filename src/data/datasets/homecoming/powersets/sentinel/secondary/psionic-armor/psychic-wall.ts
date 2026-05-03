@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PsychicWall as base } from '@/data/generated/powersets/sentinel/secondary/psionic-armor/psychic-wall';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/psionic-armor/psychic-wall';
+import { PsychicWall as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/psionic-armor/psychic-wall';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/psionic-armor/psychic-wall';
 
 export const PsychicWall: Power = withOverrides(base, overrides);

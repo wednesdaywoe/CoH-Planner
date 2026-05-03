@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RegenerationAura as base } from '@/data/generated/powersets/mastermind/secondary/empathy/regeneration-aura';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/empathy/regeneration-aura';
+import { RegenerationAura as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/empathy/regeneration-aura';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/empathy/regeneration-aura';
 
 export const RegenerationAura: Power = withOverrides(base, overrides);

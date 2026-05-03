@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AnimateStone as base } from '@/data/generated/powersets/controller/primary/earth-control/animate-stone';
-import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/animate-stone';
+import { AnimateStone as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/earth-control/animate-stone';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/earth-control/animate-stone';
 
 export const AnimateStone: Power = withOverrides(base, overrides);

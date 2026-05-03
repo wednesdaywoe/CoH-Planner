@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SandmansWhisper as base } from '@/data/generated/powersets/tanker/secondary/sonic-melee/sandmans-whisper';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/sonic-melee/sandmans-whisper';
+import { SandmansWhisper as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/sonic-melee/sandmans-whisper';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/sonic-melee/sandmans-whisper';
 
 export const SandmansWhisper: Power = withOverrides(base, overrides);

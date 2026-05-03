@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RendingFlurry as base } from '@/data/generated/powersets/stalker/primary/savage-melee/rending-flurry';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/savage-melee/rending-flurry';
+import { RendingFlurry as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/savage-melee/rending-flurry';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/savage-melee/rending-flurry';
 
 export const RendingFlurry: Power = withOverrides(base, overrides);

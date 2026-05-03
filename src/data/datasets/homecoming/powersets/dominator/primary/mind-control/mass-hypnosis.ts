@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MassHypnosis as base } from '@/data/generated/powersets/dominator/primary/mind-control/mass-hypnosis';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/mind-control/mass-hypnosis';
+import { MassHypnosis as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/mind-control/mass-hypnosis';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/mind-control/mass-hypnosis';
 
 export const MassHypnosis: Power = withOverrides(base, overrides);

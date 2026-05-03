@@ -103,8 +103,8 @@ Always three imports + one `withOverrides()` call:
 ```ts
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Foo as base } from '@/data/generated/powersets/<at>/<slot>/<set>/<power>';
-import { overrides } from '@/data/overrides/powersets/<at>/<slot>/<set>/<power>';
+import { Foo as base } from '@/data/datasets/<dataset>/generated/powersets/<at>/<slot>/<set>/<power>';
+import { overrides } from '@/data/datasets/<dataset>/overrides/powersets/<at>/<slot>/<set>/<power>';
 
 export const Foo: Power = withOverrides(base, overrides);
 ```

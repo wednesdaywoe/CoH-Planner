@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ConduitofPain as base } from '@/data/generated/powersets/defender/primary/pain-domination/conduit-of-pain';
-import { overrides } from '@/data/overrides/powersets/defender/primary/pain-domination/conduit-of-pain';
+import { ConduitofPain as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/pain-domination/conduit-of-pain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/pain-domination/conduit-of-pain';
 
 export const ConduitofPain: Power = withOverrides(base, overrides);

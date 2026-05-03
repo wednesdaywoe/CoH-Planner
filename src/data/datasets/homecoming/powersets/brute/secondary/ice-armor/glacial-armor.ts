@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GlacialArmor as base } from '@/data/generated/powersets/brute/secondary/ice-armor/glacial-armor';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/ice-armor/glacial-armor';
+import { GlacialArmor as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/ice-armor/glacial-armor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/ice-armor/glacial-armor';
 
 export const GlacialArmor: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Cleave as base } from '@/data/generated/powersets/scrapper/primary/battle-axe/cleave';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/battle-axe/cleave';
+import { Cleave as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/battle-axe/cleave';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/battle-axe/cleave';
 
 export const Cleave: Power = withOverrides(base, overrides);

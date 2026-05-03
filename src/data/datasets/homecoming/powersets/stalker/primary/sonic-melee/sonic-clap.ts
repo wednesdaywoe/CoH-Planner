@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SonicClap as base } from '@/data/generated/powersets/stalker/primary/sonic-melee/sonic-clap';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/sonic-melee/sonic-clap';
+import { SonicClap as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/sonic-melee/sonic-clap';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/sonic-melee/sonic-clap';
 
 export const SonicClap: Power = withOverrides(base, overrides);

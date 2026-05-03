@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Slash as base } from '@/data/generated/powersets/stalker/primary/claws/slash';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/claws/slash';
+import { Slash as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/claws/slash';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/claws/slash';
 
 export const Slash: Power = withOverrides(base, overrides);

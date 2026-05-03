@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CryoFreezeRay as base } from '@/data/generated/powersets/dominator/primary/arsenal-control/cryo-freeze-ray';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/arsenal-control/cryo-freeze-ray';
+import { CryoFreezeRay as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/arsenal-control/cryo-freeze-ray';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/arsenal-control/cryo-freeze-ray';
 
 export const CryoFreezeRay: Power = withOverrides(base, overrides);

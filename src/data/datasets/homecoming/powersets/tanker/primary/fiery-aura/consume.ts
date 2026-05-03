@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Consume as base } from '@/data/generated/powersets/tanker/primary/fiery-aura/consume';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/fiery-aura/consume';
+import { Consume as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/fiery-aura/consume';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/fiery-aura/consume';
 
 export const Consume: Power = withOverrides(base, overrides);

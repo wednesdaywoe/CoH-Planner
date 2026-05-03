@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Flamethrower as base } from '@/data/generated/powersets/corruptor/primary/assault-rifle/flamethrower';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/assault-rifle/flamethrower';
+import { Flamethrower as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/assault-rifle/flamethrower';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/assault-rifle/flamethrower';
 
 export const Flamethrower: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ReactionTime as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/reaction-time';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/reaction-time';
+import { ReactionTime as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/martial-combat/reaction-time';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/martial-combat/reaction-time';
 
 export const ReactionTime: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SonicThrust as base } from '@/data/generated/powersets/blaster/secondary/sonic-manipulation/sonic-thrust';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/sonic-manipulation/sonic-thrust';
+import { SonicThrust as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/sonic-manipulation/sonic-thrust';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/sonic-manipulation/sonic-thrust';
 
 export const SonicThrust: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Enduring as base } from '@/data/generated/powersets/sentinel/secondary/super-reflexes/enduring';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/super-reflexes/enduring';
+import { Enduring as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/super-reflexes/enduring';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/super-reflexes/enduring';
 
 export const Enduring: Power = withOverrides(base, overrides);

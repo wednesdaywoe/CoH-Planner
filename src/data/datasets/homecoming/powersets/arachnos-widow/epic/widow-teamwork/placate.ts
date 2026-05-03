@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Placate as base } from '@/data/generated/powersets/arachnos-widow/epic/widow-teamwork/placate';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/widow-teamwork/placate';
+import { Placate as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/widow-teamwork/placate';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/widow-teamwork/placate';
 
 export const Placate: Power = withOverrides(base, overrides);

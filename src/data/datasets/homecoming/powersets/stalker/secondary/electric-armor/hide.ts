@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Hide as base } from '@/data/generated/powersets/stalker/secondary/electric-armor/hide';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/electric-armor/hide';
+import { Hide as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/electric-armor/hide';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/electric-armor/hide';
 
 export const Hide: Power = withOverrides(base, overrides);

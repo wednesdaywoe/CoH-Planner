@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SeismicSmash as base } from '@/data/generated/powersets/blaster/secondary/earth-manipulation/seismic-smash';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/earth-manipulation/seismic-smash';
+import { SeismicSmash as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/earth-manipulation/seismic-smash';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/earth-manipulation/seismic-smash';
 
 export const SeismicSmash: Power = withOverrides(base, overrides);

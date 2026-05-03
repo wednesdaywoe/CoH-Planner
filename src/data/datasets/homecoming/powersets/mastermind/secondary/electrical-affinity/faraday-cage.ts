@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FaradayCage as base } from '@/data/generated/powersets/mastermind/secondary/electrical-affinity/faraday-cage';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/electrical-affinity/faraday-cage';
+import { FaradayCage as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/electrical-affinity/faraday-cage';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/electrical-affinity/faraday-cage';
 
 export const FaradayCage: Power = withOverrides(base, overrides);

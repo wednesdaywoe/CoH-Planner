@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Dehydrate as base } from '@/data/generated/powersets/sentinel/primary/water-blast/dehydrate';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/water-blast/dehydrate';
+import { Dehydrate as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/water-blast/dehydrate';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/water-blast/dehydrate';
 
 export const Dehydrate: Power = withOverrides(base, overrides);

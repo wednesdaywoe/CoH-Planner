@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { NimbleSlash as base } from '@/data/generated/powersets/tanker/secondary/dual-blades/light-opening';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/dual-blades/light-opening';
+import { NimbleSlash as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/dual-blades/light-opening';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/dual-blades/light-opening';
 
 export const NimbleSlash: Power = withOverrides(base, overrides);

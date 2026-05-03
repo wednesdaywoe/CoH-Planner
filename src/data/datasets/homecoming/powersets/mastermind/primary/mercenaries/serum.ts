@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Serum as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/serum';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/serum';
+import { Serum as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/mercenaries/serum';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/mercenaries/serum';
 
 export const Serum: Power = withOverrides(base, overrides);

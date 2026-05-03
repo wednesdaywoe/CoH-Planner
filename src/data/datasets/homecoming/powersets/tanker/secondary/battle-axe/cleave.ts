@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Cleave as base } from '@/data/generated/powersets/tanker/secondary/battle-axe/cleave';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/battle-axe/cleave';
+import { Cleave as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/battle-axe/cleave';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/battle-axe/cleave';
 
 export const Cleave: Power = withOverrides(base, overrides);

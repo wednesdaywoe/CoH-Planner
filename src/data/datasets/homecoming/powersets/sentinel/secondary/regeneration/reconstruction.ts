@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Reconstruction as base } from '@/data/generated/powersets/sentinel/secondary/regeneration/reconstruction';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/regeneration/reconstruction';
+import { Reconstruction as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/regeneration/reconstruction';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/regeneration/reconstruction';
 
 export const Reconstruction: Power = withOverrides(base, overrides);

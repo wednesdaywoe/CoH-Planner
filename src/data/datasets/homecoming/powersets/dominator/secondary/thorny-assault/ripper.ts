@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Ripper as base } from '@/data/generated/powersets/dominator/secondary/thorny-assault/ripper';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/thorny-assault/ripper';
+import { Ripper as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/thorny-assault/ripper';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/thorny-assault/ripper';
 
 export const Ripper: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GroundZero as base } from '@/data/generated/powersets/sentinel/secondary/radiation-armor/ground-zero';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/radiation-armor/ground-zero';
+import { GroundZero as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/radiation-armor/ground-zero';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/radiation-armor/ground-zero';
 
 export const GroundZero: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkObliteration as base } from '@/data/generated/powersets/sentinel/primary/dark-blast/dark-obliteration';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/dark-blast/dark-obliteration';
+import { DarkObliteration as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/dark-blast/dark-obliteration';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/dark-blast/dark-obliteration';
 
 export const DarkObliteration: Power = withOverrides(base, overrides);

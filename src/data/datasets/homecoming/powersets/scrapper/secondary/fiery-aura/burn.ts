@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Burn as base } from '@/data/generated/powersets/scrapper/secondary/fiery-aura/burn';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/fiery-aura/burn';
+import { Burn as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/fiery-aura/burn';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/fiery-aura/burn';
 
 export const Burn: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PoisonTrap as base } from '@/data/generated/powersets/corruptor/secondary/poison/poison-trap';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/poison/poison-trap';
+import { PoisonTrap as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/poison/poison-trap';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/poison/poison-trap';
 
 export const PoisonTrap: Power = withOverrides(base, overrides);

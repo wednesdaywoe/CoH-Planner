@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Discharge as base } from '@/data/generated/powersets/mastermind/secondary/electrical-affinity/discharge';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/electrical-affinity/discharge';
+import { Discharge as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/electrical-affinity/discharge';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/electrical-affinity/discharge';
 
 export const Discharge: Power = withOverrides(base, overrides);

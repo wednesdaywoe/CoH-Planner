@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShockingGrasp as base } from '@/data/generated/powersets/blaster/secondary/electricity-manipulation/shocking-grasp';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/electricity-manipulation/shocking-grasp';
+import { ShockingGrasp as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/electricity-manipulation/shocking-grasp';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/electricity-manipulation/shocking-grasp';
 
 export const ShockingGrasp: Power = withOverrides(base, overrides);

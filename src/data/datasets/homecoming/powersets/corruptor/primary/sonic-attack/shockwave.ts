@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Shockwave as base } from '@/data/generated/powersets/corruptor/primary/sonic-attack/shockwave';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/sonic-attack/shockwave';
+import { Shockwave as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/sonic-attack/shockwave';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/sonic-attack/shockwave';
 
 export const Shockwave: Power = withOverrides(base, overrides);

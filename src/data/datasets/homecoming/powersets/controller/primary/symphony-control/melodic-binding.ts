@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MelodicBinding as base } from '@/data/generated/powersets/controller/primary/symphony-control/melodic-binding';
-import { overrides } from '@/data/overrides/powersets/controller/primary/symphony-control/melodic-binding';
+import { MelodicBinding as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/symphony-control/melodic-binding';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/symphony-control/melodic-binding';
 
 export const MelodicBinding: Power = withOverrides(base, overrides);

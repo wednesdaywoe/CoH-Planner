@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MudPots as base } from '@/data/generated/powersets/scrapper/secondary/stone-armor/mud-pots';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/stone-armor/mud-pots';
+import { MudPots as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/stone-armor/mud-pots';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/stone-armor/mud-pots';
 
 export const MudPots: Power = withOverrides(base, overrides);

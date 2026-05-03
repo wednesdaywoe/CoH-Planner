@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HypnotizingLights as base } from '@/data/generated/powersets/dominator/primary/pyrotechnic-control/hypnotizing-lights';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/pyrotechnic-control/hypnotizing-lights';
+import { HypnotizingLights as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/pyrotechnic-control/hypnotizing-lights';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/pyrotechnic-control/hypnotizing-lights';
 
 export const HypnotizingLights: Power = withOverrides(base, overrides);

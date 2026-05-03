@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EntanglingAura as base } from '@/data/generated/powersets/defender/primary/nature-affinity/raging-tempest';
-import { overrides } from '@/data/overrides/powersets/defender/primary/nature-affinity/raging-tempest';
+import { EntanglingAura as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/nature-affinity/raging-tempest';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/nature-affinity/raging-tempest';
 
 export const EntanglingAura: Power = withOverrides(base, overrides);

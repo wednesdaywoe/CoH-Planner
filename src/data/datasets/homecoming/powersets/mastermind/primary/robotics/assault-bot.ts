@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AssaultBot as base } from '@/data/generated/powersets/mastermind/primary/robotics/assault-bot';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/robotics/assault-bot';
+import { AssaultBot as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/robotics/assault-bot';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/robotics/assault-bot';
 
 export const AssaultBot: Power = withOverrides(base, overrides);

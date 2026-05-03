@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ShadowFall as base } from '@/data/generated/powersets/controller/secondary/darkness-affinity/shadow-fall';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/darkness-affinity/shadow-fall';
+import { ShadowFall as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/darkness-affinity/shadow-fall';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/darkness-affinity/shadow-fall';
 
 export const ShadowFall: Power = withOverrides(base, overrides);

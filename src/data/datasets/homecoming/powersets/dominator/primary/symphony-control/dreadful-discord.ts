@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DreadfulDiscord as base } from '@/data/generated/powersets/dominator/primary/symphony-control/dreadful-discord';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/symphony-control/dreadful-discord';
+import { DreadfulDiscord as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/symphony-control/dreadful-discord';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/symphony-control/dreadful-discord';
 
 export const DreadfulDiscord: Power = withOverrides(base, overrides);

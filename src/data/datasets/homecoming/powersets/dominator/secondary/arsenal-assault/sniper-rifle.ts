@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SniperRifle as base } from '@/data/generated/powersets/dominator/secondary/arsenal-assault/sniper-rifle';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/arsenal-assault/sniper-rifle';
+import { SniperRifle as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/arsenal-assault/sniper-rifle';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/arsenal-assault/sniper-rifle';
 
 export const SniperRifle: Power = withOverrides(base, overrides);

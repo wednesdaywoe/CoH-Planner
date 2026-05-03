@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IceBolt as base } from '@/data/generated/powersets/defender/secondary/ice-blast/ice-bolt';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/ice-blast/ice-bolt';
+import { IceBolt as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/ice-blast/ice-bolt';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/ice-blast/ice-bolt';
 
 export const IceBolt: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CosmicBurst as base } from '@/data/generated/powersets/blaster/primary/radiation-blast/cosmic-burst';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/radiation-blast/cosmic-burst';
+import { CosmicBurst as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/radiation-blast/cosmic-burst';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/radiation-blast/cosmic-burst';
 
 export const CosmicBurst: Power = withOverrides(base, overrides);

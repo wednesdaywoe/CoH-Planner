@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Blizzard as base } from '@/data/generated/powersets/defender/secondary/ice-blast/blizzard';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/ice-blast/blizzard';
+import { Blizzard as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/ice-blast/blizzard';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/ice-blast/blizzard';
 
 export const Blizzard: Power = withOverrides(base, overrides);

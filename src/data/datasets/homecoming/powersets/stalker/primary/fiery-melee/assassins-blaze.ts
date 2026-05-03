@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AssassinsBlaze as base } from '@/data/generated/powersets/stalker/primary/fiery-melee/assassins-blaze';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/fiery-melee/assassins-blaze';
+import { AssassinsBlaze as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/fiery-melee/assassins-blaze';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/fiery-melee/assassins-blaze';
 
 export const AssassinsBlaze: Power = withOverrides(base, overrides);

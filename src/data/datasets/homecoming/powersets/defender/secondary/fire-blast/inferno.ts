@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Inferno as base } from '@/data/generated/powersets/defender/secondary/fire-blast/inferno';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/fire-blast/inferno';
+import { Inferno as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/fire-blast/inferno';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/fire-blast/inferno';
 
 export const Inferno: Power = withOverrides(base, overrides);

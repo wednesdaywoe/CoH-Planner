@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ScrambleMinds as base } from '@/data/generated/powersets/corruptor/primary/psychic-blast/scramble-thoughts';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/psychic-blast/scramble-thoughts';
+import { ScrambleMinds as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/psychic-blast/scramble-thoughts';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/psychic-blast/scramble-thoughts';
 
 export const ScrambleMinds: Power = withOverrides(base, overrides);

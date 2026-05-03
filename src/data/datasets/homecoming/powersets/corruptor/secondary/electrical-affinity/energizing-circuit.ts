@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergizingCircuit as base } from '@/data/generated/powersets/corruptor/secondary/electrical-affinity/energizing-circuit';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/electrical-affinity/energizing-circuit';
+import { EnergizingCircuit as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/electrical-affinity/energizing-circuit';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/electrical-affinity/energizing-circuit';
 
 export const EnergizingCircuit: Power = withOverrides(base, overrides);

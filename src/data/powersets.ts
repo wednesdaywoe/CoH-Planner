@@ -3,13 +3,11 @@
  *
  * Routes lookups through the active dataset's powerset registry. Each
  * dataset folder under `src/data/datasets/<id>/powersets/` ships its own
- * generated `index.ts` with a `MODULAR_POWERSETS` map. HC's tree still
- * lives at the legacy `src/data/powersets/` path until the deferred
- * Stage B migration moves it under `datasets/homecoming/`.
+ * generated `index.ts` with a `MODULAR_POWERSETS` map.
  */
 
 import type { Powerset, Power } from '@/types';
-import { MODULAR_POWERSETS as HC_POWERSETS } from './powersets/index';
+import { MODULAR_POWERSETS as HC_POWERSETS_RAW } from './datasets/homecoming/powersets/index';
 import { MODULAR_POWERSETS as REBIRTH_POWERSETS } from './datasets/rebirth/powersets/index';
 import { getActiveDataset } from './dataset';
 
@@ -22,6 +20,25 @@ export type PowersetRegistry = Record<string, Powerset>;
 // ============================================
 // POWERSET REGISTRY
 // ============================================
+
+// Powerset IDs to hide from the HC registry. Wind Control was an
+// unfinished pre-shutdown set that re-surfaced in the bin export; HC
+// doesn't ship it, so block it from showing up in archetype pickers.
+// Curated here (not via deletion in the generated index) so that
+// re-running `generate-powerset-index.cjs` doesn't reintroduce it.
+const HC_HIDDEN_POWERSETS = new Set<string>([
+  'controller/wind-control',
+  'dominator/wind-control',
+]);
+
+const HC_POWERSETS: PowersetRegistry = (() => {
+  if (HC_HIDDEN_POWERSETS.size === 0) return HC_POWERSETS_RAW;
+  const filtered: PowersetRegistry = {};
+  for (const [id, ps] of Object.entries(HC_POWERSETS_RAW)) {
+    if (!HC_HIDDEN_POWERSETS.has(id)) filtered[id] = ps;
+  }
+  return filtered;
+})();
 
 function getRegistry(): PowersetRegistry {
   switch (getActiveDataset().id) {

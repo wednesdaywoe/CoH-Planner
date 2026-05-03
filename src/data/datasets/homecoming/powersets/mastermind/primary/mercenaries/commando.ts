@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Commando as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/commando';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/commando';
+import { Commando as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/mercenaries/commando';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/mercenaries/commando';
 
 export const Commando: Power = withOverrides(base, overrides);

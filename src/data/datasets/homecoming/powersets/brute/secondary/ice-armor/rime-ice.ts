@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Rime as base } from '@/data/generated/powersets/brute/secondary/ice-armor/rime-ice';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/ice-armor/rime-ice';
+import { Rime as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/ice-armor/rime-ice';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/ice-armor/rime-ice';
 
 export const Rime: Power = withOverrides(base, overrides);

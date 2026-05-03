@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerDrain as base } from '@/data/generated/powersets/sentinel/secondary/energy-aura/power-drain';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/energy-aura/power-drain';
+import { PowerDrain as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/energy-aura/power-drain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/energy-aura/power-drain';
 
 export const PowerDrain: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChargeUp as base } from '@/data/generated/powersets/blaster/primary/electrical-blast/aim';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/electrical-blast/aim';
+import { ChargeUp as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/electrical-blast/aim';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/electrical-blast/aim';
 
 export const ChargeUp: Power = withOverrides(base, overrides);

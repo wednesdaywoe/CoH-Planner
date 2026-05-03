@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StrengthofWill as base } from '@/data/generated/powersets/stalker/secondary/willpower/strength-of-will';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/willpower/strength-of-will';
+import { StrengthofWill as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/willpower/strength-of-will';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/willpower/strength-of-will';
 
 export const StrengthofWill: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HighPainTolerance as base } from '@/data/generated/powersets/tanker/primary/willpower/high-pain-tolerance';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/willpower/high-pain-tolerance';
+import { HighPainTolerance as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/willpower/high-pain-tolerance';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/willpower/high-pain-tolerance';
 
 export const HighPainTolerance: Power = withOverrides(base, overrides);

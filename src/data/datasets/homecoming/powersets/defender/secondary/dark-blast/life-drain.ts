@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LifeDrain as base } from '@/data/generated/powersets/defender/secondary/dark-blast/life-drain';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/dark-blast/life-drain';
+import { LifeDrain as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/dark-blast/life-drain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/dark-blast/life-drain';
 
 export const LifeDrain: Power = withOverrides(base, overrides);

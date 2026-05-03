@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WildGrowth as base } from '@/data/generated/powersets/controller/secondary/nature-affinity/wild-growth';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/nature-affinity/wild-growth';
+import { WildGrowth as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/nature-affinity/wild-growth';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/nature-affinity/wild-growth';
 
 export const WildGrowth: Power = withOverrides(base, overrides);

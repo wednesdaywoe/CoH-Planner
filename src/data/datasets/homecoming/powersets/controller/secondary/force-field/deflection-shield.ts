@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DeflectionShield as base } from '@/data/generated/powersets/controller/secondary/force-field/deflection-shield';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/force-field/deflection-shield';
+import { DeflectionShield as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/force-field/deflection-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/force-field/deflection-shield';
 
 export const DeflectionShield: Power = withOverrides(base, overrides);

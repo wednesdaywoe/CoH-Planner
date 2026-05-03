@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Minerals as base } from '@/data/generated/powersets/scrapper/secondary/stone-armor/mineral-armor';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/stone-armor/mineral-armor';
+import { Minerals as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/stone-armor/mineral-armor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/stone-armor/mineral-armor';
 
 export const Minerals: Power = withOverrides(base, overrides);

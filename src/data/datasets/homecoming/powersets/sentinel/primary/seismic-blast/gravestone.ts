@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Gravestone as base } from '@/data/generated/powersets/sentinel/primary/seismic-blast/gravestone';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/seismic-blast/gravestone';
+import { Gravestone as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/seismic-blast/gravestone';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/seismic-blast/gravestone';
 
 export const Gravestone: Power = withOverrides(base, overrides);

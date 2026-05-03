@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PersonalForceField as base } from '@/data/generated/powersets/controller/secondary/force-field/personal-force-field';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/force-field/personal-force-field';
+import { PersonalForceField as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/force-field/personal-force-field';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/force-field/personal-force-field';
 
 export const PersonalForceField: Power = withOverrides(base, overrides);

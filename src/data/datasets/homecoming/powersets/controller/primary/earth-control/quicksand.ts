@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Quicksand as base } from '@/data/generated/powersets/controller/primary/earth-control/quicksand';
-import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/quicksand';
+import { Quicksand as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/earth-control/quicksand';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/earth-control/quicksand';
 
 export const Quicksand: Power = withOverrides(base, overrides);

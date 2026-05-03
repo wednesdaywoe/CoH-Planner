@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Amplify as base } from '@/data/generated/powersets/sentinel/primary/sonic-attack/amplify';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/sonic-attack/amplify';
+import { Amplify as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/sonic-attack/amplify';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/sonic-attack/amplify';
 
 export const Amplify: Power = withOverrides(base, overrides);

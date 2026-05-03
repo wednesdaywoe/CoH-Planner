@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WaterJet as base } from '@/data/generated/powersets/sentinel/primary/water-blast/water-jet';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/water-blast/water-jet';
+import { WaterJet as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/water-blast/water-jet';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/water-blast/water-jet';
 
 export const WaterJet: Power = withOverrides(base, overrides);

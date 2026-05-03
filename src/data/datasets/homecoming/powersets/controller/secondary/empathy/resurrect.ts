@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Resurrect as base } from '@/data/generated/powersets/controller/secondary/empathy/resurrect';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/empathy/resurrect';
+import { Resurrect as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/empathy/resurrect';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/empathy/resurrect';
 
 export const Resurrect: Power = withOverrides(base, overrides);

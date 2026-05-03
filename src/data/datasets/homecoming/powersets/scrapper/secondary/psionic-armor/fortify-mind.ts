@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PsychokineticBarrier as base } from '@/data/generated/powersets/scrapper/secondary/psionic-armor/fortify-mind';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/psionic-armor/fortify-mind';
+import { PsychokineticBarrier as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/psionic-armor/fortify-mind';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/psionic-armor/fortify-mind';
 
 export const PsychokineticBarrier: Power = withOverrides(base, overrides);

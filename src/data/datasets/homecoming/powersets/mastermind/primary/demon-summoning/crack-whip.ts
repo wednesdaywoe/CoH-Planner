@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrackWhip as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/crack-whip';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/crack-whip';
+import { CrackWhip as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/demon-summoning/crack-whip';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/demon-summoning/crack-whip';
 
 export const CrackWhip: Power = withOverrides(base, overrides);

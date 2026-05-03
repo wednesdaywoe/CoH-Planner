@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Earsplitter as base } from '@/data/generated/powersets/tanker/secondary/sonic-melee/earsplitter';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/sonic-melee/earsplitter';
+import { Earsplitter as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/sonic-melee/earsplitter';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/sonic-melee/earsplitter';
 
 export const Earsplitter: Power = withOverrides(base, overrides);

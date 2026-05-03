@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { KujiInSha as base } from '@/data/generated/powersets/stalker/secondary/ninjitsu/kuji-in-sha';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/ninjitsu/kuji-in-sha';
+import { KujiInSha as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/ninjitsu/kuji-in-sha';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/ninjitsu/kuji-in-sha';
 
 export const KujiInSha: Power = withOverrides(base, overrides);

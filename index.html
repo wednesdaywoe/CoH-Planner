@@ -73,8 +73,24 @@
           <!-- Loading indicator -->
           <div style="display: flex; align-items: center; justify-content: center; gap: 12px; color: #64748b; font-size: 14px;">
             <div style="width: 20px; height: 20px; border: 2px solid #1e293b; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-            <span>Loading planner...</span>
+            <span id="loading-label">Loading planner...</span>
           </div>
+          <script>
+            // Personalize the loading message when the user explicitly asked
+            // for a server (via ?serverId=) — that path is also the one taken
+            // when switching servers, so the user gets continuity from the
+            // pre-reload overlay.
+            (function () {
+              try {
+                var id = new URLSearchParams(location.search).get('serverId');
+                if (!id) return;
+                var label = id === 'rebirth' ? 'Rebirth' : id === 'homecoming' ? 'Homecoming' : null;
+                if (!label) return;
+                var el = document.getElementById('loading-label');
+                if (el) el.textContent = 'Loading ' + label + ' data — this can take a moment...';
+              } catch (e) { /* ignore */ }
+            })();
+          </script>
         </div>
 
         <!-- Feature cards -->

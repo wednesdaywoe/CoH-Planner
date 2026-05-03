@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SteamyMist as base } from '@/data/generated/powersets/corruptor/secondary/storm-summoning/steamy-mist';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/storm-summoning/steamy-mist';
+import { SteamyMist as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/storm-summoning/steamy-mist';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/storm-summoning/steamy-mist';
 
 export const SteamyMist: Power = withOverrides(base, overrides);

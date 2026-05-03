@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EagleEye as base } from '@/data/generated/powersets/blaster/secondary/tactical-arrow/eagle-eye';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/tactical-arrow/eagle-eye';
+import { EagleEye as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/tactical-arrow/eagle-eye';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/tactical-arrow/eagle-eye';
 
 export const EagleEye: Power = withOverrides(base, overrides);

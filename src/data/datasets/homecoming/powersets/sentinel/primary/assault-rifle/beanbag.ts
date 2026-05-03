@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DisorientingShot as base } from '@/data/generated/powersets/sentinel/primary/assault-rifle/beanbag';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/assault-rifle/beanbag';
+import { DisorientingShot as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/assault-rifle/beanbag';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/assault-rifle/beanbag';
 
 export const DisorientingShot: Power = withOverrides(base, overrides);

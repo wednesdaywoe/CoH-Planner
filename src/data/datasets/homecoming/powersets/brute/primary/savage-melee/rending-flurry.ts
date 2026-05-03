@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RendingFlurry as base } from '@/data/generated/powersets/brute/primary/savage-melee/rending-flurry';
-import { overrides } from '@/data/overrides/powersets/brute/primary/savage-melee/rending-flurry';
+import { RendingFlurry as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/savage-melee/rending-flurry';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/savage-melee/rending-flurry';
 
 export const RendingFlurry: Power = withOverrides(base, overrides);

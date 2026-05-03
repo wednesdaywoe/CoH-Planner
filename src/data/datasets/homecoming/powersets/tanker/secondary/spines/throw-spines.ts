@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ThrowSpines as base } from '@/data/generated/powersets/tanker/secondary/spines/throw-spines';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/spines/throw-spines';
+import { ThrowSpines as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/spines/throw-spines';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/spines/throw-spines';
 
 export const ThrowSpines: Power = withOverrides(base, overrides);

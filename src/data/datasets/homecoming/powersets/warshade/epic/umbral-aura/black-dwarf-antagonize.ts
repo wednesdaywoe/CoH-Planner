@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BlackDwarfAntagonize as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/black-dwarf-antagonize';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/black-dwarf-antagonize';
+import { BlackDwarfAntagonize as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-aura/black-dwarf-antagonize';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-aura/black-dwarf-antagonize';
 
 export const BlackDwarfAntagonize: Power = withOverrides(base, overrides);

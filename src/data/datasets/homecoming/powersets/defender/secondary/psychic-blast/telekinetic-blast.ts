@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TelekineticBlast as base } from '@/data/generated/powersets/defender/secondary/psychic-blast/telekinetic-blast';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/psychic-blast/telekinetic-blast';
+import { TelekineticBlast as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/psychic-blast/telekinetic-blast';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/psychic-blast/telekinetic-blast';
 
 export const TelekineticBlast: Power = withOverrides(base, overrides);

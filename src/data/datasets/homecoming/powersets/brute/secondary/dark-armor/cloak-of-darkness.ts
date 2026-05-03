@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CloakofDarkness as base } from '@/data/generated/powersets/brute/secondary/dark-armor/cloak-of-darkness';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/dark-armor/cloak-of-darkness';
+import { CloakofDarkness as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/dark-armor/cloak-of-darkness';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/dark-armor/cloak-of-darkness';
 
 export const CloakofDarkness: Power = withOverrides(base, overrides);

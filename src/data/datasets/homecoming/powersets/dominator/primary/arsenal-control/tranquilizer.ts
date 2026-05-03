@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Tranquilizer as base } from '@/data/generated/powersets/dominator/primary/arsenal-control/tranquilizer';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/arsenal-control/tranquilizer';
+import { Tranquilizer as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/arsenal-control/tranquilizer';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/arsenal-control/tranquilizer';
 
 export const Tranquilizer: Power = withOverrides(base, overrides);

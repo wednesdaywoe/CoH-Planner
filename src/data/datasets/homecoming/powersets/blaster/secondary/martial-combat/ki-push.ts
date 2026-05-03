@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { KiPush as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/ki-push';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/ki-push';
+import { KiPush as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/martial-combat/ki-push';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/martial-combat/ki-push';
 
 export const KiPush: Power = withOverrides(base, overrides);

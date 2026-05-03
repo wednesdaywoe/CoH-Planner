@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DNASiphon as base } from '@/data/generated/powersets/tanker/primary/bio-armor/dna-siphon';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/bio-armor/dna-siphon';
+import { DNASiphon as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/bio-armor/dna-siphon';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/bio-armor/dna-siphon';
 
 export const DNASiphon: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StoneSpears as base } from '@/data/generated/powersets/dominator/secondary/earth-assault/stone-spears';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/earth-assault/stone-spears';
+import { StoneSpears as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/earth-assault/stone-spears';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/earth-assault/stone-spears';
 
 export const StoneSpears: Power = withOverrides(base, overrides);

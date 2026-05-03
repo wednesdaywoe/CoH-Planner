@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StingoftheWasp as base } from '@/data/generated/powersets/blaster/secondary/ninja-training/sting-of-the-wasp';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/ninja-training/sting-of-the-wasp';
+import { StingoftheWasp as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/ninja-training/sting-of-the-wasp';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/ninja-training/sting-of-the-wasp';
 
 export const StingoftheWasp: Power = withOverrides(base, overrides);

@@ -41,7 +41,7 @@ const PROJECT_ROOT = path.join(__dirname, '..');
 const REBIRTH_BOOSTSETS_JSON = path.join(
   PROJECT_ROOT, 'tools/bin-crawler/exported_powers/rebirth/boostsets.json'
 );
-const HC_IO_SETS_RAW = path.join(PROJECT_ROOT, 'src/data/io-sets-raw.ts');
+const HC_IO_SETS_RAW = path.join(PROJECT_ROOT, 'src/data/datasets/homecoming/io-sets-raw.ts');
 const OUTPUT_PATH = path.join(PROJECT_ROOT, 'src/data/datasets/rebirth/io-sets-raw.ts');
 
 // ----------------------------------------------------------------------

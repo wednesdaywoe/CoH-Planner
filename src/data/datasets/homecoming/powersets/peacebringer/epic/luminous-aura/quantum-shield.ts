@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { QuantumShield as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/quantum-shield';
-import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/quantum-shield';
+import { QuantumShield as base } from '@/data/datasets/homecoming/generated/powersets/peacebringer/epic/luminous-aura/quantum-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/peacebringer/epic/luminous-aura/quantum-shield';
 
 export const QuantumShield: Power = withOverrides(base, overrides);

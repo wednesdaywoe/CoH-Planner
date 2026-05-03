@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Stalagmite as base } from '@/data/generated/powersets/sentinel/primary/seismic-blast/stalagmite';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/seismic-blast/stalagmite';
+import { Stalagmite as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/seismic-blast/stalagmite';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/seismic-blast/stalagmite';
 
 export const Stalagmite: Power = withOverrides(base, overrides);

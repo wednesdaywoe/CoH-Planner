@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MasterfulThrow as base } from '@/data/generated/powersets/dominator/secondary/martial-assault/masterful-throw';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/martial-assault/masterful-throw';
+import { MasterfulThrow as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/martial-assault/masterful-throw';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/martial-assault/masterful-throw';
 
 export const MasterfulThrow: Power = withOverrides(base, overrides);

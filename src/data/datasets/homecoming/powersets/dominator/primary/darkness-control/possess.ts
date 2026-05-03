@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Possess as base } from '@/data/generated/powersets/dominator/primary/darkness-control/possess';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/darkness-control/possess';
+import { Possess as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/darkness-control/possess';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/darkness-control/possess';
 
 export const Possess: Power = withOverrides(base, overrides);

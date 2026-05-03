@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HavocPunch as base } from '@/data/generated/powersets/scrapper/primary/electrical-melee/havoc-punch';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/electrical-melee/havoc-punch';
+import { HavocPunch as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/electrical-melee/havoc-punch';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/electrical-melee/havoc-punch';
 
 export const HavocPunch: Power = withOverrides(base, overrides);

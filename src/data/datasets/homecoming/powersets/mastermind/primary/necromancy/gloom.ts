@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Gloom as base } from '@/data/generated/powersets/mastermind/primary/necromancy/gloom';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/necromancy/gloom';
+import { Gloom as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/necromancy/gloom';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/necromancy/gloom';
 
 export const Gloom: Power = withOverrides(base, overrides);

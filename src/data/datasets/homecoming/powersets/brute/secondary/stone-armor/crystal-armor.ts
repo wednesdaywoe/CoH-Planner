@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrystalArmor as base } from '@/data/generated/powersets/brute/secondary/stone-armor/crystal-armor';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/stone-armor/crystal-armor';
+import { CrystalArmor as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/stone-armor/crystal-armor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/stone-armor/crystal-armor';
 
 export const CrystalArmor: Power = withOverrides(base, overrides);

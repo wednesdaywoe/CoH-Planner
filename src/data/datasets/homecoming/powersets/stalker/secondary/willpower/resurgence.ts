@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Resurgence as base } from '@/data/generated/powersets/stalker/secondary/willpower/resurgence';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/willpower/resurgence';
+import { Resurgence as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/willpower/resurgence';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/willpower/resurgence';
 
 export const Resurgence: Power = withOverrides(base, overrides);

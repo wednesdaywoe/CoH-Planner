@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BuildUp as base } from '@/data/generated/powersets/tanker/secondary/broad-sword/build-up';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/broad-sword/build-up';
+import { BuildUp as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/broad-sword/build-up';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/broad-sword/build-up';
 
 export const BuildUp: Power = withOverrides(base, overrides);

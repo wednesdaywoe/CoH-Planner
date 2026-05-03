@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Ionize as base } from '@/data/generated/powersets/blaster/secondary/atomic-manipulation/ionize';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/atomic-manipulation/ionize';
+import { Ionize as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/atomic-manipulation/ionize';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/atomic-manipulation/ionize';
 
 export const Ionize: Power = withOverrides(base, overrides);

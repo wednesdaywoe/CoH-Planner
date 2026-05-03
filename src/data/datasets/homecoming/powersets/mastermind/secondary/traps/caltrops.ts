@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Caltrops as base } from '@/data/generated/powersets/mastermind/secondary/traps/caltrops';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/traps/caltrops';
+import { Caltrops as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/traps/caltrops';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/traps/caltrops';
 
 export const Caltrops: Power = withOverrides(base, overrides);

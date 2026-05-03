@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WolfSpiderArmor as base } from '@/data/generated/powersets/arachnos-soldier/epic/training-and-gadgets/wolf-spider-armor';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/wolf-spider-armor';
+import { WolfSpiderArmor as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/training-and-gadgets/wolf-spider-armor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/wolf-spider-armor';
 
 export const WolfSpiderArmor: Power = withOverrides(base, overrides);

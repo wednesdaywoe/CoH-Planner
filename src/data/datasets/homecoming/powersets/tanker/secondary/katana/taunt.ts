@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DragonsRoar as base } from '@/data/generated/powersets/tanker/secondary/katana/taunt';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/katana/taunt';
+import { DragonsRoar as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/katana/taunt';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/katana/taunt';
 
 export const DragonsRoar: Power = withOverrides(base, overrides);

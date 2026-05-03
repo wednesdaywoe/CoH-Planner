@@ -41,18 +41,10 @@ const RAW_POWERS_PATH = (() => {
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
 const datasetId = parseDatasetArg();
 
-// HC keeps writing to legacy `src/data/` paths until the deferred powerset-
-// tree migration. Other datasets write into their dataset folder.
-const useLegacyOutput = datasetId === 'homecoming';
-const OUTPUT_PATH = useLegacyOutput
-  ? dataPath('generated', 'epic-pools.ts')
-  : datasetPath(datasetId, 'generated', 'epic-pools.ts');
-const COMPOSED_PATH = useLegacyOutput
-  ? dataPath('epic-pools-raw.ts')
-  : datasetPath(datasetId, 'epic-pools-raw.ts');
-const OVERRIDES_PATH = useLegacyOutput
-  ? dataPath('overrides', 'epic-pools.ts')
-  : datasetPath(datasetId, 'overrides', 'epic-pools.ts');
+// All datasets write under `src/data/datasets/<id>/`.
+const OUTPUT_PATH = datasetPath(datasetId, 'generated', 'epic-pools.ts');
+const COMPOSED_PATH = datasetPath(datasetId, 'epic-pools-raw.ts');
+const OVERRIDES_PATH = datasetPath(datasetId, 'overrides', 'epic-pools.ts');
 
 // Parse CLI args
 const args = process.argv.slice(2);
@@ -426,7 +418,7 @@ export const EPIC_POOL_OVERRIDES: Record<string, Partial<Power>> = {};
       // `_layer` lives at `src/data/_layer.ts`. HC's composed file is a
       // sibling so `./_layer` works; other datasets sit at
       // `src/data/datasets/<id>/` and need the absolute alias.
-      const layerImport = useLegacyOutput ? './_layer' : '@/data/_layer';
+      const layerImport = '@/data/_layer';
       fs.writeFileSync(COMPOSED_PATH, `/**
  * Epic/Patron Pool data — COMPOSED FACADE
  *

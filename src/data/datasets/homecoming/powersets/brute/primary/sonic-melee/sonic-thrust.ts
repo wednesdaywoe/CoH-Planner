@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SonicThrust as base } from '@/data/generated/powersets/brute/primary/sonic-melee/sonic-thrust';
-import { overrides } from '@/data/overrides/powersets/brute/primary/sonic-melee/sonic-thrust';
+import { SonicThrust as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/sonic-melee/sonic-thrust';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/sonic-melee/sonic-thrust';
 
 export const SonicThrust: Power = withOverrides(base, overrides);

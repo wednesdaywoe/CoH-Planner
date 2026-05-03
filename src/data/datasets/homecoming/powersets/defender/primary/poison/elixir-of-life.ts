@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ElixirofLife as base } from '@/data/generated/powersets/defender/primary/poison/elixir-of-life';
-import { overrides } from '@/data/overrides/powersets/defender/primary/poison/elixir-of-life';
+import { ElixirofLife as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/poison/elixir-of-life';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/poison/elixir-of-life';
 
 export const ElixirofLife: Power = withOverrides(base, overrides);

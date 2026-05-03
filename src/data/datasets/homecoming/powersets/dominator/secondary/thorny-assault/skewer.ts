@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Skewer as base } from '@/data/generated/powersets/dominator/secondary/thorny-assault/skewer';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/thorny-assault/skewer';
+import { Skewer as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/thorny-assault/skewer';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/thorny-assault/skewer';
 
 export const Skewer: Power = withOverrides(base, overrides);

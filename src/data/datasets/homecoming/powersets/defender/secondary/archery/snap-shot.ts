@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SnapShot as base } from '@/data/generated/powersets/defender/secondary/archery/snap-shot';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/archery/snap-shot';
+import { SnapShot as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/archery/snap-shot';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/archery/snap-shot';
 
 export const SnapShot: Power = withOverrides(base, overrides);

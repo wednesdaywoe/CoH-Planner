@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BodyBlow as base } from '@/data/generated/powersets/scrapper/primary/kinetic-melee/body-blow';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/kinetic-melee/body-blow';
+import { BodyBlow as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/kinetic-melee/body-blow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/kinetic-melee/body-blow';
 
 export const BodyBlow: Power = withOverrides(base, overrides);

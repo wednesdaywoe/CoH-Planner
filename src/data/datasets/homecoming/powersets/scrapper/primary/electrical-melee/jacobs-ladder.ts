@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { JacobsLadder as base } from '@/data/generated/powersets/scrapper/primary/electrical-melee/jacobs-ladder';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/electrical-melee/jacobs-ladder';
+import { JacobsLadder as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/electrical-melee/jacobs-ladder';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/electrical-melee/jacobs-ladder';
 
 export const JacobsLadder: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { M30Grenade as base } from '@/data/generated/powersets/blaster/primary/assault-rifle/m30-grenade';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/assault-rifle/m30-grenade';
+import { M30Grenade as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/assault-rifle/m30-grenade';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/assault-rifle/m30-grenade';
 
 export const M30Grenade: Power = withOverrides(base, overrides);

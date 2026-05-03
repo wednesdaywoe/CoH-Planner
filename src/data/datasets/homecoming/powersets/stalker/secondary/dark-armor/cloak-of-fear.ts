@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CloakofFear as base } from '@/data/generated/powersets/stalker/secondary/dark-armor/cloak-of-fear';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/dark-armor/cloak-of-fear';
+import { CloakofFear as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/dark-armor/cloak-of-fear';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/dark-armor/cloak-of-fear';
 
 export const CloakofFear: Power = withOverrides(base, overrides);

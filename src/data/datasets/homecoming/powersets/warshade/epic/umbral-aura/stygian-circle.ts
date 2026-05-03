@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StygianCircle as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/stygian-circle';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/stygian-circle';
+import { StygianCircle as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-aura/stygian-circle';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-aura/stygian-circle';
 
 export const StygianCircle: Power = withOverrides(base, overrides);

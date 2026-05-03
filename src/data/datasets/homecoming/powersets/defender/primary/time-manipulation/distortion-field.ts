@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DistortionField as base } from '@/data/generated/powersets/defender/primary/time-manipulation/distortion-field';
-import { overrides } from '@/data/overrides/powersets/defender/primary/time-manipulation/distortion-field';
+import { DistortionField as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/time-manipulation/distortion-field';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/time-manipulation/distortion-field';
 
 export const DistortionField: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WebGrenade as base } from '@/data/generated/powersets/controller/secondary/traps/web-grenade';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/traps/web-grenade';
+import { WebGrenade as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/traps/web-grenade';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/traps/web-grenade';
 
 export const WebGrenade: Power = withOverrides(base, overrides);

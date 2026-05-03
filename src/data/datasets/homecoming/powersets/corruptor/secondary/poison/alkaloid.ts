@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Alkaloid as base } from '@/data/generated/powersets/corruptor/secondary/poison/alkaloid';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/poison/alkaloid';
+import { Alkaloid as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/poison/alkaloid';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/poison/alkaloid';
 
 export const Alkaloid: Power = withOverrides(base, overrides);

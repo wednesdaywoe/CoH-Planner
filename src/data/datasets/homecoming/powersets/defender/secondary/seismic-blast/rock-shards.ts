@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RockShards as base } from '@/data/generated/powersets/defender/secondary/seismic-blast/rock-shards';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/seismic-blast/rock-shards';
+import { RockShards as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/seismic-blast/rock-shards';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/seismic-blast/rock-shards';
 
 export const RockShards: Power = withOverrides(base, overrides);

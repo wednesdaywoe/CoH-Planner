@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IceArrow as base } from '@/data/generated/powersets/blaster/secondary/tactical-arrow/ice-arrow';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/tactical-arrow/ice-arrow';
+import { IceArrow as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/tactical-arrow/ice-arrow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/tactical-arrow/ice-arrow';
 
 export const IceArrow: Power = withOverrides(base, overrides);

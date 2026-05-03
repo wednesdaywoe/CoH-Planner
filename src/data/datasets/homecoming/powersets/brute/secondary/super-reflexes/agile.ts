@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Agile as base } from '@/data/generated/powersets/brute/secondary/super-reflexes/agile';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/super-reflexes/agile';
+import { Agile as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/super-reflexes/agile';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/super-reflexes/agile';
 
 export const Agile: Power = withOverrides(base, overrides);

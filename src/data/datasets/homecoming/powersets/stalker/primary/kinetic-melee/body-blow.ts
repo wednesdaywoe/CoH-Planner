@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BodyBlow as base } from '@/data/generated/powersets/stalker/primary/kinetic-melee/body-blow';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/kinetic-melee/body-blow';
+import { BodyBlow as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/kinetic-melee/body-blow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/kinetic-melee/body-blow';
 
 export const BodyBlow: Power = withOverrides(base, overrides);

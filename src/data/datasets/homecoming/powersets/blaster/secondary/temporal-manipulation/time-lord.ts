@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TimeLord as base } from '@/data/generated/powersets/blaster/secondary/temporal-manipulation/time-lord';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/temporal-manipulation/time-lord';
+import { TimeLord as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/temporal-manipulation/time-lord';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/temporal-manipulation/time-lord';
 
 export const TimeLord: Power = withOverrides(base, overrides);

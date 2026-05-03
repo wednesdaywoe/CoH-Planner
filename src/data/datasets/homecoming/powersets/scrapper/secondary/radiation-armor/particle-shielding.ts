@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ParticleShielding as base } from '@/data/generated/powersets/scrapper/secondary/radiation-armor/particle-shielding';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/radiation-armor/particle-shielding';
+import { ParticleShielding as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/radiation-armor/particle-shielding';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/radiation-armor/particle-shielding';
 
 export const ParticleShielding: Power = withOverrides(base, overrides);

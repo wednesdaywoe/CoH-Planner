@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GravityShield as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/gravity-shield';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/gravity-shield';
+import { GravityShield as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-aura/gravity-shield';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-aura/gravity-shield';
 
 export const GravityShield: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SmokeFlash as base } from '@/data/generated/powersets/blaster/secondary/ninja-training/smoke-flash';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/ninja-training/smoke-flash';
+import { SmokeFlash as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/ninja-training/smoke-flash';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/ninja-training/smoke-flash';
 
 export const SmokeFlash: Power = withOverrides(base, overrides);

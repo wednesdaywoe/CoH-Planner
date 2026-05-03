@@ -12,8 +12,7 @@
  *   - interface/ + interface_silent/ → Proc debuffs on enemies
  *
  * Outputs:
- *   - homecoming: src/data/generated/incarnate-effects.ts (legacy)
- *   - other:      src/data/datasets/<id>/generated/incarnate-effects.ts
+ *   src/data/datasets/<id>/generated/incarnate-effects.ts
  *
  * Usage: node scripts/convert-incarnate-effects.cjs [--dataset <id>] [--dry-run]
  */
@@ -21,7 +20,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
+const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
 const datasetId = parseDatasetArg();
 
 // Source: bin-crawler JSON export. HC keeps the legacy flat layout
@@ -32,12 +31,7 @@ const RAW_BASE = (datasetId === 'homecoming' && !fs.existsSync(path.join(RAW_DAT
   ? path.join(RAW_DATA_BASE, 'incarnate')
   : path.join(RAW_DATA_BASE, datasetId, 'incarnate');
 
-// HC keeps writing to the legacy `src/data/generated/` path. Other
-// datasets land under `src/data/datasets/<id>/generated/`.
-const useLegacyOutput = datasetId === 'homecoming';
-const OUTPUT_FILE = useLegacyOutput
-  ? dataPath('generated', 'incarnate-effects.ts')
-  : datasetPath(datasetId, 'generated', 'incarnate-effects.ts');
+const OUTPUT_FILE = datasetPath(datasetId, 'generated', 'incarnate-effects.ts');
 const DRY_RUN = process.argv.includes('--dry-run');
 
 // ============================================

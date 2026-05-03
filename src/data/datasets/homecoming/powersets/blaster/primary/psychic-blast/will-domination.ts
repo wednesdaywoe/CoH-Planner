@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DominateWill as base } from '@/data/generated/powersets/blaster/primary/psychic-blast/will-domination';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/psychic-blast/will-domination';
+import { DominateWill as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/psychic-blast/will-domination';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/psychic-blast/will-domination';
 
 export const DominateWill: Power = withOverrides(base, overrides);

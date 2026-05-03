@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BoundlessEnergy as base } from '@/data/generated/powersets/stalker/secondary/bio-armor/boundless-energy';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/bio-armor/boundless-energy';
+import { BoundlessEnergy as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/bio-armor/boundless-energy';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/bio-armor/boundless-energy';
 
 export const BoundlessEnergy: Power = withOverrides(base, overrides);

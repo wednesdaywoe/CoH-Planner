@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HurlBoulder as base } from '@/data/generated/powersets/dominator/secondary/earth-assault/hurl-boulder';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/earth-assault/hurl-boulder';
+import { HurlBoulder as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/earth-assault/hurl-boulder';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/earth-assault/hurl-boulder';
 
 export const HurlBoulder: Power = withOverrides(base, overrides);

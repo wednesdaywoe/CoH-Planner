@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Burst as base } from '@/data/generated/powersets/stalker/primary/kinetic-melee/burst';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/kinetic-melee/burst';
+import { Burst as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/kinetic-melee/burst';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/kinetic-melee/burst';
 
 export const Burst: Power = withOverrides(base, overrides);

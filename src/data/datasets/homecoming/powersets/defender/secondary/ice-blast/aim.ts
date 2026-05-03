@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Aim as base } from '@/data/generated/powersets/defender/secondary/ice-blast/aim';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/ice-blast/aim';
+import { Aim as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/ice-blast/aim';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/ice-blast/aim';
 
 export const Aim: Power = withOverrides(base, overrides);

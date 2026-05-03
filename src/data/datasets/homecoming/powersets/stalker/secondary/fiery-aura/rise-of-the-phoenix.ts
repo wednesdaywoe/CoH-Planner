@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PhoenixRising as base } from '@/data/generated/powersets/stalker/secondary/fiery-aura/rise-of-the-phoenix';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/fiery-aura/rise-of-the-phoenix';
+import { PhoenixRising as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/fiery-aura/rise-of-the-phoenix';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/fiery-aura/rise-of-the-phoenix';
 
 export const PhoenixRising: Power = withOverrides(base, overrides);

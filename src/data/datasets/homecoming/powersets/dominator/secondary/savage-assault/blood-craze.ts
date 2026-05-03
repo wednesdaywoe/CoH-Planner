@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BloodCraze as base } from '@/data/generated/powersets/dominator/secondary/savage-assault/blood-craze';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/savage-assault/blood-craze';
+import { BloodCraze as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/savage-assault/blood-craze';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/savage-assault/blood-craze';
 
 export const BloodCraze: Power = withOverrides(base, overrides);

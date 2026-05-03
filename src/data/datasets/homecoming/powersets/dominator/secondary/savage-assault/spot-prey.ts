@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SpotPrey as base } from '@/data/generated/powersets/dominator/secondary/savage-assault/spot-prey';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/savage-assault/spot-prey';
+import { SpotPrey as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/savage-assault/spot-prey';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/savage-assault/spot-prey';
 
 export const SpotPrey: Power = withOverrides(base, overrides);

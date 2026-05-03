@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Disintegrate as base } from '@/data/generated/powersets/blaster/primary/beam-rifle/disintegrate';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/beam-rifle/disintegrate';
+import { Disintegrate as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/beam-rifle/disintegrate';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/beam-rifle/disintegrate';
 
 export const Disintegrate: Power = withOverrides(base, overrides);

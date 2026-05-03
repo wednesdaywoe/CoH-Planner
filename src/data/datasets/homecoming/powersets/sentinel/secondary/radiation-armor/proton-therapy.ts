@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ProtonTherapy as base } from '@/data/generated/powersets/sentinel/secondary/radiation-armor/proton-therapy';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/radiation-armor/proton-therapy';
+import { ProtonTherapy as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/radiation-armor/proton-therapy';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/radiation-armor/proton-therapy';
 
 export const ProtonTherapy: Power = withOverrides(base, overrides);

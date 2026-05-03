@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TimesJuncture as base } from '@/data/generated/powersets/defender/primary/time-manipulation/times-juncture';
-import { overrides } from '@/data/overrides/powersets/defender/primary/time-manipulation/times-juncture';
+import { TimesJuncture as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/time-manipulation/times-juncture';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/time-manipulation/times-juncture';
 
 export const TimesJuncture: Power = withOverrides(base, overrides);

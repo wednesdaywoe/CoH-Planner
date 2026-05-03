@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkPit as base } from '@/data/generated/powersets/defender/secondary/dark-blast/dark-pit';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/dark-blast/dark-pit';
+import { DarkPit as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/dark-blast/dark-pit';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/dark-blast/dark-pit';
 
 export const DarkPit: Power = withOverrides(base, overrides);

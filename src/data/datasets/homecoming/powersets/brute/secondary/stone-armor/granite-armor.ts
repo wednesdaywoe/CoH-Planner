@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GraniteArmor as base } from '@/data/generated/powersets/brute/secondary/stone-armor/granite-armor';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/stone-armor/granite-armor';
+import { GraniteArmor as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/stone-armor/granite-armor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/stone-armor/granite-armor';
 
 export const GraniteArmor: Power = withOverrides(base, overrides);

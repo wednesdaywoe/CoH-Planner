@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BitterIceBlast as base } from '@/data/generated/powersets/dominator/secondary/icy-assault/bitter-ice-blast';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/icy-assault/bitter-ice-blast';
+import { BitterIceBlast as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/icy-assault/bitter-ice-blast';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/icy-assault/bitter-ice-blast';
 
 export const BitterIceBlast: Power = withOverrides(base, overrides);

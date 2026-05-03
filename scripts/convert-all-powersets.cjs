@@ -104,11 +104,8 @@ for (const [category, info] of Object.entries(ALL_CATEGORIES)) {
   for (const powerset of powersets) {
     // Output dir matches the per-powerset converter's destination so the
     // [EXISTS] / --force / rmSync checks all line up with the actual write
-    // path. Defaults to legacy `src/data/powersets/...` for HC; routes to
-    // `src/data/datasets/<id>/powersets/...` for any other dataset.
-    const outputDir = datasetId === 'homecoming'
-      ? `./src/data/powersets/${info.archetype}/${info.type}/${powerset.replace(/_/g, '-')}`
-      : `./src/data/datasets/${datasetId}/powersets/${info.archetype}/${info.type}/${powerset.replace(/_/g, '-')}`;
+    // path. All datasets write under `src/data/datasets/<id>/powersets/...`.
+    const outputDir = `./src/data/datasets/${datasetId}/powersets/${info.archetype}/${info.type}/${powerset.replace(/_/g, '-')}`;
 
     // Check if already converted (skip unless --force)
     if (!force && fs.existsSync(outputDir) && fs.existsSync(path.join(outputDir, 'index.ts'))) {

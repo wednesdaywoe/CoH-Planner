@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MurkyCloud as base } from '@/data/generated/powersets/scrapper/secondary/dark-armor/defracting-cloud';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/dark-armor/defracting-cloud';
+import { MurkyCloud as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/dark-armor/defracting-cloud';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/dark-armor/defracting-cloud';
 
 export const MurkyCloud: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WarriorsProvocation as base } from '@/data/generated/powersets/brute/primary/martial-arts/warriors-provocation';
-import { overrides } from '@/data/overrides/powersets/brute/primary/martial-arts/warriors-provocation';
+import { WarriorsProvocation as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/martial-arts/warriors-provocation';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/martial-arts/warriors-provocation';
 
 export const WarriorsProvocation: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StingoftheWasp as base } from '@/data/generated/powersets/tanker/secondary/katana/hack';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/katana/hack';
+import { StingoftheWasp as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/katana/hack';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/katana/hack';
 
 export const StingoftheWasp: Power = withOverrides(base, overrides);

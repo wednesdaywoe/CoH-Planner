@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { NebulousForm as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/nebulous-form';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/nebulous-form';
+import { NebulousForm as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-aura/nebulous-form';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-aura/nebulous-form';
 
 export const NebulousForm: Power = withOverrides(base, overrides);

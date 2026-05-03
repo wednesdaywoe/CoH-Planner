@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StoneCages as base } from '@/data/generated/powersets/controller/primary/earth-control/stone-cages';
-import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/stone-cages';
+import { StoneCages as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/earth-control/stone-cages';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/earth-control/stone-cages';
 
 export const StoneCages: Power = withOverrides(base, overrides);

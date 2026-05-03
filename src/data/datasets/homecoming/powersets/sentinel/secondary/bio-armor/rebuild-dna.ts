@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RebuildDNA as base } from '@/data/generated/powersets/sentinel/secondary/bio-armor/rebuild-dna';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/bio-armor/rebuild-dna';
+import { RebuildDNA as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/bio-armor/rebuild-dna';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/bio-armor/rebuild-dna';
 
 export const RebuildDNA: Power = withOverrides(base, overrides);

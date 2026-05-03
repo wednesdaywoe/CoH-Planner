@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DampingBubble as base } from '@/data/generated/powersets/controller/secondary/force-field/force-bubble';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/force-field/force-bubble';
+import { DampingBubble as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/force-field/force-bubble';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/force-field/force-bubble';
 
 export const DampingBubble: Power = withOverrides(base, overrides);

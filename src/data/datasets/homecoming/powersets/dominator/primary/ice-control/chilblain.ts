@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Chilblain as base } from '@/data/generated/powersets/dominator/primary/ice-control/chilblain';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/ice-control/chilblain';
+import { Chilblain as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/ice-control/chilblain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/ice-control/chilblain';
 
 export const Chilblain: Power = withOverrides(base, overrides);

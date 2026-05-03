@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Hoarfrost as base } from '@/data/generated/powersets/sentinel/secondary/ice-armor/hoarfrost';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ice-armor/hoarfrost';
+import { Hoarfrost as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/ice-armor/hoarfrost';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/ice-armor/hoarfrost';
 
 export const Hoarfrost: Power = withOverrides(base, overrides);

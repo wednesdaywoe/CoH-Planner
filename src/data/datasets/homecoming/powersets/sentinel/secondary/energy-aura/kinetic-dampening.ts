@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { KineticDampening as base } from '@/data/generated/powersets/sentinel/secondary/energy-aura/kinetic-dampening';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/energy-aura/kinetic-dampening';
+import { KineticDampening as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/energy-aura/kinetic-dampening';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/energy-aura/kinetic-dampening';
 
 export const KineticDampening: Power = withOverrides(base, overrides);

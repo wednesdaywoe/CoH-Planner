@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Stalagmites as base } from '@/data/generated/powersets/dominator/primary/earth-control/stalagmites';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/earth-control/stalagmites';
+import { Stalagmites as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/earth-control/stalagmites';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/earth-control/stalagmites';
 
 export const Stalagmites: Power = withOverrides(base, overrides);

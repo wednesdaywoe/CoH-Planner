@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ConsumePsyche as base } from '@/data/generated/powersets/brute/secondary/psionic-armor/consume-psyche';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/psionic-armor/consume-psyche';
+import { ConsumePsyche as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/psionic-armor/consume-psyche';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/psionic-armor/consume-psyche';
 
 export const ConsumePsyche: Power = withOverrides(base, overrides);

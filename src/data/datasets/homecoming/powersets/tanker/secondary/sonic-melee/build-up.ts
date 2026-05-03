@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SoundBooster as base } from '@/data/generated/powersets/tanker/secondary/sonic-melee/build-up';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/sonic-melee/build-up';
+import { SoundBooster as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/sonic-melee/build-up';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/sonic-melee/build-up';
 
 export const SoundBooster: Power = withOverrides(base, overrides);

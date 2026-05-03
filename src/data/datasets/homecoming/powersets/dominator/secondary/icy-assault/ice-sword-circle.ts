@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IceSwordCircle as base } from '@/data/generated/powersets/dominator/secondary/icy-assault/ice-sword-circle';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/icy-assault/ice-sword-circle';
+import { IceSwordCircle as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/icy-assault/ice-sword-circle';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/icy-assault/ice-sword-circle';
 
 export const IceSwordCircle: Power = withOverrides(base, overrides);

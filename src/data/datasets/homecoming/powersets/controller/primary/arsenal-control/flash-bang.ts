@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FlashBang as base } from '@/data/generated/powersets/controller/primary/arsenal-control/flash-bang';
-import { overrides } from '@/data/overrides/powersets/controller/primary/arsenal-control/flash-bang';
+import { FlashBang as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/arsenal-control/flash-bang';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/arsenal-control/flash-bang';
 
 export const FlashBang: Power = withOverrides(base, overrides);

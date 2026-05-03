@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AlphaBarrier as base } from '@/data/generated/powersets/scrapper/secondary/radiation-armor/alpha-barrier';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/radiation-armor/alpha-barrier';
+import { AlphaBarrier as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/radiation-armor/alpha-barrier';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/radiation-armor/alpha-barrier';
 
 export const AlphaBarrier: Power = withOverrides(base, overrides);

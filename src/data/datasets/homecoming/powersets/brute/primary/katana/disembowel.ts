@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SoaringDragon as base } from '@/data/generated/powersets/brute/primary/katana/disembowel';
-import { overrides } from '@/data/overrides/powersets/brute/primary/katana/disembowel';
+import { SoaringDragon as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/katana/disembowel';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/katana/disembowel';
 
 export const SoaringDragon: Power = withOverrides(base, overrides);

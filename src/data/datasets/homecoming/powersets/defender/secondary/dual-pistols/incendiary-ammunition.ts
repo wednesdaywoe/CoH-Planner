@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { IncendiaryAmmunition as base } from '@/data/generated/powersets/defender/secondary/dual-pistols/incendiary-ammunition';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/dual-pistols/incendiary-ammunition';
+import { IncendiaryAmmunition as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/dual-pistols/incendiary-ammunition';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/dual-pistols/incendiary-ammunition';
 
 export const IncendiaryAmmunition: Power = withOverrides(base, overrides);

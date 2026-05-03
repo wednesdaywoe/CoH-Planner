@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PerfectShot as base } from '@/data/generated/powersets/sentinel/primary/archery/ranged-shot';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/archery/ranged-shot';
+import { PerfectShot as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/archery/ranged-shot';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/archery/ranged-shot';
 
 export const PerfectShot: Power = withOverrides(base, overrides);

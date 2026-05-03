@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnchantDemon as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/enchant-demon';
-import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/enchant-demon';
+import { EnchantDemon as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/primary/demon-summoning/enchant-demon';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/primary/demon-summoning/enchant-demon';
 
 export const EnchantDemon: Power = withOverrides(base, overrides);

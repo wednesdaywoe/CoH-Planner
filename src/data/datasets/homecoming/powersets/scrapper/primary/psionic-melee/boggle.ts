@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Boggle as base } from '@/data/generated/powersets/scrapper/primary/psionic-melee/boggle';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/psionic-melee/boggle';
+import { Boggle as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/psionic-melee/boggle';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/psionic-melee/boggle';
 
 export const Boggle: Power = withOverrides(base, overrides);

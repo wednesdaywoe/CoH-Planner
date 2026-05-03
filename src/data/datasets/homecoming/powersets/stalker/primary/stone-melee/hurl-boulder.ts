@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HurlBoulder as base } from '@/data/generated/powersets/stalker/primary/stone-melee/hurl-boulder';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/stone-melee/hurl-boulder';
+import { HurlBoulder as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/stone-melee/hurl-boulder';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/stone-melee/hurl-boulder';
 
 export const HurlBoulder: Power = withOverrides(base, overrides);

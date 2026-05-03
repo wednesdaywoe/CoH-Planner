@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FreezingTouch as base } from '@/data/generated/powersets/blaster/secondary/ice-manipulation/freezing-touch';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/ice-manipulation/freezing-touch';
+import { FreezingTouch as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/ice-manipulation/freezing-touch';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/ice-manipulation/freezing-touch';
 
 export const FreezingTouch: Power = withOverrides(base, overrides);

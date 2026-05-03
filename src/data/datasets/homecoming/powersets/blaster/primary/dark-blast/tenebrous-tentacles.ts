@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TenebrousTentacles as base } from '@/data/generated/powersets/blaster/primary/dark-blast/tenebrous-tentacles';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/dark-blast/tenebrous-tentacles';
+import { TenebrousTentacles as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/dark-blast/tenebrous-tentacles';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/dark-blast/tenebrous-tentacles';
 
 export const TenebrousTentacles: Power = withOverrides(base, overrides);

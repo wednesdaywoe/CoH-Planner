@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AcidMortar as base } from '@/data/generated/powersets/defender/primary/traps/acid-mortar';
-import { overrides } from '@/data/overrides/powersets/defender/primary/traps/acid-mortar';
+import { AcidMortar as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/traps/acid-mortar';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/traps/acid-mortar';
 
 export const AcidMortar: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ImposePresence as base } from '@/data/generated/powersets/tanker/primary/psionic-armor/impose-presence';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/psionic-armor/impose-presence';
+import { ImposePresence as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/psionic-armor/impose-presence';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/psionic-armor/impose-presence';
 
 export const ImposePresence: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TelekineticThrust as base } from '@/data/generated/powersets/dominator/secondary/psionic-assault/telekinetic-thrust';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/psionic-assault/telekinetic-thrust';
+import { TelekineticThrust as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/psionic-assault/telekinetic-thrust';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/psionic-assault/telekinetic-thrust';
 
 export const TelekineticThrust: Power = withOverrides(base, overrides);

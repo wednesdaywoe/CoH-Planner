@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Smite as base } from '@/data/generated/powersets/blaster/secondary/darkness-manipulation/smite';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/darkness-manipulation/smite';
+import { Smite as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/darkness-manipulation/smite';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/darkness-manipulation/smite';
 
 export const Smite: Power = withOverrides(base, overrides);

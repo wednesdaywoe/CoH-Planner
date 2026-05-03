@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TriCannon as base } from '@/data/generated/powersets/controller/primary/arsenal-control/gun-drone';
-import { overrides } from '@/data/overrides/powersets/controller/primary/arsenal-control/gun-drone';
+import { TriCannon as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/arsenal-control/gun-drone';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/arsenal-control/gun-drone';
 
 export const TriCannon: Power = withOverrides(base, overrides);

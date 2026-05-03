@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FieryEmbrace as base } from '@/data/generated/powersets/scrapper/secondary/fiery-aura/fiery-embrace';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/fiery-aura/fiery-embrace';
+import { FieryEmbrace as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/fiery-aura/fiery-embrace';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/fiery-aura/fiery-embrace';
 
 export const FieryEmbrace: Power = withOverrides(base, overrides);

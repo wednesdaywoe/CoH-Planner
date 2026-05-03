@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ImpenetrableMind as base } from '@/data/generated/powersets/brute/secondary/psionic-armor/impenetrable-mind';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/psionic-armor/impenetrable-mind';
+import { ImpenetrableMind as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/psionic-armor/impenetrable-mind';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/psionic-armor/impenetrable-mind';
 
 export const ImpenetrableMind: Power = withOverrides(base, overrides);

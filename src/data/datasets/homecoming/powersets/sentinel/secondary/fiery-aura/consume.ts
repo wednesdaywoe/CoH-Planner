@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Consume as base } from '@/data/generated/powersets/sentinel/secondary/fiery-aura/consume';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/fiery-aura/consume';
+import { Consume as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/fiery-aura/consume';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/fiery-aura/consume';
 
 export const Consume: Power = withOverrides(base, overrides);

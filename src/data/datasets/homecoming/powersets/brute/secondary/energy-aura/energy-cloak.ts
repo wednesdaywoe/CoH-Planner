@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EnergyCloak as base } from '@/data/generated/powersets/brute/secondary/energy-aura/energy-cloak';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/energy-aura/energy-cloak';
+import { EnergyCloak as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/energy-aura/energy-cloak';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/energy-aura/energy-cloak';
 
 export const EnergyCloak: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkNovaEmanation as base } from '@/data/generated/powersets/warshade/epic/umbral-blast/dark-nova-emanation';
-import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-blast/dark-nova-emanation';
+import { DarkNovaEmanation as base } from '@/data/datasets/homecoming/generated/powersets/warshade/epic/umbral-blast/dark-nova-emanation';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/warshade/epic/umbral-blast/dark-nova-emanation';
 
 export const DarkNovaEmanation: Power = withOverrides(base, overrides);

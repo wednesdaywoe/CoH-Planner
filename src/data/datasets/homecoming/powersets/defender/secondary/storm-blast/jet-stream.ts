@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { JetStream as base } from '@/data/generated/powersets/defender/secondary/storm-blast/jet-stream';
-import { overrides } from '@/data/overrides/powersets/defender/secondary/storm-blast/jet-stream';
+import { JetStream as base } from '@/data/datasets/homecoming/generated/powersets/defender/secondary/storm-blast/jet-stream';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/secondary/storm-blast/jet-stream';
 
 export const JetStream: Power = withOverrides(base, overrides);

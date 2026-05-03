@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BoRyaku as base } from '@/data/generated/powersets/scrapper/secondary/ninjitsu/bo-ryaku';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ninjitsu/bo-ryaku';
+import { BoRyaku as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/ninjitsu/bo-ryaku';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/ninjitsu/bo-ryaku';
 
 export const BoRyaku: Power = withOverrides(base, overrides);

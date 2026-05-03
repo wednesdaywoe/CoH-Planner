@@ -15,9 +15,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// `--dataset <id>` flag — accepted for forward compat with the multi-
-// dataset migration. IO sets haven't migrated into `src/data/datasets/`
-// yet so we still write to the legacy `src/data/` path.
+// `--dataset <id>` flag — IO sets now live under
+// `src/data/datasets/<id>/io-sets-raw.ts`.
 function parseDatasetArg(argv) {
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--dataset' && i + 1 < argv.length) return argv[i + 1];
@@ -25,12 +24,11 @@ function parseDatasetArg(argv) {
   }
   return 'homecoming';
 }
-// eslint-disable-next-line no-unused-vars
 const datasetId = parseDatasetArg(process.argv);
 
 // Read the legacy file
 const legacyPath = path.join(__dirname, '../legacy/js/data/io-sets.js');
-const outputPath = path.join(__dirname, '../src/data/io-sets-raw.ts');
+const outputPath = path.join(__dirname, `../src/data/datasets/${datasetId}/io-sets-raw.ts`);
 
 console.log('Reading legacy IO sets data...');
 const legacyContent = fs.readFileSync(legacyPath, 'utf-8');

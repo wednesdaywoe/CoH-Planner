@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PoisonDart as base } from '@/data/generated/powersets/arachnos-widow/epic/widow-training/poison-dart';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/widow-training/poison-dart';
+import { PoisonDart as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/widow-training/poison-dart';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/widow-training/poison-dart';
 
 export const PoisonDart: Power = withOverrides(base, overrides);

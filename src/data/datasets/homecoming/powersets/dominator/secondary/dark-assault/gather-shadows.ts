@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GatherShadows as base } from '@/data/generated/powersets/dominator/secondary/dark-assault/gather-shadows';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/dark-assault/gather-shadows';
+import { GatherShadows as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/dark-assault/gather-shadows';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/dark-assault/gather-shadows';
 
 export const GatherShadows: Power = withOverrides(base, overrides);

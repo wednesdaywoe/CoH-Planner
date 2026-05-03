@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Frenzy as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/frenzy';
-import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/frenzy';
+import { Frenzy as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/frenzy';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/crab-spider-soldier/frenzy';
 
 export const Frenzy: Power = withOverrides(base, overrides);

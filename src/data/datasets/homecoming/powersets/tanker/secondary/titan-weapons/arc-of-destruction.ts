@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ArcofDestruction as base } from '@/data/generated/powersets/tanker/secondary/titan-weapons/arc-of-destruction';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/titan-weapons/arc-of-destruction';
+import { ArcofDestruction as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/titan-weapons/arc-of-destruction';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/titan-weapons/arc-of-destruction';
 
 export const ArcofDestruction: Power = withOverrides(base, overrides);

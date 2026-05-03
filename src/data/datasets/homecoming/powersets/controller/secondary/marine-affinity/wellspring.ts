@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BarrierReef as base } from '@/data/generated/powersets/controller/secondary/marine-affinity/wellspring';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/marine-affinity/wellspring';
+import { BarrierReef as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/marine-affinity/wellspring';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/marine-affinity/wellspring';
 
 export const BarrierReef: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FocusChi as base } from '@/data/generated/powersets/brute/primary/martial-arts/focus-chi';
-import { overrides } from '@/data/overrides/powersets/brute/primary/martial-arts/focus-chi';
+import { FocusChi as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/martial-arts/focus-chi';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/martial-arts/focus-chi';
 
 export const FocusChi: Power = withOverrides(base, overrides);

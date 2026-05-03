@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SmokeFlash as base } from '@/data/generated/powersets/stalker/secondary/ninjitsu/smoke-flash';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/ninjitsu/smoke-flash';
+import { SmokeFlash as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/ninjitsu/smoke-flash';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/ninjitsu/smoke-flash';
 
 export const SmokeFlash: Power = withOverrides(base, overrides);

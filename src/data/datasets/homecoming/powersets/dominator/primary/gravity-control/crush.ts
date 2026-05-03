@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Crush as base } from '@/data/generated/powersets/dominator/primary/gravity-control/crush';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/gravity-control/crush';
+import { Crush as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/gravity-control/crush';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/gravity-control/crush';
 
 export const Crush: Power = withOverrides(base, overrides);

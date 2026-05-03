@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Weaken as base } from '@/data/generated/powersets/mastermind/secondary/poison/weaken';
-import { overrides } from '@/data/overrides/powersets/mastermind/secondary/poison/weaken';
+import { Weaken as base } from '@/data/datasets/homecoming/generated/powersets/mastermind/secondary/poison/weaken';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/mastermind/secondary/poison/weaken';
 
 export const Weaken: Power = withOverrides(base, overrides);

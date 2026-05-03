@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChainLightning as base } from '@/data/generated/powersets/sentinel/primary/storm-blast/chain-lightning';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/storm-blast/chain-lightning';
+import { ChainLightning as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/storm-blast/chain-lightning';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/storm-blast/chain-lightning';
 
 export const ChainLightning: Power = withOverrides(base, overrides);

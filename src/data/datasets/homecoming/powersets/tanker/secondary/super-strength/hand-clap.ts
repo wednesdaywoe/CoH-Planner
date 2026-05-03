@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HandClap as base } from '@/data/generated/powersets/tanker/secondary/super-strength/hand-clap';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/super-strength/hand-clap';
+import { HandClap as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/super-strength/hand-clap';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/super-strength/hand-clap';
 
 export const HandClap: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SniperBlast as base } from '@/data/generated/powersets/corruptor/primary/energy-blast/sniper-blast';
-import { overrides } from '@/data/overrides/powersets/corruptor/primary/energy-blast/sniper-blast';
+import { SniperBlast as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/energy-blast/sniper-blast';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/energy-blast/sniper-blast';
 
 export const SniperBlast: Power = withOverrides(base, overrides);

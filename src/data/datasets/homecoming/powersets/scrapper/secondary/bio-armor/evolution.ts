@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EvolvingArmor as base } from '@/data/generated/powersets/scrapper/secondary/bio-armor/evolution';
-import { overrides } from '@/data/overrides/powersets/scrapper/secondary/bio-armor/evolution';
+import { EvolvingArmor as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/bio-armor/evolution';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/bio-armor/evolution';
 
 export const EvolvingArmor: Power = withOverrides(base, overrides);

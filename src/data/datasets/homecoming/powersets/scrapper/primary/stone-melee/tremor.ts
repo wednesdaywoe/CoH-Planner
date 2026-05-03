@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Tremor as base } from '@/data/generated/powersets/scrapper/primary/stone-melee/tremor';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/stone-melee/tremor';
+import { Tremor as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/stone-melee/tremor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/stone-melee/tremor';
 
 export const Tremor: Power = withOverrides(base, overrides);

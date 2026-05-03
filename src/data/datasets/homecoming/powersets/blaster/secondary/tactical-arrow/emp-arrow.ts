@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ESDArrow as base } from '@/data/generated/powersets/blaster/secondary/tactical-arrow/emp-arrow';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/tactical-arrow/emp-arrow';
+import { ESDArrow as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/tactical-arrow/emp-arrow';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/tactical-arrow/emp-arrow';
 
 export const ESDArrow: Power = withOverrides(base, overrides);

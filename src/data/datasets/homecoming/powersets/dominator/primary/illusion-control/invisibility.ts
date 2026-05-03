@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SuperiorInvisibility as base } from '@/data/generated/powersets/dominator/primary/illusion-control/invisibility';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/illusion-control/invisibility';
+import { SuperiorInvisibility as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/illusion-control/invisibility';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/illusion-control/invisibility';
 
 export const SuperiorInvisibility: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MentalTraining as base } from '@/data/generated/powersets/arachnos-widow/epic/widow-teamwork/mental-training';
-import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/widow-teamwork/mental-training';
+import { MentalTraining as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/widow-teamwork/mental-training';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/widow-teamwork/mental-training';
 
 export const MentalTraining: Power = withOverrides(base, overrides);

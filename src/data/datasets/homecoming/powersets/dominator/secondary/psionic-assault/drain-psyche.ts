@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DrainPsyche as base } from '@/data/generated/powersets/dominator/secondary/psionic-assault/drain-psyche';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/psionic-assault/drain-psyche';
+import { DrainPsyche as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/psionic-assault/drain-psyche';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/psionic-assault/drain-psyche';
 
 export const DrainPsyche: Power = withOverrides(base, overrides);

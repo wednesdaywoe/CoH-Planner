@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RadiationTherapy as base } from '@/data/generated/powersets/brute/secondary/radiation-armor/radiation-therapy';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/radiation-armor/radiation-therapy';
+import { RadiationTherapy as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/radiation-armor/radiation-therapy';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/radiation-armor/radiation-therapy';
 
 export const RadiationTherapy: Power = withOverrides(base, overrides);

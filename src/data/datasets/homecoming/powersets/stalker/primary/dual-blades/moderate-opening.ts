@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerSlice as base } from '@/data/generated/powersets/stalker/primary/dual-blades/moderate-opening';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/dual-blades/moderate-opening';
+import { PowerSlice as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/dual-blades/moderate-opening';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/dual-blades/moderate-opening';
 
 export const PowerSlice: Power = withOverrides(base, overrides);

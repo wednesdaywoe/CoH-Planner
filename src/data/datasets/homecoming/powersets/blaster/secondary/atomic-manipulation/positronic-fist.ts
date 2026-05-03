@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PositronicFist as base } from '@/data/generated/powersets/blaster/secondary/atomic-manipulation/positronic-fist';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/atomic-manipulation/positronic-fist';
+import { PositronicFist as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/atomic-manipulation/positronic-fist';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/atomic-manipulation/positronic-fist';
 
 export const PositronicFist: Power = withOverrides(base, overrides);

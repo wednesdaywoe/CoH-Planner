@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Intensify as base } from '@/data/generated/powersets/sentinel/primary/storm-blast/aim';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/storm-blast/aim';
+import { Intensify as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/storm-blast/aim';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/storm-blast/aim';
 
 export const Intensify: Power = withOverrides(base, overrides);

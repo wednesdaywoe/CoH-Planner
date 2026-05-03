@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Adaptation as base } from '@/data/generated/powersets/stalker/secondary/bio-armor/adaptation';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/bio-armor/adaptation';
+import { Adaptation as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/bio-armor/adaptation';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/bio-armor/adaptation';
 
 export const Adaptation: Power = withOverrides(base, overrides);

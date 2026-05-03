@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EarthsEmbrace as base } from '@/data/generated/powersets/brute/secondary/stone-armor/earths-embrace';
-import { overrides } from '@/data/overrides/powersets/brute/secondary/stone-armor/earths-embrace';
+import { EarthsEmbrace as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/stone-armor/earths-embrace';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/stone-armor/earths-embrace';
 
 export const EarthsEmbrace: Power = withOverrides(base, overrides);

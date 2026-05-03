@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TidePool as base } from '@/data/generated/powersets/defender/primary/marine-affinity/tide-pool';
-import { overrides } from '@/data/overrides/powersets/defender/primary/marine-affinity/tide-pool';
+import { TidePool as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/marine-affinity/tide-pool';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/marine-affinity/tide-pool';
 
 export const TidePool: Power = withOverrides(base, overrides);

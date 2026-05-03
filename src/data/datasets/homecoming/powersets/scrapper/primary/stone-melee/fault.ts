@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Fault as base } from '@/data/generated/powersets/scrapper/primary/stone-melee/fault';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/stone-melee/fault';
+import { Fault as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/stone-melee/fault';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/stone-melee/fault';
 
 export const Fault: Power = withOverrides(base, overrides);

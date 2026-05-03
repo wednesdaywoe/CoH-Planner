@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AbyssalGaze as base } from '@/data/generated/powersets/blaster/primary/dark-blast/abyssal-gaze';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/dark-blast/abyssal-gaze';
+import { AbyssalGaze as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/dark-blast/abyssal-gaze';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/dark-blast/abyssal-gaze';
 
 export const AbyssalGaze: Power = withOverrides(base, overrides);

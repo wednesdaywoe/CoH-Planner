@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Mutation as base } from '@/data/generated/powersets/controller/secondary/radiation-emission/mutation';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/radiation-emission/mutation';
+import { Mutation as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/radiation-emission/mutation';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/radiation-emission/mutation';
 
 export const Mutation: Power = withOverrides(base, overrides);

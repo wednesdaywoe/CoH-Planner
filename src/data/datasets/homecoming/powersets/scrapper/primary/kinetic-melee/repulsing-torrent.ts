@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RepulsingTorrent as base } from '@/data/generated/powersets/scrapper/primary/kinetic-melee/repulsing-torrent';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/kinetic-melee/repulsing-torrent';
+import { RepulsingTorrent as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/kinetic-melee/repulsing-torrent';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/kinetic-melee/repulsing-torrent';
 
 export const RepulsingTorrent: Power = withOverrides(base, overrides);

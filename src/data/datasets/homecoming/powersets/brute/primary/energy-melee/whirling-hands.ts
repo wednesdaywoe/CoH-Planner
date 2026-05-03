@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WhirlingHands as base } from '@/data/generated/powersets/brute/primary/energy-melee/whirling-hands';
-import { overrides } from '@/data/overrides/powersets/brute/primary/energy-melee/whirling-hands';
+import { WhirlingHands as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/energy-melee/whirling-hands';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/energy-melee/whirling-hands';
 
 export const WhirlingHands: Power = withOverrides(base, overrides);

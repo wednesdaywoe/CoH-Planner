@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FrozenAura as base } from '@/data/generated/powersets/blaster/secondary/ice-manipulation/frozen-aura';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/ice-manipulation/frozen-aura';
+import { FrozenAura as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/ice-manipulation/frozen-aura';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/ice-manipulation/frozen-aura';
 
 export const FrozenAura: Power = withOverrides(base, overrides);

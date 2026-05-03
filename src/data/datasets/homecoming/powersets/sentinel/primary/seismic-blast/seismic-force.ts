@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SeismicForce as base } from '@/data/generated/powersets/sentinel/primary/seismic-blast/seismic-force';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/seismic-blast/seismic-force';
+import { SeismicForce as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/seismic-blast/seismic-force';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/seismic-blast/seismic-force';
 
 export const SeismicForce: Power = withOverrides(base, overrides);

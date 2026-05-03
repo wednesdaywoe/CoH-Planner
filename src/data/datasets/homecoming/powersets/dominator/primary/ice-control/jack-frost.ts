@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { JackFrost as base } from '@/data/generated/powersets/dominator/primary/ice-control/jack-frost';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/ice-control/jack-frost';
+import { JackFrost as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/ice-control/jack-frost';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/ice-control/jack-frost';
 
 export const JackFrost: Power = withOverrides(base, overrides);

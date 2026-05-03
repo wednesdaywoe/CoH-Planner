@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Swipe as base } from '@/data/generated/powersets/stalker/primary/claws/swipe';
-import { overrides } from '@/data/overrides/powersets/stalker/primary/claws/swipe';
+import { Swipe as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/claws/swipe';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/claws/swipe';
 
 export const Swipe: Power = withOverrides(base, overrides);

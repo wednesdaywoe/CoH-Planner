@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Integration as base } from '@/data/generated/powersets/stalker/secondary/regeneration/integration';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/regeneration/integration';
+import { Integration as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/regeneration/integration';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/regeneration/integration';
 
 export const Integration: Power = withOverrides(base, overrides);

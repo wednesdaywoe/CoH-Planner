@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SoulAbsorption as base } from '@/data/generated/powersets/controller/secondary/darkness-affinity/soul-absorption';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/darkness-affinity/soul-absorption';
+import { SoulAbsorption as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/darkness-affinity/soul-absorption';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/darkness-affinity/soul-absorption';
 
 export const SoulAbsorption: Power = withOverrides(base, overrides);

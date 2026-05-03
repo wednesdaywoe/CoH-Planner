@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Breathless as base } from '@/data/generated/powersets/dominator/primary/wind-control/breathless';
-import { overrides } from '@/data/overrides/powersets/dominator/primary/wind-control/breathless';
+import { Breathless as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/wind-control/breathless';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/wind-control/breathless';
 
 export const Breathless: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WhirlingSmash as base } from '@/data/generated/powersets/tanker/secondary/titan-weapons/whirling-slice';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/titan-weapons/whirling-slice';
+import { WhirlingSmash as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/titan-weapons/whirling-slice';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/titan-weapons/whirling-slice';
 
 export const WhirlingSmash: Power = withOverrides(base, overrides);

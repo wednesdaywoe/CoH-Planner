@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SweepingCross as base } from '@/data/generated/powersets/tanker/secondary/street-justice/sweeping-cross';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/street-justice/sweeping-cross';
+import { SweepingCross as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/street-justice/sweeping-cross';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/street-justice/sweeping-cross';
 
 export const SweepingCross: Power = withOverrides(base, overrides);

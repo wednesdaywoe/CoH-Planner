@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Permafrost as base } from '@/data/generated/powersets/tanker/primary/ice-armor/permafrost';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/ice-armor/permafrost';
+import { Permafrost as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/ice-armor/permafrost';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/ice-armor/permafrost';
 
 export const Permafrost: Power = withOverrides(base, overrides);

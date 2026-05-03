@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { XRayBeam as base } from '@/data/generated/powersets/dominator/secondary/radioactive-assault/x-ray-beam';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/radioactive-assault/x-ray-beam';
+import { XRayBeam as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/radioactive-assault/x-ray-beam';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/radioactive-assault/x-ray-beam';
 
 export const XRayBeam: Power = withOverrides(base, overrides);

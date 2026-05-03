@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AdrenalinBoost as base } from '@/data/generated/powersets/defender/primary/empathy/adrenalin-boost';
-import { overrides } from '@/data/overrides/powersets/defender/primary/empathy/adrenalin-boost';
+import { AdrenalinBoost as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/empathy/adrenalin-boost';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/empathy/adrenalin-boost';
 
 export const AdrenalinBoost: Power = withOverrides(base, overrides);

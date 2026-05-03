@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Ripper as base } from '@/data/generated/powersets/blaster/secondary/plant-manipulation/ripper';
-import { overrides } from '@/data/overrides/powersets/blaster/secondary/plant-manipulation/ripper';
+import { Ripper as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/plant-manipulation/ripper';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/plant-manipulation/ripper';
 
 export const Ripper: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FlashFreeze as base } from '@/data/generated/powersets/controller/primary/ice-control/flash-freeze';
-import { overrides } from '@/data/overrides/powersets/controller/primary/ice-control/flash-freeze';
+import { FlashFreeze as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/ice-control/flash-freeze';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/ice-control/flash-freeze';
 
 export const FlashFreeze: Power = withOverrides(base, overrides);

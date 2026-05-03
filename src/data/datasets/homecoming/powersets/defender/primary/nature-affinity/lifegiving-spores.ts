@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LifegivingSpores as base } from '@/data/generated/powersets/defender/primary/nature-affinity/lifegiving-spores';
-import { overrides } from '@/data/overrides/powersets/defender/primary/nature-affinity/lifegiving-spores';
+import { LifegivingSpores as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/nature-affinity/lifegiving-spores';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/nature-affinity/lifegiving-spores';
 
 export const LifegivingSpores: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PsionicLance as base } from '@/data/generated/powersets/blaster/primary/psychic-blast/psionic-lance';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/psychic-blast/psionic-lance';
+import { PsionicLance as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/psychic-blast/psionic-lance';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/psychic-blast/psionic-lance';
 
 export const PsionicLance: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ZappingBolt as base } from '@/data/generated/powersets/sentinel/primary/electrical-blast/zapping-bolt';
-import { overrides } from '@/data/overrides/powersets/sentinel/primary/electrical-blast/zapping-bolt';
+import { ZappingBolt as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/electrical-blast/zapping-bolt';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/primary/electrical-blast/zapping-bolt';
 
 export const ZappingBolt: Power = withOverrides(base, overrides);

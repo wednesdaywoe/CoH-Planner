@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { NullifyPain as base } from '@/data/generated/powersets/corruptor/secondary/pain-domination/nullify-pain';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/pain-domination/nullify-pain';
+import { NullifyPain as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/pain-domination/nullify-pain';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/pain-domination/nullify-pain';
 
 export const NullifyPain: Power = withOverrides(base, overrides);

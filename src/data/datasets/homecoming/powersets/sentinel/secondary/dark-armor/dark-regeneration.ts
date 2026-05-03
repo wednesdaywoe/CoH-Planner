@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DarkRegeneration as base } from '@/data/generated/powersets/sentinel/secondary/dark-armor/dark-regeneration';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/dark-armor/dark-regeneration';
+import { DarkRegeneration as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/dark-armor/dark-regeneration';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/dark-armor/dark-regeneration';
 
 export const DarkRegeneration: Power = withOverrides(base, overrides);

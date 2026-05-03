@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ParticleAcceleration as base } from '@/data/generated/powersets/sentinel/secondary/radiation-armor/particle-acceleration';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/radiation-armor/particle-acceleration';
+import { ParticleAcceleration as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/radiation-armor/particle-acceleration';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/radiation-armor/particle-acceleration';
 
 export const ParticleAcceleration: Power = withOverrides(base, overrides);

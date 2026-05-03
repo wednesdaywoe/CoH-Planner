@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Attune as base } from '@/data/generated/powersets/scrapper/primary/sonic-melee/attune';
-import { overrides } from '@/data/overrides/powersets/scrapper/primary/sonic-melee/attune';
+import { Attune as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/sonic-melee/attune';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/sonic-melee/attune';
 
 export const Attune: Power = withOverrides(base, overrides);

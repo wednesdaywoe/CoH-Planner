@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BlackHole as base } from '@/data/generated/powersets/controller/secondary/darkness-affinity/black-hole';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/darkness-affinity/black-hole';
+import { BlackHole as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/darkness-affinity/black-hole';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/darkness-affinity/black-hole';
 
 export const BlackHole: Power = withOverrides(base, overrides);

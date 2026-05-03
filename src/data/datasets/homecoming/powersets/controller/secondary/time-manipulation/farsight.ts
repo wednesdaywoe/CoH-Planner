@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Farsight as base } from '@/data/generated/powersets/controller/secondary/time-manipulation/farsight';
-import { overrides } from '@/data/overrides/powersets/controller/secondary/time-manipulation/farsight';
+import { Farsight as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/time-manipulation/farsight';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/time-manipulation/farsight';
 
 export const Farsight: Power = withOverrides(base, overrides);

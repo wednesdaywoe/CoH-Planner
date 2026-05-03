@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FocusedFighting as base } from '@/data/generated/powersets/sentinel/secondary/super-reflexes/focused-fighting';
-import { overrides } from '@/data/overrides/powersets/sentinel/secondary/super-reflexes/focused-fighting';
+import { FocusedFighting as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/super-reflexes/focused-fighting';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/super-reflexes/focused-fighting';
 
 export const FocusedFighting: Power = withOverrides(base, overrides);

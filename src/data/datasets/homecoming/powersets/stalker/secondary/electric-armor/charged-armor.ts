@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ChargedArmor as base } from '@/data/generated/powersets/stalker/secondary/electric-armor/charged-armor';
-import { overrides } from '@/data/overrides/powersets/stalker/secondary/electric-armor/charged-armor';
+import { ChargedArmor as base } from '@/data/datasets/homecoming/generated/powersets/stalker/secondary/electric-armor/charged-armor';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/secondary/electric-armor/charged-armor';
 
 export const ChargedArmor: Power = withOverrides(base, overrides);

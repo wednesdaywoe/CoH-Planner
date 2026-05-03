@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Resilience as base } from '@/data/generated/powersets/tanker/primary/regeneration/resist-disorientation';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/regeneration/resist-disorientation';
+import { Resilience as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/regeneration/resist-disorientation';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/regeneration/resist-disorientation';
 
 export const Resilience: Power = withOverrides(base, overrides);

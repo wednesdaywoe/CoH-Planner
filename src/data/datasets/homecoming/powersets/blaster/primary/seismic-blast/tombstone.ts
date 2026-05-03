@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Tombstone as base } from '@/data/generated/powersets/blaster/primary/seismic-blast/tombstone';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/seismic-blast/tombstone';
+import { Tombstone as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/seismic-blast/tombstone';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/seismic-blast/tombstone';
 
 export const Tombstone: Power = withOverrides(base, overrides);

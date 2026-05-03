@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PsychicFocus as base } from '@/data/generated/powersets/blaster/primary/psychic-blast/aim';
-import { overrides } from '@/data/overrides/powersets/blaster/primary/psychic-blast/aim';
+import { PsychicFocus as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/psychic-blast/aim';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/psychic-blast/aim';
 
 export const PsychicFocus: Power = withOverrides(base, overrides);

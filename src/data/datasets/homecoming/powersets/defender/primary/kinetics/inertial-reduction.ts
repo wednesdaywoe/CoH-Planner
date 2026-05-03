@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { InertialReduction as base } from '@/data/generated/powersets/defender/primary/kinetics/inertial-reduction';
-import { overrides } from '@/data/overrides/powersets/defender/primary/kinetics/inertial-reduction';
+import { InertialReduction as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/kinetics/inertial-reduction';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/kinetics/inertial-reduction';
 
 export const InertialReduction: Power = withOverrides(base, overrides);

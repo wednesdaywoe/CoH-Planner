@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Whitecap as base } from '@/data/generated/powersets/corruptor/secondary/marine-affinity/whitecap';
-import { overrides } from '@/data/overrides/powersets/corruptor/secondary/marine-affinity/whitecap';
+import { Whitecap as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/marine-affinity/whitecap';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/secondary/marine-affinity/whitecap';
 
 export const Whitecap: Power = withOverrides(base, overrides);

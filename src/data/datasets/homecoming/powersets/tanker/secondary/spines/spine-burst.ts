@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SpineBurst as base } from '@/data/generated/powersets/tanker/secondary/spines/spine-burst';
-import { overrides } from '@/data/overrides/powersets/tanker/secondary/spines/spine-burst';
+import { SpineBurst as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/spines/spine-burst';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/spines/spine-burst';
 
 export const SpineBurst: Power = withOverrides(base, overrides);

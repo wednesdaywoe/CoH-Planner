@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WetIce as base } from '@/data/generated/powersets/tanker/primary/ice-armor/wet-ice';
-import { overrides } from '@/data/overrides/powersets/tanker/primary/ice-armor/wet-ice';
+import { WetIce as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/ice-armor/wet-ice';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/ice-armor/wet-ice';
 
 export const WetIce: Power = withOverrides(base, overrides);

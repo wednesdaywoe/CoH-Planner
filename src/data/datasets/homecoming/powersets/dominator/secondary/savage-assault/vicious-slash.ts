@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ViciousSlash as base } from '@/data/generated/powersets/dominator/secondary/savage-assault/vicious-slash';
-import { overrides } from '@/data/overrides/powersets/dominator/secondary/savage-assault/vicious-slash';
+import { ViciousSlash as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/savage-assault/vicious-slash';
+import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/savage-assault/vicious-slash';
 
 export const ViciousSlash: Power = withOverrides(base, overrides);
