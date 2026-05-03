@@ -1124,14 +1124,49 @@ Two adjacent ID classes worth noting (not AT-inherent, no action required):
 
 ### Pending
 
-- [ ] Bigger refactor candidate: replace the existing hardcoded
-  AT-mechanic damage calcs (`calculateScourgeDamage`,
-  `calculateContainmentDamage`, `calculateFuryDamage`,
-  `calculateCriticalHitDamage`, `calculateAssassinationDamage`,
-  `calculateOpportunityCritDamage`) with reads from the binary's
-  conditional templates. Same data source for both Header toggles and
-  per-power displays — eliminates the chance of math drift between the
-  two surfaces. Low priority; the existing math is well-tested.
+- [x] ~~Bigger refactor candidate: replace the existing hardcoded
+  AT-mechanic damage calcs with reads from the binary's conditional
+  templates.~~ **Closed as no-op (2026-05-03).** Two findings made the
+  refactor unnecessary:
+
+  1. **The drift concern doesn't apply.** Both Header toggles and
+     per-power displays already flow through the same
+     `calculate*Damage` helpers in
+     [src/utils/calculations/inherents.ts](src/utils/calculations/inherents.ts)
+     (40 call sites, single source). There's no split surface to
+     unify.
+  2. **The binary doesn't encode these formulas.** Surveyed every AT
+     inherent power record in the bin export. Most are `Null`-attrib
+     marker powers — flags the C++ engine recognizes, not data-driven
+     magnitude tables:
+     - Scourge / Critical Hit / Containment: `attribs=[Null]` only
+     - Assassination: `Null` + `Global_Chance_Mod 0.03` (the 3%-per-
+       Assassin's-Focus-stack contribution to crit chance — that's
+       actual data, but it's not the damage formula)
+     - Opportunity: `Global_Chance_Mod 0.35` + `PerceptionRadius 0.25`
+       (the crit chance and perception range — again, slices, not the
+       damage bonus)
+     - Domination: `Meter` slot only
+     - Fury: not even an inherent power record; the +2% per Fury-point
+       formula is pure engine math
+
+     The actual scaling formulas (2× Containment, 50% Scourge avg,
+     Hidden 100% crit, etc.) live in the original CoH server's C++
+     source. Mids hardcodes the same constants for the same reason.
+     A "binary read" alternative does not exist in this binary format
+     because the data was never there to begin with.
+
+  Net: the well-tested hardcoded helpers are the correct
+  implementation today. If a future bin-format generation starts
+  shipping these formulas (unlikely — would require a CoH dev decision
+  not currently on any roadmap), revisit. Until then, the helpers stay
+  as-is.
+
+  Small slice of value left on the table: the fragments that *are*
+  binary-encoded (Stalker's 3%-per-Focus, Sentinel's 35%/25%, meter
+  thresholds) could be sourced from the binary so future patches
+  propagate. Tracked as a low-priority sub-item if anyone wants to
+  pick it up later; estimated 2 hours.
 
 ---
 
