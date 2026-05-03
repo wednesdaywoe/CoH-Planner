@@ -62,10 +62,7 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
   }
 
   return (
-    <div className="bg-slate-800/40 rounded p-2 space-y-1.5">
-      <div className="text-[9px] font-semibold uppercase tracking-wider text-cyan-400">
-        Mechanic Adjusters
-      </div>
+    <div className="bg-slate-800/40 rounded p-2">
       <div className="flex flex-col gap-1">
         {Array.from(groups.entries()).map(([groupId, members]) => (
           <RadioGroup
