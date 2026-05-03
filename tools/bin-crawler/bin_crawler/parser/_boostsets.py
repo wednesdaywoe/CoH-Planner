@@ -133,6 +133,10 @@ EC_CATEGORY_TO_PLANNER = {
     "ECSTanker":               "Tanker Archetype Sets",
     "ECSArachnos":             "Soldiers of Arachnos Archetype Sets",
     "ECSKheldian":             "Kheldian Archetype Sets",
+    # Rebirth-only Guardian umbrella (ECATO/ECSATO/ECATO2/ECSATO2 all
+    # land here once their allowed_powers are matched against Guardian
+    # categories via _AT_PREFIX_TO_EC).
+    "ECGuardian":              "Guardian Archetype Sets",
 }
 
 
@@ -349,6 +353,10 @@ _AT_PREFIX_TO_EC = {
     "Peacebringer_Offensive": "ECKheldian",
     "Warshade_Defensive":     "ECKheldian",
     "Warshade_Offensive":     "ECKheldian",
+    # Rebirth Guardian — its ATOs (Guardian's Gift, Absolute Resolution)
+    # slot into Guardian_Assault.* / Guardian_Comp.* powers exclusively.
+    "Guardian_Assault":   "ECGuardian",
+    "Guardian_Comp":      "ECGuardian",
 }
 
 
