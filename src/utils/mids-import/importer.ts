@@ -28,7 +28,36 @@ import {
   getIncarnateTree,
   GRANTED_POWER_GROUPS,
 } from '@/data';
+import { getActiveDataset, type DatasetId } from '@/data/dataset';
 import type { InherentPowerDef } from '@/data';
+
+// ============================================
+// SERVER DETECTION
+// ============================================
+//
+// Mids Reborn carries the source database in `BuiltWith.Database`. Two
+// known values today:
+//   - "Homecoming"
+//   - "Rebirth"
+// Anything else falls back to the active dataset (best effort) with a
+// general warning.
+//
+// Imports are blocked when the .mbd's database doesn't match the active
+// dataset because all powerset/power lookups read from the active
+// dataset's registry — a Rebirth build dropped into an HC session would
+// fail to find Guardian (or any other Rebirth-only powerset) and
+// produce a corrupt build. Caller should switch servers via the picker
+// (which reloads with the new dataset) before retrying the import.
+
+const MBD_DATABASE_TO_SERVER: Record<string, DatasetId> = {
+  'Homecoming': 'homecoming',
+  'Rebirth':    'rebirth',
+};
+
+function detectServerFromMbd(database: string | undefined): DatasetId | null {
+  if (!database) return null;
+  return MBD_DATABASE_TO_SERVER[database] ?? null;
+}
 
 import type {
   MbdFile,
@@ -109,6 +138,30 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
       success: false,
       build: null,
       warnings: [{ type: 'general', midsName: '', message: 'Missing required fields (Class, PowerSets, or PowerEntries)' }],
+      summary,
+    };
+  }
+
+  // 2a. Detect source server and require it to match the active dataset.
+  // Rebirth builds reference Guardian / Composition / etc. that don't
+  // exist in HC's registry (and vice-versa for HC's Sentinel sets), so
+  // the importer can't proceed cross-dataset. Caller should switch the
+  // server picker first.
+  const detectedServer = detectServerFromMbd(mbd.BuiltWith?.Database);
+  const activeServer = (() => {
+    try { return getActiveDataset().id; } catch { return null; }
+  })();
+  if (detectedServer && activeServer && detectedServer !== activeServer) {
+    const detectedLabel = detectedServer === 'rebirth' ? 'Rebirth' : 'Homecoming';
+    const activeLabel = activeServer === 'rebirth' ? 'Rebirth' : 'Homecoming';
+    return {
+      success: false,
+      build: null,
+      warnings: [{
+        type: 'general',
+        midsName: mbd.BuiltWith?.Database ?? '',
+        message: `This build was made for ${detectedLabel}, but the planner is currently running ${activeLabel}. Switch servers via the Build Identity picker and retry the import.`,
+      }],
       summary,
     };
   }
@@ -409,10 +462,11 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   // 12. Construct the Build object
   const build: Build = {
     name: mbd.Name || `${archetype.name} Import`,
-    // Mids `.mbd` files don't currently carry a server identifier we can
-    // detect, so imports default to the active dataset (Homecoming until
-    // detection logic lands).
-    serverId: 'homecoming',
+    // Server identifier — detected from `BuiltWith.Database` when present,
+    // otherwise falls back to the active dataset. The dataset-mismatch
+    // guard above (step 2a) ensures we never import a Rebirth build into
+    // an HC session or vice-versa, so this stamps the right id either way.
+    serverId: detectedServer ?? activeServer ?? 'homecoming',
     archetype: {
       id: archetypeId,
       name: archetype.name,

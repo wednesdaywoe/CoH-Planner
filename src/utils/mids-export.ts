@@ -478,11 +478,14 @@ export function exportToMids(build: Build): string {
     }
   }
 
+  // Database string mirrors what Mids Reborn writes for each server, so
+  // round-tripping between us and Mids preserves the dataset on import.
+  const databaseLabel = build.serverId === 'rebirth' ? 'Rebirth' : 'Homecoming';
   const mbdFile: MbdFile = {
     BuiltWith: {
       App: 'CoH Planner',
       Version: '1.0',
-      Database: 'Homecoming',
+      Database: databaseLabel,
       DatabaseVersion: '27.2025.1127.1',
     },
     Level: String(build.level - 1), // 0-based

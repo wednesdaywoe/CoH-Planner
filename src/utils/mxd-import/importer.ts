@@ -14,6 +14,7 @@ import { getArchetype } from '@/data/archetypes';
 import { getPowerset } from '@/data/powersets';
 import { getIOSet } from '@/data/io-sets';
 import { getIncarnateSlot, getIncarnateTree } from '@/data/incarnates';
+import { getActiveDataset } from '@/data/dataset';
 import { SET_ABBREVIATIONS, GENERIC_ABBREVIATIONS, CLASS_TO_ARCHETYPE } from './abbreviations';
 import type { ArchetypeId } from '@/types/archetype';
 import type { Power } from '@/types/power';
@@ -27,6 +28,12 @@ import { INCARNATE_SLOT_ORDER } from '@/types';
 export function importMxdBuild(parsed: MxdParsedBuild): MidsImportResult {
   const warnings: MidsImportWarning[] = [];
   const build = createEmptyBuild();
+  // .mxd has no server identifier in its header, so we stamp the import
+  // with the currently-active dataset. Powerset lookups below (getPowerset)
+  // already read from the active dataset; if the user is on Rebirth and
+  // imports a .mxd built for HC's Sentinel, the lookup fails per powerset
+  // and the warning surfaces in the UI per usual.
+  try { build.serverId = getActiveDataset().id; } catch { /* keep default */ }
   let powersImported = 0;
   let powersFailed = 0;
   let enhancementsImported = 0;
