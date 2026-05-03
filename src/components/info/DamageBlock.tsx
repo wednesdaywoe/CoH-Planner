@@ -242,7 +242,7 @@ function DamageRows({
               )}
             </div>
             <div className="text-[9px] text-orange-400/70 italic mt-0.5 ml-1">
-              {dot.ticks} ticks over {dot.duration}s ({dot.tickRate}s/tick)
+              {dot.ticks} ticks over {dot.duration}s ({Number(dot.tickRate.toFixed(2))}s/tick)
             </div>
           </>
         );
