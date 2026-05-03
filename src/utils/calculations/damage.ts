@@ -694,20 +694,24 @@ export function calculatePowerDamage(
   return result;
 }
 
+// CoH community-standard short forms — readable without ambiguity.
+// Single-letter abbreviations (S/L/E/P/T) collide too easily for casual
+// players to identify at a glance. Fire/Cold are already short enough
+// to leave as-is.
 const DAMAGE_TYPE_ABBREV: Record<string, string> = {
-  Smashing: 'S',
-  Lethal: 'L',
-  Fire: 'F',
-  Cold: 'C',
-  Energy: 'E',
-  Negative: 'N',
-  Psionic: 'P',
-  Toxic: 'T',
+  Smashing: 'Smash',
+  Lethal:   'Leth',
+  Fire:     'Fire',
+  Cold:     'Cold',
+  Energy:   'Energy',
+  Negative: 'Neg',
+  Psionic:  'Psi',
+  Toxic:    'Tox',
 };
 
 /**
  * Abbreviate a damage type string for compact display.
- * Handles joined types like "Smashing/Lethal" → "S/L"
+ * Handles joined types like "Smashing/Lethal" → "Smash/Leth".
  */
 export function abbreviateDamageType(type: string): string {
   return type
