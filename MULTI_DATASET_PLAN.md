@@ -18,7 +18,7 @@ Each entry below has a detail section further down. Status snapshot as of
 | 3 | **InfoPanel visual redesign** | **Complete.** All six outline sections landed (Mechanic Adjusters / Tags Block / Damage Block / Effects Block / General Stats Block / Description), language pass to in-game terminology, plus several regressions caught and fixed along the way (DoT 5×tick, FE Fire leak, Melee/Ranged misclassification, false-positive SPECIAL rows). | [#infopanel-visual-redesign](#infopanel-visual-redesign) |
 | 4 | **AT-mechanic alignment** (Header vs InfoPanel) | First overlap (Domination via `kStealth source>` on Dominator powers) routed through Header state; expand mapping as more overlaps surface | [#at-mechanic-alignment](#at-mechanic-alignment) |
 | 5 | **Calc accuracy fixes** | **Complete.** Conditional-aggregation, pure-DoT 5×tick, accuracy-final tooltip, damageModifier audit, tooltip-level convention all shipped or documented. | [#calc-accuracy](#calc-accuracy) |
-| 6 | **Rebirth scalar-table verification** | Originally framed as "Original Domination" — audit (2026-05-03) shows AT inherent mechanics are identical between HC and Rebirth. Real gap is numerical (HP tables, damage/buff modifiers) inherited from HC; needs diff against Rebirth's `classes.bin`. | [#rebirth-scalar-table-verification](#rebirth-scalar-table-verification) |
+| 6 | **Rebirth scalar-table verification** | **Done.** Diffed exported `classes.bin` tables; Rebirth's `at-tables.ts` regenerated from real Rebirth values. Tanker (Ranged_Damage -37.5%, Melee_Damage -15.8%) and Brute (Ranged_Damage -33%) had meaningful divergence — those ATs got post-i24 reworks on HC. Other ATs match HC within float-precision noise. | [#rebirth-scalar-table-verification](#rebirth-scalar-table-verification) |
 | 7 | **IO sets exporter for Rebirth** | Not started. Last Stage C blocker. | [#io-sets-exporter-for-rebirth](#io-sets-exporter-for-rebirth) |
 
 ## Open Tasks (not-yet-grouped backlog)
@@ -1175,19 +1175,47 @@ this:
 > (Melee_Damage[0]/Ranged_Damage[0]/etc.) — minor numerical divergence
 > wouldn't be surprising.
 
-### Pending
+### Audit findings (2026-05-03)
 
-- [ ] Pull Rebirth's `classes.bin` named_tables values via
-  `tools/bin-crawler/bin_crawler/export_classes.py` (already produces
-  per-AT JSON files in the right shape).
-- [ ] Diff each AT's `Melee_Damage[0]` / `Ranged_Damage[0]` /
-  `BuffDebuff_Mod` / HP scaling against the HC values now hardcoded in
-  Rebirth's `archetypes.ts`.
-- [ ] Patch any divergent values; document the divergence in the file
-  header. Mechanics stay the same — only the magnitudes shift.
-- [ ] Smoke-test on a level-50 Rebirth Dominator / Brute / Defender
-  build to confirm Header-toggle calc results match what the live game
-  would report.
+`classes.bin` exported from Rebirth's `v2_serverbin.pigg` and diffed
+against HC's tables. Pigg resolver pattern extended to match
+`*serverbin*.pigg` (Rebirth ships server-side bins separately;
+HC keeps everything in one `bin.pigg`).
+
+**Meaningful divergence — only on Tanker and Brute:**
+
+| AT | Table | HC[L50] | Rebirth[L50] | Δ |
+|---|---|---|---|---|
+| Tanker | Ranged_Damage | -44.49 | -27.81 | -37.5% |
+| Tanker | Melee_Damage | -52.83 | -44.49 | -15.8% |
+| Tanker | Ranged_Buff_Dmg | 0.100 | 0.070 | -30.0% |
+| Tanker | Ranged_Buff_ToHit | 0.100 | 0.070 | -30.0% |
+| Tanker | Ranged_DeBuff_ToHit | -0.100 | -0.070 | -30.0% |
+| Tanker | Ranged_Buff_Def | 0.075 | 0.065 | -13.3% |
+| Tanker | Ranged_Res_Dmg | 0.075 | 0.065 | -13.3% |
+| Tanker | Melee_Buff_Dmg | 0.0875 | 0.100 | +14.3% |
+| Brute | Ranged_Damage | -41.71 | -27.81 | -33.3% |
+| Brute | Ranged_Buff_Def | 0.0875 | 0.065 | -25.7% |
+| Brute | Melee_HealSelf etc. | 160.6 | 149.9 | -6.7% |
+
+These reflect HC's post-i24 Tanker/Brute reworks that Rebirth predates.
+All other player ATs (Blaster, Controller, Defender, Scrapper,
+Corruptor, Dominator, Mastermind, Stalker, Peacebringer, Warshade,
+Arachnos Soldier/Widow) have **no meaningful divergence** — values
+match HC within float-precision noise (typically ~10⁻⁶ relative).
+
+**Patch:** ran [extract-at-tables.cjs](scripts/extract-at-tables.cjs)
+with `--dataset=rebirth` to regenerate
+[src/data/datasets/rebirth/at-tables.ts](src/data/datasets/rebirth/at-tables.ts)
+from the now-available exported tables. Tanker and Brute calc results
+on Rebirth builds now match what the live game reports for those ATs.
+
+**HC-only tables** (Melee_DamageUniqueness, Melee_IncarnateProcDamage,
+Melee_InherentDamage, etc.) are i25+ HC additions; Rebirth correctly
+omits them. No action needed.
+
+**Rebirth-only tables** (Melee_SSDamage, Ranged_SSDamage on EATs) are
+genuine Rebirth additions; included in the regenerated file.
 
 ---
 

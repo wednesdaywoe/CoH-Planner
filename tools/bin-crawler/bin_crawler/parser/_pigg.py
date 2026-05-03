@@ -34,7 +34,12 @@ class BinResolver:
         self._bin_dir: Path | None = None
 
         seen: set[Path] = set()
-        for pattern in ("bin*.pigg", "*_bin.pigg", "*_bin_*.pigg"):
+        # `*serverbin*` covers Rebirth's `v2_serverbin.pigg` which holds
+        # classes.bin / villain_classes.bin / boostsets.bin alongside the
+        # main `v2_bin.pigg` (which only has powers/messages/etc.). HC
+        # ships everything in one `bin.pigg`, so the serverbin pattern is
+        # a no-op for HC's layout.
+        for pattern in ("bin*.pigg", "*_bin.pigg", "*_bin_*.pigg", "*serverbin*.pigg"):
             for pigg_path in sorted(self.assets_dir.glob(pattern)):
                 if pigg_path in seen:
                     continue
