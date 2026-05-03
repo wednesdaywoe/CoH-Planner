@@ -285,7 +285,7 @@ function DamageBar({ calculatedDamage, archetypeId }: DamageBlockProps) {
     <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%`}>
       {/* Final (back layer) — full saturation */}
       <div
-        className="absolute inset-y-0 left-0 bg-red-600 rounded-l transition-all duration-300"
+        className="absolute inset-y-0 left-0 bg-red-800 rounded-l transition-all duration-300"
         style={{ width: `${finalPercent}%` }}
       />
       {/* Enhanced (middle layer) — medium saturation */}
