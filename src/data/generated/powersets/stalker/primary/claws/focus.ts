@@ -70,9 +70,9 @@ export const Focus: Power = {
       "label": "Lethal_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.8199999928474426,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

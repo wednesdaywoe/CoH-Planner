@@ -85,9 +85,9 @@ export const SmashingBlow: Power = {
       "label": "Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.8500000238418579,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

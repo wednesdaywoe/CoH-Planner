@@ -76,14 +76,14 @@ export const MassLevitate: Power = {
   ],
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.20000000298023224,
-      "label": "Grant_Power"
+      "label": "Insight"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.6000000238418579,
-      "label": "Grant_Power"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",

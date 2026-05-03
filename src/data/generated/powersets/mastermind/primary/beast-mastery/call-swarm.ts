@@ -76,9 +76,9 @@ export const CallSwarm: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.3199999928474426,
-      "label": "Grant_Power"
+      "label": "Pack Mentality"
     }
   ]
 };

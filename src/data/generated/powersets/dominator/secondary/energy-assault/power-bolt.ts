@@ -74,9 +74,9 @@ export const PowerBolt: Power = {
       "label": "Knockback"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.20000000298023224,
-      "label": "Grant_Power"
+      "label": "Assault"
     }
   ]
 };

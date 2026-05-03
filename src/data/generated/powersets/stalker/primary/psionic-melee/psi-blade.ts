@@ -77,14 +77,14 @@ export const PsiBlade: Power = {
   ],
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.14069999754428864,
-      "label": "Grant_Power"
+      "label": "Insight"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.4221000075340271,
-      "label": "Grant_Power"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",
@@ -97,9 +97,9 @@ export const PsiBlade: Power = {
       "label": "Psionic_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.75,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

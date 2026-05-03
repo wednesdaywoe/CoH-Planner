@@ -89,9 +89,9 @@ export const GuardedSpin: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.8999999761581421,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     },
     {
       "kind": "effect-proc",

@@ -90,9 +90,9 @@ export const SoaringDragon: Power = {
       "label": "Base_Defense"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.949999988079071,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

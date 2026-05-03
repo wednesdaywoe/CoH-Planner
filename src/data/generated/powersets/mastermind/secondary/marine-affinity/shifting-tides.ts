@@ -67,9 +67,9 @@ export const ShiftingTides: Power = {
       "label": "Cold_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.25,
-      "label": "Grant_Power"
+      "label": "FX"
     }
   ]
 };

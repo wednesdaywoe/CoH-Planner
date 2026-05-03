@@ -77,14 +77,14 @@ export const MentalStrike: Power = {
   ],
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.08889999985694885,
-      "label": "Grant_Power"
+      "label": "Insight"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.26669999957084656,
-      "label": "Grant_Power"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",
@@ -97,9 +97,9 @@ export const MentalStrike: Power = {
       "label": "Psionic_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.6499999761581421,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

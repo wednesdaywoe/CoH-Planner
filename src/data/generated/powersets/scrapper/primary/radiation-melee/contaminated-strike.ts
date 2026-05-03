@@ -104,9 +104,9 @@ export const ContaminatedStrike: Power = {
       "label": "Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.11999999731779099,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     },
     {
       "kind": "effect-proc",

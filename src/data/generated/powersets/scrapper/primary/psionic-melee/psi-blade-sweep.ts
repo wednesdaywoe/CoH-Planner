@@ -111,14 +111,14 @@ export const PsiBladeSweep: Power = {
   ],
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.19040000438690186,
-      "label": "Grant_Power"
+      "label": "Insight"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.5712000131607056,
-      "label": "Grant_Power"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",

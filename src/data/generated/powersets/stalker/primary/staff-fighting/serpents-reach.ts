@@ -60,9 +60,9 @@ export const SerpentsReach: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.949999988079071,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     },
     {
       "kind": "effect-proc",

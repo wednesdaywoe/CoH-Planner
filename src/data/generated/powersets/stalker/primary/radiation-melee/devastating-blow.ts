@@ -97,9 +97,9 @@ export const DevastatingBlow: Power = {
       "label": "Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.5,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     }
   ]
 };

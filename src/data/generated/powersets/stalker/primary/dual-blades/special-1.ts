@@ -114,9 +114,9 @@ export const VengefulSlice: Power = {
       "label": "Lethal_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.8999999761581421,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

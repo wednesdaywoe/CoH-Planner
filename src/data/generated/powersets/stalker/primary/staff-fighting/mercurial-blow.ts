@@ -64,9 +64,9 @@ export const MercurialBlow: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.6499999761581421,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     },
     {
       "kind": "effect-proc",

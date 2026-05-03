@@ -95,9 +95,9 @@ export const ProtonSweep: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.20999999344348907,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     }
   ]
 };

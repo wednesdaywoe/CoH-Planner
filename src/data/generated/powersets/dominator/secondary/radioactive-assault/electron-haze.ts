@@ -78,9 +78,9 @@ export const ElectronHaze: Power = {
       "label": "Knockback"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.3400000035762787,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     }
   ]
 };

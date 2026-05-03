@@ -79,9 +79,9 @@ export const CallRavens: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.6883999705314636,
-      "label": "Grant_Power"
+      "label": "Pack Mentality"
     }
   ]
 };

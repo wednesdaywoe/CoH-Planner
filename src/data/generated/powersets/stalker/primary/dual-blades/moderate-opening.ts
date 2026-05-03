@@ -65,9 +65,9 @@ export const PowerSlice: Power = {
       "label": "Lethal_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.75,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ],
   "requires": "Stalker_Defense.Shield_Defense !"

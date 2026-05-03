@@ -61,9 +61,9 @@ export const Eviscerate: Power = {
       "label": "Lethal_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.9434000253677368,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

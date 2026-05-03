@@ -64,9 +64,9 @@ export const NeutrinoBolt: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.15000000596046448,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     }
   ]
 };

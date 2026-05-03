@@ -96,14 +96,14 @@ export const RadioactiveSmash: Power = {
       "label": "Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.23000000417232513,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.8500000238418579,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

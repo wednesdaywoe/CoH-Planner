@@ -101,9 +101,9 @@ export const DevastatingBlow: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.5,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     },
     {
       "kind": "effect-proc",

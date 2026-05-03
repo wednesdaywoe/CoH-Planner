@@ -69,9 +69,9 @@ export const PowerPush: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.20000000298023224,
-      "label": "Grant_Power"
+      "label": "Assault"
     }
   ]
 };

@@ -131,9 +131,9 @@ export const ProtonSweep: Power = {
       "label": "Toxic_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.20999999344348907,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     },
     {
       "kind": "effect-proc",

@@ -74,9 +74,9 @@ export const ShadowPunch: Power = {
       "label": "Negative_Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.6499999761581421,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

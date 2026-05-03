@@ -1468,12 +1468,20 @@ function extractSpecialEffects(rawEffects, conditionalEffects) {
       if (seen.has(key)) continue;
       seen.add(key);
 
-      if (attrib === 'Null') {
-        // Grant proc — try to identify the granted state from the power's
-        // conditional list. The grant target is a target-state (per-power)
-        // mechanic, so filter out caster-state (global) conditionals and
-        // AT-inherent ids that surface separately (Domination, etc.).
-        // If exactly one candidate remains, use its label.
+      if (attrib === 'Grant_Power') {
+        // Explicit power grant — the granted power's dotted name lives in
+        // `params.power_names`. Use the leaf segment as the label after
+        // stripping a powerset prefix (e.g. `Psionic_Melee_Insight` →
+        // `Insight`). This is the canonical case for Psionic Melee's
+        // Insight, Rad Melee's Contaminated, etc.
+        const grantedName = (t.params?.power_names && t.params.power_names[0]) || '';
+        const label = _labelFromGrantedPowerName(grantedName, conditionalEffects);
+        procs.push({ kind: 'grant', chance, label });
+      } else if (attrib === 'Null') {
+        // Implicit grant — Null-attrib chance template paired with a
+        // sibling conditionalEffects entry (Suffocate's Drowning). Filter
+        // caster-state conditionals (Domination etc.) since they're not
+        // grant targets. Use the unique remaining target-state conditional.
         const candidates = (conditionalEffects ?? []).filter(c =>
           c.scope !== 'global' && !AT_INHERENT_GRANT_BLACKLIST.has(c.id)
         );
@@ -1505,6 +1513,34 @@ function extractSpecialEffects(rawEffects, conditionalEffects) {
 // Mechanic Adjusters list. The grant-proc label heuristic excludes these
 // since they're caster-state mechanics, not target-state grants.
 const AT_INHERENT_GRANT_BLACKLIST = new Set(['domination']);
+
+/**
+ * Derive a player-friendly label for a Grant_Power template's target.
+ *
+ * `params.power_names[0]` is a dotted internal name like
+ * `Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight`. Strategy:
+ *   1. Take the leaf segment (`Psionic_Melee_Insight`).
+ *   2. If a sibling conditional shares the same leaf id (case-insensitive),
+ *      use the conditional's already-curated `label`. This picks up
+ *      curated overrides like `beam_rifle_debuff → "Disintegrating"` and
+ *      ensures consistency with the Mechanic Adjuster surface.
+ *   3. Otherwise strip a recognizable powerset-name prefix from the leaf
+ *      (e.g. `Psionic_Melee_Insight` → `Insight`) and prettify
+ *      underscores to spaces / title-case.
+ */
+function _labelFromGrantedPowerName(dotted, conditionalEffects) {
+  if (!dotted) return 'state';
+  const leaf = dotted.split('.').pop() || dotted;
+  const leafLower = leaf.toLowerCase();
+  const cond = (conditionalEffects ?? []).find(c => c.id.toLowerCase() === leafLower);
+  if (cond) return cond.label;
+  // Strip a `<Word>_<Word>_` prefix when the trailing fragment is short
+  // and meaningful on its own. Heuristic: split on `_`, take last 1-2
+  // segments depending on length.
+  const parts = leaf.split('_');
+  const candidate = parts.length >= 3 ? parts.slice(-1).join(' ') : parts.join(' ');
+  return candidate.replace(/\b\w/g, (c) => c.toUpperCase());
+}
 
 function _prettifyEffectAttrib(attrib) {
   // Map raw attrib names to player-friendly labels. Most attribs already

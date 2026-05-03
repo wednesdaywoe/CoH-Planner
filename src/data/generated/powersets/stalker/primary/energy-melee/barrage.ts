@@ -112,9 +112,9 @@ export const Barrage: Power = {
       "label": "Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.800000011920929,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

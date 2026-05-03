@@ -93,9 +93,9 @@ export const RadiationSiphon: Power = {
   ],
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.3700000047683716,
-      "label": "Grant_Power"
+      "label": "Radiation Melee Contaminated"
     }
   ]
 };

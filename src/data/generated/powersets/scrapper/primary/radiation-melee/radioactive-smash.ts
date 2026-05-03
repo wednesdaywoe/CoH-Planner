@@ -100,9 +100,9 @@ export const RadioactiveSmash: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.23000000417232513,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     },
     {
       "kind": "effect-proc",

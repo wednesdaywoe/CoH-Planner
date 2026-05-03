@@ -75,9 +75,9 @@ export const TotalFocus: Power = {
       "label": "Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.07000000029802322,
-      "label": "Grant_Power"
+      "label": "Energy Store"
     },
     {
       "kind": "effect-proc",
@@ -85,9 +85,9 @@ export const TotalFocus: Power = {
       "label": "Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.20000000298023224,
-      "label": "Grant_Power"
+      "label": "Energy Store"
     }
   ]
 };

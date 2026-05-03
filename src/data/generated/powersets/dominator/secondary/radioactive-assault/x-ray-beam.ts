@@ -64,9 +64,9 @@ export const XRayBeam: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.3100000023841858,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     }
   ]
 };

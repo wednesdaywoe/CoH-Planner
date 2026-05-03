@@ -104,9 +104,9 @@ export const RadiationSiphon: Power = {
       "label": "Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.3199999928474426,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     }
   ]
 };

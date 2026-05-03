@@ -73,9 +73,9 @@ export const ContaminatedStrike: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.17000000178813934,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     }
   ]
 };

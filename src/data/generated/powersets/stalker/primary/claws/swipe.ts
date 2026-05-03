@@ -61,9 +61,9 @@ export const Swipe: Power = {
       "label": "Lethal_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.5849999785423279,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ],
   "requires": "Stalker_Defense.Shield_Defense !"

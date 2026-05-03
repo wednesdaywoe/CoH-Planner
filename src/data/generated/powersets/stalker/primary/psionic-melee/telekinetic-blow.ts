@@ -85,14 +85,14 @@ export const TelekineticBlow: Power = {
   ],
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.23270000517368317,
-      "label": "Grant_Power"
+      "label": "Insight"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.6980999708175659,
-      "label": "Grant_Power"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",
@@ -110,9 +110,9 @@ export const TelekineticBlow: Power = {
       "label": "Psionic_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.949999988079071,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

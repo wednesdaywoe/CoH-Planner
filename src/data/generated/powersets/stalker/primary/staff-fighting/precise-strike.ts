@@ -60,9 +60,9 @@ export const PreciseStrike: Power = {
   },
   "specialEffects": [
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.800000011920929,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     },
     {
       "kind": "effect-proc",

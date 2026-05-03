@@ -74,9 +74,9 @@ export const HeavyBlow: Power = {
       "label": "Smashing_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.75,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

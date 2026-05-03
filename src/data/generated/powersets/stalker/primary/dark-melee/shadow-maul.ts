@@ -97,9 +97,9 @@ export const ShadowMaul: Power = {
       "label": "Negative_Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.8999999761581421,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };

@@ -94,9 +94,9 @@ export const BoneSmasher: Power = {
       "label": "Stun"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.20000000298023224,
-      "label": "Grant_Power"
+      "label": "Energy Store Assault"
     }
   ]
 };

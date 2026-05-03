@@ -80,9 +80,9 @@ export const CallHawk: Power = {
       "label": "Knockback"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.6136000156402588,
-      "label": "Grant_Power"
+      "label": "Pack Mentality"
     }
   ]
 };

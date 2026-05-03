@@ -76,9 +76,9 @@ export const FrozenFists: Power = {
       "label": "Cold_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.6499999761581421,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     },
     {
       "kind": "effect-proc",

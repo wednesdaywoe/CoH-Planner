@@ -102,9 +102,9 @@ export const AtomSmasher: Power = {
       "label": "Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.3499999940395355,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     }
   ]
 };

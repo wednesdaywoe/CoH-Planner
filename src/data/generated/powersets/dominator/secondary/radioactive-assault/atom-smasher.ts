@@ -87,9 +87,9 @@ export const AtomSmasher: Power = {
       "label": "Stun"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.3499999940395355,
-      "label": "Grant_Power"
+      "label": "Contaminated"
     }
   ]
 };

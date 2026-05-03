@@ -118,9 +118,9 @@ export const SonicThrust: Power = {
       "label": "Energy_Dmg"
     },
     {
-      "kind": "effect-proc",
+      "kind": "grant",
       "chance": 0.625,
-      "label": "Grant_Power"
+      "label": "Assassins Focus"
     }
   ]
 };
