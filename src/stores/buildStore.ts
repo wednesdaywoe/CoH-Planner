@@ -1065,6 +1065,22 @@ export const useBuildStore = create<BuildStore>()(
             return state;
           }
 
+          // Reject duplicates — a power may only be picked once per category.
+          // The UI normally hides already-selected powers, but this is the
+          // canonical guard against bugs that bypass that filter (focus
+          // retention firing onSelect twice, slow re-renders, etc.).
+          if (category !== 'inherent') {
+            const existing = category === 'primary' ? state.build.primary.powers
+              : category === 'secondary' ? state.build.secondary.powers
+              : category === 'epic' ? (state.build.epicPool?.powers ?? [])
+              : category === 'pool'
+                ? state.build.pools.flatMap((p) => p.powers)
+                : [];
+            if (existing.some((p) => p.internalName === power.internalName)) {
+              return state;
+            }
+          }
+
           // Level Up mode: enforce per-level pick quota so the user can't
           // pre-pay picks from future levels. If the cumulative cap at the
           // current character level is already reached, reject the add.
