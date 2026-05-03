@@ -360,6 +360,44 @@ function CollapsibleEffectGroup({
   );
 }
 
+// User-facing sections for the Power Effects table — MEZ / BUFFS / DEBUFFS /
+// SPECIAL. Multiple registry categories collapse into one section: protection
+// + movement both fold into BUFFS so a player's defensive buffs and travel
+// powers sit next to their offensive +DMG/+Rech buffs rather than under a
+// half-empty "Protection" subhead.
+type EffectSection = 'MEZ' | 'BUFFS' | 'DEBUFFS' | 'SPECIAL';
+const SECTION_PRIORITY: Record<EffectSection, number> = {
+  MEZ: 1, BUFFS: 2, DEBUFFS: 3, SPECIAL: 4,
+};
+const SECTION_COLOR: Record<EffectSection, string> = {
+  MEZ: 'text-purple-400',
+  BUFFS: 'text-green-400',
+  DEBUFFS: 'text-amber-400',
+  SPECIAL: 'text-cyan-400',
+};
+
+function sectionForCategory(cat: EffectCategory): EffectSection | null {
+  switch (cat) {
+    case 'control': return 'MEZ';
+    case 'buff': case 'protection': case 'movement': return 'BUFFS';
+    case 'debuff': return 'DEBUFFS';
+    case 'special': return 'SPECIAL';
+    default: return null;
+  }
+}
+
+function sectionPriorityForCategory(cat: EffectCategory): number {
+  const s = sectionForCategory(cat);
+  return s ? SECTION_PRIORITY[s] : 99;
+}
+
+function sectionForGroup(g: EffectGroup): EffectSection | null {
+  const cat = g.type === 'group'
+    ? g.items[0]?.effect.config.category
+    : g.item.effect.config.category;
+  return cat ? sectionForCategory(cat) : null;
+}
+
 /**
  * Group consecutive expanded effects that share the same config into collapsible groups.
  * Effects with expandedLabel from the same config become a group if there are >= COLLAPSE_THRESHOLD entries.
@@ -763,8 +801,14 @@ export function RegistryEffectsDisplay({
   // Return null only if no effects AND no damage to display
   if (displayableEffects.length === 0 && !damage) return null;
 
-  // Sort by category priority, then by effect priority
+  // Sort by user-facing section first (MEZ → BUFFS → DEBUFFS → SPECIAL),
+  // then by registry category priority within the section, then by effect
+  // priority. Prevents debuff effects from being interleaved between buff
+  // and protection rows when those all collapse into the BUFFS section.
   displayableEffects.sort((a, b) => {
+    const sectA = sectionPriorityForCategory(a.effect.config.category);
+    const sectB = sectionPriorityForCategory(b.effect.config.category);
+    if (sectA !== sectB) return sectA - sectB;
     const catA = CATEGORY_CONFIG[a.effect.config.category]?.priority ?? 99;
     const catB = CATEGORY_CONFIG[b.effect.config.category]?.priority ?? 99;
     if (catA !== catB) return catA - catB;
@@ -967,8 +1011,23 @@ export function RegistryEffectsDisplay({
           );
         })()}
 
-      {/* Effects — with collapsible groups for long expanded-by-type lists */}
-      {groupEffectsForDisplay(displayableEffects).map((group, groupIdx) => {
+      {/* Effects — sectioned by MEZ / BUFFS / DEBUFFS / SPECIAL with
+        * collapsible groups for long expanded-by-type lists. The outer
+        * flatMap inserts a section header whenever the effect category
+        * transitions to a different user-facing section. */}
+      {groupEffectsForDisplay(displayableEffects).flatMap((group, groupIdx, all) => {
+        const section = sectionForGroup(group);
+        const prevSection = groupIdx > 0 ? sectionForGroup(all[groupIdx - 1]) : null;
+        const showHeader = section !== null && section !== prevSection;
+        const sectionHeader = showHeader ? (
+          <div
+            key={`section-${section}-${groupIdx}`}
+            className={`${headerFontSize} ${SECTION_COLOR[section!]} font-semibold uppercase tracking-wider mt-1.5 first:mt-0`}
+          >
+            {section}
+          </div>
+        ) : null;
+        const itemNode = ((): React.ReactNode => {
         if (group.type === 'group') {
           return (
             <CollapsibleEffectGroup
@@ -1156,6 +1215,8 @@ export function RegistryEffectsDisplay({
             )}
           </div>
         );
+        })();
+        return sectionHeader ? [sectionHeader, itemNode] : [itemNode];
       })}
       </div>
     </div>
