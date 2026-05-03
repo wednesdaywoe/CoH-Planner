@@ -35,6 +35,11 @@ export interface PermaInfo {
  * Check if a power is eligible for perma tracking.
  *
  * A power is perma-eligible when keeping it active permanently is meaningful:
+ * - Must be a Click power. Toggles re-apply on a tick cadence (their
+ *   `buffDuration` is per-tick refresh, e.g. 0.75s, not a window between
+ *   activations) and Auto powers fire automatically — neither has a perma
+ *   gap to close. Charged Armor and other defense toggles were
+ *   incorrectly tracked because both have recharge + per-tick duration.
  * - Must have both a recharge time and a duration (buff, effect, or summon)
  * - For powers that deal damage (attacks): require recharge >= 2× duration, since
  *   the duration is typically a hold/mez that roughly matches recharge (Dark Grasp).
@@ -45,6 +50,8 @@ export interface PermaInfo {
 export function isPermaEligible(power: Power | SelectedPower): boolean {
   const effects = power.effects;
   if (!effects) return false;
+
+  if (power.powerType === 'Toggle' || power.powerType === 'Auto') return false;
 
   const recharge = getRecharge(effects, power);
   const duration = getDuration(effects);
@@ -68,6 +75,9 @@ export function calculatePermaInfo(
 ): PermaInfo | null {
   const effects = power.effects;
   if (!effects) return null;
+
+  // Toggles and autos don't have a perma cycle (see isPermaEligible).
+  if (power.powerType === 'Toggle' || power.powerType === 'Auto') return null;
 
   const baseRecharge = getRecharge(effects, power);
   const duration = getDuration(effects);
