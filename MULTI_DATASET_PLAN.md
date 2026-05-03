@@ -992,7 +992,13 @@ that triggered this work.
 
 ### Pending UI slices
 
-- [ ] Damage Block: mode tabs + 3-column pipeline + segmented bar
+- [x] **Damage Block extracted to standalone component** (2026-05-03) —
+  339 lines of ad-hoc JSX in InfoPanel.tsx replaced with a focused
+  [DamageBlock.tsx](src/components/info/DamageBlock.tsx) split into
+  `DamageRows` / `DamageBar` / `DamageMetrics` sub-pieces with helpers
+  (`resolveDamageMetric`, `computeProcContribution`). Behavior identical;
+  this is the structural-cleanup base for visual polish (mode tabs,
+  Type-A/B/C/D row classification) to layer on top.
 - [ ] Power Effects Table redesign with explicit Type A/B/C/D row types
 - [ ] Tags row
 - [ ] Section ordering refresh + dividers per proposal

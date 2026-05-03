@@ -27,7 +27,7 @@ import {
   getActiveDamageConversion,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, calculateArcanaTime, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
@@ -37,6 +37,7 @@ import { calculateIncarnateDamage } from '@/data/at-tables';
 import { resolvePath } from '@/utils/paths';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
 import { MechanicAdjusters } from './MechanicAdjusters';
+import { DamageBlock } from './DamageBlock';
 import type {
   ArchetypeId,
   Power,
@@ -48,16 +49,13 @@ import type {
 import { getSlotColor, getTierColor, getTierDisplayName } from '@/data';
 import {
   getEffectiveBuffDebuffModifier,
-  calcThreeTier as calcThreeTierUtil,
   convertGlobalBonusesToAspects,
   findSelectedPowerInBuild,
-  getDamageCap,
   selectActiveConditionals,
   applyActiveConditionals,
 } from './powerDisplayUtils';
 import {
   RegistryEffectsDisplay,
-  getConArrow,
 } from './SharedPowerComponents';
 
 export function InfoPanel() {
@@ -573,10 +571,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Get the effective buff/debuff modifier for this powerset
   const effectiveMod = getEffectiveBuffDebuffModifier(powerSet, buffDebuffMod);
 
-  // Calculate three-tier stats for key values (wrapper for shared utility)
-  const calcThreeTier = (aspect: string, baseValue: number) =>
-    calcThreeTierUtil(aspect, baseValue, enhancementBonuses, globalBonusesForCalc);
-
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
 
@@ -718,337 +712,26 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       )}
 
       {calculatedDamage && (
-        <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
-            Damage <span className="text-slate-600 font-normal">(Lvl {build.level})</span>
-          </h4>
-          <div className="bg-slate-800/50 rounded p-2">
-            {(() => {
-              const gridCols = inherentInfo ? 'grid-cols-[4rem_1fr_1fr_1fr_1fr]' : 'grid-cols-[4rem_1fr_1fr_1fr]';
-              const dot = calculatedDamage.dotDamage;
-              // Mixed = direct damage is different from DoT (both exist separately)
-              const hasDirectDamage = dot ? Math.abs(calculatedDamage.base - dot.base) > 0.001 : true;
-              const isPureDot = dot && !hasDirectDamage;
-
-              const hasEnh = Math.abs(calculatedDamage.enhanced - calculatedDamage.base) > 0.001;
-              const hasGlobal = Math.abs(calculatedDamage.final - calculatedDamage.enhanced) > 0.001;
-              const inherentFinal = inherentInfo ? inherentInfo.applyBonus(calculatedDamage.final) : calculatedDamage.final;
-              const hasInherentDiff = inherentInfo != null && Math.abs(inherentFinal - calculatedDamage.final) > 0.001;
-
-              // Purple patch combat modifier for damage display
-              const combatMod = globalBonuses.combatModifier ?? 1;
-              const showCombatMod = targetLevelOffset !== 0 && combatMod !== 1;
-              const dmgConArrow = showCombatMod ? getConArrow(targetLevelOffset) : null;
-              const cappedClass = calculatedDamage.capped ? 'underline decoration-dotted decoration-amber-400/50' : '';
-
-              // Apply combat modifier to final and inherent values for display
-              const displayFinal = showCombatMod ? calculatedDamage.final * combatMod : calculatedDamage.final;
-              const displayInherentFinal = showCombatMod ? inherentFinal * combatMod : inherentFinal;
-
-              // DoT per-tick values (for inherent bonus on DoT)
-              const dotInherentFinal = dot && inherentInfo ? inherentInfo.applyBonus(dot.final) : dot?.final ?? 0;
-              const displayDotFinal = dot ? (showCombatMod ? dot.final * combatMod : dot.final) : 0;
-              const displayDotInherentFinal = showCombatMod ? dotInherentFinal * combatMod : dotInherentFinal;
-
-              // DoT totals
-              const dotTotalBase = dot ? dot.base * dot.ticks : 0;
-              const dotTotalEnhanced = dot ? dot.enhanced * dot.ticks : 0;
-              const dotTotalFinal = dot ? displayDotFinal * dot.ticks : 0;
-              const dotTotalInherent = dot && inherentInfo ? displayDotInherentFinal * dot.ticks : dotTotalFinal;
-
-              return (
-                <>
-                  <div className={`grid ${gridCols} gap-1 text-[9px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
-                    <span>Type</span>
-                    <span>Base</span>
-                    <span>Enhanced</span>
-                    <span>Final</span>
-                    {inherentInfo && <span className={inherentInfo.color}>{inherentInfo.header}</span>}
-                  </div>
-
-                  {/* Direct damage row (or per-tick for pure DoT) */}
-                  <div className={`grid ${gridCols} gap-1 items-baseline text-xs`}>
-                    <span className="text-red-400">{isPureDot ? `${abbreviateDamageType(calculatedDamage.type)}/tick` : abbreviateDamageType(calculatedDamage.type)}</span>
-                    <span className="text-slate-200">{calculatedDamage.base.toFixed(2)}</span>
-                    <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
-                      {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(2)}` : '—'}
-                    </span>
-                    <span className={`${hasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-600'} ${cappedClass}`}>
-                      {hasGlobal || showCombatMod ? <>→ {displayFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
-                    </span>
-                    {inherentInfo && (
-                      <span className={`${hasInherentDiff || showCombatMod ? inherentInfo.color : 'text-slate-600'} ${cappedClass}`}>
-                        {hasInherentDiff || showCombatMod ? <>→ {displayInherentFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* DoT per-tick row (only for mixed direct+DoT powers) */}
-                  {dot && hasDirectDamage && (() => {
-                    const dotHasEnh = Math.abs(dot.enhanced - dot.base) > 0.001;
-                    const dotHasGlobal = Math.abs(dot.final - dot.enhanced) > 0.001;
-                    const dotHasInherent = inherentInfo != null && Math.abs(dotInherentFinal - dot.final) > 0.001;
-                    return (
-                      <div className={`grid ${gridCols} gap-1 items-baseline text-xs`}>
-                        <span className="text-red-400">{abbreviateDamageType(dot.type)}/tick</span>
-                        <span className="text-slate-200">{dot.base.toFixed(2)}</span>
-                        <span className={dotHasEnh ? 'text-green-400' : 'text-slate-600'}>
-                          {dotHasEnh ? `→ ${dot.enhanced.toFixed(2)}` : '—'}
-                        </span>
-                        <span className={`${dotHasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-600'} ${cappedClass}`}>
-                          {dotHasGlobal || showCombatMod ? <>→ {displayDotFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
-                        </span>
-                        {inherentInfo && (
-                          <span className={`${dotHasInherent || showCombatMod ? inherentInfo.color : 'text-slate-600'} ${cappedClass}`}>
-                            {dotHasInherent || showCombatMod ? <>→ {displayDotInherentFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
-                          </span>
-                        )}
-                      </div>
-                    );
-                  })()}
-
-                  {/* DoT total row */}
-                  {dot && (() => {
-                    const hasTotalEnh = Math.abs(dotTotalEnhanced - dotTotalBase) > 0.001;
-                    const hasTotalGlobal = Math.abs(dotTotalFinal - dotTotalEnhanced) > 0.001;
-                    const hasTotalInherent = inherentInfo != null && Math.abs(dotTotalInherent - dotTotalFinal) > 0.001;
-                    return (
-                      <>
-                        <div className={`grid ${gridCols} gap-1 items-baseline text-xs mt-1 pt-1 border-t border-slate-700/50`}>
-                          <span className="text-orange-400">DoT</span>
-                          <span className="text-slate-200">{dotTotalBase.toFixed(2)}</span>
-                          <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-600'}>
-                            {hasTotalEnh ? `→ ${dotTotalEnhanced.toFixed(2)}` : '—'}
-                          </span>
-                          <span className={`${hasTotalGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-600'} ${cappedClass}`}>
-                            {hasTotalGlobal || showCombatMod ? <>→ {dotTotalFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
-                          </span>
-                          {inherentInfo && (
-                            <span className={`${hasTotalInherent || showCombatMod ? inherentInfo.color : 'text-slate-600'} ${cappedClass}`}>
-                              {hasTotalInherent || showCombatMod ? <>→ {dotTotalInherent.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
-                            </span>
-                          )}
-                        </div>
-                        <div className="text-[9px] text-orange-400/70 italic mt-0.5 ml-1">
-                          {dot.ticks} ticks over {dot.duration}s ({dot.tickRate}s/tick)
-                        </div>
-                      </>
-                    );
-                  })()}
-                </>
-              );
-            })()}
-            {/* Damage bar - overlaid base/enhanced/final relative to AT cap */}
-            {!calculatedDamage.unknown && calculatedDamage.scale && (() => {
-              const damageCap = getDamageCap(archetypeId ?? '');
-              // Fixed reference: AT's damage at scale 1.0 × damageCap
-              // Since base ∝ scale, (base/scale) gives AT base at scale 1.0
-              const referenceDamage = (calculatedDamage.base / calculatedDamage.scale) * damageCap;
-
-              // Include DoT total damage in the bar (direct + DoT×ticks)
-              const dot = calculatedDamage.dotDamage;
-              const isPureDot = dot && Math.abs(calculatedDamage.base - dot.base) <= 0.001;
-              const totalBase = isPureDot
-                ? dot.base * dot.ticks
-                : calculatedDamage.base + (dot ? dot.base * dot.ticks : 0);
-              const totalEnhanced = isPureDot
-                ? dot.enhanced * dot.ticks
-                : calculatedDamage.enhanced + (dot ? dot.enhanced * dot.ticks : 0);
-              const totalFinal = isPureDot
-                ? dot.final * dot.ticks
-                : calculatedDamage.final + (dot ? dot.final * dot.ticks : 0);
-
-              const basePercent = Math.min((totalBase / referenceDamage) * 100, 100);
-              const enhPercent = Math.min((totalEnhanced / referenceDamage) * 100, 100);
-              const finalPercent = Math.min((totalFinal / referenceDamage) * 100, 100);
-
-              return (
-                <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%`}>
-                  {/* Final (back layer) */}
-                  <div
-                    className="absolute inset-y-0 left-0 bg-amber-500 rounded-l transition-all duration-300"
-                    style={{ width: `${finalPercent}%` }}
-                  />
-                  {/* Enhanced (middle layer) */}
-                  <div
-                    className="absolute inset-y-0 left-0 bg-green-500 rounded-l transition-all duration-300"
-                    style={{ width: `${enhPercent}%` }}
-                  />
-                  {/* Base (front layer) */}
-                  <div
-                    className="absolute inset-y-0 left-0 bg-slate-400 rounded-l transition-all duration-300"
-                    style={{ width: `${basePercent}%` }}
-                  />
-                </div>
-              );
-            })()}
-            {calculatedDamage.unknown && (
-              <div className="text-[9px] text-slate-500 italic mt-1">
-                * Actual damage varies (pseudo-pet or redirect power)
-              </div>
-            )}
-            {/* DPS Calculation */}
-            {!calculatedDamage.unknown && effects?.recharge && effects?.castTime && (
-              (() => {
-                // Calculate enhanced recharge time
-                const rechargeStats = calcThreeTier('recharge', effects.recharge);
-                const rawCastTime = effects.castTime;
-                const arcanaTimeEnabled = useArcanaTimeToggle;
-                const effectiveCastTime = arcanaTimeEnabled ? calculateArcanaTime(rawCastTime) : rawCastTime;
-
-                // Cycle time = cast time + recharge time
-                const baseCycleTime = effectiveCastTime + effects.recharge;
-                const finalCycleTime = effectiveCastTime + rechargeStats.final;
-
-                // DPS = total damage (direct + DoT total + proc damage) / cycle time.
-                // For pure-DoT powers, `calculatedDamage.base` IS the per-tick value
-                // (calc copies it into `dotDamage.base`), so adding both double-counts
-                // one tick. Detect that case and use only the DoT total.
-                const dot = calculatedDamage.dotDamage;
-                const isPureDotForDps = dot ? Math.abs(calculatedDamage.base - dot.base) <= 0.001 : false;
-                const dotTotalBase = dot ? dot.base * dot.ticks : 0;
-                const dotTotalFinal = dot ? dot.final * dot.ticks : 0;
-
-                // Calculate proc damage per activation if toggle is enabled
-                let procDamagePerActivation = 0;
-                if (includeProcDamageToggle && selectedPower?.slots) {
-                  const radius = effects?.radius || 0;
-                  for (const slot of selectedPower.slots) {
-                    if (!slot || slot.type !== 'io-set') continue;
-                    const ioEnh = slot as IOSetEnhancement;
-                    if (!ioEnh.isProc) continue;
-                    const procData = findProcData(ioEnh.name, ioEnh.setName);
-                    if (!procData || procData.ppm === null) continue;
-                    const effect = parseProcEffect(procData.mechanics);
-                    if (effect.category !== 'Damage' || effect.value === undefined || effect.valueMax === undefined) continue;
-                    // Interpolate damage at the enhancement's effective level
-                    const enhLevel = ioEnh.attuned ? build.level : (ioEnh.level ?? build.level);
-                    const dmgAtLevel = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, enhLevel);
-                    // Proc chance uses base recharge and raw cast time (not ArcanaTime)
-                    const procChance = calculateProcChance(procData.ppm, effects.recharge, rawCastTime, radius);
-                    procDamagePerActivation += dmgAtLevel * procChance;
-                  }
-                }
-
-                const totalDmgBase = isPureDotForDps
-                  ? dotTotalBase
-                  : calculatedDamage.base + dotTotalBase;
-                const totalDmgFinal = isPureDotForDps
-                  ? dotTotalFinal + procDamagePerActivation
-                  : calculatedDamage.final + dotTotalFinal + procDamagePerActivation;
-
-                const baseDPS = totalDmgBase / baseCycleTime;
-                const finalDPS = totalDmgFinal / finalCycleTime;
-
-                return (
-                  <div className="mt-2 pt-2 border-t border-slate-700">
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div>
-                        <span className="text-slate-500">
-                          Cycle Time{arcanaTimeEnabled && <span className="text-cyan-500 text-[9px] ml-0.5" title="Using ArcanaTime (server-tick-adjusted cast time)">A</span>}
-                        </span>
-                        <div className="text-slate-300">
-                          {finalCycleTime.toFixed(2)}s
-                          {finalCycleTime < baseCycleTime - 0.01 && (
-                            <span className="text-green-400 text-[10px] ml-1">
-                              (was {baseCycleTime.toFixed(1)}s)
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                      {(() => {
-                        // Resolve the displayed figure based on the current mode.
-                        // - 'damage'        → totalDmg
-                        // - 'damagePerAnim' → totalDmg / cast time (honors ArcanaTime via effectiveCastTime)
-                        // - 'damagePerSec'  → totalDmg / full cycle time
-                        // - 'damagePerEnd'  → totalDmg / endurance cost
-                        const endCost = effects?.enduranceCost ?? 0;
-                        let label: string;
-                        let title: string;
-                        let valueBase: number;
-                        let valueFinal: number;
-                        let unavailableReason: string | null = null;
-
-                        switch (damageDisplayMode) {
-                          case 'damage':
-                            label = 'Damage';
-                            title = 'Total damage of one activation';
-                            valueBase = totalDmgBase;
-                            valueFinal = totalDmgFinal;
-                            break;
-                          case 'damagePerAnim':
-                            label = 'DPA';
-                            title = `Damage per Animation — damage / ${arcanaTimeEnabled ? 'ArcanaTime' : 'cast time'}`;
-                            if (effectiveCastTime <= 0) {
-                              unavailableReason = 'No cast time';
-                              valueBase = 0;
-                              valueFinal = 0;
-                            } else {
-                              valueBase = totalDmgBase / effectiveCastTime;
-                              valueFinal = totalDmgFinal / effectiveCastTime;
-                            }
-                            break;
-                          case 'damagePerEnd':
-                            label = 'DPE';
-                            title = 'Damage per Endurance — damage / endurance cost';
-                            if (endCost <= 0) {
-                              unavailableReason = 'No endurance cost';
-                              valueBase = 0;
-                              valueFinal = 0;
-                            } else {
-                              valueBase = totalDmgBase / endCost;
-                              valueFinal = totalDmgFinal / endCost;
-                            }
-                            break;
-                          case 'damagePerSec':
-                          default:
-                            label = 'DPS';
-                            title = 'Damage per Second — damage / full cycle time (cast + recharge)';
-                            valueBase = baseDPS;
-                            valueFinal = finalDPS;
-                            break;
-                        }
-
-                        const improved = valueFinal > valueBase * 1.01;
-                        const procContribution =
-                          damageDisplayMode === 'damagePerSec' && finalCycleTime > 0
-                            ? procDamagePerActivation / finalCycleTime
-                            : damageDisplayMode === 'damagePerAnim' && effectiveCastTime > 0
-                            ? procDamagePerActivation / effectiveCastTime
-                            : damageDisplayMode === 'damagePerEnd' && endCost > 0
-                            ? procDamagePerActivation / endCost
-                            : procDamagePerActivation;
-
-                        return (
-                          <div>
-                            <span className="text-slate-500" title={title}>{label}</span>
-                            {unavailableReason ? (
-                              <div className="text-slate-500" title={unavailableReason}>—</div>
-                            ) : (
-                              <div className={improved ? 'text-amber-400' : 'text-slate-300'}>
-                                {valueFinal.toFixed(2)}
-                                {improved && valueBase > 0 && (
-                                  <span className="text-green-400 text-[10px] ml-1">
-                                    (+{((valueFinal / valueBase - 1) * 100).toFixed(0)}%)
-                                  </span>
-                                )}
-                                {procDamagePerActivation > 0 && (
-                                  <span className="text-cyan-400 text-[10px] ml-1" title="Includes proc damage">
-                                    +{procContribution.toFixed(1)} proc
-                                  </span>
-                                )}
-                              </div>
-                            )}
-                          </div>
-                        );
-                      })()}
-                    </div>
-                  </div>
-                );
-              })()
-            )}
-          </div>
-        </div>
+        <DamageBlock
+          calculatedDamage={calculatedDamage}
+          effects={{
+            recharge: effects?.recharge,
+            castTime: effects?.castTime,
+            enduranceCost: effects?.enduranceCost,
+            radius: effects?.radius,
+          }}
+          archetypeId={archetypeId ?? undefined}
+          buildLevel={build.level}
+          inherentInfo={inherentInfo}
+          globalCombatModifier={globalBonuses.combatModifier ?? 1}
+          targetLevelOffset={targetLevelOffset}
+          selectedPower={selectedPower}
+          damageDisplayMode={damageDisplayMode}
+          arcanaTimeEnabled={useArcanaTimeToggle}
+          includeProcDamage={includeProcDamageToggle}
+          enhancementBonuses={enhancementBonuses}
+          globalBonusesForCalc={globalBonusesForCalc}
+        />
       )}
 
       {/* Inherent AT damage bonus info panels */}
