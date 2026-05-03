@@ -18,7 +18,7 @@ Each entry below has a detail section further down. Status snapshot as of
 | 3 | **InfoPanel visual redesign** | **Complete.** All six outline sections landed (Mechanic Adjusters / Tags Block / Damage Block / Effects Block / General Stats Block / Description), language pass to in-game terminology, plus several regressions caught and fixed along the way (DoT 5×tick, FE Fire leak, Melee/Ranged misclassification, false-positive SPECIAL rows). | [#infopanel-visual-redesign](#infopanel-visual-redesign) |
 | 4 | **AT-mechanic alignment** (Header vs InfoPanel) | First overlap (Domination via `kStealth source>` on Dominator powers) routed through Header state; expand mapping as more overlaps surface | [#at-mechanic-alignment](#at-mechanic-alignment) |
 | 5 | **Calc accuracy fixes** | Conditional-aggregation fix shipped to main; pure-DoT 5×tick bug, tooltip-level convention, level-differential accuracy display still open | [#calc-accuracy](#calc-accuracy) |
-| 6 | **Original Domination mechanic** (Rebirth) | Not started. Inherent description and toggle wiring need rewrite for i23-era Domination semantics | [#original-domination](#original-domination) |
+| 6 | **Rebirth scalar-table verification** | Originally framed as "Original Domination" — audit (2026-05-03) shows AT inherent mechanics are identical between HC and Rebirth. Real gap is numerical (HP tables, damage/buff modifiers) inherited from HC; needs diff against Rebirth's `classes.bin`. | [#rebirth-scalar-table-verification](#rebirth-scalar-table-verification) |
 | 7 | **IO sets exporter for Rebirth** | Not started. Last Stage C blocker. | [#io-sets-exporter-for-rebirth](#io-sets-exporter-for-rebirth) |
 
 ## Open Tasks (not-yet-grouped backlog)
@@ -29,7 +29,7 @@ Each entry below has a detail section further down. Status snapshot as of
 - [ ] Verify ~217 HC Beam Rifle / Disintegration powers in browser after the conditional-aggregation fix shipped
 - [ ] Decide on tooltip-level convention (game uses power's design level; Sidekick uses character level)
 - [ ] Stage B: migrate HC `powersets/` `overrides/` `generated/` trees into `datasets/homecoming/` (~600 import sites)
-- [ ] Audit other Rebirth-vs-HC scalar tables (only ranged/melee damage compared so far; control/heal/etc. tables differ for Tanker/Brute, possibly others)
+- [→] ~~Audit other Rebirth-vs-HC scalar tables~~ — folded into the rescoped Workstream 6 ([Rebirth scalar-table verification](#rebirth-scalar-table-verification))
 - [ ] Investigate the 80+ "Conditional"-labeled Rebirth Vacuum-style pet conditional gates
 - [x] AT-inherent ID map expansion — audited 2026-05-03; only `domination` exists as a binary-level gate among AT-inherent mechanics. See AT-mechanic alignment section for details.
 
@@ -1134,21 +1134,43 @@ Two adjacent ID classes worth noting (not AT-inherent, no action required):
 
 ---
 
-## Original Domination
+## Rebirth scalar-table verification
 
-Rebirth uses i23-era Domination semantics (drains from a meter, not the
-HC i25+ "+mez/+rech aura"). The binary tags Domination with
-`kStealth source>` predicates. Numbers flow through correctly via the
-Mechanic Adjusters work, but UX-level concerns remain.
+Originally framed as **"Original Domination"** assuming Rebirth's
+Dominator inherent worked differently from HC's. Audit (2026-05-03)
+shows that's not the case — every player-facing AT inherent on Rebirth
+shares the exact same mechanic and description text as HC's modern
+version. Domination has been meter-based since Issue 7 on both servers;
+HC never reverted it to a passive aura. The audit-confirmed diff
+between HC and Rebirth `archetypes.ts` reduces to:
+
+- Sentinel (Opportunity) is HC-only — Rebirth predates i25
+- Cosmic Balance / Dark Sustenance per-AT lists mention Sentinel on HC,
+  omit it on Rebirth (correct — no Sentinel target to scale off)
+
+The actual remaining gap is **numerical**, not mechanical: Rebirth's
+`archetypes.ts` HP tables, damage modifiers, and `buffDebuffModifier`
+values are inherited from HC. The file's own comments already flag
+this:
+
+> HP tables / damage modifiers are inherited from HC for now. They
+> should be cross-checked against Rebirth's `classes.bin` named_tables
+> (Melee_Damage[0]/Ranged_Damage[0]/etc.) — minor numerical divergence
+> wouldn't be surprising.
 
 ### Pending
 
-- [ ] Rewrite `archetypes.ts → dominator.inherent.description` for
-  Rebirth (currently HC-cloned, describes the wrong mechanic)
-- [ ] Decide how the Dominator inherent toggle in the Header should
-  behave — meter slider vs binary on/off
-- [ ] Verify the recharge / buffDuration values in Rebirth's
-  `dominator.inherent.effects` match the i23 mechanic
+- [ ] Pull Rebirth's `classes.bin` named_tables values via
+  `tools/bin-crawler/bin_crawler/export_classes.py` (already produces
+  per-AT JSON files in the right shape).
+- [ ] Diff each AT's `Melee_Damage[0]` / `Ranged_Damage[0]` /
+  `BuffDebuff_Mod` / HP scaling against the HC values now hardcoded in
+  Rebirth's `archetypes.ts`.
+- [ ] Patch any divergent values; document the divergence in the file
+  header. Mechanics stay the same — only the magnitudes shift.
+- [ ] Smoke-test on a level-50 Rebirth Dominator / Brute / Defender
+  build to confirm Header-toggle calc results match what the live game
+  would report.
 
 ---
 
