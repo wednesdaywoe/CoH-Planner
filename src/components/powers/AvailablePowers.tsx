@@ -243,12 +243,16 @@ export function PowerItem({
     onLockToggle();
   };
 
-  const handleClick = (_e: React.MouseEvent) => {
+  const handleClick = (e: React.MouseEvent) => {
     if (isSelected && onRemove) {
       onRemove();
     } else if (!isDisabled) {
       onSelect();
     }
+    // Drop focus after activation. Chrome/Edge auto-focus role=button divs
+    // on click; without this blur, a subsequent Space press on the still-
+    // focused row re-fires onSelect and duplicates the power.
+    (e.currentTarget as HTMLDivElement).blur();
   };
 
   const hoverBorderClass = accentColor === 'purple'
