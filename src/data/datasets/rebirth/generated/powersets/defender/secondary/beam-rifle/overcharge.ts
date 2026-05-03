@@ -35,6 +35,13 @@ export const Overcharge: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defender Archetype Sets",
+    "Defense Debuff",
+    "Ranged AoE Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

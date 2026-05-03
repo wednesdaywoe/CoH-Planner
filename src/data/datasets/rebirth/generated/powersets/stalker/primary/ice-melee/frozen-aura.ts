@@ -32,6 +32,14 @@ export const FrozenAura: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Running",
+    "Stalker Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Cold",

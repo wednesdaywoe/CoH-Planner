@@ -33,6 +33,14 @@ export const Deluge: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Holds",
+    "Melee Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -34,6 +34,12 @@ export const Breathless: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Dominator Archetype Sets",
+    "Immobilize",
+    "Ranged AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

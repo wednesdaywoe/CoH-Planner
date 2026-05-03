@@ -32,6 +32,11 @@ export const Subdual: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Immobilize",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

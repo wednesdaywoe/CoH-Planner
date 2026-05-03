@@ -34,6 +34,12 @@ export const FreezingTouch: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Melee Damage",
+    "Tanker Archetype Sets",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

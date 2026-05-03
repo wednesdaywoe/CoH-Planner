@@ -33,6 +33,13 @@ export const SoulTransfer: Power = {
     "Defense Debuff",
     "Damage"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Healing",
+    "Melee AoE Damage",
+    "Scrapper Archetype Sets",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

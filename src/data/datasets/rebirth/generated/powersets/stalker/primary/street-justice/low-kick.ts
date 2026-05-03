@@ -32,6 +32,12 @@ export const ShinBreaker: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defense Debuff",
+    "Melee Damage",
+    "Slow Movement",
+    "Stalker Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

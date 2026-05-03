@@ -34,6 +34,11 @@ export const PsionicTornado: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Knockback",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

@@ -32,6 +32,10 @@ export const EnervatingField: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistanceDebuff": {

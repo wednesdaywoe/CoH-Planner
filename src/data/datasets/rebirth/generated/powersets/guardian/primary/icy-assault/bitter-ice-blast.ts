@@ -33,6 +33,14 @@ export const BitterIceBlast: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Fear",
+    "Holds",
+    "Melee Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": [
     {

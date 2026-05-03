@@ -31,6 +31,12 @@ export const Pummel: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Ranged Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

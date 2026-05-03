@@ -34,6 +34,13 @@ export const Hypothermia: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Holds",
+    "Running",
+    "Stuns",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "sleep": {

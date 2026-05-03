@@ -35,6 +35,16 @@ export const Slice: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Melee AoE Damage",
+    "Running",
+    "Slow Movement",
+    "Tanker Archetype Sets",
+    "To Hit Debuff",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

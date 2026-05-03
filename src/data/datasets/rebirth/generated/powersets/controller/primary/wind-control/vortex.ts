@@ -34,5 +34,13 @@ export const Vortex: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Slow Movement",
+    "Stuns",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

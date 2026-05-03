@@ -29,6 +29,10 @@ export const SolarGlide: Power = {
     "Healing",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Flight",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "recoveryBuff": {

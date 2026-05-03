@@ -32,6 +32,11 @@ export const WillDomination: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Ranged Damage",
+    "Sleep"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

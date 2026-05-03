@@ -32,6 +32,12 @@ export const Elude: Power = {
     "Immobilize",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Endurance Modification",
+    "Running & Sprints",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

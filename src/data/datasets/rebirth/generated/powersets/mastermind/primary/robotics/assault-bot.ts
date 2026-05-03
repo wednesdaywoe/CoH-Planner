@@ -31,5 +31,11 @@ export const AssaultBot: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets"
+  ],
   "maxSlots": 6
 };

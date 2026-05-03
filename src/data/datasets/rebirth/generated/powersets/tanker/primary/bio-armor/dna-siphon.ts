@@ -34,6 +34,14 @@ export const DNASiphon: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Healing",
+    "Endurance Modification",
+    "Healing",
+    "Melee AoE Damage",
+    "Tanker Archetype Sets",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {

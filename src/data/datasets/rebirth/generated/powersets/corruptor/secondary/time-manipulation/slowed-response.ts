@@ -33,6 +33,10 @@ export const SlowedResponse: Power = {
     "ToHit Debuff",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistanceDebuff": {

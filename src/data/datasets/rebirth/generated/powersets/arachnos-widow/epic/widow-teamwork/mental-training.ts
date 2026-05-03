@@ -26,6 +26,10 @@ export const MentalTraining: Power = {
     "Sleep",
     "Healing"
   ],
+  "allowedSetCategories": [
+    "Healing",
+    "Sleep"
+  ],
   "maxSlots": 6,
   "effects": {
     "rechargeBuff": {

@@ -31,6 +31,9 @@ export const ParalyticPoison: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Holds"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

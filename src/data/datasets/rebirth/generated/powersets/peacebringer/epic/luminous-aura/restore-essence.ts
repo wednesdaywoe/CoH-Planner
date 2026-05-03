@@ -30,6 +30,9 @@ export const RestoreEssence: Power = {
     "Defense Debuff",
     "ToHit"
   ],
+  "allowedSetCategories": [
+    "Healing"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

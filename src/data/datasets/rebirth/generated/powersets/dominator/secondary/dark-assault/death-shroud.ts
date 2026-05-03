@@ -33,6 +33,12 @@ export const MoonBeam: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Ranged Damage",
+    "Sniper Attacks",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

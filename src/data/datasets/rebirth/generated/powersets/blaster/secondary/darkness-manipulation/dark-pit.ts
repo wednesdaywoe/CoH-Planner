@@ -33,6 +33,9 @@ export const DarkPit: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Stuns"
+  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

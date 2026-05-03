@@ -31,6 +31,11 @@ export const AgainstAllOdds: Power = {
     "Slow",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "Slow Movement",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {

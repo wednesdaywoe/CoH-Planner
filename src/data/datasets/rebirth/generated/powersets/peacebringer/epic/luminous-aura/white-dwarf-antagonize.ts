@@ -32,6 +32,11 @@ export const WhiteDwarfAntagonize: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "Slow Movement",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {

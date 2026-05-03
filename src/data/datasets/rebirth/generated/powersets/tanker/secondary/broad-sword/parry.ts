@@ -34,6 +34,15 @@ export const Parry: Power = {
     "Defense",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Melee AoE Damage",
+    "Running",
+    "Slow Movement",
+    "Tanker Archetype Sets",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

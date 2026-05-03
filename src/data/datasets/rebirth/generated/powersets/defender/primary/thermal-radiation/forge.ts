@@ -30,6 +30,9 @@ export const Forge: Power = {
     "Run Speed",
     "ToHit"
   ],
+  "allowedSetCategories": [
+    "To Hit Buff"
+  ],
   "maxSlots": 6,
   "effects": {
     "tohitBuff": {

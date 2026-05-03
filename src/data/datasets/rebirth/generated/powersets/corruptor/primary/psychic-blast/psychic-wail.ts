@@ -32,6 +32,11 @@ export const PsychicWail: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee AoE Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

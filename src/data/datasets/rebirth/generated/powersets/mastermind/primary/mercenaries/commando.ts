@@ -31,5 +31,12 @@ export const Commando: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defense Debuff",
+    "Knockback",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets"
+  ],
   "maxSlots": 6
 };

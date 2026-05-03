@@ -33,6 +33,12 @@ export const SniperBlast: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Knockback",
+    "Ranged Damage",
+    "Sniper Attacks"
+  ],
   "maxSlots": 6,
   "damage": [
     {

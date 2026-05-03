@@ -35,6 +35,13 @@ export const HeadSplitter: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Knockback",
+    "Melee AoE Damage",
+    "Scrapper Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

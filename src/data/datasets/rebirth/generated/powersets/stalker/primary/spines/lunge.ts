@@ -31,6 +31,11 @@ export const Lunge: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Slow Movement",
+    "Stalker Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

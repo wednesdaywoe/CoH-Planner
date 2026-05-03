@@ -30,5 +30,8 @@ export const GlueArrow: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

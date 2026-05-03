@@ -32,6 +32,11 @@ export const GlacialShield: Power = {
     "Run Speed",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

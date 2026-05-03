@@ -32,6 +32,11 @@ export const ShortCircuit: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Endurance Modification",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

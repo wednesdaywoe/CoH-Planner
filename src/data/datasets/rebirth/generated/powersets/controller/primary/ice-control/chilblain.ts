@@ -33,6 +33,12 @@ export const Chilblain: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Immobilize",
+    "Ranged Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Cold",

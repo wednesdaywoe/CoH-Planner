@@ -32,6 +32,11 @@ export const Nova: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Knockback",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

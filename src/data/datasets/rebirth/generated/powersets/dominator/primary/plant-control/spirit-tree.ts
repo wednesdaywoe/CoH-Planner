@@ -30,5 +30,8 @@ export const SpiritTree: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing"
+  ],
   "maxSlots": 6
 };

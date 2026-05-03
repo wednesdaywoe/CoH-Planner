@@ -31,6 +31,9 @@ export const Blaze: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

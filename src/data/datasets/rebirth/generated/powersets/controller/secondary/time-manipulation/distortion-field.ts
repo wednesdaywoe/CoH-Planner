@@ -31,5 +31,10 @@ export const DistortionField: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Holds",
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

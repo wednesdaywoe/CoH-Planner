@@ -33,6 +33,11 @@ export const RibCracker: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Tanker Archetype Sets",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

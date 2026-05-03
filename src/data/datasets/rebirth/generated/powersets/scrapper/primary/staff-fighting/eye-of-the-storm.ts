@@ -32,6 +32,11 @@ export const EyeoftheStorm: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee AoE Damage",
+    "Scrapper Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

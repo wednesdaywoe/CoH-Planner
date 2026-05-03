@@ -32,5 +32,12 @@ export const Fallout: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Accurate To-Hit Debuff",
+    "Defense Debuff",
+    "Ranged AoE Damage",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

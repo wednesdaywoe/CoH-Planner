@@ -35,6 +35,11 @@ export const SirensSong: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Ranged AoE Damage",
+    "Sleep"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

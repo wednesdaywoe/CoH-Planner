@@ -32,6 +32,11 @@ export const ThornyDarts: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

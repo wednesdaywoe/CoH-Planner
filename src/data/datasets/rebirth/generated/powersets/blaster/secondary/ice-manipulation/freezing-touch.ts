@@ -31,6 +31,11 @@ export const FreezingTouch: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Holds",
+    "Melee Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

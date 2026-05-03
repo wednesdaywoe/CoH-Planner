@@ -34,5 +34,12 @@ export const SpecOps: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defense Debuff",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

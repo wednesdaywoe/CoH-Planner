@@ -35,6 +35,14 @@ export const MidnightGrasp: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Immobilize",
+    "Melee Damage",
+    "Tanker Archetype Sets",
+    "Threat Duration",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "damage": [
     {

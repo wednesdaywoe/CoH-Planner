@@ -31,6 +31,12 @@ export const Smite: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
+    "Melee Damage",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "damage": [
     {

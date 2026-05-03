@@ -32,6 +32,12 @@ export const ShockingGrasp: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Endurance Modification",
+    "Holds",
+    "Melee Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

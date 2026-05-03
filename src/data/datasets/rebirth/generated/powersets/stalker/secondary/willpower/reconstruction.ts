@@ -28,6 +28,9 @@ export const Reconstruction: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

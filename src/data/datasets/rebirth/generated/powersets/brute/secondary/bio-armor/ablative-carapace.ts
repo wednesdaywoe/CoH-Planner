@@ -28,6 +28,9 @@ export const AblativeCarapace: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing"
+  ],
   "maxSlots": 6,
   "effects": {
     "absorb": {

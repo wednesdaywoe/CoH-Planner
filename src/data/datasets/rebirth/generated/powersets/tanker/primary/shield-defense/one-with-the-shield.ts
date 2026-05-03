@@ -28,6 +28,10 @@ export const OnewiththeShield: Power = {
     "EnduranceModification",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Immobilize"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

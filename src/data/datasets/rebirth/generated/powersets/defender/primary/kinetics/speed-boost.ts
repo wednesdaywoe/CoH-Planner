@@ -34,6 +34,11 @@ export const SpeedBoost: Power = {
     "Run Speed",
     "Healing"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Running & Sprints",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "rechargeBuff": {

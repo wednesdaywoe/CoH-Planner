@@ -32,6 +32,11 @@ export const LightningRod: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee AoE Damage",
+    "Scrapper Archetype Sets"
+  ],
   "maxSlots": 6,
   "effects": {
     "teleport": {

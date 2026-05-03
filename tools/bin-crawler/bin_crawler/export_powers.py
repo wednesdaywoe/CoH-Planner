@@ -103,9 +103,18 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
     """Convert a PowerRecord to CoD2-compatible JSON dict.
 
     set_cats_index maps `full_name` → list of planner set-category strings
-    derived from boostsets.bin's authoritative per-set power lists. When
-    present, `allowed_set_categories` is populated from it; otherwise the
-    field is omitted so downstream code can fall back to inference.
+    derived from boostsets.bin's authoritative per-set power lists.
+
+    Three states for `allowed_set_categories` in the output:
+      - List with entries: the game says these categories slot here.
+      - Empty list `[]`: the game has the power in boostsets but it maps
+        to nothing — strict "no IO sets here" (e.g., SR Quickness).
+      - `null`: boostsets wasn't loaded *or* this power isn't in the
+        index. Downstream converters should fall back to inference.
+
+    The previous behavior conflated "boostsets says nothing" with "no
+    boostsets at all", which made every Rebirth power look like a strict
+    no-IO power on datasets where boostsets.bin wasn't shipped.
     """
     d = {
         'name': pw.power_name,
@@ -137,7 +146,11 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
         'targets_affected': [TARGET_TYPE.get(v, f'Unknown({v})') for v in pw.targets_affected],
         'boosts_allowed': pw.boosts_allowed,
         'allowed_set_categories': (
-            set_cats_index.get(pw.full_name, []) if set_cats_index is not None else []
+            # `set_cats_index.get(pw.full_name)` returns:
+            #   list  — power found, empty list means "no sets" (strict)
+            #   None  — power not in index OR no boostsets.bin loaded
+            #           → emit null so downstream can infer.
+            set_cats_index.get(pw.full_name) if set_cats_index else None
         ),
         'cast_through': pw.cast_through,
         'num_allowed': pw.num_allowed,

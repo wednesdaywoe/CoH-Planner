@@ -29,6 +29,12 @@ export const BrightNova: Power = {
     "Healing",
     "ToHit"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Flight",
+    "To Hit Buff",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "movement": {

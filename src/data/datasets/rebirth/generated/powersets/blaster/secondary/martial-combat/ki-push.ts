@@ -31,6 +31,11 @@ export const KiPush: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Knockback",
+    "Melee Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

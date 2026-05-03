@@ -33,5 +33,9 @@ export const Gremlins: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Pet Damage",
+    "Recharge Intensive Pets"
+  ],
   "maxSlots": 6
 };

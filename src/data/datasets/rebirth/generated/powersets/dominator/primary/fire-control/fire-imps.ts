@@ -31,6 +31,10 @@ export const FireImps: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Pet Damage",
+    "Recharge Intensive Pets"
+  ],
   "maxSlots": 6,
   "specialEffects": [
     {

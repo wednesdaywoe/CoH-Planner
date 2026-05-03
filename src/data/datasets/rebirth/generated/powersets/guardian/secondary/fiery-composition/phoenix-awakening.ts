@@ -33,6 +33,16 @@ export const PhoenixAwakening: Power = {
     "Defense Debuff",
     "Damage"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Endurance Modification",
+    "Immobilize",
+    "Ranged AoE Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "maxStacks": 2,

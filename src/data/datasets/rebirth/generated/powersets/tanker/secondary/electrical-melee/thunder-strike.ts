@@ -35,6 +35,13 @@ export const ThunderStrike: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee AoE Damage",
+    "Stuns",
+    "Tanker Archetype Sets",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

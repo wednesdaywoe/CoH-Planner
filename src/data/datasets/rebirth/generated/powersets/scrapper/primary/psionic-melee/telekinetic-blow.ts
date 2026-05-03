@@ -31,6 +31,11 @@ export const TelekineticBlow: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

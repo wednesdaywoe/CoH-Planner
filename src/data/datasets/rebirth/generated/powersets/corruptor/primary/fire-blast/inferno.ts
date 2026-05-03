@@ -31,6 +31,10 @@ export const Inferno: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -33,6 +33,12 @@ export const BitterFreezeRay: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Holds",
+    "Ranged Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Cold",

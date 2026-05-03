@@ -32,6 +32,13 @@ export const Resurrect: Power = {
     "ToHit",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Debuff",
+    "Defense Sets",
+    "Running",
+    "To Hit Buff",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

@@ -37,6 +37,13 @@ export const GraviticEmanation: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Ranged AoE Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

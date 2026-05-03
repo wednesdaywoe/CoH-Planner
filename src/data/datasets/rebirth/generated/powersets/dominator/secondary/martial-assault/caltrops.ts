@@ -31,5 +31,9 @@ export const Caltrops: Power = {
     "Run Speed",
     "Damage"
   ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

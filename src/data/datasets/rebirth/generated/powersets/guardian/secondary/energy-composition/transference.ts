@@ -31,6 +31,11 @@ export const Transference: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {

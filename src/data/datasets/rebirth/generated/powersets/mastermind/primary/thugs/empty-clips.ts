@@ -35,6 +35,10 @@ export const EmptyClips: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

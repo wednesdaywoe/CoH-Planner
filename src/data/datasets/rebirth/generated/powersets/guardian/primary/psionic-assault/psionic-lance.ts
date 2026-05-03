@@ -32,6 +32,13 @@ export const PsionicLance: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Melee Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

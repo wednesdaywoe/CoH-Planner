@@ -31,5 +31,9 @@ export const Ignite: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6
 };

@@ -28,5 +28,8 @@ export const TriageBeacon: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing"
+  ],
   "maxSlots": 6
 };

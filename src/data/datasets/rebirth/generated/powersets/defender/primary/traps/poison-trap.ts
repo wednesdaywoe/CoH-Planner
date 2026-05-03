@@ -29,5 +29,8 @@ export const PoisonTrap: Power = {
     "Hold",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Holds"
+  ],
   "maxSlots": 6
 };

@@ -32,6 +32,11 @@ export const Fossilize: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Holds",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

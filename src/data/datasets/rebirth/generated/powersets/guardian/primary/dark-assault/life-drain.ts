@@ -33,6 +33,14 @@ export const LifeDrain: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Fear",
+    "Immobilize",
+    "Melee Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": [
     {

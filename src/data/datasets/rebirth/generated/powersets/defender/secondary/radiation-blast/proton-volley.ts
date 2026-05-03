@@ -33,6 +33,13 @@ export const ProtonVolley: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defender Archetype Sets",
+    "Defense Debuff",
+    "Ranged Damage",
+    "Sniper Attacks"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

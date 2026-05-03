@@ -28,6 +28,9 @@ export const PersonalForceField: Power = {
     "Run Speed",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets"
+  ],
   "maxSlots": 6,
   "effects": {
     "onlyAffectsSelf": {

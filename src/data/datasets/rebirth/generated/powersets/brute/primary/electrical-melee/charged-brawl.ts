@@ -33,6 +33,13 @@ export const ChargedBrawl: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Brute Archetype Sets",
+    "Endurance Modification",
+    "Melee Damage",
+    "Sleep",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

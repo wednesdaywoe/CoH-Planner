@@ -29,6 +29,9 @@ export const Rage: Power = {
     "Run Speed",
     "ToHit"
   ],
+  "allowedSetCategories": [
+    "To Hit Buff"
+  ],
   "maxSlots": 6,
   "effects": {
     "tohitBuff": {

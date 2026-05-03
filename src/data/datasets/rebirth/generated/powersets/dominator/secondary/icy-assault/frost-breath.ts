@@ -35,6 +35,10 @@ export const FrostBreath: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Cold",

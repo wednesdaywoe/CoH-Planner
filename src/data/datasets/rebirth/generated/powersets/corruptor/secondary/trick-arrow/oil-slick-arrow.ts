@@ -32,5 +32,11 @@ export const OilSlickArrow: Power = {
     "ToHit Debuff",
     "Damage"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Defense Debuff",
+    "Ranged AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

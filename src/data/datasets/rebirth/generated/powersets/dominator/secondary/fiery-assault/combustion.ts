@@ -31,6 +31,9 @@ export const Combustion: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -32,5 +32,12 @@ export const DarkExtraction: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Melee Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

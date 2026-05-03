@@ -33,6 +33,10 @@ export const BlazingAura: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Tanker Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

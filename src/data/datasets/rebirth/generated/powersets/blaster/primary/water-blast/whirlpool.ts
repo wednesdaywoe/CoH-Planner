@@ -33,6 +33,13 @@ export const Whirlpool: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Defense Debuff",
+    "Ranged AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageBuff": {

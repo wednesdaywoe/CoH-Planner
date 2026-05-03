@@ -33,5 +33,10 @@ export const Phantasm: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Pet Damage",
+    "Recharge Intensive Pets"
+  ],
   "maxSlots": 6
 };

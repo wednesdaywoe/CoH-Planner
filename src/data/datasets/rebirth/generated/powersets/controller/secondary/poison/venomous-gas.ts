@@ -33,6 +33,10 @@ export const VenomousGas: Power = {
     "Fear",
     "ToHit Debuff"
   ],
+  "allowedSetCategories": [
+    "Defense Debuff",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistanceDebuff": {

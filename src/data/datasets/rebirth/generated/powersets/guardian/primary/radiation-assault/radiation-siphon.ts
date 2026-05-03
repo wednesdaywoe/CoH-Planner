@@ -34,6 +34,15 @@ export const RadiationSiphon: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Immobilize",
+    "Melee AoE Damage",
+    "Running",
+    "To Hit Debuff",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": [
     {

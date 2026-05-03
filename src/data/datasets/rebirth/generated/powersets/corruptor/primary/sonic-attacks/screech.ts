@@ -32,6 +32,11 @@ export const Screech: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Ranged Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

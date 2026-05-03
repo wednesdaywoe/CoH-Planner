@@ -28,6 +28,10 @@ export const LightForm: Power = {
     "EnduranceModification",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

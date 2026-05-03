@@ -36,6 +36,14 @@ export const GoldenDragonfly: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Brute Archetype Sets",
+    "Defense Debuff",
+    "Knockback",
+    "Melee AoE Damage",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

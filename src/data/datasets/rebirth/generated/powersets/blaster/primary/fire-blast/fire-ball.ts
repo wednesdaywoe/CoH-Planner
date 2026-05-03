@@ -33,6 +33,10 @@ export const FireBall: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

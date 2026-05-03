@@ -30,6 +30,11 @@ export const GaiasBlessing: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Immobilize",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

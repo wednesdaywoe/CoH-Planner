@@ -31,6 +31,10 @@ export const Flares: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

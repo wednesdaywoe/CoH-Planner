@@ -32,6 +32,11 @@ export const ArcticAir: Power = {
     "Run Speed",
     "Confuse"
   ],
+  "allowedSetCategories": [
+    "Confuse",
+    "Controller Archetype Sets",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {

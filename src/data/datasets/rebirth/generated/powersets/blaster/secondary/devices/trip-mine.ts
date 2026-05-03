@@ -30,6 +30,11 @@ export const TripMine: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Knockback",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageBuff": {

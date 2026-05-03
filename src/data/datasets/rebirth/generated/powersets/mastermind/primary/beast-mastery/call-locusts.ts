@@ -36,6 +36,12 @@ export const CallRavens: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Ranged AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

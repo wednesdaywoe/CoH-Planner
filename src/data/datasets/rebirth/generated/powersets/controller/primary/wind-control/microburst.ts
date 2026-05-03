@@ -36,6 +36,14 @@ export const Microburst: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Controller Archetype Sets",
+    "Defense Debuff",
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

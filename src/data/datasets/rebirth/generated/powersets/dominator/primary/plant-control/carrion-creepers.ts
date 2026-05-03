@@ -34,5 +34,12 @@ export const CarrionCreepers: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Dominator Archetype Sets",
+    "Immobilize",
+    "Knockback",
+    "Ranged AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

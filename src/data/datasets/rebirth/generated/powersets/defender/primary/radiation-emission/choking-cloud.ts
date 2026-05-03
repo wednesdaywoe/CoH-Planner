@@ -31,6 +31,9 @@ export const ChokingCloud: Power = {
     "Intangible",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Holds"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

@@ -28,6 +28,9 @@ export const InstantHealing: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing"
+  ],
   "maxSlots": 6,
   "effects": {
     "regenBuff": {

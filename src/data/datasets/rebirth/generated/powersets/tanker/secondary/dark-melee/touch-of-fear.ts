@@ -34,6 +34,12 @@ export const TouchofFear: Power = {
     "Fear",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Fear",
+    "Threat Duration",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "effects": {
     "fear": {

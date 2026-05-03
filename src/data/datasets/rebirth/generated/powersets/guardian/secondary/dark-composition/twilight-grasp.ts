@@ -32,6 +32,12 @@ export const TwilightGrasp: Power = {
     "Fear",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Fear",
+    "Immobilize",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {

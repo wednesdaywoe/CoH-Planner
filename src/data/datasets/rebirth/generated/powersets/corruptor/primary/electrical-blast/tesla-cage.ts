@@ -33,6 +33,12 @@ export const TeslaCage: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Endurance Modification",
+    "Holds",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

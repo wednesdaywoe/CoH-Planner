@@ -32,6 +32,11 @@ export const Dominate: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

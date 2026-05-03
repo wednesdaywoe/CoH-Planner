@@ -32,5 +32,11 @@ export const HeatLoss: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Holds",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

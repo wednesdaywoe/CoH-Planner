@@ -27,5 +27,9 @@ export const IcePatch: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

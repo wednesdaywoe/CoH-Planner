@@ -32,6 +32,14 @@ export const ChargedBrawl: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Melee Damage",
+    "Running",
+    "Stuns",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": [
     {

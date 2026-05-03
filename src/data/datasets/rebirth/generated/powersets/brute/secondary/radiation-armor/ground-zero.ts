@@ -34,6 +34,14 @@ export const GroundZero: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Brute Archetype Sets",
+    "Defense Debuff",
+    "Healing",
+    "Melee AoE Damage",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

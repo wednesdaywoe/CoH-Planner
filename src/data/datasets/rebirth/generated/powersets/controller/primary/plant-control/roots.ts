@@ -34,6 +34,11 @@ export const Roots: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Immobilize",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

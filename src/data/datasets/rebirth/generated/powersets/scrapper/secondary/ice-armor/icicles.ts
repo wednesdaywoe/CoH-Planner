@@ -32,6 +32,13 @@ export const Icicles: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Running",
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

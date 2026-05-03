@@ -32,6 +32,11 @@ export const AuraofConfusion: Power = {
     "Confuse",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Confuse",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "confuse": {

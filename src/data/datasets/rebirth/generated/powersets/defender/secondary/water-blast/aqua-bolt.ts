@@ -32,6 +32,12 @@ export const AquaBolt: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defender Archetype Sets",
+    "Defense Debuff",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

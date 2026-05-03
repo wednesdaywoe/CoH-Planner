@@ -35,6 +35,11 @@ export const Buckshot: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Knockback",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

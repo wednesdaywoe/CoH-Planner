@@ -34,6 +34,11 @@ export const ExplosiveBlast: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Knockback",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

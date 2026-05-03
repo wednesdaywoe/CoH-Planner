@@ -32,5 +32,9 @@ export const TimesJuncture: Power = {
     "Run Speed",
     "Fear"
   ],
+  "allowedSetCategories": [
+    "Slow Movement",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

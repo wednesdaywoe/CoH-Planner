@@ -36,6 +36,13 @@ export const Torrent: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
+    "Knockback",
+    "Ranged AoE Damage",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

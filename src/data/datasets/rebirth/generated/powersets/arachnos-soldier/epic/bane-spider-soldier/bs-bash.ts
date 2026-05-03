@@ -31,6 +31,11 @@ export const Bash: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

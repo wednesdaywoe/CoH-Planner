@@ -28,6 +28,11 @@ export const EntropyShield: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "Teleport",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "mezResistance": {

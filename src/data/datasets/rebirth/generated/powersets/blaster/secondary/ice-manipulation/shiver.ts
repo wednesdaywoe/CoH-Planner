@@ -34,6 +34,9 @@ export const Shiver: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageBuff": {

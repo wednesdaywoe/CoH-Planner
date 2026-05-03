@@ -33,5 +33,13 @@ export const GraveKnight: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defense Debuff",
+    "Knockback",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

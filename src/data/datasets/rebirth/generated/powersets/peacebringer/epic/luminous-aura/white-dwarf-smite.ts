@@ -33,6 +33,15 @@ export const WhiteDwarfSmite: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Kheldian Archetype Sets",
+    "Ranged Damage",
+    "Running",
+    "To Hit Debuff",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -28,6 +28,11 @@ export const InnerLight: Power = {
     "Run Speed",
     "ToHit"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "To Hit Buff",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "tohitBuff": {

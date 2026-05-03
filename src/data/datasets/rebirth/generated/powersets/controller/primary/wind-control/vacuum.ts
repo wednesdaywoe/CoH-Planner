@@ -34,6 +34,14 @@ export const Vacuum: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Controller Archetype Sets",
+    "Holds",
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

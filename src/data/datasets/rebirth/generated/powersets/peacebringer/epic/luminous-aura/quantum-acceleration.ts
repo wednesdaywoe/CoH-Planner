@@ -32,6 +32,11 @@ export const Starfall: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Flight",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "teleport": {

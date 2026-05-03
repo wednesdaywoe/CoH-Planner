@@ -32,6 +32,10 @@ export const Consume: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "debuffResistance": {

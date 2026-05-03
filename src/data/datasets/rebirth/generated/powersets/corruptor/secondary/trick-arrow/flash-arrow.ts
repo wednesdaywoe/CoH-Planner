@@ -33,6 +33,10 @@ export const FlashArrow: Power = {
     "Fear",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "effects": {
     "perceptionDebuff": {

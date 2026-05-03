@@ -35,6 +35,11 @@ export const ThrowSand: Power = {
     "Fear",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Stuns",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

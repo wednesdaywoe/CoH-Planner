@@ -31,6 +31,12 @@ export const BarrierField: Power = {
     "Immobilize",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Immobilize",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "untouchable": {

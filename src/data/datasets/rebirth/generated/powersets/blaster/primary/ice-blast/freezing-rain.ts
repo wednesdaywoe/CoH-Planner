@@ -32,6 +32,11 @@ export const IceStorm: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Ranged AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageBuff": {

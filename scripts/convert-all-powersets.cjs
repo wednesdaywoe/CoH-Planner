@@ -61,6 +61,9 @@ const EXTRA_CATEGORIES = {
   'arachnos_soldiers':      { archetype: 'arachnos-soldier', type: 'epic' },
   'widow_training':         { archetype: 'arachnos-widow',   type: 'epic' },
   'teamwork':               { archetype: 'arachnos-widow',   type: 'epic' },
+  // Rebirth-only Guardian
+  'guardian_assault':       { archetype: 'guardian', type: 'primary' },
+  'guardian_comp':          { archetype: 'guardian', type: 'secondary' },
 };
 
 const ALL_CATEGORIES = { ...CATEGORIES, ...EXTRA_CATEGORIES };

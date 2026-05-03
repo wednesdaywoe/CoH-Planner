@@ -31,6 +31,12 @@ export const EntropicAura: Power = {
     "Slow",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "Slow Movement",
+    "Teleport",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "mezResistance": {

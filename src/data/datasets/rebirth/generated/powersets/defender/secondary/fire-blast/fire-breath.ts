@@ -34,6 +34,10 @@ export const FireBreath: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Fire",

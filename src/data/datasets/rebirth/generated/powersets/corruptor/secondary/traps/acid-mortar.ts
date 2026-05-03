@@ -30,5 +30,11 @@ export const AcidMortar: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
+    "Defense Debuff",
+    "Ranged Damage"
+  ],
   "maxSlots": 6
 };

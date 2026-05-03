@@ -33,6 +33,13 @@ export const Blizzard: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageBuff": {

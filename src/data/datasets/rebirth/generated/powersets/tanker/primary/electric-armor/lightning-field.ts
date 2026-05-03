@@ -34,6 +34,11 @@ export const LightningField: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Melee AoE Damage",
+    "Tanker Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

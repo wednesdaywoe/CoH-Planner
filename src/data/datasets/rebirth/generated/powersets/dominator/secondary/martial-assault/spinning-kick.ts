@@ -34,6 +34,10 @@ export const SpinningKick: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

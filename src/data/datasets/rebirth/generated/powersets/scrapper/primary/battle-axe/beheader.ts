@@ -31,6 +31,11 @@ export const Beheader: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

@@ -30,6 +30,11 @@ export const PowerSurge: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Holds",
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

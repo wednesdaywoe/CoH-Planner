@@ -32,6 +32,12 @@ export const HailofBullets: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Knockback",
+    "Melee AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": [
     {

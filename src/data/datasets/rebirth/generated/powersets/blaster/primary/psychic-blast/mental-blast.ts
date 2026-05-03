@@ -31,6 +31,10 @@ export const MentalBlast: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

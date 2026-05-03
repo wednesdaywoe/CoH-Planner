@@ -34,6 +34,10 @@ export const ExtinguishLight: Power = {
     "Defense",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Teleport",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

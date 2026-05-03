@@ -33,6 +33,12 @@ export const ShadowBlast: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Kheldian Archetype Sets",
+    "Knockback",
+    "Ranged Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

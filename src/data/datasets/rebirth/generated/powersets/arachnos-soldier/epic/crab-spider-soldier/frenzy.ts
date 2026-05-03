@@ -32,6 +32,12 @@ export const Frenzy: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Melee AoE Damage",
+    "Soldiers of Arachnos Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

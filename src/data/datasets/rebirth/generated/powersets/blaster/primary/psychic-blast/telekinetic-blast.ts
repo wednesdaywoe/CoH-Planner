@@ -32,6 +32,11 @@ export const TelekineticBlast: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Knockback",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

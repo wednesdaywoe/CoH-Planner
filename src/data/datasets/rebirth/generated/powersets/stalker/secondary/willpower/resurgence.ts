@@ -30,6 +30,9 @@ export const Resurgence: Power = {
     "Defense Debuff",
     "ToHit"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

@@ -32,6 +32,10 @@ export const HurlBoulder: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

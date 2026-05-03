@@ -35,6 +35,12 @@ export const SteamSpray: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Defense Debuff",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

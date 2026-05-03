@@ -33,6 +33,12 @@ export const CloakofFear: Power = {
     "Fear",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Fear",
+    "Flight",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "fear": {

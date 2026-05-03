@@ -32,6 +32,14 @@ export const SiphonLife: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Healing",
+    "Accurate To-Hit Debuff",
+    "Healing",
+    "Melee Damage",
+    "Stalker Archetype Sets",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "damage": [
     {

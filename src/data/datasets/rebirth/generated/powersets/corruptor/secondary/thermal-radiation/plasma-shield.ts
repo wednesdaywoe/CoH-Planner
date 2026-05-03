@@ -31,6 +31,9 @@ export const PlasmaShield: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

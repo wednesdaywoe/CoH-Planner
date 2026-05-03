@@ -31,6 +31,10 @@ export const Ignite: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageBuff": {

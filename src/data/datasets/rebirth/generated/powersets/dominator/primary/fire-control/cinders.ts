@@ -31,6 +31,10 @@ export const Cinders: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Dominator Archetype Sets",
+    "Holds"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

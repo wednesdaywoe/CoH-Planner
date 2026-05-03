@@ -32,6 +32,10 @@ export const IceArrow: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

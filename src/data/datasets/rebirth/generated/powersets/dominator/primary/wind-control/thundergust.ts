@@ -34,6 +34,12 @@ export const Thundergust: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Knockback",
+    "Ranged AoE Damage",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

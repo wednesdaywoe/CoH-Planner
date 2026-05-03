@@ -34,6 +34,12 @@ export const GravityWell: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Kheldian Archetype Sets",
+    "Melee Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": [
     {

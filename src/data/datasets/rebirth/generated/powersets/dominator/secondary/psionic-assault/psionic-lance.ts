@@ -32,6 +32,10 @@ export const PsionicLance: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Ranged Damage",
+    "Sniper Attacks"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

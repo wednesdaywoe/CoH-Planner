@@ -32,6 +32,10 @@ export const Telekinesis: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

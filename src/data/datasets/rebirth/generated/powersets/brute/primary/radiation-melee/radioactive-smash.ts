@@ -35,6 +35,14 @@ export const RadioactiveSmash: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Brute Archetype Sets",
+    "Defense Debuff",
+    "Knockback",
+    "Melee Damage",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

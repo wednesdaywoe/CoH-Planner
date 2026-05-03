@@ -33,6 +33,12 @@ export const CripplingAxeKick: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Immobilize",
+    "Melee Damage",
+    "Scrapper Archetype Sets",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

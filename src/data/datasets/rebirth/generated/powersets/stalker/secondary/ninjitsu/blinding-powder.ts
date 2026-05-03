@@ -34,6 +34,11 @@ export const BlindingPowder: Power = {
     "Confuse",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Confuse",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "effects": {
     "sleep": {

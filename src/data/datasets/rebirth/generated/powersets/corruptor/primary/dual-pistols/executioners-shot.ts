@@ -34,6 +34,14 @@ export const ExecutionersShot: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
+    "Defense Debuff",
+    "Knockback",
+    "Ranged Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": [
     {

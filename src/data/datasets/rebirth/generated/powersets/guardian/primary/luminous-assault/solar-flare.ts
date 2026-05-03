@@ -33,6 +33,14 @@ export const SolarFlare: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Melee AoE Damage",
+    "Running",
+    "To Hit Debuff",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

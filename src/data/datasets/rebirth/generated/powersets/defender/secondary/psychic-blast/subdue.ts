@@ -32,6 +32,11 @@ export const Subdue: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Immobilize",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

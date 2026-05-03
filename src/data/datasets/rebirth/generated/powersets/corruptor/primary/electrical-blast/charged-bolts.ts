@@ -32,6 +32,11 @@ export const ChargedBolts: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Endurance Modification",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

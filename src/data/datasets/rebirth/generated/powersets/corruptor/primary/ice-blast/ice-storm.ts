@@ -32,5 +32,10 @@ export const IceStorm: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Ranged AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

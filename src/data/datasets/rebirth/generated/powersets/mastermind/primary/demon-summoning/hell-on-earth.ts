@@ -31,6 +31,11 @@ export const HellonEarth: Power = {
     "ToHit",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets"
+  ],
   "maxSlots": 6,
   "effects": {
     "tohitBuff": {

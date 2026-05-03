@@ -32,6 +32,11 @@ export const StonePrison: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Dominator Archetype Sets",
+    "Immobilize",
+    "Ranged Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

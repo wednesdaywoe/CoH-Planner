@@ -32,6 +32,10 @@ export const DragonsTail: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

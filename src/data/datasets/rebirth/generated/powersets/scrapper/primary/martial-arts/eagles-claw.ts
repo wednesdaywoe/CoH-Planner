@@ -31,6 +31,11 @@ export const EaglesClaw: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Scrapper Archetype Sets",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -32,5 +32,11 @@ export const ShadowField: Power = {
     "Fear",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Controller Archetype Sets",
+    "Holds",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

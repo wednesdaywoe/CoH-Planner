@@ -33,6 +33,12 @@ export const FocusedBurst: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Brute Archetype Sets",
+    "Knockback",
+    "Ranged Damage",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

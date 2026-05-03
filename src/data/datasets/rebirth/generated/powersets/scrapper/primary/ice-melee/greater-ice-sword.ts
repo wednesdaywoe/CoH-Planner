@@ -31,6 +31,14 @@ export const GreaterIceSword: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Melee Damage",
+    "Running",
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -31,5 +31,9 @@ export const DistortionField: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

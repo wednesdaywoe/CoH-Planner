@@ -32,5 +32,12 @@ export const SoulAbsorption: Power = {
     "Fear",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Fear",
+    "Immobilize",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

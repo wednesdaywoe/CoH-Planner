@@ -31,6 +31,11 @@ export const FollowUp: Power = {
     "ToHit",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Scrapper Archetype Sets",
+    "To Hit Buff"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

@@ -30,5 +30,9 @@ export const InertialReduction: Power = {
     "Run Speed",
     "Knockback"
   ],
+  "allowedSetCategories": [
+    "Leaping & Sprints",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

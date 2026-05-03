@@ -32,6 +32,13 @@ export const Infrigidate: Power = {
     "ToHit Debuff",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Holds",
+    "Running",
+    "To Hit Debuff",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "defenseDebuff": {

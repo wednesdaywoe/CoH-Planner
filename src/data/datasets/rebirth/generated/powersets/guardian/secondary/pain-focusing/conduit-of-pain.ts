@@ -32,6 +32,13 @@ export const ConduitofPain: Power = {
     "Defense Debuff",
     "ToHit"
   ],
+  "allowedSetCategories": [
+    "Defense Debuff",
+    "Endurance Modification",
+    "Running",
+    "To Hit Buff",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

@@ -35,6 +35,11 @@ export const ThrowSpines: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "Stalker Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

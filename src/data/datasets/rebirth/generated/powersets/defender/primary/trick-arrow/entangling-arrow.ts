@@ -32,6 +32,10 @@ export const EntanglingArrow: Power = {
     "Jump",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Immobilize",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "immobilize": {

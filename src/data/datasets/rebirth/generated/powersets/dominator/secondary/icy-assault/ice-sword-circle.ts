@@ -32,6 +32,10 @@ export const IceSwordCircle: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -33,5 +33,15 @@ export const Sleet: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Holds",
+    "Mastermind Archetype Sets",
+    "Ranged AoE Damage",
+    "Running",
+    "To Hit Debuff",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

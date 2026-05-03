@@ -34,6 +34,11 @@ export const BallLightning: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Endurance Modification",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

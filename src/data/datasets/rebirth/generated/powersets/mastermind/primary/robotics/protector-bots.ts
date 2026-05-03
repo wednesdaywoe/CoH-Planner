@@ -34,5 +34,12 @@ export const ProtectorBots: Power = {
     "Defense",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

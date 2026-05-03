@@ -30,5 +30,8 @@ export const TarPatch: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

@@ -33,6 +33,12 @@ export const CallHawk: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Knockback",
+    "Ranged Damage",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

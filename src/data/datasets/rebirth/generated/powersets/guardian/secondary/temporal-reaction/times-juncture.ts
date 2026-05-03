@@ -32,5 +32,11 @@ export const TimesJuncture: Power = {
     "Run Speed",
     "Fear"
   ],
+  "allowedSetCategories": [
+    "Fear",
+    "Holds",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

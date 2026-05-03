@@ -30,5 +30,9 @@ export const TrainBeasts: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

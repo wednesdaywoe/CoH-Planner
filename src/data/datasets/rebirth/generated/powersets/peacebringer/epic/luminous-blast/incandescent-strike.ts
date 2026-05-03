@@ -34,6 +34,14 @@ export const IncandescentStrike: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Holds",
+    "Kheldian Archetype Sets",
+    "Knockback",
+    "Melee Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

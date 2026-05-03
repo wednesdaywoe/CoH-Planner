@@ -31,6 +31,10 @@ export const IceSlash: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": [
     {

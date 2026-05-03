@@ -31,5 +31,10 @@ export const ChillingEmbrace: Power = {
     "Hold",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

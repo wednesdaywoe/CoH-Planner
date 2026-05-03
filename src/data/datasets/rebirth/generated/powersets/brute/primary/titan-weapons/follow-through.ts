@@ -33,6 +33,13 @@ export const FollowThrough: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Brute Archetype Sets",
+    "Knockback",
+    "Melee Damage",
+    "Stuns",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

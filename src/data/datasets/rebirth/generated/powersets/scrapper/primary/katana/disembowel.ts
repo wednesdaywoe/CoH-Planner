@@ -32,6 +32,13 @@ export const SoaringDragon: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Knockback",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

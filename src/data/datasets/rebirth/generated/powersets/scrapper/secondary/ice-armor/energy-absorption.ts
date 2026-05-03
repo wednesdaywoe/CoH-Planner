@@ -31,6 +31,12 @@ export const EnergyAbsorption: Power = {
     "Run Speed",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Endurance Modification",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {

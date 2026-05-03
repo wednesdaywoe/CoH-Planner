@@ -31,6 +31,9 @@ export const EntanglingAura: Power = {
     "Intangible",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Holds"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

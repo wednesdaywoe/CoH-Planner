@@ -32,5 +32,11 @@ export const Earthquake: Power = {
     "Fear",
     "ToHit Debuff"
   ],
+  "allowedSetCategories": [
+    "Fear",
+    "Running",
+    "To Hit Debuff",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

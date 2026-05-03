@@ -31,6 +31,11 @@ export const SteamyMist: Power = {
     "Run Speed",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {

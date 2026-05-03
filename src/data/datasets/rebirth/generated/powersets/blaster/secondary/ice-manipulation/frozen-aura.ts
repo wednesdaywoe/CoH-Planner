@@ -32,6 +32,9 @@ export const FrozenAura: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Sleep"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Cold",

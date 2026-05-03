@@ -30,6 +30,12 @@ export const StarlessRecall: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Running",
+    "Teleport",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "teleport": {

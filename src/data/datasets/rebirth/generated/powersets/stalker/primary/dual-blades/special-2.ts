@@ -33,6 +33,10 @@ export const SweepingStrike: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Stalker Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

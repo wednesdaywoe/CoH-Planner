@@ -32,5 +32,10 @@ export const OilSlickArrow: Power = {
     "ToHit Debuff",
     "Damage"
   ],
+  "allowedSetCategories": [
+    "Defense Debuff",
+    "Ranged AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

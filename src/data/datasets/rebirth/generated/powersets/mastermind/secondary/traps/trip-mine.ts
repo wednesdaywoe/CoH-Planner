@@ -30,5 +30,9 @@ export const TripMine: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6
 };

@@ -31,6 +31,9 @@ export const SiphonSpeed: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "movement": {

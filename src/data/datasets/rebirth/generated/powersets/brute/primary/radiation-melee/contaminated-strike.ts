@@ -34,6 +34,13 @@ export const ContaminatedStrike: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Brute Archetype Sets",
+    "Defense Debuff",
+    "Melee Damage",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

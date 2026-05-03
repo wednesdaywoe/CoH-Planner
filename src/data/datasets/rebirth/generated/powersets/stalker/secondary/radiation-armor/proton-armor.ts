@@ -28,6 +28,9 @@ export const ProtonArmor: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

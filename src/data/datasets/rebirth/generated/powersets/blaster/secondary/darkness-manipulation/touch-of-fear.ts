@@ -34,6 +34,13 @@ export const TouchoftheBeyond: Power = {
     "Fear",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Healing",
+    "Blaster Archetype Sets",
+    "Endurance Modification",
+    "Fear",
+    "Healing"
+  ],
   "maxSlots": 6,
   "effects": {
     "fear": {

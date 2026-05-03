@@ -32,6 +32,11 @@ export const StunningShot: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Ranged Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

@@ -32,6 +32,9 @@ export const Mutation: Power = {
     "Defense Debuff",
     "ToHit"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

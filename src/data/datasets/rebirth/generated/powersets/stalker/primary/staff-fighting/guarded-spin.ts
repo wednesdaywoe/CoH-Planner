@@ -34,6 +34,11 @@ export const GuardedSpin: Power = {
     "Defense",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Melee AoE Damage",
+    "Stalker Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

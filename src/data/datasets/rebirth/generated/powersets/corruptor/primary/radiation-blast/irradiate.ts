@@ -32,6 +32,12 @@ export const Irradiate: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
+    "Defense Debuff",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

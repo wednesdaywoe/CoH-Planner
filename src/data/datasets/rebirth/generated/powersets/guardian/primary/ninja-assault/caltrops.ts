@@ -31,5 +31,12 @@ export const Caltrops: Power = {
     "Run Speed",
     "Damage"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Ranged AoE Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

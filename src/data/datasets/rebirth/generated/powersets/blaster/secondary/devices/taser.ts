@@ -31,6 +31,11 @@ export const Taser: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Ranged Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

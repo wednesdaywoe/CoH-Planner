@@ -34,6 +34,12 @@ export const BlindingPowder: Power = {
     "Confuse",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Confuse",
+    "Fear",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "sleep": {

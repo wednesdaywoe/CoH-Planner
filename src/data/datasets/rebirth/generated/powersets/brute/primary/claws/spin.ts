@@ -32,6 +32,11 @@ export const Spin: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Brute Archetype Sets",
+    "Melee AoE Damage",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

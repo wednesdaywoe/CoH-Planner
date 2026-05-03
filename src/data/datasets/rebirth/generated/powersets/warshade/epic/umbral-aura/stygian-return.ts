@@ -32,6 +32,11 @@ export const StygianReturn: Power = {
     "Defense Debuff",
     "Damage"
   ],
+  "allowedSetCategories": [
+    "Healing",
+    "Kheldian Archetype Sets",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

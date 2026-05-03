@@ -23,6 +23,9 @@ export const Absorption: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Resist Damage"
+  ],
   "maxSlots": 0,
   "effects": {
     "resistance": {

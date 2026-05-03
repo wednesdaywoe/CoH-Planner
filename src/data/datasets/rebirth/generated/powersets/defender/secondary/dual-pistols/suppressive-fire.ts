@@ -33,6 +33,12 @@ export const SuppressiveFire: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Holds",
+    "Ranged Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

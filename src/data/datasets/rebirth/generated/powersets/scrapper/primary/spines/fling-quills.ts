@@ -32,6 +32,11 @@ export const SpineBurst: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Scrapper Archetype Sets",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": [
     {

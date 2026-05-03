@@ -32,6 +32,11 @@ export const EntanglingArrow: Power = {
     "Jump",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Immobilize",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "immobilize": {

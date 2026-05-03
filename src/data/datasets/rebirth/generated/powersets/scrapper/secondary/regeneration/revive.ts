@@ -29,6 +29,10 @@ export const Revive: Power = {
     "Immobilize",
     "Defense Debuff"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Healing"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

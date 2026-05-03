@@ -28,6 +28,10 @@ export const KujiInSha: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing",
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

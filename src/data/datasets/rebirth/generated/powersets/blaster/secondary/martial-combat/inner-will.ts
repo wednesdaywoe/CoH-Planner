@@ -27,6 +27,9 @@ export const InnerWill: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing"
+  ],
   "maxSlots": 6,
   "damage": [
     {

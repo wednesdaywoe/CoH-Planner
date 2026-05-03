@@ -34,6 +34,10 @@ export const PhotonGrenade: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

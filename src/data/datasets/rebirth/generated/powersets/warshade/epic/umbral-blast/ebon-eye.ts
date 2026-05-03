@@ -32,6 +32,11 @@ export const EbonEye: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Kheldian Archetype Sets",
+    "Ranged Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

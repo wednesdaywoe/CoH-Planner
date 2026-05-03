@@ -34,6 +34,10 @@ export const EMPArrow: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Holds"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

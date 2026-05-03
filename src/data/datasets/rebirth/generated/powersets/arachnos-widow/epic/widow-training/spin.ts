@@ -31,6 +31,10 @@ export const Spin: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Soldiers of Arachnos Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

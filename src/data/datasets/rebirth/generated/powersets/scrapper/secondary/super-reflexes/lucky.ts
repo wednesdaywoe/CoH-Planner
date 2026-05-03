@@ -25,6 +25,9 @@ export const Lucky: Power = {
   "allowedEnhancements": [
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets"
+  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

@@ -30,5 +30,11 @@ export const Riptide: Power = {
     "Run Speed",
     "Damage"
   ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

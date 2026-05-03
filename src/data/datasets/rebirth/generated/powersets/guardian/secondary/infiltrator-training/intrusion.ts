@@ -32,6 +32,14 @@ export const Intrusion: Power = {
     "Immobilize",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Immobilize",
+    "Knockback",
+    "Running",
+    "Sleep",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {

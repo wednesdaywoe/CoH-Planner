@@ -30,6 +30,9 @@ export const Incinerate: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Fire",

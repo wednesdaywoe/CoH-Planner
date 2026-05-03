@@ -32,6 +32,12 @@ export const VengefulSlice: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Brute Archetype Sets",
+    "Knockback",
+    "Melee Damage",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

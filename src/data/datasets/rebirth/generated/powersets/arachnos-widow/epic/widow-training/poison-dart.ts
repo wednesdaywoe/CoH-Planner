@@ -31,6 +31,10 @@ export const PoisonDart: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": [
     {

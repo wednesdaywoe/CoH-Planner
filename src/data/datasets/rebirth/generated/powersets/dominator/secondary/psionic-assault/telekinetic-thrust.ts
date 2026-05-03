@@ -31,6 +31,10 @@ export const TelekineticThrust: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

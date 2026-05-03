@@ -36,6 +36,13 @@ export const Geyser: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Knockback",
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

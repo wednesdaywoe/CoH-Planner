@@ -34,6 +34,11 @@ export const MudPots: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Slow Movement",
+    "Tanker Archetype Sets"
+  ],
   "maxSlots": 6,
   "effects": {
     "immobilize": {

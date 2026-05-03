@@ -34,6 +34,10 @@ export const PsychicScream: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Soldiers of Arachnos Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

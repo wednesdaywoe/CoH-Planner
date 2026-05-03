@@ -32,6 +32,9 @@ export const ChillingEmbrace: Power = {
     "Slow",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {

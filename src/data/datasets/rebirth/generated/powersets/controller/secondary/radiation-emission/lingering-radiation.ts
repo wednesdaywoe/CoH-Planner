@@ -33,6 +33,9 @@ export const LingeringRadiation: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {

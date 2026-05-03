@@ -34,6 +34,11 @@ export const KeeningWinds: Power = {
     "Confuse",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Confuse",
+    "Controller Archetype Sets",
+    "Endurance Modification"
+  ],
   "maxSlots": 6,
   "effects": {
     "confuse": {

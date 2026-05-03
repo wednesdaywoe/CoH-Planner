@@ -31,5 +31,10 @@ export const PoisonTrap: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Holds",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6
 };

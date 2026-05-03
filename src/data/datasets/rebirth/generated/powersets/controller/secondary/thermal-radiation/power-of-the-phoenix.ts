@@ -33,6 +33,12 @@ export const PowerofthePhoenix: Power = {
     "Defense Debuff",
     "Damage"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Healing",
+    "Ranged AoE Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

@@ -33,6 +33,13 @@ export const BitterIceBlast: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Defender Archetype Sets",
+    "Ranged Damage",
+    "Slow Movement",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "damage": [
     {

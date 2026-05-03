@@ -29,6 +29,9 @@ export const IndomitableWill: Power = {
     "Run Speed",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets"
+  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

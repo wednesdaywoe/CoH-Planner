@@ -32,6 +32,11 @@ export const Focus: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Ranged Damage",
+    "Stalker Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

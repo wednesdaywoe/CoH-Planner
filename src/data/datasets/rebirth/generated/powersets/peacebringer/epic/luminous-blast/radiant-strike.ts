@@ -32,6 +32,13 @@ export const RadiantStrike: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Kheldian Archetype Sets",
+    "Knockback",
+    "Melee Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

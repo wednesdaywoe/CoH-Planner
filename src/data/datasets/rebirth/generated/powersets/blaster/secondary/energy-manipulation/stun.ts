@@ -33,6 +33,11 @@ export const StaggeringBurst: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Melee Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

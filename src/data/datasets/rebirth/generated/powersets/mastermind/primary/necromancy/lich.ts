@@ -36,5 +36,14 @@ export const Lich: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Healing",
+    "Accurate To-Hit Debuff",
+    "Knockback",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

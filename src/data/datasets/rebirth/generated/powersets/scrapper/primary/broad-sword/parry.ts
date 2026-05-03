@@ -31,6 +31,11 @@ export const Parry: Power = {
     "Defense",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

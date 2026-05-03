@@ -30,6 +30,11 @@ export const GangWar: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets"
+  ],
   "maxSlots": 6,
   "specialEffects": [
     {

@@ -25,6 +25,10 @@ export const HighPainTolerance: Power = {
   "allowedEnhancements": [
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing",
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "maxHPBuff": {

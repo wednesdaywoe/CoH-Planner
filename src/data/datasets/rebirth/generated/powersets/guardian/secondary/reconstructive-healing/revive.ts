@@ -29,6 +29,13 @@ export const Revive: Power = {
     "Immobilize",
     "Defense Debuff"
   ],
+  "allowedSetCategories": [
+    "Defense Debuff",
+    "Endurance Modification",
+    "Immobilize",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

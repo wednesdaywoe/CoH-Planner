@@ -31,6 +31,12 @@ export const FortitudeAura: Power = {
     "ToHit",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Running",
+    "To Hit Buff",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "tohitBuff": {

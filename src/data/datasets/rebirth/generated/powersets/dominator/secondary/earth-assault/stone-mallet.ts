@@ -31,6 +31,10 @@ export const StoneMallet: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

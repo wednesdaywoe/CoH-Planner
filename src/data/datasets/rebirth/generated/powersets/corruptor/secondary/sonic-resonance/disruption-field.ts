@@ -31,6 +31,10 @@ export const DisruptionField: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistanceDebuff": {

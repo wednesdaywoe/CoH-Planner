@@ -26,6 +26,10 @@ export const GammaBoost: Power = {
     "EnduranceModification",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Healing"
+  ],
   "maxSlots": 6,
   "effects": {
     "regenBuff": {

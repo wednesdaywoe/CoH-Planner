@@ -33,5 +33,12 @@ export const Blizzard: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

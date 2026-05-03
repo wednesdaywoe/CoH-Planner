@@ -33,6 +33,13 @@ export const EssenceDrain: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Healing",
+    "Healing",
+    "Kheldian Archetype Sets",
+    "Melee Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -31,6 +31,10 @@ export const ElixirofLife: Power = {
     "Run Speed",
     "Defense Debuff"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

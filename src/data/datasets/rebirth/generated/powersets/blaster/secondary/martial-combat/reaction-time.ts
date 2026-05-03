@@ -32,6 +32,11 @@ export const ReactionTime: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Healing",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "slow": {

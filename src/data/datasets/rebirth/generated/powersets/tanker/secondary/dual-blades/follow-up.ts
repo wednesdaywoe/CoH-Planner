@@ -34,6 +34,12 @@ export const BlindingFeint: Power = {
     "ToHit",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Tanker Archetype Sets",
+    "Threat Duration",
+    "To Hit Buff"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

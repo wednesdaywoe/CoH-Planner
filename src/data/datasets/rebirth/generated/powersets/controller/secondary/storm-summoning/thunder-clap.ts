@@ -31,6 +31,10 @@ export const ThunderClap: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

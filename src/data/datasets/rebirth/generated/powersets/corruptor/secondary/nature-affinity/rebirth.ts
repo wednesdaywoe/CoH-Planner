@@ -32,6 +32,10 @@ export const Rebirth: Power = {
     "Immobilize",
     "Defense Debuff"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Healing"
+  ],
   "maxSlots": 6,
   "damage": [
     {

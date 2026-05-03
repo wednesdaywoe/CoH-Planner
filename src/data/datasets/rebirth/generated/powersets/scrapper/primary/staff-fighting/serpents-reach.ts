@@ -32,6 +32,11 @@ export const SerpentsReach: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Ranged Damage",
+    "Scrapper Archetype Sets"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

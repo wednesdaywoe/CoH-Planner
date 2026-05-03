@@ -32,6 +32,13 @@ export const LightningRod: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Running",
+    "Teleport",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "teleport": {

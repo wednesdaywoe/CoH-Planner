@@ -32,6 +32,11 @@ export const Mesmerize: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Ranged Damage",
+    "Sleep"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

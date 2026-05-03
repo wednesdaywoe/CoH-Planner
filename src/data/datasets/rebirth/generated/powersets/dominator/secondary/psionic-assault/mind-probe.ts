@@ -30,6 +30,9 @@ export const MindProbe: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

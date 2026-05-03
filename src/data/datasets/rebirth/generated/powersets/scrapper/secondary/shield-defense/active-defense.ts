@@ -29,6 +29,10 @@ export const Deflection: Power = {
     "Run Speed",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

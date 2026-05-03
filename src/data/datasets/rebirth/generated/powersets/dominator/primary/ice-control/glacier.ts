@@ -32,6 +32,11 @@ export const Glacier: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Dominator Archetype Sets",
+    "Holds",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

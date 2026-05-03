@@ -31,6 +31,10 @@ export const FortifyPack: Power = {
     "Immobilize",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Healing"
+  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

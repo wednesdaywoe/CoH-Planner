@@ -33,6 +33,12 @@ export const WhirlingHands: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Brute Archetype Sets",
+    "Melee AoE Damage",
+    "Stuns",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

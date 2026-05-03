@@ -32,5 +32,8 @@ export const SnowStorm: Power = {
     "Hold",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

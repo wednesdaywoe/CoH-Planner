@@ -35,6 +35,13 @@ export const NightFall: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Fear",
+    "Melee AoE Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

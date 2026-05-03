@@ -31,6 +31,9 @@ export const SmokeGrenade: Power = {
     "Run Speed",
     "Fear"
   ],
+  "allowedSetCategories": [
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "effects": {
     "perceptionDebuff": {

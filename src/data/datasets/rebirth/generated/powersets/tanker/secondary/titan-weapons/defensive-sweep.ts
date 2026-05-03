@@ -35,6 +35,12 @@ export const DefensiveSweep: Power = {
     "Defense",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Melee AoE Damage",
+    "Tanker Archetype Sets",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

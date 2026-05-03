@@ -31,6 +31,9 @@ export const SonicRepulsion: Power = {
     "Run Speed",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Knockback"
+  ],
   "maxSlots": 6,
   "effects": {
     "knockback": {

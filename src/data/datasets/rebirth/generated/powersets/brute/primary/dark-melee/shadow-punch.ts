@@ -32,6 +32,13 @@ export const ShadowPunch: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Brute Archetype Sets",
+    "Melee Damage",
+    "Threat Duration",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -34,5 +34,14 @@ export const InertialSiphon: Power = {
     "Healing",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Healing",
+    "Healing",
+    "Holds",
+    "Knockback",
+    "Running",
+    "Sleep",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

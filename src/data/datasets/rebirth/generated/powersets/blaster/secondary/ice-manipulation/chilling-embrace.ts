@@ -32,5 +32,9 @@ export const FrigidProtection: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing",
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

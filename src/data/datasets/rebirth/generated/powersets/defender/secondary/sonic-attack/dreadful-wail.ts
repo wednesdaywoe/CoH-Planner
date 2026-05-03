@@ -32,6 +32,11 @@ export const DreadfulWail: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Melee AoE Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

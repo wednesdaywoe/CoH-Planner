@@ -31,6 +31,11 @@ export const ForceBubble: Power = {
     "Hold",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "repel": {

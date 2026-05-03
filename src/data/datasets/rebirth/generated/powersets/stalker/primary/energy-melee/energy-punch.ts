@@ -31,6 +31,11 @@ export const EnergyPunch: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Stalker Archetype Sets",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

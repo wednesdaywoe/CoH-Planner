@@ -28,6 +28,9 @@ export const QuantumShield: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "recoveryBuff": {

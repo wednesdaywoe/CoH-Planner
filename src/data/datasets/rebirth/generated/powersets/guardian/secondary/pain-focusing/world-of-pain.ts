@@ -30,6 +30,11 @@ export const WorldofPain: Power = {
     "Run Speed",
     "ToHit"
   ],
+  "allowedSetCategories": [
+    "Running",
+    "To Hit Buff",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "tohitBuff": {

@@ -25,6 +25,10 @@ export const TrueGrit: Power = {
   "allowedEnhancements": [
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing",
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "maxHPBuff": {

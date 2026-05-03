@@ -34,6 +34,12 @@ export const StaggeringBurst: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Brute Archetype Sets",
+    "Melee Damage",
+    "Stuns",
+    "Threat Duration"
+  ],
   "maxSlots": 6,
   "damage": [
     {

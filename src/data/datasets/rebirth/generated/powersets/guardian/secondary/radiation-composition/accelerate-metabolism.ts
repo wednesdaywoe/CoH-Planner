@@ -31,6 +31,12 @@ export const AccelerateMetabolism: Power = {
     "Sleep",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Running",
+    "Sleep",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageBuff": {

@@ -34,6 +34,12 @@ export const ThunderStrike: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Knockback",
+    "Melee AoE Damage",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

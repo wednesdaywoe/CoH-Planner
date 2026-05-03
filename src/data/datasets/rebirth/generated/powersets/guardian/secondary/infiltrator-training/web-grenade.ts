@@ -32,6 +32,12 @@ export const WebGrenade: Power = {
     "Jump",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Leaping",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "immobilize": {

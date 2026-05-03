@@ -34,5 +34,17 @@ export const SummonDireWolf: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Fear",
+    "Healing",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Resist Damage",
+    "Running & Sprints",
+    "Slow Movement"
+  ],
   "maxSlots": 6
 };

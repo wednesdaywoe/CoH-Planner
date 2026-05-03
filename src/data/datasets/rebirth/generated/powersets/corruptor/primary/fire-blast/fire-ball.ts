@@ -33,6 +33,10 @@ export const FireBall: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

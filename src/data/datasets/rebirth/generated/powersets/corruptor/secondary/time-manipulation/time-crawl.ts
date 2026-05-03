@@ -31,6 +31,9 @@ export const TimeCrawl: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {

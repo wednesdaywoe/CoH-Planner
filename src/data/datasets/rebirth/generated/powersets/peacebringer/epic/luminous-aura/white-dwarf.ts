@@ -28,6 +28,12 @@ export const WhiteDwarf: Power = {
     "EnduranceModification",
     "Knockback"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Leaping & Sprints",
+    "Resist Damage",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

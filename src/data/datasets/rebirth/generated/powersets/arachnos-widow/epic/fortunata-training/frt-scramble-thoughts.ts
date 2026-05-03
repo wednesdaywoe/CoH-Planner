@@ -31,6 +31,11 @@ export const ScrambleThoughts: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

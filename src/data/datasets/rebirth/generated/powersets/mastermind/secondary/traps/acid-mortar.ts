@@ -30,5 +30,10 @@ export const AcidMortar: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Ranged AoE Damage"
+  ],
   "maxSlots": 6
 };

@@ -34,5 +34,11 @@ export const SoulExtraction: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

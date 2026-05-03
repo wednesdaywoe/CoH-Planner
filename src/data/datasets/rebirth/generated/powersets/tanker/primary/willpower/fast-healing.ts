@@ -25,6 +25,9 @@ export const FastHealing: Power = {
   "allowedEnhancements": [
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing"
+  ],
   "maxSlots": 6,
   "effects": {
     "regenBuff": {

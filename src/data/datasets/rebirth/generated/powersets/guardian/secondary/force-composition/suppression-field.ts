@@ -31,5 +31,10 @@ export const SuppressionField: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6
 };

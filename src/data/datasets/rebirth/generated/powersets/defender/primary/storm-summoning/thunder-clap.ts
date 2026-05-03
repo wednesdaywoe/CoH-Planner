@@ -31,6 +31,9 @@ export const ThunderClap: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Stuns"
+  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

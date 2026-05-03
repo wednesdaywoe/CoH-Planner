@@ -34,6 +34,11 @@ export const PsiBladeSweep: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Scrapper Archetype Sets",
+    "Stuns"
+  ],
   "maxSlots": 6,
   "damage": [
     {

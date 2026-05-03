@@ -33,5 +33,13 @@ export const DarkServant: Power = {
     "Fear",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Healing",
+    "Accurate To-Hit Debuff",
+    "Healing",
+    "Holds",
+    "Immobilize",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6
 };

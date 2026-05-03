@@ -31,6 +31,10 @@ export const EnergyDrain: Power = {
     "Run Speed",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Endurance Modification"
+  ],
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {

@@ -33,6 +33,10 @@ export const HotFeet: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Melee AoE Damage",
+    "Slow Movement"
+  ],
   "maxSlots": 6,
   "effects": {
     "fear": {

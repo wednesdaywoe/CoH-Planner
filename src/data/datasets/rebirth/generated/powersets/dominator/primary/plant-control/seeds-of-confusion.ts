@@ -34,6 +34,10 @@ export const SeedsofConfusion: Power = {
     "Confuse",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Confuse",
+    "Dominator Archetype Sets"
+  ],
   "maxSlots": 6,
   "effects": {
     "confuse": {

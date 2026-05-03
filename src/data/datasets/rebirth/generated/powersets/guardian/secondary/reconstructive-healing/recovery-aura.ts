@@ -30,6 +30,11 @@ export const RecoveryAura: Power = {
     "EnduranceModification",
     "Run Speed"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "recoveryBuff": {

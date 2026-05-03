@@ -32,6 +32,11 @@ export const EMPulse: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Endurance Modification",
+    "Holds"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

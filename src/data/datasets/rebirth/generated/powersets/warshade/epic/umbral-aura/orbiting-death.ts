@@ -32,6 +32,10 @@ export const OrbitingDeath: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Kheldian Archetype Sets",
+    "Melee AoE Damage"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

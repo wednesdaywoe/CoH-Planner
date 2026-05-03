@@ -29,5 +29,8 @@ export const ForceFieldGenerator: Power = {
     "Run Speed",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets"
+  ],
   "maxSlots": 6
 };

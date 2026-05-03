@@ -32,5 +32,10 @@ export const LightningStorm: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Knockback",
+    "Ranged Damage"
+  ],
   "maxSlots": 6
 };

@@ -30,6 +30,10 @@ export const WildGrowth: Power = {
     "Run Speed",
     "Immobilize"
   ],
+  "allowedSetCategories": [
+    "Healing",
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

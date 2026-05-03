@@ -33,6 +33,10 @@ export const TotalDomination: Power = {
     "Run Speed",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Holds",
+    "Soldiers of Arachnos Archetype Sets"
+  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

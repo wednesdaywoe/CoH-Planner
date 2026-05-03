@@ -31,6 +31,9 @@ export const Boggle: Power = {
     "Confuse",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Confuse"
+  ],
   "maxSlots": 6,
   "effects": {
     "confuse": {

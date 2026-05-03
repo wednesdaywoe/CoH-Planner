@@ -32,6 +32,13 @@ export const Subdue: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Leaping",
+    "Melee Damage",
+    "Running",
+    "Universal Damage Sets",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

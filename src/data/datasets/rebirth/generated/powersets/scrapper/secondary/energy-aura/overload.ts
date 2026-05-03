@@ -31,6 +31,11 @@ export const Overload: Power = {
     "Immobilize",
     "Defense"
   ],
+  "allowedSetCategories": [
+    "Defense Sets",
+    "Endurance Modification",
+    "Healing"
+  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

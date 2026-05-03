@@ -33,6 +33,14 @@ export const LifeDrain: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Accurate Healing",
+    "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
+    "Healing",
+    "Ranged Damage",
+    "To Hit Debuff"
+  ],
   "maxSlots": 6,
   "damage": [
     {

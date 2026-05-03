@@ -32,5 +32,12 @@ export const CallEnforcer: Power = {
     "Defense",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defense Debuff",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "To Hit Buff"
+  ],
   "maxSlots": 6
 };
