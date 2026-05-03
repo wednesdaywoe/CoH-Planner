@@ -47,18 +47,11 @@ export const HeadSplitter: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 2.6,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.17,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 2.6,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.67,

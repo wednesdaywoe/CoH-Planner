@@ -54,11 +54,6 @@ export const FollowThrough: Power = {
       "table": "Melee_Damage",
       "duration": 1.6,
       "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.9702,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

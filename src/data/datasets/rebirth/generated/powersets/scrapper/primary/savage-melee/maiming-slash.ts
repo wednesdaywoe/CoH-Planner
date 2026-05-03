@@ -51,18 +51,6 @@ export const MaimingSlash: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.522,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.04176,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
     }
   ],
   "specialEffects": [

@@ -39,18 +39,11 @@ export const WhirlingMace: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.12,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.504,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.12,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 2,

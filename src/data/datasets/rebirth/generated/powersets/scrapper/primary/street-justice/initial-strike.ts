@@ -48,11 +48,6 @@ export const InitialStrike: Power = {
       "type": "Smashing",
       "scale": 0.42,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.378,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

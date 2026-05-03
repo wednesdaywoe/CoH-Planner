@@ -48,11 +48,6 @@ export const GreaterPsiBlade: Power = {
       "type": "Psionic",
       "scale": 2.07,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.242,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

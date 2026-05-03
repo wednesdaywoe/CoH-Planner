@@ -52,11 +52,6 @@ export const TotalFocus: Power = {
       "type": "Energy",
       "scale": 2.56,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.602,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

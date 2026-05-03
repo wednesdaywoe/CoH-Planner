@@ -62,11 +62,6 @@ export const VengefulSlice: Power = {
       "type": "Lethal",
       "scale": 0.41,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.738,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

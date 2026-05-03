@@ -42,11 +42,6 @@ export const MudPots: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.081,
-    "table": "Melee_Damage"
-  },
   "effects": {
     "immobilize": {
       "mag": 2,

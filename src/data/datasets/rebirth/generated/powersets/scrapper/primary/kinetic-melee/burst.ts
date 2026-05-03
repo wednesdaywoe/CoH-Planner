@@ -49,11 +49,6 @@ export const Burst: Power = {
       "type": "Energy",
       "scale": 0.5,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.5625,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

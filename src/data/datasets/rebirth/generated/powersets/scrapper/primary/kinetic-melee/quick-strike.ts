@@ -48,11 +48,6 @@ export const QuickStrike: Power = {
       "type": "Energy",
       "scale": 0.21,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.378,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

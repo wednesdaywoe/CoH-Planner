@@ -49,11 +49,6 @@ export const SweepingStrike: Power = {
       "type": "Lethal",
       "scale": 1.7,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.765,
-      "table": "Melee_Damage"
     }
   ],
   "conditionalEffects": [

@@ -41,18 +41,11 @@ export const SweepingStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.765,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.7,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "taunt": {
       "scale": 1,

@@ -54,16 +54,6 @@ export const ViciousSlash: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.81,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0648,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

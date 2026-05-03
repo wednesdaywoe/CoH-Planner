@@ -36,22 +36,13 @@ export const PowerSlice: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.3867,
-      "table": "Melee_Damage",
-      "duration": 1,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Fire",
-      "scale": 0.174015,
-      "table": "Melee_Damage",
-      "duration": 1,
-      "tickRate": 0.4000000059604645
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.3867,
+    "table": "Melee_Damage",
+    "duration": 1,
+    "tickRate": 0.4000000059604645
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

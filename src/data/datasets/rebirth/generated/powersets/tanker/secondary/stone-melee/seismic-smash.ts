@@ -42,18 +42,11 @@ export const SeismicSmash: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 3.56,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.602,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 3.56,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "hold": {
       "mag": 4,

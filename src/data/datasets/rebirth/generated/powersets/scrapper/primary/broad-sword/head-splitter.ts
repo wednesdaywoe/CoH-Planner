@@ -55,11 +55,6 @@ export const HeadSplitter: Power = {
       "type": "Lethal",
       "scale": 2.6,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.17,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

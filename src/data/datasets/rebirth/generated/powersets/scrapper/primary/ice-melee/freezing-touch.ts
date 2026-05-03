@@ -55,13 +55,6 @@ export const FreezingTouch: Power = {
       "type": "Cold",
       "scale": 2.92,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.126,
-      "table": "Melee_Damage",
-      "duration": 2.6,
-      "tickRate": 0.5
     }
   ],
   "effects": {

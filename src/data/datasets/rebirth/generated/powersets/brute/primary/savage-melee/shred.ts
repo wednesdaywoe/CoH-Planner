@@ -57,18 +57,6 @@ export const Shred: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.45,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0486,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
     }
   ],
   "effects": {

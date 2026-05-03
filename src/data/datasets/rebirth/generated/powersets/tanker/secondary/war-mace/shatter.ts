@@ -43,18 +43,11 @@ export const Shatter: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2.28,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.026,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 2.28,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.67,

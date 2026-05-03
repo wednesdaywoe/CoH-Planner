@@ -1682,6 +1682,40 @@ function collectAllTemplates(effects, parentCombatGated = false) {
  * Extract damage effects from raw effect templates
  * Only extracts ACTUAL damage (aspect "Cur" or "Abs"), not damage buffs/debuffs
  */
+/**
+ * Strip Fiery Embrace bonus Fire damage from melee powers that aren't
+ * fire-themed.
+ *
+ * In HC's Parse7 binary the FE bonus template carries `chance: 0.0` (it
+ * only fires when FE is active, the engine flips chance→1 at runtime),
+ * which `collectAllTemplates` correctly filters out. Parse6 (Rebirth)
+ * has a flat AttribMod struct_array with no EffectGroup wrapper, so the
+ * chance/requires gating that suppresses the FE template in HC isn't
+ * captured — the Fire entry ships as unconditional damage on every melee
+ * power. Symptom: Brute Energy Melee Barrage's Attack Type reads
+ * "Smash/Energy/Fire" instead of "Smash/Energy".
+ *
+ * Heuristic: Fire damage on a Melee_Damage table on a non-fire-themed
+ * powerset → drop. Fire-themed powersets (Fiery Melee, Fiery Assault,
+ * Fire Manipulation) genuinely deal Fire damage and are kept.
+ */
+const FIRE_THEMED_POWERSET_RE = /\b(fire|fiery|flame|burn|magma|lava|inferno|blaze|cinder|ember|combust)/i;
+function _filterFieryEmbraceBonus(damage, powerJson) {
+  if (!damage) return damage;
+  const powerset = powerJson.powerset || powerJson.full_name || '';
+  if (FIRE_THEMED_POWERSET_RE.test(powerset)) return damage; // genuine fire set
+  const arr = Array.isArray(damage) ? damage : [damage];
+  const filtered = arr.filter((d) => {
+    if (d.type !== 'Fire') return true;
+    const table = (d.table || '').toLowerCase();
+    if (table.startsWith('melee_damage')) return false; // FE bonus pattern
+    return true;
+  });
+  if (filtered.length === arr.length) return damage; // no change
+  if (filtered.length === 0) return undefined;
+  return filtered.length === 1 ? filtered[0] : filtered;
+}
+
 function extractDamage(templates) {
   const damages = [];
 
@@ -2863,7 +2897,8 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   }
 
   if (allTemplates.length > 0) {
-    const damage = extractDamage(allTemplates);
+    let damage = extractDamage(allTemplates);
+    damage = _filterFieryEmbraceBonus(damage, powerJson);
     if (damage) power.damage = damage;
 
     const effects = extractEffects(allTemplates, powerJson.name);

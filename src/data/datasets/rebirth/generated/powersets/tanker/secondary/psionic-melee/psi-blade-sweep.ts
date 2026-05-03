@@ -53,11 +53,6 @@ export const PsiBladeSweep: Power = {
       "type": "Psionic",
       "scale": 1.08,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.648,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

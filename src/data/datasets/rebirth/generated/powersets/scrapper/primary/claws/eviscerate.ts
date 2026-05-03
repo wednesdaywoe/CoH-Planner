@@ -49,11 +49,6 @@ export const Eviscerate: Power = {
       "type": "Lethal",
       "scale": 1.99,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.8955,
-      "table": "Melee_Damage"
     }
   ],
   "specialEffects": [

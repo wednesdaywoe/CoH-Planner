@@ -52,18 +52,6 @@ export const SavageStrike: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.306,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0544,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
     }
   ],
   "effects": {

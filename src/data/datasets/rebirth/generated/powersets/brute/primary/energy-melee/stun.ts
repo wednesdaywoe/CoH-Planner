@@ -52,11 +52,6 @@ export const StaggeringBurst: Power = {
       "type": "Energy",
       "scale": 0.81,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.48708,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

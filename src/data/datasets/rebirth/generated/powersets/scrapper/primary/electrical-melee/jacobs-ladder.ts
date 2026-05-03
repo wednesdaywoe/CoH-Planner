@@ -43,18 +43,11 @@ export const JacobsLadder: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.675,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.5,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 2,

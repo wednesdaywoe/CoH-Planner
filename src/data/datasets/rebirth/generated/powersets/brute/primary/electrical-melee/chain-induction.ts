@@ -50,11 +50,6 @@ export const ChainInduction: Power = {
       "type": "Energy",
       "scale": 0.52,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.594,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

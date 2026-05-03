@@ -51,11 +51,6 @@ export const ArcofDestruction: Power = {
       "type": "Smashing",
       "scale": 2.596,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.1682,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

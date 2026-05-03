@@ -50,11 +50,6 @@ export const SpinningStrike: Power = {
       "type": "Smashing",
       "scale": 0.77,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.693,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

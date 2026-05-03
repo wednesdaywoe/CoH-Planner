@@ -41,18 +41,11 @@ export const Focus: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.51,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.6795,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.51,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.67,

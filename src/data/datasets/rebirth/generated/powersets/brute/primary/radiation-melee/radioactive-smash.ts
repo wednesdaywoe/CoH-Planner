@@ -56,11 +56,6 @@ export const RadioactiveSmash: Power = {
       "type": "Energy",
       "scale": 1.11,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.666,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

@@ -41,18 +41,11 @@ export const DefensiveSweep: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.729,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.32805,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.729,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "defenseBuff": {
       "melee": {

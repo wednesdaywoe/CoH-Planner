@@ -53,11 +53,6 @@ export const FrozenFists: Power = {
       "type": "Cold",
       "scale": 0.76,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.45,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

@@ -39,18 +39,11 @@ export const DeathShroud: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.2,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.09,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.2,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "taunt": {
       "scale": 1,

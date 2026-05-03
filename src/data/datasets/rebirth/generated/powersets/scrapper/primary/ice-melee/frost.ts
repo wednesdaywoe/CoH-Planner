@@ -43,22 +43,13 @@ export const Frost: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.27,
-      "table": "Melee_Damage",
-      "duration": 2.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1215,
-      "table": "Melee_Damage",
-      "duration": 2.6,
-      "tickRate": 0.5
-    }
-  ],
+  "damage": {
+    "type": "Cold",
+    "scale": 0.27,
+    "table": "Melee_Damage",
+    "duration": 2.6,
+    "tickRate": 0.5
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

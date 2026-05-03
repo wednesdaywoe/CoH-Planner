@@ -52,11 +52,6 @@ export const SpineBurst: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.405,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

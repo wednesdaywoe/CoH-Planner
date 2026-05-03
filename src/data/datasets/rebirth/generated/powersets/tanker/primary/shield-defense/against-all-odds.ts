@@ -32,11 +32,6 @@ export const AgainstAllOdds: Power = {
     "Run Speed"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.045,
-    "table": "Melee_Damage"
-  },
   "effects": {
     "taunt": {
       "scale": 1.25,

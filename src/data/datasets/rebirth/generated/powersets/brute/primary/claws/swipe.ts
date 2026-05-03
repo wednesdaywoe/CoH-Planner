@@ -38,18 +38,11 @@ export const Swipe: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.83,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.3735,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.83,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "taunt": {
       "scale": 1,

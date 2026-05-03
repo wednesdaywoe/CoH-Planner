@@ -44,22 +44,13 @@ export const InnocuousStrikes: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.332,
-      "table": "Melee_Damage",
-      "duration": 1.7,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1494,
-      "table": "Melee_Damage",
-      "duration": 1.7,
-      "tickRate": 0.4000000059604645
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.332,
+    "table": "Melee_Damage",
+    "duration": 1.7,
+    "tickRate": 0.4000000059604645
+  },
   "effects": {
     "immobilize": {
       "mag": 3,

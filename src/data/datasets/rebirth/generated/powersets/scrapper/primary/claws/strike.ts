@@ -36,18 +36,11 @@ export const Strike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.08,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.486,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.08,
+    "table": "Melee_Damage"
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

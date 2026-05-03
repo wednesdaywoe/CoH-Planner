@@ -52,11 +52,6 @@ export const EnergyPunch: Power = {
       "type": "Energy",
       "scale": 0.3,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.45,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

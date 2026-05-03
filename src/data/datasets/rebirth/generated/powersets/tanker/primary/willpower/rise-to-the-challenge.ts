@@ -39,11 +39,6 @@ export const RisetotheChallenge: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.045,
-    "table": "Melee_Damage"
-  },
   "effects": {
     "taunt": {
       "scale": 1.25,

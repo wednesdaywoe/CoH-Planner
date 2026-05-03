@@ -44,22 +44,13 @@ export const AblatingStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.66,
-      "table": "Melee_Damage",
-      "duration": 0.6,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Fire",
-      "scale": 0.297,
-      "table": "Melee_Damage",
-      "duration": 0.6,
-      "tickRate": 0.4000000059604645
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.66,
+    "table": "Melee_Damage",
+    "duration": 0.6,
+    "tickRate": 0.4000000059604645
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

@@ -54,11 +54,6 @@ export const RepulsingTorrent: Power = {
       "type": "Energy",
       "scale": 0.275,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.495,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

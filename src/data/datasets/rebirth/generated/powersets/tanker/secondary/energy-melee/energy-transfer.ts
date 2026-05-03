@@ -57,11 +57,6 @@ export const EnergyTransfer: Power = {
       "type": "Special",
       "scale": 3.75,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 2.052,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

@@ -42,22 +42,13 @@ export const GamblersCut: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.42,
-      "table": "Melee_Damage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Fire",
-      "scale": 0.189,
-      "table": "Melee_Damage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.42,
+    "table": "Melee_Damage",
+    "duration": 0.3,
+    "tickRate": 0.25
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

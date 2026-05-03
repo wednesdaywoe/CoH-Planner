@@ -208,7 +208,17 @@ function formatAttackType(
   if (power.targetType === 'Self' && !damageType) {
     return 'Self';
   }
-  const isRanged = (effects.range ?? 0) > 5;
+  // Use the damage entry's table as the primary signal — `Melee_Damage`
+  // and `Ranged_Damage` come straight from the binary and reliably name
+  // the attack vector. Range alone is unreliable because melee attacks
+  // typically have range 5–7ft (the natural reach of the strike) and a
+  // simple `range > 5` check labels Barrage/Slash/Boxing as Ranged.
+  // Fall back to the range threshold (>20ft, well above melee reach)
+  // only when no damage table is available.
+  const tables = damageEntryTables(power);
+  const isMelee = tables.some((t) => t.startsWith('melee_'));
+  const isRangedTable = tables.some((t) => t.startsWith('ranged_'));
+  const isRanged = isRangedTable || (!isMelee && (effects.range ?? 0) > 20);
   const isAoE = (effects.radius ?? 0) > 0;
   const vectorParts: string[] = [];
   vectorParts.push(isRanged ? 'Ranged' : 'Melee');
@@ -218,6 +228,14 @@ function formatAttackType(
   const vector = vectorParts.join(' ');
   if (!damageType || damageType === 'Unknown') return vector;
   return `${vector}, ${abbreviateDamageType(damageType)}`;
+}
+
+/** Lowercased damage-entry tables for melee/ranged classification. */
+function damageEntryTables(power: Power): string[] {
+  const dmg = power.damage;
+  if (!dmg) return [];
+  const arr = Array.isArray(dmg) ? dmg : [dmg];
+  return arr.map((d) => (d.table || '').toLowerCase()).filter(Boolean);
 }
 
 /**

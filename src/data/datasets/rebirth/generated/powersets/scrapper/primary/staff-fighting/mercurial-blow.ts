@@ -40,18 +40,11 @@ export const MercurialBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.84,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.378,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.84,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

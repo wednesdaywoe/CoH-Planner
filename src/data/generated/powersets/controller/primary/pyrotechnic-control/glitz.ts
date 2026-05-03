@@ -46,11 +46,6 @@ export const BrilliantBarrage: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Fire",
-      "scale": 0.1625,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Energy",
       "scale": 0.1625,
       "table": "Melee_Damage"

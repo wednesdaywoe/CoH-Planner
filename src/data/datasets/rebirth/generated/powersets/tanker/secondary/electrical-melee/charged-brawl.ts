@@ -54,11 +54,6 @@ export const ChargedBrawl: Power = {
       "type": "Energy",
       "scale": 0.34,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.378,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

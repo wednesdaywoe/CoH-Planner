@@ -38,13 +38,6 @@ export const TouchofFear: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.48708,
-    "table": "Melee_Damage",
-    "duration": 2,
-    "tickRate": 0.625
-  },
   "effects": {
     "fear": {
       "mag": 3,

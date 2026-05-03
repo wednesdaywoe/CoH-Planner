@@ -41,11 +41,6 @@ export const Fault: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.48708,
-    "table": "Melee_Damage"
-  },
   "effects": {
     "knockback": {
       "scale": 0.67,

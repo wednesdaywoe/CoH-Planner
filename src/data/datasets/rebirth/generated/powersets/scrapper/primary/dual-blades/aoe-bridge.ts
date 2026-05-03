@@ -37,22 +37,13 @@ export const TyphoonsEdge: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.57,
-      "table": "Melee_Damage",
-      "duration": 0.6,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2565,
-      "table": "Melee_Damage",
-      "duration": 0.6,
-      "tickRate": 0.4000000059604645
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.57,
+    "table": "Melee_Damage",
+    "duration": 0.6,
+    "tickRate": 0.4000000059604645
+  },
   "conditionalEffects": [
     {
       "id": "dd_debuffmode_2",

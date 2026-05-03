@@ -41,18 +41,11 @@ export const SoulDrain: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.45,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 1,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "tohitBuff": {
       "scale": 1.2,

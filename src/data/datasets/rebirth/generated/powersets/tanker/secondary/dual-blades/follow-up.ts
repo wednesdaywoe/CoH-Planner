@@ -42,18 +42,11 @@ export const BlindingFeint: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.36,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.8,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "taunt": {
       "scale": 1,

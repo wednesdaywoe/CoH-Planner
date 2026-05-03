@@ -40,18 +40,11 @@ export const RendArmor: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 3.212,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.4454,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 3.212,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

@@ -51,18 +51,6 @@ export const RendingFlurry: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.531,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.04248,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
     }
   ],
   "effects": {

@@ -48,11 +48,6 @@ export const SmashingBlow: Power = {
       "type": "Energy",
       "scale": 0.48,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.666,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

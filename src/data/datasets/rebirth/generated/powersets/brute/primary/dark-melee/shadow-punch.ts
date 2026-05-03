@@ -52,11 +52,6 @@ export const ShadowPunch: Power = {
       "type": "Negative",
       "scale": 0.5,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.378,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
