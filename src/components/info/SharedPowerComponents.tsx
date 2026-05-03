@@ -311,7 +311,15 @@ function CollapsibleEffectGroup({
         const enhanceable = !!config.enhancementAspect;
         const hasEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;
         const hasFinal = Math.abs(tiers.final - tiers.enhanced) > 0.001;
-        const itemLabel = elabel || config.label;
+        // Strip the group-label prefix from child rows so we don't repeat
+        // "Debuff Res:" / "Status Res:" / "Prot:" — the group header already
+        // owns that label. `expandByTypeEntries` and `expandProtectionEntries`
+        // emit labels like "Debuff Res: Recovery"; render children as just
+        // "Recovery" when the prefix matches the parent group's label.
+        const baseLabel = elabel || config.label;
+        const itemLabel = elabel && elabel.startsWith(`${label}: `)
+          ? elabel.slice(label.length + 2)
+          : baseLabel;
 
         if (config.format === 'mag') {
           const rawMag = dominationActive && config.category === 'control' ? calculateDominationMagnitude(tiers.base) : tiers.base;
