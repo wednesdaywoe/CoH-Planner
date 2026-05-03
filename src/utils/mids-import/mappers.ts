@@ -39,6 +39,7 @@ const MIDS_ARCHETYPE_MAP: Record<string, ArchetypeId> = {
   'Class_Scrapper': 'scrapper',
   'Class_Tanker': 'tanker',
   'Class_Sentinel': 'sentinel',
+  'Class_Guardian': 'guardian',  // Rebirth-only AT
   'Class_Corruptor': 'corruptor',
   'Class_Dominator': 'dominator',
   'Class_Mastermind': 'mastermind',
@@ -134,7 +135,10 @@ export function resolvePowerset(
   archetypeId: string,
   powersetLookup: Map<string, string>,
 ): string | null {
-  const segments = midsPath.split('.');
+  // Some Mids exports include trailing whitespace in segments
+  // (Rebirth Guardian builds emit "Guardian_Composition.Energy_Composition "
+  // with the trailing space). Trim every segment defensively.
+  const segments = midsPath.split('.').map(s => s.trim());
   if (segments.length < 2) return null;
 
   const midsInternalName = segments[1].toLowerCase();
@@ -346,7 +350,7 @@ const MIDS_POOL_ALIASES: Record<string, string> = {
  * @param midsPath - e.g., "Pool.Fighting" or "Pool.Force_of_Will"
  */
 export function resolvePoolId(midsPath: string): string | null {
-  const segments = midsPath.split('.');
+  const segments = midsPath.split('.').map(s => s.trim());
   if (segments.length < 2 || segments[0] !== 'Pool') return null;
 
   // "Force_of_Will" → "force_of_will"
@@ -481,6 +485,18 @@ const MIDS_EPIC_POOL_OVERRIDES: Record<string, string> = {
   // "Fire Mastery". Mids still uses the old name.
   'corr_flame_mastery': 'corruptor_fire_mastery',
   'def_flame_mastery': 'defender_fire_mastery',
+  // Rebirth Guardian — Mids puts the AT after the school
+  // ("Psionic_Mastery_Guardian"); our generated id puts the AT first
+  // ("guardian_psionic_mastery"). Map all Guardian epic pools.
+  'fire_mastery_guardian': 'guardian_fire_mastery',
+  'ice_mastery_guardian': 'guardian_ice_mastery',
+  'leviathan_mastery_guardian': 'guardian_leviathan_mastery',
+  'mace_mastery_guardian': 'guardian_mace_mastery',
+  'mu_mastery_guardian': 'guardian_mu_mastery',
+  'munitions_mastery_guardian': 'guardian_munitions_mastery',
+  'primal_forces_mastery_guardian': 'guardian_primal_forces_mastery',
+  'psionic_mastery_guardian': 'guardian_psionic_mastery',
+  'soul_mastery_guardian': 'guardian_soul_mastery',
 };
 
 /**
@@ -492,7 +508,7 @@ export function resolveEpicPoolId(
   midsPath: string,
   archetypeId: string,
 ): string | null {
-  const segments = midsPath.split('.');
+  const segments = midsPath.split('.').map(s => s.trim());
   if (segments.length < 2 || segments[0] !== 'Epic') return null;
 
   // "Energy_Mastery_Brute" → "energy_mastery_brute"

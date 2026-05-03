@@ -557,7 +557,16 @@ function processEntry(
   warnings: MidsImportWarning[],
   summary: MidsImportSummary,
 ): ProcessedEntry | null {
-  const { PowerName, Level: midsLevel, StatInclude, SlotEntries } = entry;
+  // Some Mids exports (Rebirth Guardian builds we've seen) emit power
+  // names with trailing whitespace inside segments
+  // ("Guardian_Composition.Energy_Composition .Kinetic_Shield"). Normalize
+  // the whole name once so every downstream check (skip-prefix tests,
+  // segment splits, lookup-map keys) sees a clean form.
+  const PowerName = entry.PowerName
+    .split('.')
+    .map(s => s.trim())
+    .join('.');
+  const { Level: midsLevel, StatInclude, SlotEntries } = entry;
   const appLevel = midsLevel; // Mids Level is already 1-based
 
   // Extract segments: "Brute_Melee.Kinetic_Attack.Quick_Strike" → ["Brute_Melee", "Kinetic_Attack", "Quick_Strike"]
