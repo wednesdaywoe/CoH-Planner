@@ -1478,11 +1478,16 @@ function extractSpecialEffects(rawEffects, conditionalEffects) {
         procs.push({ kind: 'grant', chance, label });
       } else if (attrib === 'Null') {
         // Implicit grant — Null-attrib chance template paired with a
-        // sibling conditionalEffects entry (Suffocate's Drowning). Filter
-        // caster-state conditionals (Domination etc.) since they're not
-        // grant targets. Use the unique remaining target-state conditional.
+        // sibling conditionalEffects entry. Two flavors:
+        //   - Target-state (Suffocate's Drowning): scope='per-power'
+        //   - Caster-state (Brute Psionic Melee's Insight, Combo Level
+        //     stacks, Tidal Power tiers): scope='global'
+        // Both are valid grant targets; only AT-inherent state machines
+        // (Domination meter) are excluded since the meter isn't a grant.
+        // When the power has exactly one such candidate we pair against
+        // it; otherwise fall back to the literal 'state' marker.
         const candidates = (conditionalEffects ?? []).filter(c =>
-          c.scope !== 'global' && !AT_INHERENT_GRANT_BLACKLIST.has(c.id)
+          !AT_INHERENT_GRANT_BLACKLIST.has(c.id)
         );
         const cond = candidates.length === 1 ? candidates[0] : null;
         procs.push({
