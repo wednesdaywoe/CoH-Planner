@@ -77,7 +77,7 @@ export interface EffectDisplayConfig {
 export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   // === EXECUTION (Power Stats) ===
   enduranceCost: {
-    label: 'Endurance',
+    label: 'Endurance Cost',
     category: 'execution',
     colorClass: STAT_COLORS.endurance,
     format: 'value',
@@ -92,7 +92,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     priority: 1.5,
   },
   recharge: {
-    label: 'Recharge',
+    label: 'Recharge Time',
     category: 'execution',
     colorClass: STAT_COLORS.recharge,
     format: 'duration',
@@ -109,7 +109,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     baseMultiplier: 75,  // Accuracy is multiplier × 75% base to-hit
   },
   range: {
-    label: 'Range',
+    label: 'Power Range',
     category: 'execution',
     colorClass: STAT_COLORS.range,
     format: 'value',
@@ -117,14 +117,14 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     priority: 4,
   },
   castTime: {
-    label: 'Cast Time',
+    label: 'Activation Time',
     category: 'execution',
     colorClass: STAT_COLORS.castTime,
     format: 'duration',
     priority: 5,
   },
   effectDuration: {
-    label: 'Effect Dur',
+    label: 'Effect Duration',
     category: 'execution',
     colorClass: STAT_COLORS.effectDuration,
     format: 'duration',

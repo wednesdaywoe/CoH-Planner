@@ -213,9 +213,9 @@ export function Header() {
         >
           {(
             [
-              { mode: 'damage',        label: 'Dmg', title: 'Damage — total damage of one activation' },
-              { mode: 'damagePerAnim', label: 'DPA', title: 'Damage per Animation — damage divided by cast time (honors ArcanaTime)' },
-              { mode: 'damagePerSec',  label: 'DPS', title: 'Damage per Second — damage divided by full cycle time (cast + recharge)' },
+              { mode: 'damage',        label: 'DMG', title: 'Average DMG — average damage of one activation' },
+              { mode: 'damagePerAnim', label: 'DPA', title: 'Damage per Animation — damage divided by activation time (honors ArcanaTime)' },
+              { mode: 'damagePerSec',  label: 'DPS', title: 'Damage per Second — damage divided by full cycle time (activation + recharge)' },
               { mode: 'damagePerEnd',  label: 'DPE', title: 'Damage per Endurance — damage divided by endurance cost' },
             ] as const
           ).map(({ mode, label, title }) => {

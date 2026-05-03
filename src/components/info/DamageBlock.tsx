@@ -401,19 +401,19 @@ function resolveDamageMetric(inputs: MetricInputs): MetricResolved {
   switch (mode) {
     case 'damage':
       return {
-        label: 'Damage',
-        title: 'Total damage of one activation',
+        label: 'Average DMG',
+        title: 'Average damage of one activation',
         valueBase: totalDmgBase,
         valueFinal: totalDmgFinal,
         unavailableReason: null,
       };
     case 'damagePerAnim':
       if (effectiveCastTime <= 0) {
-        return { label: 'DPA', title: '', valueBase: 0, valueFinal: 0, unavailableReason: 'No cast time' };
+        return { label: 'DPA', title: '', valueBase: 0, valueFinal: 0, unavailableReason: 'No activation time' };
       }
       return {
         label: 'DPA',
-        title: `Damage per Animation — damage / ${arcanaTimeEnabled ? 'ArcanaTime' : 'cast time'}`,
+        title: `Damage per Animation — damage / ${arcanaTimeEnabled ? 'ArcanaTime' : 'activation time'}`,
         valueBase: totalDmgBase / effectiveCastTime,
         valueFinal: totalDmgFinal / effectiveCastTime,
         unavailableReason: null,
@@ -433,7 +433,7 @@ function resolveDamageMetric(inputs: MetricInputs): MetricResolved {
     default:
       return {
         label: 'DPS',
-        title: 'Damage per Second — damage / full cycle time (cast + recharge)',
+        title: 'Damage per Second — damage / full cycle time (activation + recharge)',
         valueBase: baseDPS,
         valueFinal: finalDPS,
         unavailableReason: null,
