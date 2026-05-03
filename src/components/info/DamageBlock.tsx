@@ -19,6 +19,7 @@ import type { PowerDamageResult } from '@/utils/calculations';
 import { calculateArcanaTime, abbreviateDamageType } from '@/utils/calculations';
 import { findProcData, parseProcEffect, calculateProcChance, interpolateProcDamage } from '@/data';
 import type { IOSetEnhancement, SelectedPower } from '@/types';
+import { useUIStore } from '@/stores';
 import { getDamageCap, calcThreeTier as calcThreeTierUtil } from './powerDisplayUtils';
 import { getConArrow } from './SharedPowerComponents';
 
@@ -66,6 +67,7 @@ export function DamageBlock(props: DamageBlockProps) {
         Damage <span className="text-slate-600 font-normal">(Lvl {buildLevel})</span>
       </h4>
       <div className="bg-slate-800/50 rounded p-2">
+        <ModeToggle />
         <DamageRows {...props} />
         {!calculatedDamage.unknown && calculatedDamage.scale != null && (
           <DamageBar {...props} />
@@ -79,6 +81,50 @@ export function DamageBlock(props: DamageBlockProps) {
           <DamageMetrics {...props} />
         )}
       </div>
+    </div>
+  );
+}
+
+// ----------------------------------------------------------------------
+// ModeToggle — DMG / DPA / DPS / DPE radio. Reads/writes uiStore directly
+// so the chosen mode persists across power selections without prop
+// threading. Replaces the prior global toggle in the Header.
+// ----------------------------------------------------------------------
+
+const MODE_BUTTONS = [
+  { mode: 'damage'        as DamageDisplayMode, label: 'DMG', title: 'Average DMG — average damage of one activation' },
+  { mode: 'damagePerAnim' as DamageDisplayMode, label: 'DPA', title: 'Damage per Animation — damage / activation time (honors ArcanaTime)' },
+  { mode: 'damagePerSec'  as DamageDisplayMode, label: 'DPS', title: 'Damage per Second — damage / full cycle time (activation + recharge)' },
+  { mode: 'damagePerEnd'  as DamageDisplayMode, label: 'DPE', title: 'Damage per Endurance — damage / endurance cost' },
+];
+
+function ModeToggle() {
+  const damageDisplayMode = useUIStore((s) => s.damageDisplayMode);
+  const setDamageDisplayMode = useUIStore((s) => s.setDamageDisplayMode);
+  return (
+    <div
+      className="inline-flex items-center bg-slate-700/40 rounded border border-slate-600/50 overflow-hidden mb-1.5"
+      role="radiogroup"
+      aria-label="Damage display mode"
+    >
+      {MODE_BUTTONS.map(({ mode, label, title }) => {
+        const active = damageDisplayMode === mode;
+        return (
+          <button
+            key={mode}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            onClick={() => setDamageDisplayMode(mode)}
+            title={title}
+            className={`px-2 py-0.5 text-[10px] font-medium transition-colors ${
+              active ? 'bg-cyan-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-700'
+            }`}
+          >
+            {label}
+          </button>
+        );
+      })}
     </div>
   );
 }

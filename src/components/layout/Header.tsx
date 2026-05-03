@@ -74,8 +74,6 @@ export function Header() {
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
   const includeProcDamageInDPS = useUIStore((s) => s.includeProcDamageInDPS);
   const toggleIncludeProcDamageInDPS = useUIStore((s) => s.toggleIncludeProcDamageInDPS);
-  const damageDisplayMode = useUIStore((s) => s.damageDisplayMode);
-  const setDamageDisplayMode = useUIStore((s) => s.setDamageDisplayMode);
   const combatMode = useUIStore((s) => s.combatMode);
   const toggleCombatMode = useUIStore((s) => s.toggleCombatMode);
   const openProcSettingsModal = useUIStore((s) => s.openProcSettingsModal);
@@ -204,38 +202,6 @@ export function Header() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </button>
-        </div>
-
-        <div
-          className="inline-flex items-center bg-slate-700/50 rounded border border-slate-600 overflow-hidden"
-          role="radiogroup"
-          aria-label="Damage display mode"
-        >
-          {(
-            [
-              { mode: 'damage',        label: 'DMG', title: 'Average DMG — average damage of one activation' },
-              { mode: 'damagePerAnim', label: 'DPA', title: 'Damage per Animation — damage divided by activation time (honors ArcanaTime)' },
-              { mode: 'damagePerSec',  label: 'DPS', title: 'Damage per Second — damage divided by full cycle time (activation + recharge)' },
-              { mode: 'damagePerEnd',  label: 'DPE', title: 'Damage per Endurance — damage divided by endurance cost' },
-            ] as const
-          ).map(({ mode, label, title }) => {
-            const active = damageDisplayMode === mode;
-            return (
-              <button
-                key={mode}
-                type="button"
-                role="radio"
-                aria-checked={active}
-                onClick={() => setDamageDisplayMode(mode)}
-                title={title}
-                className={`px-2 py-1 text-xs font-medium transition-colors ${
-                  active ? 'bg-cyan-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-700'
-                }`}
-              >
-                {label}
-              </button>
-            );
-          })}
         </div>
 
         {archetypeId && <ATMechanics archetypeId={archetypeId} />}
