@@ -19,7 +19,7 @@ Each entry below has a detail section further down. Status snapshot as of
 | 4 | **AT-mechanic alignment** (Header vs InfoPanel) | First overlap (Domination via `kStealth source>` on Dominator powers) routed through Header state; expand mapping as more overlaps surface | [#at-mechanic-alignment](#at-mechanic-alignment) |
 | 5 | **Calc accuracy fixes** | **Complete.** Conditional-aggregation, pure-DoT 5×tick, accuracy-final tooltip, damageModifier audit, tooltip-level convention all shipped or documented. | [#calc-accuracy](#calc-accuracy) |
 | 6 | **Rebirth scalar-table verification** | **Done.** Diffed exported `classes.bin` tables; Rebirth's `at-tables.ts` regenerated from real Rebirth values. Tanker (Ranged_Damage -37.5%, Melee_Damage -15.8%) and Brute (Ranged_Damage -33%) had meaningful divergence — those ATs got post-i24 reworks on HC. Other ATs match HC within float-precision noise. | [#rebirth-scalar-table-verification](#rebirth-scalar-table-verification) |
-| 7 | **IO sets exporter for Rebirth** | Not started. Last Stage C blocker. | [#io-sets-exporter-for-rebirth](#io-sets-exporter-for-rebirth) |
+| 7 | **IO sets exporter for Rebirth** | **Done** (subset-of-HC approach). Audit shows Rebirth's set list is a strict subset of HC's (210 shared, 17 HC-only post-i24, 0 Rebirth-only). New exporter filters HC's curated `io-sets-raw.ts` by the 210 set names from Rebirth's `boostsets.bin`; `io-sets.ts` now resolves the active dataset's registry. Bonus values are HC-cloned with a documented caveat — full Parse6 `boost_effect_*.bin` parser is the long-term path for Rebirth-specific bonus tiers. | [#io-sets-exporter-for-rebirth](#io-sets-exporter-for-rebirth) |
 
 ## Open Tasks (not-yet-grouped backlog)
 
@@ -1245,8 +1245,40 @@ Rebirth), but the per-set TS data file
 off the boostsets parser that writes Rebirth's set definitions
 directly.
 
-### Pending
+### Audit findings (2026-05-03)
 
-- [ ] Build the exporter
-- [ ] Generate `datasets/rebirth/io-sets-raw.ts`
-- [ ] Verify a few Rebirth IO sets in-game
+Diffed Rebirth's `boostsets.bin` (210 sets) against HC's curated
+`io-sets-raw.ts` (227 sets):
+
+- **210 sets are shared** between HC and Rebirth — Rebirth's full
+  set list is a strict subset of HC's
+- **17 sets are HC-only** — post-i24 additions: Sentinel ATOs
+  (Opportunity Strikes, Sentinels Ward, Superior variants), plus
+  Bombardment, Cupids Crush, Hypersonic, Ice Mistral's Torment,
+  Sudden Acceleration, Synapse's Shock, Power Transfer, Preemptive
+  Optimization, Artillery, Launch, Experienced Marksman
+- **0 Rebirth-only sets** — Rebirth has nothing HC doesn't
+
+### Implementation (shipped)
+
+[scripts/extract-rebirth-io-sets.cjs](scripts/extract-rebirth-io-sets.cjs)
+shells into Python to dump set names from Rebirth's `boostsets.bin`,
+loads HC's `io-sets-raw.ts`, filters to keys present in Rebirth, and
+emits [src/data/datasets/rebirth/io-sets-raw.ts](src/data/datasets/rebirth/io-sets-raw.ts)
+with the 210 matched sets. Punctuation normalisation handles
+`gaussians_synchronized_fire-control` ↔ `gaussians_synchronized_firecontrol`.
+
+[src/data/io-sets.ts](src/data/io-sets.ts) now imports both raw files
+and resolves the active dataset's registry via `getActiveDataset()`,
+caching the transform per dataset id. HC users see 227 sets; Rebirth
+users see 210.
+
+### Caveat / follow-up
+
+Bonus values come from HC's Mids-curated data and may have minor
+numerical drift from Rebirth's actual i24-era tier values. Building a
+Parse6 parser for `boost_effect_above.bin` / `boost_effect_below.bin`
+/ `boost_effect_boosters.bin` would let us extract Rebirth's actual
+bonus tiers from binary; that's significant Parse6 work and is
+deferred. If a specific set is reported with wrong numbers we can
+audit ad-hoc.

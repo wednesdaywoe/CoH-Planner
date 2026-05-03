@@ -14,7 +14,9 @@ import type {
   IOSetPiece,
   SetBonus,
 } from '@/types';
-import { IO_SETS_RAW } from './io-sets-raw';
+import { IO_SETS_RAW as IO_SETS_RAW_HC } from './io-sets-raw';
+import { IO_SETS_RAW as IO_SETS_RAW_REBIRTH } from './datasets/rebirth/io-sets-raw';
+import { getActiveDataset } from './dataset';
 
 // ============================================
 // IO SET CATEGORIES MAPPING
@@ -217,14 +219,34 @@ function transformRegistry(legacy: LegacyIOSetRegistry): IOSetRegistry {
 // IO SET REGISTRY
 // ============================================
 
-// Transform and cache the raw data at module load time
-const _ioSets: IOSetRegistry = transformRegistry(IO_SETS_RAW);
+// Lazy-load + cache the transformed registry per dataset. Both raw data
+// files are statically imported so they share the chunk graph; the
+// transform runs once per dataset on first access.
+const _registryCache = new Map<string, IOSetRegistry>();
+
+function _resolveRawForDataset(datasetId: string) {
+  switch (datasetId) {
+    case 'rebirth': return IO_SETS_RAW_REBIRTH;
+    case 'homecoming':
+    default: return IO_SETS_RAW_HC;
+  }
+}
+
+function _activeRegistry(): IOSetRegistry {
+  const id = getActiveDataset().id;
+  let r = _registryCache.get(id);
+  if (!r) {
+    r = transformRegistry(_resolveRawForDataset(id));
+    _registryCache.set(id, r);
+  }
+  return r;
+}
 
 /**
  * Get all IO sets
  */
 export function getAllIOSets(): IOSetRegistry {
-  return _ioSets;
+  return _activeRegistry();
 }
 
 // ============================================
@@ -237,21 +259,21 @@ export function getAllIOSets(): IOSetRegistry {
  * (e.g., "gaussians_synchronized_fire-control" → "gaussians_synchronized_firecontrol")
  */
 export function getIOSet(id: string): IOSet | undefined {
-  return _ioSets[id] ?? _ioSets[id.replace(/-/g, '')];
+  return _activeRegistry()[id] ?? _activeRegistry()[id.replace(/-/g, '')];
 }
 
 /**
  * Get all IO sets of a specific rarity
  */
 export function getIOSetsByRarity(rarity: IOSetRarity): IOSet[] {
-  return Object.values(_ioSets).filter((set) => set.category === rarity);
+  return Object.values(_activeRegistry()).filter((set) => set.category === rarity);
 }
 
 /**
  * Get all IO sets that can be slotted in a power category
  */
 export function getIOSetsForCategory(category: IOSetCategory): IOSet[] {
-  return Object.values(_ioSets).filter((set) => {
+  return Object.values(_activeRegistry()).filter((set) => {
     const mappedCategory = IO_SET_TYPE_TO_CATEGORY[set.type];
     return mappedCategory === category;
   });
@@ -262,7 +284,7 @@ export function getIOSetsForCategory(category: IOSetCategory): IOSet[] {
  */
 export function getIOSetsForPower(allowedCategories: IOSetCategory[] = []): IOSet[] {
   if (!allowedCategories || allowedCategories.length === 0) return [];
-  return Object.values(_ioSets).filter((set) => {
+  return Object.values(_activeRegistry()).filter((set) => {
     const mappedCategory = IO_SET_TYPE_TO_CATEGORY[set.type];
     return mappedCategory && allowedCategories.includes(mappedCategory);
   });
@@ -291,7 +313,7 @@ export function getSetBonusesAtCount(setId: string, pieceCount: number): SetBonu
  */
 export function getAllIOSetTypes(): string[] {
   const types = new Set<string>();
-  for (const set of Object.values(_ioSets)) {
+  for (const set of Object.values(_activeRegistry())) {
     types.add(set.type);
   }
   return Array.from(types).sort();
