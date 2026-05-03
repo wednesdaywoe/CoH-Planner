@@ -511,7 +511,10 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'movement',
     colorClass: STAT_COLORS.runSpeed,
     format: 'value',
-    enhancementAspect: 'runSpeed',
+    // The Run Speed enhancement category (SO and IO) normalizes to 'run'
+    // in ASPECT_NAME_MAP. Use the same key here so slotted enhancements
+    // are reflected in the Power Effects three-tier display.
+    enhancementAspect: 'run',
     priority: 2,
   },
   jumpSpeed: {
@@ -519,7 +522,8 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'movement',
     colorClass: STAT_COLORS.jumpSpeed,
     format: 'value',
-    enhancementAspect: 'jumpSpeed',
+    // The Jumping enhancement boosts both jump speed and jump height in-game.
+    enhancementAspect: 'jump',
     priority: 3,
   },
   jumpHeight: {
@@ -527,7 +531,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'movement',
     colorClass: STAT_COLORS.jumpHeight,
     format: 'value',
-    enhancementAspect: 'jumpHeight',
+    enhancementAspect: 'jump',
     priority: 4,
   },
   teleport: {

@@ -19,7 +19,7 @@ import type { IncarnateSlotId, ToggleableIncarnateSlot } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue } from '@/data/stat-definitions';
-import { applyMovementBuff } from '@/data/core/movement-constants';
+import { applyMovementBuff, getEffectiveMovementCaps, TRAVEL_CAP_BUMPS } from '@/data/core/movement-constants';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 
 // Stats that need globalBonuses values instead of CalculatedStats
@@ -179,6 +179,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const dashboardCollapsed = useUIStore((s) => s.dashboardCollapsed);
   const toggleDashboardCollapsed = useUIStore((s) => s.toggleDashboardCollapsed);
   const setHoverHint = useUIStore((s) => s.setHoverHint);
+  const combatMode = useUIStore((s) => s.combatMode);
   // Welcome modal (auto-shows on first visit)
   const [welcomeModalOpen, closeWelcomeModal] = useWelcomeModal();
 
@@ -216,6 +217,25 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
     (build.epicPool ? countExtra(build.epicPool.powers) : 0) +
     countExtra(build.inherents);
 
+  // Effective movement caps — travel toggles (Super Speed / Mighty Leap / Fly /
+  // Afterburner / etc.) raise the cap of their corresponding stat while active,
+  // unless the In-Combat toggle is on (the game suppresses the cap bump on
+  // attack; we use combatMode as a conservative proxy since we can't detect
+  // which active toggles actually land damage on a foe).
+  const effectiveMovementCaps = useMemo(() => {
+    if (combatMode) return getEffectiveMovementCaps([]);
+    const activeNames: string[] = [];
+    const collect = (powers: { fullName?: string; isActive?: boolean }[]) => {
+      for (const p of powers) {
+        if (p.isActive && p.fullName && TRAVEL_CAP_BUMPS[p.fullName]) activeNames.push(p.fullName);
+      }
+    };
+    for (const pool of build.pools) collect(pool.powers);
+    if (build.epicPool) collect(build.epicPool.powers);
+    collect(build.inherents);
+    return getEffectiveMovementCaps(activeNames);
+  }, [build.pools, build.epicPool, build.inherents, combatMode]);
+
   // Get visible stats based on config
   const visibleStats = useMemo(() => {
     return statsConfig
@@ -235,23 +255,30 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
 
         // Movement stats display in mph/ft on the face; surface the underlying
         // % buff (and capped state) on hover so the user can see the input.
+        // Override format/tooltip so the active travel-toggle cap applies.
         let tooltip = def.tooltip;
+        let format = def.format;
         if (config.stat === 'runspeed' || config.stat === 'jumpspeed' || config.stat === 'jumpheight') {
-          const pct = Number(value);
-          const sign = pct >= 0 ? '+' : '';
           const movementStat = config.stat === 'runspeed' ? 'runSpeed'
             : config.stat === 'jumpspeed' ? 'jumpSpeed'
             : 'jumpHeight';
-          const { value: abs, capped } = applyMovementBuff(movementStat, pct);
           const unit = config.stat === 'jumpheight' ? 'ft' : 'mph';
-          tooltip = `${sign}${pct.toFixed(2)}% buff → ${abs.toFixed(2)} ${unit}${capped ? ' (capped)' : ''}`;
+          const pct = Number(value);
+          const sign = pct >= 0 ? '+' : '';
+          const { value: abs, capped } = applyMovementBuff(movementStat, pct, effectiveMovementCaps);
+          tooltip = `${sign}${pct.toFixed(2)}% buff → ${abs.toFixed(2)} ${unit}${capped ? ` (capped at ${effectiveMovementCaps[movementStat].toFixed(2)})` : ''}`;
+          format = (v) => {
+            const { value: a, capped: c } = applyMovementBuff(movementStat, Number(v), effectiveMovementCaps);
+            return `${a.toFixed(2)} ${unit}${c ? ' *' : ''}`;
+          };
         } else if (config.stat === 'flyspeed') {
           const pct = Number(value);
           const sign = pct >= 0 ? '+' : '';
-          tooltip = `${sign}${pct.toFixed(2)}% fly speed buff. Cap 58.63 mph (87.90 with Fly/Mystic Flight, 102.27 with Afterburner). Base mph requires an active fly power.`;
+          const cap = effectiveMovementCaps.flySpeed;
+          tooltip = `${sign}${pct.toFixed(2)}% fly speed buff. Effective cap ${cap.toFixed(2)} mph. Base mph requires an active fly power.`;
         }
 
-        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip };
+        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip, format };
       })
       .filter((stat) => {
         if (stat.showWhenZero) return true;
@@ -266,7 +293,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         }
         return Number(v) !== 0;
       });
-  }, [statsConfig, stats, baseHP, maxHPCap, breakdowns, globalBonuses]);
+  }, [statsConfig, stats, baseHP, maxHPCap, breakdowns, globalBonuses, effectiveMovementCaps]);
 
   // Stat categories for grouping (should match config modal)
   const STAT_CATEGORIES = [

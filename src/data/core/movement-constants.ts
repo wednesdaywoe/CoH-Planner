@@ -24,11 +24,12 @@ export const MOVEMENT_BASES = {
 } as const;
 
 /**
- * Standard movement caps. Travel powers raise these:
+ * Standard movement caps. Travel powers raise these — see TRAVEL_CAP_BUMPS:
  *   Run:  Super Speed / Speed of Sound → 120.25
  *   Fly:  Fly / Mystic Flight → 87.90; Afterburner adds another → 102.27
- *   Jump: Super Jump / Mighty Leap → 101.80; Takeoff adds another → 110.39
- * Jump height has no documented cap.
+ *   Jump: Super Jump / Mighty Leap → 101.80
+ * Jump height has no documented cap. Click-power cap bumps (Takeoff) are
+ * not modeled because the planner has no concept of an in-flight buff window.
  */
 export const MOVEMENT_CAPS = {
   runSpeed: 92.50,
@@ -38,14 +39,50 @@ export const MOVEMENT_CAPS = {
 } as const;
 
 export type MovementStat = keyof typeof MOVEMENT_BASES;
+export type MovementCaps = Record<MovementStat, number>;
+
+/**
+ * Travel toggles that raise the cap of one movement stat while active.
+ * Keyed by the canonical power fullName ("Pool.<set>.<powerInternalName>").
+ * Multiple active bumps for the same stat take the maximum (game rule:
+ * "only the strongest buff applies"). When the In-Combat toggle is on,
+ * none of these apply (the game suppresses the cap bump on attack).
+ */
+export const TRAVEL_CAP_BUMPS: Record<string, { stat: MovementStat; cap: number }> = {
+  'Pool.Speed.Super_Speed':              { stat: 'runSpeed',  cap: 120.25 },
+  'Pool.Experimentation.Speed_of_Sound': { stat: 'runSpeed',  cap: 120.25 },
+  'Pool.Leaping.Long_Jump':              { stat: 'jumpSpeed', cap: 101.80 }, // Super Jump
+  'Pool.Force_of_Will.Mighty_Leap':      { stat: 'jumpSpeed', cap: 101.80 },
+  'Pool.Flight.Fly':                     { stat: 'flySpeed',  cap: 87.90 },
+  'Pool.Sorcery.Mystic_Flight':          { stat: 'flySpeed',  cap: 87.90 },
+  'Pool.Flight.Fly_Boost':               { stat: 'flySpeed',  cap: 102.27 }, // Afterburner
+};
+
+/**
+ * Compute the effective movement caps given a set of active travel toggles.
+ * Falls back to MOVEMENT_CAPS for any stat not bumped.
+ */
+export function getEffectiveMovementCaps(activeFullNames: Iterable<string>): MovementCaps {
+  const caps: MovementCaps = { ...MOVEMENT_CAPS };
+  for (const name of activeFullNames) {
+    const bump = TRAVEL_CAP_BUMPS[name];
+    if (bump && bump.cap > caps[bump.stat]) caps[bump.stat] = bump.cap;
+  }
+  return caps;
+}
 
 /**
  * Apply a percentage buff to a movement base, clamped to the standard cap.
  * Returns { value, capped } so callers can flag capped speeds visually.
+ * Pass `caps` to override the standard cap (e.g. travel-toggle bumps).
  */
-export function applyMovementBuff(stat: MovementStat, percent: number): { value: number; capped: boolean } {
+export function applyMovementBuff(
+  stat: MovementStat,
+  percent: number,
+  caps: MovementCaps = MOVEMENT_CAPS,
+): { value: number; capped: boolean } {
   const base = MOVEMENT_BASES[stat];
-  const cap = MOVEMENT_CAPS[stat];
+  const cap = caps[stat];
   const raw = base * (1 + percent / 100);
   if (raw >= cap) return { value: cap, capped: true };
   return { value: raw, capped: false };
