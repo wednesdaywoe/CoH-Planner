@@ -23,7 +23,7 @@ Each entry below has a detail section further down. Status snapshot as of
 
 ## Open Tasks (not-yet-grouped backlog)
 
-- [ ] Multi-instance mez display (Suffocate's Mag-3 base + Mag-3 Domination = two stacking instances; current Power type shape stores `effects.hold` as a single object)
+- [x] Multi-instance mez display — shipped 2026-05-03 (commit 8ed898bff). `applyActiveConditionals` now returns `{ power, extraInstances }` instead of just a Power; additive collisions (e.g. Suffocate's Stealthed Mag-3 hold on top of base Mag-3) are captured as `ExtraInstance` entries with the conditional's label, threaded to `RegistryEffectsDisplay` via the new `extraInstances` prop, and rendered as dimmed rows beneath the matching base ("+ Hold Mag 3 (12.0s) (from Stealthed)"). Power type's effects shape didn't need a `hold: MezEffect[]` change after all — the multi-instance lives on display metadata, not the persisted Power record.
 - [x] Rendering "additive" Mechanic Adjuster contributions in the InfoPanel — shipped 2026-05-03. `describeAdjusterContribution` returns the conditional's effect keys partitioned into "new" (filled in by merger) vs "collision" (silently dropped). `MechanicAdjusters` shows a "+ extra <effect> instance" hint under each colliding toggle. Multi-instance display still pending; this is the documentation hint that bridges the gap.
 - [x] Curated label overrides for the 19 remaining "Conditional"-fallback powers — fixed 2026-05-03 by extending `_isUntoggleableGate` (Grounded/NearGround, recent-mez EventTimeSince, target-low-HP, caster-mez-state break-free) and converting `@CustomFX` from a reject rule into a strip via `_stripIgnoredClauses`. Down from 19 generic "Conditional" entries to 0 across both datasets.
 - [ ] Verify ~217 HC Beam Rifle / Disintegration powers in browser after the conditional-aggregation fix shipped
@@ -938,17 +938,22 @@ Domination active, *with* drowning, etc.
 
 ### Pending under this workstream
 
-- [ ] Multi-instance mez display (Power type allows single `effects.hold`;
-  needs to support arrays for "two simultaneous mag-3 holds" tooltip
-  display per game's two-line representation)
-- [ ] Surface "additive" conditional contributions in the InfoPanel.
-  Today the merger silently leaves base unchanged when the conditional
-  collides with a base effect key; user can't see that toggling Stealthed
-  on Suffocate adds another hold instance
-- [ ] AT-inherent ID map: only `domination` routes through Header state.
-  Add Hide/Stalker (`stealthed` from non-Dominator powers? unclear if
-  any exist), Containment, Fury, Scourge as we encounter them
-- [ ] Curate the 19 remaining "Conditional" generic labels
+- [x] Multi-instance mez display — shipped 2026-05-03 (commit 8ed898bff).
+  `applyActiveConditionals` returns `{ power, extraInstances }`; additive
+  collisions render as dimmed "+ Hold Mag X (Ys) (from <Source>)" rows
+  beneath the base. No Power-type shape change required — multi-instance
+  is display metadata.
+- [x] Surface "additive" conditional contributions in the InfoPanel —
+  shipped 2026-05-03 (MechanicAdjusters ContributionHint + the new
+  inline extra-instance rows above).
+- [x] AT-inherent ID map audit — completed 2026-05-03; only `domination`
+  exists as a binary-level gate. Other AT-inherents (Fury, Scourge, etc.)
+  use hardcoded calc helpers, not conditional templates. Documented in
+  the AT-mechanic alignment section.
+- [x] Curate the 19 remaining "Conditional" generic labels — shipped
+  2026-05-03 (extended `_isUntoggleableGate` for Grounded, recent-mez,
+  break-free, low-HP procs; replaced @CustomFX reject with
+  `_stripIgnoredClauses`). Down from 19 to 0 generic Conditional rows.
 - [ ] Verify the `mode` heuristic catches all mutex cases. Detection
   currently only fires on `<X> ownPower? !` form; other negated
   predicates (e.g. `kStealth source> .9 <` for "not hidden") might
@@ -1036,8 +1041,9 @@ Tox) so they're unambiguous at a glance.
 
 ### Concerns deferred (not blocking)
 
-- **Multi-tier mez** with secondary magnitude tiers needs an array
-  shape — see Open Tasks "Multi-instance mez display"
+- ~~Multi-tier mez with secondary magnitude tiers needs an array shape~~ —
+  resolved 2026-05-03 via display-metadata route (extra-instance rows)
+  instead of a Power-type shape change
 - **Tooltip-level convention** (game uses power's design level vs
   Sidekick's character level) — see Open Tasks
 - **Range row for self-targeted powers (range=0)** — currently shown
