@@ -970,10 +970,27 @@ Domination active, *with* drowning, etc.
   2026-05-03 (extended `_isUntoggleableGate` for Grounded, recent-mez,
   break-free, low-HP procs; replaced @CustomFX reject with
   `_stripIgnoredClauses`). Down from 19 to 0 generic Conditional rows.
-- [ ] Verify the `mode` heuristic catches all mutex cases. Detection
-  currently only fires on `<X> ownPower? !` form; other negated
-  predicates (e.g. `kStealth source> .9 <` for "not hidden") might
-  represent mutex base sides we don't auto-detect
+- [x] Verify the `mode` heuristic catches all mutex cases — audited
+  2026-05-03 across 20,497 power JSONs (HC + Rebirth combined).
+  Findings:
+  - `<X> ownPower? !` form (the one the heuristic detects): **265 hits**
+    across both datasets, all caught.
+  - `kStealth source> X <` form (hypothesized "not hidden" negation):
+    **0 hits**. Doesn't exist in the data.
+  - `kStealth source> ... !` form: **0 hits**.
+  - `<X>.Mode? !` form (negated mode toggle): **0 hits**.
+  - `kEngaged !` form: **0 hits**.
+
+  Of the 333 unique RPN expressions left unclassified by the positive-
+  side classifier, all match existing `_isUntoggleableGate` filters
+  (`@ToHitRoll` rolls, `source.TeamSize>` checks, `ScriptMessage>`
+  zone-script gates) and are correctly rejected before reaching the
+  conditional emitter — confirmed by the current 0 "Conditional"
+  generic-label count in the generated data.
+
+  Conclusion: the `<X> ownPower? !` form is the only negation pattern
+  in use across HC and Rebirth's bins. The heuristic is complete for
+  the data we have. No code change needed.
 
 ---
 
