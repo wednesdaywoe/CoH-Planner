@@ -1207,8 +1207,11 @@ match HC within float-precision noise (typically ~10⁻⁶ relative).
 **Patch:** ran [extract-at-tables.cjs](scripts/extract-at-tables.cjs)
 with `--dataset=rebirth` to regenerate
 [src/data/datasets/rebirth/at-tables.ts](src/data/datasets/rebirth/at-tables.ts)
-from the now-available exported tables. Tanker and Brute calc results
-on Rebirth builds now match what the live game reports for those ATs.
+from the now-available exported tables. (The file was already at
+Rebirth values from earlier work — the regen was a no-op confirmation
+that the per-AT scaling tables are correct.) Tanker and Brute calc
+results on Rebirth builds now match what the live game reports for
+those ATs.
 
 **HC-only tables** (Melee_DamageUniqueness, Melee_IncarnateProcDamage,
 Melee_InherentDamage, etc.) are i25+ HC additions; Rebirth correctly
@@ -1216,6 +1219,19 @@ omits them. No action needed.
 
 **Rebirth-only tables** (Melee_SSDamage, Ranged_SSDamage on EATs) are
 genuine Rebirth additions; included in the regenerated file.
+
+### Follow-up
+
+[archetypes.ts](src/data/datasets/rebirth/archetypes.ts) hardcodes per-AT
+`baseHP` / `maxHP` scalars and HP curve tables (`HP_TABLE_BRUTE` etc.)
+inherited from HC. The exported `classes.bin` JSON doesn't include
+these `attrib_max` fields — only `named_tables`. The `Melee_Buff_MaxHP`
+table differs by ~6.7% between HC and Rebirth at L50, suggesting the
+underlying HP cap values likely diverge similarly. Verifying requires
+extending [export_classes.py](tools/bin-crawler/bin_crawler/export_classes.py)
+to dump `attrib_max` fields. Lower priority than the AT scaling tables
+(the per-AT HP cap is a single number affecting cap calc, not every
+power's display); deferred.
 
 ---
 
