@@ -115,7 +115,8 @@ export type ArchetypeId =
   | 'defender'
   | 'scrapper'
   | 'tanker'
-  | 'sentinel'
+  | 'sentinel'      // HC-only (i25)
+  | 'guardian'      // Rebirth-only — Assault primary + Composition secondary
   // Villains
   | 'brute'
   | 'corruptor'

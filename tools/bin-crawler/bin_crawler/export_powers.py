@@ -45,6 +45,9 @@ PLAYER_CATEGORIES = {
     'Sentinel_Defense', 'Sentinel_Ranged',
     'Stalker_Defense', 'Stalker_Melee',
     'Tanker_Defense', 'Tanker_Melee',
+    # Rebirth Guardian — primary "Assault" sets and secondary "Composition"
+    # sets (armor + utility). HC has no equivalent AT.
+    'Guardian_Assault', 'Guardian_Comp',
     # Kheldians
     'Peacebringer_Defensive', 'Peacebringer_Offensive',
     'Warshade_Defensive', 'Warshade_Offensive',

@@ -211,6 +211,22 @@ const HP_CAP_TANKER: number[] = [
   3473.532, 3496.8252, 3513.6045, 3523.7817, 3533.959,
 ];
 
+/** Guardian (Rebirth-only) — base 1070.9 (LOW_MID curve), cap 2007.9.
+ *  Curve scaled from HP_CAP_STANDARD by 1.2500 to hit the wiki's L50 cap.
+ *  Live Rebirth per-level values can replace this when sourced. */
+const HP_CAP_GUARDIAN: number[] = [
+  187.4971, 207.1843, 228.3709, 251.1102, 275.4503,
+  301.4345, 329.0995, 358.4751, 389.5837, 422.4386,
+  457.0441, 493.3943, 531.4728, 571.2514, 612.6906,
+  655.7378, 700.3279, 746.3828, 793.8108, 842.5071,
+  892.3529, 943.2171, 994.9548, 1047.4094, 1100.4116,
+  1153.7815, 1207.3289, 1260.8537, 1314.1483, 1366.9979,
+  1419.1813, 1470.4746, 1520.6502, 1569.4800, 1616.7365,
+  1662.1943, 1705.6331, 1746.8376, 1785.6007, 1821.7248,
+  1855.0231, 1885.3219, 1912.4612, 1936.2970, 1956.7021,
+  1973.5669, 1986.8013, 1996.3349, 2002.1175, 2007.9000,
+];
+
 export const ARCHETYPES: ArchetypeRegistry = {
   blaster: {
     name: 'Blaster',
@@ -482,6 +498,85 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'tanker/super-strength',
       'tanker/titan-weapons',
       'tanker/war-mace',
+    ],
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // Guardian — Rebirth-exclusive AT. Sources:
+  //   • Stats (baseHP, maxHP, damage scale, caps): Rebirth wiki.
+  //   • Inherent: Resolve (defeat-driven absorb + status protection).
+  //   • Powerset list: filtered to the powersets actually generated under
+  //     `datasets/rebirth/powersets/guardian/`.
+  // Notes:
+  //   • Class definition isn't in `classes.bin` (Rebirth ships Guardian via
+  //     a non-`Class_*` mechanism we haven't reverse-engineered). HP curve
+  //     intermediate values are scaled from HP_CAP_STANDARD to hit the
+  //     wiki L50 target — refine when live per-level data surfaces.
+  //   • Damage modifier AoE is set conservatively to 0.85 (wiki gives
+  //     melee=ranged=0.95 only); typical for ranged-focused ATs.
+  //   • buffDebuffModifier 0.85 — between Sentinel-shape (0.75) and
+  //     Defender (1.25), reflecting the wiki's mid-range buff/debuff
+  //     scalars (Damage Buff 0.075-0.085, Heal Self 107).
+  //   • Resolve isn't a binary-encoded conditional; it's an engine-level
+  //     mechanic. No conditional template surfaces it; the inherent
+  //     description below is for tooltip display.
+  // ──────────────────────────────────────────────────────────────────────
+  guardian: {
+    name: 'Guardian',
+    side: 'hero',
+    description: 'Rebirth exclusive: Assault primary with armor/utility Composition secondary. Defeat-driven Resolve grants stacking absorb + status protection to nearby allies.',
+    inherent: {
+      name: 'Resolve',
+      description: 'When an enemy is defeated, nearby Guardians and allies gain a stack of Resolve for 15s: +5% Absorb plus protection from Disorient, Hold, Sleep, Immobilize, Fear, and Confuse. Stacks up to 3 outside PvP. In PvP, defeating a player grants 20% Absorb (no stacking).',
+    },
+    stats: {
+      baseHP: 1070.8967,
+      maxHP: 2007.9,
+      hpTable: HP_TABLE_LOW_MID,
+      hpCapTable: HP_CAP_GUARDIAN,
+      baseEndurance: 100,
+      baseRecovery: 1.67,
+      baseThreat: 1.0,
+      damageModifier: { melee: 0.95, ranged: 0.95, aoe: 0.85 },
+      buffDebuffModifier: 0.85,
+      damageCap: 5.0,
+      defenseCap: 0.45,
+      resistanceCap: 0.75,
+    },
+    primarySets: [
+      'guardian/dark-assault',
+      'guardian/earth-assault',
+      'guardian/electricity-assault',
+      'guardian/energy-assault',
+      'guardian/fiery-assault',
+      'guardian/gun-fu',
+      'guardian/hellfire-assault',
+      'guardian/icy-assault',
+      'guardian/kinetic-assault',
+      'guardian/luminous-assault',
+      'guardian/mace-assault',
+      'guardian/martial-assault',
+      'guardian/military-assault',
+      'guardian/ninja-assault',
+      'guardian/psionic-assault',
+      'guardian/radiation-assault',
+      'guardian/thorny-assault',
+      'guardian/umbral-assault',
+    ],
+    secondarySets: [
+      'guardian/atmospheric-composition',
+      'guardian/dark-composition',
+      'guardian/energy-composition',
+      'guardian/fiery-composition',
+      'guardian/force-composition',
+      'guardian/ice-composition',
+      'guardian/infiltrator-training',
+      'guardian/organic-composition',
+      'guardian/pain-focusing',
+      'guardian/radiation-composition',
+      'guardian/reconstructive-healing',
+      'guardian/stone-composition',
+      'guardian/temporal-reaction',
     ],
   },
 
@@ -906,6 +1001,7 @@ export const STANDARD_ARCHETYPE_IDS: ArchetypeId[] = [
   'defender',
   'scrapper',
   'tanker',
+  'guardian',
   'brute',
   'corruptor',
   'dominator',

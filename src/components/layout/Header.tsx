@@ -71,7 +71,7 @@ const ARCHETYPE_OPTIONS_REBIRTH = [
   { value: 'defender', label: 'Defender' },
   { value: 'scrapper', label: 'Scrapper' },
   { value: 'tanker', label: 'Tanker' },
-  { value: 'guardian', label: 'Guardian (Coming Soon)', disabled: true },
+  { value: 'guardian', label: 'Guardian' },
   { value: 'brute', label: 'Brute' },
   { value: 'corruptor', label: 'Corruptor' },
   { value: 'dominator', label: 'Dominator' },

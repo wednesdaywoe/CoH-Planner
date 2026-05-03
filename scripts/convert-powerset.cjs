@@ -55,6 +55,11 @@ const CATEGORY_MAP = {
   // Praetorian
   'sentinel_ranged': { archetype: 'sentinel', type: 'primary' },
   'sentinel_defense': { archetype: 'sentinel', type: 'secondary' },
+  // Rebirth Guardian — primary "Assault" + secondary "Composition" sets.
+  // HC has no equivalent AT (Sentinel is HC's ranged/armor hybrid; Guardian
+  // is Rebirth's distinct take with its own powerset library).
+  'guardian_assault': { archetype: 'guardian', type: 'primary' },
+  'guardian_comp': { archetype: 'guardian', type: 'secondary' },
   // Kheldians — both the defensive and offensive categories live under
   // the same `epic` path in the composed tree (Luminous/Umbral Aura &
   // Blast), matching the existing Powerset.category = 'epic'.
