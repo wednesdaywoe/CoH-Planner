@@ -32,12 +32,6 @@ export const FreezeRay: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Cold",

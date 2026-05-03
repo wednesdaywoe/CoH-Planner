@@ -247,6 +247,68 @@ def _extract_params(tail_bytes: bytes, attribs: list[str],
     return None
 
 
+def _extract_params_parse6(tail_bytes: bytes, attribs: list[str]) -> dict | None:
+    """Parse6-equivalent of `_extract_params`.
+
+    Parse6 stores strings inline as `u16(len) + chars + 4-byte-align pad`
+    (vs Parse7's u4 offset into a separate string table). The AttribMod
+    tail in Parse6 isn't fully reverse-engineered, but the Power slot
+    (granted-power dotted name) is the only field we currently care
+    about — it surfaces Stalker Assassin's Focus, Radiation Melee
+    Contaminated, Beast Mastery Pack Mentality, etc. on chance-procs
+    that would otherwise fall back to a generic "state" label.
+
+    Strategy: scan the tail for inline pascal strings that pass the
+    same `_looks_like_power_name` shape filter Parse7 uses. Returns
+    `{'type': 'Power', 'power_names': [...]}` when at least one match
+    found; None otherwise.
+
+    Entity-create (Pets, summons) handling could follow the same shape
+    but isn't currently surfaced from Parse6 — added later if needed.
+    """
+    if not attribs or not tail_bytes:
+        return None
+    attrib_lc = {a.lower() for a in attribs}
+    # Same attrib gate as Parse7 — only emit when the template's attrib
+    # actually uses a Power param. Plus 'null' (Parse6 lowers Grant_Power
+    # to a Null-attrib placeholder when the binary stores the granted
+    # power separately from the attribs list — see audit notes in
+    # MULTI_DATASET_PLAN.md → "Vacuum-style pet conditional gates").
+    is_power_attrib = bool(attrib_lc & _POWER_PARAM_ATTRIBS) or 'null' in attrib_lc
+    if not is_power_attrib:
+        return None
+
+    # Inline-pascal scan: walk the tail looking for plausible string
+    # records. A valid record has a length within reason, all printable
+    # ASCII, and post-length padded to 4-byte alignment.
+    found: list[str] = []
+    seen: set[str] = set()
+    pos = 0
+    while pos + 2 <= len(tail_bytes):
+        slen = struct.unpack_from('<H', tail_bytes, pos)[0]
+        if 4 <= slen <= 200 and pos + 2 + slen <= len(tail_bytes):
+            chars = tail_bytes[pos + 2:pos + 2 + slen]
+            if all(32 <= b < 127 or b == 0 for b in chars):
+                s = chars.rstrip(b'\x00').decode('ascii', errors='replace')
+                if s and s not in seen and all(
+                    c.isalnum() or c in '._- ' for c in s
+                ):
+                    found.append(s)
+                    seen.add(s)
+                # Advance past the string + alignment pad regardless of
+                # whether we recorded it — the bytes were a valid pascal
+                # string, so skipping byte-by-byte would re-decode it.
+                pos += 2 + slen
+                pos += (4 - (pos % 4)) % 4
+                continue
+        pos += 1
+
+    power_names = [s for s in found if _looks_like_power_name(s)]
+    if not power_names:
+        return None
+    return {'type': 'Power', 'power_names': power_names}
+
+
 def _parse_effect_template(r: BinReader) -> EffectTemplate:
     """Parse a single attrib_mod template within an effect group."""
     # Attribs: u4_array where values are enum_index * 4
@@ -1020,9 +1082,19 @@ def _parse_effect_template_parse6(r: BinReader) -> EffectTemplate:
 
     # Tail: RadiusInner/Outer, Suppress, ContinuingFX, ConditionalFX,
     # Power, Reward, Params, EntityDef, PriorityList[Passive], display-
-    # only flags, BoostModAllowed, ProcsPerMinute are skipped — the
-    # planner doesn't depend on them in the Parse6 path.
+    # only flags, BoostModAllowed, ProcsPerMinute. The full layout isn't
+    # fully reverse-engineered for Parse6, but the Power slot is the only
+    # field the planner cares about (it carries the granted-power dotted
+    # name for Grant_Power / Null-attrib chance procs — Stalker Assassin's
+    # Focus, Radiation Melee Contaminated, Beast Mastery Pack Mentality,
+    # etc.). Scan the remaining bytes for inline-pascal strings that look
+    # like power names; mirror's HC's `_extract_params` heuristic but
+    # adapted to Parse6's inline string layout.
+    tail_start = r._pos
+    tail_end = r._end
+    tail_bytes = bytes(r._data[tail_start:tail_end])
     r.skip_to_end()
+    params = _extract_params_parse6(tail_bytes, attribs)
 
     return EffectTemplate(
         attribs=attribs,
@@ -1043,6 +1115,7 @@ def _parse_effect_template_parse6(r: BinReader) -> EffectTemplate:
         stack_limit=stack_limit,
         stack_key=stack_key,
         cancel_events=cancel_events,
+        params=params,
     )
 
 

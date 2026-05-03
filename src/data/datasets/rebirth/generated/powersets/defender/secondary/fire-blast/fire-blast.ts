@@ -31,11 +31,6 @@ export const FireBlast: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

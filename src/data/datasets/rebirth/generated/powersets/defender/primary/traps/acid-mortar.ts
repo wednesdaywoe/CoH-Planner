@@ -30,13 +30,5 @@ export const AcidMortar: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defender Archetype Sets",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

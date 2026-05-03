@@ -35,11 +35,6 @@ export const BreathofFire: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

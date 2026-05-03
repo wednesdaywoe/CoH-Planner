@@ -32,15 +32,6 @@ export const SoaringDragon: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
@@ -70,7 +61,7 @@ export const SoaringDragon: Power = {
     {
       "kind": "grant",
       "chance": 0.949999988079071,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

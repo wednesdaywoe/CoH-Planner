@@ -32,12 +32,6 @@ export const PowerBlast: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

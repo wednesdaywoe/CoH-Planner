@@ -33,13 +33,5 @@ export const FreezingRain: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

@@ -31,11 +31,6 @@ export const MentalBlast: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

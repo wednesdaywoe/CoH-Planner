@@ -30,12 +30,5 @@ export const PhotonSeekers: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Kheldian Archetype Sets",
-    "Knockback",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

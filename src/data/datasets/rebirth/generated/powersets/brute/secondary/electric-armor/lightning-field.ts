@@ -34,12 +34,6 @@ export const LightningField: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Endurance Modification",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

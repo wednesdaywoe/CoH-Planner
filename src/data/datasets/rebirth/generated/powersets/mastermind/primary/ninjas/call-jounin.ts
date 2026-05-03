@@ -37,15 +37,5 @@ export const CallJounin: Power = {
     "Confuse",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

@@ -30,9 +30,6 @@ export const SharePain: Power = {
     "Run Speed",
     "Immobilize"
   ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
   "maxSlots": 6,
   "damage": [
     {

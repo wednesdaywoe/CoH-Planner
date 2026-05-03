@@ -33,14 +33,6 @@ export const BlockofIce: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Cold",

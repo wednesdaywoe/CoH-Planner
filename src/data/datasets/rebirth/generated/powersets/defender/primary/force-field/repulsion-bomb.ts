@@ -35,13 +35,6 @@ export const RepulsionBomb: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

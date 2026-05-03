@@ -32,12 +32,5 @@ export const LightningStorm: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Endurance Modification",
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

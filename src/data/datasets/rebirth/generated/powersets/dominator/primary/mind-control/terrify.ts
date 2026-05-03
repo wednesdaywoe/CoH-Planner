@@ -36,15 +36,6 @@ export const Terrify: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Dominator Archetype Sets",
-    "Fear",
-    "Ranged AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

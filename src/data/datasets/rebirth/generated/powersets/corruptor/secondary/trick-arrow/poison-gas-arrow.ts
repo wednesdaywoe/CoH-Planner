@@ -31,8 +31,5 @@ export const PoisonGasArrow: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Sleep"
-  ],
   "maxSlots": 6
 };

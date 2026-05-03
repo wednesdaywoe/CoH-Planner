@@ -30,11 +30,6 @@ export const StormKick: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",
@@ -45,7 +40,7 @@ export const StormKick: Power = {
     {
       "kind": "grant",
       "chance": 0.800000011920929,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

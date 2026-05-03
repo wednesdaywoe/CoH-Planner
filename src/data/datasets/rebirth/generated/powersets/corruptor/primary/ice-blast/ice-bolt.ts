@@ -32,13 +32,6 @@ export const IceBolt: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Corruptor Archetype Sets",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

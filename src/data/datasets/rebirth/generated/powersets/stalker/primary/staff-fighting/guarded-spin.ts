@@ -34,12 +34,6 @@ export const GuardedSpin: Power = {
     "Defense",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Melee AoE Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",
@@ -79,7 +73,7 @@ export const GuardedSpin: Power = {
     {
       "kind": "grant",
       "chance": 0.8999999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

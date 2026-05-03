@@ -33,13 +33,6 @@ export const PenetratingRay: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

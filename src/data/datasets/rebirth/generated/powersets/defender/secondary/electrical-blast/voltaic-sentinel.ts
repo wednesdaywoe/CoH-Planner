@@ -32,12 +32,5 @@ export const VoltaicSentinel: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Endurance Modification",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

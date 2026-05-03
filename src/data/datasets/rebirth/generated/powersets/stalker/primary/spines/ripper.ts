@@ -35,14 +35,6 @@ export const Ripper: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Slow Movement",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

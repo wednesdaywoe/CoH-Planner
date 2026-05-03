@@ -30,11 +30,6 @@ export const Swipe: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -52,7 +47,7 @@ export const Swipe: Power = {
     {
       "kind": "grant",
       "chance": 0.5849999785423279,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

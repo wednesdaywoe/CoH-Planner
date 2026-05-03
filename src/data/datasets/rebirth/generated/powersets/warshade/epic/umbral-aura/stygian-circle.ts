@@ -31,10 +31,6 @@ export const StygianCircle: Power = {
     "Run Speed",
     "Immobilize"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
   "maxSlots": 6,
   "damage": [
     {

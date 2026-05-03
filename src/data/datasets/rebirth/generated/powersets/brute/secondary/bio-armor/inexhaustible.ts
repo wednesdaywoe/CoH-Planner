@@ -26,10 +26,6 @@ export const Inexhaustible: Power = {
     "EnduranceModification",
     "Immobilize"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
   "maxSlots": 6,
   "effects": {
     "maxHPBuff": {

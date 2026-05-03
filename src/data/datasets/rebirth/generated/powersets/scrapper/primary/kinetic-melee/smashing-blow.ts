@@ -31,12 +31,6 @@ export const SmashingBlow: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -33,13 +33,6 @@ export const Blind: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Sleep",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

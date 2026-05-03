@@ -36,15 +36,6 @@ export const TidalWave: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Dominator Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

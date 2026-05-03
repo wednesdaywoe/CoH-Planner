@@ -32,12 +32,6 @@ export const RangedShot: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

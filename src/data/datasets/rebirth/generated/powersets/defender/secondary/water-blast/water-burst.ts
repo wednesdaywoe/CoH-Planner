@@ -35,14 +35,6 @@ export const WaterBurst: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Defender Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

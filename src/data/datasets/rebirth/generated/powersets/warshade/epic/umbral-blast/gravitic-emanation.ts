@@ -36,14 +36,6 @@ export const GraviticEmanation: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Kheldian Archetype Sets",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

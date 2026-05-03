@@ -31,10 +31,6 @@ export const Eclipse: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Resist Damage"
-  ],
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {

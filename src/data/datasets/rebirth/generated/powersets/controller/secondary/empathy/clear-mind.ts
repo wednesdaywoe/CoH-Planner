@@ -32,9 +32,6 @@ export const ClearMind: Power = {
     "Run Speed",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

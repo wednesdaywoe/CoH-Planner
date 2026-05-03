@@ -32,10 +32,6 @@ export const ChillingEmbrace: Power = {
     "Slow",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Slow Movement"
-  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {

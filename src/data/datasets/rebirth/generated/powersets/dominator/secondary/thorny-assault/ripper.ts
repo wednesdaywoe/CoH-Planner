@@ -35,14 +35,6 @@ export const Ripper: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -31,12 +31,6 @@ export const Barrage: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -70,7 +64,7 @@ export const Barrage: Power = {
     {
       "kind": "grant",
       "chance": 0.800000011920929,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

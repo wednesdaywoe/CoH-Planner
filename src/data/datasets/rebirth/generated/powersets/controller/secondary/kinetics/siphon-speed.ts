@@ -31,10 +31,6 @@ export const SiphonSpeed: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Slow Movement"
-  ],
   "maxSlots": 6,
   "effects": {
     "movement": {

@@ -30,11 +30,5 @@ export const TripMine: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

@@ -33,11 +33,6 @@ export const VenomGrenade: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Soldiers of Arachnos Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Toxic",

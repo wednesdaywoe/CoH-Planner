@@ -30,9 +30,6 @@ export const TemporalMending: Power = {
     "Run Speed",
     "Immobilize"
   ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -33,10 +33,5 @@ export const DarkestNight: Power = {
     "Run Speed",
     "Fear"
   ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6
 };

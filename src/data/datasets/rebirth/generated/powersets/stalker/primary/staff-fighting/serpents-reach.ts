@@ -32,12 +32,6 @@ export const SerpentsReach: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",
@@ -59,7 +53,7 @@ export const SerpentsReach: Power = {
     {
       "kind": "grant",
       "chance": 0.949999988079071,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

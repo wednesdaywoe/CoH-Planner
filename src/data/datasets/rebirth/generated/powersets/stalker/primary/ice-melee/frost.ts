@@ -35,13 +35,6 @@ export const Frost: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Cold",
@@ -59,7 +52,7 @@ export const Frost: Power = {
     {
       "kind": "grant",
       "chance": 0.800000011920929,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

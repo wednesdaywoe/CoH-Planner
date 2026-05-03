@@ -32,13 +32,6 @@ export const HavocPunch: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Melee Damage",
-    "Sleep",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -98,7 +91,7 @@ export const HavocPunch: Power = {
     {
       "kind": "grant",
       "chance": 0.800000011920929,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

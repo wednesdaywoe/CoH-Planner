@@ -32,11 +32,6 @@ export const Resurrect: Power = {
     "ToHit",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Defense Sets",
-    "To Hit Buff"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

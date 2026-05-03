@@ -31,9 +31,5 @@ export const DimensionShift: Power = {
     "Run Speed",
     "Jump"
   ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Immobilize"
-  ],
   "maxSlots": 6
 };

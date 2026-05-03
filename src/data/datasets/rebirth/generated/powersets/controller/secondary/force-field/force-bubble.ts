@@ -31,10 +31,6 @@ export const ForceBubble: Power = {
     "Hold",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Slow Movement"
-  ],
   "maxSlots": 6,
   "effects": {
     "repel": {

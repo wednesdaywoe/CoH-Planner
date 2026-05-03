@@ -30,9 +30,6 @@ export const SonicDispersion: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

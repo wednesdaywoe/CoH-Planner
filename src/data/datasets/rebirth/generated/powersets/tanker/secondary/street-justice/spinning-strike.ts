@@ -34,13 +34,6 @@ export const SpinningStrike: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

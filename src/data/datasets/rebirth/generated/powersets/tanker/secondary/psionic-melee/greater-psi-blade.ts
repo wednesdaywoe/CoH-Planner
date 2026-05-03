@@ -34,13 +34,6 @@ export const GreaterPsiBlade: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Holds",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

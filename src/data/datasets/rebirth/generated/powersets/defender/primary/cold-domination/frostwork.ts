@@ -30,9 +30,6 @@ export const Frostwork: Power = {
     "Run Speed",
     "Immobilize"
   ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
   "maxSlots": 6,
   "effects": {
     "maxHPBuff": {

@@ -34,12 +34,6 @@ export const Cleave: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

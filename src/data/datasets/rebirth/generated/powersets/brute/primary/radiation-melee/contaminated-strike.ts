@@ -34,15 +34,6 @@ export const ContaminatedStrike: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -74,7 +65,7 @@ export const ContaminatedStrike: Power = {
     {
       "kind": "grant",
       "chance": 0.11999999731779099,
-      "label": "state"
+      "label": "Contaminated"
     }
   ]
 };

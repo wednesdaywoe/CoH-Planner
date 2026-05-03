@@ -33,11 +33,6 @@ export const DeathShroud: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

@@ -36,13 +36,6 @@ export const Shockwave: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

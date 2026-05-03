@@ -33,10 +33,6 @@ export const SporeCloud: Power = {
     "Run Speed",
     "Fear"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {

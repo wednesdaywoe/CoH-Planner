@@ -29,11 +29,6 @@ export const Revive: Power = {
     "Immobilize",
     "Defense Debuff"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Endurance Modification",
-    "Healing"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

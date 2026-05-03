@@ -30,8 +30,5 @@ export const ContainmentShell: Power = {
     "Run Speed",
     "Jump"
   ],
-  "allowedSetCategories": [
-    "Immobilize"
-  ],
   "maxSlots": 6
 };

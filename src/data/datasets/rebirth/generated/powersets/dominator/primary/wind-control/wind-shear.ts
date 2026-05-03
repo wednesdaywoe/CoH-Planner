@@ -32,10 +32,5 @@ export const WindShear: Power = {
     "Run Speed",
     "Fear"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Slow Movement",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6
 };

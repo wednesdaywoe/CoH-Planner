@@ -33,10 +33,6 @@ export const SporeBurst: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Sleep"
-  ],
   "maxSlots": 6,
   "effects": {
     "sleep": {

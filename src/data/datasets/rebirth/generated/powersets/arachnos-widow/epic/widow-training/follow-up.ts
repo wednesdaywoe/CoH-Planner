@@ -31,12 +31,6 @@ export const FollowUp: Power = {
     "ToHit",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Soldiers of Arachnos Archetype Sets",
-    "To Hit Buff",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

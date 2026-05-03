@@ -37,16 +37,6 @@ export const EmptyClips: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defender Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

@@ -32,15 +32,5 @@ export const SummonDemonPrince: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Holds",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Sleep",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

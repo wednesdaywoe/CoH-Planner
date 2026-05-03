@@ -32,11 +32,6 @@ export const ChargedBolts: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

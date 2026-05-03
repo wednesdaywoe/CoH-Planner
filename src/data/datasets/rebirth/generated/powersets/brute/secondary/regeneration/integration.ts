@@ -32,9 +32,6 @@ export const Integration: Power = {
     "Run Speed",
     "Immobilize"
   ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
   "maxSlots": 6,
   "effects": {
     "mezResistance": {

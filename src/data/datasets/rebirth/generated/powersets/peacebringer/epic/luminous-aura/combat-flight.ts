@@ -27,11 +27,6 @@ export const CombatFlight: Power = {
     "Healing",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Flight",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "movement": {

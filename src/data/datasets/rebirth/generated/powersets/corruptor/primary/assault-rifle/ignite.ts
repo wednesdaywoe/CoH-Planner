@@ -31,10 +31,5 @@ export const Ignite: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

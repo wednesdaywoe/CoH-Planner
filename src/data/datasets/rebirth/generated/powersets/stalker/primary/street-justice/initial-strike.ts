@@ -31,12 +31,6 @@ export const InitialStrike: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -66,7 +60,7 @@ export const InitialStrike: Power = {
     {
       "kind": "grant",
       "chance": 0.6499999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

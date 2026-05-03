@@ -32,8 +32,5 @@ export const BlackHole: Power = {
     "Jump",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Immobilize"
-  ],
   "maxSlots": 6
 };

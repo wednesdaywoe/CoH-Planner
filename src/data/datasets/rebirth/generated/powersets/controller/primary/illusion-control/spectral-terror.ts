@@ -31,9 +31,5 @@ export const SpectralTerror: Power = {
     "Fly",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Fear"
-  ],
   "maxSlots": 6
 };

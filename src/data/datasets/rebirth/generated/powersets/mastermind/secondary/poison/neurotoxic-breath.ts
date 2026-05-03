@@ -34,10 +34,6 @@ export const NeurotoxicBreath: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Slow Movement"
-  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

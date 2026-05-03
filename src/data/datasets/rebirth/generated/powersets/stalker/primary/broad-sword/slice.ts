@@ -34,14 +34,6 @@ export const Slice: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
@@ -67,7 +59,7 @@ export const Slice: Power = {
     {
       "kind": "grant",
       "chance": 0.8999999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

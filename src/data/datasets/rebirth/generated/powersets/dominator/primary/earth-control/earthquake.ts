@@ -32,11 +32,5 @@ export const Earthquake: Power = {
     "Fear",
     "ToHit Debuff"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6
 };

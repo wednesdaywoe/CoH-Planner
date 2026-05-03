@@ -28,10 +28,6 @@ export const BuildUp: Power = {
     "Run Speed",
     "ToHit"
   ],
-  "allowedSetCategories": [
-    "Scrapper Archetype Sets",
-    "To Hit Buff"
-  ],
   "maxSlots": 6,
   "effects": {
     "tohitBuff": {

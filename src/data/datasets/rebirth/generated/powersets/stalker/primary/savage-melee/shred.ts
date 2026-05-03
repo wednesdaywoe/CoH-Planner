@@ -34,14 +34,6 @@ export const Shred: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -76,7 +68,7 @@ export const Shred: Power = {
     {
       "kind": "grant",
       "chance": 0.875,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

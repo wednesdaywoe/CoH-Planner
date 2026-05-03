@@ -31,12 +31,6 @@ export const DivineAvalanche: Power = {
     "Defense",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
@@ -67,7 +61,7 @@ export const DivineAvalanche: Power = {
     {
       "kind": "grant",
       "chance": 0.6499999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

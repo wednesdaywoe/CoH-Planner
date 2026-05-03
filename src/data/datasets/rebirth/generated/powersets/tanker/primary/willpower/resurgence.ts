@@ -30,12 +30,6 @@ export const Resurgence: Power = {
     "Defense Debuff",
     "ToHit"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Endurance Modification",
-    "Healing",
-    "To Hit Buff"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

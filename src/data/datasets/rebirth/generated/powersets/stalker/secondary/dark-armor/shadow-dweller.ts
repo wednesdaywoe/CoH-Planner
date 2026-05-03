@@ -25,9 +25,6 @@ export const ShadowDweller: Power = {
   "allowedEnhancements": [
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
   "maxSlots": 6,
   "effects": {
     "immobilize": {

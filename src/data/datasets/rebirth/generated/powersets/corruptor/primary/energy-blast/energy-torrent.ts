@@ -35,12 +35,6 @@ export const EnergyTorrent: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

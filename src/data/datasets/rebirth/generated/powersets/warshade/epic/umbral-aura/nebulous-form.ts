@@ -28,10 +28,6 @@ export const NebulousForm: Power = {
     "Run Speed",
     "Knockback"
   ],
-  "allowedSetCategories": [
-    "Leaping & Sprints",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {

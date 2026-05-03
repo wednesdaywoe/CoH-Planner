@@ -31,9 +31,6 @@ export const SonicBarrier: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

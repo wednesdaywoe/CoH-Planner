@@ -33,14 +33,6 @@ export const KnockoutBlow: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Holds",
-    "Knockback",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

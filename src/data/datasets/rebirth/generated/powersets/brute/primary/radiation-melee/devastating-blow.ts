@@ -35,16 +35,6 @@ export const DevastatingBlow: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -81,7 +71,7 @@ export const DevastatingBlow: Power = {
     {
       "kind": "grant",
       "chance": 0.5899999737739563,
-      "label": "state"
+      "label": "Contaminated"
     },
     {
       "kind": "effect-proc",

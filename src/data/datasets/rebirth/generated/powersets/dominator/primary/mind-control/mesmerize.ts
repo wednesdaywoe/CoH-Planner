@@ -32,12 +32,6 @@ export const Mesmerize: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Ranged Damage",
-    "Sleep",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

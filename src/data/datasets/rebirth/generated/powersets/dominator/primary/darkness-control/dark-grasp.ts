@@ -33,15 +33,6 @@ export const DarkGrasp: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Dominator Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

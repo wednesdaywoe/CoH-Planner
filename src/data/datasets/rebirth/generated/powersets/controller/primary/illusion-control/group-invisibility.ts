@@ -30,9 +30,6 @@ export const GroupInvisibility: Power = {
     "Run Speed",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {

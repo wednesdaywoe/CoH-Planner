@@ -32,10 +32,6 @@ export const ConductiveAura: Power = {
     "Immobilize",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {

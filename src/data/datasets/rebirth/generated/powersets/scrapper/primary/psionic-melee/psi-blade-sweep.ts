@@ -34,12 +34,6 @@ export const PsiBladeSweep: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -87,12 +81,12 @@ export const PsiBladeSweep: Power = {
     {
       "kind": "grant",
       "chance": 0.1904483437538147,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "grant",
       "chance": 0.3808966875076294,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",

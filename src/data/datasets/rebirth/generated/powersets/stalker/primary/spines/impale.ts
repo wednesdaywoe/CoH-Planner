@@ -33,14 +33,6 @@ export const Impale: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Slow Movement",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -72,7 +64,7 @@ export const Impale: Power = {
     {
       "kind": "grant",
       "chance": 0.8999999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

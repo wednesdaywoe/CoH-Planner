@@ -34,15 +34,6 @@ export const CrushingUppercut: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Holds",
-    "Knockback",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

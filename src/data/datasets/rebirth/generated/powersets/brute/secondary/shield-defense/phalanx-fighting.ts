@@ -27,9 +27,6 @@ export const PhalanxFighting: Power = {
   "allowedEnhancements": [
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

@@ -31,14 +31,6 @@ export const Smite: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -56,7 +48,7 @@ export const Smite: Power = {
     {
       "kind": "grant",
       "chance": 0.800000011920929,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

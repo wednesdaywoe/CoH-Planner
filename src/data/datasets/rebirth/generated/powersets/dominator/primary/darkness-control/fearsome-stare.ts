@@ -35,13 +35,6 @@ export const FearsomeStare: Power = {
     "Fear",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Dominator Archetype Sets",
-    "Fear",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6,
   "effects": {
     "fear": {

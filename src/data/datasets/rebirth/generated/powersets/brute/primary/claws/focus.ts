@@ -33,13 +33,6 @@ export const Focus: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

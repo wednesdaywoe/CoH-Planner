@@ -33,15 +33,6 @@ export const BlackDwarfSmite: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Kheldian Archetype Sets",
-    "Knockback",
-    "Melee Damage",
-    "Slow Movement",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

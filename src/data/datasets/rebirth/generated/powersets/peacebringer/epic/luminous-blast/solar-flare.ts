@@ -33,15 +33,6 @@ export const SolarFlare: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Kheldian Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

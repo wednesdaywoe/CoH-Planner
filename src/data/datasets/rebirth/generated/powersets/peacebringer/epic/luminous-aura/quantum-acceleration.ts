@@ -32,13 +32,6 @@ export const Starfall: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Flight",
-    "Kheldian Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "effects": {
     "teleport": {

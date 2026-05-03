@@ -32,12 +32,6 @@ export const Focus: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
@@ -54,7 +48,7 @@ export const Focus: Power = {
     {
       "kind": "grant",
       "chance": 0.8199999928474426,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

@@ -33,12 +33,6 @@ export const MentalStrike: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -78,12 +72,12 @@ export const MentalStrike: Power = {
     {
       "kind": "grant",
       "chance": 0.08888889104127884,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "grant",
       "chance": 0.17777778208255768,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",

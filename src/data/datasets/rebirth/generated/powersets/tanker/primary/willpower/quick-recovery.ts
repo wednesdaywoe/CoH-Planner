@@ -25,9 +25,6 @@ export const QuickRecovery: Power = {
   "allowedEnhancements": [
     "EnduranceModification"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
   "maxSlots": 6,
   "effects": {
     "recoveryBuff": {

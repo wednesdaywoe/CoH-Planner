@@ -25,10 +25,6 @@ export const Dodge: Power = {
   "allowedEnhancements": [
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Resist Damage"
-  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

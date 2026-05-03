@@ -33,14 +33,5 @@ export const SeekerDrones: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Corruptor Archetype Sets",
-    "Ranged Damage",
-    "Stuns",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

@@ -31,12 +31,6 @@ export const QuickStrike: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

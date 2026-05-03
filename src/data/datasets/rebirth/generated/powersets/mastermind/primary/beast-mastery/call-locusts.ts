@@ -36,14 +36,6 @@ export const CallRavens: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
@@ -66,7 +58,7 @@ export const CallRavens: Power = {
     {
       "kind": "grant",
       "chance": 0.6883780360221863,
-      "label": "state"
+      "label": "Pack Mentality"
     }
   ]
 };

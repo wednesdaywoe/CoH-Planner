@@ -33,11 +33,6 @@ export const Weaken: Power = {
     "Fear",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

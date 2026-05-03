@@ -29,9 +29,6 @@ export const MaskPresence: Power = {
     "Run Speed",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {

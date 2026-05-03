@@ -31,9 +31,6 @@ export const Scare: Power = {
     "Fly",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Fear"
-  ],
   "maxSlots": 6,
   "effects": {
     "fear": {

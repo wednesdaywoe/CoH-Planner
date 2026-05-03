@@ -33,13 +33,6 @@ export const HavocPunch: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Knockback",
-    "Melee Damage",
-    "Sleep",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

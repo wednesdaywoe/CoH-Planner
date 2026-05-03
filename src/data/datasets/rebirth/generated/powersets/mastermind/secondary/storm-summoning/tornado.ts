@@ -33,16 +33,5 @@ export const Tornado: Power = {
     "ToHit Debuff",
     "Damage"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

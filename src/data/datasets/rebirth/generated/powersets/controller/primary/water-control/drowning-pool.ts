@@ -34,13 +34,6 @@ export const DrowningPool: Power = {
     "ToHit Debuff",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Controller Archetype Sets",
-    "Defense Debuff",
-    "Holds"
-  ],
   "maxSlots": 6,
   "effects": {
     "hold": {

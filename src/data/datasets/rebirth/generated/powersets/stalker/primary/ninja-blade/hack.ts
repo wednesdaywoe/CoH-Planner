@@ -31,14 +31,6 @@ export const StingoftheWasp: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
@@ -59,7 +51,7 @@ export const StingoftheWasp: Power = {
     {
       "kind": "grant",
       "chance": 0.75,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

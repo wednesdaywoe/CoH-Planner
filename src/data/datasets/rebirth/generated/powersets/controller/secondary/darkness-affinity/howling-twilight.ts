@@ -35,14 +35,6 @@ export const HowlingTwilight: Power = {
     "Defense Debuff",
     "Damage"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Brute Archetype Sets",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Negative",

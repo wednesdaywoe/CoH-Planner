@@ -31,10 +31,5 @@ export const RainofFire: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

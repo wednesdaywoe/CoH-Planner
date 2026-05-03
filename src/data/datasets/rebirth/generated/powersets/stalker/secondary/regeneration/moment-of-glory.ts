@@ -29,11 +29,6 @@ export const MomentofGlory: Power = {
     "Run Speed",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Endurance Modification",
-    "Resist Damage"
-  ],
   "maxSlots": 6,
   "effects": {
     "knockback": {

@@ -29,9 +29,6 @@ export const Antidote: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

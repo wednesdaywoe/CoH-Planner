@@ -32,12 +32,6 @@ export const Dominate: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Psionic",

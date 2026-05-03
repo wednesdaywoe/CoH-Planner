@@ -35,11 +35,6 @@ export const Fault: Power = {
     "Recharge",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Stuns",
-    "Threat Duration"
-  ],
   "maxSlots": 6,
   "effects": {
     "knockback": {

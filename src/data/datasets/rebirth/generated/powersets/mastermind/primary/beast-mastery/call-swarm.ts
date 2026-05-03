@@ -33,14 +33,6 @@ export const CallSwarm: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
@@ -63,7 +55,7 @@ export const CallSwarm: Power = {
     {
       "kind": "grant",
       "chance": 0.3199999928474426,
-      "label": "state"
+      "label": "Pack Mentality"
     }
   ]
 };

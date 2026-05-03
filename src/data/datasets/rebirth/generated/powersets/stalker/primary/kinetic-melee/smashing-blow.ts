@@ -31,12 +31,6 @@ export const SmashingBlow: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -66,7 +60,7 @@ export const SmashingBlow: Power = {
     {
       "kind": "grant",
       "chance": 0.8500000238418579,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

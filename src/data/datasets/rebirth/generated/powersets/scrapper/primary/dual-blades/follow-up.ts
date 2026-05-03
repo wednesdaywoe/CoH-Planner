@@ -31,12 +31,6 @@ export const BlindingFeint: Power = {
     "ToHit",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "To Hit Buff",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",

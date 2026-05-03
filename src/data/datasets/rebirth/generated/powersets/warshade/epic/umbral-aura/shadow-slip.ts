@@ -33,10 +33,6 @@ export const StarlessGateway: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Teleport",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "teleport": {

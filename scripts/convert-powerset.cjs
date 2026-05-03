@@ -1477,24 +1477,37 @@ function extractSpecialEffects(rawEffects, conditionalEffects) {
         const label = _labelFromGrantedPowerName(grantedName, conditionalEffects);
         procs.push({ kind: 'grant', chance, label });
       } else if (attrib === 'Null') {
-        // Implicit grant — Null-attrib chance template paired with a
-        // sibling conditionalEffects entry. Two flavors:
-        //   - Target-state (Suffocate's Drowning): scope='per-power'
-        //   - Caster-state (Brute Psionic Melee's Insight, Combo Level
-        //     stacks, Tidal Power tiers): scope='global'
-        // Both are valid grant targets; only AT-inherent state machines
-        // (Domination meter) are excluded since the meter isn't a grant.
-        // When the power has exactly one such candidate we pair against
-        // it; otherwise fall back to the literal 'state' marker.
-        const candidates = (conditionalEffects ?? []).filter(c =>
-          !AT_INHERENT_GRANT_BLACKLIST.has(c.id)
-        );
-        const cond = candidates.length === 1 ? candidates[0] : null;
-        procs.push({
-          kind: 'grant',
-          chance,
-          label: cond?.label ?? 'state',
-        });
+        // Implicit grant — Null-attrib chance template. Two paths:
+        //
+        // 1. **Direct grant via params.power_names** (Parse6 + new tail
+        //    extraction): the binary stores a Null attrib with the
+        //    granted power name in the AttribMod tail. HC's Parse7
+        //    surfaces these as `Grant_Power` with explicit params, but
+        //    Parse6 lowers them to Null-with-params. When power_names
+        //    is present, label off the granted power name directly —
+        //    same path as Grant_Power.
+        // 2. **Sibling-conditional pairing** (the original Null
+        //    semantics): no params; the proc target is implied from a
+        //    sibling conditionalEffects entry. Drowning, Insight,
+        //    Combo Level, Tidal Power, etc.
+        const grantedName = (t.params?.power_names && t.params.power_names[0]) || '';
+        if (grantedName) {
+          const label = _labelFromGrantedPowerName(grantedName, conditionalEffects);
+          procs.push({ kind: 'grant', chance, label });
+        } else {
+          // AT-inherent state machines (Domination meter) are excluded
+          // since the meter isn't a grant target. When exactly one
+          // remaining candidate, pair; otherwise fall back to 'state'.
+          const candidates = (conditionalEffects ?? []).filter(c =>
+            !AT_INHERENT_GRANT_BLACKLIST.has(c.id)
+          );
+          const cond = candidates.length === 1 ? candidates[0] : null;
+          procs.push({
+            kind: 'grant',
+            chance,
+            label: cond?.label ?? 'state',
+          });
+        }
       } else {
         procs.push({
           kind: 'effect-proc',

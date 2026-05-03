@@ -32,10 +32,5 @@ export const TimesJuncture: Power = {
     "Run Speed",
     "Fear"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Slow Movement",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6
 };

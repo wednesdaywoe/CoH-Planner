@@ -32,13 +32,6 @@ export const TwilightGrasp: Power = {
     "Fear",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Healing",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {

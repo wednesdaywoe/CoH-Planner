@@ -33,11 +33,6 @@ export const VenomousGas: Power = {
     "Fear",
     "ToHit Debuff"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6,
   "effects": {
     "resistanceDebuff": {

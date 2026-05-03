@@ -33,13 +33,6 @@ export const ArcticAir: Power = {
     "Fly",
     "Confuse"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Confuse",
-    "Dominator Archetype Sets",
-    "Fear",
-    "Slow Movement"
-  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {

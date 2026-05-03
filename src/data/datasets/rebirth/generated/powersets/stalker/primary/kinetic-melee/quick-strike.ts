@@ -31,12 +31,6 @@ export const QuickStrike: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -65,7 +59,7 @@ export const QuickStrike: Power = {
     {
       "kind": "grant",
       "chance": 0.6499999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

@@ -30,9 +30,5 @@ export const Quicksand: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Slow Movement"
-  ],
   "maxSlots": 6
 };

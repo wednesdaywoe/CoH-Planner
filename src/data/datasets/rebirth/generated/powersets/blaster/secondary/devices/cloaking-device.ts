@@ -30,11 +30,6 @@ export const FieldOperative: Power = {
     "Immobilize",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Endurance Modification",
-    "Healing"
-  ],
   "maxSlots": 6,
   "effects": {
     "stealth": {

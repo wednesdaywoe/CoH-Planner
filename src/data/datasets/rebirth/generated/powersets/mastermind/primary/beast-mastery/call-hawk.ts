@@ -33,14 +33,6 @@ export const CallHawk: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
@@ -64,7 +56,7 @@ export const CallHawk: Power = {
     {
       "kind": "grant",
       "chance": 0.6136000156402588,
-      "label": "state"
+      "label": "Pack Mentality"
     }
   ]
 };

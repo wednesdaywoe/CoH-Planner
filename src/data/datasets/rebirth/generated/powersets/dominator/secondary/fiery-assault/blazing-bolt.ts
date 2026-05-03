@@ -32,11 +32,6 @@ export const BlazingBolt: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

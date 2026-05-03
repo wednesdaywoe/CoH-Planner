@@ -34,17 +34,5 @@ export const Liquefy: Power = {
     "ToHit Debuff",
     "Damage"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Corruptor Archetype Sets",
-    "Defense Debuff",
-    "Holds",
-    "Knockback",
-    "Ranged AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

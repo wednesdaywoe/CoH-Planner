@@ -27,10 +27,6 @@ export const WhiteDwarfStep: Power = {
   "allowedEnhancements": [
     "EnduranceReduction"
   ],
-  "allowedSetCategories": [
-    "Teleport",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "teleport": {

@@ -30,11 +30,6 @@ export const NimbleSlash: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
@@ -47,7 +42,7 @@ export const NimbleSlash: Power = {
     {
       "kind": "grant",
       "chance": 0.6499999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

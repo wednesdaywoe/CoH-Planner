@@ -31,9 +31,6 @@ export const Adaptation: Power = {
     "Slow",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {

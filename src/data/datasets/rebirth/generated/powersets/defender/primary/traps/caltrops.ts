@@ -31,12 +31,5 @@ export const Caltrops: Power = {
     "Run Speed",
     "Damage"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Defender Archetype Sets",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

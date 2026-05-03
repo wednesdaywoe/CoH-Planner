@@ -34,15 +34,6 @@ export const RadioactiveSmash: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -74,7 +65,7 @@ export const RadioactiveSmash: Power = {
     {
       "kind": "grant",
       "chance": 0.23000000417232513,
-      "label": "state"
+      "label": "Contaminated"
     },
     {
       "kind": "effect-proc",
@@ -84,7 +75,7 @@ export const RadioactiveSmash: Power = {
     {
       "kind": "grant",
       "chance": 0.8500000238418579,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

@@ -34,12 +34,6 @@ export const ForceofThunder: Power = {
     "Immobilize",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing",
-    "Knockback",
-    "Stuns"
-  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

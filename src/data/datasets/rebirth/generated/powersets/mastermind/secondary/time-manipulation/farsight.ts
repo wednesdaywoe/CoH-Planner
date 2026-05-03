@@ -31,10 +31,6 @@ export const Farsight: Power = {
     "ToHit",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "To Hit Buff"
-  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

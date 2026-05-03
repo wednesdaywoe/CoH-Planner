@@ -32,11 +32,6 @@ export const ConduitofPain: Power = {
     "Defense Debuff",
     "ToHit"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Endurance Modification",
-    "To Hit Buff"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

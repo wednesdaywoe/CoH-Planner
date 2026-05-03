@@ -35,11 +35,5 @@ export const ForceBolt: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

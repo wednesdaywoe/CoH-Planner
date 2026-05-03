@@ -32,9 +32,6 @@ export const OppressiveGloom: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Stuns"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Special",

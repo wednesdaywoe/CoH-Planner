@@ -29,9 +29,6 @@ export const FrozenArmor: Power = {
     "Run Speed",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

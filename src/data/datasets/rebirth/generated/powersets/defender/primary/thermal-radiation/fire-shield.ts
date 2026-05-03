@@ -31,9 +31,6 @@ export const ThermalShield: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

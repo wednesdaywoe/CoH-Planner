@@ -35,16 +35,6 @@ export const AtomSmasher: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -81,7 +71,7 @@ export const AtomSmasher: Power = {
     {
       "kind": "grant",
       "chance": 0.3499999940395355,
-      "label": "state"
+      "label": "Contaminated"
     },
     {
       "kind": "effect-proc",

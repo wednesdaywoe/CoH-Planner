@@ -32,11 +32,6 @@ export const AssassinsCorruption: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -70,7 +65,7 @@ export const AssassinsCorruption: Power = {
     {
       "kind": "grant",
       "chance": 0.8600000143051147,
-      "label": "state"
+      "label": "Contaminated"
     }
   ]
 };

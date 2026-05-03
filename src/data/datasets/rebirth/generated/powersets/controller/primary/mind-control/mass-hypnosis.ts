@@ -33,10 +33,6 @@ export const MassHypnosis: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Sleep"
-  ],
   "maxSlots": 6,
   "effects": {
     "sleep": {

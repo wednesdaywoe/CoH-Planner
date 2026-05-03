@@ -31,12 +31,6 @@ export const PsiBlade: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -76,12 +70,12 @@ export const PsiBlade: Power = {
     {
       "kind": "grant",
       "chance": 0.140666663646698,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "grant",
       "chance": 0.281333327293396,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",

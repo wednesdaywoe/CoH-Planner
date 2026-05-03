@@ -31,12 +31,6 @@ export const SeismicSmash: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Holds",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",

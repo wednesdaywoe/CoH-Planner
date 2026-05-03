@@ -30,10 +30,5 @@ export const Serum: Power = {
     "Run Speed",
     "ToHit"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Resist Damage",
-    "To Hit Buff"
-  ],
   "maxSlots": 6
 };

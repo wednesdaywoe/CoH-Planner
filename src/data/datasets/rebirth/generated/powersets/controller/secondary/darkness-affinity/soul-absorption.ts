@@ -32,12 +32,5 @@ export const SoulAbsorption: Power = {
     "Fear",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Endurance Modification",
-    "Healing",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6
 };

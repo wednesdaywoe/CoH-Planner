@@ -30,10 +30,6 @@ export const Confront: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Scrapper Archetype Sets",
-    "Threat Duration"
-  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {

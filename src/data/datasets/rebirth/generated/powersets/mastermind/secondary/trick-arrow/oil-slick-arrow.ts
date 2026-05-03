@@ -32,12 +32,5 @@ export const OilSlickArrow: Power = {
     "ToHit Debuff",
     "Damage"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

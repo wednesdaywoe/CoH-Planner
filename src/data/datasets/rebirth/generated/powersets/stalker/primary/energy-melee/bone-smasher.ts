@@ -31,12 +31,6 @@ export const BoneSmasher: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -66,7 +60,7 @@ export const BoneSmasher: Power = {
     {
       "kind": "grant",
       "chance": 0.8999999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

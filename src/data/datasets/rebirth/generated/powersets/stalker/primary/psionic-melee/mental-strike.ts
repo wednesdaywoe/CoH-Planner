@@ -30,11 +30,6 @@ export const MentalStrike: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -68,12 +63,12 @@ export const MentalStrike: Power = {
     {
       "kind": "grant",
       "chance": 0.08888889104127884,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "grant",
       "chance": 0.17777778208255768,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",
@@ -83,7 +78,7 @@ export const MentalStrike: Power = {
     {
       "kind": "grant",
       "chance": 0.6499999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

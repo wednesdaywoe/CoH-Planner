@@ -31,10 +31,6 @@ export const BarrierField: Power = {
     "Immobilize",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Healing"
-  ],
   "maxSlots": 6,
   "effects": {
     "untouchable": {

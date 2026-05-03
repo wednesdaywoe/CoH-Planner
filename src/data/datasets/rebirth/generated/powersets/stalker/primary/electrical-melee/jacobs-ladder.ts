@@ -35,13 +35,6 @@ export const JacobsLadder: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Melee AoE Damage",
-    "Sleep",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",
@@ -86,7 +79,7 @@ export const JacobsLadder: Power = {
     {
       "kind": "grant",
       "chance": 0.8999999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

@@ -27,9 +27,6 @@ export const Quickness: Power = {
     "Immobilize",
     "Healing"
   ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
   "maxSlots": 6,
   "effects": {
     "rechargeBuff": {

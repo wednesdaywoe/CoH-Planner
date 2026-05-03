@@ -33,11 +33,5 @@ export const StaticField: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Dominator Archetype Sets",
-    "Sleep",
-    "Slow Movement"
-  ],
   "maxSlots": 6
 };

@@ -33,11 +33,6 @@ export const MeltArmor: Power = {
     "ToHit Debuff",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff"
-  ],
   "maxSlots": 6,
   "effects": {
     "defenseDebuff": {

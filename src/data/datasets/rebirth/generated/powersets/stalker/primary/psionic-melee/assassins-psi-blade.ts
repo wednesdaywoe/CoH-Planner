@@ -30,11 +30,6 @@ export const AssassinsPsiBlade: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -68,7 +63,7 @@ export const AssassinsPsiBlade: Power = {
     {
       "kind": "grant",
       "chance": 0.7111111283302307,
-      "label": "state"
+      "label": "Insight"
     }
   ]
 };

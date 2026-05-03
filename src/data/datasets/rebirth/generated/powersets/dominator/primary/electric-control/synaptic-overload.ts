@@ -32,10 +32,6 @@ export const SynapticOverload: Power = {
     "Confuse",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Confuse",
-    "Dominator Archetype Sets"
-  ],
   "maxSlots": 6,
   "effects": {
     "confuse": {

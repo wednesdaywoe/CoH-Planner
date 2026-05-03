@@ -31,12 +31,6 @@ export const HeavyBlow: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",
@@ -58,7 +52,7 @@ export const HeavyBlow: Power = {
     {
       "kind": "grant",
       "chance": 0.75,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

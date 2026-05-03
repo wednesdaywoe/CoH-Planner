@@ -31,12 +31,6 @@ export const TelekineticBlow: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -76,12 +70,12 @@ export const TelekineticBlow: Power = {
     {
       "kind": "grant",
       "chance": 0.23266667127609253,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "grant",
       "chance": 0.46533334255218506,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",

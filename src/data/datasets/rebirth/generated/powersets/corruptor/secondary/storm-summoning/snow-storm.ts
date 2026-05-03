@@ -32,9 +32,5 @@ export const SnowStorm: Power = {
     "Hold",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Slow Movement"
-  ],
   "maxSlots": 6
 };

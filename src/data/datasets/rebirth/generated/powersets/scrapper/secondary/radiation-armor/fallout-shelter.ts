@@ -28,9 +28,6 @@ export const FalloutShelter: Power = {
   "allowedEnhancements": [
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

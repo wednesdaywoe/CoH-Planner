@@ -33,13 +33,6 @@ export const BetaDecay: Power = {
     "Fear",
     "ToHit Debuff"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {

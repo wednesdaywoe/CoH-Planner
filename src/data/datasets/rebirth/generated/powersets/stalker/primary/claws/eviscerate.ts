@@ -30,11 +30,6 @@ export const Eviscerate: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
@@ -45,7 +40,7 @@ export const Eviscerate: Power = {
     {
       "kind": "grant",
       "chance": 0.9433500170707703,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

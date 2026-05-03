@@ -33,11 +33,6 @@ export const RisetotheChallenge: Power = {
     "Immobilize",
     "Fear"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Healing",
-    "To Hit Debuff"
-  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {

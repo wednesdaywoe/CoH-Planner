@@ -28,10 +28,6 @@ export const QuantumFlight: Power = {
     "Run Speed",
     "Healing"
   ],
-  "allowedSetCategories": [
-    "Flight",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "movement": {

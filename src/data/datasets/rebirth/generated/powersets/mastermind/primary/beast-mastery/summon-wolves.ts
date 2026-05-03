@@ -35,20 +35,5 @@ export const SummonWolves: Power = {
     "ToHit",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Healing",
-    "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Running & Sprints",
-    "To Hit Buff",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

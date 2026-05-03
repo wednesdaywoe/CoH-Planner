@@ -35,14 +35,6 @@ export const ProtonSweep: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -79,7 +71,7 @@ export const ProtonSweep: Power = {
     {
       "kind": "grant",
       "chance": 0.20999999344348907,
-      "label": "state"
+      "label": "Contaminated"
     }
   ]
 };

@@ -31,13 +31,5 @@ export const IrradiatedGround: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

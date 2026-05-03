@@ -31,13 +31,6 @@ export const GreaterIceSword: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Melee Damage",
-    "Slow Movement",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -55,7 +48,7 @@ export const GreaterIceSword: Power = {
     {
       "kind": "grant",
       "chance": 0.949999988079071,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ]
 };

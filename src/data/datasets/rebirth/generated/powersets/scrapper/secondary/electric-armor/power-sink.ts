@@ -30,9 +30,6 @@ export const PowerSink: Power = {
     "EnduranceModification",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {

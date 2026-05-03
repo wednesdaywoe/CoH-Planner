@@ -31,9 +31,6 @@ export const Confuse: Power = {
     "Confuse",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Confuse"
-  ],
   "maxSlots": 6,
   "effects": {
     "confuse": {

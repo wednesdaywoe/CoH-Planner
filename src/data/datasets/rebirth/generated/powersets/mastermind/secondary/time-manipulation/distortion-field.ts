@@ -31,10 +31,5 @@ export const DistortionField: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Holds",
-    "Slow Movement"
-  ],
   "maxSlots": 6
 };

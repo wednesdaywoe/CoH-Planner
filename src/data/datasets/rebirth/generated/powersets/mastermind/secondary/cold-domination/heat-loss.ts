@@ -32,10 +32,5 @@ export const HeatLoss: Power = {
     "Run Speed",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Endurance Modification",
-    "Slow Movement"
-  ],
   "maxSlots": 6
 };

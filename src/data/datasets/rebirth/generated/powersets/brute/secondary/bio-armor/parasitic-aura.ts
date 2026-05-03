@@ -33,12 +33,6 @@ export const ParasiticAura: Power = {
     "Immobilize",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Endurance Modification",
-    "Healing",
-    "Threat Duration"
-  ],
   "maxSlots": 6,
   "effects": {
     "recoveryBuff": {

@@ -34,16 +34,6 @@ export const Dehydrate: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Accurate Healing",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Healing",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {

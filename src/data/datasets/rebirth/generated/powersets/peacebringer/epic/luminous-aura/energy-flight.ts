@@ -26,10 +26,6 @@ export const EnergyFlight: Power = {
   "allowedEnhancements": [
     "Healing"
   ],
-  "allowedSetCategories": [
-    "Flight",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "movement": {

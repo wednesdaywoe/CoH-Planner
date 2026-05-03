@@ -31,14 +31,5 @@ export const SummonDemons: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Healing",
-    "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Resist Damage",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6
 };

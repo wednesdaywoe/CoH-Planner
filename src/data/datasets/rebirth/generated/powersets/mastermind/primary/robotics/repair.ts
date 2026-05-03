@@ -29,9 +29,6 @@ export const Repair: Power = {
     "EnduranceReduction",
     "Run Speed"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
   "maxSlots": 6,
   "effects": {
     "enduranceGain": {

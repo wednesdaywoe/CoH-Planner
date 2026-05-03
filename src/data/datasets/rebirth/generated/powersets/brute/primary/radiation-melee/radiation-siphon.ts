@@ -35,17 +35,6 @@ export const RadiationSiphon: Power = {
     "Damage",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Accurate Healing",
-    "Blaster Archetype Sets",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Healing",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
   "maxSlots": 6,
   "damage": [
     {
@@ -77,7 +66,7 @@ export const RadiationSiphon: Power = {
     {
       "kind": "grant",
       "chance": 0.3199999928474426,
-      "label": "state"
+      "label": "Contaminated"
     }
   ]
 };

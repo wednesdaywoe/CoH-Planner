@@ -31,12 +31,6 @@ export const KujiInRetsu: Power = {
     "Run Speed",
     "Defense"
   ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Endurance Modification",
-    "Running & Sprints",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {
