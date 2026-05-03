@@ -1393,16 +1393,29 @@ function parseIOSetUid(uid: string): ParsedIOSetUid | null {
     remaining = remaining.slice('Crafted_'.length);
   }
 
-  // Extract piece letter (last _X where X is A-F)
+  // Try the standard piece letter (last _X where X is A-F).
   const pieceMatch = remaining.match(/_([A-F])$/);
-  if (!pieceMatch) return null;
+  let pieceNum: number;
+  let setName: string;
+  if (pieceMatch) {
+    const pieceLetter = pieceMatch[1];
+    pieceNum = pieceLetter.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
+    setName = remaining.slice(0, -2); // Remove "_X"
+  } else {
+    // Some Mids UIDs use a descriptive suffix instead of a letter for
+    // special pieces (e.g. "Superior_Return_From_the_Grave_Rez_Effects",
+    // event sets with unique procs). Treat these as a synthetic
+    // "last piece" — caller's piece-name resolver will use Mids' display
+    // name to find a proc/special piece in the set rather than relying on
+    // pieceNum. Conservatively use 6 (the typical last-piece slot).
+    pieceNum = 6;
+    setName = remaining;
+  }
 
-  const pieceLetter = pieceMatch[1];
-  const pieceNum = pieceLetter.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
-  const setName = remaining.slice(0, -2); // Remove "_X"
-
-  // Lowercase to match app's IO set IDs
-  const setId = setName.toLowerCase();
+  // Lowercase + strip apostrophes (Mids: "Vampire's_Bite" → our key
+  // "vampires_bite"). Mids preserves the apostrophe in its UIDs while
+  // our planner data uses ASCII-only set ids.
+  const setId = setName.toLowerCase().replace(/['']/g, '');
 
   return { setId, pieceNum, attuned };
 }
