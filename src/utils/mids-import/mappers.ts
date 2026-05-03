@@ -273,6 +273,21 @@ function tryMatch(powers: Power[], name: string): Power | null {
     return byFullName;
   }
 
+  // Last-resort: strip ALL separators and compare alphanumerics only.
+  // Catches cases where Mids has a separator we don't (or vice-versa) —
+  // e.g. Rebirth Mids emits "Moon_Beam" but our internalName is "Moonbeam"
+  // (Dark Assault), or "Build_Up" vs "BuildUp".
+  const stripSep = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const stripped = stripSep(name);
+  const byStripped = powers.find((p) =>
+    (p.internalName && stripSep(p.internalName) === stripped) ||
+    stripSep(p.name) === stripped
+  );
+  if (byStripped) {
+    warnFallback('findPowerByMidsName', `'${name}' matched by all-separators-stripped fallback → '${byStripped.name}' (internalName '${byStripped.internalName}')`);
+    return byStripped;
+  }
+
   return null;
 }
 
