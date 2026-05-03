@@ -293,10 +293,19 @@ export function PowerItem({
       role="button"
       tabIndex={isDisabled ? -1 : 0}
       onKeyDown={(e) => {
-        if (!isDisabled && (e.key === 'Enter' || e.key === ' ')) {
+        if (isDisabled) return;
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        // Ignore auto-repeat (held key generates a flood of events) — without
+        // this, holding Space adds the same power dozens of times per second.
+        if (e.repeat) {
           e.preventDefault();
-          onSelect();
+          return;
         }
+        e.preventDefault();
+        onSelect();
+        // Drop focus after activation so a subsequent unrelated Space press
+        // (e.g. user scrolling with keys) doesn't re-add the same power.
+        (e.currentTarget as HTMLDivElement).blur();
       }}
     >
       {/* Level badge */}
