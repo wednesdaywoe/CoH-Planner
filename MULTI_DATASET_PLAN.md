@@ -15,7 +15,7 @@ Each entry below has a detail section further down. Status snapshot as of
 |---|---|---|---|
 | 1 | **Multi-dataset infrastructure** (Rebirth data layer) | Stages A + C mostly done; Stage B (HC powersets-tree migration) not started | [#multi-dataset-infrastructure](#multi-dataset-infrastructure) |
 | 2 | **Conditional Effects + Mechanic Adjusters** | Data-layer capture, scope/group/mode classification, base merger, AT-inherent routing all landed on main (commit 7716ffe67) | [#conditional-effects--mechanic-adjusters](#conditional-effects--mechanic-adjusters) |
-| 3 | **InfoPanel visual redesign** | Proposal reviewed; `MechanicAdjusters` slice mounted. Section ordering, table redesign, damage block, tags row all pending. | [#infopanel-visual-redesign](#infopanel-visual-redesign) |
+| 3 | **InfoPanel visual redesign** | **Complete.** All six outline sections landed (Mechanic Adjusters / Tags Block / Damage Block / Effects Block / General Stats Block / Description), language pass to in-game terminology, plus several regressions caught and fixed along the way (DoT 5×tick, FE Fire leak, Melee/Ranged misclassification, false-positive SPECIAL rows). | [#infopanel-visual-redesign](#infopanel-visual-redesign) |
 | 4 | **AT-mechanic alignment** (Header vs InfoPanel) | First overlap (Domination via `kStealth source>` on Dominator powers) routed through Header state; expand mapping as more overlaps surface | [#at-mechanic-alignment](#at-mechanic-alignment) |
 | 5 | **Calc accuracy fixes** | Conditional-aggregation fix shipped to main; pure-DoT 5×tick bug, tooltip-level convention, level-differential accuracy display still open | [#calc-accuracy](#calc-accuracy) |
 | 6 | **Original Domination mechanic** (Rebirth) | Not started. Inherent description and toggle wiring need rewrite for i23-era Domination semantics | [#original-domination](#original-domination) |
@@ -958,57 +958,93 @@ Domination active, *with* drowning, etc.
 
 ## InfoPanel visual redesign
 
-Driven by the proposal in chat; see the comparison-with-game screenshots
-that triggered this work.
+**Complete (2026-05-03).** All six structural blocks from the user's
+outline shipped, language pass to in-game terminology applied, and
+several regressions caught and fixed along the way. The panel is now
+production-ready; further polish is incremental rather than structural.
 
-### Section structure (from proposal, adapted to actual data shape)
+### Final structure
 
-1. Header (icon, name, subtitle, lock)
-2. Tags (effect-type chips)
-3. Allowed Enhancements + Allowed Set Categories
-4. **Mechanic Adjusters** (toggles + radios from `power.conditionalEffects`)
-5. Damage Block (DMG/DPA/DPS/DPE mode tabs + 3-stage Base/Enhanced/Final
-   pipeline + segmented bar)
-6. Power Effects Table (Stat / Base / Enhanced / Final, four row types:
-   enhanceable, fixed, mez group, debuff group)
-7. (Optional) Perma tracker — small inline badge inside the Damage Block
-   for click buffs near perma
-8. Description
+1. Header (icon, name, lock)
+2. Tags row — [TagsRow.tsx](src/components/info/TagsRow.tsx) — chip-style
+   render of `power.shortHelp` colored by category
+   (debuff/buff/mez/damage/other/neutral)
+3. Tags Block — [PowerInfoBlocks.tsx](src/components/info/PowerInfoBlocks.tsx)
+   `TagsBlock` — Power Type / Target Type / Allowed Enh as compact
+   key-value rows (Foe → "Enemies", set categories preferred over basic
+   enhancement types)
+4. Mechanic Adjusters — [MechanicAdjusters.tsx](src/components/info/MechanicAdjusters.tsx)
+   — toggles for singletons, radios for groups, "+ extra X instance"
+   collision hints for additive conditionals, AT-inherent ids routed
+   through Header state
+5. Damage Block — [DamageBlock.tsx](src/components/info/DamageBlock.tsx)
+   — DMG/DPA/DPS/DPE mode toggle in-block, three-tier table with
+   per-tick + DoT-total rows, cap-relative segmented bar, cycle-time
+   metric
+6. Power Effects Block — [SharedPowerComponents.tsx](src/components/info/SharedPowerComponents.tsx)
+   `RegistryEffectsDisplay` — sectioned MEZ / BUFFS / DEBUFFS / SPECIAL
+   with neutral subheaders. SPECIAL surfaces grant procs and effect
+   procs from the new `power.specialEffects` field
+7. General Stats Block — [PowerInfoBlocks.tsx](src/components/info/PowerInfoBlocks.tsx)
+   `GeneralStatsBlock` — Activation / Rech Time / End Cost / Accuracy /
+   Pwr Range / Effect Area / Attack Type
+8. Description — bottom paragraph, header dropped per outline
 
-### Concerns flagged during proposal review (need decisions)
+### Language pass
 
-- **"Power Duration as inherited container":** the proposal claims
-  debuffs inherit a single power-level duration; actual data stores
-  duration per template. Either treat the proposal's claim as a UX
-  simplification we surface as the longest-debuff or render per-debuff.
-- **Tooltip-level convention:** game uses power's design level (Suffocate
-  shows L26 values), Sidekick uses character level. Pick one or
-  surface both.
-- **Damage type duplication** between Tags row and Damage Block —
-  intentional (glance vs detail) but worth confirming.
-- **Range row** for self-targeted powers (range=0) should be omitted.
-- **Multi-tier mez** with secondary magnitude tiers needs an array shape
-  (currently single object).
+Stat labels updated to compact in-game terminology so the column
+doesn't wrap:
 
-### Pending UI slices
+| Before | After |
+|---|---|
+| Endurance | End Cost |
+| Recharge | Rech Time |
+| Range | Pwr Range |
+| Cast Time | Activation |
+| Effect Dur | Effect Dur (kept) |
+| Damage (mode) | Average DMG |
 
-- [x] **Damage Block extracted to standalone component** (2026-05-03) —
-  339 lines of ad-hoc JSX in InfoPanel.tsx replaced with a focused
-  [DamageBlock.tsx](src/components/info/DamageBlock.tsx) split into
-  `DamageRows` / `DamageBar` / `DamageMetrics` sub-pieces with helpers
-  (`resolveDamageMetric`, `computeProcContribution`). Behavior identical;
-  this is the structural-cleanup base for visual polish (mode tabs,
-  Type-A/B/C/D row classification) to layer on top.
-- [ ] Power Effects Table redesign with explicit Type A/B/C/D row types
-- [x] **Tags row** (2026-05-03) — [TagsRow.tsx](src/components/info/TagsRow.tsx)
-  parses `power.shortHelp` into category-colored chips (debuff/buff/mez/damage/
-  other/neutral). Replaces the prior italic single-line summary. Respects
-  parenthesised type lists so "Ranged (Targeted AoE)" stays one chip.
-- [ ] Section ordering refresh + dividers per proposal
-- [ ] Description as final paragraph
-- [ ] Mechanic Adjuster styling pass (after the rest of the panel lands so
-  it visually fits)
-- [ ] Pet/redirect-power info: keep existing format (per user direction)
+Damage type abbreviations shifted from single letters (S/L/E/N) to
+community-standard short forms (Smash / Leth / Energy / Neg / Psi /
+Tox) so they're unambiguous at a glance.
+
+### Bug fixes caught along the way
+
+- **DoT 5×tick**: pure-DoT InfoPanel rollup was double-counting the
+  per-tick damage in `totalDmgBase`. Fixed by detecting
+  `abs(base - dot.base) <= 0.001` and using only `dotTotal` in that case.
+- **Accuracy "Final" tooltip**: title attr on the accuracy cell now
+  explains the level-differential adjustment ("vs +3 target — effective
+  base ToHit 48.0%") instead of leaving the user to decode a con arrow.
+- **Redundant prefix in Debuff/Status Res children**: group header
+  already says "Debuff Res", so children no longer repeat it.
+- **Power-grant proc labels**: `Grant_Power` chance templates classified
+  as `kind: 'grant'` with `params.power_names[0]` derivation — Insight
+  / Contaminated / Drowning instead of raw "Grant_Power".
+- **False-positive SPECIAL rows**: template-level `tick_chance` is the
+  ToHit Roll, not a proc gate; only EG-level `chance < 1` counts now
+  (no more "+99.80% chance to Base_Defense" on Slash).
+- **Fiery Embrace Fire leak (Rebirth)**: Parse6's flat AttribMod schema
+  doesn't capture the `chance: 0.0` gating that HC uses to suppress
+  the FE bonus template. Convert-layer `_filterFieryEmbraceBonus`
+  strips Fire entries on `Melee_Damage`-table damage on non-fire-themed
+  powersets. Cleaner long-term fix is in the parser.
+- **Melee/Ranged misclassification**: range=7 melee attacks (Barrage,
+  Slash, Boxing) were labeled "Ranged" because the threshold was `>5`.
+  Now uses the damage entry's table prefix (`Melee_Damage` vs
+  `Ranged_Damage`) as the primary signal.
+
+### Concerns deferred (not blocking)
+
+- **Multi-tier mez** with secondary magnitude tiers needs an array
+  shape — see Open Tasks "Multi-instance mez display"
+- **Tooltip-level convention** (game uses power's design level vs
+  Sidekick's character level) — see Open Tasks
+- **Range row for self-targeted powers (range=0)** — currently shown
+  as "Single Target" in Effect Area; range row is omitted by the
+  General Stats Block when range is 0
+- **Pet/redirect power info** — kept in the existing format per user
+  direction; not redesigned
 
 ---
 
