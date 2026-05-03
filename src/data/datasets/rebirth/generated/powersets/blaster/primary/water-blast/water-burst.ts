@@ -137,5 +137,22 @@ export const WaterBurst: Power = {
       "group": "tidal_power-stacks",
       "mode": "replace"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.44999998807907104,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.699999988079071,
+      "label": "Knockback"
+    }
   ]
 };

@@ -61,5 +61,12 @@ export const CallRavens: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.6883780360221863,
+      "label": "state"
+    }
+  ]
 };

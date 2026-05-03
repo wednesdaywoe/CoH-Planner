@@ -68,5 +68,12 @@ export const Skewer: Power = {
       "defenseDebuff": 6
     },
     "buffDuration": 6
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Toxic_Dmg"
+    }
+  ]
 };

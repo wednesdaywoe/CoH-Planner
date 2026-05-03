@@ -67,5 +67,12 @@ export const EnergyTorrent: Power = {
       "damageBuff": 8.57
     },
     "buffDuration": 8.57
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Knockback"
+    }
+  ]
 };

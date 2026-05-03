@@ -667,6 +667,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         dominationActive={dominationActive}
         header="Power Effects"
         duration={effects?.buffDuration}
+        specialEffects={power.specialEffects}
         purplePatchInfo={{
           factor: Math.min(0.95, Math.max(0.05, getBaseToHit(targetLevelOffset - globalBonuses.levelShift) + globalBonuses.toHit / 100)) / 0.75,
           offset: targetLevelOffset,

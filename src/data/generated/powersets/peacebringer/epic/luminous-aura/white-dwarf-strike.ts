@@ -82,5 +82,12 @@ export const WhiteDwarfStrike: Power = {
     },
     "buffDuration": 6
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Knockback"
+    }
+  ],
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Strike ! &&"
 };

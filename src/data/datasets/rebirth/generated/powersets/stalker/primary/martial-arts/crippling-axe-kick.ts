@@ -63,5 +63,12 @@ export const CripplingAxeKick: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Immobilized"
+    }
+  ]
 };

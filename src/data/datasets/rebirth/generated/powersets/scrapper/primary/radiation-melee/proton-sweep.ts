@@ -76,5 +76,17 @@ export const ProtonSweep: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Toxic_Dmg"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.20999999344348907,
+      "label": "state"
+    }
+  ]
 };

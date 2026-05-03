@@ -77,5 +77,12 @@ export const AblatingStrike: Power = {
         }
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.800000011920929,
+      "label": "state"
+    }
   ]
 };

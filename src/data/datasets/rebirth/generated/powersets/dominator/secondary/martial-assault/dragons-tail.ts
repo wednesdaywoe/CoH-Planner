@@ -48,5 +48,12 @@ export const DragonsTail: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Knockback"
+    }
+  ]
 };

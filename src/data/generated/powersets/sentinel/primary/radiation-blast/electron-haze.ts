@@ -91,5 +91,12 @@ export const ElectronHaze: Power = {
       "table": "Ranged_Knockback"
     },
     "buffDuration": 8
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
+    }
+  ]
 };

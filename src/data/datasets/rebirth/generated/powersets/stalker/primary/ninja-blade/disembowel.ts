@@ -60,5 +60,17 @@ export const SoaringDragon: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Knock Up"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.949999988079071,
+      "label": "state"
+    }
+  ]
 };

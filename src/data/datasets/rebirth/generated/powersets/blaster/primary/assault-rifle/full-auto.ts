@@ -63,5 +63,12 @@ export const FullAuto: Power = {
       "damageBuff": 11.5
     },
     "buffDuration": 11.5
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Lethal_Dmg"
+    }
+  ]
 };

@@ -69,5 +69,17 @@ export const Chop: Power = {
       "defenseDebuff": 8
     },
     "buffDuration": 8
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Base_Defense"
+    }
+  ]
 };

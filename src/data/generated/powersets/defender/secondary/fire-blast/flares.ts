@@ -56,5 +56,12 @@ export const Flares: Power = {
       "scale": 1.1871,
       "table": "Ranged_PvPDamage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Fire_Dmg"
+    }
   ]
 };

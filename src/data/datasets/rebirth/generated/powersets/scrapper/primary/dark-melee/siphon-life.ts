@@ -59,5 +59,12 @@ export const SiphonLife: Power = {
       "scale": 0.882,
       "table": "Melee_Damage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Negative_Energy_Dmg"
+    }
   ]
 };

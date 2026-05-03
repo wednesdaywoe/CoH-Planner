@@ -73,5 +73,17 @@ export const Cremate: Power = {
       "scale": 1.5,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Fire_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Fire_Dmg"
+    }
+  ]
 };

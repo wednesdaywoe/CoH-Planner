@@ -60,5 +60,12 @@ export const ThunderKick: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Stun"
+    }
+  ]
 };

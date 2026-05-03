@@ -60,5 +60,17 @@ export const Barrage: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Stun"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.800000011920929,
+      "label": "state"
+    }
+  ]
 };

@@ -40,5 +40,12 @@ export const Strike: Power = {
     "type": "Lethal",
     "scale": 1.08,
     "table": "Melee_Damage"
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.6600000262260437,
+      "label": "state"
+    }
+  ]
 };

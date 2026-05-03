@@ -77,5 +77,12 @@ export const AriaofStasis: Power = {
       "table": "Ranged_PvPMez"
     },
     "buffDuration": 15
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Immobilized"
+    }
+  ]
 };

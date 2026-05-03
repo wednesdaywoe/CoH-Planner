@@ -4,7 +4,7 @@
  */
 
 import { useState } from 'react';
-import type { PowerEffects, NumberOrScaled } from '@/types';
+import type { PowerEffects, NumberOrScaled, SpecialEffect } from '@/types';
 import { getScaleValue } from '@/types';
 import {
   calculateBuffDebuffValue,
@@ -474,6 +474,10 @@ interface RegistryEffectsDisplayProps {
   finalColumnColor?: string;
   /** Function to apply inherent bonus to damage values */
   applyInherentBonus?: (value: number) => number;
+  /** Power-level proc / state-grant entries for the SPECIAL section
+   *  ("+X% chance to grant <name> on target", "+Y% chance Knockback").
+   *  Renders as plain rows under a SPECIAL subheader; not enhanceable. */
+  specialEffects?: SpecialEffect[];
   /** Purple patch info for adjusting accuracy and damage final values */
   purplePatchInfo?: { factor: number; offset: number; toHitBonus?: number; combatModifier: number };
 }
@@ -613,6 +617,7 @@ export function RegistryEffectsDisplay({
   finalColumnColor = 'text-amber-400',
   applyInherentBonus,
   purplePatchInfo,
+  specialEffects,
 }: RegistryEffectsDisplayProps) {
   const allowedSet = new Set(allowedEnhancements);
 
@@ -1217,6 +1222,25 @@ export function RegistryEffectsDisplay({
         })();
         return sectionHeader ? [sectionHeader, itemNode] : [itemNode];
       })}
+
+      {/* SPECIAL — chance procs / state-grant entries surfaced from
+        * `specialEffects`. Emits its own neutral subheader (same style as
+        * MEZ / BUFFS / DEBUFFS) and one plain-text row per entry. */}
+      {specialEffects && specialEffects.length > 0 && (
+        <>
+          <div className={`${headerFontSize} ${SECTION_COLOR_NEUTRAL} font-semibold uppercase tracking-wider mt-1.5`}>
+            SPECIAL
+          </div>
+          {specialEffects.map((sp, i) => (
+            <div key={`special-${i}`} className={`${fontSize} text-slate-300 ml-1`}>
+              <span className="text-cyan-400">+{(sp.chance * 100).toFixed(2)}%</span>{' '}
+              {sp.kind === 'grant'
+                ? <>chance to grant <span className="text-slate-100">{sp.label}</span> on target</>
+                : <>chance to <span className="text-slate-100">{sp.label}</span></>}
+            </div>
+          ))}
+        </>
+      )}
       </div>
     </div>
   );

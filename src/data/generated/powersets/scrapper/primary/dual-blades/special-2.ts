@@ -81,5 +81,12 @@ export const SweepingStrike: Power = {
         "tickRate": 1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.15000000596046448,
+      "label": "Lethal_Dmg"
+    }
   ]
 };

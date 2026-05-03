@@ -57,5 +57,17 @@ export const Slice: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.8999999761581421,
+      "label": "state"
+    }
+  ]
 };

@@ -74,5 +74,32 @@ export const PsiBlade: Power = {
         "tickRate": 1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.14069999754428864,
+      "label": "Grant_Power"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.4221000075340271,
+      "label": "Grant_Power"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Psionic_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Psionic_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Grant_Power"
+    }
   ]
 };

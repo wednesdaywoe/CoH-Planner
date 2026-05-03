@@ -66,5 +66,12 @@ export const PenetratingRay: Power = {
         "tickRate": 1.5
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.44999998807907104,
+      "label": "Knockback"
+    }
   ]
 };

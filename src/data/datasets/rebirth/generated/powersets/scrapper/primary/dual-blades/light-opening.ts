@@ -52,5 +52,12 @@ export const NimbleSlash: Power = {
       "tickRate": 0.33000001311302185
     }
   ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    }
+  ],
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

@@ -61,5 +61,12 @@ export const BlindingPowder: Power = {
       "perceptionDebuff": 20
     },
     "buffDuration": 20
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Confuse"
+    }
+  ]
 };

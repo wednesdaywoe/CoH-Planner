@@ -67,5 +67,12 @@ export const FireBall: Power = {
       "damageBuff": 8.5
     },
     "buffDuration": 8.5
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Fire_Dmg"
+    }
+  ]
 };

@@ -95,5 +95,17 @@ export const ConcentratedStrike: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Energy_Dmg"
+    }
+  ]
 };

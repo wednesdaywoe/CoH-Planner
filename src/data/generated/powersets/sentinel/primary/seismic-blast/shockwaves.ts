@@ -32,5 +32,12 @@ export const SeismicShockwaves: Power = {
       "table": "Melee_Ones"
     }
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Knockback"
+    }
+  ],
   "mechanicType": "parentMechanic"
 };

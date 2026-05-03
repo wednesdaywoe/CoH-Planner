@@ -51,5 +51,12 @@ export const Smite: Power = {
       "scale": 1,
       "table": "Melee_Damage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.800000011920929,
+      "label": "state"
+    }
   ]
 };

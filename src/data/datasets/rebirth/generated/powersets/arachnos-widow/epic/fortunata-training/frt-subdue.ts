@@ -50,5 +50,12 @@ export const Subdue: Power = {
       "scale": 6,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Immobilized"
+    }
+  ]
 };

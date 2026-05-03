@@ -112,5 +112,12 @@ export const Suffocate: Power = {
         "buffDuration": 10
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.3257099986076355,
+      "label": "Drowning"
+    }
   ]
 };

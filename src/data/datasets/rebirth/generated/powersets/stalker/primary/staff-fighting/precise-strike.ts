@@ -50,5 +50,17 @@ export const PreciseStrike: Power = {
       "table": "Melee_Stun"
     }
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Stun"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.800000011920929,
+      "label": "state"
+    }
+  ],
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

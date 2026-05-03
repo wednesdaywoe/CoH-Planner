@@ -42,5 +42,17 @@ export const ChokingCloud: Power = {
       "scale": 4,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Hold"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Hold"
+    }
+  ]
 };

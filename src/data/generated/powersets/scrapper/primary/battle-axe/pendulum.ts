@@ -73,5 +73,22 @@ export const Pendulum: Power = {
       "scale": 1.34,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    }
+  ]
 };

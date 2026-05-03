@@ -79,5 +79,17 @@ export const Consume: Power = {
       "enduranceGain",
       "recoveryBuff"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Fire_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Fire_Dmg"
+    }
+  ]
 };

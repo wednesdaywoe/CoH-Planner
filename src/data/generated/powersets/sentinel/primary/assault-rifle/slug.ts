@@ -67,5 +67,12 @@ export const Slug: Power = {
       "scale": 1.5,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
+    }
+  ]
 };

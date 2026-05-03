@@ -60,5 +60,12 @@ export const Disembowel: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Knock Up"
+    }
+  ]
 };

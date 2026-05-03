@@ -56,5 +56,12 @@ export const SpinningStrike: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6499999761581421,
+      "label": "Knockback"
+    }
+  ]
 };

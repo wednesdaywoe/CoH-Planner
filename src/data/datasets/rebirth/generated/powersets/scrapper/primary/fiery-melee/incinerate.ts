@@ -51,5 +51,12 @@ export const Incinerate: Power = {
       "duration": 4.6,
       "tickRate": 0.5
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Fire_Dmg"
+    }
   ]
 };

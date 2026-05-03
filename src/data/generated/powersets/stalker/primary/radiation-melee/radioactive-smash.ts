@@ -78,5 +78,32 @@ export const RadioactiveSmash: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.23000000417232513,
+      "label": "Grant_Power"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.8500000238418579,
+      "label": "Grant_Power"
+    }
+  ]
 };

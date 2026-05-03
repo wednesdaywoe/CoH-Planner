@@ -60,5 +60,12 @@ export const DarkNovaBlast: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Knockback"
+    }
+  ],
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Blast ! &&"
 };

@@ -62,5 +62,12 @@ export const DivineAvalanche: Power = {
     "stacksLinear": [
       "defenseBuff"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.6499999761581421,
+      "label": "state"
+    }
+  ]
 };

@@ -81,5 +81,12 @@ export const ChainFences: Power = {
       "recoveryDebuff": 6
     },
     "buffDuration": 6
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Recovery"
+    }
+  ]
 };

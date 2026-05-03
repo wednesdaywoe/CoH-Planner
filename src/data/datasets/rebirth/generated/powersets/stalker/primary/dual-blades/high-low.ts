@@ -78,5 +78,12 @@ export const OneThousandCuts: Power = {
         "buffDuration": 20
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Lethal_Dmg"
+    }
   ]
 };

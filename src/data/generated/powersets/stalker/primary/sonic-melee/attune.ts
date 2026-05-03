@@ -38,5 +38,17 @@ export const Attune: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Energy_Dmg"
+    }
+  ]
 };

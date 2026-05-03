@@ -129,5 +129,12 @@ export const SparklingCage: Power = {
       }
     },
     "buffDuration": 15
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Execute_Power"
+    }
+  ]
 };

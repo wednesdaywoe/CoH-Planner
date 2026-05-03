@@ -43,5 +43,17 @@ export const GeneticCorruption: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6600000262260437,
+      "label": "Sleep"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.8500000238418579,
+      "label": "Sleep"
+    }
+  ]
 };

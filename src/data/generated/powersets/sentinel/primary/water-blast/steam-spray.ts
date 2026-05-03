@@ -111,5 +111,12 @@ export const SteamSpray: Power = {
       "defenseDebuff": 8
     },
     "buffDuration": 8
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.8500000238418579,
+      "label": "Fire_Dmg"
+    }
+  ]
 };

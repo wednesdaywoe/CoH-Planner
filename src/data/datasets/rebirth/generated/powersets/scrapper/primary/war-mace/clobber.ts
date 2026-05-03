@@ -56,5 +56,12 @@ export const Clobber: Power = {
       "scale": 5,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Smashing_Dmg"
+    }
+  ]
 };

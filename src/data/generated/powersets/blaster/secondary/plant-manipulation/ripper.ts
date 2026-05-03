@@ -77,5 +77,17 @@ export const Ripper: Power = {
       "defenseDebuff": 12
     },
     "buffDuration": 12
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Toxic_Dmg"
+    }
+  ]
 };

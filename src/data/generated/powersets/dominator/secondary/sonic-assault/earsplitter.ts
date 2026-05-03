@@ -82,5 +82,12 @@ export const Earsplitter: Power = {
         }
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Hold"
+    }
   ]
 };

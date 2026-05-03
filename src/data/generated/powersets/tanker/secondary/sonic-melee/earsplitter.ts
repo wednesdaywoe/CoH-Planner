@@ -103,5 +103,12 @@ export const Earsplitter: Power = {
       "table": "Melee_Immobilize"
     },
     "buffDuration": 15
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Hold"
+    }
+  ]
 };

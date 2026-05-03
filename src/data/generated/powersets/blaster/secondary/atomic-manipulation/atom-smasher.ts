@@ -79,5 +79,12 @@ export const AtomSmasher: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Stun"
+    }
+  ]
 };

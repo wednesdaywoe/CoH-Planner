@@ -54,5 +54,12 @@ export const MercurialBlow: Power = {
       "defenseDebuff": 8
     },
     "buffDuration": 8
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.6499999761581421,
+      "label": "state"
+    }
+  ]
 };

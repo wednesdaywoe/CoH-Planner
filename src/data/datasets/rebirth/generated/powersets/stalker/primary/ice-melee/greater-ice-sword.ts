@@ -50,5 +50,12 @@ export const GreaterIceSword: Power = {
       "scale": 1,
       "table": "Melee_Damage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.949999988079071,
+      "label": "state"
+    }
   ]
 };

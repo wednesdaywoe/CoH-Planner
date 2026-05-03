@@ -64,5 +64,17 @@ export const ArcticAir: Power = {
       "table": "Ranged_Fear"
     },
     "buffDuration": 2.25
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Afraid"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Confuse"
+    }
+  ]
 };

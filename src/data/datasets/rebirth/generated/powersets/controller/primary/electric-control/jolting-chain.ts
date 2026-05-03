@@ -62,5 +62,12 @@ export const JoltingChain: Power = {
       "recoveryDebuff": 8
     },
     "buffDuration": 8
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Recovery"
+    }
+  ]
 };

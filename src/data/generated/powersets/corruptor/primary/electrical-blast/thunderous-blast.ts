@@ -81,5 +81,12 @@ export const ThunderousBlast: Power = {
       "table": "Ranged_EndDrain",
       "perTarget": 13.86
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Endurance"
+    }
+  ]
 };

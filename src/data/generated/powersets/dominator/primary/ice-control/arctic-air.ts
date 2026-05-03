@@ -81,5 +81,17 @@ export const ArcticAir: Power = {
         }
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Afraid"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Confuse"
+    }
   ]
 };

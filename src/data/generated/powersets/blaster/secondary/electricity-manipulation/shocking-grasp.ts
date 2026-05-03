@@ -90,5 +90,17 @@ export const ShockingGrasp: Power = {
       "damageBuff",
       "enduranceGain"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Recovery"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Endurance"
+    }
+  ]
 };

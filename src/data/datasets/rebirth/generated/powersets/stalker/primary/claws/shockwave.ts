@@ -52,5 +52,12 @@ export const Shockwave: Power = {
       "scale": 0.7,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Lethal_Dmg"
+    }
+  ]
 };

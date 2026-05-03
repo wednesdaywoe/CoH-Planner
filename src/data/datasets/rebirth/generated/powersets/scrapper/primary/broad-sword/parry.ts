@@ -69,5 +69,12 @@ export const Parry: Power = {
     "stacksLinear": [
       "defenseBuff"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    }
+  ]
 };

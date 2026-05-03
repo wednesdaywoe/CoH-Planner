@@ -79,5 +79,27 @@ export const ShadowMaul: Power = {
       "duration": 2,
       "tickRate": 1.25
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Negative_Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Negative_Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Negative_Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.8999999761581421,
+      "label": "Grant_Power"
+    }
   ]
 };

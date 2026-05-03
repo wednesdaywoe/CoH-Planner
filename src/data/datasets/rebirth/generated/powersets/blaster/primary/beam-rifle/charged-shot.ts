@@ -74,5 +74,17 @@ export const ChargedShot: Power = {
         "table": "Ranged_Damage"
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.38999998569488525,
+      "label": "Unknown(116)"
+    }
   ]
 };

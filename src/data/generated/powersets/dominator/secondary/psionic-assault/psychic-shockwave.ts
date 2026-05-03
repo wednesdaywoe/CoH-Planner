@@ -58,5 +58,12 @@ export const PsychicShockwave: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Stun"
+    }
+  ]
 };

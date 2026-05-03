@@ -44,5 +44,12 @@ export const MassHypnosis: Power = {
       "scale": 12,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Sleep"
+    }
+  ]
 };

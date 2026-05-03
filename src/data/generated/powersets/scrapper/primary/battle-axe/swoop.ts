@@ -66,5 +66,22 @@ export const Swoop: Power = {
       "scale": 6,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.699999988079071,
+      "label": "Knock Up"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    }
+  ]
 };

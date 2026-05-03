@@ -91,5 +91,12 @@ export const ExplosiveBouquet: Power = {
       "table": "Ranged_PvPMez"
     },
     "buffDuration": 5
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Hold"
+    }
+  ]
 };

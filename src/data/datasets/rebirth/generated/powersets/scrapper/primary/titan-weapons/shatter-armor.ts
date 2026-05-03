@@ -96,5 +96,12 @@ export const RendArmor: Power = {
       }
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Smashing_Dmg"
+    }
+  ]
 };

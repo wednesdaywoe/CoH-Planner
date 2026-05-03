@@ -59,5 +59,37 @@ export const HellonEarth: Power = {
       "entityCount": 10
     },
     "buffDuration": 90
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.949999988079071,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.8999999761581421,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.8500000238418579,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.699999988079071,
+      "label": "Create_Entity"
+    }
+  ]
 };

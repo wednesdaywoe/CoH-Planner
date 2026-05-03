@@ -77,5 +77,12 @@ export const NegatronSlam: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Knockback"
+    }
+  ]
 };

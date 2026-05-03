@@ -73,5 +73,12 @@ export const BallLightning: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 8.57
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Recovery"
+    }
+  ]
 };

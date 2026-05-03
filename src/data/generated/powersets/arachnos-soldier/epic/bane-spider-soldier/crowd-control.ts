@@ -78,5 +78,12 @@ export const CrowdControl: Power = {
       "scale": 1.34,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Smashing_Dmg"
+    }
+  ]
 };

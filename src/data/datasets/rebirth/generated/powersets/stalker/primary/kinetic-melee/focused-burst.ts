@@ -56,5 +56,17 @@ export const FocusedBurst: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.8999999761581421,
+      "label": "state"
+    }
+  ]
 };

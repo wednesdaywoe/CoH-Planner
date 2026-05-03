@@ -62,5 +62,12 @@ export const StaticDischarge: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 4
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Endurance"
+    }
+  ]
 };

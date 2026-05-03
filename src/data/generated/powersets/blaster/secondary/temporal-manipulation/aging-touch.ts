@@ -89,5 +89,12 @@ export const AgingTouch: Power = {
         "tickRate": 1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Endurance"
+    }
   ]
 };

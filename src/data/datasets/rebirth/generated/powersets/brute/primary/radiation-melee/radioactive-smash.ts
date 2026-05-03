@@ -80,5 +80,17 @@ export const RadioactiveSmash: Power = {
       "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.23000000417232513,
+      "label": "state"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Knockback"
+    }
+  ]
 };

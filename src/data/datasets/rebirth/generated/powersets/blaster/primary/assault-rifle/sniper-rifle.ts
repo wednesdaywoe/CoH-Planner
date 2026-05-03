@@ -76,5 +76,12 @@ export const SniperRifle: Power = {
         "table": "Ranged_TempDamage"
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
   ]
 };

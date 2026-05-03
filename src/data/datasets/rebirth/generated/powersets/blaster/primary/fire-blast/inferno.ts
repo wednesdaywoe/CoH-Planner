@@ -65,5 +65,12 @@ export const Inferno: Power = {
       "damageBuff": 10.5
     },
     "buffDuration": 10.5
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.9900000095367432,
+      "label": "Fire_Dmg"
+    }
+  ]
 };

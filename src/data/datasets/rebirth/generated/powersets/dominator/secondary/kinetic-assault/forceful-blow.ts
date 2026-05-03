@@ -54,5 +54,12 @@ export const ForcefulBlow: Power = {
       "scale": 0.75,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Knock Up"
+    }
+  ]
 };

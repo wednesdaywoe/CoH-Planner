@@ -77,5 +77,12 @@ export const Fossilize: Power = {
       }
     },
     "buffDuration": 12
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Hold"
+    }
+  ]
 };

@@ -79,5 +79,12 @@ export const GravityDistortion: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Hold"
+    }
+  ]
 };

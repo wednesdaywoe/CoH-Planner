@@ -89,5 +89,17 @@ export const WhiteDwarfSmite: Power = {
     },
     "buffDuration": 10
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Knockback"
+    }
+  ],
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Smite ! &&"
 };

@@ -52,5 +52,12 @@ export const PowerSlice: Power = {
       "tickRate": 0.4000000059604645
     }
   ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    }
+  ],
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

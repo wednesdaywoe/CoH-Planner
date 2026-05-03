@@ -73,5 +73,12 @@ export const ContaminatedStrike: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.11999999731779099,
+      "label": "Grant_Power"
+    }
+  ]
 };

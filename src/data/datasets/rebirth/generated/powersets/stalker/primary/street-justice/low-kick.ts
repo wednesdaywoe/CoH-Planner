@@ -55,5 +55,12 @@ export const ShinBreaker: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.8999999761581421,
+      "label": "state"
+    }
+  ]
 };

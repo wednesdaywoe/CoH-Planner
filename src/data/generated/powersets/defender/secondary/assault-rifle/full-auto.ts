@@ -61,5 +61,12 @@ export const FullAuto: Power = {
       "duration": 2,
       "tickRate": 0.20000000298023224
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Lethal_Dmg"
+    }
   ]
 };

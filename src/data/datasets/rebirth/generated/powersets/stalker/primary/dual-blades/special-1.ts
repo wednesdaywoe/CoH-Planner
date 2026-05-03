@@ -80,5 +80,12 @@ export const VengefulSlice: Power = {
         "tickRate": 1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.8999999761581421,
+      "label": "state"
+    }
   ]
 };

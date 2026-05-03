@@ -49,5 +49,12 @@ export const Focus: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.8199999928474426,
+      "label": "state"
+    }
+  ]
 };

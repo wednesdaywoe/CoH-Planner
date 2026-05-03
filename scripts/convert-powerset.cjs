@@ -1425,6 +1425,100 @@ function extractConditionalEffects(rawEffects, powerJson) {
   return out;
 }
 
+/**
+ * Walk the effect tree for chance-bearing templates (chance < 1 and != 0)
+ * and emit them as `specialEffects` for the InfoPanel's SPECIAL section.
+ *
+ * Two flavors:
+ * - `Null`-attrib chance template → "grant proc". Pair with a sibling
+ *   `conditionalEffects` entry whose state-gate references a power whose
+ *   leaf name matches an inline grant identifier. If exactly one
+ *   conditional exists on the power, use it; otherwise emit a generic
+ *   "trigger" label.
+ * - Non-`Null` attrib chance template → "effect-proc". Use the attrib's
+ *   prettified name as the label (Knockback, Knockup, Stunned, etc.).
+ *
+ * Skips PvP-only / chance=0 effects the same way the base collectors do.
+ * Also skips templates whose chance equals the parent EffectGroup's chance
+ * (the chance is just an EG-level proc gate, not a per-template variant).
+ */
+function extractSpecialEffects(rawEffects, conditionalEffects) {
+  if (!rawEffects?.length) return undefined;
+  const procs = [];
+  const seen = new Set();
+
+  function visit(effect) {
+    if (effect.is_pvp === 'PVP_ONLY') return;
+    const egChance = effect.chance ?? 1.0;
+    if (egChance === 0) return;
+
+    for (const t of effect.templates ?? []) {
+      // The interesting chance value — prefer the EG-level chance when it's
+      // less than 1 (the typical proc encoding); fall back to template-level
+      // tick_chance for cases where the EG is 1.0 but the template carries
+      // a fractional chance (Suffocate's Null grant).
+      const chance = egChance < 1 ? egChance : (t.tick_chance ?? 1.0);
+      if (chance >= 1 || chance <= 0) continue;
+
+      const attrib = (t.attribs && t.attribs[0]) || null;
+      if (!attrib) continue;
+
+      // Dedup: same chance + attrib pair shouldn't render twice.
+      const key = `${attrib}:${chance.toFixed(4)}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+
+      if (attrib === 'Null') {
+        // Grant proc — try to identify the granted state from the power's
+        // conditional list. The grant target is a target-state (per-power)
+        // mechanic, so filter out caster-state (global) conditionals and
+        // AT-inherent ids that surface separately (Domination, etc.).
+        // If exactly one candidate remains, use its label.
+        const candidates = (conditionalEffects ?? []).filter(c =>
+          c.scope !== 'global' && !AT_INHERENT_GRANT_BLACKLIST.has(c.id)
+        );
+        const cond = candidates.length === 1 ? candidates[0] : null;
+        procs.push({
+          kind: 'grant',
+          chance,
+          label: cond?.label ?? 'state',
+        });
+      } else {
+        procs.push({
+          kind: 'effect-proc',
+          chance,
+          label: _prettifyEffectAttrib(attrib),
+        });
+      }
+    }
+
+    if (effect.child_effects?.length) {
+      for (const ce of effect.child_effects) visit(ce);
+    }
+  }
+
+  for (const eff of rawEffects) visit(eff);
+  return procs.length > 0 ? procs : undefined;
+}
+
+// AT-inherent conditional ids — same set the InfoPanel filters out of its
+// Mechanic Adjusters list. The grant-proc label heuristic excludes these
+// since they're caster-state mechanics, not target-state grants.
+const AT_INHERENT_GRANT_BLACKLIST = new Set(['domination']);
+
+function _prettifyEffectAttrib(attrib) {
+  // Map raw attrib names to player-friendly labels. Most attribs already
+  // read fine ("Knockback", "Stunned"); a handful need touch-ups.
+  const overrides = {
+    Knockup: 'Knock Up',
+    Stunned: 'Stun',
+    Confused: 'Confuse',
+    Held: 'Hold',
+    Terrorized: 'Fear',
+  };
+  return overrides[attrib] ?? attrib;
+}
+
 // Suffix tokens that, when shared by 2+ conditionals on the same power,
 // indicate a mutually-exclusive group. Keep this list curated rather than
 // auto-detected to avoid spurious groupings (e.g. two unrelated mechanics
@@ -2755,6 +2849,12 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   if (powerJson.effects?.length) {
     const conditional = extractConditionalEffects(powerJson.effects, powerJson);
     if (conditional) power.conditionalEffects = conditional;
+
+    // Special effects (chance procs / state grants) for the SPECIAL section.
+    // Pass the conditional list so grant procs can use a recognized label
+    // rather than a generic "trigger".
+    const special = extractSpecialEffects(powerJson.effects, conditional);
+    if (special) power.specialEffects = special;
   }
 
   // Snipe powers ship two redirect targets — Normal (charged, slower cast,

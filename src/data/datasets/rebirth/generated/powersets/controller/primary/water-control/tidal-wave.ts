@@ -91,5 +91,17 @@ export const TidalWave: Power = {
         }
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Stun"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.27067646384239197,
+      "label": "Drowning"
+    }
   ]
 };

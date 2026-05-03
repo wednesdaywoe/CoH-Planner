@@ -56,5 +56,12 @@ export const GamblersCut: Power = {
       "defenseDebuff": 6
     },
     "buffDuration": 6
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.6499999761581421,
+      "label": "state"
+    }
+  ]
 };

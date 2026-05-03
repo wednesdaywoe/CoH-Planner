@@ -58,5 +58,12 @@ export const SniperBlast: Power = {
       "scale": 0.7,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ]
 };

@@ -67,5 +67,12 @@ export const TelekineticBlast: Power = {
       "scale": 8,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Knockback"
+    }
+  ]
 };

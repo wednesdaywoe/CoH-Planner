@@ -68,5 +68,12 @@ export const PhotonGrenade: Power = {
       "table": "Ranged_Stun"
     },
     "buffDuration": 30
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Stun"
+    }
+  ]
 };

@@ -69,5 +69,47 @@ export const SpinningStrike: Power = {
       "scale": 1.34,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.574999988079071,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.6499999761581421,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Fear"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Smashing_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Smashing_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Smashing_Dmg"
+    }
+  ]
 };

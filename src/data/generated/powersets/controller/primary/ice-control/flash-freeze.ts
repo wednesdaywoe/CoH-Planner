@@ -53,5 +53,12 @@ export const FlashFreeze: Power = {
       "scale": 1,
       "table": "Ranged_PvPMez"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Sleep"
+    }
+  ]
 };

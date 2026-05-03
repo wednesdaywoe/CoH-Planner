@@ -74,5 +74,27 @@ export const Hailstones: Power = {
         }
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.25,
+      "label": "StormBlast InStormCell"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.5,
+      "label": "StormBlast InStormCell"
+    }
   ]
 };

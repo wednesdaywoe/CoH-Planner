@@ -59,5 +59,12 @@ export const ForceofThunder: Power = {
       "damageBuff": 8.73
     },
     "buffDuration": 8.73
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Stun"
+    }
+  ]
 };

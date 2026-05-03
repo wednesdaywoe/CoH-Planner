@@ -61,5 +61,12 @@ export const Inferno: Power = {
       "scale": 1.7473,
       "table": "Ranged_PvPDamage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.9900000095367432,
+      "label": "Fire_Dmg"
+    }
   ]
 };

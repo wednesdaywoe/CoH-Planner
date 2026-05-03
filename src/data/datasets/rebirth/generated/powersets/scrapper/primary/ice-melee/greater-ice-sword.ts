@@ -55,5 +55,12 @@ export const GreaterIceSword: Power = {
       "scale": 0.882,
       "table": "Melee_Damage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Cold_Dmg"
+    }
   ]
 };

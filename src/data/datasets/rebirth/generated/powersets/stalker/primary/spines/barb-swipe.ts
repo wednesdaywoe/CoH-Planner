@@ -59,5 +59,17 @@ export const BarbSwipe: Power = {
       "scale": 8,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Toxic_Dmg"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.6499999761581421,
+      "label": "state"
+    }
+  ]
 };

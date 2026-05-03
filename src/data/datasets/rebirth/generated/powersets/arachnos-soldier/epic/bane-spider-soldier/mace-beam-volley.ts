@@ -59,5 +59,12 @@ export const MaceBeamVolley: Power = {
       "scale": 1,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Knockback"
+    }
+  ]
 };

@@ -63,5 +63,12 @@ export const KeeningWinds: Power = {
     "stacksLinear": [
       "enduranceGain"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Confuse"
+    }
+  ]
 };

@@ -52,5 +52,12 @@ export const MasterfulThrow: Power = {
       "duration": 10,
       "tickRate": 2
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Lethal_Dmg"
+    }
   ]
 };

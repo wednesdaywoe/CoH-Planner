@@ -87,5 +87,12 @@ export const FocusedPowerBolt: Power = {
       "scale": 1.4,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ]
 };

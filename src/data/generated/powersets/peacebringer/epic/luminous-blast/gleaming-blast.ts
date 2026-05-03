@@ -68,5 +68,12 @@ export const GleamingBlast: Power = {
       "defenseDebuff": 6
     },
     "buffDuration": 6
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Knockback"
+    }
+  ]
 };

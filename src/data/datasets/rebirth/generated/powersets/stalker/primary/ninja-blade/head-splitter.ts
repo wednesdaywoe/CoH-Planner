@@ -63,5 +63,17 @@ export const GoldenDragonfly: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Lethal_Dmg"
+    }
+  ]
 };

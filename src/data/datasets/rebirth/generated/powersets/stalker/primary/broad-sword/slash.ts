@@ -54,5 +54,12 @@ export const Slash: Power = {
       "defenseDebuff": 6
     },
     "buffDuration": 6
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.699999988079071,
+      "label": "state"
+    }
+  ]
 };

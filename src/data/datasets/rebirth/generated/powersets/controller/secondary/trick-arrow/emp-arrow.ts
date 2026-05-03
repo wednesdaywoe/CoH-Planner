@@ -85,5 +85,12 @@ export const EMPArrow: Power = {
         "buffDuration": 15
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Hold"
+    }
   ]
 };

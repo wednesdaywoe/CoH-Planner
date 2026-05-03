@@ -60,5 +60,22 @@ export const IceSword: Power = {
       "scale": 0.974,
       "table": "Melee_PvPDamage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Cold_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Grant_Power"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Cold_Dmg"
+    }
   ]
 };

@@ -75,5 +75,12 @@ export const DefensiveSweep: Power = {
       "defenseBuff"
     ]
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Smashing_Dmg"
+    }
+  ],
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

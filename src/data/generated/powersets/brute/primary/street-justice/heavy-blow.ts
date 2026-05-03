@@ -58,5 +58,12 @@ export const HeavyBlow: Power = {
       "scale": 1.34,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Knockback"
+    }
+  ]
 };

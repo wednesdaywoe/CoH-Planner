@@ -59,5 +59,12 @@ export const FragGrenade: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ],
   "requires": "Arachnos_Soldiers.Arachnos_Soldier.Frag_Grenade !"
 };

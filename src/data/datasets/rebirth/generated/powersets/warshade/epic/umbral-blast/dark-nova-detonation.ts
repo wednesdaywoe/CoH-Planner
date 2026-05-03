@@ -55,5 +55,12 @@ export const DarkNovaDetonation: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ],
   "requires": "0"
 };

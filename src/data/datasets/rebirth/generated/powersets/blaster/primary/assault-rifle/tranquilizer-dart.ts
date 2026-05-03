@@ -61,5 +61,12 @@ export const Slug: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
+    }
+  ]
 };

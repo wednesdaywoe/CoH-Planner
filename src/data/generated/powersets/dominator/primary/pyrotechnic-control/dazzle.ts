@@ -114,5 +114,12 @@ export const Dazzle: Power = {
       "resistanceDebuff": 5
     },
     "buffDuration": 5
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Execute_Power"
+    }
+  ]
 };

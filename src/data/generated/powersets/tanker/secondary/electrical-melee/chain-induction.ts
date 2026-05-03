@@ -68,5 +68,12 @@ export const ChainInduction: Power = {
       "recoveryDebuff": 4
     },
     "buffDuration": 4
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Recovery"
+    }
+  ]
 };

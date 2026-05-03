@@ -52,5 +52,12 @@ export const Buckshot: Power = {
       "scale": 0.75,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ]
 };

@@ -67,5 +67,12 @@ export const RadiantStrike: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 6
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Knockback"
+    }
+  ]
 };

@@ -61,5 +61,12 @@ export const Thundergust: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Knockback"
+    }
+  ],
   "requires": "accesslevel char> 0 >="
 };

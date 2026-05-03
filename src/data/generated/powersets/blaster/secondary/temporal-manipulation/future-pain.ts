@@ -84,5 +84,12 @@ export const FuturePain: Power = {
         }
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Fear"
+    }
   ]
 };

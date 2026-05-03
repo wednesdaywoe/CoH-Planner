@@ -105,5 +105,17 @@ export const EyeoftheStorm: Power = {
         "buffDuration": 6
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Smashing_Dmg"
+    }
   ]
 };

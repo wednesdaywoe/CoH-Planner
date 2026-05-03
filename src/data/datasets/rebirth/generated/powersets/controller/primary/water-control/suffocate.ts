@@ -99,5 +99,17 @@ export const Suffocate: Power = {
         "buffDuration": 10
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Hold"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.3257099986076355,
+      "label": "Drowning"
+    }
   ]
 };

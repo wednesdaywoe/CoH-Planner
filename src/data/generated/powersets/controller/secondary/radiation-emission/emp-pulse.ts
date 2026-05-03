@@ -62,5 +62,12 @@ export const EMPulse: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 15
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Hold"
+    }
+  ]
 };

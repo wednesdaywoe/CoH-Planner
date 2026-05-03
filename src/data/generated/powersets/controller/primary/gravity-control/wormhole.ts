@@ -67,5 +67,12 @@ export const Wormhole: Power = {
       "table": "Ranged_Knockback"
     },
     "buffDuration": 15
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Stun"
+    }
+  ]
 };

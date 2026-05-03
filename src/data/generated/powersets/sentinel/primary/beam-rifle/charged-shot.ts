@@ -67,5 +67,17 @@ export const ChargedShot: Power = {
       "scale": 1.34,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.38999998569488525,
+      "label": "Execute_Power"
+    }
+  ]
 };

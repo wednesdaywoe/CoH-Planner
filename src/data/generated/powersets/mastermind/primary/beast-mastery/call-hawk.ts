@@ -72,5 +72,17 @@ export const CallHawk: Power = {
       "maxHPBuff": 30
     },
     "buffDuration": 30
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.6136000156402588,
+      "label": "Grant_Power"
+    }
+  ]
 };

@@ -66,5 +66,12 @@ export const GamblersCut: Power = {
     },
     "buffDuration": 6
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    }
+  ],
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

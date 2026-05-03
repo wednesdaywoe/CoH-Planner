@@ -76,5 +76,12 @@ export const ChainInduction: Power = {
       "table": "Melee_InherentTaunt"
     },
     "buffDuration": 4
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Recovery"
+    }
+  ]
 };

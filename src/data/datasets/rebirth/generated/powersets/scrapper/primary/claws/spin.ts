@@ -48,5 +48,12 @@ export const Spin: Power = {
       "scale": 0.711,
       "table": "Melee_Damage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    }
   ]
 };

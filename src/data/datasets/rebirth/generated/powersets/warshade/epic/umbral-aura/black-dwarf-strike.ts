@@ -63,5 +63,12 @@ export const BlackDwarfStrike: Power = {
       "table": "Melee_InherentTaunt"
     }
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Knockback"
+    }
+  ],
   "requires": "0"
 };

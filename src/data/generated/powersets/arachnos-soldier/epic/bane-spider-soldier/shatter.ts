@@ -70,5 +70,12 @@ export const Shatter: Power = {
       "scale": 1.34,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Knockback"
+    }
+  ]
 };

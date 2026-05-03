@@ -94,5 +94,17 @@ export const GreaterPsiBlade: Power = {
         }
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Psionic_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Psionic_Dmg"
+    }
   ]
 };

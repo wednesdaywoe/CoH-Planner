@@ -62,5 +62,12 @@ export const Breathless: Power = {
       "enduranceDiscount": 15
     },
     "buffDuration": 15
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Immobilized"
+    }
+  ]
 };

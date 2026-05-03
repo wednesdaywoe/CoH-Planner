@@ -76,5 +76,12 @@ export const CallRavens: Power = {
       "table": "Melee_HealSelf"
     },
     "buffDuration": 30
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6883999705314636,
+      "label": "Grant_Power"
+    }
+  ]
 };

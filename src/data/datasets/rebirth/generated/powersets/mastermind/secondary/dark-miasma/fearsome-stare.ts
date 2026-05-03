@@ -48,5 +48,12 @@ export const FearsomeStare: Power = {
       "scale": 15,
       "table": "Ranged_Fear"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Fear"
+    }
+  ]
 };

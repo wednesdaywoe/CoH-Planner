@@ -63,5 +63,12 @@ export const WhirlingMace: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Stun"
+    }
+  ]
 };

@@ -58,5 +58,12 @@ export const M30Grenade: Power = {
       "scale": 2,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ]
 };

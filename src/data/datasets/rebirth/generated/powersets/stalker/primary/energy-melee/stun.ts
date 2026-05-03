@@ -58,5 +58,17 @@ export const StaggeringBurst: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Stun"
+    }
+  ]
 };

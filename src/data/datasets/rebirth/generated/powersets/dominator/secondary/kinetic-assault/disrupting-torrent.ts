@@ -79,5 +79,17 @@ export const DisruptingTorrent: Power = {
         "table": "Ranged_Damage"
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.14000000059604645,
+      "label": "Combat_Phase"
+    }
   ]
 };

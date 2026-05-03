@@ -73,5 +73,12 @@ export const SteamSpray: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 10.03
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.8500000238418579,
+      "label": "Fire_Dmg"
+    }
+  ]
 };

@@ -93,5 +93,32 @@ export const PsiBladeSweep: Power = {
         }
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.1904483437538147,
+      "label": "state"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.3808966875076294,
+      "label": "state"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Psionic_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Stun"
+    }
   ]
 };

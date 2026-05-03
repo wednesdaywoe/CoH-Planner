@@ -55,5 +55,17 @@ export const QuickStrike: Power = {
       "scale": 0.7,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.6499999761581421,
+      "label": "state"
+    }
+  ]
 };

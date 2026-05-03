@@ -49,5 +49,17 @@ export const Frost: Power = {
     "table": "Melee_Damage",
     "duration": 2.6,
     "tickRate": 0.5
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Cold_Dmg"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.800000011920929,
+      "label": "state"
+    }
+  ]
 };

@@ -57,5 +57,12 @@ export const DragonsTail: Power = {
       "damageBuff": 9
     },
     "buffDuration": 9
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Knockback"
+    }
+  ]
 };

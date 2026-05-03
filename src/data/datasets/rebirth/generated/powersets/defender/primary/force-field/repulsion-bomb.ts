@@ -58,5 +58,17 @@ export const RepulsionBomb: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.6600000262260437,
+      "label": "Stun"
+    }
+  ]
 };

@@ -72,5 +72,12 @@ export const ScorpionsSting: Power = {
       "scale": 5,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Hold"
+    }
+  ]
 };

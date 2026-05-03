@@ -58,6 +58,7 @@ export type {
   PowerEffects,
   Power,
   ConditionalEffect,
+  SpecialEffect,
   Powerset,
   PowerPool,
   SelectedPower,

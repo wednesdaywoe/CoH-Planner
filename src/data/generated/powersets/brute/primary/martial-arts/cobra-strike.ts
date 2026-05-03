@@ -59,5 +59,12 @@ export const CobraStrike: Power = {
       "scale": 10,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Stun"
+    }
+  ]
 };

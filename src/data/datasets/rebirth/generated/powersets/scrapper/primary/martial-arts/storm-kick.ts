@@ -47,5 +47,12 @@ export const StormKick: Power = {
       "scale": 0.594,
       "table": "Melee_Damage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Smashing_Dmg"
+    }
   ]
 };

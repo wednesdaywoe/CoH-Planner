@@ -42,5 +42,12 @@ export const PowerSlice: Power = {
     "table": "Melee_Damage",
     "duration": 1,
     "tickRate": 0.4000000059604645
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.75,
+      "label": "state"
+    }
+  ]
 };

@@ -74,5 +74,12 @@ export const Deluge: Power = {
         "tickRate": 0.5
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.24518999457359314,
+      "label": "Drowning"
+    }
   ]
 };

@@ -77,5 +77,12 @@ export const PsionicTornado: Power = {
       "scale": 2.8,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knock Up"
+    }
+  ]
 };

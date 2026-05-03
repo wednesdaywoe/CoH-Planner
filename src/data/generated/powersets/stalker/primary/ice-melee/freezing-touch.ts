@@ -85,5 +85,17 @@ export const FreezingTouch: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 6
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Cold_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Cold_Dmg"
+    }
+  ]
 };

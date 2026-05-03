@@ -81,5 +81,12 @@ export const ChainFences: Power = {
         }
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Recovery"
+    }
   ]
 };

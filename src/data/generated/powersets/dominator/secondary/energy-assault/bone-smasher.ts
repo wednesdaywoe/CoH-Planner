@@ -86,5 +86,17 @@ export const BoneSmasher: Power = {
         "buffDuration": 15
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Grant_Power"
+    }
   ]
 };

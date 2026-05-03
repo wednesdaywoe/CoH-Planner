@@ -58,5 +58,12 @@ export const Jawbreaker: Power = {
       "scale": 4,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Knock Up"
+    }
+  ]
 };

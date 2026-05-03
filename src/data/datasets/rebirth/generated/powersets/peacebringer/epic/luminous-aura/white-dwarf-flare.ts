@@ -66,5 +66,12 @@ export const WhiteDwarfFlare: Power = {
     },
     "buffDuration": 10
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Knockback"
+    }
+  ],
   "requires": "0"
 };

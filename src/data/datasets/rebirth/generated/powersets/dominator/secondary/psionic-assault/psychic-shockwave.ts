@@ -64,5 +64,12 @@ export const PsychicShockwave: Power = {
         }
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Stun"
+    }
   ]
 };

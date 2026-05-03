@@ -67,5 +67,17 @@ export const DarkConsumption: Power = {
     "stacksLinear": [
       "enduranceGain"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Negative_Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Negative_Energy_Dmg"
+    }
+  ]
 };

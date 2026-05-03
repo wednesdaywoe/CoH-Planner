@@ -77,5 +77,12 @@ export const RadiationSiphon: Power = {
       "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.3199999928474426,
+      "label": "state"
+    }
+  ]
 };

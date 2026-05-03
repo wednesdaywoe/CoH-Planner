@@ -62,5 +62,12 @@ export const SteelWind: Power = {
       "scale": 0.671,
       "table": "Ranged_Damage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Toxic_Dmg"
+    }
   ]
 };

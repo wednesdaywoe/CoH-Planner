@@ -75,5 +75,22 @@ export const TurbulentAura: Power = {
         "buffDuration": 1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.05000000074505806,
+      "label": "Drowning"
+    }
   ]
 };

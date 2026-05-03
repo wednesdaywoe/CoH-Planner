@@ -118,5 +118,42 @@ export const SweepingCross: Power = {
       },
       "group": "combo-levels"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Smashing_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.23000000417232513,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.25999999046325684,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Knockback"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.8999999761581421,
+      "label": "state"
+    }
   ]
 };

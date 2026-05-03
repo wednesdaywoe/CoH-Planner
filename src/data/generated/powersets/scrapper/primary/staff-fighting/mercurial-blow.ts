@@ -72,5 +72,17 @@ export const MercurialBlow: Power = {
     },
     "buffDuration": 8
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Smashing_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Smashing_Dmg"
+    }
+  ],
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

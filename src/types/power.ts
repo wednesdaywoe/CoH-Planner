@@ -560,8 +560,36 @@ export interface Power {
    * `_classifyConditionalGate` in convert-powerset.cjs.
    */
   conditionalEffects?: ConditionalEffect[];
+  /**
+   * Procs and unique mechanic surfaces — chance-based effects that don't
+   * fire on every cast. Renders in the InfoPanel's SPECIAL section as
+   * "+X% chance to <description>" rows. Two flavors:
+   *
+   * - **grant**: a power-grant proc (Suffocate's "32.57% chance to grant
+   *   Drowning on target") — usually a `Null`-attrib chance template
+   *   linked to a sibling `conditionalEffects` entry by power-name.
+   * - **effect-proc**: a chance-based effect like Water Burst's "33%
+   *   chance Knockback" — a non-`Null` attrib template with `chance < 1`.
+   */
+  specialEffects?: SpecialEffect[];
   /** Mutually exclusive power(s) — picking this power prevents picking the listed internalNames */
   excludes?: string[];
+}
+
+/** A proc/conditional-grant entry for the InfoPanel SPECIAL section. */
+export interface SpecialEffect {
+  /**
+   * - `'grant'`: a power-presence grant proc (e.g. "X% chance to grant
+   *   Drowning on target"). Usually backed by a `Null`-attrib chance
+   *   template paired with a `conditionalEffects` entry.
+   * - `'effect-proc'`: a chance-based simple effect (e.g. Knockback).
+   */
+  kind: 'grant' | 'effect-proc';
+  /** Chance per cast, 0..1. */
+  chance: number;
+  /** User-facing label fragment. For 'grant', usually a power name like
+   *  "Drowning"; for 'effect-proc', the effect name like "Knockback". */
+  label: string;
 }
 
 /** A single state-gated bonus that the InfoPanel renders as a toggle. */

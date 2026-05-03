@@ -70,5 +70,12 @@ export const SniperBlast: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ]
 };

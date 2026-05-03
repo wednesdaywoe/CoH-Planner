@@ -59,5 +59,12 @@ export const Quills: Power = {
       "scale": 3,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    }
+  ]
 };

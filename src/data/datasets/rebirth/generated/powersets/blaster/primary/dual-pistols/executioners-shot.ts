@@ -100,5 +100,12 @@ export const ExecutionersShot: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.699999988079071,
+      "label": "Knockback"
+    }
+  ]
 };

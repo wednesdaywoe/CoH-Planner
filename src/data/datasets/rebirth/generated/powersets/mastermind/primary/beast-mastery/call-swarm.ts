@@ -58,5 +58,12 @@ export const CallSwarm: Power = {
       "defenseDebuff": 8
     },
     "buffDuration": 8
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.3199999928474426,
+      "label": "state"
+    }
+  ]
 };

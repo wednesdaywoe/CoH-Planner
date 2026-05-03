@@ -50,5 +50,12 @@ export const HandClap: Power = {
       "scale": 4,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Stun"
+    }
+  ]
 };

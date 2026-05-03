@@ -51,5 +51,12 @@ export const ShadowPunch: Power = {
       "scale": 0.5,
       "table": "Melee_Damage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.6499999761581421,
+      "label": "state"
+    }
   ]
 };

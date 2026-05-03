@@ -93,5 +93,12 @@ export const BulletRain: Power = {
       "scale": 2,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ]
 };

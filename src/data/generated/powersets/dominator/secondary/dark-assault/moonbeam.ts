@@ -58,5 +58,12 @@ export const EngulfingDarkness: Power = {
       "scale": 0.864,
       "table": "Melee_PvPDamage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Negative_Energy_Dmg"
+    }
   ]
 };

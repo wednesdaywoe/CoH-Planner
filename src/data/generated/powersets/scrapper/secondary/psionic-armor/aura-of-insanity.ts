@@ -141,5 +141,47 @@ export const AuraofInsanity: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 4
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Confuse"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Sleep"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Hold"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Fear"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.33329999446868896,
+      "label": "Sleep"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Hold"
+    }
+  ]
 };

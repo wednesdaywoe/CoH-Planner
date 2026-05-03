@@ -49,5 +49,12 @@ export const ForceBubble: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 0.25
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.009999999776482582,
+      "label": "Knockback"
+    }
+  ]
 };

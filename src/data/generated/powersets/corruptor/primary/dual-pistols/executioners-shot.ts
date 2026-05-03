@@ -70,5 +70,12 @@ export const ExecutionersShot: Power = {
       "table": "Ranged_Knockback"
     },
     "buffDuration": 8
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.699999988079071,
+      "label": "Knockback"
+    }
+  ]
 };

@@ -87,5 +87,12 @@ export const Roots: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 12
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Immobilized"
+    }
+  ]
 };

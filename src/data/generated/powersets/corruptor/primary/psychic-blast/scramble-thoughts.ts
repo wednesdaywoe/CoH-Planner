@@ -89,5 +89,32 @@ export const ScrambleMinds: Power = {
       "scale": 8,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Sleep"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Immobilized"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Placate"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Fear"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Hold"
+    }
+  ]
 };

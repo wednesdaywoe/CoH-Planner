@@ -76,5 +76,17 @@ export const MentalStrike: Power = {
         "tickRate": 1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.08889999985694885,
+      "label": "Grant_Power"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.26669999957084656,
+      "label": "Grant_Power"
+    }
   ]
 };

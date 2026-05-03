@@ -62,5 +62,12 @@ export const CallHawk: Power = {
       "scale": 1.34,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Knockback"
+    }
+  ]
 };

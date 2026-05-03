@@ -58,5 +58,12 @@ export const CraneKick: Power = {
       "scale": 6,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Knockback"
+    }
+  ]
 };

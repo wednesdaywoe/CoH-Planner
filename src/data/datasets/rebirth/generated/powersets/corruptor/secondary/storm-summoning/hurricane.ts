@@ -51,5 +51,12 @@ export const Hurricane: Power = {
       "table": "Ranged_Knockback"
     },
     "buffDuration": 1.05
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Knockback"
+    }
+  ]
 };

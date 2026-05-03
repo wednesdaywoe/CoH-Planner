@@ -84,5 +84,12 @@ export const Shred: Power = {
       "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Lethal_Dmg"
+    }
+  ]
 };

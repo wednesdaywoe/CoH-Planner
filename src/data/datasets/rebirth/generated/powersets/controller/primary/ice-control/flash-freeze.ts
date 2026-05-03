@@ -59,5 +59,12 @@ export const FlashFreeze: Power = {
       "scale": 12,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Sleep"
+    }
+  ]
 };

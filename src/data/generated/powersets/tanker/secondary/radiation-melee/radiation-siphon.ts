@@ -92,5 +92,12 @@ export const RadiationSiphon: Power = {
         "tickRate": 1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.3199999928474426,
+      "label": "Grant_Power"
+    }
   ]
 };

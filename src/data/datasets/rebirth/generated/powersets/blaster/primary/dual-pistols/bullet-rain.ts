@@ -100,5 +100,12 @@ export const BulletRain: Power = {
       "damageBuff": 9.17
     },
     "buffDuration": 9.17
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ]
 };

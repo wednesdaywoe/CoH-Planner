@@ -70,5 +70,22 @@ export const AtomSmasher: Power = {
       "table": "Melee_Immobilize"
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.3499999940395355,
+      "label": "state"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Energy_Dmg"
+    }
+  ]
 };

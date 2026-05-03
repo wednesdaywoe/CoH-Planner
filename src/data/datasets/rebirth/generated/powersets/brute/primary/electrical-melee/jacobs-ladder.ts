@@ -79,5 +79,17 @@ export const JacobsLadder: Power = {
       "table": "Melee_InherentTaunt"
     },
     "buffDuration": 2
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Sleep"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Recovery"
+    }
+  ]
 };

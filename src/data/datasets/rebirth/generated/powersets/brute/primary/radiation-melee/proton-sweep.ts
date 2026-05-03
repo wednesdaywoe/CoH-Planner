@@ -82,5 +82,12 @@ export const ProtonSweep: Power = {
       "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.20999999344348907,
+      "label": "state"
+    }
+  ]
 };

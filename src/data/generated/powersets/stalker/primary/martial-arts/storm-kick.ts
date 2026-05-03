@@ -48,5 +48,22 @@ export const StormKick: Power = {
       "scale": 1.221,
       "table": "Melee_PvPDamage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.11999999731779099,
+      "label": "Smashing_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Smashing_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Grant_Power"
+    }
   ]
 };

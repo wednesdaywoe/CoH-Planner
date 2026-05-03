@@ -61,5 +61,22 @@ export const ShadowPunch: Power = {
       "scale": 0.6606,
       "table": "Melee_PvPDamage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Negative_Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Negative_Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.6499999761581421,
+      "label": "Grant_Power"
+    }
   ]
 };

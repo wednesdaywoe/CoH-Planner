@@ -65,5 +65,12 @@ export const FollowThrough: Power = {
       "scale": 4,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Stun"
+    }
+  ]
 };

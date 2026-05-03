@@ -61,5 +61,12 @@ export const XRayBeam: Power = {
       "defenseDebuff": 6
     },
     "buffDuration": 6
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.3100000023841858,
+      "label": "Grant_Power"
+    }
+  ]
 };

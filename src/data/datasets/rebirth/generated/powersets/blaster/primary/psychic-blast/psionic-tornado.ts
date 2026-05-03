@@ -61,5 +61,12 @@ export const PsionicTornado: Power = {
       "damageBuff": 9.87
     },
     "buffDuration": 9.87
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knock Up"
+    }
+  ]
 };

@@ -71,5 +71,12 @@ export const BrightNovaDetonation: Power = {
     },
     "buffDuration": 10
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ],
   "requires": "0"
 };

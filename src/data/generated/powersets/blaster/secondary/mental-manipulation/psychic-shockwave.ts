@@ -66,5 +66,12 @@ export const PsychicShockwave: Power = {
       "damageBuff": 9.47
     },
     "buffDuration": 9.47
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Stun"
+    }
+  ]
 };

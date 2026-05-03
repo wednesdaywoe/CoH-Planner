@@ -66,5 +66,17 @@ export const PowerBlast: Power = {
       "scale": 2,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Grant_Power"
+    }
+  ]
 };

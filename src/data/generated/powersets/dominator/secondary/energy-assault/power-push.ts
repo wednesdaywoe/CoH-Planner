@@ -66,5 +66,12 @@ export const PowerPush: Power = {
       "scale": 16,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Grant_Power"
+    }
+  ]
 };

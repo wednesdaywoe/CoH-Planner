@@ -67,5 +67,12 @@ export const AxeCyclone: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 0.35
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ]
 };

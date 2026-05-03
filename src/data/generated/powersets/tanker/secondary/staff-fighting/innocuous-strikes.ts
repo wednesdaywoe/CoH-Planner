@@ -75,5 +75,12 @@ export const InnocuousStrikes: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Immobilized"
+    }
+  ]
 };

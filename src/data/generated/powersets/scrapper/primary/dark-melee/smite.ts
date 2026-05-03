@@ -71,5 +71,17 @@ export const Smite: Power = {
       "scale": 1.32,
       "table": "Melee_InherentDamage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Negative_Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Negative_Energy_Dmg"
+    }
   ]
 };

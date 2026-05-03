@@ -62,5 +62,12 @@ export const BrightNovaBlast: Power = {
     },
     "buffDuration": 6
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Knockback"
+    }
+  ],
   "requires": "0"
 };

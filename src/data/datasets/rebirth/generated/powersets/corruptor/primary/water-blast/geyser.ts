@@ -167,5 +167,22 @@ export const Geyser: Power = {
       "group": "tidal_power-stacks",
       "mode": "replace"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6700000166893005,
+      "label": "Knock Up"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Stun"
+    }
   ]
 };

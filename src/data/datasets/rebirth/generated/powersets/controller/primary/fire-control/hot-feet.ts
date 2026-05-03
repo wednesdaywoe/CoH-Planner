@@ -46,5 +46,12 @@ export const HotFeet: Power = {
       "scale": 4,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Fire_Dmg"
+    }
+  ]
 };

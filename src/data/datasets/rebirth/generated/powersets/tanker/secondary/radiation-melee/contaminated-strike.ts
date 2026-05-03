@@ -74,5 +74,12 @@ export const ContaminatedStrike: Power = {
       "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.11999999731779099,
+      "label": "state"
+    }
+  ]
 };

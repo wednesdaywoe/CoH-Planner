@@ -73,5 +73,12 @@ export const CallSwarm: Power = {
       "table": "Melee_HealSelf"
     },
     "buffDuration": 30
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.3199999928474426,
+      "label": "Grant_Power"
+    }
+  ]
 };

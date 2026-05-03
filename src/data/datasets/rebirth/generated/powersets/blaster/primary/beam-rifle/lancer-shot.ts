@@ -75,5 +75,12 @@ export const LancerShot: Power = {
         "table": "Ranged_Damage"
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5199999809265137,
+      "label": "Unknown(116)"
+    }
   ]
 };

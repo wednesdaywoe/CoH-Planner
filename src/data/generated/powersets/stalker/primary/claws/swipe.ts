@@ -49,5 +49,22 @@ export const Swipe: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5849999785423279,
+      "label": "Grant_Power"
+    }
+  ],
   "requires": "Stalker_Defense.Shield_Defense !"
 };

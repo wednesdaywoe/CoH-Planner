@@ -36,5 +36,22 @@ export const GangWar: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Unknown(116)"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Unknown(116)"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Unknown(116)"
+    }
+  ]
 };

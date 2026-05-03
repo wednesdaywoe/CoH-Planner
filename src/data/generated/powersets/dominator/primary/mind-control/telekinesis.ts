@@ -55,5 +55,12 @@ export const Telekinesis: Power = {
       "mezResistance": 1.5
     },
     "buffDuration": 1.5
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Immobilized"
+    }
+  ]
 };

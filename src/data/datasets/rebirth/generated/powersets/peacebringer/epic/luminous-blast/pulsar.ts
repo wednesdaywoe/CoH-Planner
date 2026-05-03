@@ -41,5 +41,12 @@ export const Pulsar: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Stun"
+    }
+  ]
 };

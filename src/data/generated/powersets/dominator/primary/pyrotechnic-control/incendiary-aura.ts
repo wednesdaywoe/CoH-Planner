@@ -90,5 +90,12 @@ export const IncendiaryAura: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "buffDuration": 5
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.029999999329447746,
+      "label": "Execute_Power"
+    }
+  ]
 };

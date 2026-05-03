@@ -52,5 +52,12 @@ export const Char: Power = {
       "scale": 12,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Hold"
+    }
+  ]
 };

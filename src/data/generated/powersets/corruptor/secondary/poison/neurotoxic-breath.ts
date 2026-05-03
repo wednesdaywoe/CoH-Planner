@@ -45,5 +45,12 @@ export const NeurotoxicBreath: Power = {
       "scale": 3,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Hold"
+    }
+  ]
 };

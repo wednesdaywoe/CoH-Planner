@@ -65,5 +65,12 @@ export const AssassinsCorruption: Power = {
       "stealth": 8
     },
     "buffDuration": 8
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.8600000143051147,
+      "label": "state"
+    }
+  ]
 };

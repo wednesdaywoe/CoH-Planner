@@ -102,5 +102,12 @@ export const SonicThrust: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 15
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Knockback"
+    }
+  ]
 };

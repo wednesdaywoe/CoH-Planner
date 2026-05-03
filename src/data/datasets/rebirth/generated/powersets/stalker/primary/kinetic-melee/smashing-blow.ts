@@ -56,5 +56,17 @@ export const SmashingBlow: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Stun"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.8500000238418579,
+      "label": "state"
+    }
+  ]
 };

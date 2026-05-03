@@ -70,5 +70,17 @@ export const BlackDwarfSmite: Power = {
       "table": "Melee_InherentTaunt"
     }
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Stun"
+    }
+  ],
   "requires": "0"
 };

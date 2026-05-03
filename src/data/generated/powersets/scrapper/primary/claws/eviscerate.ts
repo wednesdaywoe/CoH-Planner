@@ -66,5 +66,12 @@ export const Eviscerate: Power = {
       "scale": 1.99,
       "table": "Melee_InherentDamage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.15000000596046448,
+      "label": "Lethal_Dmg"
+    }
   ]
 };

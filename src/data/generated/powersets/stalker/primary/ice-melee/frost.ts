@@ -65,5 +65,22 @@ export const Frost: Power = {
       "duration": 1.1,
       "tickRate": 0.30000001192092896
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Cold_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Cold_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Cold_Dmg"
+    }
   ]
 };

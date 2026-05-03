@@ -66,5 +66,22 @@ export const ArcticAir: Power = {
     },
     "effectDuration": 2,
     "buffDuration": 2.25
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Confuse"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Confuse"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Afraid"
+    }
+  ]
 };

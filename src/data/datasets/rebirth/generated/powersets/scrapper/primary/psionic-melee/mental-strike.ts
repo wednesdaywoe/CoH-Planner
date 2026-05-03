@@ -68,5 +68,27 @@ export const MentalStrike: Power = {
         "tickRate": 1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.08888889104127884,
+      "label": "state"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.17777778208255768,
+      "label": "state"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Psionic_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Psionic_Dmg"
+    }
   ]
 };

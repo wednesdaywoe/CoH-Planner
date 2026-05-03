@@ -131,5 +131,17 @@ export const SparklingChain: Power = {
       }
     },
     "buffDuration": 12
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Execute_Power"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Execute_Power"
+    }
+  ]
 };

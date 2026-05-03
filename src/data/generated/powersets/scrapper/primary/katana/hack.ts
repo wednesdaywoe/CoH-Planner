@@ -72,5 +72,22 @@ export const StingoftheWasp: Power = {
     },
     "buffDuration": 10
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.9980000257492065,
+      "label": "Base_Defense"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Lethal_Dmg"
+    }
+  ],
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

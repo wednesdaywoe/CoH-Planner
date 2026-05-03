@@ -53,5 +53,12 @@ export const Scare: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Fear"
+    }
+  ]
 };

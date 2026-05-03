@@ -74,5 +74,22 @@ export const RadioactiveSmash: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Energy_Dmg"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.23000000417232513,
+      "label": "state"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Knockback"
+    }
+  ]
 };

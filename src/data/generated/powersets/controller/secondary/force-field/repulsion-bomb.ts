@@ -96,5 +96,12 @@ export const ForceBomb: Power = {
       "table": "Ranged_Stun"
     },
     "buffDuration": 30
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Stun"
+    }
+  ]
 };

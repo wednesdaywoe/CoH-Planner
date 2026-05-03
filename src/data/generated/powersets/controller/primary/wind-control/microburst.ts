@@ -104,5 +104,12 @@ export const Microburst: Power = {
       "mode": "replace"
     }
   ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Stun"
+    }
+  ],
   "requires": "accesslevel char> 0 >="
 };

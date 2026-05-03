@@ -53,5 +53,12 @@ export const EngulfingDarkness: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Negative_Energy_Dmg"
+    }
   ]
 };

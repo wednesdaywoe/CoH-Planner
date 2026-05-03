@@ -65,5 +65,12 @@ export const PulseRifleBurst: Power = {
       "table": "Ranged_Knockback"
     },
     "buffDuration": 30
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Knockback"
+    }
+  ]
 };

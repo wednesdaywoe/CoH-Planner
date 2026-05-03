@@ -76,5 +76,32 @@ export const TelekineticBlow: Power = {
         "tickRate": 1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.23266667127609253,
+      "label": "state"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.46533334255218506,
+      "label": "state"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Knock Up"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Psionic_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Psionic_Dmg"
+    }
   ]
 };

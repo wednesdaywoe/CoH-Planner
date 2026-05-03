@@ -69,5 +69,17 @@ export const Beheader: Power = {
       "defenseDebuff": 6
     },
     "buffDuration": 6
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Base_Defense"
+    }
+  ]
 };

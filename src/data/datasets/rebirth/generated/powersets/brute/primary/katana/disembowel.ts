@@ -73,5 +73,12 @@ export const SoaringDragon: Power = {
       "table": "Melee_InherentTaunt"
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Knock Up"
+    }
+  ]
 };

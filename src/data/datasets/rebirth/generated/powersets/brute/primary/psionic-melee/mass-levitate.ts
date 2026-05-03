@@ -78,5 +78,22 @@ export const MassLevitate: Power = {
         "tickRate": 1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.20000000298023224,
+      "label": "state"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.4000000059604645,
+      "label": "state"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Psionic_Dmg"
+    }
   ]
 };

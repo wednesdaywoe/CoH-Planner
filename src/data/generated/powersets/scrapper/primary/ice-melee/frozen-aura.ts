@@ -68,5 +68,17 @@ export const FrozenAura: Power = {
       "scale": 10,
       "table": "Melee_Sleep"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Cold_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Cold_Dmg"
+    }
+  ]
 };

@@ -56,5 +56,12 @@ export const HeartofDarkness: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Stun"
+    }
+  ]
 };

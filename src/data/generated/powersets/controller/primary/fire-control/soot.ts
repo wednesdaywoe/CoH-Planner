@@ -62,5 +62,12 @@ export const Char: Power = {
       "scale": 1,
       "table": "Ranged_PvPMez"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Hold"
+    }
+  ]
 };

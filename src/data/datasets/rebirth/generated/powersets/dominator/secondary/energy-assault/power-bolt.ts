@@ -55,5 +55,12 @@ export const PowerBolt: Power = {
       "scale": 0.7,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Knockback"
+    }
+  ]
 };

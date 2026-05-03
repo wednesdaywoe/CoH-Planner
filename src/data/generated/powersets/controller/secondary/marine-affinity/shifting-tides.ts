@@ -58,5 +58,17 @@ export const ShiftingTides: Power = {
       "scale": 0.02,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Cold_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Grant_Power"
+    }
+  ]
 };

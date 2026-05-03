@@ -68,5 +68,22 @@ export const FrozenFists: Power = {
       "duration": 0.3,
       "tickRate": 0.25
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.07000000029802322,
+      "label": "Cold_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.6499999761581421,
+      "label": "Grant_Power"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Cold_Dmg"
+    }
   ]
 };

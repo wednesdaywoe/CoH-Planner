@@ -77,5 +77,12 @@ export const PowerCrash: Power = {
       "scale": 5,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Stun"
+    }
+  ]
 };

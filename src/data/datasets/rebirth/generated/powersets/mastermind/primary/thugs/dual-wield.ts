@@ -50,5 +50,12 @@ export const DualWield: Power = {
       "scale": 0.64,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
+    }
+  ]
 };

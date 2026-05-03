@@ -73,5 +73,32 @@ export const Hypothermia: Power = {
         "buffDuration": 15.1
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Sleep"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Sleep"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Sleep"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.3799999952316284,
+      "label": "Sleep"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.32465052604675293,
+      "label": "Drowning"
+    }
   ]
 };

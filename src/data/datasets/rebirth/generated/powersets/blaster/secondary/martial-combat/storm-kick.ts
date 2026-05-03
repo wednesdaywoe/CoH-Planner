@@ -69,5 +69,12 @@ export const StormKick: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Lethal_Dmg"
+    }
+  ]
 };

@@ -62,5 +62,12 @@ export const SolarFlare: Power = {
     },
     "buffDuration": 10
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Knockback"
+    }
+  ],
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Flare ! && Inherent.Inherent.White_Dwarf_Flare ! &&"
 };

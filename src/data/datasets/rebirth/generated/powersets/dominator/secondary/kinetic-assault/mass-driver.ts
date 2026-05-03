@@ -95,5 +95,12 @@ export const MassDriver: Power = {
         "buffDuration": 8
       }
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.14000000059604645,
+      "label": "Combat_Phase"
+    }
   ]
 };

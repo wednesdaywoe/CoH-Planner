@@ -72,5 +72,12 @@ export const SoulDrain: Power = {
       "damageBuff",
       "tohitBuff"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Negative_Energy_Dmg"
+    }
+  ]
 };

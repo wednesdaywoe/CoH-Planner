@@ -109,5 +109,12 @@ export const EmptyClips: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 9.17
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Knockback"
+    }
+  ]
 };

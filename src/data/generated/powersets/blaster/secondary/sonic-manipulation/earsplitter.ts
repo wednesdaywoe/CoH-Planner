@@ -67,5 +67,12 @@ export const Earsplitter: Power = {
       "scale": 5,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Hold"
+    }
+  ]
 };

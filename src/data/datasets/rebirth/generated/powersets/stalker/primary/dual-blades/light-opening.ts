@@ -42,5 +42,12 @@ export const NimbleSlash: Power = {
     "table": "Melee_Damage",
     "duration": 0.5,
     "tickRate": 0.33000001311302185
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.6499999761581421,
+      "label": "state"
+    }
+  ]
 };

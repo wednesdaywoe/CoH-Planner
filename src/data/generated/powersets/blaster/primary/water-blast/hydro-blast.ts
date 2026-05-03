@@ -69,5 +69,12 @@ export const HydroBlast: Power = {
       "scale": 1.34,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Knockback"
+    }
+  ]
 };

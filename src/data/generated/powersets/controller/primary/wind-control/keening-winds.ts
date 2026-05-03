@@ -65,5 +65,12 @@ export const KeeningWinds: Power = {
       "enduranceGain"
     ]
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Confuse"
+    }
+  ],
   "requires": "accesslevel char> 0 >="
 };

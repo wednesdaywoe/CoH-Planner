@@ -57,5 +57,12 @@ export const Pummel: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6600000262260437,
+      "label": "Stun"
+    }
+  ]
 };

@@ -166,5 +166,17 @@ export const HailofBullets: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 5
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Knockback"
+    }
+  ]
 };

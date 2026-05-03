@@ -66,5 +66,17 @@ export const Shred: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.875,
+      "label": "state"
+    }
+  ]
 };

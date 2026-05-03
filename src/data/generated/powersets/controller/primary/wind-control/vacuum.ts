@@ -52,5 +52,12 @@ export const Vacuum: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Hold"
+    }
+  ],
   "requires": "accesslevel char> 0 >="
 };

@@ -57,5 +57,12 @@ export const EaglesClaw: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.15000000596046448,
+      "label": "Smashing_Dmg"
+    }
+  ]
 };

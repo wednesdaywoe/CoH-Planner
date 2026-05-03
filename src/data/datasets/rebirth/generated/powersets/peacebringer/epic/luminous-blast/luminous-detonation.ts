@@ -64,5 +64,12 @@ export const LuminousDetonation: Power = {
     },
     "buffDuration": 10
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ],
   "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Peacebringer_Offensive.Luminous_Blast.Bright_Nova_Detonation ! && Inherent.Inherent.Bright_Nova_Detonation ! &&"
 };

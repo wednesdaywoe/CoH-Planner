@@ -69,5 +69,12 @@ export const BrightNovaBlast: Power = {
     },
     "buffDuration": 6
   },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Knockback"
+    }
+  ],
   "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Blast ! &&"
 };

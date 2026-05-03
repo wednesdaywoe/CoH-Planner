@@ -60,5 +60,12 @@ export const Buckshot: Power = {
       "damageBuff": 8.4
     },
     "buffDuration": 8.4
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
+    }
+  ]
 };

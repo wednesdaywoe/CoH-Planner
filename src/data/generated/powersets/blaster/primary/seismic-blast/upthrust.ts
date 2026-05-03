@@ -75,5 +75,12 @@ export const Upthrust: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 16
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Knockback"
+    }
+  ]
 };

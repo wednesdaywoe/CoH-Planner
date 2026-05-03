@@ -77,5 +77,12 @@ export const RepulsingTorrent: Power = {
       "scale": 2,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Knockback"
+    }
+  ]
 };

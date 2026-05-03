@@ -64,5 +64,12 @@ export const TitanSweep: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6600000262260437,
+      "label": "Knockback"
+    }
+  ]
 };

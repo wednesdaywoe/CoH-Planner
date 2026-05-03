@@ -51,5 +51,12 @@ export const SaltCrystals: Power = {
       "defenseDebuff": 15
     },
     "buffDuration": 15
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Sleep"
+    }
+  ]
 };

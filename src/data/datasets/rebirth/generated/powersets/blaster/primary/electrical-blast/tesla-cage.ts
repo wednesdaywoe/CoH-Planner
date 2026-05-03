@@ -78,5 +78,12 @@ export const TeslaCage: Power = {
       "damageBuff",
       "enduranceGain"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Endurance"
+    }
+  ]
 };

@@ -53,5 +53,12 @@ export const FullAuto: Power = {
       "scale": 1,
       "table": "Ranged_Damage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Lethal_Dmg"
+    }
   ]
 };

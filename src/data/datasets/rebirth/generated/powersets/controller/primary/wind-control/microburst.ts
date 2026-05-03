@@ -96,5 +96,12 @@ export const Microburst: Power = {
       "group": "wind_control_pressure-stacks",
       "mode": "replace"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Stun"
+    }
   ]
 };

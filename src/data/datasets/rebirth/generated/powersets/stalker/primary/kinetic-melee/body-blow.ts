@@ -56,5 +56,17 @@ export const BodyBlow: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Stun"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.75,
+      "label": "state"
+    }
+  ]
 };

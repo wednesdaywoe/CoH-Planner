@@ -43,5 +43,17 @@ export const EntanglingAura: Power = {
       "scale": 4,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Hold"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Hold"
+    }
+  ]
 };

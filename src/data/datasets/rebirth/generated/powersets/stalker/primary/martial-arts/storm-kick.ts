@@ -40,5 +40,12 @@ export const StormKick: Power = {
     "type": "Smashing",
     "scale": 1.32,
     "table": "Melee_Damage"
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.800000011920929,
+      "label": "state"
+    }
+  ]
 };

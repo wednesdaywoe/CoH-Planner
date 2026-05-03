@@ -61,5 +61,12 @@ export const NeutrinoBolt: Power = {
       "defenseDebuff": 3
     },
     "buffDuration": 3
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.15000000596046448,
+      "label": "Grant_Power"
+    }
+  ]
 };

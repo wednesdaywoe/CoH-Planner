@@ -75,5 +75,12 @@ export const FireSwordCircle: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     }
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Fire_Dmg"
+    }
+  ]
 };

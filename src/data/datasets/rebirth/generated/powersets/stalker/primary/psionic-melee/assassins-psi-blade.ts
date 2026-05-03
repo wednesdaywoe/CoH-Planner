@@ -63,5 +63,12 @@ export const AssassinsPsiBlade: Power = {
       "stealth": 8
     },
     "buffDuration": 8
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.7111111283302307,
+      "label": "state"
+    }
+  ]
 };

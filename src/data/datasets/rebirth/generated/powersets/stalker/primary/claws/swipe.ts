@@ -47,5 +47,12 @@ export const Swipe: Power = {
       "scale": 0.3,
       "table": "Melee_Damage"
     }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.5849999785423279,
+      "label": "state"
+    }
   ]
 };
