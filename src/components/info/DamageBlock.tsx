@@ -283,19 +283,19 @@ function DamageBar({ calculatedDamage, archetypeId }: DamageBlockProps) {
 
   return (
     <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%`}>
-      {/* Final (back layer) */}
+      {/* Final (back layer) — full saturation */}
       <div
-        className="absolute inset-y-0 left-0 bg-amber-500 rounded-l transition-all duration-300"
+        className="absolute inset-y-0 left-0 bg-red-600 rounded-l transition-all duration-300"
         style={{ width: `${finalPercent}%` }}
       />
-      {/* Enhanced (middle layer) */}
+      {/* Enhanced (middle layer) — medium saturation */}
       <div
-        className="absolute inset-y-0 left-0 bg-green-500 rounded-l transition-all duration-300"
+        className="absolute inset-y-0 left-0 bg-red-400 rounded-l transition-all duration-300"
         style={{ width: `${enhPercent}%` }}
       />
-      {/* Base (front layer) */}
+      {/* Base (front layer) — light, low saturation */}
       <div
-        className="absolute inset-y-0 left-0 bg-slate-400 rounded-l transition-all duration-300"
+        className="absolute inset-y-0 left-0 bg-red-200 rounded-l transition-all duration-300"
         style={{ width: `${basePercent}%` }}
       />
     </div>
