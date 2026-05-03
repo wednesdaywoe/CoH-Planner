@@ -365,16 +365,15 @@ function CollapsibleEffectGroup({
 // + movement both fold into BUFFS so a player's defensive buffs and travel
 // powers sit next to their offensive +DMG/+Rech buffs rather than under a
 // half-empty "Protection" subhead.
+//
+// Headers stay neutral (slate-500) so they don't compete with the actual
+// effect rows for attention; the row labels themselves carry the color
+// information per the registry's per-effect colorClass.
 type EffectSection = 'MEZ' | 'BUFFS' | 'DEBUFFS' | 'SPECIAL';
 const SECTION_PRIORITY: Record<EffectSection, number> = {
   MEZ: 1, BUFFS: 2, DEBUFFS: 3, SPECIAL: 4,
 };
-const SECTION_COLOR: Record<EffectSection, string> = {
-  MEZ: 'text-purple-400',
-  BUFFS: 'text-green-400',
-  DEBUFFS: 'text-amber-400',
-  SPECIAL: 'text-cyan-400',
-};
+const SECTION_COLOR_NEUTRAL = 'text-slate-500';
 
 function sectionForCategory(cat: EffectCategory): EffectSection | null {
   switch (cat) {
@@ -1022,7 +1021,7 @@ export function RegistryEffectsDisplay({
         const sectionHeader = showHeader ? (
           <div
             key={`section-${section}-${groupIdx}`}
-            className={`${headerFontSize} ${SECTION_COLOR[section!]} font-semibold uppercase tracking-wider mt-1.5 first:mt-0`}
+            className={`${headerFontSize} ${SECTION_COLOR_NEUTRAL} font-semibold uppercase tracking-wider mt-1.5 first:mt-0`}
           >
             {section}
           </div>

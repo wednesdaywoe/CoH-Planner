@@ -19,6 +19,7 @@
  */
 
 import type { ConditionalEffect, Power } from '@/types';
+import { Toggle } from '@/components/ui/Toggle';
 import {
   useUIStore,
   useMechanicAdjuster,
@@ -105,29 +106,24 @@ function SingleToggle({ power, entry }: SingleToggleProps) {
   const setMechanicAdjuster = useUIStore((s) => s.setMechanicAdjuster);
   const setGlobalAdjuster = useUIStore((s) => s.setGlobalAdjuster);
 
-  const toggle = () => {
-    if (isGlobal) setGlobalAdjuster(entry.id, !active);
-    else setMechanicAdjuster(powerName, entry.id, !active);
+  const handleChange = (checked: boolean) => {
+    if (isGlobal) setGlobalAdjuster(entry.id, checked);
+    else setMechanicAdjuster(powerName, entry.id, checked);
   };
 
   return (
     <div className="flex flex-col">
-      <label
-        title={describeContribution(entry)}
-        className="flex items-center justify-between gap-2 text-[11px] cursor-pointer hover:bg-slate-700/30 rounded px-1 py-0.5"
-      >
-        <span className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={active}
-            onChange={toggle}
-            className="accent-cyan-500 w-3 h-3"
-          />
-          <span className={active ? 'text-slate-100' : 'text-slate-400'}>{entry.label}</span>
-        </span>
+      <div className="flex items-center justify-between gap-2 text-[11px]">
+        <Toggle
+          id={`adjuster-${powerName}-${entry.id}`}
+          checked={active}
+          onChange={(e) => handleChange(e.target.checked)}
+          label={entry.label}
+          title={describeContribution(entry)}
+        />
         {isGlobal && <GlobalBadge />}
-      </label>
-      <ContributionHint power={power} entry={entry} indent="ml-6" />
+      </div>
+      <ContributionHint power={power} entry={entry} indent="ml-12" />
     </div>
   );
 }
