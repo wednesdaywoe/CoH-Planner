@@ -1682,12 +1682,14 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
     }).length;
   }, [build, picker.currentPowerName, setId]);
 
-  // Calculate aspect values at the effective level
-  // Attuned IOs scale to character level (no maxLevel cap — that only applies to non-attuned)
+  // Calculate aspect values at the effective level.
+  // Both attuned and non-attuned cap at the set's maxLevel — only ATOs / event IOs
+  // (maxLevel <= 1) scale freely above their listed cap. Mirrors the calc engine
+  // in enhancement-values.ts to keep the picker preview consistent with the actual
+  // stat calculation (e.g. attuned Kinetic Combat caps at L35, not character level).
   const rawLevel = attunementEnabled ? (build.level || 50) : globalIOLevel;
-  const effectiveLevel = attunementEnabled
-    ? Math.max(set.minLevel, rawLevel)
-    : Math.max(set.minLevel, Math.min(rawLevel, set.maxLevel));
+  const cappedLevel = set.maxLevel > 1 ? Math.min(rawLevel, set.maxLevel) : rawLevel;
+  const effectiveLevel = Math.max(set.minLevel, cappedLevel);
   const rawAspectCount = piece.aspects.filter(a => normalizeAspectName(a) !== null).length || piece.aspects.length;
   // Proc effects count as 3 additional aspects for the multi-aspect modifier
   const aspectCount = piece.proc ? rawAspectCount + 3 : rawAspectCount;

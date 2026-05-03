@@ -35,6 +35,127 @@ from bin_crawler.parser._messages import load_messages
 
 REBIRTH_ASSETS = r'G:/Thunderspy Gaming/Sweet Tea/rebirth'
 OUTPUT_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'rebirth' / 'io-sets-raw.ts'
+HC_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'homecoming' / 'io-sets-raw.ts'
+
+
+def _load_hc_sets() -> dict[str, dict]:
+    """Build a setId -> full-set-entry map from HC's io-sets-raw.ts.
+
+    HC's data has hand-curated piece names ("Accuracy/Damage", etc.) that
+    match Mids exports verbatim, plus complete bonus tiers. The Rebirth
+    binary extraction loses Accuracy aspects on many pieces and produces
+    auto-generated names that don't match Mids strings.
+
+    For sets that exist in both servers, reuse HC's entry directly.
+    Rebirth-only sets fall back to the binary-extracted entry.
+
+    Returns a dict mapping set_id -> parsed JSON object (the full set body).
+    """
+    if not HC_IO_SETS_PATH.exists():
+        return {}
+    text = HC_IO_SETS_PATH.read_text(encoding='utf-8')
+    sets: dict[str, dict] = {}
+    set_pattern = re.compile(r'^  "([a-z0-9_]+)": (\{)', re.MULTILINE)
+    for m in set_pattern.finditer(text):
+        set_id = m.group(1)
+        # Find the matching closing brace for this top-level set object.
+        depth = 0
+        i = m.start(2)
+        end = -1
+        in_string = False
+        escape = False
+        while i < len(text):
+            c = text[i]
+            if escape:
+                escape = False
+            elif c == '\\' and in_string:
+                escape = True
+            elif c == '"':
+                in_string = not in_string
+            elif not in_string:
+                if c == '{':
+                    depth += 1
+                elif c == '}':
+                    depth -= 1
+                    if depth == 0:
+                        end = i + 1
+                        break
+            i += 1
+        if end < 0:
+            continue
+        body = text[m.start(2):end]
+        # HC's io-sets-raw.ts is TS object syntax, not strict JSON: it allows
+        # trailing commas. Strip them so json.loads can parse.
+        body_clean = re.sub(r',(\s*[\]\}])', r'\1', body)
+        try:
+            sets[set_id] = json.loads(body_clean)
+        except json.JSONDecodeError:
+            continue
+    return sets
+
+# ---------------------------------------------------------------------
+# Curated icon overrides for Rebirth-only sets.
+# Files were copied from MRB into public/img/Enhancements/{Archetype,Event,IO Sets}.
+# These names override the auto-generated `s{set_id}.png` fallback.
+# ---------------------------------------------------------------------
+ICON_OVERRIDES = {
+    # Guardian ATOs (Archetype/)
+    'guardians_gift':                  "AO_Guardian's_Gift.png",
+    'superior_guardians_gift':         "SAO_Guardian's_Gift.png",
+    'absolute_resolution':             'AO_Absolute_Resolution.png',
+    'superior_absolute_resolution':    'SAO_Absolute_Resolution.png',
+    # Halloween event sets (Event/)
+    'the_haunting':                    'EO_The_Haunting.png',
+    'superior_the_haunting':           'SEO_The_Haunting.png',
+    'endless_nightmare':               'EO_Endless_Nightmare.png',
+    'superior_endless_nightmare':      'SEO_Endless_Nightmare.png',
+    'vampires_bite':                   'EO_Vampires_Bite.png',
+    'superior_vampires_bite':          'SEO_Vampires_Bite.png',
+    'witchcraft':                      'EO_Witchcraft.png',
+    'superior_witchcraft':             'SEO_Witchcraft.png',
+    'return_from_the_grave':           'EO_Return_From_The_Grave.png',
+    'superior_return_from_the_grave':  'SEO_Return_From_The_Grave.png',
+    # Winter event sets (Event/)
+    'winter_storm':                    'EO_Winter_Storm.png',
+    'superior_winter_storm':           'SEO_Winter_Storm.png',
+    'winters_gift':                    'SEO_Winters_Gift.png',
+    # Misc Rebirth-only (IO Sets/)
+    'forced_indoctrination':           'ForcedIndoctrination.png',
+    'imperial_might':                  'ImperialMight.png',
+    'inexhaustibility':                'Inexhaustibility.png',
+    'libertys_belt':                   'Libertys_Belt.png',
+    'rolling_barrage':                 'Rolling_Barrage.png',
+    'synapses_agility':                'PowerOfSynapse.png',
+}
+
+# ---------------------------------------------------------------------
+# Curated piece data for Rebirth-only sets.
+# The binary extraction loses Accuracy aspects on many ATO pieces; Mids
+# exports use the standard ATO piece-name convention. Provide hand-curated
+# pieces so legacy "Set: Piece" Mids imports resolve correctly.
+# ---------------------------------------------------------------------
+def _ato_pieces(proc_name: str) -> list[dict]:
+    return [
+        {'num': 1, 'name': 'Accuracy/Damage',
+         'aspects': ['Accuracy', 'Damage'], 'proc': False, 'unique': True},
+        {'num': 2, 'name': 'Damage/RechargeTime',
+         'aspects': ['Damage', 'Recharge'], 'proc': False, 'unique': True},
+        {'num': 3, 'name': 'Accuracy/Damage/RechargeTime',
+         'aspects': ['Accuracy', 'Damage', 'Recharge'], 'proc': False, 'unique': True},
+        {'num': 4, 'name': 'Damage/Endurance/RechargeTime',
+         'aspects': ['Damage', 'Endurance', 'Recharge'], 'proc': False, 'unique': True},
+        {'num': 5, 'name': 'Accuracy/Damage/Endurance/RechargeTime',
+         'aspects': ['Accuracy', 'Damage', 'Endurance', 'Recharge'], 'proc': False, 'unique': True},
+        {'num': 6, 'name': proc_name,
+         'aspects': ['Recharge'], 'proc': True, 'unique': True},
+    ]
+
+PIECE_OVERRIDES = {
+    'guardians_gift':               _ato_pieces('RechargeTime/Chance for PBAoE Resolve'),
+    'superior_guardians_gift':      _ato_pieces('RechargeTime/Chance for PBAoE Resolve'),
+    'absolute_resolution':          _ato_pieces('RechargeTime/Chance for Energy Damage Bonus'),
+    'superior_absolute_resolution': _ato_pieces('RechargeTime/Chance for Energy Damage Bonus'),
+}
 
 # ---------------------------------------------------------------------
 # Rarity → planner category
@@ -60,6 +181,8 @@ EC_RARITY_TO_PLANNER = {
     'LibertysBelt':         'event',
     'ImperialMight':        'event',
     'ForcedIndoctrination': 'event',
+    'ECSpeedRun':           'event',
+    '':                     'event',
 }
 
 # ---------------------------------------------------------------------
@@ -242,6 +365,9 @@ def main() -> int:
     power_index: dict[str, PowerRecord] = {p.full_name: p for p in powers}
     print(f'  {len(powers)} power records indexed')
 
+    hc_sets = _load_hc_sets()
+    print(f'  {len(hc_sets)} HC sets loaded for shared-set fallback')
+
     # Build the io-sets-raw shape.
     # Match what's in src/data/datasets/homecoming/io-sets-raw.ts.
     out_sets: dict[str, dict] = {}
@@ -320,10 +446,36 @@ def main() -> int:
             'maxLevel': s.max_level or 50,
             'bonuses': bonuses_out,
             'pieces': pieces,
-            'icon': f's{set_id}.png',
+            'icon': ICON_OVERRIDES.get(set_id) or (hc_sets.get(set_id, {}).get('icon')) or f's{set_id}.png',
         }
 
+    # Override shared sets with HC's hand-curated entry. HC piece names
+    # match Mids exports verbatim (e.g. "Accuracy/Damage"); the binary
+    # extraction loses Accuracy aspects on many pieces and produces
+    # auto-generated names that fail Mids legacy-format imports.
+    shared_overridden = 0
+    for set_id in list(out_sets.keys()):
+        hc_entry = hc_sets.get(set_id)
+        if hc_entry:
+            # Preserve our icon override if one exists.
+            preserved_icon = ICON_OVERRIDES.get(set_id)
+            out_sets[set_id] = dict(hc_entry)
+            if preserved_icon:
+                out_sets[set_id]['icon'] = preserved_icon
+            shared_overridden += 1
+
+    # Apply curated piece-data overrides for Rebirth-only sets where the
+    # binary extraction is incomplete (Guardian ATOs lose Accuracy aspect).
+    pieces_overridden = 0
+    for set_id, pieces in PIECE_OVERRIDES.items():
+        if set_id in out_sets:
+            out_sets[set_id]['pieces'] = pieces
+            pieces_overridden += 1
+
     print(f'\nExtracted {len(out_sets)} sets ({len(skipped)} skipped)')
+    print(f'  {shared_overridden} shared sets overridden with HC data')
+    print(f'  {pieces_overridden} Rebirth-only sets received curated piece data')
+    print(f'  {len(out_sets) - shared_overridden} Rebirth-only sets total')
     for sk in skipped[:8]:
         print(f'  skip: {sk}')
 

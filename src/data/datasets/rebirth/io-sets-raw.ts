@@ -9,7 +9,7 @@
  *                     and bonus values (via Set_Bonus.X.X power records)
  *   - clientmessages-en.bin → display name resolution
  *
- * Total sets: 231
+ * Total sets: 233
  * Includes Rebirth-only sets (Guardian's Gift, Absolute Resolution,
  * Halloween + Winter event sets, Liberty's Belt, etc.) that aren't in
  * HC's curated io-sets-raw.
@@ -61,44 +61,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -106,9 +86,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -116,51 +106,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "purple",
-    "icon": "sabsolute_amazement.png",
+    "icon": "sAbsoluteamazement.png",
     "maxLevel": 50,
     "minLevel": 50,
     "name": "Absolute Amazement",
@@ -186,21 +146,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Stun",
-          "Endurance"
+          "Stun"
         ],
-        "name": "Recharge/Stun/Endurance",
+        "name": "Accuracy/Recharge/Stun",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
@@ -217,9 +177,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -ToHit",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -349,17 +309,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "sabsolute_resolution.png",
+    "icon": "AO_Absolute_Resolution.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Absolute Resolution",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
         "unique": true
@@ -369,18 +329,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage/RechargeTime",
         "num": 2,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/RechargeTime",
         "num": 3,
         "proc": false,
         "unique": true
@@ -391,18 +351,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage/Endurance/RechargeTime",
         "num": 4,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/RechargeTime",
         "num": 5,
         "proc": false,
         "unique": true
@@ -411,9 +372,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "RechargeTime/Chance for Energy Damage Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -424,52 +385,60 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.5% Damage",
+            "stat": "damage",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "sachilles_heel.png",
+    "icon": "sAchillesheel.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Achilles' Heel",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense Debuff"
+        ],
+        "name": "Defense Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense Debuff/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -Res(All)",
         "num": 3,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Defense Debuff"
@@ -479,44 +448,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Energy Resistance",
-            "stat": "energy_resistance",
-            "value": 3.0
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 3
@@ -524,9 +473,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 5
@@ -534,43 +493,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -578,40 +507,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sadjusted_targeting.png",
+    "icon": "sAdjustedTargetting.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Adjusted Targeting",
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "ToHit Buff",
+        "name": "ToHit",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge",
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "Recharge/ToHit Buff",
+        "name": "Recharge/ToHit",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
           "Recharge",
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "Endurance/Recharge/ToHit Buff",
+        "name": "Endurance/Recharge/ToHit",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -621,17 +550,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "Endurance/ToHit Buff",
+        "name": "Endurance/ToHit",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -640,7 +569,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "To Hit Buff"
@@ -650,49 +579,59 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+1.0% Recovery",
+            "stat": "recovery",
+            "value": 1
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "sadrenal_adjustment.png",
+    "icon": "sAdrenalAdj.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Adrenal Adjustment",
     "pieces": [
       {
         "aspects": [
-          "Endurance Modification"
+          "EndMod"
         ],
-        "name": "Endurance Modification",
+        "name": "EndMod",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance Modification",
+          "EndMod",
           "Recharge"
         ],
-        "name": "Endurance Modification/Recharge",
+        "name": "EndMod/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance Modification",
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "EndMod",
+          "Recharge"
         ],
-        "name": "Endurance Modification/Recharge/Endurance",
+        "name": "Accuracy/EndMod/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Endurance Modification"
@@ -702,19 +641,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 3.125
-          },
+            "desc": "+7.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
           {
-            "desc": "+3.125% Defense (Cold)",
+            "desc": "+3% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Area)",
+            "desc": "+1.56% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 3
@@ -722,44 +666,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 3.0
+            "desc": "+3% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
@@ -767,19 +681,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Area)",
+            "desc": "+3.13% Area Defense",
             "stat": "defense_(area)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 5
@@ -787,43 +696,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 4.5
-          },
-          {
             "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
+            "desc": "+4.5% Toxic Resistance",
+            "stat": "damage_resistance_(toxic)",
+            "value": 4.5
           },
           {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+7.5% Mez Resistance (All)",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -831,30 +715,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "saegis.png",
+    "icon": "sAegis.png",
     "maxLevel": 50,
     "minLevel": 25,
     "name": "Aegis",
     "pieces": [
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Damage Resistance/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage Resistance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -864,40 +748,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage Resistance/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage Resistance"
         ],
-        "name": "Damage",
+        "name": "Damage Resistance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear"
-        ],
-        "name": "Confuse/Hold/Immobilize/Sleep/Stun/Fear",
+        "aspects": [],
+        "name": "+Res Mez(All)/+Res(Psionic)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -908,9 +785,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+2.0% Knockback Strength",
+            "stat": "knockback_strength",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
@@ -918,43 +805,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -962,20 +819,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sair_burst.png",
+    "icon": "sAirburst.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Air Burst",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -985,7 +842,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -995,16 +852,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage",
+          "Range"
         ],
-        "name": "Damage",
+        "name": "Damage/Range",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Ranged AoE Damage"
@@ -1014,43 +872,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -1059,43 +897,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+11% Accuracy",
+            "stat": "accuracy",
+            "value": 11
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -1103,63 +931,68 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sanalyze_weakness.png",
+    "icon": "AnalyzeWeakness.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Analyze Weakness",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense Debuff"
+        ],
+        "name": "Defense Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Accuracy",
+          "Defense Debuff"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Defense Debuff",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense Debuff/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for +ToHit",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Accurate Defense Debuff"
@@ -1169,9 +1002,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+135.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 135.0
+            "desc": "+1.35% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.35
           }
         ],
         "pieces": 2
@@ -1179,43 +1012,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -1224,39 +1027,54 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Area)",
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 3
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.75% Area Defense",
             "stat": "defense_(area)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sannihilation.png",
+    "icon": "sAnnihilation.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Annihilation",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -1266,46 +1084,48 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -Res(All)",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Ranged AoE Damage"
@@ -1315,54 +1135,64 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+4.0% Regeneration",
+            "stat": "regeneration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 1.25
           },
           {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.25
-          },
-          {
-            "desc": "+0.625% Defense (Melee)",
+            "desc": "+0.63% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "sannoyance.png",
+    "icon": "sAnnoyance.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Annoyance",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Threat"
+        ],
+        "name": "Threat",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge"
+          "Recharge",
+          "Threat"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Threat",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge"
+          "Range",
+          "Recharge",
+          "Threat"
         ],
-        "name": "Recharge",
+        "name": "Range/Recharge/Threat",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Threat Duration"
@@ -1372,9 +1202,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+16.0% Regeneration",
+            "stat": "regeneration",
+            "value": 16
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 3
@@ -1382,9 +1222,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -1392,16 +1242,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Psionic)",
+            "desc": "+5.00% Psionic Defense",
             "stat": "defense_(psionic)",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 6
       }
     ],
     "category": "purple",
-    "icon": "sapocalypse.png",
+    "icon": "sApocalypse.png",
     "maxLevel": 50,
     "minLevel": 50,
     "name": "Apocalypse",
@@ -1427,21 +1277,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
@@ -1458,9 +1308,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Negative Energy Damage",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -1471,44 +1321,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -1516,9 +1346,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -1526,51 +1366,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "purple",
-    "icon": "sarmageddon.png",
+    "icon": "sArmageddon.png",
     "maxLevel": 50,
     "minLevel": 50,
     "name": "Armageddon",
@@ -1596,21 +1406,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
@@ -1627,9 +1437,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Fire Damage",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -1640,7 +1450,62 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 6
+          },
+          {
+            "desc": "+6.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 6
+          },
+          {
+            "desc": "+3.3% Terror Duration",
+            "stat": "terror_duration",
+            "value": 3.3
+          },
+          {
+            "desc": "+3.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 3
+          },
+          {
+            "desc": "+3.0% Hold Duration",
+            "stat": "hold_duration",
+            "value": 3
+          },
+          {
+            "desc": "+3.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 3
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -1650,59 +1515,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Ranged)",
+            "desc": "+3.13% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "sascendency_of_the_dominator.png",
+    "icon": "AO_Dominator_AscendencyOfTheDominator.png",
     "maxLevel": 1,
     "minLevel": 1,
-    "name": "Ascendency of the Dominator",
+    "name": "Ascendancy of the Dominator",
     "pieces": [
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear",
-          "Endurance"
+          "Accuracy",
+          "Mez"
         ],
-        "name": "Confuse/Hold/Immobilize/Sleep/Stun/Fear/Endurance",
+        "name": "Accuracy/Mez",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Mez/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -1712,47 +1562,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Dam(All)",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Dominator Archetype Sets"
@@ -1762,19 +1605,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Area)",
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.75% Area Defense",
             "stat": "defense_(area)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 4
@@ -1782,7 +1640,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -1791,20 +1659,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "sassassins_mark.png",
+    "icon": "AO_Stalker_AssassinsMark.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Assassin's Mark",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -1814,18 +1682,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -1836,27 +1704,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Recharge Power",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Stalker Archetype Sets"
@@ -1866,44 +1736,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 3.0
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 10
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 3
@@ -1911,19 +1761,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Melee)",
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -1931,39 +1786,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Defense (Cold)",
+            "desc": "+4% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "event",
-    "icon": "savalanche.png",
+    "icon": "EO_Avalanche.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Avalanche",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -1973,49 +1823,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Knockback",
           "Recharge"
         ],
-        "name": "Knockback/Recharge",
+        "name": "Recharge/Chance for Knockback",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Melee AoE Damage"
@@ -2025,17 +1877,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 2.5
           },
           {
-            "desc": "+2.5% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 2.5
-          },
-          {
-            "desc": "+1.25% Defense (Ranged)",
+            "desc": "+1.25% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 1.25
           }
@@ -2045,7 +1892,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Recharge",
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+8% Recharge",
             "stat": "recharge",
             "value": 7.5
           }
@@ -2055,74 +1912,54 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
         "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sbasilisks_gaze.png",
+    "icon": "Basilisk.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Basilisk's Gaze",
     "pieces": [
       {
         "aspects": [
-          "Hold",
-          "Endurance"
+          "Accuracy",
+          "Hold"
         ],
-        "name": "Hold/Endurance",
+        "name": "Accuracy/Hold",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -2132,7 +1969,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Hold/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -2143,25 +1980,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Hold/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Hold",
           "Recharge"
         ],
-        "name": "Endurance/Hold/Recharge",
+        "name": "Accuracy/Endurance/Hold/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -Recharge",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Holds"
@@ -2171,43 +2009,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+1.0% Recovery",
+            "stat": "recovery",
+            "value": 1
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 1
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -2216,7 +2044,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Recharge",
+            "desc": "+2% Recharge",
             "stat": "recharge",
             "value": 2.5
           }
@@ -2225,20 +2053,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sbefuddling_aura.png",
+    "icon": "sBefuddlingaura.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Befuddling Aura",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -2248,36 +2076,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Confuse/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Confuse"
-        ],
-        "name": "Confuse",
-        "num": 4,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Confuse",
-          "Recharge",
-          "Endurance"
+          "Range"
         ],
-        "name": "Confuse/Recharge/Endurance",
+        "name": "Confuse/Range",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Confuse",
+          "Recharge"
+        ],
+        "name": "Accuracy/Confuse/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Confuse"
@@ -2287,7 +2117,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+7.5% Range",
+            "stat": "range",
+            "value": 7.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -2297,39 +2157,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Ranged)",
+            "desc": "+3.13% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "sblasters_wrath.png",
+    "icon": "AO_Blaster_BlastersWrath.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Blaster's Wrath",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -2339,48 +2194,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Fire Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Blaster Archetype Sets"
@@ -2390,19 +2248,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Ranged)",
+            "desc": "+1.25% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 1.25
           },
           {
-            "desc": "+0.625% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 0.625
-          },
-          {
-            "desc": "+0.625% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 2
@@ -2410,52 +2263,60 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.9375
+            "value": 0.94
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+400.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 400
           }
         ],
         "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "sblessing_of_the_zephyr.png",
+    "icon": "Zephyr.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Blessing of the Zephyr",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Move Speed"
+        ],
+        "name": "Move Speed",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Endurance",
+          "Move Speed"
         ],
-        "name": "Endurance",
+        "name": "Endurance/Move Speed",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Knockback Protection",
         "num": 3,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Universal Travel"
@@ -2465,43 +2326,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 10
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -2510,19 +2361,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+1.875% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.875
-          },
-          {
-            "desc": "+0.9375% Defense (Melee)",
+            "desc": "+0.94% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -2530,39 +2376,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Defense (Cold)",
+            "desc": "+4% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "event",
-    "icon": "sblistering_cold.png",
+    "icon": "EO_Blistering_Cold.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Blistering Cold",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -2572,49 +2413,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Hold",
           "Recharge"
         ],
-        "name": "Hold/Recharge",
+        "name": "Recharge/Chance for Hold",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -2624,19 +2467,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.875
-          },
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
           {
-            "desc": "+1.875% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Area)",
+            "desc": "+0.94% Area Defense",
             "stat": "defense_(area)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 3
@@ -2644,43 +2492,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -2689,19 +2507,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Area)",
+            "desc": "+3.75% Area Defense",
             "stat": "defense_(area)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 5
@@ -2709,39 +2522,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Ranged)",
+            "desc": "+3.75% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "uncommon",
-    "icon": "sblood_mandate.png",
+    "icon": "sBloodmandate.png",
     "maxLevel": 50,
     "minLevel": 25,
     "name": "Blood Mandate",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -2751,35 +2559,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Accuracy"
         ],
-        "name": "Endurance",
+        "name": "Accuracy",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -2788,7 +2598,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Pet Damage"
@@ -2798,43 +2608,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -2843,29 +2623,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "sbonesnap.png",
+    "icon": "sBonesnap.png",
     "maxLevel": 25,
     "minLevel": 10,
     "name": "Bonesnap",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -2875,17 +2655,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -2895,43 +2675,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+4.0% Regeneration",
+            "stat": "regeneration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 1
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -2940,43 +2710,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+3.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 3
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -2984,20 +2734,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sbrilliant_leadership.png",
+    "icon": "sBrilliantleadership.png",
     "maxLevel": 40,
     "minLevel": 15,
     "name": "Brilliant Leadership",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3007,35 +2757,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Accuracy"
         ],
-        "name": "Endurance",
+        "name": "Accuracy",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3044,7 +2796,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Pet Damage"
@@ -3054,29 +2806,39 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+1.0% Recovery",
+            "stat": "recovery",
+            "value": 1
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "sbruising_blow.png",
+    "icon": "sBruisingblow.png",
     "maxLevel": 30,
     "minLevel": 15,
     "name": "Bruising Blow",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3086,7 +2848,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3096,7 +2858,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -3106,9 +2868,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 2
@@ -3116,17 +2878,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 2.5
           },
           {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 2.5
-          },
-          {
-            "desc": "+1.25% Defense (Melee)",
+            "desc": "+1.25% Melee Defense",
             "stat": "defense_(melee)",
             "value": 1.25
           }
@@ -3136,7 +2893,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -3146,64 +2913,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+5% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 5.25
           },
           {
-            "desc": "+5.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 5.25
-          },
-          {
-            "desc": "+8.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 8.75
           }
         ],
         "pieces": 6
+      },
+      {
+        "effects": [],
+        "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "sbrutes_fury.png",
+    "icon": "AO_Brute_BrutesFury.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Brute's Fury",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3213,18 +2954,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3235,27 +2976,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Rage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Brute Archetype Sets"
@@ -3265,44 +3008,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 3.0
+            "desc": "+1.0% Recovery",
+            "stat": "recovery",
+            "value": 1
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 1.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
@@ -3310,17 +3043,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 1.25
           }
@@ -3330,18 +3058,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 1.25
           }
         ],
@@ -3349,20 +3072,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "scacophany.png",
+    "icon": "sCacophony.png",
     "maxLevel": 30,
     "minLevel": 10,
-    "name": "Cacophany",
+    "name": "Cacophony",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3372,43 +3095,45 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Confuse/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Confuse"
-        ],
-        "name": "Confuse",
-        "num": 4,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Confuse",
-          "Recharge",
-          "Endurance"
+          "Range"
         ],
-        "name": "Confuse/Recharge/Endurance",
+        "name": "Confuse/Range",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Confuse",
+          "Recharge"
+        ],
+        "name": "Accuracy/Confuse/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Energy Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Confuse"
@@ -3418,19 +3143,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+1.0% Recovery",
+            "stat": "recovery",
+            "value": 1
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
-          },
-          {
-            "desc": "+0.9375% Defense (Ranged)",
+            "desc": "+0.94% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 3
@@ -3438,9 +3168,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+5% Accuracy",
+            "stat": "accuracy",
+            "value": 5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 5
@@ -3448,18 +3188,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 1.25
           }
         ],
@@ -3467,68 +3202,71 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "scalibrated_accuracy.png",
+    "icon": "sCalibratedAcc.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Calibrated Accuracy",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Accuracy",
+          "InterruptTime"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/InterruptTime",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Accuracy",
+          "Range"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Range",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Sniper Attacks"
@@ -3538,9 +3276,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+5.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -3548,9 +3296,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+225.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 225.0
+            "desc": "+2.25% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 2.25
           }
         ],
         "pieces": 4
@@ -3558,7 +3306,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -3568,43 +3316,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -3612,20 +3330,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "scall_of_the_sandman.png",
+    "icon": "sCallofthesandman.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Call of the Sandman",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3635,42 +3353,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Sleep",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Range",
           "Sleep"
         ],
-        "name": "Sleep",
+        "name": "Range/Sleep",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Sleep",
-          "Endurance"
+          "Sleep"
         ],
-        "name": "Recharge/Sleep/Endurance",
+        "name": "Accuracy/Recharge/Sleep",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for +Health",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -3681,9 +3401,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -3691,7 +3421,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -3701,43 +3431,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -3746,49 +3446,48 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 1.25
           }
         ],
         "pieces": 6
+      },
+      {
+        "effects": [],
+        "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "scall_to_arms.png",
+    "icon": "CallToArms.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Call to Arms",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3798,18 +3497,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3820,13 +3519,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Def(All)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -3837,43 +3536,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -3882,16 +3551,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "scelerity.png",
+    "icon": "sCelerity.png",
     "maxLevel": 50,
     "minLevel": 15,
     "name": "Celerity",
@@ -3903,63 +3572,80 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Run"
+        ],
+        "name": "Run",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Chance",
+        "name": "+Stealth",
         "num": 3,
         "proc": true,
         "unique": true
       }
     ],
-    "type": "Running"
+    "type": "Running & Sprints"
   },
   "cleaving_blow": {
     "bonuses": [
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Energy)",
+            "desc": "+1.0% Recovery",
+            "stat": "recovery",
+            "value": 1
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 1.25
           },
           {
-            "desc": "+1.25% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.25
-          },
-          {
-            "desc": "+0.625% Defense (Ranged)",
+            "desc": "+0.63% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.0% Damage",
+            "stat": "damage",
+            "value": 1
+          }
+        ],
+        "pieces": 4
       }
     ],
     "category": "uncommon",
-    "icon": "scleaving_blow.png",
+    "icon": "sCleavingblow.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Cleaving Blow",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3969,7 +3655,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -3979,17 +3665,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Melee AoE Damage"
@@ -3999,43 +3685,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -4044,9 +3700,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+225.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 225.0
+            "desc": "+2.25% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 2.25
           }
         ],
         "pieces": 3
@@ -4054,7 +3710,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -4064,86 +3720,92 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Ranged)",
+            "desc": "+7.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 7.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.75% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "scloud_senses.png",
+    "icon": "CloudSenses.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Cloud Senses",
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff",
+        "name": "ToHit Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "ToHit Buff",
-          "Endurance"
+          "Accuracy",
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff/Endurance",
+        "name": "Accuracy/ToHit Debuff",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
           "Recharge",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Endurance/Recharge/ToHit Buff",
+        "name": "Endurance/Recharge/ToHit Debuff",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Negative Energy Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Accurate To-Hit Debuff"
@@ -4153,9 +3815,39 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 4
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -4163,18 +3855,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Ranged)",
+            "desc": "+5.00% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 2.5
           }
         ],
@@ -4182,10 +3869,10 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "purple",
-    "icon": "scoercive_persuasion.png",
+    "icon": "sCoercivePersuasion.png",
     "maxLevel": 50,
     "minLevel": 50,
-    "name": "Coercive Persuasion ",
+    "name": "Coercive Persuasion",
     "pieces": [
       {
         "aspects": [
@@ -4208,21 +3895,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Confuse",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Confuse/Recharge/Endurance",
+        "name": "Accuracy/Confuse/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
@@ -4239,9 +3926,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Contagious Confusion",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -4252,9 +3939,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -4262,7 +3959,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Recharge",
+            "desc": "+8% Recharge",
             "stat": "recharge",
             "value": 7.5
           }
@@ -4272,43 +3969,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -4317,64 +3984,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+5% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 5.25
           },
           {
-            "desc": "+5.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 5.25
-          },
-          {
-            "desc": "+8.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 8.75
           }
         ],
         "pieces": 6
+      },
+      {
+        "effects": [],
+        "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "scommand_of_the_mastermind.png",
+    "icon": "AO_Mastermind_CommandOfTheMastermind.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Command of the Mastermind",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -4384,18 +4025,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -4406,27 +4047,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Defense (Area)",
         "num": 6,
         "proc": false,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Mastermind Archetype Sets"
@@ -4436,9 +4079,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
           }
         ],
         "pieces": 3
@@ -4446,9 +4099,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+135.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 135.0
+            "desc": "+1.35% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.35
           }
         ],
         "pieces": 4
@@ -4456,39 +4109,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Area)",
+            "desc": "+1.25% Area Defense",
             "stat": "defense_(area)",
             "value": 1.25
           },
           {
-            "desc": "+0.625% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.625
-          },
-          {
-            "desc": "+0.625% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
+        "pieces": 5
+      },
+      {
+        "effects": [],
         "pieces": 5
       }
     ],
     "category": "rare",
-    "icon": "scommanding_presence.png",
+    "icon": "sCommandingpresence.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Commanding Presence",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -4498,33 +4150,35 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Resist Threat",
         "num": 5,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Pet Damage"
@@ -4534,19 +4188,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Area)",
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.75% Area Defense",
             "stat": "defense_(area)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 4
@@ -4554,7 +4223,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -4563,20 +4242,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "scritical_strikes.png",
+    "icon": "AO_Scrapper_CriticalStrikes.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Critical Strikes",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -4586,18 +4265,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -4608,27 +4287,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Critical Hit%",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Scrapper Archetype Sets"
@@ -4638,43 +4319,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -4683,9 +4334,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
           }
         ],
         "pieces": 3
@@ -4693,9 +4344,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 5
@@ -4703,43 +4364,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -4747,20 +4378,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "scrushing_impact.png",
+    "icon": "sCrushingimpact.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Crushing Impact",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -4770,7 +4401,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -4780,28 +4411,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -4812,7 +4444,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -4822,43 +4454,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -4867,19 +4469,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+2.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 2
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 1.25
           },
           {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.25
-          },
-          {
-            "desc": "+0.625% Defense (Melee)",
+            "desc": "+0.63% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 4
@@ -4887,7 +4494,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Recharge",
+            "desc": "+2% Recharge",
             "stat": "recharge",
             "value": 2.5
           }
@@ -4896,54 +4503,61 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "scurtail_speed.png",
+    "icon": "sCurtailspeed.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Curtail Speed",
     "pieces": [
       {
         "aspects": [
-          "Endurance"
+          "Accuracy",
+          "Slow"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Slow",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage",
+          "Slow"
         ],
-        "name": "Damage",
+        "name": "Damage/Slow",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Range",
+          "Slow"
+        ],
+        "name": "Range/Slow",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Recharge"
+          "Recharge",
+          "Slow"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Endurance/Recharge/Slow",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Slow Movement"
@@ -4953,9 +4567,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+180.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 180.0
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.8% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.8
           }
         ],
         "pieces": 3
@@ -4963,44 +4587,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Energy Resistance",
-            "stat": "energy_resistance",
-            "value": 3.0
+            "desc": "+3% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
@@ -5008,9 +4602,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 5
@@ -5018,43 +4612,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+4% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -5062,40 +4626,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sdampened_spirits.png",
+    "icon": "sDampenedspirits.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Dampened Spirits",
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff",
+        "name": "ToHit Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Recharge/ToHit Buff",
+        "name": "Recharge/ToHit Debuff",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
           "Recharge",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Endurance/Recharge/ToHit Buff",
+        "name": "Endurance/Recharge/ToHit Debuff",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -5105,17 +4669,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Endurance/ToHit Buff",
+        "name": "Endurance/ToHit Debuff",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -5124,7 +4688,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "To Hit Debuff"
@@ -5134,9 +4698,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 2
@@ -5144,9 +4708,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 4
@@ -5154,43 +4728,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -5198,40 +4752,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sdark_watchers_despair.png",
+    "icon": "sDarkWatcher.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Dark Watcher's Despair",
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff",
+        "name": "ToHit Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Recharge/ToHit Buff",
+        "name": "Recharge/ToHit Debuff",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
           "Recharge",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Endurance/Recharge/ToHit Buff",
+        "name": "Endurance/Recharge/ToHit Debuff",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -5241,24 +4795,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Endurance/ToHit Buff",
+        "name": "Endurance/ToHit Debuff",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -Recharge",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "To Hit Debuff"
@@ -5268,43 +4822,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+4.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -5313,17 +4847,22 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+8.0% Regeneration",
+            "stat": "regeneration",
+            "value": 8
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 1.25
           }
@@ -5333,43 +4872,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -5377,20 +4886,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sdebiliative_action.png",
+    "icon": "sDebilitativeaction.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Debilitative Action",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -5400,45 +4909,45 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Immobilize",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Immobilize"
-        ],
-        "name": "Immobilize",
-        "num": 4,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Immobilize",
-          "Recharge",
-          "Endurance"
+          "Range"
         ],
-        "name": "Immobilize/Recharge/Endurance",
-        "num": 5,
+        "name": "Immobilize/Range",
+        "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Stun"
+          "Accuracy",
+          "Immobilize",
+          "Recharge"
         ],
-        "name": "Stun",
-        "num": 6,
+        "name": "Accuracy/Immobilize/Recharge",
+        "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
+      },
+      {
+        "aspects": [],
+        "name": "Chance for Stun",
+        "num": 6,
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Immobilize"
@@ -5448,43 +4957,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -5493,9 +4972,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
           }
         ],
         "pieces": 3
@@ -5503,9 +4982,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+225.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 225.0
+            "desc": "+2.25% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 2.25
           }
         ],
         "pieces": 4
@@ -5513,7 +4992,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -5523,43 +5002,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -5567,20 +5016,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sdecimation.png",
+    "icon": "sDecimation.png",
     "maxLevel": 40,
     "minLevel": 25,
     "name": "Decimation",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -5590,7 +5039,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -5600,34 +5049,35 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Build Up",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -5638,9 +5088,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 2
@@ -5648,19 +5098,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Ranged)",
+            "desc": "+7.5% Range",
+            "stat": "range",
+            "value": 7.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 6
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.75% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 5
@@ -5668,7 +5133,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -5677,20 +5142,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "sdefenders_bastion.png",
+    "icon": "AO_Defender_DefendersBastion.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Defender's Bastion",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -5700,7 +5165,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -5711,37 +5176,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "Recharge/Chance for +Health",
         "num": 6,
         "proc": true,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Defender Archetype Sets"
@@ -5751,9 +5219,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+225.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 225.0
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.25% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 2.25
           }
         ],
         "pieces": 3
@@ -5761,9 +5239,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+22.5% Maxhp",
-            "stat": "maxhp",
-            "value": 22.5
+            "desc": "+2.2% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 2.25
           }
         ],
         "pieces": 4
@@ -5771,7 +5249,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Recharge",
+            "desc": "+8% Recharge",
             "stat": "recharge",
             "value": 7.5
           }
@@ -5781,39 +5259,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Energy)",
+            "desc": "+4% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 3.75
-          },
-          {
-            "desc": "+1.875% Defense (Ranged)",
+            "desc": "+1.88% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "sdefiant_barrage.png",
+    "icon": "AO_Blaster_DefiantBarrage.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Defiant Barrage",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -5823,85 +5296,109 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Mez Protection,Resistance",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Blaster Archetype Sets"
   },
   "deflated_ego": {
-    "bonuses": [],
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+3% Accuracy",
+            "stat": "accuracy",
+            "value": 3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Damage",
+            "stat": "damage",
+            "value": 1.5
+          }
+        ],
+        "pieces": 3
+      }
+    ],
     "category": "rare",
-    "icon": "sdeflated_ego.png",
+    "icon": "sDeflatedego.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Deflated Ego",
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff",
+        "name": "ToHit Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Recharge/ToHit Buff",
+        "name": "Recharge/ToHit Debuff",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -Recovery",
         "num": 3,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "To Hit Debuff"
@@ -5911,43 +5408,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -5956,43 +5423,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -6001,9 +5438,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
           }
         ],
         "pieces": 4
@@ -6011,19 +5448,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -6031,43 +5463,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -6075,20 +5477,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sdetonation.png",
+    "icon": "sDetonation.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Detonation",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -6098,7 +5500,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -6108,36 +5510,39 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage",
+          "Range"
         ],
-        "name": "Damage",
+        "name": "Damage/Range",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Damage",
-          "Endurance"
+          "Endurance",
+          "Range"
         ],
-        "name": "Damage/Endurance",
+        "name": "Damage/Endurance/Range",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Ranged AoE Damage"
@@ -6147,9 +5552,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+22.5% Maxhp",
-            "stat": "maxhp",
-            "value": 22.5
+            "desc": "+12.0% Regeneration",
+            "stat": "regeneration",
+            "value": 12
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.2% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 2.25
           }
         ],
         "pieces": 3
@@ -6157,43 +5572,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -6202,7 +5597,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Psionic)",
+            "desc": "+3.75% Psionic Defense",
             "stat": "defense_(psionic)",
             "value": 3.75
           }
@@ -6211,20 +5606,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sdevastation.png",
+    "icon": "sDevastation.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Devastation",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -6234,7 +5629,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -6244,38 +5639,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Hold"
-        ],
-        "name": "Hold",
+        "aspects": [],
+        "name": "Chance for Hold",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -6285,43 +5679,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -6330,59 +5694,54 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 1.25
           },
           {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.25
-          },
-          {
-            "desc": "+0.625% Defense (Melee)",
+            "desc": "+0.63% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "sdiscouraging_words.png",
+    "icon": "sDiscouragingwords.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Discouraging Words",
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff",
+        "name": "ToHit Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Recharge/ToHit Buff",
+        "name": "Recharge/ToHit Debuff",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
           "Recharge",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Endurance/Recharge/ToHit Buff",
+        "name": "Endurance/Recharge/ToHit Debuff",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "To Hit Debuff"
@@ -6392,43 +5751,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -6437,43 +5766,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -6482,9 +5781,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+4.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 5
@@ -6492,43 +5801,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -6536,7 +5815,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sdoctored_wounds.png",
+    "icon": "sDoctoredwounds.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Doctored Wounds",
@@ -6544,12 +5823,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Endurance",
-          "Healing"
+          "Heal"
         ],
-        "name": "Endurance/Healing",
+        "name": "Endurance/Heal",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -6559,37 +5838,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Healing/Recharge",
+        "name": "Heal/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Endurance/Healing/Recharge",
+        "name": "Endurance/Heal/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing"
+          "Heal"
         ],
-        "name": "Healing",
+        "name": "Heal",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -6598,7 +5877,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Healing"
@@ -6608,9 +5887,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+6.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 6
+          },
+          {
+            "desc": "+6.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 6
+          },
+          {
+            "desc": "+3.3% Terror Duration",
+            "stat": "terror_duration",
+            "value": 3.3
+          },
+          {
+            "desc": "+3.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 3
+          },
+          {
+            "desc": "+3.0% Hold Duration",
+            "stat": "hold_duration",
+            "value": 3
+          },
+          {
+            "desc": "+3.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -6618,43 +5932,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+5% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 5.25
           },
           {
-            "desc": "+5.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 5.25
-          },
-          {
-            "desc": "+8.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 8.75
           }
         ],
@@ -6663,59 +5947,54 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Energy)",
+            "desc": "+3.0% Recovery",
+            "stat": "recovery",
+            "value": 3
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 3.75
-          },
-          {
-            "desc": "+1.875% Defense (Ranged)",
+            "desc": "+1.88% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "sdominating_grasp.png",
+    "icon": "AO_Dominator_DominatingGrasp.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Dominating Grasp",
     "pieces": [
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear",
-          "Endurance"
+          "Accuracy",
+          "Mez"
         ],
-        "name": "Confuse/Hold/Immobilize/Sleep/Stun/Fear/Endurance",
+        "name": "Accuracy/Mez",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Mez/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -6725,47 +6004,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "Recharge/Chance for Fiery Orb",
         "num": 6,
         "proc": true,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Dominator Archetype Sets"
@@ -6775,9 +6047,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -6785,7 +6067,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -6795,43 +6087,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.25% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+5% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 5.25
           },
           {
-            "desc": "+5.25% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 5.25
-          },
-          {
-            "desc": "+8.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 8.75
           }
         ],
@@ -6839,20 +6101,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "sdominion_of_arachnos.png",
+    "icon": "AO_Arachnos_DominionOfArachnos.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Dominion of Arachnos",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -6862,18 +6124,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -6884,27 +6146,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for -Dam(All)/Chance for Terror",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Soldiers of Arachnos Archetype Sets"
@@ -6914,9 +6178,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+6.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -6924,44 +6198,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 3.0
+            "desc": "+3% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
@@ -6969,43 +6213,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -7014,64 +6228,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
         "pieces": 6
+      },
+      {
+        "effects": [],
+        "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sedict_of_the_master.png",
+    "icon": "sEdictofthemaster.png",
     "maxLevel": 40,
     "minLevel": 15,
     "name": "Edict of the Master",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -7081,26 +6269,28 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -7109,13 +6299,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Def(All)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -7126,9 +6316,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
           }
         ],
         "pieces": 2
@@ -7136,120 +6326,171 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 6
       }
     ],
     "category": "uncommon",
-    "icon": "sefficacy_adaptor.png",
+    "icon": "sEfficiencyAdaptor.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Efficacy Adaptor",
     "pieces": [
       {
         "aspects": [
-          "Endurance Modification"
+          "EndMod"
         ],
-        "name": "Endurance Modification",
+        "name": "EndMod",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance Modification",
+          "EndMod",
           "Recharge"
         ],
-        "name": "Endurance Modification/Recharge",
+        "name": "EndMod/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance Modification",
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "EndMod",
+          "Recharge"
         ],
-        "name": "Endurance Modification/Recharge/Endurance",
+        "name": "Accuracy/EndMod/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance Modification",
-          "Endurance"
+          "Accuracy",
+          "EndMod"
         ],
-        "name": "Endurance Modification/Endurance",
+        "name": "Accuracy/EndMod",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance Modification",
+          "EndMod",
           "Endurance"
         ],
-        "name": "Endurance Modification/Endurance",
+        "name": "EndMod/Endurance",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Endurance Modification"
   },
   "encouraged_accuracy": {
-    "bonuses": [],
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+5% Accuracy",
+            "stat": "accuracy",
+            "value": 5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Damage",
+            "stat": "damage",
+            "value": 1.5
+          }
+        ],
+        "pieces": 3
+      }
+    ],
     "category": "uncommon",
-    "icon": "sencouraged_accuracy.png",
+    "icon": "sEncouragedAcc.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Encouraged Accuracy",
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "ToHit Buff",
+        "name": "ToHit",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge",
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "Recharge/ToHit Buff",
+        "name": "Recharge/ToHit",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
           "Recharge",
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "Endurance/Recharge/ToHit Buff",
+        "name": "Endurance/Recharge/ToHit",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "To Hit Buff"
@@ -7333,7 +6574,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "sendless_nightmare.png",
+    "icon": "EO_Endless_Nightmare.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Endless Nightmare",
@@ -7403,40 +6644,59 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "type": "Sleep"
   },
   "energy_manipulator": {
-    "bonuses": [],
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6.0% Regeneration",
+            "stat": "regeneration",
+            "value": 6
+          }
+        ],
+        "pieces": 3
+      }
+    ],
     "category": "rare",
-    "icon": "senergy_manipulator.png",
+    "icon": "sEnergyManip.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Energy Manipulator",
     "pieces": [
       {
         "aspects": [
-          "Endurance Modification"
+          "EndMod"
         ],
-        "name": "Endurance Modification",
+        "name": "EndMod",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance Modification",
+          "EndMod",
           "Recharge"
         ],
-        "name": "Endurance Modification/Recharge",
+        "name": "EndMod/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Stun"
-        ],
-        "name": "Stun",
+        "aspects": [],
+        "name": "Chance for Stun",
         "num": 3,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Endurance Modification"
@@ -7446,43 +6706,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+3.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -7491,17 +6731,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 2.5
           },
           {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 2.5
-          },
-          {
-            "desc": "+1.25% Defense (Melee)",
+            "desc": "+1.25% Melee Defense",
             "stat": "defense_(melee)",
             "value": 1.25
           }
@@ -7511,7 +6746,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Recharge",
+            "desc": "+4% Recharge",
             "stat": "recharge",
             "value": 3.75
           }
@@ -7521,39 +6756,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Melee)",
+            "desc": "+3.13% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "uncommon",
-    "icon": "senfeebled_operation.png",
+    "icon": "sEnfeebledoperation.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Enfeebled Operation",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -7563,46 +6793,48 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Immobilize",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Immobilize"
+          "Immobilize",
+          "Range"
         ],
-        "name": "Immobilize",
+        "name": "Immobilize/Range",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Immobilize",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Immobilize/Recharge/Endurance",
+        "name": "Accuracy/Immobilize/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Immobilize",
-          "Endurance"
+          "Accuracy",
+          "Immobilize"
         ],
-        "name": "Immobilize/Endurance",
+        "name": "Accuracy/Immobilize",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Immobilize"
@@ -7612,43 +6844,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -7657,19 +6859,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 10
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
-          },
-          {
-            "desc": "+0.9375% Defense (Ranged)",
+            "desc": "+0.94% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -7677,39 +6894,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Defense (Cold)",
+            "desc": "+4% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "event",
-    "icon": "sentomb.png",
+    "icon": "EO_Entomb.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Entomb",
     "pieces": [
       {
         "aspects": [
-          "Hold",
-          "Endurance"
+          "Accuracy",
+          "Hold"
         ],
-        "name": "Hold/Endurance",
+        "name": "Accuracy/Hold",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -7719,7 +6931,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Hold/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -7729,37 +6941,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Hold"
         ],
-        "name": "Endurance/Hold",
+        "name": "Accuracy/Endurance/Hold",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Hold",
           "Recharge"
         ],
-        "name": "Endurance/Hold/Recharge",
+        "name": "Accuracy/Endurance/Hold/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Absorb",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Holds"
@@ -7769,43 +6984,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -7814,9 +7009,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+225.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 225.0
+            "desc": "+2.25% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 2.25
           }
         ],
         "pieces": 4
@@ -7824,7 +7019,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -7833,20 +7028,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sentropic_chaos.png",
+    "icon": "sEntropicchaos.png",
     "maxLevel": 35,
     "minLevel": 20,
     "name": "Entropic Chaos",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -7856,7 +7051,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -7866,7 +7061,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -7877,14 +7072,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for +Health",
         "num": 5,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -7894,9 +7089,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+180.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 180.0
+            "desc": "+1.8% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.8
           }
         ],
         "pieces": 2
@@ -7904,19 +7099,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Energy)",
+            "desc": "+3% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+3.125% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 3.125
-          },
-          {
-            "desc": "+1.5625% Defense (Ranged)",
+            "desc": "+1.56% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 3
@@ -7924,9 +7114,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+22.5% Maxhp",
-            "stat": "maxhp",
-            "value": 22.5
+            "desc": "+2.2% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 2.25
           }
         ],
         "pieces": 4
@@ -7934,26 +7124,31 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Area)",
+            "desc": "+12.0% Regeneration",
+            "stat": "regeneration",
+            "value": 12
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.13% Area Defense",
             "stat": "defense_(area)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "seradication.png",
+    "icon": "Eradication.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Eradication",
@@ -7965,17 +7160,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -7985,36 +7180,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Energy Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Melee AoE Damage"
@@ -8024,43 +7220,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -8069,43 +7235,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -8114,43 +7250,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -8159,39 +7265,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Ranged)",
+            "desc": "+1.5% Hold Duration",
+            "stat": "hold_duration",
+            "value": 1.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 6
       }
     ],
     "category": "uncommon",
-    "icon": "sessence_of_curare.png",
+    "icon": "sEssenceofcurare.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Essence of Curare",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -8201,46 +7312,48 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Hold",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Hold"
+          "Hold",
+          "Range"
         ],
-        "name": "Hold",
+        "name": "Hold/Range",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Hold",
-          "Endurance"
+          "Accuracy",
+          "Hold"
         ],
-        "name": "Hold/Endurance",
+        "name": "Accuracy/Hold",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Hold",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Hold/Recharge/Endurance",
+        "name": "Accuracy/Hold/Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Holds"
@@ -8250,9 +7363,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 2
@@ -8260,7 +7373,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -8270,19 +7383,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Ranged)",
+            "desc": "+3.13% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 4
@@ -8290,39 +7398,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Melee)",
+            "desc": "+12.0% Regeneration",
+            "stat": "regeneration",
+            "value": 12
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.75% Melee Defense",
             "stat": "defense_(melee)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "sessence_transfer.png",
+    "icon": "AO_Kheldian_EssenceTransfer.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Essence Transfer",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -8332,18 +7445,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -8354,27 +7467,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Health",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Kheldian Archetype Sets"
@@ -8384,44 +7499,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 3.0
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 3
@@ -8429,43 +7524,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -8474,39 +7549,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Ranged)",
+            "desc": "+3.75% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sexecutioners_contract.png",
+    "icon": "sExecutionerscontract.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Executioner's Contract",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -8516,25 +7586,27 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage",
+          "InterruptTime"
         ],
-        "name": "Damage",
+        "name": "Damage/InterruptTime",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage",
+          "Range"
         ],
-        "name": "Damage",
+        "name": "Damage/Range",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -8544,16 +7616,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Stun"
-        ],
-        "name": "Stun",
+        "aspects": [],
+        "name": "Chance for Stun",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Sniper Attacks"
@@ -8563,43 +7633,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -8608,7 +7648,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -8618,49 +7668,58 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Ranged)",
-            "stat": "defense_(ranged)",
-            "value": 3.125
-          },
-          {
-            "desc": "+1.5625% Defense (Energy)",
-            "stat": "defense_(energy)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.5625
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
           }
         ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.13% Ranged Defense",
+            "stat": "defense_(ranged)",
+            "value": 3.13
+          },
+          {
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "defense_(energy)",
+            "value": 1.56
+          }
+        ],
+        "pieces": 6
+      },
+      {
+        "effects": [],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sexpedient_reinforcement.png",
+    "icon": "ExpedientReinforcement.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Expedient Reinforcement",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -8670,18 +7729,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -8692,13 +7751,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Res(All)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -8709,39 +7768,54 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.875
-          },
+            "desc": "+3.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
           {
-            "desc": "+1.875% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Area)",
+            "desc": "+0.94% Area Defense",
             "stat": "defense_(area)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          }
+        ],
+        "pieces": 4
       }
     ],
     "category": "uncommon",
-    "icon": "sexploit_weakness.png",
+    "icon": "sExploitweakness.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Exploit Weakness",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -8751,7 +7825,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 3,
+        "proc": false,
+        "unique": false
       },
       {
         "aspects": [
@@ -8761,7 +7845,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Sniper Attacks"
@@ -8771,55 +7855,64 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Melee)",
+            "desc": "+3% Accuracy",
+            "stat": "accuracy",
+            "value": 3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.25% Melee Defense",
             "stat": "defense_(melee)",
             "value": 1.25
           },
           {
-            "desc": "+0.625% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 0.625
-          },
-          {
-            "desc": "+0.625% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "sexploited_vulnerability.png",
+    "icon": "sExploitVuln.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Exploited Vulnerability",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense Debuff"
+        ],
+        "name": "Defense Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense Debuff/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense Debuff/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Defense Debuff"
@@ -8829,26 +7922,31 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Ranged)",
+            "desc": "+1.5% Damage",
+            "stat": "damage",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "sexplosive_strike.png",
+    "icon": "sExplosivestrike.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Explosive Strike",
@@ -8861,24 +7959,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Knockback",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Knockback",
-          "Endurance"
+          "Accuracy",
+          "Knockback"
         ],
-        "name": "Knockback/Endurance",
+        "name": "Accuracy/Knockback",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Smashing Damage",
         "num": 3,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Knockback"
@@ -8888,9 +7986,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -8898,17 +8006,22 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 1.25
           }
@@ -8918,18 +8031,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 1.25
           }
         ],
@@ -8937,20 +8045,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sextreme_measures.png",
+    "icon": "sExtrememeasures.png",
     "maxLevel": 50,
     "minLevel": 35,
     "name": "Extreme Measures",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -8960,26 +8068,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Accuracy",
+          "InterruptTime",
+          "Range"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/InterruptTime/Range",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Damage",
+          "InterruptTime",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage/InterruptTime/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -8990,17 +8101,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Range",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Range/Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Sniper Attacks"
@@ -9010,43 +8122,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -9055,28 +8137,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "sfar_strike.png",
+    "icon": "sFarstrike.png",
     "maxLevel": 25,
     "minLevel": 10,
     "name": "Far Strike",
     "pieces": [
       {
         "aspects": [
-          "Damage"
+          "Damage",
+          "Range"
         ],
-        "name": "Damage",
+        "name": "Damage/Range",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -9086,16 +8169,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -9105,43 +8189,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -9150,43 +8204,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -9195,29 +8219,39 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+135.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 135.0
+            "desc": "+1.35% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.35
           }
         ],
         "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 4.5
+          }
+        ],
+        "pieces": 5
       }
     ],
     "category": "uncommon",
-    "icon": "sfocused_smite.png",
+    "icon": "sFocusedsmite.png",
     "maxLevel": 40,
     "minLevel": 25,
     "name": "Focused Smite",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -9227,7 +8261,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -9237,28 +8271,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -9268,44 +8303,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Energy Resistance",
-            "stat": "energy_resistance",
-            "value": 3.0
+            "desc": "+7.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 3
@@ -9313,26 +8328,41 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Area)",
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.13% Area Defense",
             "stat": "defense_(area)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sforce_feedback.png",
+    "icon": "sForcefeedback.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Force Feedback",
@@ -9345,17 +8375,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Knockback",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Knockback",
-          "Endurance"
+          "Accuracy",
+          "Knockback"
         ],
-        "name": "Knockback/Endurance",
+        "name": "Accuracy/Knockback",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -9365,7 +8395,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Knockback/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -9375,7 +8405,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -9386,14 +8416,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Knockback",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for +Recharge",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Knockback"
@@ -9422,7 +8452,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "sforced_indoctrination.png",
+    "icon": "ForcedIndoctrination.png",
     "maxLevel": 50,
     "minLevel": 1,
     "name": "Forced Indoctrination",
@@ -9516,44 +8546,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -9561,9 +8571,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -9571,51 +8591,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "purple",
-    "icon": "sfortunata_hypnosis.png",
+    "icon": "sFortunatehyp.png",
     "maxLevel": 50,
     "minLevel": 50,
     "name": "Fortunata Hypnosis",
@@ -9641,21 +8631,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Sleep",
-          "Endurance"
+          "Sleep"
         ],
-        "name": "Recharge/Sleep/Endurance",
+        "name": "Accuracy/Recharge/Sleep",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
@@ -9672,9 +8662,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Placate",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -9685,16 +8675,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+8.0% Regeneration",
+            "stat": "regeneration",
+            "value": 8
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "sfreebird.png",
+    "icon": "sFreebird.png",
     "maxLevel": 50,
     "minLevel": 15,
     "name": "Freebird",
@@ -9706,18 +8706,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Fly"
+        ],
+        "name": "Fly",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Chance",
+        "name": "+Stealth",
         "num": 3,
         "proc": true,
         "unique": true
@@ -9730,44 +8732,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 3.0
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 10
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 3
@@ -9775,19 +8757,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -9795,39 +8782,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Defense (Cold)",
+            "desc": "+4% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "event",
-    "icon": "sfrozen_blast.png",
+    "icon": "EO_Frozen_Blast.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Frozen Blast",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -9837,49 +8819,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Immobilize",
           "Recharge"
         ],
-        "name": "Immobilize/Recharge",
+        "name": "Recharge/Chance for Immobilize",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Ranged AoE Damage"
@@ -9889,44 +8873,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+4% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           },
           {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 6.25
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "pvp": true,
+            "stat": "+res(recharge_debuff)",
+            "value": 10
           }
         ],
         "pieces": 2
@@ -9934,64 +8894,94 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+300.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 300
+          },
+          {
+            "desc": "+1000% Knockback Resistance Resistance",
+            "pvp": true,
+            "stat": "knockback_resistance",
+            "value": 1000
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+3% Cold and Fire",
+            "pvp": true,
+            "stat": "defense_(cold)",
+            "value": 3.13
+          },
+          {
+            "desc": "+1.56% Area Defense",
+            "pvp": true,
+            "stat": "defense_(area)",
+            "value": 1.56
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           },
           {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 6.25
+            "desc": "+2.2% Maximum HitPoints",
+            "pvp": true,
+            "stat": "maximum_hitpoints",
+            "value": 2.25
           }
         ],
         "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          },
+          {
+            "desc": "+8% Recharge",
+            "pvp": true,
+            "stat": "recharge",
+            "value": 7.5
+          }
+        ],
+        "pieces": 6
       }
     ],
     "category": "pvp",
-    "icon": "sfury_of_the_gladiator.png",
+    "icon": "sFuryofthegladiator.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Fury of the Gladiator",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10001,7 +8991,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10012,34 +9002,36 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -Res(All)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -10050,9 +9042,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+180.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 180.0
+            "desc": "+1.8% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.8
           }
         ],
         "pieces": 2
@@ -10060,43 +9052,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -10105,19 +9067,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Melee)",
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.13% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 5
@@ -10125,43 +9092,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+5% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 5.25
           },
           {
-            "desc": "+5.25% Smashing Resistance",
-            "stat": "smashing_resistance",
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 8.75
+          },
+          {
+            "desc": "+5% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 5.25
           },
           {
-            "desc": "+8.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 8.75
           }
         ],
@@ -10169,20 +9116,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "sgauntleted_fist.png",
+    "icon": "AO_Tanker_GauntletedFist.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Gauntleted Fist",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10192,18 +9139,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10214,27 +9161,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Absorb",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Tanker Archetype Sets"
@@ -10244,9 +9193,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+7.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -10254,18 +9213,53 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 1.25
           },
           {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
+            "desc": "+2.50% Ranged Defense",
+            "stat": "defense_(ranged)",
+            "value": 2.5
+          },
+          {
+            "desc": "+1% Energy and Negative Energy",
+            "stat": "defense_(energy)",
+            "value": 1.25
+          },
+          {
+            "desc": "+2.50% Area Defense",
+            "stat": "defense_(area)",
+            "value": 2.5
+          },
+          {
+            "desc": "+1% Cold and Fire",
+            "stat": "defense_(cold)",
             "value": 1.25
           }
         ],
@@ -10273,40 +9267,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sgaussians_synchronized_firecontrol.png",
+    "icon": "sGaussianSF.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Gaussian's Synchronized Fire-Control",
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "ToHit Buff",
+        "name": "ToHit",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge",
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "Recharge/ToHit Buff",
+        "name": "Recharge/ToHit",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
           "Recharge",
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "Endurance/Recharge/ToHit Buff",
+        "name": "Endurance/Recharge/ToHit",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10316,23 +9310,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "Endurance/ToHit Buff",
+        "name": "Endurance/ToHit",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Build Up",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -10343,9 +9337,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+7.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -10353,9 +9357,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+225.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 225.0
+            "desc": "+2.25% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 2.25
           }
         ],
         "pieces": 4
@@ -10363,43 +9367,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2.5% Hold Duration",
+            "stat": "hold_duration",
+            "value": 2.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -10407,20 +9391,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sghost_widows_embrace.png",
+    "icon": "sGhostwidowsembrace.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Ghost Widow's Embrace",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10430,43 +9414,45 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Hold",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Hold"
-        ],
-        "name": "Hold",
-        "num": 4,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Hold",
-          "Recharge",
-          "Endurance"
+          "Range"
         ],
-        "name": "Hold/Recharge/Endurance",
+        "name": "Hold/Range",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Hold",
+          "Recharge"
+        ],
+        "name": "Accuracy/Hold/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Psionic Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Holds"
@@ -10476,43 +9462,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -10521,9 +9487,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+180.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 180.0
+            "desc": "+1.8% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.8
           }
         ],
         "pieces": 4
@@ -10531,43 +9497,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -10576,43 +9512,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
-          },
+          }
+        ],
+        "pieces": 6
+      },
+      {
+        "effects": [
           {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+7.5% Increased Run Speed",
+            "stat": "increased_run_speed",
             "value": 7.5
           }
         ],
@@ -10620,28 +9536,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sgift_of_the_ancients.png",
+    "icon": "sGiftoftheancients.png",
     "maxLevel": 40,
     "minLevel": 15,
     "name": "Gift of the Ancients",
     "pieces": [
       {
         "aspects": [
+          "Defense",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Defense/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10651,30 +9569,35 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense"
+        ],
+        "name": "Defense",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense"
+        ],
+        "name": "Defense/+Run Speed",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -10685,44 +9608,58 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          },
+          {
+            "desc": "+2.25% Maximum Endurance",
+            "pvp": true,
+            "stat": "maximum_endurance",
+            "value": 2.25
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+300.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 300
+          },
+          {
+            "desc": "+1000% Knockback Resistance Resistance",
+            "pvp": true,
+            "stat": "knockback_resistance",
+            "value": 1000
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           },
           {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
+            "desc": "+3% Lethal and Smashing",
+            "pvp": true,
+            "stat": "damage_resistance_(lethal)",
+            "value": 3
           },
           {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 6.25
+            "desc": "+5% Mez Resistance (All Resistance",
+            "pvp": true,
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
@@ -10730,9 +9667,15 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+22.5% Maxhp",
-            "stat": "maxhp",
-            "value": 22.5
+            "desc": "+2.2% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 2.25
+          },
+          {
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "pvp": true,
+            "stat": "+res(recharge_debuff)",
+            "value": 10
           }
         ],
         "pieces": 5
@@ -10740,49 +9683,60 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 1.25
           },
           {
-            "desc": "+1.25% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.25
+            "desc": "+8% Recharge",
+            "pvp": true,
+            "stat": "recharge",
+            "value": 7.5
+          }
+        ],
+        "pieces": 6
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.00% All Defense",
+            "stat": "defense_(all)",
+            "value": 3
           }
         ],
         "pieces": 6
       }
     ],
     "category": "pvp",
-    "icon": "sgladiators_armor.png",
+    "icon": "sGladiatorsarmor.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Gladiator's Armor",
     "pieces": [
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Damage Resistance/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage Resistance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10792,33 +9746,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage Resistance/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage Resistance"
         ],
-        "name": "Damage",
+        "name": "Damage Resistance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Def(All)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -10829,29 +9783,117 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          },
+          {
+            "desc": "+7.5% Range",
+            "pvp": true,
+            "stat": "range",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
+          },
+          {
+            "desc": "+2% Lethal and Smashing",
+            "pvp": true,
+            "stat": "damage_resistance_(lethal)",
+            "value": 2.25
+          },
+          {
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true,
+            "stat": "mez_resistance_(all)",
+            "value": 3.75
           }
         ],
         "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+3% Energy and Negative Energy",
+            "pvp": true,
+            "stat": "defense_(energy)",
+            "value": 3.13
+          },
+          {
+            "desc": "+1.56% Ranged Defense",
+            "pvp": true,
+            "stat": "defense_(ranged)",
+            "value": 1.56
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+300.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 300
+          },
+          {
+            "desc": "+4% Energy and Negative Energy",
+            "pvp": true,
+            "stat": "damage_resistance_(energy)",
+            "value": 4.5
+          },
+          {
+            "desc": "+8% Mez Resistance (All Resistance",
+            "pvp": true,
+            "stat": "mez_resistance_(all)",
+            "value": 7.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          },
+          {
+            "desc": "+8% Recharge",
+            "pvp": true,
+            "stat": "recharge",
+            "value": 7.5
+          }
+        ],
+        "pieces": 6
       }
     ],
     "category": "pvp",
-    "icon": "sgladiators_javelin.png",
+    "icon": "sGladiatorsjavelin.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Gladiator's Javelin",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10861,7 +9903,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10872,35 +9914,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Toxic Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -10910,9 +9954,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+225.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 225.0
+            "desc": "+2.5% Hold Duration",
+            "stat": "hold_duration",
+            "value": 2.5
+          },
+          {
+            "desc": "+2% Cold and Fire",
+            "pvp": true,
+            "stat": "damage_resistance_(cold)",
+            "value": 2.25
+          },
+          {
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true,
+            "stat": "mez_resistance_(all)",
+            "value": 3.75
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.25% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 2.25
+          },
+          {
+            "desc": "+10.0% Range",
+            "pvp": true,
+            "stat": "range",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -10920,9 +9992,31 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Recharge",
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "pvp": true,
+            "stat": "+res(recharge_debuff)",
+            "value": 10
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+8% Recharge",
             "stat": "recharge",
             "value": 7.5
+          },
+          {
+            "desc": "+2.2% Maximum HitPoints",
+            "pvp": true,
+            "stat": "maximum_hitpoints",
+            "value": 2.25
           }
         ],
         "pieces": 5
@@ -10930,49 +10024,50 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Area)",
+            "desc": "+3.13% Area Defense",
             "stat": "defense_(area)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.5625
+            "value": 1.56
+          },
+          {
+            "desc": "+3.0% Recovery",
+            "pvp": true,
+            "stat": "recovery",
+            "value": 3
           }
         ],
         "pieces": 6
       }
     ],
     "category": "pvp",
-    "icon": "sgladiators_net.png",
+    "icon": "sGladiatorsnet.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Gladiator's Net",
     "pieces": [
       {
         "aspects": [
-          "Hold",
-          "Endurance"
+          "Accuracy",
+          "Hold"
         ],
-        "name": "Hold/Endurance",
+        "name": "Accuracy/Hold",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10982,7 +10077,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Hold/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -10993,25 +10088,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Hold/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Hold",
           "Recharge"
         ],
-        "name": "Endurance/Hold/Recharge",
+        "name": "Accuracy/Endurance/Hold/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Lethal Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Holds"
@@ -11021,9 +10117,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          },
+          {
+            "desc": "+2.25% Maximum Endurance",
+            "pvp": true,
+            "stat": "maximum_endurance",
+            "value": 2.25
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
+          },
+          {
+            "desc": "+2% Energy and Negative Energy",
+            "pvp": true,
+            "stat": "damage_resistance_(energy)",
+            "value": 2.25
+          },
+          {
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true,
+            "stat": "mez_resistance_(all)",
+            "value": 3.75
           }
         ],
         "pieces": 3
@@ -11031,64 +10155,78 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+3% Lethal and Smashing",
+            "pvp": true,
+            "stat": "defense_(lethal)",
+            "value": 3.13
+          },
+          {
+            "desc": "+1.56% Melee Defense",
+            "pvp": true,
+            "stat": "defense_(melee)",
+            "value": 1.56
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           },
           {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 6.25
+            "desc": "+1000% Knockback Resistance Resistance",
+            "pvp": true,
+            "stat": "knockback_resistance",
+            "value": 1000
           }
         ],
         "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          },
+          {
+            "desc": "+8% Recharge",
+            "pvp": true,
+            "stat": "recharge",
+            "value": 7.5
+          }
+        ],
+        "pieces": 6
       }
     ],
     "category": "pvp",
-    "icon": "sgladiators_strike.png",
+    "icon": "sGladiatorsstrike.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Gladiator's Strike",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -11098,7 +10236,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -11109,35 +10247,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Smashing Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -11147,9 +10287,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+2.8% Terror Duration",
+            "stat": "terror_duration",
+            "value": 2.75
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -11157,7 +10307,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -11167,43 +10327,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -11211,66 +10341,68 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sglimpse_of_the_abyss.png",
+    "icon": "sGlimpseoftheabyss.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Glimpse of the Abyss",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Fear"
+          "Terrorize"
         ],
-        "name": "Endurance/Fear",
+        "name": "Endurance/Terrorize",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Fear"
+          "Range",
+          "Terrorize"
         ],
-        "name": "Fear",
+        "name": "Range/Terrorize",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Fear",
-          "Endurance"
+          "Terrorize"
         ],
-        "name": "Recharge/Fear/Endurance",
+        "name": "Accuracy/Recharge/Terrorize",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Psionic Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Fear"
@@ -11280,44 +10412,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -11325,9 +10437,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -11335,51 +10457,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "purple",
-    "icon": "sgravitational_anchor.png",
+    "icon": "sGravAnchor.png",
     "maxLevel": 50,
     "minLevel": 50,
     "name": "Gravitational Anchor",
@@ -11405,21 +10497,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Immobilize",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Immobilize/Recharge/Endurance",
+        "name": "Accuracy/Immobilize/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
@@ -11435,12 +10527,10 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       },
       {
-        "aspects": [
-          "Hold"
-        ],
-        "name": "Hold",
+        "aspects": [],
+        "name": "Chance for Hold",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -11555,17 +10645,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "sguardians_gift.png",
+    "icon": "AO_Guardian's_Gift.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Guardian's Gift",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
         "unique": true
@@ -11575,18 +10665,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage/RechargeTime",
         "num": 2,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/RechargeTime",
         "num": 3,
         "proc": false,
         "unique": true
@@ -11597,18 +10687,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage/Endurance/RechargeTime",
         "num": 4,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/RechargeTime",
         "num": 5,
         "proc": false,
         "unique": true
@@ -11617,7 +10708,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "RechargeTime/Chance for PBAoE Resolve",
         "num": 6,
         "proc": true,
         "unique": true
@@ -11630,43 +10721,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -11675,19 +10746,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+3.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -11695,43 +10771,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -11739,7 +10785,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sharmonized_healing.png",
+    "icon": "sHarmonizedhealing.png",
     "maxLevel": 40,
     "minLevel": 20,
     "name": "Harmonized Healing",
@@ -11747,12 +10793,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Endurance",
-          "Healing"
+          "Heal"
         ],
-        "name": "Endurance/Healing",
+        "name": "Endurance/Heal",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -11762,37 +10808,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Healing/Recharge",
+        "name": "Heal/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Endurance/Healing/Recharge",
+        "name": "Endurance/Heal/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing"
+          "Heal"
         ],
-        "name": "Healing",
+        "name": "Heal",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -11801,7 +10847,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Healing"
@@ -11811,44 +10857,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -11856,9 +10882,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -11866,51 +10902,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "purple",
-    "icon": "shecatomb.png",
+    "icon": "sHecatomb.png",
     "maxLevel": 50,
     "minLevel": 50,
     "name": "Hecatomb",
@@ -11936,21 +10942,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
@@ -11967,9 +10973,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Negative Energy Damage",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -11980,9 +10986,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+4.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
@@ -11990,43 +11006,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -12035,7 +11021,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Recharge",
+            "desc": "+2% Recharge",
             "stat": "recharge",
             "value": 2.5
           }
@@ -12044,20 +11030,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "shibernation.png",
+    "icon": "sHibernation.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Hibernation",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -12067,36 +11053,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Sleep",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Range",
           "Sleep"
         ],
-        "name": "Sleep",
+        "name": "Range/Sleep",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Sleep",
-          "Endurance"
+          "Sleep"
         ],
-        "name": "Recharge/Sleep/Endurance",
+        "name": "Accuracy/Recharge/Sleep",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Sleep"
@@ -12106,9 +11094,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+1.1% Terror Duration",
+            "stat": "terror_duration",
+            "value": 1.1
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
@@ -12116,43 +11114,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -12161,7 +11129,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Recharge",
+            "desc": "+2% Recharge",
             "stat": "recharge",
             "value": 2.5
           }
@@ -12170,59 +11138,61 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "shorror.png",
+    "icon": "sHorror.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Horror",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Fear"
+          "Terrorize"
         ],
-        "name": "Endurance/Fear",
+        "name": "Endurance/Terrorize",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Fear"
+          "Range",
+          "Terrorize"
         ],
-        "name": "Fear",
+        "name": "Range/Terrorize",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Fear",
-          "Endurance"
+          "Terrorize"
         ],
-        "name": "Recharge/Fear/Endurance",
+        "name": "Accuracy/Recharge/Terrorize",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Fear"
@@ -12232,43 +11202,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -12277,44 +11217,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Energy Resistance",
-            "stat": "energy_resistance",
-            "value": 3.0
+            "desc": "+3.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 3
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
@@ -12322,43 +11242,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+4% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -12367,18 +11257,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 1.25
           }
         ],
@@ -12386,61 +11271,68 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "simpeded_swiftness.png",
+    "icon": "sImpededswiftness.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Impeded Swiftness",
     "pieces": [
       {
         "aspects": [
-          "Endurance"
+          "Accuracy",
+          "Slow"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Slow",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage",
+          "Slow"
         ],
-        "name": "Damage",
+        "name": "Damage/Slow",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Range",
+          "Slow"
+        ],
+        "name": "Range/Slow",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Recharge"
+          "Recharge",
+          "Slow"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Endurance/Recharge/Slow",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Smashing Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Slow Movement"
@@ -12448,7 +11340,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   "imperial_might": {
     "bonuses": [],
     "category": "event",
-    "icon": "simperial_might.png",
+    "icon": "ImperialMight.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Imperial Might",
@@ -12525,43 +11417,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -12570,9 +11432,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -12580,39 +11442,59 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 7.5
           }
         ],
         "pieces": 5
       }
     ],
     "category": "rare",
-    "icon": "simpervious_skin.png",
+    "icon": "sImperviousskin.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Impervious Skin",
     "pieces": [
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Damage Resistance/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage Resistance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -12622,25 +11504,25 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage Resistance/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Regeneration/+Res Mez(All)",
         "num": 5,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Resist Damage"
@@ -12650,9 +11532,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Psionic)",
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Psionic Defense",
             "stat": "defense_(psionic)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 3
@@ -12660,9 +11552,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+225.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 225.0
+            "desc": "+2.25% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 2.25
           }
         ],
         "pieces": 4
@@ -12670,43 +11562,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+4% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -12715,43 +11577,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -12759,30 +11591,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "simpervium_armor.png",
+    "icon": "sImperviumarmor.png",
     "maxLevel": 40,
     "minLevel": 15,
     "name": "Impervium Armor",
     "pieces": [
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Damage Resistance/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage Resistance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -12792,34 +11624,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage Resistance/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage Resistance"
         ],
-        "name": "Damage",
+        "name": "Damage Resistance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Res(Psionic)",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Resist Damage"
@@ -12829,9 +11661,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+6.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
@@ -12839,18 +11681,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 4.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 1.25
           }
         ],
@@ -12858,20 +11715,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sinduced_coma.png",
+    "icon": "sInducedcoma.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Induced Coma",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -12881,72 +11738,96 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Sleep",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Range",
           "Sleep"
         ],
-        "name": "Sleep",
+        "name": "Range/Sleep",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Sleep",
-          "Endurance"
+          "Sleep"
         ],
-        "name": "Recharge/Sleep/Endurance",
+        "name": "Accuracy/Recharge/Sleep",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -Recharge",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Sleep"
+  },
+  "inexhaustibility": {
+    "bonuses": [],
+    "category": "event",
+    "icon": "Inexhaustibility.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Inexhaustibility",
+    "pieces": [],
+    "type": ""
   },
   "jaunt": {
     "bonuses": [
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+4.0% Regeneration",
+            "stat": "regeneration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "sjaunt.png",
+    "icon": "sJaunt.png",
     "maxLevel": 50,
     "minLevel": 15,
     "name": "Jaunt",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Range"
+        ],
+        "name": "Range",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -12955,37 +11836,137 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Endurance",
+          "Range"
         ],
-        "name": "Endurance",
+        "name": "Endurance/Range",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Teleport"
   },
   "javelin_volley": {
-    "bonuses": [],
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          },
+          {
+            "desc": "+7.5% Range",
+            "pvp": true,
+            "stat": "range",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          },
+          {
+            "desc": "+2% Lethal and Smashing",
+            "pvp": true,
+            "stat": "damage_resistance_(lethal)",
+            "value": 2.25
+          },
+          {
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true,
+            "stat": "mez_resistance_(all)",
+            "value": 3.75
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+3% Energy and Negative Energy",
+            "pvp": true,
+            "stat": "defense_(energy)",
+            "value": 3.13
+          },
+          {
+            "desc": "+1.56% Ranged Defense",
+            "pvp": true,
+            "stat": "defense_(ranged)",
+            "value": 1.56
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 10
+          },
+          {
+            "desc": "+4% Cold and Fire",
+            "pvp": true,
+            "stat": "damage_resistance_(cold)",
+            "value": 3.75
+          },
+          {
+            "desc": "+6% Mez Resistance (All Resistance",
+            "pvp": true,
+            "stat": "mez_resistance_(all)",
+            "value": 6.25
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          },
+          {
+            "desc": "+8% Recharge",
+            "pvp": true,
+            "stat": "recharge",
+            "value": 7.5
+          }
+        ],
+        "pieces": 6
+      }
+    ],
     "category": "pvp",
-    "icon": "sjavelin_volley.png",
+    "icon": "sJavelinvolley.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Javelin Volley",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -12995,7 +11976,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13006,35 +11987,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Lethal Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Ranged AoE Damage"
@@ -13044,9 +12027,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+135.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 135.0
+            "desc": "+1.35% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.35
           }
         ],
         "pieces": 2
@@ -13054,44 +12037,61 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+400.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 400
+          },
+          {
+            "desc": "+400.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 400
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "skarma.png",
+    "icon": "sKarma.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Karma",
     "pieces": [
       {
         "aspects": [
+          "Defense",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Defense/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Knockback Protection",
         "num": 3,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Defense Sets"
@@ -13101,43 +12101,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -13146,7 +12126,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -13156,64 +12146,49 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.25% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+5% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 5.25
           },
           {
-            "desc": "+5.25% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 5.25
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 8.75
+          }
+        ],
+        "pieces": 6
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.5% Damage Resistance (All Damage",
+            "stat": "damage_resistance_(all)",
+            "value": 3.5
           },
           {
-            "desc": "+8.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 8.75
+            "desc": "+7.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 7.5
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "skheldians_grace.png",
+    "icon": "AO_Kheldian_KheldiansGrace.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Kheldian's Grace",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13223,18 +12198,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13245,27 +12220,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/+Dam(All)/+Max HitPoints/+Res(All)",
         "num": 6,
         "proc": false,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Kheldian Archetype Sets"
@@ -13275,43 +12252,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -13320,9 +12267,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -13330,39 +12277,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Lethal)",
+            "desc": "+4% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 3.75
-          },
-          {
-            "desc": "+1.875% Defense (Melee)",
+            "desc": "+1.88% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+7.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 7.5
+          }
+        ],
+        "pieces": 5
       }
     ],
     "category": "rare",
-    "icon": "skinetic_combat.png",
+    "icon": "sKineticcombat.png",
     "maxLevel": 35,
     "minLevel": 20,
     "name": "Kinetic Combat",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13372,7 +12324,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13382,7 +12334,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13393,16 +12345,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Knockback"
-        ],
-        "name": "Knockback",
+        "aspects": [],
+        "name": "Chance for Knockback",
         "num": 5,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -13412,43 +12362,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+4.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 4.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -13457,7 +12387,27 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Recharge",
+            "desc": "+300.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 300
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6.0% Regeneration",
+            "stat": "regeneration",
+            "value": 6
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+8% Recharge",
             "stat": "recharge",
             "value": 7.5
           }
@@ -13466,7 +12416,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "skinetic_crash.png",
+    "icon": "sKineticcrash.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Kinetic Crash",
@@ -13479,17 +12429,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Knockback",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Knockback",
-          "Endurance"
+          "Accuracy",
+          "Knockback"
         ],
-        "name": "Knockback/Endurance",
+        "name": "Accuracy/Knockback",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13499,7 +12449,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Knockback/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13509,7 +12459,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13520,18 +12470,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Knockback",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Knockback",
-          "Endurance"
+          "Knockback"
         ],
-        "name": "Damage/Knockback/Endurance",
+        "name": "Accuracy/Damage/Knockback",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Knockback"
@@ -13541,43 +12491,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -13586,7 +12516,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Recharge",
+            "desc": "+6.0% Regeneration",
+            "stat": "regeneration",
+            "value": 6
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Recharge",
             "stat": "recharge",
             "value": 3.75
           }
@@ -13595,28 +12535,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "skismet.png",
+    "icon": "sKismet.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Kismet",
     "pieces": [
       {
         "aspects": [
+          "Defense",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Defense/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13626,25 +12568,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "ToHit Buff"
-        ],
-        "name": "ToHit Buff",
+        "aspects": [],
+        "name": "+ToHit",
         "num": 5,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -13655,19 +12596,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+4.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
-          },
-          {
-            "desc": "+0.9375% Defense (Ranged)",
+            "desc": "+0.94% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 3
@@ -13675,19 +12621,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+1.875% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.875
-          },
-          {
-            "desc": "+0.9375% Defense (Melee)",
+            "desc": "+0.94% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 4
@@ -13695,19 +12636,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -13715,43 +12651,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -13759,20 +12665,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "slethargic_repose.png",
+    "icon": "sLethargicrepose.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Lethargic Repose",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -13782,46 +12688,48 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Sleep",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Range",
           "Sleep"
         ],
-        "name": "Sleep",
+        "name": "Range/Sleep",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Sleep",
-          "Endurance"
+          "Sleep"
         ],
-        "name": "Recharge/Sleep/Endurance",
+        "name": "Accuracy/Recharge/Sleep",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Sleep",
-          "Endurance"
+          "Accuracy",
+          "Sleep"
         ],
-        "name": "Sleep/Endurance",
+        "name": "Accuracy/Sleep",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Sleep"
@@ -13885,7 +12793,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "slibertys_belt.png",
+    "icon": "Libertys_Belt.png",
     "maxLevel": 50,
     "minLevel": 25,
     "name": "Liberty's Belt",
@@ -13957,43 +12865,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Hold Duration",
+            "stat": "hold_duration",
+            "value": 2.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -14002,17 +12900,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 1.25
           }
@@ -14022,49 +12915,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Ranged)",
+            "desc": "+3.75% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "slockdown.png",
+    "icon": "Lockdown.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Lockdown",
     "pieces": [
       {
         "aspects": [
-          "Hold",
-          "Endurance"
+          "Accuracy",
+          "Hold"
         ],
-        "name": "Hold/Endurance",
+        "name": "Accuracy/Hold",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14074,7 +12962,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Hold/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14085,27 +12973,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Hold/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Hold",
           "Recharge"
         ],
-        "name": "Endurance/Hold/Recharge",
+        "name": "Accuracy/Endurance/Hold/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Hold"
-        ],
-        "name": "Hold",
+        "aspects": [],
+        "name": "Chance for Hold",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Holds"
@@ -14115,9 +13002,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
           }
         ],
         "pieces": 3
@@ -14125,43 +13022,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -14170,43 +13047,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -14214,28 +13061,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sluck_of_the_gambler.png",
+    "icon": "sLuckofthegambler.png",
     "maxLevel": 50,
     "minLevel": 25,
     "name": "Luck of the Gambler",
     "pieces": [
       {
         "aspects": [
+          "Defense",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Defense/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14245,31 +13094,36 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense"
+        ],
+        "name": "Defense",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense"
+        ],
+        "name": "Defense/+Recharge",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Defense Sets"
@@ -14279,19 +13133,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.875
-          },
+            "desc": "+4.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 4.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
           {
-            "desc": "+1.875% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Area)",
+            "desc": "+0.94% Area Defense",
             "stat": "defense_(area)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 3
@@ -14299,64 +13158,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Energy Resistance",
-            "stat": "energy_resistance",
-            "value": 3.0
+            "desc": "+3% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
       }
     ],
     "category": "uncommon",
-    "icon": "smaelstroms_fury.png",
+    "icon": "sMaelstromsfury.png",
     "maxLevel": 35,
     "minLevel": 20,
     "name": "Maelstrom's Fury",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14366,7 +13195,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14376,7 +13205,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14387,7 +13216,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -14397,43 +13226,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -14442,9 +13241,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -14452,43 +13251,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -14497,39 +13276,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Ranged)",
+            "desc": "+3.75% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "smakos_bite.png",
+    "icon": "sMakosBite.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Mako's Bite",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14539,7 +13313,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14549,35 +13323,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Lethal Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -14587,7 +13363,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 2.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -14597,39 +13403,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Ranged)",
+            "desc": "+3.13% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "smalaises_illusions.png",
+    "icon": "sMalaisesillusions.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Malaise's Illusions",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14639,43 +13440,45 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Confuse/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Confuse"
-        ],
-        "name": "Confuse",
-        "num": 4,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Confuse",
-          "Recharge",
-          "Endurance"
+          "Range"
         ],
-        "name": "Confuse/Recharge/Endurance",
+        "name": "Confuse/Range",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Confuse",
+          "Recharge"
+        ],
+        "name": "Accuracy/Confuse/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Psionic Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Confuse"
@@ -14685,9 +13488,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 2
@@ -14695,19 +13498,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Ranged)",
+            "desc": "+7.5% Range",
+            "stat": "range",
+            "value": 7.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.75% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 5
@@ -14715,7 +13533,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -14724,20 +13542,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "smalice_of_the_corruptor.png",
+    "icon": "AO_Corruptor_MaliceOfTheCorruptor.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Malice of the Corruptor",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14747,18 +13565,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14769,27 +13587,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Negative Energy Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Corruptor Archetype Sets"
@@ -14799,7 +13619,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -14809,19 +13629,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Melee)",
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.13% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 4
@@ -14829,51 +13654,55 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+3.0% Recovery",
+            "stat": "recovery",
+            "value": 3
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Negative Resistance",
-            "stat": "negative_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 7.5
+          },
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 4.5
           },
           {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           },
           {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
+            "desc": "+4% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 4.5
           },
           {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
         "pieces": 6
+      },
+      {
+        "effects": [],
+        "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "smark_of_supremacy.png",
+    "icon": "AO_Mastermind_MarkOfSupremacy.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Mark of Supremacy",
@@ -14885,7 +13714,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -14895,45 +13724,48 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Endurance/+Regeneration/+Res(All)",
         "num": 6,
         "proc": false,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Mastermind Archetype Sets"
@@ -14943,9 +13775,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -14953,7 +13795,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Recharge",
+            "desc": "+8% Recharge",
             "stat": "recharge",
             "value": 7.5
           }
@@ -14963,43 +13805,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -15008,43 +13820,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+5% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 5.25
           },
           {
-            "desc": "+5.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 5.25
-          },
-          {
-            "desc": "+8.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 8.75
           }
         ],
@@ -15052,20 +13834,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "smight_of_the_tanker.png",
+    "icon": "AO_Tanker_MightOfTheTanker.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Might of the Tanker",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -15075,18 +13857,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -15097,27 +13879,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Res(All)",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Tanker Archetype Sets"
@@ -15127,9 +13911,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -15137,19 +13931,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+5.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -15157,16 +13956,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Psionic)",
+            "desc": "+1.88% Psionic Defense",
             "stat": "defense_(psionic)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "smiracle.png",
+    "icon": "sMiracle.png",
     "maxLevel": 40,
     "minLevel": 20,
     "name": "Miracle",
@@ -15174,12 +13973,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Endurance",
-          "Healing"
+          "Heal"
         ],
-        "name": "Endurance/Healing",
+        "name": "Endurance/Heal",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -15189,43 +13988,43 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Healing/Recharge",
+        "name": "Heal/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Endurance/Healing/Recharge",
+        "name": "Endurance/Heal/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing"
+          "Heal"
         ],
-        "name": "Healing",
+        "name": "Heal",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Recovery",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -15236,9 +14035,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+180.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 180.0
+            "desc": "+1.8% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.8
           }
         ],
         "pieces": 2
@@ -15246,43 +14045,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -15291,17 +14060,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 2.5
           },
           {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 2.5
-          },
-          {
-            "desc": "+1.25% Defense (Melee)",
+            "desc": "+1.25% Melee Defense",
             "stat": "defense_(melee)",
             "value": 1.25
           }
@@ -15311,19 +14075,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 3.125
-          },
-          {
-            "desc": "+3.125% Defense (Cold)",
+            "desc": "+3% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Area)",
+            "desc": "+1.56% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 5
@@ -15331,7 +14090,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Recharge",
+            "desc": "+8% Recharge",
             "stat": "recharge",
             "value": 7.5
           }
@@ -15340,52 +14099,60 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "smocking_beratement.png",
+    "icon": "sMockingberatement.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Mocking Beratement",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Threat"
+        ],
+        "name": "Threat",
         "num": 1,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Recharge"
-        ],
-        "name": "Recharge",
-        "num": 2,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Recharge"
-        ],
-        "name": "Recharge",
-        "num": 3,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge",
-          "Endurance"
+          "Threat"
         ],
-        "name": "Recharge/Endurance",
-        "num": 4,
+        "name": "Recharge/Threat",
+        "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Range",
+          "Recharge",
+          "Threat"
+        ],
+        "name": "Range/Recharge/Threat",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Recharge"
+        ],
+        "name": "Accuracy/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Range",
+          "Threat"
+        ],
+        "name": "Range/Threat",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -15394,7 +14161,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Threat Duration"
@@ -15404,43 +14171,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -15449,43 +14186,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -15494,43 +14201,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -15539,19 +14216,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -15559,39 +14231,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Melee)",
+            "desc": "+1.88% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 6
       }
     ],
     "category": "uncommon",
-    "icon": "smulti_strike.png",
+    "icon": "sMultistrike.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Multi-Strike",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -15601,7 +14268,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -15611,26 +14278,28 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -15641,7 +14310,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Melee AoE Damage"
@@ -15651,43 +14320,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -15696,9 +14335,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -15706,18 +14345,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Hold Duration",
+            "stat": "hold_duration",
+            "value": 2
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 1.25
           }
         ],
@@ -15725,20 +14379,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sneuronic_shutdown.png",
+    "icon": "sNeuronicshutdown.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Neuronic Shutdown",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -15748,43 +14402,45 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Hold",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Hold"
-        ],
-        "name": "Hold",
-        "num": 4,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Hold",
-          "Recharge",
-          "Endurance"
+          "Range"
         ],
-        "name": "Hold/Recharge/Endurance",
+        "name": "Hold/Range",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Hold",
+          "Recharge"
+        ],
+        "name": "Accuracy/Hold/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Psionic Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Holds"
@@ -15794,19 +14450,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+1.7% Terror Duration",
+            "stat": "terror_duration",
+            "value": 1.65
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
-          },
-          {
-            "desc": "+0.9375% Defense (Ranged)",
+            "desc": "+0.94% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 3
@@ -15814,44 +14475,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 3.0
+            "desc": "+5% Accuracy",
+            "stat": "accuracy",
+            "value": 5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 5
@@ -15859,43 +14500,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -15903,69 +14514,71 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "snightmare.png",
+    "icon": "sNightmare.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Nightmare",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Fear"
+          "Terrorize"
         ],
-        "name": "Endurance/Fear",
+        "name": "Endurance/Terrorize",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Fear"
+          "Range",
+          "Terrorize"
         ],
-        "name": "Fear",
+        "name": "Range/Terrorize",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Fear",
-          "Endurance"
+          "Terrorize"
         ],
-        "name": "Recharge/Fear/Endurance",
+        "name": "Accuracy/Recharge/Terrorize",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Fear",
-          "Endurance"
+          "Accuracy",
+          "Terrorize"
         ],
-        "name": "Fear/Endurance",
+        "name": "Accuracy/Terrorize",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Fear"
@@ -15975,9 +14588,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+12.0% Regeneration",
+            "stat": "regeneration",
+            "value": 12
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -15985,43 +14608,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+6.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 6
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -16030,39 +14633,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Ranged)",
+            "desc": "+3.75% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "snuminas_convalesence.png",
+    "icon": "sNuminasconvalesence.png",
     "maxLevel": 50,
     "minLevel": 30,
-    "name": "Numina's Convalesence",
+    "name": "Numina's Convalescence",
     "pieces": [
       {
         "aspects": [
           "Endurance",
-          "Healing"
+          "Heal"
         ],
-        "name": "Endurance/Healing",
+        "name": "Endurance/Heal",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -16072,43 +14670,43 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Healing/Recharge",
+        "name": "Heal/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Endurance/Healing/Recharge",
+        "name": "Endurance/Heal/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing"
+          "Heal"
         ],
-        "name": "Healing",
+        "name": "Heal",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Recovery/+Regeneration",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -16119,43 +14717,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -16164,9 +14732,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 5
@@ -16174,26 +14762,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Melee)",
+            "desc": "+3.75% Melee Defense",
             "stat": "defense_(melee)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sobliteration.png",
+    "icon": "Obliteration.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Obliteration",
@@ -16205,17 +14788,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -16225,36 +14808,37 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Smashing Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Melee AoE Damage"
@@ -16264,9 +14848,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+4.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 4
+          },
+          {
+            "desc": "+4.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 4
+          },
+          {
+            "desc": "+2.2% Terror Duration",
+            "stat": "terror_duration",
+            "value": 2.2
+          },
+          {
+            "desc": "+2.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 2
+          },
+          {
+            "desc": "+2.0% Hold Duration",
+            "stat": "hold_duration",
+            "value": 2
+          },
+          {
+            "desc": "+2.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -16274,43 +14893,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -16319,59 +14908,54 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Energy)",
+            "desc": "+3.0% Recovery",
+            "stat": "recovery",
+            "value": 3
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 3.75
-          },
-          {
-            "desc": "+1.875% Defense (Ranged)",
+            "desc": "+1.88% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "soverpowering_presence.png",
+    "icon": "AO_Controller_OverpoweringPresence.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Overpowering Presence",
     "pieces": [
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear",
-          "Endurance"
+          "Accuracy",
+          "Mez"
         ],
-        "name": "Confuse/Hold/Immobilize/Sleep/Stun/Fear/Endurance",
+        "name": "Accuracy/Mez",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Mez/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -16381,47 +14965,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "Recharge/Chance for Energy Font",
         "num": 6,
         "proc": true,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Controller Archetype Sets"
@@ -16431,9 +15008,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+12.0% Regeneration",
+            "stat": "regeneration",
+            "value": 12
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 4
@@ -16441,36 +15038,41 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 2.5
           },
           {
-            "desc": "+2.5% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 2.5
-          },
-          {
-            "desc": "+1.25% Defense (Ranged)",
+            "desc": "+1.25% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 1.25
           }
         ],
         "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+400.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 400
+          }
+        ],
+        "pieces": 6
       }
     ],
-    "category": "event",
-    "icon": "soverwhelming_force.png",
+    "category": "uncommon",
+    "icon": "UD_Overwhelming_Force.png",
     "maxLevel": 50,
-    "minLevel": 1,
+    "minLevel": 10,
     "name": "Overwhelming Force",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
         "unique": true
@@ -16487,10 +15089,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 3,
         "proc": false,
         "unique": true
@@ -16508,11 +15111,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
         "unique": true
@@ -16520,11 +15124,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Damage",
-          "Knockback"
+          "KnockToKnockDown"
         ],
-        "name": "Damage/Knockback",
+        "name": "Damage/KnockToKnockDown/Chance for Knockback",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -16535,43 +15139,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -16580,43 +15154,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 2.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -16625,80 +15189,82 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Ranged)",
+            "desc": "+3.13% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "spacing_of_the_turtle.png",
+    "icon": "sPacingoftheturtle.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Pacing of the Turtle",
     "pieces": [
       {
         "aspects": [
-          "Endurance"
+          "Accuracy",
+          "Slow"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Slow",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage",
+          "Slow"
         ],
-        "name": "Damage",
+        "name": "Damage/Slow",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Range",
+          "Slow"
+        ],
+        "name": "Range/Slow",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Recharge"
+          "Recharge",
+          "Slow"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Endurance/Recharge/Slow",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -Recharge",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Slow Movement"
@@ -16708,9 +15274,59 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          },
+          {
+            "desc": "+2% Lethal and Smashing",
+            "pvp": true,
+            "stat": "damage_resistance_(lethal)",
+            "value": 2.25
+          },
+          {
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true,
+            "stat": "mez_resistance_(all)",
+            "value": 3.75
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          },
+          {
+            "desc": "+1000% Knockback Resistance Resistance",
+            "pvp": true,
+            "stat": "knockback_resistance",
+            "value": 1000
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
+          },
+          {
+            "desc": "+3% Cold and Fire",
+            "pvp": true,
+            "stat": "damage_resistance_(cold)",
+            "value": 3
+          },
+          {
+            "desc": "+5% Mez Resistance (All Resistance",
+            "pvp": true,
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
@@ -16718,16 +15334,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Recharge",
+            "desc": "+8% Recharge",
             "stat": "recharge",
+            "value": 7.5
+          },
+          {
+            "desc": "+7.5% Range",
+            "pvp": true,
+            "stat": "range",
             "value": 7.5
           }
         ],
         "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 6
+          },
+          {
+            "desc": "+3.13% Melee Defense",
+            "pvp": true,
+            "stat": "defense_(melee)",
+            "value": 3.13
+          },
+          {
+            "desc": "+2% Lethal and Smashing",
+            "pvp": true,
+            "stat": "defense_(lethal)",
+            "value": 1.56
+          }
+        ],
+        "pieces": 6
       }
     ],
     "category": "pvp",
-    "icon": "spanacea.png",
+    "icon": "sPanacea.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Panacea",
@@ -16735,12 +15379,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Endurance",
-          "Healing"
+          "Heal"
         ],
-        "name": "Endurance/Healing",
+        "name": "Endurance/Heal",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -16750,45 +15394,43 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Healing/Recharge",
+        "name": "Heal/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Endurance/Healing/Recharge",
+        "name": "Endurance/Heal/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing"
+          "Heal"
         ],
-        "name": "Healing",
+        "name": "Heal",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Endurance Modification"
-        ],
-        "name": "Endurance Modification",
+        "aspects": [],
+        "name": "Chance for +Endurance/Chance for +Health",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -16799,43 +15441,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+1.0% Recovery",
+            "stat": "recovery",
+            "value": 1
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -16844,29 +15466,39 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+90.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 90.0
+            "desc": "+0.9% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 0.9
           }
         ],
         "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.0% Hold Duration",
+            "stat": "hold_duration",
+            "value": 1
+          }
+        ],
+        "pieces": 5
       }
     ],
     "category": "uncommon",
-    "icon": "sparalytic.png",
+    "icon": "sParalytic.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Paralytic",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -16876,36 +15508,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Hold",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Hold"
-        ],
-        "name": "Hold",
-        "num": 4,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Hold",
-          "Recharge",
-          "Endurance"
+          "Range"
         ],
-        "name": "Hold/Recharge/Endurance",
+        "name": "Hold/Range",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Hold",
+          "Recharge"
+        ],
+        "name": "Accuracy/Hold/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Holds"
@@ -16915,43 +15549,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -16960,9 +15564,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 4
@@ -16970,78 +15584,91 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Lethal)",
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+3.125% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 3.125
-          },
-          {
-            "desc": "+1.5625% Defense (Melee)",
+            "desc": "+1.56% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sperfect_zinger.png",
+    "icon": "sPerfectzinger.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Perfect Zinger",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Threat"
+        ],
+        "name": "Threat",
         "num": 1,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Recharge"
-        ],
-        "name": "Recharge",
-        "num": 2,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Recharge"
-        ],
-        "name": "Recharge",
-        "num": 3,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge",
-          "Endurance"
+          "Threat"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Recharge/Threat",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Range",
+          "Recharge",
+          "Threat"
+        ],
+        "name": "Range/Recharge/Threat",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Recharge"
+        ],
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Range",
+          "Threat"
+        ],
+        "name": "Range/Threat",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Psionic Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Threat Duration"
@@ -17051,9 +15678,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+7.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -17061,88 +15698,101 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Area)",
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.13% Area Defense",
             "stat": "defense_(area)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sperformance_shifter.png",
+    "icon": "sPerformanceShift.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Performance Shifter",
     "pieces": [
       {
         "aspects": [
-          "Endurance Modification"
+          "EndMod"
         ],
-        "name": "Endurance Modification",
+        "name": "EndMod",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance Modification",
+          "EndMod",
           "Recharge"
         ],
-        "name": "Endurance Modification/Recharge",
+        "name": "EndMod/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance Modification",
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "EndMod",
+          "Recharge"
         ],
-        "name": "Endurance Modification/Recharge/Endurance",
+        "name": "Accuracy/EndMod/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance Modification",
-          "Endurance"
+          "Accuracy",
+          "EndMod"
         ],
-        "name": "Endurance Modification/Endurance",
+        "name": "Accuracy/EndMod",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Endurance Modification"
-        ],
-        "name": "Endurance Modification",
+        "aspects": [],
+        "name": "Chance for +Endurance",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Endurance Modification"
@@ -17152,19 +15802,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+6.0% Regeneration",
+            "stat": "regeneration",
+            "value": 6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 1.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Accuracy",
+            "stat": "accuracy",
+            "value": 5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -17172,43 +15847,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -17216,20 +15861,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sperplex.png",
+    "icon": "sPerplex.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Perplex",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -17239,36 +15884,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Confuse/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Confuse"
-        ],
-        "name": "Confuse",
-        "num": 4,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Confuse",
-          "Recharge",
-          "Endurance"
+          "Range"
         ],
-        "name": "Confuse/Recharge/Endurance",
+        "name": "Confuse/Range",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Confuse",
+          "Recharge"
+        ],
+        "name": "Accuracy/Confuse/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -17278,7 +15925,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Confuse/Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Confuse"
@@ -17288,43 +15935,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -17333,7 +15960,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -17343,43 +15980,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -17387,20 +15994,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "spositrons_blast.png",
+    "icon": "sPositronsblast.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Positron's Blast",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -17410,7 +16017,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -17420,33 +16027,35 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Damage"
-        ],
-        "name": "Damage",
-        "num": 4,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Energy Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Ranged AoE Damage"
@@ -17456,39 +16065,54 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Energy)",
+            "desc": "+8.0% Regeneration",
+            "stat": "regeneration",
+            "value": 8
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 1.25
           },
           {
-            "desc": "+1.25% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.25
-          },
-          {
-            "desc": "+0.625% Defense (Ranged)",
+            "desc": "+0.63% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 4
       }
     ],
     "category": "rare",
-    "icon": "spounding_slugfest.png",
+    "icon": "sPoundingslugfest.png",
     "maxLevel": 30,
     "minLevel": 15,
     "name": "Pounding Slugfest",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -17498,7 +16122,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -17508,16 +16132,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Stun"
-        ],
-        "name": "Stun",
+        "aspects": [],
+        "name": "Chance for Stun",
         "num": 4,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -17527,43 +16149,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -17572,9 +16164,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -17582,44 +16174,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 3.0
+            "desc": "+3% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
@@ -17627,38 +16189,52 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+3.8% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 3.75
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
         ],
         "pieces": 6
+      },
+      {
+        "effects": [],
+        "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "spreventive_medicine.png",
+    "icon": "sPreventiveMedicine.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Preventive Medicine",
     "pieces": [
       {
         "aspects": [
-          "Healing"
+          "Heal"
         ],
-        "name": "Healing",
+        "name": "Heal",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Healing"
+          "Heal"
         ],
-        "name": "Endurance/Healing",
+        "name": "Endurance/Heal",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -17668,34 +16244,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Healing/Recharge",
+        "name": "Heal/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Endurance/Healing/Recharge",
+        "name": "Endurance/Heal/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Absorb/Chance for +Absorb",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -17706,43 +16282,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -17751,61 +16297,57 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 1.25
           },
           {
-            "desc": "+1.25% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.25
-          },
-          {
-            "desc": "+0.625% Defense (Ranged)",
+            "desc": "+0.63% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "spulverizing_fisticuffs.png",
+    "icon": "sPulverizingfisticuffs.png",
     "maxLevel": 25,
     "minLevel": 10,
     "name": "Pulverizing Fisticuffs",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -17815,43 +16357,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -17860,26 +16372,28 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "squickfoot.png",
+    "icon": "sQuickfoot.png",
     "maxLevel": 50,
     "minLevel": 15,
     "name": "Quickfoot",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Run"
+        ],
+        "name": "Run",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -17888,63 +16402,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Endurance",
+          "Run"
         ],
-        "name": "Endurance",
+        "name": "Endurance/Run",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
-    "type": "Running"
+    "type": "Running & Sprints"
   },
   "ragnarok": {
     "bonuses": [
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -17952,9 +16447,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -17962,51 +16467,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "purple",
-    "icon": "sragnarok.png",
+    "icon": "sRagnarok.png",
     "maxLevel": 50,
     "minLevel": 50,
     "name": "Ragnarok",
@@ -18032,21 +16507,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
@@ -18062,12 +16537,10 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       },
       {
-        "aspects": [
-          "Knockback"
-        ],
-        "name": "Knockback",
+        "aspects": [],
+        "name": "Chance for Knockback",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -18078,9 +16551,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -18088,18 +16571,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+2.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 2
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 1.25
           }
         ],
@@ -18108,17 +16596,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 1.25
           }
@@ -18127,20 +16610,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "srazzle_dazzle.png",
+    "icon": "sRazzledazzle.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Razzle Dazzle",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -18150,45 +16633,45 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Stun",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Range",
           "Stun"
         ],
-        "name": "Stun",
+        "name": "Range/Stun",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Stun",
-          "Endurance"
+          "Stun"
         ],
-        "name": "Recharge/Stun/Endurance",
+        "name": "Accuracy/Recharge/Stun",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Immobilize"
-        ],
-        "name": "Immobilize",
+        "aspects": [],
+        "name": "Chance for Immobilize",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Stuns"
@@ -18198,43 +16681,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -18243,19 +16696,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 1.25
           },
           {
-            "desc": "+1.25% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.25
-          },
-          {
-            "desc": "+0.625% Defense (Ranged)",
+            "desc": "+0.63% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 3
@@ -18263,19 +16711,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 1.25
           },
           {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.25
-          },
-          {
-            "desc": "+0.625% Defense (Melee)",
+            "desc": "+0.63% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 4
@@ -18283,19 +16726,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Area)",
+            "desc": "+1.25% Area Defense",
             "stat": "defense_(area)",
             "value": 1.25
           },
           {
-            "desc": "+0.625% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.625
-          },
-          {
-            "desc": "+0.625% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 5
@@ -18303,43 +16741,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -18347,30 +16755,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sreactive_armor.png",
+    "icon": "sReactivearmor.png",
     "maxLevel": 40,
     "minLevel": 15,
     "name": "Reactive Armor",
     "pieces": [
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Damage Resistance/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage Resistance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -18380,27 +16788,27 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage Resistance/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage Resistance"
         ],
-        "name": "Damage",
+        "name": "Damage Resistance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -18409,7 +16817,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Resist Damage"
@@ -18419,43 +16827,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -18464,9 +16842,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -18474,44 +16852,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 3.0
+            "desc": "+3% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
@@ -18519,35 +16867,52 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+3.8% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 3.75
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
         ],
         "pieces": 6
+      },
+      {
+        "effects": [],
+        "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sreactive_defenses.png",
+    "icon": "sReactiveDefenses.png",
     "maxLevel": 50,
     "minLevel": 20,
-    "name": "ReactiveDefenses",
+    "name": "Reactive Defenses",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense"
+        ],
+        "name": "Defense",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Defense/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -18557,32 +16922,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Res(All)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -18593,54 +16960,69 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+1.875% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.875
-          },
-          {
-            "desc": "+0.9375% Defense (Melee)",
+            "desc": "+0.94% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6.0% Regeneration",
+            "stat": "regeneration",
+            "value": 6
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+20.0% Perception",
+            "stat": "perception",
+            "value": 20
+          }
+        ],
+        "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "srectified_reticle.png",
+    "icon": "sRectifiedreticle.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Rectified Reticle",
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "ToHit Buff",
+        "name": "ToHit",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge",
-          "ToHit Buff"
+          "ToHit"
         ],
-        "name": "Recharge/ToHit Buff",
+        "name": "Recharge/ToHit",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Perception",
         "num": 3,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -18651,43 +17033,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -18696,43 +17048,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -18741,9 +17063,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 5
@@ -18751,18 +17083,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 1.25
           }
         ],
@@ -18770,28 +17097,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sred_fortune.png",
+    "icon": "sRedfortune.png",
     "maxLevel": 50,
     "minLevel": 25,
     "name": "Red Fortune",
     "pieces": [
       {
         "aspects": [
+          "Defense",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Defense/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -18801,24 +17130,27 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense"
+        ],
+        "name": "Defense",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -18827,7 +17159,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Defense Sets"
@@ -18837,9 +17169,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+6.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -18847,16 +17189,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+4.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 5
       }
     ],
     "category": "rare",
-    "icon": "sregenerative_tissue.png",
+    "icon": "sRegenerativetissue.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Regenerative Tissue",
@@ -18864,12 +17216,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Endurance",
-          "Healing"
+          "Heal"
         ],
-        "name": "Endurance/Healing",
+        "name": "Endurance/Heal",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -18879,34 +17231,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Healing/Recharge",
+        "name": "Heal/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Endurance/Healing/Recharge",
+        "name": "Endurance/Heal/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Regeneration",
         "num": 5,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -18991,7 +17343,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "sreturn_from_the_grave.png",
+    "icon": "EO_Return_From_The_Grave.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Return From The Grave",
@@ -19137,7 +17489,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "srolling_barrage.png",
+    "icon": "Rolling_Barrage.png",
     "maxLevel": 50,
     "minLevel": 25,
     "name": "Rolling Barrage",
@@ -19212,9 +17564,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+2.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
@@ -19222,7 +17584,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Recharge",
+            "desc": "+1.0% Damage",
+            "stat": "damage",
+            "value": 1
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Recharge",
             "stat": "recharge",
             "value": 2.5
           }
@@ -19231,20 +17603,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "srooting_grasp.png",
+    "icon": "sRoothingGrasp.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Rooting Grasp",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -19254,36 +17626,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Immobilize",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Immobilize"
-        ],
-        "name": "Immobilize",
-        "num": 4,
-        "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Immobilize",
-          "Recharge",
-          "Endurance"
+          "Range"
         ],
-        "name": "Immobilize/Recharge/Endurance",
+        "name": "Immobilize/Range",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Immobilize",
+          "Recharge"
+        ],
+        "name": "Accuracy/Immobilize/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Immobilize"
@@ -19293,43 +17667,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+6.0% Regeneration",
+            "stat": "regeneration",
+            "value": 6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -19338,44 +17692,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 3.0
+            "desc": "+2.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 2
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 5
@@ -19383,29 +17717,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Psionic)",
+            "desc": "+1.88% Psionic Defense",
             "stat": "defense_(psionic)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "uncommon",
-    "icon": "srope_a_dope.png",
+    "icon": "sRopeadope.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Rope A Dope",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -19415,46 +17749,48 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Stun",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Range",
           "Stun"
         ],
-        "name": "Stun",
+        "name": "Range/Stun",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Stun",
-          "Endurance"
+          "Stun"
         ],
-        "name": "Recharge/Stun/Endurance",
+        "name": "Accuracy/Recharge/Stun",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Stun",
-          "Endurance"
+          "Accuracy",
+          "Stun"
         ],
-        "name": "Stun/Endurance",
+        "name": "Accuracy/Stun",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Stuns"
@@ -19464,43 +17800,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -19509,9 +17815,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
           }
         ],
         "pieces": 3
@@ -19519,39 +17825,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+0.9375% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.9375
-          },
-          {
-            "desc": "+0.9375% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
       }
     ],
     "category": "uncommon",
-    "icon": "sruin.png",
+    "icon": "sRuin.png",
     "maxLevel": 40,
     "minLevel": 25,
     "name": "Ruin",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -19561,7 +17872,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -19571,28 +17882,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -19602,43 +17914,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -19647,64 +17929,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 3.0
+            "desc": "+3% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "ssalvo.png",
+    "icon": "sSalvo.png",
     "maxLevel": 25,
     "minLevel": 10,
     "name": "Salvo",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -19715,17 +17967,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Endurance"
+          "Endurance",
+          "Range"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance/Range",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -19735,43 +17989,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -19780,19 +18014,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Area)",
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.13% Area Defense",
             "stat": "defense_(area)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 5
@@ -19800,29 +18039,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Psionic)",
+            "desc": "+3.13% Psionic Defense",
             "stat": "defense_(psionic)",
-            "value": 3.125
+            "value": 3.13
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "ssciroccos_dervish.png",
+    "icon": "sSciroccosdervish.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Scirocco's Dervish",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -19832,7 +18071,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -19842,34 +18081,35 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Lethal Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Melee AoE Damage"
@@ -19879,9 +18119,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+180.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 180.0
+            "desc": "+1.8% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.8
           }
         ],
         "pieces": 2
@@ -19889,7 +18129,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -19899,39 +18139,54 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Area)",
+            "desc": "+11% Accuracy",
+            "stat": "accuracy",
+            "value": 11
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Recovery",
+            "stat": "recovery",
+            "value": 3
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.75% Area Defense",
             "stat": "defense_(area)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "sscourging_blast.png",
+    "icon": "AO_Corruptor_ScourgingBlast.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Scourging Blast",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -19941,18 +18196,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -19963,27 +18218,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "Recharge/Chance for +Endurance,+Health",
         "num": 6,
         "proc": true,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Corruptor Archetype Sets"
@@ -19993,9 +18250,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 2
@@ -20003,17 +18260,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 2.5
           },
           {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 2.5
-          },
-          {
-            "desc": "+1.25% Defense (Melee)",
+            "desc": "+1.25% Melee Defense",
             "stat": "defense_(melee)",
             "value": 1.25
           }
@@ -20023,7 +18275,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -20033,64 +18295,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+5% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 5.25
           },
           {
-            "desc": "+5.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 5.25
-          },
-          {
-            "desc": "+8.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 8.75
           }
         ],
         "pieces": 6
+      },
+      {
+        "effects": [],
+        "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "sscrappers_strike.png",
+    "icon": "AO_Scrapper_ScrappersStrike.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Scrapper's Strike",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -20100,18 +18336,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -20122,27 +18358,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/+Critical Hit%",
         "num": 6,
         "proc": false,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Scrapper Archetype Sets"
@@ -20152,9 +18390,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+4.0% Regeneration",
+            "stat": "regeneration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
@@ -20162,19 +18410,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Area)",
+            "desc": "+3% Accuracy",
+            "stat": "accuracy",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.25% Area Defense",
             "stat": "defense_(area)",
             "value": 1.25
           },
           {
-            "desc": "+0.625% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 0.625
-          },
-          {
-            "desc": "+0.625% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 5
@@ -20182,43 +18435,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -20226,28 +18449,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sserendipity.png",
+    "icon": "sSerendipity.png",
     "maxLevel": 40,
     "minLevel": 15,
     "name": "Serendipity",
     "pieces": [
       {
         "aspects": [
+          "Defense",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Defense/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -20257,24 +18482,27 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense"
+        ],
+        "name": "Defense",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -20283,7 +18511,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Defense Sets"
@@ -20293,43 +18521,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -20338,17 +18546,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 1.25
           }
@@ -20358,82 +18561,92 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Melee)",
+            "desc": "+11% Accuracy",
+            "stat": "accuracy",
+            "value": 11
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.13% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sshield_breaker.png",
+    "icon": "ShieldBreaker.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Shield Breaker",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense Debuff"
+        ],
+        "name": "Defense Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Accuracy",
+          "Defense Debuff"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Defense Debuff",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense Debuff/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Lethal Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Accurate Defense Debuff"
@@ -20443,9 +18656,31 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+22.5% Maxhp",
-            "stat": "maxhp",
-            "value": 22.5
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          },
+          {
+            "desc": "+2.5% Recovery",
+            "pvp": true,
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.2% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 2.25
+          },
+          {
+            "desc": "+1000% Knockback Resistance Resistance",
+            "pvp": true,
+            "stat": "knockback_resistance",
+            "value": 1000
           }
         ],
         "pieces": 3
@@ -20453,44 +18688,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           },
           {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
+            "desc": "+4% Lethal and Smashing",
+            "pvp": true,
+            "stat": "damage_resistance_(lethal)",
+            "value": 3.75
           },
           {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 7.5
+            "desc": "+6% Mez Resistance (All Resistance",
+            "pvp": true,
+            "stat": "mez_resistance_(all)",
+            "value": 6.25
           }
         ],
         "pieces": 4
@@ -20498,72 +18715,76 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "pvp": true,
+            "stat": "+res(recharge_debuff)",
+            "value": 10
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           },
           {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
+            "desc": "+8% Recharge",
+            "pvp": true,
+            "stat": "recharge",
+            "value": 7.5
+          }
+        ],
+        "pieces": 6
+      },
+      {
+        "effects": [
           {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 6.25
+            "desc": "+5.0% Damage Resistance (All Damage",
+            "stat": "damage_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 6
       }
     ],
     "category": "pvp",
-    "icon": "sshield_wall.png",
+    "icon": "sShieldwall.png",
     "maxLevel": 50,
     "minLevel": 10,
     "name": "Shield Wall",
     "pieces": [
       {
         "aspects": [
+          "Defense",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Defense/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -20573,30 +18794,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense"
+        ],
+        "name": "Defense",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Res(All)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -20607,19 +18831,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Lethal)",
+            "desc": "+6.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 3.75
-          },
-          {
-            "desc": "+1.875% Defense (Melee)",
+            "desc": "+1.88% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 5
@@ -20627,86 +18876,82 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Area)",
+            "desc": "+3.75% Area Defense",
             "stat": "defense_(area)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "ssiphon_insight.png",
+    "icon": "SiphonInsight.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Siphon Insight",
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff",
+        "name": "ToHit Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "ToHit Buff",
-          "Endurance"
+          "Accuracy",
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff/Endurance",
+        "name": "Accuracy/ToHit Debuff",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
           "Recharge",
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "Endurance/Recharge/ToHit Buff",
+        "name": "Endurance/Recharge/ToHit Debuff",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for +ToHit",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Accurate To-Hit Debuff"
@@ -20716,43 +18961,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -20761,9 +18976,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
           }
         ],
         "pieces": 3
@@ -20771,39 +18986,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+1.875% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.875
-          },
-          {
-            "desc": "+0.9375% Defense (Melee)",
+            "desc": "+0.94% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 4
       }
     ],
     "category": "uncommon",
-    "icon": "ssmashing_haymaker.png",
+    "icon": "sSmashinghaymaker.png",
     "maxLevel": 35,
     "minLevel": 20,
     "name": "Smashing Haymaker",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -20813,7 +19023,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -20823,7 +19033,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -20834,7 +19044,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -20844,26 +19054,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+1.0% Recovery",
+            "stat": "recovery",
+            "value": 1
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "ssoaring.png",
+    "icon": "sSoaring.png",
     "maxLevel": 50,
     "minLevel": 15,
     "name": "Soaring",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Fly"
+        ],
+        "name": "Fly",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -20872,16 +19094,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Endurance",
+          "Fly"
         ],
-        "name": "Endurance",
+        "name": "Endurance/Fly",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Flight"
@@ -20891,9 +19114,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+16.0% Regeneration",
+            "stat": "regeneration",
+            "value": 16
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 3
@@ -20901,44 +19134,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 5
@@ -20946,16 +19159,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Psionic)",
+            "desc": "+5.00% Psionic Defense",
             "stat": "defense_(psionic)",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 6
       }
     ],
     "category": "purple",
-    "icon": "ssoulbound_allegiance.png",
+    "icon": "sSoulboaundAll.png",
     "maxLevel": 50,
     "minLevel": 50,
     "name": "Soulbound Allegiance",
@@ -20981,21 +19194,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
@@ -21012,9 +19225,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Build Up",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -21025,43 +19238,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+8.0% Regeneration",
+            "stat": "regeneration",
+            "value": 8
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -21070,9 +19263,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 4
@@ -21080,43 +19273,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -21125,39 +19288,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Melee)",
+            "desc": "+3.13% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
+        "pieces": 6
+      },
+      {
+        "effects": [],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "ssovereign_right.png",
+    "icon": "sSoverignRight.png",
     "maxLevel": 50,
     "minLevel": 25,
     "name": "Sovereign Right",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -21167,41 +19329,43 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Accuracy"
         ],
-        "name": "Endurance",
+        "name": "Accuracy",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Res(All)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -21212,9 +19376,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+22.5% Maxhp",
-            "stat": "maxhp",
-            "value": 22.5
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.2% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 2.25
           }
         ],
         "pieces": 3
@@ -21222,19 +19396,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Melee)",
+            "desc": "+3.13% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 4
@@ -21242,29 +19411,43 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+315.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 315.0
+            "desc": "+14.0% Regeneration",
+            "stat": "regeneration",
+            "value": 14
           }
         ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.15% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.15
+          }
+        ],
+        "pieces": 6
+      },
+      {
+        "effects": [],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "sspiders_bite.png",
+    "icon": "AO_Arachnos_SpidersBite.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Spider's Bite",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -21274,18 +19457,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -21296,27 +19479,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Toxic Damage",
         "num": 6,
         "proc": false,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Soldiers of Arachnos Archetype Sets"
@@ -21326,26 +19511,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+3.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "sspringfoot.png",
+    "icon": "sSpringfoot.png",
     "maxLevel": 50,
     "minLevel": 15,
     "name": "Springfoot",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Jump"
+        ],
+        "name": "Jump",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -21354,38 +19551,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Endurance",
+          "Jump"
         ],
-        "name": "Endurance",
+        "name": "Endurance/Jump",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
-    "type": "Leaping"
+    "type": "Leaping & Sprints"
   },
   "stagger": {
     "bonuses": [
       {
         "effects": [
           {
-            "desc": "+1.25% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.25
-          },
+            "desc": "+3.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
           {
-            "desc": "+1.25% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 1.25
           },
           {
-            "desc": "+0.625% Defense (Area)",
+            "desc": "+0.63% Area Defense",
             "stat": "defense_(area)",
-            "value": 0.625
+            "value": 0.63
           }
         ],
         "pieces": 3
@@ -21393,7 +19596,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Recharge",
+            "desc": "+1.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 1
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Recharge",
             "stat": "recharge",
             "value": 2.5
           }
@@ -21402,20 +19615,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sstagger.png",
+    "icon": "sStagger.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Stagger",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -21425,36 +19638,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Stun",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Range",
           "Stun"
         ],
-        "name": "Stun",
+        "name": "Range/Stun",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Stun",
-          "Endurance"
+          "Stun"
         ],
-        "name": "Recharge/Stun/Endurance",
+        "name": "Accuracy/Recharge/Stun",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Stuns"
@@ -21464,17 +19679,22 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
             "value": 2.5
           },
           {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 2.5
-          },
-          {
-            "desc": "+1.25% Defense (Melee)",
+            "desc": "+1.25% Melee Defense",
             "stat": "defense_(melee)",
             "value": 1.25
           }
@@ -21484,7 +19704,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -21494,43 +19724,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.25% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+5% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 5.25
           },
           {
-            "desc": "+5.25% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 5.25
-          },
-          {
-            "desc": "+8.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 8.75
           }
         ],
@@ -21538,20 +19738,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "sstalkers_guile.png",
+    "icon": "AO_Stalker_StalkersGuile.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Stalker's Guile",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -21561,18 +19761,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -21583,27 +19783,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Hidden Status",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Stalker Archetype Sets"
@@ -21613,45 +19815,75 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.00% All Defense",
+            "stat": "defense_(all)",
+            "value": 3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+400.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 400
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "ssteadfast_protection.png",
+    "icon": "sSteadfastprotection.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Steadfast Protection",
     "pieces": [
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Damage Resistance/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage Resistance"
         ],
-        "name": "Damage",
+        "name": "Damage Resistance/+Def(All)",
         "num": 2,
-        "proc": false,
+        "proc": true,
         "unique": true
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Knockback Protection",
         "num": 3,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Resist Damage"
@@ -21661,18 +19893,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+12.0% Regeneration",
+            "stat": "regeneration",
+            "value": 12
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 1.25
           }
         ],
@@ -21681,7 +19918,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Recharge",
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+8% Recharge",
             "stat": "recharge",
             "value": 7.5
           }
@@ -21691,43 +19938,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -21735,20 +19952,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "ssting_of_the_manticore.png",
+    "icon": "sStingofthemanticore.png",
     "maxLevel": 50,
     "minLevel": 35,
     "name": "Sting of the Manticore",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -21758,26 +19975,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Accuracy",
+          "InterruptTime",
+          "Range"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/InterruptTime/Range",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Damage",
+          "InterruptTime",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage/InterruptTime/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -21788,14 +20008,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Toxic Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Sniper Attacks"
@@ -21805,9 +20025,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -21815,7 +20045,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+3.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -21825,39 +20065,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Ranged)",
+            "desc": "+3.13% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sstupefy.png",
+    "icon": "sStupefy.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Stupefy",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -21867,45 +20102,45 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Stun",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Range",
           "Stun"
         ],
-        "name": "Stun",
+        "name": "Range/Stun",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Stun",
-          "Endurance"
+          "Stun"
         ],
-        "name": "Recharge/Stun/Endurance",
+        "name": "Accuracy/Recharge/Stun",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Knockback"
-        ],
-        "name": "Knockback",
+        "aspects": [],
+        "name": "Chance for Knockback",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Stuns"
@@ -22034,17 +20269,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_absolute_resolution.png",
+    "icon": "SAO_Absolute_Resolution.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Absolute Resolution",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
         "unique": true
@@ -22054,18 +20289,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage/RechargeTime",
         "num": 2,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/RechargeTime",
         "num": 3,
         "proc": false,
         "unique": true
@@ -22076,18 +20311,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage/Endurance/RechargeTime",
         "num": 4,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/RechargeTime",
         "num": 5,
         "proc": false,
         "unique": true
@@ -22096,9 +20332,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "RechargeTime/Chance for Energy Damage Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -22109,9 +20345,64 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+8.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 8
+          },
+          {
+            "desc": "+8.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 8
+          },
+          {
+            "desc": "+4.4% Terror Duration",
+            "stat": "terror_duration",
+            "value": 4.4
+          },
+          {
+            "desc": "+4.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 4
+          },
+          {
+            "desc": "+4.0% Hold Duration",
+            "stat": "hold_duration",
+            "value": 4
+          },
+          {
+            "desc": "+4.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 4
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -22119,18 +20410,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Ranged)",
+            "desc": "+5.00% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 2.5
           }
         ],
@@ -22138,40 +20424,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_ascendency_of_the_dominator.png",
+    "icon": "SAO_Dominator_SuperiorAscendencyOfTheDominator.png",
     "maxLevel": 1,
     "minLevel": 1,
-    "name": "Superior Ascendency of the Dominator",
+    "name": "Superior Ascendancy of the Dominator",
     "pieces": [
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear",
-          "Endurance"
+          "Accuracy",
+          "Mez"
         ],
-        "name": "Confuse/Hold/Immobilize/Sleep/Stun/Fear/Endurance",
+        "name": "Accuracy/Mez",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Mez/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -22181,47 +20457,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Dam(All)",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Dominator Archetype Sets"
@@ -22231,17 +20500,32 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Area)",
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Area Defense",
             "stat": "defense_(area)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 2.5
           }
@@ -22251,29 +20535,39 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_assassins_mark.png",
+    "icon": "SAO_Stalker_SuperiorAssassinsMark.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Assassin's Mark",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -22283,18 +20577,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -22305,27 +20599,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Recharge Power",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Stalker Archetype Sets"
@@ -22335,44 +20631,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+15% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 15
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -22380,18 +20656,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Melee)",
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 2.5
           }
         ],
@@ -22400,17 +20681,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Defense (Cold)",
+            "desc": "+5% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           }
@@ -22419,20 +20695,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_avalanche.png",
+    "icon": "EO_Avalanche.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Avalanche",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -22442,49 +20718,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Knockback",
           "Recharge"
         ],
-        "name": "Knockback/Recharge",
+        "name": "Recharge/Chance for Knockback",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Melee AoE Damage"
@@ -22494,9 +20772,39 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10.0% Range",
+            "stat": "range",
+            "value": 10
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -22504,18 +20812,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Ranged)",
+            "desc": "+5.00% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 2.5
           }
         ],
@@ -22523,20 +20826,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_blasters_wrath.png",
+    "icon": "SAO_Blaster_SuperiorBlastersWrath.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Blaster's Wrath",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -22546,48 +20849,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Fire Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Blaster Archetype Sets"
@@ -22597,44 +20903,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+15% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 15
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 4
@@ -22642,17 +20938,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Lethal)",
+            "desc": "+5% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+5.0% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           }
@@ -22662,17 +20953,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Defense (Cold)",
+            "desc": "+5% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           }
@@ -22681,20 +20967,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_blistering_cold.png",
+    "icon": "SEO_Blistering_Cold.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Blistering Cold",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -22704,49 +20990,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Hold",
           "Recharge"
         ],
-        "name": "Hold/Recharge",
+        "name": "Recharge/Chance for Hold",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -22756,9 +21044,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 2
@@ -22766,17 +21054,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Lethal)",
+            "desc": "+5% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+5.0% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           }
@@ -22786,9 +21069,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -22796,64 +21089,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 6.0
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
+        "pieces": 6
+      },
+      {
+        "effects": [],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_brutes_fury.png",
+    "icon": "SAO_Brute_SuperiorBrutesFury.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Brute's Fury",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -22863,18 +21130,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -22885,27 +21152,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Rage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Brute Archetype Sets"
@@ -22915,9 +21184,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 3
@@ -22925,9 +21204,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 4
@@ -22935,44 +21214,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 5
@@ -22980,64 +21229,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 6.0
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
+        "pieces": 6
+      },
+      {
+        "effects": [],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_command_of_the_mastermind.png",
+    "icon": "SAO_Mastermind_SuperiorCommandOfTheMastermind.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Command of the Mastermind",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -23047,18 +21270,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -23069,27 +21292,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Defense (Area)",
         "num": 6,
         "proc": false,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Mastermind Archetype Sets"
@@ -23099,17 +21324,32 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Area)",
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Area Defense",
             "stat": "defense_(area)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 2.5
           }
@@ -23119,29 +21359,39 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_critical_strikes.png",
+    "icon": "SAO_Scrapper_SuperiorCriticalStrikes.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Critical Strikes",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -23151,18 +21401,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -23173,27 +21423,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Critical Hit%",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Scrapper Archetype Sets"
@@ -23203,9 +21455,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 2
@@ -23213,18 +21465,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Ranged)",
+            "desc": "+10.0% Range",
+            "stat": "range",
+            "value": 10
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+8.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 8
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 2.5
           }
         ],
@@ -23233,29 +21500,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_defenders_bastion.png",
+    "icon": "SAO_Defender_SuperiorDefendersBastion.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Defender's Bastion",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -23265,7 +21532,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -23276,37 +21543,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "Recharge/Chance for +Health",
         "num": 6,
         "proc": true,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Defender Archetype Sets"
@@ -23316,9 +21586,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+360.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 360.0
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
           }
         ],
         "pieces": 3
@@ -23326,9 +21606,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 4
@@ -23336,9 +21616,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -23346,17 +21626,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Energy)",
+            "desc": "+5% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+5.0% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           }
@@ -23365,20 +21640,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_defiant_barrage.png",
+    "icon": "SAO_Blaster_SuperiorDefiantBarrage.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Defiant Barrage",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -23388,48 +21663,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Mez Protection,Resistance",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Blaster Archetype Sets"
@@ -23439,9 +21717,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+8.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 8
+          },
+          {
+            "desc": "+8.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 8
+          },
+          {
+            "desc": "+4.4% Terror Duration",
+            "stat": "terror_duration",
+            "value": 4.4
+          },
+          {
+            "desc": "+4.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 4
+          },
+          {
+            "desc": "+4.0% Hold Duration",
+            "stat": "hold_duration",
+            "value": 4
+          },
+          {
+            "desc": "+4.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 3
@@ -23449,44 +21762,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 6.0
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 4
@@ -23494,17 +21777,22 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Energy)",
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+5.0% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           }
@@ -23513,40 +21801,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_dominating_grasp.png",
+    "icon": "SAO_Dominator_SuperiorDominatingGrasp.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Dominating Grasp",
     "pieces": [
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear",
-          "Endurance"
+          "Accuracy",
+          "Mez"
         ],
-        "name": "Confuse/Hold/Immobilize/Sleep/Stun/Fear/Endurance",
+        "name": "Accuracy/Mez",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Mez/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -23556,47 +21834,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "Recharge/Chance for Fiery Orb",
         "num": 6,
         "proc": true,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Dominator Archetype Sets"
@@ -23606,9 +21877,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 3
@@ -23616,9 +21897,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -23626,64 +21917,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_dominion_of_arachnos.png",
+    "icon": "SAO_Arachnos_SuperiorDominionOfArachnos.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Dominion of Arachnos",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -23693,18 +21954,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -23715,27 +21976,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for -Dam(All)/Chance for Terror",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Soldiers of Arachnos Archetype Sets"
@@ -23819,7 +22082,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_endless_nightmare.png",
+    "icon": "SEO_Endless_Nightmare.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Endless Nightmare",
@@ -23893,44 +22156,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 2
@@ -23938,17 +22171,32 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Energy)",
+            "desc": "+15% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 15
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+5.0% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           }
@@ -23958,17 +22206,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Defense (Cold)",
+            "desc": "+5% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           }
@@ -23977,20 +22220,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_entomb.png",
+    "icon": "EO_Entomb.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Entomb",
     "pieces": [
       {
         "aspects": [
-          "Hold",
-          "Endurance"
+          "Accuracy",
+          "Hold"
         ],
-        "name": "Hold/Endurance",
+        "name": "Accuracy/Hold",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24000,7 +22243,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Hold/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24010,37 +22253,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Hold"
         ],
-        "name": "Endurance/Hold",
+        "name": "Accuracy/Endurance/Hold",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Hold",
           "Recharge"
         ],
-        "name": "Endurance/Hold/Recharge",
+        "name": "Accuracy/Endurance/Hold/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Absorb",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Holds"
@@ -24050,9 +22296,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 2
@@ -24060,9 +22306,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 3
@@ -24070,18 +22316,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Ranged)",
+            "desc": "+5.00% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 2.5
           }
         ],
@@ -24090,18 +22331,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Melee)",
+            "desc": "+16.0% Regeneration",
+            "stat": "regeneration",
+            "value": 16
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 2.5
           }
         ],
@@ -24109,20 +22355,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_essence_transfer.png",
+    "icon": "SAO_Kheldian_SuperiorEssenceTransfer.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Essence Transfer",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24132,18 +22378,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24154,27 +22400,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Health",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Kheldian Archetype Sets"
@@ -24184,44 +22432,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+15% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 15
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -24229,17 +22457,22 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Area)",
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Area Defense",
             "stat": "defense_(area)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 2.5
           }
@@ -24249,17 +22482,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Defense (Cold)",
+            "desc": "+5% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           }
@@ -24268,20 +22496,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_frozen_blast.png",
+    "icon": "SEO_Frozen_Blast.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Frozen Blast",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24291,49 +22519,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Immobilize",
           "Recharge"
         ],
-        "name": "Immobilize/Recharge",
+        "name": "Recharge/Chance for Immobilize",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Ranged AoE Damage"
@@ -24343,9 +22573,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+360.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 360.0
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
           }
         ],
         "pieces": 2
@@ -24353,44 +22583,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Energy Resistance",
-            "stat": "energy_resistance",
-            "value": 6.0
+            "desc": "+6% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -24398,18 +22598,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Melee)",
+            "desc": "+16.0% Regeneration",
+            "stat": "regeneration",
+            "value": 16
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 2.5
           }
         ],
@@ -24418,64 +22623,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 6.0
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 6.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           },
           {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_gauntleted_fist.png",
+    "icon": "SAO_Tanker_SuperiorGauntletedFist.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Gauntleted Fist",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24485,18 +22670,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24507,27 +22692,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Absorb",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Tanker Archetype Sets"
@@ -24641,17 +22828,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_guardians_gift.png",
+    "icon": "SAO_Guardian's_Gift.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Guardian's Gift",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
         "unique": true
@@ -24661,18 +22848,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage/RechargeTime",
         "num": 2,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/RechargeTime",
         "num": 3,
         "proc": false,
         "unique": true
@@ -24683,18 +22870,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage/Endurance/RechargeTime",
         "num": 4,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/RechargeTime",
         "num": 5,
         "proc": false,
         "unique": true
@@ -24703,7 +22891,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "RechargeTime/Chance for PBAoE Resolve",
         "num": 6,
         "proc": true,
         "unique": true
@@ -24716,44 +22904,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 6.0
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -24761,9 +22929,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -24771,64 +22949,49 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
+          }
+        ],
+        "pieces": 6
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.0% Damage Resistance (All Damage",
+            "stat": "damage_resistance_(all)",
+            "value": 5
           },
           {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_kheldians_grace.png",
+    "icon": "SAO_Kheldian_SuperiorKheldiansGrace.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Kheldian's Grace",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24838,18 +23001,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24860,27 +23023,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/+Dam(All)/+Max HitPoints/+Res(All)",
         "num": 6,
         "proc": false,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Kheldian Archetype Sets"
@@ -24890,9 +23055,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 2
@@ -24900,18 +23065,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Ranged)",
+            "desc": "+10.0% Range",
+            "stat": "range",
+            "value": 10
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 2.5
           }
         ],
@@ -24920,29 +23100,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_malice_of_the_corruptor.png",
+    "icon": "SAO_Corruptor_SuperiorMaliceOfTheCorruptor.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Malice of the Corruptor",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24952,18 +23132,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -24974,27 +23154,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Negative Energy Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Corruptor Archetype Sets"
@@ -25004,9 +23186,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 2
@@ -25014,18 +23196,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Melee)",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 2.5
           }
         ],
@@ -25034,51 +23221,55 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Energy Resistance",
-            "stat": "energy_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+6.0% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
           }
         ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
+            "value": 6
+          },
+          {
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
+          },
+          {
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
+          },
+          {
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
+          },
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
+          },
+          {
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
+          }
+        ],
+        "pieces": 6
+      },
+      {
+        "effects": [],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_mark_of_supremacy.png",
+    "icon": "SAO_Mastermind_SuperiorMarkOfSupremacy.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Mark of Supremacy",
@@ -25090,7 +23281,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -25100,45 +23291,48 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Endurance/+Regeneration/+Res(All)",
         "num": 6,
         "proc": false,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Mastermind Archetype Sets"
@@ -25148,9 +23342,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 3
@@ -25158,9 +23362,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 4
@@ -25168,44 +23372,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 5
@@ -25213,64 +23387,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 6.0
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_might_of_the_tanker.png",
+    "icon": "SAO_Tanker_SuperiorMightOfTheTanker.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Might of the Tanker",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -25280,18 +23424,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -25302,27 +23446,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Res(All)",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Tanker Archetype Sets"
@@ -25332,9 +23478,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+8.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 8
+          },
+          {
+            "desc": "+8.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 8
+          },
+          {
+            "desc": "+4.4% Terror Duration",
+            "stat": "terror_duration",
+            "value": 4.4
+          },
+          {
+            "desc": "+4.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 4
+          },
+          {
+            "desc": "+4.0% Hold Duration",
+            "stat": "hold_duration",
+            "value": 4
+          },
+          {
+            "desc": "+4.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 3
@@ -25342,44 +23523,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 6.0
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 4
@@ -25387,17 +23538,22 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Energy)",
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+5.0% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           }
@@ -25406,40 +23562,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_overpowering_presence.png",
+    "icon": "SAO_Controller_SuperiorOverpoweringPresence.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Overpowering Presence",
     "pieces": [
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear",
-          "Endurance"
+          "Accuracy",
+          "Mez"
         ],
-        "name": "Confuse/Hold/Immobilize/Sleep/Stun/Fear/Endurance",
+        "name": "Accuracy/Mez",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Mez/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -25449,47 +23595,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "Recharge/Chance for Energy Font",
         "num": 6,
         "proc": true,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Controller Archetype Sets"
@@ -25573,7 +23712,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_return_from_the_grave.png",
+    "icon": "SEO_Return_From_The_Grave.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Return From The Grave",
@@ -25680,9 +23819,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+360.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 360.0
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
           }
         ],
         "pieces": 2
@@ -25690,9 +23829,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 3
@@ -25700,17 +23839,32 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Area)",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Area Defense",
             "stat": "defense_(area)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 2.5
           }
@@ -25719,20 +23873,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_scourging_blast.png",
+    "icon": "SAO_Corruptor_SuperiorScourgingBlast.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Scourging Blast",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -25742,18 +23896,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -25764,27 +23918,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "Recharge/Chance for +Endurance,+Health",
         "num": 6,
         "proc": true,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Corruptor Archetype Sets"
@@ -25794,9 +23950,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 2
@@ -25804,17 +23960,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Lethal)",
+            "desc": "+5% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+5.0% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           }
@@ -25824,9 +23975,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -25834,64 +23995,38 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 6.0
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
+        "pieces": 6
+      },
+      {
+        "effects": [],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_scrappers_strike.png",
+    "icon": "SAO_Scrapper_SuperiorScrappersStrike.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Scrapper's Strike",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -25901,18 +24036,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -25923,27 +24058,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/+Critical Hit%",
         "num": 6,
         "proc": false,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Scrapper Archetype Sets"
@@ -25953,9 +24090,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+30.0% Maxhp",
-            "stat": "maxhp",
-            "value": 30.0
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 3
           }
         ],
         "pieces": 3
@@ -25963,18 +24110,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Melee)",
+            "desc": "+5.00% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 2.5
           }
         ],
@@ -25983,29 +24125,43 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+360.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 360.0
+            "desc": "+16.0% Regeneration",
+            "stat": "regeneration",
+            "value": 16
           }
         ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      },
+      {
+        "effects": [],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_spiders_bite.png",
+    "icon": "SAO_Arachnos_SuperiorSpidersBite.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Spider's Bite",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -26015,18 +24171,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -26037,27 +24193,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Toxic Damage",
         "num": 6,
         "proc": false,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Soldiers of Arachnos Archetype Sets"
@@ -26067,17 +24225,22 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Lethal)",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+5.0% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           }
@@ -26087,9 +24250,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -26097,64 +24270,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 6.0
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_stalkers_guile.png",
+    "icon": "SAO_Stalker_SuperiorStalkersGuile.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Stalker's Guile",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -26164,18 +24307,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -26186,27 +24329,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Hidden Status",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Stalker Archetype Sets"
@@ -26290,7 +24435,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_the_haunting.png",
+    "icon": "SEO_The_Haunting.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Haunting",
@@ -26363,18 +24508,43 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Melee)",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+16.0% Regeneration",
+            "stat": "regeneration",
+            "value": 16
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 2.5
           }
         ],
@@ -26383,64 +24553,54 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Energy Resistance",
-            "stat": "energy_resistance",
-            "value": 6.0
+            "desc": "+6% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 6.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           },
           {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
+            "desc": "+6% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 6
           },
           {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           },
           {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_unrelenting_fury.png",
+    "icon": "SAO_Brute_SuperiorUnrelentingFury.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Unrelenting Fury",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -26450,18 +24610,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -26472,27 +24632,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +End Discount,+Regeneration",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Brute Archetype Sets"
@@ -26576,7 +24738,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_vampires_bite.png",
+    "icon": "SEO_Vampires_Bite.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Vampire's Bite",
@@ -26650,9 +24812,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+360.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 360.0
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
           }
         ],
         "pieces": 2
@@ -26660,9 +24822,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 3
@@ -26670,17 +24832,32 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Area)",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.00% Area Defense",
             "stat": "defense_(area)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 2.5
           }
@@ -26689,20 +24866,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_vigilant_assault.png",
+    "icon": "SAO_Defender_SuperiorVigilantAssault.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Vigilant Assault",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -26712,7 +24889,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -26723,37 +24900,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "Recharge/Chance for +Absorb",
         "num": 6,
         "proc": true,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Defender Archetype Sets"
@@ -26763,9 +24943,64 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+8.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 8
+          },
+          {
+            "desc": "+8.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 8
+          },
+          {
+            "desc": "+4.4% Terror Duration",
+            "stat": "terror_duration",
+            "value": 4.4
+          },
+          {
+            "desc": "+4.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 4
+          },
+          {
+            "desc": "+4.0% Hold Duration",
+            "stat": "hold_duration",
+            "value": 4
+          },
+          {
+            "desc": "+4.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 4
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -26773,18 +25008,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Ranged)",
+            "desc": "+5.00% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 2.5
           }
         ],
@@ -26792,40 +25022,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_will_of_the_controller.png",
+    "icon": "SAO_Controller_SuperiorWillOfTheController.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Will of the Controller",
     "pieces": [
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear",
-          "Endurance"
+          "Accuracy",
+          "Mez"
         ],
-        "name": "Confuse/Hold/Immobilize/Sleep/Stun/Fear/Endurance",
+        "name": "Accuracy/Mez",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Mez/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -26835,47 +25055,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Psionic Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Controller Archetype Sets"
@@ -26894,7 +25107,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_winter_storm.png",
+    "icon": "SEO_Winter_Storm.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Winter Storm",
@@ -26964,44 +25177,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 2
@@ -27009,17 +25192,32 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Energy)",
+            "desc": "+15% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 15
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+5.0% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           }
@@ -27029,17 +25227,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Defense (Cold)",
+            "desc": "+5% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 5.0
+            "value": 5
           },
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           }
@@ -27048,20 +25241,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_winters_bite.png",
+    "icon": "EO_WintersBite.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Winter's Bite",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -27071,48 +25264,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for -Recharge,Slow",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -27276,7 +25472,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "ssuperior_witchcraft.png",
+    "icon": "SEO_Witchcraft.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Witchcraft",
@@ -27341,24 +25537,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "type": "Blaster Archetype Sets"
   },
-  "tempered_readiness": {
+  "synapses_agility": {
     "bonuses": [
       {
         "effects": [
           {
-            "desc": "+90.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 90.0
-          }
-        ],
-        "pieces": 4
-      },
-      {
-        "effects": [
-          {
-            "desc": "+3.75% Recharge",
+            "desc": "+7.5% Recharge",
             "stat": "recharge",
-            "value": 3.75
+            "value": 7.5
           }
         ],
         "pieces": 5
@@ -27366,61 +25552,43 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Ranged)",
-            "stat": "defense_(ranged)",
-            "value": 1.875
+            "desc": "+2.5% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 2.5
           },
           {
-            "desc": "+0.9375% Defense (Energy)",
-            "stat": "defense_(energy)",
-            "value": 0.9375
+            "desc": "+1.25% Defense (Lethal)",
+            "stat": "defense_(lethal)",
+            "value": 1.25
           },
           {
-            "desc": "+0.9375% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 0.9375
+            "desc": "+1.25% Defense (Smashing)",
+            "stat": "defense_(smashing)",
+            "value": 1.25
           }
         ],
         "pieces": 6
       }
     ],
-    "category": "uncommon",
-    "icon": "stempered_readiness.png",
+    "category": "event",
+    "icon": "PowerOfSynapse.png",
     "maxLevel": 50,
-    "minLevel": 20,
-    "name": "Tempered Readiness",
+    "minLevel": 10,
+    "name": "Synapse's Agility",
     "pieces": [
       {
-        "aspects": [
-          "Endurance"
-        ],
-        "name": "Endurance",
+        "aspects": [],
+        "name": "Empty",
         "num": 1,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Damage"
+          "Recharge"
         ],
-        "name": "Damage",
+        "name": "Recharge",
         "num": 2,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Endurance"
-        ],
-        "name": "Endurance",
-        "num": 3,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [],
-        "name": "Empty",
-        "num": 4,
         "proc": false,
         "unique": true
       },
@@ -27430,19 +25598,164 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "name": "Endurance/Recharge",
-        "num": 5,
+        "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Damage",
+          "Endurance",
+          "Recharge"
+        ],
+        "name": "Endurance/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Endurance",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
         "num": 6,
         "proc": false,
         "unique": true
+      }
+    ],
+    "type": "Universal Travel"
+  },
+  "tempered_readiness": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 1.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.9% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 0.9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Recharge",
+            "stat": "recharge",
+            "value": 3.75
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.88% Ranged Defense",
+            "stat": "defense_(ranged)",
+            "value": 1.88
+          },
+          {
+            "desc": "+1% Energy and Negative Energy",
+            "stat": "defense_(energy)",
+            "value": 0.94
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "uncommon",
+    "icon": "sTemperedreadiness.png",
+    "maxLevel": 50,
+    "minLevel": 20,
+    "name": "Tempered Readiness",
+    "pieces": [
+      {
+        "aspects": [
+          "Accuracy",
+          "Slow"
+        ],
+        "name": "Accuracy/Slow",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Slow"
+        ],
+        "name": "Damage/Slow",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Endurance"
+        ],
+        "name": "Accuracy/Endurance",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Range",
+          "Slow"
+        ],
+        "name": "Range/Slow",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "Recharge",
+          "Slow"
+        ],
+        "name": "Endurance/Recharge/Slow",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Damage",
+          "Slow"
+        ],
+        "name": "Accuracy/Damage/Slow",
+        "num": 6,
+        "proc": false,
+        "unique": false
       }
     ],
     "type": "Slow Movement"
@@ -27452,43 +25765,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -27497,64 +25780,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
         "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 4
       }
     ],
     "category": "rare",
-    "icon": "stempest.png",
+    "icon": "sTempest.png",
     "maxLevel": 30,
     "minLevel": 15,
     "name": "Tempest",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -27564,7 +25827,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -27574,16 +25837,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Endurance Modification"
-        ],
-        "name": "Endurance Modification",
+        "aspects": [],
+        "name": "Chance for -Endurance/Chance for Endurance",
         "num": 4,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -27667,7 +25928,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "sthe_haunting.png",
+    "icon": "EO_The_Haunting.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "The Haunting",
@@ -27740,9 +26001,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+180.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 180.0
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.8% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.8
           }
         ],
         "pieces": 3
@@ -27750,43 +26021,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+5.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -27794,68 +26055,68 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "stheft_of_essence.png",
+    "icon": "TheftOfEssence.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Theft of Essence",
     "pieces": [
       {
         "aspects": [
-          "Healing"
+          "Heal"
         ],
-        "name": "Healing",
+        "name": "Heal",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Healing/Recharge",
+        "name": "Heal/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
-          "Endurance"
+          "Accuracy",
+          "Heal"
         ],
-        "name": "Healing/Endurance",
+        "name": "Accuracy/Heal",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
-          "Healing"
+          "Heal"
         ],
-        "name": "Endurance/Healing",
+        "name": "Accuracy/Endurance/Heal",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Endurance Modification"
-        ],
-        "name": "Endurance Modification",
+        "aspects": [],
+        "name": "Chance for +Endurance",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Accurate Healing"
@@ -27865,17 +26126,22 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Energy)",
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
             "value": 2.5
           },
           {
-            "desc": "+2.5% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 2.5
-          },
-          {
-            "desc": "+1.25% Defense (Ranged)",
+            "desc": "+1.25% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 1.25
           }
@@ -27885,18 +26151,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Ranged)",
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 6
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.50% Ranged Defense",
             "stat": "defense_(ranged)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Energy)",
+            "desc": "+1% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Negative)",
-            "stat": "defense_(negative)",
             "value": 1.25
           }
         ],
@@ -27904,20 +26185,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sthunderstrike.png",
+    "icon": "sThunderstrike.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Thunderstrike",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -27927,7 +26208,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -27937,28 +26218,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -27969,7 +26251,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -27979,16 +26261,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+8.0% Regeneration",
+            "stat": "regeneration",
+            "value": 8
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "stimespace_manipulation.png",
+    "icon": "sSpacetimemanipulation.png",
     "maxLevel": 50,
     "minLevel": 15,
     "name": "Time & Space Manipulation",
@@ -28000,18 +26292,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Range"
+        ],
+        "name": "Range",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Chance",
+        "name": "+Stealth",
         "num": 3,
         "proc": true,
         "unique": true
@@ -28024,43 +26318,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -28069,9 +26333,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -28079,44 +26343,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Lethal Resistance",
-            "stat": "lethal_resistance",
-            "value": 3.0
+            "desc": "+3% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 4
@@ -28124,18 +26358,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Melee)",
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.50% Melee Defense",
             "stat": "defense_(melee)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Lethal)",
+            "desc": "+1% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Smashing)",
-            "stat": "defense_(smashing)",
             "value": 1.25
           }
         ],
@@ -28143,30 +26382,30 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "stitanium_coating.png",
+    "icon": "sTitaniumcoating.png",
     "maxLevel": 50,
     "minLevel": 25,
     "name": "Titanium Coating",
     "pieces": [
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Damage Resistance/Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage Resistance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -28176,27 +26415,27 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage Resistance/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage"
+          "Damage Resistance"
         ],
-        "name": "Damage",
+        "name": "Damage Resistance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -28205,7 +26444,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Resist Damage"
@@ -28215,43 +26454,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -28260,9 +26469,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
@@ -28270,43 +26479,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -28315,39 +26504,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Melee)",
+            "desc": "+3.75% Melee Defense",
             "stat": "defense_(melee)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "stouch_of_death.png",
+    "icon": "sTouchofdeath.png",
     "maxLevel": 40,
     "minLevel": 25,
     "name": "Touch of Death",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -28357,7 +26541,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -28367,17 +26551,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -28388,14 +26573,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Negative Energy Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Melee Damage"
@@ -28405,45 +26590,89 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Recovery",
+            "stat": "recovery",
+            "value": 2.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+8.0% Regeneration",
+            "stat": "regeneration",
+            "value": 8
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+11% Accuracy",
+            "stat": "accuracy",
+            "value": 11
+          }
+        ],
+        "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "stouch_of_lady_grey.png",
+    "icon": "sTouchofladygray.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Touch of Lady Grey",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense Debuff"
+        ],
+        "name": "Defense Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense Debuff/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense Debuff/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -28453,23 +26682,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Defense Debuff/Endurance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Negative Energy Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Defense Debuff"
@@ -28479,9 +26709,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 2
@@ -28489,9 +26719,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+225.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 225.0
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.25% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 2.25
           }
         ],
         "pieces": 5
@@ -28499,43 +26749,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -28543,66 +26763,68 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "stouch_of_the_nictus.png",
+    "icon": "TouchOfNictus.png",
     "maxLevel": 50,
     "minLevel": 30,
     "name": "Touch of the Nictus",
     "pieces": [
       {
         "aspects": [
-          "Healing"
+          "Heal"
         ],
-        "name": "Healing",
+        "name": "Heal",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Healing/Recharge",
+        "name": "Heal/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
-          "Endurance"
+          "Accuracy",
+          "Heal"
         ],
-        "name": "Healing/Endurance",
+        "name": "Accuracy/Heal",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
-          "Healing"
+          "Heal"
         ],
-        "name": "Endurance/Healing",
+        "name": "Accuracy/Endurance/Heal",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Negative Energy Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Accurate Healing"
@@ -28612,9 +26834,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+18.75% Maxhp",
-            "stat": "maxhp",
-            "value": 18.75
+            "desc": "+5.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.9% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.875
           }
         ],
         "pieces": 3
@@ -28622,43 +26854,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Lethal Resistance",
-            "stat": "lethal_resistance",
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Smashing Resistance",
-            "stat": "smashing_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -28667,39 +26879,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Ranged)",
+            "desc": "+3.13% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "strap_of_the_hunter.png",
+    "icon": "sTrapofthehunter.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Trap of the Hunter",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -28709,44 +26916,45 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Immobilize",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Immobilize",
-          "Endurance"
+          "Accuracy",
+          "Immobilize"
         ],
-        "name": "Immobilize/Endurance",
+        "name": "Accuracy/Immobilize",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Immobilize",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Immobilize/Recharge/Endurance",
+        "name": "Accuracy/Immobilize/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Lethal Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Immobilize"
@@ -28756,16 +26964,36 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+4.0% Regeneration",
+            "stat": "regeneration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Healing Strength",
+            "stat": "healing_strength",
+            "value": 2
+          }
+        ],
+        "pieces": 4
       }
     ],
     "category": "uncommon",
-    "icon": "striage.png",
+    "icon": "sTriage.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Triage",
@@ -28773,12 +27001,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Endurance",
-          "Healing"
+          "Heal"
         ],
-        "name": "Endurance/Healing",
+        "name": "Endurance/Heal",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -28788,28 +27016,28 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Healing/Recharge",
+        "name": "Heal/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Healing",
+          "Heal",
           "Recharge"
         ],
-        "name": "Endurance/Healing/Recharge",
+        "name": "Endurance/Heal/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Healing"
@@ -28819,54 +27047,60 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Lethal)",
+            "desc": "+1.0% Recovery",
+            "stat": "recovery",
+            "value": 1
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+1.875% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.875
-          },
-          {
-            "desc": "+0.9375% Defense (Melee)",
+            "desc": "+0.94% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "striumphant_insult.png",
+    "icon": "sTriumphantinsult.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Triumphant Insult",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Threat"
+        ],
+        "name": "Threat",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Recharge"
+          "Recharge",
+          "Threat"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Threat",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Stun"
-        ],
-        "name": "Stun",
+        "aspects": [],
+        "name": "Chance for Stun",
         "num": 3,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Threat Duration"
@@ -28876,16 +27110,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+6.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 3
       }
     ],
     "category": "rare",
-    "icon": "sunbounded_leap.png",
+    "icon": "sUnboundedleap.png",
     "maxLevel": 50,
     "minLevel": 15,
     "name": "Unbounded Leap",
@@ -28897,68 +27141,50 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Jump"
+        ],
+        "name": "Jump",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Chance",
+        "name": "+Stealth",
         "num": 3,
         "proc": true,
         "unique": true
       }
     ],
-    "type": "Leaping"
+    "type": "Leaping & Sprints"
   },
   "unbreakable_constraint": {
     "bonuses": [
       {
         "effects": [
           {
-            "desc": "+6.0% Fire Resistance",
-            "stat": "fire_resistance",
-            "value": 6.0
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 3
@@ -28966,9 +27192,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Recharge",
+            "desc": "+15% Accuracy",
+            "stat": "accuracy",
+            "value": 15
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10% Recharge",
             "stat": "recharge",
-            "value": 10.0
+            "value": 10
           }
         ],
         "pieces": 5
@@ -28976,51 +27212,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.0% Toxic Resistance",
-            "stat": "toxic_resistance",
-            "value": 6.0
+            "desc": "+6% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
+            "value": 6
           },
           {
-            "desc": "+6.0% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 6.0
-          },
-          {
-            "desc": "+10.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
+            "desc": "+10% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 10
           }
         ],
         "pieces": 6
       }
     ],
     "category": "purple",
-    "icon": "sunbreakable_constraint.png",
+    "icon": "sUnbreakableconstraint.png",
     "maxLevel": 50,
     "minLevel": 50,
     "name": "Unbreakable Constraint",
@@ -29046,21 +27252,21 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Hold",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Hold/Recharge/Endurance",
+        "name": "Accuracy/Hold/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
@@ -29077,9 +27283,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Smashing Damage",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -29090,43 +27296,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+2.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -29135,19 +27321,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Melee)",
+            "desc": "+3.13% Melee Defense",
             "stat": "defense_(melee)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 4
@@ -29155,43 +27336,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
@@ -29200,73 +27351,53 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.25% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+5% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 5.25
           },
           {
-            "desc": "+5.25% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 5.25
-          },
-          {
-            "desc": "+8.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
+            "desc": "+9% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 8.75
-          },
+          }
+        ],
+        "pieces": 6
+      },
+      {
+        "effects": [
           {
-            "desc": "+8.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 8.75
-          },
-          {
-            "desc": "+8.75% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 8.75
+            "desc": "+7.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 7.5
           }
         ],
         "pieces": 6
       }
     ],
     "category": "rare",
-    "icon": "sunbreakable_guard.png",
+    "icon": "sUnbreakableGuard.png",
     "maxLevel": 50,
     "minLevel": 20,
     "name": "Unbreakable Guard",
     "pieces": [
       {
         "aspects": [
-          "Damage"
+          "Damage Resistance"
         ],
-        "name": "Damage",
+        "name": "Damage Resistance",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Damage Resistance/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -29276,34 +27407,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Recharge"
         ],
-        "name": "Damage/Recharge",
+        "name": "Damage Resistance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Damage",
+          "Damage Resistance",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Damage Resistance/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Max HitPoints",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -29314,9 +27445,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+180.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 180.0
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.8% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.8
           }
         ],
         "pieces": 3
@@ -29324,9 +27465,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+15.0% Maxhp",
-            "stat": "maxhp",
-            "value": 15.0
+            "desc": "+7% Accuracy",
+            "stat": "accuracy",
+            "value": 7
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
           }
         ],
         "pieces": 5
@@ -29334,17 +27485,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.5% Defense (Area)",
+            "desc": "+2.50% Area Defense",
             "stat": "defense_(area)",
             "value": 2.5
           },
           {
-            "desc": "+1.25% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.25
-          },
-          {
-            "desc": "+1.25% Defense (Cold)",
+            "desc": "+1% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 1.25
           }
@@ -29353,36 +27499,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sundermined_defenses.png",
+    "icon": "sUndermined.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Undermined Defenses",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Defense Debuff"
+        ],
+        "name": "Defense Debuff",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Defense Debuff/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Defense Debuff/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -29392,16 +27542,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Defense Debuff",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Defense Debuff/Endurance",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -29410,7 +27561,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Recharge",
         "num": 6,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Defense Debuff"
@@ -29420,43 +27571,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.5% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 1.5
           },
           {
-            "desc": "+1.5% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 1.5
-          },
-          {
-            "desc": "+2.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 2.5
-          },
-          {
-            "desc": "+2.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+2% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 2.5
           }
         ],
@@ -29465,9 +27586,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
@@ -29475,29 +27596,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+90.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 90.0
+            "desc": "+0.9% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 0.9
           }
         ],
         "pieces": 4
       }
     ],
     "category": "uncommon",
-    "icon": "sunquestioning_loyalty.png",
+    "icon": "sUnquestioningloyalty.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Unquestioning Loyalty",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -29507,26 +27628,28 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Pet Damage"
@@ -29536,19 +27659,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Melee)",
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Recovery",
+            "stat": "recovery",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.75% Melee Defense",
             "stat": "defense_(melee)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Lethal)",
+            "desc": "+2% Lethal and Smashing",
             "stat": "defense_(lethal)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Smashing)",
-            "stat": "defense_(smashing)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 5
@@ -29556,43 +27704,33 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Energy Resistance",
-            "stat": "energy_resistance",
+            "desc": "+4% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Negative Resistance",
-            "stat": "negative_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 7.5
+          },
+          {
+            "desc": "+4% Lethal and Smashing",
+            "stat": "damage_resistance_(lethal)",
             "value": 4.5
           },
           {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           },
           {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
+            "desc": "+4% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
+            "value": 4.5
           },
           {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -29600,20 +27738,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "sunrelenting_fury.png",
+    "icon": "AO_Brute_UnrelentingFury.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Unrelenting Fury",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -29623,18 +27761,18 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -29645,27 +27783,29 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +End Discount,+Regeneration",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Brute Archetype Sets"
@@ -29675,44 +27815,24 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.0% Energy Resistance",
-            "stat": "energy_resistance",
-            "value": 3.0
+            "desc": "+2.2% Terror Duration",
+            "stat": "terror_duration",
+            "value": 2.2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3% Energy and Negative Energy",
+            "stat": "damage_resistance_(energy)",
+            "value": 3
           },
           {
-            "desc": "+3.0% Negative Resistance",
-            "stat": "negative_resistance",
-            "value": 3.0
-          },
-          {
-            "desc": "+5.0% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 5.0
-          },
-          {
-            "desc": "+5.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 5.0
+            "desc": "+5% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
+            "value": 5
           }
         ],
         "pieces": 3
@@ -29720,9 +27840,19 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Recharge",
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5% Recharge",
             "stat": "recharge",
-            "value": 5.0
+            "value": 5
           }
         ],
         "pieces": 5
@@ -29730,43 +27860,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+4.5% Toxic Resistance",
-            "stat": "toxic_resistance",
+            "desc": "+4% Psionic and Toxic",
+            "stat": "damage_resistance_(psionic)",
             "value": 4.5
           },
           {
-            "desc": "+4.5% Psionic Resistance",
-            "stat": "psionic_resistance",
-            "value": 4.5
-          },
-          {
-            "desc": "+7.5% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+8% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 7.5
           }
         ],
@@ -29774,68 +27874,68 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "rare",
-    "icon": "sunspeakable_terror.png",
+    "icon": "sUnspeakableterror.png",
     "maxLevel": 30,
     "minLevel": 10,
     "name": "Unspeakable Terror",
     "pieces": [
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Endurance",
-          "Fear"
+          "Terrorize"
         ],
-        "name": "Endurance/Fear",
+        "name": "Endurance/Terrorize",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Accuracy/Endurance",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Fear"
+          "Range",
+          "Terrorize"
         ],
-        "name": "Fear",
+        "name": "Range/Terrorize",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Recharge",
-          "Fear",
-          "Endurance"
+          "Terrorize"
         ],
-        "name": "Recharge/Fear/Endurance",
+        "name": "Accuracy/Recharge/Terrorize",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
-        "aspects": [
-          "Stun"
-        ],
-        "name": "Stun",
+        "aspects": [],
+        "name": "Chance for Stun",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "unique": false
       }
     ],
     "type": "Fear"
@@ -29919,7 +28019,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "svampires_bite.png",
+    "icon": "EO_Vampires_Bite.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Vampire's Bite",
@@ -29993,9 +28093,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+180.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 180.0
+            "desc": "+1.8% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 1.8
           }
         ],
         "pieces": 2
@@ -30003,7 +28103,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Recharge",
+            "desc": "+6% Recharge",
             "stat": "recharge",
             "value": 6.25
           }
@@ -30013,39 +28113,54 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Area)",
+            "desc": "+11% Accuracy",
+            "stat": "accuracy",
+            "value": 11
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.75% Area Defense",
             "stat": "defense_(area)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 1.875
-          },
-          {
-            "desc": "+1.875% Defense (Cold)",
+            "desc": "+2% Cold and Fire",
             "stat": "defense_(cold)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "svigilant_assault.png",
+    "icon": "AO_Defender_VigilantAssault.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Vigilant Assault",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -30055,7 +28170,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -30066,37 +28181,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge/Chance",
+        "name": "Recharge/Chance for +Absorb",
         "num": 6,
         "proc": true,
-        "unique": true
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Defender Archetype Sets"
@@ -30106,29 +28224,39 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Maxhp",
-            "stat": "maxhp",
-            "value": 7.5
+            "desc": "+4.0% Regeneration",
+            "stat": "regeneration",
+            "value": 4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.8% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.75
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "svolley_fire.png",
+    "icon": "sVolleyfire.png",
     "maxLevel": 30,
     "minLevel": 15,
     "name": "Volley Fire",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -30138,7 +28266,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Endurance",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -30148,7 +28276,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -30158,16 +28286,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+11.25% Maxhp",
-            "stat": "maxhp",
-            "value": 11.25
+            "desc": "+6.0% Regeneration",
+            "stat": "regeneration",
+            "value": 6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.1% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.125
           }
         ],
         "pieces": 3
       }
     ],
     "category": "uncommon",
-    "icon": "svolley_of_velocity.png",
+    "icon": "sVolleyOfVelocity.png",
     "maxLevel": 20,
     "minLevel": 10,
     "name": "Volley of Velocity",
@@ -30180,17 +28318,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Knockback",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Knockback",
-          "Endurance"
+          "Accuracy",
+          "Knockback"
         ],
-        "name": "Knockback/Endurance",
+        "name": "Accuracy/Knockback",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -30200,7 +28338,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Knockback/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       }
     ],
     "type": "Knockback"
@@ -30210,7 +28348,62 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+8.75% Recharge",
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 6
+          },
+          {
+            "desc": "+6.0% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 6
+          },
+          {
+            "desc": "+3.3% Terror Duration",
+            "stat": "terror_duration",
+            "value": 3.3
+          },
+          {
+            "desc": "+3.0% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 3
+          },
+          {
+            "desc": "+3.0% Hold Duration",
+            "stat": "hold_duration",
+            "value": 3
+          },
+          {
+            "desc": "+3.0% Stun Duration",
+            "stat": "stun_duration",
+            "value": 3
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Accuracy",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9% Recharge",
             "stat": "recharge",
             "value": 8.75
           }
@@ -30220,59 +28413,44 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.125% Defense (Ranged)",
+            "desc": "+3.13% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 3.125
+            "value": 3.13
           },
           {
-            "desc": "+1.5625% Defense (Energy)",
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.5625
-          },
-          {
-            "desc": "+1.5625% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.5625
+            "value": 1.56
           }
         ],
         "pieces": 6
       }
     ],
     "category": "ato",
-    "icon": "swill_of_the_controller.png",
+    "icon": "AO_Controller_WillOfTheController.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Will of the Controller",
     "pieces": [
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear",
-          "Endurance"
+          "Accuracy",
+          "Mez"
         ],
-        "name": "Confuse/Hold/Immobilize/Sleep/Stun/Fear/Endurance",
+        "name": "Accuracy/Mez",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Mez/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -30282,47 +28460,40 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Endurance/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Confuse",
+          "Accuracy",
           "Endurance",
-          "Hold",
-          "Immobilize",
-          "Recharge",
-          "Sleep",
-          "Stun",
-          "Fear"
+          "Mez",
+          "Recharge"
         ],
-        "name": "Confuse/Endurance/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Accuracy/Endurance/Mez/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Psionic Damage",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Controller Archetype Sets"
@@ -30341,7 +28512,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "swinter_storm.png",
+    "icon": "EO_Winter_Storm.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Winter Storm",
@@ -30411,43 +28582,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+2.25% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+2% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 2.25
           },
           {
-            "desc": "+2.25% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 2.25
-          },
-          {
-            "desc": "+3.75% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+4% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 3.75
           }
         ],
@@ -30456,19 +28597,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+1.875% Defense (Energy)",
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "stat": "+res(recharge_debuff)",
+            "value": 10
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
             "stat": "defense_(energy)",
-            "value": 1.875
+            "value": 1.88
           },
           {
-            "desc": "+1.875% Defense (Negative)",
-            "stat": "defense_(negative)",
-            "value": 1.875
-          },
-          {
-            "desc": "+0.9375% Defense (Ranged)",
+            "desc": "+0.94% Ranged Defense",
             "stat": "defense_(ranged)",
-            "value": 0.9375
+            "value": 0.94
           }
         ],
         "pieces": 5
@@ -30476,39 +28632,34 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Defense (Fire)",
-            "stat": "defense_(fire)",
-            "value": 3.75
-          },
-          {
-            "desc": "+3.75% Defense (Cold)",
+            "desc": "+4% Cold and Fire",
             "stat": "defense_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+1.875% Defense (Area)",
+            "desc": "+1.88% Area Defense",
             "stat": "defense_(area)",
-            "value": 1.875
+            "value": 1.88
           }
         ],
         "pieces": 6
       }
     ],
     "category": "event",
-    "icon": "swinters_bite.png",
+    "icon": "EO_WintersBite.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Winter's Bite",
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
@@ -30518,48 +28669,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Damage/Recharge",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 3,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage/Endurance",
         "num": 4,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Recharge"
         ],
-        "name": "Damage/Endurance/Recharge",
+        "name": "Accuracy/Damage/Endurance/Recharge",
         "num": 5,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for -Recharge,Slow",
         "num": 6,
-        "proc": false,
-        "unique": true
+        "proc": true,
+        "totalAspects": 4,
+        "unique": false
       }
     ],
     "type": "Ranged Damage"
@@ -30569,76 +28723,59 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+3.75% Fire Resistance",
-            "stat": "fire_resistance",
+            "desc": "+4% Cold and Fire",
+            "stat": "damage_resistance_(cold)",
             "value": 3.75
           },
           {
-            "desc": "+3.75% Cold Resistance",
-            "stat": "cold_resistance",
-            "value": 3.75
-          },
-          {
-            "desc": "+6.25% Immobilize Resistance",
-            "stat": "immobilize_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Hold Resistance",
-            "stat": "hold_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Stun Resistance",
-            "stat": "stun_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Sleep Resistance",
-            "stat": "sleep_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 6.25
-          },
-          {
-            "desc": "+6.25% Confuse Resistance",
-            "stat": "confuse_resistance",
+            "desc": "+6% Mez Resistance (All Resistance",
+            "stat": "mez_resistance_(all)",
             "value": 6.25
           }
         ],
         "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 9
+          }
+        ],
+        "pieces": 3
       }
     ],
-    "category": "event",
-    "icon": "swinters_gift.png",
+    "category": "rare",
+    "icon": "SEO_Winters_Gift.png",
     "maxLevel": 50,
-    "minLevel": 1,
+    "minLevel": 10,
     "name": "Winter's Gift",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Move Speed"
+        ],
+        "name": "Move Speed",
         "num": 1,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Endurance",
+          "Move Speed"
         ],
-        "name": "Endurance",
+        "name": "Endurance/Move Speed",
         "num": 2,
         "proc": false,
-        "unique": true
+        "unique": false
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Res(Recharge Debuff)/+Res(Slow)",
         "num": 3,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -30723,7 +28860,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "switchcraft.png",
+    "icon": "EO_Witchcraft.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Witchcraft",

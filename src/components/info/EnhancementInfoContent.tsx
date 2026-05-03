@@ -119,11 +119,15 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
       ? rawIcon.split('/').pop() || 'Unknown.png'
       : rawIcon;
 
-    // Calculate enhancement values for each aspect
-    // Attuned IOs scale to character level (no maxLevel cap — that only applies to non-attuned)
-    // Non-attuned use their slotted level, defaulting to 50
+    // Calculate enhancement values for each aspect.
+    // Both attuned and non-attuned cap at the set's maxLevel — only ATOs / event IOs
+    // (maxLevel <= 1) scale freely above their listed cap. Mirrors the calc engine
+    // in enhancement-values.ts so the displayed value matches the actual contribution
+    // (e.g. attuned Kinetic Combat caps at L35, not character level).
+    const setMax = ioSet?.maxLevel ?? 50;
+    const setMin = ioSet?.minLevel ?? 1;
     const effectiveLevel = ioEnh.attuned
-      ? Math.max(build.level || 50, ioSet?.minLevel || 1)
+      ? Math.max(setMin, setMax > 1 ? Math.min(build.level || 50, setMax) : (build.level || 50))
       : (enhancement.level || 50);
     const rawAspectCount = ioEnh.aspects.filter(a => normalizeAspectName(a) !== null).length || ioEnh.aspects.length;
     // Proc effects count as 3 additional aspects for the multi-aspect modifier

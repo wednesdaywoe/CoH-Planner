@@ -202,7 +202,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   rel="noopener noreferrer"
                   className="text-amber-300 underline hover:text-amber-100"
                 >
-                  Sidekick Discord channel
+                  Sidekick Discord channel (if the link doesn't work, just reach out WW directly on Discord)
                 </a>
                 . I'm not able to respond to questions submitted through the reporting tool.
               </p>

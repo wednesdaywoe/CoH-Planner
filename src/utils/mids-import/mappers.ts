@@ -100,7 +100,10 @@ export function buildPowersetLookup(): Map<string, string> {
     if (!powerset.archetype || !powerset.icon) continue;
 
     // Extract internal name from icon: "kinetic_attack_set.png" → "kinetic_attack"
-    const iconStem = powerset.icon.replace(/_set\.png$/, '').replace(/\.png$/, '');
+    // Rebirth powerset icons use .ico, HC uses .png — strip either.
+    const iconStem = powerset.icon
+      .replace(/_set\.(png|ico)$/, '')
+      .replace(/\.(png|ico)$/, '');
 
     // Build the lookup key: "brute:kinetic_attack"
     const key = `${powerset.archetype}:${iconStem}`.toLowerCase();
