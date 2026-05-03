@@ -852,6 +852,33 @@ export function mapEnhancementUid(
     }
   }
 
+  // Special-suffix UIDs (e.g. Mids' "Superior_Return_From_the_Grave_Rez_Effects"
+  // for special non-letter pieces) keep the trailing descriptor in setId.
+  // Peel back one underscore-segment at a time until we find a real set,
+  // capping at 4 strips so we don't accidentally collide with a different set.
+  if (!ioSet && setId.includes('_')) {
+    let trimmed = setId;
+    for (let i = 0; i < 4; i++) {
+      const idx = trimmed.lastIndexOf('_');
+      if (idx <= 0) break;
+      trimmed = trimmed.slice(0, idx);
+      const candidate = getIOSet(trimmed);
+      if (candidate) {
+        ioSet = candidate;
+        setId = trimmed;
+        break;
+      }
+      // Also try the apostrophe-stripped fallback table — keeps us robust
+      // if the trailing segments included punctuation.
+      const fb = getIOSetNameLookup().get(trimmed);
+      if (fb) {
+        ioSet = getIOSet(fb);
+        setId = fb;
+        break;
+      }
+    }
+  }
+
   if (!ioSet) {
     return {
       enhancement: null,
