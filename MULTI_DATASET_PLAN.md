@@ -1000,7 +1000,10 @@ that triggered this work.
   this is the structural-cleanup base for visual polish (mode tabs,
   Type-A/B/C/D row classification) to layer on top.
 - [ ] Power Effects Table redesign with explicit Type A/B/C/D row types
-- [ ] Tags row
+- [x] **Tags row** (2026-05-03) — [TagsRow.tsx](src/components/info/TagsRow.tsx)
+  parses `power.shortHelp` into category-colored chips (debuff/buff/mez/damage/
+  other/neutral). Replaces the prior italic single-line summary. Respects
+  parenthesised type lists so "Ranged (Targeted AoE)" stays one chip.
 - [ ] Section ordering refresh + dividers per proposal
 - [ ] Description as final paragraph
 - [ ] Mechanic Adjuster styling pass (after the rest of the panel lands so
