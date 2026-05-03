@@ -39,6 +39,7 @@ import { EnhancementInfoContent } from './EnhancementInfoContent';
 import { MechanicAdjusters } from './MechanicAdjusters';
 import { DamageBlock } from './DamageBlock';
 import { TagsRow } from './TagsRow';
+import { TagsBlock, GeneralStatsBlock } from './PowerInfoBlocks';
 import type {
   ArchetypeId,
   Power,
@@ -607,6 +608,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         * buff, damage type) for at-a-glance power identity. */}
       {power.shortHelp && <TagsRow shortHelp={power.shortHelp} />}
 
+      {/* Tags Block — Power Type / Target Type / Allowed Enhancements. */}
+      <TagsBlock power={power} />
+
       {/* Summon/Pet Info with DPS */}
       {effects?.summon && (
         <PetDamageDisplay
@@ -659,7 +663,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         buffDebuffMod={effectiveMod}
         archetypeId={archetypeId ?? undefined}
         level={build.level}
-        categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
+        categories={['buff', 'debuff', 'control', 'protection', 'movement']}
         dominationActive={dominationActive}
         header="Power Effects"
         duration={effects?.buffDuration}
@@ -1013,19 +1017,29 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         );
       })()}
 
+      {/* General Stats Block — basic execution stats (Activation / Rech /
+        * End Cost / Accuracy / Pwr Range / Effect Area / Attack Type)
+        * consolidated into one block near the bottom. The 'execution'
+        * category is filtered out of RegistryEffectsDisplay above so we
+        * don't render the same stats twice. */}
+      <GeneralStatsBlock
+        power={power}
+        effects={effects}
+        enhancementBonuses={enhancementBonuses}
+        globalBonusesForCalc={globalBonusesForCalc}
+        damageType={calculatedDamage?.type}
+      />
+
       {/* Description (at bottom - least important info) */}
-      <div className="border-t border-slate-700 pt-2 mt-2">
-        <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-0.5">
-          Description
-        </h4>
-        <p className="text-xs text-slate-300 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: power.description
+      <p
+        className="text-xs text-slate-300 leading-relaxed"
+        dangerouslySetInnerHTML={{
+          __html: power.description
             .replace(/<br\s*\/?>/gi, ' ')
             .replace(/<[^>]+>/g, '')
             .replace(/NOTE:\s*(.*?)(?:\.|$)/g, '<span class="block mt-1 text-amber-400 font-semibold">NOTE: $1.</span>')
-          }}
-        />
-      </div>
+        }}
+      />
     </div>
   );
 }
