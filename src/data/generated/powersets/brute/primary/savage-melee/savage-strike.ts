@@ -68,12 +68,5 @@ export const SavageStrike: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
-  ],
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.75,
-      "label": "Lethal_Dmg"
-    }
   ]
 };

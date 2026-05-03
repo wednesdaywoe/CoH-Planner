@@ -74,11 +74,6 @@ export const Slash: Power = {
       "label": "Lethal_Dmg"
     },
     {
-      "kind": "effect-proc",
-      "chance": 0.9980000257492065,
-      "label": "Base_Defense"
-    },
-    {
       "kind": "grant",
       "chance": 0.699999988079071,
       "label": "Assassins Focus"

@@ -127,17 +127,5 @@ export const Slice: Power = {
       ]
     }
   ],
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.9980000257492065,
-      "label": "Base_Defense"
-    },
-    {
-      "kind": "effect-proc",
-      "chance": 0.9980000257492065,
-      "label": "Smashing_Dmg"
-    }
-  ],
   "requires": "Tanker_Melee.Broad_Sword.Boomerang_Slice !"
 };

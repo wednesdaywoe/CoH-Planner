@@ -86,12 +86,5 @@ export const FieryBreath: Power = {
       "duration": 0.6,
       "tickRate": 0.5
     }
-  ],
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Fire_Dmg"
-    }
   ]
 };

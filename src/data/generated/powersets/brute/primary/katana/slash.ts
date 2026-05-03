@@ -68,12 +68,5 @@ export const GamblersCut: Power = {
     },
     "buffDuration": 6
   },
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.9980000257492065,
-      "label": "Base_Defense"
-    }
-  ],
   "requires": "Brute_Defense.Shield_Defense !"
 };

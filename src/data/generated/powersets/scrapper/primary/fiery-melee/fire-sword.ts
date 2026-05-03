@@ -99,7 +99,7 @@ export const FireSword: Power = {
     },
     {
       "kind": "effect-proc",
-      "chance": 0.800000011920929,
+      "chance": -0.20000000298023224,
       "label": "Fire_Dmg"
     }
   ]

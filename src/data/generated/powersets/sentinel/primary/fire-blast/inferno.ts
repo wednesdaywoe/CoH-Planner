@@ -66,12 +66,5 @@ export const Inferno: Power = {
       "duration": 2.1,
       "tickRate": 1
     }
-  ],
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Fire_Dmg"
-    }
   ]
 };

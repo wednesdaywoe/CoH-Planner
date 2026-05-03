@@ -1452,13 +1452,23 @@ function extractSpecialEffects(rawEffects, conditionalEffects) {
     const egChance = effect.chance ?? 1.0;
     if (egChance === 0) return;
 
+    // Only EffectGroup-level `chance` < 1 is a real proc gate. Template-
+    // level `tick_chance` is the accuracy/to-hit roll on a normal effect
+    // (e.g. Slash's Base_Defense template carries tick_chance=0.998 = the
+    // ToHit Roll), NOT a chance for the effect to fire conditionally.
+    // Surfacing it as a "+99.8% chance to Base_Defense" SPECIAL row is a
+    // false positive.
+    if (egChance >= 1) {
+      // No EG-level proc gate → recurse into children, skip this level's
+      // templates (they fire unconditionally per the EG, even if the
+      // template has its own to-hit roll).
+      if (effect.child_effects?.length) {
+        for (const ce of effect.child_effects) visit(ce);
+      }
+      return;
+    }
+    const chance = egChance;
     for (const t of effect.templates ?? []) {
-      // The interesting chance value — prefer the EG-level chance when it's
-      // less than 1 (the typical proc encoding); fall back to template-level
-      // tick_chance for cases where the EG is 1.0 but the template carries
-      // a fractional chance (Suffocate's Null grant).
-      const chance = egChance < 1 ? egChance : (t.tick_chance ?? 1.0);
-      if (chance >= 1 || chance <= 0) continue;
 
       const attrib = (t.attribs && t.attribs[0]) || null;
       if (!attrib) continue;

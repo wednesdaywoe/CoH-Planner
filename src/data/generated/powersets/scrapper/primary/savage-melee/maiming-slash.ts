@@ -85,11 +85,6 @@ export const MaimingSlash: Power = {
       "kind": "effect-proc",
       "chance": 0.10000000149011612,
       "label": "Lethal_Dmg"
-    },
-    {
-      "kind": "effect-proc",
-      "chance": 0.75,
-      "label": "Lethal_Dmg"
     }
   ]
 };

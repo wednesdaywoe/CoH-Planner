@@ -68,12 +68,5 @@ export const ThornyDarts: Power = {
       "defenseDebuff": 5
     },
     "buffDuration": 5
-  },
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Toxic_Dmg"
-    }
-  ]
+  }
 };

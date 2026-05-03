@@ -77,12 +77,5 @@ export const ThunderousBlast: Power = {
       "recoveryDebuff": 10
     },
     "buffDuration": 10
-  },
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.30000001192092896,
-      "label": "Endurance"
-    }
-  ]
+  }
 };

@@ -68,11 +68,6 @@ export const Scorch: Power = {
       "label": "Fire_Dmg"
     },
     {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Fire_Dmg"
-    },
-    {
       "kind": "grant",
       "chance": 0.6499999761581421,
       "label": "Assassins Focus"

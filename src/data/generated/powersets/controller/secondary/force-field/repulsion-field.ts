@@ -53,12 +53,5 @@ export const RepulsionField: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 0.25
-  },
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.5,
-      "label": "Knockback"
-    }
-  ]
+  }
 };

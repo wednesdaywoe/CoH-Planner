@@ -71,12 +71,5 @@ export const FlingThorns: Power = {
       "defenseDebuff": 8
     },
     "buffDuration": 8
-  },
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Toxic_Dmg"
-    }
-  ]
+  }
 };

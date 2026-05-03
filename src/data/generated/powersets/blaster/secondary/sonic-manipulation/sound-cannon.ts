@@ -51,12 +51,5 @@ export const SoundCannon: Power = {
       "scale": 1.3,
       "table": "Melee_Ones"
     }
-  },
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.33000001311302185,
-      "label": "Knockback"
-    }
-  ]
+  }
 };

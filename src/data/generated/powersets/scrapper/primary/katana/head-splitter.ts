@@ -91,11 +91,6 @@ export const GoldenDragonfly: Power = {
       "kind": "effect-proc",
       "chance": 0.15000000596046448,
       "label": "Lethal_Dmg"
-    },
-    {
-      "kind": "effect-proc",
-      "chance": 0.9980000257492065,
-      "label": "Base_Defense"
     }
   ]
 };

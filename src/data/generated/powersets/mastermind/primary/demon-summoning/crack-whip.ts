@@ -110,11 +110,6 @@ export const CrackWhip: Power = {
       "kind": "effect-proc",
       "chance": 0.25,
       "label": "Knockback"
-    },
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Toxic_Dmg"
     }
   ]
 };

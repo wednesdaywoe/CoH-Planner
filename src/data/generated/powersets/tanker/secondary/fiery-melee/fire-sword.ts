@@ -77,12 +77,5 @@ export const FireSword: Power = {
       "defenseDebuff": 10
     },
     "buffDuration": 10
-  },
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Fire_Dmg"
-    }
-  ]
+  }
 };

@@ -76,12 +76,5 @@ export const DartBurst: Power = {
       "regenDebuff": 15
     },
     "buffDuration": 15
-  },
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Toxic_Dmg"
-    }
-  ]
+  }
 };

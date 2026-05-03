@@ -85,11 +85,6 @@ export const FireSwordCircle: Power = {
       "kind": "effect-proc",
       "chance": 0.20000000298023224,
       "label": "Fire_Dmg"
-    },
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Fire_Dmg"
     }
   ]
 };

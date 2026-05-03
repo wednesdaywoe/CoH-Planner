@@ -74,11 +74,6 @@ export const GamblersCut: Power = {
     },
     {
       "kind": "effect-proc",
-      "chance": 0.9980000257492065,
-      "label": "Base_Defense"
-    },
-    {
-      "kind": "effect-proc",
       "chance": 0.20000000298023224,
       "label": "Lethal_Dmg"
     },

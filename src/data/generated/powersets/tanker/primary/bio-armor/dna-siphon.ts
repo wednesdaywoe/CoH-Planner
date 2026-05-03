@@ -93,12 +93,5 @@ export const DNASiphon: Power = {
         "buffDuration": 30
       }
     }
-  ],
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Toxic_Dmg"
-    }
   ]
 };

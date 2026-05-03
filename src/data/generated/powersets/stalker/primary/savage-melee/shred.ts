@@ -103,11 +103,6 @@ export const Shred: Power = {
     },
     {
       "kind": "effect-proc",
-      "chance": 0.75,
-      "label": "Lethal_Dmg"
-    },
-    {
-      "kind": "effect-proc",
       "chance": 0.20000000298023224,
       "label": "Lethal_Dmg"
     },

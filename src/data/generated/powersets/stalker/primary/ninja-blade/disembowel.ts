@@ -85,11 +85,6 @@ export const SoaringDragon: Power = {
       "label": "Lethal_Dmg"
     },
     {
-      "kind": "effect-proc",
-      "chance": 0.9980000257492065,
-      "label": "Base_Defense"
-    },
-    {
       "kind": "grant",
       "chance": 0.949999988079071,
       "label": "Assassins Focus"

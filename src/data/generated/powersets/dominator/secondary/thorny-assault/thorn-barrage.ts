@@ -79,12 +79,5 @@ export const ThornBarrage: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "buffDuration": 12
-  },
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Toxic_Dmg"
-    }
-  ]
+  }
 };

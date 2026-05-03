@@ -88,11 +88,6 @@ export const Impale: Power = {
       "label": "Lethal_Dmg"
     },
     {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Toxic_Dmg"
-    },
-    {
       "kind": "grant",
       "chance": 0.8999999761581421,
       "label": "Assassins Focus"

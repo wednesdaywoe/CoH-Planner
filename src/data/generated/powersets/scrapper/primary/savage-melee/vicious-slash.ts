@@ -94,18 +94,8 @@ export const ViciousSlash: Power = {
     },
     {
       "kind": "effect-proc",
-      "chance": 0.75,
-      "label": "Lethal_Dmg"
-    },
-    {
-      "kind": "effect-proc",
       "chance": 0.6700000166893005,
       "label": "Knockback"
-    },
-    {
-      "kind": "effect-proc",
-      "chance": 0.800000011920929,
-      "label": "Lethal_Dmg"
     }
   ]
 };

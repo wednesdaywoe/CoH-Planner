@@ -156,16 +156,6 @@ export const BoomerangSlice: Power = {
       "label": "Lethal_Dmg"
     },
     {
-      "kind": "effect-proc",
-      "chance": 0.9980000257492065,
-      "label": "Base_Defense"
-    },
-    {
-      "kind": "effect-proc",
-      "chance": 0.9980000257492065,
-      "label": "Smashing_Dmg"
-    },
-    {
       "kind": "grant",
       "chance": 0.8999999761581421,
       "label": "Assassins Focus"
