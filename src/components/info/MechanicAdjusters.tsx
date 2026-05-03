@@ -12,13 +12,13 @@
  * - `scope: 'per-power'` → target-state mechanics (drowning,
  *   Disintegrating). State keyed by `<powerInternalName>:<id>`.
  *
- * Calc-pipeline integration is a follow-up: the toggles persist and
- * render correctly here; `calculatePowerDamage` etc. don't yet read the
- * active state.
+ * Visual cadence matches TagsBlock / GeneralStatsBlock — compact
+ * `bg-slate-800/40 rounded p-2` container with cyan accents for the
+ * state-mechanic theme, and a checkbox style consistent with the radio
+ * rows (no chunky `Toggle` switch which dominates vertical space).
  */
 
 import type { ConditionalEffect, Power } from '@/types';
-import { Toggle } from '@/components/ui/Toggle';
 import {
   useUIStore,
   useMechanicAdjuster,
@@ -61,8 +61,8 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
   }
 
   return (
-    <div className="px-3 py-2 border-t border-slate-800/60 space-y-1.5">
-      <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+    <div className="bg-slate-800/40 rounded p-2 space-y-1.5">
+      <div className="text-[9px] font-semibold uppercase tracking-wider text-cyan-400">
         Mechanic Adjusters
       </div>
       <div className="flex flex-col gap-1">
@@ -105,31 +105,29 @@ function SingleToggle({ power, entry }: SingleToggleProps) {
   const setMechanicAdjuster = useUIStore((s) => s.setMechanicAdjuster);
   const setGlobalAdjuster = useUIStore((s) => s.setGlobalAdjuster);
 
-  const handleChange = (checked: boolean) => {
-    if (isGlobal) setGlobalAdjuster(entry.id, checked);
-    else setMechanicAdjuster(powerName, entry.id, checked);
+  const toggle = () => {
+    if (isGlobal) setGlobalAdjuster(entry.id, !active);
+    else setMechanicAdjuster(powerName, entry.id, !active);
   };
 
   return (
-    <div className="flex flex-col gap-0">
-      <div className="flex items-center justify-between gap-2 text-[11px]">
-        <Toggle
-          id={`adjuster-${powerName}-${entry.id}`}
-          checked={active}
-          onChange={(e) => handleChange(e.target.checked)}
-          label={entry.label}
-          title={describeContribution(entry)}
-        />
-        {isGlobal && (
-          <span
-            className="text-slate-500 italic text-[9px] uppercase tracking-wide"
-            title="Affects all powers that share this state"
-          >
-            global
-          </span>
-        )}
-      </div>
-      <ContributionHint power={power} entry={entry} />
+    <div className="flex flex-col">
+      <label
+        title={describeContribution(entry)}
+        className="flex items-center justify-between gap-2 text-[11px] cursor-pointer hover:bg-slate-700/30 rounded px-1 py-0.5"
+      >
+        <span className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={active}
+            onChange={toggle}
+            className="accent-cyan-500 w-3 h-3"
+          />
+          <span className={active ? 'text-slate-100' : 'text-slate-400'}>{entry.label}</span>
+        </span>
+        {isGlobal && <GlobalBadge />}
+      </label>
+      <ContributionHint power={power} entry={entry} indent="ml-6" />
     </div>
   );
 }
@@ -162,12 +160,7 @@ function GlobalRadioGroup({ power, groupId, members }: { power: Power; groupId: 
 
   return (
     <div className="space-y-0.5">
-      <div className="flex items-center justify-between text-[10px]">
-        <span className="text-slate-400 font-medium">{prettifyGroupId(groupId)}</span>
-        <span className="text-slate-500 italic text-[9px] uppercase tracking-wide" title="Affects all powers">
-          global
-        </span>
-      </div>
+      <GroupHeader label={prettifyGroupId(groupId)} isGlobal />
       {members.map((m) => (
         <RadioRow
           key={m.id}
@@ -181,13 +174,7 @@ function GlobalRadioGroup({ power, groupId, members }: { power: Power; groupId: 
         />
       ))}
       {activeId !== null && (
-        <button
-          type="button"
-          className="text-[9px] text-slate-500 hover:text-slate-300 underline ml-5"
-          onClick={() => setGlobalAdjusterGroup(null, members.map((m) => m.id))}
-        >
-          clear
-        </button>
+        <ClearButton onClick={() => setGlobalAdjusterGroup(null, members.map((m) => m.id))} />
       )}
     </div>
   );
@@ -217,9 +204,7 @@ function PerPowerRadioGroup({
 
   return (
     <div className="space-y-0.5">
-      <div className="text-[10px] text-slate-400 font-medium">
-        {prettifyGroupId(groupId)}
-      </div>
+      <GroupHeader label={prettifyGroupId(groupId)} />
       {members.map((m) => (
         <RadioRow
           key={m.id}
@@ -231,13 +216,7 @@ function PerPowerRadioGroup({
         />
       ))}
       {activeId !== null && (
-        <button
-          type="button"
-          className="text-[9px] text-slate-500 hover:text-slate-300 underline ml-5"
-          onClick={() => select(null)}
-        >
-          clear
-        </button>
+        <ClearButton onClick={() => select(null)} />
       )}
     </div>
   );
@@ -253,22 +232,58 @@ interface RadioRowProps {
 
 function RadioRow({ power, entry, name, checked, onSelect }: RadioRowProps) {
   return (
-    <div className="flex flex-col gap-0">
+    <div className="flex flex-col">
       <label
         title={describeContribution(entry)}
-        className="flex items-center gap-2 text-[11px] cursor-pointer hover:bg-slate-800/40 rounded px-1 py-0.5"
+        className="flex items-center gap-2 text-[11px] cursor-pointer hover:bg-slate-700/30 rounded px-1 py-0.5 ml-3"
       >
         <input
           type="radio"
           name={name}
           checked={checked}
           onChange={onSelect}
-          className="accent-blue-500 w-3 h-3"
+          className="accent-cyan-500 w-3 h-3"
         />
-        <span className={checked ? 'text-slate-200' : 'text-slate-400'}>{entry.label}</span>
+        <span className={checked ? 'text-slate-100' : 'text-slate-400'}>{entry.label}</span>
       </label>
-      <ContributionHint power={power} entry={entry} indent="ml-7" />
+      <ContributionHint power={power} entry={entry} indent="ml-9" />
     </div>
+  );
+}
+
+// ----------------------------------------------------------------------
+// Shared visual primitives.
+// ----------------------------------------------------------------------
+
+function GlobalBadge() {
+  return (
+    <span
+      className="text-cyan-400/70 italic text-[8px] uppercase tracking-wide"
+      title="Affects all powers that share this state"
+    >
+      global
+    </span>
+  );
+}
+
+function GroupHeader({ label, isGlobal }: { label: string; isGlobal?: boolean }) {
+  return (
+    <div className="flex items-center justify-between text-[10px] px-1">
+      <span className="text-slate-300 font-medium">{label}</span>
+      {isGlobal && <GlobalBadge />}
+    </div>
+  );
+}
+
+function ClearButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      className="text-[9px] text-slate-500 hover:text-slate-300 underline ml-9"
+      onClick={onClick}
+    >
+      clear
+    </button>
   );
 }
 
@@ -282,14 +297,14 @@ function RadioRow({ power, entry, name, checked, onSelect }: RadioRowProps) {
 function ContributionHint({
   power,
   entry,
-  indent = 'ml-5',
+  indent = 'ml-6',
 }: { power: Power; entry: ConditionalEffect; indent?: string }) {
   const { collisionKeys } = describeAdjusterContribution(power, entry);
   if (collisionKeys.length === 0) return null;
   const phrase = collisionKeys.map(prettifyEffectKey).join(', ');
   return (
     <div
-      className={`text-[9px] text-slate-500 italic ${indent} mt-0.5`}
+      className={`text-[9px] text-slate-500 italic ${indent}`}
       title={`When active, casts a second simultaneous instance of: ${phrase}. The displayed numbers don't yet show the duplicate; the game treats them as stacked.`}
     >
       + extra {phrase} instance
