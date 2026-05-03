@@ -38,6 +38,7 @@ import { resolvePath } from '@/utils/paths';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
 import { MechanicAdjusters } from './MechanicAdjusters';
 import { DamageBlock } from './DamageBlock';
+import { TagsRow } from './TagsRow';
 import type {
   ArchetypeId,
   Power,
@@ -602,12 +603,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         </div>
       </div>
 
-      {/* Short Help (quick summary) */}
-      {power.shortHelp && (
-        <div className="text-[10px] text-amber-400/80 italic">
-          {power.shortHelp}
-        </div>
-      )}
+      {/* Tags row — chip-style render of shortHelp (range/area, mez, debuff,
+        * buff, damage type) for at-a-glance power identity. */}
+      {power.shortHelp && <TagsRow shortHelp={power.shortHelp} />}
 
       {/* Summon/Pet Info with DPS */}
       {effects?.summon && (
