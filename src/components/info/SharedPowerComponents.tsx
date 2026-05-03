@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import type { PowerEffects, NumberOrScaled, SpecialEffect } from '@/types';
+import type { ExtraInstance } from './powerDisplayUtils';
 import { getScaleValue } from '@/types';
 import {
   calculateBuffDebuffValue,
@@ -390,6 +391,82 @@ function sectionPriorityForCategory(cat: EffectCategory): number {
   return s ? SECTION_PRIORITY[s] : 99;
 }
 
+/**
+ * Render an additive extra-instance row beneath the matching base effect.
+ * Used by the SUFFOCATE-WITH-STEALTHED case: base hold Mag 3 / 12s + the
+ * conditional hold Mag 3 / 12s render as two distinct rows so the user
+ * can see the simultaneous instances. Format mirrors the base row but
+ * dimmed and prefixed with `+` and suffixed with `(from <Source>)`.
+ */
+function renderExtraInstanceRow(params: {
+  key: string;
+  baseKey: string;
+  baseConfig: EffectDisplayConfig | null;
+  extra: ExtraInstance;
+  gridCols: string;
+  fontSize: string;
+  archetypeId?: string;
+  level?: number;
+}): React.ReactNode {
+  const { key, baseKey, baseConfig, extra, gridCols, fontSize, archetypeId, level } = params;
+  const value = extra.value;
+  const labelPrefix = baseConfig?.label ?? prettyKeyFallback(baseKey);
+  const sourceTag = (
+    <span className="text-cyan-400/70 italic ml-1">(from {extra.sourceLabel})</span>
+  );
+  const colorClass = baseConfig?.colorClass ?? 'text-slate-300';
+
+  // Mez (format='mag'): show "+ Mag X (Ys)" matching the base row's shape.
+  if (baseConfig?.format === 'mag' && isMezEffect(value) && archetypeId && level) {
+    const tableVal = getTableValue(archetypeId, value.table, level);
+    const baseDuration = tableVal !== undefined ? Math.abs(value.scale * tableVal) : undefined;
+    const magStr = Number.isInteger(value.mag) ? value.mag.toString() : value.mag.toFixed(1);
+    return (
+      <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+        <span className={colorClass}>+ {labelPrefix}</span>
+        <span className="text-slate-300">
+          Mag {magStr}{baseDuration != null ? ` (${baseDuration.toFixed(1)}s)` : ''}
+          {sourceTag}
+        </span>
+        <span className="text-slate-600">—</span>
+        <span className="text-slate-600">—</span>
+      </div>
+    );
+  }
+
+  // Generic numeric / scaled fallback — render the raw value as a hint.
+  // Buff/debuff additive collisions don't currently produce these in
+  // practice (game-side those stack via the strength multiplier and the
+  // base value already reflects that). Keep the fallback so unexpected
+  // collisions still get surfaced rather than silently dropped.
+  return (
+    <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+      <span className={colorClass}>+ {labelPrefix}</span>
+      <span className="text-slate-300">
+        {summarizeExtraValue(value)}
+        {sourceTag}
+      </span>
+      <span className="text-slate-600">—</span>
+      <span className="text-slate-600">—</span>
+    </div>
+  );
+}
+
+function prettyKeyFallback(k: string): string {
+  return k.replace(/_/g, ' ').replace(/([a-z\d])([A-Z])/g, '$1 $2').replace(/^./, (c) => c.toUpperCase());
+}
+
+function summarizeExtraValue(v: unknown): string {
+  if (v == null) return '—';
+  if (typeof v === 'number') return v.toFixed(2);
+  if (typeof v === 'string') return v;
+  if (typeof v === 'object' && 'scale' in v) {
+    const s = (v as { scale: unknown }).scale;
+    return typeof s === 'number' ? s.toFixed(2) : String(s);
+  }
+  return '·';
+}
+
 function sectionForGroup(g: EffectGroup): EffectSection | null {
   const cat = g.type === 'group'
     ? g.items[0]?.effect.config.category
@@ -478,6 +555,11 @@ interface RegistryEffectsDisplayProps {
    *  ("+X% chance to grant <name> on target", "+Y% chance Knockback").
    *  Renders as plain rows under a SPECIAL subheader; not enhanceable. */
   specialEffects?: SpecialEffect[];
+  /** Additive collisions captured by `applyActiveConditionals` — keyed by
+   *  effect name (e.g. `hold`, `defenseDebuff`). Each entry is rendered as
+   *  an extra row beneath the matching base row, so simultaneous instances
+   *  (Suffocate's base Mag-3 hold + Stealthed Mag-3 hold) are both visible. */
+  extraInstances?: Record<string, ExtraInstance[]>;
   /** Purple patch info for adjusting accuracy and damage final values */
   purplePatchInfo?: { factor: number; offset: number; toHitBonus?: number; combatModifier: number };
 }
@@ -618,6 +700,7 @@ export function RegistryEffectsDisplay({
   applyInherentBonus,
   purplePatchInfo,
   specialEffects,
+  extraInstances,
 }: RegistryEffectsDisplayProps) {
   const allowedSet = new Set(allowedEnhancements);
 
@@ -1220,7 +1303,25 @@ export function RegistryEffectsDisplay({
           </div>
         );
         })();
-        return sectionHeader ? [sectionHeader, itemNode] : [itemNode];
+        // Render extra-instance rows for additive collisions on this group's
+        // key (e.g. Suffocate's Stealthed Mag-3 hold on top of base Mag-3).
+        const itemKey = group.type === 'single' ? group.item.effect.key : null;
+        const extras = (itemKey && extraInstances?.[itemKey]) || [];
+        const extraRows = extras.map((extra, i) => renderExtraInstanceRow({
+          key: `${itemKey}-extra-${groupIdx}-${i}`,
+          baseKey: itemKey!,
+          baseConfig: group.type === 'single' ? group.item.effect.config : null,
+          extra,
+          gridCols,
+          fontSize,
+          archetypeId,
+          level,
+        }));
+        const result: React.ReactNode[] = [];
+        if (sectionHeader) result.push(sectionHeader);
+        result.push(itemNode);
+        result.push(...extraRows);
+        return result;
       })}
 
       {/* SPECIAL — chance procs / state-grant entries surfaced from

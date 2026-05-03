@@ -537,11 +537,36 @@ export function selectActiveConditionals(
  *     bump the displayed hold duration; the additional hold cast is the
  *     intended game behavior, awaiting multi-instance display.
  */
+/**
+ * One simultaneous instance of an effect that the additive merger couldn't
+ * fold into the displayed power because the base already has a value for
+ * that key. The renderer surfaces these as extra rows under the matching
+ * base row (e.g. "Hold Mag 3 (12.0s)" base row followed by
+ * "+ Mag 3 (12.0s) (from Stealthed)" instance row).
+ */
+export interface ExtraInstance {
+  /** The conditional's value for the colliding key (same shape as base). */
+  value: unknown;
+  /** Human-readable origin — the conditional's `label` (e.g. "Stealthed"). */
+  sourceLabel: string;
+}
+
+export interface ApplyConditionalsResult {
+  /** Merged power with damage/effects updated for `replace` mode and additive
+   *  fills (keys not present in base). */
+  power: Power;
+  /** Additive collisions — keys where both base and conditional have values.
+   *  Keyed by effect name (`hold`, `defenseDebuff`, etc.). The renderer
+   *  shows each entry as a distinct row alongside the base. */
+  extraInstances: Record<string, ExtraInstance[]>;
+}
+
 export function applyActiveConditionals(
   power: Power,
   active: ConditionalEffect[],
-): Power {
-  if (active.length === 0) return power;
+): ApplyConditionalsResult {
+  const extraInstances: Record<string, ExtraInstance[]> = {};
+  if (active.length === 0) return { power, extraInstances };
 
   // --- damage ---
   const baseDamageArr: ScaledDamageEntry[] = power.damage
@@ -568,24 +593,32 @@ export function applyActiveConditionals(
       // Mutex with a base sibling — shallow-merge with conditional winning.
       nextEffects = nextEffects ? { ...nextEffects, ...c.effects } : { ...c.effects };
     } else {
-      // Additive (default) — only fill keys the base doesn't have, so a
-      // duplicate mez/buff entry from the conditional doesn't masquerade
-      // as a stronger version of the base. Same-keyed entries represent
-      // a second simultaneous instance which the calc/display layer
-      // doesn't yet model as a stacked pair.
+      // Additive (default). For keys not present in base, fill in. For
+      // colliding keys, record the conditional's value as an `extraInstance`
+      // so the renderer can show it as a separate row — that's the multi-
+      // instance case (two simultaneous Mag-3 holds, etc.). Replacing the
+      // base value would misleadingly show a single "stronger" effect.
       if (!nextEffects) {
         nextEffects = { ...c.effects };
       } else {
         for (const [k, v] of Object.entries(c.effects)) {
           if (!(k in nextEffects)) {
             (nextEffects as Record<string, unknown>)[k] = v;
+          } else if (k !== 'durations' && k !== 'buffDuration' && k !== 'effectDuration') {
+            // `durations` is a metadata bag (per-effect duration overrides)
+            // and the `*Duration` metadata fields aren't independent
+            // instances — skip them as collision sources.
+            (extraInstances[k] ??= []).push({ value: v, sourceLabel: c.label });
           }
         }
       }
     }
   }
 
-  return { ...power, damage: nextDamage, effects: nextEffects };
+  return {
+    power: { ...power, damage: nextDamage, effects: nextEffects },
+    extraInstances,
+  };
 }
 
 /**

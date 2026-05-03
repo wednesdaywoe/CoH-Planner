@@ -362,16 +362,19 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // the single source of truth.
   const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
   const globalAdjusters = useUIStore((s) => s.globalAdjusters);
-  const effectivePower = useMemo(() => {
-    if (!snipeAdjustedPower) return snipeAdjustedPower;
+  const conditionalMerge = useMemo(() => {
+    if (!snipeAdjustedPower) return { power: snipeAdjustedPower, extraInstances: {} };
     const active = selectActiveConditionals(
       snipeAdjustedPower,
       mechanicAdjusters,
       globalAdjusters,
       { dominationActive },
     );
-    return active.length === 0 ? snipeAdjustedPower : applyActiveConditionals(snipeAdjustedPower, active);
+    if (active.length === 0) return { power: snipeAdjustedPower, extraInstances: {} };
+    return applyActiveConditionals(snipeAdjustedPower, active);
   }, [snipeAdjustedPower, mechanicAdjusters, globalAdjusters, dominationActive]);
+  const effectivePower = conditionalMerge.power;
+  const extraInstances = conditionalMerge.extraInstances;
 
   // Calculate actual damage using archetype modifiers and level
   const calculatedDamage = useMemo(() => {
@@ -668,6 +671,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         header="Power Effects"
         duration={effects?.buffDuration}
         specialEffects={power.specialEffects}
+        extraInstances={extraInstances}
         purplePatchInfo={{
           factor: Math.min(0.95, Math.max(0.05, getBaseToHit(targetLevelOffset - globalBonuses.levelShift) + globalBonuses.toHit / 100)) / 0.75,
           offset: targetLevelOffset,
