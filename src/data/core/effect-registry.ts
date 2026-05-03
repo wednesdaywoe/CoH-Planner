@@ -92,7 +92,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     priority: 1.5,
   },
   recharge: {
-    label: 'Recharge Time',
+    label: 'Rech Time',
     category: 'execution',
     colorClass: STAT_COLORS.recharge,
     format: 'duration',
@@ -109,7 +109,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     baseMultiplier: 75,  // Accuracy is multiplier × 75% base to-hit
   },
   range: {
-    label: 'Power Range',
+    label: 'Pwr Range',
     category: 'execution',
     colorClass: STAT_COLORS.range,
     format: 'value',
@@ -117,14 +117,14 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     priority: 4,
   },
   castTime: {
-    label: 'Activation Time',
+    label: 'Activation',
     category: 'execution',
     colorClass: STAT_COLORS.castTime,
     format: 'duration',
     priority: 5,
   },
   effectDuration: {
-    label: 'Effect Duration',
+    label: 'Effect Dur',
     category: 'execution',
     colorClass: STAT_COLORS.effectDuration,
     format: 'duration',
