@@ -24,6 +24,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-05-3',
     items: [
       { message: 'Rebirth server dataset is now available! (now with 100% more Guardian)', type: 'feat' },
+      { message: 'The current roadmap for inclusion is Thunderspy, Unity, and New Dawn', type: 'update' },
       { message: 'New feature for build sharing: you can now search by author, and logged in users have a profile page for sharing your public builds. File > Profile Settings', type: 'feat' },
     ] 
   },
