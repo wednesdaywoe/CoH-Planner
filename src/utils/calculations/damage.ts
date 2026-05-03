@@ -717,7 +717,7 @@ const DAMAGE_TYPE_ABBREV: Record<string, string> = {
   Lethal:   'Leth',
   Fire:     'Fire',
   Cold:     'Cold',
-  Energy:   'Energy',
+  Energy:   'Eng',
   Negative: 'Neg',
   Psionic:  'Psi',
   Toxic:    'Tox',

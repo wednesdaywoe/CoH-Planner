@@ -139,7 +139,10 @@ function DamageRows({
   globalCombatModifier,
   targetLevelOffset,
 }: DamageBlockProps) {
-  const gridCols = inherentInfo ? 'grid-cols-[4rem_1fr_1fr_1fr_1fr]' : 'grid-cols-[4rem_1fr_1fr_1fr]';
+  // Type column needs room for "Smash/Eng" (joined damage types like
+  // Energy Melee's Smashing/Energy). 4rem cut off the second word; 5.5rem
+  // fits the longest joined-and-abbreviated form with a small margin.
+  const gridCols = inherentInfo ? 'grid-cols-[5.5rem_1fr_1fr_1fr_1fr]' : 'grid-cols-[5.5rem_1fr_1fr_1fr]';
   const dot = calculatedDamage.dotDamage;
   const hasDirectDamage = dot ? Math.abs(calculatedDamage.base - dot.base) > 0.001 : true;
   const isPureDot = dot && !hasDirectDamage;
