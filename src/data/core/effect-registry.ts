@@ -77,7 +77,7 @@ export interface EffectDisplayConfig {
 export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   // === EXECUTION (Power Stats) ===
   enduranceCost: {
-    label: 'Endurance Cost',
+    label: 'End Cost',
     category: 'execution',
     colorClass: STAT_COLORS.endurance,
     format: 'value',
