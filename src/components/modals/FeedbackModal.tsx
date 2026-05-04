@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 import { Button } from '../ui/Button';
 import { useBuildStore } from '@/stores/buildStore';
+import { getDiagnosticsSnapshot } from '@/utils/diagnostics';
 
 // Worker endpoint URL - update this after deploying the Cloudflare Worker
 const FEEDBACK_API_URL = 'https://coh-planner-feedback.wedswoe.workers.dev';
@@ -102,6 +103,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
       globalName: globalName.trim() || undefined,
       buildContext: getBuildContext(),
       buildSnapshot: includeSnapshot ? exportBuild() : undefined,
+      diagnostics: includeSnapshot ? getDiagnosticsSnapshot() : undefined,
       userAgent: navigator.userAgent,
       timestamp: new Date().toISOString(),
     };

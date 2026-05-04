@@ -22,12 +22,24 @@ interface BuildContext {
   slotCount: number;
 }
 
+interface DiagnosticsSnapshot {
+  app?: { version?: string; buildTime?: string };
+  env?: {
+    userAgent?: string;
+    viewport?: { width?: number; height?: number };
+    datasetId?: string;
+    url?: string;
+  };
+  ui?: Record<string, unknown>;
+}
+
 interface FeedbackPayload {
   type: 'bug' | 'suggestion' | 'other';
   description: string;
   globalName?: string;
   buildContext?: BuildContext;
   buildSnapshot?: string;
+  diagnostics?: DiagnosticsSnapshot;
   userAgent: string;
   timestamp: string;
 }
@@ -53,6 +65,86 @@ function escapeHtml(str: string): string {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function fmtVal(v: unknown): string {
+  if (v === null || v === undefined) return '<em style="color:#64748b">—</em>';
+  if (typeof v === 'boolean') return v
+    ? '<span style="color:#34d399">on</span>'
+    : '<span style="color:#94a3b8">off</span>';
+  if (typeof v === 'number' || typeof v === 'string') return escapeHtml(String(v));
+  if (Array.isArray(v)) {
+    return v.length === 0
+      ? '<em style="color:#64748b">(empty)</em>'
+      : escapeHtml(v.map(String).join(', '));
+  }
+  // object — show keys with truthy values, or full JSON if small
+  const json = JSON.stringify(v);
+  if (json.length <= 80) return `<code style="color:#e2e8f0">${escapeHtml(json)}</code>`;
+  return `<code style="color:#e2e8f0">${escapeHtml(json.slice(0, 80))}…</code>`;
+}
+
+function diagnosticsRow(label: string, value: unknown): string {
+  return `<tr>
+    <td style="color:#64748b; padding:3px 8px; font-size:12px;">${escapeHtml(label)}</td>
+    <td style="color:#e2e8f0; padding:3px 8px; font-size:12px;">${fmtVal(value)}</td>
+  </tr>`;
+}
+
+function buildDiagnosticsHtml(d: { app?: any; env?: any; ui?: any }): string {
+  const app = d.app ?? {};
+  const env = d.env ?? {};
+  const ui = d.ui ?? {};
+  const viewport = env.viewport ? `${env.viewport.width}×${env.viewport.height}` : null;
+
+  const rows = [
+    diagnosticsRow('App version', app.version),
+    diagnosticsRow('Build time', app.buildTime),
+    diagnosticsRow('Dataset', env.datasetId),
+    diagnosticsRow('Viewport', viewport),
+    diagnosticsRow('URL', env.url),
+    diagnosticsRow('Level Up Mode', ui.levelUpMode),
+    diagnosticsRow('Combat Mode', ui.combatMode),
+    diagnosticsRow('Exemplar Mode', ui.exemplarMode === true ? `on (lvl ${ui.exemplarLevel})` : false),
+    diagnosticsRow('Attunement', ui.attunementEnabled),
+    diagnosticsRow('Global IO Level', ui.globalIOLevel),
+    diagnosticsRow('Global Boost', ui.globalBoostLevel),
+    diagnosticsRow('Target Level Offset', ui.targetLevelOffset),
+    diagnosticsRow('ArcanaTime', ui.useArcanaTime),
+    diagnosticsRow('Procs in DPS', ui.includeProcDamageInDPS),
+    diagnosticsRow('Proc Settings', ui.procSettings),
+    diagnosticsRow('Damage Display', ui.damageDisplayMode),
+    diagnosticsRow('Power View', ui.powerViewMode),
+    diagnosticsRow('Selected Branch', ui.selectedBranch),
+    diagnosticsRow('Incarnate Level Shift', ui.incarnateLevelShiftActive),
+    diagnosticsRow('Incarnate Active', ui.incarnateActive),
+    diagnosticsRow('Mechanic Adjusters (on)', ui.mechanicAdjusters),
+    diagnosticsRow('Global Adjusters (on)', ui.globalAdjusters),
+    diagnosticsRow('Targets Hit (non-zero)', ui.targetsHitValues),
+    diagnosticsRow('Tracked Stats', ui.trackedStats),
+    diagnosticsRow('Perma Tracked', ui.permaTrackedPowers),
+  ];
+
+  // AT-conditional keys — render any UI key not already shown above
+  const renderedKeys = new Set([
+    'levelUpMode', 'combatMode', 'exemplarMode', 'exemplarLevel',
+    'attunementEnabled', 'globalIOLevel', 'globalBoostLevel',
+    'targetLevelOffset', 'procSettings', 'includeProcDamageInDPS',
+    'useArcanaTime', 'damageDisplayMode', 'incarnateActive',
+    'incarnateLevelShiftActive', 'selectedBranch', 'powerViewMode',
+    'targetsHitValues', 'mechanicAdjusters', 'globalAdjusters',
+    'trackedStats', 'permaTrackedPowers',
+  ]);
+  for (const [key, value] of Object.entries(ui)) {
+    if (renderedKeys.has(key)) continue;
+    rows.push(diagnosticsRow(key, value));
+  }
+
+  return `
+    <h3 style="color: #94a3b8; margin-top: 16px;">Diagnostics</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+      ${rows.join('')}
+    </table>`;
 }
 
 function buildEmailHtml(payload: FeedbackPayload): string {
@@ -98,7 +190,12 @@ function buildEmailHtml(payload: FeedbackPayload): string {
   if (payload.buildSnapshot) {
     snapshotHtml = `
       <h3 style="color: #94a3b8; margin-top: 16px;">Build Snapshot</h3>
-      <p style="color: #60a5fa; font-size: 13px;">Attached as .json file</p>`;
+      <p style="color: #60a5fa; font-size: 13px;">Attached as .json file (build + diagnostics)</p>`;
+  }
+
+  let diagnosticsHtml = '';
+  if (payload.diagnostics) {
+    diagnosticsHtml = buildDiagnosticsHtml(payload.diagnostics);
   }
 
   return `
@@ -111,6 +208,7 @@ function buildEmailHtml(payload: FeedbackPayload): string {
         <p style="white-space: pre-wrap; line-height: 1.5;">${escapeHtml(payload.description)}</p>
         ${contactHtml}
         ${contextHtml}
+        ${diagnosticsHtml}
         ${snapshotHtml}
         <hr style="border: none; border-top: 1px solid #334155; margin: 16px 0;" />
         <p style="color: #64748b; font-size: 12px; margin-bottom: 0;">
@@ -191,21 +289,30 @@ export default {
       if (payload.buildSnapshot) {
         // Generate a filename from the build name or timestamp
         let buildName = 'build';
+        let parsedSnapshot: Record<string, unknown> | null = null;
         try {
-          const parsed = JSON.parse(payload.buildSnapshot);
-          if (parsed.build?.name) {
-            buildName = parsed.build.name.replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 40);
+          parsedSnapshot = JSON.parse(payload.buildSnapshot);
+          const buildObj = parsedSnapshot && (parsedSnapshot.build as { name?: string } | undefined);
+          if (buildObj?.name) {
+            buildName = buildObj.name.replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 40);
           }
         } catch { /* use default */ }
 
         const timestamp = new Date().toISOString().slice(0, 10);
         const filename = `${buildName}_${timestamp}.json`;
 
-        // Pretty-print the JSON for the attachment
-        let prettyJson = payload.buildSnapshot;
-        try {
-          prettyJson = JSON.stringify(JSON.parse(payload.buildSnapshot), null, 2);
-        } catch { /* use raw */ }
+        // Splice diagnostics into the attached JSON so triage has everything
+        // in one file. The build importer ignores unknown top-level keys, so
+        // re-importing the file still works.
+        let prettyJson: string;
+        if (parsedSnapshot) {
+          if (payload.diagnostics) {
+            parsedSnapshot.diagnostics = payload.diagnostics;
+          }
+          prettyJson = JSON.stringify(parsedSnapshot, null, 2);
+        } else {
+          prettyJson = payload.buildSnapshot;
+        }
 
         // Resend accepts base64-encoded attachments
         const base64Content = btoa(unescape(encodeURIComponent(prettyJson)));
