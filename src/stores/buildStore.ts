@@ -524,7 +524,8 @@ function findPowerInCategory(
 /**
  * Count placed (additional) slots that count against the slot budget.
  * Excludes the free first slot on each power.
- * Includes inherent power slots (they count against the budget in-game).
+ * Excludes inherent slot grants (Health/Stamina Fitness auto-slots),
+ * which the game gives for free outside the 67-slot budget.
  * Inherents with maxSlots=0 (archetype inherents) have no slots so they contribute 0.
  */
 function countPlacedSlots(build: Build): number {
@@ -532,7 +533,8 @@ function countPlacedSlots(build: Build): number {
 
   const countExtra = (powers: SelectedPower[]) => {
     for (const power of powers) {
-      total += Math.max(0, power.slots.length - 1);
+      const inherent = power.inherentSlotCount ?? 0;
+      total += Math.max(0, power.slots.length - 1 - inherent);
     }
   };
 

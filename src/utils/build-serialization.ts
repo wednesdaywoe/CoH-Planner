@@ -59,6 +59,7 @@ export interface SlimPower {
   activeSubPower?: string;
   isAutoGranted?: boolean;
   grantedByPower?: string;
+  inherentSlotCount?: number;
 }
 
 export interface SlimPowersetSelection {
@@ -136,6 +137,7 @@ function slimPower(power: SelectedPower): SlimPower {
   if (power.activeSubPower) slim.activeSubPower = power.activeSubPower;
   if (power.isAutoGranted) slim.isAutoGranted = power.isAutoGranted;
   if (power.grantedByPower) slim.grantedByPower = power.grantedByPower;
+  if (power.inherentSlotCount) slim.inherentSlotCount = power.inherentSlotCount;
   return slim;
 }
 
@@ -378,6 +380,7 @@ function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], pow
         ...(slim.activeSubPower ? { activeSubPower: slim.activeSubPower } : {}),
         ...(slim.isAutoGranted ? { isAutoGranted: slim.isAutoGranted } : {}),
         ...(slim.grantedByPower ? { grantedByPower: slim.grantedByPower } : {}),
+        ...(slim.inherentSlotCount ? { inherentSlotCount: slim.inherentSlotCount } : {}),
       } as SelectedPower;
     }
 
@@ -398,6 +401,7 @@ function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], pow
       ...(slim.activeSubPower ? { activeSubPower: slim.activeSubPower } : {}),
       ...(slim.isAutoGranted ? { isAutoGranted: slim.isAutoGranted } : {}),
       ...(slim.grantedByPower ? { grantedByPower: slim.grantedByPower } : {}),
+      ...(slim.inherentSlotCount ? { inherentSlotCount: slim.inherentSlotCount } : {}),
     } as SelectedPower;
   });
 }

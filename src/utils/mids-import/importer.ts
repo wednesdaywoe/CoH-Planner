@@ -59,6 +59,29 @@ function detectServerFromMbd(database: string | undefined): DatasetId | null {
   return MBD_DATABASE_TO_SERVER[database] ?? null;
 }
 
+/**
+ * Per-server full-path remaps for Mids power names whose meaning has shifted
+ * since Mids' last database snapshot for that server.
+ *
+ * Rebirth: the Flight pool was reworked after Mids 2023.x. Old Mids builds
+ * emit `Pool.Flight.Afterburner` for what used to be the toggle (now called
+ * "Aerobatics" with internal name `Pool.Flight.Group_Fly`). Current Rebirth
+ * data has `Pool.Flight.Afterburner` pointing at a wholly different power
+ * ("Dive Attack", a tier-5 attack). Without remap, old builds import the
+ * wrong power.
+ */
+const MIDS_FULL_PATH_REMAP: Record<DatasetId, Record<string, string>> = {
+  homecoming: {},
+  rebirth: {
+    'Pool.Flight.Afterburner': 'Pool.Flight.Group_Fly',
+  },
+};
+
+function remapMidsPath(path: string, server: DatasetId | null): string {
+  if (!server) return path;
+  return MIDS_FULL_PATH_REMAP[server]?.[path] ?? path;
+}
+
 import type {
   MbdFile,
   MbdPowerEntry,
@@ -347,6 +370,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
       branchSecondarySetIds,
       warnings,
       summary,
+      detectedServer,
     );
 
     if (!result) continue;
@@ -556,16 +580,17 @@ function processEntry(
   branchSecondarySetIds: Set<string>,
   warnings: MidsImportWarning[],
   summary: MidsImportSummary,
+  server: DatasetId | null,
 ): ProcessedEntry | null {
   // Some Mids exports (Rebirth Guardian builds we've seen) emit power
   // names with trailing whitespace inside segments
   // ("Guardian_Composition.Energy_Composition .Kinetic_Shield"). Normalize
   // the whole name once so every downstream check (skip-prefix tests,
   // segment splits, lookup-map keys) sees a clean form.
-  const PowerName = entry.PowerName
-    .split('.')
-    .map(s => s.trim())
-    .join('.');
+  const PowerName = remapMidsPath(
+    entry.PowerName.split('.').map(s => s.trim()).join('.'),
+    server,
+  );
   const { Level: midsLevel, StatInclude, SlotEntries } = entry;
   const appLevel = midsLevel; // Mids Level is already 1-based
 
@@ -599,8 +624,10 @@ function processEntry(
     const powerInternalName = segments[2];
     // Build a minimal SelectedPower with just enough info to match and merge slots
     const slots: (Enhancement | null)[] = [];
+    let inherentSlotCount = 0;
     for (const slotEntry of SlotEntries) {
       summary.slotsImported++;
+      if (slotEntry.IsInherent) inherentSlotCount++;
       if (!slotEntry.Enhancement) {
         slots.push(null);
         continue;
@@ -620,6 +647,7 @@ function processEntry(
         maxSlots: 6,
         slots,
         effects: {},
+        inherentSlotCount: inherentSlotCount > 0 ? inherentSlotCount : undefined,
       } as SelectedPower,
     };
   }
@@ -855,9 +883,11 @@ function buildSelectedPower(
 ): SelectedPower {
   // Build enhancement slots
   const slots: (Enhancement | null)[] = [];
+  let inherentSlotCount = 0;
 
   for (const slotEntry of slotEntries) {
     summary.slotsImported++;
+    if (slotEntry.IsInherent) inherentSlotCount++;
 
     if (!slotEntry.Enhancement) {
       slots.push(null);
@@ -902,6 +932,7 @@ function buildSelectedPower(
     level,
     slots,
     isActive: effectiveIsActive,
+    inherentSlotCount: inherentSlotCount > 0 ? inherentSlotCount : undefined,
   };
 }
 

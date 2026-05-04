@@ -708,4 +708,10 @@ export interface SelectedPower extends Power {
   isAutoGranted?: boolean;
   /** Name of the parent power that granted this power (e.g., "Bright Nova" for Bright Nova Bolt) */
   grantedByPower?: string;
+  /**
+   * Number of trailing slots in `slots` that were auto-granted by the game
+   * (e.g. Fitness Health/Stamina inherent slot grants). These don't count
+   * against the user's 67-slot budget.
+   */
+  inherentSlotCount?: number;
 }

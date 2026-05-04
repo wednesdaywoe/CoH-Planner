@@ -732,6 +732,8 @@ const MIDS_STAT_MAP: Record<string, string> = {
   'Taunt': 'Taunt',
   'EnduranceModification': 'EnduranceModification',
   'EndMod': 'EnduranceModification',
+  'Recovery': 'EnduranceModification',
+  'Recovery_Buff': 'EnduranceModification',
 };
 
 export interface EnhancementMapResult {
