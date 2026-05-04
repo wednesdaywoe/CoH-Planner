@@ -251,10 +251,10 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
     </div>
   ) : null;
 
-  // Compact mode: 2-column grid layout
+  // Compact mode: single column on mobile, 2-column grid on sm+
   if (compact) {
     return (
-      <div className="grid grid-cols-2 gap-px bg-slate-700">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-slate-700">
         {poolTiles}
         {epicTile}
         {addPoolDropdown}
