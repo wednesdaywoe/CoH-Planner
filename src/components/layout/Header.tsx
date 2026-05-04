@@ -11,7 +11,10 @@ import { useHistoryStore } from '@/stores/historyStore';
 import { useOnboardingStore, useOnboardingCurrentStep } from '@/stores/onboardingStore';
 import { supabase } from '@/lib/supabase';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel } from '@/data';
-import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
+import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
+import type { BadgeVariant } from '@/components/ui';
+import { getActiveDataset } from '@/data/dataset';
+import type { DatasetId } from '@/data/dataset';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, OPPORTUNITY_CRIT_MULTIPLIER } from '@/utils/calculations';
 import { isCalcDebugEnabled, enableCalcDebug, disableCalcDebug } from '@/utils/calc-debug';
@@ -147,6 +150,7 @@ export function Header() {
           <SettingsPopover />
         </div>
         <BuildIdentityPopover />
+        <DatasetBadge />
 
         {/* Inline Level Slider */}
         <HeaderLevelSlider />
@@ -271,6 +275,24 @@ function countManualPlacedSlots(build: ReturnType<typeof useBuildStore.getState>
     build.pools.reduce((sum, pool) => sum + extra(pool.powers), 0) +
     (build.epicPool ? extra(build.epicPool.powers) : 0) +
     extra(build.inherents)
+  );
+}
+
+// Color-codes the active dataset so a glance at the header tells you which
+// server's data is loaded — helpful when the build's serverId could
+// otherwise diverge from what's been hydrated into the data layer.
+const DATASET_BADGE_VARIANT: Record<DatasetId, BadgeVariant> = {
+  homecoming: 'cyan',
+  rebirth: 'purple',
+};
+
+function DatasetBadge() {
+  const dataset = getActiveDataset();
+  const variant = DATASET_BADGE_VARIANT[dataset.id] ?? 'default';
+  return (
+    <Tooltip content="Currently loaded server dataset. Switch servers via the Build Identity popover.">
+      <Badge variant={variant}>{dataset.displayName}</Badge>
+    </Tooltip>
   );
 }
 
