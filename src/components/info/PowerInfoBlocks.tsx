@@ -4,10 +4,11 @@
  * The metadata sections of the InfoPanel redesign. Both render compact
  * key/value rows. TagsBlock shows the power's identity (Power Type /
  * Target Type / Allowed Enhancements) as a section near the top.
- * GeneralStatsBlock consolidates the basic execution stats (Activation,
- * Rech Time, End Cost, Accuracy, Pwr Range, Effect Area, Attack Type)
- * into one section near the bottom, replacing the 'execution' category
- * formerly rendered inside the main effects table.
+ * GeneralStatsBlock holds the non-enhanceable execution metadata
+ * (Activation, Pwr Range, Effect Area, Attack Type) near the bottom of
+ * the panel. Accuracy / End Cost / Rech Time live in the main effects
+ * table (RegistryEffectsDisplay's three-column layout) so the user can
+ * see base / enhanced / final values.
  *
  * Both use in-game terminology: "Enemies" for Foe targets, "Single
  * Target" / "Cone" / "Targeted AoE" for effect areas, "Ranged, Cold"
@@ -40,16 +41,13 @@ export function TagsBlock({ power }: TagsBlockProps) {
 }
 
 // ----------------------------------------------------------------------
-// GeneralStatsBlock — Activation / Rech / End / Acc / Range / Area / Attack.
+// GeneralStatsBlock — Activation / Range / Area / Attack.
 // ----------------------------------------------------------------------
 
 interface GeneralStatsBlockProps {
   power: Power;
   /** Merged effects object (stats + power.effects) used by the 3-tier calc */
   effects: {
-    enduranceCost?: number;
-    recharge?: number;
-    accuracy?: number;
     range?: number;
     castTime?: number;
     radius?: number;
@@ -73,9 +71,6 @@ export function GeneralStatsBlock({
     base != null ? calcThreeTierUtil(aspect, base, enhancementBonuses, globalBonusesForCalc) : null;
 
   const activation = tier('castTime', effects.castTime);
-  const rech = tier('recharge', effects.recharge);
-  const end = tier('endurance', effects.enduranceCost);
-  const acc = tier('accuracy', effects.accuracy);
   const rng = tier('range', effects.range);
 
   const effectAreaLabel = formatEffectArea(power.effectArea, effects);
@@ -85,26 +80,6 @@ export function GeneralStatsBlock({
     <div className="bg-slate-800/40 rounded p-2 space-y-0.5">
       {effects.castTime != null && activation && (
         <KvRow label="Activation" value={`${activation.final.toFixed(2)}s`} />
-      )}
-      {effects.recharge != null && rech && (
-        <KvRow
-          label="Rech Time"
-          value={`${rech.final.toFixed(2)}s`}
-          delta={rech.final < rech.base - 0.005 ? `${rech.base.toFixed(1)}s base` : null}
-        />
-      )}
-      {effects.enduranceCost != null && end && (
-        <KvRow
-          label="End Cost"
-          value={end.final.toFixed(2)}
-          delta={end.final < end.base - 0.005 ? `${end.base.toFixed(2)} base` : null}
-        />
-      )}
-      {effects.accuracy != null && acc && (
-        <KvRow
-          label="Accuracy"
-          value={`${(Math.min(0.95, acc.final * 0.75) * 100).toFixed(1)}%`}
-        />
       )}
       {effects.range != null && rng && rng.final > 0 && (
         <KvRow label="Pwr Range" value={`${rng.final.toFixed(0)}ft`} />

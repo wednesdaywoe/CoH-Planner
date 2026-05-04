@@ -535,6 +535,11 @@ interface RegistryEffectsDisplayProps {
   level?: number;
   /** Categories to include (default: execution, buff, debuff) */
   categories?: EffectCategory[];
+  /** Whitelist of execution-category keys to render (e.g. ['accuracy',
+   *  'enduranceCost', 'recharge']). When omitted, all execution effects
+   *  in the included categories render. Lets the InfoPanel show only the
+   *  three enhanceable stats here while a sibling block handles the rest. */
+  executionKeys?: string[];
   /** Use compact sizing for tooltips */
   compact?: boolean;
   /** Whether Domination is active */
@@ -690,6 +695,7 @@ export function RegistryEffectsDisplay({
   archetypeId,
   level,
   categories = ['execution', 'buff', 'debuff'],
+  executionKeys,
   compact = false,
   dominationActive = false,
   header,
@@ -729,8 +735,14 @@ export function RegistryEffectsDisplay({
   };
 
   // Check if an execution effect should be shown (must be allowed enhancement)
-  const shouldShowExecutionEffect = (_key: string, config: EffectDisplayConfig): boolean => {
+  const executionKeysSet = executionKeys ? new Set(executionKeys) : null;
+  const shouldShowExecutionEffect = (key: string, config: EffectDisplayConfig): boolean => {
     if (config.category !== 'execution') return true;
+
+    // Honor the per-key whitelist when caller passes one (InfoPanel scopes
+    // this section to accuracy/end/recharge; sibling GeneralStatsBlock owns
+    // the rest).
+    if (executionKeysSet && !executionKeysSet.has(key)) return false;
 
     // Find the enhancement type that enables this effect
     const enhType = Object.entries(enhancementToAspect).find(([, aspect]) => aspect === config.enhancementAspect)?.[0];

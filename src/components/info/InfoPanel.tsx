@@ -666,7 +666,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         buffDebuffMod={effectiveMod}
         archetypeId={archetypeId ?? undefined}
         level={build.level}
-        categories={['buff', 'debuff', 'control', 'protection', 'movement']}
+        categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
+        executionKeys={['accuracy', 'enduranceCost', 'recharge']}
         dominationActive={dominationActive}
         header="Power Effects"
         duration={effects?.buffDuration}
@@ -920,40 +921,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         </>
       )}
 
-      {/* Enhancement Bonuses Summary */}
-      {hasEnhancements && Object.keys(enhancementBonuses).length > 0 && (() => {
-        const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
-        return (
-          <div className="border-t border-slate-700 pt-2 mt-2">
-            <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
-              Enhancement Bonuses (after ED)
-            </h4>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-xs">
-              {Object.entries(enhancementBonuses).map(([aspect, value]) => {
-                const total = (value || 0) * 100;
-                const alphaVal = (alphaBonuses[aspect] || 0) * 100;
-                const hasAlphaForAspect = alphaVal > 0;
-                const ioOnly = total - alphaVal;
-                return (
-                  <div key={aspect} className="flex justify-between">
-                    <span className="text-slate-400 capitalize">{aspect}</span>
-                    <span className="text-green-400">
-                      +{total.toFixed(2)}%
-                      {hasAlpha && hasAlphaForAspect && (
-                        <span className="text-slate-500 text-[10px]"> ({ioOnly.toFixed(0)}%)</span>
-                      )}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-            {hasAlpha && (
-              <p className="text-[9px] text-slate-600 mt-1">Includes Alpha incarnate</p>
-            )}
-          </div>
-        );
-      })()}
-
       {/* Perma Tracker */}
       {isPermaEligible(power) && (() => {
         const permaTracked = useUIStore.getState().permaTrackedPowers.includes(power.internalName);
@@ -1022,11 +989,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         );
       })()}
 
-      {/* General Stats Block — basic execution stats (Activation / Rech /
-        * End Cost / Accuracy / Pwr Range / Effect Area / Attack Type)
-        * consolidated into one block near the bottom. The 'execution'
-        * category is filtered out of RegistryEffectsDisplay above so we
-        * don't render the same stats twice. */}
+      {/* General Stats Block — non-enhanceable execution metadata
+        * (Activation / Pwr Range / Effect Area / Attack Type). Accuracy /
+        * End Cost / Recharge are scoped into RegistryEffectsDisplay above
+        * via executionKeys so they get the three-column layout. */}
       <GeneralStatsBlock
         power={power}
         effects={effects}
@@ -1034,6 +1000,40 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         globalBonusesForCalc={globalBonusesForCalc}
         damageType={calculatedDamage?.type}
       />
+
+      {/* Enhancement Bonuses Summary */}
+      {hasEnhancements && Object.keys(enhancementBonuses).length > 0 && (() => {
+        const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
+        return (
+          <div className="border-t border-slate-700 pt-2 mt-2">
+            <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+              Enhancement Bonuses (after ED)
+            </h4>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-xs">
+              {Object.entries(enhancementBonuses).map(([aspect, value]) => {
+                const total = (value || 0) * 100;
+                const alphaVal = (alphaBonuses[aspect] || 0) * 100;
+                const hasAlphaForAspect = alphaVal > 0;
+                const ioOnly = total - alphaVal;
+                return (
+                  <div key={aspect} className="flex justify-between">
+                    <span className="text-slate-400 capitalize">{aspect}</span>
+                    <span className="text-green-400">
+                      +{total.toFixed(2)}%
+                      {hasAlpha && hasAlphaForAspect && (
+                        <span className="text-slate-500 text-[10px]"> ({ioOnly.toFixed(0)}%)</span>
+                      )}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            {hasAlpha && (
+              <p className="text-[9px] text-slate-600 mt-1">Includes Alpha incarnate</p>
+            )}
+          </div>
+        );
+      })()}
 
       {/* Description (at bottom - least important info) */}
       <p
