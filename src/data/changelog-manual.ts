@@ -19,12 +19,12 @@ export interface ManualEntry {
 }
 
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
-  // ─── 2026-04-23 (evening) ─────────────────────────────────────────────────
+  // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-05-03',
+    date: '2026-05-04',
     items: [
+      { message: 'Changes made to Kheldians on Rebirth are not currently reflected in the planner', type: 'known-issue' },
       { message: 'Updated Mids importer to support Rebirth builds', type: 'fix' },
-      { message: 'Rebirth server dataset is now available! (now with 100% more Guardian)', type: 'feat' },
       { message: 'The current roadmap for inclusion is Thunderspy, Unity, and New Dawn', type: 'update' },
       { message: 'New feature for build sharing: you can now search by author, and logged in users have a profile page for sharing your public builds. File > Profile Settings', type: 'feat' },
     ] 
