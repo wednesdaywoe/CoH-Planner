@@ -17,10 +17,9 @@ import {
   areEpicPoolsUnlocked,
   isEpicPowerAvailable,
   MAX_POWER_PICKS,
-  getExcludedPools,
   getPowerPicksAtLevel,
 } from '@/data';
-import { Select } from '@/components/ui';
+import { PoolPickerModal } from '@/components/modals/PoolPickerModal';
 import { PowerItem } from './AvailablePowers';
 import type { Power } from '@/types';
 
@@ -63,32 +62,24 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
   const levelUpPickQuotaReached = levelUpMode && totalPicksUsed >= getPowerPicksAtLevel(build.level);
   const pickGateClosed = powerLimitReached || levelUpPickQuotaReached;
 
-  // Available pools for dropdown
+  // Available pools (used to compute whether the "Add Pool" button has any choices)
   const allPools = getAllPowerPools();
   const selectedPoolIds = new Set(pools.map((p) => p.id));
-  const availablePoolOptions = poolsUnlocked
-    ? Object.entries(allPools)
-        .filter(([id]) => {
-          if (selectedPoolIds.has(id) || id === 'fitness') return false;
-          return true;
-        })
-        .map(([id, pool]) => {
-          // Show mutually exclusive pools as disabled with explanation
-          const excluded = getExcludedPools(id);
-          const conflicting = excluded && pools.find((p) => excluded.includes(p.id));
-          if (conflicting) {
-            const conflictPool = allPools[conflicting.id];
-            return { value: id, label: `${pool.name} (exclusive with ${conflictPool?.name || conflicting.id})`, disabled: true };
-          }
-          return { value: id, label: pool.name };
-        })
-    : [];
+  const hasAnyAvailablePool = poolsUnlocked
+    ? Object.keys(allPools).some(
+        (id) => id !== 'fitness' && !selectedPoolIds.has(id),
+      )
+    : false;
 
-  // Epic pools for dropdown
+  // Epic pools available for this archetype (used to gate the epic picker)
   const availableEpicPools = useMemo(() => {
     if (!build.archetype.id) return [];
     return getEpicPoolsForArchetype(build.archetype.id);
   }, [build.archetype.id]);
+
+  // Picker modal state
+  const [poolPickerOpen, setPoolPickerOpen] = useState(false);
+  const [epicPickerOpen, setEpicPickerOpen] = useState(false);
 
   // Info panel helpers (powerName here is internalName)
   const isPowerLocked = (powerName: string) => {
@@ -129,10 +120,6 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
   };
 
   // Pool actions
-  const handleAddPool = (poolId: string) => {
-    if (poolId) addPool(poolId);
-  };
-
   const handleSelectPoolPower = (poolId: string, power: Power) => {
     addPower('pool', {
       ...power,
@@ -152,8 +139,35 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
     });
   };
 
-  const handleSelectEpicPool = (poolId: string) => {
-    if (poolId) setEpicPool(poolId);
+  // Picker callbacks: add the pool, then (optionally) the chosen power.
+  const handlePickerAddPool = (poolId: string, powerInternalName?: string) => {
+    addPool(poolId);
+    if (!powerInternalName) return;
+    const pool = getPowerPool(poolId);
+    const power = pool?.powers.find((p) => p.internalName === powerInternalName);
+    if (power) {
+      addPower('pool', {
+        ...power,
+        powerSet: poolId,
+        level: build.level,
+        slots: [null],
+      });
+    }
+  };
+
+  const handlePickerAddEpic = (poolId: string, powerInternalName?: string) => {
+    setEpicPool(poolId);
+    if (!powerInternalName) return;
+    const epic = getEpicPool(poolId);
+    const power = epic?.powers.find((p) => p.internalName === powerInternalName);
+    if (power) {
+      addPower('epic', {
+        ...power,
+        powerSet: poolId,
+        level: build.level,
+        slots: [null],
+      });
+    }
   };
 
   // Pools not unlocked yet
@@ -201,24 +215,15 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
 
   const epicTile = epicUnlocked && build.archetype.id ? (
     !build.epicPool ? (
-      <div className={compact ? 'bg-slate-900 p-2' : 'mb-3'}>
-        <div className="text-xs font-semibold text-purple-400 uppercase tracking-wide mb-1">
-          {compact ? 'Epic' : 'Epic/Patron Pool'}
-        </div>
-        <Select
-          id="epic-pool-select"
-          name="epic-pool"
-          options={[
-            { value: '', label: compact ? 'Select...' : 'Select Epic/Patron Pool...' },
-            ...availableEpicPools.map((pool) => ({
-              value: pool.id,
-              label: pool.displayName || pool.name,
-            })),
-          ]}
-          value=""
-          onChange={(e) => handleSelectEpicPool(e.target.value)}
-          className="w-full text-xs"
-        />
+      <div className={compact ? 'bg-slate-900 p-2 flex items-center justify-center' : ''}>
+        <button
+          type="button"
+          onClick={() => setEpicPickerOpen(true)}
+          disabled={availableEpicPools.length === 0}
+          className="w-full text-xs px-2 py-1.5 rounded border border-purple-600/40 bg-slate-800 text-purple-200 hover:border-purple-500 hover:bg-slate-700/60 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          + Choose Epic / Patron Pool…
+        </button>
       </div>
     ) : (
       <AvailableEpicPoolSection
@@ -238,37 +243,65 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
     )
   ) : null;
 
-  const addPoolDropdown = poolsUnlocked && canAddPool && availablePoolOptions.length > 0 ? (
+  const addPoolDropdown = poolsUnlocked && canAddPool && hasAnyAvailablePool ? (
     <div className={compact ? 'bg-slate-900 p-2 flex items-center justify-center' : ''}>
-      <Select
-        id="add-pool-select"
-        name="add-pool"
-        options={[{ value: '', label: compact ? '+ Add Pool' : 'Add Pool...' }, ...availablePoolOptions]}
-        value=""
-        onChange={(e) => handleAddPool(e.target.value)}
-        className={compact ? 'w-full text-xs' : 'w-full text-xs'}
-      />
+      <button
+        type="button"
+        onClick={() => setPoolPickerOpen(true)}
+        className="w-full text-xs px-2 py-1.5 rounded border border-blue-600/40 bg-slate-800 text-blue-200 hover:border-blue-500 hover:bg-slate-700/60 transition-colors"
+      >
+        + Add Power Pool…
+      </button>
     </div>
   ) : null;
 
-  // Compact mode: single column on mobile, 2-column grid on sm+
+  const pickers = (
+    <>
+      <PoolPickerModal
+        isOpen={poolPickerOpen}
+        onClose={() => setPoolPickerOpen(false)}
+        mode="pool"
+        level={build.level}
+        excludeIds={selectedPoolIds}
+        onSelect={handlePickerAddPool}
+      />
+      <PoolPickerModal
+        isOpen={epicPickerOpen}
+        onClose={() => setEpicPickerOpen(false)}
+        mode="epic"
+        archetypeId={build.archetype.id ?? undefined}
+        level={build.level}
+        excludeIds={build.epicPool ? new Set([build.epicPool.id]) : new Set()}
+        onSelect={handlePickerAddEpic}
+      />
+    </>
+  );
+
+  // Compact mode: single column on mobile, 2-column grid on sm+.
+  // Order: existing pools → "+ Add Pool" → epic (always last).
   if (compact) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-slate-700">
-        {poolTiles}
-        {epicTile}
-        {addPoolDropdown}
-      </div>
+      <>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-slate-700">
+          {poolTiles}
+          {addPoolDropdown}
+          {epicTile}
+        </div>
+        {pickers}
+      </>
     );
   }
 
   // Normal mode: stacked layout
   return (
-    <div className="space-y-3">
-      {addPoolDropdown}
-      {poolTiles}
-      {epicTile}
-    </div>
+    <>
+      <div className="space-y-3">
+        {addPoolDropdown}
+        {poolTiles}
+        {epicTile}
+      </div>
+      {pickers}
+    </>
   );
 }
 
