@@ -480,6 +480,10 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     );
     if (match && slotPower.slots.length > 0) {
       match.slots = slotPower.slots;
+      // Carry over inherent slot count (Rebirth Health/Stamina auto-grants)
+      if (slotPower.inherentSlotCount) {
+        match.inherentSlotCount = slotPower.inherentSlotCount;
+      }
     }
   }
 

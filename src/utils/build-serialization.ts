@@ -288,6 +288,9 @@ export function hydrateBuild(slim: Record<string, any>): Build {
         s ? hydrateEnhancement(s) : null
       );
     }
+    if (match && slimInh.inherentSlotCount) {
+      match.inherentSlotCount = slimInh.inherentSlotCount;
+    }
   }
 
   // Sets — convert pieces arrays back to Sets

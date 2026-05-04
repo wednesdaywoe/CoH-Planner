@@ -43,6 +43,7 @@ import {
   getAllPowerPools,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
+import { getActiveDataset } from '@/data/dataset';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
 import { useHistoryStore } from './historyStore';
@@ -810,13 +811,47 @@ function applyToAllPowers(
 }
 
 /**
+ * Rebirth-only: Health and Stamina receive automatic inherent slots at
+ * specific character levels (in addition to their free first slot). These
+ * extras don't count against the 67-slot budget.
+ *
+ *   Health:  +1 slot at L8,  +1 slot at L16  (max +2)
+ *   Stamina: +1 slot at L12, +1 slot at L22  (max +2)
+ *
+ * Returns the number of inherent slots that should exist at the given
+ * character level for the given Fitness power, or 0 for HC.
+ */
+function rebirthInherentFitnessSlots(
+  internalName: string | undefined,
+  level: number,
+): number {
+  if (getActiveDataset().id !== 'rebirth') return 0;
+  const name = internalName?.toLowerCase();
+  if (name === 'health') {
+    if (level >= 16) return 2;
+    if (level >= 8) return 1;
+    return 0;
+  }
+  if (name === 'stamina') {
+    if (level >= 22) return 2;
+    if (level >= 12) return 1;
+    return 0;
+  }
+  return 0;
+}
+
+/**
  * Convert an InherentPowerDef to a SelectedPower
  */
-function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
+function createInherentSelectedPower(def: InherentPowerDef, characterLevel = 50): SelectedPower {
   // Archetype inherents have 0 maxSlots and should have no slots
   const slots: (Enhancement | null)[] = def.maxSlots === 0 ? [] : [null];
   // Use available level + 1 for display (available is 0-indexed), default to level 1
   const level = (def.available != null && def.available > 0) ? def.available + 1 : 1;
+
+  // Rebirth: pre-fill Health/Stamina inherent grant slots at appropriate levels.
+  const inherentSlotCount = rebirthInherentFitnessSlots(def.internalName, characterLevel);
+  for (let i = 0; i < inherentSlotCount; i++) slots.push(null);
 
   return {
     ...def,
@@ -825,6 +860,7 @@ function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
     slots,
     isLocked: def.isLocked ?? true, // All inherent powers are locked by default
     inherentCategory: def.category,
+    ...(inherentSlotCount > 0 ? { inherentSlotCount } : {}),
   };
 }
 
@@ -837,21 +873,22 @@ function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
 function getInherentSelectedPowers(
   archetypeId?: string | null,
   archetypeName?: string,
-  archetypeInherent?: { name: string; description: string } | null
+  archetypeInherent?: { name: string; description: string } | null,
+  characterLevel = 50,
 ): SelectedPower[] {
-  const powers = getInherentPowers().map(createInherentSelectedPower);
+  const powers = getInherentPowers().map((def) => createInherentSelectedPower(def, characterLevel));
 
   // Add archetype-specific inherent if provided
   if (archetypeName && archetypeInherent) {
     const atInherentDef = createArchetypeInherentPower(archetypeName, archetypeInherent);
     // Insert archetype inherent at the beginning
-    powers.unshift(createInherentSelectedPower(atInherentDef));
+    powers.unshift(createInherentSelectedPower(atInherentDef, characterLevel));
   }
 
   // Add archetype-specific inherent powers (e.g. Kheldian travel powers)
   const extraInherents = getArchetypeInherentPowers(archetypeId || undefined);
   for (const def of extraInherents) {
-    powers.push(createInherentSelectedPower(def));
+    powers.push(createInherentSelectedPower(def, characterLevel));
   }
 
   return powers;
@@ -1020,7 +1057,8 @@ export const useBuildStore = create<BuildStore>()(
             newBuild.inherents = getInherentSelectedPowers(
               state.build.archetype.id,
               state.build.archetype.name || undefined,
-              state.build.archetype.inherent
+              state.build.archetype.inherent,
+              state.build.level,
             );
           }
 
@@ -1050,7 +1088,8 @@ export const useBuildStore = create<BuildStore>()(
             newBuild.inherents = getInherentSelectedPowers(
               state.build.archetype.id,
               state.build.archetype.name || undefined,
-              state.build.archetype.inherent
+              state.build.archetype.inherent,
+              state.build.level,
             );
           }
 
@@ -1477,12 +1516,43 @@ export const useBuildStore = create<BuildStore>()(
       // Settings
       setLevel: (level) => {
         historyCheckpoint();
-        set((state) => ({
-          build: {
-            ...state.build,
-            level: Math.max(1, Math.min(50, level)),
-          },
-        }));
+        set((state) => {
+          const newLevel = Math.max(1, Math.min(50, level));
+          // Rebirth: Health/Stamina gain inherent slots at L8/L16/L12/L22.
+          // Reconcile their inherent slot count with the new level — preserving
+          // any user-placed enhancements at indices outside the inherent range.
+          const inherents = state.build.inherents.map((p) => {
+            const want = rebirthInherentFitnessSlots(p.internalName, newLevel);
+            const have = p.inherentSlotCount ?? 0;
+            if (want === have) return p;
+            const slots = [...p.slots];
+            if (want > have) {
+              for (let i = 0; i < want - have; i++) slots.push(null);
+            } else {
+              // Remove only trailing inherent slots that are still empty.
+              // Don't drop slots holding enhancements the user may rely on.
+              let toRemove = have - want;
+              for (let i = slots.length - 1; i >= 0 && toRemove > 0; i--) {
+                if (slots[i] === null) {
+                  slots.splice(i, 1);
+                  toRemove--;
+                } else break;
+              }
+            }
+            return {
+              ...p,
+              slots,
+              ...(want > 0 ? { inherentSlotCount: want } : { inherentSlotCount: undefined }),
+            };
+          });
+          return {
+            build: {
+              ...state.build,
+              level: newLevel,
+              inherents,
+            },
+          };
+        });
       },
 
       setExemplarLevel: (level) => {
@@ -1850,7 +1920,8 @@ export const useBuildStore = create<BuildStore>()(
               inherents: getInherentSelectedPowers(
                 state.build.archetype.id,
                 state.build.archetype.name || undefined,
-                state.build.archetype.inherent
+                state.build.archetype.inherent,
+                state.build.level,
               ),
             },
           };
@@ -1904,7 +1975,8 @@ export const useBuildStore = create<BuildStore>()(
             state.build.inherents = getInherentSelectedPowers(
               state.build.archetype.id,
               state.build.archetype.name || undefined,
-              state.build.archetype.inherent
+              state.build.archetype.inherent,
+              state.build.level,
             );
           }
 
