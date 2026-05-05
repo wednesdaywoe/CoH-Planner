@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-05-05',
     items: [
+      { message: 'Rebirth Arachnos have...problems. It\'s being investigated', type: 'known-issue' },
       { message: 'Rebirth Kheldians now have a form mode selector that routes the form buffs to the relevant powers', type: 'fix' },
       { message: 'Power pools unique to Rebirth are missing. Offering 100m INF for their safe return, unharmed', type: 'known-issue' },
       { message: 'There are some known issues with Rebirth powers having incorrect allowed enhancement types, its being investigated', type: 'known-issue' },
