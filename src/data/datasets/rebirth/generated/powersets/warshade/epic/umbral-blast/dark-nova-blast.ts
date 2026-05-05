@@ -26,20 +26,21 @@ export const DarkNovaBlast: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
+    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
-    "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Knockback",
+    "Ranged Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

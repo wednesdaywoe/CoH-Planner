@@ -24,12 +24,14 @@ export const CombatFlight: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Healing",
+    "EnduranceReduction",
+    "Fly",
     "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Healing"
+    "Flight",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

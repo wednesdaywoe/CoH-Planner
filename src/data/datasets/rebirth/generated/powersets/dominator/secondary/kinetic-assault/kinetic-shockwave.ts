@@ -27,17 +27,19 @@ export const KineticShockwave: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Dominator Archetype Sets",
+    "Knockback",
+    "Melee AoE Damage",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

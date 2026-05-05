@@ -28,17 +28,19 @@ export const DrowningPool: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
-    "ToHit Debuff",
+    "Range",
+    "Recharge",
+    "Defense Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Running",
-    "To Hit Debuff",
-    "Universal Travel"
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Controller Archetype Sets",
+    "Defense Debuff",
+    "Holds"
   ],
   "maxSlots": 6,
   "effects": {

@@ -27,19 +27,22 @@ export const LifeDrain: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize",
-    "Fear",
+    "Range",
+    "Recharge",
+    "Healing",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Fear",
-    "Immobilize",
-    "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Accurate Healing",
+    "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
+    "Healing",
+    "Ranged Damage",
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

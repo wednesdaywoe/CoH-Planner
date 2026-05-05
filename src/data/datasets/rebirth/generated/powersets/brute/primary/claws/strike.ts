@@ -26,15 +26,17 @@ export const Strike: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

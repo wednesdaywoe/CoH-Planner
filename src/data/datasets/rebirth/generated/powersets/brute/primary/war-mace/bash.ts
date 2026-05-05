@@ -26,9 +26,10 @@ export const Bash: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
-    "Slow",
-    "Range",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const Bash: Power = {
     "Brute Archetype Sets",
     "Melee Damage",
     "Stuns",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

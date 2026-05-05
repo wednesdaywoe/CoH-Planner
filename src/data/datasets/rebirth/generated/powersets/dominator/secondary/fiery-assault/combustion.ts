@@ -27,12 +27,14 @@ export const Combustion: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

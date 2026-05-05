@@ -30,12 +30,14 @@ export const SpeedBoost: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Sleep",
+    "Range",
     "Run Speed",
-    "Healing"
+    "Recharge",
+    "Fly"
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Flight",
     "Running & Sprints",
     "Universal Travel"
   ],

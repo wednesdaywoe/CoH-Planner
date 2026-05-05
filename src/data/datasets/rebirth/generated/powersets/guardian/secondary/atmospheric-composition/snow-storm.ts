@@ -29,13 +29,13 @@ export const SnowStorm: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed"
+    "Slow",
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Running",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Slow Movement"
   ],
   "maxSlots": 6
 };

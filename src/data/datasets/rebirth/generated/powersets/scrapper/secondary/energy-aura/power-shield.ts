@@ -26,7 +26,8 @@ export const PowerShield: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [

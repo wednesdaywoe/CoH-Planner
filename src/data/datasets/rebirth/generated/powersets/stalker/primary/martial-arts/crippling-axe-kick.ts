@@ -26,18 +26,23 @@ export const CripplingAxeKick: Power = {
     "castTime": 1.6
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
-    "Jump",
-    "ToHit Debuff",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
+    "Immobilize",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Defense Debuff",
     "Immobilize",
     "Melee Damage",
     "Slow Movement",
-    "Stalker Archetype Sets"
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

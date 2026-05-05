@@ -26,8 +26,9 @@ export const IcyBastion: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Endurance Modification",

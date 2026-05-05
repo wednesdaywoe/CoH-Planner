@@ -27,16 +27,19 @@ export const AtomicBlast: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "ToHit Debuff",
+    "EnduranceReduction",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Defense Debuff",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

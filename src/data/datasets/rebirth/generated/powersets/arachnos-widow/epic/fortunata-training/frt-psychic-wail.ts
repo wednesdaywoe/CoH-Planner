@@ -27,15 +27,17 @@ export const PsychicWail: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

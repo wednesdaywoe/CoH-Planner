@@ -26,17 +26,17 @@ export const FreezingTouch: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Run Speed",
+    "Hold",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Holds",
     "Melee Damage",
-    "Running",
     "Stalker Archetype Sets",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

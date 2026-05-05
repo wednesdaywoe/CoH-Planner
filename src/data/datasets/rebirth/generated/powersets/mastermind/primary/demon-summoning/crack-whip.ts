@@ -29,14 +29,16 @@ export const CrackWhip: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

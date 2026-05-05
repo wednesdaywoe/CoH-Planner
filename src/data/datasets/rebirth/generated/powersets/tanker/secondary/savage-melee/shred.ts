@@ -29,18 +29,21 @@ export const Shred: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
-    "ToHit Debuff",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

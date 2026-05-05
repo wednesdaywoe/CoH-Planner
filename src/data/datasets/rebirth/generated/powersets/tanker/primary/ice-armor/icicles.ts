@@ -28,14 +28,16 @@ export const Icicles: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
-    "Tanker Archetype Sets"
+    "Tanker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

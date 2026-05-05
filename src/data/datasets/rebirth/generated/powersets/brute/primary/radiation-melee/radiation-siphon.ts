@@ -28,21 +28,24 @@ export const RadiationSiphon: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
-    "Immobilize",
-    "ToHit Debuff",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate Healing",
+    "Blaster Archetype Sets",
     "Brute Archetype Sets",
     "Defense Debuff",
     "Healing",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

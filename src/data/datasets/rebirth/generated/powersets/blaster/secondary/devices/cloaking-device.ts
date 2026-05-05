@@ -26,12 +26,13 @@ export const FieldOperative: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize",
+    "Recharge",
+    "Healing",
     "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",
+    "Endurance Modification",
     "Healing"
   ],
   "maxSlots": 6,

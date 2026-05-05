@@ -26,20 +26,21 @@ export const KineticLance: Power = {
     "castTime": 4.67
   },
   "allowedEnhancements": [
-    "EnduranceModification",
-    "Hold",
+    "Interrupt",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Endurance Modification",
-    "Holds",
-    "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
+    "Ranged Damage",
+    "Slow Movement",
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

@@ -25,8 +25,9 @@ export const KujiInSha: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing",

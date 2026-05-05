@@ -28,18 +28,21 @@ export const BulletRain: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

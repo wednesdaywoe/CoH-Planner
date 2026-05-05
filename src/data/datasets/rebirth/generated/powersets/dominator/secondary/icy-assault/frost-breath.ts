@@ -29,15 +29,18 @@ export const FrostBreath: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

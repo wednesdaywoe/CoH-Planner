@@ -26,9 +26,10 @@ export const Clobber: Power = {
     "castTime": 1.23
   },
   "allowedEnhancements": [
-    "Slow",
-    "Range",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const Clobber: Power = {
     "Brute Archetype Sets",
     "Melee Damage",
     "Stuns",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

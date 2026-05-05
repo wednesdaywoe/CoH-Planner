@@ -26,10 +26,10 @@ export const EntropyShield: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Run Speed"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Running",
     "Teleport",
     "Universal Travel"
   ],

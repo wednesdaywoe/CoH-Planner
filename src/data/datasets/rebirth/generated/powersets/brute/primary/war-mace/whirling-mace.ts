@@ -27,9 +27,10 @@ export const WhirlingMace: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Range",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const WhirlingMace: Power = {
     "Brute Archetype Sets",
     "Melee AoE Damage",
     "Stuns",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

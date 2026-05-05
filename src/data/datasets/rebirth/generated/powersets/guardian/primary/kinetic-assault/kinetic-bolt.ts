@@ -26,18 +26,19 @@ export const KineticBolt: Power = {
     "castTime": 0.83
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
+    "Ranged Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

@@ -27,14 +27,13 @@ export const Riptide: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage"
   ],
   "allowedSetCategories": [
     "Ranged AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

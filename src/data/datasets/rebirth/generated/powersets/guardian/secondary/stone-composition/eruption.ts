@@ -27,20 +27,22 @@ export const Eruption: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
+    "Range",
+    "Recharge",
     "ToHit Debuff",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
-    "Fear",
+    "Blaster Archetype Sets",
+    "Defense Debuff",
+    "Guardian Archetype Sets",
     "Ranged AoE Damage",
-    "Running",
     "To Hit Debuff",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

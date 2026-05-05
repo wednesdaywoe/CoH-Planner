@@ -26,16 +26,18 @@ export const DarkExtraction: Power = {
     "castTime": 3.2
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

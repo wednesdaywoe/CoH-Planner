@@ -28,13 +28,13 @@ export const EntropicAura: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed"
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Running",
-    "Slow Movement",
     "Teleport",
+    "Threat Duration",
     "Universal Travel"
   ],
   "maxSlots": 6,

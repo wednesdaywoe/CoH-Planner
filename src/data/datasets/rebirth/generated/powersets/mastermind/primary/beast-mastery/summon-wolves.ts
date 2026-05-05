@@ -26,11 +26,12 @@ export const SummonWolves: Power = {
     "castTime": 1.97
   },
   "allowedEnhancements": [
-    "Sleep",
-    "Recharge",
-    "Immobilize",
-    "Fear",
+    "EnduranceReduction",
+    "Run Speed",
+    "Knockback",
+    "Healing",
     "ToHit Debuff",
+    "Defense Debuff",
     "Damage",
     "ToHit",
     "Accuracy"
@@ -38,6 +39,7 @@ export const SummonWolves: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Healing",
     "Knockback",
@@ -46,7 +48,8 @@ export const SummonWolves: Power = {
     "Recharge Intensive Pets",
     "Running & Sprints",
     "To Hit Buff",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

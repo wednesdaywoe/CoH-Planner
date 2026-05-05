@@ -26,21 +26,24 @@ export const Vortex: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
     "Range",
-    "Run Speed",
-    "Fear",
+    "Stun",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Slow Movement",
     "Stuns",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

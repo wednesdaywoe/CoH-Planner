@@ -30,17 +30,19 @@ export const NightFall: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Fear",
-    "Melee AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
+    "Ranged AoE Damage",
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

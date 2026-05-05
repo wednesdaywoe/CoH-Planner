@@ -25,13 +25,12 @@ export const Coalescence: Power = {
     "castTime": 1.93
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Running",
-    "To Hit Buff",
-    "Universal Travel"
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "effects": {

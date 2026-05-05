@@ -27,15 +27,18 @@ export const SpineBurst: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Melee AoE Damage",
     "Slow Movement",
-    "Stalker Archetype Sets"
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

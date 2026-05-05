@@ -26,15 +26,17 @@ export const Shatter: Power = {
     "castTime": 2.33
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
-    "Soldiers of Arachnos Archetype Sets"
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

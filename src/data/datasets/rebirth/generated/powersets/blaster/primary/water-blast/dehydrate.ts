@@ -26,11 +26,12 @@ export const Dehydrate: Power = {
     "castTime": 1.87
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize",
-    "ToHit Debuff",
+    "Range",
+    "Recharge",
+    "Healing",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
@@ -41,7 +42,8 @@ export const Dehydrate: Power = {
     "Defense Debuff",
     "Healing",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

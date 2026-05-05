@@ -28,14 +28,13 @@ export const AuraofConfusion: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Confuse",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Confuse",
-    "Running",
-    "Universal Travel"
+    "Confuse"
   ],
   "maxSlots": 6,
   "effects": {

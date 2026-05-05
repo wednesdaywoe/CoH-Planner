@@ -29,13 +29,15 @@ export const Eviscerate: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
-    "Soldiers of Arachnos Archetype Sets"
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

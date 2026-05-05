@@ -27,8 +27,9 @@ export const Elude: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Sleep",
+    "EnduranceReduction",
     "Run Speed",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [

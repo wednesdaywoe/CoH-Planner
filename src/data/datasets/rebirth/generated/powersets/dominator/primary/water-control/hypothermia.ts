@@ -28,18 +28,18 @@ export const Hypothermia: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Stun",
-    "Run Speed",
+    "Range",
+    "Sleep",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
-    "Holds",
-    "Running",
-    "Stuns",
-    "Universal Travel"
+    "Sleep",
+    "Slow Movement"
   ],
   "maxSlots": 6,
   "effects": {

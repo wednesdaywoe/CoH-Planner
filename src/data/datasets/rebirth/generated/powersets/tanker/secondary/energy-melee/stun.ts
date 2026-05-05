@@ -28,17 +28,19 @@ export const StaggeringBurst: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Range",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage",
+    "Melee AoE Damage",
     "Stuns",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

@@ -27,15 +27,17 @@ export const Subdual: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Immobilize",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

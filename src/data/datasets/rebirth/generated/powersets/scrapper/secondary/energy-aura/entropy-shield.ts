@@ -28,10 +28,10 @@ export const EntropicAura: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Running",
     "Teleport",
     "Universal Travel"
   ],

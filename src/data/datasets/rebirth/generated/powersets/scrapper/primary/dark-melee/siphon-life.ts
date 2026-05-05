@@ -26,19 +26,22 @@ export const SiphonLife: Power = {
     "castTime": 1.93
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize",
-    "Fear",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Healing",
     "Melee Damage",
     "Scrapper Archetype Sets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

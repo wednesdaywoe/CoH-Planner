@@ -28,19 +28,19 @@ export const TurbulentAura: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
     "Recharge",
-    "Immobilize",
+    "Knockback",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Immobilize",
+    "Accurate Healing",
+    "Healing",
+    "Knockback",
     "Melee AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

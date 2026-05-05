@@ -27,21 +27,18 @@ export const PhoenixAwakening: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Range",
-    "Run Speed",
-    "Immobilize",
-    "Defense Debuff",
+    "Stun",
+    "Recharge",
+    "Healing",
     "Damage"
   ],
   "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Endurance Modification",
-    "Immobilize",
-    "Ranged AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Brute Archetype Sets",
+    "Guardian Archetype Sets",
+    "Healing",
+    "Melee AoE Damage",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

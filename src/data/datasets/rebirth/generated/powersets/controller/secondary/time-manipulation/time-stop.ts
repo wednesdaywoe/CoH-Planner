@@ -26,9 +26,10 @@ export const TimeStop: Power = {
     "castTime": 2.17
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

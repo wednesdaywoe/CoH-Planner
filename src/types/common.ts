@@ -178,7 +178,8 @@ export type IOSetCategory =
   | 'Tanker Archetype Sets'
   | 'Sentinel Archetype Sets'
   | 'Kheldian Archetype Sets'
-  | 'Soldiers of Arachnos Archetype Sets';
+  | 'Soldiers of Arachnos Archetype Sets'
+  | 'Guardian Archetype Sets';
 
 // ============================================
 // IO SET RARITY

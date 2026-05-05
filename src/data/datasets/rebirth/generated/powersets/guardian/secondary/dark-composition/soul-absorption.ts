@@ -27,17 +27,17 @@ export const SoulAbsorption: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize",
-    "Fear",
+    "Recharge",
+    "Healing",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Endurance Modification",
-    "Fear",
-    "Immobilize",
-    "Running",
-    "Universal Travel"
+    "Healing",
+    "To Hit Debuff"
   ],
   "maxSlots": 6
 };

@@ -25,7 +25,7 @@ export const Hide: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [

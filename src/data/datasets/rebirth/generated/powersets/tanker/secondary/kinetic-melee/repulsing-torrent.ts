@@ -29,10 +29,11 @@ export const RepulsingTorrent: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
+    "Taunt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -40,7 +41,8 @@ export const RepulsingTorrent: Power = {
     "Knockback",
     "Ranged AoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

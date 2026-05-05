@@ -30,17 +30,18 @@ export const RepulsionBomb: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Run Speed",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Knockback",
     "Ranged AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

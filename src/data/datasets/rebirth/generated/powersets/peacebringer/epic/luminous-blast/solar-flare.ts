@@ -27,18 +27,21 @@ export const SolarFlare: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
     "Recharge",
-    "ToHit Debuff",
+    "Knockback",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Knockback",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

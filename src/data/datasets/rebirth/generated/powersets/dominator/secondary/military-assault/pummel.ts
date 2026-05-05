@@ -26,16 +26,17 @@ export const Pummel: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Dominator Archetype Sets",
+    "Melee Damage",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

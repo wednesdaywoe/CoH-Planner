@@ -27,18 +27,21 @@ export const GroundZero: Power = {
     "maxTargets": 30
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize",
-    "ToHit Debuff",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Healing",
     "Melee AoE Damage",
-    "Stalker Archetype Sets"
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

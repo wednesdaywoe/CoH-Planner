@@ -28,14 +28,13 @@ export const ForceBubble: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed"
+    "Slow",
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Running",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Slow Movement"
   ],
   "maxSlots": 6,
   "effects": {

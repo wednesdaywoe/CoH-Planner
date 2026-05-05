@@ -26,9 +26,10 @@ export const GreaterPsiBlade: Power = {
     "castTime": 2.5
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Slow",
-    "Run Speed",
+    "Hold",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const GreaterPsiBlade: Power = {
     "Brute Archetype Sets",
     "Holds",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

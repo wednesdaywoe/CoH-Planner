@@ -26,13 +26,12 @@ export const FrozenArmor: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets",
-    "Running",
-    "Universal Travel"
+    "Defense Sets"
   ],
   "maxSlots": 6,
   "effects": {

@@ -27,14 +27,17 @@ export const IceSwordCircle: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Melee AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

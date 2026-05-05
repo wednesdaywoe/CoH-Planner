@@ -25,8 +25,9 @@ export const HealingFlames: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing",

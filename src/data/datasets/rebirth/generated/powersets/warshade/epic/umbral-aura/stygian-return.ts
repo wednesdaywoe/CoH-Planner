@@ -26,16 +26,18 @@ export const StygianReturn: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
-    "Immobilize",
-    "Defense Debuff",
+    "Stun",
+    "Recharge",
+    "Healing",
     "Damage"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Healing",
     "Kheldian Archetype Sets",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

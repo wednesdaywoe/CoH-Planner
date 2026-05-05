@@ -29,8 +29,9 @@ export const LifegivingSpores: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize"
+    "Range",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Endurance Modification",

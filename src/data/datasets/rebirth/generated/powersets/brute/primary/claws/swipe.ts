@@ -26,15 +26,17 @@ export const Swipe: Power = {
     "castTime": 0.83
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

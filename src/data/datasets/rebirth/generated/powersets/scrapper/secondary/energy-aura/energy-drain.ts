@@ -28,7 +28,8 @@ export const EnergyDrain: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [

@@ -26,19 +26,22 @@ export const UmbralSmite: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
-    "Hold",
-    "Range",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Ranged Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
+    "Knockback",
+    "Melee Damage",
+    "Slow Movement",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

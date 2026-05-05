@@ -26,18 +26,18 @@ export const IceSword: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
+    "Blaster Archetype Sets",
     "Melee Damage",
-    "Running",
     "Scrapper Archetype Sets",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

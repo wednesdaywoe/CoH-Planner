@@ -28,15 +28,15 @@ export const TouchoftheBeyond: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize",
-    "Fly",
+    "Range",
+    "Recharge",
+    "Healing",
     "Fear",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Healing",
-    "Blaster Archetype Sets",
     "Endurance Modification",
     "Fear",
     "Healing"

@@ -26,13 +26,19 @@ export const IrradiatedGround: Power = {
     "activatePeriod": 5
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "ToHit Debuff",
+    "EnduranceReduction",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Brute Archetype Sets",
+    "Defense Debuff",
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

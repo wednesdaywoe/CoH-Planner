@@ -30,13 +30,15 @@ export const Howl: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

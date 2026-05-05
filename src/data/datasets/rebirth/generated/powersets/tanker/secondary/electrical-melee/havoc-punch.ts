@@ -29,9 +29,10 @@ export const HavocPunch: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Slow",
-    "Stun",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Sleep",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -40,7 +41,8 @@ export const HavocPunch: Power = {
     "Melee Damage",
     "Sleep",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

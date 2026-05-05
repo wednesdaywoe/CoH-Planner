@@ -27,7 +27,8 @@ export const BurstofSpeed: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -35,6 +36,7 @@ export const BurstofSpeed: Power = {
     "Blaster Archetype Sets",
     "Melee AoE Damage",
     "Teleport",
+    "Universal Damage Sets",
     "Universal Travel"
   ],
   "maxSlots": 6,

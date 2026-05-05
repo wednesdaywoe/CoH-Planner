@@ -25,12 +25,8 @@ export const Placate: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
-    "EnduranceReduction",
-    "Run Speed"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
+    "Range",
+    "Recharge"
   ],
   "maxSlots": 6,
   "effects": {

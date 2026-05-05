@@ -28,11 +28,12 @@ export const CrushingUppercut: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Slow",
-    "Range",
-    "Run Speed",
+    "Hold",
+    "Taunt",
+    "EnduranceReduction",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -42,7 +43,8 @@ export const CrushingUppercut: Power = {
     "Melee Damage",
     "Stuns",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

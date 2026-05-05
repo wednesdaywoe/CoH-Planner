@@ -28,8 +28,9 @@ export const EMPulse: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Intangible",
-    "Run Speed",
+    "Hold",
+    "EnduranceReduction",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

@@ -26,15 +26,17 @@ export const SeismicSmash: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Run Speed",
+    "Hold",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Holds",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

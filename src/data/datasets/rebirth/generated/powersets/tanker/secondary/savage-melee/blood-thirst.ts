@@ -25,8 +25,9 @@ export const BloodThirst: Power = {
     "castTime": 2
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing"

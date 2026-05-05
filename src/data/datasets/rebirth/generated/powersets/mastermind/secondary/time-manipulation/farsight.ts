@@ -27,7 +27,8 @@ export const Farsight: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "ToHit",
     "Defense"
   ],

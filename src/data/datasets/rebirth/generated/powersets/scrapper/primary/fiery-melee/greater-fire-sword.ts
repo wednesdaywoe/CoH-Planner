@@ -26,13 +26,15 @@ export const GreaterFireSword: Power = {
     "castTime": 2.33
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Melee Damage",
-    "Scrapper Archetype Sets"
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

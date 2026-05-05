@@ -27,8 +27,9 @@ export const GlowingTouch: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize"
+    "Range",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing"

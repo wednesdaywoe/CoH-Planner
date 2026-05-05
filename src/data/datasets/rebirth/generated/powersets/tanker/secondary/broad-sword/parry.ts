@@ -28,20 +28,19 @@ export const Parry: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Defense",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Melee AoE Damage",
-    "Running",
-    "Slow Movement",
+    "Melee Damage",
     "Tanker Archetype Sets",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

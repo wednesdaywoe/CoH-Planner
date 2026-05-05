@@ -27,8 +27,9 @@ export const SpectralTerror: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Fly",
+    "Range",
+    "Recharge",
+    "Fear",
     "Accuracy"
   ],
   "allowedSetCategories": [

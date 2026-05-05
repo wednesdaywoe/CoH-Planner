@@ -29,21 +29,21 @@ export const Slice: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
-    "ToHit Debuff",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Defense Debuff",
     "Melee AoE Damage",
-    "Running",
-    "Slow Movement",
     "Tanker Archetype Sets",
-    "To Hit Debuff",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

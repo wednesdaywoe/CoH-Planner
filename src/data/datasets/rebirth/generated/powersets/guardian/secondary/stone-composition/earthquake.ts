@@ -27,16 +27,17 @@ export const Earthquake: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
-    "Fear",
-    "ToHit Debuff"
+    "Knockback",
+    "ToHit Debuff",
+    "Defense Debuff"
   ],
   "allowedSetCategories": [
-    "Fear",
-    "Running",
-    "To Hit Debuff",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Defense Debuff",
+    "Knockback",
+    "To Hit Debuff"
   ],
   "maxSlots": 6
 };

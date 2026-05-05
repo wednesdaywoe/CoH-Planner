@@ -26,16 +26,19 @@ export const Soldiers: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Immobilize",
-    "ToHit Debuff",
+    "EnduranceReduction",
+    "Healing",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Mastermind Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

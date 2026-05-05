@@ -28,20 +28,23 @@ export const DevastatingBlow: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "Range",
-    "Run Speed",
-    "ToHit Debuff",
+    "Taunt",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
     "Stuns",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

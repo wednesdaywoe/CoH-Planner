@@ -27,13 +27,15 @@ export const Blaze: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

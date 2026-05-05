@@ -29,21 +29,24 @@ export const EmptyClips: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
-    "ToHit Debuff",
+    "Knockback",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Defense Debuff",
     "Knockback",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

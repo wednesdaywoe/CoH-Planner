@@ -25,11 +25,11 @@ export const KujiInRin: Power = {
     "castTime": 1.83
   },
   "allowedEnhancements": [
-    "Run Speed"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
+    "Resist Damage"
   ],
   "maxSlots": 6,
   "effects": {

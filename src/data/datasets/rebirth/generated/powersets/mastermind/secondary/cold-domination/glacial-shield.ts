@@ -29,13 +29,13 @@ export const GlacialShield: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Running",
-    "Universal Travel"
+    "Resist Damage"
   ],
   "maxSlots": 6,
   "effects": {

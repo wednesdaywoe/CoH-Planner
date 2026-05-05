@@ -27,15 +27,13 @@ export const DragonsRoar: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Run Speed",
+    "Taunt",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Running",
-    "Slow Movement",
-    "Universal Travel"
+    "Threat Duration"
   ],
   "maxSlots": 6,
   "effects": {

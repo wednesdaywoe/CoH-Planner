@@ -29,17 +29,20 @@ export const Ripper: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
     "Slow Movement",
-    "Stalker Archetype Sets"
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

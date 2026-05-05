@@ -29,15 +29,15 @@ export const MeltArmor: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "ToHit Debuff",
+    "Range",
+    "Recharge",
+    "Defense Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Running",
-    "To Hit Debuff",
-    "Universal Travel"
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Defense Debuff"
   ],
   "maxSlots": 6,
   "effects": {

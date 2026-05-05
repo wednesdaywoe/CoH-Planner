@@ -26,20 +26,27 @@ export const ProtectorBots: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Fear",
+    "EnduranceReduction",
+    "Stun",
+    "Knockback",
+    "Healing",
+    "ToHit Debuff",
     "Damage",
     "Defense",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
+    "Defense Sets",
+    "Healing",
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Debuff"
+    "Stuns",
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

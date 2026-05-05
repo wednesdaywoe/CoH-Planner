@@ -25,7 +25,8 @@ export const BuildUp: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [

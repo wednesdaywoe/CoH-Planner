@@ -29,8 +29,9 @@ export const SporeBurst: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Stun",
-    "Run Speed",
+    "Range",
+    "Sleep",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

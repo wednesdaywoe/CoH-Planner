@@ -26,7 +26,8 @@ export const HellonEarth: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "ToHit",
     "Accuracy"
@@ -34,7 +35,8 @@ export const HellonEarth: Power = {
   "allowedSetCategories": [
     "Mastermind Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

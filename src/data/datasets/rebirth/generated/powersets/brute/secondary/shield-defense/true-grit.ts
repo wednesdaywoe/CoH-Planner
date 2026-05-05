@@ -23,7 +23,7 @@ export const TrueGrit: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [
-    "Immobilize"
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing",

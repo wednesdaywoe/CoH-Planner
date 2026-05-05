@@ -28,8 +28,9 @@ export const CosmicBurst: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Run Speed",
-    "ToHit Debuff",
+    "Stun",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const CosmicBurst: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -25,13 +25,13 @@ export const WhiteDwarfSublimation: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
-    "Immobilize",
-    "Running",
-    "Universal Travel"
+    "Healing",
+    "Kheldian Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

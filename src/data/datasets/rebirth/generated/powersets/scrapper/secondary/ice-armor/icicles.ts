@@ -28,16 +28,15 @@ export const Icicles: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
-    "Running",
     "Scrapper Archetype Sets",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

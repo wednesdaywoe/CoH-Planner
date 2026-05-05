@@ -25,14 +25,16 @@ export const GunDrone: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Ranged Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

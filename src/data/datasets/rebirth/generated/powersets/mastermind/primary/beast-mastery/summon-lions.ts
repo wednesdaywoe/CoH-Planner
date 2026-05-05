@@ -26,9 +26,10 @@ export const SummonLions: Power = {
     "castTime": 2
   },
   "allowedEnhancements": [
-    "Range",
-    "Sleep",
-    "Immobilize",
+    "EnduranceReduction",
+    "Stun",
+    "Run Speed",
+    "Healing",
     "Damage",
     "Defense",
     "Accuracy"
@@ -40,7 +41,8 @@ export const SummonLions: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "Running & Sprints",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

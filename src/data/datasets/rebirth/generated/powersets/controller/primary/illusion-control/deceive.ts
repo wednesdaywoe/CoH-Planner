@@ -27,7 +27,8 @@ export const Deceive: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Confuse",
     "Accuracy"
   ],

@@ -26,18 +26,22 @@ export const GravimetricSnare: Power = {
     "castTime": 1.2
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Immobilize",
     "Kheldian Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

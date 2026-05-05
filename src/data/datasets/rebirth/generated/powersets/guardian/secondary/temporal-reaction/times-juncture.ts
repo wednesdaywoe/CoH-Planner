@@ -28,15 +28,15 @@ export const TimesJuncture: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
-    "Fear"
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
+    "ToHit Debuff"
   ],
   "allowedSetCategories": [
-    "Fear",
-    "Holds",
-    "Running",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6
 };

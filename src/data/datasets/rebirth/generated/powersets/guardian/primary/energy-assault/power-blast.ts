@@ -27,16 +27,17 @@ export const PowerBlast: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Guardian Archetype Sets",
+    "Knockback",
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

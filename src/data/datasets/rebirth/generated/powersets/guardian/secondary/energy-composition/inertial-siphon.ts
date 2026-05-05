@@ -27,20 +27,20 @@ export const InertialSiphon: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
-    "Sleep",
+    "Slow",
+    "EnduranceReduction",
     "Run Speed",
-    "Knockback",
-    "Healing",
+    "Recharge",
+    "Jump",
+    "Fly",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing",
-    "Healing",
-    "Holds",
-    "Knockback",
-    "Running",
-    "Sleep",
+    "Blaster Archetype Sets",
+    "Flight",
+    "Leaping & Sprints",
+    "Running & Sprints",
+    "Slow Movement",
     "Universal Travel"
   ],
   "maxSlots": 6

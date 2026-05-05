@@ -27,8 +27,9 @@ export const SaltCrystals: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Stun",
-    "Run Speed",
+    "EnduranceReduction",
+    "Sleep",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

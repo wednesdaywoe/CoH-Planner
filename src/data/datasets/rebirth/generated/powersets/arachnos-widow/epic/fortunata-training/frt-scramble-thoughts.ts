@@ -26,15 +26,17 @@ export const ScrambleThoughts: Power = {
     "castTime": 3
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

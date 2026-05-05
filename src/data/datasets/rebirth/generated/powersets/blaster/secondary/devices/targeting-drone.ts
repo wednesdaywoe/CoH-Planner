@@ -26,7 +26,8 @@ export const TargetingDrone: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [

@@ -28,16 +28,14 @@ export const ConduitofPain: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
-    "Defense Debuff",
+    "Range",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Defense Debuff",
+    "Brute Archetype Sets",
     "Endurance Modification",
-    "Running",
-    "To Hit Buff",
-    "Universal Travel"
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "damage": {

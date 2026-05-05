@@ -26,19 +26,22 @@ export const ProtonVolley: Power = {
     "castTime": 4.33
   },
   "allowedEnhancements": [
-    "EnduranceModification",
+    "Interrupt",
     "EnduranceReduction",
-    "Run Speed",
-    "ToHit Debuff",
+    "Range",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Defense Debuff",
     "Ranged Damage",
-    "Sniper Attacks"
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

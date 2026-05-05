@@ -26,9 +26,10 @@ export const ParalyticPoison: Power = {
     "castTime": 2
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

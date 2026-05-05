@@ -28,15 +28,17 @@ export const AnimateStone: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Run Speed",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

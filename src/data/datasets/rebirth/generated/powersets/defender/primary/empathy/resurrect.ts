@@ -27,17 +27,15 @@ export const Resurrect: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Defense Debuff",
+    "Range",
+    "Recharge",
     "ToHit",
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Debuff",
+    "Brute Archetype Sets",
     "Defense Sets",
-    "Running",
-    "To Hit Buff",
-    "Universal Travel"
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "damage": {

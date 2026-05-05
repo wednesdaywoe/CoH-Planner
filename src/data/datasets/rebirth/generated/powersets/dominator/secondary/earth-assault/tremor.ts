@@ -27,14 +27,16 @@ export const Tremor: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

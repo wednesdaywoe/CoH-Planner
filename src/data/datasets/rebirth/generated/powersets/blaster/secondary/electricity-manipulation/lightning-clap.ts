@@ -28,13 +28,16 @@ export const ForceofThunder: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
     "Recharge",
-    "Immobilize",
+    "Knockback",
+    "Healing",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Endurance Modification",
+    "Healing",
     "Knockback",
     "Stuns"
   ],

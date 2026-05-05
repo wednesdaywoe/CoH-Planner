@@ -27,8 +27,9 @@ export const InertialReduction: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Knockback"
+    "EnduranceReduction",
+    "Recharge",
+    "Jump"
   ],
   "allowedSetCategories": [
     "Leaping & Sprints",

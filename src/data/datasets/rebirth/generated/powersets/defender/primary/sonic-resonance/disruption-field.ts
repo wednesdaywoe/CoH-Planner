@@ -29,11 +29,8 @@ export const DisruptionField: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Run Speed"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "maxSlots": 6,
   "effects": {

@@ -28,13 +28,15 @@ export const CloakofFear: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Fly",
+    "EnduranceReduction",
+    "Recharge",
     "Fear",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Fear",
     "To Hit Debuff"
   ],

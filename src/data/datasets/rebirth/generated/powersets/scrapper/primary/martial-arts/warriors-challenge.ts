@@ -25,9 +25,9 @@ export const WarriorsChallenge: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Run Speed",
+    "Taunt",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

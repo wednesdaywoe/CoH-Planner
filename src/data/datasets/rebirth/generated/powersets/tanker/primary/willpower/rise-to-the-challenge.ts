@@ -28,12 +28,14 @@ export const RisetotheChallenge: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
-    "Immobilize",
-    "Fear"
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
+    "ToHit Debuff"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Healing",
     "To Hit Debuff"
   ],

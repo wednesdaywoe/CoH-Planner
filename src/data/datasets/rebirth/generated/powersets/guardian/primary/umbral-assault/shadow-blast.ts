@@ -26,19 +26,21 @@ export const ShadowBlast: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
+    "Knockback",
+    "Ranged Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

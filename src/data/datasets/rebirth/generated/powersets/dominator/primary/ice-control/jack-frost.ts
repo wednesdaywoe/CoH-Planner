@@ -26,16 +26,18 @@ export const JackFrost: Power = {
     "castTime": 1.87
   },
   "allowedEnhancements": [
-    "Intangible",
     "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

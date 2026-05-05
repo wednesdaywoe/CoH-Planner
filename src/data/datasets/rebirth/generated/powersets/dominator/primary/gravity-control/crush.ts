@@ -26,18 +26,21 @@ export const Crush: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Immobilize",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

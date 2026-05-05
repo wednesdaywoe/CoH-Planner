@@ -28,13 +28,15 @@ export const LightningBolt: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -27,17 +27,20 @@ export const SunlessMire: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "ToHit",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
     "Melee AoE Damage",
     "Slow Movement",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -30,15 +30,17 @@ export const Shockwave: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
     "Ranged AoE Damage",
-    "Scrapper Archetype Sets"
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

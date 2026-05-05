@@ -27,13 +27,15 @@ export const Bonfire: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage"
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

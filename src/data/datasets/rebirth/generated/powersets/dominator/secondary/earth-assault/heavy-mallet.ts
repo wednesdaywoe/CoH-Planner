@@ -26,14 +26,16 @@ export const HeavyMallet: Power = {
     "castTime": 1.63
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

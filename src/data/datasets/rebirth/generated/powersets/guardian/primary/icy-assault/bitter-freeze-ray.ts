@@ -26,19 +26,21 @@ export const BitterFreezeRay: Power = {
     "castTime": 2
   },
   "allowedEnhancements": [
-    "Intangible",
     "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
     "Holds",
-    "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Ranged Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

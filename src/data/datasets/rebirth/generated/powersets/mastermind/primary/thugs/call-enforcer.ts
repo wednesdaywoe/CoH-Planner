@@ -26,18 +26,21 @@ export const CallEnforcer: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "ToHit Debuff",
+    "EnduranceReduction",
+    "Defense Debuff",
     "Damage",
     "ToHit",
     "Defense",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -28,8 +28,9 @@ export const Consume: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const Consume: Power = {
     "Endurance Modification",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

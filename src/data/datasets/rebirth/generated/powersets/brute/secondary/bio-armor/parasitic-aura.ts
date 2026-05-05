@@ -28,9 +28,10 @@ export const ParasiticAura: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Slow",
-    "Run Speed",
-    "Immobilize",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Accuracy"
   ],
   "allowedSetCategories": [

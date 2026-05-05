@@ -26,10 +26,11 @@ export const Blizzard: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const Blizzard: Power = {
     "Blaster Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

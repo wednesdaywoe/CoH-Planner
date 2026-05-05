@@ -30,13 +30,15 @@ export const FearsomeStare: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Fly",
+    "Range",
+    "Recharge",
     "Fear",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Fear",
     "To Hit Debuff"

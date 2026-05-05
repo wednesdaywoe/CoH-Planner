@@ -27,15 +27,14 @@ export const BarrierField: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize",
+    "Range",
+    "Recharge",
+    "Healing",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Immobilize",
-    "Running",
-    "Universal Travel"
+    "Accurate Healing",
+    "Healing"
   ],
   "maxSlots": 6,
   "effects": {

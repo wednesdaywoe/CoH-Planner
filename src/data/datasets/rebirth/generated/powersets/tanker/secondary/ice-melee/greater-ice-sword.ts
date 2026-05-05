@@ -28,17 +28,20 @@ export const GreaterIceSword: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Hold",
     "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Melee Damage",
     "Slow Movement",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

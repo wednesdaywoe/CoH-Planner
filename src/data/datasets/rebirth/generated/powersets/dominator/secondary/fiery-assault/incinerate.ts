@@ -26,12 +26,14 @@ export const Incinerate: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

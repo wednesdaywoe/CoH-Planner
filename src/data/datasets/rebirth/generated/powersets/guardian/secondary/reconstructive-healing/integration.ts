@@ -26,13 +26,12 @@ export const Integration: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
-    "Immobilize",
-    "Running",
-    "Universal Travel"
+    "Healing"
   ],
   "maxSlots": 6,
   "effects": {

@@ -27,15 +27,17 @@ export const ShieldCharge: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
-    "Scrapper Archetype Sets"
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

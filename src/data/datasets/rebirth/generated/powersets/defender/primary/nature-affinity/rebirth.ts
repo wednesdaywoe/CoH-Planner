@@ -28,11 +28,12 @@ export const Rebirth: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize",
-    "Defense Debuff"
+    "Range",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing"
   ],

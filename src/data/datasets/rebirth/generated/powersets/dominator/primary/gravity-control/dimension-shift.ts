@@ -28,8 +28,9 @@ export const DimensionShift: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Jump"
+    "Range",
+    "Recharge",
+    "Immobilize"
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",

@@ -27,17 +27,17 @@ export const LightningRod: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
+    "Knockback",
     "Melee AoE Damage",
-    "Running",
-    "Teleport",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

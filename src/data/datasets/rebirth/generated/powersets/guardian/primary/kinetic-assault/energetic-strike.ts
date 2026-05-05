@@ -26,16 +26,17 @@ export const EnergeticStrike: Power = {
     "castTime": 2.83
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Guardian Archetype Sets",
+    "Melee Damage",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

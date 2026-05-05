@@ -29,19 +29,19 @@ export const DarkNovaEmanation: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
+    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
-    "Melee AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

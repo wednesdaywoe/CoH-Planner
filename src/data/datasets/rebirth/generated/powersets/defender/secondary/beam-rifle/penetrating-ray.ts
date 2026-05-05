@@ -26,10 +26,11 @@ export const PenetratingRay: Power = {
     "castTime": 4.4
   },
   "allowedEnhancements": [
-    "EnduranceModification",
+    "Interrupt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const PenetratingRay: Power = {
     "Defender Archetype Sets",
     "Knockback",
     "Ranged Damage",
-    "Sniper Attacks"
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

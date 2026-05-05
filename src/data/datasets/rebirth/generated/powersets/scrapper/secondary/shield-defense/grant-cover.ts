@@ -28,7 +28,8 @@ export const GrantCover: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [

@@ -25,19 +25,21 @@ export const ShredderMine: Power = {
     "castTime": 2.77
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
     "Recharge",
-    "ToHit Debuff",
+    "Knockback",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Melee Damage",
-    "Running",
-    "To Hit Debuff",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Defense Debuff",
+    "Guardian Archetype Sets",
+    "Knockback",
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

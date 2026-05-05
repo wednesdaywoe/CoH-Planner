@@ -26,20 +26,22 @@ export const BitterIceBlast: Power = {
     "castTime": 1.07
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Fear",
-    "Holds",
-    "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
+    "Ranged Damage",
+    "Slow Movement",
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

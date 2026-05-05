@@ -29,15 +29,17 @@ export const ExplosiveArrow: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Knockback",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

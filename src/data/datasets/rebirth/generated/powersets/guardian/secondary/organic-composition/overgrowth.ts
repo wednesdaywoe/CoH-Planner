@@ -27,13 +27,12 @@ export const Overgrowth: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Running",
-    "To Hit Buff",
-    "Universal Travel"
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "effects": {

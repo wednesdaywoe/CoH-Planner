@@ -28,14 +28,13 @@ export const EnergyAbsorption: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Endurance Modification",
-    "Running",
-    "Universal Travel"
+    "Endurance Modification"
   ],
   "maxSlots": 6,
   "effects": {

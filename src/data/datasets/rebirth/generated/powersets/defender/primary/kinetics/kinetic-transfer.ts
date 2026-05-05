@@ -27,12 +27,9 @@ export const FulcrumShift: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
   ],
   "maxSlots": 6
 };

@@ -27,15 +27,17 @@ export const DarkRegeneration: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Healing",
     "Healing",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

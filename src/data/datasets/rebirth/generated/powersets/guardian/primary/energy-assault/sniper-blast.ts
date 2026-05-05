@@ -26,19 +26,20 @@ export const SniperBlast: Power = {
     "castTime": 4.33
   },
   "allowedEnhancements": [
-    "EnduranceModification",
+    "Interrupt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Endurance Modification",
-    "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Guardian Archetype Sets",
+    "Knockback",
+    "Ranged Damage",
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

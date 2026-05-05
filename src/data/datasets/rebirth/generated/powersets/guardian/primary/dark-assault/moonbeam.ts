@@ -26,20 +26,22 @@ export const Moonbeam: Power = {
     "castTime": 4.33
   },
   "allowedEnhancements": [
-    "EnduranceModification",
+    "Interrupt",
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Endurance Modification",
-    "Fear",
-    "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
+    "Ranged Damage",
+    "Sniper Attacks",
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -28,8 +28,9 @@ export const AccelerateMetabolism: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Sleep",
-    "Run Speed"
+    "EnduranceReduction",
+    "Run Speed",
+    "Recharge"
   ],
   "allowedSetCategories": [
     "Endurance Modification",

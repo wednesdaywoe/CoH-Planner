@@ -27,7 +27,8 @@ export const Antidote: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed"
+    "Range",
+    "Recharge"
   ],
   "allowedSetCategories": [
     "Resist Damage"

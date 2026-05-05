@@ -27,8 +27,9 @@ export const ThunderClap: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

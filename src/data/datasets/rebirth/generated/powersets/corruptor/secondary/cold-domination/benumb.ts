@@ -27,12 +27,9 @@ export const Benumb: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

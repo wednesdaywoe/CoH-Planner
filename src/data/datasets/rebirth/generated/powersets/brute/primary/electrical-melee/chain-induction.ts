@@ -27,8 +27,9 @@ export const ChainInduction: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const ChainInduction: Power = {
     "Brute Archetype Sets",
     "Endurance Modification",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

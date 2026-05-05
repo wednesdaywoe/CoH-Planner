@@ -31,16 +31,16 @@ export const StaticDischarge: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Melee AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Guardian Archetype Sets",
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

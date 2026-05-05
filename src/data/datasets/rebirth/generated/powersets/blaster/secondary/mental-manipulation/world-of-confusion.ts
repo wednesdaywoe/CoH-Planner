@@ -28,7 +28,8 @@ export const WorldofConfusion: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Confuse",
     "Accuracy"
@@ -36,7 +37,8 @@ export const WorldofConfusion: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Confuse",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

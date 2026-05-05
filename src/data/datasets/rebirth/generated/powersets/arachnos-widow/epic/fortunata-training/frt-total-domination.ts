@@ -28,9 +28,10 @@ export const TotalDomination: Power = {
     "maxTargets": 12
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

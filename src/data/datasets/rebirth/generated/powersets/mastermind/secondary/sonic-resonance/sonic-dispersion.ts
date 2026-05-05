@@ -28,7 +28,8 @@ export const SonicDispersion: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
     "Resist Damage"

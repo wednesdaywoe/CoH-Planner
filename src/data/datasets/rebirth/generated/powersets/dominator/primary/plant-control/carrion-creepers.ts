@@ -26,20 +26,23 @@ export const CarrionCreepers: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
-    "Jump",
+    "Knockback",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Immobilize",
     "Knockback",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -25,16 +25,13 @@ export const Revive: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize",
-    "Defense Debuff"
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
-    "Defense Debuff",
+    "Brute Archetype Sets",
     "Endurance Modification",
-    "Immobilize",
-    "Running",
-    "Universal Travel"
+    "Healing"
   ],
   "maxSlots": 6,
   "damage": {

@@ -29,11 +29,13 @@ export const VenomousGas: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Fear",
-    "ToHit Debuff"
+    "EnduranceReduction",
+    "Recharge",
+    "ToHit Debuff",
+    "Defense Debuff"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "To Hit Debuff"
   ],

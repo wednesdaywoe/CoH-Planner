@@ -24,7 +24,7 @@ export const BoundlessEnergy: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Immobilize"
+    "Healing"
   ],
   "allowedSetCategories": [
     "Endurance Modification",

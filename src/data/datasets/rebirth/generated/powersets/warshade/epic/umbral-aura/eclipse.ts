@@ -28,7 +28,7 @@ export const Eclipse: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

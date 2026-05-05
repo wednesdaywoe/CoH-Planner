@@ -26,9 +26,10 @@ export const EnergyPunch: Power = {
     "castTime": 0.83
   },
   "allowedEnhancements": [
-    "Slow",
-    "Range",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const EnergyPunch: Power = {
     "Brute Archetype Sets",
     "Melee Damage",
     "Stuns",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

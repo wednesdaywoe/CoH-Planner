@@ -26,19 +26,23 @@ export const EssenceDrain: Power = {
     "castTime": 1.93
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize",
+    "Range",
+    "Recharge",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Healing",
+    "Blaster Archetype Sets",
     "Healing",
     "Kheldian Archetype Sets",
     "Melee Damage",
-    "Slow Movement"
+    "Ranged Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

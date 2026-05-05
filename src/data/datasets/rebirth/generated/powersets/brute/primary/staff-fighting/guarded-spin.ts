@@ -29,8 +29,9 @@ export const GuardedSpin: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Defense",
     "Accuracy"
@@ -39,7 +40,8 @@ export const GuardedSpin: Power = {
     "Brute Archetype Sets",
     "Defense Sets",
     "Melee AoE Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

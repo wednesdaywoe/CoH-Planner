@@ -29,19 +29,19 @@ export const Frost: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Melee AoE Damage",
-    "Running",
+    "Blaster Archetype Sets",
+    "Ranged AoE Damage",
     "Scrapper Archetype Sets",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

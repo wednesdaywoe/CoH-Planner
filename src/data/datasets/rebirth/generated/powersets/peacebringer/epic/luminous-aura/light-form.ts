@@ -26,7 +26,8 @@ export const LightForm: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
     "Endurance Modification",

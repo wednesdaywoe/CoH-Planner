@@ -23,6 +23,9 @@ export const Resilience: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Resist Damage"
+  ],
   "maxSlots": 0,
   "effects": {
     "mezResistance": {

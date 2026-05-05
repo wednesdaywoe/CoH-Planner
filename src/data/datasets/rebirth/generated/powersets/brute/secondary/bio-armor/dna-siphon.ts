@@ -28,9 +28,10 @@ export const DNASiphon: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Slow",
-    "Run Speed",
-    "Immobilize",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
@@ -40,7 +41,8 @@ export const DNASiphon: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

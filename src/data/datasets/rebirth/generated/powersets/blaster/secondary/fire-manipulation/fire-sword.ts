@@ -26,13 +26,15 @@ export const FireSword: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

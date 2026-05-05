@@ -26,7 +26,8 @@ export const BlindingFeint: Power = {
     "castTime": 1.2
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "ToHit",
     "Accuracy"
@@ -34,7 +35,8 @@ export const BlindingFeint: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Scrapper Archetype Sets",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

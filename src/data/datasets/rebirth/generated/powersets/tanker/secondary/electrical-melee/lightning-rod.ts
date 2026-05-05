@@ -26,10 +26,11 @@ export const LightningRod: Power = {
     "castTime": 2.57
   },
   "allowedEnhancements": [
-    "Slow",
+    "Taunt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const LightningRod: Power = {
     "Knockback",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

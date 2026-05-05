@@ -26,9 +26,10 @@ export const PetrifyingGaze: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

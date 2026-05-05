@@ -29,14 +29,16 @@ export const LightningField: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Endurance Modification",
     "Melee AoE Damage",
-    "Scrapper Archetype Sets"
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

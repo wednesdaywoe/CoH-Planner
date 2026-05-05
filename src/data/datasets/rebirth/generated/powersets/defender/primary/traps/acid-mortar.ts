@@ -25,16 +25,19 @@ export const AcidMortar: Power = {
     "castTime": 2.77
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "ToHit Debuff",
+    "EnduranceReduction",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Defense Debuff",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

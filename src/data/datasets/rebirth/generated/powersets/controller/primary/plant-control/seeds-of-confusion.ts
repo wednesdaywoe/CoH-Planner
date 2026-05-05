@@ -30,7 +30,8 @@ export const SeedsofConfusion: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Confuse",
     "Accuracy"
   ],

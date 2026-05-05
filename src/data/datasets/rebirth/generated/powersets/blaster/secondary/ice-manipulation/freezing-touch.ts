@@ -26,15 +26,17 @@ export const FreezingTouch: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Run Speed",
+    "Hold",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Holds",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

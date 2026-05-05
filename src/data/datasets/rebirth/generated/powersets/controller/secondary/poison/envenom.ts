@@ -29,12 +29,14 @@ export const Envenom: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "ToHit Debuff",
+    "Range",
+    "Recharge",
+    "Defense Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff"
   ],
   "maxSlots": 6,

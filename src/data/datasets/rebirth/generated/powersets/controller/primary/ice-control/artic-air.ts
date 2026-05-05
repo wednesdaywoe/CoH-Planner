@@ -28,11 +28,13 @@ export const ArcticAir: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
     "Confuse"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Confuse",
     "Controller Archetype Sets",
     "Slow Movement"

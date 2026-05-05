@@ -27,12 +27,14 @@ export const AnguishingCry: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "ToHit Debuff",
+    "EnduranceReduction",
+    "Recharge",
+    "Defense Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff"
   ],
   "maxSlots": 6,

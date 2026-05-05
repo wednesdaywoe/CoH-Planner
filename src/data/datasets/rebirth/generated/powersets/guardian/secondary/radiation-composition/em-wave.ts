@@ -28,14 +28,14 @@ export const EMWave: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Intangible",
-    "Run Speed",
+    "Hold",
+    "EnduranceReduction",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Running",
-    "Universal Travel"
+    "Holds"
   ],
   "maxSlots": 6,
   "effects": {

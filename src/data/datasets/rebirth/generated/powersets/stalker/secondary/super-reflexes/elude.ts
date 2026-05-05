@@ -27,14 +27,16 @@ export const Elude: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Sleep",
+    "EnduranceReduction",
     "Run Speed",
-    "Immobilize",
+    "Recharge",
+    "Healing",
     "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",
     "Endurance Modification",
+    "Healing",
     "Running & Sprints",
     "Universal Travel"
   ],

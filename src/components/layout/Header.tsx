@@ -230,6 +230,7 @@ export function Header() {
         </div>
 
         {archetypeId && <ATMechanics archetypeId={archetypeId} />}
+        <KheldianFormSelector />
       </div>
 
       {/* Confirmation modals */}
@@ -1173,6 +1174,48 @@ function SettingsPopover() {
 }
 
 // ---- AT Mechanics Row ----
+
+function KheldianFormSelector() {
+  const build = useBuildStore((s) => s.build);
+  const setKheldianForm = useBuildStore((s) => s.setKheldianForm);
+
+  // Only show on Rebirth Kheldian builds.
+  if (build.serverId !== 'rebirth') return null;
+  if (build.archetype.id !== 'peacebringer' && build.archetype.id !== 'warshade') return null;
+
+  const current = build.kheldianForm ?? 'human';
+  const isPB = build.archetype.id === 'peacebringer';
+  const novaLabel = isPB ? 'Bright Nova' : 'Dark Nova';
+  const dwarfLabel = isPB ? 'White Dwarf' : 'Black Dwarf';
+
+  const button = (form: 'human' | 'nova' | 'dwarf', label: string) => {
+    const active = current === form;
+    return (
+      <button
+        type="button"
+        onClick={() => setKheldianForm(form)}
+        className={`px-2 py-0.5 text-xs rounded border transition-colors ${
+          active
+            ? 'bg-purple-700/50 border-purple-500 text-purple-100'
+            : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
+        }`}
+      >
+        {label}
+      </button>
+    );
+  };
+
+  return (
+    <Tooltip content="Display variant of redirect-style Kheldian powers based on the active form. Slot allocation is unchanged.">
+      <div className="flex items-center gap-1 px-2 py-1 rounded border bg-slate-700/50 border-slate-600">
+        <span className="text-xs text-slate-400 mr-1">Form:</span>
+        {button('human', 'Human')}
+        {button('nova', novaLabel)}
+        {button('dwarf', dwarfLabel)}
+      </div>
+    </Tooltip>
+  );
+}
 
 function ATMechanics({ archetypeId }: { archetypeId: string }) {
   const dominationActive = useUIStore((s) => s.dominationActive);

@@ -26,7 +26,8 @@ export const ForceFieldGenerator: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [

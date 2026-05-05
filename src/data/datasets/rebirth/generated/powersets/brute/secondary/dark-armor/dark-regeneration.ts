@@ -27,9 +27,10 @@ export const DarkRegeneration: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
-    "Immobilize",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const DarkRegeneration: Power = {
     "Brute Archetype Sets",
     "Healing",
     "Melee AoE Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

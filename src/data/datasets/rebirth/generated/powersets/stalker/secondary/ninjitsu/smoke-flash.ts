@@ -27,12 +27,8 @@ export const SmokeFlash: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "Recharge",
     "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

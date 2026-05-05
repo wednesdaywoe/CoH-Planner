@@ -28,8 +28,9 @@ export const DNASiphon: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const DNASiphon: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
-    "Stalker Archetype Sets"
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

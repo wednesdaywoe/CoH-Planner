@@ -25,13 +25,12 @@ export const EnvenomedBlades: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Running",
-    "To Hit Buff",
-    "Universal Travel"
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "effects": {

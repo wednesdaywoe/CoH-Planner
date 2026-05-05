@@ -28,8 +28,8 @@ export const DarkConsumption: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +37,8 @@ export const DarkConsumption: Power = {
     "Brute Archetype Sets",
     "Endurance Modification",
     "Melee AoE Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

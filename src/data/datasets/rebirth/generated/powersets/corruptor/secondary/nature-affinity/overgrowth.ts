@@ -27,7 +27,8 @@ export const Overgrowth: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [

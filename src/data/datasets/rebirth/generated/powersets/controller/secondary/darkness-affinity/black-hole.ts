@@ -26,16 +26,16 @@ export const BlackHole: Power = {
     "castTime": 1.03
   },
   "allowedEnhancements": [
-    "Interrupt",
+    "Intangible",
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Leaping",
-    "Running",
-    "Universal Travel"
+    "Controller Archetype Sets",
+    "Immobilize"
   ],
   "maxSlots": 6
 };

@@ -23,7 +23,7 @@ export const FastHealing: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [
-    "Immobilize"
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing"

@@ -25,15 +25,13 @@ export const Confront: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Run Speed",
+    "Taunt",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Running",
-    "Slow Movement",
-    "Universal Travel"
+    "Threat Duration"
   ],
   "maxSlots": 6,
   "effects": {

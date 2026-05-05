@@ -24,11 +24,13 @@ export const StrengthofWill: Power = {
     "endurance": 2.6,
     "castTime": 3.1
   },
-  "allowedEnhancements": [],
+  "allowedEnhancements": [
+    "EnduranceReduction"
+  ],
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 0,
+  "maxSlots": 6,
   "effects": {
     "resistance": {
       "smashing": {

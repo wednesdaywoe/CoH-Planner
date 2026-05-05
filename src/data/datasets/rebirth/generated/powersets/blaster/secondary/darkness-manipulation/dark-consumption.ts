@@ -28,14 +28,15 @@ export const DarkConsumption: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Endurance Modification",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

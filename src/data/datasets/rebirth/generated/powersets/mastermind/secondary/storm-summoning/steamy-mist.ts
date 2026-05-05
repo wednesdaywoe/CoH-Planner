@@ -28,7 +28,8 @@ export const SteamyMist: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [

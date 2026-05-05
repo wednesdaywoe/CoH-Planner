@@ -26,16 +26,19 @@ export const Smite: Power = {
     "castTime": 0.97
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Fear",
+    "EnduranceReduction",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Melee Damage",
     "Stalker Archetype Sets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

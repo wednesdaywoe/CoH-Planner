@@ -26,7 +26,8 @@ export const BlackDwarf: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Knockback"
+    "EnduranceReduction",
+    "Jump"
   ],
   "allowedSetCategories": [
     "Endurance Modification",

@@ -28,9 +28,10 @@ export const ThunderStrike: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const ThunderStrike: Power = {
     "Dominator Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

@@ -27,14 +27,16 @@ export const TwilightGrasp: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize",
-    "Fear",
+    "Range",
+    "Recharge",
+    "Healing",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Healing",
     "To Hit Debuff"
   ],

@@ -28,14 +28,16 @@ export const BetaDecay: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
-    "Fear",
-    "ToHit Debuff"
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "ToHit Debuff",
+    "Defense Debuff"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "To Hit Debuff"
   ],

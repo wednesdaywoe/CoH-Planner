@@ -24,10 +24,12 @@ export const EnergyFlight: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Healing"
+    "EnduranceReduction",
+    "Fly"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Flight",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

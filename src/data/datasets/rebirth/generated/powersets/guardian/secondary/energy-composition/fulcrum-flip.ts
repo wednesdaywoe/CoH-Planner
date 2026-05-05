@@ -26,12 +26,9 @@ export const FulcrumFlip: Power = {
     "castTime": 2.37
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
   ],
   "maxSlots": 6
 };

@@ -28,21 +28,24 @@ export const Microburst: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
     "Range",
-    "Run Speed",
-    "ToHit Debuff",
+    "Stun",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
     "Slow Movement",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

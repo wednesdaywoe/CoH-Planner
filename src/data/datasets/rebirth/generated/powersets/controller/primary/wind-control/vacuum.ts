@@ -26,21 +26,24 @@ export const Vacuum: Power = {
     "castTime": 1.47
   },
   "allowedEnhancements": [
-    "Intangible",
     "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Holds",
     "Ranged AoE Damage",
     "Slow Movement",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

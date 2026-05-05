@@ -29,15 +29,14 @@ export const IncendiaryRound: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

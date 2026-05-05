@@ -26,16 +26,18 @@ export const SavageLeap: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Slow",
+    "Taunt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

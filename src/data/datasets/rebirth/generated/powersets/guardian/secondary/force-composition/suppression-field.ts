@@ -26,15 +26,16 @@ export const SuppressionField: Power = {
     "castTime": 2.07
   },
   "allowedEnhancements": [
-    "Intangible",
     "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed"
+    "Range",
+    "Recharge"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Holds",
-    "Running",
-    "Universal Travel"
+    "Slow Movement"
   ],
   "maxSlots": 6
 };

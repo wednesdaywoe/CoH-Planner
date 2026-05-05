@@ -24,7 +24,7 @@ export const GammaBoost: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Immobilize"
+    "Healing"
   ],
   "allowedSetCategories": [
     "Endurance Modification",

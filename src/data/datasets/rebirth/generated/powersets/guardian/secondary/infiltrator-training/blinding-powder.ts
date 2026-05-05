@@ -29,16 +29,17 @@ export const BlindingPowder: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Fear",
+    "EnduranceReduction",
+    "Recharge",
+    "ToHit Debuff",
     "Confuse",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Confuse",
-    "Fear",
-    "Running",
-    "Universal Travel"
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

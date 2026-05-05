@@ -29,7 +29,8 @@ export const IncreaseDensity: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed"
+    "Range",
+    "Recharge"
   ],
   "allowedSetCategories": [
     "Resist Damage"

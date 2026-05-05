@@ -29,15 +29,17 @@ export const BreathofFire: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
+    "Taunt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Ranged AoE Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

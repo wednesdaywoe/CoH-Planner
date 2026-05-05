@@ -27,8 +27,9 @@ export const KujiInRetsu: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Sleep",
+    "EnduranceReduction",
     "Run Speed",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [

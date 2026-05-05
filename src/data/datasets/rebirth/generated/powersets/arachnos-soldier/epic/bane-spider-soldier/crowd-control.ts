@@ -29,15 +29,17 @@ export const CrowdControl: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
-    "Soldiers of Arachnos Archetype Sets"
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

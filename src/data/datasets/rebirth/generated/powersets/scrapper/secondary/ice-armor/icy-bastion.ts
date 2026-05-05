@@ -26,14 +26,14 @@ export const IcyBastion: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Immobilize",
-    "Running",
-    "Universal Travel"
+    "Healing",
+    "Resist Damage"
   ],
   "maxSlots": 6,
   "effects": {

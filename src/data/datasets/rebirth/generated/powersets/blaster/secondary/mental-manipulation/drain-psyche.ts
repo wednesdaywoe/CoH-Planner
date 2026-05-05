@@ -28,8 +28,9 @@ export const DrainPsyche: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Accuracy"
   ],
   "allowedSetCategories": [

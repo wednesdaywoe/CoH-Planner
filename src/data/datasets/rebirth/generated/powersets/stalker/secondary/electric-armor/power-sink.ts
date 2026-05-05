@@ -28,7 +28,8 @@ export const PowerSink: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
     "Endurance Modification"

@@ -27,9 +27,9 @@ export const Taunt: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Run Speed",
+    "Taunt",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

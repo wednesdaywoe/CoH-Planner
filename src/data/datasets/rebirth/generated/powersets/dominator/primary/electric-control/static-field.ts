@@ -27,13 +27,15 @@ export const StaticField: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Stun",
-    "Run Speed",
+    "Range",
+    "Sleep",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Sleep",
     "Slow Movement"

@@ -26,13 +26,15 @@ export const TouchofFear: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Fly",
+    "EnduranceReduction",
+    "Recharge",
     "Fear",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Fear",
     "To Hit Debuff"
   ],

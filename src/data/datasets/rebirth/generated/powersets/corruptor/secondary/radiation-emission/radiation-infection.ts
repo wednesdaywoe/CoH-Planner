@@ -30,11 +30,13 @@ export const RadiationInfection: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
-    "ToHit Debuff"
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
+    "Defense Debuff"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "To Hit Debuff"
   ],

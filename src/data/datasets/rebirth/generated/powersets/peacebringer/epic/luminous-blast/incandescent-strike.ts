@@ -26,21 +26,25 @@ export const IncandescentStrike: Power = {
     "castTime": 2.2
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Range",
-    "Run Speed",
+    "Hold",
+    "EnduranceReduction",
+    "Stun",
     "Recharge",
-    "ToHit Debuff",
+    "Knockback",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Holds",
     "Kheldian Archetype Sets",
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

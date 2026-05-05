@@ -106,6 +106,7 @@ interface BuildActions {
   setProgressionMode: (mode: ProgressionMode) => void;
   setOrigin: (origin: Origin) => void;
   setGlobalIOLevel: (level: number) => void;
+  setKheldianForm: (form: 'human' | 'nova' | 'dwarf') => void;
 
   // Accolades
   addAccolade: (accolade: Accolade) => void;
@@ -1178,6 +1179,21 @@ export const useBuildStore = create<BuildStore>()(
             }
           }
 
+          // Kheldian form toggles: their initial isActive must match the
+          // current form selector. If the user is in human form (default),
+          // a freshly picked Bright_Nova should NOT auto-activate — that
+          // would silently apply its damage buff before they pick a form.
+          const novaToggles = new Set(['Bright_Nova', 'Dark_Nova']);
+          const dwarfToggles = new Set(['White_Dwarf', 'Black_Dwarf']);
+          if (power.internalName) {
+            const form = state.build.kheldianForm ?? 'human';
+            if (novaToggles.has(power.internalName)) {
+              power = { ...power, isActive: form === 'nova' };
+            } else if (dwarfToggles.has(power.internalName)) {
+              power = { ...power, isActive: form === 'dwarf' };
+            }
+          }
+
           // Enforce mutually exclusive powers (e.g., Slice vs Boomerang Slice)
           // If this power excludes another, check if the excluded power is already picked
           if (power.excludes?.length) {
@@ -1572,6 +1588,43 @@ export const useBuildStore = create<BuildStore>()(
         }));
       },
 
+      setKheldianForm: (form) => {
+        historyCheckpoint();
+        // Switching forms also toggles the corresponding form-toggle power's
+        // isActive state so its persistent effects (Bright Nova's damageBuff,
+        // White Dwarf's resistance/mez-protection, etc.) flow into global
+        // bonuses. Forms are mutually exclusive in-game, so selecting one
+        // deactivates the other. If a form toggle isn't in the build, this
+        // is a no-op for that toggle.
+        const novaNames = new Set(['Bright_Nova', 'Dark_Nova']);
+        const dwarfNames = new Set(['White_Dwarf', 'Black_Dwarf']);
+        const targetActive = (internalName: string | undefined): boolean | undefined => {
+          if (!internalName) return undefined;
+          if (novaNames.has(internalName)) return form === 'nova';
+          if (dwarfNames.has(internalName)) return form === 'dwarf';
+          return undefined; // not a form toggle — leave alone
+        };
+        const syncPowerList = (powers: SelectedPower[]): SelectedPower[] => {
+          let changed = false;
+          const out = powers.map((p) => {
+            const desired = targetActive(p.internalName);
+            if (desired === undefined) return p;
+            if (p.isActive === desired) return p;
+            changed = true;
+            return { ...p, isActive: desired };
+          });
+          return changed ? out : powers;
+        };
+        set((state) => ({
+          build: {
+            ...state.build,
+            kheldianForm: form,
+            primary: { ...state.build.primary, powers: syncPowerList(state.build.primary.powers) },
+            secondary: { ...state.build.secondary, powers: syncPowerList(state.build.secondary.powers) },
+          },
+        }));
+      },
+
       setOrigin: (origin) => {
         historyCheckpoint();
         set((state) => ({
@@ -1732,13 +1785,56 @@ export const useBuildStore = create<BuildStore>()(
         const found = findPower(state.build, powerName, categoryHint);
         if (!found) return;
         historyCheckpoint();
-        set((s) => ({
-          build: applyPowerUpdate(s.build, found.category, (powers) =>
-            powers.map((p) =>
-              p.internalName === powerName ? { ...p, isActive: !p.isActive } : p
-            )
-          ),
-        }));
+
+        // Kheldian form toggles are mutually exclusive in-game: enabling
+        // Bright Nova auto-disables White Dwarf (and vice versa). Also
+        // sync `build.kheldianForm` so the header form selector stays
+        // consistent with the per-power toggle state.
+        const novaForms = new Set(['Bright_Nova', 'Dark_Nova']);
+        const dwarfForms = new Set(['White_Dwarf', 'Black_Dwarf']);
+        const isNovaToggle = novaForms.has(powerName);
+        const isDwarfToggle = dwarfForms.has(powerName);
+        const wasActive = found.power.isActive ?? false;
+        const willBeActive = !wasActive;
+
+        const transformPowers = (powers: SelectedPower[]) =>
+          powers.map((p) => {
+            if (p.internalName === powerName) {
+              return { ...p, isActive: willBeActive };
+            }
+            // If turning on a Kheldian form toggle, deactivate the other
+            // form (Bright Nova ↔ White Dwarf, Dark Nova ↔ Black Dwarf).
+            if (willBeActive) {
+              if (isNovaToggle && dwarfForms.has(p.internalName ?? '')) {
+                return { ...p, isActive: false };
+              }
+              if (isDwarfToggle && novaForms.has(p.internalName ?? '')) {
+                return { ...p, isActive: false };
+              }
+            }
+            return p;
+          });
+
+        set((s) => {
+          const updatedBuild = applyToAllPowers(s.build, transformPowers);
+          // Sync header form selector when a Kheldian form toggle changed
+          let nextForm = updatedBuild.kheldianForm;
+          if (isNovaToggle || isDwarfToggle) {
+            if (willBeActive) {
+              nextForm = isNovaToggle ? 'nova' : 'dwarf';
+            } else {
+              // Turned a form toggle off — drop to human if it matched the
+              // currently-displayed form; otherwise leave alone.
+              if ((isNovaToggle && updatedBuild.kheldianForm === 'nova') ||
+                  (isDwarfToggle && updatedBuild.kheldianForm === 'dwarf')) {
+                nextForm = 'human';
+              }
+            }
+          }
+          return {
+            build: { ...updatedBuild, kheldianForm: nextForm },
+          };
+        });
       },
 
       // Set active sub-power for powers with mutually exclusive stances

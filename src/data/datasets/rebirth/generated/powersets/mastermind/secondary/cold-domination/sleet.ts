@@ -26,22 +26,20 @@ export const Sleet: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "ToHit Debuff",
+    "Range",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Holds",
-    "Mastermind Archetype Sets",
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Defense Debuff",
     "Ranged AoE Damage",
-    "Running",
-    "To Hit Debuff",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Slow Movement"
   ],
   "maxSlots": 6
 };

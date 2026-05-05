@@ -29,19 +29,21 @@ export const GraviticEmanation: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
     "Range",
-    "Run Speed",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
-    "Knockback",
     "Ranged AoE Damage",
     "Slow Movement",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

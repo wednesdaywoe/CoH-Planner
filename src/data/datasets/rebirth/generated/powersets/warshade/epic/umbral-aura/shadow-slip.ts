@@ -28,14 +28,13 @@ export const StarlessGateway: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "EnduranceModification",
+    "Interrupt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Endurance Modification",
-    "Running",
     "Teleport",
     "Universal Travel"
   ],

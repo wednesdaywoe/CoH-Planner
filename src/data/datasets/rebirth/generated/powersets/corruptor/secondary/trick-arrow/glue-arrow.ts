@@ -26,11 +26,13 @@ export const GlueArrow: Power = {
     "castTime": 1.16
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed"
+    "Range",
+    "Recharge"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6

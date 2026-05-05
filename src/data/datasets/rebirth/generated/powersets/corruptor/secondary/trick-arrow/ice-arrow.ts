@@ -26,13 +26,15 @@ export const IceArrow: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Intangible",
     "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Holds",
     "Slow Movement"
   ],

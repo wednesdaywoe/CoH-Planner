@@ -28,21 +28,24 @@ export const SiphonLife: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
-    "Immobilize",
-    "Fear",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Healing",
     "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

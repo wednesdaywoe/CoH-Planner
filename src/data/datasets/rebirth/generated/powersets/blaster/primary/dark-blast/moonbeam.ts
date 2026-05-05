@@ -26,10 +26,11 @@ export const Moonbeam: Power = {
     "castTime": 4.33
   },
   "allowedEnhancements": [
-    "EnduranceModification",
+    "Interrupt",
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const Moonbeam: Power = {
     "Blaster Archetype Sets",
     "Ranged Damage",
     "Sniper Attacks",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -26,20 +26,23 @@ export const GraveKnight: Power = {
     "castTime": 1.07
   },
   "allowedEnhancements": [
-    "Recharge",
-    "Immobilize",
-    "Fear",
+    "EnduranceReduction",
+    "Knockback",
+    "Healing",
     "ToHit Debuff",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

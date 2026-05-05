@@ -35,6 +35,9 @@ import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import { resolvePath } from '@/utils/paths';
+import { resolveKheldianRedirect } from '@/data/datasets/rebirth/kheldian-redirects';
+import { KHELDIAN_FORM_VARIANT_POWERS } from '@/data/datasets/rebirth/kheldian-form-variants';
+import { getPowerset } from '@/data';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
 import { MechanicAdjusters } from './MechanicAdjusters';
 import { DamageBlock } from './DamageBlock';
@@ -335,24 +338,64 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     [globalBonuses]
   );
 
-  // When combatMode is active and power has quickSnipe, use Quick-cast stats/damage
-  const isQuickSnipe = combatMode && !!power?.quickSnipe;
-  const snipeAdjustedPower = useMemo(() => {
+  // Kheldian form redirect (Rebirth only): for human-form base powers
+  // that PowerRedirector to a form-specific variant, swap the displayed
+  // power's effect data to the variant when the user has selected that
+  // form. Build state (slots, enhancements) is unaffected — slots stay
+  // on the human base.
+  const formRedirectedPower = useMemo(() => {
     if (!power) return power;
-    if (!isQuickSnipe || !power.quickSnipe) return power;
+    if (build.serverId !== 'rebirth') return power;
+    if (build.archetype.id !== 'peacebringer' && build.archetype.id !== 'warshade') return power;
+    const form = build.kheldianForm ?? 'human';
+    if (form === 'human') return power;
+    const targetName = resolveKheldianRedirect(power.internalName ?? '', form);
+    if (targetName === power.internalName) return power;
+    // Find the variant. Some variants live as siblings of their human
+    // counterpart in the same powerset (e.g. Bright_Nova_Bolt under
+    // Luminous_Blast); others ONLY exist under Kheldian_Pets.<form>.* in
+    // the binary (e.g. White_Dwarf_Bolt — has no Luminous_Aura entry).
+    // The KHELDIAN_FORM_VARIANT_POWERS map contains the latter, fed by
+    // `scripts/generate-kheldian-variants.cjs`.
+    const set = getPowerset(powerSet);
+    const variant = set?.powers.find(p => p.internalName === targetName)
+      ?? KHELDIAN_FORM_VARIANT_POWERS[targetName];
+    if (!variant) return power;
+    // Merge: keep human-form identity (name, icon, allowedEnhancements,
+    // maxSlots) but display the variant's stats / damage / effects /
+    // shortHelp / description so the info panel reflects the current
+    // form.
     return {
       ...power,
-      stats: power.stats ? { ...power.stats, ...power.quickSnipe.stats } : power.stats,
-      damage: power.quickSnipe.damage,
-      // For epic pool powers that store stats in effects
-      effects: power.effects ? {
-        ...power.effects,
-        ...(power.quickSnipe.stats.castTime != null && { castTime: power.quickSnipe.stats.castTime }),
-        ...(power.quickSnipe.stats.range != null && { range: power.quickSnipe.stats.range }),
-        ...(power.quickSnipe.stats.accuracy != null && { accuracy: power.quickSnipe.stats.accuracy }),
-      } : power.effects,
+      stats: variant.stats ?? power.stats,
+      damage: variant.damage ?? power.damage,
+      effects: variant.effects ?? power.effects,
+      shortHelp: variant.shortHelp ?? power.shortHelp,
+      description: variant.description ?? power.description,
+      effectArea: variant.effectArea ?? power.effectArea,
+      targetType: variant.targetType ?? power.targetType,
+      powerType: variant.powerType ?? power.powerType,
     } as Power;
-  }, [power, isQuickSnipe]);
+  }, [power, build.serverId, build.archetype.id, build.kheldianForm, powerSet]);
+
+  // When combatMode is active and power has quickSnipe, use Quick-cast stats/damage
+  const isQuickSnipe = combatMode && !!formRedirectedPower?.quickSnipe;
+  const snipeAdjustedPower = useMemo(() => {
+    if (!formRedirectedPower) return formRedirectedPower;
+    if (!isQuickSnipe || !formRedirectedPower.quickSnipe) return formRedirectedPower;
+    return {
+      ...formRedirectedPower,
+      stats: formRedirectedPower.stats ? { ...formRedirectedPower.stats, ...formRedirectedPower.quickSnipe.stats } : formRedirectedPower.stats,
+      damage: formRedirectedPower.quickSnipe.damage,
+      // For epic pool powers that store stats in effects
+      effects: formRedirectedPower.effects ? {
+        ...formRedirectedPower.effects,
+        ...(formRedirectedPower.quickSnipe.stats.castTime != null && { castTime: formRedirectedPower.quickSnipe.stats.castTime }),
+        ...(formRedirectedPower.quickSnipe.stats.range != null && { range: formRedirectedPower.quickSnipe.stats.range }),
+        ...(formRedirectedPower.quickSnipe.stats.accuracy != null && { accuracy: formRedirectedPower.quickSnipe.stats.accuracy }),
+      } : formRedirectedPower.effects,
+    } as Power;
+  }, [formRedirectedPower, isQuickSnipe]);
 
   // Layer active Mechanic Adjuster contributions on top of the snipe-
   // adjusted power so damage / effects display reflect toggle state

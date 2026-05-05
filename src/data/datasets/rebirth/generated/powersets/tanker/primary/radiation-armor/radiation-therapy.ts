@@ -27,9 +27,10 @@ export const RadiationTherapy: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
-    "Immobilize",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const RadiationTherapy: Power = {
     "Healing",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

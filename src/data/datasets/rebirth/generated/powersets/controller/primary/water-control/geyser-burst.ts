@@ -26,19 +26,19 @@ export const GeyserBurst: Power = {
     "castTime": 2.93
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage"
   ],
   "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
+    "Blaster Archetype Sets",
+    "Knockback",
     "Ranged AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

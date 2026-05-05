@@ -26,10 +26,11 @@ export const KnockoutBlow: Power = {
     "castTime": 2.23
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Slow",
-    "Run Speed",
+    "Hold",
+    "Taunt",
+    "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const KnockoutBlow: Power = {
     "Holds",
     "Knockback",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

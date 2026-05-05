@@ -107,6 +107,7 @@ export function slimBuild(build: Build): SlimBuildData {
     craftingChecklist: build.craftingChecklist,
     shoppingListAcquired: build.shoppingListAcquired,
     slotOrder: build.slotOrder,
+    kheldianForm: build.kheldianForm,
   };
 }
 
@@ -336,6 +337,7 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     craftingChecklist: slim.craftingChecklist ?? {},
     shoppingListAcquired: slim.shoppingListAcquired ?? {},
     slotOrder: slim.slotOrder ?? [],
+    ...(slim.kheldianForm ? { kheldianForm: slim.kheldianForm } : {}),
   };
 }
 

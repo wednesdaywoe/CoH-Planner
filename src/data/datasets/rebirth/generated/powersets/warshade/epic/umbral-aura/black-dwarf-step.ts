@@ -25,7 +25,8 @@ export const BlackDwarfStep: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
-    "EnduranceReduction"
+    "EnduranceReduction",
+    "Range"
   ],
   "allowedSetCategories": [
     "Teleport",

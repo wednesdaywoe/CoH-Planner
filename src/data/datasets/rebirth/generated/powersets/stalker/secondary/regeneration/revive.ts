@@ -25,11 +25,11 @@ export const Revive: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize",
-    "Defense Debuff"
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing"
   ],

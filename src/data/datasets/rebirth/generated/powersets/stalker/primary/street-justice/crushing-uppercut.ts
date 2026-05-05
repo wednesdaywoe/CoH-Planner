@@ -26,10 +26,11 @@ export const CrushingUppercut: Power = {
     "castTime": 2.17
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Range",
-    "Run Speed",
+    "Hold",
+    "EnduranceReduction",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const CrushingUppercut: Power = {
     "Knockback",
     "Melee Damage",
     "Stalker Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -26,12 +26,14 @@ export const DistortionField: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Intangible",
     "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed"
+    "Range",
+    "Recharge"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Holds",
     "Slow Movement"

@@ -25,8 +25,9 @@ export const PhotonSeekers: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -34,7 +35,8 @@ export const PhotonSeekers: Power = {
     "Kheldian Archetype Sets",
     "Knockback",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -28,9 +28,10 @@ export const GreaterPsiBlade: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Slow",
-    "Run Speed",
+    "Hold",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const GreaterPsiBlade: Power = {
     "Holds",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

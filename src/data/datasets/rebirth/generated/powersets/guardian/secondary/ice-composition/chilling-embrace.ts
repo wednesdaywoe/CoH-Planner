@@ -28,13 +28,13 @@ export const ChillingEmbrace: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed"
+    "Slow",
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Running",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Slow Movement"
   ],
   "maxSlots": 6
 };

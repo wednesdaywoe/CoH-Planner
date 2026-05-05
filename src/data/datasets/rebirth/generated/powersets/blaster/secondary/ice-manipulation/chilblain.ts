@@ -26,10 +26,11 @@ export const Chilblain: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const Chilblain: Power = {
     "Blaster Archetype Sets",
     "Immobilize",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

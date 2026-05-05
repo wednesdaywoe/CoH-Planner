@@ -26,7 +26,8 @@ export const PenumbralShield: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Run Speed"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
     "Resist Damage"

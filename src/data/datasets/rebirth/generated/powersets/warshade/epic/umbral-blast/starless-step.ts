@@ -29,13 +29,18 @@ export const ExtinguishLight: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Defense",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defense Sets",
+    "Kheldian Archetype Sets",
+    "Melee AoE Damage",
     "Teleport",
+    "Universal Damage Sets",
     "Universal Travel"
   ],
   "maxSlots": 6,

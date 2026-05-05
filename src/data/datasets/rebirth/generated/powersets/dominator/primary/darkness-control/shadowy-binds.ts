@@ -27,18 +27,21 @@ export const ShadowyBinds: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
-    "Fear",
+    "Range",
+    "Recharge",
+    "Immobilize",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Immobilize",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

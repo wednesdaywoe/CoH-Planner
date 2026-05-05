@@ -26,10 +26,11 @@ export const SuppressiveFire: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
     "Range",
-    "Run Speed",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const SuppressiveFire: Power = {
     "Defender Archetype Sets",
     "Holds",
     "Ranged Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

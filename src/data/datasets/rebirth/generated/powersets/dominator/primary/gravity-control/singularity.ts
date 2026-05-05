@@ -26,19 +26,21 @@ export const Singularity: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Interrupt",
     "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
-    "Jump",
+    "Knockback",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -29,7 +29,8 @@ export const DefensiveSweep: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Defense",
     "Accuracy"
@@ -37,7 +38,8 @@ export const DefensiveSweep: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Melee AoE Damage",
-    "Scrapper Archetype Sets"
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

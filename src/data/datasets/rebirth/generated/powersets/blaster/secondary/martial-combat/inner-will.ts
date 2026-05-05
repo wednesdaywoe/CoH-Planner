@@ -24,8 +24,8 @@ export const InnerWill: Power = {
     "castTime": 1.03
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing"

@@ -26,10 +26,11 @@ export const Blind: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Stun",
-    "Run Speed",
+    "Range",
+    "Sleep",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const Blind: Power = {
     "Controller Archetype Sets",
     "Holds",
     "Ranged Damage",
-    "Sleep"
+    "Sleep",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

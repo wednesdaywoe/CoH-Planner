@@ -26,7 +26,8 @@ export const BrightNova: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Healing",
+    "EnduranceReduction",
+    "Fly",
     "ToHit"
   ],
   "allowedSetCategories": [

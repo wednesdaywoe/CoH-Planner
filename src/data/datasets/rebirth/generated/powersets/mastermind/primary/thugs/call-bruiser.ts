@@ -26,9 +26,10 @@ export const CallBruiser: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Range",
-    "Recharge",
+    "Hold",
+    "EnduranceReduction",
+    "Stun",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const CallBruiser: Power = {
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -25,11 +25,8 @@ export const EmbraceofFire: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
-    "Run Speed"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "maxSlots": 6,
   "effects": {

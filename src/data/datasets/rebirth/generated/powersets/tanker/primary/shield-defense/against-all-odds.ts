@@ -28,13 +28,12 @@ export const AgainstAllOdds: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed"
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Running",
-    "Slow Movement",
-    "Universal Travel"
+    "Threat Duration"
   ],
   "maxSlots": 6,
   "effects": {

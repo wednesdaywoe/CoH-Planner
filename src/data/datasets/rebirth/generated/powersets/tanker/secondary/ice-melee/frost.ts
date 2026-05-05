@@ -29,18 +29,21 @@ export const Frost: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
     "Slow",
+    "Taunt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

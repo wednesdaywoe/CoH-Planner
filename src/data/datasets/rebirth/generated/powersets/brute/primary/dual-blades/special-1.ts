@@ -26,9 +26,10 @@ export const VengefulSlice: Power = {
     "castTime": 2.43
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const VengefulSlice: Power = {
     "Brute Archetype Sets",
     "Knockback",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

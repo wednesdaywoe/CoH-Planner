@@ -29,13 +29,12 @@ export const InsulationShield: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets",
-    "Running",
-    "Universal Travel"
+    "Defense Sets"
   ],
   "maxSlots": 6,
   "effects": {

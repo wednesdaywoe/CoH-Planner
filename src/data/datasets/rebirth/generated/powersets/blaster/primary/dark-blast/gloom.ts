@@ -27,8 +27,9 @@ export const Gloom: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const Gloom: Power = {
     "Accurate To-Hit Debuff",
     "Blaster Archetype Sets",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

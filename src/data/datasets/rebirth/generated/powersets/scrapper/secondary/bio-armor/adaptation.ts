@@ -28,8 +28,9 @@ export const Adaptation: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed"
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
     "Resist Damage"

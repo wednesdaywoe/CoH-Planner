@@ -25,13 +25,12 @@ export const DullPain: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
-    "Immobilize",
-    "Running",
-    "Universal Travel"
+    "Healing"
   ],
   "maxSlots": 6,
   "damage": {

@@ -27,15 +27,17 @@ export const Mesmerize: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Stun",
-    "Run Speed",
+    "Range",
+    "Sleep",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Ranged Damage",
-    "Sleep"
+    "Sleep",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

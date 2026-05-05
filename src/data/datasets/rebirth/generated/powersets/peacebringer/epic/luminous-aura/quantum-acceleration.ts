@@ -27,15 +27,18 @@ export const Starfall: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Defense Sets",
     "Flight",
-    "Universal Travel"
+    "Kheldian Archetype Sets",
+    "Knockback",
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

@@ -26,8 +26,9 @@ export const PoisonTrap: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Intangible",
-    "Run Speed",
+    "Hold",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -35,7 +36,8 @@ export const PoisonTrap: Power = {
     "Corruptor Archetype Sets",
     "Endurance Modification",
     "Holds",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

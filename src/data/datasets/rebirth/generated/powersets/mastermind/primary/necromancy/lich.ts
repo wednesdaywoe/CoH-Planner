@@ -26,24 +26,27 @@ export const Lich: Power = {
     "castTime": 3.17
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Recharge",
-    "Jump",
+    "Hold",
+    "EnduranceReduction",
+    "Knockback",
     "Immobilize",
-    "Fly",
+    "Healing",
     "Fear",
     "ToHit Debuff",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

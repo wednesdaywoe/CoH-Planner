@@ -26,9 +26,10 @@ export const FollowThrough: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const FollowThrough: Power = {
     "Knockback",
     "Melee Damage",
     "Scrapper Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

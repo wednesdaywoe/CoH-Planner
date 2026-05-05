@@ -27,13 +27,12 @@ export const WildBastion: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
-    "Immobilize",
-    "Running",
-    "Universal Travel"
+    "Healing"
   ],
   "maxSlots": 6,
   "damage": {

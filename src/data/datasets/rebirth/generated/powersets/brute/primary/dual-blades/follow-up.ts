@@ -26,8 +26,9 @@ export const BlindingFeint: Power = {
     "castTime": 1.2
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "ToHit",
     "Accuracy"
@@ -36,7 +37,8 @@ export const BlindingFeint: Power = {
     "Brute Archetype Sets",
     "Melee Damage",
     "Threat Duration",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

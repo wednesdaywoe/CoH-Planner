@@ -26,10 +26,11 @@ export const Focus: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Slow",
+    "Taunt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const Focus: Power = {
     "Brute Archetype Sets",
     "Knockback",
     "Ranged Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

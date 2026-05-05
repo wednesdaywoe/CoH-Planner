@@ -26,18 +26,18 @@ export const Intrusion: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Sleep",
+    "EnduranceReduction",
     "Run Speed",
-    "Knockback",
-    "Immobilize",
+    "Recharge",
+    "Jump",
+    "Healing",
     "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Immobilize",
-    "Knockback",
-    "Running",
-    "Sleep",
+    "Healing",
+    "Leaping & Sprints",
+    "Running & Sprints",
     "Universal Travel"
   ],
   "maxSlots": 6,

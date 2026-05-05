@@ -26,15 +26,15 @@ export const TimeCrawl: Power = {
     "castTime": 1.6
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Running",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Slow Movement"
   ],
   "maxSlots": 6,
   "effects": {

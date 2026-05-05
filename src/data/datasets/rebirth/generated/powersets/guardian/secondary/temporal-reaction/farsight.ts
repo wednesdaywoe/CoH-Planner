@@ -27,15 +27,14 @@ export const Farsight: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "ToHit",
     "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Running",
-    "To Hit Buff",
-    "Universal Travel"
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "effects": {

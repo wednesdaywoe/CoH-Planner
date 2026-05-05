@@ -25,13 +25,16 @@ export const Resurgence: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize",
-    "Defense Debuff",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Endurance Modification"
+    "Brute Archetype Sets",
+    "Endurance Modification",
+    "Healing",
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "damage": {

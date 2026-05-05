@@ -26,10 +26,11 @@ export const OmegaManeuver: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Range",
-    "Run Speed",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const OmegaManeuver: Power = {
     "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

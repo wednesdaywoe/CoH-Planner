@@ -30,9 +30,10 @@ export const UmbralTorrent: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
-    "Fear",
+    "Knockback",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
@@ -41,7 +42,8 @@ export const UmbralTorrent: Power = {
     "Blaster Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

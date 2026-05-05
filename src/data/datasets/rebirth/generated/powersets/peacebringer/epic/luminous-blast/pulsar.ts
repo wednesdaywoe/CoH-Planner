@@ -27,8 +27,9 @@ export const Pulsar: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

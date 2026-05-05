@@ -29,9 +29,10 @@ export const ParalyzingBlast: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

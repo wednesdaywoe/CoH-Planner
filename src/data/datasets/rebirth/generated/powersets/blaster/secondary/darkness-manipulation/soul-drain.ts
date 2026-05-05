@@ -27,7 +27,8 @@ export const SoulDrain: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "ToHit",
     "Accuracy"
@@ -35,7 +36,8 @@ export const SoulDrain: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Melee AoE Damage",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

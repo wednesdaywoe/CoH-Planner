@@ -29,17 +29,20 @@ export const InnocuousStrikes: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
-    "Jump",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Immobilize",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

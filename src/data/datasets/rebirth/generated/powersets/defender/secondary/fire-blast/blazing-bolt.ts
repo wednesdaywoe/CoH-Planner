@@ -26,16 +26,18 @@ export const BlazingBolt: Power = {
     "castTime": 4.67
   },
   "allowedEnhancements": [
-    "EnduranceModification",
+    "Interrupt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Ranged Damage",
-    "Sniper Attacks"
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

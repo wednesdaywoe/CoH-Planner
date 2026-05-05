@@ -27,18 +27,20 @@ export const PowerofthePhoenix: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Range",
-    "Run Speed",
-    "Immobilize",
-    "Defense Debuff",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
+    "Healing",
     "Damage"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Corruptor Archetype Sets",
     "Endurance Modification",
     "Healing",
     "Ranged AoE Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

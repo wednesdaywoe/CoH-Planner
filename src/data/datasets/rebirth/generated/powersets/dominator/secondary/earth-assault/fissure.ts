@@ -30,8 +30,9 @@ export const Fissure: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Run Speed",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -39,7 +40,8 @@ export const Fissure: Power = {
     "Dominator Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

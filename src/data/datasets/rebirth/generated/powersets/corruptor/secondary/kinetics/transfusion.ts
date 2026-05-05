@@ -28,8 +28,9 @@ export const Transfusion: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize",
+    "Range",
+    "Recharge",
+    "Healing",
     "Accuracy"
   ],
   "allowedSetCategories": [

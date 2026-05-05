@@ -25,8 +25,9 @@ export const TriageBeacon: Power = {
     "castTime": 2.77
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing"

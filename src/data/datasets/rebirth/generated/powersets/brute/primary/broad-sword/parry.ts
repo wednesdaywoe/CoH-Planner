@@ -26,8 +26,9 @@ export const Parry: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Defense",
     "Accuracy"
@@ -36,7 +37,8 @@ export const Parry: Power = {
     "Brute Archetype Sets",
     "Defense Sets",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

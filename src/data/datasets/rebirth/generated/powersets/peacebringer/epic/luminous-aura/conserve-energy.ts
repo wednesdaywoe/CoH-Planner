@@ -25,13 +25,12 @@ export const RenewEnergy: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
-    "Immobilize",
-    "Running",
-    "Universal Travel"
+    "Healing"
   ],
   "maxSlots": 6,
   "damage": {

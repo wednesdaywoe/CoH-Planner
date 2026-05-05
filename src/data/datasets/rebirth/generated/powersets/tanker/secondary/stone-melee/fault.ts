@@ -28,11 +28,12 @@ export const Fault: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Range",
-    "Run Speed",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Accuracy"
   ],
   "allowedSetCategories": [

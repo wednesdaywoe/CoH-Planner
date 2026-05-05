@@ -28,18 +28,20 @@ export const GravityWell: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Intangible",
     "Hold",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
     "Holds",
-    "Melee AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Melee Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

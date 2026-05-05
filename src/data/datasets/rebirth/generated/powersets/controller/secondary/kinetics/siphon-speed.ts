@@ -26,12 +26,14 @@ export const SiphonSpeed: Power = {
     "castTime": 1.93
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6,

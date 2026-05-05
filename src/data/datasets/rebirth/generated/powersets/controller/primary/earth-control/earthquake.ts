@@ -27,12 +27,14 @@ export const Earthquake: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
-    "Fear",
-    "ToHit Debuff"
+    "Knockback",
+    "ToHit Debuff",
+    "Defense Debuff"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Knockback",
     "To Hit Debuff"

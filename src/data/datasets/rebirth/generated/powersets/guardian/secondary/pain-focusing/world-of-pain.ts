@@ -27,13 +27,12 @@ export const WorldofPain: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Running",
-    "To Hit Buff",
-    "Universal Travel"
+    "Resist Damage",
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "effects": {

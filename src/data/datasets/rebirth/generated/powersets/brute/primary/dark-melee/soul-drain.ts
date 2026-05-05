@@ -27,8 +27,9 @@ export const SoulDrain: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "ToHit",
     "Accuracy"
@@ -37,7 +38,8 @@ export const SoulDrain: Power = {
     "Brute Archetype Sets",
     "Melee AoE Damage",
     "Threat Duration",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

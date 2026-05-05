@@ -25,11 +25,8 @@ export const ActiveDefense: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
-    "Run Speed"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "maxSlots": 6,
   "effects": {

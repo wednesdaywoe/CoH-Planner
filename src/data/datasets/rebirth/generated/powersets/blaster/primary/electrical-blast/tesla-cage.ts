@@ -27,9 +27,10 @@ export const TeslaCage: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const TeslaCage: Power = {
     "Blaster Archetype Sets",
     "Endurance Modification",
     "Holds",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

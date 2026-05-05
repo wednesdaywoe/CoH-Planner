@@ -30,8 +30,9 @@ export const Overcharge: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Run Speed",
-    "ToHit Debuff",
+    "Stun",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
@@ -40,7 +41,8 @@ export const Overcharge: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

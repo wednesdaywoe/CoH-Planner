@@ -26,7 +26,8 @@ export const DarkNova: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Healing",
+    "EnduranceReduction",
+    "Fly",
     "ToHit"
   ],
   "allowedSetCategories": [

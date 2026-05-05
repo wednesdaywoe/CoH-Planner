@@ -26,14 +26,17 @@ export const WebGrenade: Power = {
     "castTime": 1.37
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Immobilize"
+    "Blaster Archetype Sets",
+    "Immobilize",
+    "Slow Movement"
   ],
   "maxSlots": 6,
   "effects": {

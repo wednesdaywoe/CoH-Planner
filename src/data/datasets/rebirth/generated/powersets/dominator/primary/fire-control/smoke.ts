@@ -28,11 +28,13 @@ export const Smoke: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Fear",
+    "EnduranceReduction",
+    "Recharge",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

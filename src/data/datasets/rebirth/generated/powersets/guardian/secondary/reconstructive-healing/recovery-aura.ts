@@ -28,12 +28,11 @@ export const RecoveryAura: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Endurance Modification",
-    "Running",
-    "Universal Travel"
+    "Endurance Modification"
   ],
   "maxSlots": 6,
   "effects": {

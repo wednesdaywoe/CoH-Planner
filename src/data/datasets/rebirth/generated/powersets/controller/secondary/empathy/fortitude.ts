@@ -27,7 +27,8 @@ export const Fortitude: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "ToHit",
     "Defense"
   ],

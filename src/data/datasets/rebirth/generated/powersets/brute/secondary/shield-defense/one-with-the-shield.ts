@@ -26,11 +26,12 @@ export const OnewiththeShield: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Immobilize"
+    "EnduranceReduction",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Immobilize"
+    "Healing"
   ],
   "maxSlots": 6,
   "effects": {

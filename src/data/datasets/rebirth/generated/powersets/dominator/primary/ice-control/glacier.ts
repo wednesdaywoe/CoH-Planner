@@ -27,12 +27,14 @@ export const Glacier: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Intangible",
     "Hold",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Holds",
     "Slow Movement"

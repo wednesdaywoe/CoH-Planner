@@ -28,16 +28,19 @@ export const MudPots: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
     "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Brute Archetype Sets",
     "Melee AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

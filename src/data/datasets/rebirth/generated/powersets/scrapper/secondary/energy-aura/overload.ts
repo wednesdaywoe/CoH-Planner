@@ -27,8 +27,9 @@ export const Overload: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Defense"
   ],
   "allowedSetCategories": [

@@ -26,22 +26,25 @@ export const Liquefy: Power = {
     "castTime": 2.67
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
-    "Fear",
+    "Knockback",
     "ToHit Debuff",
+    "Defense Debuff",
     "Damage"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Holds",
     "Knockback",
     "Ranged AoE Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

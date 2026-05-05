@@ -25,18 +25,19 @@ export const RiseofthePhoenix: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Range",
-    "Run Speed",
-    "Immobilize",
-    "Defense Debuff",
+    "Stun",
+    "Recharge",
+    "Healing",
     "Damage"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

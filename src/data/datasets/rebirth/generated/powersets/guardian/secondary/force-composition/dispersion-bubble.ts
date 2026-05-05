@@ -28,13 +28,12 @@ export const DispersionBubble: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets",
-    "Running",
-    "Universal Travel"
+    "Defense Sets"
   ],
   "maxSlots": 6,
   "effects": {

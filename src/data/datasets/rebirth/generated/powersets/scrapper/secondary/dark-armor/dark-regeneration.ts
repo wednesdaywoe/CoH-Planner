@@ -27,8 +27,9 @@ export const DarkRegeneration: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const DarkRegeneration: Power = {
     "Accurate Healing",
     "Healing",
     "Melee AoE Damage",
-    "Scrapper Archetype Sets"
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

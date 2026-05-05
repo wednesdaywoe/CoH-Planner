@@ -28,8 +28,9 @@ export const ChokingCloud: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Run Speed"
+    "Hold",
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",

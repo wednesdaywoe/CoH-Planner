@@ -26,16 +26,18 @@ export const SummonDireWolf: Power = {
     "castTime": 4.67
   },
   "allowedEnhancements": [
-    "Hold",
-    "Sleep",
-    "Immobilize",
-    "Fly",
-    "ToHit Debuff",
+    "Slow",
+    "EnduranceReduction",
+    "Run Speed",
+    "Healing",
+    "Fear",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Fear",
     "Healing",
@@ -44,7 +46,8 @@ export const SummonDireWolf: Power = {
     "Recharge Intensive Pets",
     "Resist Damage",
     "Running & Sprints",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

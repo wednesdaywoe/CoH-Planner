@@ -26,19 +26,22 @@ export const SoulExtraction: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
-    "Immobilize",
-    "Fear",
+    "Range",
+    "Recharge",
+    "Healing",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

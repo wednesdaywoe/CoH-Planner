@@ -28,22 +28,23 @@ export const Disembowel: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
     "Recharge",
-    "ToHit Debuff",
+    "Knockback",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Melee AoE Damage",
-    "Running",
-    "Slow Movement",
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Defense Debuff",
+    "Knockback",
+    "Melee Damage",
     "Tanker Archetype Sets",
-    "To Hit Debuff",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

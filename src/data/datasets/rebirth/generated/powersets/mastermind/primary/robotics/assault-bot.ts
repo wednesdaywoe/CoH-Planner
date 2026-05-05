@@ -26,8 +26,9 @@ export const AssaultBot: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Range",
-    "Recharge",
+    "EnduranceReduction",
+    "Stun",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -35,7 +36,8 @@ export const AssaultBot: Power = {
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

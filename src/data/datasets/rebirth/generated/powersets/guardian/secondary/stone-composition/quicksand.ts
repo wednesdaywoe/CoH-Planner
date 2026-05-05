@@ -26,14 +26,14 @@ export const Quicksand: Power = {
     "castTime": 3.1
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed"
+    "Range",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Running",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Slow Movement"
   ],
   "maxSlots": 6
 };

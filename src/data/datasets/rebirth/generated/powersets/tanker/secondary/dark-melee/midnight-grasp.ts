@@ -28,20 +28,23 @@ export const MidnightGrasp: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
-    "Jump",
-    "Fear",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Immobilize",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Immobilize",
     "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

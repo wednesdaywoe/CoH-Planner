@@ -27,13 +27,15 @@ export const SoulAbsorption: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize",
-    "Fear",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Endurance Modification",
     "Healing",
     "To Hit Debuff"

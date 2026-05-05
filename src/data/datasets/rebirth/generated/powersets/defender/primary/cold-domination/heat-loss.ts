@@ -27,12 +27,14 @@ export const HeatLoss: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Endurance Modification",
     "Slow Movement"
   ],

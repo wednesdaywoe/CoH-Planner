@@ -26,20 +26,23 @@ export const SpecOps: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Range",
-    "Jump",
-    "Fear",
+    "Hold",
+    "EnduranceReduction",
+    "Stun",
+    "Immobilize",
     "ToHit Debuff",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

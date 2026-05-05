@@ -26,7 +26,8 @@ export const CallThugs: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Recharge",
+    "EnduranceReduction",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -34,7 +35,8 @@ export const CallThugs: Power = {
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

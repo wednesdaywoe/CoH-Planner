@@ -24,7 +24,7 @@ export const Inexhaustible: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Immobilize"
+    "Healing"
   ],
   "allowedSetCategories": [
     "Endurance Modification",

@@ -26,9 +26,10 @@ export const Oni: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Recharge",
-    "Jump",
+    "Hold",
+    "EnduranceReduction",
+    "Knockback",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const Oni: Power = {
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

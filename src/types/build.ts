@@ -162,6 +162,15 @@ export interface Build {
    *  `category` disambiguates powers with the same internalName across categories
    *  (e.g., "Conserve_Power" in both secondary and epic). Optional for backward compat. */
   slotOrder: { powerName: string; slotIndex: number; category?: string }[];
+
+  /**
+   * Active form for Kheldian (Peacebringer / Warshade) builds. Used by
+   * the damage/info display to show the right variant of redirect-style
+   * powers (Gleaming_Bolt → Bright_Nova_Bolt in Nova form, etc.). Has
+   * no effect on slot allocation — slots stay on the human-form base
+   * power regardless. Defaults to 'human' for non-Kheldian ATs.
+   */
+  kheldianForm?: 'human' | 'nova' | 'dwarf';
 }
 
 // ============================================

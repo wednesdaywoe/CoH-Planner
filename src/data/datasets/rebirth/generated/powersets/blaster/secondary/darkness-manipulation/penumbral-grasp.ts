@@ -27,9 +27,10 @@ export const PenumbralGrasp: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
-    "Fear",
+    "Range",
+    "Recharge",
+    "Immobilize",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const PenumbralGrasp: Power = {
     "Blaster Archetype Sets",
     "Immobilize",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

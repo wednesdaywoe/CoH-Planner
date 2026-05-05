@@ -29,7 +29,8 @@ export const MassConfusion: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Confuse",
     "Accuracy"
   ],

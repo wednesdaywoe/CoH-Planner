@@ -26,13 +26,15 @@ export const EntanglingArrow: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Immobilize",
     "Slow Movement"

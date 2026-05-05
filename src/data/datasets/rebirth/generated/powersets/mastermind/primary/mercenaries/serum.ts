@@ -27,7 +27,8 @@ export const Serum: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [

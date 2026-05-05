@@ -14,7 +14,7 @@ export const Placate: Power = {
   "available": 11,
   "description": "Allows you to trick a foe to no longer attack you.  A Successful Placate will also Hide you.  This Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit or an Assassins Strike. However, if you attack a Placated Foe, he will be able to attack you back. Recharge: Long",
   "shortHelp": "Ranged, Foe Placate, Self Stealth/Hide",
-  "icon": "icyonslaught_placate.png",
+  "icon": "icemelee_placate.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
@@ -25,12 +25,8 @@ export const Placate: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
-    "EnduranceReduction",
-    "Run Speed"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
+    "Range",
+    "Recharge"
   ],
   "maxSlots": 6,
   "effects": {

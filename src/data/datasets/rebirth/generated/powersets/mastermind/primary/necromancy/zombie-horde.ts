@@ -26,16 +26,19 @@ export const ZombieHorde: Power = {
     "castTime": 3.1
   },
   "allowedEnhancements": [
-    "Immobilize",
-    "Fear",
+    "EnduranceReduction",
+    "Healing",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

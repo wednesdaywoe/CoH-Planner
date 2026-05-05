@@ -23,14 +23,12 @@ export const Quickness: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [
-    "Sleep",
-    "Immobilize",
-    "Healing"
+    "Run Speed",
+    "Healing",
+    "Fly"
   ],
   "allowedSetCategories": [
-    "Healing",
-    "Immobilize",
-    "Sleep"
+    "Healing"
   ],
   "maxSlots": 6,
   "effects": {

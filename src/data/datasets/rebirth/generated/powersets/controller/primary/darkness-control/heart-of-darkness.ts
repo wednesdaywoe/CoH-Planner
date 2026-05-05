@@ -27,18 +27,21 @@ export const HeartofDarkness: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
-    "Fear",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Melee AoE Damage",
     "Stuns",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

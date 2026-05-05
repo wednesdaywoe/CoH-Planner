@@ -28,8 +28,9 @@ export const Disrupt: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

@@ -27,15 +27,17 @@ export const Subdue: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Immobilize",
     "Ranged Damage",
-    "Soldiers of Arachnos Archetype Sets"
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

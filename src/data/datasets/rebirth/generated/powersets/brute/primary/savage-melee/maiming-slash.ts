@@ -26,17 +26,20 @@ export const MaimingSlash: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Hold",
     "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Brute Archetype Sets",
     "Melee Damage",
     "Slow Movement",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

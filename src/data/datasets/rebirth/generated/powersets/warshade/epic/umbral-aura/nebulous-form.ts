@@ -25,8 +25,9 @@ export const NebulousForm: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Knockback"
+    "EnduranceReduction",
+    "Recharge",
+    "Jump"
   ],
   "allowedSetCategories": [
     "Leaping & Sprints",

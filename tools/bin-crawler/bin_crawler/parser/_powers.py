@@ -20,7 +20,7 @@ from pathlib import Path
 from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import PowerRecord, EffectGroup, EffectTemplate
 from ._enums import (
-    BOOST_TYPE, TARGET_TYPE, ATTRIB_NAME, EVENT_NAME,
+    BOOST_TYPE, BOOST_TYPE_REBIRTH, TARGET_TYPE, ATTRIB_NAME, EVENT_NAME,
     ATTRIB_MOD_TYPE, ATTRIB_MOD_ASPECT, ATTRIB_MOD_APPLICATION,
     ATTRIB_MOD_TARGET, ATTRIB_MOD_STACK, ATTRIB_MOD_CASTER_STACK,
     PVP_FLAG,
@@ -1244,7 +1244,9 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
     targets_affected = r.read_u4_array()  # 71
     r.read_bool()  # 72
     boosts_raw = r.read_u4_array()  # 73
-    boosts_allowed = [BOOST_TYPE.get(v, f"Unknown({v})") for v in boosts_raw]
+    # Parse6 (Rebirth) uses a different BOOST_TYPE enum than Parse7 (HC) —
+    # see _enums.py BOOST_TYPE_REBIRTH for the divergence.
+    boosts_allowed = [BOOST_TYPE_REBIRTH.get(v, f"Unknown({v})") for v in boosts_raw]
     # 74: u4_array of mode/group refs (see HC parser comment). Not
     # allowed_boostset_cats — that field doesn't exist in the binary.
     r.read_u4_array()

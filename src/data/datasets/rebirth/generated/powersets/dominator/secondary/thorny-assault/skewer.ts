@@ -26,15 +26,18 @@ export const Skewer: Power = {
     "castTime": 1.63
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "ToHit Debuff",
+    "EnduranceReduction",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

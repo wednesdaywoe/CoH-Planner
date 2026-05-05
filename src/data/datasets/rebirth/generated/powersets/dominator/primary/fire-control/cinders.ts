@@ -27,8 +27,9 @@ export const Cinders: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Run Speed",
+    "Hold",
+    "EnduranceReduction",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

@@ -27,11 +27,12 @@ export const ContainmentShell: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Jump"
+    "Range",
+    "Recharge",
+    "Immobilize"
   ],
   "allowedSetCategories": [
-    "Knockback"
+    "Immobilize"
   ],
   "maxSlots": 6
 };

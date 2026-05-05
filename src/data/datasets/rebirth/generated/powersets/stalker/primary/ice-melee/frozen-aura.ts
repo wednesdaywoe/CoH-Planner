@@ -27,18 +27,17 @@ export const FrozenAura: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Stun",
-    "Run Speed",
+    "EnduranceReduction",
+    "Sleep",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
-    "Running",
+    "Sleep",
     "Stalker Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

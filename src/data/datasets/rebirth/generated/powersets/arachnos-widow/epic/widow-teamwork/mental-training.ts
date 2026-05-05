@@ -23,12 +23,13 @@ export const MentalTraining: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [
-    "Sleep",
-    "Healing"
+    "Run Speed",
+    "Fly"
   ],
   "allowedSetCategories": [
-    "Healing",
-    "Sleep"
+    "Flight",
+    "Running",
+    "Universal Travel"
   ],
   "maxSlots": 6,
   "effects": {

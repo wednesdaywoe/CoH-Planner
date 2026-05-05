@@ -8,24 +8,36 @@ import { useBuildStore, useUIStore } from '@/stores';
 import { useIsTouchDevice } from '@/hooks';
 
 import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getArchetypeInherentPowers, getPowerPicksAtLevel } from '@/data';
+import { KHELDIAN_FORM_VARIANT_NAMES } from '@/data/datasets/rebirth/kheldian-redirects';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 
 /**
- * Set of slottable form sub-power names (auto-granted, not manually selectable).
+ * Set of form sub-power INTERNAL NAMES (auto-granted on HC; redirect-only
+ * on Rebirth). Either way, never user-pickable — filter them from the
+ * picker.
  *
  * Computed lazily inside the component because GRANTED_POWER_GROUPS is a
  * dataset-backed Proxy: reading it at module-load time runs before the
  * active dataset has been resolved and throws. Re-evaluated when
  * `build.serverId` changes so a dataset switch picks up the new dataset's
  * granted-power groups.
+ *
+ * Includes both:
+ *   - HC's slottable granted-power members (still works for HC where forms
+ *     auto-grant their variants as separate slottable picks).
+ *   - The full Rebirth `KHELDIAN_FORM_VARIANT_NAMES` set (Rebirth uses
+ *     PowerRedirector, so these are never picks regardless of whether
+ *     a form toggle is in the build).
  */
 function buildFormSubPowerNames(): Set<string> {
-  return new Set(
+  const names = new Set<string>(
     Object.values(GRANTED_POWER_GROUPS)
       .filter(g => g.slottable)
       .flatMap(g => g.grantedPowers),
   );
+  for (const n of KHELDIAN_FORM_VARIANT_NAMES) names.add(n);
+  return names;
 }
 
 // ============================================
@@ -476,8 +488,10 @@ export function AvailablePowers({
         if (p.available < 0) return false;
         // Filter out set mechanics/inherents (hiddenPassive, hiddenAuto, etc.)
         if (p.mechanicType === 'hiddenPassive' || p.mechanicType === 'hiddenAuto') return false;
-        // Filter out form sub-powers (auto-granted when parent form is selected)
-        if (formSubPowerNames.has(p.name)) return false;
+        // Filter out form sub-powers (auto-granted on HC; redirect-only on Rebirth).
+        // Match on internalName since form-variant names use that format
+        // (`Bright_Nova_Bolt`); display name (`Bright Nova Bolt`) wouldn't.
+        if (p.internalName && formSubPowerNames.has(p.internalName)) return false;
         // Filter out powers already granted as archetype inherents
         if (archetypeInherentNames.has(p.name)) return false;
         // Evaluate requires expression (handles negation, internal names, powersets)

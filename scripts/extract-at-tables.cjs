@@ -66,6 +66,13 @@ const RELEVANT_TABLES = [
   'ranged_damage',
   'aoe_damage',
   'pet_damage',
+  // SS-prefix tables: Self-Squid (Kheldian Nova / Dwarf form) damage tables.
+  // Powers in Bright/Dark Nova form reference `Ranged_SSDamage`; powers in
+  // White/Black Dwarf form reference `Melee_SSDamage`. Without these the
+  // planner falls back to generic ranged/melee damage and Nova/Dwarf
+  // attacks display with the wrong AT modifier.
+  'melee_ssdamage',
+  'ranged_ssdamage',
 
   // Debuff tables
   'ranged_debuff_def',

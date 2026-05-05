@@ -26,7 +26,8 @@ export const WhiteDwarf: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Knockback"
+    "EnduranceReduction",
+    "Jump"
   ],
   "allowedSetCategories": [
     "Endurance Modification",

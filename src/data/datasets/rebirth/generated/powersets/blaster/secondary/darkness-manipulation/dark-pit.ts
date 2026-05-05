@@ -30,7 +30,8 @@ export const DarkPit: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Run Speed",
+    "Stun",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

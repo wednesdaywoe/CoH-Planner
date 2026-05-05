@@ -25,13 +25,13 @@ export const Hoarfrost: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
-    "Immobilize",
-    "Running",
-    "Universal Travel"
+    "Healing",
+    "Resist Damage"
   ],
   "maxSlots": 6,
   "damage": {

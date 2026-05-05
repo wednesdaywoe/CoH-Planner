@@ -26,10 +26,11 @@ export const AbyssalGaze: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const AbyssalGaze: Power = {
     "Blaster Archetype Sets",
     "Holds",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

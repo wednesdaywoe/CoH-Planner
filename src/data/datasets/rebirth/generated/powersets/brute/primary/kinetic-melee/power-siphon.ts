@@ -25,7 +25,8 @@ export const PowerSiphon: Power = {
     "castTime": 1.93
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [

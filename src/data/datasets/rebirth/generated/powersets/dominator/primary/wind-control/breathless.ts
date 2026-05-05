@@ -29,8 +29,9 @@ export const Breathless: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,7 @@ export const Breathless: Power = {
     "Dominator Archetype Sets",
     "Immobilize",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

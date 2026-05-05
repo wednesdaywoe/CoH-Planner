@@ -26,18 +26,18 @@ export const GreaterIceSword: Power = {
     "castTime": 1.83
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
+    "Blaster Archetype Sets",
     "Melee Damage",
-    "Running",
+    "Slow Movement",
     "Stalker Archetype Sets",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

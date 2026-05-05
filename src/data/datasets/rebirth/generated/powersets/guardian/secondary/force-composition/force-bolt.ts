@@ -30,16 +30,18 @@ export const ForceBolt: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Run Speed",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Guardian Archetype Sets",
+    "Knockback",
+    "Ranged Damage",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -29,7 +29,8 @@ export const IceShield: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [

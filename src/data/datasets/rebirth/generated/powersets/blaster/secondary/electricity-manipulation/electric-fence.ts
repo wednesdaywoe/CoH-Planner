@@ -28,8 +28,9 @@ export const ElectricFence: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const ElectricFence: Power = {
     "Blaster Archetype Sets",
     "Endurance Modification",
     "Immobilize",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

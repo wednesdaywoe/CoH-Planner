@@ -26,10 +26,12 @@ export const SolarGlide: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Healing",
+    "EnduranceReduction",
+    "Fly",
     "Defense"
   ],
   "allowedSetCategories": [
+    "Defense Sets",
     "Flight",
     "Universal Travel"
   ],

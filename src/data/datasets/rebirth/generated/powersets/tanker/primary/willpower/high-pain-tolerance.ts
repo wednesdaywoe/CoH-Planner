@@ -23,7 +23,7 @@ export const HighPainTolerance: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [
-    "Immobilize"
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing",

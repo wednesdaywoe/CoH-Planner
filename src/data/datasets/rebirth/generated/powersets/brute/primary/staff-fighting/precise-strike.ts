@@ -26,10 +26,11 @@ export const PreciseStrike: Power = {
     "castTime": 1.13
   },
   "allowedEnhancements": [
-    "Slow",
-    "Slow",
-    "Range",
-    "Run Speed",
+    "Taunt",
+    "Taunt",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const PreciseStrike: Power = {
     "Brute Archetype Sets",
     "Melee Damage",
     "Stuns",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

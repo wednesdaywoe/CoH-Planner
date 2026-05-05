@@ -27,8 +27,9 @@ export const RadiationTherapy: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const RadiationTherapy: Power = {
     "Accurate Healing",
     "Healing",
     "Melee AoE Damage",
-    "Stalker Archetype Sets"
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

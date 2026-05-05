@@ -28,17 +28,20 @@ export const HowlingTwilight: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
     "Range",
-    "Run Speed",
-    "Defense Debuff",
+    "Stun",
+    "Recharge",
     "Damage"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Brute Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

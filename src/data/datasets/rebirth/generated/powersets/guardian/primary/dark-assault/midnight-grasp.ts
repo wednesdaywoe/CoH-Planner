@@ -26,19 +26,21 @@ export const MidnightGrasp: Power = {
     "castTime": 2.07
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Jump",
-    "Fear",
+    "EnduranceReduction",
+    "Recharge",
+    "Immobilize",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Fear",
-    "Leaping",
+    "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
+    "Guardian Archetype Sets",
+    "Immobilize",
     "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

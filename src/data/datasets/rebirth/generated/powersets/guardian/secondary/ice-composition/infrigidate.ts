@@ -26,18 +26,18 @@ export const Infrigidate: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "ToHit Debuff",
+    "Range",
+    "Recharge",
+    "Defense Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Holds",
-    "Running",
-    "To Hit Debuff",
-    "Universal Travel"
+    "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
+    "Defense Debuff",
+    "Slow Movement"
   ],
   "maxSlots": 6,
   "effects": {

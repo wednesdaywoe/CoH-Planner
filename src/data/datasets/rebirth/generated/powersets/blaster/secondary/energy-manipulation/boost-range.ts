@@ -25,11 +25,8 @@ export const BoostRange: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Run Speed"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "maxSlots": 6
 };

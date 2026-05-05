@@ -27,7 +27,7 @@ export const WorldofPain: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [

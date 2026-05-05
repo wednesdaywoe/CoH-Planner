@@ -30,8 +30,9 @@ export const JacobsLadder: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Stun",
-    "Run Speed",
+    "EnduranceReduction",
+    "Sleep",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -39,7 +40,8 @@ export const JacobsLadder: Power = {
     "Endurance Modification",
     "Melee AoE Damage",
     "Sleep",
-    "Stalker Archetype Sets"
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

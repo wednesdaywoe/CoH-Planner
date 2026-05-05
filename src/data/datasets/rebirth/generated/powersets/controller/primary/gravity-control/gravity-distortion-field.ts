@@ -28,13 +28,15 @@ export const GravityDistortionField: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Intangible",
     "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Holds",
     "Slow Movement"

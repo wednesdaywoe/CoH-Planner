@@ -27,8 +27,9 @@ export const PoisonGasArrow: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Stun",
-    "Run Speed",
+    "Range",
+    "Sleep",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

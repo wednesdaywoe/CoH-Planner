@@ -27,8 +27,9 @@ export const Flash: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Run Speed",
+    "Hold",
+    "EnduranceReduction",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

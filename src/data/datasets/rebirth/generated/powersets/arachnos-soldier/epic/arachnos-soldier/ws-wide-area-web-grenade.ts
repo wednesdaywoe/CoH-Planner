@@ -28,14 +28,17 @@ export const WideAreaWebGrenade: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
+    "Range",
+    "Recharge",
+    "Immobilize",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Immobilize"
+    "Blaster Archetype Sets",
+    "Immobilize",
+    "Slow Movement"
   ],
   "maxSlots": 6,
   "effects": {

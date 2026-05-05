@@ -26,14 +26,16 @@ export const ShadowField: Power = {
     "castTime": 2.67
   },
   "allowedEnhancements": [
-    "Intangible",
+    "Hold",
     "EnduranceReduction",
-    "Run Speed",
-    "Fear",
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Holds",
     "To Hit Debuff"

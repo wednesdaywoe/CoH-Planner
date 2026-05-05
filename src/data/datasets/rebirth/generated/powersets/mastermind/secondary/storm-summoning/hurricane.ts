@@ -28,11 +28,13 @@ export const Hurricane: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
     "Recharge",
-    "Fear"
+    "Knockback",
+    "ToHit Debuff"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Knockback",
     "To Hit Debuff"
   ],

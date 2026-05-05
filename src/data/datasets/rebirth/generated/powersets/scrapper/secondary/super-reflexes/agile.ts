@@ -26,7 +26,8 @@ export const Agile: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Resist Damage"
   ],
   "maxSlots": 6,
   "effects": {

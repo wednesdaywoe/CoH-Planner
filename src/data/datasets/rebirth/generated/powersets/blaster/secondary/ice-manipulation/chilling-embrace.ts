@@ -28,11 +28,13 @@ export const FrigidProtection: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Hold",
-    "Run Speed",
-    "Immobilize"
+    "Slow",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Endurance Modification",
     "Healing",
     "Slow Movement"
   ],

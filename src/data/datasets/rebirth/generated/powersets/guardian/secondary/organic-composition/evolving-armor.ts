@@ -28,11 +28,11 @@ export const EvolvingArmor: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Run Speed"
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
+    "Resist Damage"
   ],
   "maxSlots": 6,
   "effects": {

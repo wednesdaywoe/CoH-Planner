@@ -31,12 +31,14 @@ export const ThrowSand: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Run Speed",
-    "Fear",
+    "Stun",
+    "Recharge",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Stuns",
     "To Hit Debuff"
   ],

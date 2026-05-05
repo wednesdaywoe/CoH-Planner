@@ -25,12 +25,12 @@ export const QuantumFlight: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Healing"
+    "EnduranceReduction",
+    "Recharge",
+    "Fly"
   ],
   "allowedSetCategories": [
-    "Healing",
-    "Running",
+    "Flight",
     "Universal Travel"
   ],
   "maxSlots": 6,

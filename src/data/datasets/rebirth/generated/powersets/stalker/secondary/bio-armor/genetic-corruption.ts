@@ -28,8 +28,9 @@ export const GeneticCorruption: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Stun",
-    "Run Speed",
+    "EnduranceReduction",
+    "Sleep",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

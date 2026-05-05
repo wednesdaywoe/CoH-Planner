@@ -25,7 +25,8 @@ export const PsychicFocus: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [

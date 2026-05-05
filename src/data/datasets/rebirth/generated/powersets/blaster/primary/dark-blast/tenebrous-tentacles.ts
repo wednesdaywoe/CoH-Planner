@@ -30,9 +30,10 @@ export const TenebrousTentacles: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
-    "Jump",
-    "Fear",
+    "Range",
+    "Recharge",
+    "Immobilize",
+    "ToHit Debuff",
     "Damage",
     "Accuracy"
   ],
@@ -41,7 +42,8 @@ export const TenebrousTentacles: Power = {
     "Blaster Archetype Sets",
     "Immobilize",
     "Ranged AoE Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

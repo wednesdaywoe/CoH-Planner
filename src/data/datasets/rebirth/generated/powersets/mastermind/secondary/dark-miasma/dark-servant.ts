@@ -26,16 +26,18 @@ export const DarkServant: Power = {
     "castTime": 3.17
   },
   "allowedEnhancements": [
-    "Intangible",
-    "Run Speed",
-    "Jump",
+    "Hold",
+    "EnduranceReduction",
+    "Recharge",
     "Immobilize",
-    "Fear",
+    "Healing",
+    "ToHit Debuff",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Healing",
     "Holds",
     "Immobilize",

@@ -28,12 +28,13 @@ export const WindShear: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
-    "Fear"
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
+    "ToHit Debuff"
   ],
   "allowedSetCategories": [
-    "Dominator Archetype Sets",
+    "Blaster Archetype Sets",
     "Slow Movement",
     "To Hit Debuff"
   ],

@@ -26,17 +26,20 @@ export const ShinBreaker: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
-    "ToHit Debuff",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
     "Scrapper Archetype Sets",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

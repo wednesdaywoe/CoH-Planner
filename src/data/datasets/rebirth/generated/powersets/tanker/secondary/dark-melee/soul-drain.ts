@@ -27,8 +27,9 @@ export const SoulDrain: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Slow",
-    "Run Speed",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "ToHit",
     "Accuracy"
@@ -37,7 +38,8 @@ export const SoulDrain: Power = {
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

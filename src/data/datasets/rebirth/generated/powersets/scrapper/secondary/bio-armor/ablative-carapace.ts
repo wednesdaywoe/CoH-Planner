@@ -25,8 +25,9 @@ export const AblativeCarapace: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing"

@@ -27,7 +27,8 @@ export const Forge: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [

@@ -28,9 +28,10 @@ export const InkyAspect: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
-    "Range",
-    "Run Speed",
-    "Run Speed",
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
+    "Recharge",
     "Accuracy"
   ],
   "allowedSetCategories": [

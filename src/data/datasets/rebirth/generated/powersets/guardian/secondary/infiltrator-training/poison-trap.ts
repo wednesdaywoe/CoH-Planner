@@ -25,14 +25,13 @@ export const PoisonTrap: Power = {
     "castTime": 2.77
   },
   "allowedEnhancements": [
-    "Intangible",
     "Hold",
-    "Run Speed"
+    "Slow",
+    "EnduranceReduction",
+    "Recharge"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Running",
-    "Universal Travel"
+    "Holds"
   ],
   "maxSlots": 6
 };

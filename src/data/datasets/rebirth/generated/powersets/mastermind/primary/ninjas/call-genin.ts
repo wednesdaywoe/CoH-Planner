@@ -26,9 +26,10 @@ export const CallGenin: Power = {
     "castTime": 1.7
   },
   "allowedEnhancements": [
-    "Range",
-    "Sleep",
-    "Recharge",
+    "EnduranceReduction",
+    "Stun",
+    "Run Speed",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -36,7 +37,8 @@ export const CallGenin: Power = {
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

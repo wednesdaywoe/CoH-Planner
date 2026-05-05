@@ -26,14 +26,17 @@ export const Thorntrops: Power = {
     "castTime": 1.63
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

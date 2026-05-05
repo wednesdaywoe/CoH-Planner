@@ -28,11 +28,8 @@ export const EquipRobot: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed"
-  ],
-  "allowedSetCategories": [
-    "Running",
-    "Universal Travel"
+    "Range",
+    "Recharge"
   ],
   "maxSlots": 6
 };

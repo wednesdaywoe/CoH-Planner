@@ -28,13 +28,13 @@ export const AccelerateMetabolism: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Sleep",
-    "Run Speed"
+    "EnduranceReduction",
+    "Run Speed",
+    "Recharge"
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Running",
-    "Sleep",
+    "Running & Sprints",
     "Universal Travel"
   ],
   "maxSlots": 6,

@@ -26,20 +26,21 @@ export const BlackDwarfDrain: Power = {
     "castTime": 1.93
   },
   "allowedEnhancements": [
-    "Hold",
-    "Run Speed",
-    "Immobilize",
+    "Slow",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
-    "Immobilize",
+    "Accurate Healing",
+    "Blaster Archetype Sets",
+    "Healing",
     "Kheldian Archetype Sets",
     "Melee Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

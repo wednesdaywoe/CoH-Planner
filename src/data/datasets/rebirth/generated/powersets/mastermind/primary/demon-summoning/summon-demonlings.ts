@@ -26,15 +26,18 @@ export const SummonDemonlings: Power = {
     "castTime": 4
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
+    "EnduranceReduction",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

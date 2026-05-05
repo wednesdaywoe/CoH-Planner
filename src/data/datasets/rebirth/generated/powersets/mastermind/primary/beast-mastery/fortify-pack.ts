@@ -27,8 +27,9 @@ export const FortifyPack: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Defense"
   ],
   "allowedSetCategories": [

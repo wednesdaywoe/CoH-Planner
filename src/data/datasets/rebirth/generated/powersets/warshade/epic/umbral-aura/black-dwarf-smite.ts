@@ -26,20 +26,22 @@ export const BlackDwarfSmite: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
-    "Hold",
-    "Range",
-    "Run Speed",
+    "Slow",
+    "EnduranceReduction",
+    "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds",
+    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
-    "Ranged Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Knockback",
+    "Melee Damage",
+    "Slow Movement",
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

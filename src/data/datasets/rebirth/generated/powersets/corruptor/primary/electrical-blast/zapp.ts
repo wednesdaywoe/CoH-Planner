@@ -27,9 +27,10 @@ export const Zapp: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "EnduranceModification",
+    "Interrupt",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const Zapp: Power = {
     "Corruptor Archetype Sets",
     "Endurance Modification",
     "Ranged Damage",
-    "Sniper Attacks"
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

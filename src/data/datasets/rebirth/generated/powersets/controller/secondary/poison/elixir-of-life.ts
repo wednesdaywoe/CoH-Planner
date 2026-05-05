@@ -28,10 +28,11 @@ export const ElixirofLife: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
-    "Defense Debuff"
+    "Range",
+    "Recharge"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Endurance Modification",
     "Resist Damage"
   ],

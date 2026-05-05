@@ -28,19 +28,22 @@ export const ShinBreaker: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
-    "Hold",
     "Slow",
-    "Run Speed",
-    "ToHit Debuff",
+    "Taunt",
+    "EnduranceReduction",
+    "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
     "Slow Movement",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

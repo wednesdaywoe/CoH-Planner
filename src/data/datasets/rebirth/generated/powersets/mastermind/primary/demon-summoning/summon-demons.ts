@@ -26,8 +26,9 @@ export const SummonDemons: Power = {
     "castTime": 4
   },
   "allowedEnhancements": [
-    "Recharge",
-    "Immobilize",
+    "EnduranceReduction",
+    "Knockback",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
@@ -37,7 +38,8 @@ export const SummonDemons: Power = {
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Resist Damage"
+    "Resist Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

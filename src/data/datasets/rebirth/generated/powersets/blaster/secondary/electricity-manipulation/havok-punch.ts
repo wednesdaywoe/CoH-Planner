@@ -27,9 +27,10 @@ export const HavocPunch: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Stun",
-    "Run Speed",
+    "EnduranceReduction",
+    "Sleep",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -38,7 +39,8 @@ export const HavocPunch: Power = {
     "Endurance Modification",
     "Knockback",
     "Melee Damage",
-    "Sleep"
+    "Sleep",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

@@ -28,12 +28,14 @@ export const Mutation: Power = {
   "allowedEnhancements": [
     "EnduranceModification",
     "EnduranceReduction",
-    "Run Speed",
-    "Defense Debuff",
+    "Range",
+    "Recharge",
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Endurance Modification"
+    "Brute Archetype Sets",
+    "Endurance Modification",
+    "To Hit Buff"
   ],
   "maxSlots": 6,
   "damage": {

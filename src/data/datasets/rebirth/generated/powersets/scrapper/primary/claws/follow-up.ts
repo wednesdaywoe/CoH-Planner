@@ -26,7 +26,8 @@ export const FollowUp: Power = {
     "castTime": 0.83
   },
   "allowedEnhancements": [
-    "Run Speed",
+    "EnduranceReduction",
+    "Recharge",
     "Damage",
     "ToHit",
     "Accuracy"
@@ -34,7 +35,8 @@ export const FollowUp: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Scrapper Archetype Sets",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

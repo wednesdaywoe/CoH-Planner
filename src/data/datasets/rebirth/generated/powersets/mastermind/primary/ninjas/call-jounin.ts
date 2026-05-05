@@ -26,24 +26,27 @@ export const CallJounin: Power = {
     "castTime": 1.7
   },
   "allowedEnhancements": [
-    "Hold",
-    "Range",
+    "Slow",
+    "EnduranceReduction",
     "Stun",
     "Sleep",
-    "Recharge",
-    "Fear",
+    "Run Speed",
+    "Knockback",
     "ToHit Debuff",
+    "Defense Debuff",
     "Damage",
     "Confuse",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

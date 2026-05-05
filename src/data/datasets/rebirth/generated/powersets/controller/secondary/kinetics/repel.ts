@@ -27,8 +27,8 @@ export const Repel: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Recharge"
+    "Recharge",
+    "Knockback"
   ],
   "allowedSetCategories": [
     "Knockback"

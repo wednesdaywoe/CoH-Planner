@@ -26,18 +26,17 @@ export const Caltrops: Power = {
     "castTime": 1.07
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Damage"
   ],
   "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Holds",
+    "Blaster Archetype Sets",
     "Ranged AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

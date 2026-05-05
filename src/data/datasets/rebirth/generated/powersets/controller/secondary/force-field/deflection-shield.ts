@@ -29,7 +29,8 @@ export const DeflectionShield: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
+    "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [

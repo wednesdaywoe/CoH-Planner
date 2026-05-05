@@ -28,18 +28,19 @@ export const DNASiphon: Power = {
   },
   "allowedEnhancements": [
     "EnduranceModification",
-    "Run Speed",
-    "Immobilize",
+    "EnduranceReduction",
+    "Recharge",
+    "Healing",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Healing",
     "Endurance Modification",
-    "Immobilize",
+    "Guardian Archetype Sets",
+    "Healing",
     "Melee AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

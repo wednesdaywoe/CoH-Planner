@@ -26,20 +26,21 @@ export const WaterGolem: Power = {
     "castTime": 1.87
   },
   "allowedEnhancements": [
-    "Hold",
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged AoE Damage",
-    "Running",
-    "Universal Damage Sets",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Knockback",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

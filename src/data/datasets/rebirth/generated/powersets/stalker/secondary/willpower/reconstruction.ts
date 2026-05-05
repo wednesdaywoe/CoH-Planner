@@ -25,8 +25,9 @@ export const Reconstruction: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
-    "Run Speed",
-    "Immobilize"
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
     "Healing"
