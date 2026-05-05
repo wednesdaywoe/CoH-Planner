@@ -53,6 +53,10 @@ PLAYER_CATEGORIES = {
     'Warshade_Defensive', 'Warshade_Offensive',
     # VEATs
     'Arachnos_Soldiers', 'Widow_Training', 'Teamwork',
+    # VEAT Soldier secondaries: Training_and_Gadgets, Crab_Spider_Training,
+    # Bane_Spider_Training. Without this category the Soldier secondary
+    # picker is empty and branches reuse the primary as the secondary.
+    'Training_Gadgets',
     # Pools, Epic, Inherent
     'Pool', 'Epic', 'Inherent',
     # Incarnate

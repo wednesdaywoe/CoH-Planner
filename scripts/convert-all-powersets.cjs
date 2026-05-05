@@ -59,6 +59,7 @@ const EXTRA_CATEGORIES = {
   'warshade_defensive':     { archetype: 'warshade',     type: 'epic' },
   'warshade_offensive':     { archetype: 'warshade',     type: 'epic' },
   'arachnos_soldiers':      { archetype: 'arachnos-soldier', type: 'epic' },
+  'training_gadgets':       { archetype: 'arachnos-soldier', type: 'epic' },
   'widow_training':         { archetype: 'arachnos-widow',   type: 'epic' },
   'teamwork':               { archetype: 'arachnos-widow',   type: 'epic' },
   // Rebirth-only Guardian

@@ -1,9 +1,65 @@
-# Rebirth Arachnos Soldier — Missing Secondary Powersets
+# Rebirth Arachnos Soldier — Missing Secondary Powersets — **FIXED 2026-05-05**
 
 **Reported:** 2026-05-05
+**Fixed:** 2026-05-05
 **App version:** 0.1.6.5-beta
 **Dataset:** rebirth
 **Severity:** High — Arachnos Soldier (Crab/Bane) builds cannot be created on Rebirth
+
+## Resolution summary
+
+Root cause was a missing entry in the bin export filter. The
+`Training_Gadgets` powercat (Soldier secondary sets:
+`Training_and_Gadgets`, `Bane_Spider_Training`, `Crab_Spider_Training`)
+was absent from `PLAYER_CATEGORIES` in
+[tools/bin-crawler/bin_crawler/export_powers.py](tools/bin-crawler/bin_crawler/export_powers.py).
+The data exists in both HC's and Rebirth's `powers.bin` and the convert
+script in [scripts/convert-powerset.cjs](scripts/convert-powerset.cjs#L76)
+already knew how to map `training_gadgets` to `arachnos-soldier/epic/`
+— but the export step never emitted JSONs for it, so the converter had
+nothing to convert. HC's existing data was extracted via an earlier
+pipeline run that included the category. Rebirth was extracted after
+the category was already missing.
+
+### Fix steps applied
+1. Added `'Training_Gadgets'` to `PLAYER_CATEGORIES` in
+   [export_powers.py](tools/bin-crawler/bin_crawler/export_powers.py).
+2. Added `'training_gadgets': { archetype: 'arachnos-soldier', type: 'epic' }`
+   to `EXTRA_CATEGORIES` in
+   [scripts/convert-all-powersets.cjs](scripts/convert-all-powersets.cjs).
+3. Re-exported HC and Rebirth, re-ran `convert-all-powersets.cjs`,
+   re-ran `generate-powerset-index.cjs`.
+4. Updated
+   [src/data/datasets/rebirth/archetypes.ts](src/data/datasets/rebirth/archetypes.ts)
+   Soldier entry — `secondarySets: ['arachnos-soldier/training-and-gadgets']`
+   and the two `branches[*].secondarySet` to `bane-spider-training` /
+   `crab-spider-training` respectively.
+
+### Audit results
+- **Arachnos Widow** secondaries on Rebirth verified — generated files
+  source from Rebirth's own `widow_training/` and `teamwork/` exports
+  (real Rebirth data, not HC leftovers).
+- **HEAT (Peacebringer/Warshade)** — separate workstream, see
+  [REBIRTH_DATA_GAPS.md](REBIRTH_DATA_GAPS.md) §3.
+- No remaining `branches[*].secondarySet === primarySet` duplications.
+
+### Future-proofing — DONE
+
+Added a runtime validator in
+[src/data/dataset.ts](src/data/dataset.ts) `validateDataset()` that runs
+on every `loadDataset()` and flags any archetype branch whose
+`secondarySet` equals its `primarySet`. Behavior:
+- **Dev mode**: throws, surfacing the bug immediately.
+- **Prod mode**: `console.error` with full detail; the planner still
+  loads so unaffected ATs remain usable.
+
+This pattern was the canary here; the validator catches it before users
+see "secondary picker shows primary powers" again.
+
+---
+
+## Original bug report (kept for reference)
+
 
 ## Symptom
 

@@ -159,6 +159,45 @@ export function getActiveDataset(): Dataset {
 }
 
 /**
+ * Sanity-check archetype data for known footgun patterns. Runs once per
+ * dataset on first load. Throws (in dev) or warns (in prod) so the bug
+ * surfaces early rather than as a baffling user-facing symptom.
+ *
+ * Currently checks:
+ * - **Branch primary === secondary**: a branch whose `secondarySet` ID
+ *   equals its `primarySet` is always a bug. It surfaces in the UI as
+ *   "the secondary picker shows primary powers" — exactly what
+ *   triggered the 2026-05-05 Rebirth Arachnos Soldier bug
+ *   ([REBIRTH_ARACHNOS_SOLDIER_BUG.md](../../REBIRTH_ARACHNOS_SOLDIER_BUG.md)).
+ *   Almost always means the secondary powerset wasn't extracted and
+ *   was filled in with placeholder data.
+ */
+function validateDataset(ds: Dataset): void {
+  const errors: string[] = [];
+  for (const [atId, at] of Object.entries(ds.archetypes.registry)) {
+    if (!at.branches) continue;
+    for (const [branchId, branch] of Object.entries(at.branches)) {
+      if (!branch) continue;
+      if (branch.primarySet === branch.secondarySet) {
+        errors.push(
+          `Archetype "${atId}" branch "${branchId}" has primarySet === secondarySet ` +
+          `("${branch.primarySet}"). This is always a bug — the secondary powerset ` +
+          `is likely missing from extracted data.`,
+        );
+      }
+    }
+  }
+  if (errors.length === 0) return;
+  const message = `Dataset "${ds.id}" failed validation:\n  - ${errors.join('\n  - ')}`;
+  if (import.meta.env?.DEV) {
+    throw new Error(message);
+  }
+  // In prod, log loudly but don't crash the app — the user can still
+  // use ATs that aren't affected.
+  console.error(message);
+}
+
+/**
  * Lazy-loads a dataset (each lives in its own chunk via dynamic import)
  * and sets it as active. Idempotent per id — repeated calls return the
  * cached promise.
@@ -181,6 +220,7 @@ export async function loadDataset(id: DatasetId): Promise<Dataset> {
     cache.set(id, promise);
   }
   const ds = await promise;
+  validateDataset(ds);
   active = ds;
   return ds;
 }

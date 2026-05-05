@@ -925,19 +925,19 @@ export const ARCHETYPES: ArchetypeRegistry = {
       resistanceCap: 0.85,
     },
     primarySets: ['arachnos-soldier/arachnos-soldier'],
-    secondarySets: [],
+    secondarySets: ['arachnos-soldier/training-and-gadgets'],
     branches: {
       'bane-spider': {
         name: 'Bane Spider',
         level: 24,
         primarySet: 'arachnos-soldier/bane-spider-soldier',
-        secondarySet: 'arachnos-soldier/bane-spider-soldier',
+        secondarySet: 'arachnos-soldier/bane-spider-training',
       },
       'crab-spider': {
         name: 'Crab Spider',
         level: 24,
         primarySet: 'arachnos-soldier/crab-spider-soldier',
-        secondarySet: 'arachnos-soldier/crab-spider-soldier',
+        secondarySet: 'arachnos-soldier/crab-spider-training',
       },
     },
   },
