@@ -23,6 +23,7 @@ export const Foresight: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
+    "Resistance",
     "Defense"
   ],
   "allowedSetCategories": [

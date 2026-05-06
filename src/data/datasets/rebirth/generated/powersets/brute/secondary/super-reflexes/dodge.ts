@@ -23,6 +23,7 @@ export const Dodge: Power = {
     "activatePeriod": 2
   },
   "allowedEnhancements": [
+    "Resistance",
     "Defense"
   ],
   "allowedSetCategories": [

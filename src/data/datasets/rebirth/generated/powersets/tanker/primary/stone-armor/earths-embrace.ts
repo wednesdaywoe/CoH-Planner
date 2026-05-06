@@ -25,6 +25,7 @@ export const EarthsEmbrace: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge",
     "Healing"

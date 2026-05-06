@@ -27,6 +27,7 @@ export const GaiasBlessing: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge",
     "Healing"

@@ -26,6 +26,7 @@ export const Antidote: Power = {
     "castTime": 1.53
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Range",
     "Recharge"

@@ -67,20 +67,27 @@ BOOST_TYPE: dict[int, str] = {
     40: "Incarnate_Destiny",
 }
 
-# Rebirth's BOOST_TYPE enum diverges from HC: a new entry is inserted at
-# position 10 (shifting every HC value ≥10 up by 1) and a second new entry
-# is appended at position 42. Confirmed by element-wise comparison on
-# Arachnos_Soldier.Burst — same power in both servers, raw ints differ
-# in exactly the predicted way:
+# Rebirth's BOOST_TYPE enum diverges from HC at TWO insertion points:
+#   - position 10 (shifts every HC value ≥10 up by 1)
+#   - position 36 (additional shift, so HC values ≥35 end up +2 from HC)
+#
+# Element-wise comparison on Arachnos_Soldier.Burst confirms the +1 shift
+# for low values:
 #
 #   HC      [23, 22, 18, 10, 9, 5]   = EndDisc, Range, Recharge, DebuffDef, Damage, Accuracy
 #   Rebirth [24, 23, 19, 11, 9, 5]   ← +1 on every value ≥10
 #
+# The +2 shift for high values shows up on resistance toggles like
+# Brute Dark Armor / Dark Embrace:
+#
+#   HC      [35, 23, 18]              = Res_Damage, EndDisc, Recharge
+#   Rebirth [37, 24, 19]              ← Res_Damage at 37 (+2), others +1
+#
 # Position 10 in Rebirth is used only by `Boosts.Attuned_Return_From_The_Grave_*`
-# (Halloween-event self-rez set) — actual label unknown but doesn't matter for
-# player-power enhancement filtering.
-# Position 42 is used only by `Incarnate.Barrier_Rez.*` (Rebirth-only Destiny
-# rez variant).
+# (Halloween-event self-rez set) — actual label unknown.
+# Position 36 in Rebirth is used by `Inherent.Rest` and the Halloween
+# `Attuned_Inexhaustibility_A` boost set — the second Rebirth-only addition,
+# label unknown.
 BOOST_TYPE_REBIRTH: dict[int, str] = {
     0: "Science",
     1: "Mutation",
@@ -118,13 +125,13 @@ BOOST_TYPE_REBIRTH: dict[int, str] = {
     33: "Interrupt",
     34: "Recovery",
     35: "Endurance_Drain",
-    36: "Res_Damage",
-    37: "Hamidon",
-    38: "Incarnate_Judgement",
-    39: "Incarnate_Interface",
-    40: "Incarnate_Lore",
-    41: "Incarnate_Destiny",
-    42: "Rebirth_Boost_42",  # placeholder — Rebirth-only Incarnate (Barrier_Rez)
+    36: "Rebirth_Boost_36",  # placeholder — second Rebirth-only addition (Rest, Inexhaustibility set)
+    37: "Res_Damage",
+    38: "Hamidon",
+    39: "Incarnate_Judgement",
+    40: "Incarnate_Interface",
+    41: "Incarnate_Lore",
+    42: "Incarnate_Destiny",
 }
 
 # Event IDs used in AttribMod CancelEvents and Suppress arrays.

@@ -23,6 +23,7 @@ export const Agile: Power = {
     "activatePeriod": 2
   },
   "allowedEnhancements": [
+    "Resistance",
     "Defense"
   ],
   "allowedSetCategories": [

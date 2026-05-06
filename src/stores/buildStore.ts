@@ -43,9 +43,9 @@ import {
   getAllPowerPools,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
-import { getActiveDataset } from '@/data/dataset';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
+import { rebirthInherentFitnessSlots } from '@/utils/rebirth-fitness-slots';
 import { useHistoryStore } from './historyStore';
 import { useUIStore } from './uiStore';
 
@@ -811,35 +811,8 @@ function applyToAllPowers(
   };
 }
 
-/**
- * Rebirth-only: Health and Stamina receive automatic inherent slots at
- * specific character levels (in addition to their free first slot). These
- * extras don't count against the 67-slot budget.
- *
- *   Health:  +1 slot at L8,  +1 slot at L16  (max +2)
- *   Stamina: +1 slot at L12, +1 slot at L22  (max +2)
- *
- * Returns the number of inherent slots that should exist at the given
- * character level for the given Fitness power, or 0 for HC.
- */
-function rebirthInherentFitnessSlots(
-  internalName: string | undefined,
-  level: number,
-): number {
-  if (getActiveDataset().id !== 'rebirth') return 0;
-  const name = internalName?.toLowerCase();
-  if (name === 'health') {
-    if (level >= 16) return 2;
-    if (level >= 8) return 1;
-    return 0;
-  }
-  if (name === 'stamina') {
-    if (level >= 22) return 2;
-    if (level >= 12) return 1;
-    return 0;
-  }
-  return 0;
-}
+// rebirthInherentFitnessSlots imported from '@/utils/rebirth-fitness-slots'
+// so importers (URL hash, Mids, game format) share the same grant table.
 
 /**
  * Convert an InherentPowerDef to a SelectedPower
@@ -2086,6 +2059,38 @@ export const useBuildStore = create<BuildStore>()(
                 return { ...power, maxSlots: def.maxSlots };
               }
               return power;
+            });
+          }
+
+          // Migration: Reconcile Rebirth inherent fitness slots on Health/Stamina.
+          // The dataset auto-grants +1 slot at L8/L16 to Health and +1 at L12/L22
+          // to Stamina (4 total at L22+). Builds created before this rule landed
+          // — or hydrated while the dataset wasn't yet 'rebirth' — would miss the
+          // grant. Sync against the current character level here so the slots
+          // appear as soon as the page loads.
+          if (state.build.inherents.length > 0) {
+            const lvl = state.build.level;
+            state.build.inherents = state.build.inherents.map((power) => {
+              const want = rebirthInherentFitnessSlots(power.internalName, lvl);
+              const have = power.inherentSlotCount ?? 0;
+              if (want === have) return power;
+              const slots = [...power.slots];
+              if (want > have) {
+                for (let i = 0; i < want - have; i++) slots.push(null);
+              } else {
+                let toRemove = have - want;
+                for (let i = slots.length - 1; i >= 0 && toRemove > 0; i--) {
+                  if (slots[i] === null) {
+                    slots.splice(i, 1);
+                    toRemove--;
+                  } else break;
+                }
+              }
+              return {
+                ...power,
+                slots,
+                ...(want > 0 ? { inherentSlotCount: want } : { inherentSlotCount: undefined }),
+              };
             });
           }
 

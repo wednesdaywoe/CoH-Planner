@@ -25,6 +25,7 @@ export const MomentofGlory: Power = {
     "castTime": 2.57
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceModification",
     "EnduranceReduction",
     "Recharge",

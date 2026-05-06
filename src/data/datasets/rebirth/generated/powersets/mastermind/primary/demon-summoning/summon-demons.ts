@@ -26,6 +26,7 @@ export const SummonDemons: Power = {
     "castTime": 4
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Knockback",
     "Healing",

@@ -27,6 +27,7 @@ export const Eclipse: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceModification",
     "Recharge",
     "Accuracy"

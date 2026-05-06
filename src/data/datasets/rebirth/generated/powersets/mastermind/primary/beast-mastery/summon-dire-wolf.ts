@@ -26,6 +26,7 @@ export const SummonDireWolf: Power = {
     "castTime": 4.67
   },
   "allowedEnhancements": [
+    "Resistance",
     "Slow",
     "EnduranceReduction",
     "Run Speed",

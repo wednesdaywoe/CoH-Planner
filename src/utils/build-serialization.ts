@@ -39,6 +39,7 @@ import {
   DSYNC_ENHANCEMENTS,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
+import { rebirthInherentFitnessSlots } from './rebirth-fitness-slots';
 
 // ============================================
 // SLIM TYPES (exported for BuildExport typing)
@@ -269,10 +270,15 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     };
   }
 
-  // Inherent powers — auto-populate, then merge slot data from slim
+  // Inherent powers — auto-populate, then merge slot data from slim.
+  // Pass the slim's level + serverId so Rebirth Health/Stamina get their
+  // auto-grant inherent slots even on URL/JSON imports.
+  const importedServerId = (slim.serverId === 'rebirth' ? 'rebirth' : 'homecoming');
   const inherents = getInherentSelectedPowers(
     archetypeSelection.name,
     archetypeSelection.inherent,
+    slim.level ?? 50,
+    importedServerId,
   );
   const slimInherents: SlimPower[] = slim.inherents ?? [];
   for (const slimInh of slimInherents) {
@@ -312,7 +318,7 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     // migration and don't carry this field; default to Homecoming so
     // legacy builds keep loading the same data they were authored
     // against.
-    serverId: (slim.serverId === 'rebirth' ? 'rebirth' : 'homecoming') as Build['serverId'],
+    serverId: importedServerId as Build['serverId'],
     archetype: archetypeSelection,
     level: slim.level ?? 50,
     exemplarLevel: slim.exemplarLevel ?? null,
@@ -459,8 +465,16 @@ function hydrateEnhancement(slim: SlimEnhancement): Enhancement | null {
 // INHERENT POWER HELPERS (mirrors importer.ts)
 // ============================================
 
-function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
+function createInherentSelectedPower(
+  def: InherentPowerDef,
+  characterLevel: number,
+  serverId: string,
+): SelectedPower {
   const slots: (Enhancement | null)[] = def.maxSlots === 0 ? [] : [null];
+  // Rebirth: pre-fill Health/Stamina inherent grant slots at the right
+  // character level. Mirrors createInherentSelectedPower in buildStore.ts.
+  const inherentSlotCount = rebirthInherentFitnessSlots(def.internalName, characterLevel, serverId);
+  for (let i = 0; i < inherentSlotCount; i++) slots.push(null);
   return {
     ...def,
     powerSet: 'Inherent',
@@ -468,17 +482,20 @@ function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
     slots,
     isLocked: def.isLocked ?? true,
     inherentCategory: def.category,
+    ...(inherentSlotCount > 0 ? { inherentSlotCount } : {}),
   };
 }
 
 function getInherentSelectedPowers(
   archetypeName: string,
   archetypeInherent: { name: string; description: string } | null,
+  characterLevel: number,
+  serverId: string,
 ): SelectedPower[] {
-  const powers = getInherentPowers().map(createInherentSelectedPower);
+  const powers = getInherentPowers().map((def) => createInherentSelectedPower(def, characterLevel, serverId));
   if (archetypeName && archetypeInherent) {
     const atInherentDef = createArchetypeInherentPower(archetypeName, archetypeInherent);
-    powers.unshift(createInherentSelectedPower(atInherentDef));
+    powers.unshift(createInherentSelectedPower(atInherentDef, characterLevel, serverId));
   }
   return powers;
 }

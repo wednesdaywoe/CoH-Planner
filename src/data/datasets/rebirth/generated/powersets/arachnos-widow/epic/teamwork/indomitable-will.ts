@@ -26,6 +26,7 @@ export const IndomitableWill: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

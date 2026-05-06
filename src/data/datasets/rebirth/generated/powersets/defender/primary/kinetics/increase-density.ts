@@ -28,6 +28,7 @@ export const IncreaseDensity: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Range",
     "Recharge"

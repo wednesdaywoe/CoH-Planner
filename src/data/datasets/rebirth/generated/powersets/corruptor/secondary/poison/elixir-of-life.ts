@@ -26,6 +26,7 @@ export const ElixirofLife: Power = {
     "castTime": 1.83
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceModification",
     "EnduranceReduction",
     "Range",

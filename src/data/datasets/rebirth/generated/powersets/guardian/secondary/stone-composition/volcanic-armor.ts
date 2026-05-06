@@ -26,6 +26,7 @@ export const VolcanicArmor: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

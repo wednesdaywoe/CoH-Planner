@@ -25,6 +25,7 @@ export const KujiInRin: Power = {
     "castTime": 1.83
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

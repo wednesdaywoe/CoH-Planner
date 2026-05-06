@@ -25,6 +25,7 @@ export const PowerSurge: Power = {
     "castTime": 1.96
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceModification",
     "Hold",
     "EnduranceReduction",

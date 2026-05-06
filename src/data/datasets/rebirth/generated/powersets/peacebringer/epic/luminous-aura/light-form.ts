@@ -25,6 +25,7 @@ export const LightForm: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceModification",
     "EnduranceReduction",
     "Recharge"

@@ -23,11 +23,13 @@ export const DampeningField: Power = {
     "castTime": 0.5,
     "activatePeriod": 10
   },
-  "allowedEnhancements": [],
+  "allowedEnhancements": [
+    "Resistance"
+  ],
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 0,
+  "maxSlots": 6,
   "effects": {
     "resistance": {
       "smashing": {

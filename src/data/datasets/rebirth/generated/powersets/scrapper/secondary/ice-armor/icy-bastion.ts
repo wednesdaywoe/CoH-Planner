@@ -25,6 +25,7 @@ export const IcyBastion: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceModification",
     "EnduranceReduction",
     "Recharge",

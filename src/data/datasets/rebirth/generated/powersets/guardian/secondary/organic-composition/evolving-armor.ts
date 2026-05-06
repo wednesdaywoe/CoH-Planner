@@ -28,6 +28,7 @@ export const EvolvingArmor: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

@@ -23,6 +23,7 @@ export const HighPainTolerance: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [
+    "Resistance",
     "Healing"
   ],
   "allowedSetCategories": [
