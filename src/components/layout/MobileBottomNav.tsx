@@ -16,11 +16,12 @@
  * controls already live in the header.
  */
 
-import { useEffect, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { useUIStore, useBuildStore, useAuthStore } from '@/stores';
 import { useOnboardingStore } from '@/stores/onboardingStore';
 import { StatsDashboard } from './StatsDashboard';
 import { Toggle, Slider } from '@/components/ui';
+import { ConfirmModal } from '@/components/modals';
 import { MAX_LEVEL } from '@/data';
 import type { Origin } from '@/types';
 import { supabase } from '@/lib/supabase';
@@ -46,6 +47,23 @@ export function MobileBottomNav() {
   const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
   const closeIncarnateModal = useUIStore((s) => s.closeIncarnateModal);
   const incarnateModalOpen = useUIStore((s) => s.incarnateModalOpen);
+
+  // Confirm dialogs for destructive build actions live at this level so they
+  // remain mounted after the menu sheet closes (the sheet unmounts its own
+  // children on close, which would tear down any state-driven modal inside it).
+  const resetBuild = useBuildStore((s) => s.resetBuild);
+  const clearPowers = useBuildStore((s) => s.clearPowers);
+  const resetForNewBuild = useUIStore((s) => s.resetForNewBuild);
+  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | null>(null);
+
+  const requestNewBuild = () => {
+    closeMobileSheet();
+    setConfirmAction('new');
+  };
+  const requestClearPowers = () => {
+    closeMobileSheet();
+    setConfirmAction('clear');
+  };
 
   // Picking any non-Incarnate tab should close the Incarnate modal so tab
   // selection behaves like a consistent switcher (and not require the user
@@ -79,7 +97,11 @@ export function MobileBottomNav() {
       )}
       {mobileSheet === 'menu' && (
         <MobileSheet title="Menu" onClose={closeMobileSheet}>
-          <MobileMenuContent onDone={closeMobileSheet} />
+          <MobileMenuContent
+            onDone={closeMobileSheet}
+            onRequestNewBuild={requestNewBuild}
+            onRequestClearPowers={requestClearPowers}
+          />
         </MobileSheet>
       )}
       {mobileSheet === 'settings' && (
@@ -127,6 +149,23 @@ export function MobileBottomNav() {
           onClick={() => switchSheet('settings')}
         />
       </nav>
+
+      <ConfirmModal
+        isOpen={confirmAction === 'new'}
+        title="New Build"
+        message="Are you sure you want to reset? This will clear your entire build."
+        confirmLabel="Reset"
+        onConfirm={() => { resetBuild(); resetForNewBuild(); setConfirmAction(null); }}
+        onCancel={() => setConfirmAction(null)}
+      />
+      <ConfirmModal
+        isOpen={confirmAction === 'clear'}
+        title="Clear Powers"
+        message="Clear all powers and enhancements? Archetype and powerset selections will be kept."
+        confirmLabel="Clear"
+        onConfirm={() => { clearPowers(); setConfirmAction(null); }}
+        onCancel={() => setConfirmAction(null)}
+      />
     </>
   );
 }
@@ -207,16 +246,21 @@ function MobileSheet({
 // MENU CONTENT
 // ============================================
 
-function MobileMenuContent({ onDone }: { onDone: () => void }) {
+function MobileMenuContent({
+  onDone,
+  onRequestNewBuild,
+  onRequestClearPowers,
+}: {
+  onDone: () => void;
+  onRequestNewBuild: () => void;
+  onRequestClearPowers: () => void;
+}) {
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
   const openHelpModal = useUIStore((s) => s.openHelpModal);
   const openChangelogModal = useUIStore((s) => s.openChangelogModal);
   const openFeedbackModal = useUIStore((s) => s.openFeedbackModal);
   const openControlsModal = useUIStore((s) => s.openControlsModal);
-  const resetBuild = useBuildStore((s) => s.resetBuild);
-  const clearPowers = useBuildStore((s) => s.clearPowers);
-  const resetForNewBuild = useUIStore((s) => s.resetForNewBuild);
 
   const user = useAuthStore((s) => s.user);
   const loading = useAuthStore((s) => s.loading);
@@ -237,15 +281,22 @@ function MobileMenuContent({ onDone }: { onDone: () => void }) {
     </button>
   );
 
-  const handleNew = () => {
-    if (confirm('Start a new build? Unsaved changes will be lost.')) {
-      resetBuild();
-      resetForNewBuild();
-    }
-  };
-  const handleClear = () => {
-    if (confirm('Clear all powers and slots?')) clearPowers();
-  };
+  // New/Clear items don't call onDone — the parent's request handlers close
+  // the sheet themselves (so the ConfirmModal mounted by the parent isn't
+  // racing the sheet teardown).
+  const itemNoClose = (label: string, onClick: () => void, destructive = false) => (
+    <button
+      onClick={onClick}
+      className={`w-full text-left px-4 py-3 text-sm border-b border-slate-800 transition-colors ${
+        destructive
+          ? 'text-red-400 hover:bg-red-950/30 active:bg-red-950/50'
+          : 'text-slate-200 hover:bg-slate-800 active:bg-slate-700'
+      }`}
+    >
+      {label}
+    </button>
+  );
+
   const handleBuyMeCoffee = () => {
     // Trigger the hidden BMC widget button (injected by the script in index.html)
     const bmcBtn = document.getElementById('bmc-wbtn');
@@ -264,8 +315,8 @@ function MobileMenuContent({ onDone }: { onDone: () => void }) {
         {item('Save build', () => openExportImportModal('save'))}
         {item('Load / Import', () => openExportImportModal('load-import'))}
         {item('Share / Export', () => openExportImportModal('share-export'))}
-        {item('New build', handleNew)}
-        {item('Clear powers', handleClear, true)}
+        {itemNoClose('New build', onRequestNewBuild)}
+        {itemNoClose('Clear powers', onRequestClearPowers, true)}
       </Section>
       <Section label="Info">
         {item('Help', openHelpModal)}
