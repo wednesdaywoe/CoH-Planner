@@ -10,8 +10,13 @@ import { MobileBottomNav } from './MobileBottomNav';
 import { EnhancementPicker } from '@/components/enhancements/EnhancementPicker';
 import { PowerInfoTooltip } from '@/components/info';
 import { PowerInfoModal } from '@/components/modals';
-import { OnboardingBeacon } from '@/components/onboarding/OnboardingBeacon';
+// OnboardingBeacon disabled — UX research showed users didn't recognize the
+// glowing outline as instructional. Component preserved for a future tutorial
+// revisit; the help-discovery toast handles first-run pointers for now.
+// import { OnboardingBeacon } from '@/components/onboarding/OnboardingBeacon';
+import { ToastContainer } from '@/components/ui/Toast';
 import { useUIStore, useAuthStore } from '@/stores';
+import { useHelpDiscoveryToast } from '@/hooks/useHelpDiscoveryToast';
 import { useUpdateChecker } from '@/hooks/useUpdateChecker';
 import { useUndoRedoKeyboard } from '@/hooks/useUndoRedoKeyboard';
 import { useTooltipHotkey } from '@/hooks/useTooltipHotkey';
@@ -40,6 +45,7 @@ export function MainLayout({ children }: MainLayoutProps) {
   useTooltipHotkey();
   useDashboardCollapseHotkey();
   useInfoPanelLockHotkey();
+  useHelpDiscoveryToast();
   const initializeAuth = useAuthStore((s) => s.initialize);
 
   const [isMobile, setIsMobile] = useState(() =>
@@ -87,8 +93,8 @@ export function MainLayout({ children }: MainLayoutProps) {
       {/* Power info tooltip (follows mouse when enabled) */}
       <PowerInfoTooltip />
 
-      {/* Onboarding beacon - progressive feature discovery */}
-      <OnboardingBeacon />
+      {/* Toasts (status notifications, help-discovery hint) */}
+      <ToastContainer />
 
       {/* Floating buttons — hidden on mobile (those actions live in the bottom nav's Menu sheet) */}
       <div className="hidden lg:flex fixed bottom-4 right-4 z-40 items-center gap-2">

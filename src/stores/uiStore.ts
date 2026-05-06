@@ -298,6 +298,29 @@ interface UIState {
 
   /** Which mobile nav sheet is open (dashboard/menu/settings). Incarnate uses its own modal. */
   mobileSheet: 'dashboard' | 'menu' | 'settings' | null;
+
+  /** Active toast notifications (newest first). */
+  toasts: Toast[];
+
+  /** Whether the "discover the help system" hint toast appears on each load. */
+  helpToastEnabled: boolean;
+}
+
+export interface ToastAction {
+  label: string;
+  /** Action handler. Toast is dismissed after this fires unless it returns false. */
+  onClick: () => void | false;
+}
+
+export interface Toast {
+  id: string;
+  message: string;
+  /** Optional action button shown on the right. */
+  action?: ToastAction;
+  /** Auto-dismiss after this many ms. 0 = sticky until clicked away. Default 8000. */
+  durationMs?: number;
+  /** Tone for color/icon. Defaults to 'info'. */
+  tone?: 'info' | 'success' | 'warning';
 }
 
 interface UIActions {
@@ -528,6 +551,13 @@ interface UIActions {
   openMobileSheet: (sheet: 'dashboard' | 'menu' | 'settings') => void;
   closeMobileSheet: () => void;
 
+  // Toasts
+  showToast: (toast: Omit<Toast, 'id'>) => string;
+  dismissToast: (id: string) => void;
+  clearToasts: () => void;
+  setHelpToastEnabled: (enabled: boolean) => void;
+  toggleHelpToastEnabled: () => void;
+
   // Hard reset of build-specific UI state (for New Build)
   resetForNewBuild: () => void;
 }
@@ -669,6 +699,8 @@ export const useUIStore = create<UIStore>()(
       permaTrackedPowers: [], // No perma-tracked powers by default
       levelUpMode: false, // Off by default — classic "respec" flow
       mobileSheet: null,
+      toasts: [],
+      helpToastEnabled: true,
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex, overrideSelect, virtualSlots, powerCategory) =>
@@ -1379,6 +1411,19 @@ export const useUIStore = create<UIStore>()(
       openMobileSheet: (sheet) => set({ mobileSheet: sheet }),
       closeMobileSheet: () => set({ mobileSheet: null }),
 
+      // Toasts
+      showToast: (toast) => {
+        const id = `toast-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+        set((state) => ({ toasts: [{ id, ...toast }, ...state.toasts] }));
+        return id;
+      },
+      dismissToast: (id) =>
+        set((state) => ({ toasts: state.toasts.filter((t) => t.id !== id) })),
+      clearToasts: () => set({ toasts: [] }),
+      setHelpToastEnabled: (enabled) => set({ helpToastEnabled: enabled }),
+      toggleHelpToastEnabled: () =>
+        set((state) => ({ helpToastEnabled: !state.helpToastEnabled })),
+
       resetForNewBuild: () =>
         set({
           enhancementPicker: defaultEnhancementPicker,
@@ -1461,6 +1506,7 @@ export const useUIStore = create<UIStore>()(
         levelUpMode: state.levelUpMode,
         mechanicAdjusters: state.mechanicAdjusters,
         globalAdjusters: state.globalAdjusters,
+        helpToastEnabled: state.helpToastEnabled,
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };

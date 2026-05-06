@@ -593,9 +593,13 @@ function BuildIdentityPopover() {
   const primaryLabel = build.primary.name || null;
   const secondaryLabel = build.secondary.name || null;
   const buildName = build.name?.trim() || null;
+  // "Empty build" = no archetype picked yet. This is the canonical state right
+  // after File > New Build, and the moment users tend to get stuck — surface a
+  // clear call-to-action on the button itself.
+  const isEmpty = !atLabel;
   const summaryLabel = atLabel
     ? [buildName, atLabel, primaryLabel, secondaryLabel].filter(Boolean).join(' · ')
-    : 'Select Build Identity...';
+    : 'Start here — pick your Archetype';
 
   // Show onboarding beacon on trigger when popover is closed and step is a build-identity step
   const identitySteps = ['select-archetype', 'select-primary', 'select-secondary'];
@@ -608,13 +612,17 @@ function BuildIdentityPopover() {
       <button
         onClick={() => setOpen(!open)}
         data-onboarding={triggerOnboardingId}
-        className="flex items-center gap-1.5 px-2 py-1.5 text-xs border rounded transition-colors text-slate-200 bg-slate-700/50 hover:bg-slate-600/60 border-slate-600"
-        title="Set archetype and powersets"
+        className={`flex items-center gap-1.5 px-2 py-1.5 text-xs border rounded transition-colors text-slate-200 ${
+          isEmpty && !open
+            ? 'bg-[#D62BCE]/20 hover:bg-[#D62BCE]/30 identity-nudge'
+            : 'bg-slate-700/50 hover:bg-slate-600/60 border-slate-600'
+        }`}
+        title={isEmpty ? 'Choose your archetype and powersets to begin' : 'Set archetype and powersets'}
       >
         <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
-        <span className="hidden sm:inline max-w-[320px] truncate">{summaryLabel}</span>
+        <span className={`${isEmpty ? 'inline' : 'hidden sm:inline'} max-w-[320px] truncate ${isEmpty ? 'font-medium text-pink-50' : ''}`}>{summaryLabel}</span>
         <svg className="w-3 h-3 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
@@ -931,6 +939,8 @@ function SettingsPopover() {
   const onboardingEnabled = useOnboardingStore((s) => s.enabled);
   const toggleOnboarding = useOnboardingStore((s) => s.toggle);
   const resetOnboarding = useOnboardingStore((s) => s.reset);
+  const helpToastEnabled = useUIStore((s) => s.helpToastEnabled);
+  const toggleHelpToastEnabled = useUIStore((s) => s.toggleHelpToastEnabled);
 
   const [calcDebugOn, setCalcDebugOn] = useState(isCalcDebugEnabled);
   const handleToggleCalcDebug = () => {
@@ -1183,6 +1193,19 @@ function SettingsPopover() {
             >
               Reset guided hints
             </button>
+          </div>
+
+          {/* Help-discovery toast */}
+          <div className="flex items-center justify-between">
+            <Tooltip content="Show a small reminder toast on launch pointing at the searchable Help system">
+              <Toggle
+                id="help-toast-toggle"
+                name="helpToast"
+                checked={helpToastEnabled}
+                onChange={toggleHelpToastEnabled}
+                label="Help hint on launch"
+              />
+            </Tooltip>
           </div>
 
           <hr className="border-gray-700" />
