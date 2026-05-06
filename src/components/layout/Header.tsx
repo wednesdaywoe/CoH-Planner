@@ -14,6 +14,7 @@ import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerP
 import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import type { BadgeVariant } from '@/components/ui';
 import { getActiveDataset } from '@/data/dataset';
+import { buildShareUrl } from '@/utils/url-build-sync';
 import type { DatasetId } from '@/data/dataset';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, OPPORTUNITY_CRIT_MULTIPLIER } from '@/utils/calculations';
@@ -742,6 +743,18 @@ function ActionMenu({
   const login = useAuthStore((s) => s.login);
   const logout = useAuthStore((s) => s.logout);
   const currentOnboardingStep2 = useOnboardingCurrentStep();
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  const handleCopyLiveLink = async () => {
+    try {
+      const url = buildShareUrl(useBuildStore.getState().build);
+      await navigator.clipboard.writeText(url);
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 1500);
+    } catch (err) {
+      console.error('Failed to copy live link:', err);
+    }
+  };
 
   // Fetch the user's profile handle so we can show "View my Profile" only when
   // they've actually claimed a public handle. Single round-trip per session.
@@ -804,6 +817,14 @@ function ActionMenu({
           <button onClick={() => { onOpenModal('load-import'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
             <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
             Load / Import
+          </button>
+          <button
+            onClick={handleCopyLiveLink}
+            className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2"
+            title="Copy a URL that encodes the current build. The link updates live as you edit."
+          >
+            <svg className="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 015.656 5.656l-3 3a4 4 0 01-5.656 0M10.172 13.828a4 4 0 01-5.656-5.656l3-3a4 4 0 015.656 0" /></svg>
+            {linkCopied ? 'Link copied!' : 'Copy Live Link'}
           </button>
           <button onClick={() => { onOpenModal('share-export'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" data-onboarding="export-import">
             <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>

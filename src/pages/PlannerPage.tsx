@@ -16,6 +16,7 @@
  */
 
 import { useBuildStore, useUIStore, usePowerViewMode } from '@/stores';
+import { useUrlBuildSync } from '@/utils/url-build-sync';
 import { AvailablePowers } from '@/components/powers/AvailablePowers';
 import { AvailablePoolPowers } from '@/components/powers/AvailablePoolPowers';
 import { SelectedPowers } from '@/components/powers/SelectedPowers';
@@ -45,6 +46,7 @@ function UndockButton({ onClick }: { onClick: () => void }) {
 }
 
 export function PlannerPage() {
+  useUrlBuildSync();
   const build = useBuildStore((s) => s.build);
   const addPower = useBuildStore((s) => s.addPower);
   const tooltipEnabled = useUIStore((s) => s.infoPanel.tooltipEnabled);
