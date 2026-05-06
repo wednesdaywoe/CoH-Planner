@@ -46,6 +46,10 @@ export const Serum: Power = {
     "durations": {
       "maxHPBuff": 120
     },
-    "buffDuration": 120
+    "buffDuration": 120,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "maxHPBuff"
+    ]
   }
 };

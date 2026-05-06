@@ -14,6 +14,7 @@ Usage:
 import argparse
 import json
 import os
+import re
 import sys
 from dataclasses import asdict
 from pathlib import Path
@@ -366,7 +367,16 @@ def main():
                 pw_dict['available_level'] = ps_available.get(pw.full_name, 0)
                 pw_dict['powerset'] = ps_key
 
-                fname = pw.power_name.lower() + '.json'
+                # Power names containing characters invalid in Windows
+                # filenames (`:`, `/`, `\`, etc.) need sanitizing.
+                # `Combat_Training:_Defensive` → `combat_training_defensive.json`.
+                # The convert script's index.json lookup is by full power
+                # name string, so the filename mismatch is benign there;
+                # this just lets the file actually write.
+                safe_name = re.sub(r'[<>:"/\\|?*]+', '_', pw.power_name).lower()
+                # Collapse runs of underscores from the substitution.
+                safe_name = re.sub(r'_+', '_', safe_name).strip('_')
+                fname = safe_name + '.json'
                 with open(ps_dir / fname, 'w') as f:
                     json.dump(pw_dict, f, indent=2)
                 total_files += 1

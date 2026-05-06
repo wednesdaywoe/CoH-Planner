@@ -12,6 +12,7 @@ import type { Powerset } from '@/types';
 import { MaskPresence as MaskPresence } from './frt-mask-presence';
 import { MindLink as MindLink } from './frt-mind-link';
 import { Confuse as Confuse } from './confuse';
+import { TacticalTrainingVengeance as TacticalTrainingVengeance } from './frt-tactical-training-vengeance';
 import { AuraofConfusion as AuraofConfusion } from './aura-of-confusion';
 
 export const powerset: Powerset = {
@@ -25,6 +26,7 @@ export const powerset: Powerset = {
     MaskPresence,
     MindLink,
     Confuse,
+    TacticalTrainingVengeance,
     AuraofConfusion,
   ],
 };

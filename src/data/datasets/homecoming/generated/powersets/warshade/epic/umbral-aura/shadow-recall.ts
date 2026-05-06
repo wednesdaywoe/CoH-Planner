@@ -37,5 +37,11 @@ export const ShadowRecall: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
+  "effects": {
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    }
+  },
   "requires": "Inherent.Inherent.Shadow_Recall !"
 };

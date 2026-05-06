@@ -46,7 +46,6 @@ export const CallReinforcements: Power = {
       "isPseudoPet": false,
       "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
       "duration": 240,
-      "copyBoosts": true,
       "entityCount": 2
     }
   }

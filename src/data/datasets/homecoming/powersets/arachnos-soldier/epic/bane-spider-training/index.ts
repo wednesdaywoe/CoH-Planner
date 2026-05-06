@@ -18,7 +18,7 @@ export const powerset: Powerset = {
   id: 'arachnos-soldier/bane-spider-training',
   name: 'Bane Spider Training',
   description: 'Bane Spiders are the commandos of the Arachnos organization, providing excellent stealth and offensive capabilities.',
-  icon: 'bane_spider_training_set.png',
+  icon: 'bane_spider_training_set.ico',
   archetype: 'arachnos-soldier',
   category: 'epic',
   powers: [

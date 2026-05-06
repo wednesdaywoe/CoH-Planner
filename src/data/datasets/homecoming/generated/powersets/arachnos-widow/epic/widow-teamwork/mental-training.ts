@@ -26,6 +26,11 @@ export const MentalTraining: Power = {
     "Run Speed",
     "Fly"
   ],
+  "allowedSetCategories": [
+    "Flight",
+    "Running",
+    "Universal Travel"
+  ],
   "maxSlots": 6,
   "effects": {
     "rechargeBuff": {

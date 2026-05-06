@@ -25,6 +25,9 @@ export const PhoenixRising: Power = {
   "allowedEnhancements": [
     "Resistance"
   ],
+  "allowedSetCategories": [
+    "Resist Damage"
+  ],
   "maxSlots": 6,
   "requires": "Brute_Defense.Fiery_Aura.Rise_of_the_Phoenix",
   "mechanicType": "parentMechanic"

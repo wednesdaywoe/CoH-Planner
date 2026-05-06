@@ -18,7 +18,7 @@ export const powerset: Powerset = {
   id: 'arachnos-soldier/crab-spider-training',
   name: 'Crab Spider Training',
   description: 'Crab Spiders are heavy infantry in the Arachnos Organization, with a wide array of ranged and melee combat skills.',
-  icon: 'crab_spider_training_set.png',
+  icon: 'crab_spider_training_set.ico',
   archetype: 'arachnos-soldier',
   category: 'epic',
   powers: [

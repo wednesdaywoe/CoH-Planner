@@ -16,6 +16,7 @@ export const WebCocoon: Power = {
   "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
   "icon": "banespidertraining_webcocoon.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.05,

@@ -16,6 +16,7 @@ export const Surveillance: Power = {
   "shortHelp": "Ranged Foe -DEF, -RES (All)",
   "icon": "banespidertraining_surveillance.png",
   "powerType": "Click",
+  "targetType": "Foe",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

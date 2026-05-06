@@ -117,5 +117,6 @@ export const BaneSpiderArmorUpgrade: Power = {
       "table": "Melee_HealSelf"
     },
     "buffDuration": 10.25
-  }
+  },
+  "mechanicType": "parentMechanic"
 };

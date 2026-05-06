@@ -22,7 +22,7 @@ export const powerset: Powerset = {
   id: 'arachnos-soldier/training-and-gadgets',
   name: 'Training and Gadgets',
   description: 'Those who enter the Soldier training program are given crash courses in Teamwork, Tactical Analysis and Coordination of Assets.',
-  icon: 'training_and_gadgets_set.png',
+  icon: 'training_and_gadgets_set.ico',
   archetype: 'arachnos-soldier',
   category: 'epic',
   powers: [

@@ -9,7 +9,12 @@
 
 import type { Powerset } from '@/types';
 
+import { CombatTrainingDefensive as CombatTrainingDefensive } from './combat-training-defensive';
+import { CombatTrainingOffensive as CombatTrainingOffensive } from './combat-training-offensive';
+import { TacticalTrainingManeuvers as TacticalTrainingManeuvers } from './tactical-training-maneuvers';
 import { IndomitableWill as IndomitableWill } from './indomitable-will';
+import { TacticalTrainingAssault as TacticalTrainingAssault } from './tactical-training-assault';
+import { TacticalTrainingLeadership as TacticalTrainingLeadership } from './tactical-training-leadership';
 import { Foresight as Foresight } from './foresight';
 
 export const powerset: Powerset = {
@@ -20,7 +25,12 @@ export const powerset: Powerset = {
   archetype: 'arachnos-widow',
   category: 'epic',
   powers: [
+    CombatTrainingDefensive,
+    CombatTrainingOffensive,
+    TacticalTrainingManeuvers,
     IndomitableWill,
+    TacticalTrainingAssault,
+    TacticalTrainingLeadership,
     Foresight,
   ],
 };
