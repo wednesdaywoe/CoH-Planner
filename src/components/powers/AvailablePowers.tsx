@@ -471,10 +471,14 @@ export function AvailablePowers({
     };
   })();
 
-  // Build set of archetype-specific inherent power names (e.g. Kheldian travel powers)
-  // so we can hide them from the selectable powerset list
-  const archetypeInherentNames = new Set(
-    getArchetypeInherentPowers(archetypeId ?? undefined).map(p => p.name)
+  // Build set of archetype-specific inherent power identifiers (e.g. Kheldian
+  // travel powers) so we can hide them from the selectable powerset list.
+  // Match on internalName because it's stable across servers — Rebirth renames
+  // some Kheldian powers (e.g. Shadow_Recall → "Starless Recall"), so a
+  // display-name match would miss them and the user would see the same power
+  // as both an inherent and a selectable secondary pick.
+  const archetypeInherentInternalNames = new Set(
+    getArchetypeInherentPowers(archetypeId ?? undefined).map(p => p.internalName)
   );
 
   // Show ALL user-selectable powers, not just ones available at current level
@@ -493,7 +497,7 @@ export function AvailablePowers({
         // (`Bright_Nova_Bolt`); display name (`Bright Nova Bolt`) wouldn't.
         if (p.internalName && formSubPowerNames.has(p.internalName)) return false;
         // Filter out powers already granted as archetype inherents
-        if (archetypeInherentNames.has(p.name)) return false;
+        if (p.internalName && archetypeInherentInternalNames.has(p.internalName)) return false;
         // Evaluate requires expression (handles negation, internal names, powersets)
         if (p.requires && !evaluateRequires(p.requires, requiresContext)) return false;
         return true;
