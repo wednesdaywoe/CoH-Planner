@@ -38,17 +38,16 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -56,7 +55,52 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 0.2,
+              "table": "Melee_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Fire",
+              "scale": 0.09,
+              "table": "Melee_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -75,15 +119,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceReduction",
           "Hold",
-          "Intangible",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -91,7 +135,48 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 1.87,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Melee_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 10,
+            "knockback": 10,
+            "knockup": 10
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10
         }
       },
       {
@@ -109,15 +194,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -125,7 +209,24 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 0.7,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            }
+          ]
         }
       },
       {
@@ -142,13 +243,12 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Running",
-          "Universal Travel"
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1,
@@ -159,7 +259,12 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 2.356194496154785,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Fire",
+            "scale": 0.48708,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
@@ -176,15 +281,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 2,
@@ -221,15 +325,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Running",
-          "Universal Travel"
+          "Immobilize",
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -239,7 +342,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -255,19 +363,43 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -285,14 +417,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -303,7 +435,23 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 50,
           "arc": 0.6108652353286743,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -320,17 +468,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
+          "Accurate Defense Debuff",
+          "Defense Debuff",
           "Ranged AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -356,13 +503,13 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "EnduranceReduction",
           "Hold",
-          "Intangible",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
           "Holds",
-          "Running",
-          "Universal Travel"
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -370,7 +517,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       }
     ]
@@ -401,14 +553,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -419,7 +570,28 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Energy",
+            "scale": 0.96,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -434,18 +606,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -463,19 +654,20 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Immobilize",
-          "Intangible",
-          "Run Speed",
-          "Stun"
+          "EnduranceReduction",
+          "Healing",
+          "Hold",
+          "Recharge",
+          "Sleep"
         ],
         "allowedSetCategories": [
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
+          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Stuns",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Sleep",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -502,16 +694,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -521,7 +712,53 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Energy",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 0.04,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "enduranceDrain": 6.2,
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15,
+            "recoveryDebuff": 2
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -540,15 +777,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -556,7 +793,35 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 0.15,
+            "table": "Ranged_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8
         }
       }
     ]
@@ -586,15 +851,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -602,7 +866,43 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Fire",
+            "scale": 0.22,
+            "table": "Melee_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          },
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -620,14 +920,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -635,7 +935,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -653,13 +965,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -667,7 +978,21 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -683,15 +1008,14 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Running",
-          "To Hit Debuff",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -701,7 +1025,50 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "defenseDebuff": {
+            "scale": 1,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 40,
+            "resistanceDebuff": 40
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            }
+          },
+          "buffDuration": 40
         }
       },
       {
@@ -719,13 +1086,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -735,7 +1101,26 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.7,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            }
+          ]
         }
       }
     ]
@@ -762,18 +1147,24 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 600,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          },
+          "durations": {
+            "enduranceDiscount": 90
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -788,20 +1179,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -818,17 +1232,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Melee Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -836,7 +1249,20 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 6
+          },
+          "buffDuration": 6
         }
       },
       {
@@ -852,15 +1278,28 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize"
+          "Healing"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25,
+            "recoveryBuff": 10.25
+          },
+          "recoveryBuff": {
+            "scale": 0.125,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -878,14 +1317,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -896,7 +1335,23 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.66,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -931,7 +1386,15 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "maxEndBuff": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "maxEndBuff": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -946,20 +1409,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -976,17 +1462,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Melee Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -994,7 +1479,20 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 6
+          },
+          "buffDuration": 6
         }
       },
       {
@@ -1010,15 +1508,28 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize"
+          "Healing"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25,
+            "recoveryBuff": 10.25
+          },
+          "recoveryBuff": {
+            "scale": 0.125,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -1036,14 +1547,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1054,7 +1565,23 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.66,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -1084,14 +1611,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1099,7 +1626,41 @@ export const EPIC_POOLS_RAW = {
           "recharge": 9,
           "endurance": 8.58,
           "activationTime": 3,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Melee_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Knockback"
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          }
         }
       },
       {
@@ -1117,15 +1678,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1136,7 +1696,42 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 50,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.135,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.06075,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          }
         }
       },
       {
@@ -1154,13 +1749,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1171,7 +1765,37 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.7,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.315,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Melee_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ],
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          }
         }
       },
       {
@@ -1188,19 +1812,18 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Holds",
-          "Melee AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1211,7 +1834,85 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.225,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Melee_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ],
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistanceDebuff": 10,
+            "defenseDebuff": 10,
+            "knockback": 10
+          },
+          "defenseDebuff": {
+            "scale": 1.5,
+            "table": "Melee_Debuff_Def"
+          },
+          "knockback": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          },
+          "buffDuration": 10
         }
       },
       {
@@ -1229,18 +1930,18 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
+          "Immobilize",
+          "Knockback",
+          "Range",
           "Recharge",
-          "Run Speed"
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
+          "Immobilize",
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1278,14 +1979,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -1293,7 +1994,32 @@ export const EPIC_POOLS_RAW = {
           "recharge": 9,
           "endurance": 8.58,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.66,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.66,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.594,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          }
         }
       },
       {
@@ -1310,15 +2036,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Running",
-          "Universal Travel"
+          "Immobilize",
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -1328,7 +2053,21 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Fire",
+            "scale": 0.48708,
+            "table": "Ranged_Damage"
+          },
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Ranged_InherentTaunt"
+          }
         }
       },
       {
@@ -1343,20 +2082,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Mace_Mastery.Mace_Blast Epic.Brute_Mace_Mastery.Web_Envelope || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -1374,14 +2136,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -1391,7 +2153,32 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Melee_Knockback"
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          }
         }
       },
       {
@@ -1409,16 +2196,16 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Recharge",
-          "Run Speed"
+          "Immobilize",
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
+          "Immobilize",
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1457,14 +2244,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1472,7 +2258,39 @@ export const EPIC_POOLS_RAW = {
           "recharge": 9,
           "endurance": 8.58,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1.32,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.594,
+              "table": "Melee_Damage"
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 3,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Melee_Ones"
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -1491,16 +2309,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1510,7 +2327,66 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 0.04,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "enduranceDrain": 6.2,
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15,
+            "recoveryDebuff": 2
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -1529,14 +2405,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1546,7 +2421,49 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.18,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.135,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.081,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -1565,14 +2482,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1583,7 +2499,39 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.96,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.432,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Ranged_InherentTaunt"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -1601,17 +2549,18 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Immobilize",
-          "Intangible",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Hold",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
+          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1649,15 +2598,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1665,7 +2614,27 @@ export const EPIC_POOLS_RAW = {
           "recharge": 12,
           "endurance": 10.66,
           "activationTime": 1.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.22,
+              "table": "Melee_Damage",
+              "duration": 3.6,
+              "tickRate": 0.5
+            },
+            {
+              "type": "Fire",
+              "scale": 0.099,
+              "table": "Melee_Damage",
+              "duration": 3.6,
+              "tickRate": 0.5
+            }
+          ],
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          }
         }
       },
       {
@@ -1683,15 +2652,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1702,7 +2670,37 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.4363323152065277,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.135,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          }
         }
       },
       {
@@ -1718,13 +2716,12 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Running",
-          "Universal Travel"
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -1752,15 +2749,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1770,7 +2767,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.9,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.405,
+              "table": "Melee_Damage"
+            }
+          ],
+          "taunt": {
+            "scale": 1,
+            "table": "Melee_InherentTaunt"
+          }
         }
       },
       {
@@ -1788,13 +2801,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1833,14 +2845,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1851,7 +2862,16 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Energy",
+            "scale": 0.91,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 5,
+            "table": "Ranged_EndDrain"
+          }
         }
       },
       {
@@ -1870,15 +2890,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1886,7 +2906,35 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 0.15,
+            "table": "Melee_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 8
         }
       },
       {
@@ -1903,17 +2951,18 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Range",
+          "EnduranceReduction",
+          "Knockback",
           "Recharge",
-          "Run Speed",
-          "Slow"
+          "Stun",
+          "Taunt"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Running",
-          "Slow Movement",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Melee AoE Damage",
+          "Stuns",
+          "Threat Duration",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -1923,7 +2972,40 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.2,
           "effectArea": "AoE",
           "radius": 7,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.96,
+              "table": "Melee_Damage"
+            }
+          ],
+          "stun": {
+            "mag": 3,
+            "scale": 5,
+            "table": "Melee_Stun"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "knockback": {
+            "scale": 0.64,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -1939,19 +3021,68 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
           "endurance": 3.25,
           "activationTime": 1.96,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 6,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 120,
+            "recoveryBuff": 120,
+            "recoveryDebuff": 15
+          },
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -1968,13 +3099,13 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceModification",
-          "Range",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running",
-          "Universal Travel"
+          "Stuns"
         ],
         "effects": {
           "accuracy": 1,
@@ -1983,7 +3114,29 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.93,
           "effectArea": "AoE",
           "radius": 40,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "stun": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 50,
+            "table": "Ranged_EndDrain"
+          },
+          "regenDebuff": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "regenDebuff": 15,
+            "recoveryDebuff": 15
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       }
     ]
@@ -2013,15 +3166,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -2029,7 +3181,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 10.66,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 0.8,
+              "table": "Ranged_Damage"
+            }
+          ]
         }
       },
       {
@@ -2047,15 +3211,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed",
-          "Stun"
+          "Range",
+          "Recharge",
+          "Sleep"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Stuns",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Sleep",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -2065,7 +3228,24 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 25,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 0.1,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "sleep": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Sleep"
+          }
         }
       },
       {
@@ -2080,20 +3260,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Chill_Mastery.Ice_Blast Epic.Chill_Mastery.Flash_Freeze ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing",
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 540,
           "endurance": 18.2,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "durations": {
+            "maxHPBuff": 120,
+            "resistance": 120
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -2109,19 +3310,45 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "cold": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -2137,21 +3364,67 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "mezResistance": {
+            "knockback": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 0.75,
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "regenBuff": 0.75,
+            "recoveryBuff": 0.75
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       }
     ]
@@ -2178,13 +3451,12 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Hold",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Running",
-          "Universal Travel"
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1,
@@ -2212,15 +3484,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed",
-          "Stun"
+          "Range",
+          "Recharge",
+          "Sleep"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Stuns",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Sleep",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -2230,7 +3501,24 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 25,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 0.1,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "sleep": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Sleep"
+          }
         }
       },
       {
@@ -2245,20 +3533,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Flash_Freeze ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing",
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 540,
           "endurance": 18.2,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "durations": {
+            "maxHPBuff": 120,
+            "resistance": 120
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -2274,19 +3583,45 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "cold": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -2302,21 +3637,67 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "mezResistance": {
+            "knockback": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 0.75,
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "regenBuff": 0.75,
+            "recoveryBuff": 0.75
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       }
     ]
@@ -2345,17 +3726,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Melee Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -2363,7 +3743,64 @@ export const EPIC_POOLS_RAW = {
           "recharge": 24,
           "endurance": 13,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.05,
+              "table": "Ranged_Damage",
+              "duration": 9.3,
+              "tickRate": 1
+            }
+          ],
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 30,
+            "resistanceDebuff": 30
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            }
+          },
+          "buffDuration": 30
         }
       },
       {
@@ -2379,19 +3816,43 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -2409,14 +3870,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -2426,7 +3887,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -2441,20 +3918,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Controller_Mace_Mastery.Poisonous_Ray Epic.Controller_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -2471,19 +3971,18 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Holds",
+          "Accurate Defense Debuff",
+          "Defense Debuff",
           "Ranged AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -2521,15 +4020,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -2540,7 +4038,26 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 50,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.135,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -2555,18 +4072,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -2582,21 +4118,67 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "mezResistance": {
+            "knockback": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 0.75,
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "regenBuff": 0.75,
+            "recoveryBuff": 0.75
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -2614,14 +4196,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -2629,7 +4211,26 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 1.87,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.135,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -2647,19 +4248,20 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
+          "Immobilize",
+          "Knockback",
           "Range",
           "Recharge",
-          "Run Speed"
+          "Slow",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
+          "Immobilize",
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -2696,15 +4298,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Running",
-          "Universal Travel"
+          "Immobilize",
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -2714,7 +4315,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -2730,19 +4336,43 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -2757,20 +4387,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mace_Mastery.Web_Envelope Epic.Corruptor_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -2788,13 +4441,13 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "EnduranceReduction",
           "Hold",
-          "Intangible",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
           "Holds",
-          "Running",
-          "Universal Travel"
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -2802,7 +4455,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -2821,17 +4479,17 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Intangible",
-          "Jump",
-          "Run Speed"
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Leaping",
+          "Holds",
+          "Immobilize",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -2867,14 +4525,13 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Run Speed",
-          "Slow"
+          "EnduranceReduction",
+          "Recharge",
+          "Taunt"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running",
-          "Slow Movement",
-          "Universal Travel"
+          "Threat Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -2883,7 +4540,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "enduranceDrain": {
+            "scale": 0.35,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -2898,18 +4571,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -2928,15 +4620,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -2944,7 +4636,35 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 0.15,
+            "table": "Ranged_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8
         }
       },
       {
@@ -2959,18 +4679,24 @@ export const EPIC_POOLS_RAW = {
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mu_Mastery.Power_Sink Epic.Corruptor_Mu_Mastery.Charged_Armor || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 600,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          },
+          "durations": {
+            "enduranceDiscount": 90
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -2988,19 +4714,20 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Immobilize",
-          "Intangible",
-          "Run Speed",
-          "Stun"
+          "EnduranceReduction",
+          "Healing",
+          "Hold",
+          "Recharge",
+          "Sleep"
         ],
         "allowedSetCategories": [
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
+          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Stuns",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Sleep",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3037,15 +4764,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
-          "Running",
           "To Hit Buff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -3054,7 +4780,25 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 7
+          "maxTargets": 7,
+          "damage": {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 30,
+            "damageBuff": 30
+          },
+          "damageBuff": {
+            "scale": 4,
+            "table": "Melee_Buff_Dmg"
+          },
+          "buffDuration": 30
         }
       },
       {
@@ -3069,18 +4813,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -3095,18 +4862,104 @@ export const EPIC_POOLS_RAW = {
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Soul_Mastery.Soul_Drain Epic.Corruptor_Soul_Mastery.Dark_Embrace || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 120,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "effectDuration": 15,
+          "durations": {
+            "stun": 15,
+            "sleep": 15,
+            "confuse": 15,
+            "fear": 15,
+            "immobilize": 15,
+            "hold": 15,
+            "movement": 15,
+            "defenseBuff": 15,
+            "damageBuff": 15,
+            "absorb": 15,
+            "tohitBuff": 15,
+            "enduranceGain": 15
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "confuse": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "fear": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "immobilize": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "hold": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "movement": {
+            "runSpeed": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "flySpeed": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            }
+          },
+          "defenseBuff": {
+            "scale": 0.66,
+            "table": "Melee_Stun",
+            "melee": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "ranged": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "aoe": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            }
+          },
+          "damageBuff": {
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "absorb": {
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "tohitBuff": {
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "enduranceGain": {
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -3124,14 +4977,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3139,7 +4992,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Ranged_Damage",
+            "duration": 10,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -3157,19 +5022,20 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
+          "Immobilize",
+          "Knockback",
           "Range",
           "Recharge",
-          "Run Speed",
+          "Sleep",
           "Stun"
         ],
         "allowedSetCategories": [
-          "Leaping",
+          "Immobilize",
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
+          "Sleep",
           "Stuns",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3205,12 +5071,12 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
-          "Range",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Stuns"
         ],
         "effects": {
           "accuracy": 1,
@@ -3219,7 +5085,17 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 12,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Melee_Damage"
+          },
+          "stun": {
+            "mag": 2,
+            "scale": 6,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -3237,14 +5113,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Run Speed"
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
           "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3253,7 +5127,16 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Negative",
+            "scale": 0.8,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -3268,18 +5151,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Dark_Mastery.Oppressive_Gloom Epic.Dark_Mastery.Dark_Consumption ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -3295,21 +5201,18 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Damage",
-          "Defense Debuff",
           "EnduranceModification",
-          "Immobilize",
-          "Range",
-          "Run Speed"
+          "Healing",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
-          "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Healing",
+          "Melee AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3317,7 +5220,53 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 25,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Heal",
+              "scale": 3,
+              "table": "Melee_Heal",
+              "duration": 0.5,
+              "tickRate": 1
+            }
+          ],
+          "stun": {
+            "mag": 30,
+            "scale": 8,
+            "table": "Melee_Stun"
+          },
+          "recoveryBuff": {
+            "scale": 0.05,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 90,
+            "regenBuff": 90,
+            "untouchable": 15
+          },
+          "regenBuff": {
+            "scale": 0.15,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "enduranceGain": {
+            "scale": 30,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 50,
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -3334,15 +5283,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
-          "Running",
           "To Hit Buff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -3351,7 +5299,25 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 30,
+            "damageBuff": 30
+          },
+          "damageBuff": {
+            "scale": 4,
+            "table": "Melee_Buff_Dmg"
+          },
+          "buffDuration": 30
         }
       }
     ]
@@ -3381,16 +5347,17 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
+          "Knockback",
+          "Range",
           "Recharge",
-          "Run Speed"
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Knockback",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3401,7 +5368,16 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Smashing",
+            "scale": 0.4,
+            "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 5,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -3418,12 +5394,12 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Holds"
         ],
         "effects": {
           "accuracy": 1,
@@ -3431,7 +5407,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 9.75,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -3449,15 +5430,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3465,7 +5446,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
@@ -3483,15 +5469,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3502,7 +5488,14 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.3490658700466156,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Ranged_Damage",
+            "duration": 2.8,
+            "tickRate": 0.30000001192092896
+          }
         }
       },
       {
@@ -3520,17 +5513,17 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Immobilize",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3541,7 +5534,26 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.135,
+              "table": "Melee_Damage"
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          }
         }
       }
     ]
@@ -3569,19 +5581,20 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
+          "Knockback",
           "Range",
           "Recharge",
-          "Run Speed",
-          "ToHit Debuff"
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3607,13 +5620,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3624,7 +5636,21 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.7,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -3640,21 +5666,67 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "mezResistance": {
+            "knockback": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 0.75,
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "regenBuff": 0.75,
+            "recoveryBuff": 0.75
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -3669,18 +5741,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Leviathan_Mastery.Water_Spout Epic.Dominator_Leviathan_Mastery.Chum_Spray || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -3698,15 +5789,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3743,17 +5833,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Melee Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -3761,7 +5850,64 @@ export const EPIC_POOLS_RAW = {
           "recharge": 24,
           "endurance": 13,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.05,
+              "table": "Ranged_Damage",
+              "duration": 9.3,
+              "tickRate": 1
+            }
+          ],
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 30,
+            "resistanceDebuff": 30
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            }
+          },
+          "buffDuration": 30
         }
       },
       {
@@ -3777,19 +5923,43 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -3807,14 +5977,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -3824,7 +5994,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -3840,19 +6026,61 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 30,
           "endurance": 0.1625,
           "activationTime": 1.03,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "defenseBuff": {
+            "scale": 7.5,
+            "table": "Melee_Buff_Def"
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "smashing": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -3869,19 +6097,18 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Holds",
+          "Accurate Defense Debuff",
+          "Defense Debuff",
           "Ranged AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3917,14 +6144,13 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Run Speed",
-          "Slow"
+          "EnduranceReduction",
+          "Recharge",
+          "Taunt"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running",
-          "Slow Movement",
-          "Universal Travel"
+          "Threat Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -3933,7 +6159,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "enduranceDrain": {
+            "scale": 0.35,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -3948,18 +6190,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -3978,14 +6239,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -3995,7 +6255,33 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.3,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.18,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -4011,19 +6297,68 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
           "endurance": 3.25,
           "activationTime": 1.96,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 6,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 120,
+            "recoveryBuff": 120,
+            "recoveryDebuff": 15
+          },
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -4041,17 +6376,18 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Immobilize",
-          "Intangible",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Hold",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
+          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4089,16 +6425,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Run Speed",
-          "Slow"
+          "Recharge",
+          "Taunt"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
           "Melee AoE Damage",
-          "Running",
-          "Slow Movement",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Threat Duration",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4107,7 +6441,16 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Negative",
+            "scale": 0.8,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -4122,18 +6465,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -4151,15 +6517,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4169,7 +6535,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Negative",
+            "scale": 0.9,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
@@ -4186,15 +6557,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
-          "Running",
           "To Hit Buff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -4203,7 +6573,25 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 30,
+            "damageBuff": 30
+          },
+          "damageBuff": {
+            "scale": 4,
+            "table": "Melee_Buff_Dmg"
+          },
+          "buffDuration": 30
         }
       },
       {
@@ -4221,15 +6609,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
+          "Immobilize",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4267,15 +6654,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -4283,7 +6669,57 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 9.75,
           "activationTime": 1.93,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2,
+              "table": "Melee_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Fire",
+              "scale": 0.09,
+              "table": "Melee_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            }
+          ],
+          "immobilize": {
+            "mag": 4,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15,
+            "defenseDebuff": 15
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -4299,13 +6735,12 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
-          "Run Speed",
-          "Stun"
+          "EnduranceReduction",
+          "Recharge",
+          "Sleep"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Stuns",
-          "Universal Travel"
+          "Sleep"
         ],
         "effects": {
           "accuracy": 1,
@@ -4314,7 +6749,20 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 30,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "sleep": {
+            "mag": 3,
+            "scale": 20,
+            "table": "Ranged_Sleep"
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -4332,14 +6780,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -4347,7 +6795,32 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 2.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Melee_Immobilize"
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 12
+          },
+          "buffDuration": 12
         }
       },
       {
@@ -4363,13 +6836,12 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Running",
-          "Universal Travel"
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1,
@@ -4396,13 +6868,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceReduction",
           "Range",
-          "Run Speed"
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 0.8,
@@ -4412,7 +6884,32 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.9,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.405,
+              "table": "Melee_Damage"
+            }
+          ],
+          "stun": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Stun"
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 12
+          },
+          "buffDuration": 12
         }
       }
     ]
@@ -4443,14 +6940,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4461,7 +6957,16 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Energy",
+            "scale": 0.91,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 5,
+            "table": "Ranged_EndDrain"
+          }
         }
       },
       {
@@ -4480,15 +6985,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4496,7 +7001,31 @@ export const EPIC_POOLS_RAW = {
           "recharge": 16,
           "endurance": 10.66,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 2,
+            "table": "Ranged_EndDrain"
+          },
+          "durations": {
+            "enduranceDrain": 8.1
+          },
+          "enduranceGain": {
+            "scale": 5.33,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8.1
         }
       },
       {
@@ -4511,18 +7040,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Shocking_Bolt ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -4538,19 +7086,68 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
           "endurance": 3.25,
           "activationTime": 1.96,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 6,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 120,
+            "recoveryBuff": 120,
+            "recoveryDebuff": 15
+          },
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -4567,13 +7164,13 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceModification",
-          "Range",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running",
-          "Universal Travel"
+          "Stuns"
         ],
         "effects": {
           "accuracy": 1,
@@ -4582,7 +7179,29 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.93,
           "effectArea": "AoE",
           "radius": 40,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "stun": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 50,
+            "table": "Ranged_EndDrain"
+          },
+          "regenDebuff": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "regenDebuff": 15,
+            "recoveryDebuff": 15
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       }
     ]
@@ -4613,16 +7232,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Leaping",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4630,7 +7248,53 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 9.75,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 0.2,
+            "table": "Ranged_Damage",
+            "duration": 8.2,
+            "tickRate": 2
+          },
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 2,
+            "table": "Ranged_EndDrain"
+          },
+          "durations": {
+            "enduranceDrain": 6.2,
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15,
+            "recoveryDebuff": 2
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -4647,15 +7311,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Range",
+          "EnduranceReduction",
+          "Knockback",
           "Recharge",
-          "Run Speed"
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Melee AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4665,7 +7330,36 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.2,
           "effectArea": "AoE",
           "radius": 12,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 2.56,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.42,
+              "table": "Melee_Damage"
+            }
+          ],
+          "stun": {
+            "mag": 3,
+            "scale": 5,
+            "table": "Melee_Stun"
+          },
+          "knockback": {
+            "scale": 5,
+            "table": "Melee_Knockback"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -4680,18 +7374,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Thunder_Strike ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -4710,15 +7423,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4726,7 +7439,31 @@ export const EPIC_POOLS_RAW = {
           "recharge": 16,
           "endurance": 10.66,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 2,
+            "table": "Ranged_EndDrain"
+          },
+          "durations": {
+            "enduranceDrain": 8.1
+          },
+          "enduranceGain": {
+            "scale": 5.33,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8.1
         }
       },
       {
@@ -4742,12 +7479,11 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Endurance Modification",
-          "Running",
-          "Universal Travel"
+          "Endurance Modification"
         ],
         "effects": {
           "accuracy": 1,
@@ -4756,7 +7492,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 12,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "enduranceDrain": {
+            "scale": 33,
+            "table": "Melee_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       }
     ]
@@ -4783,18 +7535,24 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Tanker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 600,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          },
+          "durations": {
+            "enduranceDiscount": 90
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -4809,20 +7567,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Tanker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -4839,17 +7620,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Melee Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4857,7 +7637,27 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            }
+          ],
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 6
+          },
+          "buffDuration": 6
         }
       },
       {
@@ -4873,15 +7673,28 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize"
+          "Healing"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25,
+            "recoveryBuff": 10.25
+          },
+          "recoveryBuff": {
+            "scale": 0.125,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -4899,14 +7712,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -4917,7 +7730,28 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.66,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.432,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -4952,7 +7786,15 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "maxEndBuff": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "maxEndBuff": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -4967,20 +7809,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Brute ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -4997,17 +7862,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Melee Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -5015,7 +7879,27 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            }
+          ],
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 6
+          },
+          "buffDuration": 6
         }
       },
       {
@@ -5031,15 +7915,28 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize"
+          "Healing"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25,
+            "recoveryBuff": 10.25
+          },
+          "recoveryBuff": {
+            "scale": 0.125,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -5057,14 +7954,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -5075,7 +7972,28 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.66,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.432,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -5102,18 +8020,33 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -5131,14 +8064,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -5146,7 +8079,23 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 10.66,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.8,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -5164,14 +8113,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -5182,7 +8131,23 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.3,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.66,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.3,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -5200,14 +8165,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -5217,7 +8182,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.4,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -5233,19 +8214,68 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
           "endurance": 3.25,
           "activationTime": 3.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 120,
+            "recoveryBuff": 120,
+            "recoveryDebuff": 15
+          },
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 120
         }
       }
     ]
@@ -5275,13 +8305,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -5289,7 +8318,21 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 1.1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -5307,13 +8350,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -5323,7 +8365,26 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.15,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.9,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -5338,18 +8399,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Fire_Ball ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -5365,27 +8449,52 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Damage",
-          "Defense Debuff",
           "EnduranceModification",
-          "Immobilize",
-          "Range",
-          "Run Speed"
+          "Healing",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 300,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "damage": {
+            "type": "Heal",
+            "scale": 5,
+            "table": "Melee_HealSelf",
+            "duration": 0.5,
+            "tickRate": 1
+          },
+          "untouchable": {
+            "scale": 15,
+            "table": "Melee_Ones"
+          },
+          "enduranceGain": {
+            "scale": 50,
+            "table": "Melee_Ones"
+          },
+          "damageBuff": {
+            "scale": 5,
+            "table": "Melee_Buff_Dmg"
+          },
+          "durations": {
+            "damageBuff": 90
+          },
+          "immobilize": {
+            "mag": 50,
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -5403,14 +8512,13 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
           "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -5419,7 +8527,26 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 20,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Fire",
+            "scale": 0.4,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 20,
+            "table": "Melee_Ones"
+          },
+          "debuffResistance": {
+            "endurance": {
+              "scale": 0.5,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "debuffResistance": 120
+          },
+          "buffDuration": 120
         }
       }
     ]
@@ -5449,13 +8576,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 2,
@@ -5481,13 +8607,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -5497,7 +8622,26 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.15,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.9,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -5512,18 +8656,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Fire_Mastery_Dominator.Fire_Blast Epic.Fire_Mastery_Dominator.Fire_Ball ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -5539,27 +8706,52 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Damage",
-          "Defense Debuff",
           "EnduranceModification",
-          "Immobilize",
-          "Range",
-          "Run Speed"
+          "Healing",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 300,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "damage": {
+            "type": "Heal",
+            "scale": 5,
+            "table": "Melee_HealSelf",
+            "duration": 0.5,
+            "tickRate": 1
+          },
+          "untouchable": {
+            "scale": 15,
+            "table": "Melee_Ones"
+          },
+          "enduranceGain": {
+            "scale": 50,
+            "table": "Melee_Ones"
+          },
+          "damageBuff": {
+            "scale": 5,
+            "table": "Melee_Buff_Dmg"
+          },
+          "durations": {
+            "damageBuff": 90
+          },
+          "immobilize": {
+            "mag": 50,
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -5575,15 +8767,14 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Running",
-          "To Hit Debuff",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -5593,7 +8784,50 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "defenseDebuff": {
+            "scale": 1,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 40,
+            "resistanceDebuff": 40
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            }
+          },
+          "buffDuration": 40
         }
       }
     ]
@@ -5622,14 +8856,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 2,
@@ -5655,14 +8889,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -5670,7 +8904,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 16,
           "endurance": 10.66,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Fire",
+            "scale": 0.22,
+            "table": "Ranged_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -5685,18 +8931,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Flame_Mastery.Bonfire Epic.Flame_Mastery.Char ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -5712,15 +8981,14 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Running",
-          "To Hit Debuff",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -5730,7 +8998,55 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "defenseDebuff": {
+            "scale": 1,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 40,
+            "resistanceDebuff": 40,
+            "damageBuff": 9
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            }
+          },
+          "damageBuff": {
+            "scale": 0.04,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 40
         }
       },
       {
@@ -5746,27 +9062,52 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Damage",
-          "Defense Debuff",
           "EnduranceModification",
-          "Immobilize",
-          "Range",
-          "Run Speed"
+          "Healing",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 300,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "damage": {
+            "type": "Heal",
+            "scale": 5,
+            "table": "Melee_HealSelf",
+            "duration": 0.5,
+            "tickRate": 1
+          },
+          "untouchable": {
+            "scale": 15,
+            "table": "Melee_Ones"
+          },
+          "enduranceGain": {
+            "scale": 50,
+            "table": "Melee_Ones"
+          },
+          "damageBuff": {
+            "scale": 5,
+            "table": "Melee_Buff_Dmg"
+          },
+          "durations": {
+            "damageBuff": 90
+          },
+          "immobilize": {
+            "mag": 50,
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 90
         }
       }
     ]
@@ -5794,19 +9135,61 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 30,
           "endurance": 0.1625,
           "activationTime": 1.03,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "defenseBuff": {
+            "scale": 7.5,
+            "table": "Melee_Buff_Def"
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "smashing": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -5821,12 +9204,12 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Recharge",
-          "Run Speed"
+          "EnduranceReduction",
+          "Knockback",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Knockback"
         ],
         "effects": {
           "accuracy": 1,
@@ -5834,7 +9217,19 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 9,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "knockback": {
+            "scale": 3,
+            "table": "Ranged_Knockback"
+          },
+          "durations": {
+            "knockback": 0.75
+          },
+          "enduranceDrain": {
+            "scale": 2.5,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -5849,18 +9244,33 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Force_Mastery.Personal_Force_Field Epic.Force_Mastery.Repulsion_Field ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -5878,15 +9288,16 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
+          "Knockback",
           "Range",
           "Recharge",
-          "Run Speed"
+          "Stun"
         ],
         "allowedSetCategories": [
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -5896,7 +9307,29 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.47,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Smashing",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Ranged_Ones"
+          },
+          "stun": {
+            "mag": 2,
+            "scale": 8,
+            "table": "Ranged_Stun"
+          },
+          "damageBuff": {
+            "scale": 0.062,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "damageBuff": 10.57
+          },
+          "buffDuration": 10.57
         }
       },
       {
@@ -5912,19 +9345,68 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
           "endurance": 3.25,
           "activationTime": 3.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 120,
+            "recoveryBuff": 120,
+            "recoveryDebuff": 15
+          },
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 120
         }
       }
     ]
@@ -5955,15 +9437,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceReduction",
           "Hold",
-          "Intangible",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -5971,7 +9453,41 @@ export const EPIC_POOLS_RAW = {
           "recharge": 16,
           "endurance": 10.66,
           "activationTime": 1.87,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Cold",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 12,
+            "knockback": 12,
+            "knockup": 12
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 12
         }
       },
       {
@@ -5989,17 +9505,16 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6009,7 +9524,43 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Cold",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 5.2,
+            "tickRate": 2
+          },
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 12,
+            "knockback": 12,
+            "knockup": 12
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 12
         }
       },
       {
@@ -6024,20 +9575,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Frost_Mastery.Block_of_Ice Epic.Frost_Mastery.Frostbite ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing",
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 540,
           "endurance": 18.2,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "durations": {
+            "maxHPBuff": 120,
+            "resistance": 120
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -6053,19 +9625,45 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "cold": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -6081,21 +9679,67 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "mezResistance": {
+            "knockback": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 0.75,
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "regenBuff": 0.75,
+            "recoveryBuff": 0.75
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       }
     ]
@@ -6125,15 +9769,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6141,7 +9784,43 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Fire",
+            "scale": 0.22,
+            "table": "Melee_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          },
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -6159,13 +9838,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6175,7 +9853,26 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.15,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.9,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -6193,14 +9890,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6208,7 +9905,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Fire",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -6226,13 +9935,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 2,
@@ -6257,13 +9965,12 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -6271,7 +9978,26 @@ export const EPIC_POOLS_RAW = {
           "recharge": 24,
           "endurance": 12.688,
           "activationTime": 2.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 1.44,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.2,
+              "table": "Melee_Damage",
+              "duration": 4.1,
+              "tickRate": 1
+            }
+          ]
         }
       }
     ]
@@ -6301,17 +10027,16 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6319,7 +10044,43 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Cold",
+            "scale": 0.2,
+            "table": "Melee_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          },
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -6336,15 +10097,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Run Speed",
-          "Stun"
+          "EnduranceReduction",
+          "Recharge",
+          "Sleep"
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
-          "Running",
-          "Stuns",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Sleep",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6353,7 +10113,17 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.1,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Cold",
+            "scale": 1.42,
+            "table": "Melee_Damage"
+          },
+          "sleep": {
+            "mag": 2,
+            "scale": 10,
+            "table": "Melee_Sleep"
+          }
         }
       },
       {
@@ -6370,14 +10140,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Intangible",
-          "Run Speed"
+          "EnduranceReduction",
+          "Hold",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Holds",
           "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6386,7 +10156,43 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.192,
           "activationTime": 1,
           "effectArea": "SingleTarget",
-          "maxTargets": 5
+          "maxTargets": 5,
+          "damage": {
+            "type": "Cold",
+            "scale": 0.28,
+            "table": "Melee_Damage",
+            "duration": 5.1,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 6,
+            "knockback": 6,
+            "knockup": 6
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 6
         }
       },
       {
@@ -6404,15 +10210,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 2,
@@ -6437,13 +10242,12 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Running",
-          "Universal Travel"
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1,
@@ -6484,14 +10288,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6499,7 +10303,26 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 1.87,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.135,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -6516,19 +10339,18 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Holds",
-          "Melee AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6539,7 +10361,69 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ],
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistanceDebuff": 10,
+            "defenseDebuff": 10,
+            "knockback": 10
+          },
+          "defenseDebuff": {
+            "scale": 1.5,
+            "table": "Melee_Debuff_Def"
+          },
+          "knockback": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10
         }
       },
       {
@@ -6557,13 +10441,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6574,7 +10457,21 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.7,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -6590,19 +10487,20 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
+          "Knockback",
           "Range",
           "Recharge",
-          "Run Speed",
-          "ToHit Debuff"
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6628,15 +10526,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6673,13 +10570,12 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -6687,7 +10583,50 @@ export const EPIC_POOLS_RAW = {
           "recharge": 24,
           "endurance": 17.94,
           "activationTime": 2.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Smashing",
+            "scale": 2.76,
+            "table": "Melee_Damage"
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistanceDebuff": 16
+          },
+          "buffDuration": 16
         }
       },
       {
@@ -6705,13 +10644,13 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "EnduranceReduction",
           "Hold",
-          "Intangible",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
           "Holds",
-          "Running",
-          "Universal Travel"
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -6719,7 +10658,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -6737,14 +10681,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -6754,7 +10698,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -6769,20 +10729,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Mace_Mastery.Shatter_Armor Epic.Guardian_Mace_Mastery.Web_Cocoon || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.195,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -6799,19 +10782,18 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Holds",
+          "Accurate Defense Debuff",
+          "Defense Debuff",
           "Ranged AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6850,15 +10832,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6866,7 +10848,35 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 0.15,
+            "table": "Ranged_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8
         }
       },
       {
@@ -6885,14 +10895,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6902,7 +10911,33 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.3,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.18,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -6920,16 +10955,17 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Range",
+          "EnduranceReduction",
+          "Knockback",
           "Recharge",
-          "Run Speed"
+          "Stun"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Melee AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -6939,7 +10975,40 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.2,
           "effectArea": "AoE",
           "radius": 7,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.96,
+              "table": "Melee_Damage"
+            }
+          ],
+          "stun": {
+            "mag": 3,
+            "scale": 5,
+            "table": "Melee_Stun"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "knockback": {
+            "scale": 0.64,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -6954,18 +11023,24 @@ export const EPIC_POOLS_RAW = {
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Mu_Mastery.Electric_Shackles Epic.Guardian_Mu_Mastery.Ball_Lightning || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 360,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          },
+          "durations": {
+            "enduranceDiscount": 90
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -6983,17 +11058,18 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Immobilize",
-          "Intangible",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Hold",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
+          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7030,14 +11106,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Range",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Ranged Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Melee Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7045,7 +11121,17 @@ export const EPIC_POOLS_RAW = {
           "recharge": 18,
           "endurance": 11.856,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 2.28,
+            "table": "Melee_Damage"
+          },
+          "stun": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -7063,14 +11149,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7080,7 +11166,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.37,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.3,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.6,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -7103,7 +11205,15 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "maxEndBuff": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "maxEndBuff": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -7118,20 +11228,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Guardian_Munitions_Mastery.Taser_Jolt Epic.Guardian_Munitions_Mastery.Attack_Munitions ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.195,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -7147,14 +11280,13 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
-          "Run Speed",
-          "ToHit Debuff"
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Running",
-          "To Hit Debuff",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -7162,7 +11294,50 @@ export const EPIC_POOLS_RAW = {
           "recharge": 45,
           "endurance": 10.66,
           "activationTime": 1.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistanceDebuff": 20,
+            "defenseDebuff": 20
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "buffDuration": 20
         }
       }
     ]
@@ -7191,14 +11366,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Range",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Ranged Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Melee Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -7206,7 +11381,29 @@ export const EPIC_POOLS_RAW = {
           "recharge": 30,
           "endurance": 19.11,
           "activationTime": 2.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1.56,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 3,
+              "table": "Melee_Damage"
+            }
+          ],
+          "stun": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -7224,14 +11421,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7241,7 +11438,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.4,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -7259,14 +11472,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7277,7 +11490,23 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.3,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.66,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.3,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -7292,20 +11521,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.195,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -7321,15 +11573,28 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize"
+          "Healing"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25,
+            "recoveryBuff": 10.25
+          },
+          "recoveryBuff": {
+            "scale": 0.125,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10.25
         }
       }
     ]
@@ -7359,12 +11624,11 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Confuse",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Confuse",
-          "Running",
-          "Universal Travel"
+          "Confuse"
         ],
         "effects": {
           "accuracy": 1,
@@ -7372,7 +11636,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 20,
           "endurance": 7.8,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "confuse": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -7389,14 +11658,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Intangible",
-          "Run Speed"
+          "EnduranceReduction",
+          "Hold",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Holds",
           "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -7404,7 +11673,24 @@ export const EPIC_POOLS_RAW = {
           "recharge": 24,
           "endurance": 14.352,
           "activationTime": 2.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.69,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 2.07,
+              "table": "Melee_Damage"
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -7422,14 +11708,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7439,7 +11725,18 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 20,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Psionic",
+            "scale": 0.175,
+            "table": "Ranged_Damage",
+            "duration": 4.1,
+            "tickRate": 1
+          },
+          "knockup": {
+            "scale": 1.4,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -7456,14 +11753,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Recharge",
-          "Run Speed"
+          "EnduranceReduction",
+          "Knockback",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Knockback",
           "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7472,7 +11769,16 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.5,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Smashing",
+            "scale": 1.42,
+            "table": "Melee_Damage"
+          },
+          "knockup": {
+            "scale": 2,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -7489,13 +11795,12 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Run Speed",
-          "Stun"
+          "Range",
+          "Recharge",
+          "Sleep"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Stuns",
-          "Universal Travel"
+          "Sleep"
         ],
         "effects": {
           "accuracy": 1,
@@ -7505,7 +11810,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 25,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "sleep": {
+            "mag": 3,
+            "scale": 20,
+            "table": "Ranged_Sleep"
+          }
         }
       }
     ]
@@ -7535,14 +11845,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7550,7 +11860,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Ranged_Damage",
+            "duration": 10,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -7568,15 +11890,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7586,7 +11908,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Negative",
+            "scale": 0.9,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
@@ -7603,15 +11930,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
-          "Running",
           "To Hit Buff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -7620,7 +11946,25 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 30,
+            "damageBuff": 30
+          },
+          "damageBuff": {
+            "scale": 4,
+            "table": "Melee_Buff_Dmg"
+          },
+          "buffDuration": 30
         }
       },
       {
@@ -7638,14 +11982,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Run Speed"
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
           "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7654,7 +11996,16 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Negative",
+            "scale": 0.8,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -7672,13 +12023,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7715,14 +12065,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 2,
@@ -7748,13 +12098,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7762,7 +12111,21 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 1.1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -7780,13 +12143,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7796,7 +12158,26 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.15,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.9,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -7814,14 +12195,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7829,7 +12210,28 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 4.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Melee_Damage",
+              "duration": 4.2,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -7845,27 +12247,44 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Damage",
-          "Defense Debuff",
           "EnduranceModification",
-          "Immobilize",
-          "Range",
-          "Run Speed"
+          "Healing",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 300,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "damage": {
+            "type": "Heal",
+            "scale": 5,
+            "table": "Melee_HealSelf",
+            "duration": 0.5,
+            "tickRate": 1
+          },
+          "untouchable": {
+            "scale": 15,
+            "table": "Melee_Ones"
+          },
+          "enduranceGain": {
+            "scale": 50,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 50,
+            "scale": 4,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -7895,15 +12314,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -7911,7 +12329,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 10.66,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 0.8,
+              "table": "Ranged_Damage"
+            }
+          ]
         }
       },
       {
@@ -7927,21 +12357,67 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "mezResistance": {
+            "knockback": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 0.75,
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "regenBuff": 0.75,
+            "recoveryBuff": 0.75
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -7957,19 +12433,45 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "cold": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -7987,15 +12489,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -8006,7 +12507,14 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Cold",
+            "scale": 0.7,
+            "table": "Ranged_Damage",
+            "duration": 0.6,
+            "tickRate": 0.5
+          }
         }
       },
       {
@@ -8023,15 +12531,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 2,
@@ -8068,19 +12575,18 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Holds",
+          "Accurate Defense Debuff",
+          "Defense Debuff",
           "Ranged AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 2,
@@ -8104,21 +12610,67 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "mezResistance": {
+            "knockback": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 0.75,
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "regenBuff": 0.75,
+            "recoveryBuff": 0.75
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -8134,19 +12686,45 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "cold": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -8161,20 +12739,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Ice_Mastery_Dominator.Ice_Blast Epic.Ice_Mastery_Dominator.Hibernate ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing",
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 540,
           "endurance": 18.2,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
+          },
+          "durations": {
+            "maxHPBuff": 120,
+            "resistance": 120
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -8191,15 +12790,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 2,
@@ -8237,14 +12835,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -8252,7 +12850,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 16,
           "endurance": 10.66,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Fire",
+            "scale": 0.22,
+            "table": "Ranged_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -8270,14 +12880,13 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
           "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -8286,7 +12895,26 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 20,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Fire",
+            "scale": 0.4,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 20,
+            "table": "Melee_Ones"
+          },
+          "debuffResistance": {
+            "endurance": {
+              "scale": 0.5,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "debuffResistance": 120
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -8301,18 +12929,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Inferno_Mastery.Consume Epic.Inferno_Mastery.Char ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -8329,14 +12980,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 2,
@@ -8360,27 +13011,52 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Damage",
-          "Defense Debuff",
           "EnduranceModification",
-          "Immobilize",
-          "Range",
-          "Run Speed"
+          "Healing",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 300,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "damage": {
+            "type": "Heal",
+            "scale": 5,
+            "table": "Melee_HealSelf",
+            "duration": 0.5,
+            "tickRate": 1
+          },
+          "untouchable": {
+            "scale": 15,
+            "table": "Melee_Ones"
+          },
+          "enduranceGain": {
+            "scale": 50,
+            "table": "Melee_Ones"
+          },
+          "damageBuff": {
+            "scale": 5,
+            "table": "Melee_Buff_Dmg"
+          },
+          "durations": {
+            "damageBuff": 90
+          },
+          "immobilize": {
+            "mag": 50,
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 90
         }
       }
     ]
@@ -8408,14 +13084,13 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
-          "Run Speed",
-          "ToHit Debuff"
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Running",
-          "To Hit Debuff",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -8423,7 +13098,50 @@ export const EPIC_POOLS_RAW = {
           "recharge": 45,
           "endurance": 10.66,
           "activationTime": 1.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistanceDebuff": 20,
+            "defenseDebuff": 20
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "buffDuration": 20
         }
       },
       {
@@ -8440,15 +13158,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Running",
-          "Universal Travel"
+          "Immobilize",
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -8456,7 +13173,36 @@ export const EPIC_POOLS_RAW = {
           "recharge": 12,
           "endurance": 5.2,
           "activationTime": 2.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -8474,13 +13220,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -8488,7 +13233,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 5.2,
           "activationTime": 2.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Lethal",
+            "scale": 1.64,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
@@ -8504,10 +13254,11 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Running",
+          "Teleport",
           "Universal Travel"
         ],
         "effects": {
@@ -8516,7 +13267,30 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 13.52,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "teleport": {
+            "scale": 0.1,
+            "table": "Ranged_Ones"
+          },
+          "stealth": {
+            "stealthPvE": {
+              "scale": 120,
+              "table": "Melee_Ones"
+            },
+            "stealthPvP": {
+              "scale": 400,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "stealth": 8.5,
+            "damageBuff": 8.5
+          },
+          "damageBuff": {
+            "scale": 3,
+            "table": "Melee_Buff_Dmg"
+          },
+          "buffDuration": 8.5
         }
       },
       {
@@ -8532,21 +13306,33 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 120,
           "endurance": 10,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.8,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 30,
+            "recoveryBuff": 30
+          },
+          "recoveryBuff": {
+            "scale": 0.25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 30
         }
       }
     ]
@@ -8576,15 +13362,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -8592,7 +13377,36 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 11.7,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.21,
+              "table": "Melee_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0945,
+              "table": "Melee_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "regenDebuff": {
+            "scale": 2,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "regenDebuff": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -8608,15 +13422,28 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize"
+          "Healing"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "maxHPBuff": {
+            "scale": 0.75,
+            "table": "Melee_HealSelf"
+          },
+          "durations": {
+            "maxHPBuff": 10.25,
+            "maxEndBuff": 10.25
+          },
+          "maxEndBuff": {
+            "scale": 3.5,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -8633,17 +13460,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Melee Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.155,
@@ -8651,7 +13477,62 @@ export const EPIC_POOLS_RAW = {
           "recharge": 12,
           "endurance": 10.19,
           "activationTime": 2.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 1.64,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.738,
+              "table": "Melee_Damage"
+            }
+          ],
+          "defenseDebuff": {
+            "scale": 1.5,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 15,
+            "resistanceDebuff": 15
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -8666,18 +13547,21 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Martial_Mastery_Brute.Throwing_Dagger Epic.Martial_Mastery_Brute.Battle_Hardened ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 105,
           "endurance": 9.75,
           "activationTime": 3.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": -0.25,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -8692,13 +13576,12 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Martial_Mastery_Brute.Bodkin_Bolt Epic.Martial_Mastery_Brute.Throwing_Dagger && Epic.Martial_Mastery_Brute.Bodkin_Bolt Epic.Martial_Mastery_Brute.Battle_Hardened && || Epic.Martial_Mastery_Brute.Throwing_Dagger Epic.Martial_Mastery_Brute.Battle_Hardened && || Epic.Martial_Mastery_Brute.Reckless_Abandon Epic.Martial_Mastery_Brute.Battle_Hardened && || Epic.Martial_Mastery_Brute.Bodkin_Bolt Epic.Martial_Mastery_Brute.Reckless_Abandon && || Epic.Martial_Mastery_Brute.Throwing_Dagger Epic.Martial_Mastery_Brute.Reckless_Abandon && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
@@ -8707,7 +13590,26 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.567,
           "effectArea": "AoE",
           "radius": 30,
-          "maxTargets": 30
+          "maxTargets": 30,
+          "regenBuff": {
+            "scale": 1.4,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 2.25,
+            "mezResistance": 2.25
+          },
+          "mezResistance": {
+            "confuse": {
+              "scale": 3,
+              "table": "Ranged_Res_Boolean"
+            },
+            "fear": {
+              "scale": 3,
+              "table": "Ranged_Res_Boolean"
+            }
+          },
+          "buffDuration": 2.25
         }
       }
     ]
@@ -8735,14 +13637,13 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
-          "Run Speed",
-          "ToHit Debuff"
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Running",
-          "To Hit Debuff",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -8750,7 +13651,50 @@ export const EPIC_POOLS_RAW = {
           "recharge": 45,
           "endurance": 10.66,
           "activationTime": 1.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistanceDebuff": 20,
+            "defenseDebuff": 20
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "buffDuration": 20
         }
       },
       {
@@ -8767,15 +13711,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Running",
-          "Universal Travel"
+          "Immobilize",
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -8783,7 +13726,36 @@ export const EPIC_POOLS_RAW = {
           "recharge": 12,
           "endurance": 5.2,
           "activationTime": 2.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -8801,13 +13773,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.155,
@@ -8815,7 +13786,26 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 5.2,
           "activationTime": 2.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Lethal",
+            "scale": 1.64,
+            "table": "Melee_Damage"
+          },
+          "stealth": {
+            "stealthPvE": {
+              "scale": 1,
+              "table": "Melee_Ones"
+            },
+            "stealthPvP": {
+              "scale": 1,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "stealth": 8
+          },
+          "buffDuration": 8
         }
       },
       {
@@ -8831,13 +13821,13 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
-          "Fear",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Running",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -8846,7 +13836,17 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 12,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "fear": {
+            "mag": 2,
+            "scale": 8,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 8,
+          "durations": {
+            "fear": 8
+          },
+          "buffDuration": 8
         }
       },
       {
@@ -8862,21 +13862,33 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 120,
           "endurance": 10,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.8,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 30,
+            "recoveryBuff": 30
+          },
+          "recoveryBuff": {
+            "scale": 0.25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 30
         }
       }
     ]
@@ -8924,15 +13936,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -8940,7 +13951,36 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 11.7,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.21,
+              "table": "Melee_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0945,
+              "table": "Melee_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "regenDebuff": {
+            "scale": 2,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "regenDebuff": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -8956,15 +13996,28 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize"
+          "Healing"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "maxHPBuff": {
+            "scale": 0.75,
+            "table": "Melee_HealSelf"
+          },
+          "durations": {
+            "maxHPBuff": 10.25,
+            "maxEndBuff": 10.25
+          },
+          "maxEndBuff": {
+            "scale": 3.5,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -8981,17 +14034,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Melee Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.155,
@@ -8999,7 +14051,62 @@ export const EPIC_POOLS_RAW = {
           "recharge": 12,
           "endurance": 10.19,
           "activationTime": 2.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 1.64,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.738,
+              "table": "Melee_Damage"
+            }
+          ],
+          "defenseDebuff": {
+            "scale": 1.5,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 15,
+            "resistanceDebuff": 15
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -9014,13 +14121,12 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Martial_Mastery_Tanker.Bodkin_Bolt Epic.Martial_Mastery_Tanker.Throwing_Dagger && Epic.Martial_Mastery_Tanker.Bodkin_Bolt Epic.Martial_Mastery_Tanker.Battle_Hardened && || Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Battle_Hardened && || Epic.Martial_Mastery_Tanker.Art_Of_War Epic.Martial_Mastery_Tanker.Battle_Hardened && || Epic.Martial_Mastery_Tanker.Bodkin_Bolt Epic.Martial_Mastery_Tanker.Art_Of_War && || Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Art_Of_War && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
@@ -9029,7 +14135,26 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.567,
           "effectArea": "AoE",
           "radius": 30,
-          "maxTargets": 255
+          "maxTargets": 255,
+          "regenBuff": {
+            "scale": 1.4,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 2.25,
+            "mezResistance": 2.25
+          },
+          "mezResistance": {
+            "confuse": {
+              "scale": 3,
+              "table": "Ranged_Res_Boolean"
+            },
+            "fear": {
+              "scale": 3,
+              "table": "Ranged_Res_Boolean"
+            }
+          },
+          "buffDuration": 2.25
         }
       }
     ]
@@ -9059,15 +14184,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9078,7 +14202,26 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 50,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.135,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -9096,13 +14239,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9113,7 +14255,21 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.7,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -9130,15 +14286,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Intangible",
-          "Recharge",
-          "Run Speed"
+          "EnduranceReduction",
+          "Hold",
+          "Knockback",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Holds",
+          "Knockback",
           "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -9146,7 +14303,21 @@ export const EPIC_POOLS_RAW = {
           "recharge": 40,
           "endurance": 23.14,
           "activationTime": 2.23,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Smashing",
+            "scale": 3.56,
+            "table": "Melee_Damage"
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Stun"
+          },
+          "knockup": {
+            "scale": 3,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -9161,18 +14332,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Leviathan_Mastery.School_Of_Sharks Epic.Mastermind_Leviathan_Mastery.Chum_Spray || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -9190,14 +14380,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9205,7 +14395,26 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 1.87,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.135,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       }
     ]
@@ -9234,15 +14443,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Running",
-          "Universal Travel"
+          "Immobilize",
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -9252,7 +14460,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -9268,19 +14481,43 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -9298,14 +14535,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -9316,7 +14553,23 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 50,
           "arc": 0.6108652353286743,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -9331,18 +14584,104 @@ export const EPIC_POOLS_RAW = {
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Mace_Mastery.Web_Envelope Epic.Mastermind_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 120,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 0.44,
+            "table": "Melee_Stun"
+          },
+          "effectDuration": 15,
+          "durations": {
+            "stun": 15,
+            "sleep": 15,
+            "confuse": 15,
+            "fear": 15,
+            "immobilize": 15,
+            "hold": 15,
+            "movement": 15,
+            "defenseBuff": 15,
+            "damageBuff": 15,
+            "absorb": 15,
+            "tohitBuff": 15,
+            "enduranceGain": 15
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 0.44,
+            "table": "Melee_Stun"
+          },
+          "confuse": {
+            "mag": 1,
+            "scale": 0.44,
+            "table": "Melee_Stun"
+          },
+          "fear": {
+            "mag": 1,
+            "scale": 0.44,
+            "table": "Melee_Stun"
+          },
+          "immobilize": {
+            "mag": 1,
+            "scale": 0.44,
+            "table": "Melee_Stun"
+          },
+          "hold": {
+            "mag": 1,
+            "scale": 0.44,
+            "table": "Melee_Stun"
+          },
+          "movement": {
+            "runSpeed": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "flySpeed": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            }
+          },
+          "defenseBuff": {
+            "scale": 0.44,
+            "table": "Melee_Stun",
+            "melee": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "ranged": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "aoe": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            }
+          },
+          "damageBuff": {
+            "scale": 0.44,
+            "table": "Melee_Stun"
+          },
+          "absorb": {
+            "scale": 0.44,
+            "table": "Melee_Stun"
+          },
+          "tohitBuff": {
+            "scale": 0.44,
+            "table": "Melee_Stun"
+          },
+          "enduranceGain": {
+            "scale": 0.44,
+            "table": "Melee_Stun"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -9360,13 +14699,13 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "EnduranceReduction",
           "Hold",
-          "Intangible",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
           "Holds",
-          "Running",
-          "Universal Travel"
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -9374,7 +14713,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       }
     ]
@@ -9405,14 +14749,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9423,7 +14766,28 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Energy",
+            "scale": 0.96,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -9438,18 +14802,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -9466,17 +14849,18 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Range",
+          "EnduranceReduction",
+          "Knockback",
           "Recharge",
-          "Run Speed",
-          "Slow"
+          "Stun",
+          "Taunt"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Running",
-          "Slow Movement",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Melee AoE Damage",
+          "Stuns",
+          "Threat Duration",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9486,7 +14870,40 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.2,
           "effectArea": "AoE",
           "radius": 7,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.96,
+              "table": "Melee_Damage"
+            }
+          ],
+          "stun": {
+            "mag": 3,
+            "scale": 5,
+            "table": "Melee_Stun"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "knockback": {
+            "scale": 0.64,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -9505,16 +14922,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9524,7 +14940,53 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Energy",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 0.04,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "enduranceDrain": 6.2,
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15,
+            "recoveryDebuff": 2
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -9543,15 +15005,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9559,7 +15021,35 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 0.15,
+            "table": "Ranged_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8
         }
       }
     ]
@@ -9589,15 +15079,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9608,7 +15098,14 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.3490658700466156,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Ranged_Damage",
+            "duration": 2.8,
+            "tickRate": 0.30000001192092896
+          }
         }
       },
       {
@@ -9623,18 +15120,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -9650,12 +15170,12 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
-          "Range",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Stuns"
         ],
         "effects": {
           "accuracy": 1,
@@ -9664,7 +15184,17 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 12,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Melee_Damage"
+          },
+          "stun": {
+            "mag": 2,
+            "scale": 6,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -9682,15 +15212,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9701,7 +15230,26 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.4363323152065277,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.135,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -9719,14 +15267,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9734,7 +15282,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Ranged_Damage",
+            "duration": 10,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       }
     ]
@@ -9760,11 +15320,29 @@ export const EPIC_POOLS_RAW = {
         "powerType": "Auto",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
-        "allowedEnhancements": [],
-        "allowedSetCategories": [],
+        "allowedEnhancements": [
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
         "effects": {
           "accuracy": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 1.25,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.25,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -9782,14 +15360,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -9797,7 +15375,41 @@ export const EPIC_POOLS_RAW = {
           "recharge": 16,
           "endurance": 8.58,
           "activationTime": 1.87,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Cold",
+            "scale": 0.1,
+            "table": "Ranged_Damage"
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 10,
+            "knockback": 10,
+            "knockup": 10
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 10
         }
       },
       {
@@ -9815,15 +15427,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed",
-          "Stun"
+          "Range",
+          "Recharge",
+          "Sleep"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Stuns",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Sleep",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -9833,7 +15444,17 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.87,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Smashing",
+            "scale": 0.1,
+            "table": "Ranged_Damage"
+          },
+          "sleep": {
+            "mag": 3,
+            "scale": 20,
+            "table": "Ranged_Sleep"
+          }
         }
       },
       {
@@ -9849,14 +15470,13 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
-          "Run Speed",
-          "ToHit Debuff"
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Running",
-          "To Hit Debuff",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -9864,7 +15484,50 @@ export const EPIC_POOLS_RAW = {
           "recharge": 45,
           "endurance": 10.66,
           "activationTime": 1.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistanceDebuff": 20,
+            "defenseDebuff": 20
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "buffDuration": 20
         }
       },
       {
@@ -9881,17 +15544,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "EnduranceModification",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Interrupt",
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -9901,7 +15563,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 5.87,
           "effectArea": "AoE",
           "radius": 20,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 1.49,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Ranged_Knockback"
+          }
         }
       }
     ]
@@ -9928,18 +15606,24 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 600,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          },
+          "durations": {
+            "enduranceDiscount": 90
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -9954,20 +15638,107 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 240,
           "endurance": 13,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "effectDuration": 12.5,
+          "durations": {
+            "stun": 12.5,
+            "sleep": 12.5,
+            "confuse": 12.5,
+            "fear": 12.5,
+            "immobilize": 12.5,
+            "hold": 12.5,
+            "movement": 12.5,
+            "defenseBuff": 12.5,
+            "damageBuff": 12.5,
+            "absorb": 12.5,
+            "tohitBuff": 12.5,
+            "enduranceGain": 12.5
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "confuse": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "fear": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "immobilize": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "hold": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "movement": {
+            "runSpeed": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "flySpeed": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            }
+          },
+          "defenseBuff": {
+            "scale": 0.66,
+            "table": "Melee_Stun",
+            "melee": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "ranged": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "aoe": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            }
+          },
+          "damageBuff": {
+            "scale": 8,
+            "table": "Melee_Buff_Dmg"
+          },
+          "absorb": {
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
+          },
+          "enduranceGain": {
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "buffDuration": 12.5
         }
       },
       {
@@ -9982,18 +15753,33 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Power_Mastery.Conserve_Power Epic.Power_Mastery.Power_Build_Up ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -10009,19 +15795,68 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
           "endurance": 3.25,
           "activationTime": 3.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 120,
+            "recoveryBuff": 120,
+            "recoveryDebuff": 15
+          },
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -10038,14 +15873,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Range",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Ranged Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Melee Damage",
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -10053,7 +15888,24 @@ export const EPIC_POOLS_RAW = {
           "recharge": 40,
           "endurance": 23.14,
           "activationTime": 2.2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 2.56,
+              "table": "Melee_Damage"
+            }
+          ],
+          "stun": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Immobilize"
+          }
         }
       }
     ]
@@ -10083,14 +15935,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10098,7 +15950,23 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 10.66,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.8,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -10113,18 +15981,24 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 600,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          },
+          "durations": {
+            "enduranceDiscount": 90
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -10139,18 +16013,33 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Conserve_Power ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -10168,14 +16057,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10186,7 +16075,23 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.3,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.66,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.3,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -10201,18 +16106,104 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Conserve_Power && Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Temp_Invulnerability && || Epic.Primal_Forces_Mastery.Conserve_Power Epic.Primal_Forces_Mastery.Temp_Invulnerability && || Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Conserve_Power && || Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Energy_Torrent && || Epic.Primal_Forces_Mastery.Conserve_Power Epic.Primal_Forces_Mastery.Energy_Torrent && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 120,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "effectDuration": 15,
+          "durations": {
+            "stun": 15,
+            "sleep": 15,
+            "confuse": 15,
+            "fear": 15,
+            "immobilize": 15,
+            "hold": 15,
+            "movement": 15,
+            "defenseBuff": 15,
+            "damageBuff": 15,
+            "absorb": 15,
+            "tohitBuff": 15,
+            "enduranceGain": 15
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "confuse": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "fear": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "immobilize": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "hold": {
+            "mag": 1,
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "movement": {
+            "runSpeed": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "flySpeed": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            }
+          },
+          "defenseBuff": {
+            "scale": 0.66,
+            "table": "Melee_Stun",
+            "melee": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "ranged": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "aoe": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            }
+          },
+          "damageBuff": {
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "absorb": {
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "tohitBuff": {
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "enduranceGain": {
+            "scale": 0.66,
+            "table": "Melee_Stun"
+          },
+          "buffDuration": 15
         }
       }
     ]
@@ -10241,16 +16232,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Range",
-          "Run Speed",
-          "Slow"
+          "EnduranceReduction",
+          "Recharge",
+          "Stun",
+          "Taunt"
         ],
         "allowedSetCategories": [
-          "Ranged Damage",
-          "Running",
-          "Slow Movement",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Melee Damage",
+          "Stuns",
+          "Threat Duration",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -10258,7 +16249,29 @@ export const EPIC_POOLS_RAW = {
           "recharge": 20,
           "endurance": 19.11,
           "activationTime": 2.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1.56,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 3,
+              "table": "Melee_Damage"
+            }
+          ],
+          "stun": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -10273,18 +16286,24 @@ export const EPIC_POOLS_RAW = {
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 600,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          },
+          "durations": {
+            "enduranceDiscount": 90
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -10299,18 +16318,33 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Conserve_Power ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -10328,14 +16362,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10346,7 +16380,23 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.3,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.66,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.3,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -10364,14 +16414,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10381,7 +16431,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.4,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
         }
       }
     ]
@@ -10411,13 +16477,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10425,7 +16490,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Psionic",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
@@ -10441,19 +16511,59 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 360,
           "endurance": 19.5,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 90,
+          "durations": {
+            "stun": 90,
+            "sleep": 90,
+            "hold": 90,
+            "confuse": 90,
+            "fear": 90,
+            "defenseBuff": 90
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "hold": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "confuse": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "fear": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "defenseBuff": {
+            "psionic": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -10468,18 +16578,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Psionic_Mastery.Mental_Blast Epic.Psionic_Mastery.Indomitable_Will ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -10497,14 +16626,13 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Confuse",
           "Damage",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Confuse",
           "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10513,7 +16641,13 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Psionic",
+            "scale": 0.12,
+            "table": "Ranged_Damage",
+            "tickRate": 2
+          }
         }
       },
       {
@@ -10531,14 +16665,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10548,7 +16682,18 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 20,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Psionic",
+            "scale": 0.175,
+            "table": "Ranged_Damage",
+            "duration": 4.1,
+            "tickRate": 1
+          },
+          "knockup": {
+            "scale": 1.4,
+            "table": "Ranged_Ones"
+          }
         }
       }
     ]
@@ -10589,7 +16734,65 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.67,
           "effectArea": "AoE",
           "radius": 35,
-          "maxTargets": 255
+          "maxTargets": 255,
+          "tohitBuff": {
+            "scale": 0.33,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 90,
+            "resistance": 90,
+            "defenseBuff": 90
+          },
+          "resistance": {
+            "psionic": {
+              "scale": 0.2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "defenseBuff": {
+            "melee": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -10605,19 +16808,59 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 360,
           "endurance": 19.5,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 90,
+          "durations": {
+            "stun": 90,
+            "sleep": 90,
+            "hold": 90,
+            "confuse": 90,
+            "fear": 90,
+            "defenseBuff": 90
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "hold": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "confuse": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "fear": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "defenseBuff": {
+            "psionic": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -10632,18 +16875,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Psionic_Mastery_Domingator.Link_Minds Epic.Psionic_Mastery_Domingator.Indomitable_Will ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -10661,14 +16923,13 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Confuse",
           "Damage",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Confuse",
           "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10677,7 +16938,13 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Psionic",
+            "scale": 0.12,
+            "table": "Ranged_Damage",
+            "tickRate": 2
+          }
         }
       },
       {
@@ -10695,14 +16962,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10712,7 +16979,18 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 20,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Psionic",
+            "scale": 0.175,
+            "table": "Ranged_Damage",
+            "duration": 4.1,
+            "tickRate": 1
+          },
+          "knockup": {
+            "scale": 1.4,
+            "table": "Ranged_Ones"
+          }
         }
       }
     ]
@@ -10742,14 +17020,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -10757,7 +17035,17 @@ export const EPIC_POOLS_RAW = {
           "recharge": 16,
           "endurance": 10.66,
           "activationTime": 1.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Psionic",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -10774,13 +17062,12 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Run Speed",
-          "Stun"
+          "Range",
+          "Recharge",
+          "Sleep"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Stuns",
-          "Universal Travel"
+          "Sleep"
         ],
         "effects": {
           "accuracy": 1,
@@ -10790,7 +17077,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 25,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "sleep": {
+            "mag": 3,
+            "scale": 20,
+            "table": "Ranged_Sleep"
+          }
         }
       },
       {
@@ -10805,18 +17097,37 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Psychic_Mastery.Dominate Epic.Psychic_Mastery.Mass_Hypnosis ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -10834,14 +17145,13 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Confuse",
           "Damage",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Confuse",
           "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10850,7 +17160,13 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Psionic",
+            "scale": 0.12,
+            "table": "Ranged_Damage",
+            "tickRate": 2
+          }
         }
       },
       {
@@ -10866,12 +17182,10 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
-        "allowedSetCategories": [
-          "Running",
-          "Universal Travel"
-        ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "range": 50,
@@ -10880,7 +17194,20 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.13,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 5
+          "maxTargets": 5,
+          "hold": {
+            "mag": 3,
+            "scale": 0.75,
+            "table": "Melee_Immobilize"
+          },
+          "repel": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "repel": 0.75
+          },
+          "buffDuration": 0.75
         }
       }
     ]
@@ -10910,15 +17237,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10926,7 +17252,52 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 0.22,
+              "table": "Melee_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Fire",
+              "scale": 0.099,
+              "table": "Melee_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -10944,14 +17315,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10959,7 +17330,28 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 4.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Melee_Damage",
+              "duration": 4.2,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -10977,13 +17369,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -10991,7 +17382,33 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -11007,15 +17424,14 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Accuracy",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Running",
-          "To Hit Debuff",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -11025,7 +17441,55 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Fire",
+            "scale": 0.48708,
+            "table": "Ranged_Damage"
+          },
+          "defenseDebuff": {
+            "scale": 1,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 40,
+            "resistanceDebuff": 40
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            }
+          },
+          "buffDuration": 40
         }
       },
       {
@@ -11043,13 +17507,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11059,7 +17522,38 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.2,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.7,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Melee_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.405,
+              "table": "Melee_Damage"
+            }
+          ]
         }
       }
     ]
@@ -11089,14 +17583,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11104,7 +17598,25 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 3,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.7,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -11120,19 +17632,20 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
+          "Knockback",
           "Range",
           "Recharge",
-          "Run Speed",
-          "ToHit Debuff"
+          "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11156,21 +17669,67 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "mezResistance": {
+            "knockback": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 10,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 0.75,
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "regenBuff": 0.75,
+            "recoveryBuff": 0.75
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -11188,14 +17747,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11203,7 +17762,26 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 1.87,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.135,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -11222,16 +17800,17 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceReduction",
           "Hold",
-          "Intangible",
+          "Knockback",
+          "Range",
           "Recharge",
-          "Run Speed"
+          "Slow"
         ],
         "allowedSetCategories": [
           "Holds",
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11269,14 +17848,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -11284,7 +17863,23 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -11301,17 +17896,17 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "EnduranceModification",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Interrupt",
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged Damage",
+          "Sniper Attacks",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.25,
@@ -11319,7 +17914,23 @@ export const EPIC_POOLS_RAW = {
           "recharge": 24,
           "endurance": 17.94,
           "activationTime": 8,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1.15,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.15,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -11337,14 +17948,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -11354,7 +17965,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -11372,13 +17999,13 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "EnduranceReduction",
           "Hold",
-          "Intangible",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
           "Holds",
-          "Running",
-          "Universal Travel"
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -11386,7 +18013,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -11403,17 +18035,16 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
+          "Accurate Defense Debuff",
+          "Defense Debuff",
           "Ranged AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11452,14 +18083,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11467,7 +18097,28 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 2
+          },
+          "enduranceGain": {
+            "scale": 3.25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 2
         }
       },
       {
@@ -11486,14 +18137,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Interrupt",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Sniper Attacks",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -11501,7 +18153,28 @@ export const EPIC_POOLS_RAW = {
           "recharge": 24,
           "endurance": 17.94,
           "activationTime": 7.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 2.3,
+            "table": "Melee_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.14,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 8.97,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -11520,14 +18193,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11537,7 +18209,33 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.18,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -11556,15 +18254,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11572,7 +18270,35 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 0.15,
+            "table": "Melee_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Ones"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 8
         }
       },
       {
@@ -11590,19 +18316,20 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Immobilize",
-          "Intangible",
-          "Run Speed",
-          "Stun"
+          "EnduranceReduction",
+          "Healing",
+          "Hold",
+          "Recharge",
+          "Sleep"
         ],
         "allowedSetCategories": [
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
+          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Stuns",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Sleep",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11640,15 +18367,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11656,7 +18383,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
@@ -11673,18 +18405,18 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "EnduranceModification",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Interrupt",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Endurance Modification",
-          "Fear",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged Damage",
+          "Sniper Attacks",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -11692,7 +18424,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 24,
           "endurance": 17.94,
           "activationTime": 7.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Negative",
+            "scale": 2.3,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
@@ -11708,19 +18445,64 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 90,
           "endurance": 5.2,
           "activationTime": 3,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "melee": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -11738,14 +18520,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Intangible",
-          "Run Speed"
+          "Hold",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11753,7 +18535,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 10.66,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Negative",
+            "scale": 0.11,
+            "table": "Melee_Damage",
+            "duration": 10,
+            "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -11771,15 +18565,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
+          "Accurate To-Hit Debuff",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11817,14 +18611,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11832,7 +18626,16 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 11.7,
           "activationTime": 2.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Smashing",
+            "scale": 1.64,
+            "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 3,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -11850,15 +18653,16 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
+          "Knockback",
           "Range",
           "Recharge",
-          "Run Speed"
+          "Stun"
         ],
         "allowedSetCategories": [
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Stuns",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -11868,7 +18672,21 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Smashing",
+            "scale": 0.9,
+            "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          },
+          "stun": {
+            "mag": 2,
+            "scale": 8,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -11884,19 +18702,32 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "Defense",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Defense Sets",
-          "Running",
-          "Universal Travel"
+          "Defense Sets"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.6,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.6,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -11913,14 +18744,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Intangible",
-          "Run Speed"
+          "EnduranceReduction",
+          "Hold",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Holds",
           "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -11928,7 +18759,17 @@ export const EPIC_POOLS_RAW = {
           "recharge": 28,
           "endurance": 18.512,
           "activationTime": 1.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Smashing",
+            "scale": 2.6,
+            "table": "Melee_Damage"
+          },
+          "hold": {
+            "mag": 4,
+            "scale": 8,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -11943,20 +18784,41 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Fissure && Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Stone_Armor && || Epic.Stone_Mastery.Fissure Epic.Stone_Mastery.Stone_Armor && || Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Fissure && || Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Seismic_Smash && || Epic.Stone_Mastery.Fissure Epic.Stone_Mastery.Seismic_Smash && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Immobilize",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Running",
-          "Universal Travel"
+          "Healing",
+          "Resist Damage"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 360,
           "endurance": 13,
           "activationTime": 2.03,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 4,
+            "table": "Melee_HealSelf"
+          },
+          "maxHPBuff": {
+            "scale": 4,
+            "table": "Melee_HealSelf"
+          },
+          "durations": {
+            "maxHPBuff": 120,
+            "resistance": 120
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 120
         }
       }
     ]
@@ -11986,14 +18848,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12001,7 +18863,25 @@ export const EPIC_POOLS_RAW = {
           "recharge": 9,
           "endurance": 8.58,
           "activationTime": 3,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -12019,15 +18899,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12038,7 +18917,26 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 50,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.135,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -12056,13 +18954,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12073,7 +18970,21 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.7,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
@@ -12090,19 +19001,18 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
+          "Defense Debuff",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed",
-          "ToHit Debuff"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Holds",
-          "Melee AoE Damage",
-          "Running",
-          "To Hit Debuff",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12113,7 +19023,69 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ],
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistanceDebuff": 10,
+            "defenseDebuff": 10,
+            "knockback": 10
+          },
+          "defenseDebuff": {
+            "scale": 1.5,
+            "table": "Melee_Debuff_Def"
+          },
+          "knockback": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10
         }
       },
       {
@@ -12131,18 +19103,18 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
+          "Immobilize",
+          "Knockback",
+          "Range",
           "Recharge",
-          "Run Speed"
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
+          "Immobilize",
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12180,14 +19152,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -12195,7 +19167,23 @@ export const EPIC_POOLS_RAW = {
           "recharge": 9,
           "endurance": 8.58,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.66,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.66,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -12212,15 +19200,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Running",
-          "Universal Travel"
+          "Immobilize",
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -12230,7 +19217,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -12248,14 +19240,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Recharge",
-          "Run Speed"
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Knockback",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -12265,7 +19257,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -12282,13 +19290,12 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "Damage",
-          "Run Speed"
+          "EnduranceReduction",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -12296,7 +19303,50 @@ export const EPIC_POOLS_RAW = {
           "recharge": 30,
           "endurance": 17.94,
           "activationTime": 2.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Smashing",
+            "scale": 2.76,
+            "table": "Melee_Damage"
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "cold": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistanceDebuff": 20
+          },
+          "buffDuration": 20
         }
       },
       {
@@ -12314,16 +19364,16 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Recharge",
-          "Run Speed"
+          "Immobilize",
+          "Knockback",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
+          "Immobilize",
+          "Knockback",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12362,14 +19412,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12377,7 +19426,28 @@ export const EPIC_POOLS_RAW = {
           "recharge": 9,
           "endurance": 8.58,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 1.32,
+            "table": "Melee_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 3,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -12396,16 +19466,15 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12415,7 +19484,53 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Energy",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
+          "enduranceDrain": {
+            "scale": 0.04,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "enduranceDrain": 6.2,
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15,
+            "recoveryDebuff": 2
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Melee_Ones"
+            }
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -12434,14 +19549,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12451,7 +19565,33 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.3,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 0.18,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -12470,14 +19610,13 @@ export const EPIC_POOLS_RAW = {
           "Damage",
           "EnduranceModification",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12488,7 +19627,28 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Energy",
+            "scale": 0.96,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
@@ -12506,17 +19666,18 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceModification",
-          "Immobilize",
-          "Intangible",
-          "Run Speed"
+          "EnduranceReduction",
+          "Healing",
+          "Hold",
+          "Recharge"
         ],
         "allowedSetCategories": [
+          "Accurate Healing",
           "Endurance Modification",
-          "Immobilize",
+          "Healing",
+          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12554,15 +19715,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12570,7 +19731,14 @@ export const EPIC_POOLS_RAW = {
           "recharge": 12,
           "endurance": 10.66,
           "activationTime": 1.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Negative",
+            "scale": 0.22,
+            "table": "Melee_Damage",
+            "duration": 3.6,
+            "tickRate": 0.5
+          }
         }
       },
       {
@@ -12588,15 +19756,14 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Leaping",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12607,7 +19774,26 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.4363323152065277,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.135,
+              "table": "Melee_Damage"
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -12625,15 +19811,15 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Accurate To-Hit Debuff",
+          "Ranged AoE Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12643,7 +19829,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Negative",
+            "scale": 0.9,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
@@ -12659,13 +19850,12 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Fear",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Fear",
-          "Running",
-          "Universal Travel"
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -12693,13 +19883,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12736,15 +19925,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Running",
-          "Universal Travel"
+          "Immobilize",
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1,
@@ -12752,7 +19940,36 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 9.75,
           "activationTime": 1.37,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -12769,15 +19986,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Damage",
           "EnduranceReduction",
-          "Hold",
-          "Run Speed"
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
           "Ranged AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Slow Movement",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12803,13 +20019,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12817,7 +20032,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 3,
           "endurance": 5.46,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Lethal",
+            "scale": 0.84,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
@@ -12832,20 +20052,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Weapon_Mastery.Web_Grenade Epic.Weapon_Mastery.Caltrops ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -12863,13 +20106,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12879,7 +20121,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Lethal",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]
@@ -12908,15 +20155,14 @@ export const EPIC_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
-          "Hold",
-          "Jump",
-          "Run Speed"
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
-          "Leaping",
-          "Running",
-          "Universal Travel"
+          "Immobilize",
+          "Slow Movement"
         ],
         "effects": {
           "accuracy": 1,
@@ -12924,7 +20170,36 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 9.75,
           "activationTime": 1.37,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15,
+            "knockback": 15,
+            "knockup": 15
+          },
+          "knockback": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -12940,15 +20215,28 @@ export const EPIC_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceModification",
-          "Immobilize"
+          "Healing"
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Immobilize"
+          "Healing"
         ],
         "effects": {
           "accuracy": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25,
+            "recoveryBuff": 10.25
+          },
+          "recoveryBuff": {
+            "scale": 0.125,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10.25
         }
       },
       {
@@ -12966,13 +20254,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -12980,7 +20267,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 3,
           "endurance": 5.46,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Lethal",
+            "scale": 0.84,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
@@ -12995,20 +20287,43 @@ export const EPIC_POOLS_RAW = {
         "requires": "Epic.Weapon_Mastery_Stalker.Web_Grenade Epic.Weapon_Mastery_Stalker.Caltrops ||",
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Run Speed",
+          "EnduranceReduction",
+          "Recharge",
           "ToHit"
         ],
         "allowedSetCategories": [
-          "Running",
-          "To Hit Buff",
-          "Universal Travel"
+          "To Hit Buff"
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          },
+          "durations": {
+            "tohitBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75
+          },
+          "debuffResistance": {
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "perceptionBuff": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -13026,13 +20341,12 @@ export const EPIC_POOLS_RAW = {
           "Accuracy",
           "Damage",
           "EnduranceReduction",
-          "Run Speed"
+          "Range",
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee AoE Damage",
-          "Running",
-          "Universal Damage Sets",
-          "Universal Travel"
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
         ],
         "effects": {
           "accuracy": 1,
@@ -13042,7 +20356,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Lethal",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]

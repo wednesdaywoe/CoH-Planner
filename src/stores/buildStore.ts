@@ -876,6 +876,39 @@ function getInherentSelectedPowers(
 }
 
 /**
+ * Reconcile auto-granted inherent slot counts (e.g. Rebirth Health/Stamina
+ * grants at L8/L16/L12/L22) against the supplied level. Adds trailing empty
+ * slots when the level newly qualifies; removes only trailing empty slots
+ * when the level drops, to preserve user-placed enhancements at indices
+ * outside the inherent range. Mirrors the inline logic in `setLevel` so
+ * other level-mutating paths (e.g. auto-advance on power pick) stay in sync.
+ */
+function reconcileInherentSlots(inherents: SelectedPower[], level: number): SelectedPower[] {
+  return inherents.map((p) => {
+    const want = getInherentAutoGrantedSlotCount(p.internalName, level);
+    const have = p.inherentSlotCount ?? 0;
+    if (want === have) return p;
+    const slots = [...p.slots];
+    if (want > have) {
+      for (let i = 0; i < want - have; i++) slots.push(null);
+    } else {
+      let toRemove = have - want;
+      for (let i = slots.length - 1; i >= 0 && toRemove > 0; i--) {
+        if (slots[i] === null) {
+          slots.splice(i, 1);
+          toRemove--;
+        } else break;
+      }
+    }
+    return {
+      ...p,
+      slots,
+      ...(want > 0 ? { inherentSlotCount: want } : { inherentSlotCount: undefined }),
+    };
+  });
+}
+
+/**
  * Count total selected powers (excluding inherents and auto-granted form sub-powers)
  */
 function countSelectedPowers(build: Build): number {
@@ -1237,7 +1270,15 @@ export const useBuildStore = create<BuildStore>()(
           // L3, L5) manually via the Level Up button, so slot-placement phases
           // aren't skipped.
           if (category !== 'inherent' && !useUIStore.getState().levelUpMode) {
-            newBuild.level = Math.max(state.build.level, calculateCorrectLevel(newBuild));
+            const nextLevel = Math.max(state.build.level, calculateCorrectLevel(newBuild));
+            if (nextLevel !== newBuild.level) {
+              newBuild.level = nextLevel;
+              // Auto-advance crosses Rebirth's L8/L16/L12/L22 thresholds;
+              // mirror setLevel's reconciliation so Health/Stamina pick up
+              // their auto-granted slots without requiring a manual level
+              // change.
+              newBuild.inherents = reconcileInherentSlots(newBuild.inherents, nextLevel);
+            }
           }
 
           return { build: newBuild };
@@ -1514,39 +1555,11 @@ export const useBuildStore = create<BuildStore>()(
         historyCheckpoint();
         set((state) => {
           const newLevel = Math.max(1, Math.min(50, level));
-          // Reconcile auto-granted inherent slot counts with the new level
-          // (e.g. Rebirth's Health/Stamina grants at L8/L16/L12/L22) —
-          // preserving any user-placed enhancements at indices outside the
-          // inherent range.
-          const inherents = state.build.inherents.map((p) => {
-            const want = getInherentAutoGrantedSlotCount(p.internalName, newLevel);
-            const have = p.inherentSlotCount ?? 0;
-            if (want === have) return p;
-            const slots = [...p.slots];
-            if (want > have) {
-              for (let i = 0; i < want - have; i++) slots.push(null);
-            } else {
-              // Remove only trailing inherent slots that are still empty.
-              // Don't drop slots holding enhancements the user may rely on.
-              let toRemove = have - want;
-              for (let i = slots.length - 1; i >= 0 && toRemove > 0; i--) {
-                if (slots[i] === null) {
-                  slots.splice(i, 1);
-                  toRemove--;
-                } else break;
-              }
-            }
-            return {
-              ...p,
-              slots,
-              ...(want > 0 ? { inherentSlotCount: want } : { inherentSlotCount: undefined }),
-            };
-          });
           return {
             build: {
               ...state.build,
               level: newLevel,
-              inherents,
+              inherents: reconcileInherentSlots(state.build.inherents, newLevel),
             },
           };
         });
@@ -2077,29 +2090,7 @@ export const useBuildStore = create<BuildStore>()(
           // current character level here so the slots appear as soon as the
           // page loads.
           if (state.build.inherents.length > 0) {
-            const lvl = state.build.level;
-            state.build.inherents = state.build.inherents.map((power) => {
-              const want = getInherentAutoGrantedSlotCount(power.internalName, lvl);
-              const have = power.inherentSlotCount ?? 0;
-              if (want === have) return power;
-              const slots = [...power.slots];
-              if (want > have) {
-                for (let i = 0; i < want - have; i++) slots.push(null);
-              } else {
-                let toRemove = have - want;
-                for (let i = slots.length - 1; i >= 0 && toRemove > 0; i--) {
-                  if (slots[i] === null) {
-                    slots.splice(i, 1);
-                    toRemove--;
-                  } else break;
-                }
-              }
-              return {
-                ...power,
-                slots,
-                ...(want > 0 ? { inherentSlotCount: want } : { inherentSlotCount: undefined }),
-              };
-            });
+            state.build.inherents = reconcileInherentSlots(state.build.inherents, state.build.level);
           }
 
           // Migration: Initialize serverId if missing (builds before
