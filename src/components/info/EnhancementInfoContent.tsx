@@ -5,7 +5,7 @@
 
 import { useBuildStore } from '@/stores';
 import { useBonusTracking } from '@/hooks';
-import { getIOSet, getPower, getPowerPool, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
+import { getIOSet, getPower, getPowerPool, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
 import {
   normalizeAspectName,
   getAspectSchedule,
@@ -332,8 +332,11 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
 
                       // For Auto/Toggle powers, use special calculation
                       if (isAutoOrToggle) {
-                        const procChance = calculateAutoToggleProcChance(procData.ppm);
-                        const procsPerMin = calculateAutoToggleProcsPerMinute(procData.ppm);
+                        const togRadius = base?.effects?.radius || selected.effects?.radius || 0;
+                        const togArcRaw = base?.effects?.arc ?? selected.effects?.arc;
+                        const togArc = togRadius > 0 ? (arcToDegrees(togArcRaw) || 360) : 360;
+                        const procChance = calculateAutoToggleProcChance(procData.ppm, togRadius, togArc);
+                        const procsPerMin = calculateAutoToggleProcsPerMinute(procData.ppm, togRadius, togArc);
 
                         return (
                           <div className="mt-1 pt-1 border-t border-amber-700/30">
@@ -403,11 +406,13 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                       const recharge = base?.effects?.recharge || selected.effects?.recharge || 0;
                       const castTime = base?.effects?.castTime || selected.effects?.castTime || 1;
                       const radius = base?.effects?.radius || selected.effects?.radius || 0;
+                      const arcRaw = base?.effects?.arc ?? selected.effects?.arc;
+                      const arcDegrees = radius > 0 ? (arcToDegrees(arcRaw) || 360) : 360;
 
                       if (recharge <= 0) return null; // Can't calculate without recharge
 
-                      const procChance = calculateProcChance(procData.ppm, recharge, castTime, radius);
-                      const procsPerMin = calculateProcsPerMinute(procData.ppm, recharge, castTime, radius, 0);
+                      const procChance = calculateProcChance(procData.ppm, recharge, castTime, radius, arcDegrees);
+                      const procsPerMin = calculateProcsPerMinute(procData.ppm, recharge, castTime, radius, 0, arcDegrees);
 
                       return (
                         <div className="mt-1 pt-1 border-t border-amber-700/30">
@@ -427,7 +432,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                                 <div>
                                   <span className="text-slate-500">DPS:</span>
                                   <span className="text-red-400 ml-1">
-                                    {calculateProcDPS(procData.ppm, dmgAtLevel, dmgAtLevel, recharge, castTime, radius, 0).toFixed(1)}
+                                    {calculateProcDPS(procData.ppm, dmgAtLevel, dmgAtLevel, recharge, castTime, radius, 0, arcDegrees).toFixed(1)}
                                   </span>
                                 </div>
                               );

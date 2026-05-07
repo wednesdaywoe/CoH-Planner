@@ -17,7 +17,7 @@
 
 import type { PowerDamageResult } from '@/utils/calculations';
 import { calculateArcanaTime, abbreviateDamageType } from '@/utils/calculations';
-import { findProcData, parseProcEffect, calculateProcChance, interpolateProcDamage } from '@/data';
+import { findProcData, parseProcEffect, calculateProcChance, interpolateProcDamage, arcToDegrees } from '@/data';
 import type { IOSetEnhancement, SelectedPower } from '@/types';
 import { useUIStore } from '@/stores';
 import { getDamageCap, calcThreeTier as calcThreeTierUtil } from './powerDisplayUtils';
@@ -43,6 +43,8 @@ export interface DamageBlockProps {
     castTime?: number;
     enduranceCost?: number;
     radius?: number;
+    /** Cone arc — radians from binary, or already in degrees from upstream conversion */
+    arc?: number;
   };
   archetypeId?: string;
   buildLevel: number;
@@ -338,6 +340,7 @@ function DamageMetrics({
   let procDamagePerActivation = 0;
   if (includeProcDamage && selectedPower?.slots) {
     const radius = effects.radius ?? 0;
+    const arcDegrees = radius > 0 ? (arcToDegrees(effects.arc) || 360) : 360;
     for (const slot of selectedPower.slots) {
       if (!slot || slot.type !== 'io-set') continue;
       const ioEnh = slot as IOSetEnhancement;
@@ -350,7 +353,7 @@ function DamageMetrics({
       const enhLevel = ioEnh.attuned ? buildLevel : (ioEnh.level ?? buildLevel);
       const dmgAtLevel = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, enhLevel);
       // Proc chance uses base recharge and raw cast time (not ArcanaTime)
-      const procChance = calculateProcChance(procData.ppm, effects.recharge ?? 0, rawCastTime, radius);
+      const procChance = calculateProcChance(procData.ppm, effects.recharge ?? 0, rawCastTime, radius, arcDegrees);
       procDamagePerActivation += dmgAtLevel * procChance;
     }
   }

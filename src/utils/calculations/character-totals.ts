@@ -14,7 +14,7 @@
 
 import type { Build, Accolade, Enhancement, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
-import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance } from '@/data';
+import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
 import { getPowerPool } from '@/data/power-pools';
@@ -1497,7 +1497,7 @@ interface PowerForProcScan {
   powerType?: string;
   isActive?: boolean;
   slots?: (Enhancement | null)[];
-  stats?: { recharge?: number; castTime?: number; radius?: number };
+  stats?: { recharge?: number; castTime?: number; radius?: number; arc?: number };
 }
 
 /**
@@ -2007,7 +2007,7 @@ function applyBuildUpProcBonuses(
   breakdown: Map<string, DashboardStatBreakdown>,
 ): void {
   // Collect all click powers that have Build Up procs
-  const buildUpProcs: { procName: string; setName: string; ppm: number; damage: number; toHit: number; duration: number; powerName: string; baseRecharge: number; castTime: number; radius: number }[] = [];
+  const buildUpProcs: { procName: string; setName: string; ppm: number; damage: number; toHit: number; duration: number; powerName: string; baseRecharge: number; castTime: number; radius: number; arcDegrees: number }[] = [];
 
   const processPower = (power: PowerForProcScan) => {
     if (!power.slots) return;
@@ -2019,6 +2019,7 @@ function applyBuildUpProcBonuses(
     const baseRecharge = power.stats?.recharge || 4;
     const castTime = power.stats?.castTime || 1;
     const radius = power.stats?.radius || 0;
+    const arcDegrees = radius > 0 ? (arcToDegrees(power.stats?.arc) || 360) : 360;
 
     for (const slot of power.slots) {
       if (!slot || slot.type !== 'io-set') continue;
@@ -2042,6 +2043,7 @@ function applyBuildUpProcBonuses(
         baseRecharge,
         castTime,
         radius,
+        arcDegrees,
       });
     }
   };
@@ -2068,7 +2070,7 @@ function applyBuildUpProcBonuses(
   let bestSourceName = '';
 
   for (const proc of buildUpProcs) {
-    const procChance = calculateProcChance(proc.ppm, proc.baseRecharge, proc.castTime, proc.radius);
+    const procChance = calculateProcChance(proc.ppm, proc.baseRecharge, proc.castTime, proc.radius, proc.arcDegrees);
     // Expected uptime: assume power fires on recharge. Rough cycle = recharge + castTime.
     // Average buff uptime ≈ procChance × min(duration / cycleTime, 1)
     // For a rough estimate, use: avgDamage = procChance × damageValue

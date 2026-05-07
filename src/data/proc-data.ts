@@ -2422,41 +2422,74 @@ export function isProcAlwaysOn(procData: ProcData): boolean {
 // ============================================
 
 /**
- * Area factor for PPM calculation based on power radius
- * Formula: AreaFactor = max(0.25, 1.0 - radius × 0.011)
- * - Single target (radius 0): 1.0
- * - 15ft radius: 0.835
- * - 25ft radius: 0.725
- * - 40ft radius: 0.56
- * - Capped at minimum 0.25 for very large AoE
+ * AoE penalty denominator used by the PPM formula.
+ * denom = 0.25 + 0.75 × (1 + radius × (11 × arc + 540) / 40,000)
+ * Single target (radius 0) returns 1.0 regardless of arc.
  */
-export function getPPMAreaFactor(radius: number): number {
+function getPPMAreaDenominator(radius: number, arcDegrees: number): number {
   if (radius <= 0) return 1.0;
-  return Math.max(0.25, 1.0 - radius * 0.011);
+  return 0.25 + 0.75 * (1 + radius * (11 * arcDegrees + 540) / 40000);
 }
 
 /**
- * Calculate proc chance per activation using PPM formula
+ * Area factor (1 / denom) for PPM calculation based on radius and arc.
+ * @param radius AoE radius in feet (0 for single target)
+ * @param arcDegrees cone arc in degrees; default 360 treats AoE as a sphere
+ */
+export function getPPMAreaFactor(radius: number, arcDegrees: number = 360): number {
+  return 1 / getPPMAreaDenominator(radius, arcDegrees);
+}
+
+/**
+ * Convert a raw arc value (which may be radians or already degrees) to degrees.
+ * Bin data stores arc in radians, but some upstream callers pre-convert. Anything
+ * <= 2π is assumed to still be in radians.
+ */
+export function arcToDegrees(rawArc: number | undefined | null): number {
+  if (!rawArc) return 0;
+  return rawArc <= 2 * Math.PI ? rawArc * (180 / Math.PI) : rawArc;
+}
+
+/** Minimum proc chance clamp: 5% + PPM × 1.5% */
+function ppmMinChance(ppm: number): number {
+  return 0.05 + ppm * 0.015;
+}
+
+/** Apply min/max clamps (max 90%, min 5+PPM×1.5%). */
+function clampProcChance(rawChance: number, ppm: number): number {
+  return Math.min(0.9, Math.max(ppmMinChance(ppm), rawChance));
+}
+
+/**
+ * Calculate proc chance per activation using the PPM formula.
+ *
+ * Formula: Proc% = PPM × (ModifiedRecharge + CastTime) / (60 × AreaDenom)
+ *   where ModifiedRecharge = BaseRecharge / (1 + EnhancedRechargeBonus)
+ *   and AreaDenom = 0.25 + 0.75 × (1 + radius × (11 × arc + 540) / 40,000)
+ *
+ * Subject to clamps: min = 5% + PPM × 1.5%, max = 90%.
  *
  * @param ppm - Procs Per Minute value from the enhancement
  * @param baseRecharge - Base (unenhanced) recharge time in seconds
  * @param castTime - Activation/cast time in seconds
  * @param radius - AoE radius in feet (0 for single target)
- * @returns Proc chance as decimal (0-1, capped at 0.9)
- *
- * Formula: Proc% = PPM × (BaseRecharge + CastTime) / 60 × AreaFactor
- * Note: Enhanced recharge does NOT affect proc chance - only base recharge matters
+ * @param arcDegrees - cone arc in degrees (default 360 = sphere)
+ * @param enhancedRechargeBonus - decimal recharge enhancement applied to *this power's*
+ *        slotted enhancements only (NOT global recharge / set bonuses / Hasten).
+ *        e.g. 0.95 for +95%. Default 0.
  */
 export function calculateProcChance(
   ppm: number,
   baseRecharge: number,
   castTime: number,
-  radius: number = 0
+  radius: number = 0,
+  arcDegrees: number = 360,
+  enhancedRechargeBonus: number = 0
 ): number {
-  const areaFactor = getPPMAreaFactor(radius);
-  const procChance = (ppm * (baseRecharge + castTime) / 60) * areaFactor;
-  // Proc chance is capped at 90%
-  return Math.min(0.9, procChance);
+  const modifiedRecharge = baseRecharge / (1 + enhancedRechargeBonus);
+  const areaDenom = getPPMAreaDenominator(radius, arcDegrees);
+  const raw = (ppm * (modifiedRecharge + castTime)) / (60 * areaDenom);
+  return clampProcChance(raw, ppm);
 }
 
 /**
@@ -2474,9 +2507,17 @@ export function calculateProcsPerMinute(
   baseRecharge: number,
   castTime: number,
   radius: number = 0,
-  enhancedRechargeBonus: number = 0
+  enhancedRechargeBonus: number = 0,
+  arcDegrees: number = 360
 ): number {
-  const procChance = calculateProcChance(ppm, baseRecharge, castTime, radius);
+  const procChance = calculateProcChance(
+    ppm,
+    baseRecharge,
+    castTime,
+    radius,
+    arcDegrees,
+    enhancedRechargeBonus,
+  );
 
   // Calculate actual cycle time with enhanced recharge
   // Enhanced recharge reduces recharge time: actualRecharge = baseRecharge / (1 + bonus)
@@ -2535,14 +2576,16 @@ export function calculateProcDPS(
   baseRecharge: number,
   castTime: number,
   radius: number = 0,
-  enhancedRechargeBonus: number = 0
+  enhancedRechargeBonus: number = 0,
+  arcDegrees: number = 360
 ): number {
   const procsPerMinute = calculateProcsPerMinute(
     ppm,
     baseRecharge,
     castTime,
     radius,
-    enhancedRechargeBonus
+    enhancedRechargeBonus,
+    arcDegrees
   );
 
   // Average damage per proc (damage is uniformly distributed)
@@ -2559,26 +2602,36 @@ export function calculateProcDPS(
 export const AUTO_POWER_PSEUDO_RECHARGE = 10;
 
 /**
- * Calculate proc chance for Auto/Toggle powers
- * These use a special 10-second pseudo-recharge time
+ * Calculate proc chance for Auto/Toggle powers.
+ * Toggles use a 10s pseudo-recharge with 0 cast time, then apply the same
+ * area-factor and clamps as click powers.
+ *
+ * Formula: Proc% = PPM × 10 / (60 × AreaDenom), clamped [5+PPM×1.5%, 90%]
  *
  * @param ppm - Procs Per Minute value
- * @returns Proc chance per tick (every 10 seconds)
+ * @param radius - AoE radius in feet (0 for single target toggles)
+ * @param arcDegrees - cone arc in degrees (default 360 = sphere)
  */
-export function calculateAutoToggleProcChance(ppm: number): number {
-  // Auto/Toggle powers: PPM × (10 + 0) / 60 = PPM × 10 / 60 = PPM / 6
-  const procChance = ppm * AUTO_POWER_PSEUDO_RECHARGE / 60;
-  return Math.min(0.9, procChance);
+export function calculateAutoToggleProcChance(
+  ppm: number,
+  radius: number = 0,
+  arcDegrees: number = 360,
+): number {
+  const areaDenom = getPPMAreaDenominator(radius, arcDegrees);
+  const raw = (ppm * AUTO_POWER_PSEUDO_RECHARGE) / (60 * areaDenom);
+  return clampProcChance(raw, ppm);
 }
 
 /**
- * Calculate expected procs per minute for Auto/Toggle powers
- *
- * @param ppm - Procs Per Minute value
- * @returns Expected procs per minute
+ * Calculate expected procs per minute for Auto/Toggle powers.
+ * Toggles get 6 proc checks per minute (every 10s).
  */
-export function calculateAutoToggleProcsPerMinute(ppm: number): number {
-  const procChance = calculateAutoToggleProcChance(ppm);
+export function calculateAutoToggleProcsPerMinute(
+  ppm: number,
+  radius: number = 0,
+  arcDegrees: number = 360,
+): number {
+  const procChance = calculateAutoToggleProcChance(ppm, radius, arcDegrees);
   // 6 ticks per minute (every 10 seconds)
   return procChance * 6;
 }
@@ -2590,6 +2643,8 @@ export interface PowerProcCalcData {
   baseRecharge: number;
   castTime: number;
   radius?: number;
+  /** Cone arc in degrees. Defaults to 360 (sphere) when omitted. */
+  arcDegrees?: number;
   powerType: 'Click' | 'Toggle' | 'Auto';
 }
 
@@ -2616,22 +2671,27 @@ export function calculateProcStats(
   let procChance: number;
   let procsPerMinute: number;
 
+  const arcDegrees = power.arcDegrees ?? 360;
+
   if (isAutoOrToggle) {
-    procChance = calculateAutoToggleProcChance(procData.ppm);
-    procsPerMinute = calculateAutoToggleProcsPerMinute(procData.ppm);
+    procChance = calculateAutoToggleProcChance(procData.ppm, power.radius || 0, arcDegrees);
+    procsPerMinute = calculateAutoToggleProcsPerMinute(procData.ppm, power.radius || 0, arcDegrees);
   } else {
     procChance = calculateProcChance(
       procData.ppm,
       power.baseRecharge,
       power.castTime,
-      power.radius || 0
+      power.radius || 0,
+      arcDegrees,
+      enhancedRechargeBonus,
     );
     procsPerMinute = calculateProcsPerMinute(
       procData.ppm,
       power.baseRecharge,
       power.castTime,
       power.radius || 0,
-      enhancedRechargeBonus
+      enhancedRechargeBonus,
+      arcDegrees,
     );
   }
 

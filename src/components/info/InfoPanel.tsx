@@ -24,6 +24,7 @@ import {
   parseProcEffect,
   interpolateProcDamage,
   calculateProcChance,
+  arcToDegrees,
   getActiveDamageConversion,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
@@ -518,6 +519,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     const baseRecharge = effectivePower?.stats?.recharge ?? effectivePower?.effects?.recharge ?? 0;
     const castTime = effectivePower?.stats?.castTime ?? effectivePower?.effects?.castTime ?? 0;
     const radius = effectivePower?.stats?.radius ?? effectivePower?.effects?.radius ?? 0;
+    const rawArc = effectivePower?.stats?.arc ?? effectivePower?.effects?.arc;
+    const arcDegrees = radius > 0 ? (arcToDegrees(rawArc) || 360) : 360;
     if (!baseRecharge && !castTime) return null;
 
     const entries: { name: string; setName: string; type: string; chance: number; avgDamage: number; perActivation: number; dps: number }[] = [];
@@ -532,7 +535,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
       const slotLevel = ioSlot.level ?? build.level;
       const avgDamage = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, slotLevel);
-      const chance = calculateProcChance(procData.ppm, baseRecharge, castTime, radius);
+      const chance = calculateProcChance(procData.ppm, baseRecharge, castTime, radius, arcDegrees);
       const perActivation = chance * avgDamage;
       const cycleTime = (baseRecharge + castTime) || 1;
       const dps = perActivation / cycleTime;
@@ -770,6 +773,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             castTime: effects?.castTime,
             enduranceCost: effects?.enduranceCost,
             radius: effects?.radius,
+            arc: effects?.arc,
           }}
           archetypeId={archetypeId ?? undefined}
           buildLevel={build.level}
@@ -1042,6 +1046,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         enhancementBonuses={enhancementBonuses}
         globalBonusesForCalc={globalBonusesForCalc}
         damageType={calculatedDamage?.type}
+        useArcanaTime={useArcanaTimeToggle}
+        selectedPower={selectedPower}
       />
 
       {/* Enhancement Bonuses Summary */}

@@ -15,10 +15,18 @@
  * style attack-type composites, etc.
  */
 
-import type { Power, TargetType, EffectArea } from '@/types';
+import { useState } from 'react';
+import type { Power, TargetType, EffectArea, SelectedPower, IOSetEnhancement } from '@/types';
 import type { PowerDamageResult } from '@/utils/calculations';
 import { calcThreeTier as calcThreeTierUtil } from './powerDisplayUtils';
-import { abbreviateDamageType } from '@/utils/calculations';
+import { abbreviateDamageType, calculateArcanaTime } from '@/utils/calculations';
+import {
+  findProcData,
+  isProcAlwaysOn,
+  calculateProcChance,
+  calculateAutoToggleProcChance,
+  type ProcData,
+} from '@/data';
 
 // ----------------------------------------------------------------------
 // TagsBlock — Power Type / Target Type / Allowed Enhancements.
@@ -49,8 +57,10 @@ interface GeneralStatsBlockProps {
   /** Merged effects object (stats + power.effects) used by the 3-tier calc */
   effects: {
     range?: number;
+    recharge?: number;
     castTime?: number;
     radius?: number;
+    /** Arc in degrees (already converted upstream from radians). */
     arc?: number;
     maxTargets?: number;
   };
@@ -58,6 +68,10 @@ interface GeneralStatsBlockProps {
   globalBonusesForCalc: Record<string, number | undefined>;
   /** Attack-type composite needs the rendered damage types. */
   damageType?: string;
+  /** Whether the user prefers Arcanatime as the inline activation value. */
+  useArcanaTime: boolean;
+  /** The build's slotted version of this power — used to find slotted procs. */
+  selectedPower?: SelectedPower | null;
 }
 
 export function GeneralStatsBlock({
@@ -66,6 +80,8 @@ export function GeneralStatsBlock({
   enhancementBonuses,
   globalBonusesForCalc,
   damageType,
+  useArcanaTime,
+  selectedPower,
 }: GeneralStatsBlockProps) {
   const tier = (aspect: string, base: number | undefined) =>
     base != null ? calcThreeTierUtil(aspect, base, enhancementBonuses, globalBonusesForCalc) : null;
@@ -79,13 +95,255 @@ export function GeneralStatsBlock({
   return (
     <div className="bg-slate-800/40 rounded p-2 space-y-0.5">
       {effects.castTime != null && activation && (
-        <KvRow label="Activation" value={`${activation.final.toFixed(2)}s`} />
+        <ActivationRow castTime={activation.final} useArcanaTime={useArcanaTime} />
       )}
       {effects.range != null && rng && rng.final > 0 && (
         <KvRow label="Pwr Range" value={`${rng.final.toFixed(0)}ft`} />
       )}
       {effectAreaLabel && <KvRow label="Effect Area" value={effectAreaLabel} />}
       {attackType && <KvRow label="Attack Type" value={attackType} />}
+      <ProcChanceRow
+        powerType={power.powerType}
+        selectedPower={selectedPower ?? null}
+        baseRecharge={effects.recharge ?? 0}
+        castTime={effects.castTime ?? 0}
+        radius={effects.radius ?? 0}
+        arcDegrees={effects.arc}
+        slottedRechargeBonus={enhancementBonuses.recharge ?? 0}
+      />
+    </div>
+  );
+}
+
+// ----------------------------------------------------------------------
+// ActivationRow — expandable row showing Cast Time / Arcanatime.
+// Inline value reflects the user's toggle preference. Expanded view
+// shows both, since proc-chance math uses raw Cast Time while the
+// animation lockout uses Arcanatime.
+// ----------------------------------------------------------------------
+
+function ActivationRow({ castTime, useArcanaTime }: { castTime: number; useArcanaTime: boolean }) {
+  const [expanded, setExpanded] = useState(false);
+  const arcana = calculateArcanaTime(castTime);
+  const inlineValue = useArcanaTime ? arcana : castTime;
+
+  return (
+    <>
+      <div
+        role="button"
+        aria-expanded={expanded}
+        title={expanded ? 'Hide cast time / arcanatime detail' : 'Show cast time and arcanatime'}
+        className="grid grid-cols-[7rem_1fr] gap-1 text-[11px] cursor-pointer select-none hover:bg-slate-700/30 -mx-0.5 px-0.5 rounded"
+        onClick={() => setExpanded((v) => !v)}
+      >
+        <span className="text-slate-500">
+          <span className={`inline-block text-[8px] mr-0.5 transition-transform ${expanded ? 'rotate-90' : ''}`}>▶</span>
+          Activation
+        </span>
+        <span className="text-slate-200">{inlineValue.toFixed(2)}s</span>
+      </div>
+      {expanded && (
+        <div className="ml-3 pl-2 border-l border-slate-700/60 space-y-0.5">
+          <KvRow label="Cast Time" value={`${castTime.toFixed(3)}s`} />
+          <KvRow label="Arcanatime" value={`${arcana.toFixed(3)}s`} />
+          <div className="text-[9px] text-slate-500 italic mt-0.5">
+            Proc chance uses Cast Time; animation lockout uses Arcanatime.
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+// ----------------------------------------------------------------------
+// ProcChanceRow — expandable row showing PPM-based proc chances for the
+// procs slotted into this power. Collapsed shows a compact headline.
+// Expanded shows per-proc formula breakdown so users can reproduce the
+// math by hand.
+//
+// PPM rule of thumb: only this power's slotted enhancement recharge
+// modifies the formula (NOT global recharge / set bonuses / Hasten).
+// `slottedRechargeBonus` here is the post-ED enhancement total for the
+// power; Alpha incarnate is bundled into that figure.
+// ----------------------------------------------------------------------
+
+interface ProcChanceRowProps {
+  powerType?: string;
+  selectedPower: SelectedPower | null;
+  baseRecharge: number;
+  castTime: number;
+  radius: number;
+  arcDegrees: number | undefined;
+  slottedRechargeBonus: number;
+}
+
+interface ProcEntry {
+  key: string;
+  name: string;
+  setName: string;
+  ppm: number | null;
+  /** undefined when always-on (no PPM); otherwise the computed chance 0–1 */
+  chance?: number;
+}
+
+function ppmAreaDenom(radius: number, arcDegrees: number): number {
+  if (radius <= 0) return 1.0;
+  return 0.25 + 0.75 * (1 + radius * (11 * arcDegrees + 540) / 40000);
+}
+
+function ProcChanceRow({
+  powerType,
+  selectedPower,
+  baseRecharge,
+  castTime,
+  radius,
+  arcDegrees,
+  slottedRechargeBonus,
+}: ProcChanceRowProps) {
+  const [expanded, setExpanded] = useState(false);
+
+  if (!selectedPower?.slots) return null;
+
+  const isToggleOrAuto = powerType === 'Toggle' || powerType === 'Auto';
+  // For non-attack passives there's nothing to compute.
+  if (!isToggleOrAuto && baseRecharge <= 0 && castTime <= 0) return null;
+
+  const arcDeg = radius > 0 ? (arcDegrees && arcDegrees > 0 ? arcDegrees : 360) : 360;
+  const modifiedRecharge = baseRecharge / (1 + slottedRechargeBonus);
+  const areaDenom = ppmAreaDenom(radius, arcDeg);
+
+  const entries: ProcEntry[] = [];
+  const procDataByKey: Record<string, ProcData> = {};
+
+  for (const slot of selectedPower.slots) {
+    if (!slot || slot.type !== 'io-set') continue;
+    const ioSlot = slot as IOSetEnhancement;
+    if (!ioSlot.isProc) continue;
+    const procData = findProcData(ioSlot.name, ioSlot.setName);
+    if (!procData) continue;
+
+    const key = `${ioSlot.setName}:${ioSlot.name}:${ioSlot.pieceNum}`;
+    procDataByKey[key] = procData;
+
+    if (procData.ppm == null || isProcAlwaysOn(procData)) {
+      entries.push({
+        key,
+        name: ioSlot.name,
+        setName: ioSlot.setName,
+        ppm: null,
+      });
+      continue;
+    }
+
+    const chance = isToggleOrAuto
+      ? calculateAutoToggleProcChance(procData.ppm, radius, arcDeg)
+      : calculateProcChance(procData.ppm, baseRecharge, castTime, radius, arcDeg, slottedRechargeBonus);
+
+    entries.push({
+      key,
+      name: ioSlot.name,
+      setName: ioSlot.setName,
+      ppm: procData.ppm,
+      chance,
+    });
+  }
+
+  if (entries.length === 0) return null;
+
+  const ppmEntries = entries.filter((e) => e.chance !== undefined);
+  const headline = ppmEntries.length > 0
+    ? ppmEntries.map((e) => `${Math.round((e.chance ?? 0) * 100)}%`).join(' / ')
+    : 'always-on';
+
+  return (
+    <>
+      <div
+        role="button"
+        aria-expanded={expanded}
+        title={expanded ? 'Hide proc chance detail' : 'Show proc chance breakdown'}
+        className="grid grid-cols-[7rem_1fr] gap-1 text-[11px] cursor-pointer select-none hover:bg-slate-700/30 -mx-0.5 px-0.5 rounded"
+        onClick={() => setExpanded((v) => !v)}
+      >
+        <span className="text-slate-500">
+          <span className={`inline-block text-[8px] mr-0.5 transition-transform ${expanded ? 'rotate-90' : ''}`}>▶</span>
+          Proc Chance
+        </span>
+        <span className="text-slate-200">
+          {entries.length} slotted{ppmEntries.length > 0 ? ` — ${headline}` : ''}
+        </span>
+      </div>
+      {expanded && (
+        <div className="ml-3 pl-2 border-l border-slate-700/60 space-y-1 mt-0.5">
+          {entries.map((entry) => (
+            <ProcDetailLine
+              key={entry.key}
+              entry={entry}
+              isToggleOrAuto={isToggleOrAuto}
+              modifiedRecharge={modifiedRecharge}
+              castTime={castTime}
+              areaDenom={areaDenom}
+              hasRechargeMod={slottedRechargeBonus > 0}
+              baseRecharge={baseRecharge}
+            />
+          ))}
+          <div className="text-[9px] text-slate-500 italic mt-1">
+            Recharge here = base ÷ (1 + slotted enh recharge); global recharge buffs (set bonuses, Hasten) do not affect proc chance.
+            {isToggleOrAuto && ' Toggle procs check every 10s (~6×/min) with suppression in between.'}
+            {' '}Clamped to 5+PPM×1.5% min, 90% max.
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+function ProcDetailLine({
+  entry,
+  isToggleOrAuto,
+  modifiedRecharge,
+  castTime,
+  areaDenom,
+  hasRechargeMod,
+  baseRecharge,
+}: {
+  entry: ProcEntry;
+  isToggleOrAuto: boolean;
+  modifiedRecharge: number;
+  castTime: number;
+  areaDenom: number;
+  hasRechargeMod: boolean;
+  baseRecharge: number;
+}) {
+  if (entry.ppm == null || entry.chance === undefined) {
+    return (
+      <div className="text-[10px]">
+        <span className="text-slate-300">{entry.name}</span>
+        <span className="text-slate-500"> — always-on (no PPM check)</span>
+      </div>
+    );
+  }
+
+  const ppm = entry.ppm;
+  const chancePct = entry.chance * 100;
+
+  let formula: string;
+  if (isToggleOrAuto) {
+    formula = `${ppm.toFixed(1)} × 10 / (60 × ${areaDenom.toFixed(2)})`;
+  } else {
+    const rechargeLabel = hasRechargeMod
+      ? `${modifiedRecharge.toFixed(2)} (was ${baseRecharge.toFixed(2)})`
+      : `${modifiedRecharge.toFixed(2)}`;
+    formula = `${ppm.toFixed(1)} × (${rechargeLabel} + ${castTime.toFixed(2)}) / (60 × ${areaDenom.toFixed(2)})`;
+  }
+
+  return (
+    <div className="text-[10px] leading-tight">
+      <div>
+        <span className="text-slate-300">{entry.name}</span>
+        <span className="text-slate-500"> · {ppm.toFixed(1)} PPM</span>
+        <span className="text-amber-300 ml-2">{chancePct.toFixed(1)}%</span>
+      </div>
+      <div className="text-[9px] text-slate-500 font-mono pl-1">{formula}</div>
     </div>
   );
 }
