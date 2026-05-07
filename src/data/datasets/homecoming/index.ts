@@ -49,6 +49,13 @@ const dataset: Dataset = {
 
   grantedPowerGroups: GRANTED_POWER_GROUPS,
 
+  // Homecoming uses the baseline inherent power configuration: Fitness
+  // available at L1, no auto-granted enhancement slots.
+  inherentRules: {
+    availabilityOverrides: {},
+    autoGrantedSlotLevels: {},
+  },
+
   petEntities: PET_ENTITIES,
 
   getTableValue,

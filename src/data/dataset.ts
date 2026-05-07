@@ -90,6 +90,42 @@ export interface PetEntity {
 }
 
 // ============================================
+// INHERENT POWER RULES (per-server)
+// ============================================
+
+/**
+ * Per-server overrides applied to the shared inherent powers list.
+ *
+ * The four Fitness powers (Swift, Hurdle, Health, Stamina) plus Brawl,
+ * Sprint, and Rest are universal across servers, but availability
+ * level and auto-granted enhancement slots vary:
+ *
+ *   - HC:      Fitness available at L1, no auto-granted slots.
+ *   - Rebirth: Fitness available at L2, Health gets +1 slot at L8 / L16,
+ *              Stamina +1 at L12 / L22.
+ *   - Future servers will hook in here with their own variations.
+ *
+ * Keys are inherent power `internalName`s. Anything not listed inherits
+ * the InherentPowerDef defaults baked into the shared list.
+ */
+export interface InherentRules {
+  /**
+   * `available` field override (0-indexed: -1 = L1, 0 = L1, 1 = L2, ...).
+   * Use -1 for "always granted at L1" (the default for HC). Apply only
+   * to powers whose grant level genuinely differs from the shared default.
+   */
+  availabilityOverrides: Record<string, number>;
+
+  /**
+   * Levels at which the named inherent power receives auto-granted
+   * enhancement slots, in slot order. These slots come outside the
+   * 67-slot user budget — they're freebies. Empty array (or absent
+   * key) means no auto-grants.
+   */
+  autoGrantedSlotLevels: Record<string, readonly number[]>;
+}
+
+// ============================================
 // DATASET INTERFACE
 // ============================================
 
@@ -122,6 +158,15 @@ export interface Dataset {
   // Adaptation stances, Fly → Afterburner, Dual Pistols ammo swap).
   // Curated per server; sub-power names are server-specific data.
   grantedPowerGroups: Record<string, GrantedPowerGroup>;
+
+  // Inherent power rules — per-server overrides for the universal inherent
+  // powers (Swift, Hurdle, Health, Stamina, Brawl, Sprint, Rest, etc.).
+  // Each server tunes Fitness differently: HC grants the four Fitness
+  // powers at L1; Rebirth shifts them to L2 and adds auto-granted
+  // enhancement slots at fixed levels. Future datasets (Thunderspy,
+  // Unity, etc.) will plug in their own variations through this hook
+  // rather than hard-coding each new wrinkle in the planner.
+  inherentRules: InherentRules;
 
   // Pet entities — pet abilities + upgrade tiers used for pet damage
   // calculation (Mastermind summons, Voltaic Sentinel, Lore pets, etc.).

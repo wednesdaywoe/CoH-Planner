@@ -41,11 +41,12 @@ import {
   GRANTED_POWER_GROUPS,
   getExcludedPools,
   getAllPowerPools,
+  getInherentAvailabilityOverride,
+  getInherentAutoGrantedSlotCount,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
-import { rebirthInherentFitnessSlots } from '@/utils/rebirth-fitness-slots';
 import { useHistoryStore } from './historyStore';
 import { useUIStore } from './uiStore';
 
@@ -811,20 +812,26 @@ function applyToAllPowers(
   };
 }
 
-// rebirthInherentFitnessSlots imported from '@/utils/rebirth-fitness-slots'
-// so importers (URL hash, Mids, game format) share the same grant table.
-
 /**
- * Convert an InherentPowerDef to a SelectedPower
+ * Convert an InherentPowerDef to a SelectedPower.
+ *
+ * Per-server adjustments (e.g. Rebirth's L2 Fitness availability and
+ * auto-granted Health/Stamina slots) are applied via the dataset's
+ * inherent-rules hooks so each server can plug in its own variations
+ * without touching this code.
  */
 function createInherentSelectedPower(def: InherentPowerDef, characterLevel = 50): SelectedPower {
   // Archetype inherents have 0 maxSlots and should have no slots
   const slots: (Enhancement | null)[] = def.maxSlots === 0 ? [] : [null];
+  // Resolve the effective `available` value: server override wins over the
+  // shared default.
+  const override = getInherentAvailabilityOverride(def.internalName);
+  const effectiveAvailable = override !== undefined ? override : def.available;
   // Use available level + 1 for display (available is 0-indexed), default to level 1
-  const level = (def.available != null && def.available > 0) ? def.available + 1 : 1;
+  const level = (effectiveAvailable != null && effectiveAvailable > 0) ? effectiveAvailable + 1 : 1;
 
-  // Rebirth: pre-fill Health/Stamina inherent grant slots at appropriate levels.
-  const inherentSlotCount = rebirthInherentFitnessSlots(def.internalName, characterLevel);
+  // Pre-fill any auto-granted inherent slots (e.g. Rebirth Health/Stamina).
+  const inherentSlotCount = getInherentAutoGrantedSlotCount(def.internalName, characterLevel);
   for (let i = 0; i < inherentSlotCount; i++) slots.push(null);
 
   return {
@@ -1507,11 +1514,12 @@ export const useBuildStore = create<BuildStore>()(
         historyCheckpoint();
         set((state) => {
           const newLevel = Math.max(1, Math.min(50, level));
-          // Rebirth: Health/Stamina gain inherent slots at L8/L16/L12/L22.
-          // Reconcile their inherent slot count with the new level — preserving
-          // any user-placed enhancements at indices outside the inherent range.
+          // Reconcile auto-granted inherent slot counts with the new level
+          // (e.g. Rebirth's Health/Stamina grants at L8/L16/L12/L22) —
+          // preserving any user-placed enhancements at indices outside the
+          // inherent range.
           const inherents = state.build.inherents.map((p) => {
-            const want = rebirthInherentFitnessSlots(p.internalName, newLevel);
+            const want = getInherentAutoGrantedSlotCount(p.internalName, newLevel);
             const have = p.inherentSlotCount ?? 0;
             if (want === have) return p;
             const slots = [...p.slots];
@@ -2062,16 +2070,16 @@ export const useBuildStore = create<BuildStore>()(
             });
           }
 
-          // Migration: Reconcile Rebirth inherent fitness slots on Health/Stamina.
-          // The dataset auto-grants +1 slot at L8/L16 to Health and +1 at L12/L22
-          // to Stamina (4 total at L22+). Builds created before this rule landed
-          // — or hydrated while the dataset wasn't yet 'rebirth' — would miss the
-          // grant. Sync against the current character level here so the slots
-          // appear as soon as the page loads.
+          // Migration: Reconcile per-server auto-granted inherent slots
+          // (e.g. Rebirth's Health/Stamina grants at L8/L16/L12/L22). Builds
+          // created before this rule landed — or hydrated while a different
+          // dataset was active — would miss the grant. Sync against the
+          // current character level here so the slots appear as soon as the
+          // page loads.
           if (state.build.inherents.length > 0) {
             const lvl = state.build.level;
             state.build.inherents = state.build.inherents.map((power) => {
-              const want = rebirthInherentFitnessSlots(power.internalName, lvl);
+              const want = getInherentAutoGrantedSlotCount(power.internalName, lvl);
               const have = power.inherentSlotCount ?? 0;
               if (want === have) return power;
               const slots = [...power.slots];

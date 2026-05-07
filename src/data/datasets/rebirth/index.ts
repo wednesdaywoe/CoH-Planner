@@ -49,6 +49,23 @@ const dataset: Dataset = {
 
   grantedPowerGroups: GRANTED_POWER_GROUPS,
 
+  // Rebirth tunes Fitness: Swift / Hurdle / Health / Stamina become
+  // available at L2 (one level later than HC), and Health/Stamina each
+  // receive two auto-granted enhancement slots at fixed levels —
+  // outside the 67-slot user budget.
+  inherentRules: {
+    availabilityOverrides: {
+      Swift: 1,
+      Hurdle: 1,
+      Health: 1,
+      Stamina: 1,
+    },
+    autoGrantedSlotLevels: {
+      Health: [8, 16],
+      Stamina: [12, 22],
+    },
+  },
+
   petEntities: PET_ENTITIES,
 
   getTableValue,

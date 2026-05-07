@@ -310,6 +310,13 @@ export {
 } from './granted-powers';
 export type { GrantedPowerGroup } from './granted-powers';
 
+// Inherent power rules (per-server Fitness availability + auto-granted slots)
+export {
+  getInherentAvailabilityOverride,
+  getInherentAutoGrantedSlotLevels,
+  getInherentAutoGrantedSlotCount,
+} from './inherent-rules';
+
 // Unified power lookup
 export { lookupPower } from './power-lookup';
 export type { PowerLookupResult } from './power-lookup';

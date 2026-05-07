@@ -18,8 +18,23 @@
  */
 
 import type { Build, SelectedPower } from '@/types';
-import { SLOT_GRANTS } from '@/data/levels';
+import { SLOT_GRANTS, getInherentAutoGrantedSlotLevels } from '@/data';
 import { powerKey, type PowerCategory } from '@/utils/power-key';
+
+/** Number of inherent (auto-granted) slots a power has, if any. */
+function inherentCount(power: SelectedPower): number {
+  return power.inherentSlotCount ?? 0;
+}
+
+/** Levels for a power's inherent slots, parallel to slots[1..inherentCount].
+ *  Sourced from the active dataset's inherent-rules, so each server can plug
+ *  in its own grant schedule (HC: none, Rebirth: Health [8,16] / Stamina
+ *  [12,22], future servers TBD). */
+function inherentLevels(power: SelectedPower): readonly number[] {
+  const fixed = getInherentAutoGrantedSlotLevels(power.internalName);
+  if (fixed.length === 0) return fixed;
+  return fixed.slice(0, inherentCount(power));
+}
 
 interface CategorizedPower {
   power: SelectedPower;
@@ -76,13 +91,21 @@ function collectAllPowers(build: Build): CategorizedPower[] {
   return allPowers;
 }
 
-/** Initialize result map with slot 0 = pick level for every power. */
+/** Initialize result map with slot 0 = pick level for every power.
+ *  For inherent powers with auto-granted inherent slots (Rebirth Health/Stamina),
+ *  pre-fill those slot indices with their fixed grant levels so subsequent
+ *  pool consumption skips them. */
 function initSlotLevels(allPowers: CategorizedPower[]): Map<string, number[]> {
   const result = new Map<string, number[]>();
   for (const { power, category } of allPowers) {
     const pickLevel = category === 'inherent' ? 1 : power.level;
-    // Pre-fill array with pickLevel for all slots; extra slots get overwritten
     const levels = new Array(power.slots.length).fill(pickLevel);
+    if (category === 'inherent') {
+      const fixed = inherentLevels(power);
+      for (let i = 0; i < fixed.length && i + 1 < levels.length; i++) {
+        levels[i + 1] = fixed[i];
+      }
+    }
     result.set(powerKey(category, power.internalName), levels);
   }
   return result;
@@ -145,10 +168,11 @@ function computeSlotLevelsRespec(build: Build): Map<string, number[]> {
     const pickLevel = category === 'inherent' ? 1 : power.level;
     const key = powerKey(category, power.internalName);
     const levels = result.get(key)!;
+    // Auto-granted inherent slots (Rebirth Health/Stamina) sit at fixed levels
+    // and don't consume from the user grant pool — skip them.
+    const skipUntil = category === 'inherent' ? 1 + inherentCount(power) : 1;
 
-    // Consume grants for extra slots (slot 0 is already set)
-    for (let s = 1; s < power.slots.length; s++) {
-      // Advance past any grants that are before this power's pick level
+    for (let s = skipUntil; s < power.slots.length; s++) {
       while (grantIndex < grantPool.length && grantPool[grantIndex] < pickLevel) {
         grantIndex++;
       }
@@ -183,6 +207,16 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
   // Track which grants have been consumed (by index)
   const usedGrants = new Set<number>();
 
+  // Track inherent-slot indices to skip when iterating slotOrder
+  const inherentSkipIndex = new Map<string, number>(); // key → first user-placeable index
+  for (const { power, category } of allPowers) {
+    if (category !== 'inherent') continue;
+    const skipUntil = 1 + inherentCount(power);
+    if (skipUntil > 1) {
+      inherentSkipIndex.set(powerKey(category, power.internalName), skipUntil);
+    }
+  }
+
   // Process slotOrder entries chronologically
   for (const entry of build.slotOrder) {
     const cat = resolveSlotCategory(build, entry.powerName, entry.category);
@@ -192,6 +226,9 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
     const levels = result.get(key);
     const pickLevel = pickLevelMap.get(key);
     if (!levels || pickLevel === undefined || entry.slotIndex >= levels.length) continue;
+    // Don't let slotOrder overwrite Rebirth's auto-granted inherent slot levels
+    const skipUntil = inherentSkipIndex.get(key) ?? 1;
+    if (entry.slotIndex < skipUntil) continue;
 
     // Find the first unused grant at or after this power's pick level
     let assigned = false;
