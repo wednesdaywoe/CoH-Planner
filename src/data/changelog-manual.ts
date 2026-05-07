@@ -21,7 +21,7 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-05-06',
+    date: '2026-05-07',
     items: [
       { message: 'Added per-server inherent power rules and auto-granted slot handling', type: 'fix' },
       { message: 'Added a message to point out the searchable help system. You can disable this in settings. Also added a highlight to the Archetype/Powerset menu to help new users figure out how to get started', type: 'feat' },
