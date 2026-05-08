@@ -46,10 +46,10 @@ export function ThreeTierHeader({ compact = false }: ThreeTierHeaderProps) {
   const gridCols = compact
     ? 'grid-cols-[4rem_1fr_1fr_1fr]'
     : 'grid-cols-[5rem_1fr_1fr_1fr]';
-  const fontSize = compact ? 'text-[8px]' : 'text-[9px]';
+  const fontSize = compact ? 'text-[10px]' : 'text-[11px]';
 
   return (
-    <div className={`grid ${gridCols} gap-1 ${fontSize} text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
+    <div className={`grid ${gridCols} gap-1 ${fontSize} text-slate-400 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
       <span>Stat</span>
       <span>Base</span>
       <span>{compact ? 'Enh' : 'Enhanced'}</span>
@@ -105,25 +105,25 @@ export function ThreeTierStatRow({
   const gridCols = compact
     ? 'grid-cols-[4rem_1fr_1fr_1fr]'
     : 'grid-cols-[5rem_1fr_1fr_1fr]';
-  const fontSize = compact ? 'text-[10px]' : 'text-xs';
+  const fontSize = compact ? 'text-xs' : 'text-sm';
 
   return (
     <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
       <span className={colorClass}>{label}</span>
       <span className="text-slate-200">{formatValue(base)}</span>
       {enhanceable ? (
-        <span className={hasEnhancement ? 'text-green-400' : 'text-slate-400'}>
+        <span className={hasEnhancement ? 'text-green-400' : 'text-slate-300'}>
           {formatValue(enhanced)}
         </span>
       ) : (
-        <span className="text-slate-600">—</span>
+        <span className="text-slate-500">—</span>
       )}
       {enhanceable ? (
-        <span className={hasGlobal ? 'text-amber-400' : 'text-slate-400'}>
+        <span className={hasGlobal ? 'text-amber-400' : 'text-slate-300'}>
           {formatValue(final)}
         </span>
       ) : (
-        <span className="text-slate-600">—</span>
+        <span className="text-slate-500">—</span>
       )}
     </div>
   );
@@ -145,13 +145,13 @@ export function DamageThreeTierHeader({
   finalColumnHeader = 'Final',
   compact = false,
 }: DamageThreeTierHeaderProps) {
-  const fontSize = compact ? 'text-[8px]' : 'text-[9px]';
+  const fontSize = compact ? 'text-[10px]' : 'text-[11px]';
   const gridCols = compact
     ? 'grid-cols-[3rem_1fr_1fr_1fr]'
     : 'grid-cols-[4rem_1fr_1fr_1fr]';
 
   return (
-    <div className={`grid ${gridCols} gap-1 ${fontSize} text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
+    <div className={`grid ${gridCols} gap-1 ${fontSize} text-slate-400 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
       <span>Type</span>
       <span>Base</span>
       <span>Enhanced</span>
@@ -191,16 +191,16 @@ export function DamageRow({
   const gridCols = compact
     ? 'grid-cols-[3rem_1fr_1fr_1fr]'
     : 'grid-cols-[4rem_1fr_1fr_1fr]';
-  const fontSize = compact ? 'text-[10px]' : 'text-xs';
+  const fontSize = compact ? 'text-xs' : 'text-sm';
 
   return (
     <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize} ${dimmed ? 'opacity-40' : ''}`}>
-      <span className={dimmed ? 'text-slate-500' : typeColorClass}>{type}</span>
-      <span className={dimmed ? 'text-slate-500' : 'text-slate-200'}>{base.toFixed(1)}</span>
-      <span className={dimmed ? 'text-slate-600' : (hasEnh ? 'text-green-400' : 'text-slate-400')}>
+      <span className={dimmed ? 'text-slate-400' : typeColorClass}>{type}</span>
+      <span className={dimmed ? 'text-slate-400' : 'text-slate-200'}>{base.toFixed(1)}</span>
+      <span className={dimmed ? 'text-slate-500' : (hasEnh ? 'text-green-400' : 'text-slate-300')}>
         {enhanced.toFixed(1)}
       </span>
-      <span className={dimmed ? 'text-slate-600' : (hasGlobal ? finalColorClass : 'text-slate-400')}>
+      <span className={dimmed ? 'text-slate-500' : (hasGlobal ? finalColorClass : 'text-slate-300')}>
         {final.toFixed(1)}
       </span>
     </div>
@@ -288,20 +288,20 @@ function CollapsibleEffectGroup({
         onClick={() => setCollapsed(!collapsed)}
       >
         <span className={colorClass}>
-          <span className={`inline-block text-[8px] mr-0.5 transition-transform ${collapsed ? '' : 'rotate-90'}`}>▶</span>
+          <span className={`inline-block text-[10px] mr-0.5 transition-transform ${collapsed ? '' : 'rotate-90'}`}>▶</span>
           {label} ({items.length})
         </span>
         {summaryValue !== null ? (
           <>
             <span className="text-slate-200">{formatValue(summaryValue, items[0].effect.config)}</span>
-            <span className="text-slate-600">—</span>
-            <span className="text-slate-600">—</span>
+            <span className="text-slate-500">—</span>
+            <span className="text-slate-500">—</span>
           </>
         ) : (
           <>
             <span className="text-slate-200">{formatValue(minBase, items[0].effect.config)} – {formatValue(maxBase, items[0].effect.config)}</span>
-            <span className="text-slate-600">—</span>
-            <span className="text-slate-600">—</span>
+            <span className="text-slate-500">—</span>
+            <span className="text-slate-500">—</span>
           </>
         )}
       </div>
@@ -330,8 +330,8 @@ function CollapsibleEffectGroup({
             <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize} ml-2`}>
               <span className={magColorClass}>{itemLabel}</span>
               <span className="text-slate-200">Mag {magStr}</span>
-              <span className="text-slate-600">—</span>
-              <span className="text-slate-600">—</span>
+              <span className="text-slate-500">—</span>
+              <span className="text-slate-500">—</span>
             </div>
           );
         }
@@ -341,18 +341,18 @@ function CollapsibleEffectGroup({
             <span className={config.colorClass}>{itemLabel}</span>
             <span className="text-slate-200">{formatValue(tiers.base, config)}</span>
             {enhanceable ? (
-              <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+              <span className={hasEnh ? 'text-green-400' : 'text-slate-300'}>
                 {formatValue(tiers.enhanced, config)}
               </span>
             ) : (
-              <span className="text-slate-600">—</span>
+              <span className="text-slate-500">—</span>
             )}
             {enhanceable ? (
-              <span className={hasFinal ? finalColumnColor : 'text-slate-400'}>
+              <span className={hasFinal ? finalColumnColor : 'text-slate-300'}>
                 {formatValue(tiers.final, config)}
               </span>
             ) : (
-              <span className="text-slate-600">—</span>
+              <span className="text-slate-500">—</span>
             )}
           </div>
         );
@@ -374,7 +374,7 @@ type EffectSection = 'MEZ' | 'BUFFS' | 'DEBUFFS' | 'SPECIAL';
 const SECTION_PRIORITY: Record<EffectSection, number> = {
   MEZ: 1, BUFFS: 2, DEBUFFS: 3, SPECIAL: 4,
 };
-const SECTION_COLOR_NEUTRAL = 'text-slate-500';
+const SECTION_COLOR_NEUTRAL = 'text-slate-400';
 
 function sectionForCategory(cat: EffectCategory): EffectSection | null {
   switch (cat) {
@@ -428,8 +428,8 @@ function renderExtraInstanceRow(params: {
           Mag {magStr}{baseDuration != null ? ` (${baseDuration.toFixed(1)}s)` : ''}
           {sourceTag}
         </span>
-        <span className="text-slate-600">—</span>
-        <span className="text-slate-600">—</span>
+        <span className="text-slate-500">—</span>
+        <span className="text-slate-500">—</span>
       </div>
     );
   }
@@ -446,8 +446,8 @@ function renderExtraInstanceRow(params: {
         {summarizeExtraValue(value)}
         {sourceTag}
       </span>
-      <span className="text-slate-600">—</span>
-      <span className="text-slate-600">—</span>
+      <span className="text-slate-500">—</span>
+      <span className="text-slate-500">—</span>
     </div>
   );
 }
@@ -572,7 +572,7 @@ interface RegistryEffectsDisplayProps {
 /** Get con-colored arrow symbol for target level offset (matches in-game con system) */
 export function getConArrow(offset: number): { symbol: string; colorClass: string } | null {
   if (offset === 0) return null;
-  if (offset <= -3) return { symbol: '\u25B2', colorClass: 'text-slate-400' };
+  if (offset <= -3) return { symbol: '\u25B2', colorClass: 'text-slate-300' };
   if (offset === -2) return { symbol: '\u25B2', colorClass: 'text-green-400' };
   if (offset === -1) return { symbol: '\u25B2', colorClass: 'text-blue-400' };
   if (offset === 1) return { symbol: '\u25BC', colorClass: 'text-yellow-400' };
@@ -996,20 +996,20 @@ export function RegistryEffectsDisplay({
   const gridCols = compact
     ? 'grid-cols-[4rem_1fr_1fr_1fr]'
     : 'grid-cols-[5rem_1fr_1fr_1fr]';
-  const fontSize = compact ? 'text-[10px]' : 'text-xs';
-  const headerFontSize = compact ? 'text-[8px]' : 'text-[9px]';
+  const fontSize = compact ? 'text-xs' : 'text-sm';
+  const headerFontSize = compact ? 'text-[10px]' : 'text-[11px]';
 
   return (
     <div>
       {/* Section header if provided */}
       {header && (
-        <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+        <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
           {header}
         </h4>
       )}
       <div className="bg-slate-800/50 rounded p-2">
         {/* Table header */}
-        <div className={`grid ${gridCols} gap-1 ${headerFontSize} text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
+        <div className={`grid ${gridCols} gap-1 ${headerFontSize} text-slate-400 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
           <span>Stat</span>
           <span>Base</span>
           <span>{compact ? 'Enh' : 'Enhanced'}</span>
@@ -1048,12 +1048,12 @@ export function RegistryEffectsDisplay({
               <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
                 <span className="text-red-400">{isPureDot ? `${abbreviateDamageType(damage.type)}/tick` : abbreviateDamageType(damage.type)}</span>
                 <span className="text-slate-200">{damage.base.toFixed(2)}</span>
-                <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+                <span className={hasEnh ? 'text-green-400' : 'text-slate-300'}>
                   {damage.enhanced.toFixed(2)}
                 </span>
-                <span className={`${hasFinal || showCombatMod ? finalColumnColor : 'text-slate-400'} ${cappedClass}`}>
+                <span className={`${hasFinal || showCombatMod ? finalColumnColor : 'text-slate-300'} ${cappedClass}`}>
                   {adjustedFinal.toFixed(2)}
-                  {dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}
+                  {dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}
                 </span>
               </div>
 
@@ -1065,12 +1065,12 @@ export function RegistryEffectsDisplay({
                   <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
                     <span className="text-red-400">{abbreviateDamageType(dot.type)}/tick</span>
                     <span className="text-slate-200">{dot.base.toFixed(2)}</span>
-                    <span className={dotHasEnh ? 'text-green-400' : 'text-slate-400'}>
+                    <span className={dotHasEnh ? 'text-green-400' : 'text-slate-300'}>
                       {dot.enhanced.toFixed(2)}
                     </span>
-                    <span className={`${dotHasFinal || showCombatMod ? finalColumnColor : 'text-slate-400'} ${cappedClass}`}>
+                    <span className={`${dotHasFinal || showCombatMod ? finalColumnColor : 'text-slate-300'} ${cappedClass}`}>
                       {adjustedDotFinal.toFixed(2)}
-                      {dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}
+                      {dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}
                     </span>
                   </div>
                 );
@@ -1085,15 +1085,15 @@ export function RegistryEffectsDisplay({
                     <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
                       <span className="text-orange-400">DoT</span>
                       <span className="text-slate-200">{dotTotalBase.toFixed(2)}</span>
-                      <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-400'}>
+                      <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-300'}>
                         {dotTotalEnhanced.toFixed(2)}
                       </span>
-                      <span className={`${hasTotalFinal || showCombatMod ? finalColumnColor : 'text-slate-400'} ${cappedClass}`}>
+                      <span className={`${hasTotalFinal || showCombatMod ? finalColumnColor : 'text-slate-300'} ${cappedClass}`}>
                         {dotTotalFinal.toFixed(2)}
-                        {dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}
+                        {dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}
                       </span>
                     </div>
-                    <div className={`${compact ? 'text-[8px]' : 'text-[9px]'} text-orange-400/70 italic mt-0.5 ml-1`}>
+                    <div className={`${compact ? 'text-[10px]' : 'text-[11px]'} text-orange-400/70 italic mt-0.5 ml-1`}>
                       {dot.ticks} ticks over {dot.duration}s ({Number(dot.tickRate.toFixed(2))}s/tick)
                     </div>
                   </>
@@ -1102,7 +1102,7 @@ export function RegistryEffectsDisplay({
 
               {/* Unknown damage indicator */}
               {damage.unknown && (
-                <div className={`${compact ? 'text-[8px]' : 'text-[9px]'} text-slate-500 italic mt-0.5 ml-1`}>
+                <div className={`${compact ? 'text-[10px]' : 'text-[11px]'} text-slate-400 italic mt-0.5 ml-1`}>
                   * Actual damage varies
                 </div>
               )}
@@ -1180,13 +1180,13 @@ export function RegistryEffectsDisplay({
                   <span className="text-slate-200">
                     Mag {magStr} ({baseDuration.toFixed(1)}s)
                     {dominationActive && config.category === 'control' && (
-                      <span className="text-pink-300 text-[8px] ml-1">[2×]</span>
+                      <span className="text-pink-300 text-[10px] ml-1">[2×]</span>
                     )}
                   </span>
-                  <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+                  <span className={hasEnh ? 'text-green-400' : 'text-slate-300'}>
                     ({enhancedDuration.toFixed(1)}s)
                   </span>
-                  <span className={hasFinal ? finalColumnColor : 'text-slate-400'}>
+                  <span className={hasFinal ? finalColumnColor : 'text-slate-300'}>
                     ({finalDuration.toFixed(1)}s)
                   </span>
                 </div>
@@ -1207,10 +1207,10 @@ export function RegistryEffectsDisplay({
               <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
                 <span className={colorClass}>{label}</span>
                 <span className="text-slate-200">{tiers.base.toFixed(1)}</span>
-                <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+                <span className={hasEnh ? 'text-green-400' : 'text-slate-300'}>
                   {enhanced.toFixed(1)}
                 </span>
-                <span className={hasFinal ? finalColumnColor : 'text-slate-400'}>
+                <span className={hasFinal ? finalColumnColor : 'text-slate-300'}>
                   {final_.toFixed(1)}
                 </span>
               </div>
@@ -1228,14 +1228,14 @@ export function RegistryEffectsDisplay({
               <span className="text-slate-200">
                 Mag {magStr}
                 {mezDuration != null && (
-                  <span className="text-slate-400 ml-1">({mezDuration.toFixed(1)}s)</span>
+                  <span className="text-slate-300 ml-1">({mezDuration.toFixed(1)}s)</span>
                 )}
                 {dominationActive && config.category === 'control' && (
-                  <span className="text-pink-300 text-[8px] ml-1">[2×]</span>
+                  <span className="text-pink-300 text-[10px] ml-1">[2×]</span>
                 )}
               </span>
-              <span className="text-slate-600">—</span>
-              <span className="text-slate-600">—</span>
+              <span className="text-slate-500">—</span>
+              <span className="text-slate-500">—</span>
             </div>
           );
         }
@@ -1265,16 +1265,16 @@ export function RegistryEffectsDisplay({
             <span className={config.colorClass}>
               {label}
               {effectDur != null && (
-                <span className="text-slate-500 font-normal text-[9px] ml-0.5">({effectDur}s)</span>
+                <span className="text-slate-400 font-normal text-[11px] ml-0.5">({effectDur}s)</span>
               )}
             </span>
             <span className="text-slate-200">{formatValue(tiers.base)}</span>
             {enhanceable ? (
-              <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+              <span className={hasEnh ? 'text-green-400' : 'text-slate-300'}>
                 {formatValue(tiers.enhanced)}
               </span>
             ) : (
-              <span className="text-slate-600">—</span>
+              <span className="text-slate-500">—</span>
             )}
             {enhanceable ? (() => {
               const isAccuracy = key === 'accuracy' && purplePatchInfo;
@@ -1299,18 +1299,18 @@ export function RegistryEffectsDisplay({
                 accTitle = `Adjusted for level differential vs ${offText} target — effective base ToHit ${effectiveToHitPct}%${bonusPart}.${isCapped ? ' Hit chance capped at 95%.' : ''}`;
               }
               return (
-                <span className={isCapped ? 'text-orange-400' : hasFinal || isAdjusted ? finalColumnColor : 'text-slate-400'} title={accTitle}>
+                <span className={isCapped ? 'text-orange-400' : hasFinal || isAdjusted ? finalColumnColor : 'text-slate-300'} title={accTitle}>
                   {formatValue(adjustedFinal)}
                   {isCapped && (
-                    <span className="text-slate-500 text-[9px] ml-0.5">({formatValue(rawFinal)})</span>
+                    <span className="text-slate-400 text-[11px] ml-0.5">({formatValue(rawFinal)})</span>
                   )}
                   {conArrow && (
-                    <span className={`${conArrow.colorClass} ml-0.5 text-[9px]`}>{conArrow.symbol}</span>
+                    <span className={`${conArrow.colorClass} ml-0.5 text-[11px]`}>{conArrow.symbol}</span>
                   )}
                 </span>
               );
             })() : (
-              <span className="text-slate-600">—</span>
+              <span className="text-slate-500">—</span>
             )}
           </div>
         );

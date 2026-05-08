@@ -85,7 +85,7 @@ export function TagsRow({ shortHelp }: TagsRowProps) {
         return (
           <span
             key={`${i}-${tag}`}
-            className={`text-[10px] px-1.5 py-0.5 rounded border ${KIND_CLASSES[kind]} whitespace-nowrap`}
+            className={`text-xs px-1.5 py-0.5 rounded border ${KIND_CLASSES[kind]} whitespace-nowrap`}
           >
             {tag}
           </span>

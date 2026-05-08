@@ -97,12 +97,12 @@ export function PopOutInfoPanel() {
         className="flex items-center justify-between px-3 py-1.5 bg-slate-800 border-b border-slate-700 shrink-0 cursor-move select-none"
         onMouseDown={onDragStart}
       >
-        <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
           Power Info
         </h2>
         <button
           onClick={dockInfoPanel}
-          className="flex items-center gap-1 px-2 py-0.5 text-xs text-slate-400 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
+          className="flex items-center gap-1 px-2 py-0.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
           title="Dock panel back into main layout"
         >
           {/* Dock icon */}
@@ -123,7 +123,7 @@ export function PopOutInfoPanel() {
         className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize"
         onMouseDown={onResizeStart}
       >
-        <svg className="w-4 h-4 text-slate-600" viewBox="0 0 16 16" fill="currentColor">
+        <svg className="w-4 h-4 text-slate-500" viewBox="0 0 16 16" fill="currentColor">
           <path d="M14 14H12V12H14V14ZM14 10H12V8H14V10ZM10 14H8V12H10V14Z" />
         </svg>
       </div>

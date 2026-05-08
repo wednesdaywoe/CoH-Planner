@@ -110,7 +110,7 @@ function SingleToggle({ power, entry }: SingleToggleProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex items-center justify-between gap-2 text-[11px]">
+      <div className="flex items-center justify-between gap-2 text-xs">
         <Toggle
           id={`adjuster-${powerName}-${entry.id}`}
           checked={active}
@@ -228,7 +228,7 @@ function RadioRow({ power, entry, name, checked, onSelect }: RadioRowProps) {
     <div className="flex flex-col">
       <label
         title={describeContribution(entry)}
-        className="flex items-center gap-2 text-[11px] cursor-pointer hover:bg-slate-700/30 rounded px-1 py-0.5 ml-3"
+        className="flex items-center gap-2 text-xs cursor-pointer hover:bg-slate-700/30 rounded px-1 py-0.5 ml-3"
       >
         <input
           type="radio"
@@ -237,7 +237,7 @@ function RadioRow({ power, entry, name, checked, onSelect }: RadioRowProps) {
           onChange={onSelect}
           className="accent-cyan-500 w-3 h-3"
         />
-        <span className={checked ? 'text-slate-100' : 'text-slate-400'}>{entry.label}</span>
+        <span className={checked ? 'text-slate-100' : 'text-slate-300'}>{entry.label}</span>
       </label>
       <ContributionHint power={power} entry={entry} indent="ml-9" />
     </div>
@@ -251,7 +251,7 @@ function RadioRow({ power, entry, name, checked, onSelect }: RadioRowProps) {
 function GlobalBadge() {
   return (
     <span
-      className="text-cyan-400/70 italic text-[8px] uppercase tracking-wide"
+      className="text-cyan-400/70 italic text-[10px] uppercase tracking-wide"
       title="Affects all powers that share this state"
     >
       global
@@ -261,7 +261,7 @@ function GlobalBadge() {
 
 function GroupHeader({ label, isGlobal }: { label: string; isGlobal?: boolean }) {
   return (
-    <div className="flex items-center justify-between text-[10px] px-1">
+    <div className="flex items-center justify-between text-xs px-1">
       <span className="text-slate-300 font-medium">{label}</span>
       {isGlobal && <GlobalBadge />}
     </div>
@@ -272,7 +272,7 @@ function ClearButton({ onClick }: { onClick: () => void }) {
   return (
     <button
       type="button"
-      className="text-[9px] text-slate-500 hover:text-slate-300 underline ml-9"
+      className="text-[11px] text-slate-400 hover:text-slate-300 underline ml-9"
       onClick={onClick}
     >
       clear
@@ -297,7 +297,7 @@ function ContributionHint({
   const phrase = collisionKeys.map(prettifyEffectKey).join(', ');
   return (
     <div
-      className={`text-[9px] text-slate-500 italic ${indent}`}
+      className={`text-[11px] text-slate-400 italic ${indent}`}
       title={`When active, casts a second simultaneous instance of: ${phrase}. The displayed numbers don't yet show the duplicate; the game treats them as stacked.`}
     >
       + extra {phrase} instance

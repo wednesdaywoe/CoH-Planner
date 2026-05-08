@@ -116,40 +116,18 @@ export function GeneralStatsBlock({
 }
 
 // ----------------------------------------------------------------------
-// ActivationRow — expandable row showing Cast Time / Arcanatime.
-// Inline value reflects the user's toggle preference. Expanded view
-// shows both, since proc-chance math uses raw Cast Time while the
-// animation lockout uses Arcanatime.
+// ActivationRow — Activation (raw cast time) is always shown. When the
+// user has the ArcanaTime toggle on, a second row shows the
+// server-tick-adjusted lockout. Both rows use the same KvRow style as
+// Range / Effect Area / Attack Type for visual consistency.
 // ----------------------------------------------------------------------
 
 function ActivationRow({ castTime, useArcanaTime }: { castTime: number; useArcanaTime: boolean }) {
-  const [expanded, setExpanded] = useState(false);
-  const arcana = calculateArcanaTime(castTime);
-  const inlineValue = useArcanaTime ? arcana : castTime;
-
   return (
     <>
-      <div
-        role="button"
-        aria-expanded={expanded}
-        title={expanded ? 'Hide cast time / arcanatime detail' : 'Show cast time and arcanatime'}
-        className="grid grid-cols-[7rem_1fr] gap-1 text-[11px] cursor-pointer select-none hover:bg-slate-700/30 -mx-0.5 px-0.5 rounded"
-        onClick={() => setExpanded((v) => !v)}
-      >
-        <span className="text-slate-500">
-          <span className={`inline-block text-[8px] mr-0.5 transition-transform ${expanded ? 'rotate-90' : ''}`}>▶</span>
-          Activation
-        </span>
-        <span className="text-slate-200">{inlineValue.toFixed(2)}s</span>
-      </div>
-      {expanded && (
-        <div className="ml-3 pl-2 border-l border-slate-700/60 space-y-0.5">
-          <KvRow label="Cast Time" value={`${castTime.toFixed(3)}s`} />
-          <KvRow label="Arcanatime" value={`${arcana.toFixed(3)}s`} />
-          <div className="text-[9px] text-slate-500 italic mt-0.5">
-            Proc chance uses Cast Time; animation lockout uses Arcanatime.
-          </div>
-        </div>
+      <KvRow label="Activation" value={`${castTime.toFixed(3)}s`} />
+      {useArcanaTime && (
+        <KvRow label="ArcanaTime" value={`${calculateArcanaTime(castTime).toFixed(3)}s`} />
       )}
     </>
   );
@@ -261,11 +239,11 @@ function ProcChanceRow({
         role="button"
         aria-expanded={expanded}
         title={expanded ? 'Hide proc chance detail' : 'Show proc chance breakdown'}
-        className="grid grid-cols-[7rem_1fr] gap-1 text-[11px] cursor-pointer select-none hover:bg-slate-700/30 -mx-0.5 px-0.5 rounded"
+        className="grid grid-cols-[7rem_1fr] gap-1 text-xs cursor-pointer select-none hover:bg-slate-700/30 -mx-0.5 px-0.5 rounded"
         onClick={() => setExpanded((v) => !v)}
       >
-        <span className="text-slate-500">
-          <span className={`inline-block text-[8px] mr-0.5 transition-transform ${expanded ? 'rotate-90' : ''}`}>▶</span>
+        <span className="text-slate-400">
+          <span className={`inline-block text-[10px] mr-0.5 transition-transform ${expanded ? 'rotate-90' : ''}`}>▶</span>
           Proc Chance
         </span>
         <span className="text-slate-200">
@@ -286,7 +264,7 @@ function ProcChanceRow({
               baseRecharge={baseRecharge}
             />
           ))}
-          <div className="text-[9px] text-slate-500 italic mt-1">
+          <div className="text-[11px] text-slate-400 italic mt-1">
             Recharge here = base ÷ (1 + slotted enh recharge); global recharge buffs (set bonuses, Hasten) do not affect proc chance.
             {isToggleOrAuto && ' Toggle procs check every 10s (~6×/min) with suppression in between.'}
             {' '}Clamped to 5+PPM×1.5% min, 90% max.
@@ -316,9 +294,9 @@ function ProcDetailLine({
 }) {
   if (entry.ppm == null || entry.chance === undefined) {
     return (
-      <div className="text-[10px]">
+      <div className="text-xs">
         <span className="text-slate-300">{entry.name}</span>
-        <span className="text-slate-500"> — always-on (no PPM check)</span>
+        <span className="text-slate-400"> — always-on (no PPM check)</span>
       </div>
     );
   }
@@ -337,13 +315,13 @@ function ProcDetailLine({
   }
 
   return (
-    <div className="text-[10px] leading-tight">
+    <div className="text-xs leading-tight">
       <div>
         <span className="text-slate-300">{entry.name}</span>
-        <span className="text-slate-500"> · {ppm.toFixed(1)} PPM</span>
+        <span className="text-slate-400"> · {ppm.toFixed(1)} PPM</span>
         <span className="text-amber-300 ml-2">{chancePct.toFixed(1)}%</span>
       </div>
-      <div className="text-[9px] text-slate-500 font-mono pl-1">{formula}</div>
+      <div className="text-[11px] text-slate-400 font-mono pl-1">{formula}</div>
     </div>
   );
 }
@@ -363,11 +341,11 @@ interface KvRowProps {
 
 function KvRow({ label, value, delta, valueClass, title }: KvRowProps) {
   return (
-    <div className="grid grid-cols-[7rem_1fr] gap-1 text-[11px]" title={title}>
-      <span className="text-slate-500">{label}</span>
+    <div className="grid grid-cols-[7rem_1fr] gap-1 text-xs" title={title}>
+      <span className="text-slate-400">{label}</span>
       <span className={valueClass ?? 'text-slate-200'}>
         {value}
-        {delta && <span className="text-slate-500 text-[9px] ml-1">({delta})</span>}
+        {delta && <span className="text-slate-400 text-[11px] ml-1">({delta})</span>}
       </span>
     </div>
   );

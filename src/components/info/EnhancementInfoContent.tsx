@@ -105,7 +105,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
   const enhancement = findEnhancement();
 
   if (!enhancement) {
-    return <div className="text-slate-500 text-[10px]">No enhancement</div>;
+    return <div className="text-slate-400 text-xs">No enhancement</div>;
   }
 
   // IO Set Enhancement
@@ -159,18 +159,18 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
             className="flex-shrink-0"
           />
           <div className="min-w-0">
-            <h3 className="text-xs font-semibold text-yellow-400 leading-tight">
+            <h3 className="text-sm font-semibold text-yellow-400 leading-tight">
               {ioEnh.setName}
               {ioSet && <span className="text-yellow-600 font-normal ml-1">({ioEnh.pieceNum}/{ioSet.pieces.length})</span>}
             </h3>
-            <span className="text-[10px] text-blue-400">{enhancement.name}</span>
+            <span className="text-xs text-blue-400">{enhancement.name}</span>
           </div>
         </div>
 
         {/* Proc Effect section - shown for proc enhancements */}
         {ioEnh.isProc ? (
           <div className="bg-amber-900/30 border border-amber-700/50 rounded p-1.5">
-            <div className="text-[9px] text-amber-400 uppercase mb-1 font-semibold">Proc Effect</div>
+            <div className="text-[11px] text-amber-400 uppercase mb-1 font-semibold">Proc Effect</div>
             {/* Look up detailed proc data */}
             {(() => {
               const procData = findProcData(enhancement.name, ioEnh.setName);
@@ -211,39 +211,39 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                   <div className="space-y-1">
                     {/* Effect name and category */}
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className={`text-[10px] font-medium ${effectColorClass}`}>
+                      <span className={`text-xs font-medium ${effectColorClass}`}>
                         {procData.ioName}
                       </span>
-                      <span className={`text-[8px] px-1 py-0.5 rounded ${badgeColors}`}>
+                      <span className={`text-[10px] px-1 py-0.5 rounded ${badgeColors}`}>
                         {categoryLabel}
                       </span>
                       {effect.secondaryCategory && secondaryBadgeColors && (
-                        <span className={`text-[8px] px-1 py-0.5 rounded ${secondaryBadgeColors}`}>
+                        <span className={`text-[10px] px-1 py-0.5 rounded ${secondaryBadgeColors}`}>
                           {getProcEffectLabel(effect.secondaryCategory)}
                         </span>
                       )}
                       {isAlwaysOn && (
-                        <span className="text-[8px] px-1 py-0.5 rounded bg-green-900/50 text-green-300">
+                        <span className="text-[10px] px-1 py-0.5 rounded bg-green-900/50 text-green-300">
                           Always On
                         </span>
                       )}
                     </div>
 
                     {/* Detailed mechanics */}
-                    <div className="text-[9px] text-slate-300 bg-slate-800/50 rounded px-1.5 py-1">
+                    <div className="text-[11px] text-slate-300 bg-slate-800/50 rounded px-1.5 py-1">
                       {procData.mechanics}
                     </div>
 
                     {/* Effect details based on category */}
-                    <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[9px]">
+                    <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[11px]">
                       {procData.ppm !== null && (
                         <div>
-                          <span className="text-slate-500">PPM:</span>
+                          <span className="text-slate-400">PPM:</span>
                           <span className="text-amber-300 ml-1 font-medium">{procData.ppm}</span>
                         </div>
                       )}
                       <div>
-                        <span className="text-slate-500">Type:</span>
+                        <span className="text-slate-400">Type:</span>
                         <span className={`ml-1 ${
                           procData.type === 'Proc120s' ? 'text-purple-400' :
                           procData.type === 'Global' ? 'text-green-400' :
@@ -255,7 +255,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                       {/* Show parsed effect values */}
                       {effect.value !== undefined && effect.category === 'Damage' && effect.valueMax && (
                         <div>
-                          <span className="text-slate-500">Dmg:</span>
+                          <span className="text-slate-400">Dmg:</span>
                           <span className="text-red-400 ml-1">
                             {interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, effectiveLevel)} {effect.effectType}
                           </span>
@@ -263,7 +263,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                       )}
                       {effect.value !== undefined && effect.category !== 'Damage' && (
                         <div>
-                          <span className="text-slate-500">Value:</span>
+                          <span className="text-slate-400">Value:</span>
                           <span className={`${effectColorClass} ml-1`}>
                             {effect.category === 'KnockbackProtection' ? `Mag ${effect.value}` :
                              effect.category === 'Stealth' ? `${effect.value} ft` :
@@ -274,14 +274,14 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                       )}
                       {effect.duration && (
                         <div>
-                          <span className="text-slate-500">Dur:</span>
+                          <span className="text-slate-400">Dur:</span>
                           <span className="text-cyan-300 ml-1">{effect.duration}s</span>
                         </div>
                       )}
                       {/* Secondary effect (for combined procs like Numina's, Panacea) */}
                       {effect.secondaryCategory && effect.secondaryValue !== undefined && (
                         <div>
-                          <span className="text-slate-500">+{getProcEffectLabel(effect.secondaryCategory)}:</span>
+                          <span className="text-slate-400">+{getProcEffectLabel(effect.secondaryCategory)}:</span>
                           <span className={`${getProcEffectColor(effect.secondaryCategory)} ml-1`}>
                             {effect.secondaryValue}%
                             {effect.secondaryEffectType ? ` ${effect.secondaryEffectType}` : ''}
@@ -340,19 +340,19 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
 
                         return (
                           <div className="mt-1 pt-1 border-t border-amber-700/30">
-                            <div className="text-[8px] text-amber-400/70 uppercase mb-0.5">PPM Calculation ({powerType})</div>
-                            <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[9px]">
+                            <div className="text-[10px] text-amber-400/70 uppercase mb-0.5">PPM Calculation ({powerType})</div>
+                            <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[11px]">
                               <div>
-                                <span className="text-slate-500">Chance/tick:</span>
+                                <span className="text-slate-400">Chance/tick:</span>
                                 <span className="text-amber-300 ml-1">{(procChance * 100).toFixed(1)}%</span>
                               </div>
                               <div>
-                                <span className="text-slate-500">Procs/min:</span>
+                                <span className="text-slate-400">Procs/min:</span>
                                 <span className="text-green-400 ml-1">{procsPerMin.toFixed(2)}</span>
                               </div>
                               {effect.category === 'Damage' && effect.value !== undefined && effect.valueMax !== undefined && (
                                 <div>
-                                  <span className="text-slate-500">DPS:</span>
+                                  <span className="text-slate-400">DPS:</span>
                                   <span className="text-red-400 ml-1">
                                     {((procsPerMin * interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, effectiveLevel)) / 60).toFixed(1)}
                                   </span>
@@ -361,7 +361,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                               {/* Endurance per second for endurance procs */}
                               {effect.category === 'Endurance' && effect.value !== undefined && (
                                 <div>
-                                  <span className="text-slate-500">End/sec:</span>
+                                  <span className="text-slate-400">End/sec:</span>
                                   <span className="text-blue-400 ml-1">
                                     {((procsPerMin * effect.value) / 60).toFixed(2)}
                                   </span>
@@ -370,7 +370,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                               {/* HP per second for heal procs */}
                               {effect.category === 'Heal' && effect.value !== undefined && (
                                 <div>
-                                  <span className="text-slate-500">HP%/sec:</span>
+                                  <span className="text-slate-400">HP%/sec:</span>
                                   <span className="text-green-400 ml-1">
                                     {((procsPerMin * effect.value) / 60).toFixed(2)}%
                                   </span>
@@ -379,7 +379,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                               {/* Recovery rate for recovery procs */}
                               {effect.category === 'Recovery' && effect.value !== undefined && (
                                 <div>
-                                  <span className="text-slate-500">Rec%/sec:</span>
+                                  <span className="text-slate-400">Rec%/sec:</span>
                                   <span className="text-blue-300 ml-1">
                                     {((procsPerMin * effect.value) / 60).toFixed(2)}%
                                   </span>
@@ -388,14 +388,14 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                               {/* Regen rate for regeneration procs */}
                               {effect.category === 'Regeneration' && effect.value !== undefined && (
                                 <div>
-                                  <span className="text-slate-500">Regen%/sec:</span>
+                                  <span className="text-slate-400">Regen%/sec:</span>
                                   <span className="text-green-300 ml-1">
                                     {((procsPerMin * effect.value) / 60).toFixed(2)}%
                                   </span>
                                 </div>
                               )}
                             </div>
-                            <div className="text-[7px] text-slate-500 mt-0.5 italic">
+                            <div className="text-[9px] text-slate-400 mt-0.5 italic">
                               Auto/Toggle: 10s pseudo-recharge, 6 checks/min
                             </div>
                           </div>
@@ -416,21 +416,21 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
 
                       return (
                         <div className="mt-1 pt-1 border-t border-amber-700/30">
-                          <div className="text-[8px] text-amber-400/70 uppercase mb-0.5">PPM Calculation</div>
-                          <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[9px]">
+                          <div className="text-[10px] text-amber-400/70 uppercase mb-0.5">PPM Calculation</div>
+                          <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[11px]">
                             <div>
-                              <span className="text-slate-500">Chance:</span>
+                              <span className="text-slate-400">Chance:</span>
                               <span className="text-amber-300 ml-1">{(procChance * 100).toFixed(1)}%</span>
                             </div>
                             <div>
-                              <span className="text-slate-500">Procs/min:</span>
+                              <span className="text-slate-400">Procs/min:</span>
                               <span className="text-green-400 ml-1">{procsPerMin.toFixed(2)}</span>
                             </div>
                             {effect.category === 'Damage' && effect.value !== undefined && effect.valueMax !== undefined && (() => {
                               const dmgAtLevel = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, effectiveLevel);
                               return (
                                 <div>
-                                  <span className="text-slate-500">DPS:</span>
+                                  <span className="text-slate-400">DPS:</span>
                                   <span className="text-red-400 ml-1">
                                     {calculateProcDPS(procData.ppm, dmgAtLevel, dmgAtLevel, recharge, castTime, radius, 0, arcDegrees).toFixed(1)}
                                   </span>
@@ -440,7 +440,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                             {/* Endurance per second for endurance procs */}
                             {effect.category === 'Endurance' && effect.value !== undefined && (
                               <div>
-                                <span className="text-slate-500">End/sec:</span>
+                                <span className="text-slate-400">End/sec:</span>
                                 <span className="text-blue-400 ml-1">
                                   {((procsPerMin * effect.value) / 60).toFixed(2)}
                                 </span>
@@ -449,7 +449,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                             {/* HP per second for heal procs */}
                             {effect.category === 'Heal' && effect.value !== undefined && (
                               <div>
-                                <span className="text-slate-500">HP%/sec:</span>
+                                <span className="text-slate-400">HP%/sec:</span>
                                 <span className="text-green-400 ml-1">
                                   {((procsPerMin * effect.value) / 60).toFixed(2)}%
                                 </span>
@@ -458,7 +458,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                             {/* Recovery rate for recovery procs */}
                             {effect.category === 'Recovery' && effect.value !== undefined && (
                               <div>
-                                <span className="text-slate-500">Rec%/sec:</span>
+                                <span className="text-slate-400">Rec%/sec:</span>
                                 <span className="text-blue-300 ml-1">
                                   {((procsPerMin * effect.value) / 60).toFixed(2)}%
                                 </span>
@@ -467,14 +467,14 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                             {/* Regen rate for regeneration procs */}
                             {effect.category === 'Regeneration' && effect.value !== undefined && (
                               <div>
-                                <span className="text-slate-500">Regen%/sec:</span>
+                                <span className="text-slate-400">Regen%/sec:</span>
                                 <span className="text-green-300 ml-1">
                                   {((procsPerMin * effect.value) / 60).toFixed(2)}%
                                 </span>
                               </div>
                             )}
                           </div>
-                          <div className="text-[7px] text-slate-500 mt-0.5 italic">
+                          <div className="text-[9px] text-slate-400 mt-0.5 italic">
                             Base: {recharge.toFixed(1)}s rech, {castTime.toFixed(2)}s cast{radius > 0 ? `, ${radius}ft AoE` : ''}
                           </div>
                         </div>
@@ -483,7 +483,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
 
                     {/* PvP notes if any */}
                     {procData.pvpNotes && (
-                      <div className="text-[8px] text-orange-400/80">
+                      <div className="text-[10px] text-orange-400/80">
                         PvP: {procData.pvpNotes}
                       </div>
                     )}
@@ -502,9 +502,9 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                 return (
                   <>
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] text-amber-200">{effectText}</span>
+                      <span className="text-xs text-amber-200">{effectText}</span>
                     </div>
-                    <div className="text-[8px] text-slate-500 mt-1 italic">
+                    <div className="text-[10px] text-slate-400 mt-1 italic">
                       Proc effects trigger based on PPM (Procs Per Minute) formula
                     </div>
                   </>
@@ -515,11 +515,11 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
         ) : (
           /* Enhances section with calculated values - for non-proc enhancements */
           <div className="bg-slate-800/50 rounded p-1.5">
-            <div className="text-[10px] text-slate-400 uppercase mb-1 font-medium">Enhances:</div>
+            <div className="text-xs text-slate-300 uppercase mb-1 font-medium">Enhances:</div>
             {ioEnh.aspects.map((aspect, i) => {
               const value = calculateAspectValue(aspect);
               return (
-                <div key={i} className="flex justify-between items-baseline text-xs">
+                <div key={i} className="flex justify-between items-baseline text-sm">
                   <span className="text-slate-200">{aspect}</span>
                   {value !== null && (
                     <span className="text-green-400 font-mono">
@@ -530,7 +530,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
               );
             })}
             {effectiveAspectCount > 1 && (
-              <div className="text-[10px] text-slate-400 mt-1 italic">
+              <div className="text-xs text-slate-300 mt-1 italic">
                 {(aspectModifier * 100).toFixed(1)}% per aspect ({rawAspectCount} aspect{rawAspectCount !== 1 ? 's' : ''}{ioEnh.isProc ? ' + proc' : ''})
               </div>
             )}
@@ -538,8 +538,8 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
         )}
 
         {/* Level and flags */}
-        <div className="text-[10px] flex gap-3">
-          <span className="text-slate-400">
+        <div className="text-xs flex gap-3">
+          <span className="text-slate-300">
             {ioEnh.attuned ? (
               <span className="text-purple-400">Attuned (scales to Lvl {build.level})</span>
             ) : (
@@ -559,7 +559,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
           const hasPvPEffects = ioSet.category === 'pvp' && ioSet.bonuses.some(b => b.effects.some(e => e.pvp));
           return (
             <div className="border-t border-slate-700 pt-2">
-              <div className="text-[10px] text-slate-400 uppercase mb-1 font-medium">
+              <div className="text-xs text-slate-300 uppercase mb-1 font-medium">
                 Set Bonuses ({piecesSlotted}/{ioSet.pieces.length} slotted)
               </div>
               <div className="space-y-0.5">
@@ -570,9 +570,9 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                   return (
                     <div
                       key={idx}
-                      className={`text-xs ${isActive ? 'text-green-400' : 'text-slate-400'}`}
+                      className={`text-sm ${isActive ? 'text-green-400' : 'text-slate-300'}`}
                     >
-                      <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-500'}`}>
+                      <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-400'}`}>
                         {bonus.pieces}pc:
                       </span>{' '}
                       {pveEffects.map((eff, i) => {
@@ -586,7 +586,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                             {i > 0 && ', '}
                             {formatted}
                             {isActive && totalCount > 0 && (
-                              <span className={`ml-0.5 text-[10px] ${capped ? 'text-orange-400 font-semibold' : 'text-slate-400'}`}>
+                              <span className={`ml-0.5 text-xs ${capped ? 'text-orange-400 font-semibold' : 'text-slate-300'}`}>
                                 ({totalCount}/5)
                               </span>
                             )}
@@ -599,7 +599,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
               </div>
               {hasPvPEffects && (
                 <>
-                  <div className="text-[10px] text-red-400 uppercase mt-2 mb-0.5 font-medium">PvP Only</div>
+                  <div className="text-xs text-red-400 uppercase mt-2 mb-0.5 font-medium">PvP Only</div>
                   <div className="space-y-0.5">
                     {ioSet.bonuses.map((bonus, idx) => {
                       const pvpEffects = bonus.effects.filter(e => e.pvp);
@@ -608,9 +608,9 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                       return (
                         <div
                           key={idx}
-                          className={`text-xs ${isActive ? 'text-red-300' : 'text-slate-500'}`}
+                          className={`text-sm ${isActive ? 'text-red-300' : 'text-slate-400'}`}
                         >
-                          <span className={`font-medium ${isActive ? 'text-red-400' : 'text-slate-600'}`}>
+                          <span className={`font-medium ${isActive ? 'text-red-400' : 'text-slate-500'}`}>
                             {bonus.pieces}pc:
                           </span>{' '}
                           {pvpEffects.map((eff, i) => (
@@ -645,21 +645,21 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
             className="flex-shrink-0"
           />
           <div className="min-w-0">
-            <h3 className="text-xs font-semibold text-blue-400 leading-tight">{enhancement.name}</h3>
-            <span className="text-[9px] text-slate-400">Generic IO</span>
+            <h3 className="text-sm font-semibold text-blue-400 leading-tight">{enhancement.name}</h3>
+            <span className="text-[11px] text-slate-300">Generic IO</span>
           </div>
         </div>
-        <div className="text-[10px]">
-          <span className="text-slate-400">Enhances: </span>
+        <div className="text-xs">
+          <span className="text-slate-300">Enhances: </span>
           <span className="text-green-400">{genericEnh.stat}</span>
-          <span className="text-slate-400"> by </span>
+          <span className="text-slate-300"> by </span>
           <span className="text-green-400">
             {(genericEnh.value * (1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL)).toFixed(1)}%
           </span>
         </div>
-        <div className="text-[10px] flex gap-3">
+        <div className="text-xs flex gap-3">
           {enhancement.level && (
-            <span className="text-slate-400">
+            <span className="text-slate-300">
               Level: <span className="text-slate-200">{enhancement.level}</span>
             </span>
           )}
@@ -686,20 +686,20 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
             className="flex-shrink-0"
           />
           <div className="min-w-0">
-            <h3 className="text-xs font-semibold text-blue-400 leading-tight">{enhancement.name}</h3>
-            <span className="text-[9px] text-slate-400">{originEnh.tier}</span>
+            <h3 className="text-sm font-semibold text-blue-400 leading-tight">{enhancement.name}</h3>
+            <span className="text-[11px] text-slate-300">{originEnh.tier}</span>
           </div>
         </div>
-        <div className="text-[10px]">
-          <span className="text-slate-400">Enhances: </span>
+        <div className="text-xs">
+          <span className="text-slate-300">Enhances: </span>
           <span className="text-green-400">{originEnh.stat}</span>
-          <span className="text-slate-400"> by </span>
+          <span className="text-slate-300"> by </span>
           <span className="text-green-400">
             {(originEnh.value * (1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL)).toFixed(1)}%
           </span>
         </div>
         {enhancement.boost && enhancement.boost > 0 && (
-          <div className="text-[10px] text-green-400">+{enhancement.boost} Boosted</div>
+          <div className="text-xs text-green-400">+{enhancement.boost} Boosted</div>
         )}
       </div>
     );
@@ -723,12 +723,12 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
             className="flex-shrink-0"
           />
           <div className="min-w-0">
-            <h3 className="text-xs font-semibold text-purple-400 leading-tight">{enhancement.name}</h3>
-            <span className="text-[9px] text-slate-400 capitalize">{specialEnh.category}</span>
+            <h3 className="text-sm font-semibold text-purple-400 leading-tight">{enhancement.name}</h3>
+            <span className="text-[11px] text-slate-300 capitalize">{specialEnh.category}</span>
           </div>
         </div>
-        <div className="text-[10px]">
-          <span className="text-slate-400">Enhances: </span>
+        <div className="text-xs">
+          <span className="text-slate-300">Enhances: </span>
           <span className="text-green-400">
             {specialEnh.aspects.map(a => {
               const boosted = a.value * (1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL);
@@ -737,11 +737,11 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
           </span>
         </div>
         {enhancement.boost && enhancement.boost > 0 && (
-          <div className="text-[10px] text-green-400">+{enhancement.boost} Boosted</div>
+          <div className="text-xs text-green-400">+{enhancement.boost} Boosted</div>
         )}
       </div>
     );
   }
 
-  return <div className="text-slate-500 text-[10px]">Unknown enhancement type</div>;
+  return <div className="text-slate-400 text-xs">Unknown enhancement type</div>;
 }

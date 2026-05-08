@@ -1,5 +1,5 @@
 /**
- * Type definitions for Homecoming in-game build export format
+ * Type definitions for the in-game build export format
  */
 
 import type { Build } from '@/types';

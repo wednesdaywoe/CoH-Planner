@@ -3,7 +3,7 @@
  * Mirrors the legacy stats selector functionality
  */
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useUIStore } from '@/stores';
 import { Modal, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
@@ -233,14 +233,14 @@ const STAT_CATEGORIES: {
     name: 'Debuff Resistance',
     colorKey: 'debuffResist',
     stats: [
-      { stat: 'debuff_slow', label: 'Slow Res' },
-      { stat: 'debuff_defense', label: 'Def Debuff Res' },
-      { stat: 'debuff_recharge', label: 'Rech Debuff Res' },
-      { stat: 'debuff_endurance', label: 'End Drain Res' },
-      { stat: 'debuff_recovery', label: 'Rec Debuff Res' },
-      { stat: 'debuff_tohit', label: 'ToHit Debuff Res' },
-      { stat: 'debuff_regen', label: 'Regen Debuff Res' },
-      { stat: 'debuff_perception', label: 'Percep Res' },
+      { stat: 'debuff_slow', label: 'Slow' },
+      { stat: 'debuff_defense', label: 'Defense' },
+      { stat: 'debuff_recharge', label: 'Recharge' },
+      { stat: 'debuff_endurance', label: 'End Drain' },
+      { stat: 'debuff_recovery', label: 'Recovery' },
+      { stat: 'debuff_tohit', label: 'ToHit' },
+      { stat: 'debuff_regen', label: 'Regen' },
+      { stat: 'debuff_perception', label: 'Perception' },
     ],
   },
 ];
@@ -259,6 +259,35 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
   const reorderStats = useUIStore((s) => s.reorderStats);
   const resetStatsConfig = useUIStore((s) => s.resetStatsConfig);
   const openProcSettingsModal = useUIStore((s) => s.openProcSettingsModal);
+  const scrollToStatId = useUIStore((s) => s.statsConfigScrollTo);
+  const clearStatsConfigScrollTo = useUIStore((s) => s.clearStatsConfigScrollTo);
+
+  // Refs for each category section so we can scroll-to + flash-highlight one
+  // when the dashboard's gear icon was clicked with a deep-link target.
+  const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [flashedCategory, setFlashedCategory] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!isOpen || !scrollToStatId) return;
+    const targetCategory = STAT_CATEGORIES.find((cat) =>
+      cat.stats.some((s) => s.stat === scrollToStatId),
+    );
+    if (!targetCategory) {
+      clearStatsConfigScrollTo();
+      return;
+    }
+    // Defer one frame so the modal has mounted its scroll container.
+    const id = requestAnimationFrame(() => {
+      const el = categoryRefs.current[targetCategory.name];
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setFlashedCategory(targetCategory.name);
+        setTimeout(() => setFlashedCategory(null), 1200);
+      }
+      clearStatsConfigScrollTo();
+    });
+    return () => cancelAnimationFrame(id);
+  }, [isOpen, scrollToStatId, clearStatsConfigScrollTo]);
 
   // Local state for editing before applying
   const [localConfig, setLocalConfig] = useState<StatDisplayConfig[]>(() => {
@@ -383,7 +412,13 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
             const colors = CATEGORY_COLORS[category.colorKey];
 
             return (
-              <div key={category.name} className={`border ${colors.border} rounded-lg overflow-hidden`}>
+              <div
+                key={category.name}
+                ref={(el) => { categoryRefs.current[category.name] = el; }}
+                className={`border ${colors.border} rounded-lg overflow-hidden transition-shadow ${
+                  flashedCategory === category.name ? 'ring-2 ring-blue-400 shadow-lg shadow-blue-500/50' : ''
+                }`}
+              >
                 {/* Category header */}
                 <button
                   onClick={() => toggleCategory(category.stats)}

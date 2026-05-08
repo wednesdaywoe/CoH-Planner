@@ -1,5 +1,5 @@
 /**
- * Homecoming in-game build export import - public API
+ * Game importer — public API
  */
 
 export { importGameExport, importFromParsedData } from './importer';

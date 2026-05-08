@@ -73,7 +73,7 @@ export function InfoPanel() {
 
   if (!content) {
     return (
-      <div className="text-slate-500 text-xs text-center py-8 italic">
+      <div className="text-slate-400 text-sm text-center py-8 italic">
         Hover over a power to see details
       </div>
     );
@@ -95,7 +95,7 @@ export function InfoPanel() {
         </button>
       ) : (
         <div
-          className="absolute top-0 right-0 text-slate-600 p-1 z-10 pointer-events-auto cursor-help"
+          className="absolute top-0 right-0 text-slate-500 p-1 z-10 pointer-events-auto cursor-help"
           title="Hover-preview mode — the panel updates as you hover. Right click any power to lock its details here."
           aria-label="Info panel: hover-preview mode"
         >
@@ -558,7 +558,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const setTargetsHit = useUIStore((s) => s.setTargetsHit);
 
   if (!power || !effectivePower) {
-    return <div className="text-slate-500 text-xs">Power not found</div>;
+    return <div className="text-slate-400 text-sm">Power not found</div>;
   }
 
   const baseEffects = effectivePower.effects;
@@ -643,13 +643,13 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           <h3 className="text-sm font-semibold text-blue-400 leading-tight">
             {power.name}
             {isQuickSnipe && (
-              <span className="text-[9px] text-amber-400 ml-1 font-normal">(Quick)</span>
+              <span className="text-[11px] text-amber-400 ml-1 font-normal">(Quick)</span>
             )}
             {hasEnhancements && (
-              <span className="text-[9px] text-green-500 ml-1 font-normal">(enhanced)</span>
+              <span className="text-[11px] text-green-500 ml-1 font-normal">(enhanced)</span>
             )}
           </h3>
-          <span className="text-[10px] text-slate-400 capitalize">{power.powerType}</span>
+          <span className="text-xs text-slate-300 capitalize">{power.powerType}</span>
         </div>
       </div>
 
@@ -681,7 +681,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
         return (
           <div className={`flex items-center gap-2 bg-slate-800/50 rounded px-2 py-1.5 ${isToggleOff ? 'opacity-50' : ''}`}>
-            <span className="text-[10px] text-slate-400 whitespace-nowrap">{stackingInfo.label}</span>
+            <span className="text-xs text-slate-300 whitespace-nowrap">{stackingInfo.label}</span>
             <input
               type="range"
               min={0}
@@ -691,7 +691,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               disabled={!!isToggleOff}
               className="flex-1 h-1 accent-blue-500 cursor-pointer disabled:opacity-50"
             />
-            <span className="text-[10px] text-slate-200 font-mono w-10 text-right">
+            <span className="text-xs text-slate-200 font-mono w-10 text-right">
               {effectiveTargets === 0 ? 'Off' : `${effectiveTargets} / ${stackingInfo.maxStacks}`}
             </span>
           </div>
@@ -734,11 +734,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
        * from procs the player slots. */}
       {procDamageEntries && procDamageEntries.length > 0 && (
         <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
-            Damage from Procs <span className="text-slate-600 font-normal">(Lvl {build.level})</span>
+          <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
+            Damage from Procs <span className="text-slate-500 font-normal">(Lvl {build.level})</span>
           </h4>
           <div className="bg-slate-800/50 rounded p-2 space-y-1">
-            <div className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-2 text-[9px] text-slate-500 uppercase border-b border-slate-700 pb-0.5">
+            <div className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-2 text-[11px] text-slate-400 uppercase border-b border-slate-700 pb-0.5">
               <span>Proc</span>
               <span className="text-right">Type</span>
               <span className="text-right">Chance</span>
@@ -746,16 +746,16 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               <span className="text-right">DPS</span>
             </div>
             {procDamageEntries.map((p, i) => (
-              <div key={i} className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-2 text-[10px]">
+              <div key={i} className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-2 text-xs">
                 <span className="text-slate-300 truncate" title={`${p.setName}: ${p.name}`}>{p.name}</span>
                 <span className="text-right text-orange-400">{p.type}</span>
-                <span className="text-right text-slate-400 tabular-nums">{(p.chance * 100).toFixed(0)}%</span>
+                <span className="text-right text-slate-300 tabular-nums">{(p.chance * 100).toFixed(0)}%</span>
                 <span className="text-right text-amber-300 tabular-nums">{p.perActivation.toFixed(1)}</span>
                 <span className="text-right text-amber-400 tabular-nums">{p.dps.toFixed(2)}</span>
               </div>
             ))}
-            <div className="border-t border-slate-700 pt-0.5 flex justify-between text-[9px]">
-              <span className="text-slate-500 uppercase">Total</span>
+            <div className="border-t border-slate-700 pt-0.5 flex justify-between text-[11px]">
+              <span className="text-slate-400 uppercase">Total</span>
               <span className="text-amber-400 tabular-nums">
                 {procDamageEntries.reduce((s, p) => s + p.perActivation, 0).toFixed(1)} avg / {' '}
                 {procDamageEntries.reduce((s, p) => s + p.dps, 0).toFixed(2)} DPS
@@ -796,29 +796,29 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           {archetypeId === 'corruptor' && isCorruptorAttackPower(powerSet) && (() => {
             const scourgeInfo = getScourgeInfo();
             return (
-              <div className={`text-[10px] rounded px-2 py-1.5 border ${
+              <div className={`text-xs rounded px-2 py-1.5 border ${
                 scourgeActive
                   ? 'bg-sk-magenta/10 border-sk-magenta/30'
                   : 'bg-slate-800/50 border-slate-700/30'
               }`}>
                 <div className="flex items-center justify-between">
-                  <span className={`font-medium ${scourgeActive ? 'text-sk-magenta' : 'text-slate-400'}`}>
+                  <span className={`font-medium ${scourgeActive ? 'text-sk-magenta' : 'text-slate-300'}`}>
                     Scourge
                   </span>
-                  <span className={`text-[8px] px-1.5 py-0.5 rounded ${
-                    scourgeActive ? 'bg-sk-magenta/20 text-sk-magenta' : 'bg-slate-700 text-slate-400'
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded ${
+                    scourgeActive ? 'bg-sk-magenta/20 text-sk-magenta' : 'bg-slate-700 text-slate-300'
                   }`}>
                     {scourgeActive ? 'SHOWING AVG' : 'Hidden'}
                   </span>
                 </div>
                 {scourgeActive && (
-                  <div className="mt-1 text-[9px]">
+                  <div className="mt-1 text-[11px]">
                     <span className="text-sk-magenta/70">+{(scourgeInfo.averageDamageBonus * 100).toFixed(0)}% avg dmg</span>
-                    <span className="text-slate-500 ml-1">(×{(1 + scourgeInfo.averageDamageBonus).toFixed(2)} multiplier)</span>
+                    <span className="text-slate-400 ml-1">(×{(1 + scourgeInfo.averageDamageBonus).toFixed(2)} multiplier)</span>
                   </div>
                 )}
                 {!scourgeActive && (
-                  <div className="text-[8px] text-slate-500 mt-0.5">
+                  <div className="text-[10px] text-slate-400 mt-0.5">
                     {scourgeInfo.chanceFormula}
                   </div>
                 )}
@@ -831,24 +831,24 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             const furyInfo = getFuryInfo();
             const currentBonus = calculateFuryDamageBonus(furyLevel);
             return (
-              <div className={`text-[10px] rounded px-2 py-1.5 border ${
+              <div className={`text-xs rounded px-2 py-1.5 border ${
                 furyLevel > 0
                   ? 'bg-sk-magenta/10 border-sk-magenta/30'
                   : 'bg-slate-800/50 border-slate-700/30'
               }`}>
                 <div className="flex items-center justify-between">
-                  <span className={`font-medium ${furyLevel > 0 ? 'text-sk-magenta' : 'text-slate-400'}`}>
+                  <span className={`font-medium ${furyLevel > 0 ? 'text-sk-magenta' : 'text-slate-300'}`}>
                     Fury
                   </span>
-                  <span className={`text-[8px] px-1.5 py-0.5 rounded ${
-                    furyLevel > 0 ? 'bg-sk-magenta/20 text-sk-magenta' : 'bg-slate-700 text-slate-400'
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded ${
+                    furyLevel > 0 ? 'bg-sk-magenta/20 text-sk-magenta' : 'bg-slate-700 text-slate-300'
                   }`}>
                     {furyLevel}/{furyInfo.maxFury}
                   </span>
                 </div>
-                <div className="mt-1 text-[9px]">
+                <div className="mt-1 text-[11px]">
                   <span className="text-sk-magenta/70">+{(currentBonus * 100).toFixed(0)}% damage</span>
-                  <span className="text-slate-500 ml-1">({furyInfo.damagePerFury * 100}% per fury)</span>
+                  <span className="text-slate-400 ml-1">({furyInfo.damagePerFury * 100}% per fury)</span>
                 </div>
               </div>
             );
@@ -858,31 +858,31 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           {archetypeId === 'scrapper' && isScrapperAttackPower(powerSet) && (() => {
             const criticalHitInfo = getCriticalHitInfo();
             return (
-              <div className={`text-[10px] rounded px-2 py-1.5 border ${
+              <div className={`text-xs rounded px-2 py-1.5 border ${
                 criticalHitsActive
                   ? 'bg-sk-magenta/10 border-sk-magenta/30'
                   : 'bg-slate-800/50 border-slate-700/30'
               }`}>
                 <div className="flex items-center justify-between">
-                  <span className={`font-medium ${criticalHitsActive ? 'text-sk-magenta' : 'text-slate-400'}`}>
+                  <span className={`font-medium ${criticalHitsActive ? 'text-sk-magenta' : 'text-slate-300'}`}>
                     Critical Hits
                   </span>
-                  <span className={`text-[8px] px-1.5 py-0.5 rounded ${
-                    criticalHitsActive ? 'bg-sk-magenta/20 text-sk-magenta' : 'bg-slate-700 text-slate-400'
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded ${
+                    criticalHitsActive ? 'bg-sk-magenta/20 text-sk-magenta' : 'bg-slate-700 text-slate-300'
                   }`}>
                     {criticalHitsActive ? 'SHOWING AVG' : 'Hidden'}
                   </span>
                 </div>
                 {criticalHitsActive && (
-                  <div className="mt-1 space-y-0.5 text-[9px]">
+                  <div className="mt-1 space-y-0.5 text-[11px]">
                     <div className="flex justify-between">
-                      <span className="text-slate-400">vs Minions:</span>
+                      <span className="text-slate-300">vs Minions:</span>
                       <span className="text-sk-magenta/70">
                         {(criticalHitInfo.chanceVsMinions * 100).toFixed(0)}% → +{(criticalHitInfo.averageBonusVsMinions * 100).toFixed(0)}% avg
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-400">vs Lt/Boss+:</span>
+                      <span className="text-slate-300">vs Lt/Boss+:</span>
                       <span className="text-sk-magenta/70">
                         {(criticalHitInfo.chanceVsHigher * 100).toFixed(0)}% → +{(criticalHitInfo.averageBonusVsHigher * 100).toFixed(0)}% avg
                       </span>
@@ -890,7 +890,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                   </div>
                 )}
                 {!criticalHitsActive && (
-                  <div className="text-[8px] text-slate-500 mt-0.5">
+                  <div className="text-[10px] text-slate-400 mt-0.5">
                     5% crit vs minions, 10% vs higher ranks
                   </div>
                 )}
@@ -902,7 +902,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           {archetypeId === 'stalker' && isStalkerAttackPower(powerSet) && (() => {
             const currentBonus = calculateAssassinationDamageBonus(effectiveHidden, stalkerTeamSize);
             return (
-              <div className={`text-[10px] rounded px-2 py-1.5 border ${
+              <div className={`text-xs rounded px-2 py-1.5 border ${
                 effectiveHidden
                   ? 'bg-sk-magenta/15 border-sk-magenta/40'
                   : currentBonus > 0
@@ -910,16 +910,16 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                     : 'bg-slate-800/50 border-slate-700/30'
               }`}>
                 <div className="flex items-center justify-between">
-                  <span className={`font-medium ${effectiveHidden || currentBonus > 0 ? 'text-sk-magenta' : 'text-slate-400'}`}>
+                  <span className={`font-medium ${effectiveHidden || currentBonus > 0 ? 'text-sk-magenta' : 'text-slate-300'}`}>
                     Assassination
                   </span>
-                  <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                     effectiveHidden ? 'bg-sk-magenta/25 text-sk-magenta' : 'bg-sk-magenta/20 text-sk-magenta'
                   }`}>
                     {effectiveHidden ? 'ALPHA STRIKE' : `${stalkerTeamSize === 0 ? 'Solo' : `+${stalkerTeamSize}`}`}
                   </span>
                 </div>
-                <div className="mt-1 text-[9px]">
+                <div className="mt-1 text-[11px]">
                   {effectiveHidden ? (
                     <span className="text-sk-magenta/70 font-medium">100% critical from Hide — +100% avg damage on opening attack</span>
                   ) : (
@@ -934,23 +934,23 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           {archetypeId === 'controller' && isControllerPower(powerSet) && (() => {
             const containmentInfo = getContainmentInfo();
             return (
-              <div className={`text-[10px] rounded px-2 py-1.5 border ${
+              <div className={`text-xs rounded px-2 py-1.5 border ${
                 containmentActive
                   ? 'bg-sk-magenta/15 border-sk-magenta/40'
                   : 'bg-slate-800/50 border-slate-700/30'
               }`}>
                 <div className="flex items-center justify-between">
-                  <span className={`font-medium ${containmentActive ? 'text-sk-magenta' : 'text-slate-400'}`}>
+                  <span className={`font-medium ${containmentActive ? 'text-sk-magenta' : 'text-slate-300'}`}>
                     Containment
                   </span>
-                  <span className={`text-[8px] px-1.5 py-0.5 rounded ${
-                    containmentActive ? 'bg-sk-magenta/20 text-sk-magenta' : 'bg-slate-700/50 text-slate-400'
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded ${
+                    containmentActive ? 'bg-sk-magenta/20 text-sk-magenta' : 'bg-slate-700/50 text-slate-300'
                   }`}>
                     {containmentActive ? 'Active' : 'Inactive'}
                   </span>
                 </div>
-                <div className="mt-1 space-y-0.5 text-[9px]">
-                  <div className={containmentActive ? 'text-sk-magenta/70' : 'text-slate-500'}>
+                <div className="mt-1 space-y-0.5 text-[11px]">
+                  <div className={containmentActive ? 'text-sk-magenta/70' : 'text-slate-400'}>
                     {containmentInfo.description}
                   </div>
                   {containmentActive && (
@@ -959,7 +959,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                     </div>
                   )}
                 </div>
-                <div className="text-[8px] text-slate-500 mt-1 pt-1 border-t border-sk-magenta/30">
+                <div className="text-[10px] text-slate-400 mt-1 pt-1 border-t border-sk-magenta/30">
                   Toggle in header to show damage vs controlled targets
                 </div>
               </div>
@@ -977,15 +977,15 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         return (
           <div className="border-t border-slate-700 pt-2 mt-2">
             <div className="flex items-center justify-between">
-              <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide">
+              <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide">
                 Perma Tracker
               </h4>
               <button
                 onClick={() => togglePerma(power.internalName)}
-                className={`text-[9px] px-2 py-0.5 rounded border transition-colors ${
+                className={`text-[11px] px-2 py-0.5 rounded border transition-colors ${
                   permaTracked
                     ? 'bg-sk-magenta/20 border-sk-magenta/50 text-sk-magenta'
-                    : 'bg-slate-800 border-slate-600 text-slate-400 hover:border-slate-500'
+                    : 'bg-slate-800 border-slate-600 text-slate-300 hover:border-slate-500'
                 }`}
               >
                 {permaTracked ? 'Tracking' : 'Track'}
@@ -1001,30 +1001,30 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                       style={{ width: `${permaInfo.permaPercent}%` }}
                     />
                   </div>
-                  <span className="text-[10px] font-mono font-semibold min-w-[3rem] text-right text-sk-magenta">
+                  <span className="text-xs font-mono font-semibold min-w-[3rem] text-right text-sk-magenta">
                     {permaInfo.isPerma ? 'PERMA' : `${permaInfo.permaPercent.toFixed(1)}%`}
                   </span>
                 </div>
                 {/* Stats */}
-                <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px]">
+                <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">+Recharge</span>
+                    <span className="text-slate-400">+Recharge</span>
                     <span className={permaInfo.totalRecharge > 0 ? 'text-green-400' : 'text-slate-300'}>
                       {(permaInfo.totalRecharge * 100).toFixed(0)}% / {(permaInfo.rechargeNeeded * 100).toFixed(0)}%
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Eff. Rchg</span>
+                    <span className="text-slate-400">Eff. Rchg</span>
                     <span className={permaInfo.effectiveRecharge < permaInfo.baseRecharge ? 'text-green-400' : 'text-slate-300'}>
                       {permaInfo.effectiveRecharge.toFixed(1)}s
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Base / Duration</span>
+                    <span className="text-slate-400">Base / Duration</span>
                     <span className="text-slate-300">{permaInfo.baseRecharge}s / {permaInfo.duration}s</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Gap</span>
+                    <span className="text-slate-400">Gap</span>
                     <span className={permaInfo.isPerma ? 'text-green-400' : 'text-red-400'}>
                       {permaInfo.isPerma ? 'None' : `${(permaInfo.effectiveRecharge - permaInfo.duration).toFixed(1)}s`}
                     </span>
@@ -1055,10 +1055,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
         return (
           <div className="border-t border-slate-700 pt-2 mt-2">
-            <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+            <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
               Enhancement Bonuses (after ED)
             </h4>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-xs">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-sm">
               {Object.entries(enhancementBonuses).map(([aspect, value]) => {
                 const total = (value || 0) * 100;
                 const alphaVal = (alphaBonuses[aspect] || 0) * 100;
@@ -1066,11 +1066,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 const ioOnly = total - alphaVal;
                 return (
                   <div key={aspect} className="flex justify-between">
-                    <span className="text-slate-400 capitalize">{aspect}</span>
+                    <span className="text-slate-300 capitalize">{aspect}</span>
                     <span className="text-green-400">
                       +{total.toFixed(2)}%
                       {hasAlpha && hasAlphaForAspect && (
-                        <span className="text-slate-500 text-[10px]"> ({ioOnly.toFixed(0)}%)</span>
+                        <span className="text-slate-400 text-xs"> ({ioOnly.toFixed(0)}%)</span>
                       )}
                     </span>
                   </div>
@@ -1078,7 +1078,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               })}
             </div>
             {hasAlpha && (
-              <p className="text-[9px] text-slate-600 mt-1">Includes Alpha incarnate</p>
+              <p className="text-[11px] text-slate-500 mt-1">Includes Alpha incarnate</p>
             )}
           </div>
         );
@@ -1086,7 +1086,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
       {/* Description (at bottom - least important info) */}
       <p
-        className="text-xs text-slate-300 leading-relaxed"
+        className="text-sm text-slate-300 leading-relaxed"
         dangerouslySetInnerHTML={{
           __html: power.description
             .replace(/<br\s*\/?>/gi, ' ')
@@ -1105,7 +1105,7 @@ interface EnhancementInfoProps {
 function EnhancementInfo({ enhancementId }: EnhancementInfoProps) {
   // TODO: Implement enhancement info display
   return (
-    <div className="text-slate-500 text-xs">
+    <div className="text-slate-400 text-sm">
       Enhancement: {enhancementId}
     </div>
   );
@@ -1127,7 +1127,7 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
   const selectedPower = build.incarnates?.[slotId];
   if (!selectedPower) {
     return (
-      <div className="text-slate-500 text-xs">
+      <div className="text-slate-400 text-sm">
         No incarnate power selected for this slot.
       </div>
     );
@@ -1173,13 +1173,13 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
             {selectedPower.displayName}
           </h3>
           <div className="flex items-center gap-2 mt-0.5">
-            <span className="text-[10px] text-slate-400 capitalize">{slotId}</span>
-            <span className="text-[10px]" style={{ color: tierColor }}>
+            <span className="text-xs text-slate-300 capitalize">{slotId}</span>
+            <span className="text-xs" style={{ color: tierColor }}>
               {tierName}
             </span>
           </div>
           {isToggleable && (
-            <div className={`text-[9px] mt-0.5 ${isActive ? 'text-green-400' : 'text-gray-500'}`}>
+            <div className={`text-[11px] mt-0.5 ${isActive ? 'text-green-400' : 'text-gray-500'}`}>
               {isActive ? 'Active - bonuses applied' : 'Inactive - bonuses not applied'}
             </div>
           )}
@@ -1187,22 +1187,22 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
       </div>
 
       {/* Tree info */}
-      <div className="text-[10px] text-slate-400">
+      <div className="text-xs text-slate-300">
         Tree: <span className="text-slate-300">{selectedPower.treeName}</span>
       </div>
 
       {/* Alpha Effects (Enhancement bonuses) */}
       {alphaEffects && (
         <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+          <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
             Enhancement Bonuses
           </h4>
-          <p className="text-[9px] text-slate-500 mb-1">
+          <p className="text-[11px] text-slate-400 mb-1">
             Applies to all powers that accept these enhancement types.
           </p>
           <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
             {/* Header row for Alpha effects */}
-            <div className="grid grid-cols-[5rem_1fr_1fr] gap-1 text-[9px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
+            <div className="grid grid-cols-[5rem_1fr_1fr] gap-1 text-[11px] text-slate-400 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
               <span>Aspect</span>
               <span>Total</span>
               <span>ED Bypass</span>
@@ -1280,13 +1280,13 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
           {/* Level Shift and ED Bypass info */}
           <div className="mt-1.5 space-y-0.5">
             {alphaEffects.levelShift !== undefined && alphaEffects.levelShift > 0 && (
-              <div className="flex justify-between text-xs">
+              <div className="flex justify-between text-sm">
                 <span className="text-amber-400">Level Shift</span>
                 <span className="text-amber-400">+{alphaEffects.levelShift}</span>
               </div>
             )}
             {alphaEffects.edBypass !== undefined && (
-              <div className="text-[9px] text-slate-500 mt-1">
+              <div className="text-[11px] text-slate-400 mt-1">
                 ED Bypass: {(alphaEffects.edBypass * 100).toFixed(1)}% of bonuses ignore Enhancement Diversification
               </div>
             )}
@@ -1297,8 +1297,8 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
       {/* Destiny Effects (Direct stat bonuses) */}
       {destinyEffects && (
         <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
-            Buff Effects <span className="text-slate-600 font-normal">(initial values)</span>
+          <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
+            Buff Effects <span className="text-slate-500 font-normal">(initial values)</span>
           </h4>
           <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
             {destinyEffects.defenseAll !== undefined && (
@@ -1326,20 +1326,20 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
               <IncarnateEffectRow label="Heal" value={destinyEffects.healPercent} colorClass="text-green-400" />
             )}
             {destinyEffects.mezProtection !== undefined && (
-              <div className="flex justify-between text-xs">
+              <div className="flex justify-between text-sm">
                 <span className="text-purple-400">Mez Protection</span>
                 <span className="text-purple-400">Mag {destinyEffects.mezProtection}</span>
               </div>
             )}
             {destinyEffects.levelShift !== undefined && destinyEffects.levelShift > 0 && (
-              <div className="flex justify-between text-xs">
+              <div className="flex justify-between text-sm">
                 <span className="text-amber-400">Level Shift</span>
                 <span className="text-amber-400">+{destinyEffects.levelShift}</span>
               </div>
             )}
           </div>
           {destinyEffects.initialDuration !== undefined && (
-            <div className="text-[9px] text-slate-500 mt-1">
+            <div className="text-[11px] text-slate-400 mt-1">
               Duration: {destinyEffects.initialDuration}s peak / {destinyEffects.totalDuration}s total
             </div>
           )}
@@ -1352,7 +1352,7 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
           {/* Passive bonuses (always-on) */}
           {Object.keys(hybridEffects.passive).length > 0 && (
             <>
-              <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+              <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
                 Passive (Always-On)
               </h4>
               <div className="bg-slate-800/50 rounded p-2 space-y-0.5 mb-2">
@@ -1365,7 +1365,7 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
           {/* Front-loaded toggle bonuses */}
           {Object.keys(hybridEffects.frontLoaded).length > 0 && (
             <>
-              <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+              <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
                 Toggle (Baseline)
               </h4>
               <div className="bg-slate-800/50 rounded p-2 space-y-0.5 mb-2">
@@ -1378,7 +1378,7 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
           {/* Per-target stacking */}
           {Object.keys(hybridEffects.perTarget).length > 0 && (
             <>
-              <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+              <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
                 Per Enemy (max {hybridEffects.maxTargets})
               </h4>
               <div className="bg-slate-800/50 rounded p-2 space-y-0.5 mb-2">
@@ -1388,7 +1388,7 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
               </div>
             </>
           )}
-          <div className="text-[9px] text-slate-500 mt-1">
+          <div className="text-[11px] text-slate-400 mt-1">
             Duration: {hybridEffects.duration}s / Recharge: {hybridEffects.recharge}s
           </div>
         </div>
@@ -1401,13 +1401,13 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
           : null;
         return (
         <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+          <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
             Proc Effects
           </h4>
           <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
             {interfaceEffects.debuffType && (
-              <div className="flex justify-between text-xs">
-                <span className="text-slate-400">Debuff</span>
+              <div className="flex justify-between text-sm">
+                <span className="text-slate-300">Debuff</span>
                 <span className="text-orange-400">{interfaceEffects.debuffType}</span>
               </div>
             )}
@@ -1415,8 +1415,8 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
               <IncarnateEffectRow label="Magnitude" value={interfaceEffects.debuffMagnitude} colorClass="text-orange-400" />
             )}
             {interfaceEffects.dotType && (
-              <div className="flex justify-between text-xs">
-                <span className="text-slate-400">DoT ({interfaceEffects.dotType})</span>
+              <div className="flex justify-between text-sm">
+                <span className="text-slate-300">DoT ({interfaceEffects.dotType})</span>
                 <span className="text-red-400">
                   {dotDmg !== null ? `${dotDmg.toFixed(1)}` : `${((interfaceEffects.dotDamage || 0) * 100).toFixed(0)}% scale`}
                 </span>
@@ -1437,59 +1437,59 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
         );
         return (
         <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+          <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
             Attack Details
           </h4>
           <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
-            <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Damage ({judgementEffects.damageType})</span>
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-300">Damage ({judgementEffects.damageType})</span>
               <span className="text-red-400">
                 {judgementDamage !== null ? `${judgementDamage.toFixed(1)}` : `${judgementEffects.damageScale} scale`}
               </span>
             </div>
-            <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Effect Area</span>
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-300">Effect Area</span>
               <span className="text-cyan-400">{judgementEffects.effectArea}</span>
             </div>
             {judgementEffects.range > 0 && (
-              <div className="flex justify-between text-xs">
-                <span className="text-slate-400">Range</span>
+              <div className="flex justify-between text-sm">
+                <span className="text-slate-300">Range</span>
                 <span className="text-slate-300">{judgementEffects.range} ft</span>
               </div>
             )}
             {judgementEffects.radius > 0 && (
-              <div className="flex justify-between text-xs">
-                <span className="text-slate-400">Radius</span>
+              <div className="flex justify-between text-sm">
+                <span className="text-slate-300">Radius</span>
                 <span className="text-slate-300">{judgementEffects.radius} ft</span>
               </div>
             )}
             {judgementEffects.arc > 0 && (
-              <div className="flex justify-between text-xs">
-                <span className="text-slate-400">Arc</span>
+              <div className="flex justify-between text-sm">
+                <span className="text-slate-300">Arc</span>
                 <span className="text-slate-300">{judgementEffects.arc}&deg;</span>
               </div>
             )}
             {judgementEffects.maxTargets > 0 && (
-              <div className="flex justify-between text-xs">
-                <span className="text-slate-400">Max Targets</span>
+              <div className="flex justify-between text-sm">
+                <span className="text-slate-300">Max Targets</span>
                 <span className="text-slate-300">{judgementEffects.maxTargets}</span>
               </div>
             )}
-            <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Activation</span>
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-300">Activation</span>
               <span className="text-slate-300">{judgementEffects.activationTime}s</span>
             </div>
-            <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Recharge</span>
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-300">Recharge</span>
               <span className="text-slate-300">{judgementEffects.rechargeTime}s</span>
             </div>
           </div>
           {judgementEffects.secondaryEffects.length > 0 && (
             <div className="mt-1">
-              <div className="text-[9px] text-slate-500 mb-0.5">Secondary Effects:</div>
+              <div className="text-[11px] text-slate-400 mb-0.5">Secondary Effects:</div>
               <div className="flex flex-wrap gap-1">
                 {judgementEffects.secondaryEffects.map((effect, i) => (
-                  <span key={i} className="text-[9px] px-1.5 py-0.5 bg-slate-700/50 rounded text-amber-400">
+                  <span key={i} className="text-[11px] px-1.5 py-0.5 bg-slate-700/50 rounded text-amber-400">
                     {effect}
                   </span>
                 ))}
@@ -1502,30 +1502,30 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
       {/* Lore Effects (Pet summon) */}
       {loreEffects && (
         <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+          <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
             Summon Details
           </h4>
           <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
-            <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Faction</span>
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-300">Faction</span>
               <span className="text-cyan-400">{loreEffects.faction}</span>
             </div>
-            <div className="text-xs mt-1">
-              <span className="text-slate-400">Pets:</span>
+            <div className="text-sm mt-1">
+              <span className="text-slate-300">Pets:</span>
               <div className="flex flex-wrap gap-1 mt-0.5">
                 {loreEffects.pets.map((pet, i) => (
-                  <span key={i} className="text-[9px] px-1.5 py-0.5 bg-slate-700/50 rounded text-green-400">
+                  <span key={i} className="text-[11px] px-1.5 py-0.5 bg-slate-700/50 rounded text-green-400">
                     {pet}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="flex justify-between text-xs mt-1">
-              <span className="text-slate-400">Duration</span>
+            <div className="flex justify-between text-sm mt-1">
+              <span className="text-slate-300">Duration</span>
               <span className="text-slate-300">{loreEffects.duration}s ({Math.round(loreEffects.duration / 60)}m)</span>
             </div>
-            <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Recharge</span>
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-300">Recharge</span>
               <span className="text-slate-300">{loreEffects.rechargeTime}s ({Math.round(loreEffects.rechargeTime / 60)}m)</span>
             </div>
           </div>
@@ -1561,7 +1561,7 @@ function hybridStatColor(stat: string): string {
   if (stat === 'damage') return 'text-red-400';
   if (stat === 'statusResistance') return 'text-purple-400';
   if (stat === 'enduranceDiscount') return 'text-blue-400';
-  return 'text-slate-400';
+  return 'text-slate-300';
 }
 
 function IncarnateEffectRow({
@@ -1576,8 +1576,8 @@ function IncarnateEffectRow({
   suffix?: string;
 }) {
   return (
-    <div className="flex justify-between text-xs">
-      <span className="text-slate-400">{label}</span>
+    <div className="flex justify-between text-sm">
+      <span className="text-slate-300">{label}</span>
       <span className={colorClass}>{formatEffectValue(value)}{suffix}</span>
     </div>
   );
@@ -1600,8 +1600,8 @@ function AlphaEffectRow({
 }) {
   const bypassValue = edBypass !== undefined ? value * edBypass : 0;
   return (
-    <div className="grid grid-cols-[5rem_1fr_1fr] gap-1 items-baseline text-xs">
-      <span className="text-slate-400">{label}</span>
+    <div className="grid grid-cols-[5rem_1fr_1fr] gap-1 items-baseline text-sm">
+      <span className="text-slate-300">{label}</span>
       <span className={colorClass}>{formatEffectValue(value)}</span>
       <span className="text-green-400">
         {edBypass !== undefined ? formatEffectValue(bypassValue) : '—'}
@@ -1656,22 +1656,22 @@ function PetAbilityRow({ ad }: { ad: PetAbilityDamage }) {
         role="button"
         aria-expanded={open}
         title={open ? `Hide details for ${ability.displayName}` : `Show damage breakdown by type for ${ability.displayName}`}
-        className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[9px] items-baseline cursor-pointer select-none hover:bg-slate-800/40 rounded px-0.5"
+        className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[11px] items-baseline cursor-pointer select-none hover:bg-slate-800/40 rounded px-0.5"
         onClick={() => setOpen(!open)}
       >
         <span className="text-slate-300 truncate flex items-center gap-0.5">
-          <span className="text-[8px] text-slate-600">{open ? '▼' : '▶'}</span>
+          <span className="text-[10px] text-slate-500">{open ? '▼' : '▶'}</span>
           {ability.displayName}
-          {ability.type === 'Auto' && <span className="text-slate-500 text-[7px]">auto</span>}
+          {ability.type === 'Auto' && <span className="text-slate-400 text-[9px]">auto</span>}
         </span>
         <span className="text-red-400 text-right">{ad.damagePerHit.toFixed(1)}</span>
-        <span className={`text-right ${abilityHasEnh ? 'text-green-400' : 'text-slate-600'}`}>
+        <span className={`text-right ${abilityHasEnh ? 'text-green-400' : 'text-slate-500'}`}>
           {abilityHasEnh ? ad.damagePerHitEnhanced.toFixed(1) : '—'}
         </span>
-        <span className={`text-right ${abilityHasBuff ? 'text-amber-400' : 'text-slate-600'}`}>
+        <span className={`text-right ${abilityHasBuff ? 'text-amber-400' : 'text-slate-500'}`}>
           {abilityHasBuff ? ad.damagePerHitFinal.toFixed(1) : '—'}
         </span>
-        <span className="text-slate-400 text-right">{ad.dpsFinal.toFixed(1)}</span>
+        <span className="text-slate-300 text-right">{ad.dpsFinal.toFixed(1)}</span>
       </div>
       {open && <PetAbilityDetails ability={ability} cycleTime={ad.cycleTime} damageByType={ad.damageByType} />}
     </div>
@@ -1688,21 +1688,21 @@ function PetEffectAbilityRow({ ability }: { ability: PetAbility }) {
         role="button"
         aria-expanded={open}
         title={open ? `Hide effects for ${ability.displayName}` : `Show effect details for ${ability.displayName}`}
-        className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[9px] items-baseline cursor-pointer select-none hover:bg-slate-800/40 rounded px-0.5"
+        className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[11px] items-baseline cursor-pointer select-none hover:bg-slate-800/40 rounded px-0.5"
         onClick={() => setOpen(!open)}
       >
         <span className="text-slate-300 truncate flex items-center gap-0.5">
-          <span className="text-[8px] text-slate-600">{open ? '▼' : '▶'}</span>
+          <span className="text-[10px] text-slate-500">{open ? '▼' : '▶'}</span>
           {ability.displayName}
-          {ability.type === 'Auto' && <span className="text-slate-500 text-[7px]">auto</span>}
+          {ability.type === 'Auto' && <span className="text-slate-400 text-[9px]">auto</span>}
         </span>
-        <span className="text-slate-600 text-right col-span-3">
+        <span className="text-slate-500 text-right col-span-3">
           {ability.effects?.map(e => {
             const d = EFFECT_DISPLAY[e.type];
             return d?.label || e.type;
           }).join(', ')}
         </span>
-        <span className="text-slate-600 text-right">—</span>
+        <span className="text-slate-500 text-right">—</span>
       </div>
       {open && <PetAbilityDetails ability={ability} />}
     </div>
@@ -1735,10 +1735,10 @@ function PetAbilityDetails({ ability, cycleTime, damageByType }: {
     <div className="ml-3 mb-1 mt-0.5 pl-2 border-l border-slate-700/50">
       {/* Stats grid */}
       {stats.length > 0 && (
-        <div className="grid grid-cols-2 gap-x-3 gap-y-0 text-[9px]">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-0 text-[11px]">
           {stats.map((s) => (
             <div key={s.label} className="flex justify-between">
-              <span className="text-slate-500">{s.label}</span>
+              <span className="text-slate-400">{s.label}</span>
               <span className="text-slate-300">{s.value}</span>
             </div>
           ))}
@@ -1748,7 +1748,7 @@ function PetAbilityDetails({ ability, cycleTime, damageByType }: {
       {damageByType && damageByType.length > 0 && (
         <div className="mt-0.5">
           {damageByType.map((d) => (
-            <div key={d.type} className="flex items-center gap-2 text-[9px]">
+            <div key={d.type} className="flex items-center gap-2 text-[11px]">
               <span className="text-red-400 w-12">{abbreviateDamageType(d.type)}</span>
               <span className="text-slate-300">{d.base.toFixed(1)}</span>
               {d.enhanced !== d.base && <span className="text-green-400">→ {d.enhanced.toFixed(1)}</span>}
@@ -1761,11 +1761,11 @@ function PetAbilityDetails({ ability, cycleTime, damageByType }: {
       {ability.effects && ability.effects.length > 0 && (
         <div className="flex flex-wrap gap-1 mt-0.5">
           {ability.effects.map((eff, i) => {
-            const display = EFFECT_DISPLAY[eff.type] || { label: eff.type, color: 'text-slate-400' };
+            const display = EFFECT_DISPLAY[eff.type] || { label: eff.type, color: 'text-slate-300' };
             const magLabel = eff.magnitude ? ` ${eff.magnitude}` : '';
             const chanceLabel = eff.chance && eff.chance < 1 ? ` ${(eff.chance * 100).toFixed(0)}%` : '';
             return (
-              <span key={`${eff.type}-${i}`} className={`text-[8px] px-1 py-0.5 rounded bg-slate-800/60 ${display.color}`}>
+              <span key={`${eff.type}-${i}`} className={`text-[10px] px-1 py-0.5 rounded bg-slate-800/60 ${display.color}`}>
                 {display.label}{magLabel}{chanceLabel}
               </span>
             );
@@ -1809,13 +1809,13 @@ function SingleEntityDisplay({
       {/* Entity header */}
       {showHeader && (
         <div className="flex items-center gap-2">
-          <span className="text-indigo-400 text-xs font-medium">
+          <span className="text-indigo-400 text-sm font-medium">
             {isPseudoPet ? '⚡ Creates' : '🐾 Summons'}
           </span>
-          <span className="text-slate-200 text-xs">
+          <span className="text-slate-200 text-sm">
             {label}{countLabel}
           </span>
-          <span className="text-slate-500 text-[10px]">({durationLabel})</span>
+          <span className="text-slate-400 text-xs">({durationLabel})</span>
         </div>
       )}
 
@@ -1831,27 +1831,27 @@ function SingleEntityDisplay({
                 className="flex items-center gap-1 cursor-pointer select-none"
                 onClick={() => setExpanded(!expanded)}
               >
-                <span className="text-[9px] text-slate-500">{expanded ? '▼' : '▶'}</span>
-                <span className="text-[10px] text-slate-400 font-medium">
+                <span className="text-[11px] text-slate-400">{expanded ? '▼' : '▶'}</span>
+                <span className="text-xs text-slate-300 font-medium">
                   {entityCount > 1 ? 'Total' : 'Pet'} DPS:
                 </span>
-                <span className="text-[10px] text-red-400 font-medium">
+                <span className="text-xs text-red-400 font-medium">
                   {petDamage!.aggregateDpsBase.toFixed(1)}
                 </span>
                 {hasEnh && (
-                  <span className="text-[10px] text-green-400">
+                  <span className="text-xs text-green-400">
                     → {petDamage!.aggregateDpsEnhanced.toFixed(1)}
                   </span>
                 )}
                 {hasBuff && (
-                  <span className="text-[10px] text-amber-400">
+                  <span className="text-xs text-amber-400">
                     → {petDamage!.aggregateDpsFinal.toFixed(1)}
                   </span>
                 )}
               </div>
 
               {entityCount > 1 && (
-                <div className="text-[9px] text-slate-500 ml-3">
+                <div className="text-[11px] text-slate-400 ml-3">
                   Per pet: {petDamage!.totalDpsBase.toFixed(1)}
                   {hasEnh && ` → ${petDamage!.totalDpsEnhanced.toFixed(1)}`}
                   {hasBuff && ` → ${petDamage!.totalDpsFinal.toFixed(1)}`}
@@ -1863,7 +1863,7 @@ function SingleEntityDisplay({
           {/* Expanded ability breakdown */}
           {expanded && (
             <div className="mt-1.5 ml-1 space-y-0">
-              <div className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[8px] text-slate-500 font-medium border-b border-slate-700/50 pb-0.5 mb-0.5">
+              <div className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[10px] text-slate-400 font-medium border-b border-slate-700/50 pb-0.5 mb-0.5">
                 <span>Ability</span>
                 <span className="text-right">Base</span>
                 <span className="text-right">Enh</span>
@@ -1889,16 +1889,16 @@ function SingleEntityDisplay({
                 className="flex items-center gap-1 cursor-pointer select-none"
                 onClick={() => setEffectsExpanded(!effectsExpanded)}
               >
-                <span className="text-[9px] text-slate-500">{effectsExpanded ? '▼' : '▶'}</span>
-                <span className="text-[10px] text-slate-400 font-medium">Effects</span>
+                <span className="text-[11px] text-slate-400">{effectsExpanded ? '▼' : '▶'}</span>
+                <span className="text-xs text-slate-300 font-medium">Effects</span>
               </div>
               {effectsExpanded && (
                 <div className="mt-0.5 ml-3 space-y-0">
                   {petDamage!.allEffects.map((eff) => {
-                    const display = EFFECT_DISPLAY[eff.type] || { label: eff.type, color: 'text-slate-400' };
+                    const display = EFFECT_DISPLAY[eff.type] || { label: eff.type, color: 'text-slate-300' };
                     const chanceLabel = eff.chance && eff.chance < 1 ? ` (${(eff.chance * 100).toFixed(0)}%)` : '';
                     return (
-                      <div key={eff.type} className="grid grid-cols-[1fr_auto] gap-2 text-[9px] py-0.5">
+                      <div key={eff.type} className="grid grid-cols-[1fr_auto] gap-2 text-[11px] py-0.5">
                         <span className={display.color}>
                           {display.label}{chanceLabel}
                         </span>
@@ -2001,7 +2001,7 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
       {/* Upgrade Toggles */}
       {maxUpgradeTier > 0 && (
         <div className="flex items-center gap-3 mb-2 pb-1.5 border-b border-indigo-500/20">
-          <span className="text-[10px] text-indigo-400 font-medium">Upgrades:</span>
+          <span className="text-xs text-indigo-400 font-medium">Upgrades:</span>
           <label className="flex items-center gap-1 cursor-pointer">
             <input
               type="checkbox"
@@ -2009,7 +2009,7 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
               onChange={(e) => setUpgradeTier(e.target.checked ? Math.max(upgradeTier, 1) : 0)}
               className="w-3 h-3 accent-indigo-500"
             />
-            <span className={`text-[10px] ${upgradeTier >= 1 ? 'text-indigo-300' : 'text-slate-500'}`}>
+            <span className={`text-xs ${upgradeTier >= 1 ? 'text-indigo-300' : 'text-slate-400'}`}>
               Upgrade 1
             </span>
           </label>
@@ -2022,7 +2022,7 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
                 className="w-3 h-3 accent-indigo-500"
                 disabled={upgradeTier < 1}
               />
-              <span className={`text-[10px] ${upgradeTier >= 2 ? 'text-indigo-300' : 'text-slate-500'}`}>
+              <span className={`text-xs ${upgradeTier >= 2 ? 'text-indigo-300' : 'text-slate-400'}`}>
                 Upgrade 2
               </span>
             </label>
@@ -2063,12 +2063,12 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
           {hasDamage && (
             <div className="border-t border-indigo-500/30 pt-1.5 mt-1.5">
               <div className="flex items-center gap-1">
-                <span className="text-[10px] text-slate-400 font-medium">
+                <span className="text-xs text-slate-300 font-medium">
                   {archetypeId === 'mastermind' ? 'Total Henchmen DPS:' : 'Total Pet DPS:'}
                 </span>
-                <span className="text-[10px] text-red-400 font-medium">{totals.base.toFixed(1)}</span>
-                {hasEnh && <span className="text-[10px] text-green-400">→ {totals.enhanced.toFixed(1)}</span>}
-                {hasBuff && <span className="text-[10px] text-amber-400">→ {totals.final.toFixed(1)}</span>}
+                <span className="text-xs text-red-400 font-medium">{totals.base.toFixed(1)}</span>
+                {hasEnh && <span className="text-xs text-green-400">→ {totals.enhanced.toFixed(1)}</span>}
+                {hasBuff && <span className="text-xs text-amber-400">→ {totals.final.toFixed(1)}</span>}
               </div>
             </div>
           )}
@@ -2078,19 +2078,19 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
       {/* No entity display (pseudopets with no data) */}
       {entityList.length === 0 && (
         <div className="flex items-center gap-2">
-          <span className="text-indigo-400 text-xs font-medium">
+          <span className="text-indigo-400 text-sm font-medium">
             {summon.isPseudoPet ? '⚡ Creates' : '🐾 Summons'}
           </span>
-          <span className="text-slate-200 text-xs">
+          <span className="text-slate-200 text-sm">
             {summon.displayName || 'Entity'}
           </span>
-          <span className="text-slate-500 text-[10px]">({durationLabel})</span>
+          <span className="text-slate-400 text-xs">({durationLabel})</span>
         </div>
       )}
 
       {/* Fallback: show powers list if no pet data at all */}
       {entityList.length === 0 && summon.powers && summon.powers.length > 0 && (
-        <div className="text-[10px] text-slate-500 mt-0.5">
+        <div className="text-xs text-slate-400 mt-0.5">
           Powers: {summon.powers.map(p => p.split('.').pop()).join(', ')}
         </div>
       )}

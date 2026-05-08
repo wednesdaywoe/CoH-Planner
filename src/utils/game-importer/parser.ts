@@ -1,7 +1,8 @@
 /**
- * Parser for Homecoming in-game build export text format
+ * Parser for the in-game build export text format
  *
- * Parses the text output from the /buildexport command into structured data.
+ * Parses the text output from the /buildexport command (Homecoming and
+ * compatible servers) into structured data.
  *
  * Format:
  *   CharName: Level N Origin Class_Archetype

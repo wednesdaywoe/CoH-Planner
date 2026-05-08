@@ -298,19 +298,16 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   // Stat categories for grouping (should match config modal)
   const STAT_CATEGORIES = [
     {
-      name: 'Offense',
+      name: 'General',
       stats: [
         'damage', 'accuracy', 'tohit', 'recharge', 'endreduction',
         'range_bonus', 'heal_other', 'threat_level',
+        'runspeed', 'flyspeed', 'jumpspeed', 'jumpheight',
       ],
     },
     {
       name: 'Health & Endurance',
       stats: ['health', 'regeneration', 'maxend', 'recovery', 'endcost', 'netend', 'level_shift'],
-    },
-    {
-      name: 'Movement',
-      stats: ['runspeed', 'flyspeed', 'jumpspeed', 'jumpheight'],
     },
     {
       name: 'Stealth & Perception',
@@ -393,15 +390,29 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         {/* Grouped stats + Incarnate panel in a single flex row */}
         <div className={`flex items-stretch gap-2 ${dashboardCollapsed ? 'hidden' : ''}`}>
           {/* Stats grid - fills remaining space */}
-          <div className="flex-1 grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-2 items-stretch min-w-0">
+          <div className="flex-1 grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-2 items-stretch min-w-0">
             {groupedStats.map((group, groupIndex) => (
               <div
                 key={group.name}
                 className="@container bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 overflow-hidden min-w-0"
                 {...(groupIndex === 0 ? { 'data-onboarding': 'stat-hover' } : {})}
               >
-                <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide truncate">{group.name}</div>
-                <div className="grid grid-cols-1 @[280px]:grid-cols-2 gap-x-4 gap-y-1">
+                <div className="flex items-center justify-between gap-1 mb-1">
+                  <span className="text-xs font-semibold text-gray-400 uppercase tracking-wide truncate">{group.name}</span>
+                  <button
+                    onClick={() => openStatsConfigModal(group.stats[0]?.id)}
+                    className="shrink-0 text-gray-600 hover:text-gray-300 transition-colors"
+                    title="Configure which stats appear on the dashboard"
+                    aria-label="Configure dashboard stats"
+                    {...(groupIndex === 0 ? { 'data-onboarding': 'dashboard-config' } : {})}
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 @[220px]:grid-cols-2 gap-x-4 gap-y-1">
                   {group.stats.map((stat) => (
                     <StatItem
                       key={stat.id}
@@ -445,6 +456,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
               onSlotClick={openIncarnateModal}
               incarnateActive={incarnateActive}
               onToggleActive={toggleIncarnateActive}
+              horizontal
             />
           </div>
         </div>
@@ -797,6 +809,18 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
   const isAtCap = cap !== undefined && numericValue !== undefined && numericValue >= cap;
   const overCap = isAtCap ? numericValue - cap : 0;
   const displayColor = isAtCap ? 'text-orange-400' : color;
+
+  // Split a trailing parenthetical (e.g. "10.49/s (+90%)") into main and
+  // secondary parts. The secondary renders smaller and dimmer so it stays
+  // out of the way and truncates first if the column is tight. Full value
+  // is preserved in the tooltip.
+  const renderedValue = isAtCap ? `${cap.toFixed(2)}%` : value;
+  const parenMatch = typeof renderedValue === 'string'
+    ? renderedValue.match(/^(.*?)\s+\(([^)]+)\)$/)
+    : null;
+  const mainText = parenMatch ? parenMatch[1] : renderedValue;
+  const secondaryText = parenMatch ? parenMatch[2] : null;
+
   const content = (
     <div
       className={`flex items-baseline justify-between gap-1 min-w-0 overflow-hidden ${onTrack ? 'cursor-pointer' : 'cursor-help'} ${
@@ -806,7 +830,10 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
     >
       <span className="text-xs text-gray-500 uppercase tracking-wide shrink-0">{label}</span>
       <span className={`text-sm font-medium tabular-nums text-right truncate ${displayColor}`}>
-        {isAtCap ? `${cap.toFixed(2)}%` : value}
+        {mainText}
+        {secondaryText && (
+          <span className="text-[10px] text-gray-500 ml-1">{secondaryText}</span>
+        )}
         {overCap > 0 && (
           <span className="text-[9px] text-orange-400/70 ml-0.5">(+{overCap.toFixed(1)})</span>
         )}

@@ -56,21 +56,34 @@ function pairedValue(a: number, b: number): StatValue {
   return { first: a, second: b } as PairedStatValue;
 }
 
+/** Format a number as a percentage rounded to 2 decimals, with trailing
+ *  zeros stripped: 0 → "0", 30 → "30", 30.5 → "30.5", 30.55 → "30.55".
+ *  Veterans still see meaningful precision when it exists; clean zeros
+ *  don't pad to "0.00" or "30.00". The tooltip carries the unrounded
+ *  breakdown for users who want it. */
+function pct2(n: number): string {
+  if (Math.abs(n) < 0.005) return '0';
+  // toFixed(2) rounds to 2 decimal places; parseFloat drops trailing zeros
+  return parseFloat(n.toFixed(2)).toString();
+}
+
 /** Format a paired or simple percentage stat */
 function formatPairedPercent(v: StatValue): string {
   if (typeof v === 'object' && v !== null && 'first' in v) {
     const p = v as PairedStatValue;
-    return `${p.first.toFixed(2)}%/${p.second.toFixed(2)}%`;
+    return `${pct2(p.first)}%/${pct2(p.second)}%`;
   }
-  return `${Number(v).toFixed(2)}%`;
+  return `${pct2(Number(v))}%`;
 }
 
-/** Format mez stat showing protection (Mag) and resistance (%) */
+/** Format mez stat showing protection (Mag) and resistance (%).
+ *  The trailing "Res" suffix is omitted — the panel header (Status Protection)
+ *  and the parenthesized "% " are enough to disambiguate the value. */
 function formatMezStat(v: StatValue): string {
   if (typeof v === 'object' && v !== null && 'protection' in v) {
     const mez = v as MezStatValue;
     const prot = mez.protection > 0 ? mez.protection.toFixed(1) : '0';
-    if (mez.resistance > 0) return `${prot} (${mez.resistance.toFixed(1)}% Res)`;
+    if (mez.resistance > 0) return `${prot} (${mez.resistance.toFixed(1)}%)`;
     return prot;
   }
   return String(v);
@@ -86,7 +99,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'damage',
     label: 'Dmg',
     getValue: (stats) => stats.globalDamage,
-    format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
+    format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${pct2(n)}%`; },
     color: STAT_COLORS.damage,
     tooltip: 'Global damage from set bonuses',
     showWhenZero: true,
@@ -96,7 +109,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'accuracy',
     label: 'Acc',
     getValue: (stats) => stats.globalAccuracy,
-    format: (v) => `+${Number(v).toFixed(2)}%`,
+    format: (v) => `+${pct2(Number(v))}%`,
     color: STAT_COLORS.accuracy,
     tooltip: 'Global accuracy from set bonuses',
     showWhenZero: true,
@@ -106,7 +119,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'tohit',
     label: 'ToHit',
     getValue: (stats) => 75 + stats.toHitBuff,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.tohit,
     tooltip: 'Base 75% + ToHit buffs from set bonuses and procs',
     showWhenZero: true,
@@ -116,7 +129,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'recharge',
     label: 'Rech',
     getValue: (stats) => stats.globalRecharge,
-    format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
+    format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${pct2(n)}%`; },
     color: STAT_COLORS.recharge,
     tooltip: 'Global recharge from set bonuses',
     showWhenZero: true,
@@ -128,7 +141,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_melee',
     label: 'Melee',
     getValue: (stats) => stats.defense.melee,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Melee defense',
     showWhenZero: true,
@@ -138,7 +151,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_ranged',
     label: 'Ranged',
     getValue: (stats) => stats.defense.ranged,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Ranged defense',
     showWhenZero: true,
@@ -148,7 +161,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_aoe',
     label: 'AoE',
     getValue: (stats) => stats.defense.aoe,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'AoE defense',
     showWhenZero: true,
@@ -188,7 +201,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_psionic',
     label: 'Psi',
     getValue: (stats) => stats.defense.psionic,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Psionic defense',
     showWhenZero: true,
@@ -198,7 +211,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_toxic',
     label: 'Toxic',
     getValue: (stats) => stats.defense.toxic,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Toxic defense',
     showWhenZero: true,
@@ -240,7 +253,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'resist_psionic',
     label: 'Psi',
     getValue: (stats) => stats.resistance.psionic,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Psionic resistance',
     showWhenZero: true,
@@ -250,7 +263,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'resist_toxic',
     label: 'Toxic',
     getValue: (stats) => stats.resistance.toxic,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Toxic resistance',
     showWhenZero: true,
@@ -360,9 +373,9 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => {
       if (typeof v === 'object' && v !== null && 'perSec' in v) {
         const { perSec, buff } = v as { perSec: number; buff: number };
-        return `${perSec.toFixed(2)}/s (+${buff.toFixed(2)}%)`;
+        return `${perSec.toFixed(2)}/s (+${pct2(buff)}%)`;
       }
-      return `+${Number(v).toFixed(2)}%`;
+      return `+${pct2(Number(v))}%`;
     },
     color: STAT_COLORS.recovery,
     tooltip: 'Endurance recovery: maxEnd/60 per second',
@@ -379,7 +392,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
       if (endRdx <= 0) return 0;
       return (1 - 1 / (1 + endRdx / 100)) * 100;
     },
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.enduranceDiscount,
     tooltip: 'Endurance Discount: reduces endurance cost of powers',
     breakdownKey: 'endurance',
@@ -439,9 +452,9 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => {
       if (typeof v === 'object' && v !== null && 'perSec' in v) {
         const { perSec, buff } = v as { perSec: number; buff: number };
-        return `${perSec.toFixed(2)}/s (+${buff.toFixed(2)}%)`;
+        return `${perSec.toFixed(2)}/s (+${pct2(buff)}%)`;
       }
-      return `+${Number(v).toFixed(2)}%`;
+      return `+${pct2(Number(v))}%`;
     },
     color: STAT_COLORS.regen,
     tooltip: 'HP regeneration: base is 100% HP in 240s',
@@ -470,7 +483,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     getValue: (stats) => stats.flySpeed,
     // Fly base is 0 (no flight without a power), so the % buff doesn't translate
     // to mph in isolation. Display the raw % until per-power fly speed is wired in.
-    format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
+    format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${pct2(n)}%`; },
     color: STAT_COLORS.flySpeed,
     tooltip: 'Fly speed buff (cap 58.63 mph; +50% with Fly/Mystic Flight, +25% Afterburner)',
     showWhenZero: true,
@@ -503,75 +516,77 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     breakdownKey: 'jumpHeight',
   },
 
-  // Debuff Resistance
+  // Debuff Resistance — labels omit "Debuff" / "Res" since the panel
+  // header already conveys both. Long words like "Recharge" are spelled
+  // out where they fit.
   debuff_slow: {
     id: 'debuff_slow',
-    label: 'Slow Res',
+    label: 'Slow',
     getValue: (stats) => stats.debuffResistance.slow,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to slow/movement debuffs',
     breakdownKey: 'debuffResistSlow',
   },
   debuff_defense: {
     id: 'debuff_defense',
-    label: 'Def Debuff Res',
+    label: 'Defense',
     getValue: (stats) => stats.debuffResistance.defense,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to defense debuffs',
     breakdownKey: 'debuffResistDefense',
   },
   debuff_recharge: {
     id: 'debuff_recharge',
-    label: 'Rech Debuff Res',
+    label: 'Recharge',
     getValue: (stats) => stats.debuffResistance.recharge,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to recharge debuffs',
     breakdownKey: 'debuffResistRecharge',
   },
   debuff_endurance: {
     id: 'debuff_endurance',
-    label: 'End Drain Res',
+    label: 'End Drain',
     getValue: (stats) => stats.debuffResistance.endurance,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to endurance drain',
     breakdownKey: 'debuffResistEndurance',
   },
   debuff_recovery: {
     id: 'debuff_recovery',
-    label: 'Rec Debuff Res',
+    label: 'Recovery',
     getValue: (stats) => stats.debuffResistance.recovery,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to recovery debuffs',
     breakdownKey: 'debuffResistRecovery',
   },
   debuff_tohit: {
     id: 'debuff_tohit',
-    label: 'ToHit Debuff Res',
+    label: 'ToHit',
     getValue: (stats) => stats.debuffResistance.tohit,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to ToHit debuffs',
     breakdownKey: 'debuffResistToHit',
   },
   debuff_regen: {
     id: 'debuff_regen',
-    label: 'Regen Debuff Res',
+    label: 'Regen',
     getValue: (stats) => stats.debuffResistance.regeneration,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to regeneration debuffs',
     breakdownKey: 'debuffResistRegeneration',
   },
   debuff_perception: {
     id: 'debuff_perception',
-    label: 'Percep Res',
+    label: 'Perception',
     getValue: (stats) => stats.debuffResistance.perception,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to perception debuffs',
     breakdownKey: 'debuffResistPerception',
@@ -584,7 +599,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'def_smashing',
     label: 'Smashing',
     getValue: (stats) => stats.defense.smashing,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Smashing defense',
     showWhenZero: true,
@@ -594,7 +609,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'def_lethal',
     label: 'Lethal',
     getValue: (stats) => stats.defense.lethal,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Lethal defense',
     showWhenZero: true,
@@ -604,7 +619,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'def_fire',
     label: 'Fire',
     getValue: (stats) => stats.defense.fire,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Fire defense',
     showWhenZero: true,
@@ -614,7 +629,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'def_cold',
     label: 'Cold',
     getValue: (stats) => stats.defense.cold,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Cold defense',
     showWhenZero: true,
@@ -624,7 +639,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'def_energy',
     label: 'Energy',
     getValue: (stats) => stats.defense.energy,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Energy defense',
     showWhenZero: true,
@@ -634,7 +649,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'def_negative',
     label: 'Negative',
     getValue: (stats) => stats.defense.negative,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Negative energy defense',
     showWhenZero: true,
@@ -644,7 +659,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'def_psionic',
     label: 'Psionic',
     getValue: (stats) => stats.defense.psionic,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Psionic defense',
     showWhenZero: true,
@@ -654,7 +669,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'def_toxic',
     label: 'Toxic',
     getValue: (stats) => stats.defense.toxic,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Toxic defense',
     showWhenZero: true,
@@ -668,7 +683,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'res_smashing',
     label: 'Smashing',
     getValue: (stats) => stats.resistance.smashing,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Smashing resistance',
     showWhenZero: true,
@@ -678,7 +693,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'res_lethal',
     label: 'Lethal',
     getValue: (stats) => stats.resistance.lethal,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Lethal resistance',
     showWhenZero: true,
@@ -688,7 +703,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'res_fire',
     label: 'Fire',
     getValue: (stats) => stats.resistance.fire,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Fire resistance',
     showWhenZero: true,
@@ -698,7 +713,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'res_cold',
     label: 'Cold',
     getValue: (stats) => stats.resistance.cold,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Cold resistance',
     showWhenZero: true,
@@ -708,7 +723,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'res_energy',
     label: 'Energy',
     getValue: (stats) => stats.resistance.energy,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Energy resistance',
     showWhenZero: true,
@@ -718,7 +733,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'res_negative',
     label: 'Negative',
     getValue: (stats) => stats.resistance.negative,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Negative energy resistance',
     showWhenZero: true,
@@ -728,7 +743,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'res_psionic',
     label: 'Psionic',
     getValue: (stats) => stats.resistance.psionic,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Psionic resistance',
     showWhenZero: true,
@@ -738,7 +753,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'res_toxic',
     label: 'Toxic',
     getValue: (stats) => stats.resistance.toxic,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Toxic resistance',
     showWhenZero: true,
@@ -833,7 +848,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_hold',
     label: 'Hold',
     getValue: (stats) => stats.mezResistance.hold,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.hold,
     tooltip: 'Hold resistance',
     breakdownKey: 'mezResist',
@@ -842,7 +857,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_stun',
     label: 'Stun',
     getValue: (stats) => stats.mezResistance.stun,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.stun,
     tooltip: 'Stun resistance',
     breakdownKey: 'mezResist',
@@ -851,7 +866,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_immob',
     label: 'Immobilize',
     getValue: (stats) => stats.mezResistance.immobilize,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.immobilize,
     tooltip: 'Immobilize resistance',
     breakdownKey: 'mezResist',
@@ -860,7 +875,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_sleep',
     label: 'Sleep',
     getValue: (stats) => stats.mezResistance.sleep,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.sleep,
     tooltip: 'Sleep resistance',
     breakdownKey: 'mezResist',
@@ -869,7 +884,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_confuse',
     label: 'Confuse',
     getValue: (stats) => stats.mezResistance.confuse,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.confuse,
     tooltip: 'Confuse resistance',
     breakdownKey: 'mezResist',
@@ -878,7 +893,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_fear',
     label: 'Fear',
     getValue: (stats) => stats.mezResistance.fear,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.fear,
     tooltip: 'Fear/Terrorize resistance',
     breakdownKey: 'mezResist',
@@ -887,7 +902,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_kb',
     label: 'Knockback',
     getValue: (stats) => stats.mezResistance.knockback,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.knockback,
     tooltip: 'Knockback resistance',
     breakdownKey: 'mezResist',
@@ -900,7 +915,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'range_bonus',
     label: 'Range',
     getValue: () => 0, // Range bonus requires globalBonuses, handled via override in DetailedTotalsModal
-    format: (v) => `+${Number(v).toFixed(2)}%`,
+    format: (v) => `+${pct2(Number(v))}%`,
     color: STAT_COLORS.accuracy,
     tooltip: 'Range bonus from set bonuses',
     breakdownKey: 'range',
@@ -909,7 +924,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'heal_other',
     label: 'Heal Other',
     getValue: () => 0, // Requires globalBonuses, handled via override
-    format: (v) => `+${Number(v).toFixed(2)}%`,
+    format: (v) => `+${pct2(Number(v))}%`,
     color: STAT_COLORS.health,
     tooltip: 'Healing bonus for heals cast on others',
     breakdownKey: 'healOther',
@@ -918,7 +933,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'threat_level',
     label: 'Threat',
     getValue: () => 0, // Requires globalBonuses, handled via override
-    format: (v) => `+${Number(v).toFixed(2)}%`,
+    format: (v) => `+${pct2(Number(v))}%`,
     color: STAT_COLORS.resistance,
     tooltip: 'Threat level modifier',
     breakdownKey: 'threatLevel',
@@ -951,7 +966,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'perception_bonus',
     label: 'Perception',
     getValue: () => 0, // Requires globalBonuses
-    format: (v) => `+${Number(v).toFixed(2)}%`,
+    format: (v) => `+${pct2(Number(v))}%`,
     color: STAT_COLORS.accuracy,
     tooltip: 'Perception radius bonus',
     breakdownKey: 'perceptionRadius',
@@ -983,7 +998,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_taunt',
     label: 'Taunt',
     getValue: () => 0, // Requires globalBonuses
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.hold,
     tooltip: 'Taunt resistance',
     breakdownKey: 'mezResistTaunt',
@@ -992,7 +1007,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_placate',
     label: 'Placate',
     getValue: () => 0, // Requires globalBonuses
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.confuse,
     tooltip: 'Placate resistance',
     breakdownKey: 'mezResistPlacate',

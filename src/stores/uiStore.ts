@@ -89,6 +89,10 @@ interface UIState {
   /** Stats config modal open state */
   statsConfigModalOpen: boolean;
 
+  /** When set, the modal scrolls to the category containing this stat ID
+   *  on open and briefly highlights it. Cleared after the modal consumes it. */
+  statsConfigScrollTo: string | null;
+
   /** Accolades modal open state */
   accoladesModalOpen: boolean;
 
@@ -383,8 +387,11 @@ interface UIActions {
   moveTooltip: (x: number, y: number) => void;
 
   // Stats Config
-  openStatsConfigModal: () => void;
+  openStatsConfigModal: (scrollToStatId?: string) => void;
   closeStatsConfigModal: () => void;
+  /** Called by the modal once it has acted on the scroll-to hint, so the
+   *  next open without an explicit hint doesn't replay the old one. */
+  clearStatsConfigScrollTo: () => void;
   setStatVisible: (stat: string, visible: boolean) => void;
   reorderStats: (stats: StatDisplayConfig[]) => void;
   resetStatsConfig: () => void;
@@ -634,6 +641,7 @@ export const useUIStore = create<UIStore>()(
       genericPicker: defaultGenericPicker,
       originPicker: defaultOriginPicker,
       statsConfigModalOpen: false,
+      statsConfigScrollTo: null,
       accoladesModalOpen: false,
       aboutModalOpen: false,
       incarnateModalOpen: false,
@@ -1043,11 +1051,14 @@ export const useUIStore = create<UIStore>()(
         })),
 
       // Stats Config
-      openStatsConfigModal: () =>
-        set({ statsConfigModalOpen: true }),
+      openStatsConfigModal: (scrollToStatId?: string) =>
+        set({ statsConfigModalOpen: true, statsConfigScrollTo: scrollToStatId ?? null }),
 
       closeStatsConfigModal: () =>
         set({ statsConfigModalOpen: false }),
+
+      clearStatsConfigScrollTo: () =>
+        set({ statsConfigScrollTo: null }),
 
       // About Modal
       openAboutModal: () =>
@@ -1455,6 +1466,7 @@ export const useUIStore = create<UIStore>()(
           permaTrackedPowers: [],
           // Close all modals
           statsConfigModalOpen: false,
+          statsConfigScrollTo: null,
           accoladesModalOpen: false,
           incarnateModalOpen: false,
           incarnateCraftingModalOpen: false,

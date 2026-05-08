@@ -3,12 +3,12 @@
  *
  * Converts JSON from an external CoH tool into our internal Build format.
  * The external format contains up to 3 interleaved builds; this module
- * splits them and converts the selected build via the shared game-import pipeline.
+ * splits them and converts the selected build via the shared game-importer pipeline.
  */
 
 import type { Build, Accolade, IncarnateSlotId, SelectedIncarnatePower } from '@/types';
 import { createEmptyIncarnateBuildState } from '@/types';
-import { importFromParsedData } from '@/utils/game-import';
+import { importFromParsedData } from '@/utils/game-importer';
 import type {
   GameExportData,
   GameExportHeader,
@@ -16,7 +16,7 @@ import type {
   GameExportEnhancement,
   GameImportWarning,
   GameImportSummary,
-} from '@/utils/game-import';
+} from '@/utils/game-importer';
 import { getAccolades, getIncarnatePower, getIncarnateSlot } from '@/data';
 
 // ============================================
@@ -36,6 +36,7 @@ interface ExternalBoost {
   powerSetName: string;
   boostName: string;
   level: number;       // 0 = attuned
+  numCombines: number | null;  // null = unboosted/attuned, 1–5 = boost level (+1 to +5)
 }
 
 interface ExternalPower {
@@ -226,7 +227,7 @@ function convertBoost(boost: ExternalBoost): GameExportEnhancement {
   return {
     uid,
     level: attuned ? undefined : boost.level,
-    boost: undefined,
+    boost: boost.numCombines ?? undefined,
     attuned,
   };
 }

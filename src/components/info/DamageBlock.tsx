@@ -65,8 +65,8 @@ export function DamageBlock(props: DamageBlockProps) {
   const { calculatedDamage, effects, buildLevel } = props;
   return (
     <div>
-      <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
-        Damage <span className="text-slate-600 font-normal">(Lvl {buildLevel})</span>
+      <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
+        Damage <span className="text-slate-500 font-normal">(Lvl {buildLevel})</span>
       </h4>
       <div className="bg-slate-800/50 rounded p-2">
         <ModeToggle />
@@ -75,7 +75,7 @@ export function DamageBlock(props: DamageBlockProps) {
           <DamageBar {...props} />
         )}
         {calculatedDamage.unknown && (
-          <div className="text-[9px] text-slate-500 italic mt-1">
+          <div className="text-[11px] text-slate-400 italic mt-1">
             * Actual damage varies (pseudo-pet or redirect power)
           </div>
         )}
@@ -119,7 +119,7 @@ function ModeToggle() {
             aria-checked={active}
             onClick={() => setDamageDisplayMode(mode)}
             title={title}
-            className={`px-2 py-0.5 text-[10px] font-medium transition-colors ${
+            className={`px-2 py-0.5 text-xs font-medium transition-colors ${
               active ? 'bg-cyan-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-700'
             }`}
           >
@@ -175,7 +175,7 @@ function DamageRows({
 
   return (
     <>
-      <div className={`grid ${gridCols} gap-1 text-[9px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
+      <div className={`grid ${gridCols} gap-1 text-[11px] text-slate-400 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
         <span>Type</span>
         <span>Base</span>
         <span>Enhanced</span>
@@ -184,18 +184,18 @@ function DamageRows({
       </div>
 
       {/* Direct damage row (or per-tick for pure DoT) */}
-      <div className={`grid ${gridCols} gap-1 items-baseline text-xs`}>
+      <div className={`grid ${gridCols} gap-1 items-baseline text-sm`}>
         <span className="text-red-400">{isPureDot ? `${abbreviateDamageType(calculatedDamage.type)}/tick` : abbreviateDamageType(calculatedDamage.type)}</span>
         <span className="text-slate-200">{calculatedDamage.base.toFixed(2)}</span>
-        <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
+        <span className={hasEnh ? 'text-green-400' : 'text-slate-500'}>
           {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(2)}` : '—'}
         </span>
-        <span className={`${hasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-600'} ${cappedClass}`}>
-          {hasGlobal || showCombatMod ? <>→ {displayFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
+        <span className={`${hasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
+          {hasGlobal || showCombatMod ? <>→ {displayFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
         </span>
         {inherentInfo && (
-          <span className={`${hasInherentDiff || showCombatMod ? inherentInfo.color : 'text-slate-600'} ${cappedClass}`}>
-            {hasInherentDiff || showCombatMod ? <>→ {displayInherentFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
+          <span className={`${hasInherentDiff || showCombatMod ? inherentInfo.color : 'text-slate-500'} ${cappedClass}`}>
+            {hasInherentDiff || showCombatMod ? <>→ {displayInherentFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
           </span>
         )}
       </div>
@@ -206,18 +206,18 @@ function DamageRows({
         const dotHasGlobal = Math.abs(dot.final - dot.enhanced) > 0.001;
         const dotHasInherent = inherentInfo != null && Math.abs(dotInherentFinal - dot.final) > 0.001;
         return (
-          <div className={`grid ${gridCols} gap-1 items-baseline text-xs`}>
+          <div className={`grid ${gridCols} gap-1 items-baseline text-sm`}>
             <span className="text-red-400">{abbreviateDamageType(dot.type)}/tick</span>
             <span className="text-slate-200">{dot.base.toFixed(2)}</span>
-            <span className={dotHasEnh ? 'text-green-400' : 'text-slate-600'}>
+            <span className={dotHasEnh ? 'text-green-400' : 'text-slate-500'}>
               {dotHasEnh ? `→ ${dot.enhanced.toFixed(2)}` : '—'}
             </span>
-            <span className={`${dotHasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-600'} ${cappedClass}`}>
-              {dotHasGlobal || showCombatMod ? <>→ {displayDotFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
+            <span className={`${dotHasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
+              {dotHasGlobal || showCombatMod ? <>→ {displayDotFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
             </span>
             {inherentInfo && (
-              <span className={`${dotHasInherent || showCombatMod ? inherentInfo.color : 'text-slate-600'} ${cappedClass}`}>
-                {dotHasInherent || showCombatMod ? <>→ {displayDotInherentFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
+              <span className={`${dotHasInherent || showCombatMod ? inherentInfo.color : 'text-slate-500'} ${cappedClass}`}>
+                {dotHasInherent || showCombatMod ? <>→ {displayDotInherentFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
               </span>
             )}
           </div>
@@ -231,22 +231,22 @@ function DamageRows({
         const hasTotalInherent = inherentInfo != null && Math.abs(dotTotalInherent - dotTotalFinal) > 0.001;
         return (
           <>
-            <div className={`grid ${gridCols} gap-1 items-baseline text-xs mt-1 pt-1 border-t border-slate-700/50`}>
+            <div className={`grid ${gridCols} gap-1 items-baseline text-sm mt-1 pt-1 border-t border-slate-700/50`}>
               <span className="text-orange-400">DoT</span>
               <span className="text-slate-200">{dotTotalBase.toFixed(2)}</span>
-              <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-600'}>
+              <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-500'}>
                 {hasTotalEnh ? `→ ${dotTotalEnhanced.toFixed(2)}` : '—'}
               </span>
-              <span className={`${hasTotalGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-600'} ${cappedClass}`}>
-                {hasTotalGlobal || showCombatMod ? <>→ {dotTotalFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
+              <span className={`${hasTotalGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
+                {hasTotalGlobal || showCombatMod ? <>→ {dotTotalFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
               </span>
               {inherentInfo && (
-                <span className={`${hasTotalInherent || showCombatMod ? inherentInfo.color : 'text-slate-600'} ${cappedClass}`}>
-                  {hasTotalInherent || showCombatMod ? <>→ {dotTotalInherent.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
+                <span className={`${hasTotalInherent || showCombatMod ? inherentInfo.color : 'text-slate-500'} ${cappedClass}`}>
+                  {hasTotalInherent || showCombatMod ? <>→ {dotTotalInherent.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
                 </span>
               )}
             </div>
-            <div className="text-[9px] text-orange-400/70 italic mt-0.5 ml-1">
+            <div className="text-[11px] text-orange-400/70 italic mt-0.5 ml-1">
               {dot.ticks} ticks over {dot.duration}s ({Number(dot.tickRate.toFixed(2))}s/tick)
             </div>
           </>
@@ -386,34 +386,34 @@ function DamageMetrics({
 
   return (
     <div className="mt-2 pt-2 border-t border-slate-700">
-      <div className="grid grid-cols-2 gap-2 text-xs">
+      <div className="grid grid-cols-2 gap-2 text-sm">
         <div>
-          <span className="text-slate-500">
-            Cycle Time{arcanaTimeEnabled && <span className="text-cyan-500 text-[9px] ml-0.5" title="Using ArcanaTime (server-tick-adjusted cast time)">A</span>}
+          <span className="text-slate-400">
+            Cycle Time{arcanaTimeEnabled && <span className="text-cyan-500 text-[11px] ml-0.5" title="Using ArcanaTime (server-tick-adjusted cast time)">A</span>}
           </span>
           <div className="text-slate-300">
             {finalCycleTime.toFixed(2)}s
             {finalCycleTime < baseCycleTime - 0.01 && (
-              <span className="text-green-400 text-[10px] ml-1">
+              <span className="text-green-400 text-xs ml-1">
                 (was {baseCycleTime.toFixed(1)}s)
               </span>
             )}
           </div>
         </div>
         <div>
-          <span className="text-slate-500" title={metric.title}>{metric.label}</span>
+          <span className="text-slate-400" title={metric.title}>{metric.label}</span>
           {metric.unavailableReason ? (
-            <div className="text-slate-500" title={metric.unavailableReason}>—</div>
+            <div className="text-slate-400" title={metric.unavailableReason}>—</div>
           ) : (
             <div className={improved ? 'text-amber-400' : 'text-slate-300'}>
               {metric.valueFinal.toFixed(2)}
               {improved && metric.valueBase > 0 && (
-                <span className="text-green-400 text-[10px] ml-1">
+                <span className="text-green-400 text-xs ml-1">
                   (+{((metric.valueFinal / metric.valueBase - 1) * 100).toFixed(0)}%)
                 </span>
               )}
               {procDamagePerActivation > 0 && (
-                <span className="text-cyan-400 text-[10px] ml-1" title="Includes proc damage">
+                <span className="text-cyan-400 text-xs ml-1" title="Includes proc damage">
                   +{procContribution.toFixed(1)} proc
                 </span>
               )}

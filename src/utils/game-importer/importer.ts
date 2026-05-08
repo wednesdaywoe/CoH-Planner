@@ -1,8 +1,10 @@
 /**
- * Homecoming in-game build export importer
+ * Game importer
  *
- * Converts parsed game export data into a complete Build object
- * that can be loaded into the build store.
+ * Converts a build exported from a running CoH client (Homecoming's
+ * `/buildexport` command and the matching JSON shape used by other
+ * servers) into a complete Build object that can be loaded into the
+ * build store.
  */
 
 import type {
@@ -30,6 +32,7 @@ import {
   createArchetypeInherentPower,
   createIOSetEnhancement,
   createGenericIOEnhancement,
+  createOriginEnhancement,
   createSpecialEnhancement,
   HAMIDON_ENHANCEMENTS,
   TITAN_ENHANCEMENTS,
@@ -217,27 +220,45 @@ const SO_STAT_MAP: Record<string, string> = {
   'Run': 'Run Speed',
 };
 
+interface ParsedSO {
+  /** The stat suffix after origin prefixes are stripped (e.g. "Accuracy", "Run"). */
+  stat: string;
+  /** SO if one origin prefix, DO if two. */
+  tier: 'SO' | 'DO';
+  /** First (outermost) origin prefix — used as the SO's "origin" tag. */
+  origin: typeof SO_ORIGINS[number];
+}
+
 /**
  * Parse a SO/DO UID by stripping up to 2 origin prefixes.
- * Returns the stat part if an origin prefix was found, otherwise null.
- * Example: "Magic_Recovery" → "Recovery", "Natural_Magic_Run" → "Run".
+ * Returns the stat / tier / origin if a prefix was found, otherwise null.
+ * Examples:
+ *   "Magic_Recovery"     → { stat: "Recovery", tier: "SO", origin: "Magic" }
+ *   "Natural_Magic_Run"  → { stat: "Run",      tier: "DO", origin: "Natural" }
  */
-function parseSOEnhancement(uid: string): string | null {
+function parseSOEnhancement(uid: string): ParsedSO | null {
   // IO set pieces end with _[A-F] — skip those
   if (/^.+_[A-F]$/.test(uid)) return null;
 
   let remaining = uid;
+  let firstOrigin: typeof SO_ORIGINS[number] | null = null;
   let stripped = 0;
   for (let i = 0; i < 2; i++) {
     const match = SO_ORIGINS.find((o) => remaining.startsWith(o + '_'));
     if (match) {
+      if (firstOrigin === null) firstOrigin = match;
       remaining = remaining.slice(match.length + 1);
       stripped++;
     } else {
       break;
     }
   }
-  return stripped > 0 ? remaining : null;
+  if (stripped === 0 || firstOrigin === null) return null;
+  return {
+    stat: remaining,
+    tier: stripped >= 2 ? 'DO' : 'SO',
+    origin: firstOrigin,
+  };
 }
 
 // ============================================
@@ -340,7 +361,7 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
   // 3. Map origin and level
   let origin = ORIGIN_MAP[parsed.header.origin];
   if (!origin) {
-    warnFallback('game-import/origin', `unknown origin '${parsed.header.origin}' — defaulting to 'Natural'`);
+    warnFallback('game-importer/origin', `unknown origin '${parsed.header.origin}' — defaulting to 'Natural'`);
     origin = 'Natural';
   }
   const level = Math.min(Math.max(parsed.header.level, 1), 50);
@@ -672,14 +693,14 @@ function resolvePowersetId(gameSetName: string, archetypeId: string): string | n
     // Match by internal name in the powerset data
     const psSlug = id.split('/')[1];
     if (psSlug === slug) {
-      warnFallback('game-import/resolvePowersetId', `'${gameSetName}' (${archetypeId}) matched by brute-force slug scan → '${id}'`);
+      warnFallback('game-importer/resolvePowersetId', `'${gameSetName}' (${archetypeId}) matched by brute-force slug scan → '${id}'`);
       return id;
     }
 
     // Match by display name
     const psDisplaySlug = ps.name.toLowerCase().replace(/\s+/g, '-');
     if (psDisplaySlug === slug) {
-      warnFallback('game-import/resolvePowersetId', `'${gameSetName}' (${archetypeId}) matched by display-name scan → '${id}'`);
+      warnFallback('game-importer/resolvePowersetId', `'${gameSetName}' (${archetypeId}) matched by display-name scan → '${id}'`);
       return id;
     }
   }
@@ -873,17 +894,22 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
 
   // Check for Single/Dual Origin enhancements: "Magic_Accuracy", "Natural_Magic_Run", etc.
   // SOs/DOs have an origin prefix but no _[A-F] piece suffix.
-  const soStat = parseSOEnhancement(uid);
-  if (soStat !== null) {
-    const stat = SO_STAT_MAP[soStat] ?? GENERIC_STAT_MAP[soStat];
+  const soResult = parseSOEnhancement(uid);
+  if (soResult !== null) {
+    const stat = SO_STAT_MAP[soResult.stat] ?? GENERIC_STAT_MAP[soResult.stat];
     if (stat) {
-      const enhancement = createGenericIOEnhancement(stat as any, level ?? 50, boost);
+      const enhancement = createOriginEnhancement(
+        stat as any,
+        soResult.tier,
+        soResult.origin,
+        boost,
+      );
       return { enhancement, warning: null };
     }
     // Origin prefix found but stat is unknown — warn but don't block
     return {
       enhancement: null,
-      warning: { type: 'enhancement', name: uid, message: `Unknown SO/DO stat: ${soStat}` },
+      warning: { type: 'enhancement', name: uid, message: `Unknown SO/DO stat: ${soResult.stat}` },
     };
   }
 
@@ -908,7 +934,7 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
     const nameLookup = getIOSetNameLookup();
     const fallbackId = nameLookup.get(parsed.setId);
     if (fallbackId) {
-      warnFallback('game-import/resolveEnhancement', `IO set '${parsed.setId}' resolved via name-based lookup → '${fallbackId}' (UID '${uid}')`);
+      warnFallback('game-importer/resolveEnhancement', `IO set '${parsed.setId}' resolved via name-based lookup → '${fallbackId}' (UID '${uid}')`);
       ioSet = getIOSet(fallbackId);
     }
   }

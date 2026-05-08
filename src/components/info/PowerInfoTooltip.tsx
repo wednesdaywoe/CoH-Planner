@@ -338,7 +338,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
   // All hooks are above this point — safe to early return
   if (!basePower) {
-    return <div className="text-slate-500 text-[10px]">Power not found</div>;
+    return <div className="text-slate-400 text-xs">Power not found</div>;
   }
 
   // Merge power.stats and normalize effect keys for registry-driven display
@@ -396,25 +396,25 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     <div className="space-y-1.5 max-w-[320px]">
       {/* Header */}
       <div>
-        <h3 className="text-xs font-semibold text-blue-400 leading-tight">
+        <h3 className="text-sm font-semibold text-blue-400 leading-tight">
           {basePower.name}
           {hasEnhancements && (
-            <span className="text-[8px] text-green-500 ml-1">(enhanced)</span>
+            <span className="text-[10px] text-green-500 ml-1">(enhanced)</span>
           )}
         </h3>
-        <span className="text-[9px] text-slate-400 capitalize">{basePower.powerType}</span>
+        <span className="text-[11px] text-slate-300 capitalize">{basePower.powerType}</span>
       </div>
 
       {/* Short Help */}
       {basePower.shortHelp && (
-        <div className="text-[9px] text-amber-400/80 italic">
+        <div className="text-[11px] text-amber-400/80 italic">
           {basePower.shortHelp}
         </div>
       )}
 
       {/* Summon/Pet Info with DPS and Effects */}
       {effects?.summon && (
-        <div className="bg-indigo-900/30 rounded p-1 border border-indigo-500/30 text-[9px]">
+        <div className="bg-indigo-900/30 rounded p-1 border border-indigo-500/30 text-[11px]">
           {/* Entity labels — filter visual-only / opaque P-hash entities
               (Rain of Arrows pairs `Pets_RainofArrows` with a `P4047293352`
               visual marker that's just FX). Keep entries with PET_ENTITIES
@@ -444,13 +444,13 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                 {(effects.summon.entityCount && effects.summon.entityCount > 1) ? ` x${effects.summon.entityCount}` : ''}
               </span>
               {effects.summon.duration && (
-                <span className="text-slate-400">({effects.summon.duration}s)</span>
+                <span className="text-slate-300">({effects.summon.duration}s)</span>
               )}
             </div>
           )}
           {petDamageAggregate && petDamageAggregate.base > 0 && (
             <div className="flex items-center gap-1 mt-0.5 ml-3">
-              <span className="text-slate-400">{petDamageAggregate.results.length > 1 ? 'Total DPS:' : 'DPS:'}</span>
+              <span className="text-slate-300">{petDamageAggregate.results.length > 1 ? 'Total DPS:' : 'DPS:'}</span>
               <span className="text-red-400">{petDamageAggregate.base.toFixed(1)}</span>
               {petDamageAggregate.enhanced !== petDamageAggregate.base && (
                 <span className="text-green-400">→ {petDamageAggregate.enhanced.toFixed(1)}</span>
@@ -469,7 +469,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                 const valLabel = eff.value !== undefined ? ` ${eff.value.toFixed(1)}` : '';
                 const chanceLabel = eff.chance && eff.chance < 1 ? ` ${(eff.chance * 100).toFixed(0)}%` : '';
                 return (
-                  <span key={eff.type} className="text-[8px] text-purple-300 bg-purple-900/30 px-0.5 rounded">
+                  <span key={eff.type} className="text-[10px] text-purple-300 bg-purple-900/30 px-0.5 rounded">
                     {eff.type}{valLabel}{chanceLabel}
                   </span>
                 );
@@ -557,17 +557,17 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
             const isActive = isFieryEmbraceActive;
             return (
               <>
-                <div className={`grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px] ${isActive ? '' : 'opacity-40'}`}>
-                  <span className={isActive ? 'text-orange-400' : 'text-slate-500'}>{fe.type}</span>
-                  <span className={isActive ? 'text-slate-300' : 'text-slate-500'}>{fe.base.toFixed(2)}</span>
-                  <span className={isActive ? (hasEnh ? 'text-green-400' : 'text-slate-600') : 'text-slate-600'}>
+                <div className={`grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 items-baseline text-xs ${isActive ? '' : 'opacity-40'}`}>
+                  <span className={isActive ? 'text-orange-400' : 'text-slate-400'}>{fe.type}</span>
+                  <span className={isActive ? 'text-slate-300' : 'text-slate-400'}>{fe.base.toFixed(2)}</span>
+                  <span className={isActive ? (hasEnh ? 'text-green-400' : 'text-slate-500') : 'text-slate-500'}>
                     {hasEnh ? `→ ${fe.enhanced.toFixed(2)}` : '—'}
                   </span>
-                  <span className={isActive ? (hasGlobal ? damageDisplayInfo.finalColumnColor : 'text-slate-600') : 'text-slate-600'}>
+                  <span className={isActive ? (hasGlobal ? damageDisplayInfo.finalColumnColor : 'text-slate-500') : 'text-slate-500'}>
                     {hasGlobal ? `→ ${feFinal.toFixed(2)}` : '—'}
                   </span>
                 </div>
-                <div className={`text-[8px] italic mt-0.5 ${isActive ? 'text-orange-400' : 'text-slate-500'}`}>
+                <div className={`text-[10px] italic mt-0.5 ${isActive ? 'text-orange-400' : 'text-slate-400'}`}>
                   {isActive ? '✓ Fiery Embrace active' : '* Fire damage only with Fiery Embrace active'}
                 </div>
               </>
@@ -580,32 +580,32 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       {damageDisplayInfo && calculatedDamage && (
         <>
           {damageDisplayInfo.showScourge && (
-            <div className="text-[8px] text-sk-magenta">
+            <div className="text-[10px] text-sk-magenta">
               +{(getScourgeInfo().averageDamageBonus * 100).toFixed(0)}% avg from Scourge
             </div>
           )}
           {damageDisplayInfo.showFury && (
-            <div className="text-[8px] text-sk-magenta">
+            <div className="text-[10px] text-sk-magenta">
               +{(damageDisplayInfo.furyBonus * 100).toFixed(0)}% from Fury ({furyLevel}/100)
             </div>
           )}
           {damageDisplayInfo.showVigilance && (
-            <div className="text-[8px] text-sk-magenta">
+            <div className="text-[10px] text-sk-magenta">
               +{(damageDisplayInfo.vigilanceBonus * 100).toFixed(0)}% from Vigilance ({vigilanceTeamSize === 0 ? 'Solo' : `${vigilanceTeamSize} teammates`})
             </div>
           )}
           {damageDisplayInfo.showCriticalHits && (
-            <div className="text-[8px] text-sk-magenta">
+            <div className="text-[10px] text-sk-magenta">
               +{(getCriticalHitInfo().averageBonusVsHigher * 100).toFixed(0)}% avg from Critical Hits (vs Lt+)
             </div>
           )}
           {damageDisplayInfo.showAssassination && (
-            <div className="text-[8px] text-sk-magenta">
+            <div className="text-[10px] text-sk-magenta">
               +{(damageDisplayInfo.assassinationBonus * 100).toFixed(0)}% avg from Assassination ({effectiveHidden ? 'Alpha Strike' : 'Sustained'})
             </div>
           )}
           {damageDisplayInfo.showOpportunityCrit && (
-            <div className="text-[8px] text-sk-magenta">
+            <div className="text-[10px] text-sk-magenta">
               +{(damageDisplayInfo.opportunityCritBonus * 100).toFixed(0)}% from Opportunity Crit
             </div>
           )}
@@ -614,8 +614,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
       {/* DoT from effects.dot (secondary DoT) */}
       {effects?.dot && effects.dot.scale != null && (
-        <div className="text-[10px]">
-          <span className="text-slate-400 text-[9px] uppercase">DoT: </span>
+        <div className="text-xs">
+          <span className="text-slate-300 text-[11px] uppercase">DoT: </span>
           <span className="text-orange-400">
             {effects.dot.type} {effects.dot.scale.toFixed(2)}/tick × {effects.dot.ticks} = {(effects.dot.scale * effects.dot.ticks).toFixed(2)} total
           </span>
@@ -631,10 +631,10 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         if (!defianceInfo || defianceInfo.damageBonus <= 0) return null;
 
         return (
-          <div className="text-[10px] mt-1 bg-orange-900/20 rounded px-1.5 py-1 border border-orange-700/30">
+          <div className="text-xs mt-1 bg-orange-900/20 rounded px-1.5 py-1 border border-orange-700/30">
             <span className="text-orange-400 font-medium">Defiance: </span>
             <span className="text-orange-300">+{defianceInfo.damageBonus.toFixed(1)}% dmg</span>
-            <span className="text-slate-400"> for </span>
+            <span className="text-slate-300"> for </span>
             <span className="text-orange-300">{defianceInfo.duration.toFixed(1)}s</span>
           </div>
         );
@@ -649,32 +649,32 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         const dominationInfo = getDominationInfo();
 
         return (
-          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+          <div className={`text-xs mt-1 rounded px-1.5 py-1 border ${
             dominationActive
               ? 'bg-pink-900/30 border-pink-700/50'
               : 'bg-slate-800/50 border-slate-700/30'
           }`}>
             <div className="flex items-center justify-between">
-              <span className={`font-medium ${dominationActive ? 'text-pink-400' : 'text-slate-400'}`}>
+              <span className={`font-medium ${dominationActive ? 'text-pink-400' : 'text-slate-300'}`}>
                 Domination
               </span>
-              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+              <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                 dominationActive
                   ? 'bg-pink-600/50 text-pink-200'
-                  : 'bg-slate-700 text-slate-400'
+                  : 'bg-slate-700 text-slate-300'
               }`}>
                 {dominationActive ? 'ACTIVE' : 'Inactive'}
               </span>
             </div>
             {dominationActive && (
-              <div className="mt-1 text-[9px]">
+              <div className="mt-1 text-[11px]">
                 <span className="text-pink-300">×{dominationInfo.magnitudeMultiplier} Mag, </span>
                 <span className="text-pink-300">×{dominationInfo.durationMultiplier} Dur</span>
-                <span className="text-slate-500 ml-1">({dominationInfo.activeDuration}s)</span>
+                <span className="text-slate-400 ml-1">({dominationInfo.activeDuration}s)</span>
               </div>
             )}
             {!dominationActive && (
-              <div className="text-[8px] text-slate-500 mt-0.5">
+              <div className="text-[10px] text-slate-400 mt-0.5">
                 Enable via Settings to see enhanced values
               </div>
             )}
@@ -691,31 +691,31 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         const scourgeInfo = getScourgeInfo();
 
         return (
-          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+          <div className={`text-xs mt-1 rounded px-1.5 py-1 border ${
             scourgeActive
               ? 'bg-sk-magenta/10 border-sk-magenta/30'
               : 'bg-slate-800/50 border-slate-700/30'
           }`}>
             <div className="flex items-center justify-between">
-              <span className={`font-medium ${scourgeActive ? 'text-sk-magenta' : 'text-slate-400'}`}>
+              <span className={`font-medium ${scourgeActive ? 'text-sk-magenta' : 'text-slate-300'}`}>
                 Scourge
               </span>
-              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+              <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                 scourgeActive
                   ? 'bg-sk-magenta/20 text-sk-magenta'
-                  : 'bg-slate-700 text-slate-400'
+                  : 'bg-slate-700 text-slate-300'
               }`}>
                 {scourgeActive ? 'SHOWING AVG' : 'Hidden'}
               </span>
             </div>
             {scourgeActive && (
-              <div className="mt-1 text-[9px]">
+              <div className="mt-1 text-[11px]">
                 <span className="text-sk-magenta/70">+{(scourgeInfo.averageDamageBonus * 100).toFixed(0)}% avg dmg</span>
-                <span className="text-slate-500 ml-1">(×{(1 + scourgeInfo.averageDamageBonus).toFixed(2)} multiplier)</span>
+                <span className="text-slate-400 ml-1">(×{(1 + scourgeInfo.averageDamageBonus).toFixed(2)} multiplier)</span>
               </div>
             )}
             {!scourgeActive && (
-              <div className="text-[8px] text-slate-500 mt-0.5">
+              <div className="text-[10px] text-slate-400 mt-0.5">
                 {scourgeInfo.chanceFormula}
               </div>
             )}
@@ -733,26 +733,26 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         const currentBonus = calculateFuryDamageBonus(furyLevel);
 
         return (
-          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+          <div className={`text-xs mt-1 rounded px-1.5 py-1 border ${
             furyLevel > 0
               ? 'bg-sk-magenta/10 border-sk-magenta/30'
               : 'bg-slate-800/50 border-slate-700/30'
           }`}>
             <div className="flex items-center justify-between">
-              <span className={`font-medium ${furyLevel > 0 ? 'text-sk-magenta' : 'text-slate-400'}`}>
+              <span className={`font-medium ${furyLevel > 0 ? 'text-sk-magenta' : 'text-slate-300'}`}>
                 Fury
               </span>
-              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+              <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                 furyLevel > 0
                   ? 'bg-sk-magenta/20 text-sk-magenta'
-                  : 'bg-slate-700 text-slate-400'
+                  : 'bg-slate-700 text-slate-300'
               }`}>
                 {furyLevel}/{furyInfo.maxFury}
               </span>
             </div>
-            <div className="mt-1 text-[9px]">
+            <div className="mt-1 text-[11px]">
               <span className="text-sk-magenta/70">+{(currentBonus * 100).toFixed(0)}% damage</span>
-              <span className="text-slate-500 ml-1">({furyInfo.damagePerFury * 100}% per fury)</span>
+              <span className="text-slate-400 ml-1">({furyInfo.damagePerFury * 100}% per fury)</span>
             </div>
           </div>
         );
@@ -767,34 +767,34 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         const bodyguardInfo = getBodyguardInfo();
 
         return (
-          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+          <div className={`text-xs mt-1 rounded px-1.5 py-1 border ${
             supremacyActive
               ? 'bg-sk-magenta/10 border-sk-magenta/30'
               : 'bg-slate-800/50 border-slate-700/30'
           }`}>
             <div className="flex items-center justify-between">
-              <span className={`font-medium ${supremacyActive ? 'text-sk-magenta' : 'text-slate-400'}`}>
+              <span className={`font-medium ${supremacyActive ? 'text-sk-magenta' : 'text-slate-300'}`}>
                 Supremacy
               </span>
-              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+              <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                 supremacyActive
                   ? 'bg-sk-magenta/20 text-sk-magenta'
-                  : 'bg-slate-700 text-slate-400'
+                  : 'bg-slate-700 text-slate-300'
               }`}>
                 {supremacyActive ? 'ACTIVE' : 'Inactive'}
               </span>
             </div>
             {supremacyActive && (
               <div className="mt-1 space-y-0.5">
-                <div className="text-[9px]">
-                  <span className="text-slate-500">Henchmen within {supremacyInfo.radius}ft:</span>
+                <div className="text-[11px]">
+                  <span className="text-slate-400">Henchmen within {supremacyInfo.radius}ft:</span>
                 </div>
-                <div className="text-[9px] flex gap-3">
+                <div className="text-[11px] flex gap-3">
                   <span className="text-sk-magenta/70">+{(supremacyInfo.damageBonus * 100).toFixed(0)}% Damage</span>
                   <span className="text-sk-magenta/70">+{(supremacyInfo.toHitBonus * 100).toFixed(0)}% ToHit</span>
                 </div>
-                <div className="text-[9px] mt-1 pt-1 border-t border-sk-magenta/30">
-                  <span className="text-slate-500">Bodyguard Mode:</span>
+                <div className="text-[11px] mt-1 pt-1 border-t border-sk-magenta/30">
+                  <span className="text-slate-400">Bodyguard Mode:</span>
                   <span className="text-sk-magenta/70 ml-1">
                     {(bodyguardInfo.mastermindDamageShare * 100).toFixed(0)}% to MM, {(bodyguardInfo.henchmenDamageShare * 100).toFixed(0)}% to pets
                   </span>
@@ -802,7 +802,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
               </div>
             )}
             {!supremacyActive && (
-              <div className="text-[8px] text-slate-500 mt-0.5">
+              <div className="text-[10px] text-slate-400 mt-0.5">
                 Enable to see henchmen buff values
               </div>
             )}
@@ -821,30 +821,30 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         const teamLabel = vigilanceTeamSize === 0 ? 'Solo' : `${vigilanceTeamSize} teammate${vigilanceTeamSize > 1 ? 's' : ''}`;
 
         return (
-          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+          <div className={`text-xs mt-1 rounded px-1.5 py-1 border ${
             currentBonus > 0
               ? 'bg-sk-magenta/10 border-sk-magenta/30'
               : 'bg-slate-800/50 border-slate-700/30'
           }`}>
             <div className="flex items-center justify-between">
-              <span className={`font-medium ${currentBonus > 0 ? 'text-sk-magenta' : 'text-slate-400'}`}>
+              <span className={`font-medium ${currentBonus > 0 ? 'text-sk-magenta' : 'text-slate-300'}`}>
                 Vigilance
               </span>
-              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+              <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                 currentBonus > 0
                   ? 'bg-sk-magenta/20 text-sk-magenta'
-                  : 'bg-slate-700 text-slate-400'
+                  : 'bg-slate-700 text-slate-300'
               }`}>
                 {teamLabel}
               </span>
             </div>
-            <div className="mt-1 text-[9px]">
+            <div className="mt-1 text-[11px]">
               {currentBonus > 0 ? (
                 <span className="text-sk-magenta/70">+{(currentBonus * 100).toFixed(0)}% damage</span>
               ) : (
-                <span className="text-slate-500">No bonus (3+ teammates)</span>
+                <span className="text-slate-400">No bonus (3+ teammates)</span>
               )}
-              <span className="text-slate-500 ml-1">(max {(vigilanceInfo.maxSoloDamageBonus * 100).toFixed(0)}% solo at Lv20+)</span>
+              <span className="text-slate-400 ml-1">(max {(vigilanceInfo.maxSoloDamageBonus * 100).toFixed(0)}% solo at Lv20+)</span>
             </div>
           </div>
         );
@@ -860,44 +860,44 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         const criticalHitInfo = getCriticalHitInfo();
 
         return (
-          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+          <div className={`text-xs mt-1 rounded px-1.5 py-1 border ${
             criticalHitsActive
               ? 'bg-sk-magenta/10 border-sk-magenta/30'
               : 'bg-slate-800/50 border-slate-700/30'
           }`}>
             <div className="flex items-center justify-between">
-              <span className={`font-medium ${criticalHitsActive ? 'text-sk-magenta' : 'text-slate-400'}`}>
+              <span className={`font-medium ${criticalHitsActive ? 'text-sk-magenta' : 'text-slate-300'}`}>
                 Critical Hits
               </span>
-              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+              <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                 criticalHitsActive
                   ? 'bg-sk-magenta/20 text-sk-magenta'
-                  : 'bg-slate-700 text-slate-400'
+                  : 'bg-slate-700 text-slate-300'
               }`}>
                 {criticalHitsActive ? 'SHOWING AVG' : 'Hidden'}
               </span>
             </div>
             {criticalHitsActive && (
-              <div className="mt-1 space-y-0.5 text-[9px]">
+              <div className="mt-1 space-y-0.5 text-[11px]">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">vs Minions:</span>
+                  <span className="text-slate-300">vs Minions:</span>
                   <span className="text-sk-magenta/70">
                     {(criticalHitInfo.chanceVsMinions * 100).toFixed(0)}% chance → +{(criticalHitInfo.averageBonusVsMinions * 100).toFixed(0)}% avg
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">vs Lt/Boss+:</span>
+                  <span className="text-slate-300">vs Lt/Boss+:</span>
                   <span className="text-sk-magenta/70">
                     {(criticalHitInfo.chanceVsHigher * 100).toFixed(0)}% chance → +{(criticalHitInfo.averageBonusVsHigher * 100).toFixed(0)}% avg
                   </span>
                 </div>
-                <div className="text-[8px] text-slate-500 mt-0.5">
+                <div className="text-[10px] text-slate-400 mt-0.5">
                   Critical hits deal ×{criticalHitInfo.damageMultiplier.toFixed(0)} damage
                 </div>
               </div>
             )}
             {!criticalHitsActive && (
-              <div className="text-[8px] text-slate-500 mt-0.5">
+              <div className="text-[10px] text-slate-400 mt-0.5">
                 5% crit vs minions, 10% vs higher ranks
               </div>
             )}
@@ -916,7 +916,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         const critChance = effectiveHidden ? 1.0 : assassinationInfo.baseCritChance + (stalkerTeamSize * assassinationInfo.critChancePerTeammate);
 
         return (
-          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+          <div className={`text-xs mt-1 rounded px-1.5 py-1 border ${
             effectiveHidden
               ? 'bg-sk-magenta/15 border-sk-magenta/40'
               : currentBonus > 0
@@ -924,10 +924,10 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                 : 'bg-slate-800/50 border-slate-700/30'
           }`}>
             <div className="flex items-center justify-between">
-              <span className={`font-medium ${effectiveHidden || currentBonus > 0 ? 'text-sk-magenta' : 'text-slate-400'}`}>
+              <span className={`font-medium ${effectiveHidden || currentBonus > 0 ? 'text-sk-magenta' : 'text-slate-300'}`}>
                 Assassination
               </span>
-              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+              <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                 effectiveHidden
                   ? 'bg-sk-magenta/25 text-sk-magenta'
                   : 'bg-sk-magenta/20 text-sk-magenta'
@@ -935,35 +935,35 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                 {effectiveHidden ? 'ALPHA STRIKE' : `${stalkerTeamSize === 0 ? 'Solo' : `+${stalkerTeamSize}`}`}
               </span>
             </div>
-            <div className="mt-1 space-y-0.5 text-[9px]">
+            <div className="mt-1 space-y-0.5 text-[11px]">
               {effectiveHidden ? (
                 <>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">From Hide:</span>
+                    <span className="text-slate-300">From Hide:</span>
                     <span className="text-sk-magenta/70 font-medium">100% critical chance</span>
                   </div>
-                  <div className="text-[8px] text-sk-magenta/60 mt-0.5">
+                  <div className="text-[10px] text-sk-magenta/60 mt-0.5">
                     +100% avg damage (guaranteed double damage)
                   </div>
                 </>
               ) : (
                 <>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Base crit:</span>
+                    <span className="text-slate-300">Base crit:</span>
                     <span className="text-sk-magenta/70">{(assassinationInfo.baseCritChance * 100).toFixed(0)}%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Team bonus:</span>
+                    <span className="text-slate-300">Team bonus:</span>
                     <span className="text-sk-magenta/70">+{(stalkerTeamSize * assassinationInfo.critChancePerTeammate * 100).toFixed(0)}% ({stalkerTeamSize} × 3%)</span>
                   </div>
                   <div className="flex justify-between font-medium">
-                    <span className="text-slate-400">Total:</span>
+                    <span className="text-slate-300">Total:</span>
                     <span className="text-sk-magenta/70">{(critChance * 100).toFixed(0)}% → +{(currentBonus * 100).toFixed(0)}% avg</span>
                   </div>
                 </>
               )}
             </div>
-            <div className="text-[8px] text-slate-500 mt-1 pt-1 border-t border-sk-magenta/30">
+            <div className="text-[10px] text-slate-400 mt-1 pt-1 border-t border-sk-magenta/30">
               Assassin's Focus: Primary attacks can stack +33.3% crit (×3) for Assassin's Strike
             </div>
           </div>
@@ -978,16 +978,16 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         const gauntletInfo = getGauntletInfo();
 
         return (
-          <div className="text-[10px] mt-1 rounded px-1.5 py-1 border bg-yellow-900/30 border-yellow-700/50">
+          <div className="text-xs mt-1 rounded px-1.5 py-1 border bg-yellow-900/30 border-yellow-700/50">
             <div className="flex items-center justify-between">
               <span className="font-medium text-yellow-400">
                 Gauntlet
               </span>
-              <span className="text-[8px] px-1.5 py-0.5 rounded bg-yellow-600/50 text-yellow-200">
+              <span className="text-[10px] px-1.5 py-0.5 rounded bg-yellow-600/50 text-yellow-200">
                 PunchVoke
               </span>
             </div>
-            <div className="mt-1 space-y-0.5 text-[9px]">
+            <div className="mt-1 space-y-0.5 text-[11px]">
               <div className="text-yellow-300">
                 +{(gauntletInfo.aoeRadiusBonus * 100).toFixed(0)}% AoE Radius/Range
               </div>
@@ -1001,7 +1001,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                 AoE attacks taunt all affected
               </div>
             </div>
-            <div className="text-[8px] text-slate-500 mt-1 pt-1 border-t border-yellow-700/30">
+            <div className="text-[10px] text-slate-400 mt-1 pt-1 border-t border-yellow-700/30">
               PBAoE hits bonus targets at {(gauntletInfo.bonusTargetDamageMultiplier * 100).toFixed(0)}% damage
             </div>
           </div>
@@ -1017,25 +1017,25 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         const containmentInfo = getContainmentInfo();
 
         return (
-          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+          <div className={`text-xs mt-1 rounded px-1.5 py-1 border ${
             containmentActive
               ? 'bg-sk-magenta/15 border-sk-magenta/40'
               : 'bg-slate-800/50 border-slate-700/30'
           }`}>
             <div className="flex items-center justify-between">
-              <span className={`font-medium ${containmentActive ? 'text-sk-magenta' : 'text-slate-400'}`}>
+              <span className={`font-medium ${containmentActive ? 'text-sk-magenta' : 'text-slate-300'}`}>
                 Containment
               </span>
-              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+              <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                 containmentActive
                   ? 'bg-sk-magenta/20 text-sk-magenta'
-                  : 'bg-slate-700/50 text-slate-400'
+                  : 'bg-slate-700/50 text-slate-300'
               }`}>
                 {containmentActive ? 'Active' : 'Inactive'}
               </span>
             </div>
-            <div className="mt-1 space-y-0.5 text-[9px]">
-              <div className={containmentActive ? 'text-sk-magenta/70' : 'text-slate-500'}>
+            <div className="mt-1 space-y-0.5 text-[11px]">
+              <div className={containmentActive ? 'text-sk-magenta/70' : 'text-slate-400'}>
                 {containmentInfo.description}
               </div>
               {containmentActive && (
@@ -1044,7 +1044,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                 </div>
               )}
             </div>
-            <div className="text-[8px] text-slate-500 mt-1 pt-1 border-t border-sk-magenta/30">
+            <div className="text-[10px] text-slate-400 mt-1 pt-1 border-t border-sk-magenta/30">
               Toggle in header to show damage vs controlled targets
             </div>
           </div>
@@ -1054,8 +1054,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       {/* Enhancement summary */}
       {hasEnhancements && Object.keys(enhancementBonuses).length > 0 && (
         <div className="border-t border-slate-700 pt-1 mt-1">
-          <span className="text-[8px] text-slate-500 uppercase">Enhancement Bonuses (after ED):</span>
-          <div className="flex flex-wrap gap-x-2 text-[9px]">
+          <span className="text-[10px] text-slate-400 uppercase">Enhancement Bonuses (after ED):</span>
+          <div className="flex flex-wrap gap-x-2 text-[11px]">
             {Object.entries(enhancementBonuses).map(([aspect, value]) => (
               <span key={aspect} className="text-green-400">
                 {aspect}: +{((value || 0) * 100).toFixed(2)}%
@@ -1215,7 +1215,7 @@ export function PowerInfoTooltip() {
           <div ref={pinnedRef} className="ring-2 ring-sky-400/70 rounded-lg inline-block">
             <TooltipBody content={pinned.content} />
           </div>
-          <div className="text-[9px] text-sky-300 text-center mt-0.5">Pinned (Shift)</div>
+          <div className="text-[11px] text-sky-300 text-center mt-0.5">Pinned (Shift)</div>
         </div>
       )}
       {showLive && infoPanelContent && (
