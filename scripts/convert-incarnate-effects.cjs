@@ -54,6 +54,29 @@ function readDir(dirPath) {
   }
 }
 
+/** T3+ alpha and destiny tiers grant +1 level shift. The binary doesn't tag
+ *  this as a distinct Level_Shift attrib — index 123 collapses Recharge_Power,
+ *  Level_Shift, Vision_Phase, and Ninja_Run with no disambiguator, so the
+ *  attrib-based detection that used to live here never actually fired.
+ *  Filename inference per the documented CoH naming convention is reliable:
+ *    Alpha T3+:   *_core_paragon, *_radial_paragon,
+ *                 *_partial_{core,radial}_revamp, *_total_{core,radial}_revamp
+ *    Destiny T3+: *_core_epiphany, *_radial_epiphany,
+ *                 *_partial_{core,radial}_invocation, *_total_{core,radial}_invocation
+ */
+function inferLevelShiftFromFilename(powerId) {
+  const id = powerId.toLowerCase();
+  // T3 paragon/epiphany — unique suffixes, safe to match by endsWith.
+  if (id.endsWith('_paragon') || id.endsWith('_epiphany')) return 1;
+  // Alpha _revamp only appears on T3.5/T4 (partial_/total_*_revamp).
+  if (id.endsWith('_revamp')) return 1;
+  // Destiny _invocation is ambiguous: alone it's T1, with `_core_`/`_radial_`
+  // it's T2 (none of these grant shift). Only the partial_/total_ variants
+  // (T3.5/T4) shift.
+  if (/_(partial|total)_(core|radial)_invocation$/.test(id)) return 1;
+  return 0;
+}
+
 /** True if a template represents a Grant_Power, across both Parse7 (HC) and
  *  Parse6 (Rebirth) export shapes. HC tags `attribs: ['Grant_Power']`;
  *  Parse6 currently decodes the same attrib as `Null` but still populates
@@ -185,15 +208,9 @@ function extractAlpha() {
     const displayName = data.display_name || powerId;
     const grantedRefs = extractGrantedPowers(data);
 
-    // Extract level shift from main power
-    let levelShift = 0;
-    for (const eff of data.effects || []) {
-      for (const t of eff.templates || []) {
-        if ((t.attribs || []).includes('Level_Shift')) {
-          levelShift = t.scale || 0;
-        }
-      }
-    }
+    // T3+ alphas grant +1 level shift; see inferLevelShiftFromFilename for why
+    // we read this from the filename rather than the binary.
+    const levelShift = inferLevelShiftFromFilename(powerId);
 
     // Resolve silent power references to get enhancement bonuses
     const enhancements = {};
@@ -278,22 +295,10 @@ function extractDestiny() {
     const powerId = f.replace('.json', '');
     const displayName = data.display_name || powerId;
 
-    // Check for level shift from silent grants
-    const grantedRefs = extractGrantedPowers(data);
-    let levelShift = 0;
-    for (const ref of grantedRefs) {
-      const silentName = silentRefToFilename(ref);
-      const silentData = silentCache[silentName];
-      if (silentData) {
-        for (const eff of silentData.effects || []) {
-          for (const t of eff.templates || []) {
-            if ((t.attribs || []).includes('Level_Shift')) {
-              levelShift = t.scale || 0;
-            }
-          }
-        }
-      }
-    }
+    // T3+ destinies grant +1 level shift; same filename rule as alpha. The
+    // attrib-based detection that used to live here never fired (silent
+    // files don't carry a Level_Shift attrib in either Parse7 or Parse6).
+    const levelShift = inferLevelShiftFromFilename(powerId);
 
     // Extract diminishing buff effects from main power
     // Destiny powers have multiple copies of the same effect at different durations

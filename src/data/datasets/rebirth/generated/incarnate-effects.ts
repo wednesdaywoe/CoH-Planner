@@ -20,145 +20,145 @@ export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
   // Agility Core Boost
   'agility_core_boost': {"enduranceModification":0.33,"recharge":0.33},
   // Agility Core Paragon
-  'agility_core_paragon': {"enduranceModification":0.45,"recharge":0.33,"defense":0.2},
+  'agility_core_paragon': {"levelShift":1,"enduranceModification":0.45,"recharge":0.33,"defense":0.2},
   // Agility Partial Core Revamp
-  'agility_partial_core_revamp': {"enduranceModification":0.33,"recharge":0.33,"defense":0.2},
+  'agility_partial_core_revamp': {"levelShift":1,"enduranceModification":0.33,"recharge":0.33,"defense":0.2},
   // Agility Partial Radial Revamp
-  'agility_partial_radial_revamp': {"enduranceModification":0.33,"recharge":0.165,"defense":0.2,"runSpeed":0.33},
+  'agility_partial_radial_revamp': {"levelShift":1,"enduranceModification":0.33,"recharge":0.165,"defense":0.2,"runSpeed":0.33},
   // Agility Radial Boost
   'agility_radial_boost': {"enduranceModification":0.33,"defense":0.2},
   // Agility Radial Paragon
-  'agility_radial_paragon': {"enduranceModification":0.33,"recharge":0.33,"defense":0.2,"jumpSpeed":0.33,"runSpeed":0.33,"flySpeed":0.33},
+  'agility_radial_paragon': {"levelShift":1,"enduranceModification":0.33,"recharge":0.33,"defense":0.2,"jumpSpeed":0.33,"runSpeed":0.33,"flySpeed":0.33},
   // Agility Total Core Revamp
-  'agility_total_core_revamp': {"enduranceModification":0.45,"recharge":0.33},
+  'agility_total_core_revamp': {"levelShift":1,"enduranceModification":0.45,"recharge":0.33},
   // Agility Total Radial Revamp
-  'agility_total_radial_revamp': {"enduranceModification":0.33,"recharge":0.165,"defense":0.2,"jumpSpeed":0.33},
+  'agility_total_radial_revamp': {"levelShift":1,"enduranceModification":0.33,"recharge":0.165,"defense":0.2,"jumpSpeed":0.33},
   // Cardiac Boost
   'cardiac_boost': {"enduranceReduction":0.33},
   // Cardiac Core Boost
   'cardiac_core_boost': {"enduranceReduction":0.33,"range":0.2},
   // Cardiac Core Paragon
-  'cardiac_core_paragon': {"enduranceReduction":0.45,"range":0.2,"resistance":0.2},
+  'cardiac_core_paragon': {"levelShift":1,"enduranceReduction":0.45,"range":0.2,"resistance":0.2},
   // Cardiac Partial Core Revamp
-  'cardiac_partial_core_revamp': {"enduranceReduction":0.33,"range":0.2,"resistance":0.2},
+  'cardiac_partial_core_revamp': {"levelShift":1,"enduranceReduction":0.33,"range":0.2,"resistance":0.2},
   // Cardiac Partial Radial Revamp
-  'cardiac_partial_radial_revamp': {"enduranceReduction":0.33,"range":0.1,"resistance":0.2,"fear":0.33},
+  'cardiac_partial_radial_revamp': {"levelShift":1,"enduranceReduction":0.33,"range":0.1,"resistance":0.2,"fear":0.33},
   // Cardiac Radial Boost
   'cardiac_radial_boost': {"enduranceReduction":0.33,"resistance":0.2},
   // Cardiac Radial Paragon
-  'cardiac_radial_paragon': {"enduranceReduction":0.33,"range":0.2,"resistance":0.2,"sleep":0.33,"fear":0.33,"intangible":0.33},
+  'cardiac_radial_paragon': {"levelShift":1,"enduranceReduction":0.33,"range":0.2,"resistance":0.2,"sleep":0.33,"fear":0.33,"intangible":0.33},
   // Cardiac Total Core Revamp
-  'cardiac_total_core_revamp': {"enduranceReduction":0.45,"range":0.2},
+  'cardiac_total_core_revamp': {"levelShift":1,"enduranceReduction":0.45,"range":0.2},
   // Cardiac Total Radial Revamp
-  'cardiac_total_radial_revamp': {"enduranceReduction":0.33,"range":0.1,"resistance":0.2,"sleep":0.33},
+  'cardiac_total_radial_revamp': {"levelShift":1,"enduranceReduction":0.33,"range":0.1,"resistance":0.2,"sleep":0.33},
   // Intuition Boost
   'intuition_boost': {"hold":0.33},
   // Intuition Core Boost
   'intuition_core_boost': {"hold":0.33,"defenseDebuff":0.33},
   // Intuition Core Paragon
-  'intuition_core_paragon': {"hold":0.45,"defenseDebuff":0.33,"range":0.2},
+  'intuition_core_paragon': {"levelShift":1,"hold":0.45,"defenseDebuff":0.33,"range":0.2},
   // Intuition Partial Core Revamp
-  'intuition_partial_core_revamp': {"hold":0.33,"defenseDebuff":0.33,"range":0.2},
+  'intuition_partial_core_revamp': {"levelShift":1,"hold":0.33,"defenseDebuff":0.33,"range":0.2},
   // Intuition Partial Radial Revamp
-  'intuition_partial_radial_revamp': {"hold":0.33,"defenseDebuff":0.165,"range":0.2,"damage":0.33},
+  'intuition_partial_radial_revamp': {"levelShift":1,"hold":0.33,"defenseDebuff":0.165,"range":0.2,"damage":0.33},
   // Intuition Radial Boost
   'intuition_radial_boost': {"hold":0.33,"range":0.2},
   // Intuition Radial Paragon
-  'intuition_radial_paragon': {"hold":0.33,"defenseDebuff":0.33,"range":0.2,"toHitDebuff":0.2,"damage":0.33,"slow":0.33},
+  'intuition_radial_paragon': {"levelShift":1,"hold":0.33,"defenseDebuff":0.33,"range":0.2,"toHitDebuff":0.2,"damage":0.33,"slow":0.33},
   // Intuition Total Core Revamp
-  'intuition_total_core_revamp': {"hold":0.45,"defenseDebuff":0.33},
+  'intuition_total_core_revamp': {"levelShift":1,"hold":0.45,"defenseDebuff":0.33},
   // Intuition Total Radial Revamp
-  'intuition_total_radial_revamp': {"hold":0.33,"defenseDebuff":0.165,"range":0.2,"toHitDebuff":0.2},
+  'intuition_total_radial_revamp': {"levelShift":1,"hold":0.33,"defenseDebuff":0.165,"range":0.2,"toHitDebuff":0.2},
   // Musculature Boost
   'musculature_boost': {"damage":0.33},
   // Musculature Core Boost
   'musculature_core_boost': {"damage":0.33,"immobilize":0.33},
   // Musculature Core Paragon
-  'musculature_core_paragon': {"damage":0.45,"immobilize":0.33,"defenseDebuff":0.33},
+  'musculature_core_paragon': {"levelShift":1,"damage":0.45,"immobilize":0.33,"defenseDebuff":0.33},
   // Musculature Partial Core Revamp
-  'musculature_partial_core_revamp': {"damage":0.33,"immobilize":0.33,"defenseDebuff":0.33},
+  'musculature_partial_core_revamp': {"levelShift":1,"damage":0.33,"immobilize":0.33,"defenseDebuff":0.33},
   // Musculature Partial Radial Revamp
-  'musculature_partial_radial_revamp': {"damage":0.33,"immobilize":0.165,"defenseDebuff":0.33,"toHitDebuff":0.2},
+  'musculature_partial_radial_revamp': {"levelShift":1,"damage":0.33,"immobilize":0.165,"defenseDebuff":0.33,"toHitDebuff":0.2},
   // Musculature Radial Boost
   'musculature_radial_boost': {"damage":0.33,"defenseDebuff":0.33},
   // Musculature Radial Paragon
-  'musculature_radial_paragon': {"damage":0.33,"immobilize":0.33,"defenseDebuff":0.33,"enduranceModification":0.33,"toHitDebuff":0.2,"runSpeed":0.33},
+  'musculature_radial_paragon': {"levelShift":1,"damage":0.33,"immobilize":0.33,"defenseDebuff":0.33,"enduranceModification":0.33,"toHitDebuff":0.2,"runSpeed":0.33},
   // Musculature Total Core Revamp
-  'musculature_total_core_revamp': {"damage":0.45,"immobilize":0.33},
+  'musculature_total_core_revamp': {"levelShift":1,"damage":0.45,"immobilize":0.33},
   // Musculature Total Radial Revamp
-  'musculature_total_radial_revamp': {"damage":0.33,"immobilize":0.165,"defenseDebuff":0.33,"enduranceModification":0.33},
+  'musculature_total_radial_revamp': {"levelShift":1,"damage":0.33,"immobilize":0.165,"defenseDebuff":0.33,"enduranceModification":0.33},
   // Nerve Boost
   'nerve_boost': {"accuracy":0.33},
   // Nerve Core Boost
   'nerve_core_boost': {"accuracy":0.33,"hold":0.33},
   // Nerve Core Paragon
-  'nerve_core_paragon': {"accuracy":0.45,"hold":0.33,"defense":0.2},
+  'nerve_core_paragon': {"levelShift":1,"accuracy":0.45,"hold":0.33,"defense":0.2},
   // Nerve Partial Core Revamp
-  'nerve_partial_core_revamp': {"accuracy":0.33,"hold":0.33,"defense":0.2},
+  'nerve_partial_core_revamp': {"levelShift":1,"accuracy":0.33,"hold":0.33,"defense":0.2},
   // Nerve Partial Radial Revamp
-  'nerve_partial_radial_revamp': {"accuracy":0.33,"hold":0.165,"defense":0.2,"taunt":0.33},
+  'nerve_partial_radial_revamp': {"levelShift":1,"accuracy":0.33,"hold":0.165,"defense":0.2,"taunt":0.33},
   // Nerve Radial Boost
   'nerve_radial_boost': {"accuracy":0.33,"defense":0.2},
   // Nerve Radial Paragon
-  'nerve_radial_paragon': {"accuracy":0.33,"hold":0.33,"defense":0.2,"confuse":0.33,"taunt":0.33,"flySpeed":0.33},
+  'nerve_radial_paragon': {"levelShift":1,"accuracy":0.33,"hold":0.33,"defense":0.2,"confuse":0.33,"taunt":0.33,"flySpeed":0.33},
   // Nerve Total Core Revamp
-  'nerve_total_core_revamp': {"accuracy":0.45,"hold":0.33},
+  'nerve_total_core_revamp': {"levelShift":1,"accuracy":0.45,"hold":0.33},
   // Nerve Total Radial Revamp
-  'nerve_total_radial_revamp': {"accuracy":0.33,"hold":0.165,"defense":0.2,"confuse":0.33},
+  'nerve_total_radial_revamp': {"levelShift":1,"accuracy":0.33,"hold":0.165,"defense":0.2,"confuse":0.33},
   // Resilient Boost
   'resilient_boost': {"resistance":0.2},
   // Resilient Core Boost
   'resilient_core_boost': {"resistance":0.2,"toHitBuff":0.2},
   // Resilient Core Paragon
-  'resilient_core_paragon': {"resistance":0.33,"toHitBuff":0.2,"immobilize":0.33},
+  'resilient_core_paragon': {"levelShift":1,"resistance":0.33,"toHitBuff":0.2,"immobilize":0.33},
   // Resilient Partial Core Revamp
-  'resilient_partial_core_revamp': {"resistance":0.2,"toHitBuff":0.2,"immobilize":0.33},
+  'resilient_partial_core_revamp': {"levelShift":1,"resistance":0.2,"toHitBuff":0.2,"immobilize":0.33},
   // Resilient Partial Radial Revamp
-  'resilient_partial_radial_revamp': {"resistance":0.2,"toHitBuff":0.1,"immobilize":0.33,"stun":0.33},
+  'resilient_partial_radial_revamp': {"levelShift":1,"resistance":0.2,"toHitBuff":0.1,"immobilize":0.33,"stun":0.33},
   // Resilient Radial Boost
   'resilient_radial_boost': {"resistance":0.2,"immobilize":0.33},
   // Resilient Radial Paragon
-  'resilient_radial_paragon': {"resistance":0.2,"toHitBuff":0.2,"immobilize":0.33,"intangible":0.33,"stun":0.33,"taunt":0.33},
+  'resilient_radial_paragon': {"levelShift":1,"resistance":0.2,"toHitBuff":0.2,"immobilize":0.33,"intangible":0.33,"stun":0.33,"taunt":0.33},
   // Resilient Total Core Revamp
-  'resilient_total_core_revamp': {"resistance":0.33,"toHitBuff":0.2},
+  'resilient_total_core_revamp': {"levelShift":1,"resistance":0.33,"toHitBuff":0.2},
   // Resilient Total Radial Revamp
-  'resilient_total_radial_revamp': {"resistance":0.2,"toHitBuff":0.1,"immobilize":0.33,"intangible":0.33},
+  'resilient_total_radial_revamp': {"levelShift":1,"resistance":0.2,"toHitBuff":0.1,"immobilize":0.33,"intangible":0.33},
   // Spiritual Boost
   'spiritual_boost': {"recharge":0.33},
   // Spiritual Core Boost
   'spiritual_core_boost': {"recharge":0.33,"stun":0.33},
   // Spiritual Core Paragon
-  'spiritual_core_paragon': {"recharge":0.45,"stun":0.33,"heal":0.33},
+  'spiritual_core_paragon': {"levelShift":1,"recharge":0.45,"stun":0.33,"heal":0.33},
   // Spiritual Partial Core Revamp
-  'spiritual_partial_core_revamp': {"recharge":0.33,"stun":0.33,"heal":0.33},
+  'spiritual_partial_core_revamp': {"levelShift":1,"recharge":0.33,"stun":0.33,"heal":0.33},
   // Spiritual Partial Radial Revamp
-  'spiritual_partial_radial_revamp': {"recharge":0.33,"stun":0.165,"heal":0.33,"slow":0.33},
+  'spiritual_partial_radial_revamp': {"levelShift":1,"recharge":0.33,"stun":0.165,"heal":0.33,"slow":0.33},
   // Spiritual Radial Boost
   'spiritual_radial_boost': {"recharge":0.33,"heal":0.33},
   // Spiritual Radial Paragon
-  'spiritual_radial_paragon': {"recharge":0.33,"stun":0.33,"heal":0.33,"toHitBuff":0.2,"slow":0.33,"jumpSpeed":0.33},
+  'spiritual_radial_paragon': {"levelShift":1,"recharge":0.33,"stun":0.33,"heal":0.33,"toHitBuff":0.2,"slow":0.33,"jumpSpeed":0.33},
   // Spiritual Total Core Revamp
-  'spiritual_total_core_revamp': {"recharge":0.45,"stun":0.33},
+  'spiritual_total_core_revamp': {"levelShift":1,"recharge":0.45,"stun":0.33},
   // Spiritual Total Radial Revamp
-  'spiritual_total_radial_revamp': {"recharge":0.33,"stun":0.165,"heal":0.33,"toHitBuff":0.2},
+  'spiritual_total_radial_revamp': {"levelShift":1,"recharge":0.33,"stun":0.165,"heal":0.33,"toHitBuff":0.2},
   // Vigor Boost
   'vigor_boost': {"heal":0.33},
   // Vigor Core Boost
   'vigor_core_boost': {"heal":0.33,"accuracy":0.33},
   // Vigor Core Paragon
-  'vigor_core_paragon': {"heal":0.45,"accuracy":0.33,"enduranceReduction":0.33},
+  'vigor_core_paragon': {"levelShift":1,"heal":0.45,"accuracy":0.33,"enduranceReduction":0.33},
   // Vigor Partial Core Revamp
-  'vigor_partial_core_revamp': {"heal":0.33,"accuracy":0.33,"enduranceReduction":0.33},
+  'vigor_partial_core_revamp': {"levelShift":1,"heal":0.33,"accuracy":0.33,"enduranceReduction":0.33},
   // Vigor Partial Radial Revamp
-  'vigor_partial_radial_revamp': {"heal":0.33,"accuracy":0.165,"enduranceReduction":0.33,"sleep":0.33},
+  'vigor_partial_radial_revamp': {"levelShift":1,"heal":0.33,"accuracy":0.165,"enduranceReduction":0.33,"sleep":0.33},
   // Vigor Radial Boost
   'vigor_radial_boost': {"heal":0.33,"enduranceReduction":0.33},
   // Vigor Radial Paragon
-  'vigor_radial_paragon': {"heal":0.33,"accuracy":0.33,"enduranceReduction":0.33,"confuse":0.33,"sleep":0.33,"fear":0.33},
+  'vigor_radial_paragon': {"levelShift":1,"heal":0.33,"accuracy":0.33,"enduranceReduction":0.33,"confuse":0.33,"sleep":0.33,"fear":0.33},
   // Vigor Total Core Revamp
-  'vigor_total_core_revamp': {"heal":0.45,"accuracy":0.33},
+  'vigor_total_core_revamp': {"levelShift":1,"heal":0.45,"accuracy":0.33},
   // Vigor Total Radial Revamp
-  'vigor_total_radial_revamp': {"heal":0.33,"accuracy":0.165,"enduranceReduction":0.33,"confuse":0.33},
+  'vigor_total_radial_revamp': {"levelShift":1,"heal":0.33,"accuracy":0.165,"enduranceReduction":0.33,"confuse":0.33},
 };
 
 // ============================================
@@ -168,95 +168,95 @@ export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
 
 export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number>> = {
   // Ageless Core Epiphany
-  'ageless_core_epiphany': {"endurance":1,"recharge":0.4,"recovery":5},
+  'ageless_core_epiphany': {"levelShift":1,"endurance":1,"recharge":0.4,"recovery":5},
   // Ageless Core Invocation
   'ageless_core_invocation': {"endurance":0.5,"recharge":0.4,"recovery":5},
   // Ageless Invocation
   'ageless_invocation': {"endurance":0.5,"recharge":0.4},
   // Ageless Partial Core Invocation
-  'ageless_partial_core_invocation': {"endurance":0.75,"recharge":0.4,"recovery":5},
+  'ageless_partial_core_invocation': {"levelShift":1,"endurance":0.75,"recharge":0.4,"recovery":5},
   // Ageless Partial Radial Invocation
-  'ageless_partial_radial_invocation': {"endurance":0.75,"recharge":0.4,"resistanceAll":0.5},
+  'ageless_partial_radial_invocation': {"levelShift":1,"endurance":0.75,"recharge":0.4,"resistanceAll":0.5},
   // Ageless Radial Epiphany
-  'ageless_radial_epiphany': {"endurance":1,"recharge":0.4,"resistanceAll":0.5},
+  'ageless_radial_epiphany': {"levelShift":1,"endurance":1,"recharge":0.4,"resistanceAll":0.5},
   // Ageless Radial Invocation
   'ageless_radial_invocation': {"endurance":0.5,"recharge":0.4,"resistanceAll":0.5},
   // Ageless Total Core Invocation
-  'ageless_total_core_invocation': {"endurance":0.75,"recharge":0.4,"recovery":5},
+  'ageless_total_core_invocation': {"levelShift":1,"endurance":0.75,"recharge":0.4,"recovery":5},
   // Ageless Total Radial Invocation
-  'ageless_total_radial_invocation': {"endurance":0.75,"recharge":0.4,"resistanceAll":0.5},
+  'ageless_total_radial_invocation': {"levelShift":1,"endurance":0.75,"recharge":0.4,"resistanceAll":0.5},
   // Barrier Core Epiphany
-  'barrier_core_epiphany': {"defenseAll":0.575,"resistanceAll":0.575},
+  'barrier_core_epiphany': {"levelShift":1,"defenseAll":0.575,"resistanceAll":0.575},
   // Barrier Core Invocation
   'barrier_core_invocation': {"defenseAll":0.6,"resistanceAll":0.6},
   // Barrier Invocation
   'barrier_invocation': {"defenseAll":0.6,"resistanceAll":0.6},
   // Barrier Partial Core Invocation
-  'barrier_partial_core_invocation': {"defenseAll":0.575,"resistanceAll":0.575},
+  'barrier_partial_core_invocation': {"levelShift":1,"defenseAll":0.575,"resistanceAll":0.575},
   // Barrier Partial Radial Invocation
-  'barrier_partial_radial_invocation': {"defenseAll":0.6,"resistanceAll":0.6},
+  'barrier_partial_radial_invocation': {"levelShift":1,"defenseAll":0.6,"resistanceAll":0.6},
   // Barrier Radial Epiphany
-  'barrier_radial_epiphany': {"defenseAll":0.6,"resistanceAll":0.6},
+  'barrier_radial_epiphany': {"levelShift":1,"defenseAll":0.6,"resistanceAll":0.6},
   // Barrier Radial Invocation
   'barrier_radial_invocation': {"defenseAll":0.6,"resistanceAll":0.6},
   // Barrier Total Core Invocation
-  'barrier_total_core_invocation': {"defenseAll":0.6,"resistanceAll":0.6},
+  'barrier_total_core_invocation': {"levelShift":1,"defenseAll":0.6,"resistanceAll":0.6},
   // Barrier Total Radial Invocation
-  'barrier_total_radial_invocation': {"defenseAll":0.6,"resistanceAll":0.6},
+  'barrier_total_radial_invocation': {"levelShift":1,"defenseAll":0.6,"resistanceAll":0.6},
   // Clarion Core Epiphany
-  'clarion_core_epiphany': {"resistanceAll":2.1},
+  'clarion_core_epiphany': {"levelShift":1,"resistanceAll":2.1},
   // Clarion Core Invocation
   'clarion_core_invocation': {"resistanceAll":2.1},
   // Clarion Invocation
   'clarion_invocation': {"resistanceAll":3},
   // Clarion Partial Core Invocation
-  'clarion_partial_core_invocation': {"resistanceAll":2.1},
+  'clarion_partial_core_invocation': {"levelShift":1,"resistanceAll":2.1},
   // Clarion Partial Radial Invocation
-  'clarion_partial_radial_invocation': {"resistanceAll":3,"stunned":0.4,"sleep":0.4,"confused":0.4,"terrorized":0.4,"immobilized":0.4,"held":0.4,"runningspeed":0.4,"flyingspeed":0.4,"base_defense":0.4,"melee":0.4,"ranged":0.4,"area":0.4,"smashing":0.4,"lethal":0.4,"fire":0.4,"cold":0.4,"energy":0.4,"negative_energy":0.4,"psionic":0.4,"heal_dmg":0.4,"absorb":0.4,"tohit":0.4,"endurance":0.4,"unknown(88)":0.4},
+  'clarion_partial_radial_invocation': {"levelShift":1,"resistanceAll":3,"stunned":0.4,"sleep":0.4,"confused":0.4,"terrorized":0.4,"immobilized":0.4,"held":0.4,"runningspeed":0.4,"flyingspeed":0.4,"base_defense":0.4,"melee":0.4,"ranged":0.4,"area":0.4,"smashing":0.4,"lethal":0.4,"fire":0.4,"cold":0.4,"energy":0.4,"negative_energy":0.4,"psionic":0.4,"heal_dmg":0.4,"absorb":0.4,"tohit":0.4,"endurance":0.4,"unknown(88)":0.4},
   // Clarion Radial Epiphany
-  'clarion_radial_epiphany': {"resistanceAll":3,"stunned":0.6,"sleep":0.6,"confused":0.6,"terrorized":0.6,"immobilized":0.6,"held":0.6,"runningspeed":0.6,"flyingspeed":0.6,"base_defense":0.6,"melee":0.6,"ranged":0.6,"area":0.6,"smashing":0.6,"lethal":0.6,"fire":0.6,"cold":0.6,"energy":0.6,"negative_energy":0.6,"psionic":0.6,"heal_dmg":0.6,"absorb":0.6,"tohit":0.6,"endurance":0.6,"unknown(88)":0.6},
+  'clarion_radial_epiphany': {"levelShift":1,"resistanceAll":3,"stunned":0.6,"sleep":0.6,"confused":0.6,"terrorized":0.6,"immobilized":0.6,"held":0.6,"runningspeed":0.6,"flyingspeed":0.6,"base_defense":0.6,"melee":0.6,"ranged":0.6,"area":0.6,"smashing":0.6,"lethal":0.6,"fire":0.6,"cold":0.6,"energy":0.6,"negative_energy":0.6,"psionic":0.6,"heal_dmg":0.6,"absorb":0.6,"tohit":0.6,"endurance":0.6,"unknown(88)":0.6},
   // Clarion Radial Invocation
   'clarion_radial_invocation': {"resistanceAll":3,"stunned":0.4,"sleep":0.4,"confused":0.4,"terrorized":0.4,"immobilized":0.4,"held":0.4,"runningspeed":0.4,"flyingspeed":0.4,"base_defense":0.4,"melee":0.4,"ranged":0.4,"area":0.4,"smashing":0.4,"lethal":0.4,"fire":0.4,"cold":0.4,"energy":0.4,"negative_energy":0.4,"psionic":0.4,"heal_dmg":0.4,"absorb":0.4,"tohit":0.4,"endurance":0.4,"unknown(88)":0.4},
   // Clarion Total Core Invocation
-  'clarion_total_core_invocation': {"resistanceAll":2.1},
+  'clarion_total_core_invocation': {"levelShift":1,"resistanceAll":2.1},
   // Clarion Total Radial Invocation
-  'clarion_total_radial_invocation': {"resistanceAll":3,"stunned":0.6,"sleep":0.6,"confused":0.6,"terrorized":0.6,"immobilized":0.6,"held":0.6,"runningspeed":0.6,"flyingspeed":0.6,"base_defense":0.6,"melee":0.6,"ranged":0.6,"area":0.6,"smashing":0.6,"lethal":0.6,"fire":0.6,"cold":0.6,"energy":0.6,"negative_energy":0.6,"psionic":0.6,"heal_dmg":0.6,"absorb":0.6,"tohit":0.6,"endurance":0.6,"unknown(88)":0.6},
+  'clarion_total_radial_invocation': {"levelShift":1,"resistanceAll":3,"stunned":0.6,"sleep":0.6,"confused":0.6,"terrorized":0.6,"immobilized":0.6,"held":0.6,"runningspeed":0.6,"flyingspeed":0.6,"base_defense":0.6,"melee":0.6,"ranged":0.6,"area":0.6,"smashing":0.6,"lethal":0.6,"fire":0.6,"cold":0.6,"energy":0.6,"negative_energy":0.6,"psionic":0.6,"heal_dmg":0.6,"absorb":0.6,"tohit":0.6,"endurance":0.6,"unknown(88)":0.6},
   // Incandescence Core Epiphany
-  'incandescence_core_epiphany': {"resistanceAll":-0.8},
+  'incandescence_core_epiphany': {"levelShift":1,"resistanceAll":-0.8},
   // Incandescence Core Invocation
   'incandescence_core_invocation': {"resistanceAll":-0.5},
   // Incandescence Invocation
   'incandescence_invocation': {"resistanceAll":-0.3},
   // Incandescence Partial Core Invocation
-  'incandescence_partial_core_invocation': {"resistanceAll":-0.5},
+  'incandescence_partial_core_invocation': {"levelShift":1,"resistanceAll":-0.5},
   // Incandescence Partial Radial Invocation
-  'incandescence_partial_radial_invocation': {"resistanceAll":-0.5},
+  'incandescence_partial_radial_invocation': {"levelShift":1,"resistanceAll":-0.5},
   // Incandescence Radial Epiphany
-  'incandescence_radial_epiphany': {"resistanceAll":-0.6},
+  'incandescence_radial_epiphany': {"levelShift":1,"resistanceAll":-0.6},
   // Incandescence Radial Invocation
   'incandescence_radial_invocation': {"resistanceAll":-0.4},
   // Incandescence Total Core Invocation
-  'incandescence_total_core_invocation': {"resistanceAll":-0.7},
+  'incandescence_total_core_invocation': {"levelShift":1,"resistanceAll":-0.7},
   // Incandescence Total Radial Invocation
-  'incandescence_total_radial_invocation': {"resistanceAll":-0.5},
+  'incandescence_total_radial_invocation': {"levelShift":1,"resistanceAll":-0.5},
   // Rebirth Core Epiphany
-  'rebirth_core_epiphany': {},
+  'rebirth_core_epiphany': {"levelShift":1},
   // Rebirth Core Invocation
   'rebirth_core_invocation': {},
   // Rebirth Invocation
   'rebirth_invocation': {},
   // Rebirth Partial Core Invocation
-  'rebirth_partial_core_invocation': {},
+  'rebirth_partial_core_invocation': {"levelShift":1},
   // Rebirth Partial Radial Invocation
-  'rebirth_partial_radial_invocation': {"regeneration":10},
+  'rebirth_partial_radial_invocation': {"levelShift":1,"regeneration":10},
   // Rebirth Radial Epiphany
-  'rebirth_radial_epiphany': {"regeneration":10},
+  'rebirth_radial_epiphany': {"levelShift":1,"regeneration":10},
   // Rebirth Radial Invocation
   'rebirth_radial_invocation': {"regeneration":10},
   // Rebirth Total Core Invocation
-  'rebirth_total_core_invocation': {},
+  'rebirth_total_core_invocation': {"levelShift":1},
   // Rebirth Total Radial Invocation
-  'rebirth_total_radial_invocation': {"regeneration":10},
+  'rebirth_total_radial_invocation': {"levelShift":1,"regeneration":10},
 };
 
 // ============================================
