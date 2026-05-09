@@ -471,9 +471,17 @@ function extractHybrid() {
           if (!statKey) continue;
           if (statKey === 'taunt') continue; // Skip taunt — not a player stat
 
-          // Classify as front-loaded or per-target
-          const isPerTarget = req.includes('Ne(target');
-          const isSelfOnly = req.includes('source>entref') || req === '';
+          // Classify as front-loaded or per-target. Two requires_expression
+          // dialects exist:
+          //   - Legacy raw_data_homecoming: `Ne(target,source)` for per-target,
+          //     `source>entref` for self.
+          //   - bin-crawler export (RPN): `entref target> entref source> eq`
+          //     for self (target equals source), same plus trailing ` !` for
+          //     per-target (target NOT source).
+          const isSelfRPN = /entref\s+target>\s+entref\s+source>\s+eq\s*$/.test(req);
+          const isPerTargetRPN = /entref\s+target>\s+entref\s+source>\s+eq\s+!/.test(req);
+          const isPerTarget = isPerTargetRPN || req.includes('Ne(target');
+          const isSelfOnly = isSelfRPN || req.includes('source>entref') || req === '';
 
           if (isPerTarget) {
             if (!perTarget[statKey]) perTarget[statKey] = 0;
