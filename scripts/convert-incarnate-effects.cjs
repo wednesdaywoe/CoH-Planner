@@ -54,21 +54,31 @@ function readDir(dirPath) {
   }
 }
 
+/** True if a template represents a Grant_Power, across both Parse7 (HC) and
+ *  Parse6 (Rebirth) export shapes. HC tags `attribs: ['Grant_Power']`;
+ *  Parse6 currently decodes the same attrib as `Null` but still populates
+ *  `params.type = 'Power'` with the power_names. Skip Revoke_Power explicitly. */
+function isGrantPowerTemplate(t) {
+  const attribs = t.attribs || [];
+  if (attribs.includes('Revoke_Power')) return false;
+  if (attribs.includes('Grant_Power')) return true;
+  return !!(t.params && t.params.type === 'Power' && Array.isArray(t.params.power_names) && t.params.power_names.length);
+}
+
 /** Extract all "Incarnate.*Silent.*" references from a power's Grant_Power templates */
 function extractGrantedPowers(data) {
   const grants = [];
   for (const eff of data.effects || []) {
     for (const t of eff.templates || []) {
-      if ((t.attribs || []).includes('Grant_Power')) {
-        // power_names can be at top level or nested inside params
-        const pnames = [
-          ...(t.power_names || []),
-          ...((t.params && t.params.power_names) || []),
-        ];
-        for (const pn of pnames) {
-          if (pn.toLowerCase().includes('silent')) {
-            grants.push(pn);
-          }
+      if (!isGrantPowerTemplate(t)) continue;
+      // power_names can be at top level or nested inside params
+      const pnames = [
+        ...(t.power_names || []),
+        ...((t.params && t.params.power_names) || []),
+      ];
+      for (const pn of pnames) {
+        if (pn.toLowerCase().includes('silent')) {
+          grants.push(pn);
         }
       }
     }
@@ -420,21 +430,23 @@ function extractHybrid() {
         const scale = t.scale || 0;
         const aspect = t.aspect || '';
 
-        for (const attrib of attribs) {
-          if (attrib === 'Grant_Power') {
-            const pnames = [
-              ...(t.power_names || []),
-              ...((t.params && t.params.power_names) || []),
-            ];
-            for (const pn of pnames) {
-              if (pn.toLowerCase().includes('boost')) {
-                grantedPassiveRefs.push(pn);
-              } else if (pn.toLowerCase().includes('silent')) {
-                grantedOtherRefs.push(pn);
-              }
+        // Cross-format grant detection (Parse7 attribs vs Parse6 params).
+        if (isGrantPowerTemplate(t)) {
+          const pnames = [
+            ...(t.power_names || []),
+            ...((t.params && t.params.power_names) || []),
+          ];
+          for (const pn of pnames) {
+            if (pn.toLowerCase().includes('boost')) {
+              grantedPassiveRefs.push(pn);
+            } else if (pn.toLowerCase().includes('silent')) {
+              grantedOtherRefs.push(pn);
             }
-            continue;
           }
+          continue;
+        }
+
+        for (const attrib of attribs) {
           if (attrib === 'Revoke_Power' || attrib === 'Set_Mode') continue;
           if (scale === 0) continue;
 
@@ -824,8 +836,10 @@ function extractLore() {
           const durMatch = (t.duration || '').match(/([\d.]+)\s*seconds?/i);
           if (durMatch) duration = parseFloat(durMatch[1]);
         }
-        // Check for level shift grant (via Lore_Silent.Level_Shift)
-        if (attrib === 'Grant_Power') {
+        // Check for level shift grant (via Lore_Silent.Level_Shift).
+        // Cross-format detection: Parse7 tags Grant_Power, Parse6 leaves
+        // attribs as Null but populates params.power_names.
+        if (isGrantPowerTemplate(t)) {
           const pnames = [
             ...(t.power_names || []),
             ...((t.params && t.params.power_names) || []),
