@@ -199,6 +199,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Ranged Damage",
           "Slow Movement",
           "Universal Damage Sets"
@@ -248,6 +249,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Slow Movement"
         ],
         "effects": {
@@ -286,6 +288,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
@@ -331,8 +334,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Slow Movement"
+          "Immobilize"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -475,8 +477,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -508,6 +512,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Holds",
           "Slow Movement"
         ],
@@ -661,12 +666,9 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
-          "Healing",
-          "Holds",
-          "Ranged AoE Damage",
-          "Sleep",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -1015,6 +1017,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff"
         ],
         "effects": {
@@ -1239,6 +1242,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -1469,6 +1473,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -1820,6 +1825,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged AoE Damage",
           "Slow Movement",
@@ -1937,10 +1943,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
-          "Slow Movement",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -2042,8 +2047,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Slow Movement"
+          "Immobilize"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -2202,9 +2206,9 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -2555,11 +2559,9 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
-          "Healing",
-          "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -2604,6 +2606,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -2721,6 +2724,7 @@ export const EPIC_POOLS_RAW = {
           "ToHit Debuff"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "To Hit Debuff"
         ],
         "effects": {
@@ -2755,6 +2759,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -2805,7 +2810,10 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Blaster Archetype Sets",
+          "Pet Damage",
+          "Recharge Intensive Pets",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -2961,7 +2969,6 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Melee AoE Damage",
           "Stuns",
-          "Threat Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -3171,6 +3178,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Ranged Damage",
           "Slow Movement",
           "Universal Damage Sets"
@@ -3456,6 +3464,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Slow Movement"
         ],
         "effects": {
@@ -3733,6 +3742,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -3978,10 +3988,10 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
-          "Ranged AoE Damage",
-          "Slow Movement",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -4256,11 +4266,11 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Immobilize",
+          "Blaster Archetype Sets",
           "Knockback",
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Stuns",
+          "Pet Damage",
+          "Recharge Intensive Pets",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -4304,8 +4314,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Slow Movement"
+          "Immobilize"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -4446,6 +4455,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Holds",
           "Slow Movement"
         ],
@@ -4485,10 +4495,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Endurance Modification",
-          "Holds",
-          "Immobilize",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -4530,8 +4538,7 @@ export const EPIC_POOLS_RAW = {
           "Taunt"
         ],
         "allowedSetCategories": [
-          "Endurance Modification",
-          "Threat Duration"
+          "Endurance Modification"
         ],
         "effects": {
           "accuracy": 1,
@@ -4721,12 +4728,9 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
-          "Healing",
-          "Holds",
-          "Ranged AoE Damage",
-          "Sleep",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -5030,11 +5034,9 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
-          "Sleep",
-          "Stuns",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -5207,7 +5209,7 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
+          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
@@ -5354,6 +5356,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Knockback",
           "Ranged AoE Damage",
           "To Hit Debuff",
@@ -5436,6 +5439,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -5475,6 +5479,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -5520,6 +5525,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Immobilize",
           "Ranged AoE Damage",
           "To Hit Debuff",
@@ -5589,7 +5595,7 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Knockback",
           "Ranged AoE Damage",
@@ -5794,8 +5800,11 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Slow Movement",
+          "Blaster Archetype Sets",
+          "Defense Debuff",
+          "Knockback",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -5840,6 +5849,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -6104,10 +6114,10 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
-          "Ranged AoE Damage",
-          "Slow Movement",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -6149,8 +6159,7 @@ export const EPIC_POOLS_RAW = {
           "Taunt"
         ],
         "allowedSetCategories": [
-          "Endurance Modification",
-          "Threat Duration"
+          "Endurance Modification"
         ],
         "effects": {
           "accuracy": 1,
@@ -6382,11 +6391,9 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
-          "Healing",
-          "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -6431,7 +6438,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Melee AoE Damage",
-          "Threat Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -6523,6 +6529,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -6614,8 +6621,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -6841,6 +6848,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Slow Movement"
         ],
         "effects": {
@@ -7430,6 +7438,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
+          "Melee AoE Damage",
           "Ranged Damage",
           "Universal Damage Sets"
         ],
@@ -7627,6 +7636,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -7869,6 +7879,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -8455,10 +8466,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
+          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -8712,10 +8723,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
+          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -8774,6 +8785,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff"
         ],
         "effects": {
@@ -8988,6 +9000,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff"
         ],
         "effects": {
@@ -9068,10 +9081,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
+          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -9442,6 +9455,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Holds",
           "Ranged Damage",
           "Slow Movement",
@@ -9511,6 +9525,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Immobilize",
           "Ranged AoE Damage",
           "Slow Movement",
@@ -9774,6 +9789,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Immobilize",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -9842,6 +9858,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
@@ -9895,6 +9912,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -9939,6 +9957,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
@@ -9969,6 +9988,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Melee Damage",
           "Universal Damage Sets"
         ],
@@ -10033,6 +10053,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Immobilize",
           "Ranged Damage",
           "Slow Movement",
@@ -10102,6 +10123,7 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Melee AoE Damage",
           "Sleep",
           "Universal Damage Sets"
@@ -10145,6 +10167,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Holds",
           "Melee Damage",
           "Universal Damage Sets"
@@ -10215,6 +10238,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
+          "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
@@ -10247,6 +10272,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Slow Movement"
         ],
         "effects": {
@@ -10293,6 +10319,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -10347,7 +10374,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
+          "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
@@ -10445,6 +10474,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
@@ -10495,8 +10525,9 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
+          "Guardian Archetype Sets",
           "Knockback",
           "Ranged AoE Damage",
           "Stuns",
@@ -10531,8 +10562,12 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Slow Movement",
+          "Blaster Archetype Sets",
+          "Defense Debuff",
+          "Guardian Archetype Sets",
+          "Knockback",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10574,6 +10609,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Melee Damage",
           "Universal Damage Sets"
         ],
@@ -10649,6 +10685,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Holds",
           "Slow Movement"
         ],
@@ -10686,6 +10723,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
@@ -10789,10 +10827,11 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
-          "Ranged AoE Damage",
-          "Slow Movement",
+          "Guardian Archetype Sets",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10838,6 +10877,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -10900,6 +10940,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
@@ -10962,6 +11003,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Guardian Archetype Sets",
           "Knockback",
           "Melee AoE Damage",
           "Stuns",
@@ -11064,11 +11106,10 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
-          "Healing",
-          "Holds",
-          "Ranged AoE Damage",
+          "Guardian Archetype Sets",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -11286,6 +11327,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff"
         ],
         "effects": {
@@ -11371,6 +11413,7 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Melee Damage",
           "Stuns",
           "Universal Damage Sets"
@@ -11426,6 +11469,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
@@ -11477,6 +11521,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
@@ -11663,6 +11708,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Holds",
           "Melee Damage",
           "Universal Damage Sets"
@@ -11713,6 +11759,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Knockback",
           "Ranged AoE Damage",
           "Universal Damage Sets"
@@ -11758,6 +11805,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Knockback",
           "Melee AoE Damage",
           "Universal Damage Sets"
@@ -11850,6 +11898,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
           "Universal Damage Sets"
@@ -11896,6 +11945,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
+          "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -11935,6 +11986,7 @@ export const EPIC_POOLS_RAW = {
           "ToHit"
         ],
         "allowedSetCategories": [
+          "Guardian Archetype Sets",
           "Melee AoE Damage",
           "To Hit Buff",
           "Universal Damage Sets"
@@ -11986,6 +12038,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Guardian Archetype Sets",
           "Melee AoE Damage",
           "Universal Damage Sets"
         ],
@@ -12027,7 +12080,11 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Blaster Archetype Sets",
+          "Guardian Archetype Sets",
+          "Pet Damage",
+          "Recharge Intensive Pets",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -12253,10 +12310,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
+          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -12319,6 +12376,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Ranged Damage",
           "Slow Movement",
           "Universal Damage Sets"
@@ -12494,6 +12552,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
@@ -12536,6 +12595,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
@@ -12583,6 +12643,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged AoE Damage",
           "Slow Movement",
@@ -12795,6 +12856,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
@@ -13017,10 +13079,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
+          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -13090,6 +13152,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff"
         ],
         "effects": {
@@ -13164,8 +13227,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Slow Movement"
+          "Immobilize"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -13643,6 +13705,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff"
         ],
         "effects": {
@@ -13717,8 +13780,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Slow Movement"
+          "Immobilize"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -13826,7 +13888,7 @@ export const EPIC_POOLS_RAW = {
           "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "To Hit Debuff"
         ],
         "effects": {
@@ -14449,8 +14511,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize",
-          "Slow Movement"
+          "Immobilize"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -14704,6 +14765,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Holds",
           "Slow Movement"
         ],
@@ -14859,7 +14921,6 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Melee AoE Damage",
           "Stuns",
-          "Threat Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -15085,6 +15146,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -15476,6 +15538,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff"
         ],
         "effects": {
@@ -16240,7 +16303,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Stuns",
-          "Threat Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -17431,6 +17493,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff"
         ],
         "effects": {
@@ -17640,7 +17703,7 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Knockback",
           "Ranged AoE Damage",
@@ -17806,10 +17869,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Holds",
           "Knockback",
-          "Ranged AoE Damage",
-          "Slow Movement",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -18004,6 +18066,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Holds",
           "Slow Movement"
         ],
@@ -18042,8 +18105,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -18323,12 +18388,9 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
-          "Healing",
-          "Holds",
-          "Ranged AoE Damage",
-          "Sleep",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -18373,6 +18435,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -18413,6 +18476,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Ranged Damage",
           "Sniper Attacks",
           "To Hit Debuff",
@@ -18571,7 +18635,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
+          "Blaster Archetype Sets",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
@@ -19009,6 +19075,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
+          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged AoE Damage",
           "Slow Movement",
@@ -19110,10 +19177,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
-          "Slow Movement",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -19206,6 +19272,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Immobilize",
           "Slow Movement"
         ],
@@ -19370,9 +19437,9 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -19672,11 +19739,9 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
-          "Healing",
-          "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -19721,6 +19786,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -19817,6 +19883,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -19855,6 +19922,7 @@ export const EPIC_POOLS_RAW = {
           "ToHit Debuff"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "To Hit Debuff"
         ],
         "effects": {
@@ -19887,7 +19955,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -19931,6 +20000,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Immobilize",
           "Slow Movement"
         ],
@@ -19991,6 +20061,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
           "Universal Damage Sets"
@@ -20161,6 +20232,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Blaster Archetype Sets",
           "Immobilize",
           "Slow Movement"
         ],

@@ -763,8 +763,11 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # 27. activate_requires (string_array)
     activate_requires_parts = r.read_string_array()
     activate_requires = " ".join(activate_requires_parts) if activate_requires_parts else ""
-    # 28. slot_requires (string_array)
-    r.read_string_array()
+    # 28. slot_requires (string_array). Boost (IO piece) records carry
+    # `BoostsSlotted>X <= 0` constraints here when the piece is unique
+    # within a slot pool — used by the IO-set extractor to detect uniqueness.
+    slot_requires_parts = r.read_string_array()
+    slot_requires = " ".join(slot_requires_parts) if slot_requires_parts else ""
     # 29. target_requires (string_array)
     target_requires_parts = r.read_string_array()
     target_requires = " ".join(target_requires_parts) if target_requires_parts else ""
@@ -962,6 +965,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         boosts_allowed=boosts_allowed,
         allowed_boostset_cats=allowed_boostset_cats,
         cast_through=cast_through,
+        slot_requires=slot_requires,
         effects=effects,
         activation_effects=activation_effects,
         redirects=redirects,
@@ -1197,7 +1201,11 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
     requires = " ".join(requires_parts) if requires_parts else ""
     activate_requires_parts = r.read_string_array()  # 27
     activate_requires = " ".join(activate_requires_parts) if activate_requires_parts else ""
-    r.read_string_array()  # 28
+    # 28. slot_requires (string_array). Boost (IO piece) records carry
+    # `BoostsSlotted>X <= 0` constraints here when the piece is unique
+    # within a slot pool — read by the IO-set extractor for per-piece uniqueness.
+    slot_requires_parts = r.read_string_array()  # 28
+    slot_requires = " ".join(slot_requires_parts) if slot_requires_parts else ""
     target_requires_parts = r.read_string_array()  # 29
     target_requires = " ".join(target_requires_parts) if target_requires_parts else ""
     r.read_string_array()  # 30
@@ -1318,6 +1326,7 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
         boosts_allowed=boosts_allowed,
         allowed_boostset_cats=allowed_boostset_cats,
         cast_through=cast_through,
+        slot_requires=slot_requires,
         effects=effects,
         activation_effects=activation_effects,
         redirects=redirects,

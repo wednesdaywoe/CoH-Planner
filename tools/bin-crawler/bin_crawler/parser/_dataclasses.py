@@ -110,6 +110,13 @@ class PowerRecord:
     boosts_allowed: list[str]
     allowed_boostset_cats: list[str]
     cast_through: list[str]
+    # Slot-requires expression. Empty for most powers. Boost (IO piece)
+    # records carry per-piece "BoostsSlotted>X <= 0" constraints here when
+    # the piece is unique within a slot pool — this is how the game enforces
+    # purple-set / ATO / proc uniqueness. The Rebirth IO-set extractor
+    # reads this to determine the per-piece `unique` flag instead of
+    # guessing from `is_proc`.
+    slot_requires: str = ""
 
     # Effect data — the binary stores two parallel struct_arrays:
     # - `Effect` blocks (main effects) go into `effects`

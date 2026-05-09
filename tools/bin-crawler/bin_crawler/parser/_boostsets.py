@@ -288,6 +288,13 @@ def _parse_boostsets_parse6(r: Parse6BinReader) -> list[BoostSetRecord]:
             pool_to_cat.setdefault(key, rec["category"])
 
     for rec in raw:
+        # Curated overrides win unconditionally — the binary doesn't carry a
+        # category for these sets and the AT-prefix fallback is unreliable
+        # for wide allowed_powers pools (Halloween, challenge enhancements).
+        override = REBIRTH_SET_CATEGORY_OVERRIDES.get(rec["name"])
+        if override:
+            rec["category"] = override
+            continue
         if not rec["category"] and rec["powers"]:
             key = (len(rec["powers"]), rec["powers"][0])
             rec["category"] = pool_to_cat.get(key, "")
@@ -468,6 +475,47 @@ def parse_boostsets(bin_path_or_data) -> list[BoostSetRecord]:
 
 
 _SPRINT_MARKER = "Inherent.Inherent.Sprint"
+
+
+# ----------------------------------------------------------------------------
+# Curated category overrides for Rebirth-only sets.
+# ----------------------------------------------------------------------------
+# The bin format doesn't store a planner-friendly category for these sets:
+#   - Halloween / event sets carry a wide-pool allowed_powers list (~30-1000+
+#     powers) where AT-prefix inference picks up whichever AT happens to come
+#     first alphabetically — usually wrong (Witchcraft tagged "ECBlaster",
+#     Return From The Grave tagged "ECBrute", etc.).
+#   - Challenge enhancements (Secret Master TF rewards) likewise lack any
+#     authoritative category in the binary.
+#
+# Inference from boost-type frequency was tested and rejected: most of these
+# pools are dominated by generic boosts (EndDisc 99%, Recharge 98%, Accuracy
+# 87%) with no boost type unique enough to distinguish the set's intended
+# slot category. Sleep / Fear sets are the only ones inference would catch
+# correctly — and even those work better with an explicit table.
+#
+# Verify each entry against the Rebirth Wiki before adding:
+#   https://wiki.cityofheroesrebirth.com/wiki/Halloween_Enhancements
+#   https://wiki.cityofheroesrebirth.com/wiki/Challenge_Enhancements
+REBIRTH_SET_CATEGORY_OVERRIDES: dict[str, str] = {
+    # Halloween — verified via in-pool boost-frequency signal AND user report.
+    'Witchcraft':                    'ECToHitDeBuff',  # @Redlynne 2026-05-08
+    'Superior_Witchcraft':           'ECToHitDeBuff',
+    'The_Haunting':                  'ECFear',         # 92.9% Fear in pool
+    'Superior_The_Haunting':         'ECFear',
+    'Endless_Nightmare':             'ECSleep',        # 100% Sleep in pool
+    'Superior_Endless_Nightmare':    'ECSleep',
+    # Halloween — TODO verify on wiki:
+    #   Vampires_Bite / Superior_Vampires_Bite       (currently mis-tagged ECMelee, 511 powers)
+    #   Return_From_The_Grave / Superior_Return_From_The_Grave (currently mis-tagged ECBrute, 60 powers)
+    # Challenge enhancements (Secret Master TF rewards) — TODO verify on wiki:
+    #   Imperial_Might          (currently mis-tagged ECKnockback)
+    #   Forced_Indoctrination   (no category)
+    #   Libertys_Belt           (currently mis-tagged ECResist)
+    #   Inexhaustibility        (no category)
+    # Synapses_Agility currently maps to ECUniversalTravel via pool-match —
+    # leave alone unless wiki confirms otherwise.
+}
 
 
 def _resolve_category(s: BoostSetRecord) -> str:

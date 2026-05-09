@@ -412,12 +412,19 @@ def main() -> int:
                     piece_display = f'Recharge/Chance'
                 else:
                     piece_display = 'Chance'
+            # Authoritative unique flag: the piece's `slot_requires`
+            # contains a `BoostsSlotted>X <= 0` constraint when the game
+            # enforces uniqueness for that piece (purples, ATOs, ATIO
+            # globals, etc.). Empty / level-only slot_requires means the
+            # piece is freely slottable across multiple powers.
+            slot_req = (piece_power.slot_requires or '').lower()
+            is_unique = 'boostsslotted>' in slot_req
             pieces.append({
                 'num': i + 1,
                 'name': piece_display,
                 'aspects': aspects,
                 'proc': is_proc,
-                'unique': True,  # most modern IO pieces are unique; refine if needed
+                'unique': is_unique,
             })
 
         # Build bonuses.

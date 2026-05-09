@@ -114,21 +114,32 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     .filter(Boolean);
   power.allowedEnhancements = [...new Set(enhancements)].sort();
 
-  // Allowed IO set categories — inferred from boost types (the bin parser's
-  // allowed_boostset_cats field is broken; see PARSER_TODO.md). Epic powers
-  // don't grant ATO categories, so pass 'epic' as both archetype and role.
-  const hasTeleportAttrib = (rawJson.effects || []).some(eff =>
-    (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
-  );
-  power.allowedSetCategories = inferAllowedSetCategories(
-    rawJson.boosts_allowed || [],
-    'epic',
-    'epic',
-    EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
-    rawJson.range,
-    rawJson.powerset || rawJson.full_name,
-    hasTeleportAttrib,
-  );
+  // Allowed IO set categories. Prefer the authoritative
+  // `allowed_set_categories` field — built by the bin exporter from
+  // boostsets.bin's per-set allowed_powers index, so it reflects what the
+  // game actually permits (Pet Damage / Recharge Intensive Pets on
+  // summon powers, To Hit Debuff on Darkest Night, etc.). Fall back to
+  // the heuristic only when the field is null (older exports without
+  // boostsets data).
+  if (Array.isArray(rawJson.allowed_set_categories)) {
+    if (rawJson.allowed_set_categories.length > 0) {
+      power.allowedSetCategories = [...rawJson.allowed_set_categories].sort();
+    }
+    // else: leave allowedSetCategories unset — game says no IO sets here.
+  } else {
+    const hasTeleportAttrib = (rawJson.effects || []).some(eff =>
+      (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'teleport')
+    );
+    power.allowedSetCategories = inferAllowedSetCategories(
+      rawJson.boosts_allowed || [],
+      'epic',
+      'epic',
+      EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
+      rawJson.range,
+      rawJson.powerset || rawJson.full_name,
+      hasTeleportAttrib,
+    );
+  }
 
   // Effects object (legacy format: stats mixed in with effects)
   const effects = {};
