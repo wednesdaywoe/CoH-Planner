@@ -53,9 +53,11 @@ docs/
 raw defs/
 tools/ghidra-audit/project/
 
+# Python bytecode caches (anywhere in the repo)
+**/__pycache__/
+*.pyc
+
 # Tool suite: commit source, ignore build artifacts and generated data
-tools/**/__pycache__/
-tools/**/*.pyc
 tools/pigg-wrangler-dist/build/
 tools/pigg-wrangler-dist/dist/
 tools/bin-crawler/exported_powers/
