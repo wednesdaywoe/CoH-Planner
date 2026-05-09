@@ -418,7 +418,8 @@ export const POWER_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Recharge"
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Resist Damage"
@@ -3301,7 +3302,8 @@ export const POWER_POOLS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Recharge"
+          "Recharge",
+          "Resistance"
         ],
         "allowedSetCategories": [
           "Resist Damage"
