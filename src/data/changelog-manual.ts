@@ -24,7 +24,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-05-10',
     items: [
       { message: 'Saving to your Build Library now updates the existing entry when you load + edit a build you own (instead of always creating a new copy). Use "Save as new copy" to fork.', type: 'feat' },
-      { message: 'Renamed "Vault" to "Build Library" throughout the UI to avoid confusion with HC\'s upcoming Vault feature.', type: 'update' },
+      { message: 'Renamed "Vault" to "Build Library" for reasons', type: 'update' },
       { message: 'Stealth defense suppression should now match in-game behavior', type: 'fix' },
       { message: 'Fixes for a whole mess of HC-related issues', type: 'fix' },
       { message: 'Fix for missing epic pools in the Rebirth dataset', type: 'fix' },
