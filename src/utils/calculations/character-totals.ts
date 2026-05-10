@@ -1228,12 +1228,17 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Stealth Radius
+    // Stealth Radius — highest-source-wins, not additive. Per CoH game
+    // mechanics, multiple stealth toggles (Stealth + Super Speed +
+    // Infiltration etc.) do NOT stack their radii — only the largest
+    // single source applies. Track contributors in the breakdown so the
+    // user can see why the displayed total isn't the sum, but commit
+    // only `Math.max` to the global stat.
     if (effects.stealth) {
       if (effects.stealth.stealthPvE !== undefined) {
         const val = resolveScaledEffect(effects.stealth.stealthPvE, archetypeId, buildLevel);
         if (val > 0) {
-          global.stealthRadiusPvE += val;
+          global.stealthRadiusPvE = Math.max(global.stealthRadiusPvE, val);
           addToBreakdown(breakdown, 'stealthRadiusPvE', {
             name: power.name,
             value: val,
@@ -1244,7 +1249,7 @@ function applyActivePowerBonuses(
       if (effects.stealth.stealthPvP !== undefined) {
         const val = resolveScaledEffect(effects.stealth.stealthPvP, archetypeId, buildLevel);
         if (val > 0) {
-          global.stealthRadiusPvP += val;
+          global.stealthRadiusPvP = Math.max(global.stealthRadiusPvP, val);
           addToBreakdown(breakdown, 'stealthRadiusPvP', {
             name: power.name,
             value: val,
