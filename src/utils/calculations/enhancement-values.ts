@@ -311,6 +311,7 @@ const ASPECT_NAME_MAP: Record<string, string> = {
   'Range Increase': 'range',
   Fly: 'fly',
   'Run Speed': 'run',
+  Run: 'run',
   Jumping: 'jump',
   Jump: 'jump',
   Taunt: 'taunt',
@@ -410,18 +411,53 @@ export function getSetRarityMultiplier(category?: string, name?: string): number
 }
 
 /**
+ * Count the effective aspect "slots" on an IO set piece for the multi-aspect
+ * scheduling penalty. The explicit `aspects` array only lists enhancement
+ * attributes the piece directly enhances; it omits global-proc, power-grant,
+ * and other special segments that nonetheless count toward the penalty.
+ *
+ * The piece's display name reflects every segment (e.g. "EndMod/+Run Speed",
+ * "Range/Fast Snipe", "Recharge/+Dam(All)/+Max HitPoints/+Res(All)") and is
+ * the most reliable signal across both legacy Mids data (HC) and bin-derived
+ * Rebirth data — which inconsistently tag `proc: true` on pieces of this
+ * shape (Thrust #4 is `proc: true`, Synapse's Shock #6 is `proc: false`,
+ * despite both being "X/+Y" patterns).
+ *
+ * Rules, in priority order:
+ *   1. Explicit `totalAspects` wins (used for pieces with internal multi-
+ *      attribute effects like +Critical Hit% that count as 3 extra).
+ *   2. Otherwise: max of the explicit `aspects.length` (+1 if `isProc`) and
+ *      the slash-segment count of the piece name.
+ */
+export function getEffectiveAspectCount(
+  aspects: string[],
+  isProc: boolean,
+  totalAspects: number | undefined,
+  pieceName: string,
+): number {
+  if (totalAspects != null) return totalAspects;
+  const explicit = aspects.length + (isProc ? 1 : 0);
+  if (!pieceName) return explicit;
+  const nameSegments = pieceName.split('/').length;
+  return Math.max(explicit, nameSegments);
+}
+
+/**
  * Parse IO set piece aspects into enhancement bonuses
  */
-export function parseIOSetPieceValues(aspects: string[], level = 50, isProc = false, totalAspects?: number): ParsedBonuses {
+export function parseIOSetPieceValues(
+  aspects: string[],
+  level = 50,
+  isProc = false,
+  totalAspects?: number,
+  pieceName = '',
+): ParsedBonuses {
   if (!aspects || !Array.isArray(aspects)) {
     return {};
   }
 
   const bonuses: ParsedBonuses = {};
-  // Use explicit totalAspects if provided (for pieces with internal attributes
-  // not listed in aspects, e.g. +Critical Hit% counts as 3 extra attributes).
-  // Otherwise, proc effects count as 1 additional aspect.
-  const effectiveAspectCount = totalAspects ?? (isProc ? aspects.length + 1 : aspects.length);
+  const effectiveAspectCount = getEffectiveAspectCount(aspects, isProc, totalAspects, pieceName);
   const modifier = getMultiAspectModifier(effectiveAspectCount);
 
   // Each aspect gets the schedule's value modified by aspect count
@@ -472,7 +508,7 @@ export interface EnhancementBonuses {
 export function calculatePowerEnhancementBonuses(
   power: PowerWithSlots,
   globalIOLevel = 50,
-  getIOSet?: (setId: string) => { pieces: Array<{ num: number; aspects?: string[]; proc?: boolean; totalAspects?: number }>; maxLevel: number; category?: string; name?: string } | undefined,
+  getIOSet?: (setId: string) => { pieces: Array<{ num: number; name?: string; aspects?: string[]; proc?: boolean; totalAspects?: number }>; maxLevel: number; category?: string; name?: string } | undefined,
   exemplarLevel?: number
 ): EnhancementBonuses {
   if (!power?.slots) {
@@ -514,7 +550,7 @@ export function calculatePowerEnhancementBonuses(
       }
       // Purple and Superior sets get 25% higher enhancement values
       const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
-      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc, piece.totalAspects);
+      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc, piece.totalAspects, piece.name);
 
       Object.entries(bonuses).forEach(([aspect, value]) => {
         let scaledValue = value * rarityMultiplier * boostMultiplier;
@@ -628,7 +664,7 @@ export function combineWithAlphaED(
         ioLevel = Math.min(globalIOLevel, set.maxLevel);
       }
       const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
-      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc, piece.totalAspects);
+      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc, piece.totalAspects, piece.name);
       Object.entries(bonuses).forEach(([aspect, value]) => {
         let scaledValue = value * rarityMultiplier * boostMultiplier;
         const isPureProc = piece.proc && (!piece.aspects || piece.aspects.length === 0);

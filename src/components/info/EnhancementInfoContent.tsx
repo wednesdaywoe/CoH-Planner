@@ -15,6 +15,7 @@ import {
   isBonusCapped,
   BOOST_MULTIPLIER_PER_LEVEL,
   getMultiAspectModifier,
+  getEffectiveAspectCount,
   getSetRarityMultiplier,
 } from '@/utils/calculations';
 import {
@@ -129,9 +130,20 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
     const effectiveLevel = ioEnh.attuned
       ? Math.max(setMin, setMax > 1 ? Math.min(build.level || 50, setMax) : (build.level || 50))
       : (enhancement.level || 50);
+    // Look up the piece data so we can use its display name as a fallback
+    // signal for special segments (e.g. "/+Run Speed", "/Fast Snipe") that
+    // don't appear in the aspects array but still count toward the
+    // multi-aspect penalty. Mirrors the main calc engine's behavior.
+    const piece = ioSet?.pieces.find((p) => p.num === ioEnh.pieceNum);
+    const pieceName = piece?.name || '';
+    const pieceTotalAspects = (piece as { totalAspects?: number } | undefined)?.totalAspects;
     const rawAspectCount = ioEnh.aspects.filter(a => normalizeAspectName(a) !== null).length || ioEnh.aspects.length;
-    // Proc effects count as 3 additional aspects for the multi-aspect modifier
-    const effectiveAspectCount = ioEnh.isProc ? rawAspectCount + 3 : rawAspectCount;
+    const effectiveAspectCount = getEffectiveAspectCount(
+      ioEnh.aspects.slice(0, rawAspectCount),
+      !!ioEnh.isProc,
+      pieceTotalAspects,
+      pieceName,
+    );
     const aspectModifier = getMultiAspectModifier(effectiveAspectCount);
     // Purple and Superior sets get 25% higher enhancement values
     const rarityMultiplier = getSetRarityMultiplier(ioSet?.category, ioSet?.name);

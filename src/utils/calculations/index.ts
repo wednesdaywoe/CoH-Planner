@@ -32,6 +32,7 @@ export {
   BASE_RECOVERY_RATE,
   BASE_REGEN_RATE,
   getMultiAspectModifier,
+  getEffectiveAspectCount,
   getSetRarityMultiplier,
   calculatePowerEnhancementBonuses,
   combineWithAlphaED,
