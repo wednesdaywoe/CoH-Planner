@@ -28,7 +28,7 @@ import {
   getActiveDamageConversion,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
@@ -457,6 +457,68 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     return result;
   }, [effectivePower, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, build.primary.powers, build.secondary.powers]);
 
+  // Pseudo-pet damage synthesis. Powers like Blizzard, Caltrops, Ice Storm,
+  // Bonfire, etc. carry no `damage[]` on the parent; they summon an
+  // `isPseudoPet` entity that ticks the actual damage. Players think
+  // "Blizzard does X damage", not "Blizzard summons a pseudo-pet that ticks
+  // X". Surface the pet's lifetime damage in the standard Damage section by
+  // synthesizing a PowerDamageResult and feeding the same DamageBlock as
+  // every other attack — so DPS, enhancement tiers, and cap-relative bars
+  // match the rest of the UI. Only pseudo-pets unify here; real summons
+  // (Voltaic Sentinel, Phantom Army, MM henchmen) keep their separate
+  // SummonsBlock — those are entities the player commands.
+  const pseudoPetDamage = useMemo(() => {
+    if (calculatedDamage) return null;
+    const summon = effectivePower?.effects?.summon;
+    if (!summon || !summon.isPseudoPet) return null;
+
+    const entityList = summon.entities && summon.entities.length > 0
+      ? summon.entities.map(e => ({ entityName: e.entity, count: e.count }))
+      : summon.entity
+        ? [{ entityName: summon.entity, count: summon.entityCount || 1 }]
+        : [];
+    if (entityList.length === 0) return null;
+
+    const enhBonus = enhancementBonuses.damage || 0;
+    const globalBonus = (globalBonusesForCalc.damage || 0) / 100;
+    let base = 0, enhanced = 0, final = 0;
+    const damageTypes = new Set<string>();
+    for (const { entityName, count } of entityList) {
+      const applyEnh = shouldApplyEnhancements(entityName, summon.copyBoosts);
+      const result = calculatePetDamage(
+        entityName, build.level, count, summon.duration,
+        applyEnh ? enhBonus : 0, applyEnh, globalBonus, 0,
+      );
+      if (!result || result.aggregateDpsBase <= 0) continue;
+      // Lifetime damage = DPS × duration. Permanent pets fall back to a
+      // single cycle window — `damage` for them is conceptually DPS-driven
+      // and would otherwise overflow.
+      const window = summon.duration ?? 0;
+      if (window <= 0) continue;
+      base += result.aggregateDpsBase * window;
+      enhanced += result.aggregateDpsEnhanced * window;
+      final += result.aggregateDpsFinal * window;
+      for (const ab of result.abilities) {
+        for (const dmg of ab.damageByType) damageTypes.add(dmg.type);
+      }
+    }
+    if (base <= 0) return null;
+
+    const typeLabel = damageTypes.size === 1
+      ? Array.from(damageTypes)[0]
+      : damageTypes.size > 1 ? 'Mixed' : 'Damage';
+
+    return {
+      base,
+      enhanced,
+      final,
+      type: typeLabel,
+    } as PowerDamageResult;
+  }, [calculatedDamage, effectivePower, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage]);
+
+  // Resolved damage shown in the Damage block — direct first, pseudo-pet fallback.
+  const resolvedDamage = calculatedDamage ?? pseudoPetDamage;
+
   // Calculate archetype inherent damage bonus info (Containment, Scourge, Fury, etc.)
   const inherentInfo = useMemo(() => {
     if (!calculatedDamage) return null;
@@ -660,8 +722,14 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       {/* Tags Block — Power Type / Target Type / Allowed Enhancements. */}
       <TagsBlock power={power} />
 
-      {/* Summon/Pet Info with DPS */}
-      {effects?.summon && (
+      {/* Summon/Pet Info with DPS. Pseudo-pet powers (Blizzard, Caltrops,
+        * Ice Storm, Bonfire, etc.) surface their lifetime damage through
+        * the unified Damage block above instead — players think of those
+        * as the power's own damage, not a separate summon. Real summons
+        * (Voltaic Sentinel, Phantom Army, MM henchmen, Lore pets) keep
+        * the dedicated panel since the entity is something the player
+        * commands. */}
+      {effects?.summon && !(effects.summon.isPseudoPet && pseudoPetDamage) && (
         <PetDamageDisplay
           summon={effects.summon}
           level={build.level}
@@ -765,9 +833,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         </div>
       )}
 
-      {calculatedDamage && (
+      {resolvedDamage && (
         <DamageBlock
-          calculatedDamage={calculatedDamage}
+          calculatedDamage={resolvedDamage}
           effects={{
             recharge: effects?.recharge,
             castTime: effects?.castTime,
