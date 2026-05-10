@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-05-09',
+    date: '2026-05-10',
     items: [
+      { message: 'Stealth defense suppression should now match in-game behavior', type: 'fix' },
       { message: 'Fixes for a whole mess of HC-related issues', type: 'fix' },
       { message: 'Fix for missing epic pools in the Rebirth dataset', type: 'fix' },
       { message: 'Fixed an issue with Rebirth/Fitness/Tough missing some boostSetTypes', type: 'fix' },
