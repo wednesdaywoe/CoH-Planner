@@ -171,6 +171,16 @@ export interface Build {
    * power regardless. Defaults to 'human' for non-Kheldian ATs.
    */
   kheldianForm?: 'human' | 'nova' | 'dwarf';
+
+  /**
+   * If this build was loaded from the user's Vault, the source build's id.
+   * Used by the Save → Vault flow to update the existing entry rather than
+   * creating a duplicate. Cleared when the user starts a new build or
+   * imports an unrelated one. The presence of an owner token (separate,
+   * stored per-id by sharedBuilds.ts) is what actually authorizes the
+   * update; this field is just the link.
+   */
+  vaultId?: string;
 }
 
 // ============================================

@@ -105,6 +105,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [vaultSaveLoading, setVaultSaveLoading] = useState(false);
 
   const { exportBuild, importBuild, importMidsBuild: applyMidsBuild, build } = useBuildStore();
+  const setVaultId = useBuildStore((s) => s.setVaultId);
   const user = useAuthStore((s) => s.user);
 
   // Fetch account-owned builds when modal opens and user is logged in
@@ -113,6 +114,27 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
       getMyBuilds().then(setAccountBuilds).catch(() => {});
     }
   }, [isOpen, user]);
+
+  // Whether the in-memory build is linked to a Vault entry the user can
+  // update. Requires both a vaultId on the build (set when loaded from
+  // BuildDetailPage as the owner) AND the owner token still being present
+  // — without the token the backend rejects the update. Stale links (the
+  // entry was deleted, or the user cleared their tokens) fall through to
+  // the new-entry path.
+  const linkedVaultId = build.vaultId ?? null;
+  const canUpdateVault = !!(linkedVaultId && (getOwnerToken(linkedVaultId) || user));
+
+  // Pre-populate the alias input with the build's name when the modal
+  // opens against a vault-linked build, so users can see (and adjust)
+  // the name that will overwrite their saved entry.
+  useEffect(() => {
+    if (isOpen && canUpdateVault && !buildAlias.trim() && build.name) {
+      setBuildAlias(build.name);
+    }
+    // Intentionally only depend on isOpen — we don't want to re-prefill
+    // every time the user types or the build state changes after open.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   // Merge token-owned IDs with account-owned IDs (deduplicated)
   const tokenIds = getOwnedBuildIds();
@@ -154,7 +176,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     onClose();
   };
 
-  const handleVaultSave = async () => {
+  const handleVaultSave = async (asNew = false) => {
     setVaultSaveError(null);
     setVaultSaveLoading(true);
     setVaultSaveSuccess(false);
@@ -170,7 +192,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         vaultName = ['Generic ' + at, pri, sec].filter(Boolean).join(' - ') || 'Saved Build';
       }
 
-      await shareBuild({
+      // Update an existing entry when the build is linked and the user
+      // can authorize it (owner token or login session). asNew=true
+      // forks: drop the link and create a fresh entry.
+      const updateExisting = !asNew && canUpdateVault && linkedVaultId;
+      const result = await shareBuild({
         name: vaultName,
         description: '',
         author_name: '',
@@ -178,7 +204,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         tags: [],
         build_json: exportData,
         is_public: false,
+        existingId: updateExisting ? linkedVaultId : undefined,
       });
+      // Link the in-memory build to the (new or updated) entry so a
+      // follow-up Save continues to update in place.
+      if (result?.id) setVaultId(result.id);
       setVaultSaveSuccess(true);
     } catch (e) {
       setVaultSaveError(e instanceof Error ? e.message : 'Failed to save to vault');
@@ -794,22 +824,40 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                 <>
                   {vaultSaveSuccess ? (
                     <div className="bg-indigo-900/20 border border-indigo-700/50 rounded p-4 text-sm text-indigo-300">
-                      <p className="font-semibold">Build saved to your vault!</p>
+                      <p className="font-semibold">
+                        {canUpdateVault ? 'Build updated in your vault!' : 'Build saved to your vault!'}
+                      </p>
                       <p className="text-xs text-indigo-400 mt-1">
                         This build is private and only visible to you in My Builds.
                       </p>
                     </div>
                   ) : (
                     <>
+                      {canUpdateVault && (
+                        <p className="text-xs text-indigo-400">
+                          This build is linked to a Vault entry. Saving will overwrite the existing entry; choose "Save as new" to fork it instead.
+                        </p>
+                      )}
                       <Button
                         variant="primary"
-                        onClick={handleVaultSave}
+                        onClick={() => handleVaultSave(false)}
                         isLoading={vaultSaveLoading}
                         disabled={vaultSaveLoading || !build.archetype.id}
                         className="w-full !bg-indigo-600 hover:!bg-indigo-700"
                       >
-                        Save to Vault (Private)
+                        {canUpdateVault ? 'Update Saved Build' : 'Save to Vault (Private)'}
                       </Button>
+                      {canUpdateVault && (
+                        <Button
+                          variant="secondary"
+                          onClick={() => handleVaultSave(true)}
+                          isLoading={vaultSaveLoading}
+                          disabled={vaultSaveLoading || !build.archetype.id}
+                          className="w-full"
+                        >
+                          Save as new copy
+                        </Button>
+                      )}
                       {vaultSaveError && (
                         <div className="bg-red-900/20 border border-red-700/50 rounded p-3 text-sm text-red-300">
                           {vaultSaveError}

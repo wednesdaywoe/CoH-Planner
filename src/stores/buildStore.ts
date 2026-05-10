@@ -109,6 +109,15 @@ interface BuildActions {
   setGlobalIOLevel: (level: number) => void;
   setKheldianForm: (form: 'human' | 'nova' | 'dwarf') => void;
 
+  /**
+   * Link the current in-memory build to a Vault entry by id, so the
+   * next "Save to Vault" updates that entry rather than creating a
+   * duplicate. Pass `null` to clear (e.g. when starting fresh or
+   * forking). Called after loading a build from BuildDetailPage and
+   * cleared automatically on import / reset.
+   */
+  setVaultId: (id: string | null) => void;
+
   // Accolades
   addAccolade: (accolade: Accolade) => void;
   removeAccolade: (accoladeId: string) => void;
@@ -1630,6 +1639,17 @@ export const useBuildStore = create<BuildStore>()(
             secondary: { ...state.build.secondary, powers: syncPowerList(state.build.secondary.powers) },
           },
         }));
+      },
+
+      setVaultId: (id) => {
+        // Note: not history-checkpointed. This is metadata about *where* the
+        // build came from, not part of the user's editable state — undoing a
+        // "loaded from Vault" event would surprise the user.
+        set((state) => {
+          const next = id ?? undefined;
+          if (state.build.vaultId === next) return state;
+          return { build: { ...state.build, vaultId: next } };
+        });
       },
 
       setOrigin: (origin) => {

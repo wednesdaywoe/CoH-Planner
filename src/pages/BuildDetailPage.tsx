@@ -14,6 +14,7 @@ export function BuildDetailPage() {
   const { id } = useParams({ from: '/builds/$id' });
   const navigate = useNavigate();
   const importBuild = useBuildStore((s) => s.importBuild);
+  const setVaultId = useBuildStore((s) => s.setVaultId);
   const user = useAuthStore((s) => s.user);
 
   const [build, setBuild] = useState<SharedBuild | null>(null);
@@ -74,6 +75,12 @@ export function BuildDetailPage() {
     if (!build) return;
     const success = importBuild(JSON.stringify(build.build_json));
     if (success) {
+      // Link the in-memory build to this Vault entry only when the viewer
+      // is the owner — otherwise "Save to Vault" would attempt to update
+      // someone else's entry (which the backend rejects, but we surface
+      // a "Save as new" instead). For non-owners, treat the load as a
+      // fresh fork.
+      setVaultId(owned ? build.id : null);
       navigate({ to: '/' });
     }
   };
