@@ -18,7 +18,7 @@ import {
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
-import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getTotalBonusCount, isBonusCapped, getSetRarityMultiplier, BOOST_MULTIPLIER_PER_LEVEL } from '@/utils/calculations';
+import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getTotalBonusCount, isBonusCapped, getSetRarityMultiplier, getEffectiveAspectCount, getMultiAspectModifier, BOOST_MULTIPLIER_PER_LEVEL } from '@/utils/calculations';
 import { getPairedStat } from '@/utils/calculations/set-bonuses';
 import { useBonusTracking } from '@/hooks';
 import { Modal, ModalBody } from '@/components/modals';
@@ -1691,18 +1691,16 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   const cappedLevel = set.maxLevel > 1 ? Math.min(rawLevel, set.maxLevel) : rawLevel;
   const effectiveLevel = Math.max(set.minLevel, cappedLevel);
   const rawAspectCount = piece.aspects.filter(a => normalizeAspectName(a) !== null).length || piece.aspects.length;
-  // Proc effects count as 3 additional aspects for the multi-aspect modifier
-  const aspectCount = piece.proc ? rawAspectCount + 3 : rawAspectCount;
-  const getAspectModifier = (count: number): number => {
-    switch (count) {
-      case 1: return 1.0;
-      case 2: return 0.625;
-      case 3: return 0.5;
-      case 4: return 0.4375;
-      default: return 0.4375;
-    }
-  };
-  const aspectModifier = getAspectModifier(aspectCount);
+  // Use the shared classifier so the IO picker preview matches the InfoPanel,
+  // the hover tooltip, and the dashboard. Picks up special segments encoded
+  // only in the piece name (e.g. "EndMod/+Run Speed" → 2 effective aspects).
+  const aspectCount = getEffectiveAspectCount(
+    piece.aspects.slice(0, rawAspectCount),
+    !!piece.proc,
+    piece.totalAspects,
+    piece.name,
+  );
+  const aspectModifier = getMultiAspectModifier(aspectCount);
 
   // Boost multiplier — pure procs (no aspects) can't be boosted, but hybrid procs can
   const isPureProc = piece.proc && piece.aspects.length === 0;

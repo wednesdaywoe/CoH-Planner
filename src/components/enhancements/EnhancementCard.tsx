@@ -12,6 +12,7 @@ import {
   normalizeAspectName,
   getAspectSchedule,
   getIOValueAtLevel,
+  getEffectiveAspectCount,
   BOOST_MULTIPLIER_PER_LEVEL,
 } from '@/utils/calculations';
 import { getEnhancementOutline } from '@/utils/enhancement-outline';
@@ -196,9 +197,18 @@ function formatEnhValue(value: number): string {
 function EnhancementTooltip({ piece, setName, level, isAttuned, boost = 0, category }: EnhancementTooltipProps) {
   // Attuned enhancements scale to character level; non-attuned use their fixed level
   const effectiveLevel = level;
-  // Use explicit totalAspects when the piece has internal attributes beyond
-  // the listed aspects (e.g. +Critical Hit% counts as 3 extra attributes)
-  const aspectCount = piece.totalAspects ?? (piece.proc ? piece.aspects.length + 1 : piece.aspects.length);
+  // Use the shared classifier so the hover tooltip matches the InfoPanel and
+  // the dashboard. The piece name carries special segments (e.g.
+  // "EndMod/+Run Speed", "Range/Fast Snipe") that the explicit `aspects`
+  // array omits but that still count toward the multi-aspect penalty —
+  // without this, Synapse's Shock #6 reads 42.4% in the tooltip while the
+  // InfoPanel correctly shows 26.5%.
+  const aspectCount = getEffectiveAspectCount(
+    piece.aspects,
+    !!piece.proc,
+    piece.totalAspects,
+    piece.name,
+  );
   const boostMultiplier = 1 + boost * BOOST_MULTIPLIER_PER_LEVEL;
   const rarityLabel = category ? RARITY_LABEL[category] : null;
   const procEffect = piece.proc ? parseProcEffect((findProcData(piece.name, setName)?.mechanics) || '') : null;
