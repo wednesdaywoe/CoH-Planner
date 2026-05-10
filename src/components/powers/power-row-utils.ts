@@ -64,10 +64,14 @@ function hasPersistentBuffEffects(power: { effects?: object; damage?: unknown })
   const effects = power.effects as Record<string, unknown>;
   // selfPenalty flag means debuff fields (e.g., Granite Armor's -damage) are real self-effects
   if (effects.selfPenalty) return true;
-  // Damage attacks: damageBuff is a per-cast Defiance proc, not a persistent
-  // buff. Real persistent self-buffs (resistance, defense, mez resistance,
-  // etc.) on the same power still trigger the toggle.
-  const skip = isDamagingAttack(power) ? new Set(['damageBuff']) : null;
+  // Damage attacks: damageBuff is a per-cast Defiance proc, and rangeBuff
+  // is the Fast Snipe per-power range bump (gated on ≥22% ToHit buff in
+  // game). Neither is a persistent caster buff worth toggling at the
+  // build level — Fast Snipe state is the right knob for snipe damage/
+  // range, not a generic active-power flag. Real persistent self-buffs
+  // (resistance, defense, mez resistance, etc.) on the same power still
+  // trigger the toggle.
+  const skip = isDamagingAttack(power) ? new Set(['damageBuff', 'rangeBuff']) : null;
   return CASTER_BUFF_KEYS.some(key => key in effects && !skip?.has(key));
 }
 
