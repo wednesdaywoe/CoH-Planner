@@ -85,7 +85,8 @@ export const ShadowCloak: Power = {
       "defenseBuff": 0.75,
       "debuffResistance": 0.75,
       "perceptionBuff": 0.75,
-      "immobilize": 0.75
+      "immobilize": 0.75,
+      "stealth": 0.75
     },
     "debuffResistance": {
       "perception": {
@@ -103,6 +104,16 @@ export const ShadowCloak: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.75,
+    "stealth": {
+      "stealthPvP": {
+        "scale": 390,
+        "table": "Melee_Ones"
+      },
+      "stealthPvE": {
+        "scale": 35.5,
+        "table": "Melee_Ones"
+      }
+    },
     "buffDuration": 0.75
   }
 };

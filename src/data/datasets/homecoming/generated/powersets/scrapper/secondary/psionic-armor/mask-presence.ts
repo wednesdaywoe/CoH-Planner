@@ -41,7 +41,9 @@ export const MaskPresence: Power = {
     },
     "durations": {
       "damageBuff": 0.75,
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "defenseBuffSuppressible": 0.55,
+      "stealth": 0.75
     },
     "defenseBuff": {
       "ranged": {
@@ -51,6 +53,62 @@ export const MaskPresence: Power = {
       "melee": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
+      }
+    },
+    "defenseBuffSuppressible": {
+      "ranged": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35.5,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 390,
+        "table": "Melee_Ones"
       }
     },
     "buffDuration": 0.75

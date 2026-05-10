@@ -82,7 +82,18 @@ export const EnergyCloak: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "stealth": 0.75
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 36.5,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 390,
+        "table": "Melee_Ones"
+      }
     },
     "buffDuration": 0.75
   }

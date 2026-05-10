@@ -542,12 +542,17 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
       if (req.includes('kMeter > 0') || req.includes('kMeter >=')) continue;
       // Scourge/proc-based bonus damage (random chance expressions)
       if (req.includes('rand()')) continue;
-      // Out-of-combat gating (pool Stealth, Invisibility) — propagate downward
-      if (_isOutOfCombatGate(req)) combatGated = true;
+      // Out-of-combat gating (pool Stealth, Invisibility) — propagate downward.
+      // Use `else` for the conditional-gate skip below: combat-gated effects
+      // also match `_isConditionalGate` (non-empty, doesn't end with `!`) and
+      // would otherwise be dropped along with all their child_effects, losing
+      // the suppressible defense buried in nested PvE/PvP children.
+      const outOfCombat = _isOutOfCombatGate(req);
+      if (outOfCombat) combatGated = true;
       // Generic positive-state-gate skip — covers Parse6's per-template gates
       // (drowning, Domination boost, etc.). Negated gates pass through as
       // the base case.
-      if (_isConditionalGate(req)) continue;
+      if (!outOfCombat && _isConditionalGate(req)) continue;
     }
 
     // Collect templates from this level
@@ -1674,13 +1679,18 @@ function collectAllTemplates(effects, parentCombatGated = false) {
       // These are mutually exclusive modes — the base unconditional effects provide
       // the default values; mode-specific bonuses would overwrite them incorrectly
       if (req.includes('Source.Mode?') || req.includes('kMode')) continue;
-      // Out-of-combat gating (pool Stealth, Invisibility) — propagate downward
-      if (_isOutOfCombatGate(req)) combatGated = true;
+      // Out-of-combat gating (pool Stealth, Invisibility) — propagate downward.
+      // The `_isConditionalGate` check below also matches these; gating with
+      // `else` keeps combat-gated effects (and their nested children) flowing
+      // through with combatGated=true so the suppressible defense reaches
+      // the extractor.
+      const outOfCombat = _isOutOfCombatGate(req);
+      if (outOfCombat) combatGated = true;
       // Generic positive-state-gate skip — covers Parse6's per-template gates
       // (drowning, Domination boost, etc.) that HC encodes via the explicit
       // checks above. Negated gates ("target NOT drowning") describe the
       // base case and pass through.
-      if (_isConditionalGate(req)) continue;
+      if (!outOfCombat && _isConditionalGate(req)) continue;
     }
 
     // Collect templates from this level
