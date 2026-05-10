@@ -94,6 +94,10 @@ export interface DestinyEffects {
   defenseAll?: number;
   // Resistance (all damage types)
   resistanceAll?: number;
+  // Resistance to debuffs (defense, regen, recovery, recharge, tohit, ...).
+  // Distinct from `resistanceAll` — Ageless Radial Epiphany grants 50%
+  // debuff resistance, not 50% damage resistance.
+  debuffResistance?: number;
   // Healing
   healPercent?: number;
   // Recovery/Regeneration

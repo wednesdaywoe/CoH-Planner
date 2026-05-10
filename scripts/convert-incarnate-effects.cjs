@@ -322,8 +322,17 @@ function extractDestiny() {
         // Determine the stat key
         let statKey = null;
         if (aspect === 'Resistance') {
-          // All damage resistance types
-          statKey = 'resistanceAll';
+          // `aspect: Resistance` covers two distinct game concepts:
+          //   - "Resistance to damage of type X" when the attrib is a damage
+          //     type (suffixed `_Dmg`). Routes to `resistanceAll` for
+          //     damage resistance display (Barrier Radial Epiphany etc.).
+          //   - "Resistance to debuffs of stat X" for everything else
+          //     (Ranged/Melee/Area defense positions, Endurance, ToHit,
+          //     Regeneration, Recovery, RechargeTime, etc.). Routes to
+          //     `debuffResistance` — this is what Ageless Radial Epiphany
+          //     actually grants (50% Debuff Resistance, not 50% Damage
+          //     Resistance).
+          statKey = attrib.endsWith('_Dmg') ? 'resistanceAll' : 'debuffResistance';
         } else if (aspect === 'Current' && ATTRIB_MAP[attrib]) {
           const mapped = ATTRIB_MAP[attrib];
           if (mapped.startsWith('def')) {

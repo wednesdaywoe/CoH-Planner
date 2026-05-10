@@ -1375,6 +1375,9 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
             {destinyEffects.resistanceAll !== undefined && (
               <IncarnateEffectRow label="Resistance (All)" value={destinyEffects.resistanceAll} colorClass="text-orange-400" />
             )}
+            {destinyEffects.debuffResistance !== undefined && (
+              <IncarnateEffectRow label="Debuff Resistance" value={destinyEffects.debuffResistance} colorClass="text-cyan-400" />
+            )}
             {destinyEffects.regeneration !== undefined && (
               <IncarnateEffectRow label="Regeneration" value={destinyEffects.regeneration} colorClass="text-green-400" />
             )}

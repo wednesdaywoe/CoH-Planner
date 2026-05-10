@@ -176,15 +176,15 @@ export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number>> =
   // Ageless Partial Core Invocation
   'ageless_partial_core_invocation': {"levelShift":1,"endurance":0.75,"recharge":0.4,"recovery":5},
   // Ageless Partial Radial Invocation
-  'ageless_partial_radial_invocation': {"levelShift":1,"endurance":0.75,"recharge":0.4,"resistanceAll":0.5},
+  'ageless_partial_radial_invocation': {"levelShift":1,"endurance":0.75,"recharge":0.4,"debuffResistance":0.5},
   // Ageless Radial Epiphany
-  'ageless_radial_epiphany': {"levelShift":1,"endurance":1,"recharge":0.4,"resistanceAll":0.5},
+  'ageless_radial_epiphany': {"levelShift":1,"endurance":1,"recharge":0.4,"debuffResistance":0.5},
   // Ageless Radial Invocation
-  'ageless_radial_invocation': {"endurance":0.5,"recharge":0.4,"resistanceAll":0.5},
+  'ageless_radial_invocation': {"endurance":0.5,"recharge":0.4,"debuffResistance":0.5},
   // Ageless Total Core Invocation
   'ageless_total_core_invocation': {"levelShift":1,"endurance":0.75,"recharge":0.4,"recovery":5},
   // Ageless Total Radial Invocation
-  'ageless_total_radial_invocation': {"levelShift":1,"endurance":0.75,"recharge":0.4,"resistanceAll":0.5},
+  'ageless_total_radial_invocation': {"levelShift":1,"endurance":0.75,"recharge":0.4,"debuffResistance":0.5},
   // Barrier Core Epiphany
   'barrier_core_epiphany': {"levelShift":1,"defenseAll":0.575,"resistanceAll":0.575},
   // Barrier Core Invocation
@@ -204,23 +204,23 @@ export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number>> =
   // Barrier Total Radial Invocation
   'barrier_total_radial_invocation': {"levelShift":1,"defenseAll":0.6,"resistanceAll":0.6},
   // Clarion Core Epiphany
-  'clarion_core_epiphany': {"levelShift":1,"resistanceAll":2.1},
+  'clarion_core_epiphany': {"levelShift":1,"debuffResistance":2.1},
   // Clarion Core Invocation
-  'clarion_core_invocation': {"resistanceAll":2.1},
+  'clarion_core_invocation': {"debuffResistance":2.1},
   // Clarion Invocation
-  'clarion_invocation': {"resistanceAll":3},
+  'clarion_invocation': {"debuffResistance":3},
   // Clarion Partial Core Invocation
-  'clarion_partial_core_invocation': {"levelShift":1,"resistanceAll":2.1},
+  'clarion_partial_core_invocation': {"levelShift":1,"debuffResistance":2.1},
   // Clarion Partial Radial Invocation
-  'clarion_partial_radial_invocation': {"levelShift":1,"resistanceAll":3},
+  'clarion_partial_radial_invocation': {"levelShift":1,"debuffResistance":3},
   // Clarion Radial Epiphany
-  'clarion_radial_epiphany': {"levelShift":1,"resistanceAll":3},
+  'clarion_radial_epiphany': {"levelShift":1,"debuffResistance":3},
   // Clarion Radial Invocation
-  'clarion_radial_invocation': {"resistanceAll":3},
+  'clarion_radial_invocation': {"debuffResistance":3},
   // Clarion Total Core Invocation
-  'clarion_total_core_invocation': {"levelShift":1,"resistanceAll":2.1},
+  'clarion_total_core_invocation': {"levelShift":1,"debuffResistance":2.1},
   // Clarion Total Radial Invocation
-  'clarion_total_radial_invocation': {"levelShift":1,"resistanceAll":3},
+  'clarion_total_radial_invocation': {"levelShift":1,"debuffResistance":3},
   // Incandescence Core Epiphany
   'incandescence_core_epiphany': {"levelShift":1,"resistanceAll":-0.8},
   // Incandescence Core Invocation
